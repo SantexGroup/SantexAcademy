@@ -5,14 +5,6 @@ Esta es una API de ejemplo desarrollada en Node + Express + Sequelize.
 
 ## INSTALACION
 
-###Python (en caso de ser necesario)
-
-```
-$ sudo apt-get install python-software-properties python g++ make
-$ sudo add-apt-repository ppa:chris-lea/node.js
-$ sudo apt-get update
-```
-
 ### Node Js
 
 `$ sudo apt-get install nodejs`
