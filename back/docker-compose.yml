@@ -11,9 +11,9 @@ services:
       MYSQL_PASSWORD: $DB_PASSWORD
       MYSQL_ROOT_PASSWORD: $DB_MYSQL_ROOT_PASSWORD
       MYSQL_DATABASE: $DB_DATABASE
-      MYSQL_TCP_PORT: $DB_PORT
+      MYSQL_TCP_PORT: 3306
     ports:
-      - $DB_PORT:$DB_PORT
+      - $DB_PORT:3306
     volumes: 
       - db-config:/etc/mysql
       - db-data:/var/lib/mysql
