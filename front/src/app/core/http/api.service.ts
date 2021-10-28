@@ -96,7 +96,7 @@ export class ApiService {
    *
    * @return An `Observable` of the response body as a JSON object.
    */
-  public get(url: string, params?: HttpParams): Observable<Object> {
+  public get<T>(url: string, params?: HttpParams): Observable<T> {
     const opts = {
       headers: this.httpHeaders,
       params: (params ? params : null) as HttpParams,
@@ -106,13 +106,13 @@ export class ApiService {
       opts.params = params;
     }
 
-    return this.http.get(this.apiUrl + url, opts);
+    return this.http.get<T>(this.apiUrl + url, opts);
   }
 
-  public getFile(
+  public getFile<T>(
     url: string,
     params: HttpParams | undefined = undefined
-  ): Observable<Object> {
+  ): Observable<T> {
     const headers = this.httpHeaders.delete('Content-Type');
 
     const opts = {
@@ -125,7 +125,7 @@ export class ApiService {
       opts.params = params;
     }
 
-    return this.http.get(this.apiUrl + url, opts);
+    return this.http.get<T>(this.apiUrl + url, opts);
   }
 
   /**
@@ -137,7 +137,7 @@ export class ApiService {
    *
    * @return An `Observable` of the response, with the response body as a JSON object.
    */
-  public post(url: string, body?: any): Observable<Object> {
+  public post<T>(url: string, body?: any): Observable<T> {
     let postBody = body;
     const opts = {
       headers: this.httpHeaders,
@@ -147,7 +147,7 @@ export class ApiService {
       postBody = {};
     }
 
-    return this.http.post(this.apiUrl + url, postBody, opts);
+    return this.http.post<T>(this.apiUrl + url, postBody, opts);
   }
 
   /**
@@ -159,7 +159,7 @@ export class ApiService {
    *
    * @return An `Observable` of the response, with the response body as a JSON object.
    */
-  public put(url: string, body?: any): Observable<Object> {
+  public put<T>(url: string, body?: any): Observable<T> {
     let putBody = body;
     const opts = {
       headers: this.httpHeaders,
@@ -169,7 +169,7 @@ export class ApiService {
       putBody = {};
     }
 
-    return this.http.put(this.apiUrl + url, putBody, opts);
+    return this.http.put<T>(this.apiUrl + url, putBody, opts);
   }
 
   /**
@@ -180,11 +180,11 @@ export class ApiService {
    *
    * @return An `Observable` of the response, with the response body of type `Object`.
    */
-  public delete(url: string): Observable<Object> {
+  public delete<T>(url: string): Observable<T> {
     const opts = {
       headers: this.httpHeaders,
     };
 
-    return this.http.delete(this.apiUrl + url, opts);
+    return this.http.delete<T>(this.apiUrl + url, opts);
   }
 }

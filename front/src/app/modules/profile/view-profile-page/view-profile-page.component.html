@@ -1,6 +1,6 @@
 <app-dashboard-page></app-dashboard-page>
 
-<mat-card class="example-card">
+<mat-card class="example-card" *ngIf="profile">
   <mat-card-title-group>
     <mat-card-title>{{ profile.username }}</mat-card-title>
     <img
