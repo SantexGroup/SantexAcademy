@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoginRoutingModule } from './login-routing.module';
-import { LoginPageComponent } from './login-page/login-page.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,9 +15,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
+import { LoginRoutingModule } from './login-routing.module';
+
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
+
 @NgModule({
   declarations: [
     LoginPageComponent,
+    RegisterPageComponent
   ],
   imports: [
     CommonModule,

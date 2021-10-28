@@ -1,0 +1,16 @@
+<app-dashboard-page></app-dashboard-page>
+
+<mat-card class="example-card">
+  <mat-card-title-group>
+    <mat-card-title>{{ profile.username }}</mat-card-title>
+    <img
+      mat-card-lg-image
+      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+    />
+  </mat-card-title-group>
+  <mat-card-content>
+    Hola, {{ profile.username }}.
+  </mat-card-content>
+</mat-card>
+
+<router-outlet></router-outlet>

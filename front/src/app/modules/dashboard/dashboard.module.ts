@@ -18,9 +18,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
-  declarations: [
-    DashboardPageComponent,
-  ],
+  declarations: [DashboardPageComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -42,8 +40,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatSlideToggleModule,
     MatSelectModule,
     MatOptionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
-  providers: []
+  exports: [
+    DashboardPageComponent
+  ],
+  providers: [],
 })
-export class DashboardModule { }
+export class DashboardModule {}

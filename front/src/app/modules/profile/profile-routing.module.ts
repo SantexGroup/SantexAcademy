@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
+
+import { ViewProfilePageComponent } from './view-profile-page/view-profile-page.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardPageComponent,
-    children: [
-      
-    ]
+    component: ViewProfilePageComponent,
+    children: []
   }
 ];
 
@@ -16,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DashboardRoutingModule { }
+export class ProfileRoutingModule { }
