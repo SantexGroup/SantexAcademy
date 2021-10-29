@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const userModel = require('../models').user;
-const InvalidPasswordException = require('../exceptions/invalidPassword.exceptions');
+const UserNotFoundException = require('../exceptions/userNotFound.exception');
 
 function createToken(id) {
   const expirationTime = parseInt(process.env.JWT_EXPIRATION_TOKEN, 10);
@@ -25,11 +25,45 @@ async function login(username, password) {
 }
 
 async function getOne(data) {
-  const user = await userModel.findOne({ where: data, attributes: { exclude: ['password'] } });
-  return user;
+  return userModel.findOne({ where: data, attributes: { exclude: ['password'] } });
+}
+
+/**
+ * 
+ * @param {*} id 
+ * @param {*} userData 
+ */
+async function edit(id, userData) {
+  const user = await userModel.findByPk(id, {
+    attributes: { exclude: ['password'] }
+  });
+
+  if (!!user) {
+    if (!!userData.email) {
+      user.email = userData.email;
+    }
+
+    if (userData.phonenumber) {
+      user.phone_number = userData.phonenumber
+    }
+
+    if (userData.name) {
+      user.name = userData.name;
+    }
+
+    if (userData.lastname) {
+      user.lastname = userData.lastname;
+    }
+
+    user.save();
+
+    return user;
+  }
+  throw new UserNotFoundException();
 }
 
 module.exports = {
   login,
   getOne,
+  edit
 };
