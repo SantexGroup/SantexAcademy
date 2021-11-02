@@ -17,6 +17,16 @@ async function login(req, res, next) {
   }
 }
 
+async function newUser(req, res, next) {
+  try {
+    const { username, password } = req.body;
+    const user = await userService.newUser(username, password);
+    res.status(201).json(user);
+  } catch (error) {
+    next(error);
+  }
+}
+
 /**
  * 
  * @param {*} req 
@@ -65,6 +75,7 @@ async function editUser(req, res, next) {
 
 module.exports = {
   login,
+  newUser,
   userInfo,
   editUser
 };
