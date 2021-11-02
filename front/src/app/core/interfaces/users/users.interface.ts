@@ -3,6 +3,10 @@
 export interface User {
   id: number;
   username: string;
+  phone_number: string,
+  email: string,
+  name: string,
+  lastname: string,
   updatedAt: Date;
   createdAt: Date;
 }

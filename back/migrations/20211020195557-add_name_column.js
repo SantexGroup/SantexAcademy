@@ -4,16 +4,17 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.addColumn(
       'users',
-      'email',
+      'name',
       {
         type: Sequelize.STRING,
         defaultValue: null,
-        allowNull: true
+        allowNull: true,
+        after: 'password',
       }
     );
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.removeColumn('users', 'email');
+    return queryInterface.removeColumn('users', 'name');
   }
 };

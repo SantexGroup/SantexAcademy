@@ -14,9 +14,16 @@ app.post('/login', [
   userController.login
 );
 
+app.post('/', [
+  UserValidator.validate('register'),
+  Validator.checkValidationResult,
+], 
+  userController.newUser
+);
+
 // users/info/1
 app.get('/info/:id', [
-  //Passport.authenticate('jwt', { session: false }),
+  Passport.authenticate('jwt', { session: false }),
 ],
   userController.userInfo
 );

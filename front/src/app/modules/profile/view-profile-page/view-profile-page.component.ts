@@ -10,14 +10,13 @@ import { User } from '../../../core/interfaces/users/users.interface';
   styleUrls: ['./view-profile-page.component.scss'],
 })
 export class ViewProfilePageComponent implements OnInit {
-  
   profile!: User;
-  
+
   constructor(private userService: UserService) {}
-  
+
   ngOnInit(): void {
     this.userService.getProfile().subscribe((profile: User) => {
       this.profile = profile;
-    })
+    });
   }
 }

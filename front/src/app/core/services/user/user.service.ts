@@ -2,13 +2,24 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { ApiService } from '../../http/api.service';
+import { CookieService } from 'ngx-cookie-service';
+
 import { User } from '../../interfaces/users/users.interface';
 
 @Injectable()
 export class UserService {
-  constructor(private apiService: ApiService) {}
+  loggedUser!: User;
+
+  constructor(private apiService: ApiService, private cookieService: CookieService) {}
 
   getProfile(): Observable<User> {
-    return this.apiService.get<User>('users/myInfo');
+    const user = this.cookieService.get('user');
+    try {
+      this.loggedUser = JSON.parse(user);
+      console.log(this.loggedUser)
+    } catch (err) {
+      console.error(err);
+    }
+    return this.apiService.get<User>(`users/info/${this.loggedUser.id}`);
   }
 }
