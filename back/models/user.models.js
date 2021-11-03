@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
   const user = sequelize.define('user', {
     id: {
       type: DataTypes.INTEGER(16),
-      autoIncrement: true,      
+      autoIncrement: true,
       primaryKey: true,
     },
     username: {
@@ -17,27 +17,29 @@ module.exports = (sequelize, DataTypes) => {
     phone_number: {
       type: DataTypes.STRING,
       defaultValue: null,
-      allowNull: true
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING(255),
       defaultValue: null,
-      allowNull: true
+      allowNull: true,
     },
     name: {
       type: DataTypes.STRING(60),
       defaultValue: null,
-      allowNull: true
+      allowNull: true,
     },
     lastname: {
       type: DataTypes.STRING(60),
       defaultValue: null,
-      allowNull: true
-    }
+      allowNull: true,
+    },
   }, {
     timestamps: true,
     tableName: 'users',
   });
-
+  user.associate = (models) => {
+    user.hasMany(models.pet);
+  };
   return user;
 };
