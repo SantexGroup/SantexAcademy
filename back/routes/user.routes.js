@@ -29,6 +29,7 @@ app.get('/info/:id', [
   userController.editUser
 );
 */
+
 //user/new
 app.post('/new', [
   prueba, 

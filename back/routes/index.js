@@ -16,7 +16,7 @@ app.use('/ping', (req, res) => {
     });
 });
 */
-app.use('/user', userRoute);
+app.use('/users', userRoute);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);

@@ -65,7 +65,7 @@ async function editUser(req, res, next) {
 */ 
 async function createUser(req, res, next) {
     const { username, password } = req.body;
-    const user = await userService.newUser(username, password);
+    const user = await userService.newUser(username, password, res);
     res.status(201).json({success: true, user });
 }
 

@@ -63,18 +63,19 @@ async function edit(id, userData) {
   throw new UserNotFoundException();
 }
  */
-async function newUser(username, password) {
+async function newUser(username, password, res) {
   const user = await userModel.findOne({ where: { username } });
   if (user) {
     return res
       .status(400)
       .json({ success: false, message: "El nombre de usuario ya existe" });
   }
+  console.log(username, password);
   password = bcrypt.hashSync(password, 10);
-  //const usuario = { username, password };
-  //user.password=password;
-  user.save();
-  return usuario;
+ 
+  console.log(username, password);
+  const creado = await userModel.create({username,password});
+  return creado;
 }
 
 module.exports = {
