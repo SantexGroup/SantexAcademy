@@ -12,7 +12,8 @@ import { ToastService } from 'src/app/core/services/toast/toast.service';
 })
 export class LoginPageComponent implements OnInit, OnDestroy {
   public loginForm = this.formBuilder.group({ commodity: [null] });
-  formSubscritions: Subscription = new Subscription();
+  formSubscriptions: Subscription = new Subscription();
+  loading: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -44,16 +45,19 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   public login(): void {
     const loginData = this.loginForm?.value;
-    this.formSubscritions.add(
+    this.loading = true;
+    this.formSubscriptions.add(      
       this.authService.login(loginData.username, loginData.password)
         .subscribe(
           (res: any) => {
             this.authService.setUser(res);
+            this.toastService.presentToast(`Bienvenido ${res.user?.username}`);
             this.router.navigateByUrl('/dashboard');
-            
+            this.queryComplete()
           },
           (err) => {
             this.toastService.presentToast(err.error);
+            this.queryComplete()
           }
         )
     );
@@ -65,7 +69,14 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Setea loading en false (para ocultar barra de progreso)
+   */
+  private queryComplete(): void {
+    setTimeout(() => this.loading = false, 600);
+  }
+
   ngOnDestroy(): void {
-    this.formSubscritions.unsubscribe();
+    this.formSubscriptions.unsubscribe();
   }
 }
