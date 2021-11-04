@@ -1,10 +1,14 @@
 <mat-card class="my-card">
   <mat-card-content>
-    <form [formGroup]="registerForm" (onSubmit)="register()">
-      <h2>Registrar</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <h2>Registrar nuevo Usuario</h2>
+      <!-- Username -->
       <mat-form-field class="full-width">
         <mat-label>Usuario</mat-label>
         <input matInput placeholder="Usuario" formControlName="username" />
+        <mat-hint *ngIf="username?.pristine"
+          >Min 5 - Max 60 caracteres</mat-hint
+        >
         <mat-error *ngIf="registerForm.controls.username?.errors?.required">
           El nombre de usuario es requerido.
         </mat-error>
@@ -12,23 +16,68 @@
           La cantidad mínima de caracteres es 5.
         </mat-error>
         <mat-error *ngIf="registerForm.controls.username?.errors?.maxlength">
-          La cantidad máxima de caracteres es 255.
+          La cantidad máxima de caracteres es 60.
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <!-- Password -->
+      <mat-form-field class="separate-top">
         <mat-label>Password</mat-label>
-        <input matInput placeholder="Password" type="password" formControlName="password" />
-        <mat-error *ngIf="registerForm.controls.password?.errors?.required">
+        <input
+          matInput
+          placeholder="Password"
+          type="password"
+          formControlName="password"
+        />
+        <mat-error *ngIf="password?.errors?.required">
           El password es requerido.
         </mat-error>
-        <mat-error *ngIf="registerForm.controls.password?.errors?.pattern">
-          El password debe contener 5 carecteres como mínimo y al menos una letra minuscula, una letra mayuscula, un número y un caracter especial.
+        <mat-error *ngIf="password?.errors?.minlength">
+          La cantidad mínima de caracteres es 5.
+        </mat-error>
+        <mat-error *ngIf="password?.errors?.maxlength">
+          La cantidad máxima de caracteres es 60.
+        </mat-error>
+        <mat-error *ngIf="password?.errors?.pattern">
+          Al menos una letra minúscula, una letra
+          mayúscula, un número y un caracter especial.
         </mat-error>
       </mat-form-field>
-      <mat-card-actions>
-        <a mat-raised-button routerLink="/auth/login">Cancel</a>
-        <button mat-raised-button color="primary" [disabled]="registerForm.invalid">Registrar</button>
-      </mat-card-actions>
+      <!-- Confirmación Password -->
+      <mat-form-field class="separate-top">
+        <mat-label>Confirmar Password</mat-label>
+        <input
+          matInput
+          placeholder="Confirmar Password"
+          type="password"
+          formControlName="passwordConfirm"
+        />
+        <mat-hint *ngIf="passwordConfirm?.pristine"
+          >Min 5 - Max 60 caracteres. Al menos una letra minúscula, una letra
+          mayúscula, un número y un caracter especial.
+        </mat-hint>
+        <mat-error *ngIf="passwordConfirm?.errors?.required">
+          El campo es requerido.
+        </mat-error>
+        <mat-error *ngIf="passwordConfirm?.dirty && registerForm.errors?.nocoincide">
+          Los password ingresados no coinciden
+        </mat-error>        
+      </mat-form-field>
+      <div class="separate-top">
+        <button
+          mat-raised-button
+          class="block-button"
+          color="primary"
+          [disabled]="registerForm.invalid || loading"
+        >
+          Registrar
+        </button>
+        <a mat-raised-button class="block-button" routerLink="/auth/login"
+          >Cancelar
+        </a>
+      </div>
     </form>
   </mat-card-content>
+  <mat-card-footer>
+    <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar>
+  </mat-card-footer>
 </mat-card>
