@@ -18,7 +18,7 @@ async function listPets(userId, page) {
     limit: limite,
     offset: (page - 1) * limite,
   });
-
+  console.log(pets);
   return pets;
 }
 

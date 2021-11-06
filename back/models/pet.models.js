@@ -35,9 +35,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.VIRTUAL,
         get() {
           let today = moment(new Date());
-          // let age = (today - this.getDataValue('birth_date'));
           let birth = moment(this.getDataValue('birth_date'));
-          let age = today.diff(birth, 'years');
+          //La edad se expresa en meses, tranformar en anio + meses desde el frontend
+          let age = today.diff(birth, 'months');
           return age;
         },
       },
