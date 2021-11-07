@@ -5,18 +5,14 @@ exports.validate = function (method) {
   switch (method) {
     case 'login':
       result = [
-        body('username')
+        body('username').trim().escape()
           .exists()
-          .withMessage(() => 'El username es obligatorio.')
-          .trim()
-          .escape()
+          .withMessage(() => 'El username es obligatorio.')          
           .isLength({ min: 5, max: 60 })
           .withMessage(() => 'El username debe tener entre 5 y 60 caracteres.'),
-        body('password')
+        body('password').trim().escape()
           .exists()
-          .withMessage(() => 'El password es obligatorio.')
-          .trim()
-          .escape()
+          .withMessage(() => 'El password es obligatorio.')          
           .isLength({ min: 5, max: 60 })
           .withMessage(() => 'El password debe tener entre 5 y 60 caracteres.'),
         body().custom((item) => {
@@ -27,18 +23,14 @@ exports.validate = function (method) {
       break;
     case 'register':
       result = [
-        body('username')
+        body('username').trim().escape()
           .exists()
-          .withMessage(() => 'El username es obligatorio.')
-          .trim()
-          .escape()
+          .withMessage(() => 'El username es obligatorio.')          
           .isLength({ min: 5, max: 60 })
           .withMessage(() => 'El username debe tener entre 5 y 60 caracteres.'),
-        body('password')
+        body('password').trim().escape()
           .exists()
-          .withMessage(() => 'El password es obligatorio.')
-          .trim()
-          .escape()
+          .withMessage(() => 'El password es obligatorio.')          
           .isLength({ min: 5, max: 60 })
           .withMessage(() => 'El password debe tener entre 5 y 60 caracteres.')
           .matches(/^(?=.*[a-z])(?=.*[A-Z]).+$/)
