@@ -1,3 +1,4 @@
+const moment = require('moment');
 module.exports = (sequelize, DataTypes) => {
   const pet = sequelize.define('pet', {
     id: {
@@ -20,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     gender: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(2),
       allowNull: false,
     },
     userId: {

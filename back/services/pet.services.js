@@ -1,4 +1,5 @@
 const petModel = require('../models').pet;
+const userModel = require('../models').user;
 const GenericException = require('../exceptions/generic.exceptions');
 
 async function checkPetName(userId, name = null) {
@@ -24,13 +25,30 @@ async function newPet(name, birthDate, breed, gender, userId) {
     birth_date: birthDate,
     breed,
     gender,
-    userId,
-
+    userId
   });
   pet.save();
   return (pet);
 }
 
+async function listPets(userId, page) {
+  const limite = 10;
+  const pets = await petModel.findAll({
+    where: { userId },
+    order: [['id', 'ASC']],
+    //La edad la trae calculada desde el SQL en una columna virtual "age" que se define en en el modelo 
+    attributes: ['name', 'birth_date', 'age', 'breed', 'gender'],
+    include: {
+      model: userModel,
+      attributes: ['name', 'lastname'],
+    },
+    limit: limite,
+    offset: (page - 1) * limite,
+  });  
+  return pets;
+}
+
 module.exports = {
   newPet,
+  listPets,
 };

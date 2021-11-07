@@ -1,9 +1,14 @@
 <mat-card>
   <mat-card-content>
     <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && login()">
-      <h2>Log In</h2>
+      <h2>Log In de Usuario</h2>
       <mat-form-field class="full-width-input">
-        <input matInput placeholder="Username" formControlName="username" required>
+        <input
+          matInput
+          placeholder="Username"
+          formControlName="username"
+          required
+        />
         <mat-error *ngIf="loginForm.controls.username?.errors?.required">
           El nombre de usuario es requerido.
         </mat-error>
@@ -18,7 +23,13 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
-        <input matInput type="password" placeholder="Password" formControlName="password" required>
+        <input
+          matInput
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+          required
+        />
         <mat-error *ngIf="loginForm.controls.password?.errors?.required">
           La contraseña es requerida.
         </mat-error>
@@ -29,8 +40,17 @@
           La cantidad mínima de caracteres es 5.
         </mat-error>
       </mat-form-field>
-      <a mat-raised-button routerLink="/auth/register">Registrar</a>
-      <button mat-raised-button color="primary">Login</button>
+
+      <button mat-raised-button color="primary" class="block-button" [disabled]="loading">
+        Ingresar
+      </button>
+      <p>¿Primera vez ingresando al Sitio?</p>
+      <a mat-stroked-button color="primary" class="block-button" routerLink="/auth/register"
+        >Registrar nuevo Usuario</a
+      >
     </form>
   </mat-card-content>
+  <mat-card-footer>
+    <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar>
+  </mat-card-footer>
 </mat-card>

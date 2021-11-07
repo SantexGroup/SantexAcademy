@@ -7,9 +7,18 @@ const Validator = require('../middleware/validation.middleware');
 
 const app = Express();
 
+//La URL debe enviar un parametro id para filtrar los perros segun el usuario que realiza la consulta
+//ademas debe pasar por queryParams la pagina de resultados que desea ver (?page=n)
+app.get(  
+  '/:id',
+  [Passport.authenticate('jwt', { session: false })],
+  petController.listPets
+);
+
 app.post('/',
   Passport.authenticate('jwt', { session: false }),
   PetValidator.validate('register'),
   Validator.checkValidationResult,
   petController.newPet);
+
 module.exports = app;

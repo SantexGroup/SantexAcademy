@@ -14,6 +14,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { LoginRoutingModule } from './login-routing.module';
 
@@ -48,6 +49,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     MatSelectModule,
     MatOptionModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule    
   ],
   providers: []
 })

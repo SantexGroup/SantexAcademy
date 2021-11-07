@@ -10,13 +10,6 @@ const app = Express();
 const userRoute = require('./user.routes');
 const petRoute = require('./pet.routes');
 
-// use=
-app.use('/ping', (req, res) => {
-  res.json({
-    // eslint-disable-next-line comma-dangle
-    response: 'pong!'
-  });
-});
 app.use('/users', userRoute);
 app.use('/pets', petRoute);
 app.use('/', rootPath.handler);
