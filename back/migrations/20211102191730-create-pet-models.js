@@ -12,18 +12,15 @@ module.exports = {
       },
       birth_date: {
         type: Sequelize.DATE,
-        allowNull: true,
-        defaultValue: null,
+        allowNull: false,
       },
       breed: {
         type: Sequelize.STRING,
-        allowNull: true,
-        defaultValue: null,
+        allowNull: false,
       },
       gender: {
         type: Sequelize.STRING,
-        allowNull: true,
-        defaultValue: null,
+        allowNull: false,
       },
       userId: {
         type: Sequelize.INTEGER.UNSIGNED,

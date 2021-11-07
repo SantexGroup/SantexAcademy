@@ -10,7 +10,31 @@ async function listPets(req, res, next) {
     next(error);
   }
 }
+    
+async function newPet(req, res, next) {
+  const {
+    name,
+    birth_date,
+    breed,
+    gender
+  } = req.body;
+  const { id } = req.user;
+  try {
+    const pet = await petService.newPet(
+      name,
+      birth_date,
+      breed,
+      gender,
+      id
+    );
+    res.status(201).json(pet);
+  } catch (error) {
+    next(error);
+  }
+}
+
 
 module.exports = {
   listPets,
+  newPet,
 };
