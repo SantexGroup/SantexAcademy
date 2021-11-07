@@ -32,7 +32,7 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "sequelize": "^6.6.5",
-    "sequelize-cli": "^6.2.0",
+    "sequelize-cli": "^6.3.0",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.5",
     "winston-transport": "^4.4.0",

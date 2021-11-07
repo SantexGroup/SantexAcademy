@@ -1,7 +1,10 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const userModel = require("../models").user;
+const InvalidPasswordException = require("../exceptions/invalidPassword.exceptions");
 const UserNotFoundException = require("../exceptions/userNotFound.exception");
+const UserExistException= require("../exceptions/userExist.exception");
+//const { noExtendLeft } = require("sequelize/types/lib/operators");
 
 function createToken(id) {
   const expirationTime = parseInt(process.env.JWT_EXPIRATION_TOKEN, 10);
@@ -33,7 +36,7 @@ async function getOne(data) {
  * 
  * @param {*} id 
  * @param {*} userData 
-
+*/
 async function edit(id, userData) {
   const user = await userModel.findByPk(id, {
     attributes: { exclude: ['password'] }
@@ -62,25 +65,19 @@ async function edit(id, userData) {
   }
   throw new UserNotFoundException();
 }
- */
-async function newUser(username, password, res) {
-  const user = await userModel.findOne({ where: { username } });
-  if (user) {
-    return res
-      .status(400)
-      .json({ success: false, message: "El nombre de usuario ya existe" });
-  }
-  console.log(username, password);
-  password = bcrypt.hashSync(password, 10);
  
-  console.log(username, password);
-  const creado = await userModel.create({username,password});
-  return creado;
+async function newUser(username, password) {
+    const user = await userModel.findOne({ where: { username } });
+    if (!user) {
+      password = bcrypt.hashSync(password, 10);
+      const created = await userModel.create({ username, password });
+      return created;
+    }
+    throw new UserExistException();
 }
-
 module.exports = {
   login,
   getOne,
-  // edit,
+  edit,
   newUser,
 };

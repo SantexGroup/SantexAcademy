@@ -1,23 +1,44 @@
-const { body } = require('express-validator');
+const { body } = require("express-validator");
 
 exports.validate = function (method) {
-  if (method === 'login') {
+  if (method === "login") {
     return [
-      body('username').trim().escape()
+      body("username")
+        .trim()
+        .escape()
         .exists()
-        .withMessage(() => 'El campo es obligatorio.')
+        .withMessage(() => "El campo es obligatorio.")
         .isLength({ min: 3, max: 255 })
-        .withMessage(() => 'El campo debe tener entre 3 y 255 caracteres.'),
-      body('password').trim().escape()
+        .withMessage(() => "El campo debe tener entre 3 y 255 caracteres."),
+      body("password")
+        .trim()
+        .escape()
         .exists()
-        .withMessage(() => 'El campo es obligatorio.')
+        .withMessage(() => "El campo es obligatorio.")
         .isLength({ min: 5, max: 255 })
-        .withMessage(() => 'El campo debe tener entre 5 y 255 caracteres.'),
-      body().custom((item) => {
-        const keys = ['username', 'recaptcha', 'password', 'cuit'];
-        return Object.keys(item).every((key) => keys.includes(key));
-      }).withMessage('Hay parámetros no permitidos en su consulta.'),
+        .withMessage(() => "El campo debe tener entre 5 y 255 caracteres."),
+      body()
+        .custom((item) => {
+          const keys = ["username", "recaptcha", "password", "cuit"];
+          return Object.keys(item).every((key) => keys.includes(key));
+        })
+        .withMessage("Hay parámetros no permitidos en su consulta."),
     ];
+  } else if (method === "register") {
+    return [
+      body("password")
+        .trim()
+        .escape()
+        .exists()
+        .withMessage(() => "El campo es obligatorio.")
+        .isLength({ min: 5, max: 255 })
+        .withMessage(() => "El campo debe tener entre 5 y 255 caracteres.")
+        //.matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{5,}$/)
+        .matches(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[$@$_!%*?&])[A-Za-z\d$@$_!%*?&]{5,}$/)
+        .withMessage(() =>"El password no tiene el formato correcto"
+        ),
+    ];
+  } else {
+    return [];
   }
-  return [];
 };
