@@ -1,0 +1,19 @@
+{
+  "name": "jesus-maria-api",
+  "version": "1.0.0",
+  "description": "Santex Academy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yami-morano/SantexAcademy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yami-morano/SantexAcademy/issues"
+  },
+  "homepage": "https://github.com/Yami-morano/SantexAcademy#readme"
+}
