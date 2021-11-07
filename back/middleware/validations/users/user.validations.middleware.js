@@ -5,32 +5,40 @@ exports.validate = function (method) {
   switch (method) {
     case 'login':
       result = [
-        body('username').trim().escape()
-            .exists()
-            .withMessage(() => 'El username es obligatorio.')
-            .isLength({ min: 5, max: 60 })
-            .withMessage(() => 'El username debe tener entre 5 y 60 caracteres.'),
-          body('password').trim().escape()
-            .exists()
-            .withMessage(() => 'El password es obligatorio.')
-            .isLength({ min: 5, max: 60 })
-            .withMessage(() => 'El password debe tener entre 5 y 60 caracteres.'),
-          body().custom((item) => {
-            const keys = ['username', 'recaptcha', 'password', 'cuit'];
-            return Object.keys(item).every((key) => keys.includes(key));
-          }).withMessage('Hay parámetros no permitidos en su consulta.'),
+        body('username')
+          .exists()
+          .withMessage(() => 'El username es obligatorio.')
+          .trim()
+          .escape()
+          .isLength({ min: 5, max: 60 })
+          .withMessage(() => 'El username debe tener entre 5 y 60 caracteres.'),
+        body('password')
+          .exists()
+          .withMessage(() => 'El password es obligatorio.')
+          .trim()
+          .escape()
+          .isLength({ min: 5, max: 60 })
+          .withMessage(() => 'El password debe tener entre 5 y 60 caracteres.'),
+        body().custom((item) => {
+          const keys = ['username', 'recaptcha', 'password', 'cuit'];
+          return Object.keys(item).every((key) => keys.includes(key));
+        }).withMessage('Hay parámetros no permitidos en su consulta.'),
       ];
       break;
     case 'register':
       result = [
-        body('username').trim().escape()
+        body('username')
           .exists()
           .withMessage(() => 'El username es obligatorio.')
+          .trim()
+          .escape()
           .isLength({ min: 5, max: 60 })
           .withMessage(() => 'El username debe tener entre 5 y 60 caracteres.'),
-        body('password').trim().escape()
+        body('password')
           .exists()
           .withMessage(() => 'El password es obligatorio.')
+          .trim()
+          .escape()
           .isLength({ min: 5, max: 60 })
           .withMessage(() => 'El password debe tener entre 5 y 60 caracteres.')
           .matches(/^(?=.*[a-z])(?=.*[A-Z]).+$/)
@@ -38,18 +46,18 @@ exports.validate = function (method) {
           .matches(/^(?=.*\d).+$/)
           .withMessage('El password debe contener al menos un dígito numérico')
           .matches(/^(?=.*[.,:;_!#$%&()=?¡¿\-\@\/]).+$/)
-          .withMessage('El password debe contener al menos un símbolo'),        
+          .withMessage('El password debe contener al menos un símbolo'),
         body().custom((item) => {
           const keys = ['username', 'recaptcha', 'password', 'cuit'];
           return Object.keys(item).every((key) => keys.includes(key));
         }).withMessage('Hay parámetros no permitidos en su consulta.'),
-      ];      
+      ];
       break;
     case 'edit':
       // TODO: agregar validaciones para los demás campos
       break;
     default:
       break;
-  }  
+  }
   return result;
 };

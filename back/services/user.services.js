@@ -23,10 +23,10 @@ async function login(username, password) {
       return { user, token };
     }
   }
-  throw new InvalidPasswordException();  
+  throw new InvalidPasswordException();
 }
 
-async function getOne(data) {  
+async function getOne(data) {
   const user = await userModel.findOne({ where: data, attributes: { exclude: ['password'] } });
   return user;
 }
@@ -44,8 +44,8 @@ async function newUser(username, password) {
 
 /**
  * 
- * @param {*} id 
- * @param {*} userData 
+ * @param {*} id
+ * @param {*} userData
  */
 async function edit(id, userData) {
   const user = await userModel.findByPk(id, {
@@ -80,5 +80,6 @@ module.exports = {
   login,
   getOne,
   newUser,
-  edit
+  edit,
+
 };
