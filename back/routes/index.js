@@ -11,9 +11,9 @@ const userRoute = require('./user.routes');
 
 /*
 app.use('/ping', (req, res) => {
-    res.json({
-        response: 'pong!'
-    });
+  res.json({
+    response: 'pong!',
+  });
 });
 */
 app.use('/users', userRoute);
