@@ -8,10 +8,11 @@ import { ToastService } from "src/app/core/services/toast/toast.service";
 import { UserService } from "src/app/core/services/user/user.service";
 
 @Component({
-    selector: 'app-register-page',
+  selector: 'app-register-page',
   templateUrl: './register-page.component.html',
-  styleUrls: ['./register-page.component.scss']
+  styleUrls: ['./register-page.component.scss'],
 })
+
 export class RegisterPageComponent implements OnInit, OnDestroy {
 
 
@@ -79,6 +80,4 @@ public registerForm = this.formBuilder.group({ commodity: [null] });
   
   }
 
-  
-
-}
+ }

@@ -28,4 +28,13 @@ app.put('/edit/:id', [
   userController.editUser
 );
 
+
+//user/new
+app.post('/new', [
+  UserValidator.validate('register'),
+  Validator.checkValidationResult
+], 
+  userController.createUser
+);
+
 module.exports = app;

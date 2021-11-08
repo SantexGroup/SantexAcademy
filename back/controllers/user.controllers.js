@@ -40,7 +40,7 @@ async function userInfo(req, res, next) {
  * @param {*} req 
  * @param {*} res 
  * @param {*} next 
- */
+*/ 
 async function editUser(req, res, next) {
   try {
     let id = req.params.id;
@@ -62,9 +62,26 @@ async function editUser(req, res, next) {
     next(error);
   }
 }
+ 
+async function createUser(req, res, next) {
+  try{
+    const { username, password } = req.body;
+    const created = await userService.newUser(username, password);
+    if(created){
+      return res
+        .status(201)
+        .json({ success: true, message: "El ha sido creado correctamente" });
+    }
+  }
+  catch (error) {
+    next(error);
+  }
+    //return res.status(201).json({success: true, user });
+}
 
 module.exports = {
   login,
   userInfo,
-  editUser
+  editUser,
+  createUser
 };
