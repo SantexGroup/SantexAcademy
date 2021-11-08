@@ -1,10 +1,10 @@
 const userService = require('../services/user.services');
 
 /**
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
  */
 async function login(req, res, next) {
   try {
@@ -18,16 +18,16 @@ async function login(req, res, next) {
 }
 
 /**
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
  */
 async function userInfo(req, res, next) {
   try {
-    let id = req.params.id;
+    const { id } = req.params;
     const userData = await userService.getOne({
-      id
+      id,
     });
     res.json(userData);
   } catch (error) {
@@ -36,52 +36,51 @@ async function userInfo(req, res, next) {
 }
 
 /**
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
-*/ 
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+*/
 async function editUser(req, res, next) {
   try {
-    let id = req.params.id;
-    let {
+    const { id } = req.params;
+    const {
       email,
       phonenumber,
       name,
-      lastname
+      lastname,
     } = req.body;
-    
+
     const userData = await userService.edit(id, {
       email,
       phonenumber,
       name,
-      lastname
+      lastname,
     });
     res.json(userData);
   } catch (error) {
     next(error);
   }
 }
- 
+
 async function createUser(req, res, next) {
-  try{
+  try {
     const { username, password } = req.body;
     const created = await userService.newUser(username, password);
-    if(created){
-      return res
+    if (created) {
+      res
         .status(201)
-        .json({ success: true, message: "El ha sido creado correctamente" });
+        .json({ success: true, message: 'El usuario ha sido creado correctamente' });
     }
-  }
-  catch (error) {
+  } catch (error) {
     next(error);
   }
-    //return res.status(201).json({success: true, user });
+  // return res.status(201).json({success: true, user });
 }
 
 module.exports = {
   login,
   userInfo,
   editUser,
-  createUser
+  createUser,
 };

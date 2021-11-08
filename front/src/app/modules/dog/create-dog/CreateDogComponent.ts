@@ -18,8 +18,8 @@ export class CreateDogComponent implements OnInit, OnDestroy {
   public dogForm = this.formBuilder.group({ commodity: [null] });
   formSubscritions: Subscription = new Subscription();
 
-  selected = 'female';
-  // date = new FormControl(moment([2017, 0, 1]));
+
+ 
 
   constructor(
     private formBuilder: FormBuilder,

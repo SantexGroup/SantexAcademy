@@ -10,7 +10,11 @@
   <mat-card-content>
     <form [formGroup]="dogForm" (ngSubmit)="dogForm.valid && registerDog()">
       <mat-form-field class="full-width-input">
-        <input matInput placeholder="nombre de la mascota" formControlName="nombreDog" />
+        <input
+          matInput
+          placeholder="nombre de la mascota"
+          formControlName="nombreDog"
+        />
         <mat-error *ngIf="dogForm.controls.nombreDog?.errors?.required">
           El nombre del perro es requerido.
         </mat-error>
@@ -34,23 +38,21 @@
         </mat-error>
       </mat-form-field>
 
-      <h4>Sexo</h4>
-      <mat-form-field appearance="fill">
-        <mat-label>selecione el sexo del perro</mat-label>
-        <mat-select>
-          <mat-option value="female">Hembra</mat-option>
-           <mat-option value="male">Macho</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-    
-      <!-- <mat-form-field apariencia = "fill" > 
-  <mat-label > Moment.js datepicker </mat-label > 
-  <input  matInput [ matDatepicker ] = "dp" [formControl] = "date" > 
-  <mat-datepicker- toggle  matSuffix [ for ] = "dp" > </mat-datepicker-toggle > 
-  <mat-datepicker # dp> </mat-datepicker > 
-</campo-formulario-mat> -->
-
+      <mat-optgroup>
+      <mat-label>Sexo</mat-label>
+      <br>
+        <mat-radio-group aria-label="sexo">
+          <mat-radio-button value="macho">Macho</mat-radio-button>
+          <mat-radio-button value="hembra">Hembra</mat-radio-button>
+        </mat-radio-group>
+      </mat-optgroup>
+<br>
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>Moment.js datepicker</mat-label>
+        <input matInput [matDatepicker]="dp" [formControl]="fechaNacimiento">
+        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp></mat-datepicker>
+      </mat-form-field> -->
 
       <button mat-raised-button color="primary">Registrar</button>
     </form>
