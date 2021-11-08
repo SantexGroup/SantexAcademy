@@ -63,12 +63,13 @@ public registerForm = this.formBuilder.group({ commodity: [null] });
       this.userService.register(loginData.username, loginData.password)
         .subscribe(
           (res: any) => {
-            this.toastService.presentToast('usuario creado con exito');
+            this.toastService.presentToast(res.message);
             this.router.navigateByUrl('/login');
             
           },
           (err) => {
             this.toastService.presentToast(err.error);
+            
           }
         )
     );

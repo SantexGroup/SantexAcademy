@@ -21,8 +21,8 @@ import { DashboardModule } from "../dashboard/dashboard.module";
 import { LoginRoutingModule } from "../login/login-routing.module";
 import { CreateDogComponent } from "./create-dog/CreateDogComponent";
 import { DogRoutingModule } from "./dog-routing.module";
-
-
+import {MatRadioModule} from '@angular/material/radio';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -56,13 +56,14 @@ import { DogRoutingModule } from "./dog-routing.module";
     FormsModule, 
     MatNativeDateModule,
     MatMomentDateModule,
-
-   
+    MatRadioModule,
+    MatDatepickerModule,
   
   ],
   providers: [
     DogService,
     {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}}
+    
     //aca van los servicios que se conecten con la api
   ],
 

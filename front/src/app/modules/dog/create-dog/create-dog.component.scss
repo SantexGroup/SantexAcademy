@@ -1,9 +1,10 @@
 .example-card {
-    max-width: 400px;
-    margin-bottom: 8px;
+    max-width: 500px;
+    max-height: max-content;
+    margin-bottom: 1px;
   }
   mat-card {
-    max-width: 400px;
+    max-width: 800px;
     margin: 2em auto;
     text-align: center;
   }
@@ -11,4 +12,14 @@
   mat-form-field {
     display: block;
   }
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
   
+  .mat-radio-group{
+    text-align: center;
+   
+  }
+  .mat-optgroup{
+    display: block;
+  }
