@@ -19,6 +19,14 @@ const routes: Routes = [
     canActivate: [LoggedInGuard],
     loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule),
   },
+
+  {
+    path: 'dog',
+    canActivate: [LoggedInGuard],
+    loadChildren: () => import('./modules/dog/dog.module').then(m => m.DogModule),
+  },
+
+ 
   {
     path: '**',
     redirectTo: 'auth/login'

@@ -1,0 +1,59 @@
+<mat-card class="example-card">
+  <mat-card-title-group>
+    <mat-card-title>Registro canino</mat-card-title>
+
+    <img
+      mat-card-lg-image
+      src="https://2.bp.blogspot.com/-J1kaITU-hcs/VQ3cxlGHYfI/AAAAAAABE5Q/3CZKYljALjA/s00/Perrito-con-rosa-en-la-boca_Imagenes-de-perros-tiernos.jpg"
+    />
+  </mat-card-title-group>
+  <mat-card-content>
+    <form [formGroup]="dogForm" (ngSubmit)="dogForm.valid && registerDog()">
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="nombre de la mascota" formControlName="nombreDog" />
+        <mat-error *ngIf="dogForm.controls.nombreDog?.errors?.required">
+          El nombre del perro es requerido.
+        </mat-error>
+        <mat-error *ngIf="dogForm.controls.nombreDog?.errors?.maxlength">
+          La cantidad máxima de caracteres es 255.
+        </mat-error>
+        <mat-error *ngIf="dogForm.controls.nombreDog?.errors?.minlength">
+          La cantidad mínima de caracteres es 5.
+        </mat-error>
+        <mat-error *ngIf="dogForm.controls.nombreDog?.errors?.backendErr">
+          Ya registraste ese nombre.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="raza" formControlName="raza" />
+        <mat-error *ngIf="dogForm.controls.raza?.errors?.required">
+          La raza es requerida.
+        </mat-error>
+        <mat-error *ngIf="dogForm.controls.raza?.errors?.maxlength">
+          La cantidad máxima de caracteres es 60.
+        </mat-error>
+      </mat-form-field>
+
+      <h4>Sexo</h4>
+      <mat-form-field appearance="fill">
+        <mat-label>selecione el sexo del perro</mat-label>
+        <mat-select>
+          <mat-option value="female">Hembra</mat-option>
+           <mat-option value="male">Macho</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    
+      <!-- <mat-form-field apariencia = "fill" > 
+  <mat-label > Moment.js datepicker </mat-label > 
+  <input  matInput [ matDatepicker ] = "dp" [formControl] = "date" > 
+  <mat-datepicker- toggle  matSuffix [ for ] = "dp" > </mat-datepicker-toggle > 
+  <mat-datepicker # dp> </mat-datepicker > 
+</campo-formulario-mat> -->
+
+
+      <button mat-raised-button color="primary">Registrar</button>
+    </form>
+    <br />
+  </mat-card-content>
+</mat-card>
