@@ -1,5 +1,7 @@
 'use strict';
 
+const dogs = require("../models/dogs");
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return await queryInterface.createTable('users',
@@ -37,3 +39,11 @@ module.exports = {
     queryInterface.dropTable('users');
   }
 };
+
+userModels.hasMany(dogs, {
+  foreignKey: {
+    name: 'id_User',
+    allowNull: false
+  }
+});
+

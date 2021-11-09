@@ -9,14 +9,14 @@ const app = Express();
 // Rutas
 const userRoute = require('./user.routes');
 
-/*
-app.use('/ping', (req, res) => {
-  res.json({
-    response: 'pong!',
-  });
-});
-*/
+const dogRoute = require('./dog.routes');
+//use=
+
+
+
+
 app.use('/users', userRoute);
+app.use('/dogs', dogRoute);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
