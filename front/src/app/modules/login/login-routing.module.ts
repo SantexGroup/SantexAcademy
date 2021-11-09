@@ -13,7 +13,7 @@ const routes: Routes = [
     component: LoginPageComponent,
   },
   {
-    path: 'register',
+    path: 'registerPage',
     canActivate: [NotLoggedInGuard],
     component: RegisterPageComponent,
   },

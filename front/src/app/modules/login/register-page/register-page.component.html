@@ -1,31 +1,84 @@
+
+
 <mat-card class="my-card">
+  <mat-card-content>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <h2>Register</h2>
+      <mat-form-field appearance="outline">
+        <mat-label>User Name</mat-label>
+        <input matInput placeholder="User name" formControlName="username" required>
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-error *ngIf="registerForm.controls.username?.errors?.required">
+          El nombre de usuario es requerido.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.username?.errors?.maxlength">
+          La cantidad máxima de caracteres es 255.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.username?.errors?.minlength">
+          La cantidad mínima de caracteres es 5.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.username?.errors?.backendErr">
+          Revisá tu Usuario.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+        </button>
+        <mat-error *ngIf="registerForm.controls.password?.errors?.required">
+          La contraseña es requerida.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.password?.errors?.maxlength">
+          La cantidad máxima de caracteres es 60.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.password?.errors?.minlength">
+          La cantidad mínima de caracteres es 5.
+        </mat-error>
+      </mat-form-field>
+      <mat-card-actions>
+        
+        <button mat-raised-button color="primary">Register</button>
+      </mat-card-actions>
+    </form>
+    <button mat-raised-button color="secondary" [routerLink]="['/auth/login']">Cancel</button>
+  </mat-card-content>
+</mat-card> 
+
+<!-- <mat-card class="my-card">
   <mat-card-content>
     <form class="my-form">
       <h2>Register</h2>
       <mat-form-field class="full-width">
-        <mat-label>First Name</mat-label>
-        <input matInput placeholder="First name" name="fname" required />
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Last Name" name="lname" required />
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-label>Address</mat-label>
-        <input matInput placeholder="Address" name="address" required />
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Email" name="email" />
+        <mat-label>Usuario</mat-label>
+        <input matInput placeholder="Usuario" formControlName="username" />
+        <mat-error *ngIf="registerForm.controls.username?.errors?.required">
+          El nombre de usuario es requerido.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.username?.errors?.minlength">
+          La cantidad mínima de caracteres es 5.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.username?.errors?.maxlength">
+          La cantidad máxima de caracteres es 255.
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Password</mat-label>
-        <input matInput placeholder="Password" name="password" />
+        <input matInput placeholder="Password" type="password" formControlName="password" />
+        <mat-error *ngIf="registerForm.controls.password?.errors?.required">
+          El password es requerido.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.password?.errors?.pattern">
+          El password debe contener 5 carecteres como mínimo y al menos una letra minuscula, una letra mayuscula, un número y un caracter especial.
+        </mat-error>
       </mat-form-field>
       <mat-card-actions>
-        <button mat-raised-button color="secondary">Cancel</button>
+        <button mat-raised-button color="secondary" [routerLink]="['/auth/login']">Cancel</button>
         <button mat-raised-button color="primary">Register</button>
       </mat-card-actions>
     </form>
   </mat-card-content>
-</mat-card>
+</mat-card> -->

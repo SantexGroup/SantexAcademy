@@ -19,6 +19,8 @@ import { LoginRoutingModule } from './login-routing.module';
 
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { UserService } from 'src/app/core/services/user/user.service';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,11 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     MatOptionModule,
     MatProgressSpinnerModule,
   ],
-  providers: []
+  providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+    UserService
+  
+  ]
 })
 export class LoginModule { }
+
