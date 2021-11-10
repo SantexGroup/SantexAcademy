@@ -1,3 +1,5 @@
+<app-dashboard-page></app-dashboard-page>
+
 <mat-card class="example-card">
   <mat-card-title-group>
     <mat-card-title>Registro canino</mat-card-title>
@@ -39,20 +41,20 @@
       </mat-form-field>
 
       <mat-optgroup>
-      <mat-label>Sexo</mat-label>
-      <br>
-        <mat-radio-group aria-label="sexo">
-          <mat-radio-button value="macho">Macho</mat-radio-button>
-          <mat-radio-button value="hembra">Hembra</mat-radio-button>
+      <mat-label class="sexo">Sexo</mat-label>
+      
+        <mat-radio-group formControlName="sexo"aria-label="sexo">
+          <mat-radio-button value="1">Macho</mat-radio-button>
+          <mat-radio-button value="2">Hembra</mat-radio-button>
         </mat-radio-group>
       </mat-optgroup>
 <br>
-      <!-- <mat-form-field appearance="fill">
-        <mat-label>Moment.js datepicker</mat-label>
-        <input matInput [matDatepicker]="dp" [formControl]="fechaNacimiento">
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de nacimiento</mat-label>
+        <input matInput [matDatepicker]="dp" formControlName="fechaNacimiento">
         <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
         <mat-datepicker #dp></mat-datepicker>
-      </mat-form-field> -->
+      </mat-form-field>
 
       <button mat-raised-button color="primary">Registrar</button>
     </form>
