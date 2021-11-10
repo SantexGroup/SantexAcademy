@@ -2,7 +2,7 @@ export interface Dog {
     id: number;
     nombreDog: string;
     raza: string;
-    sexo: boolean;
+    sexo: number;
     fechaNacimiento: Date;
     updatedAt: Date;
     createdAt: Date;

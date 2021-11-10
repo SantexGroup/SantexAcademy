@@ -11,7 +11,7 @@ export class DogService {
 
   constructor(private apiService: ApiService, private http : ApiService) {}
 
-  public registerDog(nombreDog: string, raza: string, sexo: boolean, fechaNacimiento: Date) {
+  public registerDog(nombreDog: string, raza: string, sexo: number, fechaNacimiento: Date) {
     const body = {
       nombreDog,
       raza,

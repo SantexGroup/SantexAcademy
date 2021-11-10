@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -26,17 +27,20 @@ export class CreateDogComponent implements OnInit, OnDestroy {
     private router: Router,
     private dogService: DogService,
     private toastService: ToastService,
+    private datePipe: DatePipe,
   ) {
   }
 
 
   ngOnInit(): void {
     this.createDogForm();
+    
   }
 
  
 
   private createDogForm() {
+
     this.dogForm = this.formBuilder.group({
       nombreDog: new FormControl(null, Validators.compose([
         Validators.required,
@@ -60,7 +64,9 @@ export class CreateDogComponent implements OnInit, OnDestroy {
   }
 
   public registerDog(): void {
+
     const registerDogData = this.dogForm?.value;
+    registerDogData.fechaNacimiento=this.datePipe.transform(registerDogData.fechaNacimiento, 'dd-MM-yyyy')
     this.formSubscritions.add(
       this.dogService.registerDog(registerDogData.nombreDog, registerDogData.raza, registerDogData.sexo, registerDogData.fechaNacimiento)
         .subscribe(
@@ -79,5 +85,7 @@ export class CreateDogComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     
   }
+
+ 
 
 }

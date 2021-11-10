@@ -1,11 +1,11 @@
-import { CommonModule } from "@angular/common";
+import { CommonModule, DatePipe } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from "@angular/material-moment-adapter";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
-import { MatNativeDateModule, MatOptionModule } from "@angular/material/core";
+import { MatNativeDateModule, MatOptionModule, MAT_DATE_LOCALE } from "@angular/material/core";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
@@ -53,16 +53,19 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatSelectModule,
     MatOptionModule,
     MatProgressSpinnerModule,
-    FormsModule, 
-    MatNativeDateModule,
+    FormsModule,
     MatMomentDateModule,
     MatRadioModule,
     MatDatepickerModule,
+    MatNativeDateModule,
   
   ],
   providers: [
     DogService,
-    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}}
+    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}},
+    {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
+    DatePipe
+
     
     //aca van los servicios que se conecten con la api
   ],
