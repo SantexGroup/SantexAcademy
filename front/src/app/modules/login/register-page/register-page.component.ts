@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import {
   MAX_USERNAME_LENGTH,
   MIN_USERNAME_LENGTH,
+  PASSWORD_PATTERN,
 } from 'src/app/core/interfaces/users/users.interface';
 
 @Component({
@@ -30,9 +31,7 @@ export class RegisterPageComponent implements OnInit {
         null,
         Validators.compose([
           Validators.required,
-          Validators.pattern(
-            '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$@!%&*?.,])[A-Za-z\\d#$@!%&*?.,]{5,250}$'
-          ),
+          Validators.pattern(PASSWORD_PATTERN),
         ])
       ),
     });
