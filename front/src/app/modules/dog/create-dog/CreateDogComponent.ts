@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MAX_NAME_LENGTH, MAX_RACE_LENGTH, MIN_NAME_LENGTH, MIN_RACE_LENGTH } from 'src/app/core/interfaces/dog/dog.interface';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { DogService } from 'src/app/core/services/dog/dog.service';
 import { ToastService } from 'src/app/core/services/toast/toast.service';
 
@@ -28,6 +29,7 @@ export class CreateDogComponent implements OnInit, OnDestroy {
     private dogService: DogService,
     private toastService: ToastService,
     private datePipe: DatePipe,
+    private authservice: AuthService,
   ) {
   }
 
@@ -68,10 +70,10 @@ export class CreateDogComponent implements OnInit, OnDestroy {
     const registerDogData = this.dogForm?.value;
     registerDogData.fechaNacimiento=this.datePipe.transform(registerDogData.fechaNacimiento, 'dd-MM-yyyy')
     this.formSubscritions.add(
-      this.dogService.registerDog(registerDogData.nombreDog, registerDogData.raza, registerDogData.sexo, registerDogData.fechaNacimiento)
+      this.dogService.registerDog(registerDogData.nombreDog, registerDogData.raza, registerDogData.sexo, registerDogData.fechaNacimiento, this.authservice.user.id )
         .subscribe(
           (res: any) => {
-            this.toastService.presentToast('Perro registrado con exito');
+            this.toastService.presentToast(res.message);
             this.router.navigateByUrl('/dashboard');
             
           },

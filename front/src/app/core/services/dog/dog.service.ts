@@ -9,14 +9,15 @@ import { Dog } from '../../interfaces/dog/dog.interface';
 })
 export class DogService {
 
-  constructor(private apiService: ApiService, private http : ApiService) {}
+  constructor(private http : ApiService) {}
 
-  public registerDog(nombreDog: string, raza: string, sexo: number, fechaNacimiento: Date) {
+  public registerDog(nombreDog: string, raza: string, sexo: number, fechaNacimiento: Date, id_User: number) {
     const body = {
       nombreDog,
       raza,
       sexo,
       fechaNacimiento, 
+      id_User
     };
 
     return this.http.post('dogs/altaDog', body);

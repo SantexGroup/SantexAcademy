@@ -18,6 +18,16 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: null,
       allowNull: true
     },
+    cuil: {
+      type: DataTypes.STRING,
+      defaultValue: null,
+      allowNull: true
+    },
+    adress: {
+      type: DataTypes.STRING,
+      defaultValue: null,
+      allowNull: true
+    },
     email: {
       type: DataTypes.STRING,
       defaultValue: null,
