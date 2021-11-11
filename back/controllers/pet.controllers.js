@@ -10,13 +10,23 @@ async function listPets(req, res, next) {
     next(error);
   }
 }
-    
+
+async function listAllPets(req, res, next) {
+  try {
+    const { page = 0 } = req.query;
+    const valid = Math.abs(page);
+    const { count, rows } = await petService.listAllPets(valid);
+    res.status(200).json({ count, rows });
+  } catch (error) {
+    next(error);
+  }
+}
 async function newPet(req, res, next) {
   const {
     name,
     birth_date,
     breed,
-    gender
+    gender,
   } = req.body;
   const { id } = req.user;
   try {
@@ -25,7 +35,7 @@ async function newPet(req, res, next) {
       birth_date,
       breed,
       gender,
-      id
+      id,
     );
     res.status(201).json(pet);
   } catch (error) {
@@ -33,8 +43,8 @@ async function newPet(req, res, next) {
   }
 }
 
-
 module.exports = {
   listPets,
   newPet,
+  listAllPets,
 };
