@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayoutAlign="center">
   <div fxFlex="1 1 80vw">
-    <mat-card class="card-with-table">
+    <mat-card>
       <mat-card-title>Mascotas registradas</mat-card-title>
       <mat-card-subtitle>
         Listado de todas las Mascotas registradas en el sistema
@@ -19,6 +19,14 @@
               <td mat-cell *matCellDef="let row">{{ row.id }}</td>
             </ng-container>
 
+            <!-- Owner Column -->
+            <ng-container matColumnDef="user">
+              <th mat-header-cell *matHeaderCellDef>Dueño</th>
+              <td mat-cell *matCellDef="let row">
+                {{ row.user.lastname }} {{ row.user.name }}
+              </td>
+            </ng-container>
+
             <!-- Name Column -->
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
@@ -31,7 +39,7 @@
                 Fecha de Nacimiento
               </th>
               <td mat-cell *matCellDef="let row">
-                {{ row.birth_date | date: "dd/mm/yyyy" }}
+                {{ row.birth_date | date: "dd/MM/YYYY" }}
               </td>
             </ng-container>
 
@@ -50,7 +58,7 @@
             <!-- Age Column -->
             <ng-container matColumnDef="age">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Edad</th>
-              <td mat-cell *matCellDef="let row">{{ row.age }}</td>
+              <td mat-cell *matCellDef="let row">{{ row.age | petAge }}</td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

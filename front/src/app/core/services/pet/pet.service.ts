@@ -14,7 +14,6 @@ export class PetService {
   constructor(private apiService: ApiService, private cookieService: CookieService) { }
 
   getAllPets(page: number): Observable<Pet[]> {
-    // TODO: cambiar el endpoint. Actualmente pide id de Usuario
     const params = new HttpParams().append('page', page)
     return this.apiService.get<Pet[]>(`pets`, params );
   }

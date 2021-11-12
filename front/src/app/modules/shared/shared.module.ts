@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
 import { MaterialModule } from './material.module';
+
+import { NavbarComponent } from './navbar/navbar.component';
+import { PetAgePipe } from './pipes/pet-age.pipe';
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    PetAgePipe
   ],
   imports: [
     CommonModule, 
@@ -14,7 +17,8 @@ import { MaterialModule } from './material.module';
     MaterialModule
   ],
   exports: [
-    NavbarComponent, 
+    NavbarComponent,
+    PetAgePipe
   ],
 })
 export class SharedModule {}

@@ -27,7 +27,7 @@ export class PetListPageComponent implements OnInit, AfterViewInit {
   loading: boolean = false;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'birth_date', 'breed', 'gender', 'age'];
+  displayedColumns = ['id', 'user', 'name', 'birth_date', 'breed', 'gender', 'age'];
 
   constructor(private _petService: PetService) {
     this.dataSource = new MatTableDataSource<Pet>();
@@ -40,10 +40,7 @@ export class PetListPageComponent implements OnInit, AfterViewInit {
     };
   }
 
-  ngOnInit(): void {
-    // this.getPaginatedPets();
-    // this.dataSource.data = this.data;
-    // this.dataSource = new PetListDataSource(this._petService);
+  ngOnInit(): void {    
     this.getPaginatedPets(this.paginatorOpts.pageIndex);
   }
 
@@ -53,6 +50,10 @@ export class PetListPageComponent implements OnInit, AfterViewInit {
     this.table.dataSource = this.dataSource;
   }
 
+  /**
+   * Recupera datos ya paginados desde el backend para poblar la tabla.
+   * @param page número de página (la primer página es 0 ).
+   */
   getPaginatedPets(page: number) {
     this.loading = true;    
     this._petService.getAllPets(page).subscribe(
@@ -60,7 +61,7 @@ export class PetListPageComponent implements OnInit, AfterViewInit {
         this.dataSource.data = resp.rows;
         setTimeout(() => {
           this.paginator.pageIndex = page
-          this.paginator.length = resp.count;          
+          this.paginator.length = resp.count;
         }, 0);
         this.loading = false;
       },
@@ -68,9 +69,12 @@ export class PetListPageComponent implements OnInit, AfterViewInit {
         console.error(err);
         this.loading = false;
       }
-    );    
+    );
   }
 
+  /**
+   * Solicita nuevos datos al backend en cada cambio de página.
+   */
   changePage(event$: PageEvent) {
     this.getPaginatedPets(event$.pageIndex);    
     this.paginatorOpts.pageIndex = event$.pageIndex;

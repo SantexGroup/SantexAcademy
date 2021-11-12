@@ -70,10 +70,7 @@ export class RegisterPageComponent implements OnInit {
     return this.registerForm.get('passwordConfirm');
   }
 
-  register() {
-    // if (this.registerForm.valid) {
-    //   // TOOD llamar a la API y en caso de haber un error capturarlo y mostrarselo al usuario con un toastr como en el login
-    // }
+  register() {    
     const newUserData = this.registerForm?.value;
     this.loading = true;
     this.formSubscriptions.add(

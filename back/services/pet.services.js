@@ -52,7 +52,7 @@ async function listAllPets(page) {
   const limite = 10;
   const { count, rows } = await petModel.findAndCountAll({
     order: [['id', 'ASC']],
-    attributes: ['name', 'birth_date', 'age', 'breed', 'gender'],
+    attributes: ['id', 'name', 'birth_date', 'age', 'breed', 'gender'],
     include: {
       model: userModel,
       attributes: ['id', 'name', 'lastname'],
