@@ -1,4 +1,4 @@
-const { body } = require('express-validator');
+const { body, query } = require('express-validator');
 
 // eslint-disable-next-line func-names
 exports.validate = function (method) {
@@ -26,6 +26,16 @@ exports.validate = function (method) {
           .escape()
           .isLength({ max: 255 })
           .withMessage(() => 'La raza de la mascota no debe tener más de 255 caracteres.'),
+      ];
+      break;
+    case 'list':
+      result = [
+        query('page')
+          .exists()
+          .withMessage(() => 'Se requiere un parametro.')
+          .isNumeric()
+          .withMessage(() => 'El parametro debe ser un numero.'),
+
       ];
       break;
     case 'edit':
