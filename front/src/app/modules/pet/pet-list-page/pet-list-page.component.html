@@ -1,0 +1,83 @@
+<div fxLayout="row" fxLayoutAlign="center">
+  <div fxFlex="1 1 80vw">
+    <mat-card>
+      <mat-card-title>Mascotas registradas</mat-card-title>
+      <mat-card-subtitle>
+        Listado de todas las Mascotas registradas en el sistema
+      </mat-card-subtitle>
+      <mat-card-content>
+        <!-- Tabla con los resultados -->
+        <div fxLayout="column" class="mat-elevation-z8">
+          <mat-progress-bar
+            mode="indeterminate"
+            *ngIf="loading"
+          ></mat-progress-bar>
+          <table fxFlex="1 1 90%" mat-table matSort aria-label="Elements">
+            <!-- Id Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+              <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+            </ng-container>
+
+            <!-- Owner Column -->
+            <ng-container matColumnDef="user">
+              <th mat-header-cell *matHeaderCellDef>Dueño</th>
+              <td mat-cell *matCellDef="let row">
+                {{ row.user.lastname }} {{ row.user.name }}
+              </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+              <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+            </ng-container>
+
+            <!-- Birth Date Column -->
+            <ng-container matColumnDef="birth_date">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Fecha de Nacimiento
+              </th>
+              <td mat-cell *matCellDef="let row">
+                {{ row.birth_date | date: "dd/MM/YYYY" }}
+              </td>
+            </ng-container>
+
+            <!-- Breed Column -->
+            <ng-container matColumnDef="breed">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Raza</th>
+              <td mat-cell *matCellDef="let row">{{ row.breed }}</td>
+            </ng-container>
+
+            <!-- Gender Column -->
+            <ng-container matColumnDef="gender">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Sexo</th>
+              <td mat-cell *matCellDef="let row">{{ row.gender }}</td>
+            </ng-container>
+
+            <!-- Age Column -->
+            <ng-container matColumnDef="age">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Edad</th>
+              <td mat-cell *matCellDef="let row">{{ row.age | petAge }}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+
+          <mat-paginator
+            fxFlex="1 1 90%"
+            #paginator
+            [length]="paginatorOpts.length"
+            [pageIndex]="paginatorOpts.pageIndex"
+            [pageSize]="paginatorOpts.pageSize"
+            [pageSizeOptions]="paginatorOpts.pageSizeOptions"
+            (page)="changePage($event)"
+            aria-label="Select page"
+          >
+          </mat-paginator>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

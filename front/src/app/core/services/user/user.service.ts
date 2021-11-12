@@ -16,7 +16,6 @@ export class UserService {
     const user = this.cookieService.get('user');
     try {
       this.loggedUser = JSON.parse(user);
-      console.log(this.loggedUser)
     } catch (err) {
       console.error(err);
     }

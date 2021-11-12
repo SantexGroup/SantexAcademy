@@ -1,24 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { MatCardModule } from '@angular/material/card';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
 import { ProfileRoutingModule } from './profile-routing.module';
 
-import { ViewProfilePageComponent } from './view-profile-page/view-profile-page.component';
+import { MaterialModule } from '../shared/material.module';
 
 import { UserService } from 'src/app/core/services/user/user.service';
-import { DashboardModule } from '../dashboard/dashboard.module';
+import { ViewProfilePageComponent } from './view-profile-page/view-profile-page.component';
 
 @NgModule({
   declarations: [ViewProfilePageComponent],
   imports: [
     CommonModule,
     ProfileRoutingModule,
-    DashboardModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
+    MaterialModule
   ],
   providers: [UserService],
 })

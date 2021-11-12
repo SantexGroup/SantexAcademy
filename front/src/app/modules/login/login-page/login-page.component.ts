@@ -52,7 +52,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
           (res: any) => {
             this.authService.setUser(res);
             this.toastService.presentToast(`Bienvenido ${res.user?.username}`);
-            this.router.navigateByUrl('/dashboard');
+            this.router.navigateByUrl('/pet/list');
             this.queryComplete()
           },
           (err) => {

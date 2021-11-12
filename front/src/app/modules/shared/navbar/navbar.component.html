@@ -1,0 +1,20 @@
+<mat-toolbar color="primary" class="expanded-toolbar">
+  <span>
+    <button mat-button routerLink="/">Aplicación de Registro Canino - Jesús María</button>
+    <button mat-button routerLink="/profile"><mat-icon>person</mat-icon></button>
+    <button mat-button routerLink="/pet"><mat-icon>pets</mat-icon></button>
+    <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
+  </span>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <button mat-button (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      Logout
+    </button>
+  </div>
+</mat-toolbar>
+<mat-menu xPosition="after" #menu="matMenu">
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+    Logout
+  </button>
+</mat-menu>
