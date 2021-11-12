@@ -1,9 +1,6 @@
 const dogModel  = require("../models").dogs;
+const userModel = require("../models").user;
 const DogExistException = require('../exceptions/dogExist.exceptions');
-
-async function getOne(data) {
-  return dogModel.findOne({ where: data, attributes: dogData });
-}
 
 async function existeNombreDog( id_User, nombreDog  ) {
    
@@ -16,8 +13,6 @@ async function existeNombreDog( id_User, nombreDog  ) {
   }); 
  
   return tmp;
-  
-
 }
 
 async function altaDogService( nombreDog, raza, sexo, fechaNacimiento, id_User ) {
@@ -38,9 +33,25 @@ async function altaDogService( nombreDog, raza, sexo, fechaNacimiento, id_User )
     return newDog;
 }
 
+const limite = 10;
 
+async function getAll(page){
+  let pagina = (page.page - 1) * limite;
+  const result = await dogModel.findAll({
+    include: [{
+      model: userModel,
+      attributes:['username'],
+      required: true
+     }],
+    attributes: [ 'id', 'nombreDog', 'raza', 'sexo', 'fechaNacimiento' ],
+    limit: limite,
+    offset: pagina,
+  });
+
+  return result;
+}
 
 module.exports = {
     altaDogService,
-    
+    getAll
 };

@@ -12,9 +12,18 @@ async function altaDog(req, res, next) {
   }
 }
 
-
+async function dogsList(req, res, next){
+  try{
+    const { page } = req.params || 1;
+    const list = await dogService.getAll({page});
+    res.json(list);
+  }
+  catch(error){
+    next(error);
+  }
+}
 
 module.exports = {
   altaDog,
-  
+  dogsList  
 };

@@ -1,4 +1,9 @@
 'use strict';
+
+const dogs = require("../models/dogs");
+
+const userModels = require("../models").user;
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('dogs', {
@@ -21,7 +26,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       id_User: {
-        type: Sequelize.TINYINT
+        type: Sequelize.INTEGER.UNSIGNED
       },
       createdAt: {
         allowNull: false,
