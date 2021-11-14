@@ -28,7 +28,7 @@ async function newPet(name, birthDate, breed, gender, userId) {
     userId,
   });
   pet.save();
-  return (pet);
+  return pet;
 }
 
 async function listPets(userId, page) {

@@ -15,8 +15,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 const MaterialComponents = [
+  MatNativeDateModule,
+  MatDatepickerModule,
+  ReactiveFormsModule,
   MatInputModule,
   MatButtonModule,
   MatInputModule,

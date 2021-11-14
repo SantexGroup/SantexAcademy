@@ -12,7 +12,9 @@ exports.validate = function (method) {
           .trim()
           .escape()
           .isLength({ max: 255 })
-          .withMessage(() => 'El nombre de la mascota no debe tener más de 255 caracteres.'),
+          .withMessage(
+            () => 'El nombre de la mascota no debe tener más de 255 caracteres.'
+          ),
         body('birth_date')
           .exists()
           .withMessage(() => 'La fecha de nacimiento es obligatoria.')
@@ -25,7 +27,10 @@ exports.validate = function (method) {
           .trim()
           .escape()
           .isLength({ max: 255 })
-          .withMessage(() => 'La raza de la mascota no debe tener más de 255 caracteres.'),
+          .withMessage(
+            () => 'La raza de la mascota no debe tener más de 255 caracteres.'
+          ),
+        body('id').exists(),
       ];
       break;
     case 'list':
@@ -35,7 +40,6 @@ exports.validate = function (method) {
           .withMessage(() => 'Se requiere un parametro.')
           .isNumeric()
           .withMessage(() => 'El parametro debe ser un numero.'),
-
       ];
       break;
     case 'edit':

@@ -7,10 +7,11 @@ import { PetRoutingModule } from './pet-routing.module';
 import { PetService } from 'src/app/core/services/pet/pet.service';
 
 import { PetListPageComponent } from './pet-list-page/pet-list-page.component';
+import { PetRegisterPageComponent } from './pet-register-page/pet-register-page.component';
 
 
 @NgModule({
-  declarations: [PetListPageComponent],
+  declarations: [PetListPageComponent, PetRegisterPageComponent],
   imports: [
     CommonModule,
     PetRoutingModule,
