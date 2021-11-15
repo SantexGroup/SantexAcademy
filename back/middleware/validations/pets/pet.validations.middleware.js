@@ -19,7 +19,7 @@ exports.validate = function (method) {
           .exists()
           .withMessage(() => 'La fecha de nacimiento es obligatoria.')
           .trim()
-          .isDate()
+          .isISO8601()
           .withMessage(() => 'La fecha ingresada no es válida'),
         body('breed')
           .exists()
@@ -30,7 +30,6 @@ exports.validate = function (method) {
           .withMessage(
             () => 'La raza de la mascota no debe tener más de 255 caracteres.'
           ),
-        body('id').exists(),
       ];
       break;
     case 'list':

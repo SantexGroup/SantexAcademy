@@ -1,3 +1,4 @@
+const { body } = require('express-validator');
 const petService = require('../services/pet.services');
 
 async function listPets(req, res, next) {
@@ -22,8 +23,9 @@ async function listAllPets(req, res, next) {
   }
 }
 async function newPet(req, res, next) {
-  const { name, birth_date, breed, gender, id } = req.body;
-  // const { id } = req.user;
+  const { name, birth_date, breed, gender } = req.body;
+  const { id } = req.user;
+  console.log(req.body, id);
   try {
     const pet = await petService.newPet(name, birth_date, breed, gender, id);
     res.status(201).json(pet);

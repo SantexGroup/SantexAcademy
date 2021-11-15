@@ -4,7 +4,7 @@ export interface Pet {
   birth_date: Date,
   breed: string,
   gender: string,
-  userId: number,
+  // userId: number,
   user?: {
     id: number,
     name: string,

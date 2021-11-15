@@ -70,7 +70,7 @@ export class PetRegisterPageComponent implements OnInit {
   }
 
   register() {    
-    const newPetData : Pet = this.registerForm?.value;
+    const newPetData = this.registerForm?.value;
     this.loading = true;
     this.formSubscriptions.add(
       this.petService
@@ -78,13 +78,13 @@ export class PetRegisterPageComponent implements OnInit {
         .createPet(newPetData.name ,newPetData.breed, newPetData.gender,newPetData.birth_date)
         .subscribe(
           (res: any) => {            
-            this.toastService.presentToast(`Registro a ${res.petName} exitosamente`); 
+            this.toastService.presentToast(`Registro a ${res.name} exitosamente`); 
             setTimeout(() => {
-              this.router.navigateByUrl('/');
+              this.router.navigateByUrl('/pet/list');
             }, 600);
           },
           (err) => {
-            //??? aca deberia venir el error desde el back?
+            
             this.toastService.presentToast(err.error);
             this.queryComplete();
           }

@@ -25,13 +25,14 @@ export class PetService {
     //el unico que no es string es birth_date : Date
 
     //donde se pondrian las validaciones del back (ejemplo que el usuario no tenga otra mascota con el mismo nombre)??
+
     //Rta: en el back en services antes de hacer el INSERT se consulta y se devuelve el error... pero como lo capturo desde el front???
     //Puede que el toast del componente resuelva el problema.
-    const {id} = JSON.parse(this.cookieService.get('user'));
-    // const {id} = JSON.parse(userdata)
-    console.log(id);
+
+    //Error 400 rastreado hasta el pet.validator case register
+    
     const body = {
-      name, breed, gender, birth_date, id
+      name, breed, gender, birth_date,
     }
     
     return this.apiService.post(`pets`, body);

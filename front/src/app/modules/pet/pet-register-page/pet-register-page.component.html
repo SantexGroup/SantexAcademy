@@ -51,6 +51,9 @@
         />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="birth_date?.errors?.required">
+          El campo es requerido.
+        </mat-error>
       </mat-form-field>
       <div class="separate-top">
         <button
@@ -61,7 +64,7 @@
         >
           Registrar
         </button>
-        <a mat-raised-button class="block-button" routerLink="/auth/login"
+        <a mat-raised-button class="block-button" routerLink="/pet/list"
           >Cancelar
         </a>
       </div>
