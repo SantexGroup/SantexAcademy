@@ -7,8 +7,7 @@ module.exports = {
       'email',
       {
         type: Sequelize.STRING,
-        defaultValue: null,
-        allowNull: true,
+        allowNull: false,
         after: 'password',
       }
     );

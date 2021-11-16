@@ -48,7 +48,32 @@ exports.validate = function (method) {
           .withMessage('El email debe tener un formato valido'),
         body('cuil')
           .exists()
-          .withMessage(() => 'El cuil es obligatorio.'),
+          .withMessage(() => 'El cuil es obligatorio.')
+          .trim()
+          .escape()
+          .matches(/^([0-9]{11}|[0-9]{2}-[0-9]{8}-[0-9]{1})$/g)
+          .withMessage(() => 'El cuil no es válido.'),
+        body('name')
+          .exists()
+          .withMessage(() => 'El name es obligatorio.')
+          .trim()
+          .escape()
+          .isLength({ min: 3, max: 60 })
+          .withMessage(() => 'El name debe tener entre 3 y 60 caracteres.'),
+        body('lastname')
+          .exists()
+          .withMessage(() => 'El lastname es obligatorio.')
+          .trim()
+          .escape()
+          .isLength({ min: 3, max: 60 })
+          .withMessage(() => 'El lastname debe tener entre 3 y 60 caracteres.'),
+        body('address')
+          .exists()
+          .withMessage(() => 'El address es obligatorio.')
+          .trim()
+          .escape()
+          .isLength({ min: 5, max: 60 })
+          .withMessage(() => 'El address debe tener entre 5 y 60 caracteres.'),
         body().custom((item) => {
           const keys = ['username', 'recaptcha', 'password', 'cuit',
             'phone_number', 'email', 'name', 'lastname', 'address', 'cuil', ''];
