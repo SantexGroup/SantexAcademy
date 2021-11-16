@@ -19,6 +19,10 @@ app.post('/altaDog',
 ],
 dogControllers.altaDog);
 
-
+app.get('/list/:page',
+[
+    //Passport.authenticate('jwt', { session: false }),
+],
+    dogControllers.dogsList);
 
 module.exports = app;
