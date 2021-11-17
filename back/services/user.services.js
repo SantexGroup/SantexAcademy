@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const { Op } = require('sequelize');
 const userModel = require('../models').user;
 const UserNotFoundException = require('../exceptions/userNotFound.exception');
 const InvalidPasswordException = require('../exceptions/invalidPassword.exceptions');
@@ -31,25 +32,33 @@ async function getOne(data) {
   return user;
 }
 
-async function newUser(username, password) {
-  const exists = await userModel.findOne({ where: { username } });
+// eslint-disable-next-line camelcase
+async function newUser(username, password, phone_number, email, name, lastname, address, cuil) {
+  const exists = await userModel.findOne({
+    where: {
+      [Op.or]: [{ username }, { email },
+        { cuil }],
+    },
+  });
   if (exists) {
-    throw new GenericException('Nombre de Usuario no disponible', 409);
+    throw new GenericException('El username, el email o el cuil no pueden registrarse mas de una vez', 409);
   }
   const hash = bcrypt.hashSync(password, 10);
-  const user = await userModel.create({ username, password: hash });
+  const user = await userModel.create({
+    username, password: hash, phone_number, email, name, lastname, address, cuil,
+  });
   delete user.dataValues.password;
   return user;
 }
 
 /**
- * 
+ *
  * @param {*} id
  * @param {*} userData
  */
 async function edit(id, userData) {
   const user = await userModel.findByPk(id, {
-    attributes: { exclude: ['password'] }
+    attributes: { exclude: ['password'] },
   });
 
   if (!!user) {

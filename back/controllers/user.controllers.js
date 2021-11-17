@@ -19,25 +19,29 @@ async function login(req, res, next) {
 
 async function newUser(req, res, next) {
   try {
-    const { username, password } = req.body;
-    const user = await userService.newUser(username, password);
+    const {
+      // eslint-disable-next-line camelcase
+      username, password, phone_number, email, name, lastname, address, cuil,
+    } = req.body;
+    const user = await userService.newUser(
+      username, password, phone_number, email, name, lastname, address, cuil,
+    );
     res.status(201).json(user);
   } catch (error) {
     next(error);
   }
 }
-
 /**
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
  */
 async function userInfo(req, res, next) {
   try {
     let id = req.params.id;
     const userData = await userService.getOne({
-      id
+      id,
     });
     res.json(userData);
   } catch (error) {
@@ -46,10 +50,10 @@ async function userInfo(req, res, next) {
 }
 
 /**
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
  */
 async function editUser(req, res, next) {
   try {
@@ -60,12 +64,12 @@ async function editUser(req, res, next) {
       name,
       lastname
     } = req.body;
-    
+
     const userData = await userService.edit(id, {
       email,
       phonenumber,
       name,
-      lastname
+      lastname,
     });
     res.json(userData);
   } catch (error) {
@@ -77,5 +81,5 @@ module.exports = {
   login,
   newUser,
   userInfo,
-  editUser
+  editUser,
 };
