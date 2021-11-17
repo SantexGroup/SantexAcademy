@@ -23,7 +23,11 @@ module.exports = {
         allowNull: false,
       },
       userId: {
-        type: Sequelize.INTEGER.UNSIGNED,
+        type: Sequelize.INTEGER(16),
+        allowNull: false,
+      },
+      breedId: {
+        type: Sequelize.INTEGER(16),
         allowNull: false,
       },
       createdAt: {
