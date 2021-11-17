@@ -25,21 +25,18 @@
         </mat-error>
       </mat-form-field>
       <!-- Gender -->
-      <mat-form-field class="separate-top">
+      <mat-radio-group
+        class="separate-top"
+        appearance="fill"
+        formControlName="gender"
+        fxLayout="column"
+        fxLayoutGap=".25rem"
+      >
         <mat-label>Sexo</mat-label>
-        <input
-          matInput
-          placeholder="M o F"
-          type="text"
-          formControlName="gender"
-        />
-        <mat-hint *ngIf="gender?.pristine"
-          >M para macho / H para hembra.
-        </mat-hint>
-        <mat-error *ngIf="gender?.errors?.required">
-          El campo es requerido.
-        </mat-error>
-      </mat-form-field>
+        <mat-radio-button value="M">Macho</mat-radio-button>
+        <mat-radio-button value="F">Hembra</mat-radio-button>
+      </mat-radio-group>
+
       <mat-form-field class="separate-top" appearance="fill">
         <mat-label>Seleccione fecha de nacimiento</mat-label>
         <input
