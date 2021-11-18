@@ -3,10 +3,10 @@
 <mat-card class="my-card">
   <mat-card-content>
     <form [formGroup]="registerForm" (ngSubmit)="register()">
-      <h2>Register</h2>
+      <h2>Registro de usuario</h2>
       <mat-form-field appearance="outline">
-        <mat-label>User Name</mat-label>
-        <input matInput placeholder="User name" formControlName="username" required>
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre de usuario" formControlName="username" required>
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         <mat-error *ngIf="registerForm.controls.username?.errors?.required">
           El nombre de usuario es requerido.
@@ -21,6 +21,94 @@
           Revisá tu Usuario.
         </mat-error>
       </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="nombre" formControlName="nombre" required>
+        <mat-error *ngIf="registerForm.controls.nombre?.errors?.required">
+          El nombre es requerido.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.nombre?.errors?.maxlength">
+          La cantidad máxima de caracteres es 13.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.nombre?.errors?.minlength">
+          La cantidad mínima de caracteres es 11.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Apellido</mat-label>
+        <input matInput placeholder="apellido" formControlName="apellido" required>
+        <mat-error *ngIf="registerForm.controls.apellido?.errors?.required">
+          El apellido es requerido.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.apellido?.errors?.maxlength">
+          La cantidad máxima de caracteres es 13.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.apellido?.errors?.minlength">
+          La cantidad mínima de caracteres es 11.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>CUIL</mat-label>
+        <input matInput placeholder="CUIL 00-00000000-00" formControlName="cuil" required>
+        <mat-error *ngIf="registerForm.controls.cuil?.errors?.required">
+          El CUIL es requerido.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.cuil?.errors?.maxlength">
+          La cantidad máxima de caracteres es 13.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.cuil?.errors?.minlength">
+          La cantidad mínima de caracteres es 11.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.cuil?.errors?.pattern">
+          ingresar un cuil correcto.
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input type="email" matInput [errorStateMatcher]="matcher"
+               placeholder="user@example.com" formControlName="email">
+      
+        <mat-error *ngIf="registerForm.controls.email.hasError('email') && !registerForm.controls.email.hasError('required')">
+          Por favor, ingresar un email valido
+        </mat-error>
+       <mat-error *ngIf="registerForm.controls.email?.errors?.required">
+          el Email es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Teléfono</mat-label>
+        <input type= "tel" matInput placeholder="Telefono" formControlName="telefono" required>
+        <mat-error *ngIf="registerForm.controls.telefono?.errors?.required">
+          El Telefono es requerido.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.telefono?.errors?.maxlength">
+          La cantidad máxima de caracteres es 13.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.telefono?.errors?.minlength">
+          La cantidad mínima de caracteres es 11.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Domicilio</mat-label>
+        <input matInput placeholder="domicilio" formControlName="domicilio" required>
+        <mat-error *ngIf="registerForm.controls.domicilio?.errors?.required">
+          El domicilio es requerido.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.domicilio?.errors?.maxlength">
+          La cantidad máxima de caracteres es 13.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls.domicilio?.errors?.minlength">
+          La cantidad mínima de caracteres es 11.
+        </mat-error>
+      </mat-form-field>
+
+
 
       <mat-form-field appearance="fill">
         <mat-label>Enter your password</mat-label>
@@ -48,37 +136,3 @@
   </mat-card-content>
 </mat-card> 
 
-<!-- <mat-card class="my-card">
-  <mat-card-content>
-    <form class="my-form">
-      <h2>Register</h2>
-      <mat-form-field class="full-width">
-        <mat-label>Usuario</mat-label>
-        <input matInput placeholder="Usuario" formControlName="username" />
-        <mat-error *ngIf="registerForm.controls.username?.errors?.required">
-          El nombre de usuario es requerido.
-        </mat-error>
-        <mat-error *ngIf="registerForm.controls.username?.errors?.minlength">
-          La cantidad mínima de caracteres es 5.
-        </mat-error>
-        <mat-error *ngIf="registerForm.controls.username?.errors?.maxlength">
-          La cantidad máxima de caracteres es 255.
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-label>Password</mat-label>
-        <input matInput placeholder="Password" type="password" formControlName="password" />
-        <mat-error *ngIf="registerForm.controls.password?.errors?.required">
-          El password es requerido.
-        </mat-error>
-        <mat-error *ngIf="registerForm.controls.password?.errors?.pattern">
-          El password debe contener 5 carecteres como mínimo y al menos una letra minuscula, una letra mayuscula, un número y un caracter especial.
-        </mat-error>
-      </mat-form-field>
-      <mat-card-actions>
-        <button mat-raised-button color="secondary" [routerLink]="['/auth/login']">Cancel</button>
-        <button mat-raised-button color="primary">Register</button>
-      </mat-card-actions>
-    </form>
-  </mat-card-content>
-</mat-card> -->
