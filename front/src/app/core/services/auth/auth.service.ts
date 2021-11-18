@@ -32,13 +32,8 @@ export class AuthService {
     return this.http.post('users/login', body);
   }
   
-  public register(username: string, password: string) {
-    const body = {
-      username,
-      password,
-    };
-
-    return this.http.post('users/', body);
+  public register(newUser: User) {
+    return this.http.post('users/', newUser);
   }
 
   /**
