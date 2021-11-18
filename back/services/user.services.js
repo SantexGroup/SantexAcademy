@@ -41,7 +41,12 @@ async function newUser(username, password, phone_number, email, name, lastname, 
     },
   });
   if (exists) {
-    throw new GenericException('El username, el email o el cuil no pueden registrarse mas de una vez', 409);
+    if(exists.username === username) 
+      throw new GenericException("El username ingresado está en uso, pruebe uno diferente", 409);
+    if(exists.email === email) 
+      throw new GenericException("El email ingresado está en uso, pruebe uno diferente", 409);
+    if(exists.cuil === cuil) 
+      throw new GenericException("El CUIL ingresado está en uso, pruebe uno diferente", 409);
   }
   const hash = bcrypt.hashSync(password, 10);
   const user = await userModel.create({

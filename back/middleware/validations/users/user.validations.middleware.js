@@ -51,7 +51,7 @@ exports.validate = function (method) {
           .withMessage(() => 'El cuil es obligatorio.')
           .trim()
           .escape()
-          .matches(/^([0-9]{11}|[0-9]{2}-[0-9]{8}-[0-9]{1})$/g)
+          .matches(/^[0-9]{11}$/)
           .withMessage(() => 'El cuil no es válido.'),
         body('name')
           .exists()
