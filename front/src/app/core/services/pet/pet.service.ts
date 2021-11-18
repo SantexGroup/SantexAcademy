@@ -7,6 +7,7 @@ import { User } from '../../interfaces/users/users.interface';
 import { Pet } from '../../interfaces/pets/pets.interface';
 import { Observable } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
+//import { stringify } from 'querystring';
 
 @Injectable()
 export class PetService {
@@ -16,5 +17,24 @@ export class PetService {
   getAllPets(page: number): Observable<Pet[]> {
     const params = new HttpParams().append('page', page)
     return this.apiService.get<Pet[]>(`pets`, params );
+  }
+
+  createPet(name: string, breed: string, gender: string, birth_date: Date){
+    //Atento que el back puede pedir el UserId para crear un perro
+    //Al parecer lo toma de req.user
+    //el unico que no es string es birth_date : Date
+
+    //donde se pondrian las validaciones del back (ejemplo que el usuario no tenga otra mascota con el mismo nombre)??
+
+    //Rta: en el back en services antes de hacer el INSERT se consulta y se devuelve el error... pero como lo capturo desde el front???
+    //Puede que el toast del componente resuelva el problema.
+
+    //Error 400 rastreado hasta el pet.validator case register
+    
+    const body = {
+      name, breed, gender, birth_date,
+    }
+    
+    return this.apiService.post(`pets`, body);
   }
 }

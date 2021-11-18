@@ -17,6 +17,7 @@ import {
 import { Router } from '@angular/router';
 import { MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 
+
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',

@@ -1,0 +1,73 @@
+<mat-card class="my-card">
+  <mat-card-content>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <h2>Registrar nuevo perro</h2>
+      <!-- PetName -->
+      <mat-form-field class="full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre" formControlName="name" />
+        <mat-hint *ngIf="name?.pristine"></mat-hint>
+        <mat-error *ngIf="registerForm.controls.name?.errors?.required">
+          El nombre del perro es requerido.
+        </mat-error>
+      </mat-form-field>
+      <!-- Breed -->
+      <mat-form-field class="separate-top">
+        <mat-label>Raza</mat-label>
+        <input
+          matInput
+          placeholder="Raza"
+          type="text"
+          formControlName="breed"
+        />
+        <mat-error *ngIf="breed?.errors?.required">
+          La raza es requerido.
+        </mat-error>
+      </mat-form-field>
+      <!-- Gender -->
+      <mat-radio-group
+        class="separate-top"
+        appearance="fill"
+        formControlName="gender"
+        fxLayout="column"
+        fxLayoutGap=".25rem"
+      >
+        <mat-label>Sexo</mat-label>
+        <mat-radio-button value="M">Macho</mat-radio-button>
+        <mat-radio-button value="F">Hembra</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field class="separate-top" appearance="fill">
+        <mat-label>Seleccione fecha de nacimiento</mat-label>
+        <input
+          matInput
+          [min]="minDate"
+          [max]="ToDAyDate"
+          [matDatepicker]="picker"
+          formControlName="birth_date"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="birth_date?.errors?.required">
+          El campo es requerido.
+        </mat-error>
+      </mat-form-field>
+      <div class="separate-top">
+        <button
+          mat-raised-button
+          class="block-button"
+          color="primary"
+          [disabled]="registerForm.invalid || loading"
+        >
+          Registrar
+        </button>
+        <a mat-raised-button class="block-button" routerLink="/pet/list"
+          >Cancelar
+        </a>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>
