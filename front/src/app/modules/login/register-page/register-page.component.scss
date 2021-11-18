@@ -25,3 +25,9 @@ input.example-right-align::-webkit-inner-spin-button {
 input.example-right-align {
   -moz-appearance: textfield;
 }
+
+.example-full-width {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
