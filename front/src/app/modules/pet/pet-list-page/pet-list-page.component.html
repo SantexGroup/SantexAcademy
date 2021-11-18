@@ -1,10 +1,22 @@
 <div fxLayout="row" fxLayoutAlign="center">
   <div fxFlex="1 1 80vw">
     <mat-card>
-      <mat-card-title>Mascotas registradas</mat-card-title>
-      <mat-card-subtitle>
-        Listado de todas las Mascotas registradas en el sistema
-      </mat-card-subtitle>
+      <div class="container">
+        <div>
+          <mat-card-title>Mascotas registradas</mat-card-title>
+          <mat-card-subtitle>
+            Listado de todas las Mascotas registradas en el sistema
+          </mat-card-subtitle>
+        </div>
+        <div class="add_button">
+          <button mat-button routerLink="/pet/register">
+            <mat-icon>add_circle_outline </mat-icon>
+            <mat-icon> pets</mat-icon>
+            <!-- <mat-icon>add_circle_outline</mat-icon> -->
+          </button>
+        </div>
+      </div>
+
       <mat-card-content>
         <!-- Tabla con los resultados -->
         <div fxLayout="column" class="mat-elevation-z8">

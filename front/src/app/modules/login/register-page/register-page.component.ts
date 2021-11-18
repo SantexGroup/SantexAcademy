@@ -13,6 +13,7 @@ import {
 } from 'src/app/core/interfaces/users/users.interface';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
