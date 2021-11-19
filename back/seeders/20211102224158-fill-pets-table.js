@@ -4,7 +4,6 @@ module.exports = {
       {
         name: 'rocky',
         birth_date: new Date(),
-        breed: 'pitbull',
         gender: 'M',
         userId: 1,
         breedId: 2,
@@ -14,7 +13,6 @@ module.exports = {
       {
         name: 'zamba',
         birth_date: new Date(),
-        breed: 'caniche',
         gender: 'H',
         breedId: 1,
         userId: 1,
@@ -24,7 +22,6 @@ module.exports = {
       {
         name: 'suna',
         birth_date: '2010-11-04',
-        breed: 'caniche',
         gender: 'H',
         breedId: 1,
         userId: 1,
@@ -34,7 +31,6 @@ module.exports = {
       {
         name: 'pampa',
         birth_date: '2016-02-04',
-        breed: 'san bernardo',
         gender: 'H',
         breedId: 1,
         userId: 1,
@@ -44,7 +40,6 @@ module.exports = {
       {
         name: 'boby',
         birth_date: '2018-01-12',
-        breed: 'mestizo',
         gender: 'M',
         breedId: 1,
         userId: 1,
@@ -54,7 +49,6 @@ module.exports = {
       {
         name: 'Rudolf',
         birth_date: '2012-06-23',
-        breed: 'pug chino',
         gender: 'M',
         breedId: 1,
         userId: 1,
@@ -64,7 +58,6 @@ module.exports = {
       {
         name: 'Jana',
         birth_date: '1999-12-01',
-        breed: 'caniche',
         gender: 'H',
         breedId: 1,
         userId: 1,
@@ -74,7 +67,6 @@ module.exports = {
       {
         name: 'Flipo',
         birth_date: '2018-11-04',
-        breed: 'Ovejero',
         gender: 'M',
         breedId: 4,
         userId: 1,
@@ -84,7 +76,6 @@ module.exports = {
       {
         name: 'Chueco',
         birth_date: '2017-11-04',
-        breed: 'mestizo',
         gender: 'M',
         breedId: 1,
         userId: 1,
@@ -94,7 +85,6 @@ module.exports = {
       {
         name: 'Tomy',
         birth_date: '2002-11-04',
-        breed: 'ovejero belga',
         gender: 'M',
         breedId: 2,
         userId: 1,
@@ -104,7 +94,6 @@ module.exports = {
       {
         name: 'Scooby',
         birth_date: '2014-11-04',
-        breed: 'Alano Aleman',
         gender: 'M',
         breedId: 3,
         userId: 1,
@@ -114,7 +103,6 @@ module.exports = {
       {
         name: 'Manchas',
         birth_date: '2015-11-04',
-        breed: 'gran danes',
         gender: 'H',
         breedId: 1,
         userId: 1,
@@ -124,7 +112,6 @@ module.exports = {
       {
         name: 'nino',
         birth_date: '2020-11-04',
-        breed: 'caniche',
         gender: 'M',
         breedId: 3,
         userId: 2,
@@ -134,7 +121,6 @@ module.exports = {
       {
         name: 'toto',
         birth_date: '2020-11-04',
-        breed: 'pitbull',
         gender: 'M',
         breedId: 4,
         userId: 2,
@@ -144,7 +130,6 @@ module.exports = {
       {
         name: 'tati',
         birth_date: '2020-11-04',
-        breed: 'chiguagua',
         gender: 'H',
         breedId: 2,
         userId: 3,
@@ -154,7 +139,6 @@ module.exports = {
       {
         name: 'milo',
         birth_date: '2020-11-04',
-        breed: 'caniche',
         gender: 'M',
         breedId: 4,
         userId: 4,
@@ -164,7 +148,6 @@ module.exports = {
       {
         name: 'roco',
         birth_date: '2020-11-04',
-        breed: 'mestizo',
         gender: 'M',
         breedId: 1,
         userId: 4,
@@ -174,7 +157,6 @@ module.exports = {
       {
         name: 'lolo',
         birth_date: '2020-11-04',
-        breed: 'pekines',
         gender: 'M',
         breedId: 2,
         userId: 7,
@@ -184,7 +166,6 @@ module.exports = {
       {
         name: 'lula',
         birth_date: '2020-11-04',
-        breed: 'mestizo',
         gender: 'H',
         breedId: 3,
         userId: 5,

@@ -14,10 +14,6 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      breed: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       gender: {
         type: Sequelize.STRING,
         allowNull: false,
