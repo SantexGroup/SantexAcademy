@@ -221,12 +221,6 @@ module.exports = {
       },
       {
         name: 'Airedale Terrier',
-        dangerous: False,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'Beagle',
         dangerous: false,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -297,12 +291,7 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-      {
-        name: 'Fox Terrier',
-        dangerous: false,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
+
       {
         name: 'Viejo Pastor Inglés',
         dangerous: true,
