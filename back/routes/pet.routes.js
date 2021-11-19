@@ -8,25 +8,28 @@ const Validator = require('../middleware/validation.middleware');
 const app = Express();
 
 // Recupera todas las mascotas registradas
-app.get('/',
+app.get(
+  '/',
   [Passport.authenticate('jwt', { session: false })],
   PetValidator.validate('list'),
   Validator.checkValidationResult,
-  petController.listAllPets,
+  petController.listAllPets
 );
-// La URL debe enviar un parametro id para filtrar los perros segun el usuario que realiza 
+// La URL debe enviar un parametro id para filtrar los perros segun el usuario que realiza
 // la consulta
 // ademas debe pasar por queryParams la pagina de resultados que desea ver (?page=n)
 app.get(
   '/:id',
   [Passport.authenticate('jwt', { session: false })],
-  petController.listPets,
+  petController.listPets
 );
 
-app.post('/',
+app.post(
+  '/',
   Passport.authenticate('jwt', { session: false }),
   PetValidator.validate('register'),
   Validator.checkValidationResult,
-  petController.newPet);
+  petController.newPet
+);
 
 module.exports = app;

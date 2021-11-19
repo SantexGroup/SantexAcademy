@@ -7,8 +7,7 @@ module.exports = {
       'cuil',
       {
         type: Sequelize.STRING,
-        defaultValue: null,
-        allowNull: true,
+        allowNull: false,
         unique: true,
         after: 'password',
       }

@@ -1,72 +1,215 @@
 <mat-card class="my-card">
   <mat-card-content>
-    <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <form [formGroup]="registerForm">
       <h2>Registrar nuevo Usuario</h2>
-      <!-- Username -->
-      <mat-form-field class="full-width">
-        <mat-label>Usuario</mat-label>
-        <input matInput placeholder="Usuario" formControlName="username" />
-        <mat-hint *ngIf="username?.pristine"
-          >Min 5 - Max 60 caracteres</mat-hint
+      <mat-stepper [linear]="true" #stepper>
+        <mat-step
+          formGroupName="data"
+          [stepControl]="registerForm.controls['data']"
+          label="Datos de Acceso"
         >
-        <mat-error *ngIf="registerForm.controls.username?.errors?.required">
-          El nombre de usuario es requerido.
-        </mat-error>
-        <mat-error *ngIf="registerForm.controls.username?.errors?.minlength">
-          La cantidad mínima de caracteres es 5.
-        </mat-error>
-        <mat-error *ngIf="registerForm.controls.username?.errors?.maxlength">
-          La cantidad máxima de caracteres es 60.
-        </mat-error>
-      </mat-form-field>
-      <!-- Password -->
-      <mat-form-field class="separate-top">
-        <mat-label>Password</mat-label>
-        <input
-          matInput
-          placeholder="Password"
-          type="password"
-          formControlName="password"
-        />
-        <mat-error *ngIf="password?.errors?.required">
-          El password es requerido.
-        </mat-error>
-        <mat-error *ngIf="password?.errors?.minlength">
-          La cantidad mínima de caracteres es 5.
-        </mat-error>
-        <mat-error *ngIf="password?.errors?.maxlength">
-          La cantidad máxima de caracteres es 60.
-        </mat-error>
-        <mat-error *ngIf="password?.errors?.pattern">
-          Al menos una letra minúscula, una letra
-          mayúscula, un número y un caracter especial.
-        </mat-error>
-      </mat-form-field>
-      <!-- Confirmación Password -->
-      <mat-form-field class="separate-top">
-        <mat-label>Confirmar Password</mat-label>
-        <input
-          matInput
-          placeholder="Confirmar Password"
-          type="password"
-          formControlName="passwordConfirm"
-        />
-        <mat-hint *ngIf="passwordConfirm?.pristine"
-          >Min 5 - Max 60 caracteres. Al menos una letra minúscula, una letra
-          mayúscula, un número y un caracter especial.
-        </mat-hint>
-        <mat-error *ngIf="passwordConfirm?.errors?.required">
-          El campo es requerido.
-        </mat-error>
-        <mat-error *ngIf="passwordConfirm?.dirty && registerForm.errors?.nocoincide">
-          Los password ingresados no coinciden
-        </mat-error>        
-      </mat-form-field>
-      <div class="separate-top">
+          <!-- Username -->
+          <mat-form-field class="full-width">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="username" />
+            <mat-hint *ngIf="username?.pristine"
+              >Min 5 - Max 60 caracteres</mat-hint
+            >
+            <mat-error *ngIf="username?.errors?.required">
+              El nombre de usuario es requerido.
+            </mat-error>
+            <mat-error *ngIf="username?.errors?.minlength">
+              La cantidad mínima de caracteres es 5.
+            </mat-error>
+            <mat-error *ngIf="username?.errors?.maxlength">
+              La cantidad máxima de caracteres es 60.
+            </mat-error>
+          </mat-form-field>
+          <!-- Password -->
+          <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              placeholder="Password"
+              type="password"
+              formControlName="password"
+            />
+            <mat-error *ngIf="password?.errors?.required">
+              El password es requerido.
+            </mat-error>
+            <mat-error *ngIf="password?.errors?.minlength">
+              La cantidad mínima de caracteres es 5.
+            </mat-error>
+            <mat-error *ngIf="password?.errors?.maxlength">
+              La cantidad máxima de caracteres es 60.
+            </mat-error>
+            <mat-error *ngIf="password?.errors?.pattern">
+              Al menos una letra minúscula, una letra mayúscula, un número y un
+              caracter especial.
+            </mat-error>
+          </mat-form-field>
+          <!-- Confirmación Password -->
+          <mat-form-field class="full-width">
+            <mat-label>Confirmar Password</mat-label>
+            <input
+              matInput
+              placeholder="Confirmar Password"
+              type="password"
+              formControlName="passwordConfirm"
+            />
+            <mat-hint *ngIf="passwordConfirm?.pristine"
+              >Min 5 - Max 60 caracteres. Al menos una letra minúscula, una
+              letra mayúscula, un número y un caracter especial.
+            </mat-hint>
+            <mat-error *ngIf="passwordConfirm?.errors?.required">
+              El campo es requerido.
+            </mat-error>
+            <!-- <mat-error
+              *ngIf="(passwordConfirm?.dirty || passwordConfirm?.touched) 
+                      && registerForm.controls['data'].errors?.passMatches"
+            >
+              Los password ingresados no coinciden
+            </mat-error> -->
+          </mat-form-field>
+          <!-- Error por fuera del formControl -- mejorar aspecto -->
+          <mat-error
+            *ngIf="
+              (passwordConfirm?.dirty || passwordConfirm?.touched) &&
+              registerForm.controls['data'].errors?.passMatches
+            "
+          >
+            Los password ingresados no coinciden
+          </mat-error>
+          <div class="separate-top">
+            <button
+              type="button"
+              class="block-button"
+              mat-stroked-button
+              color="warn"
+              matStepperNext
+            >
+              Siguiente
+            </button>
+          </div>
+        </mat-step>
+        <mat-step
+          formGroupName="profile"
+          [stepControl]="registerForm.controls['profile']"
+          label="Datos Personales"
+        >
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <!-- Lastname -->
+          <mat-form-field class="half-width">
+            <mat-label>Apellido</mat-label>
+            <input matInput formControlName="lastname" />
+            <mat-hint *ngIf="lastname?.pristine"
+              >Min 3 - Max 60 caracteres</mat-hint
+            >
+            <mat-error *ngIf="lastname?.errors?.required">
+              El Apellido es requerido.
+            </mat-error>
+            <mat-error *ngIf="lastname?.errors?.minlength">
+              La cantidad mínima de caracteres es 3.
+            </mat-error>
+            <mat-error *ngIf="lastname?.errors?.maxlength">
+              La cantidad máxima de caracteres es 60.
+            </mat-error>
+          </mat-form-field>
+          <!-- Name -->
+          <mat-form-field class="half-width">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name" />
+            <mat-hint *ngIf="name?.pristine"
+              >Min 3 - Max 60 caracteres</mat-hint
+            >
+            <mat-error *ngIf="name?.errors?.required">
+              El Nombre es requerido.
+            </mat-error>
+            <mat-error *ngIf="name?.errors?.minlength">
+              La cantidad mínima de caracteres es 3.
+            </mat-error>
+            <mat-error *ngIf="name?.errors?.maxlength">
+              La cantidad máxima de caracteres es 60.
+            </mat-error>
+          </mat-form-field>
+          
+        </div>  
+          <!-- Email -->
+          <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+            <mat-hint *ngIf="email?.pristine"
+              >Dirección de Email válida</mat-hint
+            >
+            <mat-error *ngIf="email?.errors?.required">
+              El Email es requerido.
+            </mat-error>
+            <mat-error *ngIf="email?.errors?.email">
+              El Email ingresado no tiene un formato válido.
+            </mat-error>
+          </mat-form-field>
+          <!-- Address -->
+          <mat-form-field class="full-width">
+            <mat-label>Dirección</mat-label>
+            <input matInput formControlName="address" />
+            <mat-hint *ngIf="address?.pristine"
+              >Min 5 - Max 60 caracteres</mat-hint
+            >
+            <mat-error *ngIf="address?.errors?.required">
+              La Dirección es requerida.
+            </mat-error>
+            <mat-error *ngIf="address?.errors?.minlength">
+              La cantidad mínima de caracteres es 5.
+            </mat-error>
+            <mat-error *ngIf="address?.errors?.maxlength">
+              La cantidad máxima de caracteres es 60.
+            </mat-error>
+          </mat-form-field>
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <!-- CUIL -->
+            <mat-form-field class="half-width">
+              <mat-label>CUIL</mat-label>
+              <input matInput formControlName="cuil" />
+              <mat-hint *ngIf="cuil?.pristine">Nro. de CUIL sin guiones</mat-hint>
+              <mat-error *ngIf="cuil?.errors?.required">
+                El CUIL es requerido.
+              </mat-error>
+              <mat-error *ngIf="cuil?.errors?.pattern">
+                El CUIL ingresado no tiene un formato válido.
+              </mat-error>
+            </mat-form-field>          
+            <!-- Phone Number -->
+            <mat-form-field class="half-width">
+              <mat-label>Nro. de Teléfono</mat-label>
+              <input matInput formControlName="phone_number" />
+              <mat-hint *ngIf="phone_number?.pristine"
+                >Celular para notificaciones (opcional)</mat-hint
+              >
+              <mat-error *ngIf="phone_number?.errors?.pattern">
+                El número ingresado no es válido.
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="separate-top">
+            <button
+              type="button"
+              class="block-button"
+              mat-stroked-button
+              color="warn"
+              matStepperPrevious
+            >
+              Anterior
+            </button>
+          </div>
+        </mat-step>
+      </mat-stepper> 
+      <div>
         <button
           mat-raised-button
           class="block-button"
           color="primary"
+          (click)="register()"
           [disabled]="registerForm.invalid || loading"
         >
           Registrar
