@@ -8,15 +8,15 @@ const app = Express();
 
 // Rutas
 const userRoute = require('./user.routes');
-
 const dogRoute = require('./dog.routes');
-//use=
+const breedRoute = require('./breed.routes');
 
 
 
 
 app.use('/users', userRoute);
 app.use('/dogs', dogRoute);
+app.use('/breeds', breedRoute);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
