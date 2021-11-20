@@ -18,6 +18,16 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: null,
       allowNull: true
     },
+    cuil: {
+      type: DataTypes.STRING,
+      defaultValue: null,
+      allowNull: true
+    },
+    adress: {
+      type: DataTypes.STRING,
+      defaultValue: null,
+      allowNull: true
+    },
     email: {
       type: DataTypes.STRING,
       defaultValue: null,
@@ -38,5 +48,10 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'users',
   });
 
+  user.associate = (models) => {
+    user.hasMany(models.dogs, { foreignKey: 'id_User' });
+  };
+
   return user;
 };
+

@@ -1,32 +1,18 @@
 'use strict';
-
-const dogs = require("../models/dogs");
-
-const userModels = require("../models").user;
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('dogs', {
+    await queryInterface.createTable('Razas', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nombreDog: {
-        type: Sequelize.STRING
-      },
       raza: {
         type: Sequelize.STRING
       },
-      sexo: {
-        type: Sequelize.TINYINT
-      },
-      fechaNacimiento: {
-        type: Sequelize.DATE
-      },
-      id_User: {
-        type: Sequelize.INTEGER.UNSIGNED
+      peligroso: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -39,6 +25,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('dogs');
+    await queryInterface.dropTable('Razas');
   }
 };

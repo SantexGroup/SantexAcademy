@@ -1,6 +1,7 @@
 'use strict';
 
-const dogs = require("../models/dogs");
+const dogs = require("../models").dogs;
+const userModels = require("../models").userModel;
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -40,10 +41,5 @@ module.exports = {
   }
 };
 
-userModels.hasMany(dogs, {
-  foreignKey: {
-    name: 'id_User',
-    allowNull: false
-  }
-});
+
 
