@@ -25,7 +25,11 @@ const routes: Routes = [
     canActivate: [LoggedInGuard],
     loadChildren: () => import('./modules/dog/dog.module').then(m => m.DogModule),
   },
-
+  // {
+  //   path: 'list',
+  //   canActivate: [LoggedInGuard],
+  //   loadChildren: () => import('./modules/dog/dog.module').then(m => m.DogModule),
+  // },
  
   {
     path: '**',
