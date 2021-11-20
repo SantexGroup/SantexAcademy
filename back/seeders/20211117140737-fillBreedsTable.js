@@ -255,10 +255,7 @@ module.exports = {
           createdAt: "2021-05-05 00:00:00",
           updatedAt: "2021-05-05 00:00:00",
         },
-      ],
-      {}
-    );
-  },
+      ]),
 
   down: async (queryInterface, Sequelize) => {
     await queryInterface.bulkDelete("Breeds", null, {});
