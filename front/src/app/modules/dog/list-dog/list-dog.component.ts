@@ -1,8 +1,10 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import {MatTableDataSource, MatTable} from '@angular/material/table';
 import { Router } from '@angular/router';
-import { listDogService } from 'src/app/core/services/listDog/listDog.service';
+import { listDog } from 'src/app/core/interfaces/dog/listDog.interface';
+import { DogService } from 'src/app/core/services/dog/dog.service';
+import { ToastService } from 'src/app/core/services/toast/toast.service';
 
 /**
  * @title Table with pagination
@@ -15,52 +17,48 @@ import { listDogService } from 'src/app/core/services/listDog/listDog.service';
 })
 
 
-export class ListDogComponent implements AfterViewInit {
-  displayedColumns: string[] = ['nombreUsuario', 'nombrePerro', 'raza', 'sexo', 'edad'];
-  dataSource = new MatTableDataSource<listDog>(ELEMENT_DATA);
-
- // constructor(
-  
-   // private router: Router,
-    //private listDogService: listDogService,
-    
-  //){}
-
-  //ngOnInit():void{};
-  //this.listDogService.getAllDog().suscribe(ELEMENT_DATA );
-
+export class ListDogComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
+  @ViewChild(MatTable)
+  table!: MatTable<listDog>;
+  listadoPerro: listDog[] = []
+  displayedColumns: string[] = ['fechaNacimiento', 'nombreDog', 'raza', 'sexo', 'userName'];
+  dataSource = new MatTableDataSource<listDog>();
+
+
+ constructor(
+  
+    private router: Router,
+    private dogService: DogService,
+    private toastService: ToastService,
+    
+  ){}
+
+  ngOnInit(): void {
+    this.dogService.listAllDogs(1).subscribe( (res: any) => {
+      this.listadoPerro = res;
+      console.log(this.listadoPerro);
+      this.dataSource.data= this.listadoPerro;
+    });  
+  }
+  
+ 
+
+ 
 
   
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 }
+ //const listadoPerro: listDog[] = [
+  //{ nombrePerro: "TANGO", raza: "pastor aleman", sexo: 1, edad: 11,nombreUsuario: "example2"},
+  // {id:1, nombrePerro: "TANGO", raza: "pastor aleman", sexo: 1, edad: 11,nombreUsuario: "example2"},
+  // {id:1, nombrePerro: "TANGO", raza: "pastor aleman", sexo: 1, edad: 11,nombreUsuario: "example2"},
+  // {id:1, nombrePerro: "TANGO", raza: "pastor aleman", sexo: 1, edad: 11,nombreUsuario: "example2"}
+//];  
 
-export interface listDog {
- 
-  nombreUsuario: string;
-  nombrePerro: string;
-  raza: string;
-  sexo: number;
-  edad: number;
-  
-}
 
-const ELEMENT_DATA: listDog[] = [
-  {nombreUsuario: 'juan', nombrePerro: 'lulu', raza: 'caniche', sexo: 1 , edad: 6},
-  {nombreUsuario: 'juan', nombrePerro: 'lulu', raza: 'caniche', sexo: 1 , edad: 6},
-  {nombreUsuario: 'juan', nombrePerro: 'lulu', raza: 'caniche', sexo: 1 , edad: 6},
-  {nombreUsuario: 'juan', nombrePerro: 'lulu', raza: 'caniche', sexo: 1 , edad: 6},
-  {nombreUsuario: 'juan', nombrePerro: 'lulu', raza: 'caniche', sexo: 1 , edad: 6},
-  {nombreUsuario: 'juan', nombrePerro: 'lulu', raza: 'caniche', sexo: 1 , edad: 6},
-  {nombreUsuario: 'juan', nombrePerro: 'lulu', raza: 'caniche', sexo: 1 , edad: 6},
-  {nombreUsuario: 'juan', nombrePerro: 'lulu', raza: 'caniche', sexo: 1 , edad: 6},
-  {nombreUsuario: 'juan', nombrePerro: 'lulu', raza: 'caniche', sexo: 1 , edad: 6},
-  {nombreUsuario: 'juan', nombrePerro: 'lulu', raza: 'caniche', sexo: 1 , edad: 6},
-  {nombreUsuario: 'juan', nombrePerro: 'lulu', raza: 'caniche', sexo: 1 , edad: 6},
-  {nombreUsuario: 'juan', nombrePerro: 'lulu', raza: 'caniche', sexo: 1 , edad: 6},
-  
-];
+
 

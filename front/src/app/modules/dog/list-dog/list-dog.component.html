@@ -1,39 +1,55 @@
 <app-dashboard-page></app-dashboard-page>
 
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource">
+<!-- <table class="table">
+  <thead>
+      <tr>
+          <th [ngStyle]="{ 'width': '100px' }">Dueño</th>
+          <th [ngStyle]="{ 'width': '150px' }">Nombre Perro</th>
+         <th [ngStyle]="{ 'width': '150px' }">Sexo</th>
+          <th [ngStyle]="{ 'width': '150px' }">Edad</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let perro of listadoPerro"
+          [ngStyle]="{ 'height': '100px'}">
+          <td>{{ perro.fechaNacimiento}}</td>
+          <td>{{ perro.nombrePerro}}</td>
+          <td>{{ perro.raza}}</td>
+          <td>{{ perro.sexo}}</td>   
+          <td>{{ perro.nombreUsuario}}</td>            
+      </tr>
+  </tbody>
+</table>  -->
+ <div class="mat-elevation-z8">
+  <table mat-table  [dataSource]="dataSource">
 
-
-    <ng-container matColumnDef="nombreUsuario">
-      <th mat-header-cell *matHeaderCellDef> NombreUsuario </th>      
-      <td mat-cell *matCellDef="let element"> {{element.nombreUsuario}} </td>
+    <ng-container matColumnDef="fechaNacimiento">
+      <th mat-header-cell *matHeaderCellDef> fecha nacimiento </th>      
+      <td mat-cell *matCellDef="let perro"> {{perro.fechaNacimiento}} </td>
     </ng-container>
-    
-    
-   
-    <ng-container matColumnDef="nombrePerro">
-      <th mat-header-cell *matHeaderCellDef> NombrePerro </th>
-      <td mat-cell *matCellDef="let element"> {{element.nombrePerro}} </td>
+       
+    <ng-container matColumnDef="nombreDog">
+      <th mat-header-cell *matHeaderCellDef> Nombre del Perro </th>
+      <td mat-cell *matCellDef="let perro"> {{perro.nombreDog}} </td>
     </ng-container>
 
     <ng-container matColumnDef="raza">
       <th mat-header-cell *matHeaderCellDef> Raza </th>
-      <td mat-cell *matCellDef="let element"> {{element.raza}} </td>
+      <td mat-cell *matCellDef="let perro"> {{perro.raza}} </td>
     </ng-container>
-
     
     <ng-container matColumnDef="sexo">
       <th mat-header-cell *matHeaderCellDef> Sexo </th>
-      <td mat-cell *matCellDef="let element"> {{element.sexo}} </td>
+      <td mat-cell *matCellDef="let perro"> {{perro.sexo}} </td>
     </ng-container>
     
-    <ng-container matColumnDef="edad">
-      <th mat-header-cell *matHeaderCellDef> Edad </th>
-      <td mat-cell *matCellDef="let element"> {{element.edad}} </td>
+    <ng-container matColumnDef="userName">
+      <th mat-header-cell *matHeaderCellDef> Dueño </th>
+      <td mat-cell *matCellDef="let perro"> {{perro.userName}} </td>
     </ng-container>
     
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
   
   </table>
@@ -42,11 +58,11 @@
                  [length]="100"
                  [pageSize]="10"
                  showFirstLastButtons 
-                 aria-label="Select page of periodic elements">
+                 aria-label="Select page">
   </mat-paginator>
 
 
   
 
 
-</div>
+</div> 

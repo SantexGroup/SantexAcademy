@@ -53,7 +53,7 @@ async function getAll(page) {
     attributes: ["id", "nombreDog", "raza", "sexo", "fechaNacimiento"],
     limit: limite,
     offset: pagina,
-  });
+  });  
 
   const response = [];
   for (const pet of result) {
@@ -68,7 +68,20 @@ async function getAll(page) {
   return response;
 }
 
+// async function listDogsServices() {
+//   const result = await dogModel.findAll ({);   
+//   include: [
+//     {
+//       model: userModel,
+//       attributes: ["username"],
+//       required: true,
+//     },
+//   ],
+//   return result
+// };
+
 module.exports = {
   altaDogService,
   getAll,
+  //listDogsServices,
 };
