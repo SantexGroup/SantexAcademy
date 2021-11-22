@@ -5,11 +5,15 @@ import { MaterialModule } from './material.module';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { PetAgePipe } from './pipes/pet-age.pipe';
+import { PetDangerousPipe } from './pipes/pet-dangerous.pipe';
+import { PetGenderPipe } from './pipes/pet-gender.pipe';
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    PetAgePipe
+    PetAgePipe,
+    PetDangerousPipe,
+    PetGenderPipe,
   ],
   imports: [
     CommonModule, 
@@ -18,7 +22,9 @@ import { PetAgePipe } from './pipes/pet-age.pipe';
   ],
   exports: [
     NavbarComponent,
-    PetAgePipe
+    PetAgePipe,
+    PetDangerousPipe,
+    PetGenderPipe
   ],
 })
 export class SharedModule {}

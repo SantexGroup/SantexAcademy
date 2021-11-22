@@ -11,7 +11,7 @@ import { PetRegisterPageComponent } from './pet-register-page/pet-register-page.
 
 
 @NgModule({
-  declarations: [PetListPageComponent, PetRegisterPageComponent],
+  declarations: [PetListPageComponent, PetRegisterPageComponent, ],
   imports: [
     CommonModule,
     PetRoutingModule,
