@@ -6,6 +6,7 @@ module.exports = {
     return queryInterface.addConstraint('dogs', {
               fields: ['idRaza'],
               type: 'foreign key', 
+              name: 'FK_Breeds_dogs', // optional
               references: {
                 table: 'razas',
                 field: 'id',
@@ -15,6 +16,6 @@ module.exports = {
             });  
   },
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.removeConstraint('dogs', 'foreign Key');        
+   // return queryInterface.removeColumn('dogs', 'foreign Key');        
   }
 };

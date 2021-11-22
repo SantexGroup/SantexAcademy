@@ -1,5 +1,6 @@
 const dogModel = require("../models").dogs;
 const userModel = require("../models").user;
+const razaModel = require("../models").Razas;
 const DogExistException = require("../exceptions/dogExist.exceptions");
 
 async function existeNombreDog(id_User, nombreDog) {
@@ -14,15 +15,14 @@ async function existeNombreDog(id_User, nombreDog) {
   return tmp;
 }
 
-async function altaDogService(nombreDog, raza, sexo, fechaNacimiento, id_User) {
+async function altaDogService(nombreDog, idRaza, sexo, fechaNacimiento, id_User) {
   const existeDog = await existeNombreDog(id_User, nombreDog);
   if (existeDog) {
     throw new DogExistException();
   }
-
   const newDog = await dogModel.create({
     nombreDog: nombreDog,
-    raza: raza,
+    idRaza: idRaza,
     sexo: sexo,
     fechaNacimiento: fechaNacimiento,
     id_User: id_User,
@@ -49,12 +49,18 @@ async function getAll(page) {
         attributes: ["username"],
         required: true,
       },
+      {
+        model: razaModel,
+        attributes: ["raza"],
+        required: true,
+      },
     ],
-    attributes: ["id", "nombreDog", "raza", "sexo", "fechaNacimiento"],
+    attributes: ["id", "nombreDog", "sexo", "fechaNacimiento"],
     limit: limite,
     offset: pagina,
   });
 
+  console.log(result);
   const response = [];
   for (const pet of result) {
     const edad = calculateAge(pet.fechaNacimiento);

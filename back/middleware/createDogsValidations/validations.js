@@ -8,10 +8,8 @@ exports.validate = function (method) {
         .withMessage(() => 'El campo nombre es obligatorio.')
         .isLength({ min: 3, max: 255 })
         .withMessage(() => 'El campo nombre no puede estar vacio.'),
-        body('raza').trim().escape()
+        body('idRaza').trim().escape()
         .exists()
-        .withMessage(() => 'El campo nombre es obligatorio.')
-        .isLength({ min: 3, max: 255 })
         .withMessage(() => 'El campo raza no puede estar vacio.'),
         body('fechaNacimiento').trim().escape()
         .exists()

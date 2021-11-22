@@ -5,14 +5,26 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Razas extends Model {
     static associate(models) {
+     Razas.hasMany(models.dogs, { foreignKey: 'idRaza' });      
     }
   };
   Razas.init({
-    raza: DataTypes.STRING,
-    peligroso: DataTypes.BOOLEAN
+    id: {
+      type: DataTypes.TINYINT,
+      primaryKey: true,
+    },
+    raza: { 
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    peligroso: { 
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'Razas',
   });
-  return Razas;
+
+  return Razas;  
 };
