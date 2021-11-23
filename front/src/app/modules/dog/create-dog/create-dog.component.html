@@ -30,16 +30,14 @@
           Ya registraste ese nombre.
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="full-width-input">
-        <input matInput placeholder="raza" formControlName="raza" />
-        <mat-error *ngIf="dogForm.controls.raza?.errors?.required">
-          La raza es requerida.
-        </mat-error>
-        <mat-error *ngIf="dogForm.controls.raza?.errors?.maxlength">
-          La cantidad máxima de caracteres es 60.
-        </mat-error>
+      <mat-form-field appearance="fill">
+        <mat-label>Raza</mat-label>
+        <mat-select formControlName = 'idRaza'>
+          <mat-option *ngFor="let raza of razas" [value]="raza.id">
+            {{raza.raza}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
-
       <mat-optgroup>
       <mat-label class="sexo">Sexo</mat-label>
       

@@ -1,7 +1,7 @@
 export interface Dog {
     id: number;
     nombreDog: string;
-    raza: string;
+    idRaza: number;
     sexo: number;
     fechaNacimiento: Date;
     updatedAt: Date;

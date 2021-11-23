@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { MAX_NAME_LENGTH, MAX_RACE_LENGTH, MIN_NAME_LENGTH, MIN_RACE_LENGTH } from 'src/app/core/interfaces/dog/dog.interface';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { DogService } from 'src/app/core/services/dog/dog.service';
+import { RazaService } from 'src/app/core/services/raza/raza.service';
 import { ToastService } from 'src/app/core/services/toast/toast.service';
 
 
@@ -18,6 +19,11 @@ import { ToastService } from 'src/app/core/services/toast/toast.service';
 })
 export class CreateDogComponent implements OnInit, OnDestroy {
   public dogForm = this.formBuilder.group({ commodity: [null] });
+  public razas = 
+   [
+     {id: 1, raza:'Mapuche'},
+     {id: 2, raza:'Pelon'}
+    ];
   formSubscritions: Subscription = new Subscription();
 
 
@@ -49,10 +55,8 @@ export class CreateDogComponent implements OnInit, OnDestroy {
         Validators.minLength(MIN_NAME_LENGTH),
         Validators.maxLength(MAX_NAME_LENGTH)
       ])),
-      raza: new FormControl(null, Validators.compose([
+      idRaza: new FormControl(null, Validators.compose([
         Validators.required,
-        Validators.minLength(MIN_RACE_LENGTH),
-        Validators.maxLength(MAX_RACE_LENGTH)
       ])),
       sexo: new FormControl(null, Validators.compose([
         Validators.required,
