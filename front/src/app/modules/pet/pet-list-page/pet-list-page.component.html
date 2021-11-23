@@ -58,13 +58,26 @@
             <!-- Breed Column -->
             <ng-container matColumnDef="breed">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Raza</th>
-              <td mat-cell *matCellDef="let row">{{ row.breed }}</td>
+              <td mat-cell *matCellDef="let row">{{ row.breed.name }}</td>
+            </ng-container>
+
+            <!-- IsDangerous -->
+            <ng-container matColumnDef="dangerous">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Peligroso
+              </th>
+              <td mat-cell *matCellDef="let row">
+                {{ row.breed.dangerous | petDangerous }}
+                <!-- {{ row.breed.dangerous ? "Si" : "No" }} -->
+              </td>
             </ng-container>
 
             <!-- Gender Column -->
             <ng-container matColumnDef="gender">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Sexo</th>
-              <td mat-cell *matCellDef="let row">{{ row.gender }}</td>
+              <td mat-cell *matCellDef="let row">
+                {{ row.gender | petGender }}
+              </td>
             </ng-container>
 
             <!-- Age Column -->

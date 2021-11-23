@@ -27,7 +27,7 @@ export class PetListPageComponent implements OnInit, AfterViewInit {
   loading: boolean = false;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'user', 'name', 'birth_date', 'breed', 'gender', 'age'];
+  displayedColumns = ['id', 'user', 'name', 'birth_date', 'breed', 'dangerous', 'gender', 'age'];
 
   constructor(private _petService: PetService) {
     this.dataSource = new MatTableDataSource<Pet>();
