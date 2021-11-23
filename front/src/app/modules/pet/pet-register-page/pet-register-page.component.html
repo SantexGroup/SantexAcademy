@@ -6,38 +6,26 @@
       <mat-form-field class="full-width">
         <mat-label>Nombre</mat-label>
         <input matInput placeholder="Nombre" formControlName="name" />
-        <mat-hint *ngIf="name?.pristine"></mat-hint>
-        <mat-error *ngIf="registerForm.controls.name?.errors?.required">
+        <mat-hint *ngIf="name?.pristine">Min 3 - Max 60 caracteres</mat-hint>
+        <mat-error *ngIf="name?.errors?.required">
           El nombre del perro es requerido.
         </mat-error>
       </mat-form-field>
-      <!-- Breed -->
-      <mat-form-field class="separate-top">
+      <!-- Breed -->      
+      <mat-form-field>
         <mat-label>Raza</mat-label>
-        <input
-          matInput
-          placeholder="Raza"
-          type="text"
-          formControlName="breed"
-        />
-        <mat-error *ngIf="breed?.errors?.required">
-          La raza es requerido.
+        <mat-select formControlName="breedId">
+          <mat-option *ngFor="let item of breedList" [value]="item.id">{{ item.name }}</mat-option>
+        </mat-select>
+        <mat-hint *ngIf="breedId?.pristine">
+          Seleccione una Raza del listado
+        </mat-hint>
+        <mat-error *ngIf="breedId?.errors?.required">
+          La Raza del perro es requerida.
         </mat-error>
       </mat-form-field>
-      <!-- Gender -->
-      <mat-radio-group
-        class="separate-top"
-        appearance="fill"
-        formControlName="gender"
-        fxLayout="column"
-        fxLayoutGap=".25rem"
-      >
-        <mat-label>Sexo</mat-label>
-        <mat-radio-button value="M">Macho</mat-radio-button>
-        <mat-radio-button value="F">Hembra</mat-radio-button>
-      </mat-radio-group>
-
-      <mat-form-field class="separate-top" appearance="fill">
+      <!-- Birth Date -->
+      <mat-form-field>
         <mat-label>Seleccione fecha de nacimiento</mat-label>
         <input
           matInput
@@ -52,6 +40,17 @@
           El campo es requerido.
         </mat-error>
       </mat-form-field>
+      <!-- Gender -->
+      <mat-radio-group        
+        formControlName="gender"
+        fxLayout="row"
+        fxLayoutAlign="space-between"
+        fxLayoutGap=".25rem"
+      >
+        <mat-label>Seleccione el Sexo</mat-label>
+        <mat-radio-button value="M">Macho</mat-radio-button>
+        <mat-radio-button value="F">Hembra</mat-radio-button>
+      </mat-radio-group>
       <div class="separate-top">
         <button
           mat-raised-button

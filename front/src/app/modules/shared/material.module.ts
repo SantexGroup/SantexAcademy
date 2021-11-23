@@ -12,21 +12,21 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
+import { MatOptionModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatStepperModule } from '@angular/material/stepper';
-import { ReactiveFormsModule } from '@angular/forms';
+// import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
-
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 const MaterialComponents = [
   MatRadioModule,
   MatNativeDateModule,
   MatDatepickerModule,
-  ReactiveFormsModule,
+  // ReactiveFormsModule,
   MatInputModule,
   MatButtonModule,
   MatInputModule,
@@ -46,11 +46,15 @@ const MaterialComponents = [
   MatOptionModule,
   MatProgressSpinnerModule,
   MatProgressBarModule,
-  MatStepperModule
+  MatStepperModule,
 ];
 
 @NgModule({
   imports: [MaterialComponents],
   exports: [MaterialComponents],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'es-AR' },
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'} }
+  ],
 })
 export class MaterialModule {}

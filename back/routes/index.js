@@ -9,9 +9,11 @@ const app = Express();
 // Rutas
 const userRoute = require('./user.routes');
 const petRoute = require('./pet.routes');
+const breedRoute = require('./breed.routes');
 
 app.use('/users', userRoute);
 app.use('/pets', petRoute);
+app.use('/breeds', breedRoute);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
