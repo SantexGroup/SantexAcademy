@@ -1,4 +1,4 @@
-export interface Dog {
+export interface Breed {
     id: number;
     raza: string;
     peligroso: number;

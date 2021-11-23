@@ -8,12 +8,8 @@ import { Observable } from 'rxjs';
 export class RazaService {
 
   constructor(private http : ApiService) { }
-    
-  obtenerRazas(){
-    return this
-  }
 
-  cargaSelect(raza : raza[]){
+  cargaSelect(){
     return this.http.get('breeds/list');
     
   }

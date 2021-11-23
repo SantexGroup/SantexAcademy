@@ -2,14 +2,13 @@ import { DatePipe } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { observable, Subscription } from 'rxjs';
 import { MAX_NAME_LENGTH, MAX_RACE_LENGTH, MIN_NAME_LENGTH, MIN_RACE_LENGTH } from 'src/app/core/interfaces/dog/dog.interface';
+import { Breed } from 'src/app/core/interfaces/raza/raza.interface';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { DogService } from 'src/app/core/services/dog/dog.service';
 import { RazaService } from 'src/app/core/services/raza/raza.service';
 import { ToastService } from 'src/app/core/services/toast/toast.service';
-
-
 
 
 @Component({
@@ -17,17 +16,12 @@ import { ToastService } from 'src/app/core/services/toast/toast.service';
   templateUrl: './create-dog.component.html',
   styleUrls: ['./create-dog.component.scss']
 })
+
 export class CreateDogComponent implements OnInit, OnDestroy {
   public dogForm = this.formBuilder.group({ commodity: [null] });
-  public razas = 
-   [
-     {id: 1, raza:'Mapuche'},
-     {id: 2, raza:'Pelon'}
-    ];
+  public razas = [] as Breed[];
+
   formSubscritions: Subscription = new Subscription();
-
-
- 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,13 +30,16 @@ export class CreateDogComponent implements OnInit, OnDestroy {
     private toastService: ToastService,
     private datePipe: DatePipe,
     private authservice: AuthService,
+    private razaservices : RazaService,
   ) {
   }
 
 
   ngOnInit(): void {
-    this.createDogForm();
-    
+    this.createDogForm();   
+    this.razaservices.cargaSelect().subscribe( (res: any) => {
+     this.razas = res; 
+    });  
   }
 
  
@@ -74,7 +71,7 @@ export class CreateDogComponent implements OnInit, OnDestroy {
     const registerDogData = this.dogForm?.value;
     registerDogData.fechaNacimiento=this.datePipe.transform(registerDogData.fechaNacimiento, 'dd-MM-yyyy')
     this.formSubscritions.add(
-      this.dogService.registerDog(registerDogData.nombreDog, registerDogData.raza, registerDogData.sexo, registerDogData.fechaNacimiento, this.authservice.user.id )
+      this.dogService.registerDog(registerDogData.nombreDog, registerDogData.idRaza, registerDogData.sexo, registerDogData.fechaNacimiento, this.authservice.user.id )
         .subscribe(
           (res: any) => {
             this.toastService.presentToast(res.message);

@@ -11,10 +11,10 @@ export class DogService {
 
   constructor(private http : ApiService) {}
 
-  public registerDog(nombreDog: string, raza: string, sexo: number, fechaNacimiento: Date, id_User: number) {
+  public registerDog(nombreDog: string, idRaza: number, sexo: number, fechaNacimiento: Date, id_User: number) {
     const body = {
       nombreDog,
-      raza,
+      idRaza, 
       sexo,
       fechaNacimiento, 
       id_User
