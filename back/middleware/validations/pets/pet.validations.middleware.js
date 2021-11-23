@@ -13,7 +13,7 @@ exports.validate = function (method) {
           .escape()
           .isLength({ max: 255 })
           .withMessage(
-            () => 'El nombre de la mascota no debe tener más de 255 caracteres.'
+            () => 'El nombre de la mascota no debe tener más de 255 caracteres.',
           ),
         body('birth_date')
           .exists()
@@ -21,15 +21,13 @@ exports.validate = function (method) {
           .trim()
           .isISO8601()
           .withMessage(() => 'La fecha ingresada no es válida'),
-        body('breed')
+        body('breedId')
           .exists()
           .withMessage(() => 'La raza de la mascota es obligatoria.')
           .trim()
           .escape()
-          .isLength({ max: 255 })
-          .withMessage(
-            () => 'La raza de la mascota no debe tener más de 255 caracteres.'
-          ),
+          .isInt()
+          .withMessage(() => 'El id debe ser un numero entero.'),
       ];
       break;
     case 'list':

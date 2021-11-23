@@ -1,6 +1,7 @@
 const petModel = require('../models').pet;
 const userModel = require('../models').user;
-const breedModel = require('../models/').breed;
+const breedModel = require('../models').breed;
+
 const GenericException = require('../exceptions/generic.exceptions');
 
 async function checkPetName(userId, name = null) {
@@ -11,20 +12,27 @@ async function checkPetName(userId, name = null) {
   const pet = await petModel.findAll({ where: query });
   return pet;
 }
-
-async function newPet(name, birthDate, breed, gender, userId) {
+async function petBreed(id) {
+  return breedModel.findOne({ where: { id } });
+}
+async function newPet(name, birthDate, breedId, gender, userId) {
+  const breed = await petBreed(breedId);
   const petsByuser = await checkPetName(userId, name);
   const message = `Ya existe una mascota con el nombre ${name} registrada para este usuario`;
+  const msg = ` La raza ${breedId} no es valida `;
 
   // eslint-disable-next-line no-extra-boolean-cast
   if (!!petsByuser.length) {
     throw new GenericException(message, 409);
   }
+  if (!breed) {
+    throw new GenericException(msg, 409);
+  }
 
   const pet = await petModel.create({
     name,
     birth_date: birthDate,
-    breed,
+    breedId,
     gender,
     userId,
   });
