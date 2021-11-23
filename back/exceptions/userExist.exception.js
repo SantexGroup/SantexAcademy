@@ -5,7 +5,10 @@ class UserExistException extends BaseException {
     super('El nombre de usuario ya existe.');
     this.name = this.constructor.name;
     this.status = 403;
+
   }
 }
 
 module.exports = UserExistException;
+
+
