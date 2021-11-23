@@ -22,7 +22,7 @@
     
     <ng-container matColumnDef="sexo">
       <th mat-header-cell *matHeaderCellDef> Sexo </th>
-      <td mat-cell *matCellDef="let perro"> {{perro.sexo}} </td>
+      <td mat-cell *matCellDef="let perro"> {{perro.sexo===2?'Hembra':'Macho'}} </td>
     </ng-container>
     
     <ng-container matColumnDef="edad">
@@ -36,12 +36,7 @@
   
   </table>
 
-   <!-- <mat-paginator [pageSizeOptions]="[10]"
-                 [length]="100"
-                 [pageSize]="10"
-                 [showFirstLastButtons]="true"
-                 aria-label="Select page">
-  </mat-paginator>   -->
+   
 
    <mat-paginator 
 	     [length]="cantidad"

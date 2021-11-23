@@ -30,8 +30,6 @@ export class ListDogComponent implements AfterViewInit, OnInit {
   itemsPorPagina!:number;
  
   
- 
-
  constructor(
   
     private router: Router,
@@ -42,18 +40,20 @@ export class ListDogComponent implements AfterViewInit, OnInit {
 
    ngOnInit(): void {
    this.dogService.listAllDogs(1).subscribe( (res: any) => {
-     this.listadoPerro = res;
+     this.listadoPerro = res.response;
      console.log(this.listadoPerro);
     this.dataSource.data= this.listadoPerro;
+    this.cantidad= res.count;
     });  
     }
   
  listadoPerroPag(page: number){
    
   this.dogService.listAllDogs(page).subscribe( (res: any) => {
-  this.listadoPerro = res;   
+  this.listadoPerro = res.response;   
    this.dataSource.data= this.listadoPerro;
        setTimeout(() =>{
+    this.cantidad= res.count;
     this.paginator.length = this.cantidad,
     this.paginator.pageIndex = this.nroPagina;
     this.paginator.pageSize = this.itemsPorPagina;
@@ -68,7 +68,7 @@ export class ListDogComponent implements AfterViewInit, OnInit {
   }
 
    cambiaPagina(event$: PageEvent) {
-   this.listadoPerroPag(event$.pageIndex);
+   this.listadoPerroPag(event$.pageIndex + 1);
    this.nroPagina = event$.pageIndex;
    this.itemsPorPagina = event$.pageSize;
    }
