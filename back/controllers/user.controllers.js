@@ -65,8 +65,8 @@ async function editUser(req, res, next) {
 
 async function createUser(req, res, next) {
   try {
-    const { username, password } = req.body;
-    const created = await userService.newUser(username, password);
+    const { username, password, phone_number, cuil, adress, email, name, lastname } = req.body;
+    const created = await userService.newUser(username, password, phone_number, cuil, adress, email, name, lastname);
     if (created) {
       res
         .status(201)
@@ -75,7 +75,7 @@ async function createUser(req, res, next) {
   } catch (error) {
     next(error);
   }
-  // return res.status(201).json({success: true, user });
+ 
 }
 
 module.exports = {

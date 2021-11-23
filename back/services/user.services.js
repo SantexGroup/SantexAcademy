@@ -4,6 +4,8 @@ const userModel = require("../models").user;
 const InvalidPasswordException = require("../exceptions/invalidPassword.exceptions");
 const UserNotFoundException = require("../exceptions/userNotFound.exception");
 const UserExistException= require("../exceptions/userExist.exception");
+const EmailExistException = require("../exceptions/emailExist.exception");
+const CuilExistException = require("../exceptions/cuilExist.exception");
 //const { noExtendLeft } = require("sequelize/types/lib/operators");
 
 function createToken(id) {
@@ -66,14 +68,23 @@ async function edit(id, userData) {
   throw new UserNotFoundException();
 }
  
-async function newUser(username, password) {
+async function newUser(username, password, phone_number, cuil, adress, email, name, lastname) {
     const user = await userModel.findOne({ where: { username } });
-    if (!user) {
-      password = bcrypt.hashSync(password, 10);
-      const created = await userModel.create({ username, password });
-      return created;
-    }
+    const emailvalid = await userModel.findOne({ where: { email } });
+    const cuilvalid = await userModel.findOne({ where: { cuil } });
+    if (!user){
+      if (!emailvalid){
+        if(!cuilvalid){
+          password = bcrypt.hashSync(password, 10);
+          const created = await userModel.create({ username, password, phone_number, cuil, adress, email, name, lastname });
+          return created;
+        }
+        throw new CuilExistException();
+      }
+      throw new EmailExistException();
+    } 
     throw new UserExistException();
+      
 }
 module.exports = {
   login,
