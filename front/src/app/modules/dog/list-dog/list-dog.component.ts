@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatTableDataSource, MatTable} from '@angular/material/table';
 import { Router } from '@angular/router';
 import { listDog } from 'src/app/core/interfaces/dog/listDog.interface';
@@ -23,9 +23,14 @@ export class ListDogComponent implements AfterViewInit, OnInit {
   @ViewChild(MatTable)
   table!: MatTable<listDog>;
   listadoPerro: listDog[] = []
-  displayedColumns: string[] = ['fechaNacimiento', 'nombreDog', 'raza', 'sexo', 'userName'];
-  dataSource = new MatTableDataSource<listDog>();
-
+  displayedColumns: string[] = ['userName', 'nombreDog', 'raza', 'sexo', 'edad' ];
+  dataSource = new MatTableDataSource<listDog>(); 
+  cantidad!: number;
+  nroPagina!: number;
+  itemsPorPagina!:number;
+ 
+  
+ 
 
  constructor(
   
@@ -35,15 +40,39 @@ export class ListDogComponent implements AfterViewInit, OnInit {
     
   ){}
 
-  ngOnInit(): void {
-    this.dogService.listAllDogs(1).subscribe( (res: any) => {
-      this.listadoPerro = res;
-      console.log(this.listadoPerro);
-      this.dataSource.data= this.listadoPerro;
+   ngOnInit(): void {
+   this.dogService.listAllDogs(1).subscribe( (res: any) => {
+     this.listadoPerro = res;
+     console.log(this.listadoPerro);
+    this.dataSource.data= this.listadoPerro;
     });  
-  }
+    }
   
- 
+ listadoPerroPag(page: number){
+   
+  this.dogService.listAllDogs(page).subscribe( (res: any) => {
+  this.listadoPerro = res;   
+   this.dataSource.data= this.listadoPerro;
+       setTimeout(() =>{
+    this.paginator.length = this.cantidad,
+    this.paginator.pageIndex = this.nroPagina;
+    this.paginator.pageSize = this.itemsPorPagina;
+       
+    }, 0);
+       },
+   (err) => {
+    console.error(err);
+    
+  }
+ );  
+  }
+
+   cambiaPagina(event$: PageEvent) {
+   this.listadoPerroPag(event$.pageIndex);
+   this.nroPagina = event$.pageIndex;
+   this.itemsPorPagina = event$.pageSize;
+   }
+  
 
  
 
@@ -52,13 +81,7 @@ export class ListDogComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
   }
 }
- //const listadoPerro: listDog[] = [
-  //{ nombrePerro: "TANGO", raza: "pastor aleman", sexo: 1, edad: 11,nombreUsuario: "example2"},
-  // {id:1, nombrePerro: "TANGO", raza: "pastor aleman", sexo: 1, edad: 11,nombreUsuario: "example2"},
-  // {id:1, nombrePerro: "TANGO", raza: "pastor aleman", sexo: 1, edad: 11,nombreUsuario: "example2"},
-  // {id:1, nombrePerro: "TANGO", raza: "pastor aleman", sexo: 1, edad: 11,nombreUsuario: "example2"}
-//];  
-
+ 
 
 
 
