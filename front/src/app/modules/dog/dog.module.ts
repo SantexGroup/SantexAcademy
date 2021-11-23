@@ -20,20 +20,24 @@ import { UserService } from "src/app/core/services/user/user.service";
 import { DashboardModule } from "../dashboard/dashboard.module";
 import { LoginRoutingModule } from "../login/login-routing.module";
 import { CreateDogComponent } from "./create-dog/CreateDogComponent";
+import { ListDogComponent } from "./list-dog/list-dog.component";
 import { DogRoutingModule } from "./dog-routing.module";
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
+import { MatPaginatorModule } from "@angular/material/paginator";
+
 
 @NgModule({
-  declarations: [CreateDogComponent],
+  declarations: [CreateDogComponent, ListDogComponent],
   imports: [
+    
     CommonModule,
     DogRoutingModule,
     LoginRoutingModule,
     ReactiveFormsModule,
     MatInputModule,
-    
+    MatPaginatorModule,
     DashboardModule,
     MatButtonModule,
     ReactiveFormsModule,

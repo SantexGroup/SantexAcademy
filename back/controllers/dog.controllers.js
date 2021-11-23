@@ -1,5 +1,5 @@
 const dogService = require('../services/dog.services');
-
+const userModel = require("../models").user;
 
 async function altaDog(req, res, next) {
   try {
@@ -30,7 +30,28 @@ async function dogsList(req, res, next){
   }
 }
 
+async function listDogs(req, res, next){
+  try{
+    
+    const list = await dogService.listDogsServices();
+    const fechaNac = list.fechaNacimiento;
+    const nombDoc = list.nombreDog;
+    const raza = list.raza;
+    const sexo = list.sexo;
+    const nombreUser = list.user.username;
+
+    const listDogs = {fechaNac, nombDoc, raza,sexo, nombreUser}
+    console.log(listDogs)
+    res.json(listDogs);
+
+  }
+  catch(error){
+    next(error);
+  }
+}
+
 module.exports = {
   altaDog,
-  dogsList  
+  dogsList,
+  listDogs
 };

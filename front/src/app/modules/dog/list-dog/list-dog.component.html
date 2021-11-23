@@ -1,0 +1,53 @@
+<app-dashboard-page></app-dashboard-page>
+
+
+ <div class="mat-elevation-z8">
+  <table mat-table  [dataSource]="dataSource">
+
+    <ng-container matColumnDef="userName">
+      <th mat-header-cell *matHeaderCellDef > Dueño </th>
+      <td mat-cell *matCellDef="let perro" > {{perro.userName}} </td>
+    </ng-container>
+  
+       
+    <ng-container matColumnDef="nombreDog">
+      <th mat-header-cell *matHeaderCellDef> Nombre del Perro </th>
+      <td mat-cell *matCellDef="let perro"> {{perro.nombreDog}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="raza">
+      <th mat-header-cell *matHeaderCellDef> Raza </th>
+      <td mat-cell *matCellDef="let perro"> {{perro.raza}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="sexo">
+      <th mat-header-cell *matHeaderCellDef> Sexo </th>
+      <td mat-cell *matCellDef="let perro"> {{perro.sexo===2?'Hembra':'Macho'}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="edad">
+      <th mat-header-cell *matHeaderCellDef> Edad </th>      
+      <td mat-cell *matCellDef="let perro"> {{perro.edad}} </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  
+  </table>
+
+   
+
+   <mat-paginator 
+	     [length]="cantidad"
+       [pageIndex]="nroPagina"
+	     [pageSize]="itemsPorPagina"
+	    [pageSizeOptions]="[10]"
+       (page)="cambiaPagina($event)" 
+	
+	      aria-label="Select page">
+  </mat-paginator>   
+   
+ 
+
+</div> 

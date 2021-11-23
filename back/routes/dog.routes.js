@@ -25,4 +25,6 @@ app.get('/list/:page',
 ],
     dogControllers.dogsList);
 
+    app.get('/listDogs', dogControllers.listDogs);
+
 module.exports = app;
