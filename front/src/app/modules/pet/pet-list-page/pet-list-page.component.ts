@@ -58,6 +58,7 @@ export class PetListPageComponent implements OnInit, AfterViewInit {
     this.loading = true;    
     this._petService.getAllPets(page).subscribe(
       (resp: any) => {        
+        console.log(resp);
         this.dataSource.data = resp.rows;
         setTimeout(() => {
           this.paginator.pageIndex = page
