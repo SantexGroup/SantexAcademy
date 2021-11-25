@@ -69,7 +69,7 @@ export class CreateDogComponent implements OnInit, OnDestroy {
   public registerDog(): void {
 
     const registerDogData = this.dogForm?.value;
-    registerDogData.fechaNacimiento=this.datePipe.transform(registerDogData.fechaNacimiento, 'dd-MM-yyyy')
+    registerDogData.fechaNacimiento=this.datePipe.transform(registerDogData.fechaNacimiento, 'yyyy-MM-dd')
     this.formSubscritions.add(
       this.dogService.registerDog(registerDogData.nombreDog, registerDogData.idRaza, registerDogData.sexo, registerDogData.fechaNacimiento, this.authservice.user.id )
         .subscribe(
