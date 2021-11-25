@@ -14,5 +14,5 @@ export interface Pet {
   },
 }
 
-export const MIN_PETNAME_LENGTH: number = 5;
+export const MIN_PETNAME_LENGTH: number = 2;
 export const MAX_PETNAME_LENGTH: number = 60;

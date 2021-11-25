@@ -15,9 +15,7 @@ app.get(
   Validator.checkValidationResult,
   petController.listAllPets
 );
-// La URL debe enviar un parametro id para filtrar los perros segun el usuario que realiza
-// la consulta
-// ademas debe pasar por queryParams la pagina de resultados que desea ver (?page=n)
+// TODO: Mover y adaptar esta ruta al router de users
 app.get(
   '/:id',
   [Passport.authenticate('jwt', { session: false })],

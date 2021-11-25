@@ -14,6 +14,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-   return queryInterface.removeConstraint('pets', 'foreign Key');
+   return queryInterface.removeConstraint('pets', 'FK_users_pets');
   },
 };
