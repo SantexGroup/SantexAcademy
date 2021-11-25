@@ -19,7 +19,7 @@ import { MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./pet-register-page.component.scss'],
 })
 export class PetRegisterPageComponent implements OnInit {
-  public minDate: Date = new Date('2006/01/01');
+  public minDate: Date = new Date('1996/01/01');
   public ToDAyDate: Date = new Date();
 
   public registerForm = this.formBuilder.group({});
@@ -72,10 +72,6 @@ export class PetRegisterPageComponent implements OnInit {
 
   register() {
     const newPetData: Pet = this.registerForm?.value;
-    console.table(newPetData);
-    console.log(newPetData);
-    
-
     this.loading = true;
     this.formSubscriptions.add(
       this.petService
@@ -91,12 +87,16 @@ export class PetRegisterPageComponent implements OnInit {
 
             let msg: string = err.error
             let errToast: MatSnackBarRef<TextOnlySnackBar>;            
-            errToast = this.toastService.presentError(msg);
+            if (err.status === 400) {
+              msg = err.error.errors[0].msg;
+            } else {
+              msg = err.error
+            }
+            errToast = this.toastService.presentError(msg);            
             errToast.afterDismissed().subscribe(() => {
               this.queryComplete();
             })
-            // this.toastService.presentToast(err.error);
-            // this.queryComplete();
+            
           }
         )
     );

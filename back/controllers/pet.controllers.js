@@ -1,5 +1,6 @@
 const petService = require('../services/pet.services');
 
+// TODO: Mover y adaptar esta función al controller de users
 async function listPets(req, res, next) {
   try {
     const userId = req.params.id;
@@ -13,14 +14,21 @@ async function listPets(req, res, next) {
 
 async function listAllPets(req, res, next) {
   try {
-    const { page = 0 } = req.query;
-    const valid = Math.abs(page);
-    const { count, rows } = await petService.listAllPets(valid);
-    res.status(200).json({ count, rows });
+    let { 
+      page = 0,
+      limit = 10,
+      sort = 'id',
+      order = 'asc'
+    } = req.query; // Se asignan valores por defecto en caso que no vengan en la request    
+    page = parseInt(page);
+    limit = parseInt(limit);
+    const { count, rows } = await petService.listAllPets(page, limit, sort, order);
+    res.status(200).json({ page, count, rows });
   } catch (error) {
     next(error);
   }
 }
+
 async function newPet(req, res, next) {
   const {
     name, birth_date, gender, breedId,

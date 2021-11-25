@@ -166,7 +166,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        name: 'Pastor belga',
+        name: 'Pastor Belga',
         dangerous: true,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -221,7 +221,7 @@ module.exports = {
       },
       {
         name: 'Airedale Terrier',
-        dangerous: false,
+        dangerous: true,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -291,9 +291,26 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-
       {
         name: 'Viejo Pastor Inglés',
+        dangerous: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Mixto - Indefinido',
+        dangerous: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Ovejero Alemán',
+        dangerous: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Staffordshire Terrier',
         dangerous: true,
         createdAt: new Date(),
         updatedAt: new Date(),

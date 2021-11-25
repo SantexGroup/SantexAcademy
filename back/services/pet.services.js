@@ -12,9 +12,11 @@ async function checkPetName(userId, name = null) {
   const pet = await petModel.findAll({ where: query });
   return pet;
 }
+
 async function petBreed(id) {
   return breedModel.findOne({ where: { id } });
 }
+
 async function newPet(name, birthDate, breedId, gender, userId) {
   const breed = await petBreed(breedId);
   const petsByuser = await checkPetName(userId, name);
@@ -40,6 +42,7 @@ async function newPet(name, birthDate, breedId, gender, userId) {
   return pet;
 }
 
+// TODO: Mover y adaptar esta función al service de users
 async function listPets(userId, page) {
   const limite = 10;
   const pets = await petModel.findAll({
@@ -57,10 +60,35 @@ async function listPets(userId, page) {
   });
   return pets;
 }
-async function listAllPets(page) {
-  const limite = 10;
+
+async function listAllPets(page, limit, sort, order) {
+  // Compone el array usado para el ordenamiento, 
+  // ya que algunos campos son de modelos anidados, 
+  // hay que especificar a qué modelo corresponde
+  let orderBy = [];
+  switch (sort) {
+    case 'breed':
+      orderBy = [breedModel, 'name', order];
+      break;
+    case 'dangerous':
+      orderBy = [breedModel, 'dangerous', order];
+      break;
+    case 'user':
+      orderBy = [userModel, 'lastname', order];
+      break;
+    case 'age':      
+      // Este caso es especial, ya que 'age' es un campo virtual
+      // al no existir en la BD no se lo puede usar para ordenamiento.
+      // Se usa el campo 'birth_date' invirtiendo el orden solicitado
+      orderBy = ['birth_date', order === 'asc' ? 'desc' : 'asc'];
+      break;      
+    default:
+      orderBy = [sort, order];
+      break;
+  }
+
   const { count, rows } = await petModel.findAndCountAll({
-    order: [['id', 'ASC']],
+    order: [orderBy],
     attributes: ['id', 'name', 'birth_date', 'age', 'gender'],
     include: [
       {
@@ -72,10 +100,10 @@ async function listAllPets(page) {
         attributes: ['id', 'name', 'dangerous'],
       },
     ],
-    limit: limite,
-    offset: page * limite,
+    limit: limit,
+    offset: page * limit,
   });
-  return { count, rows };
+  return { page, count, rows };
 }
 
 module.exports = {

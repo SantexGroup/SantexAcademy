@@ -3,7 +3,7 @@ module.exports = {
     return queryInterface.addConstraint('pets', {
       fields: ['breedId'],
       type: 'foreign key',
-      name: 'pet-breed-association',
+      name: 'FK_breeds_pets',
       references: {
         table: 'breeds',
         field: 'id',
@@ -13,15 +13,7 @@ module.exports = {
     });
   },
 
-  down: async (queryInterface, Sequelize) => {
-    return queryInterface.removeConstraint('pets', {
-      fields: ['breedId'],
-      type: 'foreign key',
-      name: 'pet-breed-association',
-      references: {
-        table: 'breeds',
-        field: 'id',
-      },
-    });
+  down: async (queryInterface, Sequelize) => {    
+    return queryInterface.removeConstraint('pets', 'FK_breeds_pets');
   },
 };
