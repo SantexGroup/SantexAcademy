@@ -11,16 +11,16 @@ import { User } from '../../interfaces/users/users.interface';
 export class UserService {
   constructor(private apiService: ApiService, private http : ApiService) {}
 
-  public register(username: string, nombre: string, apellido: string, cuil: string, email: string, telefono: string, domicilio: string, password: string ) {
+  public register(username: string, password: string, phone_number: string, cuil: string, adress: string, email: string, name: string, lastname: string  ) {
     const body = {
-      username,
-      nombre,
-      apellido,
-      cuil,
-      email,
-      telefono,
-      domicilio,
-      password,
+      username, 
+      password, 
+      phone_number, 
+      cuil, 
+      adress, 
+      email, 
+      name, 
+      lastname 
       
     };
 

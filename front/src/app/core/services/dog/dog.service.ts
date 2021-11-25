@@ -22,6 +22,15 @@ export class DogService {
 
     return this.http.post('dogs/altaDog', body);
   }
+  //public listDog(page:number) {
+    //return this.http.get('/list/'+page);
+    //};
+
+//este funciona bien con datos
+  public listAllDogs(page:number){
+    //return this.http.get('dogs/listDogs');
+    return this.http.get('dogs/list/'+page);
+  }
 
 }
 

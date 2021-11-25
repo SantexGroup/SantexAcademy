@@ -5,14 +5,14 @@
     <form [formGroup]="registerForm" (ngSubmit)="register()">
       <h2>Registro de usuario</h2>
       <mat-form-field appearance="outline">
-        <mat-label>Nombre</mat-label>
+        <mat-label>Nombre de usuario</mat-label>
         <input matInput placeholder="Nombre de usuario" formControlName="username" required>
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         <mat-error *ngIf="registerForm.controls.username?.errors?.required">
           El nombre de usuario es requerido.
         </mat-error>
         <mat-error *ngIf="registerForm.controls.username?.errors?.maxlength">
-          La cantidad máxima de caracteres es 255.
+          La cantidad máxima de caracteres es 15.
         </mat-error>
         <mat-error *ngIf="registerForm.controls.username?.errors?.minlength">
           La cantidad mínima de caracteres es 5.
@@ -24,32 +24,33 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Nombre</mat-label>
-        <input matInput placeholder="nombre" formControlName="nombre" required>
-        <mat-error *ngIf="registerForm.controls.nombre?.errors?.required">
+        <input matInput placeholder="nombre" formControlName="name" required>
+        <mat-error *ngIf="registerForm.controls.name?.errors?.required">
           El nombre es requerido.
         </mat-error>
-        <mat-error *ngIf="registerForm.controls.nombre?.errors?.maxlength">
-          La cantidad máxima de caracteres es 13.
+        <mat-error *ngIf="registerForm.controls.name?.errors?.maxlength">
+          La cantidad máxima de caracteres es 15.
         </mat-error>
-        <mat-error *ngIf="registerForm.controls.nombre?.errors?.minlength">
-          La cantidad mínima de caracteres es 11.
+        <mat-error *ngIf="registerForm.controls.name?.errors?.minlength">
+          La cantidad mínima de caracteres es 5.
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Apellido</mat-label>
-        <input matInput placeholder="apellido" formControlName="apellido" required>
-        <mat-error *ngIf="registerForm.controls.apellido?.errors?.required">
+        <input matInput placeholder="apellido" formControlName="lastname" required>
+        <mat-error *ngIf="registerForm.controls.lastname?.errors?.required">
           El apellido es requerido.
         </mat-error>
-        <mat-error *ngIf="registerForm.controls.apellido?.errors?.maxlength">
-          La cantidad máxima de caracteres es 13.
+        <mat-error *ngIf="registerForm.controls.lastname?.errors?.maxlength">
+          La cantidad máxima de caracteres es 15.
         </mat-error>
-        <mat-error *ngIf="registerForm.controls.apellido?.errors?.minlength">
-          La cantidad mínima de caracteres es 11.
+        <mat-error *ngIf="registerForm.controls.lastname?.errors?.minlength">
+          La cantidad mínima de caracteres es 5.
         </mat-error>
       </mat-form-field>
 
+    
       <mat-form-field appearance="outline">
         <mat-label>CUIL</mat-label>
         <input matInput placeholder="CUIL 00-00000000-00" formControlName="cuil" required>
@@ -57,10 +58,10 @@
           El CUIL es requerido.
         </mat-error>
         <mat-error *ngIf="registerForm.controls.cuil?.errors?.maxlength">
-          La cantidad máxima de caracteres es 13.
+          La cantidad máxima de caracteres es 15.
         </mat-error>
         <mat-error *ngIf="registerForm.controls.cuil?.errors?.minlength">
-          La cantidad mínima de caracteres es 11.
+          La cantidad mínima de caracteres es 13.
         </mat-error>
         <mat-error *ngIf="registerForm.controls.cuil?.errors?.pattern">
           ingresar un cuil correcto.
@@ -78,33 +79,36 @@
        <mat-error *ngIf="registerForm.controls.email?.errors?.required">
           el Email es <strong>requerido</strong>
         </mat-error>
+        <mat-error *ngIf="registerForm.controls.email?.errors?.pattern">
+          
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Teléfono</mat-label>
-        <input type= "tel" matInput placeholder="Telefono" formControlName="telefono" required>
-        <mat-error *ngIf="registerForm.controls.telefono?.errors?.required">
+        <input type= "tel" matInput placeholder="Telefono" formControlName="phone_number" required>
+        <mat-error *ngIf="registerForm.controls.phone_number?.errors?.required">
           El Telefono es requerido.
         </mat-error>
-        <mat-error *ngIf="registerForm.controls.telefono?.errors?.maxlength">
-          La cantidad máxima de caracteres es 13.
+        <mat-error *ngIf="registerForm.controls.phone_number?.errors?.maxlength">
+          La cantidad máxima de caracteres es 30.
         </mat-error>
-        <mat-error *ngIf="registerForm.controls.telefono?.errors?.minlength">
-          La cantidad mínima de caracteres es 11.
+        <mat-error *ngIf="registerForm.controls.phone_number?.errors?.minlength">
+          La cantidad mínima de caracteres es 5.
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Domicilio</mat-label>
-        <input matInput placeholder="domicilio" formControlName="domicilio" required>
-        <mat-error *ngIf="registerForm.controls.domicilio?.errors?.required">
+        <input matInput placeholder="domicilio" formControlName="adress" required>
+        <mat-error *ngIf="registerForm.controls.adress?.errors?.required">
           El domicilio es requerido.
         </mat-error>
-        <mat-error *ngIf="registerForm.controls.domicilio?.errors?.maxlength">
-          La cantidad máxima de caracteres es 13.
+        <mat-error *ngIf="registerForm.controls.adress?.errors?.maxlength">
+          La cantidad máxima de caracteres es 60.
         </mat-error>
-        <mat-error *ngIf="registerForm.controls.domicilio?.errors?.minlength">
-          La cantidad mínima de caracteres es 11.
+        <mat-error *ngIf="registerForm.controls.adress?.errors?.minlength">
+          La cantidad mínima de caracteres es 5.
         </mat-error>
       </mat-form-field>
 
