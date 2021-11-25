@@ -28,6 +28,10 @@ module.exports = {
       id_User: {
         type: Sequelize.INTEGER.UNSIGNED
       },
+      idRaza: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
