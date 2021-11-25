@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatSortHeader } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Pet } from '../../../core/interfaces/pets/pets.interface';
 import { PetService } from '../../../core/services/pet/pet.service';
@@ -9,6 +10,7 @@ export interface PaginatorOpts {
   length: number;
   pageIndex: number;
   pageSize: number;
+  limit : number;
   pageSizeOptions: number[];
 }
 
@@ -22,9 +24,14 @@ export class PetListPageComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Pet>;
   
+    
   dataSource!: MatTableDataSource<Pet>;
   paginatorOpts!: PaginatorOpts;
   loading: boolean = false;
+
+  order : string = 'asc';
+  sortBy : string = 'id';
+  
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'user', 'name', 'birth_date', 'breed', 'dangerous', 'gender', 'age'];
@@ -36,6 +43,7 @@ export class PetListPageComponent implements OnInit, AfterViewInit {
       length: 0,
       pageIndex: 0,
       pageSize: 10,
+      limit : 10,
       pageSizeOptions: [5, 10],
     };
   }
@@ -56,7 +64,7 @@ export class PetListPageComponent implements OnInit, AfterViewInit {
    */
   getPaginatedPets(page: number) {
     this.loading = true;    
-    this._petService.getAllPets(page).subscribe(
+    this._petService.getAllPets(page, this.sortBy, this.order, this.paginatorOpts.limit).subscribe(
       (resp: any) => {        
         console.log(resp);
         this.dataSource.data = resp.rows;
@@ -80,5 +88,15 @@ export class PetListPageComponent implements OnInit, AfterViewInit {
     this.getPaginatedPets(event$.pageIndex);    
     this.paginatorOpts.pageIndex = event$.pageIndex;
     this.paginatorOpts.pageSize = event$.pageSize;
+  }
+  
+  //esto lo saque de la documentacion de material...
+  //https://material.angular.io/components/sort/overview
+  changeSort(sortState: Sort | any ){
+    //esta parte es invento mio.
+    this.sortBy = sortState.active;
+    console.log(this.sortBy);
+    this.order = sortState.direction;
+    this.getPaginatedPets(this.paginatorOpts.pageIndex);
   }
 }

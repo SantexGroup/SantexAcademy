@@ -23,16 +23,22 @@
             mode="indeterminate"
             *ngIf="loading"
           ></mat-progress-bar>
-          <table fxFlex="1 1 90%" mat-table matSort aria-label="Elements">
+          <table
+            fxFlex="1 1 90%"
+            mat-table
+            matSort
+            (MatSortChange)="changeSort($event)"
+            aria-label="Elements"
+          >
             <!-- Id Column -->
             <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef>Id</th>
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>Id</th>
               <td mat-cell *matCellDef="let row">{{ row.id }}</td>
             </ng-container>
 
             <!-- Owner Column -->
             <ng-container matColumnDef="user">
-              <th mat-header-cell *matHeaderCellDef>Dueño</th>
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>Dueño</th>
               <td mat-cell *matCellDef="let row">
                 {{ row.user.lastname }} {{ row.user.name }}
               </td>
@@ -40,13 +46,13 @@
 
             <!-- Name Column -->
             <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef>Nombre</th>
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>Nombre</th>
               <td mat-cell *matCellDef="let row">{{ row.name }}</td>
             </ng-container>
 
             <!-- Birth Date Column -->
             <ng-container matColumnDef="birth_date">
-              <th mat-header-cell *matHeaderCellDef>
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>
                 Fecha de Nacimiento
               </th>
               <td mat-cell *matCellDef="let row">
@@ -56,13 +62,13 @@
 
             <!-- Breed Column -->
             <ng-container matColumnDef="breed">
-              <th mat-header-cell *matHeaderCellDef>Raza</th>
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>Raza</th>
               <td mat-cell *matCellDef="let row">{{ row.breed.name }}</td>
             </ng-container>
 
             <!-- IsDangerous -->
             <ng-container matColumnDef="dangerous">
-              <th mat-header-cell *matHeaderCellDef>
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>
                 Peligroso
               </th>
               <td mat-cell *matCellDef="let row">
@@ -73,7 +79,7 @@
 
             <!-- Gender Column -->
             <ng-container matColumnDef="gender">
-              <th mat-header-cell *matHeaderCellDef>Sexo</th>
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>Sexo</th>
               <td mat-cell *matCellDef="let row">
                 {{ row.gender | petGender }}
               </td>
@@ -81,7 +87,7 @@
 
             <!-- Age Column -->
             <ng-container matColumnDef="age">
-              <th mat-header-cell *matHeaderCellDef>Edad</th>
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>Edad</th>
               <td mat-cell *matCellDef="let row">{{ row.age | petAge }}</td>
             </ng-container>
 
