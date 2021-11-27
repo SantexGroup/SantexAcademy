@@ -14,15 +14,16 @@ async function listPets(req, res, next) {
 
 async function listAllPets(req, res, next) {
   try {
-    let { 
-      page = 0,
-      limit = 10,
-      sort = 'id',
-      order = 'asc'
-    } = req.query; // Se asignan valores por defecto en caso que no vengan en la request    
+    let { page = 0, limit = 10, sort = 'id', order = 'asc' } = req.query; // Se asignan valores por defecto en caso que no vengan en la request
     page = parseInt(page);
     limit = parseInt(limit);
-    const { count, rows } = await petService.listAllPets(page, limit, sort, order);
+
+    const { count, rows } = await petService.listAllPets(
+      page,
+      limit,
+      sort,
+      order
+    );
     res.status(200).json({ page, count, rows });
   } catch (error) {
     next(error);
@@ -30,9 +31,7 @@ async function listAllPets(req, res, next) {
 }
 
 async function newPet(req, res, next) {
-  const {
-    name, birth_date, gender, breedId,
-  } = req.body;
+  const { name, birth_date, gender, breedId } = req.body;
   const { id } = req.user;
 
   try {
