@@ -21,7 +21,6 @@ export class PetService {
   
   getAllPets(page: number, limit: number, sort: string, order: string): Observable<Pet[]> {
     if(!order) order = 'asc';
-    console.log(order);
     const params = new HttpParams().append('page', page).append('sort', sort).append('order', order).append('limit', limit);
     return this.apiService.get<Pet[]>(`pets`, params );
   }
