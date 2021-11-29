@@ -11,28 +11,26 @@ app.post('/login', [
   UserValidator.validate('login'),
   Validator.checkValidationResult,
 ],
-userController.login,
-);
+userController.login);
 
 app.post('/', [
   UserValidator.validate('register'),
   Validator.checkValidationResult,
 ],
-userController.newUser,
-);
+userController.newUser);
 
 // users/info/1
 app.get('/info/:id', [
   Passport.authenticate('jwt', { session: false }),
 ],
-userController.userInfo,
-);
+userController.userInfo);
 
 // users/edit/1
 app.put('/edit/:id', [
   Passport.authenticate('jwt', { session: false }),
+  UserValidator.validate('edit'),
+  Validator.checkValidationResult,
 ],
-userController.editUser,
-);
+userController.editUser);
 
 module.exports = app;
