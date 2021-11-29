@@ -1,5 +1,14 @@
 const { body, query } = require('express-validator');
-const fields = ['id', 'age', 'name', 'birth_date', 'gender', 'user', 'breed', 'dangerous'];
+const fields = [
+  'id',
+  'age',
+  'name',
+  'birth_date',
+  'gender',
+  'user',
+  'breed',
+  'dangerous',
+];
 // eslint-disable-next-line func-names
 exports.validate = function (method) {
   let result = [];
@@ -13,7 +22,7 @@ exports.validate = function (method) {
           .escape()
           .isLength({ min: 2, max: 60 })
           .withMessage(
-            () => 'El nombre de la mascota debe tener entre 2 y 60 caracteres.',
+            () => 'El nombre de la mascota debe tener entre 2 y 60 caracteres.'
           ),
         body('birth_date')
           .exists()
@@ -46,13 +55,17 @@ exports.validate = function (method) {
           .trim()
           .escape()
           .isInt({ min: 0 })
-          .withMessage(() => `El parámetro 'page' debe ser un número entero a partir de 0.`),
+          .withMessage(
+            () => `El parámetro 'page' debe ser un número entero a partir de 0.`
+          ),
         query('limit')
           .optional()
           .trim()
           .escape()
           .isInt({ min: 0, max: 10 })
-          .withMessage(() => `El parámetro 'limit' debe ser un número entero entre 0 y 10.`)
+          .withMessage(
+            () => `El parámetro 'limit' debe ser un número entero entre 0 y 10.`
+          )
           .bail(),
         query('sort')
           .optional()
@@ -68,11 +81,10 @@ exports.validate = function (method) {
           .withMessage(() => `El parámetro 'order' sólo acepta 'asc' o 'desc'`),
         query()
           .custom((item) => {
-              const keys = ['page', 'limit', 'sort', 'order'];
-              return Object.keys(item).every((key) => keys.includes(key));
+            const keys = ['page', 'limit', 'sort', 'order'];
+            return Object.keys(item).every((key) => keys.includes(key));
           })
-          .withMessage(() => 'Hay parámetros no permitidos en su consulta.')
-
+          .withMessage(() => 'Hay parámetros no permitidos en su consulta.'),
       ];
       break;
     case 'edit':

@@ -19,8 +19,9 @@ export class PetService {
     return this.apiService.get<Breed[]>('breeds');    
   }
   
-  getAllPets(page: number): Observable<Pet[]> {
-    const params = new HttpParams().append('page', page)
+  getAllPets(page: number, limit: number, sort: string, order: string): Observable<Pet[]> {
+    if(!order) order = 'asc';
+    const params = new HttpParams().append('page', page).append('sort', sort).append('order', order).append('limit', limit);
     return this.apiService.get<Pet[]>(`pets`, params );
   }
 
