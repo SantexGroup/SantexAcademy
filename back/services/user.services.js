@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { Op } = require('sequelize');
@@ -41,12 +43,12 @@ async function newUser(username, password, phone_number, email, name, lastname, 
     },
   });
   if (exists) {
-    if(exists.username === username) 
-      throw new GenericException("El username ingresado está en uso, pruebe uno diferente", 409);
-    if(exists.email === email) 
-      throw new GenericException("El email ingresado está en uso, pruebe uno diferente", 409);
-    if(exists.cuil === cuil) 
-      throw new GenericException("El CUIL ingresado está en uso, pruebe uno diferente", 409);
+    if (exists.username === username)
+      throw new GenericException('El username ingresado está en uso, pruebe uno diferente', 409);
+    if (exists.email === email)
+      throw new GenericException('El email ingresado está en uso, pruebe uno diferente', 409);
+    if (exists.cuil === cuil)
+      throw new GenericException('El CUIL ingresado está en uso, pruebe uno diferente', 409);
   }
   const hash = bcrypt.hashSync(password, 10);
   const user = await userModel.create({
@@ -66,22 +68,32 @@ async function edit(id, userData) {
     attributes: { exclude: ['password'] },
   });
 
-  if (!!user) {
-    if (!!userData.email) {
-      user.email = userData.email;
+  const email = userData.email;
+  const cuil = userData.cuil;
+  const data = await userModel.findOne({
+    where: {
+      [Op.not]: [{ id }],
+      [Op.or]: [{ email },
+        { cuil }],
+    },
+  });
+  if (user) {
+    if (userData.phone_number) {
+      user.phone_number = userData.phone_number;
     }
-
-    if (userData.phonenumber) {
-      user.phone_number = userData.phonenumber
+    if (data) {
+      if (data.email === email) {
+        throw new GenericException('El email ingresado está en uso, pruebe uno diferente', 409);
+      }
+      if (data.cuil === cuil) {
+        throw new GenericException('El cuil ingresado está en uso, pruebe uno diferente', 409);
+      }
     }
-
-    if (userData.name) {
-      user.name = userData.name;
-    }
-
-    if (userData.lastname) {
-      user.lastname = userData.lastname;
-    }
+    user.email = email;
+    user.cuil = cuil;
+    user.name = userData.name;
+    user.lastname = userData.lastname;
+    user.address = userData.address;
 
     user.save();
 
@@ -95,5 +107,4 @@ module.exports = {
   getOne,
   newUser,
   edit,
-
 };

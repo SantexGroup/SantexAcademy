@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const userService = require('../services/user.services');
 
 /**
@@ -57,20 +58,18 @@ async function userInfo(req, res, next) {
  */
 async function editUser(req, res, next) {
   try {
-    let id = req.params.id;
-    let {
+    const id = req.params.id;
+    const {
       email,
-      phonenumber,
-      name,
-      lastname
-    } = req.body;
-
-    const userData = await userService.edit(id, {
-      email,
-      phonenumber,
+      phone_number,
       name,
       lastname,
-    });
+      cuil,
+      address,
+
+    } = req.body;
+
+    const userData = await userService.edit(id, req.body);
     res.json(userData);
   } catch (error) {
     next(error);
