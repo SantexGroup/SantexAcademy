@@ -34,7 +34,9 @@ async function altaDogService(nombreDog, idRaza, sexo, fechaNacimiento, id_User)
 function calculateAge(birthday) {
   // birthday is a date
   var ageDifMs = Date.now() - birthday.getTime();
+  console.log('diferencia con dia actual', ageDifMs);
   var ageDate = new Date(ageDifMs); // miliseconds from epoch
+  console.log('ageDate', ageDate);
   return Math.abs(ageDate.getUTCFullYear() - 1970);
 }
 
@@ -43,13 +45,13 @@ const limite = 10;
 async function getAll(page) {
   const response = [];
   let pagina = (page - 1) * limite;
-  //const result = await dogModel.findAndCountAll({
+//const result = await dogModel.findAndCountAll({
 const { count, rows } = await dogModel.findAndCountAll({
 
     include: [
       {
         model: userModel,
-        attributes: ["username"],
+        attributes: ["name", "lastname"],
         required: true,
       },
       {
@@ -63,33 +65,22 @@ const { count, rows } = await dogModel.findAndCountAll({
     offset: pagina,
   });  
 
+  
 
   for (const pet of rows) {
     const edad = calculateAge(pet.fechaNacimiento);
+    let name = pet.user.lastname + ", " + pet.user.name;
     response.push({
       ...pet.dataValues,
       edad,
-      userName: pet.user.username,
+      userName: name,
       user: undefined,
     });
   }
   return {count, response};
 }
 
-// async function listDogsServices() {
-//   const result = await dogModel.findAll ({);   
-//   include: [
-//     {
-//       model: userModel,
-//       attributes: ["username"],
-//       required: true,
-//     },
-//   ],
-//   return result
-// };
-
 module.exports = {
   altaDogService,
   getAll,
-  //listDogsServices,
 };
