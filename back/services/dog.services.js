@@ -34,9 +34,7 @@ async function altaDogService(nombreDog, idRaza, sexo, fechaNacimiento, id_User)
 function calculateAge(birthday) {
   // birthday is a date
   var ageDifMs = Date.now() - birthday.getTime();
-  console.log('diferencia con dia actual', ageDifMs);
   var ageDate = new Date(ageDifMs); // miliseconds from epoch
-  console.log('ageDate', ageDate);
   return Math.abs(ageDate.getUTCFullYear() - 1970);
 }
 
