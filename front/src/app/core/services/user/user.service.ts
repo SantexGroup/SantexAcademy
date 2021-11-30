@@ -27,8 +27,8 @@ export class UserService {
     return this.http.post('users/new', body);
   }
 
-  getProfile(): Observable<User> {
-    return this.apiService.get<User>('users/myInfo');
+  getProfile(idUser : number): Observable<User> {
+    return this.apiService.get<User>('users/info/' +idUser);
   }
 
   

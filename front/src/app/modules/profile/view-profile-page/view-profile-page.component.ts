@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 import { UserService } from 'src/app/core/services/user/user.service';
 
@@ -13,10 +14,13 @@ export class ViewProfilePageComponent implements OnInit {
   
   profile!: User;
   
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private authservice: AuthService)
+     {}
   
   ngOnInit(): void {
-    this.userService.getProfile().subscribe((profile: User) => {
+    this.userService.getProfile(this.authservice.user.id).subscribe((profile: User) => {
       this.profile = profile;
     })
   }

@@ -2,16 +2,15 @@
 
 <mat-toolbar color="primary" class="expanded-toolbar">
   <span>
-    <button mat-button routerLink="/">Jesus Maria Boilerplate</button>
-    <button mat-button routerLink="/profile"><mat-icon>person</mat-icon></button>
     <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
-    <button mat-button routerLink="/dog"><mat-icon>pets</mat-icon></button>
-    <button mat-button routerLink="/dog/listado"><mat-icon>list</mat-icon></button>
+    <button mat-button routerLink="/profile"><mat-icon>person</mat-icon>USUARIO</button>    
+    <button mat-button routerLink="/dog"><mat-icon>pets</mat-icon>REGISTRO CANINO</button>
+    <button mat-button routerLink="/dog/listado"><mat-icon>list</mat-icon>LISTADO CANINO</button>
   </span>
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
     <button mat-button (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>
-      Logout
+      CERRAR SESION
     </button>
   </div>
 </mat-toolbar>

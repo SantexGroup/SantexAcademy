@@ -28,7 +28,7 @@ export class ListDogComponent implements AfterViewInit, OnInit {
   cantidad!: number;
   nroPagina!: number;
   itemsPorPagina!:number;
- 
+  color = '#33FFF6'
   
  constructor(
   
