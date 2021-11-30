@@ -69,14 +69,7 @@ async function editUser(req, res, next) {
 
     } = req.body;
 
-    const userData = await userService.edit(id, {
-      email,
-      phone_number,
-      name,
-      lastname,
-      cuil,
-      address,
-    });
+    const userData = await userService.edit(id, req.body);
     res.json(userData);
   } catch (error) {
     next(error);

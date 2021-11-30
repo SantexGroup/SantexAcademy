@@ -39,7 +39,7 @@ async function newUser(username, password, phone_number, email, name, lastname, 
   const exists = await userModel.findOne({
     where: {
       [Op.or]: [{ username }, { email },
-      { cuil }],
+        { cuil }],
     },
   });
   if (exists) {
@@ -72,6 +72,7 @@ async function edit(id, userData) {
   const cuil = userData.cuil;
   const data = await userModel.findOne({
     where: {
+      [Op.not]: [{ id }],
       [Op.or]: [{ email },
         { cuil }],
     },
