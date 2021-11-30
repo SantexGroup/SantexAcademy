@@ -4,7 +4,7 @@ const userController = require('../controllers/user.controllers');
 require('../middleware/passport.middleware')(Passport);
 const UserValidator = require('../middleware/validations/users/user.validations.middleware');
 const Validator = require('../middleware/validation.middleware');
-const Validate = require('../middleware/id.validation.middleware');
+const Validate = require('../middleware/check_user.middleware');
 
 const app = Express();
 
