@@ -27,7 +27,7 @@
     
     <ng-container matColumnDef="edad">
       <th mat-header-cell *matHeaderCellDef [style.background-color]="color" > <strong><h2> EDAD</h2></strong></th>      
-      <td mat-cell *matCellDef="let perro"> {{perro.edad}} </td>
+      <td mat-cell *matCellDef="let perro"> {{calcularEdad(perro.edad)}} </td>
     </ng-container>
     
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
