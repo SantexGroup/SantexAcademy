@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="center">
   <div fxFlex="1 1 80vw">
     <mat-card>
-      <div class="container">
+      <div fxLayout="row" fxLayoutAlign="space-between" fxLayout.lt-sm="column" >
         <div>
           <mat-card-title>Mascotas registradas</mat-card-title>
           <mat-card-subtitle>
@@ -9,12 +9,26 @@
           </mat-card-subtitle>
         </div>
         <div class="add_button">
-          <button mat-button routerLink="/pet/register">
-            <mat-icon>add_circle_outline </mat-icon>
-            <mat-icon> pets</mat-icon>
+          <button mat-raised-button color="primary" routerLink="/pet/register">
+            <mat-icon>add_circle_outline</mat-icon>
+            <mat-icon>pets</mat-icon>&nbsp; Nuevo Perro
           </button>
         </div>
       </div>
+      <!-- <div class="container">
+        <div>
+          <mat-card-title>Mascotas registradas</mat-card-title>
+          <mat-card-subtitle>
+            Listado de todas las Mascotas registradas en el sistema
+          </mat-card-subtitle>
+        </div>
+        <div class="add_button">
+          <button mat-raised-button color="primary" routerLink="/pet/register">
+            <mat-icon>add_circle_outline </mat-icon>
+            <mat-icon>pets</mat-icon> Nueva Mascota
+          </button>
+        </div>
+      </div> -->
 
       <mat-card-content>
         <!-- Tabla con los resultados -->
@@ -23,8 +37,10 @@
             mode="indeterminate"
             *ngIf="loading"
           ></mat-progress-bar>
+          
           <table
-            fxFlex="1 1 90%"
+            fxFlex
+            fxFlex.gt-xs="1 1 90%"
             mat-table
             matSort
             (matSortChange)="changeSort($event)"
@@ -35,7 +51,6 @@
               <th mat-header-cell mat-sort-header *matHeaderCellDef>Id</th>
               <td mat-cell *matCellDef="let row">{{ row.id }}</td>
             </ng-container>
-
             <!-- Owner Column -->
             <ng-container matColumnDef="user">
               <th mat-header-cell mat-sort-header *matHeaderCellDef>Dueño</th>
@@ -43,13 +58,11 @@
                 {{ row.user.lastname }} {{ row.user.name }}
               </td>
             </ng-container>
-
             <!-- Name Column -->
             <ng-container matColumnDef="name">
               <th mat-header-cell mat-sort-header *matHeaderCellDef>Nombre</th>
               <td mat-cell *matCellDef="let row">{{ row.name }}</td>
             </ng-container>
-
             <!-- Birth Date Column -->
             <ng-container matColumnDef="birth_date">
               <th mat-header-cell mat-sort-header *matHeaderCellDef>
@@ -59,13 +72,11 @@
                 {{ row.birth_date | date: "dd/MM/YYYY" }}
               </td>
             </ng-container>
-
             <!-- Breed Column -->
             <ng-container matColumnDef="breed">
               <th mat-header-cell mat-sort-header *matHeaderCellDef>Raza</th>
               <td mat-cell *matCellDef="let row">{{ row.breed.name }}</td>
             </ng-container>
-
             <!-- IsDangerous -->
             <ng-container matColumnDef="dangerous">
               <th mat-header-cell mat-sort-header *matHeaderCellDef>
@@ -76,7 +87,6 @@
                 <!-- {{ row.breed.dangerous ? "Si" : "No" }} -->
               </td>
             </ng-container>
-
             <!-- Gender Column -->
             <ng-container matColumnDef="gender">
               <th mat-header-cell mat-sort-header *matHeaderCellDef>Sexo</th>
@@ -84,16 +94,15 @@
                 {{ row.gender | petGender }}
               </td>
             </ng-container>
-
             <!-- Age Column -->
             <ng-container matColumnDef="age">
               <th mat-header-cell mat-sort-header *matHeaderCellDef>Edad</th>
               <td mat-cell *matCellDef="let row">{{ row.age | petAge }}</td>
             </ng-container>
-
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
           </table>
+          
 
           <mat-paginator
             fxFlex="1 1 90%"

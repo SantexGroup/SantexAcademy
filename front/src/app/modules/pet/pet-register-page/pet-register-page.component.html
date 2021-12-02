@@ -1,7 +1,7 @@
 <mat-card class="my-card">
   <mat-card-content>
     <form [formGroup]="registerForm" (ngSubmit)="register()">
-      <h2>Registrar nuevo perro</h2>
+      <h2>Registro de nuevo Perro</h2>
       <!-- PetName -->
       <mat-form-field class="full-width">
         <mat-label>Nombre</mat-label>
@@ -61,7 +61,8 @@
           color="primary"
           [disabled]="registerForm.invalid || loading"
         >
-          Registrar
+        <mat-icon>save</mat-icon>
+          &nbsp;Registrar Perro
         </button>
         <a mat-raised-button class="block-button" routerLink="/pet/list"
           >Cancelar
