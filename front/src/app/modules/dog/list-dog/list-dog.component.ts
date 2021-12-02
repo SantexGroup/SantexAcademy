@@ -75,7 +75,7 @@ export class ListDogComponent implements AfterViewInit, OnInit {
   public calcularEdad(meses: number) {
     let calculoAnios = Math.floor(meses / 12);
     let calculoMes = meses % 12;
-    let mes = 'menos de 1 mes';
+    let mes = '';
     let anio = '';
     let union = '';
 
@@ -98,33 +98,12 @@ export class ListDogComponent implements AfterViewInit, OnInit {
     if ((calculoAnios != 0) && (calculoMes != 0)) {
       union = ' y ';
     }
+    else
+    if ((calculoAnios == 0) && (calculoMes == 0)) {
+      mes = 'menos de 1 mes';
+    } 
 
     return anio + union + mes;
-    /*if (calculoMes === 1) {
-      mes = '1 mes';
-    } else {
-      if (calculoMes > 1) {
-        mes = calculoMes + ' meses';
-      }
-    }
-    if (calculoAnios === 0) {
-      mensaje = mes;
-    } else {
-      if (calculoAnios === 1) {
-        if (calculoMes > 0) {
-          mensaje = '1 año y ' + mes;
-        } else {
-          mensaje = '1 año';
-        }
-      } else {
-        if (calculoMes > 0) {
-          mensaje = calculoAnios + ' años';
-        } else {
-          mensaje = calculoAnios + ' años y ' + mes;
-        }
-      }
-    }*/
-    //return mensaje;
   }
 
   ngAfterViewInit() {
