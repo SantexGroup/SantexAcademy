@@ -1,15 +1,28 @@
-<mat-card class="example-card" *ngIf="profile">
-  <mat-card-title-group>
-    <mat-card-title>{{ profile.username }}</mat-card-title>
-    <img
-      mat-card-lg-image
-      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-    />
-  </mat-card-title-group>
-  <mat-card-content>
-    <h4>Apellido: {{ profile.lastname }}</h4>
-    <h4>Nombre: {{ profile.name }}</h4>
-    <h4>Email: {{ profile.email }}</h4>
-    <h4>Dirección: {{ profile.address }}</h4>
-  </mat-card-content>
-</mat-card>
+<div fxLayout="row">
+  <mat-card fxFlex="auto" fxFlex.gt-xs="450px" class="example-card mat-elevation-z12" *ngIf="profile">
+    <div class="mat-elevation-z8">
+      <mat-card-title-group>
+        <mat-card-title>{{ profile.username }}</mat-card-title>
+        <mat-card-subtitle>Perfil de Usuario</mat-card-subtitle>
+        <img
+          mat-card-lg-image
+          src="../../../../assets/user-circle.svg"
+        />
+      </mat-card-title-group>
+    </div>
+    <mat-card-content>
+      <p><strong>Apellido:</strong> {{ profile.lastname }}</p>
+      <p><strong>Nombre:</strong> {{ profile.name }}</p>
+      <p><strong>Dirección:</strong> {{ profile.address }}</p>
+      <div>
+        <p fxFlex="50%"><strong>Email:</strong> {{ profile.email }}</p>
+        <p fxFlex="50%" *ngIf="profile?.phone_number"><strong>Teléfono:</strong> {{ profile.phone_number }}</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <a mat-raised-button color="primary" routerLink="edit">
+        <mat-icon>edit_note</mat-icon>&nbsp; Editar Detalles
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</div>

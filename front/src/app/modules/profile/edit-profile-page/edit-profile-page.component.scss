@@ -1,0 +1,32 @@
+
+mat-card.edit-form {
+  max-width: 400px;
+  margin: 2em auto;
+  text-align: center;
+}
+
+mat-step {
+  justify-content: space-between;
+}
+
+mat-form-field.full-width {
+  display: block;
+  margin-bottom: 20px;
+}
+
+mat-form-field.half-width {
+  display: inline-block;
+  width: 48%;
+  margin-bottom: 20px;
+}
+
+div.separate-top {
+  margin-top: 60px;
+}
+
+.block-button {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+  display: block;
+}

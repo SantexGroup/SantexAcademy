@@ -1,10 +1,16 @@
 :host {
     mat-card {
         width: 500px;
-        margin: 15px;
+        margin: 2em auto;
 
         img {
             border-radius: 100%;
         }
     }
+
+    mat-card-title-group {
+        margin-bottom: 25px;
+        padding-left: 15px;
+    }
+    
 }

@@ -17,6 +17,7 @@ export class ViewProfilePageComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getProfile().subscribe((profile: User) => {
       this.profile = profile;
+      this.userService.loggedUser = profile;
     });
   }
 }

@@ -1,0 +1,115 @@
+<mat-card class="edit-form">
+  <mat-card-content>
+    <form [formGroup]="editForm">
+      <h2>Editar datos del Usuario</h2>
+      <div fxLayout="row" fxLayoutAlign="space-between">
+        <!-- Lastname -->
+        <mat-form-field class="half-width">
+          <mat-label>Apellido</mat-label>
+          <input matInput formControlName="lastname" />
+          <mat-hint *ngIf="lastname?.pristine"
+            >Min 3 - Max 60 caracteres</mat-hint
+          >
+
+          <mat-error *ngIf="lastname?.errors?.required">
+            El Apellido es requerido.
+          </mat-error>
+          <mat-error *ngIf="lastname?.errors?.minlength">
+            La cantidad mínima de caracteres es 3.
+          </mat-error>
+          <mat-error *ngIf="lastname?.errors?.maxlength">
+            La cantidad máxima de caracteres es 60.
+          </mat-error>
+        </mat-form-field>
+        <!-- Name -->
+        <mat-form-field class="half-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="name" />
+          <mat-hint *ngIf="name?.pristine">Min 3 - Max 60 caracteres</mat-hint>
+
+          <mat-error *ngIf="name?.errors?.required">
+            El Nombre es requerido.
+          </mat-error>
+          <mat-error *ngIf="name?.errors?.minlength">
+            La cantidad mínima de caracteres es 3.
+          </mat-error>
+          <mat-error *ngIf="name?.errors?.maxlength">
+            La cantidad máxima de caracteres es 60.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <!-- Email -->
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+        <mat-hint *ngIf="email?.pristine">Dirección de Email válida</mat-hint>
+
+        <mat-error *ngIf="email?.errors?.required">
+          El Email es requerido.
+        </mat-error>
+        <mat-error *ngIf="email?.errors?.email">
+          El Email ingresado no tiene un formato válido.
+        </mat-error>
+      </mat-form-field>
+      <!-- Address -->
+      <mat-form-field class="full-width">
+        <mat-label>Dirección</mat-label>
+        <input matInput formControlName="address" />
+        <mat-hint *ngIf="address?.pristine">Min 5 - Max 60 caracteres</mat-hint>
+
+        <mat-error *ngIf="address?.errors?.required">
+          La Dirección es requerida.
+        </mat-error>
+        <mat-error *ngIf="address?.errors?.minlength">
+          La cantidad mínima de caracteres es 5.
+        </mat-error>
+        <mat-error *ngIf="address?.errors?.maxlength">
+          La cantidad máxima de caracteres es 60.
+        </mat-error>
+      </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="space-between">
+        <!-- CUIL -->
+        <mat-form-field class="half-width">
+          <mat-label>CUIL</mat-label>
+          <input matInput formControlName="cuil" />
+          <mat-hint *ngIf="cuil?.pristine">Nro. de CUIL sin guiones</mat-hint>
+          <mat-error *ngIf="cuil?.errors?.required">
+            El CUIL es requerido.
+          </mat-error>
+          <mat-error *ngIf="cuil?.errors?.pattern">
+            El CUIL ingresado no tiene un formato válido.
+          </mat-error>
+        </mat-form-field>
+        <!-- Phone Number -->
+        <mat-form-field class="half-width">
+          <mat-label>Nro. de Teléfono</mat-label>
+          <input matInput formControlName="phone_number" />
+          <mat-hint *ngIf="phone_number?.pristine"
+            >Celular para notificaciones (opcional)</mat-hint
+          >
+          <mat-error *ngIf="phone_number?.errors?.pattern">
+            El número ingresado no es válido.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <button
+          mat-raised-button
+          class="block-button"
+          color="primary"
+          (click)="checkSubmit()"
+          [disabled]="loading"
+        >
+        <mat-icon>save</mat-icon>
+          &nbsp; Actualizar Datos
+        </button>
+        <a mat-raised-button class="block-button" routerLink="/profile"
+          >Cancelar Edición
+        </a>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>

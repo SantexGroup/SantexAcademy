@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { MaterialModule } from './material.module';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -18,9 +20,11 @@ import { PetGenderPipe } from './pipes/pet-gender.pipe';
   imports: [
     CommonModule, 
     RouterModule,
+    ReactiveFormsModule,
     MaterialModule
   ],
   exports: [
+    ReactiveFormsModule,
     NavbarComponent,
     PetAgePipe,
     PetDangerousPipe,

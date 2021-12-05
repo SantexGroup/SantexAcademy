@@ -1,11 +1,11 @@
 <mat-toolbar color="primary" class="expanded-toolbar">
   <span>
-    <button mat-button routerLink="/">Aplicación de Registro Canino - Jesús María</button>
+    <button fxHide.lt-sm mat-button routerLink="/">Registro Canino - Jesús María</button>
     <button mat-button routerLink="/profile"><mat-icon>person</mat-icon></button>
     <button mat-button routerLink="/pet"><mat-icon>pets</mat-icon></button>
     <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
   </span>
-  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+  <div fxLayout="row" fxShow="false" fxShow.gt-xs>
     <button mat-button (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>
       Logout
