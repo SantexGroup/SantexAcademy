@@ -44,26 +44,32 @@ async function newPet(name, birthDate, breedId, gender, userId) {
 
 // TODO: Mover y adaptar esta función al service de users
 async function listPets(userId, page) {
-  const limite = 10;
+  // const limite = 10;
   const pets = await petModel.findAll({
     where: { userId },
     order: [['id', 'ASC']],
     // La edad la trae calculada desde el SQL en una columna virtual "age"
     // que se define en en el modelo
-    attributes: ['name', 'birth_date', 'age', 'breed', 'gender'],
-    include: {
-      model: userModel,
-      attributes: ['name', 'lastname'],
-    },
-    limit: limite,
-    offset: (page - 1) * limite,
+    attributes: ['name', 'birth_date', 'age', 'gender'],
+    include: [
+      {
+        model: userModel,
+        attributes: ['id', 'name', 'lastname'],
+      },
+      {
+        model: breedModel,
+        attributes: ['id', 'name', 'dangerous'],
+      },
+    ],
+    // limit: limite,
+    // offset: (page - 1) * limite,
   });
   return pets;
 }
 
 async function listAllPets(page, limit, sort, order) {
-  // Compone el array usado para el ordenamiento, 
-  // ya que algunos campos son de modelos anidados, 
+  // Compone el array usado para el ordenamiento,
+  // ya que algunos campos son de modelos anidados,
   // hay que especificar a qué modelo corresponde
   let orderBy = [];
   switch (sort) {
@@ -76,12 +82,12 @@ async function listAllPets(page, limit, sort, order) {
     case 'user':
       orderBy = [userModel, 'lastname', order];
       break;
-    case 'age':      
+    case 'age':
       // Este caso es especial, ya que 'age' es un campo virtual
       // al no existir en la BD no se lo puede usar para ordenamiento.
       // Se usa el campo 'birth_date' invirtiendo el orden solicitado
       orderBy = ['birth_date', order === 'asc' ? 'desc' : 'asc'];
-      break;      
+      break;
     default:
       orderBy = [sort, order];
       break;
