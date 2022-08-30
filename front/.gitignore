@@ -45,4 +45,5 @@ testem.log
 .DS_Store
 Thumbs.db
 .dccache
-front/.dccacheback/.dccache
+front/.dccache
+back/.dccache
