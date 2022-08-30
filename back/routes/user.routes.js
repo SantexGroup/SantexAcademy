@@ -19,10 +19,4 @@ app.get('/myInfo', [
 ],
 userController.userInfo);
 
-// users/edit/1
-app.put('/edit/:id', [
-  // Passport.authenticate('jwt', { session: false }),
-],
-userController.editUser);
-
 module.exports = app;

@@ -1,4 +1,4 @@
-const userService = require('../services/user.services');
+const userProvider = require('../providers/user.providers');
 
 /**
  *
@@ -9,7 +9,7 @@ const userService = require('../services/user.services');
 async function login(req, res, next) {
   try {
     const { username, password } = req.body;
-    const user = await userService.login(username, password);
+    const user = await userProvider.login(username, password);
 
     res.json(user);
   } catch (error) {
@@ -25,36 +25,8 @@ async function login(req, res, next) {
  */
 async function userInfo(req, res, next) {
   try {
-    const userData = await userService.getOne({
+    const userData = await userProvider.getOne({
       id: req.user.id,
-    });
-    res.json(userData);
-  } catch (error) {
-    next(error);
-  }
-}
-
-/**
- *
- * @param {*} req
- * @param {*} res
- * @param {*} next
- */
-async function editUser(req, res, next) {
-  try {
-    const { id } = req.params;
-    const {
-      email,
-      phonenumber,
-      name,
-      lastname,
-    } = req.body;
-
-    const userData = await userService.edit(id, {
-      email,
-      phonenumber,
-      name,
-      lastname,
     });
     res.json(userData);
   } catch (error) {
@@ -65,5 +37,4 @@ async function editUser(req, res, next) {
 module.exports = {
   login,
   userInfo,
-  editUser,
 };
