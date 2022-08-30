@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 
 import {
   MAX_USERNAME_LENGTH,
@@ -15,11 +15,11 @@ import {
 export class RegisterPageComponent implements OnInit {
   public registerForm = this.formBuilder.group({});
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: UntypedFormBuilder) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      username: new FormControl(
+      username: new UntypedFormControl(
         null,
         Validators.compose([
           Validators.required,
@@ -27,7 +27,7 @@ export class RegisterPageComponent implements OnInit {
           Validators.maxLength(MAX_USERNAME_LENGTH),
         ])
       ),
-      password: new FormControl(
+      password: new UntypedFormControl(
         null,
         Validators.compose([
           Validators.required,
