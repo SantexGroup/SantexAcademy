@@ -1,5 +1,4 @@
-ARG NODE_VERSION=16.13.2
-
+ARG NODE_VERSION=18.8.0
 # Stage 1: Compile and Build angular codebase
 
 # Use official node image as the base image
