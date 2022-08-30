@@ -1,4 +1,3 @@
-const moment = require('moment');
 const logger = require('../utils/winston.logger');
 
 // eslint-disable-next-line consistent-return,func-names

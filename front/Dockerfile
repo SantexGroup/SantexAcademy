@@ -1,4 +1,4 @@
-ARG NODE_VERSION=14.16.1
+ARG NODE_VERSION=16.13.2
 
 # Stage 1: Compile and Build angular codebase
 

@@ -2,9 +2,10 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const userModel = require('../models').user;
 const UserNotFoundException = require('../exceptions/userNotFound.exception');
+const InvalidPasswordException = require('../exceptions/invalidPassword.exceptions');
 
 function createToken(id) {
-  const expirationTime = parseInt(process.env.JWT_EXPIRATION_TOKEN, 10);
+  const expirationTime = Number(process.env.JWT_EXPIRATION_TOKEN);
   return jwt.sign(
     { userId: id },
     process.env.JWT_ENCRYPTION_TOKEN,
@@ -29,22 +30,22 @@ async function getOne(data) {
 }
 
 /**
- * 
- * @param {*} id 
- * @param {*} userData 
+ *
+ * @param {*} id
+ * @param {*} userData
  */
 async function edit(id, userData) {
   const user = await userModel.findByPk(id, {
-    attributes: { exclude: ['password'] }
+    attributes: { exclude: ['password'] },
   });
 
-  if (!!user) {
-    if (!!userData.email) {
+  if (user) {
+    if (userData.email) {
       user.email = userData.email;
     }
 
     if (userData.phonenumber) {
-      user.phone_number = userData.phonenumber
+      user.phone_number = userData.phonenumber;
     }
 
     if (userData.name) {
@@ -65,5 +66,5 @@ async function edit(id, userData) {
 module.exports = {
   login,
   getOne,
-  edit
+  edit,
 };

@@ -1,9 +1,11 @@
 const { ExtractJwt, Strategy } = require('passport-jwt');
 const userService = require('../services/user.services');
+const logger = require('../utils/winston.logger');
 
 async function authenticateRequest(request, jwtPayload, done) {
   // Extract User ID from Payload, then find User.
   try {
+    logger.api.info(jwtPayload);
     const user = await userService.getOne({ id: jwtPayload.userId });
     if (user) {
       return done(null, user);

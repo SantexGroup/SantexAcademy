@@ -1,10 +1,10 @@
 const userService = require('../services/user.services');
 
 /**
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
  */
 async function login(req, res, next) {
   try {
@@ -18,16 +18,15 @@ async function login(req, res, next) {
 }
 
 /**
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
  */
 async function userInfo(req, res, next) {
   try {
-    let id = req.params.id;
     const userData = await userService.getOne({
-      id
+      id: req.user.id,
     });
     res.json(userData);
   } catch (error) {
@@ -36,26 +35,26 @@ async function userInfo(req, res, next) {
 }
 
 /**
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
  */
 async function editUser(req, res, next) {
   try {
-    let id = req.params.id;
-    let {
+    const { id } = req.params;
+    const {
       email,
       phonenumber,
       name,
-      lastname
+      lastname,
     } = req.body;
-    
+
     const userData = await userService.edit(id, {
       email,
       phonenumber,
       name,
-      lastname
+      lastname,
     });
     res.json(userData);
   } catch (error) {
@@ -66,5 +65,5 @@ async function editUser(req, res, next) {
 module.exports = {
   login,
   userInfo,
-  editUser
+  editUser,
 };

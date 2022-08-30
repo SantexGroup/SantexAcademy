@@ -16,7 +16,7 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Raza</mat-label>
-        <mat-select>
+        <mat-select formControlName="raza">
           <mat-option *ngFor="let item of razas" [value]="item">
             {{ item.nombre }}
           </mat-option>
