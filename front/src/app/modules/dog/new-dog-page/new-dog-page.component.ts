@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-dog',
@@ -18,16 +18,16 @@ export class NewDogPageComponent {
     }
   ];
 
-  constructor(private formBuilder: FormBuilder, private datePipe: DatePipe) {}
+  constructor(private formBuilder: UntypedFormBuilder, private datePipe: DatePipe) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      name: new FormControl(null, Validators.compose([Validators.required])),
-      birthDate: new FormControl(
+      name: new UntypedFormControl(null, Validators.compose([Validators.required])),
+      birthDate: new UntypedFormControl(
         null,
         Validators.compose([Validators.required])
       ),
-      raza: new FormControl(
+      raza: new UntypedFormControl(
         null,
         Validators.compose([Validators.required])
       ),

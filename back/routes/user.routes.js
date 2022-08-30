@@ -9,23 +9,14 @@ const app = Express();
 
 app.post('/login', [
   UserValidator.validate('login'),
-  Validator.checkValidationResult
+  Validator.checkValidationResult,
 ],
-  userController.login
-);
+userController.login);
 
 // users/info/1
-app.get('/info/:id', [
-  //Passport.authenticate('jwt', { session: false }),
+app.get('/myInfo', [
+  Passport.authenticate('jwt', { session: false }),
 ],
-  userController.userInfo
-);
-
-// users/edit/1
-app.put('/edit/:id', [
-  //Passport.authenticate('jwt', { session: false }),
-],
-  userController.editUser
-);
+userController.userInfo);
 
 module.exports = app;

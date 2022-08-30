@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { MAX_PASSWORD_LENGTH, MAX_USERNAME_LENGTH, MIN_PASSWORD_LENGTH, MIN_USERNAME_LENGTH } from 'src/app/core/interfaces/users/users.interface';
 import { ToastService } from 'src/app/core/services/toast/toast.service';
@@ -15,7 +15,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   formSubscritions: Subscription = new Subscription();
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private router: Router,
     private authService: AuthService,
     private toastService: ToastService,
@@ -29,12 +29,12 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   private crearLoginForm() {
     this.loginForm = this.formBuilder.group({
-      username: new FormControl(null, Validators.compose([
+      username: new UntypedFormControl(null, Validators.compose([
         Validators.required,
         Validators.minLength(MIN_USERNAME_LENGTH),
         Validators.maxLength(MAX_USERNAME_LENGTH)
       ])),
-      password: new FormControl(null, Validators.compose([
+      password: new UntypedFormControl(null, Validators.compose([
         Validators.required,
         Validators.minLength(MIN_PASSWORD_LENGTH),
         Validators.maxLength(MAX_PASSWORD_LENGTH)

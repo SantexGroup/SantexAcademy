@@ -1,4 +1,4 @@
-ARG NODE_VERSION=14.17.3
+ARG NODE_VERSION=18.8.0
 
 # Build stage
 FROM node:${NODE_VERSION}-alpine as builder
@@ -32,7 +32,8 @@ WORKDIR /app
 COPY --from=builder ./app ./dist
 COPY --from=builder ./app/node_modules ./node_modules
 COPY --from=builder ./app/entrypoint.sh ./
-RUN mkdir /app/uploads
+RUN mkdir -p /app/uploads
+RUN mkdir -p /app/dist/logs
 RUN chown $USER_ID:$GROUP_ID -R  /app/uploads
 
 RUN chmod +x ./entrypoint.sh
@@ -40,6 +41,7 @@ RUN chmod +x ./entrypoint.sh
 # Create non root user and set /app as home
 RUN addgroup -g $GROUP_ID appgrp
 RUN adduser -u $USER_ID appuser -S -h /app -G appgrp
+
 RUN chown $USER_ID:$GROUP_ID -R /app/dist/logs/
 # Run app as non root
 USER appuser

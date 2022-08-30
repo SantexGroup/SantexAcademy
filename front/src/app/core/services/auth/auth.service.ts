@@ -68,7 +68,7 @@ export class AuthService {
   }
 
   public isLoggedIn(): boolean {
-      return !!this.cookieService.get('user');;
+      return !!this.cookieService.get('user');
   }
 
   public logOut(): void {
