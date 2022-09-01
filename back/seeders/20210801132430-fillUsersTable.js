@@ -15,6 +15,12 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },
+    {
+      username: 'example3',
+      password: await bcrypt.hash('secret3', 10),
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
   ]),
   down: async (queryInterface) => {
     await queryInterface.bulkDelete('users', null, {
