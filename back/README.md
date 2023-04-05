@@ -1,16 +1,31 @@
 
-# BOILERPLATE EJEMPLO PARA JESUS MARIA
+# Proyecto NodeJs + Express Academy 
 
-Esta es una API de ejemplo desarrollada en Node + Express + Sequelize.
+Este proyecto en [NodeJs](https://nodejs.org/en/), [Express](https://expressjs.com/) y [Sequelize](https://sequelize.org/) esta pensado para empezar como base para los desarrollos del curso.
 
-## INSTALACION
+## Levantar proyecto
 
-### Node Js
-`$ sudo apt-get install nodejs`
----------
-### BASE DE DATOS
+Agregar un archivo nuevo dentro de la carpeta back con el nombre  ".env" y copiar el contenido del .env.example. Luego modificar estas constantes dependiendo de su configuracion local. Recordar que, como este proyecto ya se conecta a una base de datos existente, esta debe estar creada y en el ".env" los siguientes datos hacen referencia a la conexion con la base de datos:
 
-Configurar el archivo .env con los parametros de mysql local o levantando un container de mysql con el docker-compose
+* DB_HOST
+* DB_PORT
+* DB_USERNAME
+* DB_PASSWORD
+* DB_DATABASE
+* DB_DIALECT 
+
+Por ultimo para levantar el proyecto, se tienen que correr los siguientes comandos:
+
+```bash
+  npm run build
+  npx start
+```
+
+
+
+
+
+## Comandos de Sequelize
 
 #### Para crear y popular la base de datos:
 ```
@@ -37,9 +52,9 @@ Reemplazando:
 
 Luego de ejecutar ese comando, se van a generar 2 archivos automáticamente:
 - [model name].js dentro del a carpeta models (deberian renombrarla a .model.js para mantener consistencia)
-- [tiempstamp]-create-[model name].js dentro del a carpeta migrations. Ej: 202110271235-create-users.js
+- [tiempstamp]-create-[model name].js dentro del a carpeta migrations. Ej: 202303271235-create-users.js
 
-Si necesitan crear relaciones entre tablas o agregar atributos mas complejos que string/number, recomiendo que vayan al 202110271235-create-users.js y hagan los cambios en ese archivo como si fuera el Model.
+Si necesitan crear relaciones entre tablas o agregar atributos mas complejos que string/number, recomiendo que vayan al 202303271235-create-users.js y hagan los cambios en ese archivo como si fuera el Model.
 
 ### Paso 2:
 Correr el siguiente comando para que se cree la tabla usando los archivos anteriores.
@@ -55,6 +70,3 @@ Listo!
 ```
 $ ./node_modules/.bin/sequelize db:seed:undo:all`
 ```
-## DEPLOY DEL SERVIDOR
-
-`$ npm start`

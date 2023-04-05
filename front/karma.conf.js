@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/jesus-maria-front'),
+      dir: require('path').join(__dirname, './coverage/santex-academy'),
       subdir: '.',
       reporters: [
         { type: 'html' },
