@@ -5,7 +5,6 @@ const express = require('express');
 // Sanitizacion XSS
 const xss = require('xss-clean');
 // Custom Dependencies:
-const passport = require('passport');
 const helmet = require('helmet');
 const session = require('express-session');
 // Winston logger Dependencies
@@ -56,7 +55,6 @@ app.use(express.urlencoded(
     parameterLimit: 10,
   },
 ));
-app.use(passport.initialize());
 
 // Cors configuration
 const whitelist = process.env.CORS.split(' ');
