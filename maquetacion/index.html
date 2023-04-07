@@ -18,15 +18,38 @@
         }
         button.redondo {
             background-color: white;
-            border: 1px solid black;
+            border: 2px solid black;
             border-radius: 25px;
             padding: 0px 20px;
             height: 32px;
+         
         }
+        button.redondo:hover {
+            background-color: black;
+            color: white
+        }
+
         div#introduction-actions {
             display: flex;
             justify-content: center;
         }
+        p:hover {
+            color: blueviolet;
+        }
+        button.redondolila {
+            color: blueviolet;
+            background-color: white;
+            border: 2px solid blueviolet;
+            border-radius: 25px;
+            padding: 0px 20px;
+            height: 32px;
+         
+        }
+        button.redondolila:hover {
+            background-color: blueviolet;
+            color: white
+        }
+
     </style>
 </head>
 <body>
@@ -37,10 +60,12 @@
         <div id="header-right" style="display: flex; align-items: center;">
             <p>Nosotros</p>
             <p>Programas</p>
-            <p>Capaciontaciones</p>
+            <p>Capacitaciones</p>
             <p>Alianzas</p>
             <p>Contacto</p>
             <button class="redondo">Sumate +</button>
+            <img src="instagram_icon_125245.png" style="display: flex; padding: 20px 20px 20px 40px" width="20px">
+            <img src="linkedin_icon-icons.com_49942.png" style="display: flex; padding: 10px" width="20px">
         </div>
     </div>
     <div id="introduction" style="padding: 48px;">
@@ -49,7 +74,7 @@
         </div>
         <div id="introduction-actions" style="margin-top: 25px;">
             <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+                <button class="redondolila" style="margin-left: 14px;">Sumate +</button>
         </div>
     </div>
 </body>
