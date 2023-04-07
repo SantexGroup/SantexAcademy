@@ -1,56 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <title>Xacademy Clase 1 maquetacion</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        p {
-            margin-right: 40px;
-        }
-        h1 {
-            margin: 0px 400px;
-            text-align: center;
-        }
-        button.redondo {
-            background-color: white;
-            border: 1px solid black;
-            border-radius: 25px;
-            padding: 0px 20px;
-            height: 32px;
-        }
-        div#introduction-actions {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
+    <div id="header">
         <div id="header-left">
-            <img src="logo.svg">
+            <img class="logo-technology" src="logo.svg">
         </div>
         <div id="header-right" style="display: flex; align-items: center;">
             <p>Nosotros</p>
             <p>Programas</p>
-            <p>Capaciontaciones</p>
+            <p>Capacitaciones</p>
             <p>Alianzas</p>
             <p>Contacto</p>
-            <button class="redondo">Sumate +</button>
+            <button class="redondo negro">Sumate +</button>
+            <img class="logo instagram"
+                src="https://cdn.icon-icons.com/icons2/791/PNG/512/instagram_f_icon-icons.com_65485.png"
+                alt="logo-instagram">
+            <img class="logo linkedin"
+                src="https://cdn.icon-icons.com/icons2/509/PNG/512/linkedin_icon-icons.com_49942.png"
+                alt="logo-linkedin">
         </div>
     </div>
-    <div id="introduction" style="padding: 48px;">
+    <div id="introduction">
         <div id="introduction-text">
-            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
+            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la
+                tecnología.</h1>
         </div>
-        <div id="introduction-actions" style="margin-top: 25px;">
-            <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+        <div id="introduction-actions">
+            <button class="redondo negro">Contactanos -></button>
+            <button class="redondo violeta" style="">Sumate +</button>
         </div>
     </div>
+
+    <footer>
+
+
+        <div id="mi-footer">
+
+            <div id="footer-description">
+
+                <h2>. Impacto</h2>
+                <p>Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la
+                    comunidad.
+                    Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector
+                    social.
+                </p>
+
+            </div>
+
+            <div class="numbers">
+                <h2>58</h2>
+                <p>Localidades</p>
+            </div>
+
+            <div class="numbers">
+                <h2>+50</h2>
+                <p>Mentores</p>
+            </div>
+
+            <div class="numbers">
+                <h2>301</h2>
+                <p>Participantes</p>
+            </div>
+
+        </div>
+
+    </footer>
+
 </body>
+
+
+
 </html>
