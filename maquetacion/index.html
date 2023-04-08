@@ -8,21 +8,37 @@
     <style>
         body {
             margin: 0;
+            font-family: Inter, Arial, Helvetica, sans-serif;
         }
         p {
             margin-right: 40px;
+            height: 20px;
+            font-size: 14px;
+        }
+        img#header{
+             margin-left: 40px;
         }
         h1 {
-            margin: 0px 400px;
+            margin: 50px 580px 30px;
             text-align: center;
+            font-size: 1.8em;
         }
         button.redondo {
             background-color: white;
-            border: 1px solid black;
+            border: 2px solid black;
             border-radius: 25px;
             padding: 0px 20px;
             height: 32px;
+            margin-right: 10px;
         }
+         button.lila{
+            background-color: white;
+            border: 2px solid #6b53f0;
+            color:#6b53f0;
+            border-radius: 25px;
+            padding: 0px 20px;
+            height: 32px;
+        } 
         div#introduction-actions {
             display: flex;
             justify-content: center;
@@ -41,6 +57,8 @@
             <p>Alianzas</p>
             <p>Contacto</p>
             <button class="redondo">Sumate +</button>
+            <img id="header" src="instagram (1).png" style="height: 14px;">
+            <img id="header" src="linkedin.png" style="height: 14px;">
         </div>
     </div>
     <div id="introduction" style="padding: 48px;">
@@ -49,8 +67,11 @@
         </div>
         <div id="introduction-actions" style="margin-top: 25px;">
             <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+            <button class="lila" style="margin-left: 14px; color:#6b53f0">Sumate +</button>
         </div>
+    </div>
+    <div id="centro" style="background-color: #201b24;background-position: center center;background-repeat: no-repeat;border-width: 0px 0px 0px 0px;border-color:var(--awb-color3);border-style:solid;">
+        <div style="max-width:1248px;margin-left: calc(-4% / 2 );margin-right: calc(-4% / 2 );"></div>
     </div>
 </body>
 </html>
