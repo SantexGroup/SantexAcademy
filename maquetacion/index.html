@@ -10,46 +10,57 @@
             margin: 0;
         }
         p {
-            margin-right: 40px;
+            margin-right: 55px;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            background-color: white;
+        
         }
+        
+        p:hover {color: blue;}
         h1 {
-            margin: 0px 400px;
+            margin: 0px 300px;
             text-align: center;
         }
         button.redondo {
             background-color: white;
-            border: 1px solid black;
+            border: 2px solid black;
             border-radius: 25px;
             padding: 0px 20px;
             height: 32px;
+        }
+        button.redondo:hover { background-color: black; color: white;
+
         }
         div#introduction-actions {
             display: flex;
             justify-content: center;
         }
+        #header-left {margin-left: 10px;}
     </style>
 </head>
 <body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
+    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 15px 30px; justify-content: space-between">
         <div id="header-left">
             <img src="logo.svg">
         </div>
-        <div id="header-right" style="display: flex; align-items: center;">
+        <div id="header-right" style="display: flex; align-items: center; margin-right: 10px;">
             <p>Nosotros</p>
             <p>Programas</p>
-            <p>Capaciontaciones</p>
+            <p>Capacitaciones</p>
             <p>Alianzas</p>
             <p>Contacto</p>
             <button class="redondo">Sumate +</button>
         </div>
     </div>
-    <div id="introduction" style="padding: 48px;">
+    <div id="introduction" style="padding: 75px 48px 75px 48px;">
         <div id="introduction-text">
             <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
         </div>
         <div id="introduction-actions" style="margin-top: 25px;">
-            <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+            <button class="redondo">Contactanos →</button>
+            <button class="redondo" style="margin-left: 14px; color: blue;">Sumate +</button>
         </div>
     </div>
 </body>
