@@ -6,14 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xacademy Clase 1 maquetacion</title>
     <style>
+        
         body {
             margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 7px 20px;
+            font-size: 15px;
         }
+
         p {
             margin-right: 40px;
+            font-size: 14px;
+            
+
+            
         }
         h1 {
-            margin: 0px 400px;
+            margin: 40px 300px;
             text-align: center;
         }
         button.redondo {
@@ -22,11 +31,24 @@
             border-radius: 25px;
             padding: 0px 20px;
             height: 32px;
+            
         }
         div#introduction-actions {
             display: flex;
             justify-content: center;
         }
+        button.redondo:hover {color:white; background-color: black;}
+        
+
+        
+        
+        .simple
+        {
+            text-decoration: none;
+            color: black;
+        }
+        .simple:hover {color: lightblue}
+        
     </style>
 </head>
 <body>
@@ -35,11 +57,11 @@
             <img src="logo.svg">
         </div>
         <div id="header-right" style="display: flex; align-items: center;">
-            <p>Nosotros</p>
-            <p>Programas</p>
-            <p>Capaciontaciones</p>
-            <p>Alianzas</p>
-            <p>Contacto</p>
+            <p><a class="simple" href="#">Nosotros</a></p>
+            <p><a class="simple" href="#">Programas</a></p>
+            <p><a class="simple" href="#">Capacitaciones</a></p>
+            <p><a class="simple" href="#">Alianzas</a></p>
+            <p><a class="simple" href="#">Contacto</a></p>
             <button class="redondo">Sumate +</button>
         </div>
     </div>
