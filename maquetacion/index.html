@@ -6,51 +6,203 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xacademy Clase 1 maquetacion</title>
     <style>
+        div#header {
+            height: 80px;
+            border-bottom: 1px solid gray; 
+            display: flex; 
+            padding: 0px 30px; 
+            justify-content: space-between;
+            display: flex;
+            
+        }
+        div#header-left {
+            margin-left: 0px;
+        }
+        div#header-right {
+            color: #201b24;
+            display: flex; 
+            align-items: center;
+            padding: 0px 35px 0px 0px;           
+            font-family: 13px 'Inter', Arial, Helvetica, sans-serif;
+            display: flex;
+        }
         body {
             margin: 0;
         }
         p {
-            margin-right: 40px;
+            padding: 0px 35px 0px 0px;
+            font-weight: 500;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            background-color: white;
         }
-        h1 {
-            margin: 0px 400px;
-            text-align: center;
+        p:hover {
+            color: #6B53f0;
         }
         button.redondo {
+            color: #201b24;
             background-color: white;
-            border: 1px solid black;
+            border: 2px solid black;
             border-radius: 25px;
             padding: 0px 20px;
-            height: 32px;
+            margin-right: 20px;
+            height: 35px;
+            font-family: 12px 'Inter', Arial, Helvetica, sans-serif;
+        }
+        button.redondo:hover { 
+            background-color: black; 
+            color: white;
+        }
+        div#introduction {
+            padding: 75px 48px 75px 48px;
         }
         div#introduction-actions {
+            margin-top: 25px;
             display: flex;
             justify-content: center;
+        }
+        div#introduction-text {
+            margin: 0px 300px;
+            text-align: center;
+            display: flex;
+        }
+        div#buttonColor {
+            margin-left: 14px; 
+            color: #6B53f0;
+            font-family: 12px 'Inter', Arial, Helvetica, sans-serif;    
+        }
+        div#arrow {
+            font-size: 14px;
+        }
+        button.redondoColor {
+            color: #6B53f0;
+            background-color: white;
+            border: 2px solid #6B53f0;
+            border-radius: 25px;
+            padding: 0px 20px;
+            height: 35px;
+        }
+        button.redondoColor:hover {
+            background-color: #6B53f0; 
+            color: white;
+        }
+        h1 {
+            color: #201b24;
+            font-family: 28px 'Inter', Arial, Helvetica, sans-serif;
+        }
+        img {
+            margin-top: 20px;
+            padding-left: 10px;
+            display: flex;
+    
+        }
+        .impact {
+            background-color: #201b24;
+            background-position: center center;
+            background-repeat: no-repeat;
+            border-width: 0px 0px 0px 0px;
+            border-color: #d9d9d9;
+            border-style: solid;
+            
+            
+        }
+        .container {
+            padding-top: 120px;
+            margin-top: 0px;
+            padding-right: 150px;
+            padding-bottom: 100px;
+            margin-bottom: 0px;
+            padding-left: 3px;
+            color: #ffffff;
+            display: flex;
+            font-family:'Inter', Arial, Helvetica, sans-serif;            
+        }
+        h2 {           
+            text-align: left;
+            font-size: 30px;
+            font-family:'Inter', Arial, Helvetica, sans-serif;
+        }
+        .impact-left {
+            font-size: 30px;
+            padding: 0px 0px 0px 180px;
+            margin: 0px 0px 20px;       
+            font-family: 'Inter', Arial, Helvetica, sans-serif;
+            display: flex;
+            text-align: center;
+        }
+        #impact-text, .impact-right {
+            margin-right: 100px;
+            color: #ffffff;
+            background-color: #201b24;
+            text-align: left;
+            display: flex;
+            font-size: 14px;
+            font-family: 'Inter', Arial, Helvetica, sans-serif;
+        }       
+        #impact-p1,#impact-p2,#impact-p3 {
+            padding: 25px;
+            font-size: 14px;
+            font-family: 14px 'Inter', Arial, Helvetica, sans-serif;
+            color: #8c939c;
+            background-color: #201b24;
+            display: inline-flexbox;
+        }
+        #item-color {
+            font-size: 30px;
+            color: #6B53f0;
+        }
+        #item-number {
+            font-size: 50px;
+            font-weight: 700;
+            color: #ffffff;
         }
     </style>
 </head>
 <body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
+    <div id="header">
         <div id="header-left">
             <img src="logo.svg">
         </div>
-        <div id="header-right" style="display: flex; align-items: center;">
+        <div id="header-right">
             <p>Nosotros</p>
             <p>Programas</p>
-            <p>Capaciontaciones</p>
+            <p>Capacitaciones</p>
             <p>Alianzas</p>
             <p>Contacto</p>
             <button class="redondo">Sumate +</button>
         </div>
     </div>
-    <div id="introduction" style="padding: 48px;">
+    <div id="introduction">
         <div id="introduction-text">
             <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
         </div>
-        <div id="introduction-actions" style="margin-top: 25px;">
-            <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+        <div id="introduction-actions">
+            <button class="redondo">Contactanos <span id="arrow">→</span> </button>
+            <button class="redondoColor">Sumate +</button>
         </div>
+    </div>
+    <div class="impact">
+        <div class="container">
+            <div class="impact-left">
+                <h2>
+                  .Impacto
+                    <p id="impact-text">
+                        Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la comunidad. Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.
+                    </p>
+                </h2>
+            </div>
+            <div class="impact-right">
+                <div>
+                    <p id="impact-p1"><span id="item-number">58</span><br>Localidades</p>
+                </div>
+                <div>
+                    <p id="impact-p2"><span id="item-color">+</span><span id="item-number">50</span> <br>Mentores</p>
+                </div>
+                <div>
+                    <p id="impact-p3"><span id="item-number">301</span><br>Participantes</p>
+                </div>
+            </div>            
+        </div>             
     </div>
 </body>
 </html>
