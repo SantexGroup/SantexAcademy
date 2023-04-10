@@ -4,53 +4,192 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>  <!--Link de icono Instagram e LinkedIn-->
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'> <!--link de flecha-->
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'> <!--link del icono mas-->
     <title>Xacademy Clase 1 maquetacion</title>
     <style>
         body {
             margin: 0;
         }
         p {
-            margin-right: 40px;
+            margin-right: 35px;
+            color: black;           /*Agregue color a la letra*/
+            font-family:'Inter', sans-serif;    /*tipología de letra*/
+            font-size: 13px;    /*tamaño de letra*/
+            font-weight: 500;   /*grosor de letra*/
+            line-height: 13px;  /*altura del relleno*/
         }
         h1 {
             margin: 0px 400px;
-            text-align: center;
+            text-align: center;     /*Alineado de texto en el centro*/
+            font-family:'Inter', sans-serif;    /*tipología de letra*/
+            font-size: 28px;
+            font-weight: 600;
         }
-        button.redondo {
-            background-color: white;
-            border: 1px solid black;
-            border-radius: 25px;
-            padding: 0px 20px;
-            height: 32px;
+        button {
+            background-color: white;    /*fondo blanco del boton*/
+            border: 2px solid black;    /*subí el grosor de la linea a 2px*/
+            border-radius: 20px;        /*disminuí el border-radius a 20px*/
+            padding: 9px 20px;          /*agregue padding top y bot de 9px*/
+            /*height: 32px;*/           /*Borrado*/
+            line-height: 14px;
         }
+
+        .sumate{                                /*cree la clase sumate para 2 botones similares*/
+            font-family:'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        button.sumate:hover{    /*Agregue el pseudo-selector "hover" para agregarle estilos cuando el cursor se posiciona sobre el boton*/
+            background-color: black;    /*se convierte en color negro el fondo cuando se posiciona el puntero*/
+            color: white;   /*la letra se convierte en color blanco*/
+            cursor: pointer;    /*tipo de cursor al posicionarse*/
+        }
+
         div#introduction-actions {
             display: flex;
             justify-content: center;
         }
+
+        #header-right a{
+            text-decoration: none;      /*elimino la decoración de la etiqueta a*/
+        }
+
+        #header-right a p:hover{            /*Agregue el pseudo-selector "hover" para agregarle estilos cuando el cursor se posiciona sobre el boton*/
+            color: rgba(107, 83, 240, 0.584);
+        }
+
+        #contenedor{                        /*agrego estilos al al div con el ID "contenedor*/
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /*
+        .introduction-text{             BORRADO
+            max-width: 624px;
+        }
+        */
+
+        ul li:hover{  
+            color: rgba(107, 83, 240, 0.584);
+            cursor: pointer;
+        }
+
+
+        .sub-menu {                     /*clase creada para menejar los sub-menues de "Programas" y "Capacitación"*/
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            color: black;
+            position: absolute;
+            border: 1px solid black;
+            top: 79px;
+            padding: 0px;
+            z-index: 12px;
+            visibility:hidden;
+            transition: all 100ms ease;                        
+        }
+
+        ul li a{
+            color: black;
+        }
+
+        .sub-menu li {            
+            list-style: none;
+            padding: 12px 20px;
+            color:black;
+            font-family:'Inter', sans-serif;
+        }
+
+       li:hover ul{      /*configuración del sub-menu para que sea visible al pasar el puntero*/
+            visibility: visible;
+            cursor: pointer;
+        }
+
+        .sub-menu li {
+            padding: 12px 20px;
+            color:black;
+            font-family:'Inter', sans-serif;
+            font-size: 12px;
+        }
+        
+        ul li a:hover{              /*configuración de las etiquetas "a" del sub-menu al pasar el puntero */
+            color: rgba(107, 83, 240, 0.584);
+            cursor: pointer;
+        }
+       
+        .sumate-2{              /*creo una clase para otro boton (violeta)*/
+            display: flex;
+            text-align: center;
+            color: #6b53f0;
+            background-color: white;
+            font-family:'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            border-color: #6b53f0;
+        }
+
+        button.sumate-2:hover{    /*Agregue el pseudo-selector "hover" para agregarle estilos cuando el cursor se posiciona sobre el boton*/
+            background-color: #6b53f0;
+            color: white;   /*la letra se convierte en color blanco*/
+            cursor: pointer;    /*tipo de cursor al posicionarse*/
+        }
+
+        #introduction-text{         /*configuración div que contiene el h1*/
+            padding-top: 70px;
+            margin: 0px 235px;      
+        }
     </style>
 </head>
+
 <body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
-        <div id="header-left">
-            <img src="logo.svg">
+    <div id="header" style="border-bottom: 1px solid #8C939C; display: block; padding: 0px 30px 0px 30px; height: 80px; box-sizing: border-box;">
+        <div id="contenedor">   <!--creo el div con el id "contenedor" donde ubico todos los elementos el header-->
+            <div id="header-left" style="margin: 20px 0px 20px -8px; display: block; float: left; width: 142px; height: 40px;">
+                <img src="logo.svg">
+            </div>
+            <div id="header-right" style="display: flex; align-items: center;"> <!--se crea un div que contiene etiquetas "a"-->
+                <ul style="display: flex; list-style: none;">
+                    <li><a href="#"><p>Nosotros</p></a></li>
+                    <li style="list-style: none; cursor: pointer;"><a href="#"><p>Programas</p></a>
+                        <ul class="sub-menu">
+                            <li><a href="#">Xacademy</a></li>
+                            <li><a href="#">Robota espacio educativo: la tecnología del futuro</a></li>
+                        </ul>
+                    </li>
+                    <li style="list-style: none; cursor: pointer;"><a href="#"><p>Capacitaciones</p></a>
+                        <ul class="sub-menu">
+                            <li><a href="#">Seguridad informática para infancias</a></li>
+                            <li><a href="#">EStafas virtuales: ¿Cómo protegernos?</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><p>Alianzas</p></a></li>
+                    <li><a href="#"><p>Contacto</p></a></li>
+                    <button class="sumate">Sumate +</button>
+                    <li style="display: flex;"><i class="fi fi-brands-instagram" style="padding: 15px 20px 0px 35px; font-size: 12.25px;"></i></li> <!--Incono de Intagram-->
+                    <li style="display: flex;"><i class="fi fi-brands-linkedin" style="padding: 13px 20px 0px 0px; font-size: 16px;"></i></li><!--Ícono de LinkedIn-->
+                </ul>
+            </div>
         </div>
-        <div id="header-right" style="display: flex; align-items: center;">
-            <p>Nosotros</p>
-            <p>Programas</p>
-            <p>Capaciontaciones</p>
-            <p>Alianzas</p>
-            <p>Contacto</p>
-            <button class="redondo">Sumate +</button>
+    </div>  
+        
+    <div id="introduction-text">
+        <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
+        <div id="introduction-actions" style="margin-top: 25px;"><!--se le agrega un margen superior a los íconos-->
+            <button class="sumate">Contactanos <i class="fi fi-rs-arrow-alt-right" style="padding-left: 7px;padding-top: 5px;"></i></button> <!--se agrega ícono dentro del boton y se configura la posicion-->
+            <button class="sumate-2" style="margin-left: 14px;">Sumate <i class="fi fi-br-plus" style="padding-left: 7px; font-weight: bold;"></i></button><!--se agrega ícono dentro de boto y se configura la posicion-->
         </div>
-    </div>
-    <div id="introduction" style="padding: 48px;">
-        <div id="introduction-text">
-            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
-        </div>
-        <div id="introduction-actions" style="margin-top: 25px;">
-            <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
-        </div>
-    </div>
+    </div>   
 </body>
 </html>
