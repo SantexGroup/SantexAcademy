@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xacademy Clase 1 maquetacion</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        p {
+            margin-right: 40px;
+        }
+        h1 {
+            margin: 0px 400px;
+            text-align: center;
+            font-weight: 600;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 28px;
+        }
+        button.redondo {
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 25px;
+            padding: 0px 20px;
+            height: 32px;
+        }
+        div#introduction-actions {
+            display: flex;
+            justify-content: center;
+        }
+
+        div#introduction-text{
+            padding: 70px 30px 70px 30px;
+            margin-left: 30px;
+            margin-right: 30px;
+            
+        }
+        div#impacto{
+            background-color: #201b24;
+            display: flex;
+            align-items: center;
+        }
+        div#cajatexto{            
+            width: 900px;
+            padding-right: 50px;
+            margin-left: 100px;
+            margin-right: 100px;
+
+        }
+        p#descripcion{
+            color:white;
+            display: inline-block;
+            margin-left: 200px;
+            padding-left: 100px;
+            padding-right: 100px;
+            text-align: left;
+            font-size: medium;
+        }
+        h1#imp{
+            color: white;
+            text-align: left;
+            margin-left: 300px;
+            font-size: 30;
+            line-height: 36px;
+        }
+        div#numeros {
+            display: flex;
+            justify-content: space-between;
+            width: 40%;
+            height: 300px;
+        }
+
+        div#numeros1,
+        div#numeros2,
+        div#numeros3 {
+            width: 30%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        #numeros {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40%;
+        }
+
+        div#numeros1,
+        div#numeros2 {
+            margin-right: 10px;
+        }
+
+        div#numeros1 h1,
+        div#numeros2 h1,
+        div#numeros3 h1 {
+            color: white;
+            margin: 0;
+            text-align: center;
+            font-size: 28px;
+            line-height: 36px;
+        }
+        div#numeros1 p,
+        div#numeros2 p,
+        div#numeros3 p {
+            color: white;
+            margin: 0;
+            text-align: center;
+            font-size: 15px;
+            line-height: 36px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
+        <div id="header-left">
+            <img src="logo.svg">
+        </div>
+        <div id="header-right" style="display: flex; align-items: center;">
+            <p>Nosotros</p>
+            <p>Programas</p>
+            <p>Capacitaciones</p>
+            <p>Alianzas</p>
+            <p>Contacto</p>
+            <button class="redondo">Sumate +</button>
+        </div>
+    </div>
+    <div id="introduction" style="padding: 48px;">
+        <div id="introduction-text">
+            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
+        </div>
+        <div id="introduction-actions" style="margin-top: 25px;">
+            <button class="redondo">Contactanos -></button>
+            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+        </div>
+    </div>
+
+    <div id="impacto">
+        <div id="cajatexto">
+            <h1 id="imp">. Impacto</h1>
+            <p id="descripcion">Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la comunidad. 
+               Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.
+            </p>
+        </div>
+        <div id="numeros">
+            <div id="numeros1"> 
+                <h1 id="num1">58</h1>
+                <p id="num1">Localidades</p>
+            </div>
+            <div id="numeros2">
+                <h1 id="num2">+50</h1>
+                <p id="num2">Mentores</p>
+            </div>
+            <div id="numeros3">
+                <h1 id="num3">301</h1>
+                <p id="num3">Participantes</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
