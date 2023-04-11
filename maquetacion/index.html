@@ -5,24 +5,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xacademy Clase 1 maquetacion</title>
+    <script src="https://kit.fontawesome.com/bc6eb8a656.js" crossorigin="anonymous"></script>
+    
     <style>
+       
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap');
+        
+
         body {
             margin: 0;
+            font-family: 'Inter', sans-serif;
         }
         p {
+            color: black;
             margin-right: 40px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 12px;
         }
         h1 {
-            margin: 0px 400px;
+            margin: 0px 300px;
             text-align: center;
+            font-size: 30px;
+            font-family: 'Inter', sans-serif;
         }
-        button.redondo {
+
+        i{
+            margin-left: 20px;
+            color: black;
+        }
+
+        button.redondo1, button.redondo2, button.redondo3 {
             background-color: white;
             border: 1px solid black;
             border-radius: 25px;
             padding: 0px 20px;
             height: 32px;
+            
         }
+
+        button.redondo3{
+            color:blue;
+            
+        }
+        button.redondo3:hover {
+            background-color: blue;
+            color:white;
+        }
+
+        button:hover {
+            background-color: black;
+            color:white;
+        }
+
+        .fa-regular:hover {
+            background-color: blue;
+            color: white;
+        }
+
+        .glyphicon:hover {
+            background-color: white;
+            color:lightslategray;
+        }
+        
         div#introduction-actions {
             display: flex;
             justify-content: center;
@@ -30,27 +78,31 @@
     </style>
 </head>
 <body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
+    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between; width: 115%;">
         <div id="header-left">
             <img src="logo.svg">
         </div>
-        <div id="header-right" style="display: flex; align-items: center;">
-            <p>Nosotros</p>
-            <p>Programas</p>
-            <p>Capaciontaciones</p>
-            <p>Alianzas</p>
-            <p>Contacto</p>
-            <button class="redondo">Sumate +</button>
+        <div id="header-right" style="display: flex; align-items: center; width: 70%;">
+            <a href="#"><p>Nosotros</p></a>
+            <a href="#"><p>Programas</p></a>
+            <a href="#"><p>Capacitaciones</p></a>
+            <a href="#"><p>Alianzas</p></a>
+            <a href="#"><p>Contacto</p></a>
+            <a href="#"><button class="redondo1"  style="border:2px solid black;">Sumate <i class=" fa-regular fa-plus"></i></button></a>
+            <a href="#"><i class="glyphicon fa-instagram fab" aria-hidden="true"></i></a>
+            <a href="#"><i class="glyphicon fa-linkedin-in fab" aria-hidden="true"></i></a>
         </div>
     </div>
     <div id="introduction" style="padding: 48px;">
         <div id="introduction-text">
-            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
+            <h1 style="width: 50%;">Somos una Fundación dedicada a mejorar<br> calidad de vida de las personas y su <br>entorno, a través de la tecnología.</h1>
         </div>
         <div id="introduction-actions" style="margin-top: 25px;">
-            <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+            <a href="#"><button class="redondo2">Contactanos  <i class="fa-solid fa-arrow-right"></i></button></a>
+            <a href= "#"><button class="redondo3" style="margin-left: 14px; border-color: blue;">Sumate  <i class="icono3 fa-regular fa-plus"></i></button></a>
+            
         </div>
+        
     </div>
 </body>
 </html>
