@@ -1,56 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xacademy Clase 1 maquetacion</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        p {
-            margin-right: 40px;
-        }
-        h1 {
-            margin: 0px 400px;
-            text-align: center;
-        }
-        button.redondo {
-            background-color: white;
-            border: 1px solid black;
-            border-radius: 25px;
-            padding: 0px 20px;
-            height: 32px;
-        }
-        div#introduction-actions {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
-</head>
-<body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
-        <div id="header-left">
-            <img src="logo.svg">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Xacademy Clase 1 maquetacion</title>
+        <style>
+            body {
+                margin: 0;
+            }
+            p {
+                margin-right: 40px;
+                font-weight: 500;
+                font-family: Arial, Helv50px etica, sans-serif;
+                font-size: 13px;
+                background-color: white;
+                font-style: normal;
+            }
+            p:hover {color: #6b53f0;}
+
+        a {
+                text-decoration: none;
+                color: black;
+            }
+            a:hover {background-color: white; color: #6b53f0;}
+
+            .dropdown-li {
+                position: relative;
+            }
+
+            .contenido-desplegable {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: white;
+                opacity: 0;
+                transition: opacity 0.2s ease-in-out;
+                border: 1px solid #8C939C;
+                font-family: Arial, Helv50px etica, sans-serif;
+                font-size: 13px;
+                width: 150px;
+                height: 90px;
+            }
+
+            .dropdown-li:hover .contenido-desplegable {
+                opacity: 1;
+            }
+
+            .contenido-desplegable li {
+                display: block;
+                width: 100%;
+            }
+
+            .contenido-desplegable li a {
+                display: block;
+                padding: 10px;
+                color: black;
+            
+            }
+
+            .contenido-desplegable li:hover {
+                background-color: white;
+            }
+
+            .contenido-desplegable li ul {
+                float: left;
+                display: none;
+                position: absolute;
+                list-style: none;
+                color: black;
+                border: 1px solid #8C939C;
+                font-family: Inter, Arial, Helvetica, sans-serif;
+                font-weight: 400;
+            }
+
+            .contenido-desplegable li:hover>.contenido-desplegable {
+                display: block;
+                position: relative;
+                list-style: none;
+                color: black;
+                border: 1px solid #8C939C;
+                font-family: Inter, Arial, Helvetica, sans-serif;
+                font-weight: 400;
+            }
+            a.btn:hover {
+                background-color: white;
+                color: #6b53f0;
+            }
+
+            h1 {
+                margin: 30px 601px;
+                text-align: center;
+                display: flex;
+                font-size: 1em;
+                line-height: 1.2;
+                font-family: Inter, Arial, Helvetica,sans-serif;
+                font-weight: 600;
+                height: 100.781px;
+                width: 576.094px;
+            }
+
+            button.redondo {
+                background-color: white;
+                border: 2px solid black;
+                border-radius: 25px;
+                padding: 5px 20px;
+                height: 39px;
+            }
+            button.redondo:hover {background-color: black; color: white}
+
+            a.btn2:hover {
+                background-color: black;
+                color: white;
+            }
+
+            button.redondo2 {
+                background-color: white;
+                border: 2px solid #6b53f0;
+                color: #6b53f0;
+                border-radius: 25px;
+                padding: 5px 20px;
+                height: 39px;
+            }
+
+            button.redondo2:hover {background-color: #6b53f0; color: white}
+
+            a.btn3:hover {
+                background-color: #6b53f0;
+                color: white;
+            }
+
+            div#introduction-actions {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            div#impacto {
+                background-color: black;
+                background-position: center;
+                padding-top: 80px;
+                padding-right: 30px;
+                padding-bottom: 80px;
+                padding-left: 30px;
+                margin: 0px -30px;
+            }
+
+            div#subtitulo {
+                margin: 0px 200px 0px 550px;
+                text-align:left;
+                color: white;
+                display: flex;
+                font-size: 21px;
+                line-height: 1.2;
+                font-family: Inter, Arial, Helvetica,sans-serif;
+                font-weight: 600;
+                letter-spacing: -0.4px;
+                text-transform: none;
+                font-style: normal;
+                height: 80px;
+                width: 150px;
+            }
+
+            div#subtitulo-text {
+                margin: 0px 200px 0px 550px;
+                text-align:left;
+                background-color: black;
+                color: white;
+                display: flex;
+                font-size: 50px;
+                line-height: 1.2;
+                font-family: Inter, Arial, Helvetica,sans-serif;
+                font-weight: 600;
+                letter-spacing: -0.4px;
+                text-transform: none;
+                font-style: normal;
+                height: 100px;
+                width: 400px;
+            }
+        </style>
+    </head>
+
+    <body>
+    
+        <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 15px 300px 15px 400px; justify-content: space-between">
+                
+            <div id="header-left">
+                <img src="logo.svg">
+            </div>
+
+            <nav>
+                <div id="header-right" style="display: flex; align-items: center;">
+
+                    <p><a href="https://technologywithpurpose.org/nosotros/">Nosotros</a></p>
+                    
+                    <div class="dropdown-li">
+                        <p>Programas</p>
+                            <ul class="contenido-desplegable">                        
+                                <li><a class="btn" href="https://technologywithpurpose.org/xacademy/">xAcademy</a></li>
+                                <li><a class="btn" href="https://technologywithpurpose.org/robotica-educativa-la-tecnologia-del-futuro/">Robotica educativa</a></li>
+                            </ul>
+                    </div>
+                    
+                    <div class="dropdown-li">
+                        <p>Capaciontaciones</p>
+                            <ul class="contenido-desplegable">                        
+                                <li><a class="btn" href="https://technologywithpurpose.org/seguridad-informatica-para-infancias/">Seguridad Informatica para infancias</a></li>
+                                <li><a class="btn" href="https://technologywithpurpose.org/estafas-virtuales-como-protegernos/">Estafas Virtuales</a></li>
+                            </ul>
+                    </div>
+
+                    <p><a href="https://technologywithpurpose.org/nosotros/#alianzas">Alianzas</a></p>
+                    <p><a href="https://technologywithpurpose.org/contacto/">Contacto</a></p>
+                        
+                    <button class="redondo"><a class="btn2" href="https://donaronline.org/technology-with-purpose-foudation/sumate-genera-impacto">Sumate +</a></button>
+
+                </div>        
+
+            </nav>
+
         </div>
-        <div id="header-right" style="display: flex; align-items: center;">
-            <p>Nosotros</p>
-            <p>Programas</p>
-            <p>Capaciontaciones</p>
-            <p>Alianzas</p>
-            <p>Contacto</p>
-            <button class="redondo">Sumate +</button>
-        </div>
-    </div>
-    <div id="introduction" style="padding: 48px;">
-        <div id="introduction-text">
-            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
-        </div>
-        <div id="introduction-actions" style="margin-top: 25px;">
-            <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
-        </div>
-    </div>
-</body>
+
+    
+        <main>
+            <div id="introduction" style="padding: 30px 50px 30px 30px;">
+                
+                <div id="introduction-text" style="font-size: 28px; margin-top: 10px; margin-right: 20px; margin-bottom: 15px; margin-left: 20px">
+                    <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
+                </div>
+
+                <div id="introduction-actions" style="margin-top: 36px; margin-left: 772px; margin-right: 720px; display: flex; justify-content: space-between;">
+                    <button class="redondo"><a class="btn2" href="https://technologywithpurpose.org/contacto/">Contactanos -></a></button>
+                    <button class="redondo2"><a class="btn3" href="https://donaronline.org/technology-with-purpose-foudation/sumate-genera-impacto">Sumate +</a></button>  
+                </div>
+
+            </div>
+
+            <div id="impacto">
+                
+                <div id="subtitulo">
+                    <h2>. Impacto</h2>
+                </div>
+
+                <div id="subtitulo-text">
+                    <p style="margin-top: 0%; margin-right: 40px; font-weight: 500; font-family: Arial, Helv50px etica, sans-serif; font-size: 15px; background-color: black; color: white; font-style: normal;">Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la comunidad. Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.</p>
+                </div>
+
+            </div>
+
+        </main>
+
+        <footer></footer>
+    
+    </body>
+
 </html>
