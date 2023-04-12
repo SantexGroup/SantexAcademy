@@ -7,30 +7,49 @@
     <title>Xacademy Clase 1 maquetacion</title>
     <style>
         body {
-            margin: 0;
+            
+            margin:0;
+            font-size: 14px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+            
+
         }
         p {
             margin-right: 40px;
         }
         h1 {
-            margin: 0px 400px;
+            padding: 20px;
+            margin: 0px 280px;
+            display: flex;
             text-align: center;
         }
-        button.redondo {
+        button {
             background-color: white;
             border: 1px solid black;
-            border-radius: 25px;
-            padding: 0px 20px;
+            border-radius: 20px;
+            padding: 0px 14px;
             height: 32px;
         }
         div#introduction-actions {
             display: flex;
             justify-content: center;
         }
+
+        div#impacto {
+            font-size:larger ;
+            background-color:black ;
+            color: white;
+            margin: 0 ;
+            text-align: center
+            
+        }
+
+        
+        
     </style>
 </head>
-<body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
+<div>
+    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 19px 15px; padding-left: 30px; justify-content: space-between">
         <div id="header-left">
             <img src="logo.svg">
         </div>
@@ -40,17 +59,28 @@
             <p>Capaciontaciones</p>
             <p>Alianzas</p>
             <p>Contacto</p>
-            <button class="redondo">Sumate +</button>
+            <button>Sumate +</button>
+        
         </div>
     </div>
+
     <div id="introduction" style="padding: 48px;">
         <div id="introduction-text">
             <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
         </div>
-        <div id="introduction-actions" style="margin-top: 25px;">
-            <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+           <div id="introduction-actions" style="margin-top: 40px;">
+            <button>Contactanos -></button>
+            <button style="margin-left: 20px;">Sumate +</button>
         </div>
     </div>
+    
+<div id="impacto" style="background-color:black;padding: 80px; display: flex;margin-bottom: 50px;align-items: center">
+ <p style="line-height: 20px">.Impacto Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la comunidad. Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.</p>
+    <div id="Impacto-info" style="display: flex; align-items: center;">
+        <p style="line-height: 20px"> 58 Localidades</p>
+        <p style="line-height: 20px">50 Programas</p> 
+        <p style="line-height: 20px">301 Capaciontaciones</p>
+        
+</div>
 </body>
 </html>
