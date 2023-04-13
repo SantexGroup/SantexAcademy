@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 16px;
+
+}
+
+p {
+    margin-right: 40px;
+    color: rgb(32, 27, 36);
+    display: block;
+    float: right;
+    box-sizing: border-box;
+    font-size: 0.7em;
+    font-weight: 500;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(32, 27, 36);
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+button.redondo {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 10px 20px;
+    height: 38px;
+    color: rgb(32, 27, 36);
+    font-size: 0.7em;
+    font-weight: 500;
+}
+
+button.redondo-secundario {
+    background-color: white;
+    border: 2px solid rgb(107,83,240);
+    border-radius: 20px;
+    padding: 10px 20px;
+    height: 38px;
+    color: rgb(107, 83, 240);
+    font-size: 0.7em;
+    font-weight: 500;
+    margin-left: 14px;
+}
+
+div#content {
+    height: 80px; 
+    overflow: visible; 
+    border-bottom: 1px solid gray;    
+}
+
+div#header{
+    height: 80px; 
+    overflow: visible; 
+    display: flex; 
+    padding: 0px 30px; 
+    justify-content: space-between; 
+    margin: 0px 90px; 
+    max-width: 1200px;
+}
+
+div#header-left{
+    display: flex; 
+    align-items: center;
+}
+
+div#header-right{
+    display: flex; 
+    align-items: center;
+}
+
+div#introduction-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+div#introduction-text {
+    display: flex;
+    justify-content: center;
+}
