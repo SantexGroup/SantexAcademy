@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+p {
+    margin-right: 55px;
+    font-size: 13px;
+    background-color: white;
+
+}
+p:hover{color:blue}
+h1 {
+    margin: 0px 550px;
+    text-align: center;
+    letter-spacing: -0.4px;
+    font-size: 2em;
+    font-weight: 600;
+}
+button.redondo {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 0px 20px;
+    height: 32px;
+}
+button.redondo:hover { 
+    background-color: black; 
+    color: white;
+}
+button.redondo1 {
+    background-color: white;
+    color: blueviolet;
+    border: 2px solid blueviolet;
+    border-radius: 20px;
+    padding: 0px 20px;
+    height: 32px;
+}
+button.redondo1:hover { 
+    background-color: blueviolet; 
+    color: white;
+}
+div#introduction-actions {
+    display: flex;
+    justify-content: center;
+}
+#header-left {
+    margin-left: 10px;
+}
+
+@media (width >= 2000px) {
+    body{
+        font-size: 20px;
+    }
+}
+
+@media (width >= 4000px) {
+    body{
+        font-size: 40px;
+    }
+}
