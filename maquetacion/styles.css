@@ -1,0 +1,181 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+}
+
+#header {
+    border-bottom: 1px solid gray; 
+    display: flex; 
+    padding: 1.5em 10em; 
+    justify-content: space-between;
+}
+
+#header-right {
+    display: flex; 
+    align-items: center;
+}
+
+#iconos-redes {
+    margin-left: 1em;
+    margin-right: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.fa-brands {
+    margin-right: 1em;
+}
+
+.fa-brands:hover {
+    color: #6b53f0;
+  }  
+
+p {
+    margin-right: 2.5em;
+}
+
+p:hover {
+    color: #6b53f0;
+}
+
+#introduction {
+    padding-top: 8em;
+    margin-top: 0px;
+    padding-right: 2em;
+    padding-bottom: 8em;
+    margin-bottom: 0px;
+    padding-left: 2em;
+    justify-content: center;
+}
+
+h1 {
+    margin: 0 auto;
+    text-align: center;
+    letter-spacing: -0.025em;
+    line-height: 1.2em;
+    font-size: 2.15em;
+    font-weight: 600;
+    max-width: 20em;
+}
+
+button.redondo {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 1.5em;
+    padding: 1em 2em;
+    height: 2.8em;
+    margin-left: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div#introduction-actions {
+    display: flex;
+    justify-content: center;
+}
+
+button.important-button {
+    color: #6b53f0;
+    border-color: #6b53f0;
+}
+
+button.redondo:hover {
+    background-color: black;
+    color: white;
+}
+
+button.important-button:hover {
+    background-color: #6b53f0;
+    color: white;
+}
+
+#impacto-section {
+    background-color: #201b24;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 6em;
+    margin-top: 0px;
+    padding-right: 2em;
+    padding-bottom: 6em;
+    margin-bottom: 0px;
+    padding-left: 2em;
+    justify-content: center;
+}
+
+#impacto-texto {
+    max-width: 33em;
+    text-align: left;
+    font-size: 1.07em;
+}
+
+.impacto-cifras {
+    display: flex;
+    align-items: center;
+}
+
+.cifra {
+    text-align: center;
+    margin-right: 1.25em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position:relative;
+}
+
+.cifra h2 {
+    font-size: 3.84em;
+    font-weight: 700;
+    vertical-align: middle;
+    margin-bottom: 0;
+    position: relative;
+    z-index:1;
+}
+
+.cifra h4 {
+    font-size: 1.25em;
+    color: #505059;
+    text-align: center;
+    margin-top: 0.1em;
+}
+
+.cifra #cifra-especial::before {
+    content:"+";
+    position:absolute;
+    left: -0.6em;
+    font-size: 0.5em;
+    color: #6b53f0;
+    top:50%;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 500px) {
+    body {
+        font-size: 10px;
+    }
+    #header {
+        flex-direction: column;
+        align-items: center;
+    }
+    #header-right {
+        flex-direction: column;
+    }
+    #impacto-section {
+        flex-direction:column;
+    }
+}
+
+@media (width >=2000px) {
+    body {
+        font-size: 20px;
+    }
+}
+
+@media (width >=4000px) {
+    body {
+        font-size: 30px;
+    }
+
+}
