@@ -4,53 +4,88 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xacademy Clase 1 maquetacion</title>
+    <title>Fundación Tecnología con Propósito</title>
+
     <style>
-        body {
+        body{
             margin: 0;
+            font-family: Roboto;
+        }
+
+        #header {
+            border-bottom: 1px solid gray;
+            display: flex;
+            justify-content: space-between;
+            font-size: small;
+            padding: 20px 100px 0px 30px;     
+        }
+        #menu{
+            display: flex;
+            margin-bottom: 20px;
         }
         p {
-            margin-right: 40px;
+            margin-right: 35px;
+
         }
-        h1 {
-            margin: 0px 400px;
-            text-align: center;
-        }
-        button.redondo {
+        button{
             background-color: white;
-            border: 1px solid black;
+            border: 2px solid black;
             border-radius: 25px;
             padding: 0px 20px;
             height: 32px;
+            margin-top: 5px;
         }
-        div#introduction-actions {
+        #black:hover{
+            background-color: black;
+            color: white;
+        }
+        #violet{
+            border: 2px solid #6b53f0;                   
+            color: #6b53f0;
+            margin-left: 20px;
+
+        }
+        #violet:hover{
+            background-color: #6b53f0;
+            color: white;
+        }
+        #principal-text{           
+            padding: 50px 250px 0px ;
+            margin-top: 20px;
+            text-align: center;
+        }    
+        #principal-buttons{
             display: flex;
             justify-content: center;
         }
     </style>
+
 </head>
 <body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
-        <div id="header-left">
+    <div id="header">
+        <div id="image">
             <img src="logo.svg">
         </div>
-        <div id="header-right" style="display: flex; align-items: center;">
-            <p>Nosotros</p>
-            <p>Programas</p>
-            <p>Capaciontaciones</p>
-            <p>Alianzas</p>
-            <p>Contacto</p>
-            <button class="redondo">Sumate +</button>
-        </div>
+        <div id="menu" >
+            <p><b>Nosotros</b></p>
+            <p><b>Programas</b></p>
+            <p><b>Capacitaciones</b></p>
+            <p><b>Alianzas</b></p>
+            <p><b>Contacto</b></p>
+            <button id="black">Sumate +</button>
+        </div> 
     </div>
-    <div id="introduction" style="padding: 48px;">
-        <div id="introduction-text">
+    <div id="principal">
+        <div id="principal-text">
             <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
         </div>
-        <div id="introduction-actions" style="margin-top: 25px;">
-            <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+        <div id="principal-buttons">
+            <button>Contactanos &#8594</button>
+            <button id="violet">Sumate +</button>
         </div>
+
     </div>
+
+
 </body>
 </html>
