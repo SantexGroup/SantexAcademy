@@ -1,55 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xacademy Clase 1 maquetacion</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        p {
-            margin-right: 40px;
-        }
-        h1 {
-            margin: 0px 400px;
-            text-align: center;
-        }
-        button.redondo {
-            background-color: white;
-            border: 1px solid black;
-            border-radius: 25px;
-            padding: 0px 20px;
-            height: 32px;
-        }
-        div#introduction-actions {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 <body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
+    <div id="header">
         <div id="header-left">
-            <img src="logo.svg">
+            <img src="logo.svg" alt="logo de Technology with Purpose">
         </div>
-        <div id="header-right" style="display: flex; align-items: center;">
+        <div id="header-right">
             <p>Nosotros</p>
             <p>Programas</p>
-            <p>Capaciontaciones</p>
+            <p>Capacitaciones</p>
             <p>Alianzas</p>
             <p>Contacto</p>
             <button class="redondo">Sumate +</button>
+            <div id="iconos-redes">
+                <a href="https://www.instagram.com/technologywithpurpose/" target="_blank">
+                    <i class="fa-brands fa-instagram" style="color: #000000;"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/technologywithpurpose/" target="_blank">
+                    <i class="fa-brands fa-linkedin-in" style="color: #000000;"></i>
+                </a>
+            </div>
         </div>
     </div>
-    <div id="introduction" style="padding: 48px;">
+    <div id="introduction">
         <div id="introduction-text">
             <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
         </div>
         <div id="introduction-actions" style="margin-top: 25px;">
             <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+            <button class="redondo important-button">Sumate +</button>
+        </div>
+    </div>
+
+    <div id="impacto-section">
+        <div id="impacto-texto">
+            <h2>. Impacto</h2>
+            <h3>Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la comunidad. Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.</h3>
+        </div>
+        <div class="impacto-cifras">
+            <div class="cifra">
+                <h2>58</h2>
+                <h4>Localidades</h4>
+            </div>
+            <div class="cifra">
+                <h2 id="cifra-especial">50</h2>
+                <h4>Mentores</h4>
+            </div>
+            <div class="cifra">
+                <h2>301</h2>
+                <h4>Participantes</h4>
+            </div>
         </div>
     </div>
 </body>
