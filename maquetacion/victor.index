@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Xacademy Clase 1 maquetacion</title>
+    
+    <style>
+        *{
+            font-family:Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+
+        #header {
+            border-bottom: 1px solid gray; 
+            display: flex; 
+            padding: 11px 260px; 
+            justify-content: space-between;       
+        }
+
+        .link-item {
+            margin-right: 40px;
+            color: black;
+            font-family:Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 150ms linear;
+        }
+
+        .link-item:hover {
+            color: blueviolet;
+        }
+
+        a:link, a:visited {
+            text-decoration: none;
+        }
+
+        h1 {
+            padding: 18px;
+            text-align: center;
+            font-family:Arial, Helvetica, sans-serif;
+            margin: 0;
+            font-size: 30px;
+            font-weight: 550;
+            line-height: 1;
+        }
+
+        #introduction-text {
+            display: flex;
+            justify-content: center;
+            max-width: 650px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        button.redondo {
+            margin: 5px;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 25px;
+            padding: 0px 20px;
+            height: 42px;
+            transition: all 200ms linear;
+        }
+
+        button.sumate {
+            color: blueviolet;
+            background-color: white;
+            border: 2px solid blueviolet;
+            border-radius: 25px;
+            padding: 0px 20px;
+            height: 42px;
+            transition: all 200ms linear;
+        }
+
+        button.redondo:hover {
+            color: white;
+            background-color: black;
+        }
+
+        button.sumate:hover {
+            color: white;
+            background-color: blueviolet;
+        }
+
+        .redes{ 
+            display: flex;
+            padding: 0px 15px;
+        }
+
+        .bx {
+            padding: 5px;
+        }
+
+        .redes .bx:hover {
+            color: white;
+            background-color: blueviolet;     
+        }
+
+        #introduction-actions {
+            justify-content: center;
+        }
+
+        .impacto {
+            background-color: #201b24;
+            height: 400px;
+        }
+
+        .text-impacto {
+            padding: 100px;
+            color: white;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .text-impacto h3 {
+            font-size: 35px;
+            padding: 15px 0px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div id="header">
+        <div id="header-left">
+           <a href="https://technologywithpurpose.org/">
+                <img src="logo.svg" style="padding: 8px;">
+            </a>
+        </div>
+        <div id="header-right" style="display: flex; align-items: center;">            
+            <a href="https://technologywithpurpose.org/nosotros/"><p class="link-item">Nosotros</p></a>
+            <a href="#"><p class="link-item">Programas</p></a>
+            <a href="#"><p class="link-item">Capaciontaciones</p></a>
+            <a href="#"><p class="link-item">Alianzas</p></a>
+            <a href="#"><p class="link-item">Contacto</p></a>
+            <a href="https://donaronline.org/technology-with-purpose-foudation/sumate-genera-impacto"><button class="redondo">Sumate +</button></a>
+            <div class="redes">
+            <p class='bx bxl-instagram'></p>
+            <p class='bx bxl-linkedin'></p>
+            </div>
+        </div>
+    </div>
+    <div id="introduction" style="padding: 50px; text-align: center;">
+        <div id="introduction-text">
+            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
+        </div>
+        <div id="introduction-actions" style="margin-top: 14px;">
+            <button class="redondo">Contactanos -></button>
+            <a href="https://donaronline.org/technology-with-purpose-foudation/sumate-genera-impacto"><button class="sumate" style="margin-left: 14px;">Sumate +</button></a>
+        </div>
+    </div>
+
+    <div class="impacto">
+        <div class="text-impacto">
+            <h3>.Impacto</h3>
+            <p>
+                Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la comunidad. 
+                Trabajamos para acercar la tecnología innovadora y disruptiva
+                del sector privado hacia el sector social.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
