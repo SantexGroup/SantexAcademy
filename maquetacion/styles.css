@@ -1,0 +1,220 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+}
+div#header {
+    border-bottom: 0.0714em solid gray; 
+    display: flex; 
+    padding: 2em 27.75em 1em 22em;
+    justify-content: space-between
+}
+div#header-left {
+    width: 10.14em;
+}
+.logo {
+    border-style: none;
+    vertical-align: top;
+    max-width: 100%;
+    height: auto;
+    margin-top: -1em;
+}
+div#header-right {
+    display: flex; 
+    align-items: center;
+}
+
+p {
+    margin-right: 2.5em;
+    font-size: 0.95em;
+    background-color: white;
+    align-items: center;
+}
+p:hover {color: #6b53f0;}
+
+a {
+    text-decoration: none;
+    color: black;
+    /*font-weight: 500;*/
+}
+a:hover {background-color: white; color: #6b53f0;}
+
+.lista-desplegable {
+    position: relative;
+    font-size: 1em;
+}
+.contenido-desplegable {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    border: 1px solid #8C939C;
+    font-size: 1em;
+    width: 14.2857em;
+    padding-left: 1em;
+}
+.lista-desplegable:hover .contenido-desplegable {
+    opacity: 1;
+}
+.contenido-desplegable li {
+    display: block;
+    width: 100%;
+}
+.contenido-desplegable li a {
+    display: block;
+    color: black;
+    padding: 0.8571em 1.42857em;
+    font-size: 0.92857em;
+
+}
+.contenido-desplegable li:hover {
+    background-color: white;
+}
+.contenido-desplegable li ul {
+    float: left;
+    display: none;
+    position: absolute;
+    list-style: none;
+    color: black;
+    border: 1px solid #8C939C;
+    font-weight: 400;
+}
+.contenido-desplegable li:hover>.contenido-desplegable {
+    display: block;
+    position: relative;
+    list-style: none;
+    color: black;
+    border: 1px solid #8C939C;
+    font-weight: 400;
+}
+a.btn {
+    text-align: left;
+    padding-left: 0%;
+}
+a.btn:hover {
+    background-color: white;
+    color: #6b53f0;
+}
+
+button.redondo {
+    background-color: white;
+    border: 0.2em solid black;
+    color: black;
+    border-radius: 1.666em;
+    padding: 0.64em 1.43em;
+    height: 2.98em;
+    align-items: center;
+    line-height: 1em;
+    letter-spacing: 0.015em;
+    font-size: 0.86em;
+    font-weight: 500;
+}
+button.redondo:hover {background-color: black; color: white}
+
+div#introduction {
+    box-sizing: border-box;
+    display: block;
+}
+div#introduction-text {
+    font-size: 2em; 
+    padding-top: 2.5em;
+    padding-right: 1.075em;
+    padding-bottom: 1.2em;
+    padding-left: 1.075em;
+}
+h1 {
+    margin-left: 21.42857em;
+    text-align: center;
+    display: flex;
+    font-size: 1em;
+    line-height: 1.2;
+    font-weight: 600;
+    height: 100.781px;
+    width: 576.094px;
+}
+div#introduction-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 56.4285714em; 
+    margin-right: 56.4285714em; 
+    margin-bottom: 6.42857143em;
+    justify-content: space-between;
+}
+
+a.btn2:hover {
+    background-color: black; color: white;
+}
+
+button.redondo2 {
+    background-color: white;
+    border: 0.2em solid #6b53f0;
+    color: #6b53f0;
+    border-radius: 1.666em;
+    padding: 0.64em 2em;
+    height: 2.98em;
+    align-items: center;
+    line-height: 1em;
+    letter-spacing: 0.015em;
+    font-size: 0.86em;
+    font-weight: 500;
+}
+button.redondo2:hover {background-color: #6b53f0; color: white}
+
+a.btn3 {
+    color: #6b53f0;
+}
+a.btn3:hover {background-color: #6b53f0; color: white;}
+
+
+div#impacto {
+    background-color: #201b24;
+    background-position: center;
+    padding: 130px 30px;
+    margin: 0px -30px;
+}
+
+div#subtitulo {
+    margin: 0px 200px 0px 550px;
+    text-align:left;
+    color: white;
+    display: flex;
+    font-size: 2.14285714em;
+    line-height: 2.57142857em;
+    font-weight: 600;
+    letter-spacing: -0.02857143em;
+    text-transform: none;
+    height: 1.92857143em;
+    width: 10.7142857em;
+}
+
+div#subtitulo-text {
+    margin: 0px 200px 0px 550px;
+    text-align:left;
+    display: flex;
+    height: 109px;
+    width: 430px;
+}
+p.descripcion-impacto {
+    margin-top: 0%; 
+    margin-right: 2.85714286em; 
+    font-weight: 400; 
+    font-size: 1em; 
+    background-color:#201b24;
+    color: white; 
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+}
+
+@media (width >= 2000px) {
+    body {font-size: 16px}
+}
+
+@media (width >= 4000px) {
+    body {font-size: 20px}
+}
