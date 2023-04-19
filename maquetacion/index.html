@@ -4,21 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xacademy Clase 1 maquetacion</title>
+    <title>Xacademy maquetacion</title>
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
     <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
         <div id="header-left">
-            <img src="./logos/logo.svg">
+            <a class="link-href" rel="noopener noreferrer" href="index.html">
+                <img src="./logos/logo.svg">
+            </a>
         </div>
-        <div id="header-right" style="display: flex; align-items: center;">
+        <div id="header-right" style="display: flex; margin-left: 25%; align-items: center;">
             <p>Nosotros</p>
-            <p>Programas</p>
-            <p>Capaciontaciones</p>
+            <div class="menu">Programas
+                <div class="opciones">
+                    <div class="opcion">
+                        xAcademy
+                    </div>
+                    <div class="opcion">
+                        Robótica educativa: la tecnología del futuro
+                    </div>
+                </div>
+            </div>
+            <div class="menu">Capacitaciones
+                <div class="opciones">
+                    <div class="opcion">
+                        Seguridad informática para infancias
+                    </div>
+                    <div class="opcion">
+                        Estafas virtuales: ¿ como protegernos ?
+                    </div>
+                </div>
+            </div>
             <p>Alianzas</p>
             <p>Contacto</p>
-            <button class="redondo">Sumate +</button>
+            <button class="redondo hover-negro">Sumate +</button>
+            <a class="link-href" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/technologywithpurpose/"><img class="instagram" src="./icons/instagram.svg"></a>
+            <a class="link-href" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/company/technologywithpurpose/"><img class="linked-in" src="./icons/linked-in.svg"></a>
         </div>
     </div>
     <div id="introduction" style="padding: 48px;">
@@ -26,8 +48,8 @@
             <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
         </div>
         <div id="introduction-actions" style="margin-top: 25px;">
-            <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+            <button class="redondo hover-negro">Contactanos -></button>
+            <button class="redondo-violeta hover-violeta" style="margin-left: 14px;">Sumate +</button>
         </div>
     </div>
 </body>

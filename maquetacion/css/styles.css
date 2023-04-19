@@ -1,14 +1,17 @@
-<style>
+
 body {
     margin: 0;
 }
+
 p {
     margin-right: 40px;
 }
+
 h1 {
     margin: 0px 400px;
     text-align: center;
 }
+
 button.redondo {
     background-color: white;
     border: 1px solid black;
@@ -16,8 +19,79 @@ button.redondo {
     padding: 0px 20px;
     height: 32px;
 }
+
+button.redondo-violeta {
+    background-color: white;
+    border: 1px solid #6b53f0;
+    border-radius: 25px;
+    padding: 0px 20px;
+    height: 32px;
+    border: 1px solid #6b53f0;
+    color: #6b53f0;
+}
+
 div#introduction-actions {
     display: flex;
     justify-content: center;
 }
-</style>
+
+.link-href{
+    width: 5%;
+}
+
+.instagram{
+    width: 35%;
+    margin-left: 35px;
+}
+
+.instagram:hover{
+   color: #6b53f0;
+}
+
+.linked-in{
+    width: 35%;
+    margin-left: 25px;
+}
+
+.linked-in:hover{
+   color: #6b53f0;
+}
+
+.hover-negro:hover{
+    background-color: black;
+    color: white;    
+}
+
+.hover-violeta:hover{
+    background-color: #6b53f0;
+    color: white;    
+}
+
+.menu{
+    margin-right: 40px;
+}
+
+.menu:hover .opciones{
+    display: block;
+}
+
+.opciones{
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.opcion{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.opcion:hover{
+    lor: #6b53f0;
+    background-color: #f1f1f1;
+}
