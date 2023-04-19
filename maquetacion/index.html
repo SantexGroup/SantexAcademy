@@ -5,31 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xacademy Clase 1 maquetacion</title>
+         <link rel:"stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+         
     <style>
         body {
             
             margin:0;
-            font-size: 14px;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+            font-size: 15px;
+            font-family: 'Inter', sans-serif
+;           letter-spacing: normal;
+            ;
             
-
         }
+
         p {
+            letter-spacing: normal;
+            font-size: 13px;
             margin-right: 40px;
         }
+        
         h1 {
-            padding: 20px;
-            margin: 0px 280px;
+            padding: 28px;
+            margin: 0px 285px;
             display: flex;
             text-align: center;
+            font-style: normal;
+            color: rgb(36, 35, 35);
+            font-size: 28px;
+            font-weight: 600px;
+            letter-spacing: -0.4px;
+            text-size-adjust:100% ;
+            line-height: 33.6px;
         }
+        
         button {
             background-color: white;
-            border: 1px solid black;
-            border-radius: 20px;
-            padding: 0px 14px;
+            border: 2px solid black;
+            border-radius:  20px;
             height: 32px;
+            letter-spacing: 0.18px;
+            line-height: 14px;
+            
         }
+
+       
         div#introduction-actions {
             display: flex;
             justify-content: center;
@@ -44,22 +66,29 @@
             
         }
 
-        
+        div#impacto-info {
+            line-height: 20px;
+            align-items: center;
+            display: flex
+            
+        }
         
     </style>
 </head>
 <div>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 19px 15px; padding-left: 30px; justify-content: space-between">
+    <div id="header" style="border-bottom: 0.5px solid rgb(170, 169, 169); display: flex; padding: 14px 13px; padding-left: 20px; justify-content: space-between">
         <div id="header-left">
-            <img src="logo.svg">
+            <img src="logo.svg" style="margin-top: 4px;padding-left:8px">
         </div>
-        <div id="header-right" style="display: flex; align-items: center;">
+        <div id="header-right" style="display: flex; align-items: center;font-size: 13px; font-size: normal; font-weight: 500; line-height: 13px;">
             <p>Nosotros</p>
             <p>Programas</p>
             <p>Capaciontaciones</p>
             <p>Alianzas</p>
             <p>Contacto</p>
             <button>Sumate +</button>
+            <p><img src="logo-insta.svg" style="width:12px;margin-left: 20px"></p>
+            <p><img src="logo-in.svg" style="width:12px"></p>
         
         </div>
     </div>
@@ -68,19 +97,20 @@
         <div id="introduction-text">
             <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
         </div>
-           <div id="introduction-actions" style="margin-top: 40px;">
+           <div id="introduction-actions" style="margin-top: 14px;font-size: 12px;font-weight: 500;font-style: normal;">
             <button>Contactanos -></button>
-            <button style="margin-left: 20px;">Sumate +</button>
+            <button style="margin-left: 20px;border-color: rgb(107,83,240);color: rgb(107,83,240);">Sumate <strong>+</strong></button>
         </div>
     </div>
     
-<div id="impacto" style="background-color:black;padding: 80px; display: flex;margin-bottom: 50px;align-items: center">
- <p style="line-height: 20px">.Impacto Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la comunidad. Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.</p>
-    <div id="Impacto-info" style="display: flex; align-items: center;">
-        <p style="line-height: 20px"> 58 Localidades</p>
-        <p style="line-height: 20px">50 Programas</p> 
-        <p style="line-height: 20px">301 Capaciontaciones</p>
-        
+<div id="impacto" style="background-color:rgb(32, 27, 36);padding: 80px; display: flex;margin-bottom: 50px;align-items: left">
+    <p><strong style="font-size: 30PX;font-weight: 600;font-style: normal;text-align: left;display: block; ; box-sizing: border-box ; line-height: 2;">.Impacto</strong> </p>
+    <div id="Impacto-info" style="display: flex; align-items: center;"> 
+     <p style="font-size: 14px;font-weight: 400; text-align: left;">Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la comunidad. Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.</p>
+        <p style="line-height: 20px"><strong style="font-size: 50PX;font-weight: 700;">58</strong> Localidades</p>
+        <p style="line-height: 20px"><strong style="font-size: 50PX;font-weight: 700;">+50</strong> Mentores</p> 
+        <p style="line-height: 20px"><strong style="font-size: 50PX;font-weight: 700;">301</strong> Participantes</p>
+ </div>       
 </div>
 </body>
 </html>
