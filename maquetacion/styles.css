@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Configuracion de la barra de navegacion */
+
+#navbar{
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid gray;
+    position: fixed;
+    top: 0;
+    font-size: 14px;
+    color: #201B24;
+    background: white;
+    width: 100%;
+    height: 80px;
+}
+
+#navbar_left{
+    display: flex;
+    align-items: center;
+} 
+
+/* Configuracion de la barra de navegacion lado derecho interno de la barra de navegacion */
+
+#navbar_rigth{
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+}
+
+#navbar_rigth a{
+    text-decoration: none;
+}
+
+#navbar_rigth #social_network{
+    width: 14px;
+    height: 14px;
+    margin-left: 2rem;
+}
+
+#navbar_rigth ul{
+    display: flex;
+    margin-right: 1rem;
+    align-items: center;
+    list-style: none;
+    height: 100%;
+}
+
+#navbar_rigth ul li{
+    margin: 1rem;
+}
+
+#navbar_rigth ul li a{
+    color: #201B24;
+    margin: 0;
+    cursor: pointer;
+}
+
+
+#navbar_rigth ul li a:hover{
+    color:#6b53f0;
+}
+
+/* configuracion del menu desplegables */
+
+#navbar_rigth ul #expand_menu{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 4rem;
+}
+
+#navbar_rigth ul #expand_menu ul{
+    display: none;
+    position: absolute;
+    height: max-content;
+    border: 1px solid gray;
+    width: 200px;
+    background: white;
+}
+
+#navbar_rigth ul #expand_menu:hover ul{
+    display: block;
+    margin-top: 3rem;
+}
+
+#navbar_rigth button{
+    padding: 8px 24px 8px 24px;
+    border: 2px solid #201B24;
+    border-radius: 24px;
+    font-weight: 500;
+    font-size: 12px;
+    background: none;
+    transition: all 0.5s ease-in;
+    transition: 0.2s;
+}
+
+#navbar_rigth button:hover{
+    background: black;
+    color: white;
+    cursor: pointer;
+}
