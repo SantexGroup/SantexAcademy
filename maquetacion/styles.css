@@ -104,3 +104,348 @@
     color: white;
     cursor: pointer;
 }
+
+/* Estilos de contenido*/
+
+#contenido{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10rem 0 5rem 0;
+}
+
+#contenido p{
+    font-weight: bold;
+    font-size: 28px;
+    text-align: center;
+    margin: 0 29% 0 29%;
+}
+
+#contenido button{
+    margin-top: 2rem;
+    border-radius: 24px;
+    padding: 0 1rem 0 1rem;
+    font-size: 12px;
+    font-weight: bold;
+    height: 40px;
+    transition: all 0.5s ease-in;
+    transition: 0.2s;
+}
+
+#contenido #contactanos{
+    border: 2px solid #201B24;
+    margin-right: 2rem;
+    width: 140px;
+    background: white;
+}
+
+#contenido #contactanos:hover{
+    background: #201B24;
+    color: white;
+    cursor: pointer;
+}
+
+#contenido #sumate{
+    width: 120px;
+    background: white;
+    color: rgb(155, 81, 224, 1);
+    border: 2px solid #6b53f0;
+}
+
+#contenido #sumate:hover{
+    background: #6b53f0;
+    color: white;
+    cursor: pointer;
+}
+
+/* Estilos del bloque oscuro con los contadores */
+
+#conteo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #201b24;
+    height: 400px;
+    padding: 0 15rem 0 15rem;
+}
+
+#conteo #info{
+    float: left;
+    width: 50%;
+    color: white;
+    padding: 0 3rem 0 0.5rem;
+}
+
+#conteo #info p{
+    font-size: 14px;
+    line-height: 1.2rem;
+}
+
+#conteo #info h1{
+    margin-bottom: 1rem;
+}
+
+#conteo #contador{
+    margin-right: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    float: right;
+    width: 50%;
+}
+
+#conteo #contador div h1{
+    margin-top: 2rem;
+    text-align: center; 
+    font-size: 50px;   
+}
+
+#conteo #contador div p{
+    text-align: center;
+    color: #828b9c;
+    font-size: 14px;
+}
+
+#conteo #mentores div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: fit-content;
+    margin: 0 2rem 0 2rem;
+}
+
+#conteo #mentores div p{
+    margin-top: 1.5rem;
+    float: left;
+    font-size: 30px;
+    color:  #6b53f0;
+}
+
+#conteo #mentores div h1{
+    float: right;
+    font-size: 50px;
+}
+
+/* Foto de fondo fijo */
+
+#foto_fondo div{
+    height: 28rem;
+    background: url(./img/fondo.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Estilos para la seccion de programas y capacitaciones */
+
+#programasCapacitaciones {
+    margin: 5rem 0 5rem 0;
+}
+
+#programasCapacitaciones #contenidoGeneral{
+    margin-top: 8rem;
+    padding: 0 5rem 0 5rem;
+    display: flex;
+}
+
+#programasCapacitaciones #contenidoGeneral #contenidoGeneral_principal img{
+    width: 550px;
+    margin-top: 2rem;
+    border-radius: 0 32px 32px 32px;
+}
+
+#programasCapacitaciones #contenidoGeneral #contenidoGeneral_info{
+    padding: 5rem;
+    margin-top: 3rem;
+}
+
+#programasCapacitaciones #contenidoGeneral #contenidoGeneral_info #logo{
+    width: 200px;
+}
+
+#programasCapacitaciones #contenidoGeneral #contenidoGeneral_info p{
+    margin-top: 1rem;    
+}
+
+/* Configuracion para todos los botones de esta seccion */
+
+#proCapButtons{
+    margin-top: 2rem;
+    padding: 8px 24px 8px 24px;
+    border: 2px solid #201B24;
+    border-radius: 24px;
+    font-weight: 500;
+    font-size: 12px;
+    background: none;
+    transition: all 0.5s ease-in;
+    transition: 0.2s;
+}
+
+#proCapButtons:hover{
+    background: black;
+    color: white;
+    cursor: pointer;
+}
+
+#programasCapacitaciones #contenidoGeneral_revez{
+    display: flex;
+    padding: 0 8rem 0 8rem;
+}
+
+#programasCapacitaciones #contenidoGeneral_revez img{
+    width: 550px;
+    border-radius: 24px 24px 0 24px;
+}
+
+#programasCapacitaciones #contenidoGeneral_revez h3{
+    margin-top: 10rem;
+}
+
+#programasCapacitaciones #contenidoGeneral_revez p{
+    margin: 1rem 4rem 0 0;
+    font-size: 14px;
+}
+
+/* Estilos para las terjetas de pesonas */
+
+#equipo{
+    padding: 5rem;
+    background: #F4F4F5;
+}
+
+#equipo #personas{
+    display: flex;
+    background: #F4F4F5;
+}
+
+#equipo #personas #persona{
+    margin: 2rem 2.5rem 0 0;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    border-radius: 24px 24px 24px 0;
+}
+
+#equipo #personas #persona img{
+    border-radius: 24px 24px 0 0;
+    width: 17rem;
+    margin-bottom: 2rem;    
+}
+
+#equipo #personas #persona p{
+    color: gray;
+    font-size: 14px;
+}
+
+#equipo #personas #persona a img{
+    margin-top: 1rem;
+    width: 30px;
+    transition: all 0.5s ease-in-out;
+
+}
+
+#equipo #personas #persona a img:hover{
+    content: url(./img/iconos/linkedin-tarjetas-hover.png);
+}
+
+/* Seccion Alianza */
+
+#alianza{
+    padding: 5rem;
+}
+
+#alianza #items{
+   overflow: hidden;
+}
+
+#alianza ul{
+    display: flex;
+    margin-top: 3rem;
+    list-style: none;
+    animation: cambio 10s infinite;
+}
+
+@keyframes cambio {
+    25% { margin-left: 0px;}
+    50% { margin-left: -720px;} 
+    75% { margin-left: -1100px;}
+}
+
+#alianza ul li img{
+    width: 240px;
+    filter: grayscale(100%);
+}
+
+#alianza ul li img:hover{
+    filter: grayscale(0%);
+}
+
+/* Footer */
+
+footer{
+    background: #201b24;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 5rem 0 5rem;
+}
+
+footer #logo_frase{
+    display: flex;
+    float: left;
+    width: 30%;
+}
+
+footer #logo_frase div img{
+    width: 177px;
+    margin: 2rem 1rem 0 0;
+}
+
+footer #logo_frase div p{
+    margin: 2rem;
+    font-size: 12px;
+    width: 240px;
+}
+
+footer #secciones{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    width: 70%;
+}
+
+footer #secciones div{
+    margin-left: 8rem;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+footer #secciones div p:hover{
+    cursor: pointer;
+}
+
+footer button{
+    color: white;
+    margin-top: 120px;
+    border-radius: 10px 10px 0 0;
+    border: none;
+    width: 60px;
+    height: 40px;
+    background: rgb(99, 99, 99);
+}
+
+footer button:hover{
+    cursor: pointer;
+    background-color: #644edc;
+}
+
+
+
+
