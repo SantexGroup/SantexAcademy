@@ -457,5 +457,142 @@ footer button:hover{
 }
 
 
+/* Resposive */
+
+/* contenido */
+
+@media (max-width:800px) {
+
+    #navbar button{
+        display: none;
+    }
+    
+    #navbar ul{
+        display: none;
+    }
+
+    #navbar #navbar_rigth a{
+        display: none;
+    }
+
+    
+
+    #contenido p{
+        margin: 1rem;
+    }
+
+    #conteo{ 
+        flex-direction: column;
+        height: 800px;
+    }
+
+    #conteo #info{
+        margin-top: 3rem;
+        padding: 1rem;
+        width: 400px;
+    }
+
+    #conteo #contador{
+        flex-direction: column;
+    }
+
+    #foto_fondo{
+        display: none;
+    }
+
+    #programasCapacitaciones div{
+        flex-direction: column;
+    }
+
+    #programasCapacitaciones #contenidoGeneral{
+        padding: 0 2rem 0 3rem;
+    }
+
+    #programasCapacitaciones #contenidoGeneral #contenidoGeneral_principal h1 {
+        margin-bottom: 2rem;
+    }
+
+    #programasCapacitaciones #contenidoGeneral #contenidoGeneral_info{
+        padding: 0;
+    }
+
+    #programasCapacitaciones  #contenidoGeneral_revez{
+        padding: 0 2rem 0 2rem;
+    }
+
+    #programasCapacitaciones  #contenidoGeneral_revez div{
+        margin: 2rem 0 0 1rem ;
+    }
+
+    #programasCapacitaciones  #contenidoGeneral_revez div h3{
+        margin: 2rem 0 0 0;
+    }
+
+    #programasCapacitaciones  #contenidoGeneral_revez div img{
+        width: 400px;
+    }
+
+    #programasCapacitaciones #contenidoGeneral #contenidoGeneral_principal img{
+        margin: 0;
+        width: 400px;
+
+    }
+
+    #equipo{
+        padding: 2rem 0 0 3rem;
+    }
+
+    #equipo #personas{
+        flex-direction: column;
+    }
+
+    #equipo #personas #persona img{
+        width: 400px;
+    }
+
+    #alianza{
+        padding: 1rem;
+    }
+
+    #alianza #items ul li img{
+        width: 150px;
+    }
+
+    footer{
+        height: 400px;
+        flex-direction: column;
+        padding: 0 2rem 0 2rem;
+    }
+
+    footer #logo_frase{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    footer #logo_frase div{
+        padding: 0;
+    }
+
+    footer #logo_frase div p{
+        margin: 1rem 0 0 0;
+        width: 100%;
+    }
+
+    footer #secciones{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    footer #secciones div{
+        align-items: end;
+        margin: 1rem 0 0 0;
+        width: 100%;
+    }
+
+    footer button{
+        display: none;
+    }
+}
+
 
 
