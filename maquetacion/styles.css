@@ -427,6 +427,12 @@ footer #secciones div{
     font-size: 14px;
 }
 
+footer #secciones div p img{
+    margin-right: 1rem;
+    width: 15px;
+    filter: invert(1);
+}
+
 footer #secciones div p:hover{
     cursor: pointer;
 }
@@ -436,9 +442,13 @@ footer button{
     margin-top: 120px;
     border-radius: 10px 10px 0 0;
     border: none;
-    width: 60px;
-    height: 40px;
+    width: 50px;
+    height: 35px;
     background: rgb(99, 99, 99);
+}
+
+footer button img{
+    width: 32px;
 }
 
 footer button:hover{
