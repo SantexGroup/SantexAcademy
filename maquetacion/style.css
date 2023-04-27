@@ -1,22 +1,45 @@
+
 body {
     margin: 0;
 }
 
 p {
     margin-right: 40px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: 500;
 }
 
 h1 {
-    margin: 0px 400px;
+    margin: 23px 324px;
     text-align: center;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    color: #201b24;
 }
 
 button.redondo {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
     background-color: white;
     border: 1px solid black;
     border-radius: 25px;
     padding: 0px 20px;
-    height: 32px;
+    height: 35px;
+    font-size: 13px;
+    line-height: 13px;
+    border: solid;
+    border-width: 2px;
+}
+button.redondo:hover{
+    background-color: black;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s;
+    border-color: black;
+
 }
 div#introduction-actions {
     display: flex;
@@ -26,7 +49,7 @@ div#introduction-actions {
 #header {
     border-bottom: 1px solid gray;
     display: flex;
-    padding: 10px 100px;
+    padding: 23px 99px;
     justify-content: space-between
 }
 
@@ -35,10 +58,28 @@ div#introduction-actions {
     align-items: center;
 }
 
+#introduction{
+    padding: 48px;
+}
+
 #introduction-actions{
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
 #introduction-actions .redondo{
-    margin-left: 14px;
+    margin-left: 30px;
 }
+
+
+#sumate{
+    color: #6b53f0;
+}
+#sumate.redondo:hover{
+    background-color: #6b53f0;
+    color: white;
+    transition: 0.3s;
+    border-color: #6b53f0;
+}   
+
+
+
