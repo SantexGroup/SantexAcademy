@@ -6,8 +6,11 @@
     <h2 style="color: black; text-decoration: underline; margin-bottom: 2rem"> Replicar el Sitio de xAcademy<h2>
 </div>
 
-<h2 style="text-align: left; color: black">En la primera clase de maquetación como ejercicio práctico intentamos realizar una réplica del home del sitio de la Fundación. El código trabajado en la clase está guardado en el repo público del Academy (abajo el link) en la carpeta maquetación. Como tarea deben:</h2>
+<h1 style="text-align: left; color: black"><strong>Yo arranque el proyecto desde la primera clase por eso es que la entra es temprana.<br> Esto se puede comprobar porque lo inicie en al repositorio: https://github.com/PabloAndresBustos/html-css </strong></h1>
 
+<h2 style="text-align: left; color: black">En la primera clase de maquetación como ejercicio práctico intentamos realizar una réplica del home del sitio de la Fundación. El código trabajado en la clase está guardado en el repo público del Academy (abajo el link) en la carpeta maquetación. Como tarea deben:</h2>
+<br>
+<br>
 <div style="text-align: left; color: black">
     <ul>
         <li>Crear un fork del repositorio</li>
@@ -25,11 +28,11 @@
 </div>
 <div style="display: flex; align-items: center; justify-content: space-around">
     <div style="display: flex; flex-direction: column; align-items: center; color: black">
-        <img src="https://drive.google.com/uc?export=view&id=1qlv-QjdNQz9szJ1DTpBRPhDfXJKuWkwP" style="border-radius: 50%; width: 250px; border: 3px solid black; float: left">
-        <p>Lorenzo Sauchelli</p>
+        <img src="https://drive.google.com/uc?export=view&id=1iJWth66KYS7-U6hoKYgPE-DEQ0JFfsBT" style="border-radius: 50%; width: 250px; border: 3px solid black; float: left">
+        <p>Diana Cabrera</p>
     </div>
     <div style="display: flex; flex-direction: column; align-items: center; color: black">
-        <img src="https://drive.google.com/uc?export=view&id=1sIlF1O7pn6nzaQTXA7NCFmltMedEp0TS" style="border-radius: 50%; width: 250px; border: 3px solid black; float: rigth">
-        <p>Luciana Pesado</p>
+        <img src="https://drive.google.com/uc?export=view&id=1rtwYkshQVtyBv2QT3Dn0tG2hNCyLDaVi" style="border-radius: 50%; width: 250px; border: 3px solid black; float: rigth">
+        <p>Andres Rodriguez</p>
     </div>
 </div>
