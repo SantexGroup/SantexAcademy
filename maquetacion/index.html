@@ -6,42 +6,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cluster 2 - X Academy</title>
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body style="margin: 0;">
-    <div id="navbar" style="display: flex; border-bottom: 1px solid gray; padding: 14px 800px; justify-content: space-between;">
+<body>
+    <div id="navbar">
         <div id="navbar-left">
             <img src="technology-with-purpose.svg">
         </div>
-        <div id="navbar-right" style="display: flex; align-items: center;">
-            <p>Nosotros</p>
-            <p>Programas</p>
-            <p>Capacitaciones</p>
-            <p>Alianzas</p>
-            <p>Contacto</p>
-            <button>Sumate +</button>
+        <div id="navbar-right">
+            <a href="#">Nosotros</a>
+            <a href="#">Programas</a>
+            <a href="#">Capacitaciones</a>
+            <a href="#">Alianzas</a>
+            <a href="#">Contacto</a>
+            <button class="sumate">Sumate +</button>
+            <div class="social">
+                <a href=""><i class="bi-instagram"></i></a>
+                <a href=""><i class="bi-linkedin"></i></a>
+            </div>
+            
         </div>
     </div>
-    <div id="contact-form">
-        <form style="margin: 0 300px;" action="">
+    <div id="section-1">
+        <div id="contenido">
             <div>
-                <input type="text" placeholder="Nombre y Apellido">
-                <input type="email" placeholder="Email">
-                <select name="" id="">
-                    <option value="">Programas</option>
-                    <option value="">Capacitaciones</option>
-                </select>
+                <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología</h1>
+        
+                <button>Contactanos →</button>
+        
+                <button class="sumate">Sumate +</button></div>
+            
+        </div>
+    </div>
+    <div id="section-2">
+        <div id="content2">
+            <div class="content-left">
+                <h2>. Impacto</h2>
+                <p>Buscamos construir alianzas y fortalecer vinculos para generar una transformacion real en la comunidad.
+                Trabajamos para acercar la tecnologia innovadora y disruptiva del sector privado hacia el sector social.
+                </p>
             </div>
-            <div>
-                <textarea name="" cols="30" rows="10"></textarea>
+            <div class="content-right">
+                <div>
+                    <span>58</span>
+                    <span class="text">Localidades</span>
+                </div>
+                <div class="mentores">
+                    <div style="display: flex;">
+                        <span style="color: #6b53f0; font-weight: 300;">+</span>
+                        <span>50</span>
+                    </div>
+                    <div>
+                        <span class="text">Mentores</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <span>301</span>
+                    <span class="text">Participantes</span>
+                </div>
             </div>
-            <div>
-                <button>Enviar</button>
-            </div>
-        </form>
+        </div>
     </div>
 </body>
 </html>
