@@ -8,28 +8,123 @@
     <style>
         body {
             margin: 0;
+            background-color: #ffdd90;
+            background-image: url("twp-home.jpg");
+            background-attachment: fixed;
+            background-size: 100%;             
         }
+       
         p {
             margin-right: 40px;
+            font-family: Arial;
+            font-size: 90%;
         }
         h1 {
-            margin: 0px 400px;
+            margin: 0px 220px;
             text-align: center;
+            font-family: Arial;
+                     
+
+           
+        }
+        div#header {
+            display: flex;
+            justify-content: center;
+            background-color: white;
+            position: sticky;
+            top: 0px;
+            right: 0px;
+            left: 0px;
+            
+        }
+        h2 {
+            margin: 75px 220px 20px;
+            font-family: Arial;
+            color: white;
+            text-size-adjust: 111%;
+                    
+        }
+        h6 {
+            margin: 0px 100px 75px 220px;
+            font-family: Arial;
+            color: white;
+            font-size: 90%;
+                    
         }
         button.redondo {
             background-color: white;
-            border: 1px solid black;
+            border: 2px solid black;
             border-radius: 25px;
             padding: 0px 20px;
             height: 32px;
         }
+        button.redondo1 {
+            background-color: white;
+            border: 2px solid rgb(89, 4, 247);
+            color:rgb(89, 4, 247);
+            border-radius: 25px;
+            padding: 0px 20px;
+            height: 32px;
+        }
+
+   
         div#introduction-actions {
             display: flex;
             justify-content: center;
+            
         }
+        div#introduction-text {
+            display: flex;
+            justify-content: center;
+            margin-right: 4%;
+            margin-left: 4%;
+            
+            
+            
+        }
+        div#parte_gris {
+            display: flex;
+            justify-content: center;
+            background-color: rgb(27, 27, 36);
+            
+            
+        }
+        div#espacio {
+            display: flex;
+            justify-content: center;
+            opacity: 0;
+            
+            
+        }
+        .box01{
+        width: 600px;
+        height: 300px;
+        background: rgb(27, 27, 36);
+        display: flex;
+        align-items: flex-end;
+        }
+
+        .box02{
+        width: 33%;
+        height: 100%;
+        background: rgb(27, 27, 36);
+        }
+
+        .box03{
+        width: 33%;
+        height: 100%;
+        background: rgb(27, 27, 36);
+        }
+        .box04{
+        width: 33%;
+        height: 100%;
+        background: rgb(27, 27, 36);
+        }
+    
     </style>
 </head>
 <body>
+    
     <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
         <div id="header-left">
             <img src="logo.svg">
@@ -37,20 +132,60 @@
         <div id="header-right" style="display: flex; align-items: center;">
             <p>Nosotros</p>
             <p>Programas</p>
-            <p>Capaciontaciones</p>
+            <p>Capacitaciones</p>
             <p>Alianzas</p>
             <p>Contacto</p>
             <button class="redondo">Sumate +</button>
         </div>
     </div>
-    <div id="introduction" style="padding: 48px;">
+    <div id="introduction" style="padding: 48px 48px 150px 48px; background-color: white;">
         <div id="introduction-text">
             <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
         </div>
         <div id="introduction-actions" style="margin-top: 25px;">
             <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+            <button class="redondo1" style="margin-left: 14px;" >Sumate +</button>
         </div>
     </div>
+    <div id="introduction">
+        <div id="parte_gris">
+            <div>
+                <h2>. Impacto</h2>
+                <h6>Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la comunidad. Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.</h6>
+            </div>
+            <div>
+                <div class="box01">
+                    <div class="box02">
+                        <div style="color:white; font-size: 58px; font-family: Arial; padding-top: 60%;padding-left: 5%;"><b>58</b></div>
+                        <div style="color:gray; font-size: 15px; font-family: Arial;"><b>Localidades</b></div>
+                    </div>
+                    <div class="box03">
+                        
+                        <div style="color:white; font-size: 58px; font-family: Arial; padding-top: 60%;"><b>50</b></div>
+                        <div style="color:gray; font-size: 15px; font-family: Arial;"><b>Mentores</b></div>
+                    </div>
+                    <div class="box04">
+                        <div style="color:white; font-size: 58px; font-family: Arial; padding-top: 60%;"><b>300</b></div>
+                        <div style="color:gray; font-size: 15px; font-family: Arial;"><b>Participantes</b></div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+        <div id="espacio" style="margin-top: 400px;">
+            <h4>espacio </h4>
+        </div>
+        <div id="introduction" style="padding: 48px 48px 150px 48px; background-color: white;">
+            <div id="introduction-text">
+                <h1>Hasta aquí llegué....</h1>
+            </div>
+           
+        </div>
+     </div>
+     <footer>
+        <div style="background-color: rgb(27, 27, 36);padding: 50px 100px 50px 100px;">LOGOS</div>
+     </footer>
+   
 </body>
 </html>
