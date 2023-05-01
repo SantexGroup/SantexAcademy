@@ -1,0 +1,257 @@
+body {
+    margin: 0;
+  }
+  
+  h1 {
+    margin: 0px 400px;
+    text-align: center;
+  }
+  
+  button.redondo {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 0px 20px;
+    height: 32px;
+  }
+  
+  div#introduction-actions {
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: center;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+  }
+  
+  .menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    max-width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+  
+  .menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu li {
+    margin: 0 10px;
+    font-size: 18px;
+  }
+  
+  .menu li:first-child {
+    margin-left: 0;
+  }
+  
+  .menu li:last-child {
+    margin-right: 0;
+  }
+  
+  button.redondo {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 0px 20px;
+    height: 32px;
+  }
+  .border-purple {
+    border-color: #6b53f0;
+    color: #6b53f0;
+  }
+  
+  .border-black {
+    border-color: black;
+  }
+  
+  /* boton sumante de la barra de navegacion */
+  #btn-join {
+    height: 3em;
+    width: 8.5em;
+  }
+  
+  #btn-join:hover {
+    background-color: #201b24;
+    color: white;
+  }
+  
+  /* boton contactanos, en introduccion */
+  #btn-contact {
+    height: 3.2em;
+    width: 11.5em;
+  }
+  
+  #btn-contact:hover {
+    background-color: #201b24;
+    color: white;
+  }
+  
+  #btn-join-purple {
+    height: 3.2em;
+    width: 8.9em;
+  }
+  
+  /* boton sumate, en introduccion */
+  #btn-join-purple:hover {
+    background-color: #6b53f0;
+    color: white;
+  }
+  
+  #introduction {
+    padding-top: 140px;
+    padding-bottom: 70px;
+  }
+  
+  #introduction-text {
+    display: flex;
+    justify-content: center;
+  }
+  
+
+  /* texto central  */
+#text-1 {
+    display: flex;
+    text-align: center;
+    font-size: 1.75em;
+    width: 31%;
+  }
+  
+  /* botones contactanos y sumate */
+  #introduction-actions {
+    display: flex;
+    justify-content: center;
+    padding: 18px 0px;
+  }
+  
+  #impact {
+    background-color: #201b24;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 405px;
+  }
+  
+  /* texto de la seccion impacto */
+  #impact-text-1 {
+    font-size: 1.9em;
+    font-weight: bolder;
+    margin: 0.6em 0;
+  }
+  
+  /* detalle de la seccion impacto */
+  #impact-text-2 {
+    font-size: 0.9em;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  
+  .impact-col {
+    width: 44%;
+  }
+  
+  #item-3 {
+    /* background-color: red; */
+    width: 50%;
+  }
+  
+  #item-4 {
+    /* background-color: blue; */
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+  }
+  
+  .counters-box {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* numeros del contador */
+  .counter-number {
+    text-align: center;
+    font-size: 3em;
+    font-weight: bolder;
+    text-align: center;
+  }
+  
+  /* texto del contador */
+  .counter-text {
+    font-size: 0.9em;
+    color: #8c939c;
+  }
+
+  #plus {
+    color: #6b53f0;
+    font-size: 2em;
+  }
+  
+  /* organizar elementos en una columna */
+  .col {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* organizar elementos en una fila */
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  
+  
+
+  #impact {
+    background-color: #F8F8F8;
+    padding: 50px 0px;
+  }
+  
+  .counters-row {
+    margin-top: 50px;
+    justify-content: center;
+  }
+  
+  .counters-box {
+    text-align: center;
+    margin: 0 50px;
+  }
+  
+  .counter-number {
+    font-size: 60px;
+    font-weight: 700;
+    color: #2980b9;
+  }
+  
+  .counter-text {
+    font-size: 20px;
+    color: #666;
+    margin-top: 20px;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .counters-row {
+      flex-direction: column;
+    }
+    
+  }
+  
