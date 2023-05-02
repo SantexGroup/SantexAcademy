@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+p {
+    margin-right: 40px;
+}
+
+/*Incorporo el cambio de color al pasar cursor sobre link*/
+p:hover {
+    color: #9b51e0;
+}
+
+h1 {
+    margin: 0px 400px;
+    text-align: center;
+}
+
+button.redondo {
+    background-color: white;
+    border: 2px solid #201b24;
+    border-radius: 25px;
+    padding: 0px 20px;
+    height: 32px;
+}
+
+button:hover {
+    background-color:#201b24;
+    color: white;
+}
+
+/*Le doy estilo diferente al botón sumate en color*/
+button.redondoColor {
+    background-color: white;
+    border: 2px solid #9b51e0;
+    border-radius: 25px;
+    padding: 0px 20px;
+    height: 32px;
+    color: #9b51e0;
+}
+
+button.redondoColor:hover {
+    background-color: #9b51e0;
+    color: white;
+}
+
+div#introduction-actions {
+    display: flex;
+    justify-content: center;
+}
+
+/*Estilo del alcance*/
+div#introduction-alcance {
+    display: flex;
+    width: 100%;
+    background-color: #201b24;
+    padding-top: 120px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 100px;
+}
+
+#h2alcance{
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+}
+#palcance {
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/*Estilo cajas*/
+div#caja1{
+    padding-right: 50px;
+    padding-left: 70px;
+}
+div#caja2{
+    padding-right: 50px;
+    color:white;
+}
+div#caja3{
+    padding-right: 50px;
+    color:white;
+}
+div#caja4{
+    padding-right: 50px;
+    color:white;
+}
+
+
+/*Estilo del footer*/
+div#footer {
+    background-color: #201b24;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 60px;
+    margin-top: 0px;
+    padding-right: 30px;
+    padding-bottom: 40px;
+    margin-bottom: 0px;
+    padding-left: 30px;
+    position: relative;
+}
+
+#pfooter {
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+}
+/*Backgroung con imagen*/

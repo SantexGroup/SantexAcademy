@@ -1,56 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Xacademy Clase 1 maquetacion</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        p {
-            margin-right: 40px;
-        }
-        h1 {
-            margin: 0px 400px;
-            text-align: center;
-        }
-        button.redondo {
-            background-color: white;
-            border: 1px solid black;
-            border-radius: 25px;
-            padding: 0px 20px;
-            height: 32px;
-        }
-        div#introduction-actions {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
-</head>
-<body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
-        <div id="header-left">
-            <img src="logo.svg">
-        </div>
-        <div id="header-right" style="display: flex; align-items: center;">
-            <p>Nosotros</p>
-            <p>Programas</p>
-            <p>Capaciontaciones</p>
-            <p>Alianzas</p>
-            <p>Contacto</p>
-            <button class="redondo">Sumate +</button>
-        </div>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="estilos.css" />
+  </head>
+  <body>
+    <div
+      id="header"
+      style="
+        border-bottom: 1px solid gray;
+        display: flex;
+        padding: 10px 100px;
+        justify-content: space-between;
+        position: fixed;
+        width: 100%;
+        background-color: white;
+      "
+    >
+      <div id="header-left">
+        <img src="logo.svg" />
+      </div>
+      <div id="header-right" style="display: flex; align-items: center">
+        <p>Nosotros</p>
+        <p>Programas</p>
+        <p>Capacitaciones</p>
+        <p>Alianzas</p>
+        <p>Contacto</p>
+        <button class="redondo">Sumate +</button>
+      </div>
     </div>
-    <div id="introduction" style="padding: 48px;">
-        <div id="introduction-text">
-            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
-        </div>
-        <div id="introduction-actions" style="margin-top: 25px;">
-            <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
-        </div>
+    <div
+      id="introduction"
+      style="
+        padding-top: 70px;
+        padding-bottom: 70px;
+        padding-left: 30px;
+        padding-right: 30px;
+      "
+    >
+      <div id="introduction-text">
+        <h1>
+          Somos una Fundación dedicada a mejorar la calidad de vida de las
+          personas y su entorno, a través de la tecnología.
+        </h1>
+      </div>
+      <div id="introduction-actions" style="margin-top: 25px">
+        <button class="redondo">Contactanos -></button>
+        <button class="redondoColor" style="margin-left: 14px">Sumate +</button>
+      </div>
     </div>
-</body>
+    <div id="introduction-alcance">
+      <div id="caja1">
+        <h2 id="h2alcance">.Impacto</h2>
+        <p id="palcance">
+          Buscamos construir alianzas y fortalecer vínculos para generar una
+          transformación real en la comunidad. Trabajamos para acercar la
+          tecnología innovadora y disruptiva del sector privado hacia el sector
+          social.
+        </p>
+      </div>
+      <div id="caja2">
+        <p style="font-weight: 700;font-size: 50px">58</p>
+        <p style="font-size: 14px;color:#8c939c">Localidades</p>
+      </div>
+      <div id="caja3">
+        <p style="font-weight: 700;font-size: 50px">+50</p>
+        <p style="font-size: 14px;color:#8c939c">Mentores</p>
+      </div>
+      <div id="caja4">
+        <p style="font-weight: 700;font-size: 50px">301</p>
+        <p style="font-size: 14px;color:#8c939c">Participantes</p>
+      </div>
+    </div>
+    <div id="footer">
+      <div><img src="technology-with-purpose-white.svg" /></div>
+      <div>
+        <p id="pfooter">
+          Trabajamos para acercar la tecnología innovadora y disruptiva del
+          sector privado hacia el sector social.
+        </p>
+      </div>
+      <div>
+        <p id="pfooter">NOSOTROS</p>
+        <p id="pfooter">CONTACTO</p>
+      </div>
+      <div>
+        <p id="pfooter">PROGRAMAS</p>
+        <p id="pfooter">CAPACITACIONES</p>
+      </div>
+      <div>
+        <p id="pfooter">INSTAGRAM</p>
+        <p id="pfooter">LINKEDIN</p>
+      </div>
+    </div>
+  </body>
 </html>
