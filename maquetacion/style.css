@@ -1,0 +1,489 @@
+/*GENERALES*/
+
+html {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    overflow-x: hidden;
+}
+
+a {
+    display: flex;
+    height: 1em;
+    margin-right: 2em;
+    color: black;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+button {
+    background-color: white;
+    border-radius: 20px;
+    padding: 0px 1.5em;
+    height: 3em;
+    border: 2px solid black;
+    font-size: 0.923em;
+    font-weight: 500;
+    width: 8.3em;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+    transition: color 0.3s; background-color: 0.3s;
+    cursor: pointer;
+}
+
+a:hover {
+    color: rgb(71, 71, 213);
+    transition: color 0.2s;
+}
+
+/*SECCIÓN NAVBAR*/
+
+#navbar {
+    display: flex;
+    position: fixed;
+    justify-content:space-between;
+    width: 100%;
+    height: 80px;
+    top: 0;
+    background-color: white;
+    border-bottom: 1px solid #8C939C;
+}
+
+#navbar-left {
+    display: flex;
+    align-items: center;
+    padding-left: 11em;
+}
+
+#navbar-right {
+    display: flex;
+    align-items: center;
+    padding-right: 12em;
+}
+
+#navbar p {
+    padding-right: 1.5em;
+}
+
+#navbar a {
+    padding-left: 1.5em;
+    margin: 0;
+}
+
+#logo {
+    width: 11em;
+    height: 3em;
+}
+
+.redes {
+    font-size: 1.1em;
+}
+
+#boton {
+    align-items: center;
+}
+
+/*SECCIÓN "PRESENTACION"*/
+
+#presentacion {
+    display: flex;
+    justify-content: space-evenly;
+    align-items:center; 
+    margin-top: 6em;
+    padding: 4em; 
+}
+
+#prescontenido {
+    display: block;
+    justify-content:flex-start;
+    align-items: center;
+    width: 45em; 
+    height: 19em;
+}
+
+#prestexto {
+    display: block;
+    text-align: center;
+    font-size: 2.15em;
+    font-weight: 600; 
+}
+
+#presbotones {
+    display: flex;
+    justify-content: center;
+}
+
+#contactanos {
+    padding-right: 20px;
+    padding-left: 1.5em;
+    width: 11.5em;
+}
+
+#sumate {
+    margin-left: 1.8em;
+    width: 9em;
+    color: rgb(71, 71, 213);
+    border-color: rgb(71, 71, 213);
+}
+
+#sumate:hover {
+    background-color: rgb(71, 71, 213);
+    color: white
+}
+
+/*SECCIÓN "IMPACTO"*/
+
+#impacto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #201b24;
+    color: white;
+    height: 31em;
+    padding-right: 11em;
+}
+
+#impacto p {
+    padding: 0px;
+    margin: 0px;
+}
+
+#imptexto { 
+    width: 28em;
+    padding-left: 7em;
+    font-size: 1.1em;
+}
+
+#imptexto1 {
+    font-size: 2.1em; 
+    font-weight: 600;
+}
+
+#imptexto2 {
+    padding-top: 1.2em;
+    display: flex;
+    justify-content: space-evenly;    
+    line-height: 1.5em;
+}
+
+#imptexto2 p {
+    height: 7em;
+}
+
+#impcontador {
+    display: flex;
+}
+
+.contadores {
+    padding-left: 3.5em;
+    padding-top: 1em;
+}
+
+.texcontadores p {
+    display: flex;
+    justify-content: center;
+    font-size: 1.1em;
+    color: rgb(140, 147, 156);
+}
+
+.numcontadores {
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 3.9em;
+}
+
+/*SECCIÓN IMAGEN*/
+
+#imagengrupal {
+    background-image: url("https://technologywithpurpose.org/wp-content/uploads/2022/11/twp-home.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
+    height: 100vh;
+    width: 100%
+}
+
+/*SECCION PROYECTOS*/
+
+#proyectos {
+    margin: 10em 12em 5em 12em;
+}
+
+.protitulo1 p {
+    font-weight: 600;
+    font-size: 2.3em;
+}
+
+.procontenido {
+    display: flex;
+}
+
+.proimagenes {
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    height: 30em;
+    width: 45em;
+}
+
+.proinfo1 {
+    padding-left: 7em;
+    padding-top: 6em;
+    font-size: 1.1em;
+}
+
+.proinfo1 img {
+    height: 45px;
+}
+
+.proinfo1 p {
+    padding-right: 3.1em;
+    line-height: 1.5em;
+}
+
+.proinfo1 button {
+    width: 8.6em;
+    height: 2.7em;
+}
+
+.procontenido2 {
+    display: flex;
+    padding-top: 1.5em;
+}
+
+.proinfotitulo {
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+.proinfo2 {
+    padding-left: 4em;
+    padding-top: 5em;
+    padding-right: 8em;
+    font-size: 1.1em;
+}
+
+.proinfo2 p {
+    line-height: 1.5em;
+}
+
+.proinfo2 button {
+    width: 8.6em;
+    height: 2.7em;
+}
+
+.protitulo2 p {
+    font-weight: 600;
+    font-size: 2.3em;
+    padding-top: 3.5em;
+}
+
+.proimagen3 img {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    height: 35em;
+    width: 45em;
+}
+
+/* SECCIÓN EQUIPO*/
+
+#seccionequipo {
+    background-color: rgb(244, 244, 244);
+    padding: 4em 5em 10em 12em;
+    width: 100%;
+}
+
+.tituloequipo {
+    font-weight: 600;
+    font-size: 2.3em;
+}
+
+#equipo1 {
+    display: inline-flex;
+    justify-content: space-evenly;
+}
+
+.personas {
+    width: 20em;
+    padding-right: 4em;
+}
+
+.personas img {
+    width: 20em;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+.personasfooter {
+    display:inline-block;
+    justify-content: center;
+    background-color: white;
+    border-bottom-right-radius: 30px;
+    height: 9em;
+    width: 100%;
+}
+
+.personasfooter p {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;    
+}
+
+.personasfooter a {
+    display: flex;
+    justify-content: center;
+    width: 1em;
+    border-radius: 100px;
+    border: 2px solid black;
+    margin-top: 1em;
+    margin-left: 8.5em; 
+    padding: 0.3em;
+}
+
+.personasfooter a:hover {
+    background-color: rgb(71, 71, 213);;
+    transition: 0.3s;
+    border-color: white;
+}
+
+#equipo2 {
+    display: inline-flex;
+    justify-content: space-evenly;
+    padding-top: 3em;
+}
+
+.nombre {
+    font-weight: 600;
+    font-size: 1.4em;
+}
+
+.puesto {
+    color:rgb(140, 147, 156);
+}
+
+/*SECCIÓN ALIANZAS*/
+
+#alianzas {
+    padding: 40px 160px;
+    width: 100%;
+}
+
+#aliimagenes {
+    display: flex;
+    height: 6.5em;
+}
+
+#aliimagenes img {
+    padding-right: 2em;
+    filter: grayscale(1)
+}
+
+#aliimagenes img:hover {
+    filter: none;
+}
+
+/*SECCIÓN FOOTER*/
+
+#footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 14em;
+    background-color: #201b24;
+    color: white;
+    padding-left: 10em;
+    padding-right: 17em;
+}
+
+#footer img {
+    filter: brightness(0) invert(1);
+    width: 13em;
+}
+
+#footer a {
+    color: rgb(217, 217, 217);
+    font-size: 1.1em;
+    font-weight: 600;
+    padding-bottom: 0.5em;
+}
+
+#footer a:hover {
+    color: white;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+#footer p {
+    width: 20em;
+    color: rgb(217, 217, 217);
+    line-height: 1.4em;
+    font-weight: lighter;
+    font-size: 0.92em;
+}
+
+#footer a img {
+    width: 1em;
+}
+
+.footerredes {
+    display:flex;
+}
+
+/*MEDIA*/
+
+@media (width >= 2500px) {
+    html {
+        font-size: 28px;
+    }
+}
+
+@media (width >= 3500px) {
+    html {
+        font-size: 32px;
+    }
+}
+
+
+
+/*
+HOY
+
+-Revisar página y ver que cambios haría
+-Crear repositorio en GitHub
+-Buscar código repetido o innecesario y hacerlo lo más simnple posible. Reemplazo estilo en html??
+-Resolver como usar imágenes de mi ordenador
+-Ver y anotar todos los problemas que veo en el código
+-Considerar si voy a pasar a medidas relativas
+-Considerar si voy a tratar de hacerlo responsive
+-Escribir Readme
+-Subir versión a GitHub
+
+
+Preguntas: 
+¿Hay divs innecesarios? 
+¿Hay declaraciones de estilo innecesarias o repetidas?
+¿Se pueden simplificar los contenedores?
+¿Se puede agrupar de otra manera?
+
+
+Cositas:
+-Logo de instagram en footer está corrido a la izquierda
+-Todo el footer está distinto
+-Agregar redireccionamientos a la página
+-Los botones de linkedin en footer no son circulares y no pude hacer que se vuelva blanco el logo
+-No logré que los logos de navbar se tornen violetas
+-Tuve que agregar un id específico para centrar el botón. 
+-El texto de presentacion está mas abajo que el original
+-La imagen quedó mas grande en mi versión
+-Resolví la superposición de navbar con presentacion agregandole margin-top 
+-Defino el height de los elementos grandes cuando entiendo que deberían acomodarse solos. 
+-Tuve que agregar un overflow-x:hidden para no ver la barra de navegación de la iamgen
+-Agregar una clase para el line-height
+-Hay una división entre personas y su contenido de abajo
+-Para centrar los linkedin de personas tuve que hacerlo con margin

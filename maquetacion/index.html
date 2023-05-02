@@ -1,55 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xacademy Clase 1 maquetacion</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        p {
-            margin-right: 40px;
-        }
-        h1 {
-            margin: 0px 400px;
-            text-align: center;
-        }
-        button.redondo {
-            background-color: white;
-            border: 1px solid black;
-            border-radius: 25px;
-            padding: 0px 20px;
-            height: 32px;
-        }
-        div#introduction-actions {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
+    <title>Fundación Tecnología con Propósito</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
-        <div id="header-left">
-            <img src="logo.svg">
+    <div id="navbar">
+        <div id="navbar-left">
+            <a id="logo" href="https://technologywithpurpose.org/"><img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/technology-with-purpose.svg"></a>
         </div>
-        <div id="header-right" style="display: flex; align-items: center;">
-            <p>Nosotros</p>
-            <p>Programas</p>
-            <p>Capaciontaciones</p>
-            <p>Alianzas</p>
-            <p>Contacto</p>
-            <button class="redondo">Sumate +</button>
+        <div id="navbar-right">
+            <a target="_blank" href="https://technologywithpurpose.org/nosotros/">Nosotros</p></a>
+            <a target="_blank" href="https://technologywithpurpose.org/">Programas</p></a>
+            <a target="_blank" href="https://technologywithpurpose.org/">Capacitaciones</p></a>
+            <a target="_blank" href="https://technologywithpurpose.org/">Alianzas</p></a>
+            <a target="_blank" href="https://technologywithpurpose.org/contacto/">Contacto</p></a>
+            <a id="boton" target="_blank" href="https://donaronline.org/technology-with-purpose-foudation/sumate-genera-impacto"><button>Sumate +</button></a>
+            <a class="redes" title="Instagram" target="_blank" href="https://www.instagram.com/technologywithpurpose/"><img src="Logo instagram.png"></a>
+            <a class="redes" title="linkedin" target="_blank" href="https://www.linkedin.com/company/technologywithpurpose/"><img src="Logo linkedin.png"></a>
         </div>
     </div>
-    <div id="introduction" style="padding: 48px;">
-        <div id="introduction-text">
-            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
+    <div id="presentacion">
+        <div id="prescontenido">
+            <div id="prestexto">
+                <p> Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</p>
+            </div>
+            <div id="presbotones">
+                <button id="contactanos">Contactanos <snap id="flecha"> →</snap></button>
+                <a target="_blank" href="https://donaronline.org/technology-with-purpose-foudation/sumate-genera-impacto"><button id="sumate">Sumate +</button></a>
+            </div>
         </div>
-        <div id="introduction-actions" style="margin-top: 25px;">
-            <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+    </div>
+    <div id="impacto">
+        <div id="imptexto">
+            <div id="imptexto1">
+                <p>. Impacto</p>
+            </div>
+            <div id="imptexto2">
+                <p>Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la comunidad. Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.</p>
+            </div>    
+        </div>
+        <div id="impcontador">
+            <div class="contadores">
+                <div class="numcontadores">
+                    <p>58</p>
+                </div>
+                <div class="texcontadores">
+                    <p>Localidades</p>
+                </div>
+            </div>
+            <div class="contadores">
+                <div class="numcontadores">
+                    <p><snap style=" font-weight: 400; color: rgb(71, 71, 213); font-size: 30px;">+</snap>50</p>
+                </div>
+                <div class="texcontadores">
+                    <p>Mentores</p>
+                </div>
+            </div>
+            <div class="contadores">
+                <div class="numcontadores">
+                    <p>301</p>
+                </div>
+                <div class="texcontadores">
+                    <p>Participantes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="imagengrupal">
+    </div>
+    <div id="proyectos">
+        <div class="proseccion">
+            <div class="protitulo1">
+                <p>. Programas</p>
+            </div>
+            <div class="procontenido">
+                <div class="proimagen">
+                    <img class="proimagenes" src="https://technologywithpurpose.org/wp-content/uploads/2022/11/xacademy-01-800x533.jpg">
+                </div>
+                <div class="proinfo1">
+                    <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/xacademy.svg">
+                    <p>xAcademy es un programa de formación en tecnología llevado adelante por la Fundación Tecnología con Propósito junto a Santex que busca promover un cambio positivo en la comunidad a través de la educación en IT, apuntando a lograr la inserción laboral de personas en el mundo tecnológico.</p>
+                    <a href="https://technologywithpurpose.org/xacademy/"><button>Más info →</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="proseccion">
+            <div class="procontenido2">
+                <div class="proinfo2">
+                    <p class="proinfotitulo">Robótica educativa: la tecnología del futuro</p>
+                    <p>Durante el curso, los alumnos y alumnas a través de la robótica desarrollan la curiosidad, el autodidactismo y las habilidades blandas necesarias para afrontar la revolución tecnológica del siglo XXI.</p>
+                    <a href="https://technologywithpurpose.org/robotica-educativa-la-tecnologia-del-futuro/"><button>Más info →</button></a>
+                </div>
+                <div class="proimagen2">
+                    <img class="proimagenes" src="https://technologywithpurpose.org/wp-content/uploads/2022/11/robotica-educativa-07-800x533.jpg">
+                </div>
+            </div>
+        </div>
+        <div class="proseccion">
+            <div class="protitulo2">
+                <p>. Capacitaciones</p>
+            </div>
+            <div class="procontenido">
+                <div class="proimagen3">
+                    <img src="https://technologywithpurpose.org/wp-content/uploads/2022/11/estafas-virtuales-04-800x603.jpg">
+                </div>
+                <div class="proinfo1">
+                    <p class="proinfotitulo">Estafas virtuales: ¿cómo protegernos?</p>
+                    <p>Los canales de comunicación a través de medios digitales cobraron gran protagonismo a partir de la pandemia. Al mismo tiempo, se perfeccionan cada vez más rápido las modalidades de estafas y fraudes virtuales. En esta capacitación vas a aprender diferentes tips y consejos útiles para navegar de manera más segura.</p>
+                    <a href="https://technologywithpurpose.org/estafas-virtuales-como-protegernos/"><button>Más info →</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="proseccion">
+            <div class="procontenido2">
+                <div class="proinfo2">
+                    <p class="proinfotitulo">Seguridad informática para infancias</p>
+                    <p>¿Navegamos seguros en internet? La propuesta es una charla para niños y niñas donde se brindan herramientas de seguridad y autocuidado digital.</p>
+                    <a href="https://technologywithpurpose.org/seguridad-informatica-para-infancias/"><button>Más info →</button></a>
+                </div>
+                <div class="proimagen2">
+                    <img class="proimagenes" src="https://technologywithpurpose.org/wp-content/uploads/2022/10/seguridad-informatica-para-infancias-800x531.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="seccionequipo">
+        <p class="tituloequipo">. Equipo</p>
+        <div id="equipo1">
+            <div class="personas">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-juan.png">
+                <div class="personasfooter">
+                    <p class="nombre" style="margin-top: 20px;">Juan Santiago</p>
+                    <p class="puesto">Presidente</p>
+                    <a class="redes" title="Instagram" target="_blank" href="https://www.linkedin.com/in/juan-santiago-1461942/"><img src="Logo linkedin.png"></a>
+                </div>
+            </div>
+            <div class="personas">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-walter.png">
+                <div class="personasfooter">
+                    <p class="nombre" style="margin-top: 20px;">Walter Abrigo</p>
+                    <p class="puesto">Secreatario</p>
+                    <a class="redes" title="Instagram" target="_blank" href="https://www.linkedin.com/in/walterabrigo/"><img src="Logo linkedin.png"></a>
+                </div>
+            </div>
+            <div class="personas">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-gabriela.png">
+                <div class="personasfooter">
+                    <p class="nombre" style="margin-top: 20px;">Gabriela Fernandez</p>
+                    <p class="puesto">Tesorera</p>
+                    <a class="redes" title="Instagram" target="_blank" href="https://www.linkedin.com/in/gabriela-fernandez-53475b20/"><img src="Logo linkedin.png"></a>
+                </div>
+            </div>
+            <div class="personas">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-gabriel.png">
+                <div class="personasfooter">
+                    <p class="nombre" style="margin-top: 20px;">Gabriel Dubini</p>
+                    <p class="puesto">Tesorero</p>
+                    <a class="redes2" title="Instagram" target="_blank" href="https://technologywithpurpose.org/"><img src="Logo linkedin.png"></a>
+                </div>
+            </div>
+        </div>
+        <div id="equipo2">
+            <div class="personas">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-florencia.png">
+                <div class="personasfooter">
+                    <p class="nombre" style="margin-top: 20px;">Florencia D’Agostino</p>
+                    <p class="puesto">Dirección Ejecutiva</p>
+                    <a class="redes2" title="Instagram" target="_blank" href="https://www.linkedin.com/in/florencia-dagostino/"><img src="Logo linkedin.png"></a>
+                </div>
+            </div>
+            <div class="personas">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-celeste.png">
+                <div class="personasfooter">
+                    <p class="nombre" style="margin-top: 20px;">Celeste Torresi</p>
+                    <p class="puesto">Comisión Directiva</p>
+                    <a class="redes2" title="Instagram" target="_blank" href="https://www.linkedin.com/in/celeste-torresi-77094739/"><img src="Logo linkedin.png"></a>
+                </div>
+            </div>
+            <div class="personas">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-lucia.png">
+                <div class="personasfooter">
+                    <p class="nombre" style="margin-top: 20px;">Lucia Jaimez</p>
+                    <p class="puesto">Directora xAcademy</p>
+                    <a class="redes2" title="Instagram" target="_blank" href="https://www.linkedin.com/in/luc%C3%ADa-jaimez-365416151/"><img src="Logo linkedin.png"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="alianzas">
+        <p class="tituloequipo">. Alianzas</p>
+        <div id="aliimagenes">
+            <img src="https://technologywithpurpose.org/wp-content/uploads/2022/11/alianza-banco-galicia-400x151.png">
+            <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/alianza-banco-alimentos-cordoba-400x151.png">
+            <img src="https://technologywithpurpose.org/wp-content/uploads/2022/11/alianza-fundacion-scrum-400x151.png">
+            <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/alianza-grupo-inteligencia-educativa-400x151.png">
+            <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/alianza-jesus-maria-400x151.png">
+        </div>
+    </div>
+    <div id="footer">
+        <div>
+            <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/technology-with-purpose.svg">
+        </div>
+        <div>
+            <p>Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.</p>
+        </div>
+        <div>
+            <a title="Nosotros" href="https://technologywithpurpose.org/nosotros/">NOSOTROS</a>
+            <a title="Contacto" href="https://technologywithpurpose.org/contacto/">CONTACTO</a>
+        </div>
+        <div>
+            <a title="Programas" target="_blank" href="https://technologywithpurpose.org/#programas">PROGRAMAS</a>
+            <a title="Capacitaciones" target="_blank" href="https://technologywithpurpose.org/#capacitaciones">CAPACITACIONES</a>
+        </div>
+        <div>
+            <div class="footerredes">
+                <a title="Instagram" target="_blank" href="https://www.instagram.com/technologywithpurpose/"><img src="Logo instagram.png"></a>
+                <a title="Instagram" target="_blank" href="https://www.instagram.com/technologywithpurpose/">INSTAGRAM</a>
+            </div>
+            <div class="footerredes">
+                <a title="linkedin" target="_blank" href="https://www.instagram.com/technologywithpurpose/"><img src="Logo linkedin.png"></a>
+                <a title="linkedin" target="_blank" href="https://www.instagram.com/technologywithpurpose/">LINKEDIN</a>
+            </div>
         </div>
     </div>
 </body>
