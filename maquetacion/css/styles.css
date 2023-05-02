@@ -2,9 +2,15 @@ body {
     margin: 0;
   }
   
+  * {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+  }
+  
   h1 {
-    margin: 0px 400px;
+    margin: 100px 400px;
     text-align: center;
+    font-size: 1.67em;
+    width: 40%;
   }
   
   button.redondo {
@@ -20,11 +26,6 @@ body {
     justify-content: center;
   }
   
-  nav {
-    display: flex;
-    justify-content: center;
-    font-family: Inter, Arial, Helvetica, sans-serif;
-  }
   
   .menu-container {
     display: flex;
@@ -39,6 +40,12 @@ body {
   .logo {
     display: flex;
     align-items: center;
+  }
+  
+
+  nav {
+    display: flex;
+    justify-content: center;
   }
   
   .logo img {
@@ -56,7 +63,7 @@ body {
   
   .menu li {
     margin: 0 10px;
-    font-size: 18px;
+    font-size: 14px;
   }
   
   .menu li:first-child {
@@ -67,13 +74,44 @@ body {
     margin-right: 0;
   }
   
-  button.redondo {
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 25px;
-    padding: 0px 20px;
-    height: 32px;
+  .menu li:hover {
+    color: #6b53f0;
   }
+
+.font-icons:hover {
+  color: #d153f0;
+}
+
+  .redondo {
+    background-color: white;
+    color: black;
+    border-radius: 25%;
+    padding: 10px 25px;
+    font-size: 14px;
+    border: none;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+  
+  .redondo:hover {
+    background-color: black;
+    color: white;
+  }
+
+  .r-violeta {
+    background-color:#ffffff;
+    color: #6b53f0;
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-size: 14px;
+    border: none;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+  
+  .r-violeta:hover {
+    background-color: #6b53f0 ;
+    color:#ffffff;
+  }
+
   .border-purple {
     border-color: #6b53f0;
     color: #6b53f0;
@@ -83,7 +121,6 @@ body {
     border-color: black;
   }
   
-  /* boton sumante de la barra de navegacion */
   #btn-join {
     height: 3em;
     width: 8.5em;
@@ -94,27 +131,6 @@ body {
     color: white;
   }
   
-  /* boton contactanos, en introduccion */
-  #btn-contact {
-    height: 3.2em;
-    width: 11.5em;
-  }
-  
-  #btn-contact:hover {
-    background-color: #201b24;
-    color: white;
-  }
-  
-  #btn-join-purple {
-    height: 3.2em;
-    width: 8.9em;
-  }
-  
-  /* boton sumate, en introduccion */
-  #btn-join-purple:hover {
-    background-color: #6b53f0;
-    color: white;
-  }
   
   #introduction {
     padding-top: 140px;
@@ -124,23 +140,10 @@ body {
   #introduction-text {
     display: flex;
     justify-content: center;
+    
   }
   
 
-  /* texto central  */
-#text-1 {
-    display: flex;
-    text-align: center;
-    font-size: 1.75em;
-    width: 31%;
-  }
-  
-  /* botones contactanos y sumate */
-  #introduction-actions {
-    display: flex;
-    justify-content: center;
-    padding: 18px 0px;
-  }
   
   #impact {
     background-color: #201b24;
@@ -151,14 +154,12 @@ body {
     height: 405px;
   }
   
-  /* texto de la seccion impacto */
   #impact-text-1 {
     font-size: 1.9em;
     font-weight: bolder;
     margin: 0.6em 0;
   }
   
-  /* detalle de la seccion impacto */
   #impact-text-2 {
     font-size: 0.9em;
     font-weight: 400;
@@ -170,12 +171,10 @@ body {
   }
   
   #item-3 {
-    /* background-color: red; */
     width: 50%;
   }
   
   #item-4 {
-    /* background-color: blue; */
     display: flex;
     justify-content: space-around;
     width: 50%;
@@ -187,7 +186,6 @@ body {
     align-items: center;
   }
   
-  /* numeros del contador */
   .counter-number {
     text-align: center;
     font-size: 3em;
@@ -195,7 +193,6 @@ body {
     text-align: center;
   }
   
-  /* texto del contador */
   .counter-text {
     font-size: 0.9em;
     color: #8c939c;
@@ -206,13 +203,11 @@ body {
     font-size: 2em;
   }
   
-  /* organizar elementos en una columna */
   .col {
     display: flex;
     flex-direction: column;
   }
   
-  /* organizar elementos en una fila */
   .row {
     display: flex;
     flex-direction: row;
@@ -243,8 +238,7 @@ body {
   }
   
   .counter-text {
-    font-size: 20px;
-    color: #666;
+    color: #8c999c;
     margin-top: 20px;
   }
   
@@ -254,4 +248,45 @@ body {
     }
     
   }
+  .caja-externa {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20%;
+  }
   
+  #introduction {
+    display: flex;
+    justify-content: center;
+    padding: 18px 0px;  }
+
+  .fusion-row {
+      margin: 0 auto;
+  }
+  .contenedor-todo {
+    height: 100vh;
+  }
+  
+  .counter {
+    color: #fff;
+    text-align: center;
+    font-size: 3em;
+    font-weight: bolder;
+  }
+  
+  
+  #counter-container {
+    display: flex;
+    flex-wrap: wrap;
+    
+  }
+  
+  #counter-container > div {
+    flex-basis: 50%;
+  }
+  
+  @media screen and (min-width: 600px) {
+    #counter-container > div {
+      flex-basis: auto;
+    }
+  }

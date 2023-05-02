@@ -1,1 +1,1 @@
-This folder contains the code for the HTML and CSS lessons
+Carpeta con index.html y contenedora de las carpetas: css, js e img.
