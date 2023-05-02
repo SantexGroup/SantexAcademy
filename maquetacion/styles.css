@@ -1,0 +1,122 @@
+html{
+    font-family: 'Inter', sans-serif;
+   
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    height: 80px;
+    width: 1145px;
+    border-bottom: 1px solid gray;
+    padding: 0px 30px;
+    max-width: 1200px;
+    overflow: visible;
+}
+
+
+
+.main-menu{
+    display: flex;
+    float: right;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    width: 684.359px;
+    padding-right: 13px;
+}
+
+.nav-item {
+    display: flex;
+    justify-content: center;
+    padding-right: 35px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgb(32,27,36);
+    align-items: center;
+}
+
+.nav-item a{
+    text-decoration: none;
+}
+
+.nav-item:hover {
+    color: #6b53f0;
+    cursor: pointer;
+}
+
+#button-menu {
+    display: inline-flex;
+    background-color: white;
+    border-radius: 20px;
+    padding: 9px 20px;
+    height: 36px;
+    border: 2px solid rgb(32,27,36);
+    font-size: 12px;
+    align-items: center;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 14px;
+    letter-spacing: 0.18px;
+}
+
+#button-menu:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.logo{
+    width: 142px;
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    max-width: 100%;
+    line-height: 21px;
+    vertical-align: top;
+    float: left;
+}
+
+.social-media-icon{
+    display: flex;
+    align-items: center;
+    line-height: 13px;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgb(32,27,36);
+    float: left;
+}
+
+#instagram{
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    font-size: 14px;
+}
+
+#linkedin{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.social-media-icon:hover{
+    color: #c353f0;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.form{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.fusion-form-input{
+    border: 1px solid rgb(140, 147, 156);
+}
