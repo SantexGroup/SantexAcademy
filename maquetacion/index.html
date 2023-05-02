@@ -8,12 +8,25 @@
     <style>
         body {
             margin: 0;
+            background-image: url("img/twp-home.jpg");
+            background-repeat: no-repeat;
+            background-position-x:center;
+            
+            background-size: 100%;
+            background-attachment: fixed;
         }
         p {
             margin-right: 40px;
         }
         h1 {
             margin: 0px 400px;
+            text-align: center
+        }
+        h2 {
+            background-color: white;
+        }
+        h3, h4 {
+            align-content: center;
             text-align: center;
         }
         button.redondo {
@@ -23,16 +36,134 @@
             padding: 0px 20px;
             height: 32px;
         }
+        button.linkedin {
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 45px 45px 45px 45px;
+            height: 20px;
+            margin-left: 140px;
+        }
         div#introduction-actions {
             display: flex;
+            background-color: white;
             justify-content: center;
         }
+        .BlackBanner{
+            background-color: black;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-width: 0px;
+            border-style: solid;
+            padding-top: 100px;
+            
+            padding-right: 200px;
+            padding-left: 200px;
+            padding-bottom: 200px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            color: aliceblue;
+        }
+    
+        .cajon{
+            float:left;
+            width: 50%;
+        }
+        .cajonBlanco{
+            float:left;
+            width: 50%;
+            height: 500px;
+            background-color: white;
+        }
+        .pequeñaCaja{
+            float:left;
+            text-align: center;
+            width: 33%
+        }
+        #impacto{
+            font-size: 30px;
+        }
+        .numero{
+            font-size: 50px;
+        }    
+        .detalleNumero{
+            font-size: 14px;
+            color: gray
+        }
+        .subtitulo{
+            font-size: 30px;
+            margin-top: 40px;
+            margin-left: 30px;
+        }
+        #programas{
+            margin-top: 400px;
+            background-color: white;
+        }
+        .imgIzq{
+            border-radius: 0px 30px 30px 30px;
+            margin: 0px 0px 0px 20px;
+        }
+        .imgDer{
+            border-radius: 30px 30px 0px 30px;
+            padding: 10px;
+        }
+        .imgTar{
+            border-radius: 30px 30px 0px 0px;
+            max-width: 300px;
+        }
+        #xacad{
+            background-color: white;
+            margin-top: 140px;
+            margin-left: 140px;
+            max-width: 30%;
+        }
+        .parrafoIzq{
+            background-color: white;
+            margin-left: 140px;
+            margin-right: 30px;
+            margin-top: 20px;
+        }
+        .parrafoDer{
+            background-color: white;
+            margin-left: 30px;
+            margin-right: 140px;
+            margin-top: 20px;
+        }
+        .borde{
+            margin-left: 140px;
+            margin-top: 30px;
+        }
+        div#equipo{
+            overflow: hidden;
+            background-color: rgb(204, 199, 199);
+            width: 100%;
+            background-size: cover;
+        }
+        .tarjeta{
+            margin: 10px;
+            background-color: rgb(204, 199, 199);
+            background-image: none;
+            max-width: 300px;
+            max-height: 600px;
+            float:left;
+        }
+        .pie{
+            overflow: hidden;
+            background-color: rgb(83, 79, 79);
+            width: 100%; 
+        }
+        .detallePie{
+            float: left;
+            max-width: 20%;
+            margin-left: 100px;
+        }
+
+
     </style>
 </head>
 <body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
+    <div id="header" style="background-color: white; border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
         <div id="header-left">
-            <img src="logo.svg">
+            <img src="img/logo.svg">
         </div>
         <div id="header-right" style="display: flex; align-items: center;">
             <p>Nosotros</p>
@@ -43,7 +174,7 @@
             <button class="redondo">Sumate +</button>
         </div>
     </div>
-    <div id="introduction" style="padding: 48px;">
+    <div id="introduction" style="padding: 48px; background-color: white;">
         <div id="introduction-text">
             <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
         </div>
@@ -52,5 +183,127 @@
             <button class="redondo" style="margin-left: 14px;">Sumate +</button>
         </div>
     </div>
+    <div class="BlackBanner">
+        <div class="cajon">
+            <div id="impacto">
+            . Impacto
+            </div>
+            <p>
+                Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la comunidad. Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.
+            </p>
+        </div>
+        <div class="cajon">
+            <div class="pequeñaCaja">
+                <div class="numero">58</div>
+                <div class="detalleNumero">Localidades</div>
+            </div>
+            <div class="pequeñaCaja">
+                <div class="numero">+50</div>
+                <div class="detalleNumero">Mentores</div>
+            </div>
+            <div class="pequeñaCaja">
+                <div class="numero">301</div>
+                <div class="detalleNumero">Participantes</div>
+            </div>
+
+        </div>
+    </div>
+    <div id="programas">
+        <div class="cajonBlanco">
+            <div class="subtitulo">. Programas</div>
+            <img class="imgIzq" src="img/xacademy-01-600x400.jpg" alt="Imagen"/>
+        </div>
+        <div class="cajonBlanco">
+            <img id="xacad" src="img/xacademy.svg" alt="xacademy"/>
+            <div class="parrafoIzq">xAcademy es un programa de formación en tecnología llevado adelante por la Fundación Tecnología con Propósito junto a Santex que busca promover un cambio positivo en la comunidad a través de la educación en IT, apuntando a lograr la inserción laboral de personas en el mundo tecnológico.</div>
+            <button class="redondo borde">Más Info -></button>
+        </div>
+    </div>
+    <div>
+        <div class="cajonBlanco">
+            <div class="subtitulo">Robótica educativa: la tecnología del futuro</div>
+            <div class="parrafoDer">Durante el curso, los alumnos y alumnas a través de la robótica desarrollan la curiosidad, el autodidactismo y las habilidades blandas necesarias para afrontar la revolución tecnológica del siglo XXI.</div>
+            <button class="redondo borde">Más Info -></button>
+        </div>
+        <div class="cajonBlanco">
+            <img class="imgDer" src="img/robotica-educativa-07-600x400.jpg" alt="Imagen"/>
+        </div>
+    </div>
+    <div>
+        <div class="cajonBlanco">
+            <div class="subtitulo">. Capacitaciones</div>
+            <img class="imgIzq" src="img/estafas-virtuales-04-600x453.jpg" alt="Imagen"/>
+        </div>
+        <div class="cajonBlanco">
+            <div class="subtitulo">Estafas virtuales: ¿cómo protegernos?</div>
+            <div class="parrafoIzq">Los canales de comunicación a través de medios digitales cobraron gran protagonismo a partir de la pandemia. Al mismo tiempo, se perfeccionan cada vez más rápido las modalidades de estafas y fraudes virtuales. En esta capacitación vas a aprender diferentes tips y consejos útiles para navegar de manera más segura.</div>
+            <button class="redondo borde">Más Info -></button>
+        </div>
+    </div>
+    <div>
+        <div class="cajonBlanco">
+            <div class="subtitulo">Seguridad informática para infancias</div>
+            <div class="parrafoDer">¿Navegamos seguros en internet? La propuesta es una charla para niños y niñas donde se brindan herramientas de seguridad y autocuidado digital.</div>
+            <button class="redondo borde">Más Info -></button>
+        </div>
+        <div class="cajonBlanco">
+            <img class="imgDer" src="img/seguridad-informatica-para-infancias-600x398.jpg" alt="Imagen"/>
+        </div>
+    </div>
+
+    <div id="equipo">
+        <div class="tarjeta">
+            <img class="imgTar" src="img/twp-juan-400x296.png" alt="Juan"/>
+            <h3>Juan Santiago</h3>
+            <h4>Presidente</h4>
+            <button class="linkedin">in</button>
+        </div>
+        <div class="tarjeta">
+            <img class="imgTar" src="img/twp-walter-400x296.png" alt="Walter"/>
+            <h3>Walter Abrigo</h3>
+            <h4>Secretario</h4>
+            <button class="linkedin">in</button>
+        </div>
+        <div class="tarjeta">
+            <img class="imgTar" src="img/twp-gabriela-400x296.png" alt="Gabriela"/>
+            <h3>Gabriela Fernandez</h3>
+            <h4>Tesorera</h4>
+            <button class="linkedin">in</button>
+        </div>
+        <div class="tarjeta">
+            <img class="imgTar" src="img/twp-gabriel-400x296.png" alt="Gabriel"/>
+            <h3>Gabriel Dubini</h3>
+            <h4>Tesorero</h4>
+            <button class="linkedin">in</button>
+        </div>
+        <div class="tarjeta">
+            <img class="imgTar" src="img/twp-florencia-400x296.png" alt="Florencia"/>
+            <h3>Florencia D’Agostino</h3>
+            <h4>Dirección Ejecutiva</h4>
+            <button class="linkedin">in</button>
+        </div>
+        <div class="tarjeta">
+            <img class="imgTar" src="img/twp-celeste-400x296.png" alt="Celeste"/>
+            <h3>Celeste Torresi</h3>
+            <h4>Comisión Directiva</h4>
+            <button class="linkedin">in</button>
+        </div>
+        <div class="tarjeta">
+            <img class="imgTar" src="img/twp-lucia-400x296.png" alt="Lucia"/>
+            <h3>Lucia Jaimez</h3>
+            <h4>Directora XAcademy</h4>
+            <button class="linkedin">in</button>
+        </div>
+        <div class="tarjeta">
+        </div>
+    </div>
+    <div class="pie">
+        <div class="detallePie"><img src="img/pie.svg"/></div>
+        <div class="detallePie">Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.</div>
+        <div class="detallePie">NOSOTROS CONTACTO</div>
+        <div class="detallePie">PROGRAMAS CAPACITACIONES</div>
+        <div class="detallePie">INSTAGRAM - LINKEDIN</div>
+    </div>
+   
 </body>
 </html>
