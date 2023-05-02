@@ -6,27 +6,491 @@ html {
     font-size: 16px;
 }
 
-p {
-    margin-right: 2em;
-    font-weight: bold;
-    font-size: 0.9em;
-    font-weight: 500;
+body {
+    margin: 0;
 }
 
-button {
+/*----------nav-bar----------------*/
+
+#header{
+    border-bottom: 1px solid gray; 
+    background-color: white; 
+    display: flex; padding: 10px 100px; 
+    justify-content: space-between; 
+    z-index: 10011; 
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+
+div#header-right p {
+    margin-right: 2em;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+div#header-right p:hover {
+   color:  rgb(107, 83, 240);
+}
+
+div#header-right button {
     background-color: white;
-    border-radius: 30px;
-    padding: 0px 1.5em;
-    height: 2.5em;
+    border-radius: 2.5em;
+    padding: .8em 1.5em;
     border: 2px solid black;
-    font-size: 0.8em;
-    width: 8em;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+div#header-right button:hover {
+    background-color: black;
+    color: white;
 }
 
 div#navbar-left img {
     width: 8em;
 }
 
+/*----------Fin-nav-bar----------------*/
+
+/*------Seccion-Introduccion------*/
+
+h1 {
+    margin: 0px 13.5em;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.75em;
+}
+
+button.redondo {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 1.75em;
+    padding: .7em 1.3em;
+    font-weight: 400;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+button.redondo1 {
+    background-color: white;
+    border: 2px solid rgb(107, 83, 240);
+    color: rgb(107, 83, 240);
+    border-radius: 1.75em;
+    padding: .7em 1.3em;
+    margin-left: 20px;
+    font-weight: 400;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+button.redondo:hover {
+    background-color: black;
+    color: white;
+}
+
+button.redondo1:hover {
+    background-color: rgb(107, 83, 240);
+    color: white;
+}
+
+div#introduction-actions {
+    display: flex;
+    justify-content: center;
+}
+
+/*------Fin-Seccion-Introduccion------*/
+
+/*------seccion inpacto---*/
+
+div#impacto{
+    display: block; 
+    background-color: rgb(32, 27, 36);
+    z-index: 10;
+}
+
+.cont-impacto{
+    display: flex;
+    position: relative;
+    padding-bottom: 100px;
+    padding-top: 120px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.impacto{
+    display: flex; 
+    float: left; 
+    position: relative; 
+    width: 416px;
+    color: white;
+    flex-direction: column;
+    padding-right:  50px;
+}
+
+.impacto h2{
+   font-size: 1.9em;
+   font-weight: 600;
+   line-height: 1.2em;
+}
+
+.impacto p{
+    font-size: .9em;
+    font-weight: 400;
+    line-height: 1.5em;
+ }
+
+ .valores-impacto{
+    display: flex; 
+    float: left; 
+    position: relative; 
+    width: 416px;
+ }
+
+ .valor{
+    color: white;
+    text-align: center;
+    padding: 1em;
+ }
+
+ .valor .titulo{
+    font-size: 3.2em;
+    font-weight: 700;
+    padding-top: 1.7em;
+ }
+
+ .valor .titulo span{
+    color: rgb(107, 83, 240);
+    font-size: .6em;
+    font-weight: 400;
+    vertical-align: middle;
+ }
+
+ .valor .descripcion{
+    color: rgb(140, 147, 156);
+    font-size: .88em;
+    font-weight: 400;
+    line-height: 1.5em;
+ }
+/*------Fin-seccion-inpacto---*/
+
+/*-------Seccion-Equipo---*/
+
+.equipo{
+    background-image: url(./img/twp-home.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 40em;
+}
+
+/*-------Fin-Seccion-Equipo---*/
+
+/*-------Programas---*/
+
+#programas{
+    display: block;
+}
+
+#programas1{
+    display: block;
+    padding-bottom: 70px;
+}
+
+.contenedor-programa{
+    padding-top: 5.5em;
+    padding-left: 5em;
+    padding-right: 5em;
+    position: relative;
+}
+
+.contenedor-programa h2{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.contenedor-programa-descripcion{
+    display: flex; 
+    align-items: center;
+    z-index: 10;
+}
+
+.contenedor-programa-descripcion .contenedor-img{
+    padding-top: 1em;
+    padding-left: 5em;
+    padding-right: 5em;
+}
+
+.contenedor-des{
+    display: flex;
+    flex-direction: column;
+    padding-right: 5em;
+    padding-left: 2em;
+}
+
+.contenedor-des-rob{
+    display: flex;
+    flex-direction: column;
+    padding-right: 2em;
+    padding-left: 5em;
+}
+
+.programa-parrafo p{
+    font-size: .88em;
+    font-weight: 400;
+    line-height: 1.49em;
+}
+
+/*-------Fin-Programas---*/
+
+/*-------Equipo---*/
+
+#equipo{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 10;
+    background-color: rgb(244, 244, 245);
+    padding-bottom: 4.4em;
+    padding-top: 4.4em;
+    padding-left: 1.9em;
+    padding-right: 1.9em;
+}
+
+div#contenedor-targeta{
+    margin-left: 1.1em;
+}
+
+#equipo h2{
+    font-size: 1.9em;
+    font-weight: 600;
+    line-height: 1.2em;
+    margin-left: 1.1em;
+    margin-right: 1.1em;
+}
+
+.targeta{
+    display: flex;
+    float: left;
+    width: 19.5em;
+    padding-bottom:  20px;
+}
+
+.cont-Target{
+    display: flex;
+    flex-direction: column;
+}
+
+.pie-targeta{
+    background-color: white;
+    text-align: center;
+    border-bottom-right-radius: 15px;
+}
+
+.pie-targeta h5{
+    font-size: 1.25em;
+    font-weight: 600;
+    line-height: 1.2em;
+    margin-bottom: 0;
+}
+
+.pie-targeta p{
+    color: rgb(140, 147, 156);
+    font-size: .9em;
+    font-weight: 400;
+    line-height: 1.5em;
+    margin-top: 0;
+}
+
+.pie-targeta button{
+    background-color: white;
+    border-radius: 3.5em;
+    /*padding: .8em 1.5em;*/
+    border: 2px solid black;
+    font-size: .9em;
+    font-weight: 600;
+    cursor: pointer;
+    width: 1.75em;
+    height: 1.75em;
+    margin-bottom: 1.4em;
+    text-align: center;
+}
+
+.pie-targeta button:hover{
+    background-color: rgb(107, 83, 240);
+    color: white;
+    border: 2px solid rgb(107, 83, 240);
+}
+/*-------Fin-Equipo---*/
+
+/*-------Alianzas---*/ 
+
+#alianzas{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 10;
+    padding-bottom: 4.4em;
+    padding-top: 4.4em;
+    padding-left: 1.9em;
+    padding-right: 1.9em;
+}
+
+div#contenedor_Alianzas{
+    margin-left: 1.1em;
+}
+
+#alianzas h2{
+    font-size: 1.9em;
+    font-weight: 600;
+    line-height: 1.2em;
+    margin-left: 1.1em;
+    margin-right: 1.1em;
+}
+
+.targeta-a{
+    display: flex;
+    float: left;
+    width: 14.4em;
+    height: 5.65em;
+}
+
+.targeta-a img{
+    filter: grayscale(1);
+}
+
+.targeta-a img:hover{
+    filter: grayscale(0);
+}
+/*-------Fin-Alianzas---*/
+
+/*-------varios---*/
+.img-redon{
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px;
+    width: 36em;
+    height: 24em;
+}
+
+.img-redon1{
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    width: 36em;
+    height: 24em;
+}
+
+.img-redon-t{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 16.3em;
+}
+
+.btns{
+    background-color: white;
+    border-radius: 30px;
+    padding: .8em 1.5em;
+    border: 2px solid black;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.btns:hover{
+    background-color: black;
+    color: white;
+}
+
+.tituloh4{
+    font-size: 1.4em;
+    line-height: 1.5em;
+    font-weight: 600;
+}
+/*-------Fin-varios---*/
+
+/*------------pie de pagina---------------------*/
+
+.contenedor-footer{
+    display: flex; 
+    justify-content: center; 
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.contenedor-footer a{
+    text-decoration: none;
+    color: white;
+    font-size: .9em;
+    font-weight: 600;
+    line-height: 1.5em;
+}
+
+.img-footer{
+    display: flex; 
+    float: left;
+    
+}
+
+.parrafo-footer{
+    display: flex; 
+    float: left;
+    color: white;
+    font-size: .75em;
+    font-weight: 400;
+    line-height: 1.5em;
+    width: 250px;
+}
+
+.enlace-footer{
+    display: flex; 
+    float: left;
+    flex-direction: column;
+   
+}
+
+.be{
+    margin-left:  24px;
+    margin-right: 24px;
+}
+
+/*------------Fin pie de pagina---------------------*/
+
+/*-Responsive-*/
+@media (width < 900px) {
+    html {
+        font-size: 8px;
+    }
+}
+
+@media (width < 1024px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media (width < 1215px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media (width < 1300px) {
+    html {
+        font-size: 14px;
+    }
+}
+@media (width > 1360px) {
+    html {
+        font-size: 20px;
+    }
+}
 @media (width >= 2500px) {
     html {
         font-size: 28px;
