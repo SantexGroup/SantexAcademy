@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="footer.css">
 </head>
 
 <body>
@@ -19,7 +20,7 @@
             <img class="image-logo" src="logo.svg">
         </div>
         <nav class="main-menu">
-            
+
             <li class="nav-item"><a>Nosotros</a></li>
             <li class="nav-item"><a>Programas</a></li>
             <li class="nav-item"><a>Capacitaciones</a></li>
@@ -29,18 +30,79 @@
             <i id="instagram" class="social-media-icon fa-instagram fab" aria-hidden="true"></i>
             <i id="linkedin" class="social-media-icon fa-linkedin-in fab" aria-hidden="true"></i>
         </nav>
-
     </header>
-    <div class="introduction" style="padding: 48px;">
-        <div id="introduction-text">
-            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la
+    <section class="intro-container">
+        <div class="text-intro-container">
+            <h1 class="introduction">Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su
+                entorno, a través de la
                 tecnología.</h1>
         </div>
-        <div id="introduction-actions" style="margin-top: 25px;">
-            <button class="redondo">Contactanos -></button>
-            <button class="button-novedades" style="margin-left: 14px;">Sumate +</button>
+        <div class="actions-container">
+            <button class="button-contactanos">Contactanos
+                <i class="fa-long-arrow-alt-right fas button-icon-right" aria-hidden="true"></i>
+            </button>
+            <button class="button-novedades" style="margin-left: 14px;">Sumate
+                <i class="fa-plus fas button-icon-right" aria-hidden="true"></i>
+            </button>
+        </div>
+    </section>
+
+    <div class="a-container">
+        <div class="space-container">
+            <div class="left-container">
+                <div class="title-container">
+                    <h2 class="title-text">.Impacto</h2>
+                </div>
+                <div class="p-container">
+                    <p class="p-text">Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la
+                        comunidad.
+                        Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector
+                        social.</p>
+                </div>
+
+            </div>
         </div>
     </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+          <img class="footer-image" src="./logo-white.svg" alt="Logo de la empresa">
+          <div class="footer-text-container">
+            <div class="text-container">
+                <p class="footer-text">Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.</p>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="footer-link-container" style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <div class="nosotros-contacto-footer-container">
+                <div class="nosotros-contacto">
+                    <a class="footer-link" href="https://technologywithpurpose.org/nosotros/">NOSOTROS</a>
+                    <a class="footer-link" href="https://technologywithpurpose.org/contacto/">CONTACTO</a>
+                </div>
+            </div>   
+        </div>
+
+        <div class="footer-link-container" style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <div class="nosotros-contacto-footer-container">
+                <div class="nosotros-contacto">
+                    <a class="footer-link" href="https://technologywithpurpose.org/#programas">PROGRAMAS</a>
+                    <a class="footer-link" href="https://technologywithpurpose.org/#capacitaciones">CAPACITACIONES</a>
+                </div>
+            </div>   
+        </div>
+
+        <div class="footer-link-container">
+            <div class="nosotros-contacto-footer-container">
+                <div class="nosotros-contacto">
+                    <a class="footer-link" href="https://www.instagram.com/technologywithpurpose/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> INSTAGRAM</a>
+                    <a class="footer-link" href="https://www.linkedin.com/company/technologywithpurpose/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i> LINKEDIN</a>
+                </div>
+            </div>   
+        </div>
+      </footer>
+
     <script src="https://kit.fontawesome.com/c26c11b9f6.js" crossorigin="anonymous"></script>
 </body>
 
