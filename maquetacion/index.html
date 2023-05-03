@@ -4,25 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Rubik+Dirt&family=Rubik:wght@300;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>Xacademy Clase 1 maquetacion</title>
     <style>
         body {
             margin: 0;
+            font-family: 'Inter', Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            font-weight: 500;
         }
         p {
             margin-right: 40px;
         }
         h1 {
-            margin: 0px 400px;
+            margin: 0px 500px;
+            padding: 30px 30px 0px 30px;
             text-align: center;
+            font-size: 28px;
+            font-weight: 600;
         }
-        button.redondo {
+        .redondo {
             background-color: white;
-            border: 1px solid black;
+            border: 2px solid black;
             border-radius: 25px;
-            padding: 0px 20px;
-            height: 32px;
+            padding: 5px 15px;
+            height: 36px;
         }
+
+        .redondo:hover{
+            background-color: black;
+            color: white;
+        }
+
         div#introduction-actions {
             display: flex;
             justify-content: center;
@@ -30,27 +46,141 @@
     </style>
 </head>
 <body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
+    <!--Barra de navegación-->
+    <div id="header" style="border-bottom: 2px solid gray; display: flex; padding: 15px 100px; justify-content: space-evenly">
         <div id="header-left">
             <img src="logo.svg">
         </div>
         <div id="header-right" style="display: flex; align-items: center;">
-            <p>Nosotros</p>
-            <p>Programas</p>
-            <p>Capaciontaciones</p>
-            <p>Alianzas</p>
-            <p>Contacto</p>
+            <p class="header-right">Nosotros</p>
+            <p class="header-right">Programas</p>
+            <p class="header-right">Capaciontaciones</p>
+            <p class="header-right">Alianzas</p>
+            <p class="header-right">Contacto</p>
             <button class="redondo">Sumate +</button>
         </div>
     </div>
+
+    <!--Introducción-->
     <div id="introduction" style="padding: 48px;">
         <div id="introduction-text">
             <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
         </div>
         <div id="introduction-actions" style="margin-top: 25px;">
             <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+            <button class="redondo" id="redondo-blue" style="margin-left: 14px;">Sumate +</button>
         </div>
     </div>
+
+    <!--Impacto-->
+    <section>
+        <div class="contenedor-impacto">
+            <h2 class="titulo-impacto">.Impacto</h2>
+            <div class="texto-impacto">
+                <p>Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la comunidad. Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.</p>
+            </div>
+            <div class="span-num">
+                <span>58</span>
+                <span><span class="mas">+</span>
+                    50
+                </span>
+                <span>301</span>
+            </div>  
+            <div class="span-descripcion">
+                <span>Localidades</span>
+                <span>Mentores</span>
+                <span>Participantes</span>
+            </div> 
+        </div>
+    </section>
+
+    <section>
+        <div>
+            <img class="img-santex" src="imagenes/1681411165557.jpeg" alt="Foto Santex Academy">
+        </div>
+    </section>
+
+    <!--Programas-->
+    <section>
+        <div class="prog-cap">
+        <div class="titulo">
+            <h2 class="titulo">.Programas</h2>
+        </div>
+
+        <div class="programa-academy">
+            <img class="prog-academy"  src="imagenes/xacademy-01-600x400A.jpg" alt="foto">
+             <img class="img-xacademy" src="imagenes/xacademy.svg" alt="foto">
+            
+            <div class="descripcion-programa">
+                <p class="descripcion-programa">xAcademy es un programa de formación en tecnología llevado adelante por la Fundación Tecnología con Propósito junto a Santex que busca promover un cambio positivo en la comunidad a través de la educación en IT, apuntando a lograr la inserción laboral de personas en el mundo tecnológico.</p>
+            </div> 
+            <div class="btn-programa">
+                <button class="redondo">Más info -></button>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="contenedor-robotica">
+        <div class="prog-robotica">
+            <img src="imagenes/robotica-educativa-07-600x400B.jpg" class="prog-academy" alt="foto">
+            <div class="titulo-robotica">
+                <h2 class="titulo-robotica">Robótica educativa: la tecnología del futuro</h2>
+            </div>
+          <div class="descripcion-robotica">
+            <p>Durante el curso, los alumnos y alumnas a través de la robótica desarrollan la curiosidad, el autodidactismo y las habilidades blandas necesarias para afrontar la revolución tecnológica del siglo XXI.</p>
+
+            <button class="redondo">Más info -></button>
+          </div>
+        </div>
+    </div>
+      
+
+    <div class="prog-cap capacitaciones"> 
+        <div class="titulo">
+            <h2 class="titulo">.Capacitaciones</h2>
+        </div>
+        <div class="programa-academy">
+            <img class="prog-academy" src="imagenes/estafas-virtuales-04-600x453C.jpg" alt="foto">
+            <h2 class="img-xacademy estafa-titulo">Estafas virtuales: ¿cómo protegernos?</h2>
+          
+            <div class="descripcion-programa">
+                <p class="descripcion-programa">Los canales de comunicación a través de medios digitales cobraron gran protagonismo a partir de la pandemia. Al mismo tiempo, se perfeccionan cada vez más rápido las modalidades de estafas y fraudes virtuales. En esta capacitación vas a aprender diferentes tips y consejos útiles para navegar de manera más segura.</p>
+            </div>
+
+            <div class="btn-programa">
+                <button class="redondo">Más info -></button>
+            </div>
+        </div>
+    </div>
+
+        <div class="contenedor-robotica seguridad">
+            <div class="prog-robotica">
+                <img class="prog-academy imagen-robotica" src="imagenes/seguridad-informatica-para-infancias-600x398D.jpg" alt="foto">
+            </div>
+            <div class="titulo-robotica">
+                <h2 class="titulo-robotica">Seguridad informática para infancias</h2>
+            </div>
+          <div class="descripcion-seguridad">
+            <p class="descripcion-seguridad">¿Navegamos seguros en internet? La propuesta es una charla para niños y niñas donde se brindan herramientas de seguridad y autocuidado digital.</p>
+
+            <button class="redondo btn-seguridad">Más info -></button>
+          </div>
+        </div>
+    </section>
+
+<!--Footer-->
+    <footer>
+        <div class="row">
+            <img src="imagenes/technology-with-purpose-white.svg" alt="Logo">
+            <ul>
+                <li>Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.</li>
+                <li><a href="#">NOSOTROS CONTACTO</a></li>
+                <li><a href="#">PROGRAMAS CAPACITACIONES</a></li>
+                <li><a href="#">INSTAGRAM LINKEDIN</a></li>
+            </ul>
+        </div>
+    </footer>
+
 </body>
 </html>

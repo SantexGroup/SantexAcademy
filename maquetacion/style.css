@@ -1,0 +1,207 @@
+#redondo-blue{
+    color:  #6b53f0;
+    border: 2px solid  #6b53f0;
+    border-radius: 25px;
+
+}
+
+#redondo-blue:hover{
+    background-color: #6b53f0;
+    color: white;
+}
+
+.header-right:hover{
+    color: #6b53f0;
+    cursor: pointer;
+}
+
+/*Impacto*/
+.contenedor-impacto{
+    padding: 100px;
+    background-color: #201b24;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo-impacto{
+    margin-left: 400px;
+    font-size: 2rem;
+    font-family: "Intel" Arial, Helvetica, sans-serif;
+}
+
+.texto-impacto{
+    margin-left: 400px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    display: block;
+    width: 400px;
+}
+
+.mas{
+    color: #6b53f0;
+    font-weight: 200;
+    font-size: 48px;
+    padding: 5px;
+}
+
+.span-num{
+    display: block;
+    margin-top: -140px;
+    margin-left: 1000px;
+    font-size: 48px;
+    font-family: 'Inter' Arial, Helvetica, sans-serif;
+    font-weight: 800;
+}
+
+span{
+    margin-right: 15px;
+    justify-content: space-between;
+}
+
+.span-descripcion{
+    padding: 10px;
+    margin-left: 1000px;
+    font-family: 'Inter' Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin-top: 0px;
+    justify-content: space-between;
+    
+}
+
+.img-santex{
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 10;
+}
+
+/*Porgramas*/
+
+.titulo{
+    font-family: 'Inter' Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    margin-top: 100px;
+    font-weight: 800;
+    margin-left: 200px;
+    
+}
+
+.programa-academy{
+    width: 600px;
+    height: 800px;
+    margin-left: 400px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.prog-academy{
+    border-radius: 0 45px 45px 45px;
+}
+
+.img-xacademy{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 700px;
+    margin-top: -300px;
+}
+
+.descripcion-programa{
+    font-size: 14px;
+    font-weight: 250px;
+    font-family: 'Inter' Arial, Helvetica, sans-serif;
+    text-align: start;
+    margin-top: 10px;
+    padding: 0px 400px 800px 350px; 
+    width: 400px;
+    
+}
+
+.btn-programa{
+    margin-top: -1600px;
+    margin-left: 450px;
+    width: 600px;
+    
+}
+
+.contenedor-robotica{
+    margin-top: -380px;
+    margin-left: 1000px;
+}
+
+.titulo-robotica{
+    font-size: 22px;
+    font-family: 'Inter' Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    margin-left: -290px;
+    margin-top: -280px;
+}
+
+.descripcion-robotica{
+    font-size: 14px;
+    font-family: 'Inter' Arial, Helvetica, sans-serif;
+    font-weight: 250px;
+    margin-left: -580px;
+    margin-top: 10px;
+    text-align: start;
+    width: 500px;
+}
+
+.descripcion-seguridad{
+    font-size: 14px;
+    font-family: 'Inter' Arial, Helvetica, sans-serif;
+    font-weight: 250px;
+    margin-left: -290px;
+    margin-top: 10px;
+    text-align: start;
+    width: 500px;
+}
+
+.btn-seguridad{
+    margin-left: -290px;
+}
+
+.imagen-robotica{
+    margin-top: 70px;
+    border-radius: 45px 45px 45px 0px;
+}
+
+.seguridad{
+    margin-top: -350px;
+}
+
+.capacitaciones{
+    margin-top: 250px;
+}
+
+.estafa-titulo{
+    width: 500px;
+    margin-left: 610px;
+}
+
+/*Footer*/
+footer{
+    background-color: #201b24;
+    color: white;
+    padding: 20px;
+    margin-top: 200px;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+li{
+    display: flex;
+    flex-direction: column;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
