@@ -1,6 +1,4 @@
 
-
-
 html {
     font-family: 'Inter', sans-serif;
     font-size: 16px;
@@ -25,16 +23,102 @@ button {
 
 div#navbar-left img {
     width: 8em;
+   
+    
+}
+div#container{
+    
+    margin:0 auto;
+    text-align: center;
 }
 
-@media (width >= 2500px) {
-    html {
-        font-size: 28px;
+section{
+    padding: 6% 0;
+}
+
+.container{
+    max-width: 48vw;
+    margin:0 auto;
+    text-align: center;
+    
+}
+
+#button-container{
+    margin-top: 7%;
+    display: flex;
+    justify-content: center;
+    
+
+}
+#button-container .redondo {
+    margin-left: 12px;
+    margin-right: 12px;
+    
+}
+.redondo-violeta {
+    border-color: #6b53f0;
+    color: #6b53f0;
+}
+
+.impacto{
+    background-color: #201b24; 
+    padding: 9% 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: end;  
+}
+.container-impacto{
+    max-width: 30vw;
+    margin:0 auto;
+    text-align: left;
+    background-color: #201b24; 
+    margin: 0;
+    padding: 0;
+    margin-right: 50px;
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+.container-impacto p{
+    line-height: 21px;
+}
+.container-impacto h2{
+    font-size: 30px;
+}
+
+.container-contadores{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    text-align: left;   
+}
+
+.container-contadores span{
+    font-size: 50px;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.container-contadores div{
+    padding: 10px;
+    text-align: center;
+}
+@media (width <= 900px){
+    html{
+        font-size: 13px;
     }
 }
 
-@media (width >= 3500px) {
-    html {
+@media (width >= 1500px){
+    html{
+        font-size: 32px;
+    }
+}
+
+@media (width >= 3000px){
+    html{
         font-size: 32px;
     }
 }
