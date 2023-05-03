@@ -1,0 +1,208 @@
+html {
+
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+
+body{
+    margin: 0;
+    
+
+} 
+
+p{
+ display: flex;
+} 
+
+div#navbar{
+    display:flex;
+    border-bottom: 1px solid gray;
+    padding-right: 30px;
+    padding-left: 30px;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+
+div#navbar-left img{
+   
+    display:flex;
+    text-align: left;
+    height: auto;
+    padding: 30px;
+ 
+}
+
+
+
+div#navbar-right{
+    display: flex;
+    align-items: center;
+}
+
+div#navbar-right p{
+    display:flex;
+    margin-right: 35px;
+    font-weight: 500;
+    font-size: 13px;
+    
+} 
+
+button {
+    background-color: white;
+    border-radius: 30px;
+    padding: 10,20,10,20;
+    height: 2.5em;
+    border: 2px solid black;
+    font-size:0.8em;
+    width: 8em;
+    box-sizing: border-box;
+    justify-content: center;
+    position: relative;
+    margin: 0, 10,0,10;
+    cursor: pointer;
+       
+}
+
+
+h1{
+    text-align: center;
+    padding: 0;
+    margin: 80px;
+    font-size: 28px;
+    line-height: 1.2;
+    justify-content: center;
+    display: flex;
+} 
+    
+
+
+
+.inicio{
+    padding: 6% 0;
+    display: flex;
+} 
+
+.container{
+    max-width: 48vw;
+    margin:0 auto;
+    text-align: center;
+}
+
+
+#button-container{
+    margin: 50px;
+    margin-top: 7%;
+    display: flex;
+    justify-content: center;
+    line-height: 1.2;
+    padding: 10, 20, 10,20;
+    text-align: center;
+   
+
+
+}
+#button-container .redondo {
+   
+    margin-left: 10px;
+    margin-right: 10px;
+    line-height: 1.2;
+    padding: 10, 20, 10,20;
+    justify-content: center;
+    text-align: center;
+    
+}
+.redondo-redondo-violeta {
+   
+    border-color:#6b53f0;
+    color:#6b53f0;
+    line-height: 1.2;
+    padding: 10, 20, 10,20;
+    justify-content: center;
+    text-align: center;
+    
+    
+}
+#button-container .redondo-violeta:hover{
+    
+    background-color: #6b53f0;
+    color:white;
+    line-height: 1.2;
+    padding: 10, 20, 10,20;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+
+.impacto{
+    background-color:#201b24;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color:whitesmoke;
+    display:flex;
+    padding: 120px, 30px, 100px;
+    justify-content: center;
+    align-items: end;
+    margin-left: calc(-4% / 2);
+} 
+.container-impacto{
+    max-width: 40vw;
+    padding: 0;
+    text-align: left;
+    justify-content: center;
+    margin: 0 auto;
+   
+}
+
+
+
+.container-contador{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    padding: 0;
+    text-align: left;
+    margin: 0;
+ 
+} 
+
+.container-contador span{
+    font-size: 50px;
+    font-weight: 700;
+    line-height: normal;
+    vertical-align: middle;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 0 7px;
+} 
+
+
+.container-contador div{
+    padding: 10px;
+    text-align: center;
+} 
+
+
+
+
+
+
+
+
+
+
+
+@media (width >= 2500px) {
+    html {
+        font-size: 28px;
+    }
+}
+
+@media (width >= 3500px) {
+    html {
+        font-size: 32px;
+    }
+}
+
+
