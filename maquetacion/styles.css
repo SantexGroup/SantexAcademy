@@ -1,0 +1,70 @@
+html {
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+.buttonPurp {
+    border: 2px solid rgb(102, 92, 197);
+}
+
+.divLogos {
+    padding: 0.5em;
+    border-color: red;
+}
+
+.log {
+    width: 0.8em;
+}
+
+.divSections {
+
+    display: flex;
+    height: 25em;
+    background-position: center center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+    border: 0px solid var(--awb-color3);
+}
+
+.divImpacto {
+    background-color: #201b24;
+    color: white;
+}
+
+.divImpacto_text {
+
+    font-size: 1.1em;
+}
+
+.divImpacto_datos_num {
+    font-size: 3.5em;
+    font-weight: 800;
+    display: flex;
+    height: 2em;
+}
+
+.divImpacto_datos_letras{
+    display: flex;
+    opacity: 0.5;
+}
+
+.divProgramas {
+
+    height: 30em;
+}
+
+.imgXacademy {
+    background-attachment: fixed;
+    overflow: hidden;
+    background-repeat: no-repeat;
+
+}
+
+.aa {
+    background-image: url("fondoXA.png");
+}

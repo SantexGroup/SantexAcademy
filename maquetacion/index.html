@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <title>Xacademy Clase 1 maquetacion</title>
     <style>
-        body {
-            margin: 0;
-        }
         p {
             margin-right: 40px;
         }
@@ -18,7 +19,7 @@
         }
         button.redondo {
             background-color: white;
-            border: 1px solid black;
+            border: 2px solid black;
             border-radius: 25px;
             padding: 0px 20px;
             height: 32px;
@@ -27,10 +28,18 @@
             display: flex;
             justify-content: center;
         }
+
+        div#introduction {
+            height: 17em;
+        }
+
+        div#introduction-text {
+            margin-top: 3em;
+        }
     </style>
 </head>
 <body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
+    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 1% 17%; justify-content: space-between">
         <div id="header-left">
             <img src="logo.svg">
         </div>
@@ -41,16 +50,44 @@
             <p>Alianzas</p>
             <p>Contacto</p>
             <button class="redondo">Sumate +</button>
+            <div class="divLogos">
+                <img src="logotipo-de-instagram.png" class="divLogos log">
+                <img src="linkedin.png" class="divLogos log">
+            </div>
         </div>
     </div>
     <div id="introduction" style="padding: 48px;">
         <div id="introduction-text">
-            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
+            <h1>Somos una Fundación dedicada a mejorar <br> la calidad de vida de las personas y su<br> entorno, a través de la tecnología.</h1>
         </div>
         <div id="introduction-actions" style="margin-top: 25px;">
             <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+            <button class="redondo buttonPurp" style="margin-left: 14px; border-color: rgb(122, 116, 219);">Sumate +</button>
         </div>
+    </div>
+    <div class="divImpacto divSections">
+        <div class="divImpacto_text">
+            <h2>. Impacto</h2>
+            <p>Buscamos construir alianzas y fortalecer vínculos para <br> generar una transformación real en la comunidad.<br> Trabajamos para acercar la tecnología innovadora y<br> disruptiva del sector privado hacia el sector social.</p>
+        </div>
+        <div class="divImpacto_datos">
+            <div class="divImpacto_datos_num"><p>58</p><p>+50</p><p>301</p></div>
+            <div class="divImpacto_datos_letras"><p>Localidades</p><p>Mentores</p><p>Participantes</p></div>
+        </div>
+    </div>
+    <div class="imgXacademy aa">
+        <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+    </div>
+
+    <div class="divProgramas divSections">
+        <div class="divProgramas_izq">
+            <h2>. Programas</h2>
+            <img src="https://technologywithpurpose.org/wp-content/uploads/2022/11/xacademy-01-600x400.jpg" style="width: 85%; border-radius: 0 35px 35px 35px;">
+        </div>
+        <div class="divProgramas_der">
+            <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/xacademy.svg" style="width: 40%;">
+            <p>xAcademy es un programa de formación en tecnología llevado<br> adelante por la Fundación Tecnología con Propósito junto a Santex que<br> busca promover un cambio positivo en la comunidad a través de la<br> educación en IT, apuntando a lograr la inserción laboral de personas<br> en el mundo tecnológico.</p>
+            <button class="redondo">Más info -></button>
     </div>
 </body>
 </html>
