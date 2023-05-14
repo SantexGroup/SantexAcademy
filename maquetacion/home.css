@@ -1,0 +1,88 @@
+.home {
+  padding: 5em 1em;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.home__content {
+  width: min(90%, 700px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 2em;
+}
+
+.home__title {
+  color: var(--black);
+  font-weight: 600;
+  font-size: var(--sizeTitle);
+  width: 95%;
+}
+
+.home__btns {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.home__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 40px;
+  border-radius: 2em;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.home__btn-contact {
+  border: 2px solid var(--black);
+  color: var(--black);
+}
+
+.home__btn-contact a {
+  color: var(--black);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home__btn-sumate {
+  border: 2px solid var(--MediumSlateBlue);
+}
+
+.home__btn-contact:hover {
+  background-color: var(--black);
+  color: var(--white);
+  transition: var(--transition);
+}
+
+.home__btn-contact:hover a {
+  color: var(--white);
+  transition: var(--transition);
+}
+
+.home__btn-sumate:hover {
+    background-color: var(--MediumSlateBlue);
+    color: var(--white);
+  }
+
+@media screen and (min-width: 800px) {
+    .home__btn {
+        width: 150px;
+        font-size: var( --sizeBtn);
+      }
+      
+
+}

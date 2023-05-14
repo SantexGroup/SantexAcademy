@@ -1,56 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <title>Xacademy Clase 1 maquetacion</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        p {
-            margin-right: 40px;
-        }
-        h1 {
-            margin: 0px 400px;
-            text-align: center;
-        }
-        button.redondo {
-            background-color: white;
-            border: 1px solid black;
-            border-radius: 25px;
-            padding: 0px 20px;
-            height: 32px;
-        }
-        div#introduction-actions {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
-</head>
-<body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
-        <div id="header-left">
-            <img src="logo.svg">
+
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./navbar.css" />
+    <link rel="stylesheet" href="./home.css" />
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <figure class="header__ctrLogo">
+        <img src="logo.svg" alt="logo" class="header__logo" />
+      </figure>
+
+      <div class="header__btns">
+        <i class="bx bx-search"></i>
+
+        <div class="bars__menu">
+          <span class="line1__bars-menu"></span>
+          <span class="line2__bars-menu"></span>
+          <span class="line3__bars-menu"></span>
         </div>
-        <div id="header-right" style="display: flex; align-items: center;">
-            <p>Nosotros</p>
-            <p>Programas</p>
-            <p>Capaciontaciones</p>
-            <p>Alianzas</p>
-            <p>Contacto</p>
-            <button class="redondo">Sumate +</button>
-        </div>
-    </div>
-    <div id="introduction" style="padding: 48px;">
-        <div id="introduction-text">
-            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
-        </div>
-        <div id="introduction-actions" style="margin-top: 25px;">
-            <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
-        </div>
-    </div>
-</body>
+      </div>
+
+      <nav class="nav">
+        <ul class="nav__menu">
+          <li class="nav__item">
+            <a href="#" class="nav__link"> Nosotros </a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link"> Programas </a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link"> Capaciontaciones </a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link"> Alianzas </a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link"> Contacto </a>
+          </li>
+        </ul>
+        <article class="nav__btns">
+          <button class="nav__btn">Sumate +</button>
+          <a
+            href="https://www.instagram.com/technologywithpurpose/"
+            target="_blank"
+            class="nav__btn-inst"
+          >
+            <i class="bx bxl-instagram"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/company/technologywithpurpose/"
+            target="_blank"
+          >
+            <i class="bx bxl-linkedin"></i>
+          </a>
+        </article>
+      </nav>
+    </header>
+    <main class="main">
+      <section class="home">
+        <article class="home__content">
+          <h1 class="home__title">
+            Somos una Fundación dedicada a mejorar la calidad de vida de las
+            personas y su entorno, a través de la tecnología.
+          </h1>
+          <div class="home__btns">
+            <button class="home__btn home__btn-contact">
+              <a href="https://exedeveloper.me/" target="_blank">
+                Contactanos <i class="bx bx-right-arrow-alt"></i>
+              </a>
+            </button>
+            <button class="home__btn home__btn-sumate">Sumate +</button>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
 </html>
