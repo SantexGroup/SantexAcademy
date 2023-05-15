@@ -5,36 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xacademy Clase 1 maquetacion</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        p {
-            margin-right: 40px;
-        }
-        h1 {
-            margin: 0px 400px;
-            text-align: center;
-        }
-        button.redondo {
-            background-color: white;
-            border: 1px solid black;
-            border-radius: 25px;
-            padding: 0px 20px;
-            height: 32px;
-        }
-        div#introduction-actions {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css"></link>
+   
 </head>
 <body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
+    <div id="header">
         <div id="header-left">
             <img src="logo.svg">
         </div>
-        <div id="header-right" style="display: flex; align-items: center;">
+        <div id="header-right">
             <p>Nosotros</p>
             <p>Programas</p>
             <p>Capaciontaciones</p>
@@ -52,5 +31,36 @@
             <button class="redondo" style="margin-left: 14px;">Sumate +</button>
         </div>
     </div>
+    <div id="impacto">
+      <div class="columnasI">
+        <div class="col1"></div>
+        <div class="col2"> 
+            <h2>. Impacto</h2>
+            <p>Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la comunidad. 
+               Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.</p>
+        </div>
+        <div class="col3">
+            <div class="Localidades">
+                <h2 class="NumI">58</h2>
+                <p class="DescripI">Localidades</p>
+            </div>
+            <div class="Mentores">
+                <h2 class="NumI">+50</h2>
+                <p class="DescripI">Mentores</p>
+            </div>
+            <div class="Participantes">
+                <h2 class="NumI">301</h2>
+                <p class="DescripI">Participantes</p>
+            </div>
+        </div>
+        <div></div>
+      </div>
+     
+    </div>
+    <div class="imagen">
+      <img src="./assets/twp-home.jpg" alt="">
+    </div>
+    <div id="programas"> .Programas </div>
+    <div id="Capacitaciones"> .Capacitaciones </div>
 </body>
 </html>

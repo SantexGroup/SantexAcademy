@@ -1,0 +1,91 @@
+html{
+    font-family: 'Inter', sans-serif;
+    margin: 0px;
+
+}
+body {
+    margin:0%;
+}
+
+p {
+    margin-right: 40px;
+}
+
+h1 {
+    margin: 0px 400px;
+    text-align: center;
+}
+
+button.redondo {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 0px 20px;
+    height: 32px;
+}
+
+div#introduction-actions {
+    display: flex;
+    justify-content: center;
+}
+
+div#header{
+    border-bottom: 1px solid gray; 
+    display: flex; 
+    padding: 10px 100px; 
+    justify-content: space-between
+    }
+
+div#header-right{
+    display: flex; 
+    align-items: center;
+}
+
+div#impacto{
+    background-color: #201b24;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-width: 0px;
+    border-style: solid;
+}
+
+.columnasI{
+    padding: 4em 1em;
+    color:white;
+    display: flex;
+}
+
+.col1{
+    margin:2em;
+    width: 10em;
+}
+
+.col2{
+    margin:2em;
+    width: 25em;
+}
+
+.col3{
+    display:flex;
+    align-items: center;
+    margin: 1em;
+    width:25em;
+    justify-content: space-around;
+    
+}
+
+.NumI{  
+    margin: 0.2em;
+    font-size: 3.5em;
+}
+
+p[class="DescripI"]{
+    display: flex;
+    margin:auto;
+    justify-content: center;
+    align-items: center;
+}
+
+img{
+    width: 100%;
+}
