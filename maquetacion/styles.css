@@ -51,6 +51,7 @@ div#header-left {
     display: block;
     float: left;
     max-width: 100%;
+    cursor: pointer;
 
 }
 
@@ -62,6 +63,7 @@ img#logo-nav {
 
 div#header-right {
 
+    font-size: 13px;
     padding-top: 20px;
     font-size: 13px;
     font-style: normal;
@@ -69,6 +71,7 @@ div#header-right {
     display: flex;
     float: right;
     align-items: center;
+    justify-content: space-between;
 }
 
 
@@ -87,6 +90,26 @@ button.redondo {
     border-color: rgb(32, 27, 36);
 }
 
+button#btn-nav-bar {
+    margin-right: 30px;
+}
+
+li.menu-item {
+    display: list-item;
+    float: left;
+    padding-right: 20px !important;
+    position: relative;
+    cursor: pointer;
+    list-style: none;
+    list-style-position: initial;
+    list-style-image: initial;
+    list-style-type: none;
+}
+
+a.redes {
+    font-size: 14px;
+    color: black;
+}
 
 
 div#introduction-actions {
