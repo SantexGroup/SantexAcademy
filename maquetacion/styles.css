@@ -1,4 +1,6 @@
-
+* {
+    box-sizing: border-box;
+}
 
 
 html {
@@ -13,27 +15,104 @@ p {
     font-weight: 500;
 }
 
+
+
+a {
+    text-decoration: none;
+}
+
+
+
+li {
+    list-style: none;
+}
+
 button {
     background-color: white;
     border-radius: 30px;
     padding: 0px 1.5em;
     height: 2.5em;
     border: 2px solid black;
-    font-size: 0.8em;
+    font-size: 0.8rem;
+    font-family: 'Inter', sans-serif;
     width: 8em;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+    transition: 0.5s;
 }
 
 div#navbar-left img {
     width: 8em;
 }
 
-@media (width >= 2500px) {
+#navbar-right,
+.glyphicon:hover {
+    color: magenta;
+}
+
+#navbar-right,
+a {
+    color: black;
+}
+
+#navbar-right,
+a:hover {
+    color: #6b53f0;
+}
+
+.navbar-right,
+li {
+    color: black;
+    margin-right: 20px;
+}
+
+/*Footer*/
+
+#footer-right,
+li {
+    font-weight: 600;
+    color: #fff;
+}
+
+#footer-right,
+li:hover {
+    color: #6b53f0;
+}
+
+#footer-right,
+.glyphicon:hover {
+    color: magenta;
+}
+
+#text-footer p {
+    color: lightgray;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    line-height: 18px;
+}
+
+#text-footer {
+    max-width: 25%;
+}
+
+div#footer,
+ul {
+    font-size: 14px;
+}
+
+/*Responsives*/
+
+@media (width >=2500px) {
     html {
         font-size: 28px;
     }
 }
 
-@media (width >= 3500px) {
+@media (width >=3500px) {
     html {
         font-size: 32px;
     }
