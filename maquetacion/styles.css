@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+}
+
+div {
+    display: block;
+}
+
+p {
+    margin-right: 40px;
+}
+
+h1 {
+    margin: 0px 400px;
+    text-align: center;
+}
+
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    border-style: none;
+    vertical-align: top;
+    max-width: 100%;
+    height: auto;
+}
+
+div#header {
+    height: 81.0px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-bottom: 1.5px solid #8C939C;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(140, 147, 156);
+    align-items: center;
+
+}
+
+div#header-left {
+
+    padding-top: 20px;
+    display: block;
+    float: left;
+    max-width: 100%;
+
+}
+
+img#logo-nav {
+    display: block;
+    width: auto;
+    max-width: 100%;
+}
+
+div#header-right {
+
+    padding-top: 20px;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    display: flex;
+    float: right;
+    align-items: center;
+}
+
+
+button.redondo {
+
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 12px 20px;
+    height: 32px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(32, 27, 36);
+}
+
+
+
+div#introduction-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
