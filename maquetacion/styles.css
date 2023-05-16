@@ -1,40 +1,83 @@
-
-
-
-html {
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
+html{
+    font-size: 100%;
 }
-
-p {
-    margin-right: 2em;
-    font-weight: bold;
-    font-size: 0.9em;
-    font-weight: 500;
-}
-
-button {
+body {
+    /*background-image: url(https://technologywithpurpose.org/wp-content/uploads/2022/11/xacademy-01.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    */
     background-color: white;
-    border-radius: 30px;
-    padding: 0px 1.5em;
-    height: 2.5em;
-    border: 2px solid black;
-    font-size: 0.8em;
-    width: 8em;
-}
-
-div#navbar-left img {
-    width: 8em;
-}
-
-@media (width >= 2500px) {
-    html {
-        font-size: 28px;
+    margin: 0;
+        padding: 0;
     }
+nav 
+    {
+        margin: 0;
+        padding: 0.51rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        background-color: white;
+        width: 100%;
+        position: fixed;
+        z-index: 100;
+        border-bottom: 1px solid gray;
+    }
+
+ul {
+    list-style: none;
+}
+#nav-menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+}
+.nav-item{
+    margin-left: 2rem;
+    text-decoration: none;
+    color:#000000;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.82rem;
 }
 
-@media (width >= 3500px) {
-    html {
-        font-size: 32px;
-    }
+.nav-item:hover{
+    color:blueviolet;
+}
+.nav-buttom{
+    margin-left: 2rem;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: #000000;
+    font-size: 0.82rem;
+    padding: 0.6rem 1.4rem;
+    text-decoration: none;
+    border-radius: 26px;
+    border: solid #000000 2px;
+}
+.nav-buttom:hover{
+    background: #000000;
+    color: white;
+}
+.contenido {
+    padding-top: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+.titulo{
+    margin: 0% 28.5rem;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.87rem;
 }
