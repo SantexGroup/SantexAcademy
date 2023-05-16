@@ -21,24 +21,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <!-- <style>
-       
+
+
     </style> -->
 </head>
 
 <body>
+    <!-- Navbar -->
     <div id="navbar">
-        <nav class="navbar navbar-expand bg-light d-flex justify-content-evenly my-2">
+        <nav class="navbar navbar-expand d-flex justify-content-evenly my-2 border-bottom border-black">
             <div id="navbar-left">
                 <a href="/maquetacion/index.html">
-                <img width="187" height="51" src="technology-with-purpose.svg">
+                    <img width="187" height="51" src="technology-with-purpose.svg">
                 </a>
             </div>
             <div class="w-25"></div>
             <div id="navbar-right">
                 <ul class="d-flex align-items-center">
                     <li><a href="/maquetacion/nosotros.html">Nosotros</a></li>
-                    <li><a href="#">Programas</a></li>
-                    <li><a href="#">Capacitaciones</a></li>
+
+                    <div class="dropdown">
+                        <li class="dropdownbtn"><a href="#">Programas</a>
+                            <div class="dropdown-content">
+                                <a href="#">xAcademy</a>
+                                <a href="#">Robótica educativa: la tecnologia del futuro</a>
+                            </div>
+                        </li>
+                    </div>
+
+
+                    <div class="dropdown">
+                        <li class="dropdownbtn"><a href="#">Capacitaciones</a>
+                            <div class="dropdown-content">
+                                <a href="#">Seguridad Informática para infancias</a>
+                                <a href="#">Estafas virtuales: ¿Cómo protegernos?</a>
+                            </div>
+                        </li>
+                    </div>
+
                     <li><a href="/maquetacion/contacto.html">Contacto</a></li>
                     <li><a href="#"><button>Sumate +</button></a></li>
                     <li><a href="#"><i class="glyphicon fa-instagram fab" aria-hidden="true"></i></a></li>
@@ -47,12 +67,37 @@
             </div>
         </nav>
     </div>
+
+    <!-- Fin Navbar  -->
+
+    <!-- Main -->
+    <section>
+        <div class="container center-div">
+            <div>
+                <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de
+                    la
+                    tecnología</h1>
+            </div>
+            <div class="mx-auto mt-4">
+                <ul class="d-flex">
+                    <li><a href="https://technologywithpurpose.org/contacto/"><button><span>Contactanos&#160</span><i
+                                    class="fa-long-arrow-alt-right fas button-icon-right"
+                                    aria-hidden="true"></i></button></a></li>
+                    <li><a href="https://donaronline.org/technology-with-purpose-foudation/sumate-genera-impacto"><button><span>Sumate&#160
+                                </span><i class="fa-plus fas button-icon-right" aria-hidden="true"></i></button></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- Fin Main -->
     <!-- Footer -->
     <div id="footer">
         <nav class="navbar navbar-expand bg-dark d-flex text-white fixed-bottom py-5 px-5">
             <div class="footer-left">
                 <svg xmlns="http://www.w3.org/2000/svg" width="177" height="51" viewBox="0 0 177 51" fill="none">
-                    <path d="M59.6722 15.6356H62.5983V2.61337H67.2443V0H55.0262V2.61337H59.6722V15.6356Z" fill="white" />
+                    <path d="M59.6722 15.6356H62.5983V2.61337H67.2443V0H55.0262V2.61337H59.6722V15.6356Z"
+                        fill="white" />
                     <path
                         d="M71.4909 15.8589C74.0819 15.8589 76.1145 14.6304 76.7399 11.9947H74.1936C73.8585 13.1115 73.0097 13.6699 71.5579 13.6699C69.7263 13.6699 68.6318 12.7318 68.4531 10.5652H76.8293C76.8739 10.3195 76.8963 10.0961 76.8963 9.69404C76.8963 5.45011 74.4393 3.79721 71.4462 3.79721C68.4084 3.79721 65.7504 5.51712 65.7504 9.80572C65.7504 14.139 68.4754 15.8589 71.4909 15.8589ZM68.4754 8.82292C68.6765 6.92432 69.7263 5.98618 71.4015 5.98618C73.2778 5.98618 74.1266 7.19235 74.1936 8.82292H68.4754Z"
                         fill="white" />
@@ -111,7 +156,8 @@
                     <path
                         d="M171.594 35.7136C174.185 35.7136 176.218 34.4851 176.843 31.8494H174.297C173.962 32.9662 173.113 33.5246 171.661 33.5246C169.83 33.5246 168.735 32.5865 168.556 30.4198H176.933C176.977 30.1741 177 29.9508 177 29.5487C177 25.3048 174.543 23.6519 171.549 23.6519C168.512 23.6519 165.854 25.3718 165.854 29.6604C165.854 33.9937 168.579 35.7136 171.594 35.7136ZM168.579 28.6776C168.78 26.779 169.83 25.8408 171.505 25.8408C173.381 25.8408 174.23 27.047 174.297 28.6776H168.579Z"
                         fill="white" />
-                    <path d="M56.1262 49.8848H57.6868V46.3944H60.8913V45.1197H57.6868V42.9159H61.5703V41.5459H56.1262V49.8848Z"
+                    <path
+                        d="M56.1262 49.8848H57.6868V46.3944H60.8913V45.1197H57.6868V42.9159H61.5703V41.5459H56.1262V49.8848Z"
                         fill="white" />
                     <path
                         d="M65.3436 50.004C66.8923 50.004 68.4171 49.0271 68.4171 46.7875C68.4171 44.5479 66.8923 43.5711 65.3436 43.5711C63.783 43.5711 62.2701 44.5479 62.2701 46.7875C62.2701 49.0271 63.783 50.004 65.3436 50.004ZM63.6997 46.7875C63.6997 45.4414 64.4383 44.8457 65.3436 44.8457C66.2371 44.8457 66.9757 45.4414 66.9757 46.7875C66.9757 48.1337 66.2371 48.7293 65.3436 48.7293C64.4383 48.7293 63.6997 48.1337 63.6997 46.7875Z"
@@ -190,8 +236,10 @@
                         <li>CAPACITACIONES</li>
                     </ul>
                     <ul>
-                        <li><a href="https://www.instagram.com/technologywithpurpose/" class="text-light"><i class="glyphicon fa-instagram fab" aria-hidden="true">&#160</i>INSTAGRAM</a></li>
-                        <li><a href="https://www.linkedin.com/company/technologywithpurpose/" class="text-light"><i class="glyphicon fa-linkedin-in fab" aria-hidden="true">&#160</i>LINKEDIN</a></li>
+                        <li><a href="https://www.instagram.com/technologywithpurpose/" class="text-light"><i
+                                    class="glyphicon fa-instagram fab" aria-hidden="true">&#160</i>INSTAGRAM</a></li>
+                        <li><a href="https://www.linkedin.com/company/technologywithpurpose/" class="text-light"><i
+                                    class="glyphicon fa-linkedin-in fab" aria-hidden="true">&#160</i>LINKEDIN</a></li>
                     </ul>
                 </div>
             </div>
