@@ -20,16 +20,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- <style>
+    <style>
 
 
-    </style> -->
+    </style>
 </head>
 
 <body>
     <!-- Navbar -->
-    <div id="navbar">
-        <nav class="navbar navbar-expand d-flex justify-content-evenly my-2 border-bottom border-black">
+    <header id="navbar">
+        <nav class="navbar navbar-expand d-flex bg-white justify-content-evenly py-3 border-bottom border-black">
             <div id="navbar-left">
                 <a href="/maquetacion/index.html">
                     <img width="187" height="51" src="technology-with-purpose.svg">
@@ -66,34 +66,91 @@
                 </ul>
             </div>
         </nav>
-    </div>
-
+    </header>
     <!-- Fin Navbar  -->
-
     <!-- Main -->
-    <section>
-        <div class="container center-div">
-            <div>
-                <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de
-                    la
-                    tecnología</h1>
+    <main>
+        <!-- Hero Binvenida -->
+        <section id="bienvenida">
+            <div class="container center-div">
+                <div>
+                    <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través
+                        de
+                        la
+                        tecnología</h1>
+                </div>
+                <div class="mx-auto mt-4">
+                    <ul class="d-flex">
+                        <li><a href="https://technologywithpurpose.org/contacto/"><button
+                                    class="w-100"><span>Contactanos&#160</span><i
+                                        class="fa-long-arrow-alt-right fas button-icon-right"
+                                        aria-hidden="true"></i></button></a></li>
+                        <li><a href="https://donaronline.org/technology-with-purpose-foudation/sumate-genera-impacto"><button><span>Sumate&#160
+                                    </span><i class="fa-plus fas button-icon-right" aria-hidden="true"></i></button></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="mx-auto mt-4">
-                <ul class="d-flex">
-                    <li><a href="https://technologywithpurpose.org/contacto/"><button><span>Contactanos&#160</span><i
-                                    class="fa-long-arrow-alt-right fas button-icon-right"
-                                    aria-hidden="true"></i></button></a></li>
-                    <li><a href="https://donaronline.org/technology-with-purpose-foudation/sumate-genera-impacto"><button><span>Sumate&#160
-                                </span><i class="fa-plus fas button-icon-right" aria-hidden="true"></i></button></a>
-                    </li>
-                </ul>
+        </section>
+        <!-- Fin -->
+        <!-- Hero Impacto -->
+        <section id="impacto">
+            <div class="container-fluid py-5 border border-1 bg-dark text-light">
+                <div class="row pt-5 m-3 align-items-center">
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <div class="left-div">
+                            <h2>.Impacto</h2>
+                            <p>Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en
+                                la
+                                comunidad. Trabajamos para
+                                acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="right-div d-flex estadisticas align-items-center">
+                            <div>
+                                <span class="display-counter" data-value="58" data-direction="up"
+                                    data-decimals="0">00</span>
+                                <!-- <span>58</span> -->
+                                <p>Localidades</p>
+                            </div>
+                            <div class="fa-1x mb-5"><i class="fa-plus fas button-icon-right" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <span class="display-counter" data-value="50" data-direction="up"
+                                    data-decimals="0">00</span>
+                                <p>Mentores</p>
+                            </div>
+                            <div class="ms-4">
+                                <span class="display-counter" data-value="301" data-direction="up"
+                                    data-decimals="0">000</span>
+                                <p>Participantes</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
             </div>
+        </section>
+        <!-- Fin -->
+        <!-- Hero Parallax Group* -->
+        <div id="background">
+
         </div>
-    </section>
+        <!-- Fin -->
+        <!-- Section Programas/Capacitaciones -->
+        <section id="Programas">
+            
+        </section>
+        <!-- Section Equipo -->
+    </main>
     <!-- Fin Main -->
+
     <!-- Footer -->
-    <div id="footer">
-        <nav class="navbar navbar-expand bg-dark d-flex text-white fixed-bottom py-5 px-5">
+    <footer id="footer">
+        <nav class="navbar navbar-expand bg-dark d-flex text-white bottom py-5 px-5">
             <div class="footer-left">
                 <svg xmlns="http://www.w3.org/2000/svg" width="177" height="51" viewBox="0 0 177 51" fill="none">
                     <path d="M59.6722 15.6356H62.5983V2.61337H67.2443V0H55.0262V2.61337H59.6722V15.6356Z"
@@ -223,7 +280,8 @@
             </div>
             <div class="d-flex justify-content-around">
                 <div id="text-footer">
-                    <p>Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector
+                    <p>Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el
+                        sector
                         social.</p>
                 </div>
                 <div class="footer-right d-flex">
@@ -237,14 +295,16 @@
                     </ul>
                     <ul>
                         <li><a href="https://www.instagram.com/technologywithpurpose/" class="text-light"><i
-                                    class="glyphicon fa-instagram fab" aria-hidden="true">&#160</i>INSTAGRAM</a></li>
+                                    class="glyphicon fa-instagram fab" aria-hidden="true">&#160</i>INSTAGRAM</a>
+                        </li>
                         <li><a href="https://www.linkedin.com/company/technologywithpurpose/" class="text-light"><i
-                                    class="glyphicon fa-linkedin-in fab" aria-hidden="true">&#160</i>LINKEDIN</a></li>
+                                    class="glyphicon fa-linkedin-in fab" aria-hidden="true">&#160</i>LINKEDIN</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
-    </div>
+    </footer>
     <!-- Fin Footer -->
 
 </body>
@@ -252,6 +312,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
     crossorigin="anonymous"></script>
+<script src="/maquetacion/index.js"></script>
 <!--  -->
 
 </html>
