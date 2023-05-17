@@ -237,6 +237,51 @@ section {
     height: 700px;
 }
 
+/*Programas*/
+#Programas p,
+#Capacitaciones p {
+    font-size: 14px;
+    line-height: 21px;
+    text-align: start;
+    color: #201b24;
+    font-weight: 400;
+    word-spacing: normal;
+}
+
+.texto img {
+    width: 200px;
+    height: 77px;
+}
+
+.texto button{
+    font-size: 12px;
+}
+
+.imagen img {
+    -webkit-border-radius: 41px;
+    -webkit-border-top-left-radius: 0;
+    -moz-border-radius: 41px;
+    -moz-border-radius-topleft: 0;
+    border-radius: 41px;
+    border-top-left-radius: 0;
+}
+
+.imagen2 img {
+    -webkit-border-top-right-radius: 41px;
+    -webkit-border-bottom-left-radius: 41px;
+    -moz-border-radius-topright: 41px;
+    -moz-border-radius-bottomleft: 41px;
+    border-top-right-radius: 41px;
+    border-bottom-left-radius: 41px;
+}
+
+
+
+
+
+
+/*Equipo*/
+
 /*Responsives*/
 
 @media (width >=2500px) {
