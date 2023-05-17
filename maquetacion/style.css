@@ -10,6 +10,7 @@ body {
 .header-right {
     display: flex; 
     align-items: center;
+
 }
 
 .introduction-text{
@@ -31,10 +32,14 @@ div#introduction-actions {
 }
 
 div#header{
+    background-color: white;
     border-bottom: 1px solid gray; 
     display: flex; 
     padding: 10px 100px; 
-    justify-content: space-between
+    justify-content: space-between;
+    position: -webkit-sticky;
+    position: sticky;
+    top:0px;
     }
 
 
@@ -227,7 +232,7 @@ h5{
 /*Seccion Alianzas*/
 
 .estructura-alianza{
-    margin: 60px 30px 0 30px;
+    margin: 60px 30px 60px 30px;
     justify-content:center;
     align-content: center;
 }
@@ -265,9 +270,35 @@ h5{
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    padding: 30px 30px;
+    padding: 40px 30px 40px 30px;
 }
 
-#img-footer{
+.img-footer{
+    width: 200px;
+    padding: 10px;
+}
+
+.texto-footer{
+    font-size:small;
+    width: 350px;
+    padding: 15px;
+    color: white;
+}
+
+.contacto{
+    width: 167px;
+    padding: 15px;
+    color: white;
+}
+
+.programas-footer{
+    width: 167px;
+    padding: 15px;
+    color: white;
+}
+
+.red {
+    width: 167px;
+    padding: 15px 15px 15px 80px;
     color: white;
 }
