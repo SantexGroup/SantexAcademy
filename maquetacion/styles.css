@@ -46,7 +46,7 @@ div#navbar-left img {
 }
 
 #navbar-right,
-.glyphicon:hover {
+.ico-nav:hover {
     color: magenta;
 }
 
@@ -55,10 +55,6 @@ a {
     color: black;
 }
 
-#navbar-right,
-a:hover {
-    color: #6b53f0 !important;
-}
 
 .navbar-right,
 li {
@@ -89,14 +85,6 @@ li {
     font-size: 12px;
 }
 
-/* 
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-} */
-
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -111,12 +99,7 @@ li {
 
 #footer-right,
 li:hover {
-    color: #fff;
-}
-
-#footer-right,
-.glyphicon:hover {
-    color: magenta;
+    color: #ececec;
 }
 
 .footer-left {
@@ -253,7 +236,7 @@ section {
     height: 77px;
 }
 
-.texto button{
+.texto button {
     font-size: 12px;
 }
 
@@ -277,8 +260,37 @@ section {
 
 /*Equipo*/
 
-#equipo{
+.card {
+    width: 14rem;
+    height: auto;
+    border-radius: 10% 10% 10% 0%;
+    border: none;
+}
+
+.card img {
+    border-radius: 11% 11% 0% 0%
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-body p {
+    font-size: 15px;
+    word-wrap: break-word;
+}
+
+#equipo {
     background-color: #f4f4f5;
+}
+
+.ico-card:hover {
+    background-color: #6b53f0;
+    color: #fff;
+    font-size: 10px;
 }
 
 /*Responsives*/
