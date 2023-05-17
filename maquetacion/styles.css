@@ -55,8 +55,7 @@ a {
     color: black;
 }
 
-
-.navbar-right,
+#navbar-right,
 li {
     color: black;
     margin-right: 20px;
@@ -91,6 +90,11 @@ li {
 
 /*Footer*/
 
+#footer {
+    background-color: #212529;
+    align-items: center;
+}
+
 #footer-right,
 li {
     font-weight: 600;
@@ -112,6 +116,7 @@ li:hover {
     font-weight: 400;
     font-family: 'Inter', sans-serif;
     line-height: 18px;
+    padding-top: 10px;
 }
 
 #text-footer {
@@ -162,6 +167,10 @@ section {
 }
 
 /*Section Impacto*/
+
+#impacto {
+    background-color: #212529;
+}
 
 .estadisticas {
     display: flex;
@@ -215,9 +224,9 @@ section {
 #background {
     width: 100%;
     background-image: url('/maquetacion/img/back-attached.jpg');
-    background-size: center;
+    background-size: cover;
     background-attachment: fixed;
-    height: 700px;
+    height: 500px;
 }
 
 /*Programas*/
@@ -280,6 +289,7 @@ section {
 
 .card-body p {
     font-size: 15px;
+    font-weight: 400;
     word-wrap: break-word;
 }
 
@@ -293,6 +303,58 @@ section {
     font-size: 10px;
 }
 
+/*Alianzas*/
+.carousel-box-padre {
+    overflow: hidden;
+    width: 85vw;
+    align-items: center;
+}
+
+.carousel-box {
+    margin: 0;
+    animation: scroll 20s infinite alternate linear;
+    -webkit-animation: scroll 20s infinite alternate linear;
+    width: calc(200px * 14);
+}
+
+@keyframes scroll {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    100% {
+        -webkit-transform: translateX(calc(-200px * 7));
+        transform: translateX(calc(-200px * 7));
+    }
+}
+
+.carousel-box button {
+    background-color: rgb(116, 103, 103);
+    border-radius: 0%;
+    outline: none;
+    width: 50px;
+    height: 120px;
+}
+
+.lista {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.lista img {
+    filter: grayscale(100%);
+    width: 229px;
+    height: 90px;
+}
+
+.lista img:hover{
+    filter: grayscale(0);
+}
 /*Responsives*/
 
 @media (width >=2500px) {
