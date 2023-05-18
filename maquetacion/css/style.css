@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap');
+*{
+   /*  Reseteadores */
+    font-family: 'Inter', 'Arial','Helvetica', 'sans-serif';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize; /* para que ela primera letra empiece en mayuscula */
+    text-decoration: none;   /* quita las linea de los enlaces */
+    list-style: none; /* quitas las visñetas de las listas */
+}
+:root{
+    /* =========color========= */
+    --body-color: #ffff;
+}
+body {
+    margin: 0;
+}
+p {
+    margin-right: 40px;
+}
+h1 {
+    margin: 0px 400px;
+    text-align: center;
+}
+button.redondo {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 0px 20px;
+    height: 32px;
+}
+div#introduction-actions {
+    display: flex;
+    justify-content: center;
+}
