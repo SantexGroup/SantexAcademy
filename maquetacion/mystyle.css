@@ -1,0 +1,183 @@
+html{
+    font-family: Inter, sans-serif ;
+    font-size: 12px;
+}
+body {
+    margin: 0em;
+}
+#header{
+    border-bottom: 1px solid gray; 
+    display: flex; 
+    justify-content:first baseline;
+    align-items: center;    
+    height: 6.5em;
+    padding-left: 5.5em;
+    font-size: 1.1em;
+} 
+#header-right{
+    display: flex; 
+    align-items:flex-start;
+    padding: 28.5em ;
+}
+p { 
+    margin-right: 2.2em;
+}
+
+p.aqua:hover{
+    color: blue;
+    text-decoration: none;
+}
+button.redondo {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 1.5em;
+    padding: 0px 1.2em;
+    height: 2.6em;
+    width: 7.7em;   
+    margin-top: 0.4em;
+}
+.redondo{
+    margin-left: 0.9em;
+} 
+.redondo:hover{
+    background-color: black;
+    color: white;
+}
+h1 {
+    margin: 0em 10.5em;
+    margin-top: 2.2em;
+    text-align: center;
+    font-size: 2.3em;
+}
+.instagram{
+    width: 1em; 
+    height: 1em; 
+    padding-top: 1em;
+    padding-left: 2.5em;
+}
+.linkedin{
+    width: 1.6em; 
+    height: 1.6em; 
+    padding-top: 0.5em;
+    padding-left: 1.5em;
+}
+div#introduction-actions {
+    display: flex;
+    justify-content: center;
+    height: 10em;
+}
+#introduction{
+    padding:1em 9em;
+}
+#introduction-actions{
+    margin-top: 2em
+} 
+#introduction-actions button.redondo{
+    width: 12em; 
+    height: 3em;
+}
+#introduction-actions button.redondo2{
+    background-color: white;
+    border: 2px solid blueviolet;
+    border-radius: 1.5em;
+    margin-left: 2em;
+    padding: 0px 1.2em;
+    height: 3em;
+    width: 7.7em;   
+    margin-top: 0.4em;
+}
+.footer{
+    display: flex;
+    flex-direction:row;
+    background-color:rgb(28, 16, 28);
+    height: 33em;
+    color: white;
+}
+.footer-izq{
+    display: flex;
+    flex-direction: column;
+}
+.footer-izq-sup{
+    height: 2.5em;
+    font-size: 3em;
+    font-weight: bold;
+    padding-top: 2.5em;
+    padding-left: 8.4em;
+}
+.footer-izq-inf{
+    width: 30em;
+    font-size:1.2em;
+    padding-top: 0em;
+    padding-left: 21em;
+    
+}
+.footer-der-sup{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 60%;
+}
+.footer-der-sup p{
+    padding-left: 0em;
+    font-size: 3.5em;
+    font: weight 900px;;
+    padding-top: 3.5em;
+}
+.footer-der-inf{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    color:gray;
+}
+.footer-der-inf p{
+    padding-right: 6.1em;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    max-width: 170px;
+    padding: 12px 16px;
+    z-index: 1;
+    border:1px solid black;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  @media screen and (max-width: 900px) {
+    html{
+        font-size: 8px;
+    }
+    #header-right{
+        padding: 7.5em ;
+    }
+
+    div#introduction-actions{
+        height: 10em;
+    }
+    #introduction{
+        padding:1em 7em;
+    }
+    .footer-izq-sup{
+        font-size: 3em;
+        font-weight: bold;
+        padding-top: 2.5em;
+        padding-left: 0.5em;
+    }
+    .footer-der-sup p{
+        font-size: 3.5em;
+        font: weight 500px;;
+        padding-top: 3.5em;
+    }
+    .footer-izq-inf{
+        font-size: 1.5em;
+        padding-left: 1em;
+    }
+    .footer-der-inf-par{
+        padding-right: 4em;
+    }
+    
+  }
+
+    
