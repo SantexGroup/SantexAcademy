@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap');
 *{
    /*  Reseteadores */
-    font-family: 'Inter', 'Arial','Helvetica', 'sans-serif';
+    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-transform: capitalize; /* para que ela primera letra empiece en mayuscula */
     text-decoration: none;   /* quita las linea de los enlaces */
     list-style: none; /* quitas las visñetas de las listas */
 }
@@ -15,14 +14,44 @@
 }
 body {
     margin: 0;
+    
+}
+header{
+    background-color: white;
+}
+main{
+
+    background-image: url('../img/fondo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.libre{
+    height: 490px; /* Establece una altura de 200 píxeles */
 }
 p {
     margin-right: 40px;
+    font-size: 14px;
 }
 h1 {
-    margin: 0px 370px;
+    margin: 0px 330px;
     text-align:center;
     font-size: 28px;
+}
+h1 {
+    margin: 0px 330px;
+    text-align:center;
+    font-size: 30px;
+}
+#introduction{
+    padding: 48px;
+    background-color: white;
+}
+#introduction-text{
+    padding-bottom: 20px;
+}
+#introduction-actions{
+    padding-bottom: 20px;
 }
 button.redondo {
     background-color: white;
@@ -70,4 +99,89 @@ div#introduction-actions {
 #header-right a{
     color: black;
     margin-left: 25px;
+}
+#container{
+    background-color: #201B24;
+    color: white;
+    display: flex; 
+    align-items: center; 
+    flex-direction: row;
+    padding: 100px 230px;
+}
+#CuadroUno{
+    padding-left: 20px;
+    padding-right: 80px;
+    line-height: 1.5;
+}
+.separador{
+    margin-bottom: 12px;
+}
+#CuadroDos{
+    display: flex; 
+    align-items: center; 
+    flex-direction: row;
+    gap: 20px;
+    
+}
+#CuadroDos .numero{
+    font-size: 50px; 
+}
+#CuadroDos .parrafo{
+    color: #868C95;
+
+}
+#CuadroDos .valor{
+    color: #6B53F0;
+    font-size: 30px; 
+}
+
+.containerDos{
+    background-color: white;
+    display: flex; 
+    align-items: center; 
+    flex-direction: column;
+    
+}
+.porfolio img{
+    border-style: none;
+    vertical-align: top;
+    max-width: 50%;
+    width: 570px;
+    height: auto;
+    border-radius: 30px 30px 0px 30px;
+}
+.porfolio .imagen1{
+    border-radius: 0px 30px 30px 30px;
+}
+.porfolio{
+    display: flex; 
+    align-items: center; 
+    flex-direction: row;
+    padding: 5px 70px;
+    gap: 100px;
+}
+.porfolio-1{
+    line-height: 1.5;
+    padding: 0px 8px;
+}
+.porfolio-1 img{
+    width: 200px; 
+    height: 43px;
+    margin-bottom: 15px;
+}
+.porfolio-1 .redondoDos{
+    margin-top: 20px;
+}
+
+.porfolio-2{
+    line-height: 1.5;
+    padding: 0px 8px;
+}
+.porfolio-2 img{
+    width: 200px; 
+    height: 43px;
+    margin-bottom: 15px;
+}
+.porfolio-2 .redondoDos{
+    margin-top: 20px;
 }
