@@ -26,3 +26,45 @@ div#introduction-actions {
 	display: flex;
 	justify-content: center;
 }
+
+.letraGrande {
+	color: white;
+	font-size: 50px;
+	font-weight: 700;
+	margin-bottom: 14px;
+	padding: 0 7px;
+}
+
+.letraChica {
+	color: #8C939C; 
+	font-size: 14px;
+}
+
+.flexDiv {
+	border-bottom: 1px solid gray;
+	display: flex;
+	margin: 10px;
+}
+
+#Impacto-left {
+	width: 33.3%;
+	background-color: black;
+	color: white;
+	padding: 0px 50px 0px 0px;
+}
+
+#Impacto-right {
+	width: 33.3%;
+	display: flex;
+	background-color: black;
+	color: white;
+}
+
+{
+}
+
+{
+}
+
+{
+}
