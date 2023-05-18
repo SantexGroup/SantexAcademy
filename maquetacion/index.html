@@ -1,47 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cluster 2 - X Academy</title>
+    <title>Fundación Tecnología con Propósito</title>
+
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/css/global.css">
 </head>
-<body style="margin: 0;">
-    <div id="navbar" style="display: flex; border-bottom: 1px solid gray; padding: 14px 800px; justify-content: space-between;">
-        <div id="navbar-left">
-            <img src="technology-with-purpose.svg">
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-img">
+            <img src="./assets/img/technology-with-purpose.svg">
         </div>
-        <div id="navbar-right" style="display: flex; align-items: center;">
-            <p>Nosotros</p>
-            <p>Programas</p>
-            <p>Capacitaciones</p>
-            <p>Alianzas</p>
-            <p>Contacto</p>
+        <div>
+            <ul>
+                <li class="navbar-links"><a href="#">Nosotros</a></li>
+                <li class="navbar-links"><a href="#">Programas</a></li>
+                <li class="navbar-links"><a href="#">Capacitaciones</a></li>
+                <li class="navbar-links"><a href="#">Alianzas</a></li>
+                <li class="navbar-links"><a href="#">Contacto</a></li>
+                <li class="navbar-links"><a href="#">Sumate +</a></li>
+                <li class="navbar-links"><a href="#"><i class="fab fa-instagram" target="_blank"></i></a></li>
+                <li class="navbar-links"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- SOMOS -->
+    <header class="somos">
+        <div class="somos-text">
+            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la
+                tecnología.</h1>
+        </div>
+        <div class="somos-button">
+            <button>Contactanos →</button>
             <button>Sumate +</button>
         </div>
-    </div>
-    <div id="contact-form">
-        <form style="margin: 0 300px;" action="">
-            <div>
-                <input type="text" placeholder="Nombre y Apellido">
-                <input type="email" placeholder="Email">
-                <select name="" id="">
-                    <option value="">Programas</option>
-                    <option value="">Capacitaciones</option>
-                </select>
+    </header>
+
+    <main>
+        <!-- IMPACTO -->
+        <section class="impacto">
+            <div class="impacto-text">
+                <h2>. Impacto</h2>
+                <p>
+                    Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la
+                    comunidad. Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el
+                    sector social.
+                </p>
             </div>
-            <div>
-                <textarea name="" cols="30" rows="10"></textarea>
+            <div class="impacto-nros">
+                <p><span>58</span> Localidades</p>
+                <p><span>+50</span> Mentores</p>
+                <p><span>301</span> Participantes</p>
             </div>
-            <div>
-                <button>Enviar</button>
+        </section>
+
+        <!-- PROGRAMAS -->
+        <section class="seccion">
+            <div class="seccion-text">
+                <h2>. Programas</h2>
             </div>
-        </form>
-    </div>
+            <div class="seccion-contenidos">
+                <div class="seccion-descripcion">
+                    <div>
+                        <img src="./assets/img/tarj-home/xacademy-01-800x533.jpg" alt="">
+                    </div>
+                    <div class="seccion-descipcion-text">
+                        <img id="logo-xacademy" src="./assets/img/tarj-home/xacademy.svg" alt="">
+                        <p>
+                            xAcademy es un programa de formación en tecnología llevado adelante por la Fundación
+                            Tecnología con Propósito junto a Santex que busca promover un cambio positivo en la
+                            comunidad a través de la educación en IT, apuntando a lograr la inserción laboral de
+                            personas en el mundo tecnológico.
+                        </p>
+                        <div class="somos-button">
+                            <button>Más info →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="seccion-descripcion">
+                    <div class="seccion-descipcion-text">
+                        <h4>Robótica educativa: la tecnología del futuro</h4>
+                        <p>
+                            Durante el curso, los alumnos y alumnas a través de la robótica desarrollan la curiosidad,
+                            el autodidactismo y las habilidades blandas necesarias para afrontar la revolución
+                            tecnológica del siglo XXI.
+                        </p>
+                        <div class="somos-button">
+                            <button>Más info →</button>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="./assets/img/tarj-home/robotica-educativa-07-800x533.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAPACITACIONES -->
+        <section class="seccion">
+            <div class="seccion-text">
+                <h2>. Capacitaciones</h2>
+            </div>
+            <div class="seccion-contenidos">
+                <div class="seccion-descripcion">
+                    <div>
+                        <img src="./assets/img/tarj-home/estafas-virtuales-04-800x603.jpg" alt="">
+                    </div>
+                    <div class="seccion-descipcion-text">
+                        <h4>Estafas virtuales: ¿cómo protegernos?</h4>
+                        <p>
+                            Los canales de comunicación a través de medios digitales cobraron gran protagonismo a partir
+                            de la pandemia. Al mismo tiempo, se perfeccionan cada vez más rápido las modalidades de
+                            estafas y fraudes virtuales. En esta capacitación vas a aprender diferentes tips y consejos
+                            útiles para navegar de manera más segura.
+                        </p>
+                        <div class="somos-button">
+                            <button>Más info →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="seccion-descripcion">
+
+                    <div class="seccion-descipcion-text">
+                        <h4>Seguridad informática para infancias</h4>
+                        <p>
+                            Durante el curso, los alumnos y alumnas a través de la robótica desarrollan la curiosidad,
+                            el autodidactismo y las habilidades blandas necesarias para afrontar la revolución
+                            tecnológica del siglo XXI.
+                        </p>
+                        <div class="somos-button">
+                            <button>Más info →</button>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="./assets/img/tarj-home/seguridad-informatica-para-infancias-800x531.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EQUIPO -->
+        <section class="seccion">
+            <div class="seccion-text">
+                <h2>. Equipo</h2>
+            </div>
+            <div class="seccion-contenido-equipo">
+                <div class="seccion-descripcion-equipo">
+                    <div>
+                        <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-juan.png" alt="">
+                    </div>
+                    <div>
+                        <h5>Juan Santiago</h5>
+                        <p>
+                            Presidente
+                        </p>
+                        <a href="https://www.linkedin.com/in/juan-santiago-1461942/" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="seccion-descripcion-equipo">
+                    <div>
+                        <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-walter.png" alt="">
+                    </div>
+                    <div>
+                        <h5>Walter Abrigo</h5>
+                        <p>
+                            Secretario
+                        </p>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="seccion-descripcion-equipo">
+                    <div>
+                        <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-gabriela.png" alt="">
+                    </div>
+                    <div>
+                        <h5>Gabriela Fernandez</h5>
+                        <p>
+                            Comisión Directiva
+                        </p>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="seccion-descripcion-equipo">
+                    <div>
+                        <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-gabriel.png" alt="">
+                    </div>
+                    <div>
+                        <h5>Gabriel Dubini</h5>
+                        <p>
+                            Tesorero
+                        </p>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="seccion-descripcion-equipo">
+                    <div>
+                        <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-florencia.png"
+                            alt="">
+                    </div>
+                    <div>
+                        <h5>Florencia D’Agostino</h5>
+                        <p>
+                            Dirección Ejecutiva
+                        </p>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="seccion-descripcion-equipo">
+                    <div>
+                        <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-celeste.png" alt="">
+                    </div>
+                    <div>
+                        <h5>Celeste Torresi</h5>
+                        <p>
+                            Comisión Directiva
+                        </p>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="seccion-descripcion-equipo">
+                    <div>
+                        <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-lucia.png" alt="">
+                    </div>
+                    <div>
+                        <h5>CLucia Jaimez</h5>
+                        <p>
+                            Directora Academy
+                        </p>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="seccion-descripcion-equipo">
+                    <div>
+                        <img src="https://technologywithpurpose.org/wp-content/uploads/2023/05/agustin-chino.png"
+                            alt="">
+                    </div>
+                    <div>
+                        <h5>Agustín Chino</h5>
+                        <p>
+                            Coord. Área Inclusión Social
+                        </p>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="seccion-descripcion-equipo">
+                    <div>
+                        <img src="https://technologywithpurpose.org/wp-content/uploads/2023/05/enzo-dotto.png" alt="">
+                    </div>
+                    <div>
+                        <h5>Enzo Dotto</h5>
+                        <p>
+                            Relaciones Institucionales
+                        </p>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ALIANZAS -->
+        <section class="seccion">
+            <div class="seccion-text">
+                <h2>. ALIANZAS</h2>
+            </div>
+            <div class="seccion-alianzas">
+                <div class="alianza-nav">
+                    <a><i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+                <div class="seccion-alianza-img">
+                    <img src="https://technologywithpurpose.org/wp-content/uploads/2022/11/alianza-municipalidad-concordia.png"
+                        alt="">
+                    <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/alianza-municipalidad-morteros-1.png"
+                        alt="">
+                    <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/alianza-naranja.png" alt="">
+                    <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/alianza-santex.png" alt="">
+                    <img src="https://technologywithpurpose.org/wp-content/uploads/2023/05/alianza-att.png" alt="">
+                    <img src="https://technologywithpurpose.org/wp-content/uploads/2022/11/alianza-banco-galicia.png"
+                        alt="">
+                    <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/alianza-banco-alimentos-cordoba.png"
+                        alt="">
+                    <img src="https://technologywithpurpose.org/wp-content/uploads/2022/11/alianza-fundacion-scrum.png"
+                        alt="">
+                    <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/alianza-grupo-inteligencia-educativa.png"
+                        alt="">
+                    <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/alianza-jesus-maria.png"
+                        alt="">
+                    </div>
+                    <div class="alianza-nav">
+                        <a><i class="fa-solid fa-arrow-left fa-rotate-180"></i></a>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <img src="./assets/img/technology-with-purpose-white.svg" alt="">
+        </div>
+        <div>
+            <p>
+                Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.
+            </p>
+        </div>
+        <div>
+            <a href="./nosotros.html">NOSOTROS</a>
+            <a href="./contacto.html">CONTACTO</a>
+        </div>
+        <div>
+            <a href="./programas.html">PROGRAMAS</a>
+            <a href="./capacitaciones.html">CAPACITACIONES</a>
+        </div>
+        <div>
+            <a href="https://www.instagram.com/technologywithpurpose/">INSTAGRAM</a>
+            <a href="https://www.linkedin.com/company/technologywithpurpose/" target="_blank">LINKEDIN</a>
+        </div>
+
+    </footer>
+
 </body>
+<script src="./assets/js/all.min.js"></script>
+
 </html>

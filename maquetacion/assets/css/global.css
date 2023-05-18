@@ -1,0 +1,42 @@
+:root {
+    /*FONTS | FONT SIZES*/
+    --font-family: Inter, Arial, Helvetica, sans-serif;
+    --font-size-somos: 28px;
+    --font-size-p: 14px;
+    --font-size-seccion-text: 30px;
+    --font-size-span: 50px;
+    --font-size-button: 14px;
+    --font-size-seccion-text-equipo-h5: 18px;
+    /**/
+    --font-size-footer-text: 12px;
+    --font-size-footer-a: 14px;
+
+    /* COLORS */
+    --color1: #ffffff;
+    --color2: #f9f9fb;
+    --color3: #d9d9d9;
+    --color4: #9e23ff;
+    --color5: #6b53f0;
+    --color6: #8c939c;
+    --color7: #201b24;   
+
+    /* PADDINGS */
+    --padding-somos: 70px 30px;
+    --padding-menu: 30px 30px;/*0px 30px*/
+    --padding-button: 10px 20px;
+    
+    --padding-alianzas-contenido: 8px 0px;
+    --padding-footer: 60px 30px 40px;
+
+    --padding-equipo-text: 15px 0px 20px;
+    --padding-seccion-equipo: 60px 30px 50px;
+
+    --margin-p: 0px 0px 20px;
+    --margin-h2: 50px 0px 20px;
+    --margin-seccion: 0px 30px;
+    --margin-equipo-text: 0px 5px;
+    --margin-footer-div: 0px 5px 30px;
+
+    /* BORDER RADIUS */
+    --border-r-botton: 30px;
+}
