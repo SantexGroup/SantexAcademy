@@ -139,8 +139,7 @@ div#introduction-actions {
     background-color: white;
     display: flex; 
     align-items: center; 
-    flex-direction: column;
-    
+    flex-direction: column;   
 }
 .porfolio img{
     border-style: none;
@@ -184,4 +183,124 @@ div#introduction-actions {
 }
 .porfolio-2 .redondoDos{
     margin-top: 20px;
+}
+.porfolio-2 h3{
+    font-size: 22px; 
+}
+.porfolio-2 p{
+    font-size: 14px; 
+}
+
+.titulo{
+    background-color: white;
+    color: black;
+    padding-top: 60px;
+    padding-left: 70px;
+    padding-bottom: 10px;
+}
+.titulo h2{
+    font-size: 30px; 
+}
+.titulo2{
+    background-color: white;
+    color: black;
+    padding-top: 60px;
+    padding-left: 70px;
+    padding-bottom: 22px;
+}
+.titulo2 h2{
+    font-size: 30px; 
+}
+.espacio{
+    padding-bottom: 50px; 
+}
+.titulo3{
+    background-color:#F4F4F5;
+    color: black;
+    padding-top: 60px;
+    padding-left: 70px;
+    padding-bottom: 22px;
+}
+.titulo3 h2{
+    font-size: 30px; 
+}
+.equipo{
+    display: flex; 
+    align-items: center; 
+    flex-direction: row;
+    padding: 5px 70px;
+    background-color:#F4F4F5;
+}
+.card2{
+    background-color:#F4F4F5;
+}
+.card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 350px;
+    background-color: white;
+    border-radius: 30px 30px 30px 0px;
+    padding: 30px;
+}
+.imagen-card {
+    margin-right: 10px;
+}
+.imagen-card img {
+    max-width: 100%;
+    height: auto;
+}
+.texto-card {
+    flex: 1;
+}
+.logo-card {
+    font-size: 24px;
+}
+.logo-card i {
+    color: #3f729b;
+}
+.compilado{
+    background-color: white;
+}
+.carrucel{
+    display: flex; 
+    align-items: center; 
+    flex-direction: row;
+    padding: 5px 70px;
+    padding-bottom: 40px;
+}
+.carrucel img{
+    width: 240px;
+    filter: grayscale(100%); /* Cambia la imagen a escala de grises */
+}
+.carrucel img:hover{
+    width: 240px;
+    filter: grayscale(0%); /* Cambia la imagen a escala de grises */
+}
+footer{
+    background-color: #201B24;
+    color: #F4F4F5;
+}
+.fila{
+    display: flex; 
+    align-items: center; 
+    flex-direction: row;
+    padding: 60px 70px;
+    gap: 90px;
+}
+.colum2{
+    width: 304.4px;
+}
+.colum2 p{
+    font-size: 12px; 
+}
+.colum3 h4{
+    font-size: 14px; 
+}
+.colum4 h4{
+    font-size: 14px; 
+}
+.colum5 span{
+    font-size: 14px; 
+    color: #F4F4F5;
 }
