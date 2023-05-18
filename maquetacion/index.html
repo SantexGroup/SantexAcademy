@@ -5,52 +5,93 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xacademy Clase 1 maquetacion</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        p {
-            margin-right: 40px;
-        }
-        h1 {
-            margin: 0px 400px;
-            text-align: center;
-        }
-        button.redondo {
-            background-color: white;
-            border: 1px solid black;
-            border-radius: 25px;
-            padding: 0px 20px;
-            height: 32px;
-        }
-        div#introduction-actions {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;800&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" />
+    <!--<style>-->
+    <!--</style>-->
 </head>
-<body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
-        <div id="header-left">
-            <img src="logo.svg">
+    <body>
+        <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
+            <div id="header-left">
+                <img src="logo.svg">
+            </div>
+            <div id="header-right" style="display: flex; align-items: center;">
+                <p>Nosotros</p>
+                <p>Programas</p>
+                <p>Capaciontaciones</p>
+                <p>Alianzas</p>
+                <p>Contacto</p>
+                <button class="redondo">Sumate +</button>
+            </div>
         </div>
-        <div id="header-right" style="display: flex; align-items: center;">
-            <p>Nosotros</p>
-            <p>Programas</p>
-            <p>Capaciontaciones</p>
-            <p>Alianzas</p>
-            <p>Contacto</p>
-            <button class="redondo">Sumate +</button>
+        <div id="introduction" style="padding: 48px;">
+            <div id="introduction-text">
+                <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
+            </div>
+            <div id="introduction-actions" style="margin-top: 25px;">
+                <button class="redondo">Contactanos -></button>
+                <button class="redondo" style="margin-left: 14px; color: #6B53F0; border-color: #6B53F0;">Sumate +</button>
+            </div>
+        </div>
+        <div id="Impacto" style="display: flex; background-color: black; color: white;">
+            <div style="width: 16.7%">
+            </div>
+            <div id="Impacto-left" style="width: 33.3%; background-color: black; color: white; padding: 0px 50px 0px 0px ">
+                <h2 style="color: white; font-size: 30px;">. Impacto </h2>
+                <p style="color: white; font-size: 14px; margin: 0px 0px 20px ">
+                    Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la comunidad.
+                    Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.
+                </p>
+            </div>
+            <div id="Impacto-right" style="width:33.3%; display: flex; background-color: black; color: white;">
+                <div style="vertical-align: middle;">
+                    <p style="color: white; font-size: 50px; font-weight: 700; margin-bottom: 14px; padding: 0 7px"> 58 </p>
+                    <p style="color: #8C939C; font-size: 14px;"> Localidades </p>
+                </div>
+                <div>
+                    <p style="color: white; font-size: 50px; font-weight: 700; margin-bottom: 14px; padding: 0 7px; "> +50 </p>
+                    <p style="color: #8C939C; font-size: 14px;"> Mentores </p>
+                </div>
+                <div>
+                    <p style="color: white; font-size: 50px; font-weight: 700; margin-bottom: 14px; padding: 0 7px; "> 301 </p>
+                    <p style="color: #8C939C; font-size: 14px;"> Participantes </p>
+                </div>
+            </div>
+            <div style="width: 16.7%">
+            </div>
+        </div>
+        <div style="background-color: rgba(255, 255, 255, 0);
+           background-image: url(https://technologywithpurpose.org/wp-content/uploads/2022/11/twp-home.jpg);
+           background-position: center center; background-repeat: no-repeat; border-width: 0px;
+           border-style: solid; background-size: cover; background-attachment: fixed; height: calc(100vh - 80px);">
+        </div>
+        <div id="programas">
+            <h2>. Programas</h2>
+        </div>
+        <div id="programas-1"  style="border-bottom: 1px solid gray; display: flex;">
+            <div style="">
+                <img src="xacademy-01-600x400.jpg" style="border-radius: 0 50px 50px 50px; padding: 20px; ">
+            </div>
+            <div>
+                <img src="xacademy.svg">
+                <p>
+                    xAcademy es un programa de formación en tecnología llevado adelante por la Fundación Tecnología con Propósito junto a Santex que busca promover un cambio positivo en la comunidad a través de la educación en IT, apuntando a lograr la inserción laboral de personas en el mundo tecnológico.
+                </p>
+                <button class="redondo">Más Info -->
+    </button>
+    </div>
+    </div>
+    <div id="programas-2" style="border-bottom: 1px solid gray; display: flex;">
+        <div>
+            <h2>Robótica educativa: la tecnología del futuro</h2>
+            <p>Durante el curso, los alumnos y alumnas a través de la robótica desarrollan la curiosidad, el autodidactismo y las habilidades blandas necesarias para afrontar la revolución tecnológica del siglo XXI.</p>
+            <button class="redondo">Más Info --></button>
+        </div>
+        <div>
+            <img src="robotica-educativa-07-600x400.jpg" style="border-radius: 50px 50px 0 50px; padding: 20px; " ">
         </div>
     </div>
-    <div id="introduction" style="padding: 48px;">
-        <div id="introduction-text">
-            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
-        </div>
-        <div id="introduction-actions" style="margin-top: 25px;">
-            <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
-        </div>
-    </div>
-</body>
-</html>
+    </body>
+</html> 

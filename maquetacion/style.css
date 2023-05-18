@@ -1,0 +1,28 @@
+body {
+	margin: 0;
+	font-family: 'inter';
+}
+
+p {
+	margin-right: 40px;
+	color: #201B24;
+	font: 13px inter, arial;
+}
+
+h1 {
+	margin: 0px 400px;
+	text-align: center;
+}
+
+button.redondo {
+	background-color: white;
+	border: 2px solid black;
+	border-radius: 25px;
+	padding: 0px 20px;
+	height: 32px;
+}
+
+div#introduction-actions {
+	display: flex;
+	justify-content: center;
+}
