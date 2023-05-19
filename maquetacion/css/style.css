@@ -13,6 +13,7 @@
     --body-color-blanco: #ffff;
     --body-color-violeta: #6B53F0;
     --body-color-gris: #868C95;
+    --body-color-grisClaro: #F4F4F5;
 }
 body {
     margin: 0;
@@ -232,28 +233,32 @@ div#introduction-actions {
     max-width: 1600px;
     background-color:#F4F4F5;
 }
-.card2{
-    background-color:#F4F4F5;
-}
+
 .card {
     background-color: var(--body-color-blanco);
     width: 100%;
     margin: 10px;
+    padding-bottom: 20px;
     border-radius: 30px 30px 30px 0px;
     overflow: hidden;
+}
+.card2{
+    background-color:var(--body-color-grisClaro);
 }
 .imagen-card img {
     width: 100%;
     height: auto;
 }
-.texto-card {
+.texto-card{
     padding: 15px;
     text-align: center;
     margin-top: 10px;
+    
 }
 
 .texto-card p{
     color: var(--body-color-gris);
+    margin-right: 0px;
 }
 .logo-card {
     font-size: 24px;
