@@ -10,14 +10,16 @@
 }
 :root{
     /* =========color========= */
-    --body-color: #ffff;
+    --body-color-blanco: #ffff;
+    --body-color-violeta: #6B53F0;
+    --body-color-gris: #868C95;
 }
 body {
     margin: 0;
     
 }
 header{
-    background-color: white;
+    background-color: var(--body-color-blanco);
 }
 main{
 
@@ -45,7 +47,7 @@ h1 {
 }
 #introduction{
     padding: 48px;
-    background-color: white;
+    background-color: var(--body-color-blanco);
 }
 #introduction-text{
     padding-bottom: 20px;
@@ -54,7 +56,7 @@ h1 {
     padding-bottom: 20px;
 }
 button.redondo {
-    background-color: white;
+    background-color: var(--body-color-blanco);
     border: 2px solid black;
     border-radius: 25px;
     padding: 0px 20px;
@@ -63,22 +65,22 @@ button.redondo {
 }
 button.redondo1:hover {
     background-color: black;
-    border: 2px solid white;
-    color: white;
+    border: 2px solid var(--body-color-blanco);
+    color: var(--body-color-blanco);
 }
 button.redondo2 {
-    background-color: white;
-    border: 2px solid #6B53F0;
-    color: #6B53F0;
+    background-color: var(--body-color-blanco);
+    border: 2px solid var(--body-color-violeta);
+    color: var(--body-color-violeta);
     border-radius: 25px;
     padding: 0px 20px;
     height: 35px;
     font-size: 12px;
 }
 button.redondo2:hover {
-    background-color: #6B53F0;
-    border: 2px solid white;
-    color: white;
+    background-color: var(--body-color-violeta);
+    border: 2px solid var(--body-color-blanco);
+    color: var(--body-color-blanco);
 }
 div#introduction-actions {
     display: flex;
@@ -102,7 +104,7 @@ div#introduction-actions {
 }
 #container{
     background-color: #201B24;
-    color: white;
+    color: var(--body-color-blanco);
     display: flex; 
     align-items: center; 
     flex-direction: row;
@@ -127,16 +129,16 @@ div#introduction-actions {
     font-size: 50px; 
 }
 #CuadroDos .parrafo{
-    color: #868C95;
+    color: var(--body-color-gris);
 
 }
 #CuadroDos .valor{
-    color: #6B53F0;
+    color: var(--body-color-violeta);
     font-size: 30px; 
 }
 
 .containerDos{
-    background-color: white;
+    background-color: var(--body-color-blanco);
     display: flex; 
     align-items: center; 
     flex-direction: column;   
@@ -192,7 +194,7 @@ div#introduction-actions {
 }
 
 .titulo{
-    background-color: white;
+    background-color: var(--body-color-blanco);
     color: black;
     padding-top: 60px;
     padding-left: 70px;
@@ -202,7 +204,7 @@ div#introduction-actions {
     font-size: 30px; 
 }
 .titulo2{
-    background-color: white;
+    background-color: var(--body-color-blanco);
     color: black;
     padding-top: 60px;
     padding-left: 70px;
@@ -225,42 +227,50 @@ div#introduction-actions {
     font-size: 30px; 
 }
 .equipo{
-    display: flex; 
-    align-items: center; 
-    flex-direction: row;
     padding: 5px 70px;
+    display: flex; 
+    max-width: 1600px;
     background-color:#F4F4F5;
 }
 .card2{
     background-color:#F4F4F5;
 }
 .card {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 350px;
-    background-color: white;
+    background-color: var(--body-color-blanco);
+    width: 100%;
+    margin: 10px;
     border-radius: 30px 30px 30px 0px;
-    padding: 30px;
-}
-.imagen-card {
-    margin-right: 10px;
+    overflow: hidden;
 }
 .imagen-card img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
 }
 .texto-card {
-    flex: 1;
+    padding: 15px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.texto-card p{
+    color: var(--body-color-gris);
 }
 .logo-card {
     font-size: 24px;
+    text-align: center;
+    cursor: default;
+    transition: all 400ms ease;
+}
+.logo-card i:hover {
+    font-size: 24px;
+    cursor: default;
+    transition: all 400ms ease;
 }
 .logo-card i {
     color: #3f729b;
 }
 .compilado{
-    background-color: white;
+    background-color: var(--body-color-blanco);
 }
 .carrucel{
     display: flex; 
