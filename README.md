@@ -1,4 +1,4 @@
-<img src="C_Ampliacion/src/banner_telecomv2.png" align="center" height="350">
+<img src="https://github.com/gastonloco/SantexAcademy/blob/FerreyraGaston/maquetacion/img/banner.PNG" align="center" height="350">
 
 # Santex Academy
 
