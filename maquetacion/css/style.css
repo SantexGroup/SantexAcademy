@@ -234,6 +234,10 @@ div#introduction-actions {
     display: flex; 
     max-width: 1600px;
     background-color:var(--body-color-grisClaro);
+    padding-bottom: 20px;
+}
+.equipoDos{
+    padding-bottom: 70px;
 }
 
 .card {
