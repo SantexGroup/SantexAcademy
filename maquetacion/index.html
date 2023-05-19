@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Farro:wght@300&display=swap" rel="stylesheet">
     <title>Xacademy Clase 1 maquetacion</title>
     <style>
         body {
@@ -15,32 +18,65 @@
         h1 {
             margin: 0px 400px;
             text-align: center;
+            
         }
         button.redondo {
             background-color: white;
-            border: 1px solid black;
+            border: 2px solid black;
             border-radius: 25px;
             padding: 0px 20px;
-            height: 32px;
+            height: 35px;
         }
         div#introduction-actions {
             display: flex;
             justify-content: center;
+            align-content: center;
+            text-align: center;
+            
+        }
+        div#introduction-text{
+            display: flex;
+            align-content: center;
+            align-items: center;
+            height: 30px;
+            margin:120px 150px ;
+            font-family: 'Farro', sans-serif;
+        }
+        #imagen{
+            width: 15px;
+            height: 15px;
+            margin-left: 45px;
+            margin-right: 10px;
+        }
+        #imagen2{
+            width: 15px;
+            height: 15px;
+            margin-left: 5px;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
-        <div id="header-left">
-            <img src="logo.svg">
+    <div id="header" style="border-bottom: 2px solid gray; display: flex; padding: 5px 100px; justify-content: space-between;margin-left: 5px;
+        margin-right: 5px;">
+        <div id="header-left" style="margin-bottom: 10px;
+        margin-top: 10px;">
+            <img src="logo.svg" style="margin-left: 110px;
+            padding-left: 95px;
+            margin-top: 5px;
+            margin-bottom: 5px">
         </div>
-        <div id="header-right" style="display: flex; align-items: center;">
+        <div id="header-right" style="display: flex; align-items: center;margin-right: 230px;font-size: 14px;font-family:Arial, Helvetica, sans-serif;">
+            
             <p>Nosotros</p>
             <p>Programas</p>
             <p>Capaciontaciones</p>
             <p>Alianzas</p>
             <p>Contacto</p>
             <button class="redondo">Sumate +</button>
+            <img id='imagen' src="/maquetacion/instagram.png" alt="">
+            <img id='imagen2' src="/maquetacion/linkedin.png" alt="">
+            
         </div>
     </div>
     <div id="introduction" style="padding: 48px;">
