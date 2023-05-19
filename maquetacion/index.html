@@ -5,36 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xacademy Clase 1 maquetacion</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        p {
-            margin-right: 40px;
-        }
-        h1 {
-            margin: 0px 400px;
-            text-align: center;
-        }
-        button.redondo {
-            background-color: white;
-            border: 1px solid black;
-            border-radius: 25px;
-            padding: 0px 20px;
-            height: 32px;
-        }
-        div#introduction-actions {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
-        <div id="header-left">
+    <div id="navbar" >
+        <div id="navbar-left">
             <img src="logo.svg">
         </div>
-        <div id="header-right" style="display: flex; align-items: center;">
+        <div id="navbar-right">
             <p>Nosotros</p>
             <p>Programas</p>
             <p>Capaciontaciones</p>
@@ -43,14 +25,264 @@
             <button class="redondo">Sumate +</button>
         </div>
     </div>
-    <div id="introduction" style="padding: 48px;">
+    <div id="introduction">
         <div id="introduction-text">
             <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
         </div>
-        <div id="introduction-actions" style="margin-top: 25px;">
+        <div id="introduction-action">
             <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+            <button class="redondo" style="margin-left: 1em;">Sumate +</button>
         </div>
     </div>
+    <div>
+        <div class="row-container-main-content" id="container-dark">
+            <!-- <div class="container-dark-col"></div> -->
+            <div id="container-left-content">
+                <div class="left-header-title" style="color: white;">.Impacto</div>
+                <div>
+                    <p>Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la comunidad.
+                    Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.</p>
+                </div>
+            </div>
+            <div id="container-right-content">
+                <div class="counter-box">
+                    <div>
+                        <span>58</span>
+                    </div>
+                    <div class="label">Localidades</div>
+                </div>
+                <div class="counter-box" id="midle-box">
+                    <div style="display: flex;">
+                        <span id="plus">+</span>
+                        <span>50</span>
+                    </div>
+                    <div class="label" style="padding-left: 1em;">Mentores</div>
+                </div>
+                <div class="counter-box">
+                    <div>
+                        <span>301</span>
+                    </div>
+                    <div class="label">Participantes</div>
+                </div>
+            </div>
+            <!-- <div class="container-dark-col"></div> -->
+        </div>
+    </div>
+    <div id="container-img">
+        <!-- <div id="background-image"></div> -->
+    </div >
+    <div class="row-container">
+        <div class="left-header-title content-box-title" id="programas">.Programas</div>
+        <div class="row-container-content">
+            <div class="img-content">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/11/xacademy-01-1200x800.jpg">
+            </div>
+            <div class="main-content-right">
+                <div class="img-title">
+                    <img title="xacademy" src="https://technologywithpurpose.org/wp-content/uploads/2022/10/xacademy.svg">
+                </div>
+                <div class="text">
+                    <p>xAcademy es un programa de formación en tecnología llevado adelante por la Fundación Tecnología con Propósito
+                        junto a Santex que busca promover un cambio positivo en la comunidad a través de la educación en IT, 
+                        apuntando a lograr la inserción laboral de personas en el mundo tecnológico.</p>
+                </div>
+                <div class="button">
+                    <button class="redondo">Más info -></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row-container">
+        <div class="row-container-content">
+            <div class="main-content-left">
+                <div class="article-title">
+                    <h4>Robótica educativa: la tecnología del futuro</h4>
+                </div>
+                <div class="text">
+                    <p>Durante el curso, los alumnos y alumnas a través de la robótica desarrollan la curiosidad, 
+                        el autodidactismo y las habilidades blandas necesarias para afrontar la revolución tecnológica del siglo XXI.</p>
+                </div>
+                <div class="button">
+                    <button class="redondo">Más info -></button>
+                </div>
+            </div>
+            <div class="img-content">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/11/robotica-educativa-07-1200x800.jpg">
+            </div>
+        </div>
+    </div>
+    <div class="row-container">
+        <div class="left-header-title content-box-title" id="capacitaciones">.Capacitaciones</div>
+        <div class="row-container-content">
+            <div class="img-content">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/11/estafas-virtuales-04-1200x905.jpg">
+            </div>
+            <div class="main-content-right">
+                <div class="article-title">
+                    <h4>Estafas virtuales: ¿cómo protegernos?</h4>
+                </div>
+                <div class="text">
+                    <p>Los canales de comunicación a través de medios digitales cobraron gran protagonismo a partir de la pandemia. 
+                        Al mismo tiempo, se perfeccionan cada vez más rápido las modalidades de estafas y fraudes virtuales. 
+                        En esta capacitación vas a aprender diferentes tips y consejos útiles para navegar de manera más segura.</p>
+                </div>
+                <div class="button">
+                    <button class="redondo">Más info -></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row-container">
+        <div class="row-container-content">
+            <div class="main-content-left">
+                <div class="article-title">
+                    <h4>Seguridad informática para infancias</h4>
+                </div>
+                <div class="text">
+                    <p>¿Navegamos seguros en internet? La propuesta es una charla para niños y 
+                        niñas donde se brindan herramientas de seguridad y autocuidado digital.</p>
+                </div>
+                <div class="button">
+                    <button class="redondo">Más info -></button>
+                </div>
+            </div>
+            <div class="img-content">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/seguridad-informatica-para-infancias-1200x797.jpg">
+            </div>
+        </div>
+    </div>
+    <div class="team-container">
+        <div class="left-header-title content-box-title" >.Equipo</div>
+        <div class="cards-container">
+            <div class="card">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-juan.png" alt="">
+                <div class="card-info">
+                    <span class="card-name">
+                        <h5>Juan Santiago</h5>
+                    </span>
+                    <span class="card-role">
+                        <p>Presidente</p>
+                    </span>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-walter.png" alt="">
+                <div class="card-info">
+                    <span class="card-name">
+                        <h5>Walter Abrigo</h5>
+                    </span>
+                    <span class="card-role">
+                        <p>Secretario</p>
+                    </span>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-gabriela.png" alt="">
+                <div class="card-info">
+                    <span class="card-name">
+                        <h5>Gabriela Fernandez</h5>
+                    </span>
+                    <span class="card-role">
+                        <p>Comisión Directiva</p>
+                    </span>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-gabriel.png" alt="">
+                <div class="card-info">
+                    <span class="card-name">
+                        <h5>Gabriel Dubini</h5>
+                    </span>
+                    <span class="card-role">
+                        <p>Tesorero</p>
+                    </span>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-florencia.png" alt="">
+                <div class="card-info">
+                    <span class="card-name">
+                        <h5>Florencia D'Agostino</h5>
+                    </span>
+                    <span class="card-role">
+                        <p>Dirección Ejecutiva</p>
+                    </span>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-celeste.png" alt="">
+                <div class="card-info">
+                    <span class="card-name">
+                        <h5>Celeste Torresi</h5>
+                    </span>
+                    <span class="card-role">
+                        <p>Comisión Directiva</p>
+                    </span>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/twp-lucia.png" alt="">
+                <div class="card-info">
+                    <span class="card-name">
+                        <h5>Lucia Jaimez</h5>
+                    </span>
+                    <span class="card-role">
+                        <p>Directora Academy</p>
+                    </span>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2023/05/agustin-chino.png" alt="">
+                <div class="card-info">
+                    <span class="card-name">
+                        <h5>Agustín Chino</h5>
+                    </span>
+                    <span class="card-role">
+                        <p>Coord. Área Inclusión Social</p>
+                    </span>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2023/05/enzo-dotto.png" alt="">
+                <div class="card-info">
+                    <span class="card-name">
+                        <h5>Enzo Dotto</h5>
+                    </span>
+                    <span class="card-role">
+                        <p>Relaciones Institucionales</p>
+                    </span>
+                </div>
+            </div>
+            <div class="card" id="empty"></div>
+        </div>
+    </div>
+    <footer>
+        <div>
+            <div class="footer-item">
+                <img src="https://technologywithpurpose.org/wp-content/uploads/2022/10/technology-with-purpose-white.svg" alt="">
+            </div>
+            <div id="footer-p">
+                <p>Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.</p>
+            </div>
+            <div class="link">
+                <p>
+                    <a href="https://technologywithpurpose.org/nosotros/">NOSOTROS</a><br>
+                    <a href="https://technologywithpurpose.org/contacto/">CONTACTO</a>
+                </p>
+            </div>
+            <div class="link">
+                <p>
+                    <a href="#programas">PROGRAMAS</a><br>
+                    <a href="#capacitaciones">CAPACITACIONES</a>
+                </p>
+            </div>
+            <div class="link">
+                <p>
+                    <a href="https://www.instagram.com/technologywithpurpose/">INSTAGRAM</a><br>
+                    <a href="https://www.linkedin.com/company/technologywithpurpose/">LINKEDIN</a>
+                </p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

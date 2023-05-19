@@ -1,0 +1,324 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+html {
+    font-size: 13px;
+    font-family: inter, sans-serif;
+}
+body {
+    margin: 0em; 
+}
+p {
+    margin-right: 2.5em;
+}
+h1 {
+    margin: 0em;
+    text-align: center;;
+    text-align: center;
+}
+.redondo {
+    background-color: white;
+    border: 0.15em solid black;
+    border-radius: 1.5626em;
+    border-width: 0.2em;
+    width: 9em;
+    height: 3em;
+}
+div.container-center {
+    justify-content: center;
+    
+}
+div#introduction-action {
+    display: flex;
+    justify-content: center;
+    padding: 2em;
+}
+div#introduction {
+    padding: 3.7em 32em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.0625em solid gray; 
+    padding: 1.1em 8em;
+    position: sticky;
+    top: 0em;
+    background-color: white;
+}
+div#navbar-right {
+    display: flex;
+    align-items: center;
+}
+#container-dark{
+     background-color: #201b24;
+}
+.row-container-main-content {
+    background-color: white;
+    padding: 9.2em 16.3em;
+    display: flex;
+    justify-content: space-between;
+}
+#container-left-content{
+    padding-right: 7.8em;
+    display: block;
+}
+.left-header-title {
+    color: black;
+    font-size: 2.3em;
+    font-weight: 600;
+    padding: 0.5em 0em;
+}
+#container-left-content div p {
+    color: white;
+    font-size: 1.1em;
+    margin-right: 0em;
+}
+#container-right-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4.5em 1em 0em;
+}
+.counter-box {
+    color: white;
+}
+.counter-box span {
+    font-size: 4em;
+    font-weight: bolder;
+}
+.row-container-content {
+    padding: 1em 3em;
+    display: flex;
+    justify-content: space-between;
+}
+.row-container {
+    padding: 1em, 0em;
+}
+.content-box-title {
+    padding-left: 1.5em;
+    padding-top: 2em;
+}
+.img-content img {
+    border-radius:0em 3em 3em 3em;
+    vertical-align: top;
+    width:44em;
+    height:30em;
+    image-rendering: auto;
+}
+.img-title img {
+    vertical-align: top;
+    width:16em;
+    height:4em;
+    image-rendering: auto;
+}
+.main-content-right {
+    padding: 5em 4em 7em 7em;
+}
+.main-content-left {
+    padding: 9em 7em 9em 4em;
+}
+.article-title {
+    font-size: 1.6em;
+}
+.text {
+    margin: 2em 0em;
+    text-align: justify;
+    text-justify: inter-word;
+}
+.text p {
+    margin-right: 0em;
+    font-size: 1.1em;
+}
+#midle-box {
+    padding: 0em 4em;
+}
+#plus {
+    padding-top: 0.2em;
+    font-size: 2.5em;
+    font-weight: 300;
+    color: #6B53F0;
+}
+.label {
+    color: #8c939c;
+}
+#background-image {
+    
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); */
+}
+#container-img {
+    background-image: url("https://technologywithpurpose.org/wp-content/uploads/2022/11/twp-home.jpg");
+    background-repeat: no-repeat;
+    /* background-size: 97.8em 65.7em;
+    padding: 30em 0em; */
+    background-size: cover;
+    background-attachment: fixed;
+    height: calc(100vh - 80px);
+    background-position: center center;
+    justify-content: center;
+}
+#translucid {
+    background-color: transparent;
+    padding: 30em 03em;
+}
+.team-container {
+    background-color: #f4f4f5;
+}
+.cards-container {
+    padding: 1em 3em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 1em 1em 1em 0em;
+    margin-bottom: 3em;
+    padding: 0em;
+}
+.card img {
+    vertical-align: top;
+    width: 17em;
+    height: 13em;
+    border-radius: 1em 1em 0em 0em;
+    image-rendering: auto;
+}
+.card-info {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-name {
+    font-size: 1.6em;
+    margin-bottom: 0.1em;
+}
+.card-role p {
+    color: #8c939c;
+    margin-right: 0;
+    font-size: 1.1em;
+}
+.card#empty {
+    padding: 5em 8.5em;
+}
+footer {
+    background-color: #201b24;
+    padding: 3em;
+    color: white;
+}
+footer div:first-child {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0em 2em;
+}
+footer p {
+    padding: 1em 0em;
+}
+.footer-item img {
+    vertical-align: top;
+    width: 14em;
+    height: 5em;
+    image-rendering: auto;
+}
+.footer-item {
+    align-items: center;
+}
+.link a {
+    font-weight: 600;
+    color: #d9d9d9;
+    cursor: pointer;
+    text-decoration: white;
+    font-size: 1.1em;
+}
+#footer-p {
+    width: 23em;
+    resize: horizontal;
+    overflow: auto;
+    font-size: 0.9em;
+}
+
+
+@media only screen and (min-width: 350px) and (max-width: 500px) {
+    html {
+        font-size: 7px;
+    }
+    .row-container-main-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .row-container-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #navbar {
+        flex-direction: column;
+    }
+    
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 600px) {
+    html {
+        font-size: 8px;
+    }
+    .row-container-main-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .row-container-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #navbar {
+        flex-direction: column;
+    }
+    
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+    html {
+        font-size: 8px;
+    }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1000px) {
+    html {
+        font-size: 10px;
+    }
+}
+/* 
+@media (width <= 1100px) {
+    html {
+        font-size: 11px;
+    }
+}
+
+@media (width >= 2700px) {
+    html {
+        font-size: 20px;
+    }
+}
+
+@media (width >= 3100px) {
+    html {
+        font-size: 32px;
+    }
+} */
