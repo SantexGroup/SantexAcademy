@@ -1,56 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Xacademy Clase 1 maquetacion</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        p {
-            margin-right: 40px;
-        }
-        h1 {
-            margin: 0px 400px;
-            text-align: center;
-        }
-        button.redondo {
-            background-color: white;
-            border: 1px solid black;
-            border-radius: 25px;
-            padding: 0px 20px;
-            height: 32px;
-        }
-        div#introduction-actions {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
-</head>
-<body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
-        <div id="header-left">
-            <img src="logo.svg">
-        </div>
-        <div id="header-right" style="display: flex; align-items: center;">
-            <p>Nosotros</p>
-            <p>Programas</p>
-            <p>Capaciontaciones</p>
-            <p>Alianzas</p>
-            <p>Contacto</p>
-            <button class="redondo">Sumate +</button>
-        </div>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="header">
+      <div id="header-left">
+        <a href="https://technologywithpurpose.org/"
+          ><img id="logo-nav" src="logo.svg"
+        /></a>
+      </div>
+      <div id="header-right">
+        <p>Nosotros</p>
+        <p>Programas</p>
+        <p>Capacitaciones</p>
+        <p>Alianzas</p>
+        <p>Contacto</p>
+        <button id="btn-nav-bar" class="redondo">Sumate +</button>
+        <li class="menu-item">
+          <a
+            target="_blank"
+            id="instagram"
+            rel="noopener noreferrer"
+            href="https://www.instagram.com/technologywithpurpose/"
+            class="fusion-icon-only-link fusion-flex-link fusion-textcolor-highlight redes"
+          >
+            <span class="fusion-megamenu-icon">
+              <i class="glyphicon fa-instagram fab" aria-hidden="true"></i>
+            </span>
+          </a>
+        </li>
+
+        <li class="menu-item">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.linkedin.com/company/technologywithpurpose/"
+            class="fusion-icon-only-link fusion-flex-link fusion-textcolor-highlight redes"
+          >
+            <span class="fusion-megamenu-icon">
+              <i class="glyphicon fa-linkedin-in fab" aria-hidden="true"></i>
+            </span>
+          </a>
+        </li>
+      </div>
     </div>
-    <div id="introduction" style="padding: 48px;">
-        <div id="introduction-text">
-            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
+    <div id="content">
+      <div id="motto-content">
+        <div id="introduction" style="padding: 48px">
+          <div id="introduction-text">
+            <h1 id="frase">
+              Somos una Fundación dedicada a mejorar la calidad de vida de las
+              personas y su entorno, a través de la tecnología.
+            </h1>
+          </div>
+          <div id="introduction-actions">
+            <button class="redondo">
+              <a href="https://technologywithpurpose.org/contacto/">
+                <span class="fusion-button-text">Contactanos</span> -></a
+              >
+            </button>
+            <button id="btn-donar" class="redondo">Sumate +</button>
+          </div>
         </div>
-        <div id="introduction-actions" style="margin-top: 25px;">
-            <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+      </div>
+
+      <!-- Impacto -->
+      <div class="container">
+        <div id="impacto">
+          <div id="impact-content">
+            <div id="impact-row">
+              <div class="impact-col-lat"></div>
+              <div class="impact-col-cent">
+                <div id="content-impact-title">
+                  <h2 id="impact-title">. Impacto</h2>
+                
+                <div id="content-impact-text">
+                  <p id="impact-text">
+                    Buscamos construir alianzas y fortalecer vínculos para
+                    generar una transformación real en la comunidad. Trabajamos
+                    para acercar la tecnología innovadora y disruptiva del
+                    sector privado hacia el sector social.
+                  </p>
+                </div></div>
+              </div>
+              <div class="impact-col-cent">
+                <div id="content-2col-cent">
+                  <div id="content-stats">
+                    <div class="counter-content" data-animationoffset="top-into-view">
+                      <div class="counter">
+                        <div class="number">
+                          <span class="display-counter" data-value="58" data-direction="up" data-decimals="0">58</span>
+                        </div>
+                        <div class="counter-box-content">Localidades</div>
+                      </div>
+                    </div>
+
+                    <div class="counter-content" data-animationoffset="top-into-view">
+                      <div class="counter">
+                        <div class="number">
+                          <span class="unit">+</span>
+                          <span class="display-counter" data-value="58" data-direction="up" data-decimals="0">50</span>
+                        </div>
+                        <div class="counter-box-content">Mentores</div>
+                      </div>
+                    </div>
+
+                    <div class="counter-content" data-animationoffset="top-into-view">
+                      <div class="counter">
+                        <div class="number">
+                          <span class="display-counter" data-value="58" data-direction="up" data-decimals="0">301</span>
+                        </div>
+                        <div class="counter-box-content">Participantes</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <div class="impact-col-lat"></div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</body>
+          <!-- / Impacto -->
+    <div id="foto-fundacion"></div>
+
+      <!-- progamas -->
+    <div id="programas">
+      <div id="title-programs">
+        <div id="title-programs-content">
+          <div id="title-progrmas-content-column">
+            <div id="programs-wraper">
+              <div id="programs-title-h2">
+                <h2 id="title-programs-text">
+                  . Programas
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="Xacademy-description">
+        <div id="Xacademy-description-content">
+          <div class="Xacademy-description-content-column">
+            <div id="Xacademy-description-image">              
+              <div>
+                <span id="Xacademy-image">
+                  <img id="xAcademy-img-1" title="xAcademy" src="https://technologywithpurpose.org/wp-content/uploads/2022/11/xacademy-01.jpg">
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="Xacademy-description-content-column">
+            <div id="text-description">
+                <span id="content-img-logo-Xacademy">
+                  <img id="xAcademy-logo" src="https://technologywithpurpose.org/wp-content/uploads/2022/10/xacademy.svg"></span>
+                  <div id="description-Xacademy-text">
+                    <p>xAcademy es un programa de formación en tecnología llevado adelante por la Fundación Tecnología con Propósito junto a Santex 
+                      que busca promover un cambio positivo en la comunidad a través de la educación en IT, 
+                      apuntando a lograr la inserción laboral de personas en el mundo tecnológico.
+                    </p>
+                  </div>  
+                  <div id="button-content">
+                    <a class="redondo" href="https://technologywithpurpose.org/xacademy/">
+                      <span class="fusion-button-text">Más info</span>
+                      <i class="fa-long-arrow-alt-right fas button-icon-right" aria-hidden="true"></i>
+                    </a>
+                  </div>
+              </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </body>
 </html>
