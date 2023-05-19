@@ -1,4 +1,4 @@
-<img src="https://github.com/gastonloco/SantexAcademy/blob/FerreyraGaston/maquetacion/img/banner.PNG" align="center" height="350">
+<img src="https://github.com/gastonloco/SantexAcademy/blob/FerreyraGaston/maquetacion/img/banner.PNG" align="center">
 
 # Santex Academy
 
@@ -13,4 +13,4 @@ Damos la bienvenida a todos los colaboradores 💙
 
 ## Implmentacón
 
-<img src="https://github.com/gastonloco/SantexAcademy/blob/FerreyraGaston/maquetacion/img/Xacademy.png" align="center" height="350">
+<img src="https://github.com/gastonloco/SantexAcademy/blob/FerreyraGaston/maquetacion/img/Xacademy.png" align="center">
