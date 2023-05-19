@@ -268,11 +268,6 @@ div#introduction-actions {
     cursor: default;
     transition: all 400ms ease;
 }
-.logo-card i:hover {
-    font-size: 24px;
-    cursor: default;
-    transition: all 400ms ease;
-}
 .logo-card i {
     color: var(--body-color-black);
     border: 2px solid var(--body-color-black);
@@ -280,6 +275,14 @@ div#introduction-actions {
     font-size: 12px;
     padding: 5px;
 }
+.logo-card i:hover {
+    border: 2px solid var(--body-color-violeta);
+    color: var(--body-color-blanco);
+    background-color:var(--body-color-violeta);
+    transition: all 400ms ease;
+}
+
+
 .compilado{
     background-color: var(--body-color-blanco);
 }
