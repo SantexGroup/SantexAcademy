@@ -146,6 +146,11 @@ div#introduction-actions {
     align-items: center; 
     flex-direction: column;   
 }
+.parte2 .suma{
+    display: flex; 
+    align-items: center; 
+    flex-direction: row;   
+}
 .porfolio img{
     border-style: none;
     vertical-align: top;
