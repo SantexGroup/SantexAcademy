@@ -1,56 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xacademy Clase 1 maquetacion</title>
-    <style>
-        body {
-            margin: 0;
-        }
-        p {
-            margin-right: 40px;
-        }
-        h1 {
-            margin: 0px 400px;
-            text-align: center;
-        }
-        button.redondo {
-            background-color: white;
-            border: 1px solid black;
-            border-radius: 25px;
-            padding: 0px 20px;
-            height: 32px;
-        }
-        div#introduction-actions {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <title>Fundación Tecnología con proposito</title>
 </head>
 <body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
-        <div id="header-left">
-            <img src="logo.svg">
-        </div>
-        <div id="header-right" style="display: flex; align-items: center;">
-            <p>Nosotros</p>
-            <p>Programas</p>
-            <p>Capaciontaciones</p>
-            <p>Alianzas</p>
-            <p>Contacto</p>
-            <button class="redondo">Sumate +</button>
+    <div id="header">
+        <div class="header-container container">
+            <div id="header-left">
+                <img src="logo.svg">
+            </div>
+            <div id="header-right">
+                <ul>
+                    <li><a href="#" class="menu-link">Nosotros</a></li>
+                    <li><a href="#" class="menu-link">Programas</a></li>
+                    <li><a href="#" class="menu-link">Capacitaciones</a></li>
+                    <li><a href="#" class="menu-link">Alianzas</a></li>
+                    <li><a href="#" class="menu-link">Contacto</a></li>
+                    <li><a href="" class="menu-link"><button class="menu_btn">Sumate +</button></a></li>
+                    <li><a href="https://www.instagram.com/technologywithpurpose/" class="menu-link" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQEbSqUePR2hjAAAAYdj55yAKGBddJ8Vn1TLDAN9KdhejSzcl6lw_XPXM7GuAayKj0Bt_Z9jfALJTPCel_KMocTplUEmOYHdya6-ISGFB50Yu6tzXCfTpiXNpNl_JKGw0fRYQs4=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Ftechnologywithpurpose%2F" class="menu-link" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
         </div>
     </div>
-    <div id="introduction" style="padding: 48px;">
+    <div id="introduction">
         <div id="introduction-text">
             <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
         </div>
         <div id="introduction-actions" style="margin-top: 25px;">
-            <button class="redondo">Contactanos -></button>
-            <button class="redondo" style="margin-left: 14px;">Sumate +</button>
+            <button class="redondo">Contactanos &nbsp;<i class="fas fa-arrow-right"></i></button>
+            <button class="azul_btn" style="margin-left: 14px;">Sumate &nbsp;<i class="fas fa-plus"></i></button>
         </div>
     </div>
 </body>
-</html>
