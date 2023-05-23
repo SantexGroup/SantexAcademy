@@ -1,37 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cluster 2 - X Academy</title>
-    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/47f2c59d1f.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<body style="margin: 0;">
+  <body>
     <div id="navbar">
-        <div id="navbar-left">
-            <img src="technology-with-purpose.svg">
-        </div>
-        <div id="navbar-right" style="display: flex; align-items: center;">
-            <p>Nosotros</p>
-            <p>Programas</p>
-            <p>Capacitaciones</p>
-            <p>Alianzas</p>
-            <p>Contacto</p>
-            <button id="main-button">Sumate +</button>
-        </div>
-    </div>
-    <div id="main-title">
-        <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la
-            tecnología.</h1>
+      <div id="navbar-left">
+        <img class="img_svg" src="technology-with-purpose.svg" />
+      </div>
+      <div id="navbar-right">
+        <a href="#">Nosotros</a>
+        <a href="#">Programas</a>
+        <a href="#">Capacitaciones</a>
+        <a href="#">Alianzas</a>
+        <a href="#">Contacto</a>
+        <a href="#"><button class="btn">Sumate +</button></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
     </div>
 
-</body>
+    <main class="main">
+      <section class="main_section">
+        <article class="main_article">
+          <h1 class="main_title">
+            Somos una Fundación dedicada a mejorar la calidad de vida de las
+            personas y su entorno, a través de la tecnología.
+          </h1>
+          <div class="main_buttons">
+            <button class="btn_contact">
+              <a
+                href="https://technologywithpurpose.org/contacto/"
+                target="_blank"
+              >
+                Contactanos
+                <i id="right" class="fas fa-long-arrow-alt-right"></i>
+              </a>
+            </button>
+            <button class="btn_sumate_a">
+              Sumate <i id="fa_plus" class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+          </div>
+        </article>
+      </section>
+    </main>
 
+    <div class="dark-overlay">
+      <div class="content">
+        <div class="left-content">
+          <h2 class="left-content-impacto">. Impacto</h2>
+          <p>
+            Buscamos construir alianzas y fortalecer vínculos para generar una
+            transformación real en la comunidad. Trabajamos para acercar la
+            tecnología innovadora y disruptiva del sector privado hacia el
+            sector social.
+          </p>
+        </div>
+        <div class="right-content">
+          <div class="column">
+            <span>58</span>
+            <p>Localidades</p>
+          </div>
+          <div class="column">
+            <span class="unit">50</span>
+            <p>Mentores</p>
+          </div>
+          <div class="column">
+            <span>301</span>
+            <p>Participantes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="img_container"></div>
+    
+    <div class="main_content_programs">
+      <div class="programs">
+        <h2>. Programas</h2>
+      </div>
+    </div>
+
+    <div class="main_img_description">
+      <div class="img_description">
+        <div class="img_container_description">
+          <div class="img_container">
+            <img src="/images/xacademy-01.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </body>
 </html>
+
