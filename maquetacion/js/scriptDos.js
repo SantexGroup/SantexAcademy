@@ -41,9 +41,6 @@ class Carrito {
         this.categorias = [];
     }
 
-    /**
-     * función que agrega @{cantidad} de productos con @{sku} al carrito
-     */
     async agregarProducto(sku, cantidad) {
         console.log(`Agregando ${cantidad} ${sku}`);
 
@@ -83,7 +80,7 @@ class Carrito {
     eliminarProducto(sku, cantidad) {
         return new Promise((resolve, reject) => {
             const productoEnCarrito = this.productos.find(producto => producto.sku === sku);
-
+            console.log(productoEnCarrito)
             if (productoEnCarrito) {
                 if (cantidad < productoEnCarrito.cantidad) {
                     // Restar la cantidad del producto en el carrito
