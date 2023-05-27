@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+}
+p {
+    margin-right: 25px;
+    color: grey;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    font-weight: bold;
+}
+h1 {
+    margin: 35px 200px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28px;
+}
+button.redondo {
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 25px;
+    border-color: #343a40;
+    font-weight: bold;
+    color: #343a40;
+    padding: 10px 20px;
+}
+div svg {
+    margin-left: 25px;
+}
+div#introduction-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+div#impacto {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-direction: row;
+    background-color: black;
+    padding: 120px 30px;
+}
+div#impacto-text h1 {
+    color: white;
+    margin: 20px 0;
+    text-align: left;
+    padding: 0 50px 0 150px;
+    width: 270px;
+}
+div#impacto-text p {
+    color: white;
+    margin: 20px 0;
+    text-align: left;
+    padding: 0 50px 0 150px;
+    width: 270px;
+    line-height: 1.5;
+}
+div#contadores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+div.contador-item {
+    margin: 0 10px;
+    text-align: 50px;
+}
+div.contador-numero p {
+    margin: 0 25px 0 0;
+    font-size: 50px;
+    color: white;
+}
+span {
+    vertical-align: middle;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 550;
+}
