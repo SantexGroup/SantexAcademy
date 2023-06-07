@@ -1,40 +1,147 @@
-
-
-
 html {
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
 }
 
-p {
-    margin-right: 2em;
-    font-weight: bold;
-    font-size: 0.9em;
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    padding: 1.2em 0;
+    background-color: white;
+    border-bottom: 1px solid gray;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+a:link, a:visited {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+a:hover {
+    color: #6b53f0;
+}
+
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: 2px solid black;
+    font-size: 12px;
     font-weight: 500;
 }
 
-button {
-    background-color: white;
-    border-radius: 30px;
-    padding: 0px 1.5em;
-    height: 2.5em;
-    border: 2px solid black;
-    font-size: 0.8em;
-    width: 8em;
+.button:hover {
+    background-color: black;
+    color: white;
 }
 
-div#navbar-left img {
-    width: 8em;
+.button-alt {
+    border-color: #6b53f0 !important;
+    color: #6b53f0 !important;
 }
 
-@media (width >= 2500px) {
-    html {
-        font-size: 28px;
-    }
+.button-alt:hover {
+    background-color: #6b53f0 !important;
+    color: white !important;
 }
 
-@media (width >= 3500px) {
-    html {
-        font-size: 32px;
-    }
+#menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-weight: 500;
+}
+
+#menu li {
+    margin: 0 1em;
+}
+
+main {
+    padding-top: 5.4em;
+}
+
+#introduccion {
+    display: flex;
+    justify-content: center;
+    padding: 6em 0;
+}
+
+#introduccion-contenido {
+    text-align: center;
+}
+
+#introduccion h1 {
+    width: 21em;
+    margin: 0 0 1.2em 0;
+}
+
+#introduccion .button {
+    margin: 0 0.6em;
+}
+
+#impacto {
+    display: flex;
+    justify-content: center;
+    padding: 8em 0;
+    background-color: #201b24;
+}
+
+#impacto-contenido {
+    display: flex;
+    align-items: flex-end;
+    color: white;
+}
+
+#impacto-texto {
+    width: 28em;
+    margin: 0 2em;
+}
+
+#impacto-datos {
+    display: flex;
+}
+
+.impacto-dato {
+    text-align: center;
+    padding: 2em;
+}
+
+.impacto-dato-numero {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.align-items-center {
+    display: flex;
+    align-items: center;
+}
+
+#dato-mas {
+    color: #6b53f0;
+    font-size: 0.6em;
+    font-weight: 400;
+}
+
+.impacto-dato-titulo {
+    color: #8c939c;
+    margin: 0;
+}
+
+p {
+    line-height: 1.5;
+}
+
+#foto {
+    height: calc(100vh - 80px);
+    background-image: url("https://technologywithpurpose.org/wp-content/uploads/2022/11/twp-home.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
 }
