@@ -18,9 +18,10 @@ const models = require('./models');
 const routes = require('./routes');
 
 const config = require('./config/config');
+const validateEnv = require('./utils/validateEnv');
 
 const app = express();
-
+validateEnv.validate();
 app.use(helmet());
 app.use(helmet.ieNoOpen());
 // Sets "Strict-Transport-Security: max-age=5184000; includeSubDomains".
