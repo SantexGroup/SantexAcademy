@@ -10,19 +10,19 @@ module.exports = {
       [
         {
           profiles_id: '1',
-          references_id: '1',
+          wreferences_id: '1',
         },
         {
           profiles_id: '1',
-          references_id: '2',
+          wreferences_id: '2',
         },
         {
           profiles_id: '2',
-          references_id: '1',
+          wreferences_id: '1',
         },
         {
           profiles_id: '3',
-          references_id: '3',
+          wreferences_id: '3',
         },
       ],
       {}

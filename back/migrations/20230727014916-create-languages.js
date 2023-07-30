@@ -12,7 +12,7 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
-      languge: {
+      language: {
         type: Sequelize.STRING(100)
       },
       createdAt: {

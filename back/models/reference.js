@@ -2,16 +2,10 @@ const {
   Model,
 } = require('sequelize');
 
+const { REFERENCES_TABLE_NAME } = require('../helpers/sequelize.helper');
+
 module.exports = (sequelize, DataTypes) => {
   class Reference extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    // static associate(models) {
-    //   // define association here
-    // }
   }
   Reference.init({
     name: DataTypes.STRING,
@@ -21,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     company: DataTypes.STRING,
   }, {
     sequelize,
+    tableName: REFERENCES_TABLE_NAME,
   });
   return Reference;
 };

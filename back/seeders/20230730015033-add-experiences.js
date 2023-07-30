@@ -11,7 +11,7 @@ module.exports = {
         {
           status_id: '1',
           countries_id: '1',
-          type_id: '1',
+          types_id: '1',
           position: 'Escritor',
           company: 'Zapateria Yepeto',
           description: 'Escribir el dia a dia de Yepeto y Pinocho',
@@ -19,7 +19,7 @@ module.exports = {
         {
           status_id: '1',
           countries_id: '1',
-          type_id: '2',
+          types_id: '2',
           position: 'Consejero',
           company: 'Aventuras de Pinocho',
           description: 'Ayudar a Pinocho a hacer el bien',
@@ -27,7 +27,7 @@ module.exports = {
         {
           status_id: '1',
           countries_id: '1',
-          type_id: '1',
+          types_id: '1',
           position: 'Carpintero',
           company: 'Jugeteria Yepeto',
           description: 'Construir juguete y suecos de madera',

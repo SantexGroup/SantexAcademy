@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       models.Profile.belongsToMany(models.Reference, {
         through: models.ProfileReference,
         foreignKey: 'profiles_id',
-        otherKey: 'references_id',
+        otherKey: 'wreferences_id',
       });
       models.Profile.belongsToMany(models.Language, {
         through: models.ProfileLanguage,

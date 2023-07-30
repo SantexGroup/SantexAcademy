@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     optionals_id: DataTypes.INTEGER,
   }, {
     sequelize,
+    timestamps: false,
     tableName: PROFILES_OPTIONALS_TABLE_NAME,
     defaultScope: {
       attributes: {

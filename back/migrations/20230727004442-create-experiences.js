@@ -19,7 +19,7 @@ module.exports = {
       countries_id: {
         type: Sequelize.INTEGER
       },
-      type_id: {
+      types_id: {
         type: Sequelize.INTEGER
       },
       position: {
@@ -43,7 +43,7 @@ module.exports = {
 
     await addForeingKey(queryInterface, EXPIRIENCES_TABLE_NAME, 'status_id', EXPERIENCES_STATUS_TABLE_NAME);
     await addForeingKey(queryInterface, EXPIRIENCES_TABLE_NAME, 'countries_id', COUNTRIES_TABLE_NAME);
-    await addForeingKey(queryInterface, EXPIRIENCES_TABLE_NAME, 'type_id', EXPERIENCES_TYPES_TABLE_NAME);
+    await addForeingKey(queryInterface, EXPIRIENCES_TABLE_NAME, 'types_id', EXPERIENCES_TYPES_TABLE_NAME);
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable(EXPIRIENCES_TABLE_NAME);

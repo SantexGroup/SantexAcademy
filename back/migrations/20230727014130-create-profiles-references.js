@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      references_id: {
+      wreferences_id: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
@@ -31,7 +31,7 @@ module.exports = {
     });
 
     await addForeingKey(queryInterface, PROFILES_REFERENCES_TABLE_NAME, 'profiles_id', PROFILES_TABLE_NAME);
-    await addForeingKey(queryInterface, PROFILES_REFERENCES_TABLE_NAME, 'references_id', REFERENCES_TABLE_NAME);
+    await addForeingKey(queryInterface, PROFILES_REFERENCES_TABLE_NAME, 'wreferences_id', REFERENCES_TABLE_NAME);
   },
 
   async down(queryInterface, Sequelize) {

@@ -17,7 +17,7 @@ const app = Express();
 //   });
 // });
 
-app.use('/profile', profileController.getProfile);
+app.use('/profile/:id', profileController.getProfile);
 
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);

@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     profiles_id: DataTypes.INTEGER,
   }, {
     sequelize,
+    timestamps: false,
     tableName: PROFILES_FORMATIONS_TABLE_NAME,
     defaultScope: {
       attributes: {

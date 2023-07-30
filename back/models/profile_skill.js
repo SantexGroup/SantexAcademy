@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     level: DataTypes.INTEGER,
   }, {
     sequelize,
+    timestamps: false,
     tableName: PROFILES_SKILLS_TABLE_NAME,
     defaultScope: {
       attributes: {

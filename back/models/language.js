@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     // }
   }
   Language.init({
-    languge: DataTypes.STRING,
+    language: DataTypes.STRING,
   }, {
     sequelize,
   });

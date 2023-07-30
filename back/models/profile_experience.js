@@ -1,6 +1,7 @@
 const {
   Model,
 } = require('sequelize');
+
 const { PROFILES_EXPERIENCES_TABLE_NAME } = require('../helpers/sequelize.helper');
 
 module.exports = (sequelize, DataTypes) => {
@@ -11,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     profiles_id: DataTypes.INTEGER,
   }, {
     sequelize,
+    timestamps: false,
     tableName: PROFILES_EXPERIENCES_TABLE_NAME,
     defaultScope: {
       attributes: {
