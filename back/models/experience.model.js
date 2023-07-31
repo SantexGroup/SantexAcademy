@@ -2,6 +2,8 @@ const {
   Model,
 } = require('sequelize');
 
+const { EXPERIENCES_TABLE_NAME } = require('../helpers/sequelize.helper');
+
 module.exports = (sequelize, DataTypes) => {
   class Experience extends Model {
     /**
@@ -24,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
   }, {
     sequelize,
+    tableName: EXPERIENCES_TABLE_NAME,
     defaultScope: {
       attributes: {
         exclude: ['deletedAt', 'createdAt', 'updatedAt'],

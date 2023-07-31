@@ -2,6 +2,8 @@ const {
   Model,
 } = require('sequelize');
 
+const { USERS_TABLE_NAME } = require('../helpers/sequelize.helper');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -24,6 +26,12 @@ module.exports = (sequelize, DataTypes) => {
     pictureLink: DataTypes.STRING,
   }, {
     sequelize,
+    tableName: USERS_TABLE_NAME,
+    defaultScope: {
+      attributes: {
+        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
+      },
+    },
   });
   return User;
 };

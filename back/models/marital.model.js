@@ -2,6 +2,8 @@ const {
   Model,
 } = require('sequelize');
 
+const { MARITALS_TABLE_NAME } = require('../helpers/sequelize.helper');
+
 module.exports = (sequelize, DataTypes) => {
   class Marital extends Model {
   }
@@ -9,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     condition: DataTypes.STRING,
   }, {
     sequelize,
+    tableName: MARITALS_TABLE_NAME,
     defaultScope: {
       attributes: {
         exclude: ['deletedAt', 'createdAt', 'updatedAt'],

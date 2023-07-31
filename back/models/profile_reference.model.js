@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
         exclude: ['deletedAt', 'createdAt', 'updatedAt'],
       },
     },
-
   });
   return ProfileReference;
 };

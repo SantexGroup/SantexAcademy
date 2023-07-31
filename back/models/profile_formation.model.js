@@ -1,6 +1,7 @@
 const {
   Model,
 } = require('sequelize');
+
 const { PROFILES_FORMATIONS_TABLE_NAME } = require('../helpers/sequelize.helper');
 
 module.exports = (sequelize, DataTypes) => {

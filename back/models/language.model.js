@@ -2,6 +2,8 @@ const {
   Model,
 } = require('sequelize');
 
+const { LANGUAGES_TABLE_NAME } = require('../helpers/sequelize.helper');
+
 module.exports = (sequelize, DataTypes) => {
   class Language extends Model {
     /**
@@ -16,6 +18,12 @@ module.exports = (sequelize, DataTypes) => {
     language: DataTypes.STRING,
   }, {
     sequelize,
+    tableName: LANGUAGES_TABLE_NAME,
+    defaultScope: {
+      attributes: {
+        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
+      },
+    },
   });
   return Language;
 };

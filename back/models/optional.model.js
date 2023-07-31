@@ -2,6 +2,8 @@ const {
   Model,
 } = require('sequelize');
 
+const { OPTIONALS_TABLE_NAME } = require('../helpers/sequelize.helper');
+
 module.exports = (sequelize, DataTypes) => {
   class Optional extends Model {
     /**
@@ -32,6 +34,12 @@ module.exports = (sequelize, DataTypes) => {
     zipCode: DataTypes.STRING,
   }, {
     sequelize,
+    tableName: OPTIONALS_TABLE_NAME,
+    defaultScope: {
+      attributes: {
+        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
+      },
+    },
   });
   return Optional;
 };

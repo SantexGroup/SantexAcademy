@@ -16,6 +16,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     tableName: REFERENCES_TABLE_NAME,
+    defaultScope: {
+      attributes: {
+        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
+      },
+    },
   });
   return Reference;
 };

@@ -2,6 +2,8 @@ const {
   Model,
 } = require('sequelize');
 
+const { PROFILES_TABLE_NAME } = require('../helpers/sequelize.helper');
+
 module.exports = (sequelize, DataTypes) => {
   class Profile extends Model {
     /**
@@ -49,6 +51,7 @@ module.exports = (sequelize, DataTypes) => {
     profileName: DataTypes.STRING,
   }, {
     sequelize,
+    tableName: PROFILES_TABLE_NAME,
     defaultScope: {
       attributes: {
         exclude: ['deletedAt', 'createdAt', 'updatedAt'],
