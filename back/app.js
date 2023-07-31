@@ -48,9 +48,7 @@ if (config.environment === 'production') {
   app.set('trust proxy', 1); // trust first proxy
 }
 app.use(session(sess));
-app.use(express.json({
-  spaces: 0,
-}));
+app.use(express.json());
 app.use(express.urlencoded(
   {
     extended: false,
