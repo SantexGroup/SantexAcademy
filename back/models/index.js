@@ -1,3 +1,8 @@
+/** Configuracion y coneccion con DB utilizando Sequelize, importando y configurando los 
+ * modelos definidos en los archivos del directorio actual, y estableciendo las asociaciones
+ * entre ellos si es necesario. Todo esto permite que la aplicación pueda interactuar de manera
+ * eficiente con la DB y manejar relaciones entre los modelos de manera adecuada.*/
+
 /* eslint-disable global-require */
 const fs = require('fs');
 const path = require('path');

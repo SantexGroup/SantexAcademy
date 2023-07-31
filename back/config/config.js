@@ -1,3 +1,6 @@
+/** Objeto de configuración para la DB con diferentes ajustes según el entorno
+ * (development, test y production).*/
+
 require('dotenv').config();
 
 const logger = require('../utils/winston.logger');
