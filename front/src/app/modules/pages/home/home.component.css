@@ -4,9 +4,9 @@
 .bg{
     background-image: url(../../../../assets/mujer-buscando.jpg);
     background-position-x: -150px;
-    height: auto;
 }
 .bg_sections{
+  height: auto;
   background-repeat: no-repeat;
   background-position: left center;
   background-size: cover;
