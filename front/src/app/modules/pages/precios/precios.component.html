@@ -1,0 +1,128 @@
+<div class="container px-4 py-5">
+    <main>
+      <h2 class="pb-2 border-bottom">Nuestros Planes</h2>
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center py-5">
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Gratuito</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">$0<small class="text-body-secondary fw-light">/mes</small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>1 inscripción por mes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Socio</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">$1000<small class="text-body-secondary fw-light">/mes</small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>3 inscripciones por mes</li>
+                <li>Soporte docente 24/7</li>
+                <li>Cupones de descuento</li>
+              </ul>
+              <button type="button" class="w-100 btn btn-lg btn-primary" [routerLink]="['/carrito']">Acceder al plan</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm border-primary">
+            <div class="card-header py-3 text-bg-primary border-primary">
+              <h4 class="my-0 fw-normal">VIP</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">$2000<small class="text-body-secondary fw-light">/mes</small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Inscripciones ilimitadas por mes</li>
+                <li>Soporte docente 24/7</li>
+                <li>Acceso a slack privado</li>
+                <li>Acceso a meet pre examen</li>
+                <li>Cupones de descuento</li>
+              </ul>
+              <button type="button" class="w-100 btn btn-lg btn-primary" [routerLink]="['/carrito']">Acceder al plan</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <h2 class="display-6 text-center mb-5">Comparación de planes</h2>
+  
+      <div class="table-responsive">
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th style="width: 34%;"></th>
+              <th style="width: 22%;">Gratuito</th>
+              <th style="width: 22%;">Socio</th>
+              <th style="width: 22%;">VIP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="text-start">Inscripciones con límites</th>
+              <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+              </svg></td>
+              <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+              </svg></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-start">Inscripciones sin límites</th>
+              <td></td>
+              <td></td>
+              <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+              </svg></td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-start">Soporte de docentes 24/7</th>
+              <td></td>
+              <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+              </svg></td>
+              <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+              </svg></td>
+            </tr>
+          </tbody>
+  
+          <tbody>
+            <tr>
+              <th scope="row" class="text-start">Acceso a Slack privado</th>
+              <td></td>
+              <td></td>
+              <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+              </svg></td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-start">Meet pre examen</th>
+              <td></td>
+              <td></td>
+              <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+              </svg></td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-start">Cupones de descuento</th>
+              <td></td>
+              <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+              </svg></td>
+              <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+              </svg></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
