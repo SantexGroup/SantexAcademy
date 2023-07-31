@@ -8,8 +8,6 @@ module.exports = {
       attendance: 1,
       deleted: false,
       visualized: true,
-      createdAt: new Date(),
-      updatedAt: new Date(),
     }], {});
   },
 
