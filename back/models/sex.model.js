@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   class Sex extends Model {
   }
   Sex.init({
-    condition: DataTypes.STRING,
+    gender: DataTypes.STRING,
   }, {
     sequelize,
     tableName: SEXS_TABLE_NAME,

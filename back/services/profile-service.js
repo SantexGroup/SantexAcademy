@@ -1,4 +1,6 @@
 const {
+  User,
+  Rol,
   Profile,
   Experience,
   Reference,
@@ -33,13 +35,18 @@ async function getProfileById(id) {
     include: [FormationStatus, FormationType],
   };
 
+  const USERS = {
+    model: User,
+    include: [Rol],
+  };
+
   const OPTIONAL = {
     model: Optional,
     include: [Marital, Sex],
   };
 
   const profiles = await Profile.findByPk(id, {
-    include: [EXPERIENCE, Reference, Language, Skill, FORMATION, OPTIONAL],
+    include: [EXPERIENCE, Reference, Language, Skill, USERS, FORMATION, OPTIONAL],
   });
 
   if (!profiles) {
