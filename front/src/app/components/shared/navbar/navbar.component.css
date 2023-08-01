@@ -20,8 +20,7 @@
     .navbar {
       position: initial;
       width: 100%;
-      height: 0px;
+      min-height: auto;
       border-top: 1px solid #CCCCCC;
-      padding: 1em;
     }
   }
