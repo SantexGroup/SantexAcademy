@@ -12,8 +12,19 @@ module.exports = {
       xl: "1280px",
       "2xl": "1536px",
     },
-    colors: {},
-    backgroundColor: {},
+    colors: {
+      white: "#FFF",
+      black: "#000",
+      lightGray: "#CCCCCC",
+    },
+    backgroundColor: {
+      white: "#FFF",
+      black: "#000",
+      lightGray: "#CCCCCC",
+    },
+    fontFamily: {
+      sans: ["Open Sans"],
+    },
     fontSize: {
       xs: ["0.75rem", { lineHeight: "1rem" }],
       sm: ["0.875rem", { lineHeight: "1.25rem" }],
