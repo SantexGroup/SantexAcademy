@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     pictureLink: DataTypes.STRING,
   }, {
     sequelize,
+    timestamps: false,
     tableName: USERS_TABLE_NAME,
     defaultScope: {
       attributes: {
