@@ -50,7 +50,7 @@ module.exports = {
       isTeacher: true,
     },
     {
-      id: 4,
+      id: 5,
       firstName: 'student1',
       lastName: 'Onestudent',
       email: 'student1@gmail.com',
@@ -62,7 +62,7 @@ module.exports = {
       isTeacher: false,
     },
     {
-      id: 5,
+      id: 6,
       firstName: 'student2',
       lastName: 'Twostudent',
       email: 'student2@gmail.com',
