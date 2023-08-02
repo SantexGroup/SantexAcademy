@@ -1,1 +1,68 @@
-<p>footer works!</p>
+<footer class="w-full flex flex-col p-4">
+  <div
+    class="w-full flex flex-col p-4 gap-2 md:flex-row md:items-center md:justify-center"
+  >
+    <article
+      class="w-full flex flex-col items-center justify-center text-center gap-2 md:w-[40%] md:border-r border-lightGray"
+    >
+      <figure class="flex items-center gap-2">
+        <img
+          src="/assets/logo/logohand.svg"
+          alt="logo"
+          class="w-[50px] sm:w-[70px]"
+        />
+        <img
+          src="/assets/logo/logovoluntime.svg"
+          alt="logo"
+          class="w-[80px] sm:w-[100px]"
+        />
+      </figure>
+      <p class="text-sm w-[70%] sm:text-base">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae
+        maximus dui. Nulla facilisi.
+      </p>
+      <button
+        class="px-12 bg-orangeRed text-white text-sm rounded-md mb-2 sm:text-base"
+      >
+        Donar
+      </button>
+    </article>
+    <hr class="boder border-lightGray md:hidden" />
+    <article class="w-full items-center justify-center">
+      <ul
+        class="grid grid-cols-2 gap-x-2 gap-y-2 text-sm mb-2 justify-items-center m:flex m:items-start m:justify-around m:flex-wrap sm:text-base"
+      >
+        <li>
+          <b>Descubrir</b>
+          <p>Organizaciones</p>
+          <p>Oportunidades <br />de voluntariado</p>
+        </li>
+        <li>
+          <b>Quienes somos</b>
+          <p>Acerca de nosotros</p>
+          <p>Nuestro equipo</p>
+        </li>
+        <li>
+          <b>Contactanos</b>
+          <p>+54 351 1234567</p>
+        </li>
+        <li>
+          <b>Síguenos</b>
+          <div
+            class="text-base text-dimGray flex items-center gap-2 sm:text-xl"
+          >
+            <i class="bx bxl-facebook-square cursor-pointer"></i
+            ><i class="bx bxl-twitter cursor-pointer"></i
+            ><i class="bx bxl-instagram cursor-pointer"></i>
+          </div>
+        </li>
+      </ul>
+    </article>
+    <hr class="boder border-lightGray md:hidden" />
+  </div>
+  <div class="md:border-t border-lightGray text-center md:pt-2">
+    <span class="text-xs text-center sm:text-sm"
+      >Copyright © 2023 VolunTime - Todos los derechos reservados</span
+    >
+  </div>
+</footer>
