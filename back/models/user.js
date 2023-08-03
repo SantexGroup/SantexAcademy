@@ -14,8 +14,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      len: [1, 30],
+    },
+    email: {
+      type: DataTypes.STRING,
+      unique: true,
+      validate: {
+        isEmail: true,
+        len: [1, 320], // 320 caracteres es el maximo apra un email
+      },
+    },
   }, {
     sequelize,
     modelName: 'User',
