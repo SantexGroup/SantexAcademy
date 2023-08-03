@@ -46,13 +46,11 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     pictureLink: DataTypes.STRING,
-    deleted: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
   }, {
     sequelize,
-    timestamps: false,
+    paranoid: true,
+    createdAt: false,
+    updatedAt: false,
     tableName: USERS_TABLE_NAME,
   });
   return User;

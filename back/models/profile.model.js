@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     paranoid: true,
     createdAt: false,
-    updatedAt: false,
+    // updatedAt: false,
     tableName: PROFILES_TABLE_NAME,
   });
   return Profile;
