@@ -1,0 +1,58 @@
+.contenedor{
+  margin: 0px 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  /* align-content: center; */
+  justify-content: space-between;
+  & ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    & li{
+      width: 10%;
+      list-style: none;
+      font-weight: 400;
+      font-size: 18px;
+      & a{
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+
+  & .logo{
+    width: 8%;
+    & img{
+      width: 80%;
+    }
+  }
+
+  & .botones{
+    & .registro{
+      margin-left: 15px;
+      width: 40%;
+      & img{
+        width: 15%;
+        margin-left: 2px;
+      }
+    }
+    & button{
+      span{
+        font-weight: 400;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.mat-toolbar{
+  border-bottom: 1px solid black;
+}
+
+
