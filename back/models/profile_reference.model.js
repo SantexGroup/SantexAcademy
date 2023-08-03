@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
   class ProfileReference extends Model {
   }
   ProfileReference.init({
-    wreferences_id: DataTypes.INTEGER,
-    profiles_id: DataTypes.INTEGER,
+    wreferences_id: DataTypes.INTEGER, /* Not Null */
+    profiles_id: DataTypes.INTEGER, /* Not Null */
   }, {
     sequelize,
     timestamps: false,

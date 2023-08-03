@@ -17,11 +17,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Formation.init({
-    status_id: DataTypes.INTEGER,
-    types_id: DataTypes.INTEGER,
+    status_id: DataTypes.INTEGER, /* Not Null */
+    types_id: DataTypes.INTEGER, /* Not Null */
     title: DataTypes.STRING,
     institute: DataTypes.STRING,
+    startDate: DataTypes.DATE,
+    endDate: DataTypes.DATE,
     description: DataTypes.STRING,
+    deleted: DataTypes.INTEGER, /* Not Null */
   }, {
     sequelize,
     timestamps: false,

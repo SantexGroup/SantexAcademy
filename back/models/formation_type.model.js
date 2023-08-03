@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   class FormationType extends Model {
   }
   FormationType.init({
-    type: DataTypes.STRING,
+    type: DataTypes.STRING, /* Not Null */
   }, {
     sequelize,
     timestamps: false,

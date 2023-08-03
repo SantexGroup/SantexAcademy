@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   class Country extends Model {
   }
   Country.init({
-    country: DataTypes.STRING,
+    country: DataTypes.STRING, /* Not Null */
   }, {
     sequelize,
     timestamps: false,

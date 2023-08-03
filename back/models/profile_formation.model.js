@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
   class ProfileFormation extends Model {
   }
   ProfileFormation.init({
-    formations_id: DataTypes.INTEGER,
-    profiles_id: DataTypes.INTEGER,
+    formations_id: DataTypes.INTEGER, /* Not Null */
+    profiles_id: DataTypes.INTEGER, /* Not Null */
   }, {
     sequelize,
     timestamps: false,

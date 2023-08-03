@@ -19,9 +19,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Optional.init({
-    marital_id: DataTypes.INTEGER,
-    sexs_id: DataTypes.INTEGER,
-    countries_id: DataTypes.INTEGER,
+    marital_id: DataTypes.INTEGER, /* Not Null */
+    sexs_id: DataTypes.INTEGER, /* Not Null */
+    countries_id: DataTypes.INTEGER, /* Not Null */
     profile: DataTypes.STRING,
     webPage: DataTypes.STRING,
     linkedIn: DataTypes.STRING,
@@ -32,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     achievements: DataTypes.STRING,
     address: DataTypes.STRING,
     zipCode: DataTypes.STRING,
+    deleted: DataTypes.INTEGER, /* Not Null */
   }, {
     sequelize,
     timestamps: false,

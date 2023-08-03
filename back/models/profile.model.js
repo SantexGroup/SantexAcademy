@@ -47,8 +47,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Profile.init({
-    user_id: DataTypes.INTEGER,
-    profileName: DataTypes.STRING,
+    user_id: DataTypes.INTEGER, /* Not Null */
+    profileName: DataTypes.STRING, /* Not Null */
+    deleted: DataTypes.INTEGER, /* Not Null */
   }, {
     sequelize,
     timestamps: false,
