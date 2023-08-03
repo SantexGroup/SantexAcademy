@@ -1,6 +1,6 @@
 'use strict';
 
-const { addForeingKey, PROFILES_EXPERIENCES_TABLE_NAME, EXPIRIENCES_TABLE_NAME, PROFILES_TABLE_NAME } = require('../helpers/sequelize.helper');
+const { addForeingKey, PROFILES_EXPERIENCES_TABLE_NAME, EXPERIENCES_TABLE_NAME, PROFILES_TABLE_NAME } = require('../helpers/sequelize.helper');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -19,18 +19,10 @@ module.exports = {
       profiles_id: {
         type: Sequelize.INTEGER,
         allowNull: false
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
       }
     });
 
-    await addForeingKey(queryInterface, PROFILES_EXPERIENCES_TABLE_NAME, 'experiences_id', EXPIRIENCES_TABLE_NAME);
+    await addForeingKey(queryInterface, PROFILES_EXPERIENCES_TABLE_NAME, 'experiences_id', EXPERIENCES_TABLE_NAME);
     await addForeingKey(queryInterface, PROFILES_EXPERIENCES_TABLE_NAME, 'profiles_id', PROFILES_TABLE_NAME);
   },
   async down(queryInterface, Sequelize) {

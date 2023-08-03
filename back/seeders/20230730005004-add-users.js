@@ -19,6 +19,7 @@ module.exports = {
       USERS_TABLE_NAME,
       [
         {
+          role_id: 1,
           nick: 'Pepillo',
           password: 'false',
           name: 'Pepe',
@@ -26,6 +27,7 @@ module.exports = {
           email: 'pepe@gmail.com',
         },
         {
+          role_id: 2,
           nick: 'ElYepe',
           password: 'false',
           name: 'Jose',
