@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
   class Marital extends Model {
   }
   Marital.init({
-    condition: DataTypes.STRING,
+    condition: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
     sequelize,
     timestamps: false,
