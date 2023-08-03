@@ -15,11 +15,6 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     timestamps: false,
     tableName: PROFILES_LANGUAGES_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return ProfileLanguage;
 };

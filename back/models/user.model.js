@@ -30,11 +30,6 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     timestamps: false,
     tableName: USERS_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return User;
 };

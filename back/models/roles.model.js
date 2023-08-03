@@ -14,12 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     rol: DataTypes.STRING,
   }, {
     sequelize,
+    timestamps: false,
     tableName: ROLES_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return Rol;
 };

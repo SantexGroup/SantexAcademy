@@ -34,12 +34,8 @@ module.exports = (sequelize, DataTypes) => {
     zipCode: DataTypes.STRING,
   }, {
     sequelize,
+    timestamps: false,
     tableName: OPTIONALS_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return Optional;
 };
