@@ -2,8 +2,9 @@ const { userService } = require('../services');
 
 const createUser = async (req, res) => {
   const newDataUser = {
-    username: 'juan',
-    password: 123,
+    firstName: 'juan',
+    lastName: 'perez',
+    password: '123345678',
     email: 'juan@juan',
 
   };
