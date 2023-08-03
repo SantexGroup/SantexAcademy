@@ -10,11 +10,19 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
     static associate(models) {
+      console.log(models);
       // define association here
+      // Un curso tiene muchos usuarios (docentes o alumnos)
       Course.belongsToMany(models.User, {
         through: 'User_Courses',
         foreignKey: 'course_id',
       });
+
+      // Un curso tiene muchas clases
+      Course.hasMany(models.Clase, { foreignKey: 'courseId' });
+
+      // PROBANDDO ALGO
+      // Course.hasMany(models.Attendance, { foreignKey: 'claseId' });
     }
   }
   Course.init({
@@ -23,7 +31,6 @@ module.exports = (sequelize, DataTypes) => {
     start_date: DataTypes.DATE,
     finish: DataTypes.DATE,
     duration: DataTypes.INTEGER,
-    teacher_id: DataTypes.INTEGER,
     maximun_quota: DataTypes.INTEGER,
     current_quota: DataTypes.INTEGER,
     price: DataTypes.INTEGER,
