@@ -1,16 +1,24 @@
 <div class="form-container">
-  <form class="form">
+  <form class="form" [formGroup]="myForm">
     <p class="title">Registro de Usuario</p>
     <label>
-      <input required="" name="email" placeholder="Email" type="email" class="input">
+      <input required ngModel 
+        name="email" 
+        placeholder="Email" 
+        type="email" 
+        class="input" 
+        formControlName="email">   
     </label> 
     
     <label>
-      <input required="" name="password" placeholder="Password" type="password" class="input">
+      <input required ngModel
+        name="password" 
+        placeholder="Password" 
+        type="password" 
+        class="input" 
+        formControlName="password">
     </label>
-    <label>
-      <input required="" name="confirmPassword" placeholder="Confirm password" type="password" class="input">
-    </label>
+
     <button class="submit">Submit</button>
   </form>
 </div>
