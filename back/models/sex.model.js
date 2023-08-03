@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
   class Sex extends Model {
   }
   Sex.init({
-    gender: DataTypes.STRING,
+    gender: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
     sequelize,
     timestamps: false,
