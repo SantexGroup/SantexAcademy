@@ -25,16 +25,16 @@ const bcrypt = require('../node_modules/bcrypt');
 //     });
 //   }
 // };
-async function recordUser(id, nick, password, name, lastName, email, phone, roles) {
+async function recordUser(id, nick, password, name, lastName, email, phone, rolesId) {
   const user = new User();
   user.id = id;
+  user.roles_id = rolesId;
   user.nick = nick;
   user.password = password;
   user.name = name;
   user.lastname = lastName;
   user.mail = email;
   user.phone = phone;
-  user.roles_id = roles;
 
   const userCreated = await user.save();
   return userCreated;
