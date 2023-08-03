@@ -13,13 +13,11 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     phone: DataTypes.STRING,
     company: DataTypes.STRING,
-    deleted: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
   }, {
     sequelize,
-    timestamps: false,
+    paranoid: true,
+    createdAt: false,
+    updatedAt: false,
     tableName: REFERENCES_TABLE_NAME,
   });
   return Reference;
