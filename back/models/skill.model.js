@@ -11,12 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     skill: DataTypes.STRING,
   }, {
     sequelize,
+    timestamps: false,
     tableName: SKILLS_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return Skill;
 };

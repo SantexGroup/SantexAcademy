@@ -11,12 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.STRING,
   }, {
     sequelize,
+    timestamps: false,
     tableName: EXPERIENCES_TYPES_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return ExpirenceType;
 };

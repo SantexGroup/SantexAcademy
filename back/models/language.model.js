@@ -18,12 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     language: DataTypes.STRING,
   }, {
     sequelize,
+    timestamps: false,
     tableName: LANGUAGES_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return Language;
 };

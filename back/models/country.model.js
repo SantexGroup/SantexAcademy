@@ -11,12 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     country: DataTypes.STRING,
   }, {
     sequelize,
+    timestamps: false,
     tableName: COUNTRIES_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return Country;
 };
