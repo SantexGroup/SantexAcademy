@@ -25,6 +25,7 @@ const bcrypt = require('../node_modules/bcrypt');
 //     });
 //   }
 // };
+
 async function recordUser(id, nick, password, name, lastName, email, phone, rolesId) {
   const user = new User();
   user.id = id;
