@@ -2,7 +2,7 @@
 
 const courses=[
   {
-    title: "Uñas",
+    title: "Cultivo del tomate",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     start_date: new Date('2023-11-20'),
     finish: new Date('2023-12-20'),
@@ -13,7 +13,7 @@ const courses=[
     price: 3500,
   },
   {
-    title: "gestion de pyme",
+    title: "Crianza de patos",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     start_date: new Date('2023-9-1'),
     finish: new Date('2023-12-10'),
