@@ -21,11 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     roles_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true,
     },
     nick: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     password: {
       type: DataTypes.STRING,

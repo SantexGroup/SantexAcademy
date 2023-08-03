@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     startDate: DataTypes.DATE,
     endDate: DataTypes.DATE,
-    daleted: {
+    deleted: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

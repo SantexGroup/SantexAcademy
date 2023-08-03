@@ -1,3 +1,3 @@
-const profileService = require('./profile-service');
+const profileService = require('./profile.service');
 
 module.exports = { profileService };
