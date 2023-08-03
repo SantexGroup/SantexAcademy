@@ -18,15 +18,27 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Experience.init({
-    status_id: DataTypes.INTEGER, /* Not Null */
-    countries_id: DataTypes.INTEGER, /* Not Null */
-    types_id: DataTypes.INTEGER, /* Not Null */
+    status_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    countries_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    types_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     position: DataTypes.STRING,
     company: DataTypes.STRING,
     description: DataTypes.STRING,
     startDate: DataTypes.DATE,
     endDate: DataTypes.DATE,
-    daleted: DataTypes.INTEGER, /* Not Null */
+    daleted: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   }, {
     sequelize,
     timestamps: false,

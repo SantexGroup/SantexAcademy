@@ -15,7 +15,10 @@ module.exports = (sequelize, DataTypes) => {
     // }
   }
   Language.init({
-    language: DataTypes.STRING, /* Not Null */
+    language: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
     sequelize,
     timestamps: false,

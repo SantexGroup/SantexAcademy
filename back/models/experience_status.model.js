@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
   class ExperienceStatus extends Model {
   }
   ExperienceStatus.init({
-    status: DataTypes.STRING, /* Not Null */
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
     sequelize,
     timestamps: false,
