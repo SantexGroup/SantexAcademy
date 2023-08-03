@@ -11,12 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.STRING,
   }, {
     sequelize,
+    timestamps: false,
     tableName: FORMATIONS_STATUS_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return FormationStatus;
 };

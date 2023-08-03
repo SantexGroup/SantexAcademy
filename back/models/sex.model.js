@@ -11,12 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     gender: DataTypes.STRING,
   }, {
     sequelize,
+    timestamps: false,
     tableName: SEXS_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return Sex;
 };

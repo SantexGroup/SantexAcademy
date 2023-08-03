@@ -11,12 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     condition: DataTypes.STRING,
   }, {
     sequelize,
+    timestamps: false,
     tableName: MARITALS_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return Marital;
 };

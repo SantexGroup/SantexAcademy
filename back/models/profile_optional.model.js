@@ -14,12 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     timestamps: false,
     tableName: PROFILES_OPTIONALS_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
-
   });
   return ProfileOptional;
 };
