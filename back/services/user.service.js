@@ -24,8 +24,23 @@ const { User } = require('../models');
 //   }
 // };
 
+/**
+ * Registra un nuevo usuario en la base de datos.
+ *
+ * @param {number} rolesId - El ID del rol del usuario.
+ * @param {string} nick - El nick o apodo del usuario.
+ * @param {string} password - La contraseña del usuario.
+ * @param {string} name - El nombre del usuario.
+ * @param {string} lastName - El apellido del usuario.
+ * @param {string} email - El correo electrónico del usuario.
+ * @param {string} phone - El número de teléfono del usuario.
+ * @returns {Promise<object>} - Una Promesa que se resuelve con el objeto del usuario creado.
+ * @throws {Error} - Si ocurre algún error durante el registro del usuario.
+ */
+
 async function recordUser(rolesId, nick, password, name, lastName, email, phone) {
   try {
+    // Lógica para crear el nuevo usuario en la base de datos
     const userCreated = await User.create({
       roles_id: rolesId,
       nick,
@@ -35,21 +50,25 @@ async function recordUser(rolesId, nick, password, name, lastName, email, phone)
       email,
       phone,
     });
+    // Devolver el objeto del usuario creado
     return userCreated;
   } catch (error) {
+    /* En caso de error, imprimir el mensaje de error y lanzar una excepción para que el llamador
+    lo maneje adecuadamente */
     console.error('Error al guardar el usuario:', error);
-    throw error; // Re-lanzamos el error para que el llamador lo maneje adecuadamente
+    throw error;
   }
 }
-
+// Realiza el proceso de inicio de sesión de un usuario.
 async function login(nick, password) {
+  // Buscar al usuario en la base de datos por su nick y contraseña
   const user = await User.findOne({
     where: {
       nick,
       password,
     },
   });
-
+  // Si no se encuentra el usuario, lanzar un error indicando que las credenciales son incorrectas
   if (!user) {
     throw new Error('El nick o contraseña son incorrectos');
   }
@@ -60,7 +79,7 @@ async function login(nick, password) {
     id: user.id,
     nick: user.nick,
   }, jwtSecret);
-
+  // Devolver un objeto con el token de acceso
   return {
     accessToken: token,
   };
@@ -69,7 +88,9 @@ async function login(nick, password) {
 // Servicio que actualiza datos de un usuario
 
 async function updateUser(id, nick, password, name, lastName, email, phone) {
+  // Buscar al usuario en la base de datos por su ID
   const user = await User.findByPk(id);
+  // Actualizar los campos del usuario con los nuevos valores proporcionados, si existen
   if (id) {
     user.id = id;
   }
@@ -91,9 +112,15 @@ async function updateUser(id, nick, password, name, lastName, email, phone) {
   if (phone) {
     user.phone = phone;
   }
+  if (!user) {
+    throw new Error('El ID del usuario no existe en la base de datos');
+  }
+  // Guardar el usuario actualizado
   const userEdited = await user.save();
+  // Devolver el objeto del usuario actualizado
   return userEdited;
 }
+
 // Servicio para eliminar usuarios
 async function deleteUser(id) {
   /* Buscamos el ususario en la base de datos por ID */
