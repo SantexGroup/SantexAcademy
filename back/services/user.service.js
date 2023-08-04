@@ -75,10 +75,12 @@ async function login(nick, password) {
     throw new Error('El nick o contraseña son incorrectos');
   }
 
+  const jwtSecret = process.env.JWT_SECRET;
+
   const token = jwt.sign({
     id: user.id,
     nick: user.nick,
-  }, 'LaClaveEsSecreta');
+  }, jwtSecret);
 
   return {
     accessToken: token,
