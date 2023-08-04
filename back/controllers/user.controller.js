@@ -5,6 +5,7 @@ const userService = require('../services/user.service');
 // controlador que redirige al servicio para registrar un usuario
 async function recordUser(req, res) {
   const {
+    /* Extraer los datos del cuerpo de la solicitud */
     rolesId,
     nick,
     password,
@@ -13,7 +14,9 @@ async function recordUser(req, res) {
     email,
     phone,
   } = req.body;
+  // Llamas al servicio para registrar un usuario
   const user = await userService.recordUser(rolesId, nick, password, name, lastName, email, phone);
+  // Enviar respuesta con el usuario registrado
   res.status(201).send(user);
 }
 
