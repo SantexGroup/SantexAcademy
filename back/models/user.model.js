@@ -48,9 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     pictureLink: DataTypes.STRING,
   }, {
     sequelize,
-    paranoid: true,
-    createdAt: false,
-    updatedAt: false,
+    timestamps: false,
     tableName: USERS_TABLE_NAME,
   });
   return User;
