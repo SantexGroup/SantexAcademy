@@ -1,29 +1,30 @@
-'use strict';
+/* eslint-disable no-unused-vars */
+
+const { User, Course } = require('../models');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    const userId = 1; 
-    const courseId = 2; 
+  async up(queryInterface, Sequelize) {
+    const allUsers = await User.findAll();
+    const allCOurses = await Course.findAll();
+
     await queryInterface.bulkInsert('User_Courses', [
       {
-        user_id: userId,
-        course_id: courseId,
+        user_id: allUsers[0].id,
+        course_id: allCOurses[0].id,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        user_id: 4,
-        course_id: 1,
+        user_id: allUsers[2].id,
+        course_id: allCOurses[2].id,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
     ], {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     await queryInterface.bulkDelete('User_Courses', null, {});
-
-
-  }
+  },
 };

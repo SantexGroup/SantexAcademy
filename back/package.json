@@ -15,6 +15,7 @@
     "db:seed:all": "./node_modules/.bin/sequelize db:seed:all"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.0.2",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "debug": "^4.3.4",
@@ -23,6 +24,7 @@
     "express": "^4.17.3",
     "express-session": "^1.17.3",
     "express-validator": "6.6.1",
+    "faker": "^6.6.6",
     "helmet": "^4.6.0",
     "lint-staged": "^10.5.4",
     "moment": "^2.29.4",

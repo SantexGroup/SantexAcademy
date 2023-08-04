@@ -17,6 +17,8 @@ const config = {
     host: process.env.DB_HOST,
     dialect: 'mysql',
     operatorsAliases: '0',
+    seederStorage: 'sequelize', // Indica que se almacenará en la base de datos
+    seederStorageTableName: 'SequelizeSeeds', // Nombre de la tabla para almacenar información de seeders
   },
   test: {
     logging: (msg) => logger.api.debug(`Database: ${process.env.DB_DATABASE} - ${msg}`),
@@ -38,6 +40,7 @@ const config = {
     dialect: 'mysql',
     operatorsAliases: '0',
   },
+
 };
 
 module.exports = config;

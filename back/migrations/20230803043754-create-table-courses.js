@@ -1,16 +1,18 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable strict */
+
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-   
     await queryInterface.createTable('courses', {
 
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       title: Sequelize.STRING,
       description: Sequelize.TEXT,
@@ -23,8 +25,16 @@ module.exports = {
       price: Sequelize.INTEGER,
       status: {
         type: Sequelize.ENUM('activo', 'inactivo', 'en curso', 'finalizado', 'proximamente'),
-        defaultValue: 'inactivo'
-      }
+        defaultValue: 'inactivo',
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
 
     });
   },
@@ -34,8 +44,8 @@ module.exports = {
      * Add reverting commands here.
      *
      * Example:
-     * 
+     *
      */
     await queryInterface.dropTable('courses');
-  }
+  },
 };

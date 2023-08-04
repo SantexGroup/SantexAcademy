@@ -5,10 +5,10 @@ const createUser = async (req, res) => {
     firstName: 'juan',
     lastName: 'perez',
     password: '123345678',
-    email: 'juan@juan',
+    email: req.query.email,
 
   };
-
+  console.log(req.query.email);
   try {
     const newUser = await userService.createUser(newDataUser);
     res.json(newUser);
