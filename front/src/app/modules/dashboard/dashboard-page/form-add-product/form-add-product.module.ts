@@ -12,7 +12,7 @@ import { FormAddProductComponent } from './form-add-product.component';
     CommonModule
   ],
   exports: [
-    FormAddProductComponent
+    
   ]
 })
 export class FormAddProductModule { }

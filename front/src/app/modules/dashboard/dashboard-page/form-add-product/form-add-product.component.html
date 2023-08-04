@@ -1,4 +1,3 @@
-<h1>Formulario: Agregar Producto</h1>
 
 <form class="form_container" [formGroup]="myForm">
     <div class="title_container">
@@ -8,37 +7,37 @@
     <br>
     <div class="input_container">
         <label class="input_label" for="name_field">Nombre del Producto</label>
-        <input placeholder="ProductoX" title="Inpit nomeProduc" name="input-name" type="text" class="input_field" id="name_field" formControlName="nombreProducto">
+        <input placeholder="ProductoX" title="Nombre del Producto" name="input-name" type="text" class="input_field" id="name_field" formControlName="nombreProducto">
         <p class="errorInput" *ngIf="nombreProducto?.touched && nombreProducto?.hasError('required')">Campo Obligatorio</p>
     </div>
     <div class="input_container">
         <label class="input_label" for="name_field">Cantidad</label>
-        <input placeholder="3" title="Inpit nomeProduc" name="input-cantidad" type="number" class="input_field" id="cantidad_field" formControlName="cantidad">
+        <input placeholder="3" title="Cantidad" name="input-cantidad" type="number" class="input_field" id="cantidad_field" formControlName="cantidad">
         <p class="errorInput" *ngIf="cantidad?.touched && cantidad?.hasError('required')">Campo Obligatorio</p>
     </div>
     <div class="input_container">
         <label class="input_label" for="categoria_field">Categoria</label>
-        <input placeholder="CategoriaX" title="Inpit title" name="input-categoria" type="text" class="input_field" id="categoria_field" formControlName="categoria">
+        <input placeholder="CategoriaX" title="Categoria" name="input-categoria" type="text" class="input_field" id="categoria_field" formControlName="categoria">
         <p class="errorInput" *ngIf="categoria?.touched && categoria?.hasError('required')">Campo Obligatorio</p>
     </div>
     <div class="input_container">
         <label class="input_label" for="material_field">Tipo de Material</label>
-        <input placeholder="materialX" title="Inpit title" name="input-material" type="text" class="input_field" id="material_field" formControlName="tipoMaterial">
+        <input placeholder="materialX" title="Tipo de Material" name="input-material" type="text" class="input_field" id="material_field" formControlName="tipoMaterial">
         <p class="errorInput" *ngIf="tipoMaterial?.touched && tipoMaterial?.hasError('required')">Campo Obligatorio</p>
     </div>
     <div class="input_container">
         <label class="input_label" for="url_field">URL de la imagen</label>
-        <input placeholder="url" title="Inpit title" name="input-url" type="url" class="input_field" id="url_field" formControlName="urlImagen">
+        <input placeholder="url" title="url" name="input-url" type="url" class="input_field" id="url_field" formControlName="urlImagen">
         <p class="errorInput" *ngIf="urlImagen?.touched && urlImagen?.hasError('required')">Campo Obligatorio</p>
     </div>
     <div class="input_container">
         <label class="input_label" for="precio_field">Precio</label>
-        <input placeholder="$ 1500" title="Inpit title" name="input-precio" type="number" class="input_field" id="precio_field" formControlName="precio">
+        <input placeholder="$ 1500" title="Precio" name="input-precio" type="number" class="input_field" id="precio_field" formControlName="precio">
         <p class="errorInput" *ngIf="precio?.touched && precio?.hasError('required')">Campo Obligatorio</p>
     </div>
     <div class="input_container">
         <label class="input_label" for="password_field">Descripción</label>
-        <textarea placeholder="Descripción de producto" title="Inpit title" name="input-name" class="input_field input-description" id="password_field" formControlName="descripcion"></textarea>
+        <textarea placeholder="Descripción de producto" title="Descripción del Producto" name="input-name" class="input_field input-description" id="password_field" formControlName="descripcion"></textarea>
         <p class="errorInput" *ngIf="descripcion?.touched && descripcion?.hasError('required')">Campo Obligatorio</p>
     </div>
     
