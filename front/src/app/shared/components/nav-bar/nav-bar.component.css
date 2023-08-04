@@ -14,6 +14,9 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    & li a:hover{
+      color:#316BDB;
+    }
     & li{
       width: 10%;
       list-style: none;
@@ -55,4 +58,7 @@
   border-bottom: 1px solid black;
 }
 
+ul li .router-link-active{
+  color: #316BDB;
+}
 

@@ -1,0 +1,80 @@
+#seccion-principal{
+  margin-top: 80px;
+  & .contenedor-seccion-principal{
+    margin: 0px 160px;
+    /* display: grid;
+    align-content: center;
+    justify-content: start;
+    align-items: center;
+    justify-items: start;
+    grid-template-columns: 1fr 1fr; */
+
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+
+    & .parte-izquierda{
+      display: flex;
+      justify-content: flex-end;
+      margin-right: 96px;
+      & .textos{
+        display: flex;
+        flex-direction: column;
+        width: 76%;
+        & .texto-principal{
+          & p{
+            font-size: 32px;
+            width: 90%;
+            line-height: 1.2;
+          }
+        }
+        & texto-secundario{
+          & p{
+            font-size: 20px;
+          }
+        }
+      }
+    }
+
+    & .parte-derecha{
+      /* width: 100%;
+      display: flex;
+      align-content: flex-start;
+      justify-content: flex-start;
+      align-items: stretch; */
+      & .pasos{
+        /* width: 100%; */
+        & ul{
+          display: flex;
+          flex-direction: column;
+          /* align-content: flex-start; */
+          justify-content: flex-start;
+          align-items: flex-start;
+          & li{
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 7px;
+            & .numero{
+              width: 40px;
+              height: 40px;
+              background-color: #316BDB;
+              display: flex;
+              /* align-content: center; */
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              color: white;
+              margin-right: 20px;
+            }
+            & .descripcion{
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

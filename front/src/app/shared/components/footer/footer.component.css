@@ -1,0 +1,135 @@
+body{
+  box-sizing: border-box;
+}
+
+.contenedor{
+  margin: 0px 150px;
+  /* display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; */
+
+
+
+    display: grid;
+    grid-template-columns: 2fr repeat(2, 4fr) 2fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 0px;
+
+
+  & ul{
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center; */
+    /* width: 100%; */
+    padding: 0px;
+    & li a:hover{
+      color:#316BDB;
+    }
+    & li{
+      width: 10%;
+      list-style: none;
+      font-weight: 400;
+      font-size: 18px;
+      & a{
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+
+  & .logo{
+    width: 34%;
+    & img{
+      width: 100%;
+    }
+  }
+
+  & .mas-info{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+
+    & .enlaces{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-content: flex-start;
+      justify-content: flex-start;
+      align-items: flex-start;
+      & .navegacion{
+        margin-right: 80px;
+      }
+      & ul li{
+        margin-bottom: 14px;
+        & a{
+          color: #0A142F;
+          font-size: 15px;
+        }
+      }
+
+    }
+    & .copyright{
+      margin-top: 30px;
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      justify-content: flex-start;
+      align-items: center;
+      & span{
+        font-size: 15px;
+        margin-right: 5px;
+      }
+      & img{
+        width: 7%;
+      }
+    }
+  }
+
+  & .incubadora-info{
+    & .direccion p{
+      width: 260px;
+      font-size: 22px;
+      line-height: 1.2;
+      margin-top: 21px;
+      margin-bottom: 21px;
+    }
+    & .telefono{
+      margin-bottom: 10px;
+    }
+    & .copyright{
+      margin-top: 35px;
+    }
+  }
+}
+
+.footer{
+  border-top: 1px solid black;
+  position: absolute;
+  bottom: 0px;
+  padding: 40px 0px 45px 0px;
+  /* height: 340px; */
+  width: 100%;
+  background-color: #FAF5DE;
+  & .ir-arriba{
+    /* border: 1px solid black; */
+    background: #316BDB;
+    padding: 12px;
+    border-radius: 50%;
+    color: white;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    & span{
+      font-size: 25px;
+    }
+  }
+}
+
+
