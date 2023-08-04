@@ -10,7 +10,11 @@ CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`carritoRecompensa` (
   `id_carrito` INT NOT NULL AUTO_INCREMENT,
+<<<<<<< HEAD
   `name` letCHAR(50) NOT NULL,
+=======
+  `name` VARCHAR(50) NOT NULL,
+>>>>>>> 8456f959085b6d57731efffc60119c4f0adae936
   PRIMARY KEY (`id_carrito`),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE);
 
@@ -21,9 +25,15 @@ CREATE TABLE IF NOT EXISTS `mydb`.`carritoRecompensa` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS mydb.usuario (
   `idUsuario` INT NOT NULL AUTO_INCREMENT,
+<<<<<<< HEAD
   `username` letCHAR(16) NOT NULL,
   `email` letCHAR(255) NOT NULL,
   `password` letCHAR(32) NOT NULL,
+=======
+  `username` VARCHAR(16) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(32) NOT NULL,
+>>>>>>> 8456f959085b6d57731efffc60119c4f0adae936
   `reputation` INT NOT NULL,
   `carritoRecompensa_id_carrito` INT NOT NULL,
   `id_rol` INT,
@@ -53,7 +63,11 @@ ADD COLUMN `recompensas_acumuladas` INT;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`roles` (
     `id_rol` INT AUTO_INCREMENT PRIMARY KEY,
+<<<<<<< HEAD
     `nombre_rol` letCHAR(255) NOT NULL
+=======
+    `nombre_rol` VARCHAR(255) NOT NULL
+>>>>>>> 8456f959085b6d57731efffc60119c4f0adae936
 );
 
 
@@ -63,7 +77,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`roles` (
 
 CREATE TABLE IF NOT EXISTS `mydb`.`visitante` (
     `id_visitante` INT AUTO_INCREMENT PRIMARY KEY,
+<<<<<<< HEAD
     `nombre_rol` letCHAR(255) NOT NULL,
+=======
+    `nombre_rol` VARCHAR(255) NOT NULL,
+>>>>>>> 8456f959085b6d57731efffc60119c4f0adae936
     `id_rol` INT,
     FOREIGN KEY (`id_rol`) REFERENCES mydb.roles(`id_rol`)
 );
@@ -74,11 +92,19 @@ CREATE TABLE IF NOT EXISTS `mydb`.`visitante` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`voluntario` (
     `id_voluntario` INT AUTO_INCREMENT PRIMARY KEY,
+<<<<<<< HEAD
     `fullname` letCHAR(255) NOT NULL,
     `email` letCHAR(255) NOT NULL,
     `telefono` INT NOT NULL,
     `password` letCHAR(32) NOT NULL,
     `nombre_rol` letCHAR(255) NOT NULL,
+=======
+    `fullname` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `telefono` VARCHAR(255) NOT NULL,
+    `password` VARCHAR(32) NOT NULL,
+    `nombre_rol` VARCHAR(255) NOT NULL,
+>>>>>>> 8456f959085b6d57731efffc60119c4f0adae936
     `id_rol` INT,
     FOREIGN KEY (`id_rol`) REFERENCES mydb.roles(`id_rol`)
 );
@@ -90,6 +116,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`voluntario` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`coordinador` (
     `id_coordinador` INT AUTO_INCREMENT PRIMARY KEY,
+<<<<<<< HEAD
     `fullname` letCHAR(255) NOT NULL,
     `email` letCHAR(255) NOT NULL,
     `telefono` INT NOT NULL,
@@ -97,6 +124,15 @@ CREATE TABLE IF NOT EXISTS `mydb`.`coordinador` (
     `ong_cuit` INT NOT NULL,
     `password` letCHAR(32) NOT NULL,
     `nombre_rol` letCHAR(255) NOT NULL,
+=======
+    `fullname` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `telefono` VARCHAR(255) NOT NULL,
+    `ong_nombre` VARCHAR(255) NOT NULL,
+    `ong_cuit` INT NOT NULL,
+    `password` VARCHAR(32) NOT NULL,
+    `nombre_rol` VARCHAR(255) NOT NULL,
+>>>>>>> 8456f959085b6d57731efffc60119c4f0adae936
     `id_rol` INT,
     FOREIGN KEY (`id_rol`) REFERENCES mydb.roles(`id_rol`)
 );
@@ -107,9 +143,15 @@ CREATE TABLE IF NOT EXISTS `mydb`.`coordinador` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`administrador` (
     `id_administrador` INT AUTO_INCREMENT PRIMARY KEY,
+<<<<<<< HEAD
     `username` letCHAR(255) NOT NULL,
     `password` letCHAR(255) NOT NULL,
     `nombre_rol` letCHAR(255) NOT NULL,
+=======
+    `username` VARCHAR(255) NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
+    `nombre_rol` VARCHAR(255) NOT NULL,
+>>>>>>> 8456f959085b6d57731efffc60119c4f0adae936
     `id_rol` INT,
     FOREIGN KEY (`id_rol`) REFERENCES mydb.roles(`id_rol`)
 );
@@ -120,7 +162,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`administrador` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`voluntariado` (
   `id_voluntariado` INT NOT NULL AUTO_INCREMENT,
+<<<<<<< HEAD
   `descripcion` letCHAR(255) NOT NULL,
+=======
+  `descripcion` VARCHAR(255) NOT NULL,
+>>>>>>> 8456f959085b6d57731efffc60119c4f0adae936
   `recompensa` INT NOT NULL,
   PRIMARY KEY (`id_voluntariado`),
   UNIQUE INDEX `id_voluntariado_UNIQUE` (`id_voluntariado` ASC) VISIBLE);
@@ -154,7 +200,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`usuarioVoluntariado` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`catalogo_Productos` (
   `id_catalogo` INT NOT NULL,
+<<<<<<< HEAD
   `name` letCHAR(50) NOT NULL,
+=======
+  `name` VARCHAR(50) NOT NULL,
+>>>>>>> 8456f959085b6d57731efffc60119c4f0adae936
   PRIMARY KEY (`id_catalogo`));
 
 
@@ -163,8 +213,13 @@ CREATE TABLE IF NOT EXISTS `mydb`.`catalogo_Productos` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`producto` (
   `id_producto` INT NOT NULL AUTO_INCREMENT,
+<<<<<<< HEAD
   `nombre` letCHAR(50) NOT NULL,
   `costo_en_horas` letCHAR(50) NOT NULL,
+=======
+  `nombre` VARCHAR(50) NOT NULL,
+  `costo_en_horas` VARCHAR(50) NOT NULL,
+>>>>>>> 8456f959085b6d57731efffc60119c4f0adae936
   `catalogo_Productos_id_catalogo` INT NOT NULL,
   PRIMARY KEY (`id_producto`, `catalogo_Productos_id_catalogo`),
   INDEX `fk_producto_catalogoProductos1_idx` (`catalogo_Productos_id_catalogo` ASC) VISIBLE,
