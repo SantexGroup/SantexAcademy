@@ -16,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
     },
     telefono: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
     ong_nombre: {
@@ -24,7 +24,7 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
     },
     ong_cuit: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
     password: {
