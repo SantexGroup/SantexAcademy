@@ -1,9 +1,7 @@
 // Los servicios disponibles para usuarios son : Crear un nuevo usuario, actualizar un usuario,
 // eliminar un usuario y Login.
-
+const jwt = require('jsonwebtoken');
 const { User } = require('../models');
-const jwt = require('../node_modules/jsonwebtoken');
-const bcrypt = require('../node_modules/bcrypt');
 
 //
 //
@@ -26,7 +24,7 @@ const bcrypt = require('../node_modules/bcrypt');
 //   }
 // };
 
-async function recordUser(nick, password, name, lastName, email, phone, rolesId) {
+async function recordUser(rolesId, nick, password, name, lastName, email, phone) {
   try {
     const userCreated = await User.create({
       roles_id: rolesId,
@@ -66,6 +64,28 @@ async function recordUser(id, nick, password, name, lastName, email, phone, role
 // Servicio que autoriza login
 
 async function login(nick, password) {
+  const user = await User.findOne({
+    where: {
+      nick,
+      password,
+    },
+  });
+
+  if (!user) {
+    throw new Error('El nick o contraseña son incorrectos');
+  }
+
+  const token = jwt.sign({
+    id: user.id,
+    nick: user.nick,
+  }, 'LaClaveEsSecreta');
+
+  return {
+    accessToken: token,
+  };
+}
+/*
+async function login(nick, password) {
   try {
     const user = await User.findOne({
       where: {
@@ -99,6 +119,7 @@ async function login(nick, password) {
     throw new Error('Ha ocurrido un error en el proceso de inicio de sesión');
   }
 }
+*/
 // Servicio que actualiza datos de un usuario
 
 async function updateUser(id, nick, password, name, lastName, email, phone) {
