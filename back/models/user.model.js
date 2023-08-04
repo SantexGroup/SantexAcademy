@@ -21,11 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     roles_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true,
     },
     nick: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     password: {
       type: DataTypes.STRING,
@@ -46,13 +46,11 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     pictureLink: DataTypes.STRING,
-    deleted: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
   }, {
     sequelize,
-    timestamps: false,
+    paranoid: true,
+    createdAt: false,
+    updatedAt: false,
     tableName: USERS_TABLE_NAME,
   });
   return User;

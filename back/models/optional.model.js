@@ -41,13 +41,11 @@ module.exports = (sequelize, DataTypes) => {
     achievements: DataTypes.STRING,
     address: DataTypes.STRING,
     zipCode: DataTypes.STRING,
-    deleted: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
   }, {
     sequelize,
-    timestamps: false,
+    paranoid: true,
+    createdAt: false,
+    updatedAt: false,
     tableName: OPTIONALS_TABLE_NAME,
   });
   return Optional;
