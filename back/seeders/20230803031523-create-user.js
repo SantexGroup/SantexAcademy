@@ -48,6 +48,14 @@ module.exports = {
       password: 'leomessi212',
       createdAt: new Date(),
       updatedAt: new Date(),
+    },
+    {
+      firstName: faker.person.firstName(),
+      lastName: faker.person.lastName(),
+      email: faker.internet.email(),
+      password: 'leomessi212',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }];
     return queryInterface.bulkInsert('Users', users);
   },
