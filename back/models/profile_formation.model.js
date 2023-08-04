@@ -8,17 +8,18 @@ module.exports = (sequelize, DataTypes) => {
   class ProfileFormation extends Model {
   }
   ProfileFormation.init({
-    formations_id: DataTypes.INTEGER,
-    profiles_id: DataTypes.INTEGER,
+    formations_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    profiles_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   }, {
     sequelize,
     timestamps: false,
     tableName: PROFILES_FORMATIONS_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return ProfileFormation;
 };

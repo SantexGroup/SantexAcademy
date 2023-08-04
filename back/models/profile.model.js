@@ -47,16 +47,20 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Profile.init({
-    user_id: DataTypes.INTEGER,
-    profileName: DataTypes.STRING,
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    profileName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
     sequelize,
+    paranoid: true,
+    createdAt: false,
+    // updatedAt: false,
     tableName: PROFILES_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return Profile;
 };

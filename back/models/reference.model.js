@@ -15,12 +15,10 @@ module.exports = (sequelize, DataTypes) => {
     company: DataTypes.STRING,
   }, {
     sequelize,
+    paranoid: true,
+    createdAt: false,
+    updatedAt: false,
     tableName: REFERENCES_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return Reference;
 };

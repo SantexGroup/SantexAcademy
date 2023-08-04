@@ -25,21 +25,43 @@ const bcrypt = require('../node_modules/bcrypt');
 //     });
 //   }
 // };
-async function recordUser(id, nick, password, name, lastName, email, phone, roles) {
-  const user = new User({
-    id,
-    nick,
-    password,
-    name,
-    lastName,
-    email,
-    phone,
-    roles,
-  });
+async function recordUser(nick, password, name, lastName, email, phone, rolesId) {
+  try {
+    const userCreated = await User.create({
+      roles_id: rolesId,
+      nick,
+      password,
+      name,
+      lastName,
+      email,
+      phone,
+    });
+
+    return userCreated;
+  } catch (error) {
+    console.error('Error al guardar el usuario:', error);
+    throw error; // Re-lanzamos el error para que el llamador lo maneje adecuadamente
+  }
+}
+
+/*
+async function recordUser(id, nick, password, name, lastName, email, phone, rolesId, deleted) {
+  const user = new User();
+  user.id = id;
+  user.roles_id = rolesId;
+  user.nick = nick;
+  user.password = password;
+  user.name = name;
+  user.lastname = lastName;
+  user.email = email;
+  user.phone = phone;
+  user.deleted = deleted || false;
+>>>>>>> 66487c468685d1e50ece563b59facd8c12492e86
 
   const userCreated = await user.save();
   return userCreated;
 }
+*/
 
 // Servicio que autoriza login
 
@@ -102,10 +124,10 @@ async function updateUser(id, nick, password, name, lastName, email, phone) {
   if (phone) {
     user.phone = phone;
   }
-  user.updateUser = null;
   const userEdited = await user.save();
   return userEdited;
 }
+
 /*
 const updateUser = async (req, res) => {
   const {

@@ -17,19 +17,25 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Formation.init({
-    status_id: DataTypes.INTEGER,
-    types_id: DataTypes.INTEGER,
+    status_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    types_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     title: DataTypes.STRING,
     institute: DataTypes.STRING,
+    startDate: DataTypes.DATE,
+    endDate: DataTypes.DATE,
     description: DataTypes.STRING,
   }, {
     sequelize,
+    paranoid: true,
+    createdAt: false,
+    updatedAt: false,
     tableName: FORMATIONS_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return Formation;
 };

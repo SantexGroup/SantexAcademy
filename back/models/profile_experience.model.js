@@ -8,17 +8,18 @@ module.exports = (sequelize, DataTypes) => {
   class ProfileExperience extends Model {
   }
   ProfileExperience.init({
-    experiences_id: DataTypes.INTEGER,
-    profiles_id: DataTypes.INTEGER,
+    experiences_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    profiles_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   }, {
     sequelize,
     timestamps: false,
     tableName: PROFILES_EXPERIENCES_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return ProfileExperience;
 };

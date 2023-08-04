@@ -18,20 +18,29 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Experience.init({
-    status_id: DataTypes.INTEGER,
-    countries_id: DataTypes.INTEGER,
-    types_id: DataTypes.INTEGER,
+    status_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    countries_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    types_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     position: DataTypes.STRING,
     company: DataTypes.STRING,
     description: DataTypes.STRING,
+    startDate: DataTypes.DATE,
+    endDate: DataTypes.DATE,
   }, {
     sequelize,
+    paranoid: true,
+    createdAt: false,
+    updatedAt: false,
     tableName: EXPERIENCES_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return Experience;
 };
