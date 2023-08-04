@@ -1,6 +1,6 @@
 // Importacion de userService para inyectar en el controlador.
 
-const userService = require('../services/user');
+const userService = require('../services/user.service');
 //
 // controlador que redirige al servicio para registrar un usuario
 async function recordUser(req, res) {
