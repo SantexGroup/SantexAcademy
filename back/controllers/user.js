@@ -5,9 +5,15 @@ const userService = require('../services/user');
 // controlador que redirige al servicio para registrar un usuario
 async function recordUser(req, res) {
   const {
-    body,
+    rolesId,
+    nick,
+    password,
+    name,
+    lastName,
+    email,
+    phone,
   } = req.body;
-  const user = await userService.recordUser(body);
+  const user = await userService.recordUser(rolesId, nick, password, name, lastName, email, phone);
   res.status(201).send(user);
 }
 
@@ -15,11 +21,11 @@ async function recordUser(req, res) {
 
 async function login(req, res, next) {
   const {
-    email,
+    nick,
     password,
   } = req.body;
   try {
-    const result = await userService.login(email, password);
+    const result = await userService.login(nick, password);
     res.status(201).send(result);
   } catch (error) {
     next(error);

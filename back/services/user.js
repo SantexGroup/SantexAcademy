@@ -26,10 +26,9 @@ const bcrypt = require('../node_modules/bcrypt');
 //   }
 // };
 
-async function recordUser(id, nick, password, name, lastName, email, phone, rolesId, deleted) {
+async function recordUser(nick, password, name, lastName, email, phone, rolesId) {
   try {
     const userCreated = await User.create({
-      id,
       roles_id: rolesId,
       nick,
       password,
@@ -37,7 +36,6 @@ async function recordUser(id, nick, password, name, lastName, email, phone, role
       lastName,
       email,
       phone,
-      deleted: deleted || false,
     });
 
     return userCreated;
@@ -129,6 +127,7 @@ async function updateUser(id, nick, password, name, lastName, email, phone) {
   const userEdited = await user.save();
   return userEdited;
 }
+
 /*
 const updateUser = async (req, res) => {
   const {
