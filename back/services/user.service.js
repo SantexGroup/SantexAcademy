@@ -35,33 +35,12 @@ async function recordUser(rolesId, nick, password, name, lastName, email, phone)
       email,
       phone,
     });
-
     return userCreated;
   } catch (error) {
     console.error('Error al guardar el usuario:', error);
     throw error; // Re-lanzamos el error para que el llamador lo maneje adecuadamente
   }
 }
-
-/*
-async function recordUser(id, nick, password, name, lastName, email, phone, rolesId, deleted) {
-  const user = new User();
-  user.id = id;
-  user.roles_id = rolesId;
-  user.nick = nick;
-  user.password = password;
-  user.name = name;
-  user.lastname = lastName;
-  user.email = email;
-  user.phone = phone;
-  user.deleted = deleted || false;
-
-  const userCreated = await user.save();
-  return userCreated;
-}
-*/
-
-// Servicio que autoriza login
 
 async function login(nick, password) {
   const user = await User.findOne({
