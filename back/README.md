@@ -1,4 +1,10 @@
 
+
+
+
+
+
+
 # Proyecto NodeJs + Express Academy 
 
 Este proyecto en [NodeJs](https://nodejs.org/en/), [Express](https://expressjs.com/) y [Sequelize](https://sequelize.org/) esta pensado para empezar como base para los desarrollos del curso.
