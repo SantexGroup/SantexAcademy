@@ -58,9 +58,9 @@ export class FormAddProductComponent implements OnInit {
     return this.myForm.get('descripcion');
   }
 
-  submit(myForm: NgForm) {
-    console.log('Agregar', myForm.value)
-  }
+  addProduct() {
+    console.log('Agregar', this.myForm.value)
+  } 
 
   ngOnInit(): void {
   }

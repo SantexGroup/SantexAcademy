@@ -1,5 +1,5 @@
 
-<form class="form_container" [formGroup]="myForm">
+<form class="form_container" [formGroup]="myForm"  (ngSubmit)="addProduct()">
     <div class="title_container">
         <p class="title">Agregar Producto</p>
         <span class="subtitle">Ingrese los datos del nuevo producto.</span>
@@ -41,7 +41,7 @@
         <p class="errorInput" *ngIf="descripcion?.touched && descripcion?.hasError('required')">Campo Obligatorio</p>
     </div>
     
-    <button title="Sign In" type="submit" class="sign-in_btn">
+    <button title="Sign In" type="submit" class="sign-in_btn" [disabled]="myForm.invalid">
         <span>Agregar</span>
     </button>
 </form>
