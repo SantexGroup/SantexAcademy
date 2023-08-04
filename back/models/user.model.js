@@ -21,11 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     roles_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      unique: false,
     },
     nick: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
     password: {
       type: DataTypes.STRING,
@@ -48,9 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     pictureLink: DataTypes.STRING,
   }, {
     sequelize,
-    paranoid: true,
-    createdAt: false,
-    updatedAt: false,
+    timestamps: false,
     tableName: USERS_TABLE_NAME,
   });
   return User;
