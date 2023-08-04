@@ -30,13 +30,11 @@ module.exports = (sequelize, DataTypes) => {
     startDate: DataTypes.DATE,
     endDate: DataTypes.DATE,
     description: DataTypes.STRING,
-    deleted: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
   }, {
     sequelize,
-    timestamps: false,
+    paranoid: true,
+    createdAt: false,
+    updatedAt: false,
     tableName: FORMATIONS_TABLE_NAME,
   });
   return Formation;

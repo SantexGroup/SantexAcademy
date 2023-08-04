@@ -35,13 +35,11 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     startDate: DataTypes.DATE,
     endDate: DataTypes.DATE,
-    deleted: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
   }, {
     sequelize,
-    timestamps: false,
+    paranoid: true,
+    createdAt: false,
+    updatedAt: false,
     tableName: EXPERIENCES_TABLE_NAME,
   });
   return Experience;
