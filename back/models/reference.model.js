@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     phone: DataTypes.STRING,
     company: DataTypes.STRING,
+    deletedAt: DataTypes.DATE,
   }, {
     sequelize,
     paranoid: true,

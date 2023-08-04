@@ -41,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
     achievements: DataTypes.STRING,
     address: DataTypes.STRING,
     zipCode: DataTypes.STRING,
+    deletedAt: DataTypes.DATE,
   }, {
     sequelize,
     paranoid: true,

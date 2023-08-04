@@ -46,6 +46,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     pictureLink: DataTypes.STRING,
+    deletedAt: DataTypes.DATE,
   }, {
     sequelize,
     timestamps: false,

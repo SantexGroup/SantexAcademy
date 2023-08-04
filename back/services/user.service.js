@@ -84,42 +84,7 @@ async function login(nick, password) {
     accessToken: token,
   };
 }
-/*
-async function login(nick, password) {
-  try {
-    const user = await User.findOne({
-      where: {
-        nick,
-      },
-    });
 
-    if (!user) {
-      throw new Error('El email y/o contraseñas son incorrectos');
-    }
-
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-
-    if (!isPasswordValid) {
-      throw new Error('El email y/o contraseñas son incorrectos');
-    }
-
-    const token = jwt.sign(
-      {
-        id: user.id,
-        nick: user.nick,
-        email: user.email,
-      },
-      'Clave',
-    );
-
-    return {
-      accessToken: token,
-    };
-  } catch (error) {
-    throw new Error('Ha ocurrido un error en el proceso de inicio de sesión');
-  }
-}
-*/
 // Servicio que actualiza datos de un usuario
 
 async function updateUser(id, nick, password, name, lastName, email, phone) {
@@ -148,40 +113,30 @@ async function updateUser(id, nick, password, name, lastName, email, phone) {
   const userEdited = await user.save();
   return userEdited;
 }
-
-/*
-const updateUser = async (req, res) => {
-  const {
-    body,
-  } = req;
-  const {
-    id,
-  } = req.params;
-  try {
-    const user = await User.findByPk(id);
-    if (user) {
-      await user.update(body);
-      res.json({
-        msg: 'Sus datos se actualizaron correctamente',
-      });
-    } else {
-      res.status(404).json({
-        msg: 'Usuario no encontrado',
-      });
-    }
-  } catch (error) {
-    console.log(error);
-    res.json({
-      msg: 'Ups, ocurrio un error',
+// Servicio para eliminar usuarios
+async function deleteUser(id) {
+  /* Buscamos el ususario en la base de datos por ID */
+  const user = await User.findByPk(id);
+  /* Si encontramos el usuario */
+  if (user && user.deletedAt === null) {
+    /* Actualizamos el estado de la columna deletedAt, para un borrado logico */
+    User.update({
+      deletedAt: new Date(),
+    }, {
+      where: {
+        id,
+      },
     });
+  } else {
+    /* Si el usuario el valor pasado por params no es valido */
+    throw Error('No existe ese usuario');
   }
-};
-*/
-
+}
 //
 // Exportamos el servicio para inyectar en el controlador
 module.exports = {
   recordUser,
   updateUser,
   login,
+  deleteUser,
 };
