@@ -1,12 +1,12 @@
 'use strict';
 
-const { FORMATIONS_TYPE_TABLE_NAME } = require("../helpers/sequelize.helper");
+const { FORMATIONS_TYPES_TABLE_NAME } = require("../helpers/sequelize.helper");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
-      FORMATIONS_TYPE_TABLE_NAME,
+      FORMATIONS_TYPES_TABLE_NAME,
       [
         {
           type: 'Autodidacta',
@@ -29,6 +29,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete(FORMATIONS_TYPE_TABLE_NAME, null, {});  
+    await queryInterface.bulkDelete(FORMATIONS_TYPES_TABLE_NAME, null, {});  
   }
 };
