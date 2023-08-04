@@ -7,18 +7,16 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./register-page.component.css']
 })
 export class RegisterPageComponent implements OnInit {
-/*   myForm = new FormGroup({
-    email: new FormControl("");
-    password: new FormControl("");
-  });
- */
-
-  myForm = this.fb.group({
-    email: ['', Validators.required, Validators.email],
-    password: ['', Validators.required, Validators.minLength(6)]
-  })
-  
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {  }
+
+  myForm = this.fb.group({
+    email: ['', [ Validators.required, Validators.email ]],
+    password: ['', [ Validators.required, Validators.minLength(6) ]],
+  })
+  
+  submit(myForm: FormGroup) {
+    console.log("submit", myForm);
+  }
 }

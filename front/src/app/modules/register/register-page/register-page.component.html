@@ -2,16 +2,16 @@
   <form class="form" [formGroup]="myForm">
     <p class="title">Registro de Usuario</p>
     <label>
-      <input required ngModel 
+      <input required  
         name="email" 
         placeholder="Email" 
         type="email" 
-        class="input" 
+        class="input"
         formControlName="email">   
     </label> 
     
     <label>
-      <input required ngModel
+      <input required
         name="password" 
         placeholder="Password" 
         type="password" 
@@ -19,6 +19,6 @@
         formControlName="password">
     </label>
 
-    <button class="submit">Submit</button>
+    <button class="submit" type="button" (click)="submit(myForm)">Submit</button>
   </form>
 </div>
