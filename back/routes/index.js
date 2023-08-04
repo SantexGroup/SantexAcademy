@@ -4,7 +4,6 @@ const Express = require('express');
 const rootPath = require('../middleware/root_path.middleware');
 const errors = require('../middleware/error_handler.middleware');
 const profileController = require('../controllers/profile.controller');
-
 const userRoutes = require('./user');
 
 const app = Express();
