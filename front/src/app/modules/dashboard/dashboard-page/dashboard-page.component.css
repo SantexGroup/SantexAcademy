@@ -2,5 +2,11 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-        
+    width: 100%;
+
+}
+
+.logoHeader{
+    display: flex;
+    height: 100px;
 }
