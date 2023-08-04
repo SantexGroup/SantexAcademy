@@ -126,7 +126,6 @@ async function updateUser(id, nick, password, name, lastName, email, phone) {
   if (phone) {
     user.phone = phone;
   }
-  user.updateUser = null;
   const userEdited = await user.save();
   return userEdited;
 }

@@ -46,10 +46,6 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     pictureLink: DataTypes.STRING,
-    deleted: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
   }, {
     sequelize,
     timestamps: false,
