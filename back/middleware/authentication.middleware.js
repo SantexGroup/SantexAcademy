@@ -1,6 +1,4 @@
-// const passport = require('passport');
 const passport = require('passport');
-// const { NotAuthorized } = require('../exceptions/not-authorized.exceptions');
 
 /**
  * Middleware de autenticacion que utiliza passport
@@ -16,11 +14,9 @@ const passport = require('passport');
  *
  */
 const isAuthenticated = (req, res, next) => {
-  // eslint-disable-next-line consistent-return
-  passport.authenticate('jwt', { session: false }, (err, user) => {
-    // console.log('validando autenticacion');
+  // eslint-disable-next-line consistent-return, no-unused-vars
+  passport.authenticate('jwt', { session: false }, (err, user, info) => {
     if (err || !user) {
-      // const error = new NotAuthorized('Usuario no autorizado');
       const error = new Error('Usuario no autorizado');
 
       return next(error);
@@ -30,4 +26,6 @@ const isAuthenticated = (req, res, next) => {
   })(req, res, next);
 };
 
-module.exports = { isAuthenticated };
+module.exports = isAuthenticated;
+
+// module.exports.handler = handler;
