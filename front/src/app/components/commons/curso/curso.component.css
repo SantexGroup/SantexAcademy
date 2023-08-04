@@ -1,0 +1,11 @@
+.bg_sections{
+    height: auto;
+    background-color: aqua;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: cover;
+  }
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+  }

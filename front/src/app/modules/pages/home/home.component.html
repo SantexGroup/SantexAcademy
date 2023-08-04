@@ -1,0 +1,21 @@
+<main>
+    <!-- SECCION LOGIN -->
+    <section class="main_section">
+        <div class="container-fluid bg-white shadow px-0" id="contentForm">
+            <!-- SECCION LOGIN -->
+            <div class="row align-items-stretch mt-4">
+                <!-- IMAGEN FONDO -->
+                <div class="col bg_sections bg d-none d-lg-block col-md-6 col-lg-6 col-xl-7 ">
+                </div>
+                <div class="col bg-white p-5">
+                    <div *ngIf="mostrarDiv;else templateName">
+                        <app-login-form [estado]="this.mostrarDiv" (newItemEvent)="cambiar($event)"></app-login-form>
+                    </div>
+                    <ng-template  #templateName>
+                        <app-register-form [estado]="this.mostrarDiv" (newItemEvent)="cambiar($event)"></app-register-form>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
