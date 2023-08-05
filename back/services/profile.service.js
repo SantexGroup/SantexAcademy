@@ -1,3 +1,4 @@
+const NotFoundException = require('../exceptions/not_found.exceptions');
 const {
   User,
   Rol,
@@ -50,7 +51,7 @@ async function getProfileById(id) {
   });
 
   if (!profiles) {
-    throw new Error('Profile not found');
+    throw new NotFoundException('Profile not found');
   }
 
   return profiles;
