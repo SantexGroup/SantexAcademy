@@ -1,6 +1,6 @@
 // Importacion de userService para inyectar en el controlador.
 
-const userService = require('../services/user');
+const userService = require('../services/user.service');
 //
 // controlador que redirige al servicio para registrar un usuario
 async function recordUser(req, res) {
@@ -49,9 +49,20 @@ async function updateUser(req, res) {
   const user = await userService.updateUser(id, nick, password, name, lastName, email, phone);
   res.status(201).send(user);
 }
+
+async function userDeleted(req, res, next) {
+  const { id } = req.params;
+  try {
+    await userService.deleteUser(id);
+    res.status(201).send('usuario eliminado correctamente');
+  } catch (error) {
+    next(error);
+  }
+}
 // Modulos a exportar para inyectar en routes
 module.exports = {
   recordUser,
   updateUser,
   login,
+  userDeleted,
 };

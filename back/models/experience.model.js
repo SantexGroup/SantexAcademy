@@ -35,6 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     startDate: DataTypes.DATE,
     endDate: DataTypes.DATE,
+    deletedAt: DataTypes.DATE,
   }, {
     sequelize,
     paranoid: true,

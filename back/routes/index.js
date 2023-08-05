@@ -3,8 +3,8 @@ const Express = require('express');
 // Middlewares:
 const rootPath = require('../middleware/root_path.middleware');
 const errors = require('../middleware/error_handler.middleware');
-const userRoutes = require('./user');
 const profileRoutes = require('./profile.routes');
+const userRoutes = require('./user.routes');
 
 const app = Express();
 
