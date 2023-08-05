@@ -15,8 +15,8 @@ const logger = require('./utils/winston.logger');
 const models = require('./models');
 
 // Rutes:
-const routes = require('./routes');
 
+const routes = require('./routes');
 const config = require('./config/config');
 const validateEnv = require('./utils/validateEnv');
 
@@ -87,6 +87,7 @@ models.sequelize.authenticate()
   });
 
 app.use('/', routes);
+
 const PORT = process.env.PORT || 4001;
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
