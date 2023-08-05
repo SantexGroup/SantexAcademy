@@ -46,7 +46,7 @@ const OPTIONAL = {
 
 async function getProfileById(id) {
   const profiles = await Profile.findByPk(id, {
-    include: [EXPERIENCE, Reference, Language, Skill, USERS, FORMATION, OPTIONAL],
+    include: [USERS, EXPERIENCE, Reference, Language, Skill, FORMATION, OPTIONAL],
   });
 
   if (!profiles) {
