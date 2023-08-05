@@ -11,7 +11,7 @@ const app = Express();
 // Rutas
 
 // use=
-app.use('/profiles', profileRoutes);
+app.use('/profile', profileRoutes);
 app.use('/user', userRoutes);
 
 app.use('/', rootPath.handler);
