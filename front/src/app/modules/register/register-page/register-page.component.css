@@ -52,3 +52,12 @@
 .submit:hover {
   background-color: rgb(56, 90, 194);
 }
+
+.submit:disabled {
+  background-color: #808080;
+}
+
+.error {
+  font-size: 12px;
+  color: red;
+}

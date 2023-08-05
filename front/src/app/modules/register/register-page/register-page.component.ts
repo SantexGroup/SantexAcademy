@@ -9,7 +9,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class RegisterPageComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void { }
 
   myForm = this.fb.group({
     email: ['', [ Validators.required, Validators.email ]],

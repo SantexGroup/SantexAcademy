@@ -2,13 +2,16 @@
   <form class="form" [formGroup]="myForm">
     <p class="title">Registro de Usuario</p>
     <label>
-      <input required  
+      <input required email
         name="email" 
         placeholder="Email" 
         type="email" 
         class="input"
         formControlName="email">   
     </label> 
+    <p class="error" *ngIf="myForm.controls.email?.errors?.['required'] && myForm.controls.email?.dirty">Este campo es obligatorio</p>
+
+    <p class="error" *ngIf="myForm.controls.email?.errors?.['email']">Debe ingresar un correo valido</p>
     
     <label>
       <input required
@@ -18,7 +21,17 @@
         class="input" 
         formControlName="password">
     </label>
+    <p class="error" *ngIf="myForm.controls.password?.errors?.['required'] && myForm.controls.password?.dirty">Este campo es obligatorio</p>
 
-    <button class="submit" type="button" (click)="submit(myForm)">Submit</button>
+    <p class="error" *ngIf="myForm.controls.password?.errors?.['minlength']">La longitud minima es de 6 caracteres</p>
+
+    <button class="submit" 
+      type="button" 
+      (click)="submit(myForm)"
+      [disabled]="myForm.status==='INVALID'"
+      >Submit
+    </button>
   </form>
 </div>
+
+<!--  -->
