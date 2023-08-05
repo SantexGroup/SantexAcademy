@@ -7,37 +7,6 @@ const { User } = require('../models');
 //
 // Servicio que recupera los datos ingresados y los guarda para crear un usuario.
 
-// const recordUser = async (req, res) => {
-//   const {
-//     body,
-//   } = req;
-//   try {
-//     await User.create(body);
-//     res.status(201).json({
-//       msg: 'Usuario creado correctamente',
-//     });
-//   } catch (error) { // Si hay un error lo capturamos
-//     console.log(error);
-//     res.status(401).json({
-//       msg: 'Ups, algo salio mal',
-//     });
-//   }
-// };
-
-/**
- * Registra un nuevo usuario en la base de datos.
- *
- * @param {number} rolesId - El ID del rol del usuario.
- * @param {string} nick - El nick o apodo del usuario.
- * @param {string} password - La contraseña del usuario.
- * @param {string} name - El nombre del usuario.
- * @param {string} lastName - El apellido del usuario.
- * @param {string} email - El correo electrónico del usuario.
- * @param {string} phone - El número de teléfono del usuario.
- * @returns {Promise<object>} - Una Promesa que se resuelve con el objeto del usuario creado.
- * @throws {Error} - Si ocurre algún error durante el registro del usuario.
- */
-
 async function recordUser(rolesId, nick, password, name, lastName, email, phone) {
   try {
     // Lógica para crear el nuevo usuario en la base de datos
