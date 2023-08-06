@@ -4,15 +4,23 @@ import { CommonModule } from '@angular/common';
 import { throwIfAlreadyLoaded } from './core-import.guard';
 
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button'
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    HttpClientModule,
+    HttpClientModule
+    
   ],
-  exports: [],
+  exports: [
+    ReactiveFormsModule,
+    FormsModule,
+    MatButtonModule
+    
+  ],
   providers: []
 })
 export class CoreModule {
