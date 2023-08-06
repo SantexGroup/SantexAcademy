@@ -45,4 +45,8 @@ table {
 	border-spacing: 0;
 }
 
-/*  */
+/* css global para la pagina */
+
+*{
+font-family: sans-serif;
+}

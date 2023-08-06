@@ -3,10 +3,36 @@
     align-items: center;
     justify-content: space-around;
     width: 100%;
-
+    background-color: #0072bb;
 }
 
 .logoHeader{
     display: flex;
     height: 100px;
+}
+
+ul{
+    display: none;
+}
+
+.abrir-menu{
+
+    
+}
+button:hover{
+    border-radius: 40px;
+    background-color: #ffffff;
+    color: black;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+button{
+    border-radius: 15px;
+    background-color: #0072bb;
+    border: 1px solid #ffffff;
+    padding: 10px;
+    color: #ffffff;
+    
+    
 }

@@ -1,0 +1,15 @@
+.eslogan{
+    display: flex;
+    margin: 110px 100px;
+    
+}
+
+.eslogan-frase{
+    text-align: center;
+    font-weight: 500;
+}
+
+span{
+    color: #2783ec;
+    font-weight: bold;
+}
