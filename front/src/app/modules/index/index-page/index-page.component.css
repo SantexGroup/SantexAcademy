@@ -1,0 +1,25 @@
+
+.contenedor{
+    padding-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+}
+
+.fondo-degradado{
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(90deg,#8c52ff,#1bdaff);
+}
+
+.contenedor-botones{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.boton-registro{
+    margin-right: 30px;
+}

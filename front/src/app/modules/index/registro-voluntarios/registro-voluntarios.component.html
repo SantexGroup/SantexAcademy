@@ -1,0 +1,44 @@
+<div class="contenedor fondo-degradado">
+    <h2 class="titulo">Registro de voluntarios</h2>
+    <form class="formulario" [formGroup]="formRegistro" >
+
+        
+       <input type="text" class="input-full-width" formControlName="nombre"  placeholder="Ingresá un nombre *"
+       [ngClass]="{'input-invalid':formRegistro.get('nombre')?.touched && formRegistro.get('nombre')?.invalid,
+                    'input-valid':formRegistro.get('nombre')?.touched && formRegistro.get('nombre')?.valid}">
+        
+        <input type="text" class="input-full-width"  formControlName="apellido"  placeholder="Ingresa un apellido *"
+        [ngClass]="{'input-invalid':formRegistro.get('apellido')?.touched && formRegistro.get('apellido')?.invalid,
+                    'input-valid':formRegistro.get('apellido')?.touched && formRegistro.get('apellido')?.valid}">
+        
+        
+        <input type="text" class="input-full-width"   formControlName="direccion"  placeholder="Ingresá una dirección *"
+        [ngClass]="{'input-invalid':formRegistro.get('direccion')?.touched && formRegistro.get('direccion')?.invalid,
+                    'input-valid':formRegistro.get('direccion')?.touched && formRegistro.get('direccion')?.valid}">
+        
+        <input type="number" class="input-full-width"  formControlName="celular"  placeholder="Ingresá un número de teléfono *"
+        [ngClass]="{'input-invalid':formRegistro.get('celular')?.touched && formRegistro.get('celular')?.invalid,
+                    'input-valid':formRegistro.get('celular')?.touched && formRegistro.get('celular')?.valid}">
+        
+        
+        <input type="email"  class="input-full-width"  formControlName="email"  placeholder="Ingresá un email *"
+        [ngClass]="{'input-invalid':formRegistro.get('email')?.touched && formRegistro.get('email')?.invalid,
+                    'input-valid':formRegistro.get('email')?.touched && formRegistro.get('email')?.valid}"
+        >
+        
+        <input type="password" class="input-full-width"  formControlName="password"  placeholder="Ingresá una contraseña *"
+        [ngClass]="{'input-invalid':formRegistro.get('password')?.touched && formRegistro.get('password')?.invalid,
+                    'input-valid':formRegistro.get('password')?.touched && formRegistro.get('password')?.valid}">
+        
+
+        
+        <button  class="button-full-width" [disabled]="!formRegistro.valid" [ngClass]="{'button-disabled':formRegistro.invalid}" (click)="crearVoluntario()">Registrarse</button>
+        
+    </form>
+    
+        <p>¿Ya tienes una cuenta? <span class="inicia-sesion" (click)="irLoginVoluntario()" > Inicia Sesión</span></p>
+
+        <button mat-raised-button color="accent" class="boton-volver" routerLink="/index" >Volver al Inicio</button>
+
+    
+</div>
