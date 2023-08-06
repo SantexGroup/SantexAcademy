@@ -56,4 +56,26 @@ async function getProfileById(id) {
   return profiles;
 }
 
-module.exports = { getProfileById };
+// profile.service.js
+async function getProfilesByUserId(id) {
+  console.log('UserID:', id); // Imprime el valor del ID de usuario para verificar
+
+  const user = await User.findOne({ where: { id } });
+
+  if (!user) {
+    throw new Error(`User not found for ID ${id}`);
+  }
+
+  const profiles = await Profile.findAll(id, {
+    where: { id },
+    include: [USERS, EXPERIENCE, Reference, Language, Skill, FORMATION, OPTIONAL],
+  });
+
+  if (!profiles || profiles.length === 0) {
+    throw new Error(`No profiles found for the user with ID ${id}`);
+  }
+
+  return profiles;
+}
+
+module.exports = { getProfileById, getProfilesByUserId };

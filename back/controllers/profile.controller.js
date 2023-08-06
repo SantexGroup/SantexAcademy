@@ -25,6 +25,23 @@ async function getProfile(req, res, next) {
   }
 }
 
+// profile.controller.js
+
+// profile.controller.js
+async function getProfiles(req, res, next) {
+  const { id } = req.params;
+  // Obtener el userId de la solicitud (asegúrate de usar el nombre correcto)
+
+  try {
+    const profiles = await profileService.getProfilesByUserId(id);
+
+    res.status(200).json(profiles);
+  } catch (error) {
+    next(error);
+  }
+}
+
 module.exports = {
   getProfile,
+  getProfiles,
 };
