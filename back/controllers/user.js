@@ -1,13 +1,31 @@
-const createUserCont = (_req, res) => {
-  res.status(200).send({
-    msg: 'signup de users',
-  });
+const { UserServices } = require('../services');
+
+const createUserCont = async (req, res) => {
+  try {
+    const newUser = await UserServices.createUserServ(req.body);
+    res.status(201).send({
+      newUser,
+    });
+  } catch (error) {
+    res.status(400).json({
+      action: 'createUser',
+      error: error.message,
+    });
+  }
 };
 
-const loginUserCont = (_req, res) => {
-  res.status(200).send({
-    msg: 'login de users',
-  });
+const loginUserCont = async (req, res) => {
+  try {
+    const foundUser = await UserServices.loginServ(req.body);
+    res.status(200).send({
+      foundUser,
+    });
+  } catch (error) {
+    res.status(400).json({
+      action: 'loginUser',
+      error: error.message,
+    });
+  }
 };
 
 const modifUserCont = (req, res) => {
