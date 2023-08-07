@@ -25,23 +25,21 @@ async function getProfile(req, res, next) {
   }
 }
 
-// profile.controller.js
-
-// profile.controller.js
-async function getProfiles(req, res, next) {
+// Controlador para obetner todos los Perfiles de un Usuario
+async function getProfilesByUserIdController(req, res) {
+  // Desestructuración del objeto req.params para obtener directamente el userId
   const { id } = req.params;
-  // Obtener el userId de la solicitud (asegúrate de usar el nombre correcto)
-
   try {
-    const profiles = await profileService.getProfilesByUserId(id);
-
-    res.status(200).json(profiles);
+    const profiles = await profileService.getProfileByUserId(id);
+    // Respondemos con los perfiles obtenidos en formato JSON
+    res.json(profiles);
   } catch (error) {
-    next(error);
+    // Manejo de errores si ocurre algún problema en el servicio
+    res.status(500).json({ error: 'Error al obtener los perfiles del usuario' });
   }
 }
 
 module.exports = {
   getProfile,
-  getProfiles,
+  getProfilesByUserIdController,
 };

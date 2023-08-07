@@ -1,4 +1,3 @@
-const NotFoundException = require('../exceptions/not_found.exceptions');
 const {
   User,
   Rol,
@@ -19,42 +18,60 @@ const {
 } = require('../models');
 
 /**
- * Obtener los datos completos de un PROFILE por su ID
- *
- * @param {integer} id - Identificador del PROFILE
- *
- * @returns {Profile}
- */
+   * Obtener los datos completos de un PROFILE por su ID
+   *
+   * @param {integer} id - Identificador del PROFILE
+   *
+   * @returns {Profile}
+   */
+const EXPERIENCE = {
+  model: Experience,
+  include: [ExperienceStatus, ExpirenceType, Country],
+};
+
+const FORMATION = {
+  model: Formation,
+  include: [FormationStatus, FormationType],
+};
+
+const USERS = {
+  model: User,
+  include: [Rol],
+};
+
+const OPTIONAL = {
+  model: Optional,
+  include: [Marital, Sex],
+};
+
 async function getProfileById(id) {
-  const EXPERIENCE = {
-    model: Experience,
-    include: [ExperienceStatus, ExpirenceType, Country],
-  };
-
-  const FORMATION = {
-    model: Formation,
-    include: [FormationStatus, FormationType],
-  };
-
-  const USERS = {
-    model: User,
-    include: [Rol],
-  };
-
-  const OPTIONAL = {
-    model: Optional,
-    include: [Marital, Sex],
-  };
-
   const profiles = await Profile.findByPk(id, {
-    include: [EXPERIENCE, Reference, Language, Skill, USERS, FORMATION, OPTIONAL],
+    include: [USERS, EXPERIENCE, Reference, Language, Skill, FORMATION, OPTIONAL],
   });
 
   if (!profiles) {
-    throw new NotFoundException('Profile not found');
+    throw new Error('Profile not found');
   }
 
   return profiles;
 }
 
-module.exports = { getProfileById };
+async function getProfileByUserId(id) {
+  try {
+    // Consulta la base de datos para obtener los perfiles correspondientes al 'user_id'
+    const profiles = await Profile.findAll({
+      where: { user_id: id },
+      include: [USERS, EXPERIENCE, Reference, Language, Skill, FORMATION, OPTIONAL],
+    });
+
+    if (!profiles || profiles.length === 0) {
+      throw new Error(`No profiles found for the user with ID ${id}`);
+    }
+    return profiles;
+  } catch (error) {
+    // Manejo de errores si ocurre algún problema con la consulta
+    throw new Error(`Error al obtener los perfiles para el usuario con ID ${id}`);
+  }
+}
+
+module.exports = { getProfileById, getProfileByUserId };
