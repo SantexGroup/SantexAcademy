@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 module.exports = {
   // eslint-disable-next-line no-unused-vars
   async up(queryInterface, _Sequelize) {
-    await queryInterface.bulkInsert('User', [{
+    await queryInterface.bulkInsert('Users', [{
       id: 1,
       firstName: 'Admin1',
       lastName: '',

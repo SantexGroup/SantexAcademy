@@ -2,7 +2,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-useless-catch */
 const bcrypt = require('bcrypt');
-const User = require('../models/user');
+const { User } = require('../models');
 
 const newUserProv = async (user) => {
   const {
