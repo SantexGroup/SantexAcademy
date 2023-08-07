@@ -1,0 +1,35 @@
+<header class="container-fluid px-0" id="headerHeader">
+    <!-- NAVIGATION -->
+      <nav class="navbar sticky-top bg-white navbar-expand-lg shadow-lg" id="navHeader">
+          <div class="container-fluid" id="contenedor_nav">
+              <a class="d-inline-block align-text-top p-1" routerLink="/home"><img src="../../../../assets/345270431_766231688363871_4341753288289659002_n.jpg" alt="" width="100px"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+              <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                  <div class="offcanvas-header">
+                      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">MENU</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body justify-content-end" width="100">
+                      <ul class="navbar-nav my-2 my-lg-0">
+                          <li class="nav-item m-3">
+                              <a class="nav-link link" aria-current="page" routerLink="/home">Inicio</a>
+                          </li>
+                          <li class="nav-item m-3">
+                              <a class="nav-link" aria-current="page" routerLink='/cursos'>Cursos</a>
+                          </li>
+                          <li class="nav-item m-3">
+                            <a class="nav-link" aria-current="page" routerLink='/precios'>Nuestros Planes</a>
+                        </li>
+                        <li class="nav-item m-3 mt-4">
+                            <app-social></app-social>
+                        </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </nav>
+
+
+</header>
