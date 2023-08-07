@@ -14,7 +14,7 @@ app.use('/ping', (req, res) => {
     response: 'pong!',
   });
 });
-app.use('/user', userRouter);
+app.use('/users', userRouter);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
