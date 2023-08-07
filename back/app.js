@@ -86,11 +86,9 @@ models.sequelize.authenticate()
   });
 
 app.use('/', routes);
-module.exports = app;
-
 const PORT = 4001;
-// const port = process.env.PORT || 3000
-
 app.listen(PORT, () => {
-  console.log(`El servido está escuchano el puerto ${PORT}`);
+  // eslint-disable-next-line no-console
+  console.log('Escuchando al puerto 4001');
 });
+module.exports = app;
