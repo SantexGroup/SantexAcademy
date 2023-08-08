@@ -31,11 +31,17 @@ export class LoginComponent implements OnInit {
           this.organizacion = true;
           this.titulo = "Organizaciones"
         }
-        if(parametro==='voluntario'){
+        else if(parametro==='voluntario'){
           this.voluntario = true;
           this.titulo = "Voluntarios"
         }
+        else{
+          this.router.navigate(['index']);
+        }
 
+      }
+      else{
+        this.router.navigate(['index']);
       }
     });
 
