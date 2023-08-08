@@ -15,9 +15,9 @@ export class RegistroOrganizacionComponent implements OnInit {
   constructor(fb:FormBuilder, private router:Router, private organizacionService:OrganizacionService,
     private matSnackBar:MatSnackBar){
     this.formRegistro = fb.group({
-      nombre:['',[Validators.required]],
-      direccion:['',Validators.required],
-      telefono:['',[Validators.required]],
+      nombre:['',[Validators.required, Validators.minLength(2)]],
+      direccion:['',[Validators.required, Validators.minLength(5)]],
+      telefono:['',[Validators.required, Validators.pattern(/^[0-9]{8,}$/)]],
       descripcion:['',[Validators.required,Validators.minLength(20)]],
       email:['',[Validators.required,Validators.email]],
       password:['',Validators.required]//Ver que validacion hay que agregarle
