@@ -14,11 +14,6 @@ const getUser = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
-  // const result = validationResult(req)
-  // if(!result.isEmpty()){
-  //     console.log(result)
-  //     return  res.status(400).send({errors: result.array})
-  // }
   // eslint-disable-next-line object-curly-newline
   const { nombre, apellido, nombreUsuario, contrasena, email, role, cel } = req.body;
   try {
@@ -69,9 +64,31 @@ const deleteUser = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res) => {
+  // eslint-disable-next-line prefer-destructuring
+  const idUser = req.params.idUser;
+  // eslint-disable-next-line object-curly-newline
+  const { nombre, apellido, nombreUsuario, contrasena, email, role, cel } = req.body;
+  try {
+    const newUser = await userService.updateUser(idUser, {
+      nombre,
+      apellido,
+      nombreUsuario,
+      contrasena,
+      email,
+      role,
+      cel,
+    });
+    res.status(200).json(newUser);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getUser,
   createUser,
   getUsers,
   deleteUser,
+  updateUser,
 };

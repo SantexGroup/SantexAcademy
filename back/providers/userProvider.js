@@ -8,7 +8,8 @@ const { User } = require('../models');
 const getUser = async (id) => {
   // eslint-disable-next-line no-useless-catch
   try {
-    const user = await User.findByPk(id, { include: [{ all: true }] });
+    // const user = await User.findByPk(id, { include: [{ all: true }] });
+    const user = await User.findByPk(id, { attributes: { exclude: ['contrasena'] } });
     // eslint-disable-next-line max-len
     // eslint-disable-next-line spaced-comment
     if (user) {
@@ -33,9 +34,10 @@ const createUser = async (userAttributes) => {
 
 const getUsers = async (conditions) => {
   try {
-    let options = { include: [{ all: true }] };
+    // let options = { include: [{ all: true }] };
+    let options = { attributes: { exclude: ['contrasena'] } };
     if (conditions) {
-      options = { ...options, where: { [Op.or]: conditions } };
+      options = { ...options, where: { [Op.and]: conditions } };
       // eslint-disable-next-line max-len
     } // opciones tiene username y/o role, capturado en la url. Op nos permite buscar por distintos operadores logicos
     const users = await User.findAll(options);
@@ -59,9 +61,24 @@ const deleteUser = async (idUser) => {
     throw error;
   }
 };
+
+const updateUser = async (idUser, attributes) => {
+  try {
+    await getUser(idUser);
+    // eslint-disable-next-line no-unused-vars
+    const [numRowsUpdated] = await User.update(attributes, {
+      where: { id: idUser },
+    });
+
+    return User.findByPk(idUser, { attributes: { exclude: ['contrasena'] } });
+  } catch (error) {
+    throw error;
+  }
+};
 module.exports = {
   getUser,
   createUser,
   getUsers,
   deleteUser,
+  updateUser,
 };
