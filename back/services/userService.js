@@ -1,7 +1,8 @@
-/* const userProvider = require('../providers/userProvider');
+const userProvider = require('../providers/userProvider');
 
 const createUser = async (user) => {
-    return await userProvider.userCreate(user);
-}
+  const newU = await userProvider.userCreate(user);
+  return newU;
+};
 
-module.exports = { createUser } */
+module.exports = { createUser };

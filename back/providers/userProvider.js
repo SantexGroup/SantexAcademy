@@ -1,16 +1,19 @@
-/* const User = require('../models/user');
+const db = require('../models/index');
 
 const userCreate = async (user) => {
+  // falta verificar si el usuario ya existe (usuario ya registrado)
   try {
-    //codigo a modo de ejemplo
-    //create user es un metodo de sequelize
-    //que tendria que hacer un insert*
-    const newUser = await User.Create(user) ;
+    const newUser = await db.User.create({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      password: user.password,
+    });
     return newUser;
   } catch (error) {
-    console.error('unable to create a user', err);
-    throw err;
+    console.error('Unable to create a user. Error: ', error);
+    throw error;
   }
 };
 
-module.exports = { userCreate } */
+module.exports = { userCreate };

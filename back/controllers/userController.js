@@ -1,12 +1,50 @@
-/* const userService = require('../services/userService');
+const userService = require('../services/userService');
 
-const createUser = async (req, res) => {
-  try{
+const createAUser = async (req, res) => {
+  try {
     const newUser = await userService.createUser(req.body);
     res.json(newUser);
-  }catch(err){
-    res.status().json({ action: 'create a user', error: 'something when wrong'});
+  } catch (err) {
+    res.status(500).json({ action: 'create a user', error: 'something when wrong' });
   }
-}
+};
 
-module.exports = { createUser } */
+const logIn = (req, res) => {
+  res.json({
+    response: 'hola soy un loggin',
+  });
+};
+
+const getUser = (req, res) => {
+  res.json({
+    response: 'hola soy un usuario',
+  });
+};
+
+const getAllUsers = (req, res) => {
+  res.json({
+    response: 'devuelve todos los usuarios',
+  });
+};
+
+const modifyUser = (req, res) => {
+  res.json({
+    response: 'modifico un usuario',
+  });
+};
+
+const deleteUser = (req, res) => {
+  res.json({
+    response: 'elimino un usuario',
+  });
+};
+
+module.exports = {
+  createAUser,
+  logIn,
+  getUser,
+  getAllUsers,
+  modifyUser,
+  deleteUser,
+
+};

@@ -1,41 +1,24 @@
 const express = require('express');
 
 const router = express.Router();
-// const userController = require('../controllers/userController');
+const userController = require('../controllers/userController');
 
 // crear un usuario
-// comentarios hechos para que husky me deje subir los archivos
-// router.post('/register', userController.createUser);
+router.post('/register', userController.createAUser);
 
 /* ingresar a la app */
-router.post('/loggin', (req, res) => {
-  res.json({
-    response: 'hola soy un loggin',
-  });
-});
+router.post('/login', userController.logIn);
+
 /* obtener un usuario */
-router.get('/:userId', (req, res) => {
-  res.json({
-    response: 'hola soy un usuario',
-  });
-});
+router.get('/:userId', userController.getUser);
+
 /* obtener todos los usuarios */
-router.get('/user', (req, res) => {
-  res.json({
-    response: 'devuelve todos los usuarios',
-  });
-});
+router.get('/', userController.getAllUsers);
+
 /* modificar usuario */
-router.put('/:userId', (req, res) => {
-  res.json({
-    response: 'modifico un usuario',
-  });
-});
+router.put('/:userId', userController.modifyUser);
+
 /* eliminar usuario */
-router.delete('/', (req, res) => {
-  res.json({
-    response: 'elimino un usuario',
-  });
-});
+router.delete('/unsuscribe/:userId', userController.deleteUser);
 
 module.exports = router;
