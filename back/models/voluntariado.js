@@ -1,41 +1,57 @@
-// const Sequelize = require('sequelize');
 module.exports = function (sequelize, DataTypes) {
   return sequelize.define('voluntariado', {
-    id_voluntariado: {
+    idVoluntariado: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
+      primaryKey: true
     },
     descripcion: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: false
     },
     recompensa: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: false
     },
+    organizacionId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      references: {
+        model: 'organizacion',
+        key: 'id'
+      }
+    }
   }, {
     sequelize,
     tableName: 'voluntariado',
     timestamps: false,
     indexes: [
       {
-        name: 'PRIMARY',
+        name: "PRIMARY",
         unique: true,
-        using: 'BTREE',
+        using: "BTREE",
         fields: [
-          { name: 'id_voluntariado' },
-        ],
+          { name: "idVoluntariado" },
+          { name: "organizacionId" },
+        ]
       },
       {
-        name: 'id_voluntariado_UNIQUE',
+        name: "id_voluntariado_UNIQUE",
         unique: true,
-        using: 'BTREE',
+        using: "BTREE",
         fields: [
-          { name: 'id_voluntariado' },
-        ],
+          { name: "idVoluntariado" },
+        ]
       },
-    ],
+      {
+        name: "fk_voluntariado_organizacion1_idx",
+        using: "BTREE",
+        fields: [
+          { name: "organizacionId" },
+        ]
+      },
+    ]
   });
 };

@@ -1,18 +1,17 @@
 module.exports = function (sequelize, DataTypes) {
-  return sequelize.define('roles', {
+  return sequelize.define('catalogo', {
     id: {
-      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    nombre: {
+    name: {
       type: DataTypes.STRING(50),
       allowNull: false
     }
   }, {
     sequelize,
-    tableName: 'roles',
+    tableName: 'catalogo',
     timestamps: false,
     indexes: [
       {

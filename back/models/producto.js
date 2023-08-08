@@ -1,50 +1,49 @@
-// const Sequelize = require('sequelize');
 module.exports = function (sequelize, DataTypes) {
   return sequelize.define('producto', {
-    id_producto: {
+    id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
+      primaryKey: true
     },
     nombre: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      allowNull: false
     },
-    costo_en_horas: {
+    costoEnHoras: {
       type: DataTypes.STRING(50),
-      allowNull: false,
+      allowNull: false
     },
-    catalogo_Productos_id_catalogo: {
+    catalogoId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       references: {
-        model: 'catalogo_Productos',
-        key: 'id_catalogo',
-      },
-    },
+        model: 'catalogo',
+        key: 'id'
+      }
+    }
   }, {
     sequelize,
     tableName: 'producto',
     timestamps: false,
     indexes: [
       {
-        name: 'PRIMARY',
+        name: "PRIMARY",
         unique: true,
-        using: 'BTREE',
+        using: "BTREE",
         fields: [
-          { name: 'id_producto' },
-          { name: 'catalogo_Productos_id_catalogo' },
-        ],
+          { name: "id" },
+          { name: "catalogoId" },
+        ]
       },
       {
-        name: 'fk_producto_catalogoProductos1_idx',
-        using: 'BTREE',
+        name: "fk_producto_catalogo1_idx",
+        using: "BTREE",
         fields: [
-          { name: 'catalogo_Productos_id_catalogo' },
-        ],
+          { name: "catalogoId" },
+        ]
       },
-    ],
+    ]
   });
 };

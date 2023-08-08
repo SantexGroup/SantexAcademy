@@ -1,97 +1,91 @@
-// const Sequelize = require('sequelize');
 module.exports = function (sequelize, DataTypes) {
   return sequelize.define('usuario', {
-    idUsuario: {
+    id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
+      primaryKey: true
     },
-    username: {
-      type: DataTypes.STRING(16),
-      allowNull: false,
-      unique: 'username_UNIQUE',
+    fullName: {
+      type: DataTypes.STRING(50),
+      allowNull: true
+    },
+    telefono: {
+      type: DataTypes.STRING(50),
+      allowNull: false
     },
     email: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(50),
       allowNull: false,
-      unique: 'email_UNIQUE',
+      unique: "email_UNIQUE"
     },
     password: {
       type: DataTypes.STRING(32),
-      allowNull: false,
+      allowNull: false
     },
     reputation: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: false
     },
-    carritoRecompensa_id_carrito: {
+    recompensasAcumuladas: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    rolesId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       references: {
-        model: 'carritoRecompensa',
-        key: 'id_carrito',
-      },
-    },
-    id_rol: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
         model: 'roles',
-        key: 'id_rol',
-      },
-      unique: 'fk_usuario_roles',
+        key: 'id'
+      }
     },
-    recompensas_acumuladas: {
+    cestaRecompensasId: {
       type: DataTypes.INTEGER,
-      allowNull: true,
-    },
+      allowNull: false,
+      primaryKey: true,
+      references: {
+        model: 'cestaRecompensas',
+        key: 'id'
+      }
+    }
   }, {
     sequelize,
     tableName: 'usuario',
     timestamps: false,
     indexes: [
       {
-        name: 'PRIMARY',
+        name: "PRIMARY",
         unique: true,
-        using: 'BTREE',
+        using: "BTREE",
         fields: [
-          { name: 'idUsuario' },
-          { name: 'carritoRecompensa_id_carrito' },
-        ],
+          { name: "id" },
+          { name: "rolesId" },
+          { name: "cestaRecompensasId" },
+        ]
       },
       {
-        name: 'username_UNIQUE',
+        name: "email_UNIQUE",
         unique: true,
-        using: 'BTREE',
+        using: "BTREE",
         fields: [
-          { name: 'username' },
-        ],
+          { name: "email" },
+        ]
       },
       {
-        name: 'email_UNIQUE',
-        unique: true,
-        using: 'BTREE',
+        name: "fk_usuario_roles1_idx",
+        using: "BTREE",
         fields: [
-          { name: 'email' },
-        ],
+          { name: "rolesId" },
+        ]
       },
       {
-        name: 'id_rol_UNIQUE',
-        unique: true,
-        using: 'BTREE',
+        name: "fk_usuario_cestaRecompensas1_idx",
+        using: "BTREE",
         fields: [
-          { name: 'id_rol' },
-        ],
+          { name: "cestaRecompensasId" },
+        ]
       },
-      {
-        name: 'fk_usuario_carritoRecompensa1_idx',
-        using: 'BTREE',
-        fields: [
-          { name: 'carritoRecompensa_id_carrito' },
-        ],
-      },
-    ],
+    ]
   });
 };
