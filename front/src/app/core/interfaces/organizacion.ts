@@ -1,5 +1,5 @@
 export interface Organizacion {
-    id_coordinator:number,
+    id_coordinator?:number,
     name:string,
     description:string ,
     email:string,
