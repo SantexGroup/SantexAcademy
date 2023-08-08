@@ -5,26 +5,31 @@
         
        
         
-       <input type="text" class="input-full-width" required formControlName="nombre"  placeholder="Ingresá el nombre *"
+       <input type="text" class="input-full-width" formControlName="nombre"  placeholder="Ingresá el nombre *"
        [ngClass]="{'input-invalid':formRegistro.get('nombre')?.touched && formRegistro.get('nombre')?.invalid,
                     'input-valid':formRegistro.get('nombre')?.touched && formRegistro.get('nombre')?.valid}">
         
-        <input type="text" class="input-full-width"  required formControlName="direccion"  placeholder="Ingresá una dirección *"
+        <input type="text" class="input-full-width"  formControlName="direccion"  placeholder="Ingresá una dirección *"
         [ngClass]="{'input-invalid':formRegistro.get('direccion')?.touched && formRegistro.get('direccion')?.invalid,
                     'input-valid':formRegistro.get('direccion')?.touched && formRegistro.get('direccion')?.valid}">
         
-        <input type="number" class="input-full-width" required formControlName="celular"  placeholder="Ingresá un número de teléfono *"
-        [ngClass]="{'input-invalid':formRegistro.get('celular')?.touched && formRegistro.get('celular')?.invalid,
-                    'input-valid':formRegistro.get('celular')?.touched && formRegistro.get('celular')?.valid}">
+        <input type="number" class="input-full-width" formControlName="telefono"  placeholder="Ingresá un número de teléfono *"
+        [ngClass]="{'input-invalid':formRegistro.get('telefono')?.touched && formRegistro.get('telefono')?.invalid,
+                    'input-valid':formRegistro.get('telefono')?.touched && formRegistro.get('telefono')?.valid}">
         
         
-        <input type="email" class="input-full-width" required formControlName="email"  placeholder="Ingresá un email *"
+        <input type="email" class="input-full-width" formControlName="email"  placeholder="Ingresá un email *"
         [ngClass]="{'input-invalid':formRegistro.get('email')?.touched && formRegistro.get('email')?.invalid,
                     'input-valid':formRegistro.get('email')?.touched && formRegistro.get('email')?.valid}">
         
-        <input type="password" class="input-full-width" required formControlName="password"  placeholder="Ingresá una contraseña *"
+        <input type="password" class="input-full-width" formControlName="password"  placeholder="Ingresá una contraseña *"
         [ngClass]="{'input-invalid':formRegistro.get('password')?.touched && formRegistro.get('password')?.invalid,
                     'input-valid':formRegistro.get('password')?.touched && formRegistro.get('password')?.valid}">
+
+        <textarea class="input-full-width" cols="30" rows="3" placeholder="Ingresá una breve descripción ..." 
+        formControlName="descripcion" 
+        [ngClass]="{'input-invalid':formRegistro.get('descripcion')?.touched && formRegistro.get('descripcion')?.invalid,
+                    'input-valid':formRegistro.get('descripcion')?.touched && formRegistro.get('descripcion')?.valid}"></textarea>
                     
         
 
