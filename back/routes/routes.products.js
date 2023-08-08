@@ -5,8 +5,8 @@ const controller = require('../controllers/products.controller');
 
 // Create
 //local.../products/
-router.post('/crear', controller.create);
-//router.get("/get",null /**controller.get*/);
+router.post('/', controller.create);
+router.get("/",controller.getAll);
 //router.get("/get/:id",null /**controller.getByID*/);
 //router.put("/edit",null /**controller.edit*/);
 //router.delete("/delete",null /**controller.delete*/);

@@ -27,15 +27,6 @@ module.exports = {
       status: {
         type: Sequelize.STRING,
       },
-      categoryId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Categories",
-          key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "SET NULL",
-      },
       userId: {
         type: Sequelize.INTEGER,
         references: {
