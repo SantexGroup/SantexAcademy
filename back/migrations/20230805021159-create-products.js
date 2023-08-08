@@ -53,9 +53,39 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+    });await queryInterface.createTable('ProductCategories', {
+      ProductId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Products',
+          key: 'id'
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        allowNull: false
+      },
+      CategoryId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Categories',
+          key: 'id'
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        allowNull: false
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
     });
   },
   async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('ProductCategories');
     await queryInterface.dropTable('Products');
   }
 };
