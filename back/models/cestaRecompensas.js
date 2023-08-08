@@ -1,37 +1,37 @@
 module.exports = function (sequelize, DataTypes) {
-  return sequelize.define('carrito_recompensa', {
-    id_carrito: {
+  return sequelize.define('cestaRecompensas', {
+    id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
+      primaryKey: true
     },
     name: {
       type: DataTypes.STRING(50),
       allowNull: false,
-      unique: 'name_UNIQUE',
-    },
+      unique: "name_UNIQUE"
+    }
   }, {
     sequelize,
-    tableName: 'carritoRecompensa',
+    tableName: 'cestaRecompensas',
     timestamps: false,
     indexes: [
       {
-        name: 'PRIMARY',
+        name: "PRIMARY",
         unique: true,
-        using: 'BTREE',
+        using: "BTREE",
         fields: [
-          { name: 'id_carrito' },
-        ],
+          { name: "id" },
+        ]
       },
       {
-        name: 'name_UNIQUE',
+        name: "name_UNIQUE",
         unique: true,
-        using: 'BTREE',
+        using: "BTREE",
         fields: [
-          { name: 'name' },
-        ],
+          { name: "name" },
+        ]
       },
-    ],
+    ]
   });
 };
