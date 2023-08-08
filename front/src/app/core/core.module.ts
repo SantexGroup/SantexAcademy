@@ -5,7 +5,8 @@ import { throwIfAlreadyLoaded } from './core-import.guard';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button'
+import {MatButtonModule} from '@angular/material/button';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {MatButtonModule} from '@angular/material/button'
   exports: [
     ReactiveFormsModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
     
   ],
   providers: []
