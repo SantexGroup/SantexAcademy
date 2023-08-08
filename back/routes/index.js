@@ -3,7 +3,7 @@ const Express = require('express');
 // Middlewares:
 const rootPath = require('../middleware/root_path.middleware');
 const errors = require('../middleware/error_handler.middleware');
-const profileController = require('../controllers/profile.controller');
+const profileRoutes = require('./profile.routes');
 const userRoutes = require('./user.routes');
 const experienceRoutes = require('./experience.routes');
 
@@ -11,15 +11,7 @@ const app = Express();
 
 // Rutas
 
-// use=
-
-// app.use('/ping', (req, res) => {
-//   res.json({
-//     response: 'pong!',
-//   });
-// });
-
-app.use('/profile/:id', profileController.getProfile);
+app.use('/profile', profileRoutes);
 app.use('/user', userRoutes);
 app.use('/experiences', experienceRoutes);
 app.use('/', rootPath.handler);
