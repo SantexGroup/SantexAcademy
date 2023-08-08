@@ -15,7 +15,7 @@ const logger = require('./utils/winston.logger');
 const models = require('./models');
 
 // Rutes:
-const routes = require('./routes');
+const courseRoutes = require('./routes/courseRoutes');
 
 const config = require('./config/config');
 const validateEnv = require('./utils/validateEnv');
@@ -85,5 +85,5 @@ models.sequelize.authenticate()
     logger.api.error(err);
   });
 
-app.use('/', routes);
+app.use('/courses', courseRoutes);
 module.exports = app;
