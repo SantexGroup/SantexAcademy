@@ -1,23 +1,48 @@
 .headerPrincipal{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+
     width: 100%;
     background-color: #0072bb;
+    padding: 1em;
+
+    display: flex;    
+    flex-flow: row wrap;
+    justify-content: space-around ;
+    align-items: center;    
 }
 
 .logoHeader{
     display: flex;
-    height: 100px;
+    height: 10em;
 }
 
-ul{
-    display: none;
+.iniciar-sesion{
+    width: 10em;
+    font-weight: 600;
+}
+.itemsHeader{
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+.lista-header{
+    display: flex;
+    flex-flow: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    color: white;
+}
+
+.li-header{
+    margin: 1em;
 }
 
 .abrir-menu{
-
-    
+    display: none;
+    width: 3em;
+    height: 3em;
+    cursor: pointer;
 }
 button:hover{
     border-radius: 40px;
@@ -35,4 +60,35 @@ button{
     color: #ffffff;
     
     
+}
+
+
+@media screen and (max-width: 720px){
+
+    .loginHeader{
+        display: flex;
+        align-items: center;
+
+    }
+    
+    .abrir-menu{
+        display: flex;
+    }
+
+    .nav-header{
+        width: 100%;
+        display: none;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .nav-activo{
+        display: flex;
+    }
+    .lista-header{
+        flex-direction: column;
+    }
+    .li-header{
+        margin: 1em 1em;
+    }
 }
