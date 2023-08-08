@@ -22,6 +22,7 @@
     flex-direction: column;
     align-items: center;
     height: 100%;
+
     
     
 }
@@ -29,6 +30,9 @@
 .fondo-degradado{
     width: 100%;
     height: 100%;
+    
+    position: relative;
+    overflow: auto;
     background-image: linear-gradient(90deg,#8c52ff,#1bdaff);
 }
 
@@ -36,7 +40,6 @@
     width: 100%;
     padding: 10px 20px;
     border-radius: 20px;
-    margin-bottom: 20px;
     border:none;
     font-style: italic;
     outline: none;
@@ -45,6 +48,18 @@
 .input-full-width:focus-visible{
     border: #8c52ff solid 2px;
    
+}
+
+.contenedor-input{
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.mensaje-error{
+    color: rgb(255, 4, 130);
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 0;
 }
 
 .button-full-width{
@@ -94,4 +109,8 @@
     cursor: auto;
     background-color: rgba(0,0,0,.5);
     color: white;
+}
+
+.boton-volver{
+    margin-bottom: 20px;
 }

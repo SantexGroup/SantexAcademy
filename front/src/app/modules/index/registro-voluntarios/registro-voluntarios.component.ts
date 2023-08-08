@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Voluntario } from 'src/app/core/interfaces/voluntario';
+import { VoluntarioService } from 'src/app/core/services/voluntario.service';
 
 @Component({
   selector: 'app-registro-voluntarios',
@@ -9,17 +12,17 @@ import { Router } from '@angular/router';
 })
 export class RegistroVoluntariosComponent implements OnInit {
 
-  constructor(fb:FormBuilder, private router:Router){
+  constructor(fb:FormBuilder, private router:Router,private voluntarioService:VoluntarioService, private matSnackBar:MatSnackBar){
     this.formRegistro = fb.group({
-      nombre:['',Validators.required],
-      apellido:['',Validators.required],
+      nombre:['',[Validators.required,Validators.minLength(2)]],
+      apellido:['',[Validators.required,Validators.minLength(2)]],
       email:['',[Validators.required,Validators.email]],
-      direccion:['',Validators.required],
-      celular:['',[Validators.required]],
-      password:['',Validators.required]
+      direccion:['',[Validators.required, Validators.minLength(5)]],
+      telefono:['',[Validators.required, Validators.pattern(/^[0-9]{8,}$/)]],
+      password:['',Validators.required] //Consultar que validación le agregamos a password 
     });
   }
-  //,private voluntarioService:VoluntarioService
+  
   formRegistro:FormGroup;
 
 
@@ -30,30 +33,41 @@ export class RegistroVoluntariosComponent implements OnInit {
   
   
   crearVoluntario():void{
-    // const formValue = this.formRegistro.value;
+    const formValue = this.formRegistro.value;
 
-    // const voluntario:Voluntario = {
+    const voluntario:Voluntario = {
       
-    //   nombre: formValue.nombre,
-    //   apellido: formValue.apellido,
-    //   email:formValue.email,
-    //   direccion: formValue.direccion,
-    //   telefono:formValue.telefono,
-    //   password:formValue.password
-    // }
-    // console.log("*******FORM VALUE**********")
-    // console.log(formValue);
+      name: formValue.nombre,
+      lastname: formValue.apellido,
+      email:formValue.email,
+      address: formValue.direccion,
+      phone:formValue.telefono.toString(),
+      password:formValue.password
+    }
+    
+    
 
-    // console.log("*********VOLUNTARIO***********");
-    // console.log(voluntario);
-    // this.voluntarioService.crearVoluntario(voluntario).subscribe({
-    //   next:(res)=>{
-    //     console.log(res);
-    //   },
-    //   error:(err)=>{
-    //     console.log(err);
-    //   }
-    // });
+    this.voluntarioService.crearVoluntario(voluntario).subscribe({
+      next:()=>{
+
+        this.matSnackBar.open('Registro Exitoso!','OK',{
+          duration:3000,
+        horizontalPosition:'center',
+        verticalPosition:'top'});
+
+        this.irLoginVoluntario();
+
+        
+        
+      },
+      error:()=>{
+        this.matSnackBar.open('Error al registrarse','ERROR',{
+          duration:3000,
+        horizontalPosition:'center',
+        verticalPosition:'top'}
+        );
+      }
+    });
 
   }
 
