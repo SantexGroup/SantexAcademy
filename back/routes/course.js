@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/newline-after-import
 const express = require('express');
 const router = express.Router();
 
