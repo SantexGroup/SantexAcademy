@@ -15,8 +15,12 @@ const getUsers = async (options) => {
   return await userProvider.getUsers(options);
 };
 
+const deleteUser = async (id) => {
+  return await userProvider.deleteUser(id);
+};
 module.exports = {
   getUser,
   createUser,
   getUsers,
+  deleteUser,
 };

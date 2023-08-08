@@ -51,9 +51,17 @@ const getUsers = async (conditions) => {
     throw error;
   }
 };
-
+const deleteUser = async (idUser) => {
+  try {
+    await getUser(idUser);
+    return User.destroy({ where: { id: idUser } });
+  } catch (error) {
+    throw error;
+  }
+};
 module.exports = {
   getUser,
   createUser,
   getUsers,
+  deleteUser,
 };
