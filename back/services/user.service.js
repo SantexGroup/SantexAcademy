@@ -3,32 +3,23 @@
 const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 
-//
-//
-// Servicio que recupera los datos ingresados y los guarda para crear un usuario.
-
 async function recordUser(rolesId, nick, password, name, lastName, email, phone) {
-  try {
-    // Lógica para crear el nuevo usuario en la base de datos
-    const userCreated = await User.create({
-      roles_id: rolesId,
-      nick,
-      password,
-      name,
-      lastName,
-      email,
-      phone,
-    });
-    // Devolver el objeto del usuario creado
+  const userCreated = await User.create({
+    roles_id: rolesId,
+    nick,
+    password,
+    name,
+    lastName,
+    email,
+    phone,
+  });
+  if (userCreated) {
     return userCreated;
-  } catch (error) {
-    /* En caso de error, imprimir el mensaje de error y lanzar una excepción para que el llamador
-    lo maneje adecuadamente */
-    console.error('Error al guardar el usuario:', error);
-    throw error;
   }
+  throw new Error(); // Re-lanzamos el error para que el llamador lo maneje adecuadamente
 }
-// Realiza el proceso de inicio de sesión de un usuario.
+
+// Servicio que autoriza login
 async function login(nick, password) {
   // Buscar al usuario en la base de datos por su nick y contraseña
   const user = await User.findOne({
@@ -55,7 +46,6 @@ async function login(nick, password) {
 }
 
 // Servicio que actualiza datos de un usuario
-
 async function updateUser(id, nick, password, name, lastName, email, phone) {
   // Buscar al usuario en la base de datos por su ID
   const user = await User.findByPk(id);
@@ -72,14 +62,13 @@ async function updateUser(id, nick, password, name, lastName, email, phone) {
   return user;
 }
 
-// Servicio para eliminar usuarios
+// Servicio de borrado de usuario provisorio. Hasta finalar el delete de los demas servicios
 async function deleteUser(id) {
   /* Buscamos el ususario en la base de datos por ID */
   const user = await User.findByPk(id);
-  /* Si encontramos el usuario */
+  // Si el usuario nexiste y no fue eliminado, Lo macmos como eliminado
   if (user && user.deletedAt === null) {
-    /* Actualizamos el estado de la columna deletedAt, para un borrado logico */
-    User.update({
+    user.update({
       deletedAt: new Date(),
     }, {
       where: {
@@ -87,8 +76,7 @@ async function deleteUser(id) {
       },
     });
   } else {
-    /* Si el usuario el valor pasado por params no es valido */
-    throw Error('No existe ese usuario');
+    throw Error('El susuario no existe');
   }
 }
 //
