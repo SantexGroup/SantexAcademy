@@ -5,9 +5,9 @@ const {
 const { EXPERIENCES_TYPES_TABLE_NAME } = require('../helpers/sequelize.helper');
 
 module.exports = (sequelize, DataTypes) => {
-  class ExpirenceType extends Model {
+  class ExperienceType extends Model {
   }
-  ExpirenceType.init({
+  ExperienceType.init({
     type: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -17,5 +17,5 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
     tableName: EXPERIENCES_TYPES_TABLE_NAME,
   });
-  return ExpirenceType;
+  return ExperienceType;
 };

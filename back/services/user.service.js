@@ -3,66 +3,23 @@
 const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 
-//
-//
-// Servicio que recupera los datos ingresados y los guarda para crear un usuario.
-
-// const recordUser = async (req, res) => {
-//   const {
-//     body,
-//   } = req;
-//   try {
-//     await User.create(body);
-//     res.status(201).json({
-//       msg: 'Usuario creado correctamente',
-//     });
-//   } catch (error) { // Si hay un error lo capturamos
-//     console.log(error);
-//     res.status(401).json({
-//       msg: 'Ups, algo salio mal',
-//     });
-//   }
-// };
-
 async function recordUser(rolesId, nick, password, name, lastName, email, phone) {
-  try {
-    const userCreated = await User.create({
-      roles_id: rolesId,
-      nick,
-      password,
-      name,
-      lastName,
-      email,
-      phone,
-    });
-
+  const userCreated = await User.create({
+    roles_id: rolesId,
+    nick,
+    password,
+    name,
+    lastName,
+    email,
+    phone,
+  });
+  if (userCreated) {
     return userCreated;
-  } catch (error) {
-    console.error('Error al guardar el usuario:', error);
-    throw error; // Re-lanzamos el error para que el llamador lo maneje adecuadamente
   }
+  throw new Error(); // Re-lanzamos el error para que el llamador lo maneje adecuadamente
 }
-
-/*
-async function recordUser(id, nick, password, name, lastName, email, phone, rolesId, deleted) {
-  const user = new User();
-  user.id = id;
-  user.roles_id = rolesId;
-  user.nick = nick;
-  user.password = password;
-  user.name = name;
-  user.lastname = lastName;
-  user.email = email;
-  user.phone = phone;
-  user.deleted = deleted || false;
-
-  const userCreated = await user.save();
-  return userCreated;
-}
-*/
 
 // Servicio que autoriza login
-
 async function login(nick, password) {
   const user = await User.findOne({
     where: {
@@ -86,7 +43,6 @@ async function login(nick, password) {
 }
 
 // Servicio que actualiza datos de un usuario
-
 async function updateUser(id, nick, password, name, lastName, email, phone) {
   const user = await User.findByPk(id);
   if (id) {
@@ -113,14 +69,14 @@ async function updateUser(id, nick, password, name, lastName, email, phone) {
   const userEdited = await user.save();
   return userEdited;
 }
-// Servicio para eliminar usuarios
+
+// Servicio de borrado de usuario provisorio. Hasta finalar el delete de los demas servicios
 async function deleteUser(id) {
   /* Buscamos el ususario en la base de datos por ID */
   const user = await User.findByPk(id);
-  /* Si encontramos el usuario */
+  // Si el usuario nexiste y no fue eliminado, Lo macmos como eliminado
   if (user && user.deletedAt === null) {
-    /* Actualizamos el estado de la columna deletedAt, para un borrado logico */
-    User.update({
+    user.update({
       deletedAt: new Date(),
     }, {
       where: {
@@ -128,8 +84,7 @@ async function deleteUser(id) {
       },
     });
   } else {
-    /* Si el usuario el valor pasado por params no es valido */
-    throw Error('No existe ese usuario');
+    throw Error('El susuario no existe');
   }
 }
 //
