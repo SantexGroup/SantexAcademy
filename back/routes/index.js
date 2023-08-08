@@ -4,9 +4,12 @@ const Express = require('express');
 const rootPath = require('../middleware/root_path.middleware');
 const errors = require('../middleware/error_handler.middleware');
 
+const userRoutes = require('./user');
+
 const app = Express();
 
 // Rutas
+app.use('/user', userRoutes);
 
 // use=
 app.use('/ping', (req, res) => {

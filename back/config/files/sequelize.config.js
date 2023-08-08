@@ -27,4 +27,5 @@ const sequelize = new Sequelize(
   process.env.DB_PASSWORD,
   sequelizeOptions,
 );
+
 module.exports.connection = sequelize;
