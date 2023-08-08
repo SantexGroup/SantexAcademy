@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Organizacion } from 'src/app/core/interfaces/organizacion';
+import { OrganizacionService } from 'src/app/core/services/organizacion.service';
 
 @Component({
   selector: 'app-registro-organizacion',
@@ -9,18 +12,19 @@ import { Router } from '@angular/router';
 })
 export class RegistroOrganizacionComponent implements OnInit {
 
-  constructor(fb:FormBuilder, private router:Router){
+  constructor(fb:FormBuilder, private router:Router, private organizacionService:OrganizacionService,
+    private matSnackBar:MatSnackBar){
     this.formRegistro = fb.group({
-      nombre:['',[Validators.required]],
-      direccion:['',Validators.required],
-      celular:['',[Validators.required]],
+      nombre:['',[Validators.required, Validators.minLength(2)]],
+      direccion:['',[Validators.required, Validators.minLength(5)]],
+      telefono:['',[Validators.required, Validators.pattern(/^[0-9]{8,}$/)]],
+      descripcion:['',[Validators.required,Validators.minLength(20)]],
       email:['',[Validators.required,Validators.email]],
-      password:['',Validators.required]
+      password:['',Validators.required]//Ver que validacion hay que agregarle
     });
   }
   
   formRegistro:FormGroup;
-  //private organizacionService:OrganizacionService
   
   ngOnInit(): void {
 
@@ -29,29 +33,34 @@ export class RegistroOrganizacionComponent implements OnInit {
   
 
   crearOrganizacion():void{
-    // const formValue = this.formRegistro.value;
+    const formValue = this.formRegistro.value;
 
-    // const organizacion:Organizacion = {
+    const organizacion:Organizacion = {
       
-    //   nombre: formValue.nombre,
-    //   email:formValue.email,
-    //   direccion: formValue.direccion,
-    //   telefono:formValue.telefono,
-    //   password:formValue.password
-    // }
-    // console.log("*******FORM VALUE**********")
-    // console.log(formValue);
-
-    // console.log("*********ORGANIZACION***********");
-    // console.log(organizacion);
-    // this.organizacionService.crearOrganizacion(organizacion).subscribe({
-    //   next:(res)=>{
-    //     console.log(res);
-    //   },
-    //   error:(err)=>{
-    //     console.log(err);
-    //   }
-    // });
+      name: formValue.nombre,
+      email:formValue.email,
+      address: formValue.direccion,
+      phone:formValue.telefono.toString(),
+      password:formValue.password,
+      description:formValue.descripcion
+    }
+    
+    this.organizacionService.crearOrganizacion(organizacion).subscribe({
+      next:()=>{
+        this.matSnackBar.open('Registro Exitoso!','OK',{
+          duration:3000,
+        horizontalPosition:'center',
+        verticalPosition:'top'});
+        this.irLoginOrganizacion();
+      },
+      error:()=>{
+        this.matSnackBar.open('Error al registrarse','ERROR',{
+          duration:3000,
+        horizontalPosition:'center',
+        verticalPosition:'top'}
+        );
+      }
+    });
 
   }
 

@@ -21,6 +21,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    overflow: auto;
     
     
 }
@@ -35,15 +37,28 @@
     width: 100%;
     padding: 10px 20px;
     border-radius: 20px;
-    margin-bottom: 20px;
+    
     border:none;
-    font-style: italic;
+   
     outline: none;
 }
 .input-full-width:focus-visible{
     border: #8c52ff solid 2px;
    
 }
+
+.contenedor-input{
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.mensaje-error{
+    color: white;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
 
 .button-full-width{
     width: 100%;
@@ -95,5 +110,8 @@
     color: white;
 }
 
+.boton-volver{
+    margin-bottom: 20px;
+}
 
 
