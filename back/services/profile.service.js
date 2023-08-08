@@ -6,7 +6,7 @@ const {
   Experience,
   Reference,
   Language,
-  ExpirenceType,
+  ExperienceType,
   ExperienceStatus,
   Country,
   Skill,
@@ -21,7 +21,7 @@ const {
 // Definición de una constante EXPERIENCE que contiene el modelo Experience y sus relaciones
 const EXPERIENCE = {
   model: Experience,
-  include: [ExperienceStatus, ExpirenceType, Country],
+  include: [ExperienceStatus, ExperienceType, Country],
 };
 // Definiciòn de una constante FORMATION que contiene el modelo Formation y sus relaciones
 const FORMATION = {
