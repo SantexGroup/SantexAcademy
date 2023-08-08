@@ -32,7 +32,7 @@ async function getProfilesByUserIdController(req, res) {
   try {
     const profiles = await profileService.getProfileByUserId(id);
     // Respondemos con los perfiles obtenidos en formato JSON
-    res.json(profiles);
+    res.status(201).send(profiles);
   } catch (error) {
     // Manejo de errores si ocurre algún problema en el servicio
     res.status(500).json({ error: 'Error al obtener los perfiles del usuario' });
