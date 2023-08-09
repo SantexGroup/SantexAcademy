@@ -8,13 +8,15 @@ module.exports = (sequelize, DataTypes) => {
   class ProfileSkill extends Model {
   }
   ProfileSkill.init({
-    profiles_id: {
+    profilesId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'profiles_id',
     },
-    skills_id: {
+    skillsId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'skills_id',
     },
     level: DataTypes.INTEGER,
   }, {

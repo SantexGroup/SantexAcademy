@@ -5,7 +5,7 @@ const { User } = require('../models');
 
 async function recordUser(rolesId, nick, password, name, lastName, email, phone) {
   const userCreated = await User.create({
-    roles_id: rolesId,
+    rolesId,
     nick,
     password,
     name,

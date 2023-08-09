@@ -19,17 +19,20 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Optional.init({
-    marital_id: {
+    maritalId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'marital_id',
     },
-    sexs_id: {
+    sexsId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'sexs_id',
     },
-    countries_id: {
+    countriesId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'countries_id',
     },
     profile: DataTypes.STRING,
     webPage: DataTypes.STRING,

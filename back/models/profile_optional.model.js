@@ -8,13 +8,15 @@ module.exports = (sequelize, DataTypes) => {
   class ProfileOptional extends Model {
   }
   ProfileOptional.init({
-    profiles_id: {
+    profilesId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'profiles_id',
     },
-    optionals_id: {
+    optionalsId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'optionals_id',
     },
   }, {
     sequelize,

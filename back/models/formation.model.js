@@ -17,13 +17,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Formation.init({
-    status_id: {
+    statusId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'status_id',
     },
-    types_id: {
+    typesId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'types_id',
     },
     title: DataTypes.STRING,
     institute: DataTypes.STRING,

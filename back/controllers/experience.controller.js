@@ -52,21 +52,19 @@ async function experienceAdd(
     description,
     startDate,
     endDate,
-    profileId,
   } = req.body;
   try {
     // Reservamos todos los datos en la constante
-    const newExperience = await ExperienceService.addExperience({
-      status_id: statusId,
-      countries_id: countriesId,
-      types_id: typesId,
+    const newExperience = await ExperienceService.addExperience(
+      statusId,
+      countriesId,
+      typesId,
       position,
       company,
       description,
       startDate,
       endDate,
-      profile_id: profileId,
-    });
+    );
     // Retornamos que esta ok con el 200 y enviamos la constante al front
     res.status(200).send(newExperience);
   } catch (error) {
@@ -116,9 +114,9 @@ async function experienceUpdate(
     // constante que reserva el resultado de updateExperience
     const experience = await ExperienceService.updateExperience({
       id,
-      status_id: statusId,
-      countries_id: countriesId,
-      types_id: typesId,
+      statusId,
+      countriesId,
+      typesId,
       position,
       company,
       description,
