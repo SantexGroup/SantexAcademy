@@ -4,33 +4,34 @@ import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class RegistroComponent implements OnInit {
+export class LoginComponent implements OnInit {
   mensajeError: string = "";
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UsuarioService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   get email() {
-    return this.registroForm.controls.email;
+    return this.loginForm.controls.email;
   }
 
   get password() {  
-    return this.registroForm.controls.password;
+    return this.loginForm.controls.password;
   }
 
-  registroForm = this.fb.group({
+  loginForm = this.fb.group({
     email: ['', [ Validators.required, Validators.email ]],
     password: ['', [ Validators.required, Validators.minLength(6) ]],
   })
   
   submit(myForm: FormGroup) {
     if(myForm.status == 'VALID') {
-      this.userService.registro(myForm.value).subscribe({
+      this.userService.login(myForm.value).subscribe({
         next: (data) => { console.log(data); }, 
         error: (err) => { 
           console.log(err); 
@@ -43,4 +44,5 @@ export class RegistroComponent implements OnInit {
       });
     }
   }
+
 }

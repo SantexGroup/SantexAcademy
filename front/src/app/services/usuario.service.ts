@@ -5,16 +5,18 @@ import { Observable, catchError, throwError, BehaviorSubject, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterService {
+export class UsuarioService {
   constructor( private http: HttpClient ) { }
 
   //* informa si se llevo al cabo el registro
   registrodeUsuario: BehaviorSubject<boolean> = new BehaviorSubject<boolean> (false); 
-  
+  //* informa si se llevo al cabo el logueo
+  logindeUsuario: BehaviorSubject<boolean> = new BehaviorSubject<boolean> (false); 
   //* sirve para llevar los datos del usuario a otro componente
   dataUser: BehaviorSubject<any> = new BehaviorSubject<any> ({});
 
-  register(user: any) : Observable <any> {
+  //* metodo para registrar un usuario
+  registro(user: any) : Observable <any> {
     return this.http.get('../../assets/data.json').pipe(
       tap((user: any) => {
         this.dataUser.next(user);
@@ -24,6 +26,19 @@ export class RegisterService {
     );
   }
 
+  //* metodo para loguear un usuario
+  login(user: any) : Observable <any> {
+    console.log("desde servicio login");
+    return this.http.get('../../assets/data.json').pipe(
+      tap((user: any) => {
+        this.dataUser.next(user);
+        this.logindeUsuario.next(true);
+      }), 
+      catchError(this.handleError)
+    );
+  }
+
+  //* metodo para manejar errores
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RegisterService } from 'src/app/services/register.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 @Component({
   selector: 'app-dashboard-page',
   templateUrl: './dashboard-page.component.html',
@@ -7,18 +7,25 @@ import { RegisterService } from 'src/app/services/register.service';
 })
 export class DashboardPageComponent {
   registroUsuario: boolean = false;
+  loginUsuario: boolean = false;
   userData?: any = {};
   
-  constructor( private registerServices: RegisterService) {}
+  constructor( private userServices: UsuarioService) {}
 
   ngOnInit(): void {
-    this.registerServices.registroUsuario.subscribe({
+    this.userServices.registroUsuario.subscribe({
       next: (registroUsuario) => {
         this.registroUsuario = registroUsuario;
       }
     })
 
-    this.registerServices.userData.subscribe({
+    this.userServices.logindeUsuario.subscribe({
+      next: (logindeUsuario) => {
+        this.loginUsuario = logindeUsuario;
+      }
+    })
+
+    this.userServices.userData.subscribe({
       next: (userData) => {
         this.userData = userData;
       } 
