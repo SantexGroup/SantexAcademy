@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/services/register.service';
 
 @Component({
-  selector: 'app-register-page',
-  templateUrl: './register-page.component.html',
-  styleUrls: ['./register-page.component.css']
+  selector: 'app-registro',
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.css']
 })
-export class RegisterPageComponent implements OnInit {
+export class RegistroComponent implements OnInit {
   mensajeError: string = "";
 
   constructor(private fb: FormBuilder, private router: Router, private registerService: RegisterService) { }
@@ -16,15 +16,14 @@ export class RegisterPageComponent implements OnInit {
   ngOnInit(): void { }
 
   get email() {
-    return this.registerForm.controls.email;
+    return this.registroForm.controls.email;
   }
 
   get password() {  
-    return this.registerForm.controls.password;
+    return this.registroForm.controls.password;
   }
 
-
-  registerForm = this.fb.group({
+  registroForm = this.fb.group({
     email: ['', [ Validators.required, Validators.email ]],
     password: ['', [ Validators.required, Validators.minLength(6) ]],
   })

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegisterPageComponent } from './modules/register/register-page/register-page.component';
+import { RegistroComponent } from './modules/usuario/registro/registro.component';
 
 const routes: Routes = [
   {
@@ -13,7 +13,7 @@ const routes: Routes = [
   },  */
   {
     path: 'registro',
-    component: RegisterPageComponent
+    component: RegistroComponent
   }
 ];
 

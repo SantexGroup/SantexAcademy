@@ -1,5 +1,5 @@
 <div class="form-container">
-  <form class="form" [formGroup]="registerForm">
+  <form class="form" [formGroup]="registroForm">
     <p class="title">Registro de Usuario</p>
     <label>
       <input required email
@@ -27,8 +27,8 @@
 
     <button class="submit" 
       type="button" 
-      (click)="submit(registerForm)"
-      [disabled]="registerForm.status==='INVALID'"
+      (click)="submit(registroForm)"
+      [disabled]="registroForm.status==='INVALID'"
       >Submit
     </button>
   </form>
