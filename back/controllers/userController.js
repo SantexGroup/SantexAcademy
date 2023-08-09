@@ -9,34 +9,64 @@ const createAUser = async (req, res) => {
   }
 };
 
-const logIn = (req, res) => {
+const getUser = async (req, res) => {
+  try {
+    const searchUser = await userService.findUserByEmail(req.params.email);
+    if (searchUser) {
+      res.json(searchUser);
+    } else {
+      res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error en el servidor' });
+  }
+};
+
+const logIn = async (req, res) => {
   res.json({
     response: 'hola soy un loggin',
   });
 };
 
-const getUser = (req, res) => {
-  res.json({
-    response: 'hola soy un usuario',
-  });
+const getAllUsers = async (req, res) => {
+  try {
+    const searchUser = await userService.findUsers();
+    if (searchUser) {
+      res.json(searchUser);
+    } else {
+      res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error en el servidor' });
+  }
 };
 
-const getAllUsers = (req, res) => {
-  res.json({
-    response: 'devuelve todos los usuarios',
-  });
+const modifyUser = async (req, res) => {
+  try {
+    const newUser = req.body;
+    const updatedUser = await userService.modifyAUser(req.params.email, newUser);
+    if (updatedUser[0] !== 0) {
+      res.status(200).json({ message: 'Usuario actualizado exitosamente' });
+    } else {
+      res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error en el servidor' });
+  }
 };
 
-const modifyUser = (req, res) => {
-  res.json({
-    response: 'modifico un usuario',
-  });
-};
-
-const deleteUser = (req, res) => {
-  res.json({
-    response: 'elimino un usuario',
-  });
+const deleteAUser = async (req, res) => {
+  try {
+    const { email } = req.params;
+    const toDelete = await userService.deleteByEmail(email);
+    if (toDelete) {
+      res.status(200).json({ message: 'Usuario eliminado exitosamente' });
+    } else {
+      res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error en el servidor' });
+  }
 };
 
 module.exports = {
@@ -45,6 +75,6 @@ module.exports = {
   getUser,
   getAllUsers,
   modifyUser,
-  deleteUser,
+  deleteAUser,
 
 };

@@ -3,22 +3,26 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
 
-// crear un usuario
+// crear un usuario (falta AUTH)
 router.post('/register', userController.createAUser);
 
-/* ingresar a la app */
+/* obtener un usuario (falta AUTH) */
+router.get('/:email', userController.getUser);
+
+/* autentificarse */
 router.post('/login', userController.logIn);
 
-/* obtener un usuario */
-router.get('/:userId', userController.getUser);
+/* ingreso a la pagina (falta AUTH)
+router.post('/welcome');
+?? */
 
-/* obtener todos los usuarios */
+/* obtener todos los usuarios (falta AUTH) */
 router.get('/', userController.getAllUsers);
 
-/* modificar usuario */
-router.put('/:userId', userController.modifyUser);
+/* modificar usuario (falta AUTH) */
+router.put('/:email', userController.modifyUser);
 
-/* eliminar usuario */
-router.delete('/unsuscribe/:userId', userController.deleteUser);
+/* eliminar usuario (falta AUTH) */
+router.delete('/unsuscribe/:email', userController.deleteAUser);
 
 module.exports = router;
