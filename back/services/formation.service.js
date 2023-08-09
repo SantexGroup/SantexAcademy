@@ -1,35 +1,85 @@
 const NotFoundException = require('../exceptions/not_found.exceptions');
 const ApiFeatures = require('../helpers/api_features');
 const { Formation } = require('../models');
+const { checkFormationTypeById } = require('./formation_type.service');
+const { checkFormationStatusById } = require('./formation_status.service');
 
-// eslint-disable-next-line no-underscore-dangle
-async function _finFormationdByPk(formationId) {
+/**
+ * Encontrar una formacion por su id.
+ * Si no existe, lanza una excepcion NotFoundException.
+ */
+async function findAndCheckFormationdByPk(formationId) {
   const formation = await Formation.findByPk(formationId);
+
+  if (!formation) {
+    throw new NotFoundException('Formations not found');
+  }
 
   return formation;
 }
 
 /**
+ * Pasar una estring en camel case case a snake
+ */
+function camelToSnakeCase(str) {
+  return str.replace(/[A-Z]/g, (match) => `_${match.toLowerCase()}`);
+}
+
+/**
+ * reemplazar la propiedad camel case de un objeto por una
+ * propiedad en snake case
+ */
+function propertyToSnakeCase(model, property) {
+  const snakeCaseProperty = camelToSnakeCase(property);
+  model[snakeCaseProperty] = model[property];
+  delete model[property];
+}
+
+/**
+ * Verificar que existan los tipos y estados de las formacion.
+ * Si la propiedad typesId o statusId estan en camel case, trasnforman a snake case
+ */
+async function transformAndCheckFKData(formationData) {
+  if (formationData.typesId) {
+    // verificar si existe el type id
+    await checkFormationTypeById(formationData.typesId);
+    // pasar a snake case la propiedad typesId
+    propertyToSnakeCase(formationData, 'typesId');
+  }
+
+  if (formationData.statusId) {
+    // verificar si existe el status id
+    await checkFormationStatusById(formationData.statusId);
+    // pasar a snake case la propiedad statusId
+    propertyToSnakeCase(formationData, 'statusId');
+  }
+
+  return formationData;
+}
+
+/**
+ * Develve una lista de formaciones,
  *
+ * Permite aplicar filtros, limitar campos,
+ * ordenar y paginar los resultados.
+ *
+ * En caso de no encontrar formaciones lanza una
+ * excepción NotFoundException.
  */
 async function fetchFormations(queryOptions) {
-  const query = Formation;
-  const features = new ApiFeatures(query, queryOptions);
-  const formations = features.filter().limitFields().sort().paginate()
-    .exec();
+  let formations;
 
-  // const formations = await Formation.findAll({
-  //   // limit,
-  //   // offset,
-  //   // where: {
-  //   //   id: { $gt: 1 },
-  //   // },
-
-  //   // order: [
-  //   //   ['id', 'ASC'],
-  //   //   ['title', 'ASC'],
-  //   // ],
-  // });
+  // en caso de especificar opciones, se pueden aplicar
+  // filtros, limites de campos, ordenamiento y paginación
+  // De lo contrario se devuelven todas las formaciones
+  if (queryOptions) {
+    const query = Formation;
+    const features = new ApiFeatures(query, queryOptions);
+    formations = features.filter().limitFields().sort().paginate()
+      .exec();
+  } else {
+    formations = await Formation.findAll();
+  }
 
   if (!formations) {
     throw new NotFoundException('Formations not found');
@@ -39,91 +89,35 @@ async function fetchFormations(queryOptions) {
 }
 
 /**
- *
+ * Obener una formacion por su id.
  */
 async function fetchFormationById(id) {
-  const formation = await Formation.findByPk(id);
-
-  if (!formation) {
-    throw new NotFoundException(`Formation with id ${id} not found`);
-  }
-
-  return formation;
+  return findAndCheckFormationdByPk(id);
 }
 
 /**
- *
+ * Guardar los datos de una nueva formacion.
  */
-async function saveFormationData(
-  statusId,
-  typesId,
-  title,
-  institute,
-  description,
-  startDate,
-  endDate,
-) {
-  const formation = await Formation.create({
-    status_id: statusId,
-    types_id: typesId,
-    title,
-    description,
-    institute,
-    startDate,
-    endDate,
-  });
-
-  return formation;
+async function saveNewFormationData(formationData) {
+  const data = await transformAndCheckFKData(formationData);
+  return Formation.create(data);
 }
 
 /**
- *
+ * Actualizar los datos de una formacion.
  */
-async function updateFormationDataById(
-  id,
-  statusId,
-  typesId,
-  title,
-  institute,
-  description,
-  startDate,
-  endDate,
-) {
-  const formation = await _finFormationdByPk(id);
+async function saveFormationData(id, formationData) {
+  const formation = await findAndCheckFormationdByPk(id);
 
-  if (statusId) {
-    formation.status_id = statusId;
-  }
-
-  if (typesId) {
-    formation.types_id = typesId;
-  }
-
-  if (title) {
-    formation.title = title;
-  }
-
-  if (institute) {
-    formation.institute = institute;
-  }
-
-  if (description) {
-    formation.description = description;
-  }
-
-  if (startDate) {
-    formation.startDate = startDate;
-  }
-
-  if (endDate) {
-    formation.endDate = endDate;
-  }
-
-  return formation.save();
+  const data = await transformAndCheckFKData(formationData);
+  return formation.update(data);
 }
 
-async function deleteFormationDataById(id) {
-  const formation = await _finFormationdByPk(id);
+/**
+ * Eliminar una formacion
+ */
+async function deleteFormationData(id) {
+  const formation = await findAndCheckFormationdByPk(id);
 
   return formation.destroy();
 }
@@ -131,7 +125,7 @@ async function deleteFormationDataById(id) {
 module.exports = {
   fetchFormations,
   fetchFormationById,
+  saveNewFormationData,
   saveFormationData,
-  updateFormationDataById,
-  deleteFormationDataById,
+  deleteFormationData,
 };
