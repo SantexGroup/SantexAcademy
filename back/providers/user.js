@@ -2,6 +2,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-useless-catch */
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 const { User } = require('../models');
 const {
   tokenSign,
@@ -18,6 +19,7 @@ const newUserProv = async (user) => {
 
   try {
     const newUser = await User.create({
+      id: crypto.randomUUID(),
       firstName,
       lastName,
       email,

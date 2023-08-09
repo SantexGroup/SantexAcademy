@@ -2,12 +2,13 @@
 /** @type {import('sequelize-cli').Migration} */
 
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 
 module.exports = {
   // eslint-disable-next-line no-unused-vars
   async up(queryInterface, _Sequelize) {
     await queryInterface.bulkInsert('Users', [{
-      id: 1,
+      id: crypto.randomUUID(),
       firstName: 'Admin1',
       lastName: '',
       email: 'admin1@gmail.com',
@@ -22,7 +23,7 @@ module.exports = {
       isTeacher: false,
     },
     {
-      id: 2,
+      id: crypto.randomUUID(),
       firstName: 'Admin2',
       lastName: '',
       email: 'admin2@gmail.com',
@@ -37,7 +38,7 @@ module.exports = {
       isTeacher: false,
     },
     {
-      id: 3,
+      id: crypto.randomUUID(),
       firstName: 'Teacher1',
       lastName: 'One',
       email: 'teacher1@gmail.com',
@@ -52,7 +53,7 @@ module.exports = {
       isTeacher: true,
     },
     {
-      id: 4,
+      id: crypto.randomUUID(),
       firstName: 'Teacher2',
       lastName: 'Two',
       email: 'teacher2@gmail.com',
@@ -67,7 +68,7 @@ module.exports = {
       isTeacher: true,
     },
     {
-      id: 5,
+      id: crypto.randomUUID(),
       firstName: 'student1',
       lastName: 'Onestudent',
       email: 'student1@gmail.com',
@@ -82,7 +83,7 @@ module.exports = {
       isTeacher: false,
     },
     {
-      id: 6,
+      id: crypto.randomUUID(),
       firstName: 'student2',
       lastName: 'Twostudent',
       email: 'student2@gmail.com',

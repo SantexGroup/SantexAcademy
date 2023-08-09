@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   User.init({
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       autoIncrement: true,
       primaryKey: true,
       unique: true,
@@ -62,6 +62,7 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
     paranoid: false,
     modelName: 'User',
+    tableName: 'Users',
   });
   return User;
 };
