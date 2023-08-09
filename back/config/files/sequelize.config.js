@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const { Sequelize, Op } = require('sequelize');
 const logger = require('../../utils/winston.logger');
 
 const sequelizeOptions = {
@@ -6,7 +6,10 @@ const sequelizeOptions = {
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   dialect: 'mysql',
-  operatorsAliases: '0',
+  // operatorsAliases: '0',
+  operatorsAliases: {
+    $gt: Op.gt,
+  },
   timezone: '-03:00',
   dialectOptions: {
     timezone: '-03:00',

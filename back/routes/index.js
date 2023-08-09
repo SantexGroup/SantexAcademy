@@ -4,6 +4,7 @@ const Express = require('express');
 const rootPath = require('../middleware/root_path.middleware');
 const errors = require('../middleware/error_handler.middleware');
 const profileRoutes = require('./profile.routes');
+const formationRoutes = require('./formation.routes');
 const userRoutes = require('./user.routes');
 
 const app = Express();
@@ -11,6 +12,7 @@ const app = Express();
 // Rutas
 
 app.use('/profiles', profileRoutes);
+app.use('/formations', formationRoutes);
 app.use('/user', userRoutes);
 
 app.use('/', rootPath.handler);

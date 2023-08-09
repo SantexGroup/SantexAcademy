@@ -37,6 +37,11 @@ module.exports = (sequelize, DataTypes) => {
     createdAt: false,
     updatedAt: false,
     tableName: FORMATIONS_TABLE_NAME,
+    defaultScope: {
+      attributes: {
+        exclude: ['deletedAt', 'status_id', 'types_id'],
+      },
+    },
   });
   return Formation;
 };
