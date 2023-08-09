@@ -67,9 +67,9 @@ async function addExperience(
 ) {
   // Cremos una instancia del modelo Experience, donde guardamos todos los datos.
   const newExperience = await Experience.create({
-    status_id: statusId,
-    countries_id: countriesId,
-    types_id: typesId,
+    statusId,
+    countriesId,
+    typesId,
     position,
     company,
     description,
@@ -117,8 +117,8 @@ async function updateExperience(
   const experience = await getExperience(id);
   // Creamos un objeto con todos los datos que componen la instancia del Experience
   const updateData = {
-    status_id: statusId,
-    countries_id: countriesId,
+    statusId,
+    countriesId,
     typesId,
     position,
     company,
