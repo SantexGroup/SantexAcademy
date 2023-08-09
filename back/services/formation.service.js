@@ -3,6 +3,7 @@ const ApiFeatures = require('../helpers/api_features');
 const { Formation } = require('../models');
 const { checkFormationTypeById } = require('./formation_type.service');
 const { checkFormationStatusById } = require('./formation_status.service');
+const { propertyToSnakeCase } = require('../helpers/service.helper');
 
 /**
  * Encontrar una formacion por su id.
@@ -16,23 +17,6 @@ async function findAndCheckFormationdByPk(formationId) {
   }
 
   return formation;
-}
-
-/**
- * Pasar una estring en camel case case a snake
- */
-function camelToSnakeCase(str) {
-  return str.replace(/[A-Z]/g, (match) => `_${match.toLowerCase()}`);
-}
-
-/**
- * reemplazar la propiedad camel case de un objeto por una
- * propiedad en snake case
- */
-function propertyToSnakeCase(model, property) {
-  const snakeCaseProperty = camelToSnakeCase(property);
-  model[snakeCaseProperty] = model[property];
-  delete model[property];
 }
 
 /**
