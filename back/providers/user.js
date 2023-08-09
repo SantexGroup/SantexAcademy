@@ -3,6 +3,10 @@
 /* eslint-disable no-useless-catch */
 const bcrypt = require('bcrypt');
 const { User } = require('../models');
+const {
+  tokenSign,
+} = require('../middleware/token');
+const { wrongEmailOrPassw, userNotFound } = require('../exceptions/erros');
 
 const newUserProv = async (user) => {
   const {
@@ -23,14 +27,13 @@ const newUserProv = async (user) => {
       ),
     });
     if (newUser) {
-      return newUser;
-      // //   const token = tokenSign(newUser);
-      // // const result = {
-      // //   token: token,
-      // //   user: newUser,
+      // return newUser;
+      const token = tokenSign(newUser);
+      // const result = {
+      //   token: token,
+      //   user: newUser,
       // }
-
-    //   return token;
+      return token;
     }
     // user.password = await bcrypt.hash(
     //   password,
@@ -48,21 +51,24 @@ const loginProv = async (user) => {
     const foundUser = await User.findOne({
       where: { email },
     });
-    password = await bcrypt.compare(
-      password,
-      foundUser.password,
-    );
+    if (foundUser) {
+      password = await bcrypt.compare(
+        password,
+        foundUser.password,
+      );
 
-    if (password) {
-      // const token = tokenSign(foundUser);
-      // const result = {
-      //   token: token,
-      //   user: foundUser,
-      // };
-      // return token;
-      return user;
+      if (password) {
+        const token = tokenSign(foundUser);
+        // const result = {
+        //   token: token,
+        //   user: foundUser,
+        // };
+        return token;
+        // return user;
+      }
+      throw wrongEmailOrPassw;
     }
-    return false;
+    throw userNotFound;
   } catch (error) {
     throw error;
   }
