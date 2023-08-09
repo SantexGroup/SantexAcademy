@@ -13,10 +13,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   User.init({
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       autoIncrement: true,
       primaryKey: true,
       unique: true,
+      allowNull: false,
     },
     firstName: {
       type: DataTypes.STRING,
@@ -58,9 +59,10 @@ module.exports = (sequelize, DataTypes) => {
   },
   {
     sequelize,
-    timestamps: true,
-    paranoid: true,
+    timestamps: false,
+    paranoid: false,
     modelName: 'User',
+    tableName: 'Users',
   });
   return User;
 };
