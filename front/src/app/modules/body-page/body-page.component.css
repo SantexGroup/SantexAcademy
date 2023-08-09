@@ -1,15 +1,75 @@
 .eslogan{
     display: flex;
-    margin: 110px 100px;
+    color: #20272edc;
+    justify-content: center;
+    background: rgb(32, 28, 28);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,114,187,1) 100%);
     
 }
 
 .eslogan-frase{
     text-align: center;
     font-weight: 500;
+    margin: 110px 100px;
+    font-size: 3em;
 }
 
 span{
     color: #2783ec;
     font-weight: bold;
 }
+
+.div-plantillas{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+
+}
+
+.texto-plantillas{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    color: #20272edc;
+    text-align: justify;
+    align-items: center;
+    margin: 1em;
+    justify-content: center;
+}
+
+.texto-plantillas h1{
+   color: #2783ec;  
+   margin: 1em;
+   text-align:center;
+   align-items: center;
+   justify-content: center;
+}
+
+.boton-creatucv{
+    align-items: center;
+    justify-content: center;
+}
+
+#carrusel-plantillas{
+    width: 25%;
+    
+}
+
+button:hover{
+    border-radius: 40px;
+    background-color: #0072bb;
+    color: #ffffff;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+button{
+    border-radius: 15px;
+    background-color: #0072bb;
+    border: 1px solid #ffffff;
+    padding: 10px;
+    color: #ffffff;
+    
+    
+}
+

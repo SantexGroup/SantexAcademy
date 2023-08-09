@@ -43,6 +43,8 @@
     width: 3em;
     height: 3em;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
 }
 button:hover{
     border-radius: 40px;

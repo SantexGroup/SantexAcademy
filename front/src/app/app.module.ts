@@ -15,6 +15,6 @@ import { BodyPageComponent } from './modules/body-page/body-page.component';
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,BodyPageComponent]
 })
 export class AppModule { }
