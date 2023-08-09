@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
   Course.init({
     id: {
       type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
+      unique: true,
 
     },
     courseName: {
