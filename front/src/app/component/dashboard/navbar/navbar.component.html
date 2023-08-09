@@ -3,9 +3,7 @@
       <span>AppUsers</span>
 
       <span class="example-spacer"></span> 
-      <button mat-button routerLink="/dashboard">Dashboard</button>
-      <button mat-button routerLink="/dashboard/usuarios">Usuario</button>
-      <button mat-button routerLink="/dashboard/encuesta">Encuesta</button>
+      <button mat-button  *ngFor="let item of menu" [routerLink]="item.redirect">{{item.nombre}}</button>
       <span class="example-spacer"></span>
 
       <button mat-icon-button routerLink="/logout"  class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
