@@ -1,0 +1,27 @@
+.jumbotrol{
+  background: rgba(45, 181, 196, 0.5);
+  margin: 0 auto;
+}
+.container {
+  text-align: center;
+  padding-top: 50px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.logo {
+  width: 150px;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.word-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.display-8 {
+  margin: 0 80px;
+  color: white;
+  font: Arial, Helvetica, sans-serif;
+}
