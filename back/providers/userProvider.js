@@ -1,16 +1,10 @@
-/* eslint-disable no-else-return */
-/* eslint-disable no-useless-catch */
-/* eslint-disable eol-last */
-// eslint-disable-next-line no-unused-vars
 const { Op } = require('sequelize');
 const { User } = require('../models');
 
 const getUser = async (id) => {
   // eslint-disable-next-line no-useless-catch
   try {
-    // const user = await User.findByPk(id, { include: [{ all: true }] });
     const user = await User.findByPk(id, { attributes: { exclude: ['contrasena'] } });
-    // eslint-disable-next-line max-len
     // eslint-disable-next-line spaced-comment
     if (user) {
       return user;
@@ -22,8 +16,8 @@ const getUser = async (id) => {
     throw error;
   }
 };
-
 const createUser = async (userAttributes) => {
+  // eslint-disable-next-line no-useless-catch
   try {
     const newUser = await User.create(userAttributes);
     return newUser;
@@ -33,6 +27,7 @@ const createUser = async (userAttributes) => {
 };
 
 const getUsers = async (conditions) => {
+  // eslint-disable-next-line no-useless-catch
   try {
     // let options = { include: [{ all: true }] };
     let options = { attributes: { exclude: ['contrasena'] } };
@@ -44,6 +39,7 @@ const getUsers = async (conditions) => {
 
     if (users) {
       return users;
+    // eslint-disable-next-line no-else-return
     } else {
       throw new Error(
         'No se encontraron Usuarios con estas condiciones de busqueda',
@@ -54,6 +50,7 @@ const getUsers = async (conditions) => {
   }
 };
 const deleteUser = async (idUser) => {
+  // eslint-disable-next-line no-useless-catch
   try {
     await getUser(idUser);
     return User.destroy({ where: { id: idUser } });
@@ -63,6 +60,7 @@ const deleteUser = async (idUser) => {
 };
 
 const updateUser = async (idUser, attributes) => {
+  // eslint-disable-next-line no-useless-catch
   try {
     await getUser(idUser);
     // eslint-disable-next-line no-unused-vars
