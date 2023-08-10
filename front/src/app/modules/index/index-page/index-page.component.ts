@@ -8,7 +8,11 @@ import { Router } from '@angular/router';
 })
 export class IndexPageComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  mostrarMenu:boolean;
+
+  constructor(private router:Router) {
+    this.mostrarMenu = false;
+   }
 
   ngOnInit(): void {
   }
