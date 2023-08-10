@@ -1,38 +1,23 @@
-// 'use strict';
-
 const {
   Model,
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Volunteer extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
-  Volunteer.init(
+  class Coordinator extends Model {}
+  Coordinator.init(
     {
-      id_volunteer: {
+      id_coordinator: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        allowNull: false,
+        defaultValue: 0,
       },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      lastname: {
+      description: {
         type: DataTypes.STRING,
-        allowNull: false,
-      },
-      dni: {
-        type: DataTypes.BIGINT,
         allowNull: false,
       },
       email: {
@@ -47,25 +32,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      points: {
-        type: DataTypes.BIGINT,
-        allowNull: true,
-        defaultValue: 0,
-      },
       phone: {
         type: DataTypes.STRING,
         allowNull: false,
       },
     }, {
       sequelize,
-      modelName: 'Volunteer',
+      modelName: 'Coordinator',
       timestamps: false,
       underscored: false,
+      createdAt: false,
+      updatedAt: false,
     },
   );
-
-  return Volunteer;
+  return Coordinator;
 };
-
-// eslint-disable-next-line no-undef
-// module.exports = { Volunteer };

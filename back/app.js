@@ -16,8 +16,6 @@ const models = require('./models');
 
 // Rutes:
 const routes = require('./routes');
-const volunteerRoutes = require('./routes/volunteer-routes');
-const coordinatorRoutes = require('./routes/coordinator-routes');
 const config = require('./config/config');
 const validateEnv = require('./utils/validateEnv');
 
@@ -86,7 +84,7 @@ models.sequelize.authenticate()
     logger.api.error(err);
   });
 
-app.use('/', routes);
-app.use('/volunteer', volunteerRoutes);
-app.use('/coordinator', coordinatorRoutes);
+//app.use('/', routes);
+app.use('/volunteer', routes.volunteer);
+app.use('/coordinator', routes.coordinator);
 module.exports = app;

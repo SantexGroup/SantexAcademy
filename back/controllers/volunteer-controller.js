@@ -2,7 +2,7 @@ const volunteerServices = require('../services/volunteer-services');
 
 async function getAllVolunteer(req, res) {
   const users = await volunteerServices.getAll();
-  res.status(200).send(users);
+  res.send(users);
 }
 
 async function getVolunteerById(req, res, next) {
