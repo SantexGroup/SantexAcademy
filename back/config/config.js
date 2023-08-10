@@ -3,7 +3,7 @@ require('dotenv').config();
 const logger = require('../utils/winston.logger');
 /**
  * To add new configuration create a new file in
- * the ./config folder, define the letiable as an
+ * the ./config folder, define the variable as an
  * object, export it and then import the file in here.
  */
 
