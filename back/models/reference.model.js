@@ -6,6 +6,13 @@ const { REFERENCES_TABLE_NAME } = require('../helpers/sequelize.helper');
 
 module.exports = (sequelize, DataTypes) => {
   class Reference extends Model {
+    static associate(models) {
+      models.Reference.belongsToMany(models.Profile, {
+        through: models.ProfileReference,
+        foreignKey: 'wreferences_id',
+        otherKey: 'profiles_id',
+      });
+    }
   }
   Reference.init({
     name: DataTypes.STRING,
