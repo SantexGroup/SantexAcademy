@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BarraComponent } from './barra/barra.component';
-import { DashboardModule } from './modules/dashboard/dashboard.module';
-import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
+
 
 const routes: Routes = [
   {
-    path: 'dashboard',
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+    path: 'home-page',
+    component: HomePageComponent
   },
   {
     path: 'barra',
@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: DashboardPageComponent
+    component: HomePageComponent
   },
 ]
 @NgModule({

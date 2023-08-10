@@ -1,5 +1,27 @@
 <div class="barraNavegacion">
-    <a class="logoBarra" routerLink="/dashboard">
-        <img src="assets/logoimage.jpg" />
-       </a>
+  <div id="logo">
+      <a class="logoBarra" routerLink="/">
+          <img src="assets/logoimage.jpg" />
+      </a>
+  </div>
+  <div class="categorias">
+    <div class="dropdown">
+      <button data-bs-toggle="dropdown">Categorías</button>
+      <div class="dropdown-menu">
+        <a id="iteminicial" class="dropdown-item" href="localhost:4200">Mesas</a>
+        <a class="dropdown-item" href="localhost:4200">Sillas</a>
+        <a id="itemfinal" class="dropdown-item" href="localhost:4200">Mesas</a>
+      </div>
+    </div>
+  </div>
+  <div id="buscador">
+    <form>
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="inputPassword" placeholder="Busque un producto">
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

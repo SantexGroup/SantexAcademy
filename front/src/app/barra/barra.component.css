@@ -1,13 +1,57 @@
 .barraNavegacion {
     margin: 0;
-    height: 70px;
+    height: 90px;
     border-bottom: 2px solid #874421;
+    display: flex;
 }
 
 img {
-    width: 70px;
-}
+    width: 80px;
+    padding-left: 30px;
+} 
+
 /* si hago esto no funciona no sé porqué
 .logoBarra {
     width: 70px;
 }*/ 
+
+/* menu */
+
+.dropdown-menu {
+    border: 1px solid #e6b68b;
+    border-radius: 20px;
+}
+
+.dropdown-item {
+    border-bottom: 1px solid #e6b68b;
+}
+
+#iteminicial {
+    border-radius: 0px;
+}
+
+#itemfinal {
+    border-bottom: none;
+    border-radius: 8px;
+}
+
+.dropdown button {
+    background-color: #e6b68b;
+    color: white;
+    border: 2px solid #7c3b1a;
+    border-radius: 10px;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+}
+
+.categorias {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    /*lo de abajo no funciona */
+    width: 200px;
+    max-width: 200px;
+}
