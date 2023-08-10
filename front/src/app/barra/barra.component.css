@@ -1,0 +1,13 @@
+.barraNavegacion {
+    margin: 0;
+    height: 70px;
+    border-bottom: 2px solid #874421;
+}
+
+img {
+    width: 70px;
+}
+/* si hago esto no funciona no sé porqué
+.logoBarra {
+    width: 70px;
+}*/ 
