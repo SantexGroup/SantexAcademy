@@ -16,9 +16,9 @@ const userCreate = async (user) => {
   }
 };
 
-const findUser = async (email) => {
+const findUser = async (id) => {
   try {
-    const userFound = await db.User.findOne({ where: { email } });
+    const userFound = await db.User.findOne({ where: { id } });
     return userFound;
   } catch (error) {
     console.error('I can not find the user. Error: ', error);
@@ -36,10 +36,9 @@ const find = async () => {
   }
 };
 
-const modifyUser = async (email, newUser) => {
+const modifyUser = async (id, newUser) => {
   try {
-    // const { firstName, lastName, email, password } = newUser;
-    const updatedUser = await db.User.update(newUser, { where: { email } });
+    const updatedUser = await db.User.update(newUser, { where: { id } });
     return updatedUser;
   } catch (error) {
     console.error('Error al actualizar el usuario: ', error);
@@ -47,12 +46,12 @@ const modifyUser = async (email, newUser) => {
   }
 };
 
-const deleteUser = async (email) => {
+const deleteUser = async (id) => {
   try {
-    const deletedUser = await db.User.destroy({ where: { email } });
+    const deletedUser = await db.User.destroy({ where: { id } });
     return deletedUser;
   } catch (error) {
-    console.error(`Error deleting the User with id: ${email}. Error detail: `, error);
+    console.error(`Error deleting the User with id: ${id}. Error detail: `, error);
     throw error;
   }
 };
