@@ -3,25 +3,25 @@ module.exports = function (sequelize, DataTypes) {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     name: {
       type: DataTypes.STRING(50),
-      allowNull: false
-    }
+      allowNull: false,
+    },
   }, {
     sequelize,
     tableName: 'catalogo',
     timestamps: false,
     indexes: [
       {
-        name: "PRIMARY",
+        name: 'PRIMARY',
         unique: true,
-        using: "BTREE",
+        using: 'BTREE',
         fields: [
-          { name: "id" },
-        ]
+          { name: 'id' },
+        ],
       },
-    ]
+    ],
   });
 };
