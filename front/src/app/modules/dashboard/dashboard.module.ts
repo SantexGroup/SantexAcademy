@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
-import { CursosComponent } from './cursos/cursos.component';
+import { CoursesComponent } from './courses/courses.component';
 
 @NgModule({
-  declarations: [ CursosComponent],
+  declarations: [ CoursesComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     
   ],
   exports: [
-    CursosComponent
+    CoursesComponent
   ],
   providers: [],
 })
