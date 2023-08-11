@@ -4,12 +4,17 @@ import { IndexPageComponent } from './index-page/index-page.component';
 import { RegistroVoluntariosComponent } from './registro-voluntarios/registro-voluntarios.component';
 import { RegistroOrganizacionComponent } from './registro-organizacion/registro-organizacion.component';
 import { LoginComponent } from './login/login.component';
+import { IndexComponent } from './index.component';
 
 const routes: Routes = [
-  {path:'',component:IndexPageComponent},
-  {path:'registro-voluntario',component:RegistroVoluntariosComponent},
-  {path:'registro-organizacion',component:RegistroOrganizacionComponent},
-  {path:'login', component:LoginComponent}
+  {path:'',component:IndexComponent, children:[
+    {path:'', component:IndexPageComponent},
+    {path:'registro-voluntario',component:RegistroVoluntariosComponent},
+    {path:'registro-organizacion',component:RegistroOrganizacionComponent},
+    {path:'login', component:LoginComponent}
+    
+  ]},
+  
 ];
 
 @NgModule({
