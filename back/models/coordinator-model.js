@@ -3,10 +3,10 @@ const {
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Coordinator extends Model {}
-  Coordinator.init(
+  class coordinator extends Model {}
+  coordinator.init(
     {
-      id_coordinator: {
+      id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
@@ -38,12 +38,12 @@ module.exports = (sequelize, DataTypes) => {
       },
     }, {
       sequelize,
-      modelName: 'Coordinator',
+      modelName: 'coordinator',
       timestamps: false,
       underscored: false,
       createdAt: false,
       updatedAt: false,
     },
   );
-  return Coordinator;
+  return coordinator;
 };

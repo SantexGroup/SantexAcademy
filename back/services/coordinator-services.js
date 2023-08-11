@@ -1,6 +1,6 @@
-const {DataTypes, Sequelize} = require('sequelize');
+const { DataTypes, Sequelize } = require('sequelize');
 const coordinatorModel = require('../models/coordinator-model');
-const {sequelize} = require('../models');
+const { sequelize } = require('../models');
 
 async function getAll() {
   const Coordinator = coordinatorModel(sequelize, DataTypes);
@@ -65,7 +65,7 @@ async function editUser(id, name, description, email, password, address, phone) 
 async function deleteUser(id) {
   const Coordinator = coordinatorModel(sequelize, DataTypes);
   const user = await getById(id);
-  
+
   await user.destroy();
 }
 
