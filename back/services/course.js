@@ -5,6 +5,12 @@ const getAllCourses = async () => {
   return allCourses;
 };
 
+const getOneCourse = async (courseId) => {
+  const getCourse = await CourseProvider.getOneCourse(courseId);
+  return getCourse;
+};
+
 module.exports = {
   getAllCourses,
+  getOneCourse,
 };

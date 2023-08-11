@@ -14,6 +14,25 @@ const getAllCourses = async (req, res) => {
   }
 };
 
+const getCourse = async (req, res) => {
+  try {
+    const course = await CourseServices.getOneCourse(req.params.courseId);
+    if (!course) {
+      res.status(404).json({ action: 'getCourse', error: 'Course not found' });
+    } else {
+      res.status(200).send({
+        payload: course,
+      });
+    }
+  } catch (error) {
+    res.status(400).json({
+      action: 'getCourse',
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   getAllCourses,
+  getCourse,
 };
