@@ -19,9 +19,21 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Optional.init({
-    marital_id: DataTypes.INTEGER,
-    sexs_id: DataTypes.INTEGER,
-    countries_id: DataTypes.INTEGER,
+    maritalId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'marital_id',
+    },
+    sexsId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'sexs_id',
+    },
+    countriesId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'countries_id',
+    },
     profile: DataTypes.STRING,
     webPage: DataTypes.STRING,
     linkedIn: DataTypes.STRING,
@@ -32,14 +44,13 @@ module.exports = (sequelize, DataTypes) => {
     achievements: DataTypes.STRING,
     address: DataTypes.STRING,
     zipCode: DataTypes.STRING,
+    deletedAt: DataTypes.DATE,
   }, {
     sequelize,
+    paranoid: true,
+    createdAt: false,
+    updatedAt: false,
     tableName: OPTIONALS_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return Optional;
 };

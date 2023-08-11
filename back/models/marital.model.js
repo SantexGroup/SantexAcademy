@@ -8,15 +8,14 @@ module.exports = (sequelize, DataTypes) => {
   class Marital extends Model {
   }
   Marital.init({
-    condition: DataTypes.STRING,
+    condition: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
     sequelize,
+    timestamps: false,
     tableName: MARITALS_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return Marital;
 };

@@ -23,14 +23,6 @@ module.exports = {
       level: {
         type: Sequelize.SMALLINT
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
     });
 
     await addForeingKey(queryInterface, PROFILES_SKILLS_TABLE_NAME, 'profiles_id', PROFILES_TABLE_NAME);

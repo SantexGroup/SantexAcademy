@@ -15,15 +15,14 @@ module.exports = (sequelize, DataTypes) => {
     // }
   }
   Language.init({
-    language: DataTypes.STRING,
+    language: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
     sequelize,
+    timestamps: false,
     tableName: LANGUAGES_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return Language;
 };

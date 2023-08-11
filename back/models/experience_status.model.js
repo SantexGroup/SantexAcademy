@@ -8,15 +8,14 @@ module.exports = (sequelize, DataTypes) => {
   class ExperienceStatus extends Model {
   }
   ExperienceStatus.init({
-    status: DataTypes.STRING,
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
     sequelize,
+    timestamps: false,
     tableName: EXPERIENCES_STATUS_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return ExperienceStatus;
 };

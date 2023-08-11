@@ -1,0 +1,39 @@
+<div class="form-container">
+  <form class="form" [formGroup]="registroForm">
+    <p class="title">Registro de Usuario</p>
+    <label>
+      <input required email
+        name="email" 
+        placeholder="Email" 
+        type="email" 
+        class="input"
+        formControlName="email">   
+    </label> 
+    <p class="error" *ngIf="email?.errors?.['required'] && email?.dirty">Este campo es obligatorio</p>
+
+    <p class="error" *ngIf="email?.errors?.['email']">Debe ingresar un correo valido</p>
+    
+    <label>
+      <input required
+        name="password" 
+        placeholder="Password" 
+        type="password" 
+        class="input" 
+        formControlName="password">
+    </label>
+    <p class="error" *ngIf="password?.errors?.['required'] && password?.dirty">Este campo es obligatorio</p>
+
+    <p class="error" *ngIf="password?.errors?.['minlength']">La longitud minima es de 6 caracteres</p>
+
+    <button class="submit" 
+      type="button" 
+      (click)="submit(registroForm)"
+      [disabled]="registroForm.status==='INVALID'"
+      >Submit
+    </button>
+  </form>
+</div>
+
+<p class="error">{{mensajeError}}</p>
+
+<!--  -->

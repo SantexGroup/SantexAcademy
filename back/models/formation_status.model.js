@@ -8,15 +8,14 @@ module.exports = (sequelize, DataTypes) => {
   class FormationStatus extends Model {
   }
   FormationStatus.init({
-    status: DataTypes.STRING,
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
     sequelize,
+    timestamps: false,
     tableName: FORMATIONS_STATUS_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return FormationStatus;
 };

@@ -10,6 +10,10 @@ import { FooterPageComponent } from './modules/footer-page/footer-page.component
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { HeaderPageComponent } from './modules/header-page/header-page.component';
+import { UsuarioModule } from './modules/usuario/usuario.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +29,11 @@ import { HeaderPageComponent } from './modules/header-page/header-page.component
     MatExpansionModule,
     MatInputModule,
     MatButtonModule,
+    UsuarioModule,
+    FormsModule,
+    ReactiveFormsModule, 
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent,BodyPageComponent]
