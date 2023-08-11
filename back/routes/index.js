@@ -1,5 +1,4 @@
 const Express = require('express');
-const userRoutes = require('./user');
 
 // Middlewares:
 const rootPath = require('../middleware/root_path.middleware');
