@@ -5,7 +5,7 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
   templateUrl: './introduction.component.html',
   styleUrls: ['./introduction.component.css']
 })
-export class IntroductionComponent implements AfterViewInit{
+export class IntroductionComponent implements AfterViewInit {
   @ViewChild('videoElement', { static: false }) videoElement!: ElementRef;
 
   ngAfterViewInit() {
@@ -13,5 +13,4 @@ export class IntroductionComponent implements AfterViewInit{
     video.muted = true;
     video.play();
   }
-
 }
