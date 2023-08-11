@@ -29,7 +29,8 @@ async function getLanguagesByUser(id) {
         {
           model: Language,
           through: {
-            attributes: [],
+            model: ProfileLanguage,
+            attributes: ['level'],
           },
         },
       ],
