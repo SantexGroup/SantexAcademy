@@ -28,4 +28,5 @@ const Catalogo = sequelize.define(
   },
 );
 
+// Se exporta el modelo SIN DESESTRUCTURAR
 module.exports = Catalogo;
