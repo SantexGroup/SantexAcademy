@@ -1,17 +1,17 @@
 const { Profile, Language, ProfileLanguage } = require('../models');
 
-async function addLanguageToProfile(languageId, profileId, level) {
+async function addLanguageToProfile(languagesId, profilesId, level) {
   try {
-    const profile = await Profile.findByPk(profileId);
-    const language = await Language.findByPk(languageId);
+    const profile = await Profile.findByPk(profilesId);
+    const language = await Language.findByPk(languagesId);
 
     if (!profile || !language) {
       throw new Error('Profile or Language not found');
     }
 
     const newRelation = await ProfileLanguage.create({
-      languages_id: languageId,
-      profiles_id: profileId,
+      languagesId,
+      profilesId,
       level,
     });
 
@@ -22,30 +22,27 @@ async function addLanguageToProfile(languageId, profileId, level) {
 }
 
 async function getLanguagesByUser(id) {
-  // Buscamos todas los Experinces registrados
-  const languages = await Language.findAll({
-    // Incluimos el modelo Profile, sin sus atributos
-    include: [
-      {
-        model: Profile,
-        attributes: [],
-        where: {
-          // buscamos donde el Profgiles.user_id sea igual al id indicadno por params
-          user_id: id,
+  try {
+    const userLanguages = await Profile.findOne({
+      where: { user_id: id },
+      include: [
+        {
+          model: Language,
+          through: {
+            attributes: [],
+          },
         },
-      },
-      // Incluimos los modelos de las tablas hijas
+      ],
+    });
 
-    ],
-    // Que no se repitan
-    distinct: true,
-  });
-  if (languages) {
-    // Retornamos el Experinece obtenido
-    return languages;
+    if (userLanguages) {
+      return userLanguages.Languages;
+    }
+
+    return [];
+  } catch (error) {
+    throw new Error(error.message);
   }
-  // Manejador de errores
-  throw new Error();
 }
 
 module.exports = { addLanguageToProfile, getLanguagesByUser };

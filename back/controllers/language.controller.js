@@ -1,11 +1,11 @@
 const languageService = require('../services/languaje.service');
 
 async function addLanguageToProfile(req, res) {
-  const { languageId, profileId, level } = req.body;
+  const { languagesId, profilesId, level } = req.body;
 
   try {
-    const newRelation = await languageService.addLanguageToProfile(languageId,
-      profileId,
+    const newRelation = await languageService.addLanguageToProfile(languagesId,
+      profilesId,
       level);
     return res.status(201).json(newRelation);
   } catch (error) {
