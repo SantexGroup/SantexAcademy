@@ -21,4 +21,31 @@ async function addLanguageToProfile(languageId, profileId, level) {
   }
 }
 
-module.exports = { addLanguageToProfile };
+async function getLanguagesByUser(id) {
+  // Buscamos todas los Experinces registrados
+  const languages = await Language.findAll({
+    // Incluimos el modelo Profile, sin sus atributos
+    include: [
+      {
+        model: Profile,
+        attributes: [],
+        where: {
+          // buscamos donde el Profgiles.user_id sea igual al id indicadno por params
+          user_id: id,
+        },
+      },
+      // Incluimos los modelos de las tablas hijas
+
+    ],
+    // Que no se repitan
+    distinct: true,
+  });
+  if (languages) {
+    // Retornamos el Experinece obtenido
+    return languages;
+  }
+  // Manejador de errores
+  throw new Error();
+}
+
+module.exports = { addLanguageToProfile, getLanguagesByUser };
