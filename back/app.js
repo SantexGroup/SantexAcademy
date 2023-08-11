@@ -25,3 +25,5 @@ app.listen(PORT, async () => {
     console.error('Error initializing DB.', err);
   }
 });
+
+// router controller service provider
