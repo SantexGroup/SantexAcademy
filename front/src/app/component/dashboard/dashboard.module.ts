@@ -8,6 +8,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { EncuestaComponent } from './encuesta/encuesta.component';
+import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
 
 
 
@@ -17,7 +18,8 @@ import { EncuestaComponent } from './encuesta/encuesta.component';
     InicioComponent,
     NavbarComponent,
     UsuariosComponent,
-    EncuestaComponent
+    EncuestaComponent,
+    CrearUsuarioComponent
    
   ],
   imports: [

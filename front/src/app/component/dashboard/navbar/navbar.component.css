@@ -1,5 +1,17 @@
-.example-spacer {
-    flex: 1 1 auto;
+
+
+  .example-icon {
+    color: #FEA31C;
   }
 
+  .example-button {
+    color: rgb(252, 250, 250); 
+    transition: color 0.3s; 
+    cursor: pointer; 
+    transform: scale(1.1);
+  }
   
+  
+  .example-button:hover {
+    color: #FEA31C; 
+  }

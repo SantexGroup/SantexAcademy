@@ -4,9 +4,9 @@ table {
   }
 
 
-th{
-  width: 20%;
-}
+  th{
+    width: 2%;
+  }
 
 .pointer{
   cursor: pointer;
@@ -19,6 +19,13 @@ th{
 }
 
 .mat-form-field {
-  font-size: 14px;
+  font-size: 15px;
   width: 100%;
 }
+
+.botonagregar{
+  background-color: #FEA31C;
+  color: white;
+}
+
+

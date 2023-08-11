@@ -4,7 +4,7 @@
         <mat-spinner *ngIf="loading"  class="spinner" diameter="50"></mat-spinner>
 
         <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="ingresar()">
-            <img src="./assets/img/usuario.png" width="30%">
+            <img src="./assets/img/usuario (2).png" width="40%">
             <h2>login</h2>
     
             <mat-form-field class="ancho" appearance="fill">
@@ -16,7 +16,6 @@
                 <input type="password" matInput autocomplete="off" formControlName="password">
             </mat-form-field>
             <br>
-            <p>olvidaste tu contraseña?</p> 
             <br>
             <button type="submit"  class="ancho button" mat-raised-button color="primary" [disabled]="form.invalid">Ingresar</button>
         </form>
