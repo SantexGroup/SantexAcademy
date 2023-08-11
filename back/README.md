@@ -77,5 +77,10 @@ Listo!
 
 ### Para eliminar datos iniciales
 ```
-$ ./node_modules/.bin/sequelize db:seed:undo:all`
+$ ./node_modules/.bin/sequelize db:seed:undo:all
+```
+### Crear Seeders e Insertarlos
+```
+npx sequelize-cli seed:generate --name Users --seeders-path seeders
+npm run db:seed:all
 ```
