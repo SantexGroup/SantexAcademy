@@ -17,7 +17,6 @@ Agregar un archivo nuevo dentro de la carpeta back con el nombre  ".env" y copia
 Por ultimo para levantar el proyecto, se tienen que correr los siguientes comandos:
 
 ```bash
-  npm run build
   npx start
 ```
 
