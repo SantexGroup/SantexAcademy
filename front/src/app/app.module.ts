@@ -9,12 +9,14 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { FooterPageComponent } from './modules/footer-page/footer-page.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import { HeaderPageComponent } from './modules/header-page/header-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BodyPageComponent,
-    FooterPageComponent
+    FooterPageComponent,
+    HeaderPageComponent
   ],
   imports: [
     BrowserModule,
