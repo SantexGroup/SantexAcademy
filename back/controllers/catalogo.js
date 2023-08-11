@@ -2,8 +2,8 @@ const { catalogoService } = require('../services');
 
 const getCatalog = async (req, res) => {
   try {
-    const catalog = await catalogoService.getCatalog(req.body);
-    res.json(catalog);
+    const catalog = await catalogoService.getCatalog();
+    res.status(200).json(catalog);
   } catch (err) {
     res.status(500).json({ action: 'getCatalog', error: err.message });
   }
