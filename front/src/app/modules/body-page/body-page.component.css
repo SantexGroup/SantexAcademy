@@ -121,11 +121,11 @@ button{
     margin: 1em;
     text-align: center;
     font-weight: bold;
+    color:#0072bb
 }
 
-.descripcion-objetivo{
-    
-    text-align: center;
+.card-objetivos p{
+    line-height: 2em;
 }
 
 .quienes-somos{
@@ -134,7 +134,7 @@ button{
     flex-direction: column;
     align-items: center;
     padding-top: 7em;
-    color: black;   
+    color: #20272edc;
 
 }
 .quienes-somos h1{
@@ -150,6 +150,7 @@ button{
 
 .quienes-somos p{
     padding: 0em 10em;
+    line-height: 2.5em;
 }
 
 .preguntas-frecuentes{
