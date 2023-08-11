@@ -80,3 +80,8 @@ app-login {
     width: 100%;
     padding-right: 60px;
 }
+
+*:focus {
+    outline: 1px solid #874421;
+    box-shadow: none;
+}
