@@ -8,17 +8,17 @@ Portal Web para cursos y capacitaciones [Incubadora del NOC]
 
 ## Equipo
 
-Mariano Miranda - Usuario de git: MarianoAgustinMiranda
-Melisa Apaz	- Usuario de git: melisaapaz
-Jorgelina Báez - Usuario de git: JorBaez
-Juan Jose Diaz - Usuario de git: diazjuanjo
-Rony Mari	- Usuario de git: ronymari
-Maria Alejandra Rodriguez	- Usuario de git: Marialer27
-Eduardo Villella - Usuario de git: Eduardo-Villella
+- Mariano Miranda - Usuario de git: MarianoAgustinMiranda
+- Melisa Apaz	- Usuario de git: melisaapaz
+- Jorgelina Báez - Usuario de git: JorBaez
+- Juan Jose Diaz - Usuario de git: diazjuanjo
+- Rony Mari - Usuario de git: ronymari
+- Maria Alejandra Rodriguez	- Usuario de git: Marialer27
+- Eduardo Villella - Usuario de git: Eduardo-Villella
 	
 ## Mentores	
-Franco Piemontesi	- Usuario de git: fpiemontesisantex
-Mauricio Bergallo	- Usuario de git: mbergallosantex
+- Franco Piemontesi	- Usuario de git: fpiemontesisantex
+- Mauricio Bergallo	- Usuario de git: mbergallosantex
 
 ## Descripción del proyecto
 
