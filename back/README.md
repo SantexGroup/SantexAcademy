@@ -44,6 +44,15 @@ Ejecutar este comando:
 
 ```
 npx sequelize-cli model:generate --name [model name] --attributes [attributes]
+
+Crear model Users:
+npx sequelize-cli model:generate --name Users --attributes firstName:string,lastName:string,dni:integer, mail:integer,password:string,alias:string,estadoDeVendedor:boolean,idDireccion:integer
+
+Crear model Products:
+npx sequelize-cli model:generate --name Products --attributes idUsuario:integer,nombre:string,detalles:string, precio:integer,envio:boolean,idTipoProducto:integer
+
+Crear model Fotos:
+npx sequelize-cli model:generate --name Images --attributes url:string,idProducto:integer
 ```
 
 Reemplazando:
