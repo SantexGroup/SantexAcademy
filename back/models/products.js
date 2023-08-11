@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Products.init({
-    idFotos: DataTypes.INTEGER,
+    idFotos: DataTypes.INTEGER, // quitar
     idUsuario: DataTypes.INTEGER,
     idTipoProducto: DataTypes.INTEGER,
     nombre: DataTypes.STRING,
