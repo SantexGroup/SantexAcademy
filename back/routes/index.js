@@ -1,8 +1,9 @@
-const Express = require('express');
+const Express = require("express");
 
-const userRouter = require('./user');
+const userRouter = require("./user");
+const surveyRouter = require("./surveyRouter");
 // Middlewares:
-const rootPath = require('../middleware/root_path.middleware');
+const rootPath = require("../middleware/root_path.middleware");
 // const errors = require('../middleware/error_handler.middleware');
 
 const app = Express();
@@ -10,15 +11,10 @@ const app = Express();
 // Rutas
 
 // use=
-app.use('/ping', (req, res) => {
-  res.json({
-    response: 'pong!',
-  });
-});
 // app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 // app.use(errors.handler);
-app.use('/user', userRouter);
-
+app.use("/user", userRouter);
+app.use("/api/surveys", surveyRouter);
 // module.exports = app;
 module.exports = app;
