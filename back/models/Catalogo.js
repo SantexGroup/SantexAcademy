@@ -17,7 +17,7 @@ const Catalogo = sequelize.define(
     },
   },
   {
-    tableName: 'catalogo',
+    tableName: 'Catalogo',
     timestamps: false,
     indexes: [
       {
