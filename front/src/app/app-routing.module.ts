@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BarraComponent } from './barra/barra.component';
+import { HomePageComponent } from './home-page/home-page.component';
+
 
 const routes: Routes = [
   {
-    path: 'dashboard',
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+    path: 'home-page',
+    component: HomePageComponent
   },
   {
-    path: '**',
-    redirectTo: 'dashboard'
-  }
-];
-
+    path: 'barra',
+    component: BarraComponent
+  },
+  {
+    path: '',
+    component: HomePageComponent
+  },
+]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
