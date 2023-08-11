@@ -8,6 +8,11 @@ module.exports = (sequelize, DataTypes) => {
   class ProfileExperience extends Model {
   }
   ProfileExperience.init({
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     experiencesId: {
       type: DataTypes.INTEGER,
       allowNull: false,

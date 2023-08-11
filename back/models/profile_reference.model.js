@@ -8,6 +8,11 @@ module.exports = (sequelize, DataTypes) => {
   class ProfileReference extends Model {
   }
   ProfileReference.init({
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     referencesId: {
       type: DataTypes.INTEGER,
       allowNull: false,
