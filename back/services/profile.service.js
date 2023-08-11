@@ -60,7 +60,7 @@ async function getProfileByUserId(id) {
   try {
     // Consulta la base de datos para obtener los perfiles correspondientes al 'user_id'
     const profiles = await Profile.findAll({
-      where: { userId: id },
+      where: { user_id: id },
       include: [USERS, EXPERIENCE, Reference, Language, Skill, FORMATION, OPTIONAL],
     });
     // si no se encontraron perfiles o el array esta vacio, se lanza un error
