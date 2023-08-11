@@ -9,12 +9,15 @@ const app = Express();
 
 // Rutas
 const userRouter = require('./user');
+const courseRouter = require('./course');
+
 // use=
 app.use('/ping', (req, res) => {
   res.json({
     response: 'pong!',
   });
 });
+app.use('/courses', courseRouter);
 app.use('/users', userRouter);
 app.get('/onlyadmin', isAdminMdw, (req, res) => {
   res.send({
@@ -26,6 +29,7 @@ app.get('/onlyteacher', isTeacherMdw, (req, res) => {
     msg: 'Aca solo llegan los teachers',
   });
 });
+
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
