@@ -85,4 +85,5 @@ models.sequelize.authenticate()
   });
 
 app.use('/', routes);
+
 module.exports = app;
