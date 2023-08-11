@@ -1,10 +1,18 @@
 const { User } = require('../models');
 
-async function login() {
-  const usuarios = await User.findAll();
-  //console.log('USERS', usuarios);
+async function login(alias, password) {
+  const users = await User.findOne({ 
+    where: { 
+        alias: alias,
+        password: password
+    } 
+});
 
-  return usuarios;
+if (!users) {
+    throw new Error("Alias o Contraseña incorrectos");
+}
+
+  return users;
 }
 
 module.exports = { login };
