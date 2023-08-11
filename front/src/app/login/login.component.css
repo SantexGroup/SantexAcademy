@@ -1,0 +1,25 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(178, 211, 211);
+  height: 100%;
+}
+.logo{
+    height: 100px;
+    margin-bottom: 10px;
+    
+}
+.body {
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-color: aqua;
+}
