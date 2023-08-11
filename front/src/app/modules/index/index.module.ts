@@ -7,6 +7,7 @@ import { RegistroVoluntariosComponent } from './registro-voluntarios/registro-vo
 import { RegistroOrganizacionComponent } from './registro-organizacion/registro-organizacion.component';
 import { LoginComponent } from './login/login.component';
 import { CoreModule } from 'src/app/core/core.module';
+import { IndexComponent } from './index.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { CoreModule } from 'src/app/core/core.module';
     IndexPageComponent,
     RegistroVoluntariosComponent,
     RegistroOrganizacionComponent,
-    LoginComponent
+    LoginComponent,
+    IndexComponent
   ],
   imports: [
     CommonModule,

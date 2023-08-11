@@ -1,0 +1,31 @@
+<nav class="navbar">
+    <mat-icon class="icono-menu" (click)="sideNav.toggle()">menu</mat-icon>
+    <p class="logo icono-menu" (click)="redireccionarA('/')">CLUB DE HORAS</p>
+</nav>
+
+<mat-sidenav-container >
+    <mat-sidenav #sideNav mode="over" >
+        <mat-nav-list >
+            <a mat-list-item class="icono-menu" (click)="redireccionarA('/')" >Inicio</a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item class="icono-menu" (click)="irLoginVoluntarios()" >Login Voluntarios</a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item class="icono-menu" (click)="irLoginOrganizaciones()" >Login Organizaciones</a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item class="icono-menu" (click)="redireccionarA('/index/registro-voluntario')">Registro Voluntarios</a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item class="icono-menu" (click)="redireccionarA('/index/registro-organizacion')">Registro Organizaciones</a>
+        </mat-nav-list>
+      <mat-nav-list>
+        <a mat-list-item class="icono-menu" (click)="sideNav.toggle()" >Cerrar </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+   
+            <router-outlet></router-outlet>
+        
+  </mat-sidenav-container>
