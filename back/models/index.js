@@ -1,5 +1,5 @@
-const { Catalogo } = require('./catalogo');
+const Catalogo = require('./Catalogo');
 
 // relations
 
-module.exports = { Catalogo };
+module.exports = Catalogo;

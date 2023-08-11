@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db-config');
 
 const Catalogo = sequelize.define(
-  'catalogo',
+  'Catalogo',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -15,7 +15,6 @@ const Catalogo = sequelize.define(
     },
   },
   {
-    sequelize,
     tableName: 'catalogo',
     timestamps: false,
     indexes: [
@@ -29,4 +28,4 @@ const Catalogo = sequelize.define(
   },
 );
 
-module.exports = { Catalogo };
+module.exports = Catalogo;

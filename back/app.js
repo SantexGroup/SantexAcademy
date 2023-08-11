@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { initializeDB } = require('./config/db-config');
+const { initializeDB, sequelize } = require('./config/db-config');
 require('dotenv').config();
 
 // const {  } = require("./routes");
@@ -19,7 +19,7 @@ app.use(
 app.listen(PORT, async () => {
   try {
     await initializeDB();
-    // await userService.createFirstAdmin();
+    await sequelize.sync();
     console.log(`Listening on port ${PORT}..`);
   } catch (err) {
     console.error('Error initializing DB.', err);

@@ -1,25 +1,25 @@
 const { Sequelize } = require('sequelize'); // Take the Sequelize Class
 require('dotenv').config();
 
-// Make a unique instance of the class
-const sequelize = new Sequelize({
-  dialect: process.env.DB_DIALECT,
-  host: process.env.DB_HOST,
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT,
-  logging: false,
-});
+const sequelize = new Sequelize(
+  process.env.DB_DATABASE,
+  process.env.DB_USERNAME,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST,
+    dialect: 'mysql',
+  },
+);
+
 const initializeDB = async () => {
   try {
-    await sequelize.authenticate(); // Tests connection by trying to authenticate
-    console.log('Conection to DB established.');
+    await sequelize.authenticate();
+    console.log('Conexión a la base de datos establecida.');
 
-    // Sync all defined models to the DB
-    await sequelize.sync({ force: true }); // force: if true, each start deletes DB
+    // Sincronizar todos los modelos definidos en la base de datos
+    await sequelize.sync({ force: false });
   } catch (err) {
-    console.error('Error initializing DB.', err.message);
+    console.error('Error al inicializar la base de datos.', err.message);
     throw err;
   }
 };
