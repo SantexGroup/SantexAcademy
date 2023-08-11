@@ -9,6 +9,7 @@ const userRoutes = require('./user.routes');
 const languageRoutes = require('./language.routes');
 
 const experienceRoutes = require('./experience.routes');
+const referencesRoutes = require('./references.routes');
 
 const app = Express();
 
@@ -18,6 +19,7 @@ app.use('/language', languageRoutes);
 app.use('/profile', profileRoutes);
 app.use('/user', userRoutes);
 app.use('/experiences', experienceRoutes);
+app.use('/references', referencesRoutes);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);

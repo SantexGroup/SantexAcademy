@@ -50,6 +50,7 @@ module.exports = (sequelize, DataTypes) => {
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'user_id',
     },
     profileName: {
       type: DataTypes.STRING,

@@ -1,6 +1,6 @@
 // Importacion de los models necesarios
 const {
-  Profile, ProfileExperience, Experience, ExperienceStatus, ExperienceType, Country,
+  Profile, Experience, ExperienceStatus, ExperienceType, Country,
 } = require('../models');
 
 // Obtener un experience especifico
@@ -64,32 +64,21 @@ async function addExperience(
   description,
   startDate,
   endDate,
-  profileId,
 ) {
   // Cremos una instancia del modelo Experience, donde guardamos todos los datos.
   const newExperience = await Experience.create({
-    status_id: statusId,
-    countries_id: countriesId,
-    types_id: typesId,
+    statusId,
+    countriesId,
+    typesId,
     position,
     company,
     description,
     startDate,
     endDate,
   });
-  /* el profile_id, brindado por params se brinda a esta funcion para
-        poder agregar la relacion entre el profile_id y el experience */
-  const addProfileExperince = await ProfileExperience.create({
-    // el id de la nueva instancia se guarda en la tabla intermedia
-    experiences_id: newExperience.id,
-    profiles_id: profileId,
-  });
   if (newExperience) {
     // Retornamos las intancias de ambos modelos.
-    return {
-      experience: newExperience,
-      profileExperience: addProfileExperince,
-    };
+    return newExperience;
   }
   // Manejador de errores
   throw new Error();
@@ -128,8 +117,8 @@ async function updateExperience(
   const experience = await getExperience(id);
   // Creamos un objeto con todos los datos que componen la instancia del Experience
   const updateData = {
-    status_id: statusId,
-    countries_id: countriesId,
+    statusId,
+    countriesId,
     typesId,
     position,
     company,

@@ -1,1 +1,11 @@
-<p>Page works!</p>
+<div *ngIf="registroUsuario" >
+  <p>Se registro el usuario: </p>
+  <p>Mail: {{userData.mail}}</p>
+  <p>Usuario: {{userData.user}}</p>
+</div>
+
+<div *ngIf="loginUsuario" >
+  <p>Se inicio sesion con los siguientes datos: </p>
+  <p>Mail: {{userData.mail}}</p>
+  <p>Usuario: {{userData.user}}</p>
+</div>

@@ -8,13 +8,20 @@ module.exports = (sequelize, DataTypes) => {
   class ProfileFormation extends Model {
   }
   ProfileFormation.init({
-    formations_id: {
+    id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
-    profiles_id: {
+    formationsId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'formations_id',
+    },
+    profilesId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'profiles_id',
     },
   }, {
     sequelize,
