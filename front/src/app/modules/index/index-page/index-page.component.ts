@@ -8,21 +8,13 @@ import { Router } from '@angular/router';
 })
 export class IndexPageComponent implements OnInit {
 
-  mostrarMenu:boolean;
-
-  constructor(private router:Router) {
-    this.mostrarMenu = false;
-   }
+  
+constructor(private router:Router) {
+    
+}
 
   ngOnInit(): void {
   }
   
-  irLoginVoluntarios(){
-    this.router.navigate(['/index/login'],{queryParams:{tipo:'voluntario'}});
-  }
-
-  irLoginOrganizaciones(){
-    this.router.navigate(['/index/login'],{queryParams:{tipo:'organizacion'}});
-  }
-
+  
 }
