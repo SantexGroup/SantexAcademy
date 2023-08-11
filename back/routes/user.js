@@ -8,14 +8,23 @@ router.get('/:idUser', userController.getUser);
 router.get('/', userController.getUsers);
 router.post('/', [
   body('nombre', 'El nombre debe tener más de dos caracteres')
-    .exists().isLength({ min: 3 }),
+    .exists()
+    .isLength({ min: 3 }),
   body('apellido', 'El apellido debe tener más de tres caracteres')
-    .exists().isLength({ min: 4 }),
+    .exists()
+    .isLength({ min: 4 }),
   body('nombreUsuario', 'El nombre usuario debe tener más de siete caracteres')
-    .exists().isLength({ min: 8 }),
+    .exists()
+    .isLength({ min: 8 }),
   body('contrasena', 'La contraseña debe tener al menos 8 caracteres')
-    .exists().isLength({ min: 8 }),
-  body('role', 'Debe ingresar Admin ó encuestador').exists().isLength({ min: 5 }),
+    .exists()
+    .isLength({ min: 8 }),
+  body('email', 'mail no válido')
+    .exists()
+    .isEmail(),
+  body('role', 'Debe ingresar Admin ó encuestador')
+    .exists()
+    .isLength({ min: 5 }),
 ],
 userController.createUser);
 router.delete('/:idUser', userController.deleteUser);
@@ -24,12 +33,19 @@ router.put('/:idUser', [
     .exists()
     .isLength({ min: 3 }),
   body('apellido', 'El apellido debe tener mas de tres caracteres')
-    .exists().isLength({ min: 4 }),
+    .exists()
+    .isLength({ min: 4 }),
   body('nombreUsuario', 'El nombre usuario debe tener más de siete caracteres')
     .exists().isLength({ min: 8 }),
   body('contrasena', 'La contraseña debe tener al menos 8 caracteres')
-    .exists().isLength({ min: 8 }),
-  body('role', 'Debe ingresar Admin ó encuestador').exists().isLength({ min: 5 }),
+    .exists()
+    .isLength({ min: 8 }),
+  body('email', 'mailno válido')
+    .exists()
+    .isEmail(),
+  body('role', 'Debe ingresar Admin ó encuestador')
+    .exists()
+    .isLength({ min: 5 }),
 ], userController.updateUser);
 
 module.exports = router;
