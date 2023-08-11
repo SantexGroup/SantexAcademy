@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   User.init({
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       autoIncrement: true,
       primaryKey: true,
       unique: true,
@@ -60,8 +60,13 @@ module.exports = (sequelize, DataTypes) => {
   {
     sequelize,
     timestamps: false,
+<<<<<<< HEAD
     paranoid: true,
+=======
+    paranoid: false,
+>>>>>>> origin/SAN-35-1
     modelName: 'User',
+    tableName: 'Users',
   });
   return User;
 };
