@@ -1,4 +1,5 @@
 const express = require('express');
+const { catalogoRouter } = require("./routes");
 const cors = require('cors');
 const { initializeDB, sequelize } = require('./config/db-config');
 require('dotenv').config();
@@ -25,5 +26,7 @@ app.listen(PORT, async () => {
     console.error('Error initializing DB.', err);
   }
 });
+
+app.use('/catalogo' , catalogoRouter )
 
 // router controller service provider

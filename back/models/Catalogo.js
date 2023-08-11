@@ -1,6 +1,8 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db-config');
 
+//INSERT INTO volunTimeDB2.catalogo (id, name) VALUES(0, 'catalogo1');
+
 const Catalogo = sequelize.define(
   'Catalogo',
   {
