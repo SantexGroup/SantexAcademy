@@ -1,4 +1,4 @@
-<div class="contenedor fondo-degradado">
+<div class="fondo-degradado">
     <h2 class="titulo">Registro de voluntarios</h2>
     <form class="formulario" [formGroup]="formRegistro" >
 
@@ -74,7 +74,7 @@
         <div class="contenedor-input">
 
             
-            <input type="password" class="input-full-width"  formControlName="password"  placeholder="Ingresá una contraseña *"
+            <input type="password" class="input-full-width"  formControlName="password"  placeholder="Ingresá una contraseña *" autocomplete="current-password"
             [ngClass]="{'input-invalid':formRegistro.get('password')?.touched && formRegistro.get('password')?.invalid,
             'input-valid':formRegistro.get('password')?.touched && formRegistro.get('password')?.valid}">
             
