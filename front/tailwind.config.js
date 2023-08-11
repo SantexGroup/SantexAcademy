@@ -68,6 +68,5 @@ module.exports = {
       black: "900",
     },
   },
-
   plugins: [],
 };

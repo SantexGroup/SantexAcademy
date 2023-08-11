@@ -22,7 +22,3 @@ export class NavbarComponent {
     localStorage.setItem('isOpen', JSON.stringify(this.isOpen));
   }
 }
-
-
-
-
