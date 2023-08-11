@@ -16,18 +16,15 @@
     
 }
 
-.contenedor{
-    padding-top: 200px;
+
+.fondo-degradado{
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    
-}
-
-.fondo-degradado{
+    overflow: auto;
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 54px);
     background-image: linear-gradient(90deg,#8c52ff,#1bdaff);
 }
 

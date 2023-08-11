@@ -1,43 +1,15 @@
 
-<div class="contenedor fondo-degradado" >
-    <div *ngIf="mostrarMenu" class="fondo-oscuro">
+<div class="fondo-degradado" >
     
-    </div>
-    <nav class="navbar">
-        <mat-icon class="icono-menu" (click)="mostrarMenu = !mostrarMenu">menu</mat-icon>
-        <p class="logo">CLUB DE HORAS</p>
-    </nav>
-
-    <nav  class="menu-desktop">
-        <p class="logo">CLUB DE HORAS</p>
-        <ul class="lista-menu">
-            <li class="item-menu" routerLink="/index">Inicio</li>
-            <li class="item-menu" (click)="irLoginVoluntarios()">Login Voluntarios</li>
-            <li class="item-menu" (click)="irLoginOrganizaciones()">Login Organizaciones</li>
-            <li class="item-menu" routerLink="/index/registro-voluntario">Registro Voluntarios</li>
-            <li class="item-menu" routerLink="/index/registro-organizacion">Registro Organizaciones</li>
-            
-        </ul>
-    </nav>
-
-    <div *ngIf="mostrarMenu" class="menu">
-        <ul class="lista-menu">
-            <li class="item-menu" routerLink="/index">Inicio</li>
-            <li class="item-menu" (click)="irLoginVoluntarios()">Login Voluntarios</li>
-            <li class="item-menu" (click)="irLoginOrganizaciones()">Login Organizaciones</li>
-            <li class="item-menu" routerLink="/index/registro-voluntario">Registro Voluntarios</li>
-            <li class="item-menu" routerLink="/index/registro-organizacion">Registro Organizaciones</li>
-            
-        </ul>
-    </div>
     <div class="seccion">
         <div class="contenedor-left">
-                <h2 class="subtitulo">Tus horas cuentan!</h2>
-
             
+            <h2 class="subtitulo">Tus horas cuentan!</h2>
+
             <button class="button-full-width">Conocé más</button>
 
         </div>
+
         <div class="contenedor-right">
             <img src="../../../../assets/season_change_f99v.svg" >
 
@@ -55,8 +27,8 @@
         </div>
         
         <div class="contenedor-imagen tres">
-                    <img src="../../../../assets/happy_news_re_tsbd.svg" alt="">
-                    <p>Disfrutá los beneficios</p>
+            <img src="../../../../assets/happy_news_re_tsbd.svg" alt="">
+            <p>Disfrutá los beneficios</p>
         </div>
         
         
@@ -82,5 +54,4 @@
 
         </div>
     </div>
-
-
+</div>

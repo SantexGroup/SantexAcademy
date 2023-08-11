@@ -1,115 +1,14 @@
-.contenedor{
+.fondo-degradado{
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    
-}
-
-.fondo-degradado{
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(90deg,#8c52ff,#1bdaff);
     overflow: auto;
-}
-
-.contenedor-botones{
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-}
-
-.boton-registro{
-    margin-right: 30px;
-}
-.navbar{
     width: 100%;
-    background-color: black;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    z-index: 99;
+    height: calc(100vh - 54px);
+    background-image: linear-gradient(90deg,#8c52ff,#1bdaff);
 }
 
-.logo{
-    color:white;
-    margin : 0;
-}
-
-.menu{
-    width: 250px;
-    height:calc(100vh - 54px);
-    position: absolute;
-    top:54px;
-    left: 0;
-    background-color: black;
-    z-index: 99;
-}
-
-.lista-menu{
-    margin: 0;
-    padding: 0;
-}
-.item-menu{
-    color: white;
-    font-weight: 500;
-    list-style: none;
-    
-    padding: 5px 0 5px 20px;
-    margin-top: 10px;
-}
-
-
-.item-menu:hover{
-
-    
-    color: #1bdaff;
-    cursor: pointer;
-}
-
-.icono-menu{
-    color: white;
-    cursor: pointer;
-}
-
-.menu-desktop{
-    display: none;
-    background-color: black;
-    width: 100%;
-    height: auto;
-}
-
-@media (min-width:900px) {
-
-    .navbar{
-        display: none;
-    }
-    .menu-desktop{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 30px;
-    }
-    .lista-menu{
-        display: flex;
-    }
-    .item-menu{
-        padding-top: 0;
-    }
-
-}
-
-
-.fondo-oscuro{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6); /* Ajusta el valor alfa para cambiar la opacidad */
-    z-index: 9; /* Asegúrate de que el overlay esté en frente de otros elementos */
-}
 
 .seccion{
     display: flex;

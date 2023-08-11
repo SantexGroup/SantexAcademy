@@ -6,7 +6,7 @@
         [ngClass]="{'input-invalid':formLogin.get('email')?.touched && formLogin.get('email')?.invalid,
                     'input-valid':formLogin.get('email')?.touched && formLogin.get('email')?.valid}">
         
-        <input [type]="mostrarPassword?'text':'password'" class="input-full-width" required formControlName="password"  placeholder="Ingresá la contraseña *"
+        <input [type]="mostrarPassword?'text':'password'" class="input-full-width" required formControlName="password"  placeholder="Ingresá la contraseña *" autocomplete="current-password"
         [ngClass]="{'input-invalid':formLogin.get('password')?.touched && formLogin.get('password')?.invalid,
                     'input-valid':formLogin.get('password')?.touched && formLogin.get('password')?.valid}">
             

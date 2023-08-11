@@ -23,16 +23,23 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.routeActive.queryParams.subscribe(params=>{
     
+    this.routeActive.queryParams.subscribe(params=>{
+      
+      this.formLogin.reset();
+      
+
       if(params){
         const parametro = params['tipo'];
         if(parametro==='organizacion'){
           this.organizacion = true;
+          this.voluntario = false;
           this.titulo = "Organizaciones"
+          
         }
         else if(parametro==='voluntario'){
           this.voluntario = true;
+          this.organizacion = false;
           this.titulo = "Voluntarios"
         }
         else{
