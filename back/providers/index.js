@@ -1,3 +1,3 @@
 const catalogoProvider = require('./catalogo');
 
-module.exports = {catalogoProvider}
+module.exports = { catalogoProvider };

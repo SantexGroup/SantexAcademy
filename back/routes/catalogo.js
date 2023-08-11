@@ -1,8 +1,9 @@
 const express = require('express');
-const router = express.Router();
 
-const {catalogoController}= require('../controllers');
+const catalogoRouter = express.Router();
 
-router.get('/', catalogoController.getCatalog);
+const { catalogoController } = require('../controllers');
 
-module.exports = router;
+catalogoRouter.get('/', catalogoController.getCatalog);
+
+module.exports = catalogoRouter;

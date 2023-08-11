@@ -1,14 +1,12 @@
-const {userService} = require('../services');
-
+const { catalogoService } = require('../services');
 
 const getCatalog = async (req, res) => {
-    try {
-      const users = await userService.getCatalog();
-      res.status(200).json(users);
-    } catch (err) {
-      res.status(500).json({ error: err.message });
-    }
-  };
+  try {
+    const catalog = await catalogoService.getCatalog(req.body);
+    res.json(catalog);
+  } catch (err) {
+    res.status(500).json({ action: 'getCatalog', error: err.message });
+  }
+};
 
-  module.exports = { getCatalog } 
-
+module.exports = { getCatalog };

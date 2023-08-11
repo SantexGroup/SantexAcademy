@@ -1,10 +1,9 @@
 const express = require('express');
-const { catalogoRouter } = require("./routes");
 const cors = require('cors');
 const { initializeDB, sequelize } = require('./config/db-config');
 require('dotenv').config();
 
-// const {  } = require("./routes");
+const routes = require('./routes');
 // const {  } = require("./services");
 
 const app = express();
@@ -20,6 +19,7 @@ app.use(
 app.listen(PORT, async () => {
   try {
     await initializeDB();
+    // await userService.createFirstAdmin();
     await sequelize.sync();
     console.log(`Listening on port ${PORT}..`);
   } catch (err) {
@@ -27,6 +27,6 @@ app.listen(PORT, async () => {
   }
 });
 
-app.use('/catalogo' , catalogoRouter )
+app.use('/', routes);
 
 // router controller service provider

@@ -16,13 +16,13 @@ const sequelize = new Sequelize(
 
 const initializeDB = async () => {
   try {
-    await sequelize.authenticate();
-    console.log('Conexión a la base de datos establecida.');
+    await sequelize.authenticate(); // Tests connection by trying to authenticate
+    console.log('Conection to DB established.');
 
-    // Sincronizar todos los modelos definidos en la base de datos
-    await sequelize.sync({ force: false });
+    // Sync all defined models to DB
+    await sequelize.sync({ force: false }); // force: if true, each start deletes DB
   } catch (err) {
-    console.error('Error al inicializar la base de datos.', err.message);
+    console.error('Error initializing DB.', err.message);
     throw err;
   }
 };

@@ -1,23 +1,24 @@
-// const Express = require('express');
+const express = require('express');
 
 // // Middlewares:
 // const rootPath = require('../middleware/root_path.middleware');
 // const errors = require('../middleware/error_handler.middleware');
 
-// const app = Express();
+const routes = express();
 
 // Rutas
-const catalogo = require("./catalogo");
+const catalogoRouter = require('./catalogo');
 
-module.exports = { catalogo };
 // use=
-// app.use('/ping', (req, res) => {
-//   res.json({
-//     response: 'pong!',
-//   });
-// });
-// // app.use('/', rootPath.handler);
-// // app.use(rootPath.setHeaders);
-// // app.use(errors.handler);
+routes.use('/ping', (req, res) => {
+  res.json({
+    response: 'pong!',
+  });
+});
+// routes.use('/', rootPath.handler);
+// routes.use(rootPath.setHeaders);
+// routes.use(errors.handler);
 
-// module.exports = app;
+routes.use('/catalogo', catalogoRouter);
+
+module.exports = routes;

@@ -1,3 +1,3 @@
-const catalogoService = require('./catalogo')
+const catalogoService = require('./catalogo');
 
-module.exports = { catalogoService}
+module.exports = { catalogoService };

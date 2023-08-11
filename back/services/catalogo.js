@@ -1,6 +1,11 @@
-const getCatalog = async () => {
-    const users = await userProvider.getCatalog();
-    return users;
-  };
+const { catalogoProvider } = require('../providers');
 
-module.exports = {getCatalog}
+const getCatalog = async (catalogID) => {
+  const catalog = await catalogoProvider.getCatalog(catalogID);
+  if (catalog) {
+    return catalog;
+  }
+  return null;
+};
+
+module.exports = { getCatalog };

@@ -1,18 +1,13 @@
-const {Catalogo} = require('../models');
-const { sequelize } = require("../config/db-config");
+const { Catalogo } = require('../models');
 
+const getCatalog = async (catalogID) => {
+  try {
+    const catalog = await Catalogo.findByPk(catalogID);
+    return catalog;
+  } catch (err) {
+    console.error('The catalog could not be listed due to an error.', err);
+    throw err;
+  }
+};
 
-
-const getCatalog = async () => {
-    try {
-      const users = await User.findAll({
-        attributes: { exclude: ["deletedAt"] },
-      });
-      return users;
-    } catch (error) {
-      console.error("The users could not be listed due to an error.", error);
-      throw error;
-    }
-  };
-
-  module.exports = { getCatalog}
+module.exports = { getCatalog };
