@@ -37,11 +37,13 @@ span{
     flex-direction: column;
     width: 50%;
     align-items: center;
+    margin-right: 3em;
+    
 }
 
 .texto-plantillas h1{
    color: #2783ec;  
-   margin: 1em;
+   
    text-align:justify;
    align-items: center;
    justify-content: center;
@@ -53,9 +55,12 @@ span{
     align-items: center;
     justify-content: center;   
     font-weight: 600; 
+    margin-top: 3em;
+    line-height: 2.5em;
  }
 
 .boton-creatucv{
+    margin-top: 3em;
     width: 8em;
     font-weight: 600;
 }
@@ -134,6 +139,12 @@ button{
 }
 .quienes-somos h1{
     padding: 3em;
+    color: #2783ec;  
+    margin: 1em;
+    text-align:justify;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 
 }
 
@@ -147,14 +158,28 @@ button{
     justify-content: center;
     flex-direction: column;
     width: 100%;
+    margin-top: 7em;
+}
+
+.preguntas-frecuentes h1{
+    color: #2783ec;  
+    margin: 1em;
+    text-align:justify;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 }
 
 mat-expansion-panel{
     width: 100%;
 }
-mat-expansion-panel-header{
+mat-panel-title{
+    justify-content: center;
+    font-weight: bold;
 
 }
+
+
 
 @media screen and (max-width: 720px){
 
