@@ -12,7 +12,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.Optional.belongsToMany(models.Profile, {
+        through: models.ProfileOptional,
+        foreignKey: 'optionals_id',
+        otherKey: 'profiles_id',
+      });
       models.Optional.belongsTo(models.Marital, { foreignKey: 'marital_id' });
       models.Optional.belongsTo(models.Sex, { foreignKey: 'sexs_id' });
       models.Optional.belongsTo(models.Country, { foreignKey: 'countries_id' });
@@ -44,7 +48,6 @@ module.exports = (sequelize, DataTypes) => {
     achievements: DataTypes.STRING,
     address: DataTypes.STRING,
     zipCode: DataTypes.STRING,
-    deletedAt: DataTypes.DATE,
   }, {
     sequelize,
     paranoid: true,
