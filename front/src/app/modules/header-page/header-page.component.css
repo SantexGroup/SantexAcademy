@@ -1,0 +1,110 @@
+.headerPrincipal{
+
+    width: 100%;
+    background-color: #0072bb;
+    padding: 1em;
+
+    display: flex;    
+    flex-flow: row wrap;
+    justify-content: space-around ;
+    align-items: center;  
+      
+}
+
+.logoHeader{
+    display: flex;
+    height: 10em;
+}
+
+.iniciar-sesion{
+    width: 10em;
+    font-weight: 600;
+}
+.itemsHeader{
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+.lista-header{
+    display: flex;
+    flex-flow: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    color: white;
+}
+
+.li-header{
+    margin: 1em;
+}
+
+.abrir-menu{
+    display: none;
+    width: 3em;
+    height: 3em;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+button:hover{
+    border-radius: 40px;
+    background-color: #ffffff;
+    color: black;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+button{
+    border-radius: 15px;
+    background-color: #0072bb;
+    border: 1px solid #ffffff;
+    padding: 10px;
+    color: #ffffff;
+    
+    
+}
+
+.li-header:hover{
+    font-weight: 700;
+    transition: 0.5s;
+    cursor: pointer;
+
+}
+
+
+@media screen and (max-width: 720px){
+
+    .loginHeader{
+        display: flex;
+        align-items: center;
+
+    }
+    
+    .abrir-menu{
+        display: flex;
+    }
+
+    .nav-header{
+        width: 100%;
+        display: none;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .nav-activo{
+        display: flex;
+    }
+    .lista-header{
+        flex-direction: column;
+    }
+    .li-header{
+        margin: 1em 1em;
+    }
+    .li-header:hover{
+        font-weight: 700;
+        transition: 0.5s;
+        cursor: pointer;
+    
+    }
+}
