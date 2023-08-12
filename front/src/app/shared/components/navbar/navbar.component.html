@@ -1,4 +1,6 @@
-<header class="w-full flex flex-col p-6 bg-white lg:gap-4">
+<header
+  class="fixed top-0 w-full flex flex-col p-6 bg-white z-20 lg:gap-4 lg:relative"
+>
   <div class="w-full flex items-center justify-between">
     <figure class="flex items-center gap-2">
       <img
@@ -12,8 +14,15 @@
         class="w-[80px] m:w-[100px]"
       />
     </figure>
+
     <i
+      [ngClass]="!isOpen ? 'hidden' : 'visible'"
       class="bx bx-menu text-3xl cursor-pointer m:text-4xl lg:hidden"
+      (click)="handleMenu()"
+    ></i>
+    <i
+      [ngClass]="isOpen ? 'hidden' : 'visible'"
+      class="bx bx-x text-3xl cursor-pointer m:text-4xl lg:hidden"
       (click)="handleMenu()"
     ></i>
     <ul class="hidden lg:flex items-center justify-center gap-6 text-base">
