@@ -24,13 +24,13 @@ router.get('/:id', optinalController.getOptionalById);
 /**
  * Ruta para crear un nuevo OPCIONAL (POST /optionals).
  *
- * Previo a pasar al controlador, se valida que los datos enviados
+ * Previo a pasar al controlador, se validan los datos enviados
  */
 router.post('/', createValidation, optinalController.createOptional);
-// router.post('/', optinalController.createOptional);
 
 /**
  * Ruta para actualizar un OPCIONAL especificando su id (PUT /optionals/{id}).
+ * Previo a pasar al controlador, se validan los datos enviados
  */
 router.put('/:id', updateValidation, optinalController.updateOptional);
 

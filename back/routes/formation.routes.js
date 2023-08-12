@@ -24,12 +24,13 @@ router.get('/:id', formationController.getFormationById);
 /**
  * Ruta para crear una nueva FORMACION (POST /formations).
  *
- * Previo a pasar al controlador, se valida que los datos enviados
+ * Previo a pasar al controlador, se validan los datos enviados
  */
 router.post('/', createValidation, formationController.createFormation);
 
 /**
  * Ruta para actualizar una FORMACION específica, identificada por id (PUT /formations/{id}).
+ * Previo a pasar al controlador, se validan los datos enviados
  */
 router.put('/:id', updateValidation, formationController.updateFormation);
 
