@@ -10,11 +10,6 @@ const app = Express();
 const courseRoutes = require('./courseRoutes');
 
 // use=
-app.use('/ping', (req, res) => {
-  res.json({
-    response: 'pong!',
-  });
-});
 app.use('/courses', courseRoutes);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
