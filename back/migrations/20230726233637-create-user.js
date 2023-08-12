@@ -1,6 +1,6 @@
 "use strict";
 
-const { USERS_TABLE_NAME } = require("../helpers/sequelize.helper");
+const {addForeingKey, USERS_TABLE_NAME, ROLES_TABLE_NAME } = require("../helpers/sequelize.helper");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -12,8 +12,12 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
+      role_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       nick: {
-        type: Sequelize.STRING(20),
+        type: Sequelize.STRING(45),
         allowNull: false,
       },
       password: {
@@ -38,20 +42,12 @@ module.exports = {
       pictureLink: {
         type: Sequelize.TEXT,
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW,
-      },
       deletedAt: {
-        allowNull: false,
         type: Sequelize.DATE,
       },
     });
+
+    await addForeingKey(queryInterface, USERS_TABLE_NAME, 'role_id', ROLES_TABLE_NAME);
   },
 
   async down(queryInterface, Sequelize) {

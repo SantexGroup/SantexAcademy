@@ -8,18 +8,27 @@ module.exports = (sequelize, DataTypes) => {
   class ProfileLanguage extends Model {
   }
   ProfileLanguage.init({
-    profiles_id: DataTypes.INTEGER,
-    languages_id: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    profilesId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'profiles_id',
+    },
+    languagesId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'languages_id',
+    },
     level: DataTypes.INTEGER,
   }, {
     sequelize,
     timestamps: false,
     tableName: PROFILES_LANGUAGES_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return ProfileLanguage;
 };

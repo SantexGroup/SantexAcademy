@@ -1,12 +1,12 @@
 'use strict';
 
-const { EXPIRIENCES_TABLE_NAME } = require("../helpers/sequelize.helper");
+const { EXPERIENCES_TABLE_NAME } = require("../helpers/sequelize.helper");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
-      EXPIRIENCES_TABLE_NAME,
+      EXPERIENCES_TABLE_NAME,
       [
         {
           status_id: '1',
@@ -38,6 +38,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete(EXPIRIENCES_TABLE_NAME, null, {});  
+    await queryInterface.bulkDelete(EXPERIENCES_TABLE_NAME, null, {});  
   }
 };

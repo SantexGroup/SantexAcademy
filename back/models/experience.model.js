@@ -12,26 +12,44 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      models.Experience.belongsToMany(models.Profile, {
+        through: models.ProfileExperience,
+        foreignKey: 'experiences_id',
+        otherKey: 'profiles_id',
+      });
       models.Experience.belongsTo(models.ExperienceStatus, { foreignKey: 'status_id' });
-      models.Experience.belongsTo(models.ExpirenceType, { foreignKey: 'types_id' });
+      models.Experience.belongsTo(models.ExperienceType, { foreignKey: 'types_id' });
       models.Experience.belongsTo(models.Country, { foreignKey: 'countries_id' });
     }
   }
   Experience.init({
-    status_id: DataTypes.INTEGER,
-    countries_id: DataTypes.INTEGER,
-    types_id: DataTypes.INTEGER,
+    statusId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'status_id',
+    },
+    countriesId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'countries_id',
+    },
+    typesId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'types_id',
+    },
     position: DataTypes.STRING,
     company: DataTypes.STRING,
     description: DataTypes.STRING,
+    startDate: DataTypes.DATE,
+    endDate: DataTypes.DATE,
+    deletedAt: DataTypes.DATE,
   }, {
     sequelize,
+    paranoid: true,
+    createdAt: false,
+    updatedAt: false,
     tableName: EXPERIENCES_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return Experience;
 };
