@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db-config');
 
 const Producto = sequelize.define(
-  'Producto',
+  'producto',
   {
     id: {
       autoIncrement: true,
@@ -30,7 +30,7 @@ const Producto = sequelize.define(
   },
   {
     sequelize,
-    tableName: 'Producto',
+    tableName: 'producto',
     timestamps: false,
     indexes: [
       {
@@ -40,7 +40,7 @@ const Producto = sequelize.define(
         fields: [{ name: 'id' }, { name: 'catalogoId' }],
       },
       {
-        name: 'fk_Producto_catalogo1_idx',
+        name: 'fk_producto_catalogo1_idx',
         using: 'BTREE',
         fields: [{ name: 'catalogoId' }],
       },
