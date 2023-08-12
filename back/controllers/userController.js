@@ -30,7 +30,7 @@ const logIn = async (req, res) => {
   res.redirect('http://localhost:4001/api/user');
   /* Esta respuesta para que solo de este mensaje:
   res.json({
-    response: `Usuario ${email} logueado con éxito`,
+    response: `Usuario con ${email} y pass ${password} logueado con éxito`,
   }); */
 };
 
