@@ -1,5 +1,7 @@
 const { DataTypes, Sequelize } = require('sequelize');
 const volunteerModel = require('../models/volunteer-model');
+const { error } = require('winston');
+const jwt = require('jsonwebtoken');
 const { sequelize } = require('../models');
 
 async function getAll() {
@@ -84,6 +86,24 @@ async function deleteUser(id) {
   await user.destroy();
 }
 
+async function login(email, password) {
+  const Volunteer = volunteerModel(sequelize, DataTypes);
+  const user = await Volunteer.findOne({
+    where: {
+      email:email,
+      password:password,
+    },
+  });
+
+  if (!user) {
+    throw new Error('Email o contraseña incorrectos');
+  }
+
+  const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+  return token;
+}
+
 module.exports = {
-  getAll, getById, createUser, editUser, deleteUser,
+  getAll, getById, createUser, editUser, deleteUser, login,
 };

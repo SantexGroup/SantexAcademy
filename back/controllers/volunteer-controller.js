@@ -47,6 +47,17 @@ async function deleteVolunteer(req, res) {
   res.status(200).send(`Usuario con el id ${id} ha sido eliminado exitosamente`);
 }
 
+async function login(req, res) {
+  const { email, password } = req.body;
+
+  try {
+    const token = await volunteerServices.login(email, password);
+    res.json({ token });
+  } catch (error) {
+    res.status(401).json({ message: 'Credenciales incorrectas' });
+  }
+}
+
 module.exports = {
-  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer,
+  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, login,
 };

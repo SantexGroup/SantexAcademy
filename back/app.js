@@ -9,6 +9,8 @@ const helmet = require('helmet');
 const session = require('express-session');
 // Winston logger Dependencies
 const cors = require('cors');
+const passport = require('passport');
+const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
 const logger = require('./utils/winston.logger');
 
 // Models:
@@ -56,6 +58,32 @@ app.use(express.urlencoded(
   },
 ));
 
+// JWT y passport config
+
+// ...
+
+// Configurar Passport con JWT
+const jwtOptions = {
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: process.env.JWT_SECRET,
+};
+
+passport.use(new JwtStrategy(jwtOptions, async (jwtPayload, done) => {
+  try {
+    const volunteerModel = require('./models/volunteer-model');
+    const Volunteer = volunteerModel(sequelize, DataTypes);
+    const user = await Volunteer.findByPk(jwtPayload.id);
+
+    if (!user) {
+      return done(null, false);
+    }
+
+    return done(null, user);
+  } catch (error) {
+    return done(error, false);
+  }
+}));
+
 // Cors configuration
 const whitelist = process.env.CORS.split(' ');
 
@@ -84,7 +112,7 @@ models.sequelize.authenticate()
     logger.api.error(err);
   });
 
-//app.use('/', routes);
+// app.use('/', routes);
 app.use('/volunteer', routes.volunteer);
 app.use('/coordinator', routes.coordinator);
 module.exports = app;
