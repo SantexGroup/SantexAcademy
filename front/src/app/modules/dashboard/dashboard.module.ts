@@ -4,6 +4,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 
 import { CoursesComponent } from './courses/courses.component';
 import { CoursesDetailComponent } from './courses/courses-detail/courses-detail.component';
+import { PrimengModule } from 'src/app/lib/primeNG/primeng/primeng.module';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { CoursesDetailComponent } from './courses/courses-detail/courses-detail.
   imports: [
     CommonModule,
     DashboardRoutingModule,
+    PrimengModule
     
   ],
   exports: [
