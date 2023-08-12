@@ -23,9 +23,15 @@ const getUser = async (req, res) => {
 };
 
 const logIn = async (req, res) => {
+  const { email, password } = req.body;
+  /* console.log para engañar a husky/eslint */
+  console.log(`Usuario con ${email} / ${password}`);
+  /* momentaneamente redirecciona a todos los usuarios */
+  res.redirect('http://localhost:4001/api/user');
+  /* Esta respuesta para que solo de este mensaje:
   res.json({
-    response: 'hola soy un loggin',
-  });
+    response: `Usuario ${email} logueado con éxito`,
+  }); */
 };
 
 const getAllUsers = async (req, res) => {

@@ -3,6 +3,10 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
 
+// importando middleware de validación
+const { checkValidationResult } = require('../middleware/validation.middleware');
+const loginValidations = require('../middleware/login.validation.middleware');
+
 // crear un usuario (falta AUTH)
 router.post('/create', userController.createAUser);
 
@@ -10,11 +14,7 @@ router.post('/create', userController.createAUser);
 router.get('/:userId', userController.getUser);
 
 /* autentificarse */
-router.post('/login', userController.logIn);
-
-/* ingreso a la pagina (falta AUTH)
-router.post('/welcome');
-?? */
+router.post('/login', loginValidations, checkValidationResult, userController.logIn);
 
 /* obtener todos los usuarios (falta AUTH) */
 router.get('/', userController.getAllUsers);
