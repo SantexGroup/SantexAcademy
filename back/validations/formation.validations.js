@@ -2,10 +2,16 @@ const { body } = require('express-validator');
 const { FormationStatus, FormationType } = require('../models');
 const { validateValueInModel } = require('../helpers/validations.helper');
 
+/**
+ * Valida que el valor exista en FORMATIONS_STATUS
+ */
 async function validateFormationStatus(value) {
   return validateValueInModel(FormationStatus, value);
 }
 
+/**
+ * Valida que el valor exista en FORMATIONS_TYPES
+ */
 async function validateFormationType(value) {
   return validateValueInModel(FormationType, value);
 }

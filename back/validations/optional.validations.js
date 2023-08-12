@@ -2,14 +2,23 @@ const { body } = require('express-validator');
 const { Marital, Sex, Country } = require('../models');
 const { validateValueInModel } = require('../helpers/validations.helper');
 
+/**
+ * Valida que el valor exista en MARITALS
+ */
 async function validateMarital(value) {
   return validateValueInModel(Marital, value);
 }
 
+/**
+ * Valida que el valor exista en SEXS
+ */
 async function validateSex(value) {
   return validateValueInModel(Sex, value, 'Sex value not valid');
 }
 
+/**
+ * Valida que el valor exista en COUNTRIES
+ */
 async function validateCountry(value) {
   return validateValueInModel(Country, value, 'Country id not valid');
 }
