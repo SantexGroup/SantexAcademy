@@ -1,6 +1,6 @@
 const { CourseService } = require("../services");
 const { validationResult } = require("express-validator");
-
+const a =require("../providers/categoryProvider")
 
 
 const createCourse = async (req, res) => {
@@ -12,12 +12,10 @@ const createCourse = async (req, res) => {
     end,
     active,
     price,
-    CourseCategory,
     requirement,
-    teacher
+    teacher,
+    CourseCategoryId
   } = req.body;
-  console.log(req.body);
-
   const newCourse = await CourseService.createCourse({
     name,
     description,
@@ -26,9 +24,9 @@ const createCourse = async (req, res) => {
     end,
     active,
     price,
-    CourseCategory,
     requirement,
-    teacher
+    teacher,
+    CourseCategoryId
   });
 
   res.status(201).json(newCourse);

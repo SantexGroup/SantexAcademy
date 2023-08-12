@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       //define association here
       //Course.hasOne(models.CourseCategory)
      // models.CourseCategory.hasMany(Course)
+     Course.belongsTo(models.CourseCategory,{
+      foreignKey:'id',
+      target_key:'CourseCategoryId'
+  
+     })
     }
   }
   Course.init({
@@ -25,8 +30,8 @@ module.exports = (sequelize, DataTypes) => {
     active: DataTypes.BOOLEAN,
     price: DataTypes.INTEGER,
     requirement:DataTypes.STRING,
-    teacher:DataTypes.STRING
-    
+    teacher:DataTypes.STRING,
+    CourseCategoryId:DataTypes.INTEGER  
   }, {
     sequelize,
     modelName: 'Course',

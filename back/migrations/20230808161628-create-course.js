@@ -47,6 +47,15 @@ module.exports = {
         allowNull:false,
         type:Sequelize.STRING
       },
+      CourseCategoryId:{
+        type:Sequelize.INTEGER,
+        references:{
+        model:'CourseCategories',
+        key:'id'
+        },
+        onDelete:'CASCADE',
+        onUpdate:'CASCADE'
+       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -54,10 +63,8 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-     // CourseCategoryId:{
-      // type:Sequelize.INTEGER
-     // }
+      }
+     
     });
   },
   async down(queryInterface, Sequelize) {

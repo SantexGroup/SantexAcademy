@@ -1,13 +1,14 @@
 const {Course,CourseCategory}  = require("../models");
-const a =require("./categoryProvider")
+const CategoryProvider =require("./categoryProvider")
 
 
 const createCourse = async (CourseOptions) => {
   try {
-    console.log("------------------------------------------")
-    //const category = await a.getCategory(1);
-    //console.log(category)
-    const newCourse = await Course.create({    
+    //obtiene el objeto
+    const getObjetCategory = await CategoryProvider.getCategoryByName(CourseOptions.CourseCategoryId);
+    //obtiene el id de la categoria 
+    const idCategory = await CategoryProvider.getCategory(getObjetCategory.id);
+    const newCourse = await Course.create({  
       name: CourseOptions.name,
       description:CourseOptions.description,
       maxStudents: CourseOptions.maxStudents,
@@ -16,7 +17,9 @@ const createCourse = async (CourseOptions) => {
       active: CourseOptions.active,
       price: CourseOptions.price,
       requirement: CourseOptions.requirement,
-      teacher: CourseOptions.teacher
+      teacher: CourseOptions.teacher,
+      CourseCategoryId: idCategory.dataValues.id
+      
       //CourseCategoryId: category.id,
     });
 
@@ -29,7 +32,8 @@ const createCourse = async (CourseOptions) => {
 const getCourse = async (id) => {
 
   try {
-    const CourseSelect = await Course.findByPk(id);
+    let options = { include: [{ all: true }] };
+    const CourseSelect = await Course.findByPk(id, options);
     if (CourseSelect) {
       return CourseSelect;
     } else {

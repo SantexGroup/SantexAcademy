@@ -39,7 +39,18 @@ const getCategory = async (id) => {
     throw error;
   }
 };
-
+const getCategoryByName=async (name) =>{
+  try {
+    const user = await CourseCategory.findOne({where: { name},});
+    if (user) {
+      return user;
+    } else {
+      throw new Error("no get Category found");
+    }
+  } catch (error) {
+    throw error;
+  }
+}
 const updateCategory = async (CategoryId, CategoryOptions) => {
   try {
     await getCategory (CategoryId);
@@ -64,5 +75,5 @@ module.exports = {
   getCategory,
   getCategories,
   updateCategory,
-
+  getCategoryByName
 };
