@@ -1,35 +1,39 @@
-module.exports = function (sequelize, DataTypes) {
-  return sequelize.define('usuario', {
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../config/db-config');
+
+const Usuario = sequelize.define(
+  'usuario',
+  {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     fullName: {
       type: DataTypes.STRING(50),
-      allowNull: true
+      allowNull: true,
     },
     telefono: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING(50),
       allowNull: false,
-      unique: "email_UNIQUE"
+      unique: 'email_UNIQUE',
     },
     password: {
       type: DataTypes.STRING(32),
-      allowNull: false
+      allowNull: false,
     },
     reputation: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
     recompensasAcumuladas: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
     },
     rolesId: {
       type: DataTypes.INTEGER,
@@ -37,8 +41,8 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true,
       references: {
         model: 'roles',
-        key: 'id'
-      }
+        key: 'id',
+      },
     },
     cestaRecompensasId: {
       type: DataTypes.INTEGER,
@@ -46,46 +50,48 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true,
       references: {
         model: 'cestaRecompensas',
-        key: 'id'
-      }
-    }
+        key: 'id',
+      },
+    },
   }, {
     sequelize,
     tableName: 'usuario',
     timestamps: false,
     indexes: [
       {
-        name: "PRIMARY",
+        name: 'PRIMARY',
         unique: true,
-        using: "BTREE",
+        using: 'BTREE',
         fields: [
-          { name: "id" },
-          { name: "rolesId" },
-          { name: "cestaRecompensasId" },
-        ]
+          { name: 'id' },
+          { name: 'rolesId' },
+          { name: 'cestaRecompensasId' },
+        ],
       },
       {
-        name: "email_UNIQUE",
+        name: 'email_UNIQUE',
         unique: true,
-        using: "BTREE",
+        using: 'BTREE',
         fields: [
-          { name: "email" },
-        ]
+          { name: 'email' },
+        ],
       },
       {
-        name: "fk_usuario_roles1_idx",
-        using: "BTREE",
+        name: 'fk_usuario_roles1_idx',
+        using: 'BTREE',
         fields: [
-          { name: "rolesId" },
-        ]
+          { name: 'rolesId' },
+        ],
       },
       {
-        name: "fk_usuario_cestaRecompensas1_idx",
-        using: "BTREE",
+        name: 'fk_usuario_cestaRecompensas1_idx',
+        using: 'BTREE',
         fields: [
-          { name: "cestaRecompensasId" },
-        ]
+          { name: 'cestaRecompensasId' },
+        ],
       },
-    ]
-  });
-};
+    ],
+  },
+);
+
+module.exports = Usuario;
