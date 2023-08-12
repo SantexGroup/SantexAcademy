@@ -1,4 +1,4 @@
-const courseProvider = require('../providers/courseProvider');
+const { courseProvider } = require('../providers');
 
 const getAllCourses = async () => {
   try {

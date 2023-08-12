@@ -1,7 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-const CourseController = require('../controllers/courseController');
+const { CourseController } = require('../controllers');
 
 // Obtener todos los cursos
 router.get('/', CourseController.getAllCourses);
