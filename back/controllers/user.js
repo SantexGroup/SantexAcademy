@@ -23,12 +23,12 @@ const createUser = async (req, res) => {
     return res.status(400).send({ errors: result.array });
   }
   // eslint-disable-next-line object-curly-newline
-  const { nombre, apellido, nombreUsuario, contrasena, email, role, cel } = req.body;
+  const { nombre, apellido, nombreusuario, contrasena, email, role, cel } = req.body;
   try {
     const newUser = await userService.createUser({
       nombre,
       apellido,
-      nombreUsuario,
+      nombreusuario,
       contrasena,
       email,
       role,
@@ -83,13 +83,13 @@ const updateUser = async (req, res) => {
     return res.status(400).send({ errors: result.array });
   }
   // eslint-disable-next-line object-curly-newline
-  const { nombre, apellido, nombreUsuario, contrasena, email, role, cel } = req.body;
+  const { nombre, apellido, nombreusuario, contrasena, email, role, cel } = req.body;
   try {
     // eslint-disable-next-line no-undef
     const newUser = await userService.updateUser(idUser, {
       nombre,
       apellido,
-      nombreUsuario,
+      nombreusuario,
       contrasena,
       email,
       role,

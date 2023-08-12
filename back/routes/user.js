@@ -13,13 +13,13 @@ router.post('/', [
   body('apellido', 'El apellido debe tener más de tres caracteres')
     .exists()
     .isLength({ min: 4 }),
-  body('nombreUsuario', 'El nombre usuario debe tener más de siete caracteres')
+  body('nombreusuario', 'El nombre de usuario debe tener más de siete caracteres')
     .exists()
     .isLength({ min: 8 }),
   body('contrasena', 'La contraseña debe tener al menos 8 caracteres')
     .exists()
     .isLength({ min: 8 }),
-  body('email', 'mail no válido')
+  body('email', 'email no válido')
     .exists()
     .isEmail(),
   body('role', 'Debe ingresar Admin ó encuestador')
@@ -35,12 +35,12 @@ router.put('/:idUser', [
   body('apellido', 'El apellido debe tener mas de tres caracteres')
     .exists()
     .isLength({ min: 4 }),
-  body('nombreUsuario', 'El nombre usuario debe tener más de siete caracteres')
+  body('nombreusuario', 'El nombre de usuario debe tener más de siete caracteres')
     .exists().isLength({ min: 8 }),
   body('contrasena', 'La contraseña debe tener al menos 8 caracteres')
     .exists()
     .isLength({ min: 8 }),
-  body('email', 'mailno válido')
+  body('email', 'email no válido')
     .exists()
     .isEmail(),
   body('role', 'Debe ingresar Admin ó encuestador')
