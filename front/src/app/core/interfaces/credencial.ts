@@ -1,3 +1,5 @@
 export interface Credencial {
-    token:string
+    token:string,
+    tipoUsuario:string
+
 }
