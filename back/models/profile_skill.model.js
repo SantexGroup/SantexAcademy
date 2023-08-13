@@ -8,18 +8,26 @@ module.exports = (sequelize, DataTypes) => {
   class ProfileSkill extends Model {
   }
   ProfileSkill.init({
-    profiles_id: DataTypes.INTEGER,
-    skills_id: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    profilesId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'profiles_id',
+    },
+    skillsId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'skills_id',
+    },
     level: DataTypes.INTEGER,
   }, {
     sequelize,
     timestamps: false,
     tableName: PROFILES_SKILLS_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return ProfileSkill;
 };

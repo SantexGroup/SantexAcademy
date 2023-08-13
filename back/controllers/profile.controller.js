@@ -25,6 +25,21 @@ async function getProfile(req, res, next) {
   }
 }
 
+// Controlador para obetner todos los Perfiles de un Usuario
+async function getProfilesByUserIdController(req, res) {
+  // Desestructuración del objeto req.params para obtener directamente el userId
+  const { id } = req.params;
+  try {
+    const profiles = await profileService.getProfileByUserId(id);
+    // Respondemos con los perfiles obtenidos en formato JSON
+    res.status(201).send(profiles);
+  } catch (error) {
+    // Manejo de errores si ocurre algún problema en el servicio
+    res.status(500).json({ error: 'Error al obtener los perfiles del usuario' });
+  }
+}
+
 module.exports = {
   getProfile,
+  getProfilesByUserIdController,
 };

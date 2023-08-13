@@ -18,21 +18,39 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    nick: DataTypes.STRING,
-    password: DataTypes.STRING,
-    name: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
+    roles_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    nick: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     phone: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
     pictureLink: DataTypes.STRING,
+    deletedAt: DataTypes.DATE,
   }, {
     sequelize,
+    timestamps: false,
     tableName: USERS_TABLE_NAME,
-    defaultScope: {
-      attributes: {
-        exclude: ['deletedAt', 'createdAt', 'updatedAt'],
-      },
-    },
   });
   return User;
 };
