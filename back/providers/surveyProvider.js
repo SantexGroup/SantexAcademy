@@ -17,7 +17,9 @@ async function getSurveysByEmail(email) {
     });
     return surveys;
   } catch (error) {
-    throw new Error(`Error al obtener las encuestas por email: ${error.message}`);
+    throw new Error(
+      `Error al obtener las encuestas por email: ${error.message}`
+    );
   }
 }
 
@@ -64,11 +66,20 @@ async function updateSurvey(id, newData) {
     }
 
     // Actualizar los campos de la encuesta con los nuevos datos
-    await survey.update(newData);
+    // await survey.update(newData);
+    if (newData.email) {
+      survey.email = newData.email;
+    }
+    if (newData.questions) {
+      Object.assign(survey.questions, newData.questions);
+    }
 
+    await survey.save();
     return survey;
   } catch (error) {
-    throw new Error(`Error al actualizar la encuesta con id ${id}: ${error.message}`);
+    throw new Error(
+      `Error al actualizar la encuesta con id ${id}: ${error.message}`
+    );
   }
 }
 
