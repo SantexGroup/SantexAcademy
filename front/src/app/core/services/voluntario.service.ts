@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from '../http/api.service';
 import { Voluntario } from '../interfaces/voluntario';
 import { Observable } from 'rxjs';
+import { Credencial } from '../interfaces/credencial';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,9 @@ export class VoluntarioService {
 
   eliminarVoluntario(id:number):Observable<boolean>{
    return this.apiService.delete<boolean>(`/volunteer/delete-user/${id}`);
+  }
+
+  iniciarSesion(credenciales:any):Observable<Credencial>{
+    return this.apiService.post<Credencial>('/volunteer/login',credenciales)
   }
 }
