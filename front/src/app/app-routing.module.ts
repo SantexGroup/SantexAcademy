@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: ()=> import ('./modules/index/index.module').then(m=>m.IndexModule)
   },
   {
+    path:'voluntarios',
+    loadChildren:()=> import('./modules/voluntarios/voluntarios.module').then(m=>m.VoluntariosModule)
+  },
+  {
     path: '**',
     redirectTo: 'index'
   }
