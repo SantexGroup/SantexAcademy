@@ -4,7 +4,7 @@ import { Observable, catchError, throwError, BehaviorSubject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
-})
+})  
 export class UsuarioService {
   constructor( private http: HttpClient ) { }
 
@@ -17,7 +17,7 @@ export class UsuarioService {
 
   //* metodo para registrar un usuario
   registro(user: any) : Observable <any> {
-    return this.http.get('../../assets/data.json').pipe(
+    return this.http.post('http://localhost:3000/record', user).pipe(
       tap((user: any) => {
         this.dataUser.next(user);
         this.registrodeUsuario.next(true);
