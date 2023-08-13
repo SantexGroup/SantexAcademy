@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../http/api.service';
 import { Voluntario } from '../interfaces/voluntario';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Credencial } from '../interfaces/credencial';
 
 @Injectable({
@@ -41,6 +41,22 @@ export class VoluntarioService {
   }
 
   iniciarSesion(credenciales:any):Observable<Credencial>{
-    return this.apiService.post<Credencial>('/volunteer/login',credenciales)
+    return this.apiService.post<Credencial>('/volunteer/login',credenciales).pipe(
+      //Se crea un pipe para manipular la respuesta de la peticion y se crea un objeto de tipo credencial
+      // para poder mandarle las nuevas credenciales al observable credencialesVoluntario
+
+      map((res)=>{
+        
+        const credenciales:Credencial = {
+          token:res.token,
+          tipoUsuario:'voluntario'
+        }
+
+        this.credencialesVoluntario.next(credenciales);
+        
+        return credenciales;
+
+      })
+    );
   }
 }
