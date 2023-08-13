@@ -71,13 +71,12 @@ export class LoginComponent implements OnInit {
       }
 
       this.voluntarioService.iniciarSesion(credenciales).subscribe({
-        next:(res)=>{
+        next:()=>{
           this.matSnackBar.open('Inicio de sesión exitoso!','OK',{
             duration:3000,
           horizontalPosition:'center',
           verticalPosition:'top'});
-          console.log(res.token);
-          this.router.navigate(['/']);
+          this.router.navigate(['/voluntarios']);
           
         },
         error:(err)=>{
