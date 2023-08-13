@@ -48,36 +48,15 @@ async function login(nick, password) {
 }
 
 // Servicio que actualiza datos de un usuario
-async function updateUser(id, nick, password, name, lastName, email, phone) {
+async function updateUser(id, data) {
   // Buscar al usuario en la base de datos por su ID
   const user = await User.findByPk(id);
-  // Actualizar los campos del usuario con los nuevos valores proporcionados, si existen
-  if (id) {
-    user.id = id;
-  }
-  if (nick) {
-    user.nick = nick;
-  }
-  if (password) {
-    user.password = password;
-  }
-  if (name) {
-    user.name = name;
-  }
-  if (lastName) {
-    user.lastName = lastName;
-  }
-  if (email) {
-    user.email = email;
-  }
-  if (phone) {
-    user.phone = phone;
-  }
+
   if (!user) {
     throw new Error('El ID del usuario no existe en la base de datos');
   }
   // Guardar el usuario actualizado
-  const userEdited = await user.save();
+  const userEdited = await user.update(data);
   // Devolver el objeto del usuario actualizado
   return userEdited;
 }
