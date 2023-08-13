@@ -13,4 +13,16 @@ async function validateValueInModel(model, value, msg = 'Value not found') {
   }
 }
 
-module.exports = { validateValueInModel };
+/**
+ * Validacion de valores unicos en modelos
+ * Recibe como parametros el modelo, el campo y valor a validar y un mensaje opcional
+ * Si el valor ya existe en el modelo, lanza Error
+ */
+async function isUnique(model, field, value, msg = 'The value is not unique') {
+  const whereClause = { [field]: value };
+  const result = await model.findOne({ where: whereClause });
+  if (result) {
+    throw new Error(msg);
+  }
+}
+module.exports = { validateValueInModel, isUnique };

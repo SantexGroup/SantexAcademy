@@ -1,6 +1,7 @@
 // Los servicios disponibles para usuarios son : Crear un nuevo usuario, actualizar un usuario,
 // eliminar un usuario y Login.
 const jwt = require('jsonwebtoken');
+const AuthenticationException = require('../exceptions/authentication.exceptions');
 const { User } = require('../models');
 
 async function recordUser(rolesId, nick, password, name, lastName, email, phone) {
@@ -25,12 +26,13 @@ async function login(nick, password) {
   const user = await User.findOne({
     where: {
       nick,
-      password,
     },
   });
-  // Si no se encuentra el usuario, lanzar un error indicando que las credenciales son incorrectas
-  if (!user) {
-    throw new Error('El nick o contraseña son incorrectos');
+
+  // Si no se encuentra el usuario o la contraseña no es correcta,
+  // lanzar un error indicando que las credenciales son incorrectas
+  if (!user || !await user.checkPassword(password)) {
+    throw new AuthenticationException('El nick o contraseña son incorrectos');
   }
 
   const jwtSecret = process.env.JWT_SECRET;
