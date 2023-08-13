@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { VoluntarioService } from 'src/app/core/services/voluntario.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(fb:FormBuilder,private routeActive:ActivatedRoute, private router:Router ) {
+  constructor(fb:FormBuilder,private routeActive:ActivatedRoute, private router:Router, private voluntarioService:VoluntarioService, private matSnackBar:MatSnackBar ) {
 
     this.formLogin = fb.group({
       email:['',[Validators.required,Validators.email]],
@@ -63,7 +65,32 @@ export class LoginComponent implements OnInit {
   iniciarSesion(){
     if(this.voluntario){
       //Inicio de sesion voluntario
-      console.log("Inicio de sesión voluntario");
+      const credenciales = {
+        email:this.formLogin.value.email,
+        password:this.formLogin.value.password
+      }
+
+      this.voluntarioService.iniciarSesion(credenciales).subscribe({
+        next:(res)=>{
+          this.matSnackBar.open('Inicio de sesión exitoso!','OK',{
+            duration:3000,
+          horizontalPosition:'center',
+          verticalPosition:'top'});
+          console.log(res.token);
+          this.router.navigate(['/']);
+          
+        },
+        error:(err)=>{
+          this.matSnackBar.open('Error al iniciar sesión','ERROR',{
+            duration:3000,
+          horizontalPosition:'center',
+          verticalPosition:'top'}
+          );
+          console.log(err);
+        }
+      });
+
+
     }
 
     if(this.organizacion){
