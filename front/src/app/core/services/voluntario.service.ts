@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../http/api.service';
 import { Voluntario } from '../interfaces/voluntario';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Credencial } from '../interfaces/credencial';
 
 @Injectable({
@@ -10,9 +10,13 @@ import { Credencial } from '../interfaces/credencial';
 export class VoluntarioService {
 
   constructor(private apiService:ApiService) {
-
+   
+    //Se crea el observable en null cuando arranca la aplicación, porque todavia no inició sesión el voluntario.
+    this.credencialesVoluntario = new BehaviorSubject<Credencial | null>(null);
   }
 
+  //Se declara el observable para controlar las credenciales del voluntario pero no se inicializa.
+  credencialesVoluntario:BehaviorSubject<Credencial | null>;
 
 
   crearVoluntario(voluntario:Voluntario):Observable<Voluntario>{
