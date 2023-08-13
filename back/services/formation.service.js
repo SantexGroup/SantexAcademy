@@ -81,7 +81,7 @@ async function deleteFormationData(id) {
 }
 
 /**
- * Obener una lista de OPCIONALES por usuario.
+ * Obener una lista de FORMACIONES por usuario.
  */
 async function fetchFormationssByUserId(userId) {
   const PROFILE = [
@@ -94,16 +94,16 @@ async function fetchFormationssByUserId(userId) {
     },
   ];
 
-  const optinal = await Formation.findAll({
+  const formations = await Formation.findAll({
     include: [...PROFILE, ...TYPES_STATUS],
     distinct: true,
   });
 
-  if (!optinal) {
-    throw new NotFoundException(`Optional with user_id ${userId} not found`);
+  if (!formations) {
+    throw new NotFoundException(`Formations with user_id ${userId} not found`);
   }
 
-  return optinal;
+  return formations;
 }
 
 module.exports = {
