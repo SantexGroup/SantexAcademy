@@ -5,16 +5,17 @@
 /**
  * Module dependencies.
  */
-
-const debug = require('debug')('example-node:server');
 const http = require('http');
+const debug = require('debug')('example-node:server');
 const app = require('../app');
 
 /**
  * Get port from environment and store in Express.
  */
-
-const port = normalizePort(process.env.PORT || '3000');
+// const port = normalizePort('3000');
+// eslint-disable-next-line spaced-comment
+const port = normalizePort('3000');
+// const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**

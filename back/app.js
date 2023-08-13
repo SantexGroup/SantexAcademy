@@ -15,8 +15,8 @@ const logger = require('./utils/winston.logger');
 const models = require('./models');
 
 // Rutes:
-const routes = require('./routes');
 
+const routes = require('./routes');
 const config = require('./config/config');
 const validateEnv = require('./utils/validateEnv');
 
@@ -25,6 +25,7 @@ validateEnv.validate();
 app.use(helmet());
 app.use(helmet.ieNoOpen());
 // Sets "Strict-Transport-Security: max-age=5184000; includeSubDomains".
+
 const sixtyDaysInSeconds = 5184000;
 app.use(helmet.hsts({
   maxAge: sixtyDaysInSeconds,
@@ -86,7 +87,8 @@ models.sequelize.authenticate()
   });
 
 app.use('/', routes);
-const PORT = 4001;
+
+const PORT = process.env.PORT || 4001;
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log('Escuchando al puerto 4001');
