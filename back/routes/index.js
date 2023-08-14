@@ -9,9 +9,11 @@ const app = Express();
 // Rutas
 const courseRoutes = require('./courseRoutes');
 const userRoutes = require('./user');
+const teacherRoutes = require('./teacherRoutes');
 
 // use=
 app.use('/courses', courseRoutes);
+app.use('/teacher', teacherRoutes);
 app.use('/user', userRoutes);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
