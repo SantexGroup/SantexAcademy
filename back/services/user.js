@@ -33,4 +33,18 @@ const getAllUsers = async () => {
   }
 };
 
-module.exports = { createUser, getUserById, getAllUsers };
+const deleteUser = async (id) => {
+  try {
+    const deletedUser = await userProvider.deleteUser(id);
+    if (deletedUser === 0) {
+      throw new Error('User not found');
+    }
+    return deletedUser;
+  } catch (error) {
+    throw new Error('Error when deleting an user');
+  }
+};
+
+module.exports = {
+  createUser, getUserById, getAllUsers, deleteUser,
+};

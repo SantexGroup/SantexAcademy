@@ -26,5 +26,18 @@ const getAllUsers = async () => {
     throw new Error('Error when found the users');
   }
 };
-
-module.exports = { createUser, getUserById, getAllUsers };
+const deleteUser = async (id) => {
+  try {
+    const deletedUser = await User.destroy({
+      where: {
+        id,
+      },
+    });
+    return deletedUser;
+  } catch (error) {
+    throw new Error('Error when deleting an user');
+  }
+};
+module.exports = {
+  createUser, getUserById, getAllUsers, deleteUser,
+};
