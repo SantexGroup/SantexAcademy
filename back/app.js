@@ -20,6 +20,7 @@ const models = require('./models');
 const routes = require('./routes');
 const config = require('./config/config');
 const validateEnv = require('./utils/validateEnv');
+const { DataTypes } = require('sequelize');
 
 const app = express();
 validateEnv.validate();
@@ -71,10 +72,13 @@ const jwtOptions = {
 passport.use(new JwtStrategy(jwtOptions, async (jwtPayload, done) => {
   try {
     const volunteerModel = require('./models/volunteer-model');
+    const coordinatorModel = require('./models/coordinator-model');
     const Volunteer = volunteerModel(sequelize, DataTypes);
+    const Coordinator = coordinatorModel(sequelize, DataTypes);
     const user = await Volunteer.findByPk(jwtPayload.id);
+    const cord = await Coordinator.findByPk(jwtPayload.id);
 
-    if (!user) {
+    if (!user || !cord) {
       return done(null, false);
     }
 

@@ -47,7 +47,7 @@ async function deleteVolunteer(req, res) {
   res.status(200).send(`Usuario con el id ${id} ha sido eliminado exitosamente`);
 }
 
-async function login(req, res) {
+async function loginVolunteer(req, res) {
   const { email, password } = req.body;
 
   try {
@@ -59,5 +59,6 @@ async function login(req, res) {
 }
 
 module.exports = {
-  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, login,
+  // eslint-disable-next-line max-len
+  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, loginVolunteer,
 };
