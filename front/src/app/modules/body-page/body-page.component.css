@@ -1,0 +1,220 @@
+.eslogan{
+    display: flex;
+    flex-direction: column;
+    color: #20272edc;
+    justify-content: center;
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,114,187,1) 100%);
+    width: 100%;
+    
+}
+
+.eslogan-frase{
+    text-align: center;
+    font-weight: 700;
+    font-size: 4em;
+    width: 100%;
+    line-height: 2em;
+    padding: 0 4.5em;
+}
+
+span{
+    color: #2783ec;
+    font-weight: bold;
+    text-align: center;
+}
+
+.div-plantillas{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    margin: 4em;
+
+}
+
+.texto-plantillas{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    margin-right: 3em;
+    
+}
+
+.texto-plantillas h1{
+   color: #2783ec;  
+   
+   text-align:justify;
+   align-items: center;
+   justify-content: center;
+   font-weight: bold;
+}
+.texto-plantillas p{
+    color: #20272edc;
+    text-align: justify;
+    align-items: center;
+    justify-content: center;   
+    font-weight: 600; 
+    margin-top: 3em;
+    line-height: 2.5em;
+ }
+
+.boton-creatucv{
+    margin-top: 3em;
+    width: 8em;
+    font-weight: 600;
+}
+
+#carrusel-plantillas{
+    width: 25%;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+button:hover{
+    border-radius: 40px;
+    background-color: #025a91;
+    color: #ffffff;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+button{
+    border-radius: 15px;
+    background-color: #0072bb;
+    border: 1px solid #ffffff;
+    padding: 10px;
+    color: #ffffff;
+    
+    
+}
+
+.div-objetivos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 7em;
+    padding: 0 5em;
+    justify-content: space-around;
+}
+
+.card-objetivos{
+    display: flex;
+    flex-flow:column nowrap ;
+    align-items: center;
+    width: 33%;
+    padding: 2em;
+    text-align: center;
+    color: #20272edc;   
+    
+}
+.imagen-objetivo{
+    width: 3em;
+    margin: 2em;
+}
+
+.titulo-objetivo{
+    margin: 1em;
+    text-align: center;
+    font-weight: bold;
+    color:#0072bb
+}
+
+.card-objetivos p{
+    line-height: 2em;
+}
+
+.quienes-somos{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 7em;
+    color: #20272edc;
+
+}
+.quienes-somos h1{
+    padding: 3em;
+    color: #2783ec;  
+    margin: 1em;
+    text-align:justify;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+
+}
+
+.quienes-somos p{
+    padding: 0em 10em;
+    line-height: 2.5em;
+}
+
+.preguntas-frecuentes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 7em;
+}
+
+.preguntas-frecuentes h1{
+    color: #2783ec;  
+    margin: 1em;
+    text-align:justify;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+mat-expansion-panel{
+    width: 100%;
+}
+mat-panel-title{
+    justify-content: center;
+    font-weight: bold;
+
+}
+
+
+
+@media screen and (max-width: 720px){
+
+    .eslogan-frase{
+        font-size: 3em;
+        margin: 3em 0em 4em 0em;
+        padding: 0;
+    }
+    .div-plantillas{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+    }
+    #carrusel-plantillas{
+        width: 70%;
+        margin-top: 3em;
+        
+    }
+
+    .div-objetivos{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+
+    }
+    .card-objetivos{
+        margin: 0;
+        width: 100%;
+    }
+    .quienes-somos p{
+        padding: 2em;
+    }
+
+}
