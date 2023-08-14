@@ -9,9 +9,20 @@ const getAllTeachers = async (req, res) => {
   }
 };
 
-// Falta las funciones de create, getById, update y delete similar a CourseController
+const getTeachersById = async (req, res) => {
+  const teacherId = req.params.id;
+  try {
+    const teachers = await teacherService.getTeachersById(teacherId);
+    res.json(teachers);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al obtener al docente' });
+  }
+};
+
+// Falta las funciones de create, update y delete similar a CourseController
 
 module.exports = {
   getAllTeachers,
+  getTeachersById,
   // Falta aquí las demás funciones
 };

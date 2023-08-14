@@ -13,7 +13,7 @@ const teacherRoutes = require('./teacherRoutes');
 
 // use=
 app.use('/courses', courseRoutes);
-app.use('/teacher', teacherRoutes);
+app.use('/teachers', teacherRoutes);
 app.use('/user', userRoutes);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
