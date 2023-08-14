@@ -10,7 +10,16 @@ const getOneCourse = async (courseId) => {
   return getCourse;
 };
 
+const createCourseServ = async (course) => {
+  const newCourse = await CourseProvider.newCourseProv(
+    course,
+  );
+
+  return newCourse;
+};
+
 module.exports = {
   getAllCourses,
   getOneCourse,
+  createCourseServ,
 };

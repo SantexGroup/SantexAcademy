@@ -12,8 +12,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
+<<<<<<< HEAD
       unique: true,
 
+=======
+>>>>>>> development
     },
     courseName: {
       type: DataTypes.STRING,

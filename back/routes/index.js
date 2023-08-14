@@ -17,8 +17,8 @@ app.use('/ping', (req, res) => {
     response: 'pong!',
   });
 });
+app.use('/courses', courseRouter);
 app.use('/users', userRouter);
-app.use('/course', courseRouter);
 app.get('/onlyadmin', isAdminMdw, (req, res) => {
   res.send({
     msg: 'Aca solo llegan los admins',
@@ -29,6 +29,7 @@ app.get('/onlyteacher', isTeacherMdw, (req, res) => {
     msg: 'Aca solo llegan los teachers',
   });
 });
+
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
