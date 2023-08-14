@@ -18,4 +18,13 @@ const getUserById = async (id) => {
   }
 };
 
-module.exports = { createUser, getUserById };
+const getAllUsers = async () => {
+  try {
+    const users = await User.findAll();
+    return users;
+  } catch (error) {
+    throw new Error('Error when found the users');
+  }
+};
+
+module.exports = { createUser, getUserById, getAllUsers };

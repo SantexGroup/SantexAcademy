@@ -9,4 +9,7 @@ router.post('/', userController.createUser);
 // Obtener un usuario por Id
 router.get('/:id', userController.getUserById);
 
+// Obtener todos los usuarios
+router.get('/', userController.getAllUsers);
+
 module.exports = router;

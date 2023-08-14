@@ -21,4 +21,16 @@ const getUserById = async (id) => {
   }
 };
 
-module.exports = { createUser, getUserById };
+const getAllUsers = async () => {
+  try {
+    const users = await userProvider.getAllUsers();
+    if (!users) {
+      throw new Error('Users not found ');
+    }
+    return users;
+  } catch (error) {
+    throw new Error('Error when searching for users ');
+  }
+};
+
+module.exports = { createUser, getUserById, getAllUsers };
