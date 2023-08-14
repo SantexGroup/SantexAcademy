@@ -1,3 +1,5 @@
+/* eslint-disable no-else-return */
+/* eslint-disable no-useless-catch */
 const { Op } = require('sequelize');
 const { User } = require('../models');
 
@@ -73,10 +75,27 @@ const updateUser = async (idUser, attributes) => {
     throw error;
   }
 };
+
+const validateUser = async (nombreusuario, contrasena) => {
+  try {
+    const user = await User.findOne({
+      where: { nombreusuario, contrasena },
+    });
+    if (user) {
+      return user;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   getUser,
   createUser,
   getUsers,
   deleteUser,
   updateUser,
+  validateUser,
 };

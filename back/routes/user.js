@@ -3,6 +3,7 @@ const { body } = require('express-validator');
 
 const router = express.Router();
 const { userController } = require('../controllers');
+const { authMiddleware } = require('../middleware/authentication-jwt');
 
 router.get('/:idUser', userController.getUser);
 router.get('/', userController.getUsers);
@@ -26,8 +27,10 @@ router.post('/', [
     .exists()
     .isLength({ min: 5 }),
 ],
-userController.createUser);
-router.delete('/:idUser', userController.deleteUser);
+authMiddleware, userController.createUser);
+
+router.delete('/:idUser', authMiddleware, userController.deleteUser);
+
 router.put('/:idUser', [
   body('nombre', 'El nombre debe tener más de dos caracteres')
     .exists()
@@ -46,6 +49,6 @@ router.put('/:idUser', [
   body('role', 'Debe ingresar Admin ó encuestador')
     .exists()
     .isLength({ min: 5 }),
-], userController.updateUser);
+], authMiddleware, userController.updateUser);
 
 module.exports = router;
