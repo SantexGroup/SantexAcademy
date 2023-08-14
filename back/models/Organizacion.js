@@ -17,7 +17,7 @@ const Organizacion = sequelize.define(
       unique: 'nombre_UNIQUE',
     },
     email: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(100),
       allowNull: false,
       unique: 'email_UNIQUE',
     },
@@ -49,35 +49,11 @@ const Organizacion = sequelize.define(
         ],
       },
       {
-        name: 'nombre_UNIQUE',
-        unique: true,
-        using: 'BTREE',
-        fields: [
-          { name: 'nombre' },
-        ],
-      },
-      {
-        name: 'email_UNIQUE',
-        unique: true,
-        using: 'BTREE',
-        fields: [
-          { name: 'email' },
-        ],
-      },
-      {
         name: 'cuit_UNIQUE',
         unique: true,
         using: 'BTREE',
         fields: [
           { name: 'cuit' },
-        ],
-      },
-      {
-        name: 'telefono_UNIQUE',
-        unique: true,
-        using: 'BTREE',
-        fields: [
-          { name: 'telefono' },
         ],
       },
     ],
