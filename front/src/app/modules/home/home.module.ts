@@ -4,13 +4,15 @@ import { IntroductionComponent } from './components/introduction/introduction.co
 import { HomePageComponent } from './home-page/home-page.component';
 import { SliderOrganizationsComponent } from './components/slider-organizations/slider-organizations.component';
 import { CardsAgendahoursComponent } from './components/cards-agendahours/cards-agendahours.component';
+import { VolunteeringSearchComponent } from './components/volunteering-search/volunteering-search.component';
 
 @NgModule({
   declarations: [
     IntroductionComponent,
     HomePageComponent,
     SliderOrganizationsComponent,
-    CardsAgendahoursComponent
+    CardsAgendahoursComponent,
+    VolunteeringSearchComponent
   ],
   imports: [
     CommonModule,

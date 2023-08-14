@@ -1,0 +1,56 @@
+.bg-image {
+  background-image: url(https://res.cloudinary.com/carina-bosio/image/upload/v1691970346/xAcademy/img-volunteering-search_sm0vvp.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.text-centered {
+  text-align: center;
+  font-family: Poppins;
+  font-size: clamp(1.25rem, 0.893rem + 1.79vw, 2.5rem);
+}
+
+.flex {
+  display: flex;
+  /* gap: 76px; */
+  gap: clamp(1.563rem, 0.652rem + 4.55vw, 4.75rem);
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.rounded-full {
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 390px) {
+  .rounded-full {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+.category {
+  font-size: clamp(1.125rem, 0.982rem + 0.71vw, 1.625rem);
+}
+
+.btn-shadow {
+  font-size: clamp(0.938rem, 0.848rem + 0.45vw, 1.25rem);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+  &:hover {
+    background-color: #ffffff;
+    color: #3F2883;
+    outline: 2px solid #3F2883;
+  }
+}
