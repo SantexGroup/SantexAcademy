@@ -60,11 +60,7 @@ module.exports = (sequelize, DataTypes) => {
   {
     sequelize,
     timestamps: false,
-<<<<<<< HEAD
     paranoid: true,
-=======
-    paranoid: false,
->>>>>>> origin/SAN-35-1
     modelName: 'User',
     tableName: 'Users',
   });
