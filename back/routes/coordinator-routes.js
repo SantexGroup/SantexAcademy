@@ -8,5 +8,6 @@ router.get('/get-coordinator-by-id/:id', coordinatorController.getCoordinatorByI
 router.post('/create-user', coordinatorController.createCoordinator);
 router.put('/edit-user/:id', coordinatorController.editCoordinator);
 router.delete('/delete-user/:id', coordinatorController.deleteCoordinator);
+router.post('/login', coordinatorController.loginCoordinator);
 
 module.exports = router;

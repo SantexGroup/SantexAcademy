@@ -1,6 +1,7 @@
 const { DataTypes, Sequelize } = require('sequelize');
 const coordinatorModel = require('../models/coordinator-model');
 const { sequelize } = require('../models');
+const jwt = require('jsonwebtoken');
 
 async function getAll() {
   const Coordinator = coordinatorModel(sequelize, DataTypes);
@@ -69,6 +70,24 @@ async function deleteUser(id) {
   await user.destroy();
 }
 
+async function login(email, password) {
+  const Coordinator = coordinatorModel(sequelize, DataTypes);
+  const user = await Coordinator.findOne({
+    where: {
+      email:email,
+      password:password,
+    },
+  });
+
+  if (!user) {
+    throw new Error('Email o contraseña incorrectos');
+  }
+
+  const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+  return token;
+}
+
 module.exports = {
-  getAll, getById, createUser, editUser, deleteUser,
+  getAll, getById, createUser, editUser, deleteUser, login,
 };

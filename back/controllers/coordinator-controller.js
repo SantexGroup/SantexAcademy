@@ -46,6 +46,18 @@ async function deleteCoordinator(req, res) {
   res.status(200).send(`Usuario con el id ${id} ha sido eliminado exitosamente`);
 }
 
+async function loginCoordinator(req, res) {
+  const { email, password } = req.body;
+
+  try {
+    const token = await coordinatorServices.login(email, password);
+    res.json({ token });
+  } catch (error) {
+    res.status(401).json({ message: 'Credenciales incorrectas' });
+  }
+}
+
 module.exports = {
-  getAllCoordinators, getCoordinatorById, createCoordinator, editCoordinator, deleteCoordinator,
+  // eslint-disable-next-line max-len
+  getAllCoordinators, getCoordinatorById, createCoordinator, editCoordinator, deleteCoordinator, loginCoordinator,
 };
