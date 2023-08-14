@@ -5,8 +5,8 @@ const createUser = async (user) => {
   return newU;
 };
 
-const findUserByEmail = async (email) => {
-  const found = await userProvider.findUser(email);
+const findUserById = async (user) => {
+  const found = await userProvider.findUser(user);
   return found;
 };
 
@@ -15,20 +15,20 @@ const findUsers = async () => {
   return found;
 };
 
-const modifyAUser = async (email, newUser) => {
-  const updatedUser = await userProvider.modifyUser(email, newUser);
+const modifyAUser = async (userId, newUser) => {
+  const updatedUser = await userProvider.modifyUser(userId, newUser);
   return updatedUser;
 };
 
-const deleteByEmail = async (email) => {
-  const userToDelete = await userProvider.deleteUser(email);
+const deleteById = async (userId) => {
+  const userToDelete = await userProvider.deleteUser(userId);
   return userToDelete;
 };
 
 module.exports = {
   createUser,
-  findUserByEmail,
+  findUserById,
   findUsers,
   modifyAUser,
-  deleteByEmail,
+  deleteById,
 };

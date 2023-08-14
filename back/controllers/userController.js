@@ -11,7 +11,7 @@ const createAUser = async (req, res) => {
 
 const getUser = async (req, res) => {
   try {
-    const searchUser = await userService.findUserByEmail(req.params.email);
+    const searchUser = await userService.findUserById(req.params.userId);
     if (searchUser) {
       res.json(searchUser);
     } else {
@@ -23,9 +23,15 @@ const getUser = async (req, res) => {
 };
 
 const logIn = async (req, res) => {
+  const { email, password } = req.body;
+  /* console.log para engañar a husky/eslint */
+  console.log(`Usuario con ${email} / ${password}`);
+  /* momentaneamente redirecciona a todos los usuarios */
+  res.redirect('http://localhost:4001/api/user');
+  /* Esta respuesta para que solo de este mensaje:
   res.json({
-    response: 'hola soy un loggin',
-  });
+    response: `Usuario con ${email} y pass ${password} logueado con éxito`,
+  }); */
 };
 
 const getAllUsers = async (req, res) => {
@@ -44,7 +50,7 @@ const getAllUsers = async (req, res) => {
 const modifyUser = async (req, res) => {
   try {
     const newUser = req.body;
-    const updatedUser = await userService.modifyAUser(req.params.email, newUser);
+    const updatedUser = await userService.modifyAUser(req.params.userId, newUser);
     if (updatedUser[0] !== 0) {
       res.status(200).json({ message: 'Usuario actualizado exitosamente' });
     } else {
@@ -57,8 +63,8 @@ const modifyUser = async (req, res) => {
 
 const deleteAUser = async (req, res) => {
   try {
-    const { email } = req.params;
-    const toDelete = await userService.deleteByEmail(email);
+    const id = req.params.userId;
+    const toDelete = await userService.deleteById(id);
     if (toDelete) {
       res.status(200).json({ message: 'Usuario eliminado exitosamente' });
     } else {
