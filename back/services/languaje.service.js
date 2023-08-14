@@ -1,49 +1,76 @@
+const { addRelation, updateRelation } = require('../helpers/relations.helper');
 const { Profile, Language, ProfileLanguage } = require('../models');
 
-async function addLanguageToProfile(languagesId, profilesId, level) {
-  try {
-    const profile = await Profile.findByPk(profilesId);
-    const language = await Language.findByPk(languagesId);
-
-    if (!profile || !language) {
-      throw new Error('Profile or Language not found');
-    }
-
-    const newRelation = await ProfileLanguage.create({
-      languagesId,
-      profilesId,
-      level,
-    });
-
-    return newRelation;
-  } catch (error) {
-    throw new Error(error.message);
+async function getLanguage(id) {
+  const language = await Language.findByPk(id, {
+    include: [{
+      model: ProfileLanguage,
+      as: 'ProfileLanguages',
+      attributes: ['id', 'profiles_id', 'level'],
+    }],
+  });
+  if (language) {
+    return language;
   }
+  throw new Error(' Lenguaje no encontrado ');
 }
 
-async function getLanguagesByUser(id) {
-  try {
-    const userLanguages = await Profile.findOne({
-      where: { user_id: id },
-      include: [
-        {
-          model: Language,
-          through: {
-            model: ProfileLanguage,
-            attributes: ['level'],
-          },
+// service que trae todos los idiomas de un usuario
+async function getAllLanguage(id) {
+  const language = await Language.findAll({
+    include: [
+      {
+        model: Profile,
+        as: 'LanguageToProfile',
+        attributes: [],
+        where: {
+          user_id: id,
         },
-      ],
-    });
-
-    if (userLanguages) {
-      return userLanguages.Languages;
-    }
-
-    return [];
-  } catch (error) {
-    throw new Error(error.message);
+      },
+    ],
+    distinct: true,
+  });
+  if (language) {
+    return language;
   }
+  throw new Error(`No existe el lenguaje para el usuario ${id}`);
+}
+// servicio que Agrega un lenguaje
+async function addLanguage(
+  language,
+  level,
+  profileId,
+) {
+  const createLanguage = await Language.create({
+    language,
+  });
+
+  await addRelation(ProfileLanguage, createLanguage.id, profileId, level);
+
+  const newLanguage = await getLanguage(createLanguage.id);
+
+  return newLanguage;
 }
 
-module.exports = { addLanguageToProfile, getLanguagesByUser };
+async function updateLanguage(id, level, profileId) {
+  // Obtener el idioma existente
+  const language = await getLanguage(id);
+
+  // Obtener el ID de la relación entre idioma y perfil
+  const relationId = language.ProfileLanguages.id;
+
+  // Actualizar la relación entre idioma y perfil
+  await updateRelation(ProfileLanguage, relationId, id, profileId, level);
+
+  // Obtener el idioma actualizado
+  const upgradedLanguage = await getLanguage(id);
+
+  return upgradedLanguage;
+}
+
+module.exports = {
+  getLanguage,
+  getAllLanguage,
+  addLanguage,
+  updateLanguage,
+};

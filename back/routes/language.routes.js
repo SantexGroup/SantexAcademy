@@ -1,11 +1,12 @@
 const express = require('express');
 
 const router = express.Router();
-const langujeController = require('../controllers/language.controller');
+const languageController = require('../controllers/language.controller');
 
-// endpoint que agrega un lenguaje al perfil
-router.post('/new', langujeController.addLanguageToProfile);
-// endpoint que busca los lenguajes de un perfil
-router.get('/allLanguages/:id', langujeController.getLanguagesByUser);
+router.get('/:id', languageController.languageGet);
+router.get('/all/:id', languageController.languageGetAll);
+router.post('/add', languageController.languageAdd);
+router.put('/update/:id', languageController.languageUpdate);
+// router.delete('/delete/:id', languageController.languageDelete);
 
 module.exports = router;
