@@ -6,14 +6,9 @@ const createCourse = async (CourseOptions) => {
   try {
     //obtiene el objeto
     const getObjetCategory = await CategoryProvider.getCategoryByName(CourseOptions.CourseCategoryName);
-    //obtiene el id de la categoria 
-    const idCategory = await CategoryProvider.getCategory(getObjetCategory.id);
-
     //obtiene objeto del horario
-    console.log(CourseOptions.start)
     const getObjetSchedule = await ScheduleProvider.getScheduleByTime(CourseOptions.start);
-    //obtiene el id del horario
-    const idSchedule = await ScheduleProvider.getSchedule(getObjetSchedule.id);
+    
     const newCourse = await Course.create({  
       name: CourseOptions.name,
       description:CourseOptions.description,
@@ -24,10 +19,10 @@ const createCourse = async (CourseOptions) => {
       price: CourseOptions.price,
       requirement: CourseOptions.requirement,
       teacher: CourseOptions.teacher,
-      CourseCategoryId: idCategory.dataValues.id
+      CourseCategoryId: getObjetCategory.id
     });
     const relation = await ScheduleCourses.create({
-      idSchedule:idSchedule.dataValues.id,
+      idSchedule:getObjetSchedule.id,
       idCourse: newCourse.id
     })
     return newCourse;
