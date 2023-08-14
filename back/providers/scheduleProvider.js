@@ -14,6 +14,19 @@ const createSchedule = async (options) => {
   }
 };
 
+const getScheduleByTime=async (start) =>{
+  try {
+    const scheduleSelect = await schedule.findOne({where: { start},});
+    if (scheduleSelect) {
+      return scheduleSelect;
+    } else {
+      throw new Error("no get schedule found");
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
 const getSchedules = async () => {
   try {
     const Schedules = await schedule.findAll();
@@ -64,5 +77,5 @@ module.exports = {
   getSchedule,
   getSchedules,
   updateSchedule,
-
+  getScheduleByTime
 };

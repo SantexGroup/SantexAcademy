@@ -7,11 +7,38 @@ router.get("/", CourseController.getCourses);
 
 router.get("/:CourseId", CourseController.getByIdCourse);
 
-router.post("/", CourseController.createCourse);
+router.post(
+  "/",
+  body("name").isString(),
+  body("description").isString(),
+  body("maxStudents").isInt(),
+  body("start").isString(),
+  body("end").isString(),
+  body("active").isBoolean(),
+  body("price").isInt(),
+  body("requirement").isString(),
+  body("teacher").isString(),
+  body("CourseCategoryName").isString(),
 
-router.put("/:CourseId",CourseController.updateCourse);
+  CourseController.createCourse
+);
 
-router.delete( "/:CourseId",CourseController.deleteCourse);
+router.put(
+  "/:CourseId",
+  body("name").isString(),
+  body("description").isString(),
+  body("maxStudents").isInt(),
+  body("start").isString(),
+  body("end").isString(),
+  body("active").isBoolean(),
+  body("price").isInt(),
+  body("requirement").isString(),
+  body("teacher").isString(),
+  body("CourseCategoryName").isString(),
+  CourseController.updateCourse
+);
+
+router.delete("/:CourseId", CourseController.deleteCourse);
 
 //export
 module.exports = router;

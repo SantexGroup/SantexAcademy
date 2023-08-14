@@ -5,9 +5,7 @@ const {CourseCategory} = require("../models");
 const createCategory = async (options) => {
   console.log(options)
   try {
-
     const  newCategory = await CourseCategory.create(options);
-    
     return newCategory;
   } catch (error) {
     throw error;

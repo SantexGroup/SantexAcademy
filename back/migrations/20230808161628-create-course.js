@@ -48,6 +48,7 @@ module.exports = {
         type:Sequelize.STRING
       },
       CourseCategoryId:{
+        allowNull:true,
         type:Sequelize.INTEGER,
         references:{
         model:'CourseCategories',

@@ -12,13 +12,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       //define association here
-      //Course.hasOne(models.CourseCategory)
-     // models.CourseCategory.hasMany(Course)
      Course.belongsTo(models.CourseCategory,{
       foreignKey:'id',
       target_key:'CourseCategoryId'
   
      })
+     Course.hasMany(models.ScheduleCourses,{
+      foreignKey: 'idCourse'
+      })
     }
   }
   Course.init({
@@ -31,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.INTEGER,
     requirement:DataTypes.STRING,
     teacher:DataTypes.STRING,
-    CourseCategoryId:DataTypes.INTEGER  
+    CourseCategoryId:DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Course',
