@@ -39,6 +39,17 @@ const deleteUser = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res) => {
+  const userId = req.params.id;
+  const userData = req.body;
+  try {
+    const updatedUser = await userService.updateUser(userId, userData);
+    res.json({ message: 'User successfully updated ', count: updatedUser });
+  } catch (error) {
+    res.status(500).json({ error: 'Error when updating user' });
+  }
+};
+
 module.exports = {
-  createUser, getUserById, getAllUsers, deleteUser,
+  createUser, getUserById, getAllUsers, deleteUser, updateUser,
 };

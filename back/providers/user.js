@@ -38,6 +38,20 @@ const deleteUser = async (id) => {
     throw new Error('Error when deleting an user');
   }
 };
+
+const updateUser = async (id, user) => {
+  try {
+    const [updatedUser] = await User.update(user, {
+      where: {
+        id,
+      },
+    });
+    return updatedUser;
+  } catch (error) {
+    throw new Error('Error when updating user');
+  }
+};
+
 module.exports = {
-  createUser, getUserById, getAllUsers, deleteUser,
+  createUser, getUserById, getAllUsers, deleteUser, updateUser,
 };

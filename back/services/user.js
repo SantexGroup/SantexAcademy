@@ -45,6 +45,18 @@ const deleteUser = async (id) => {
   }
 };
 
+const updateUser = async (id, userData) => {
+  try {
+    const updatedUser = await userProvider.updateUser(id, userData);
+    if (updatedUser === 0) {
+      throw new Error('User not found');
+    }
+    return updatedUser;
+  } catch (error) {
+    throw new Error('Error when updating user');
+  }
+};
+
 module.exports = {
-  createUser, getUserById, getAllUsers, deleteUser,
+  createUser, getUserById, getAllUsers, deleteUser, updateUser,
 };
