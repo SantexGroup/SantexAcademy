@@ -9,4 +9,16 @@ const createUser = async (userData) => {
   }
 };
 
-module.exports = { createUser };
+const getUserById = async (id) => {
+  try {
+    const user = await userProvider.getUserById(id);
+    if (!user) {
+      throw new Error('User not found ');
+    }
+    return user;
+  } catch (error) {
+    throw new Error('Error when searching for user ');
+  }
+};
+
+module.exports = { createUser, getUserById };
