@@ -2,13 +2,33 @@
     <h2 class="titulo">Login de {{titulo}}</h2>
     <form class="formulario" [formGroup]="formLogin" >
   
-        <input type="email" class="input-full-width" required formControlName="email"  placeholder="Ingresá el email *"
-        [ngClass]="{'input-invalid':formLogin.get('email')?.touched && formLogin.get('email')?.invalid,
-                    'input-valid':formLogin.get('email')?.touched && formLogin.get('email')?.valid}">
         
-        <input [type]="mostrarPassword?'text':'password'" class="input-full-width" required formControlName="password"  placeholder="Ingresá la contraseña *" autocomplete="current-password"
-        [ngClass]="{'input-invalid':formLogin.get('password')?.touched && formLogin.get('password')?.invalid,
-                    'input-valid':formLogin.get('password')?.touched && formLogin.get('password')?.valid}">
+        <div class="contenedor-input">
+
+            <input type="email" class="input-full-width" required formControlName="email"  placeholder="Ingresá el email *"
+            [ngClass]="{'input-invalid':formLogin.get('email')?.touched && formLogin.get('email')?.invalid,
+            'input-valid':formLogin.get('email')?.touched && formLogin.get('email')?.valid}">
+            
+            <p *ngIf="formLogin.get('email')?.touched && formLogin.get('email')?.value == ''" 
+            class="mensaje-error">Este campo es obligatorio</p>
+
+            <p *ngIf="formLogin.get('email')?.touched && formLogin.get('email')?.value != '' && formLogin.get('email')?.errors" 
+            class="mensaje-error">Ingrese un email válido</p>
+
+        </div>          
+        
+        <div class="contenedor-input">
+
+            <input [type]="mostrarPassword?'text':'password'" class="input-full-width" required formControlName="password"  placeholder="Ingresá la contraseña *" autocomplete="current-password"
+            [ngClass]="{'input-invalid':formLogin.get('password')?.touched && formLogin.get('password')?.invalid,
+            'input-valid':formLogin.get('password')?.touched && formLogin.get('password')?.valid}">
+            
+            <p *ngIf="formLogin.get('password')?.touched && formLogin.get('password')?.invalid" 
+            class="mensaje-error">Este campo es obligatorio</p>
+            
+            
+         </div>   
+                   
             
 
         

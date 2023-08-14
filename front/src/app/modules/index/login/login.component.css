@@ -32,7 +32,6 @@
     width: 100%;
     padding: 10px 20px;
     border-radius: 20px;
-    margin-bottom: 20px;
     border:none;
     font-style: italic;
     outline: none;
@@ -101,3 +100,16 @@
     background-color: rgba(0,0,0,.5);
     color: white;
 }
+
+.contenedor-input{
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.mensaje-error{
+    color: white;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
