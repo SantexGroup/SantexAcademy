@@ -17,6 +17,11 @@ const routes: Routes = [
     canLoad:[VoluntarioGuard]
   },
   {
+    path:'organizaciones',
+    loadChildren:()=>import('./modules/organizaciones/organizaciones.module').then(m=>m.OrganizacionesModule),
+    
+  },
+  {
     path: '**',
     redirectTo: 'index'
   }
