@@ -4,10 +4,10 @@ const router = express.Router();
 
 const ReferenceController = require('../controllers/references.controllers');
 
-router.get('/getreference/:id', ReferenceController.referenceGet);
-router.get('/allreferences/:id', ReferenceController.referencesGetAll);
-router.put('/updatereference/:id', ReferenceController.referenceUpdate);
-router.post('/addreference', ReferenceController.referenceCreate);
-router.delete('/delreference/:id', ReferenceController.referenceDelete);
+router.get('/:id', ReferenceController.referenceGet);
+router.get('/all/:id', ReferenceController.referencesGetAll);
+router.put('/update/:id', ReferenceController.referenceUpdate);
+router.post('/add', ReferenceController.referenceCreate);
+router.delete('/delete/:id', ReferenceController.referenceDelete);
 
 module.exports = router;

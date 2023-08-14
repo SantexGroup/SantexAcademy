@@ -6,6 +6,11 @@ const { PROFILES_SKILLS_TABLE_NAME } = require('../helpers/sequelize.helper');
 
 module.exports = (sequelize, DataTypes) => {
   class ProfileSkill extends Model {
+    static associate(models) {
+      models.ProfileSkill.belongsTo(models.Skill, {
+        foreignKey: 'skills_id',
+      });
+    }
   }
   ProfileSkill.init({
     id: {
