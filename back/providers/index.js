@@ -1,3 +1,4 @@
 const courseProvider = require('./courseProvider');
+const teacherProvider = require('./teacherProvider');
 
-module.exports = { courseProvider };
+module.exports = { courseProvider, teacherProvider };
