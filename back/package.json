@@ -20,27 +20,29 @@
     "debug": "^4.3.4",
     "dotenv": "^8.6.0",
     "envalid": "^7.3.1",
-    "express": "^4.17.3",
+    "express": "^4.18.2",
     "express-session": "^1.17.3",
-    "express-validator": "6.6.1",
+    "express-validator": "^6.6.1",
+    "faker": "^5.5.3",
     "helmet": "^4.6.0",
     "lint-staged": "^10.5.4",
+    "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "morgan": "~1.10.0",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.29.0",
-    "sequelize-cli": "^6.6.0",
+    "sequelize": "^6.32.1",
     "winston": "^3.10.0",
     "winston-daily-rotate-file": "^4.7.1",
     "winston-transport": "^4.5.0",
-    "xss-clean": "^0.1.1"
+    "xss-clean": "^0.1.4"
   },
   "devDependencies": {
-    "eslint": "^7.27.0",
+    "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-import": "^2.28.0",
     "husky": "^4.3.8",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "sequelize-cli": "^6.6.1"
   },
   "husky": {
     "hooks": {
