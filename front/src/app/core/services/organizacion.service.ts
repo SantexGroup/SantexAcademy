@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../http/api.service';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Organizacion } from '../interfaces/organizacion';
+import { DatosLogin } from '../interfaces/DatosLogin';
+import { Credencial } from '../interfaces/credencial';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +34,19 @@ export class OrganizacionService {
 
   eliminarOrganizacion(id:number):Observable<boolean>{
    return this.apiService.delete<boolean>(`/coordinator/delete-user/${id}`);
+  }
+
+  iniciarSesion(datosLogin:DatosLogin):Observable<Credencial>{
+    return this.apiService.post<Credencial>("/coordinator/login", datosLogin).pipe(
+      map((res)=>{
+
+        const credencial:Credencial = {
+          token: res.token,
+          tipoUsuario:'organizacion'
+        }
+        
+        return credencial;
+      })
+    );
   }
 }
