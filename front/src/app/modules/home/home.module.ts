@@ -5,6 +5,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { SliderOrganizationsComponent } from './components/slider-organizations/slider-organizations.component';
 import { CardsAgendahoursComponent } from './components/cards-agendahours/cards-agendahours.component';
 import { VolunteeringSearchComponent } from './components/volunteering-search/volunteering-search.component';
+import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { VolunteeringSearchComponent } from './components/volunteering-search/vo
     HomePageComponent,
     SliderOrganizationsComponent,
     CardsAgendahoursComponent,
-    VolunteeringSearchComponent
+    VolunteeringSearchComponent,
+    TestimonialsComponent
   ],
   imports: [
     CommonModule,
