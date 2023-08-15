@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
-import { CarouselModule } from 'primeng/carousel';
+import { AccordionModule } from 'primeng/accordion';
 
 @NgModule({
   declarations: [],
@@ -14,7 +14,7 @@ import { CarouselModule } from 'primeng/carousel';
   exports: [
     ButtonModule,
     DividerModule,
-    CarouselModule
+    AccordionModule,
   ]
 })
 export class PrimengModule { }
