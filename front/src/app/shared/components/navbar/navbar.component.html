@@ -1,0 +1,49 @@
+<header
+  class="fixed top-0 w-full flex flex-col p-6 bg-white z-20 lg:gap-4 lg:relative"
+>
+  <div class="w-full flex items-center justify-between">
+    <figure class="flex items-center gap-2">
+      <img
+        src="/assets/logo/logohand.svg"
+        alt="logo"
+        class="w-[50px] m:w-[70px]"
+      />
+      <img
+        src="/assets/logo/logovoluntime.svg"
+        alt="logo"
+        class="w-[80px] m:w-[100px]"
+      />
+    </figure>
+
+    <i
+      [ngClass]="!isOpen ? 'hidden' : 'visible'"
+      class="bx bx-menu text-3xl cursor-pointer m:text-4xl lg:hidden"
+      (click)="handleMenu()"
+    ></i>
+    <i
+      [ngClass]="isOpen ? 'hidden' : 'visible'"
+      class="bx bx-x text-3xl cursor-pointer m:text-4xl lg:hidden"
+      (click)="handleMenu()"
+    ></i>
+    <ul class="hidden lg:flex items-center justify-center gap-6 text-base">
+      <li>Quienes somos</li>
+      <li>¿Tienes dudas? <i class="bx bx-chevron-down"></i></li>
+      <li>Contacto</li>
+      <i class="bx bx-search"></i>
+    </ul>
+  </div>
+
+  <nav [ngClass]="isOpen ? 'navbar' : 'navbar navbar-closed'">
+    <ul
+      class="w-full flex flex-col items-center justify-center gap-4 m:text-lg lg:flex-row lg:justify-around lg:uppercase lg:pt-6"
+    >
+      <li>Inicio</li>
+      <li class="lg:hidden">Acerca de nosotros</li>
+      <li>Voluntariado</li>
+      <li>Registro de voluntarios</li>
+      <li>Testimonios de voluntarios</li>
+      <li class="lg:hidden">Contacto</li>
+      <li>FAQ</li>
+    </ul>
+  </nav>
+</header>

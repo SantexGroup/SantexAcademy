@@ -1,0 +1,3 @@
+En esta carpeta *core* generalmente se utiliza para almacenar funcionalidades y servicios principales que son compartidos en todo el proyecto. 
+Estos podrían incluir servicios para manejar la autenticación, comunicación con la API, manejo de errores, interceptores HTTP, y 
+cualquier otra lógica central que sea esencial para el funcionamiento de la aplicación.

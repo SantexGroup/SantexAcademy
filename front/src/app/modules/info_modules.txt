@@ -1,0 +1,2 @@
+La carpeta *modules* contendría submódulos de la aplicación, cada uno con su propia estructura interna.
+Cada módulo específico de la característica tendría su propia carpeta con componentes, servicios y el archivo.
