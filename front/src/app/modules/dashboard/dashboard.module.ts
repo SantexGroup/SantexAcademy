@@ -5,18 +5,20 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { CoursesComponent } from './courses/courses.component';
 import { CoursesDetailComponent } from './courses/courses-detail/courses-detail.component';
 import { PrimengModule } from 'src/app/lib/primeNG/primeng/primeng.module';
+import { LandingCoursesComponent } from './courses/landing-courses/landing-courses.component';
 
 
 @NgModule({
-  declarations: [ CoursesComponent, CoursesDetailComponent,],
+  declarations: [ CoursesComponent, CoursesDetailComponent, LandingCoursesComponent,],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    PrimengModule
+    PrimengModule,
     
   ],
   exports: [
-    CoursesComponent
+    CoursesComponent,
+    LandingCoursesComponent
   ],
   providers: [],
 })

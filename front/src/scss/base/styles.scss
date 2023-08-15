@@ -1,4 +1,5 @@
 @use "font" as *;
+@use "../utilities/barrel" as c;
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "~primeflex/primeflex.css";
@@ -153,4 +154,45 @@ h5 {
 small,
 .text_small {
     font-size: 0.833rem;
+}
+
+//Estilos generales primeNG
+
+.ui-carousel {
+    padding: 0.6em; // or use ui-panel class
+}
+
+.ui-carousel .ui-carousel-viewport {
+    margin: 0.2em 0;
+}
+
+.ui-carousel .ui-carousel-viewport .ui-carousel-items .ui-carousel-item {
+    margin-right: 0.2em;
+}
+
+.p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
+
+    background-color: #1f1f1f;
+
+}
+
+.p-carousel .p-carousel-indicators .p-carousel-indicator button {
+
+    border-radius: 2rem;
+
+}
+
+
+.p-carousel .p-carousel-content .p-carousel-prev, .p-carousel .p-carousel-content .p-carousel-next {
+
+    background-color: #505D68;
+    color: white;
+
+}
+
+.p-carousel .p-carousel-content .p-carousel-prev {
+
+    background-color: #505D68;
+    color: white;
+
 }

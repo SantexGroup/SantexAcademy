@@ -1,0 +1,137 @@
+@use '../../utilities/barrel' as *;
+
+.section__cards {
+
+    .article__cards {
+
+        .title__courses {
+
+            text-align: center;
+            font-weight: 500;
+
+        }
+
+        .card {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid $wireframe;
+            padding: 1rem;
+            margin-top: 1.5rem;
+
+            &__title {
+
+                font-weight: 600;
+                text-transform: uppercase;
+
+            }
+
+            &__description {
+
+                display: -webkit-box;
+                -webkit-line-clamp: 2; 
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color: $wireframe;
+                
+            }
+
+            &__price--bold {
+
+                font-weight: 400;
+
+            }
+
+            &__price {
+
+                font-weight: 900;
+
+            }
+
+            &__line {
+
+                border: 1px solid $wireframe;
+
+            }
+
+            .card__button--info {
+
+                color: black;
+
+            }
+
+            .card__content {
+
+
+                .footer {
+
+                    margin-top: 1rem;
+
+                    &__button--info {
+
+                        background-color: white;
+                        white-space: nowrap;
+                        border: 1px solid $wireframe;
+                        margin-bottom: 1rem;
+                        color: $wireframe;
+                        text-transform: uppercase;
+
+                    }
+
+                    &__button--apply {
+
+                        background-color: white;
+                        white-space: nowrap;
+                        border: 1px solid $wireframe;
+                        color: $wireframe;
+                        text-transform: uppercase;
+
+                    }
+
+                }
+
+
+            }
+
+
+        }
+
+
+    }
+
+}
+
+@media screen and (min-width: $large) {
+
+    .card {
+
+        max-width: toEm(425px);
+
+        .card__content {
+
+            max-width: toEm(425px);
+
+            .footer {
+
+                &__button--info {
+
+                    max-width: toEm(425px);
+
+                }
+
+                &__button--apply {
+
+                    max-width: toEm(425px);
+
+                }
+
+            }
+
+
+        }
+
+    }
+
+}
