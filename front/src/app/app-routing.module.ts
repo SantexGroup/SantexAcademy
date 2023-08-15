@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { VoluntarioGuard } from './core/guards/voluntario.guard';
+import { OrganizacionGuard } from './core/guards/organizacion.guard';
 
 const routes: Routes = [
   {
@@ -15,6 +16,12 @@ const routes: Routes = [
     path:'voluntarios',
     loadChildren:()=> import('./modules/voluntarios/voluntarios.module').then(m=>m.VoluntariosModule),
     canLoad:[VoluntarioGuard]
+  },
+  {
+    path:'organizaciones',
+    loadChildren:()=>import('./modules/organizaciones/organizaciones.module').then(m=>m.OrganizacionesModule),
+    canLoad:[OrganizacionGuard]
+
   },
   {
     path: '**',

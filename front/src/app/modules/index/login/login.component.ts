@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DatosLogin } from 'src/app/core/interfaces/datosLogin';
+import { OrganizacionService } from 'src/app/core/services/organizacion.service';
 import { VoluntarioService } from 'src/app/core/services/voluntario.service';
 
 @Component({
@@ -11,7 +13,8 @@ import { VoluntarioService } from 'src/app/core/services/voluntario.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(fb:FormBuilder,private routeActive:ActivatedRoute, private router:Router, private voluntarioService:VoluntarioService, private matSnackBar:MatSnackBar ) {
+  constructor(fb:FormBuilder,private routeActive:ActivatedRoute, private router:Router, private voluntarioService:VoluntarioService, private matSnackBar:MatSnackBar,
+              private organizacionService:OrganizacionService ) {
 
     this.formLogin = fb.group({
       email:['',[Validators.required,Validators.email]],
@@ -63,12 +66,13 @@ export class LoginComponent implements OnInit {
   mostrarPassword:boolean;
 
   iniciarSesion(){
+    const credenciales:DatosLogin = {
+      email:this.formLogin.value.email,
+      password:this.formLogin.value.password
+    }
+    
     if(this.voluntario){
       //Inicio de sesion voluntario
-      const credenciales = {
-        email:this.formLogin.value.email,
-        password:this.formLogin.value.password
-      }
 
       this.voluntarioService.iniciarSesion(credenciales).subscribe({
         next:()=>{
@@ -93,8 +97,26 @@ export class LoginComponent implements OnInit {
     }
 
     if(this.organizacion){
-      //Inicio de sesion Organizacion
-      console.log("Inicio de sesión organización");
+
+      this.organizacionService.iniciarSesion(credenciales).subscribe({
+        next:()=>{
+          this.matSnackBar.open('Inicio de sesión exitoso!','OK',{
+            duration:3000,
+          horizontalPosition:'center',
+          verticalPosition:'top'});
+
+          this.router.navigate(['/organizaciones']);
+        },
+        error:(err)=>{
+          this.matSnackBar.open('Error al iniciar sesión','ERROR',{
+            duration:3000,
+          horizontalPosition:'center',
+          verticalPosition:'top'}
+          );
+          console.log(err);
+        }
+      });
+      
     }
   }
 

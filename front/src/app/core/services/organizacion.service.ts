@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../http/api.service';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Organizacion } from '../interfaces/organizacion';
+import { Credencial } from '../interfaces/credencial';
+import { DatosLogin } from '../interfaces/datosLogin';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,10 @@ export class OrganizacionService {
 
   constructor(private apiService:ApiService) {
 
+    this.credencialesOrganizacion = new BehaviorSubject<Credencial | null>(null);
   }
+
+  credencialesOrganizacion:BehaviorSubject<Credencial | null>;
   
 
   crearOrganizacion(organizacion:Organizacion):Observable<Organizacion>{
@@ -32,5 +37,20 @@ export class OrganizacionService {
 
   eliminarOrganizacion(id:number):Observable<boolean>{
    return this.apiService.delete<boolean>(`/coordinator/delete-user/${id}`);
+  }
+
+  iniciarSesion(datosLogin:DatosLogin):Observable<Credencial>{
+    return this.apiService.post<Credencial>("/coordinator/login", datosLogin).pipe(
+      map((res)=>{
+
+        const credenciales:Credencial = {
+          token: res.token,
+          tipoUsuario:'organizacion'
+        };
+        
+        this.credencialesOrganizacion.next(credenciales);
+        return credenciales;
+      })
+    );
   }
 }
