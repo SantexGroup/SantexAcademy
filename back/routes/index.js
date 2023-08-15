@@ -9,8 +9,9 @@ const app = Express();
 // Rutas
 const courseRoutes = require('./courseRoutes');
 const userRoutes = require('./user');
-
+const coursesDetailRoutes = require('./courseDetail');
 // use=
+app.use('/coursesDetail', coursesDetailRoutes);
 app.use('/courses', courseRoutes);
 app.use('/user', userRoutes);
 app.use('/', rootPath.handler);
