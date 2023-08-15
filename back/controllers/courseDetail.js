@@ -18,7 +18,17 @@ const createCourseDetail = async (req, res) => {
   }
 };
 
+const updateCourseDetail = async (req, res) => {
+  try {
+    const courseDetail = await courseDetailService.updateCourseDetail(req.params.id, req.body);
+    res.json(courseDetail);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al actualizar el detalle del curso' });
+  }
+};
+
 module.exports = {
   getAllCoursesDetails,
   createCourseDetail,
+  updateCourseDetail,
 };
