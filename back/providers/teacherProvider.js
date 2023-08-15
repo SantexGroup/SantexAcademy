@@ -17,10 +17,20 @@ const getTeachersById = async (id) => {
     throw new Error('Error al obtener el docente');
   }
 };
-// Faltan las funciones de create, update y delete similar a CourseProvider
+
+const createTeacher = async (teacher) => {
+  try {
+    const createdTeacher = await Teacher.create(teacher);
+    return createdTeacher;
+  } catch (error) {
+    throw new Error('Error al crear profesor');
+  }
+};
+// Faltan las funciones de update y delete similar a CourseProvider
 
 module.exports = {
   getAllTeachers,
   getTeachersById,
+  createTeacher,
   // Faltan las demás funciones
 };

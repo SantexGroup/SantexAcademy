@@ -19,10 +19,21 @@ const getTeachersById = async (req, res) => {
   }
 };
 
+const createTeacher = async (req, res) => {
+  const teacher = req.body;
+  try {
+    const newTeacher = await teacherService.createTeacher(teacher);
+    res.json(newTeacher);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al crear al docente' });
+  }
+};
+
 // Falta las funciones de create, update y delete similar a CourseController
 
 module.exports = {
   getAllTeachers,
   getTeachersById,
+  createTeacher,
   // Falta aquí las demás funciones
 };
