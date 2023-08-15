@@ -25,7 +25,7 @@ passport.use(
 const authMiddleware = passport.authenticate('jwt', { session: false });
 
 const authIsAdmin = (req, res, next) => {
-  if (req.isAuthenticated() && req.user.role === 'Admin') {
+  if (req.user && req.user.role === 'admin') {
     return next();
   }
   res.status(401).json({ error: 'Usuario no es Admin' });
