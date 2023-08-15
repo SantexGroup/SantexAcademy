@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from './modules/home/home-page/home-page.component';
 
 const routes: Routes = [
-  {path: '', component: HomePageComponent}
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'dashboard'
+  }
 ];
 
 @NgModule({
