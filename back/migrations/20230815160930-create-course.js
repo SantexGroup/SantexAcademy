@@ -1,6 +1,4 @@
 'use strict';
-
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -12,40 +10,31 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       description: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       maxStudents: {
-        allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       start: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       end: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       active: {
-        allowNull: false,
         type: Sequelize.BOOLEAN
       },
       price: {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
-      requirement:{
-        allowNull:false,
-        type:Sequelize.STRING
+      requirement: {
+        type: Sequelize.STRING
       },
-      teacher:{
-        allowNull:false,
-        type:Sequelize.STRING
+      teacher: {
+        type: Sequelize.STRING
       },
       CourseCategoryId:{
         allowNull:true,
@@ -65,11 +54,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-     
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Courses');
   }
 };
-

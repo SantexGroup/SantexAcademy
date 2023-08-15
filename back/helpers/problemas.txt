@@ -6,3 +6,14 @@
     a)al principio funcionaba me puse con los horarios y dejo de andar
 3) los horarios solo muestran el id del horario, en vez de mostrar la informacion
     a)¿¿supongo que le falta un include o algo por el estilo??
+
+comandos:
+create Course:
+./node_modules/.bin/sequelize model:generate --name Course --attributes name:string,description:string,maxStudents:integer,start:date,end:date,active:boolean,price:integer,requirement:string,teacher:string,CourseCategoryId:integer
+create Category:
+./node_modules/.bin/sequelize model:generate --name CourseCategory --attributes name:string
+Create ScheduleCourses:
+./node_modules/.bin/sequelize model:generate --name ScheduleCourses --attributes idCourse:integer,idSchedule:integer
+Create Schedule:
+./node_modules/.bin/sequelize model:generate --name Schedule --attributes start:date,end:date,where:string,active:boolean
+

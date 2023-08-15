@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:'id',
         target_key:'idCourse'
        })
-       ScheduleCourses.belongsTo(models.schedule,{
+       ScheduleCourses.belongsTo(models.Schedule,{
         foreignKey:'id',
         target_key:'idSchedule'
        })

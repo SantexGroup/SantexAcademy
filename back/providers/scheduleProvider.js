@@ -1,4 +1,4 @@
-const {schedule} = require("../models");
+const {Schedule} = require("../models");
 
 
 
@@ -6,7 +6,7 @@ const createSchedule = async (options) => {
   console.log(options)
   try {
 
-    const  newSchedule = await schedule.create(options);
+    const  newSchedule = await Schedule.create(options);
     
     return newSchedule;
   } catch (error) {
@@ -16,11 +16,11 @@ const createSchedule = async (options) => {
 
 const getScheduleByTime=async (start) =>{
   try {
-    const scheduleSelect = await schedule.findOne({where: { start},});
+    const scheduleSelect = await Schedule.findOne({where: { start},});
     if (scheduleSelect) {
       return scheduleSelect;
     } else {
-      throw new Error("no get schedule found");
+      throw new Error("no get Schedule found");
     }
   } catch (error) {
     throw error;
@@ -29,7 +29,7 @@ const getScheduleByTime=async (start) =>{
 
 const getSchedules = async () => {
   try {
-    const Schedules = await schedule.findAll();
+    const Schedules = await Schedule.findAll();
     if (Schedules) {
       return Schedules;
     } else {
@@ -42,7 +42,7 @@ const getSchedules = async () => {
 
 const getSchedule = async (id) => {
   try {
-    const Schedule = await schedule.findByPk(id);
+    const Schedule = await Schedule.findByPk(id);
     if (Schedule) {
       return Schedule;
     } else {
@@ -56,8 +56,8 @@ const getSchedule = async (id) => {
 const updateSchedule = async (ScheduleId, ScheduleOptions) => {
   try {
     await getSchedule (ScheduleId);
-    await schedule.update(ScheduleOptions, { where: { id: ScheduleId } });
-    return schedule.findByPk(ScheduleId);
+    await Schedule.update(ScheduleOptions, { where: { id: ScheduleId } });
+    return Schedule.findByPk(ScheduleId);
   } catch (error) {
     throw error;
   }
@@ -65,7 +65,7 @@ const updateSchedule = async (ScheduleId, ScheduleOptions) => {
 
 const deleteSchedule = async (ScheduleId) => {
   try {
-    return schedule.destroy({ where: { id: ScheduleId } });
+    return Schedule.destroy({ where: { id: ScheduleId } });
   } catch (error) {
     throw error;
   }
