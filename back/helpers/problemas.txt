@@ -2,8 +2,10 @@
     a)nose porque en los cursos  se ve la relacion y en el horario no
     b)si creo la relacion desde el horario(como entiendo que estaria bien) y hago la petion get desde
     los cursos no me aparece que este relacionado
+    ----------------HECHO------------------------
 2) las categorias se rompen, ya no se pueden generar varios cursos con la misma categoria
     a)al principio funcionaba me puse con los horarios y dejo de andar
+    ----------------HECHO------------------------
 3) los horarios solo muestran el id del horario, en vez de mostrar la informacion
     a)¿¿supongo que le falta un include o algo por el estilo??
 

@@ -1,17 +1,18 @@
-const {Course,ScheduleCourses}  = require("../models");
-const CategoryProvider =require("./categoryProvider")
-const ScheduleProvider = require("./scheduleProvider")
+const { Course, ScheduleCourses } = require("../models");
+const CategoryProvider = require("./categoryProvider");
+const ScheduleProvider = require("./scheduleProvider");
 
 const createCourse = async (CourseOptions) => {
   try {
+    const checkExist = await Course.findOne({name : CourseOptions.name})
+    if(checkExist)throw new Error("course already exists");
     //obtiene el objeto
-    const getObjetCategory = await CategoryProvider.getCategoryByName(CourseOptions.CourseCategoryName);
-    //obtiene objeto del horario
-    const getObjetSchedule = await ScheduleProvider.getScheduleByTime(CourseOptions.start);
-    
-    const newCourse = await Course.create({  
+    const getObjetCategory = await CategoryProvider.getCategoryByName(
+      CourseOptions.CourseCategoryName
+    );
+    const newCourse = await Course.create({
       name: CourseOptions.name,
-      description:CourseOptions.description,
+      description: CourseOptions.description,
       maxStudents: CourseOptions.maxStudents,
       start: CourseOptions.start,
       end: CourseOptions.end,
@@ -19,12 +20,8 @@ const createCourse = async (CourseOptions) => {
       price: CourseOptions.price,
       requirement: CourseOptions.requirement,
       teacher: CourseOptions.teacher,
-      CourseCategoryId: getObjetCategory.id
+      CourseCategoryId: getObjetCategory.id,
     });
-    const relation = await ScheduleCourses.create({
-      idSchedule:getObjetSchedule.id,
-      idCourse: newCourse.id
-    })
     return newCourse;
   } catch (error) {
     throw error;
@@ -32,7 +29,6 @@ const createCourse = async (CourseOptions) => {
 };
 
 const getCourse = async (id) => {
-
   try {
     let options = { include: [{ all: true }] };
     const CourseSelect = await Course.findByPk(id, options);
@@ -85,5 +81,4 @@ module.exports = {
   getCourse,
   getCourses,
   updateCourse,
-
 };

@@ -4,7 +4,7 @@ const { validationResult } = require("express-validator");
 const getSchedules = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-     return res.status(403).send({ errors: result.array() });
+    return res.status(403).send({ errors: result.array() });
   }
   try {
     const Schedules = await ScheduleService.getSchedules();
@@ -16,15 +16,16 @@ const getSchedules = async (req, res) => {
 const createSchedule = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-     return res.status(403).send({ errors: result.array() });
+    return res.status(403).send({ errors: result.array() });
   }
-  const { start, end, active, where } = req.body;
+  const { start, end, active, where, course } = req.body;
   try {
     const newSchedule = await ScheduleService.createSchedule({
       start,
       end,
       active,
       where,
+      course,
     });
 
     res.status(201).json(newSchedule);
@@ -36,7 +37,7 @@ const createSchedule = async (req, res) => {
 const getByIdSchedule = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-     return res.status(403).send({ errors: result.array() });
+    return res.status(403).send({ errors: result.array() });
   }
   const ScheduleId = req.params.ScheduleId;
   try {
@@ -50,7 +51,7 @@ const getByIdSchedule = async (req, res) => {
 const updateSchedule = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-     return res.status(403).send({ errors: result.array() });
+    return res.status(403).send({ errors: result.array() });
   }
   const ScheduleId = req.params.ScheduleId;
   const { start, end, active, where } = req.body;
@@ -70,7 +71,7 @@ const updateSchedule = async (req, res) => {
 const deleteSchedule = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-     return res.status(403).send({ errors: result.array() });
+    return res.status(403).send({ errors: result.array() });
   }
   const ScheduleId = req.params.ScheduleId;
   try {
