@@ -1,0 +1,17 @@
+//Función para pasar de px a rem con scss
+
+@function toRem($pixels) {
+
+    $remSize: 16px; 
+    @return ($pixels / $remSize) * 1rem;
+
+}
+
+//Función para pasar de px a em con scss 
+
+@function toEm($pixels) {
+
+    $emSize: 16px; 
+    @return ($pixels / $emSize) * 1em;
+
+}
