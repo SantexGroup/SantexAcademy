@@ -1,12 +1,8 @@
 .containerDetail{
     .containerDetailCourse{
-        // margin: 0 .5rem;
         .containerCourse{                   
             .containerCost{
                 border: 2px solid blue;
-                .text{
-                    // margin-top: 1.5rem;
-                }
             }
         }
     }
@@ -17,31 +13,19 @@
         }
     }
     .containerDivider{
-           
         .divCard{
             border: 1px solid rgb(234, 234, 234);
         }
-
     }
-
-
 }
 
 @media screen and (min-width: 64em){
     .containerDetail{
-        // width: 70%; 
-        // margin: auto;
-        // display: flex;
-        // flex-direction: column;
         .containerDetailText{
-            // display: flex;
-            
             .detailText{
-                // padding-right: 3rem;
                 max-width: 65ch;
             }
             .imgLogo {
-                // max-width: 70rem;
                 border: 1px solid rgb(243, 240, 240);
                 border-radius: 5px;
             }
