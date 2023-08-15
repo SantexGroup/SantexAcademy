@@ -47,14 +47,16 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Profile.init({
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'user_id',
     },
     profileName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    deletedAt: DataTypes.DATE,
   }, {
     sequelize,
     paranoid: true,

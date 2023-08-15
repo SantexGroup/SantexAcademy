@@ -6,15 +6,27 @@ const { PROFILES_SKILLS_TABLE_NAME } = require('../helpers/sequelize.helper');
 
 module.exports = (sequelize, DataTypes) => {
   class ProfileSkill extends Model {
+    static associate(models) {
+      models.ProfileSkill.belongsTo(models.Skill, {
+        foreignKey: 'skills_id',
+      });
+    }
   }
   ProfileSkill.init({
-    profiles_id: {
+    id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
-    skills_id: {
+    profilesId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'profiles_id',
+    },
+    skillsId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'skills_id',
     },
     level: DataTypes.INTEGER,
   }, {

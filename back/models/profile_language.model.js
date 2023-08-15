@@ -6,15 +6,28 @@ const { PROFILES_LANGUAGES_TABLE_NAME } = require('../helpers/sequelize.helper')
 
 module.exports = (sequelize, DataTypes) => {
   class ProfileLanguage extends Model {
+    static associate(models) {
+      models.ProfileLanguage.belongsTo(models.Language, {
+        foreignKey: 'languages_id',
+      });
+    }
   }
   ProfileLanguage.init({
-    profiles_id: {
+    id: {
       type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
       allowNull: false,
     },
-    languages_id: {
+    profilesId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'profiles_id',
+    },
+    languagesId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'languages_id',
     },
     level: DataTypes.INTEGER,
   }, {

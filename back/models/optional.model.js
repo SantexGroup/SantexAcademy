@@ -12,24 +12,31 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.Optional.belongsToMany(models.Profile, {
+        through: models.ProfileOptional,
+        foreignKey: 'optionals_id',
+        otherKey: 'profiles_id',
+      });
       models.Optional.belongsTo(models.Marital, { foreignKey: 'marital_id' });
       models.Optional.belongsTo(models.Sex, { foreignKey: 'sexs_id' });
       models.Optional.belongsTo(models.Country, { foreignKey: 'countries_id' });
     }
   }
   Optional.init({
-    marital_id: {
+    maritalId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'marital_id',
     },
-    sexs_id: {
+    sexsId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'sexs_id',
     },
-    countries_id: {
+    countriesId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'countries_id',
     },
     profile: DataTypes.STRING,
     webPage: DataTypes.STRING,

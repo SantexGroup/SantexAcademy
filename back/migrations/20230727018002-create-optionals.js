@@ -54,14 +54,9 @@ module.exports = {
       zipCode: {
         type: Sequelize.STRING,
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      deletedAt: {
+        type: Sequelize.DATE,
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
     });
     
     await addForeingKey(queryInterface, OPTIONALS_TABLE_NAME, 'countries_id', COUNTRIES_TABLE_NAME);
