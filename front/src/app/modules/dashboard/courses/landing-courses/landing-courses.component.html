@@ -1,0 +1,50 @@
+<section class="section__cards">
+
+    <article class="article__cards">
+
+        <h1 class="title__courses">Nuestros cursos</h1>
+
+        <p-carousel [value]="coursesService.courses" [numVisible]="3" [numScroll]="1" [circular]="false"
+            [responsiveOptions]="coursesService.responsiveOptions">
+            <ng-template let-course pTemplate="item" class="course__list-template">
+                <div class="flex justify-content-center align-items-center py-5 px-3">
+                    <div class="card">
+                        <div class="card__content">
+                            <h2 class="card__title mb-2">
+                                {{ course.title }}
+                            </h2>
+                            <p class="card__description mb-2">
+                                {{ course.description }}
+                            </p>
+                            <div class="card__line"></div>
+                            <h3 class="mt-3 card__price">
+                                {{course.price | currency}}
+                            </h3>
+                            <p class="card__cuotes">
+                                Hasta 6 cuotas sin interés de <span class="card__price--bold">$1200</span>
+                            </p>
+                            <p class="card__starter mb-3">
+                                Fecha de inicio: {{ course.starter_date }}
+                            </p>
+                            <div class="card__line"></div>
+
+                            <footer class="flex flex-column justify-content-center footer">
+
+                                <a pButton label="ver detalle del curso" type="button"
+                                    styleClass="p-mr-2 w-full uppercase" class="footer__button--info">
+                                </a>
+
+                                <a pButton label="inscríbete" type="button" styleClass="p-mr-2 mt-5 w-full uppercase"
+                                    class="footer__button--apply"></a>
+
+                            </footer>
+
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+
+    </article>
+
+</section>
