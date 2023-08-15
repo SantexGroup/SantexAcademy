@@ -21,6 +21,9 @@ const config = require('./config/config');
 const validateEnv = require('./utils/validateEnv');
 
 const app = express();
+app.listen(3000, () => {
+  console.log('servidor corriendo en el localhost 3000');
+});
 validateEnv.validate();
 app.use(helmet());
 app.use(helmet.ieNoOpen());
