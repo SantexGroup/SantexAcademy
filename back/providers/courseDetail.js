@@ -9,6 +9,16 @@ const getAllCoursesDetails = async () => {
   }
 };
 
+const createCourseDetail = async (req) => {
+  try {
+    const coursesDetails = await courseDetail.create(req);
+    return coursesDetails;
+  } catch (error) {
+    throw new Error('Error al crear el detalle del curso');
+  }
+};
+
 module.exports = {
   getAllCoursesDetails,
+  createCourseDetail,
 };

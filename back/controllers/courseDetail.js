@@ -9,6 +9,16 @@ const getAllCoursesDetails = async (req, res) => {
   }
 };
 
+const createCourseDetail = async (req, res) => {
+  try {
+    const courseDetail = await courseDetailService.createCourseDetail(req.body);
+    res.json(courseDetail);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al crear el detalle del curso' });
+  }
+};
+
 module.exports = {
   getAllCoursesDetails,
+  createCourseDetail,
 };
