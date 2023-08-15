@@ -35,8 +35,13 @@ const Organizacion = sequelize.define(
       type: DataTypes.STRING(45),
       allowNull: false,
     },
+    deletedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
   }, {
     sequelize,
+    paranoid:true,
     tableName: 'organizacion',
     timestamps: false,
     indexes: [

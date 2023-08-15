@@ -8,6 +8,7 @@ const routes = express();
 
 // Rutas
 const catalogoRouter = require('./catalogo');
+const orgRoutes = require('./organizaciones');
 
 // use=
 routes.use('/ping', (req, res) => {
@@ -20,5 +21,6 @@ routes.use('/ping', (req, res) => {
 // routes.use(errors.handler);
 
 routes.use('/catalogo', catalogoRouter);
+routes.use('/org', orgRoutes);
 
 module.exports = routes;

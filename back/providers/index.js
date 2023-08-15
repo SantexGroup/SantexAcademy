@@ -1,3 +1,4 @@
 const catalogoProvider = require('./catalogo');
+const orgProvider = require('./organizacion');
 
-module.exports = { catalogoProvider };
+module.exports = { catalogoProvider, orgProvider  };
