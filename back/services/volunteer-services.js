@@ -33,6 +33,7 @@ async function createUser(name, lastname, dni, email, password, address, phone) 
   user.phone = phone;
 
   const userCreated = await user.save();
+  delete userCreated.dataValues.password;
 
   return userCreated;
 }

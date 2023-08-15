@@ -91,17 +91,7 @@ passport.use(new JwtStrategy(jwtOptions, async (jwtPayload, done) => {
 // Cors configuration
 const whitelist = process.env.CORS.split(' ');
 
-const corsOptions = {
-  origin(origin, callback) {
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      logger.api.error('Not allowed by CORS', { origin });
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
-app.use(cors(corsOptions));
+app.use(cors());
 
 if (config.environment === 'production') {
   app.set('trust proxy', 1); // trust first proxy
