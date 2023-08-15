@@ -1,21 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormAddProductComponent } from './form-add-product/form-add-product.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-
+import { DashboardPageRoutingModule } from './dashboard-page-routing.module';
 
 
 @NgModule({
   declarations: [
-    // FormAddProductComponent,
-    // NavBarComponent
+
   ],
   imports: [
     CommonModule,
-
+    DashboardPageRoutingModule
   ],
   exports: [
-
+    
   ]
 })
 export class DashboardPageModule { }
