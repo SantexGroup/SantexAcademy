@@ -26,11 +26,26 @@ const createTeacher = async (teacher) => {
     throw new Error('Error al crear profesor');
   }
 };
-// Faltan las funciones de update y delete similar a CourseProvider
+
+const updateTeacher = async (id, teacher) => {
+  try {
+    const [updatedTeacherCount] = await Teacher.update(teacher, {
+      where: {
+        id,
+      },
+    });
+    return updatedTeacherCount;
+  } catch (error) {
+    throw new Error('Error al actualizar profesor');
+  }
+};
+
+// Faltan las funciones delete similar a CourseProvider
 
 module.exports = {
   getAllTeachers,
   getTeachersById,
   createTeacher,
+  updateTeacher,
   // Faltan las demás funciones
 };

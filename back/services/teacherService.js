@@ -26,11 +26,21 @@ const createTeacher = async (teacher) => {
     throw new Error('Error en el servicio al crear el docente');
   }
 };
-// Faltan las funciones update y delete
+
+const updateTeacher = async (id, teacher) => {
+  try {
+    const updatedTeacher = await teacherProvider.updateTeacher(id, teacher);
+    return updatedTeacher;
+  } catch (error) {
+    throw new Error('Error en el servicio al actualizar el docente');
+  }
+};
+// Faltan las funciones y delete
 
 module.exports = {
   getAllTeachers,
   getTeachersById,
   createTeacher,
+  updateTeacher,
   // Falta aquí las demás funciones
 };
