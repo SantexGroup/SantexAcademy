@@ -9,6 +9,19 @@ const getAllCoursesDetails = async () => {
   }
 };
 
+const getCourseDetailsById = async (id) => {
+  try {
+    const coursesDetails = await courseDetail.findOne({
+      where: {
+        id,
+      },
+    });
+    return coursesDetails;
+  } catch (error) {
+    throw new Error(`Error al obtener los detalles del curso con el id ${id}`);
+  }
+};
+
 const createCourseDetail = async (req) => {
   try {
     const coursesDetails = await courseDetail.create(req);
@@ -19,7 +32,6 @@ const createCourseDetail = async (req) => {
 };
 
 const updateCourseDetail = async (id, body) => {
-  console.log(id, body);
   try {
     const coursesDetails = await courseDetail.update(body, {
       where: {
@@ -47,6 +59,7 @@ const deleteCourseDetail = async (id) => {
 
 module.exports = {
   getAllCoursesDetails,
+  getCourseDetailsById,
   createCourseDetail,
   updateCourseDetail,
   deleteCourseDetail,

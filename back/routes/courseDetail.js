@@ -6,6 +6,9 @@ const { courseDetailController } = require('../controllers');
 // Obtener todos los cursos
 router.get('/', courseDetailController.getAllCoursesDetails);
 
+// Obtener todos los cdetalles del curso segun id
+router.get('/:id', courseDetailController.getCourseDetailsById);
+
 // Crear un nuevo curso
 router.post('/', courseDetailController.createCourseDetail);
 

@@ -9,6 +9,15 @@ const getAllCoursesDetails = async () => {
   }
 };
 
+const getCourseDetailsById = async (id) => {
+  try {
+    const courseDetail = await courseDetailProvider.getCourseDetailsById(id);
+    return courseDetail;
+  } catch (error) {
+    throw new Error(`Error al obtener los detalles del curso con el id ${id}`);
+  }
+};
+
 const createCourseDetail = async (req) => {
   try {
     const courseDetail = await courseDetailProvider.createCourseDetail(req);
@@ -40,6 +49,7 @@ const deleteCourseDetail = async (id) => {
 };
 module.exports = {
   getAllCoursesDetails,
+  getCourseDetailsById,
   createCourseDetail,
   updateCourseDetail,
   deleteCourseDetail,
