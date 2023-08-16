@@ -11,6 +11,7 @@
             {
                 "props": false
             }
-        ]
+        ],
+        "linebreak-style": ["off"]
     }
 }

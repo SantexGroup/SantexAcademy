@@ -1,4 +1,4 @@
-const surveyProvider = require("../providers/surveyProvider");
+const surveyProvider = require('../providers/surveyProvider');
 
 const createSurvey = async (survey) => {
   const newSurvey = await surveyProvider.createSurvey(survey);

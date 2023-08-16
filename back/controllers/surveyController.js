@@ -1,12 +1,12 @@
-const surveyService = require("../services/surveyService");
+const surveyService = require('../services/surveyService');
 
 async function createSurvey(req, res) {
   try {
-    const { email, questions } = req.body;
-    const newSurvey = await surveyService.createSurvey({ email, questions });
+    const { email, questions, surveyorId } = req.body;
+    const newSurvey = await surveyService.createSurvey({ email, questions, surveyorId });
     res.status(201).json(newSurvey);
   } catch (error) {
-    res.status(500).json({ message: "Error al crear la encuesta" });
+    res.status(500).json({ message: 'Error al crear la encuesta' });
   }
 }
 async function getSurveysByEmail(req, res) {
@@ -15,7 +15,7 @@ async function getSurveysByEmail(req, res) {
     const surveys = await surveyService.findByEmail(email);
     res.status(200).json(surveys);
   } catch (error) {
-    res.status(500).json({ message: "Error al recuperar las encuestas" });
+    res.status(500).json({ message: 'Error al recuperar las encuestas' });
   }
 }
 
@@ -24,7 +24,7 @@ async function getAllSurveys(req, res) {
     const surveys = await surveyService.findAll();
     res.status(200).json(surveys);
   } catch (error) {
-    res.status(500).json({ message: "Error al traer todas las encuestas" });
+    res.status(500).json({ message: 'Error al traer todas las encuestas' });
   }
 }
 
@@ -35,10 +35,10 @@ async function getSurveyById(req, res) {
     if (survey) {
       res.status(200).json(survey);
     } else {
-      res.status(404).json({ message: "Encuesta no encontrada" });
+      res.status(404).json({ message: 'Encuesta no encontrada' });
     }
   } catch (error) {
-    res.status(500).json({ message: "Error al traer encuesta por su id" });
+    res.status(500).json({ message: 'Error al traer encuesta por su id' });
   }
 }
 
@@ -61,7 +61,7 @@ async function updateSurvey(req, res) {
     const updatedSurvey = await surveyService.updateSurvey(id, newData);
     res.status(200).json(updatedSurvey);
   } catch (error) {
-    res.status(500).json({ message: "Error al actualizar la encuesta" });
+    res.status(500).json({ message: 'Error al actualizar la encuesta' });
   }
 }
 

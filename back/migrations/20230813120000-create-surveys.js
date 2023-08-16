@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Surveys', {
@@ -17,6 +15,16 @@ module.exports = {
         type: Sequelize.JSON,
         allowNull: false,
       },
+      surveyorId: { // Agregar este campo para la asociación
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Surveyors',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -30,5 +38,5 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('Surveys');
-  }
+  },
 };
