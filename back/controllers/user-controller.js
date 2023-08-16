@@ -1,7 +1,6 @@
 const userService = require('../services/user-service');
 
 async function login(req, res, next) {
-
   const { alias, password } = req.body;
 
   try {
@@ -12,4 +11,16 @@ async function login(req, res, next) {
   }
 }
 
-module.exports = { login };
+// crear usuario
+async function createUser(req, res) {
+  const {
+    idDireccion, firstName, lastName, dni, mail, password, estadoDeVendedor, alias,
+  } = req.body;
+
+  const user = await userService.userRegister(idDireccion, firstName, lastName, dni, mail,
+    password, estadoDeVendedor, alias);
+
+  res.status(201).send(user);
+}
+
+module.exports = { login, createUser };
