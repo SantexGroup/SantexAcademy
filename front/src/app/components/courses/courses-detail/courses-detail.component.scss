@@ -1,0 +1,27 @@
+.containerDetail{
+    .containerDetailCourse{
+
+        margin: 0 .5rem;
+        .imgBanner{}
+        .containerCourse{                   
+            .title{
+            }
+            .containerCost{
+                border: 2px solid blue;
+                .text{
+                    margin-top: 1.5rem;
+                }
+            }
+        }
+    }
+
+    .containerDetailDownload{
+        .iconsDownload{
+              margin-left: 10rem;  
+        }
+        .buttonDownload{
+
+        }
+    }
+
+}
