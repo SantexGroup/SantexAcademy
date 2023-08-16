@@ -27,8 +27,20 @@ const updateCourseDetail = async (id, body) => {
   }
 };
 
+const deleteCourseDetail = async (id) => {
+  try {
+    const courseDetail = await courseDetailProvider.deleteCourseDetail(id);
+    if (courseDetail === 0) {
+      throw new Error('Curso no encontrado');
+    }
+    return courseDetail;
+  } catch (error) {
+    throw new Error('Error al eliminar el detalle del curso');
+  }
+};
 module.exports = {
   getAllCoursesDetails,
   createCourseDetail,
   updateCourseDetail,
+  deleteCourseDetail,
 };

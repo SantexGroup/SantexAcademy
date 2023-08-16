@@ -27,8 +27,18 @@ const updateCourseDetail = async (req, res) => {
   }
 };
 
+const deleteCourseDetail = async (req, res) => {
+  try {
+    const courseDetail = await courseDetailService.deleteCourseDetail(req.params.id);
+    res.json({ message: 'Detalle de Curso eliminado exitosamente', status: courseDetail });
+  } catch (error) {
+    res.status(500).json({ error: 'Error al eliminar el detalle del curso' });
+  }
+};
+
 module.exports = {
   getAllCoursesDetails,
   createCourseDetail,
   updateCourseDetail,
+  deleteCourseDetail,
 };

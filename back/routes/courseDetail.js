@@ -12,4 +12,7 @@ router.post('/', courseDetailController.createCourseDetail);
 // Actualizar detalles de un curso existente
 router.put('/:id', courseDetailController.updateCourseDetail);
 
+// Eliminar detalles de un curso existente
+router.delete('/:id', courseDetailController.deleteCourseDetail);
+
 module.exports = router;

@@ -32,8 +32,22 @@ const updateCourseDetail = async (id, body) => {
   }
 };
 
+const deleteCourseDetail = async (id) => {
+  try {
+    const coursesDetails = await courseDetail.destroy({
+      where: {
+        id,
+      },
+    });
+    return coursesDetails;
+  } catch (error) {
+    throw new Error('Error al eliminar el detalle del curso');
+  }
+};
+
 module.exports = {
   getAllCoursesDetails,
   createCourseDetail,
   updateCourseDetail,
+  deleteCourseDetail,
 };
