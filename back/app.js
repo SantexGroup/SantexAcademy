@@ -86,7 +86,6 @@ models.sequelize.authenticate()
   .catch((err) => {
     logger.api.error('Conexión con la Base de Datos: FALLIDA');
     logger.api.error(err);
-    console.log();
   });
 
 app.use('/', routes);
