@@ -7,7 +7,7 @@ import { HomePageComponent } from './Features/home-page/home-page.component';
 import { LoginComponent } from './Shared/login/login.component';
 import { FooterComponent } from './Shared/footer/footer.component';
 import { BannerComponent } from './Features/banner/banner.component';
-import { BasesComponent } from './Shared/bases/bases.component';
+import { BasesComponent } from './Features/bases/bases.component';
 import { RegistroComponent } from './Features/registro/registro.component';
 
 
