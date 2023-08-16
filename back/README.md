@@ -41,20 +41,10 @@ Documentacion: https://sequelize.org/master/manual/migrations.html
 Ejecutar este comando:
 
 ### Paso 1:
-
 ```
 npx sequelize-cli model:generate --name [model name] --attributes [attributes]
 
-Crear model Users:
-npx sequelize-cli model:generate --name Users --attributes firstName:string,lastName:string,dni:integer, mail:integer,password:string,alias:string,estadoDeVendedor:boolean,idDireccion:integer
-
-Crear model Products:
-npx sequelize-cli model:generate --name Products --attributes idUsuario:integer,nombre:string,detalles:string, precio:integer,envio:boolean,idTipoProducto:integer
-
-Crear model Fotos:
-npx sequelize-cli model:generate --name Images --attributes url:string,idProducto:integer
 ```
-
 Reemplazando:
 - [model name] por el nombre de que quieran que tenga el Model. Ej: Users
 - [attributes] por un listado de atributos separados por coma que va a tener el Model. Ej: firstName:string,lastName:number
@@ -64,6 +54,12 @@ Luego de ejecutar ese comando, se van a generar 2 archivos automáticamente:
 - [tiempstamp]-create-[model name].js dentro del a carpeta migrations. Ej: 202303271235-create-users.js
 
 Si necesitan crear relaciones entre tablas o agregar atributos mas complejos que string/number, recomiendo que vayan al 202303271235-create-users.js y hagan los cambios en ese archivo como si fuera el Model.
+
+#### (EJEMPLO) Creando Model User
+```
+Crear model Users:
+npx sequelize-cli model:generate --name Users --attributes firstName:string,lastName:string,dni:integer, mail:integer,password:string,alias:string,estadoDeVendedor:boolean,idDireccion:integer
+```
 
 ### Paso 2:
 Correr el siguiente comando para que se cree la tabla usando los archivos anteriores.
