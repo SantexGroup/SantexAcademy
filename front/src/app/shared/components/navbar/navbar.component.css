@@ -1,0 +1,26 @@
+.navbar {
+    width: 100%;
+    min-height: 100vh;
+    position: fixed;
+    top: 90px;
+    left: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: white;
+    transition: 0.3s ease;
+  }
+  
+  .navbar-closed {
+    left: 0;
+    transition: 0.3s ease;
+  }
+
+  @media screen and (min-width: 1024px){
+    .navbar {
+      position: initial;
+      width: 100%;
+      min-height: auto;
+      border-top: 1px solid #CCCCCC;
+    }
+  }
