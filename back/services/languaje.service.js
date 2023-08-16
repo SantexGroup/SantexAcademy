@@ -2,13 +2,14 @@ const { addRelation, updateRelation } = require('../helpers/relations.helper');
 const { Profile, Language, ProfileLanguage } = require('../models');
 
 async function getLanguage(id) {
-  const language = await Language.findByPk(id, {
-    include: [{
-      model: ProfileLanguage,
-      as: 'ProfileLanguages',
-      attributes: ['id', 'profiles_id', 'level'],
-    }],
-  });
+  // const language = await Language.findByPk(id, {
+  //   include: [{
+  //     model: ProfileLanguage,
+  //     as: 'ProfileLanguages',
+  //     attributes: ['id', 'profiles_id', 'level'],
+  //   }],
+  // });
+  const language = await Language.findByPk(id);
   if (language) {
     return language;
   }
@@ -21,7 +22,7 @@ async function getAllLanguage(id) {
     include: [
       {
         model: Profile,
-        as: 'LanguageToProfile',
+        // as: 'LanguageToProfile',
         attributes: [],
         where: {
           user_id: id,

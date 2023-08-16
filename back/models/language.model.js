@@ -8,13 +8,13 @@ module.exports = (sequelize, DataTypes) => {
         through: models.ProfileLanguage,
         foreignKey: 'languages_id',
         otherKey: 'profiles_id',
-        as: 'LanguageToProfile', // Alias único para la asociación
+        // as: 'LanguageToProfile', // Alias único para la asociación
       });
 
-      models.Language.hasMany(models.ProfileLanguage, {
-        foreignKey: 'languages_id',
-        as: 'ProfileLanguages', // Alias único para la asociación
-      });
+      // models.Language.hasMany(models.ProfileLanguage, {
+      //   foreignKey: 'languages_id',
+      //   as: 'ProfileLanguages', // Alias único para la asociación
+      // });
     }
   }
 

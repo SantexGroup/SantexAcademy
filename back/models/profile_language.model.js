@@ -6,12 +6,8 @@ const { PROFILES_LANGUAGES_TABLE_NAME } = require('../helpers/sequelize.helper')
 
 module.exports = (sequelize, DataTypes) => {
   class ProfileLanguage extends Model {
-    static associate(models) {
-      models.ProfileLanguage.belongsTo(models.Language, {
-        foreingKey: 'languages_id',
-      });
-    }
   }
+
   ProfileLanguage.init({
     id: {
       type: DataTypes.INTEGER,
