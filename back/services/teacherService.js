@@ -35,12 +35,23 @@ const updateTeacher = async (id, teacher) => {
     throw new Error('Error en el servicio al actualizar el docente');
   }
 };
-// Faltan las funciones y delete
+
+const deleteTeacher = async (id) => {
+  try {
+    const deletedTeacherCount = await teacherProvider.deleteTeacher(id);
+    if (deletedTeacherCount === 0) {
+      throw new Error('Profesor no encontrado');
+    }
+    return deletedTeacherCount;
+  } catch (error) {
+    throw new Error('Error al eliminar el Profesor');
+  }
+};
 
 module.exports = {
   getAllTeachers,
   getTeachersById,
   createTeacher,
   updateTeacher,
-  // Falta aquí las demás funciones
+  deleteTeacher,
 };

@@ -40,12 +40,20 @@ const updateTeacher = async (req, res) => {
   }
 };
 
-// Falta las funciones de create, update y delete similar a CourseController
+const deleteTeacher = async (req, res) => {
+  const teacherId = req.params.id;
+  try {
+    const deletedTeacherCount = await teacherService.deleteTeacher(teacherId);
+    res.json({ message: 'Profesor eliminado exitosamente', count: deletedTeacherCount });
+  } catch (error) {
+    res.status(500).json({ error: 'Error al eliminar el profesor' });
+  }
+};
 
 module.exports = {
   getAllTeachers,
   getTeachersById,
   createTeacher,
   updateTeacher,
-  // Falta aquí las demás funciones
+  deleteTeacher,
 };

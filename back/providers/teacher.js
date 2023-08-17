@@ -40,12 +40,23 @@ const updateTeacher = async (id, teacher) => {
   }
 };
 
-// Faltan las funciones delete similar a CourseProvider
+const deleteTeacher = async (id) => {
+  try {
+    const deletedTeacherCount = await Teacher.destroy({
+      where: {
+        id,
+      },
+    });
+    return deletedTeacherCount;
+  } catch (error) {
+    throw new Error('Error al eliminar al docente');
+  }
+};
 
 module.exports = {
   getAllTeachers,
   getTeachersById,
   createTeacher,
   updateTeacher,
-  // Faltan las demás funciones
+  deleteTeacher,
 };

@@ -1,5 +1,8 @@
-const CourseController = require('./courseController');
+const CourseController = require('./course');
 const userController = require('./user');
-const TeacherController = require('./teacherController');
+const courseDetailController = require('./courseDetail');
+const TeacherController = require('./teacher');
 
-module.exports = { CourseController, TeacherController, userController };
+module.exports = {
+  CourseController, TeacherController, userController, courseDetailController,
+};

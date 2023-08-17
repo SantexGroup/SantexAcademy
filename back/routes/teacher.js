@@ -7,6 +7,6 @@ router.get('/', TeacherController.getAllTeachers);
 router.get('/:id', TeacherController.getTeachersById);
 router.post('/', TeacherController.createTeacher);
 router.put('/:id', TeacherController.updateTeacher);
-// Faltan aquí las demás rutas relacionadas con Teachers
+router.delete('/:id', TeacherController.deleteTeacher);
 
 module.exports = router;

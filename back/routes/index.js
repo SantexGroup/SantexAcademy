@@ -7,11 +7,13 @@ const errors = require('../middleware/error_handler.middleware');
 const app = Express();
 
 // Rutas
-const courseRoutes = require('./courseRoutes');
+const courseRoutes = require('./course');
 const userRoutes = require('./user');
-const teacherRoutes = require('./teacherRoutes');
+const coursesDetailRoutes = require('./courseDetail');
+const teacherRoutes = require('./teacher');
 
 // use=
+app.use('/coursesDetail', coursesDetailRoutes);
 app.use('/courses', courseRoutes);
 app.use('/teachers', teacherRoutes);
 app.use('/user', userRoutes);
