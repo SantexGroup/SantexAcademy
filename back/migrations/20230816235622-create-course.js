@@ -30,6 +30,15 @@ module.exports = {
       price: {
         type: Sequelize.INTEGER
       },
+      due: {
+        type: Sequelize.INTEGER
+      },
+      has_surcharge: {
+        type: Sequelize.BOOLEAN
+      },
+      surcharge_percentage: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

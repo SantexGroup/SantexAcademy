@@ -1,4 +1,4 @@
-const CourseController = require('./courseController');
+const CourseController = require('./course');
 const userController = require('./user');
 const courseDetailController = require('./courseDetail');
 

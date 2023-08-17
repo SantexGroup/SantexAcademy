@@ -1,4 +1,4 @@
-const courseProvider = require('./courseProvider');
+const courseProvider = require('./course');
 const userProvider = require('./user');
 const courseDetailProvider = require('./courseDetail');
 

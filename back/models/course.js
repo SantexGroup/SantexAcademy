@@ -21,6 +21,9 @@ module.exports = (sequelize, DataTypes) => {
     start_date: DataTypes.STRING,
     capacity: DataTypes.INTEGER,
     price: DataTypes.INTEGER,
+    due: DataTypes.INTEGER,
+    has_surcharge: DataTypes.BOOLEAN,
+    surcharge_percentage: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Course',

@@ -7,7 +7,7 @@ const errors = require('../middleware/error_handler.middleware');
 const app = Express();
 
 // Rutas
-const courseRoutes = require('./courseRoutes');
+const courseRoutes = require('./course');
 const userRoutes = require('./user');
 const coursesDetailRoutes = require('./courseDetail');
 // use=
