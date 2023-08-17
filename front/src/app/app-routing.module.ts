@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { InputLoginComponent } from './modules/input-login/input-login.component';
+import { RouterModule, Routes } from  '@angular/router'; 
 
-const routes: Routes = [
+const routes: Routes=[  
   {
-    path: 'dashboard',
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+    path: '',
+    component: InputLoginComponent
   },
-  {
-    path: '**',
-    redirectTo: 'dashboard'
-  }
+  
 ];
 
 @NgModule({
