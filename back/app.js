@@ -13,6 +13,9 @@ const logger = require('./utils/winston.logger');
 
 // Models:
 const models = require('./models');
+// const userModels = require('./models').user;
+// const adminModels = require('./models').admin;
+// const passwordModels = require('./models').password;
 
 // Rutes:
 const routes = require('./routes');
