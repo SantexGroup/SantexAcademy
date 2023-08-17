@@ -9,6 +9,7 @@ const routes = express();
 // Rutas
 const catalogoRouter = require('./catalogo');
 const orgRoutes = require('./organizaciones');
+const userRoutes = require('./usuario');
 
 // use=
 routes.use('/ping', (req, res) => {
@@ -22,5 +23,6 @@ routes.use('/ping', (req, res) => {
 
 routes.use('/catalogo', catalogoRouter);
 routes.use('/org', orgRoutes);
+routes.use('/user', userRoutes);
 
 module.exports = routes;

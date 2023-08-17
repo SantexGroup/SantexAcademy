@@ -16,15 +16,15 @@ const getOrganizations = async () => {
 
 // Esta funcion busca todos las organizaciones  o aquellas que cumplan con un criterio de busqueda
 
-const getOrganizationByCriteria = async (options) => {
+const getOrganizationByCriteria = async (queryOptions, bodyOptions) => {
   try {
-    const where = {};
-    const validOptions = ['id', 'name', 'telefono', 'cuit'];
+    const options = { ...queryOptions, ...bodyOptions }; // Combinar las opciones de búsqueda
+    const where = {}; // Excluir registros eliminados lógicamente
+    const validOptions = ['id', 'nombre', 'telefono', 'cuit', 'email'];
+
     validOptions.forEach((option) => {
       if (options[option]) where[option] = options[option];
     });
-
-    // Añadir una condición para excluir registros eliminados lógicamente
     where.deletedAt = null;
 
     const organizations = await Organizacion.findAll({
@@ -36,11 +36,14 @@ const getOrganizationByCriteria = async (options) => {
   } catch (error) {
     console.error(
       'The organization/s could not be retrieved due to an error.',
-      error,
+      error
     );
     throw error;
   }
 };
+
+
+
 
 const updateOrganizationById = async (id, organization) => {
   try {

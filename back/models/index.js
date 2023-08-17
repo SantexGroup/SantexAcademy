@@ -60,8 +60,8 @@ Usuario.belongsTo(CestaRecompensas, {
   as: 'cestaRecompensa',
   foreignKey: 'cestaRecompensasId',
 });
-CestaRecompensas.hasMany(Usuario, {
-  as: 'usuarios',
+CestaRecompensas.hasOne(Usuario, {
+  as: 'usuario',
   foreignKey: 'cestaRecompensasId',
 });
 Voluntariado.belongsTo(Organizacion, {
