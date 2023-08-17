@@ -20,10 +20,11 @@ import { FormInscCourseComponent } from './courses/form-insc-course/form-insc-co
 import { PayTransfCourseComponent } from './courses/pay-transf-course/pay-transf-course.component';
 import { PrimeflexModule } from '../lib/primeFlex/primeflex/primeflex.module';
 import { ComponentsRoutingModule } from './components-routing.module';
+import { AllCoursesComponent } from './courses/all-courses/all-courses.component';
 
 
 @NgModule({
-  declarations: [ CoursesComponent, CoursesDetailComponent, LandingCoursesComponent, HeaderComponent, HomeComponent, FooterComponent, BannerComponent, CompaniesComponent, TestimonialsComponent, EventsComponent, AdvertisementsComponent, ContactComponent, LoginComponent, RecordComponent, FormInscCourseComponent, PayTransfCourseComponent,],
+  declarations: [ CoursesComponent, CoursesDetailComponent, LandingCoursesComponent, HeaderComponent, HomeComponent, FooterComponent, BannerComponent, CompaniesComponent, TestimonialsComponent, EventsComponent, AdvertisementsComponent, ContactComponent, LoginComponent, RecordComponent, FormInscCourseComponent, PayTransfCourseComponent, AllCoursesComponent,],
   imports: [
     CommonModule,
     ComponentsRoutingModule,
