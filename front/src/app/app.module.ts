@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { InputContraseniaComponent } from './modules/input-contrasenia/input-contrasenia.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InputContraseniaComponent
   ],
   imports: [
     BrowserModule,

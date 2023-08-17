@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { InputContraseniaComponent } from './modules/input-contrasenia/input-contrasenia.component';
 
 const routes: Routes = [
   {
-    path: 'dashboard',
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+    path: '',
+    component: InputContraseniaComponent
+    
   },
-  {
-    path: '**',
-    redirectTo: 'dashboard'
-  }
+  
 ];
 
 @NgModule({

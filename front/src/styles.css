@@ -1,4 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    background-color:#240d8d ;
+    font-family: 'Lobster', cursive; 
+   
+}
+.login{
+    background-color: #3448b8;
+}
+.button{
+    background-color:#210892 ;
+}
