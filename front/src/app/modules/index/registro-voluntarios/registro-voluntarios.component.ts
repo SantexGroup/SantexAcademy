@@ -60,7 +60,7 @@ export class RegistroVoluntariosComponent implements OnInit {
         
         
       },
-      error:()=>{
+      error:(error)=>{ console.log(error)
         this.matSnackBar.open('Error al registrarse','ERROR',{
           duration:3000,
         horizontalPosition:'center',

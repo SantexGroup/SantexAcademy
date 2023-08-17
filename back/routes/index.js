@@ -29,6 +29,7 @@ app.use('/buenos/dias', (req, res) => {
   });
 });
 */
+
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
