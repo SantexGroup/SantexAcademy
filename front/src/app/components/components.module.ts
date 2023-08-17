@@ -17,10 +17,12 @@ import { AdvertisementsComponent } from './advertisements/advertisements.compone
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { RecordComponent } from './record/record.component';
+import { FormInscCourseComponent } from './courses/form-insc-course/form-insc-course.component';
+import { PayTransfCourseComponent } from './courses/pay-transf-course/pay-transf-course.component';
 
 
 @NgModule({
-  declarations: [ CoursesComponent, CoursesDetailComponent, LandingCoursesComponent, HeaderComponent, HomeComponent, FooterComponent, BannerComponent, CompaniesComponent, TestimonialsComponent, EventsComponent, AdvertisementsComponent, ContactComponent, LoginComponent, RecordComponent,],
+  declarations: [ CoursesComponent, CoursesDetailComponent, LandingCoursesComponent, HeaderComponent, HomeComponent, FooterComponent, BannerComponent, CompaniesComponent, TestimonialsComponent, EventsComponent, AdvertisementsComponent, ContactComponent, LoginComponent, RecordComponent, FormInscCourseComponent, PayTransfCourseComponent,],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -33,4 +35,4 @@ import { RecordComponent } from './record/record.component';
   ],
   providers: [],
 })
-export class DashboardModule {}
+export class ComponentsModule {}
