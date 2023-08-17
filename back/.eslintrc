@@ -12,6 +12,7 @@
                 "props": false
             }
         ],
-        "linebreak-style": ["off"]
+        "linebreak-style": ["off"],
+        "consistent-return": "off"
     }
 }
