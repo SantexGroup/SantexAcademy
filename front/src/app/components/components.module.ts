@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DashboardRoutingModule } from './components-routing.module';
 
 import { CoursesComponent } from './courses/courses.component';
 import { CoursesDetailComponent } from './courses/courses-detail/courses-detail.component';
@@ -19,14 +18,17 @@ import { LoginComponent } from './login/login.component';
 import { RecordComponent } from './record/record.component';
 import { FormInscCourseComponent } from './courses/form-insc-course/form-insc-course.component';
 import { PayTransfCourseComponent } from './courses/pay-transf-course/pay-transf-course.component';
+import { PrimeflexModule } from '../lib/primeFlex/primeflex/primeflex.module';
+import { ComponentsRoutingModule } from './components-routing.module';
 
 
 @NgModule({
   declarations: [ CoursesComponent, CoursesDetailComponent, LandingCoursesComponent, HeaderComponent, HomeComponent, FooterComponent, BannerComponent, CompaniesComponent, TestimonialsComponent, EventsComponent, AdvertisementsComponent, ContactComponent, LoginComponent, RecordComponent, FormInscCourseComponent, PayTransfCourseComponent,],
   imports: [
     CommonModule,
-    DashboardRoutingModule,
+    ComponentsRoutingModule,
     PrimengModule,
+    PrimeflexModule
     
   ],
   exports: [
