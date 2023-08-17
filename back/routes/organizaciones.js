@@ -1,7 +1,5 @@
 const express = require('express');
-
 const orgRouter = express.Router();
-
 const { orgController } = require('../controllers');
 
 // orgRouter.get('/', orgController.getOrganizations);
