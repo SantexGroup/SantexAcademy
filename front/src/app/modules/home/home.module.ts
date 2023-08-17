@@ -7,6 +7,7 @@ import { CardsAgendahoursComponent } from './components/cards-agendahours/cards-
 import { VolunteeringSearchComponent } from './components/volunteering-search/volunteering-search.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 
+
 @NgModule({
   declarations: [
     IntroductionComponent,
@@ -14,7 +15,7 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
     SliderOrganizationsComponent,
     CardsAgendahoursComponent,
     VolunteeringSearchComponent,
-    TestimonialsComponent
+    TestimonialsComponent,
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,29 @@
-<section class="w-full flex flex-col">
+<section class="w-full flex flex-col bg-white">
   <app-introduction></app-introduction>
   <app-slider-organizations></app-slider-organizations>
-  <app-volunteering-search></app-volunteering-search>
+
+  <!-- ------START VOLUNTEERING-SEARCH------ -->
+  <div class="bg-image w-full h-full py-[60px] px-[20px]">
+    <h1 class="title-volunteering-search text-center mb-10 font-poppins font-bold">BUSCÁ UN
+      VOLUNTARIADO SEGÚN TUS PREFERENCIAS</h1>
+    <div class="flex flex-wrap justify-center">
+      <app-volunteering-search *ngFor="let item of volunteeringData" [image]="item.image" [title]="item.title"
+        [backgroundColor]="item.backgroundColor"></app-volunteering-search>
+    </div>
+  </div>
+  <!-- ------END VOLUNTEERING-SEARCH------ -->
+
   <app-cards-agendahours></app-cards-agendahours>
-  <app-testimonials></app-testimonials>
+
+<!-- ------START TESTIMONIALS------ -->
+<div class="w-full bg-white p-[80px]">
+  <h2 class="title-testimonials text-center mb-[60px] font-poppins font-bold ">Voces Voluntarias: Experiencias
+    compartidas en
+    horas de compromiso</h2>
+  <div class="flex flex-wrap justify-center gap-[55px]">
+    <app-testimonials *ngFor="let item of testimonialsData" [image]="item.image" [name]="item.name"
+      [volunteerPlace]="item.volunteerplace" [testimonial]="item.testimonial"></app-testimonials>
+  </div>
+</div>
+<!-- ------END TESTIMONIALS------ -->
 </section>
