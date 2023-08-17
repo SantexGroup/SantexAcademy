@@ -1,4 +1,5 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
+// const cookieParser = require('cookie-parser');
 
 // Express Dependencies:
 const express = require('express');
@@ -27,6 +28,7 @@ app.listen(3000, () => {
 validateEnv.validate();
 app.use(helmet());
 app.use(helmet.ieNoOpen());
+
 // Sets "Strict-Transport-Security: max-age=5184000; includeSubDomains".
 const sixtyDaysInSeconds = 5184000;
 app.use(helmet.hsts({
@@ -89,5 +91,22 @@ models.sequelize.authenticate()
   });
 
 app.use('/', routes);
+
+// Seteamos el motor de plantillas
+app.set('view engine', 'ejs');
+
+// Para procesar datos enviados del form
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Seteamos las variables de entorno
+dotenv.config({ path: '/back/env/env.production' });
+
+/*  Para trabajar con las cookies
+app.use(cookieParser); */
+
+app.get('/', (req, res) => {
+  res.send('Hola Mundo');
+});
 
 module.exports = app;
