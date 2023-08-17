@@ -1,13 +1,15 @@
+const bcrypt = require('bcrypt');
 const db = require('../models/index');
 
 const userCreate = async (user) => {
   // falta verificar si el usuario ya existe (usuario ya registrado)
   try {
+    const hashedPassword = await bcrypt.hash(user.password, 10);
     const newUser = await db.User.create({
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
-      password: user.password,
+      password: hashedPassword,
     });
     return newUser;
   } catch (error) {
