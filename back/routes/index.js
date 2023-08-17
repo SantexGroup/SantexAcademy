@@ -9,14 +9,9 @@ const rootPath = require('../middleware/root_path.middleware');
 
 const app = Express();
 
-// Rutas
-
-// use=
-// app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
-// app.use(errors.handler);
 app.use('/user', userRouter);
 app.use('/api/surveys', surveyRouter);
 app.use('/api/surveyors', surveyorRoutes);
-// module.exports = app;
+
 module.exports = app;
