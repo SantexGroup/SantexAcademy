@@ -20,7 +20,7 @@ const getProduct = async (id) => {
   }
 };
 
-const getProducts = async () => {
+const getAllProducts = async () => {
   try {
     const products = await Producto.findAll();
     return products;
@@ -57,7 +57,7 @@ const deleteProduct = async (id) => {
 module.exports = {
   createProduct,
   getProduct,
-  getProducts,
+  getAllProducts,
   updateProduct,
   deleteProduct,
 };
