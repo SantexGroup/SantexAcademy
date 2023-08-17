@@ -1,16 +1,8 @@
 .containerDetail{
     .containerDetailCourse{
-
-        margin: 0 .5rem;
-        .imgBanner{}
         .containerCourse{                   
-            .title{
-            }
             .containerCost{
                 border: 2px solid blue;
-                .text{
-                    margin-top: 1.5rem;
-                }
             }
         }
     }
@@ -19,9 +11,25 @@
         .iconsDownload{
               margin-left: 10rem;  
         }
-        .buttonDownload{
-
+    }
+    .containerDivider{
+        .divCard{
+            border: 1px solid rgb(234, 234, 234);
         }
     }
+}
 
+@media screen and (min-width: 64em){
+    .containerDetail{
+        .containerDetailText{
+            .detailText{
+                max-width: 65ch;
+            }
+            .imgLogo {
+                border: 1px solid rgb(243, 240, 240);
+                border-radius: 5px;
+            }
+        }
+
+    }
 }
