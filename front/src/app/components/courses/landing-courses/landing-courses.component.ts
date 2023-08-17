@@ -5,7 +5,7 @@ import { CoursesService } from 'src/app/services/courses.service';
 @Component({
   selector: 'app-landing-courses',
   templateUrl: './landing-courses.component.html',
-  styleUrls: ['../../../../../scss/pages/home/_landing-courses.scss'],
+  styleUrls: ['./landing-courses.scss'],
 })
 export class LandingCoursesComponent {
 
