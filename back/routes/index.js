@@ -8,9 +8,9 @@ const { isAdminMdw, isTeacherMdw } = require('../middleware/auth');
 const app = Express();
 
 // Rutas
+
 const userRouter = require('./user');
 const courseRouter = require('./course');
-
 // use=
 app.use('/ping', (req, res) => {
   res.json({

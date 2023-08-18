@@ -1,11 +1,11 @@
-const Express = require('express');
-
-const router = Express.Router();
-
-// controller
+// eslint-disable-next-line import/newline-after-import
+const express = require('express');
 const { courseController } = require('../controllers');
 
-// course routes
+const router = express.Router();
+
+router.get('/all', courseController.getAllCourses);
+router.get('/:courseId', courseController.getCourse);
 router.post('/create', courseController.createCourseCont);
 
 module.exports = router;
