@@ -16,6 +16,13 @@ const routes: Routes = [
   },
 
   {
+
+    path: 'all-courses',
+    loadChildren: () => import('../app/components/all-courses-routing.module').then(m => m.AllCoursesRoutingModule)
+
+  },
+
+  {
     path: '**',
     redirectTo: 'home'
   }
