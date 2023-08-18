@@ -27,8 +27,22 @@ const createStudent = async (student) => {
   }
 };
 
+const updateStudent = async (id, student) => {
+  try {
+    const [updatedStudentCount] = await Student.update(student, {
+      where: {
+        id,
+      },
+    });
+    return updatedStudentCount;
+  } catch (error) {
+    throw new Error('Error al actualizar el estudiante');
+  }
+};
+
 module.exports = {
   getAllStudents,
   getStudentById,
   createStudent,
+  updateStudent,
 };

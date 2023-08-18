@@ -29,8 +29,20 @@ const createStudent = async (req, res) => {
   }
 };
 
+const updateStudent = async (req, res) => {
+  const studentId = req.params.id;
+  const studentData = req.body;
+  try {
+    const updatedStudentCount = await studentService.updateStudent(studentId, studentData);
+    res.json({ message: 'Estudiante actualizado exitosamente', count: updatedStudentCount });
+  } catch (error) {
+    res.status(500).json({ error: 'Error al actualizar el estudiante' });
+  }
+};
+
 module.exports = {
   getAllStudents,
   getStudentById,
   createStudent,
+  updateStudent,
 };

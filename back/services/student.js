@@ -27,8 +27,21 @@ const createStudent = async (student) => {
   }
 };
 
+const updateStudent = async (id, studentData) => {
+  try {
+    const updatedStudentCount = await StudentProvider.updateStudent(id, studentData);
+    if (updatedStudentCount === 0) {
+      throw new Error('Estudiante no encontrado');
+    }
+    return updatedStudentCount;
+  } catch (error) {
+    throw new Error('Error al actualizar el estudiante');
+  }
+};
+
 module.exports = {
   getAllStudents,
   getStudentById,
   createStudent,
+  updateStudent,
 };
