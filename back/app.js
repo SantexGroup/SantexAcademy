@@ -84,6 +84,6 @@ models.sequelize.authenticate()
     logger.api.error('Conexión con la Base de Datos: FALLIDA');
     logger.api.error(err);
   });
-
+ models.sequelize.sync();
 app.use('/', routes);
 module.exports = app;
