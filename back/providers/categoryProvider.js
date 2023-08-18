@@ -1,11 +1,9 @@
-const {CourseCategory} = require("../models");
-
-
+const { CourseCategory } = require("../models");
 
 const createCategory = async (options) => {
-  console.log(options)
+  console.log(options);
   try {
-    const  newCategory = await CourseCategory.create(options);
+    const newCategory = await CourseCategory.create(options);
     return newCategory;
   } catch (error) {
     throw error;
@@ -37,9 +35,9 @@ const getCategory = async (id) => {
     throw error;
   }
 };
-const getCategoryByName=async (name) =>{
+const getCategoryByName = async (name) => {
   try {
-    const user = await CourseCategory.findOne({where: { name},});
+    const user = await CourseCategory.findOne({ where: { name } });
     if (user) {
       return user;
     } else {
@@ -48,10 +46,10 @@ const getCategoryByName=async (name) =>{
   } catch (error) {
     throw error;
   }
-}
+};
 const updateCategory = async (CategoryId, CategoryOptions) => {
   try {
-    await getCategory (CategoryId);
+    await getCategory(CategoryId);
     await CourseCategory.update(CategoryOptions, { where: { id: CategoryId } });
     return CourseCategory.findByPk(CategoryId);
   } catch (error) {
@@ -73,5 +71,5 @@ module.exports = {
   getCategory,
   getCategories,
   updateCategory,
-  getCategoryByName
+  getCategoryByName,
 };

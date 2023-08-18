@@ -5,7 +5,7 @@ const a = require("../providers/categoryProvider");
 const createCourse = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-     return res.status(403).send({ errors: result.array() });
+    return res.status(403).send({ errors: result.array() });
   }
   const {
     name,
@@ -44,7 +44,7 @@ const createCourse = async (req, res) => {
 const getByIdCourse = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-     return res.status(403).send({ errors: result.array() });
+    return res.status(403).send({ errors: result.array() });
   }
   const CourseId = req.params.CourseId;
   console.log(CourseId);
@@ -59,7 +59,7 @@ const getByIdCourse = async (req, res) => {
 const getCourses = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-     return res.status(403).send({ errors: result.array() });
+    return res.status(403).send({ errors: result.array() });
   }
   try {
     const Course = await CourseService.getCourses();
@@ -72,7 +72,7 @@ const getCourses = async (req, res) => {
 const updateCourse = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-     return res.status(403).send({ errors: result.array() });
+    return res.status(403).send({ errors: result.array() });
   }
   const CourseId = req.params.CourseId;
   const {
@@ -109,7 +109,7 @@ const updateCourse = async (req, res) => {
 const deleteCourse = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-     return res.status(403).send({ errors: result.array() });
+    return res.status(403).send({ errors: result.array() });
   }
   const CourseId = req.params.CourseId;
   try {

@@ -1,4 +1,4 @@
-const ExpressValidator = require('express-validator');
+const ExpressValidator = require("express-validator");
 
 exports.checkValidationResult = function checkValidationResult(req, res, next) {
   const result = ExpressValidator.validationResult(req);

@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Schedule extends Model {
     /**
@@ -16,14 +14,17 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  Schedule.init({
-    where: DataTypes.STRING,
-    active: DataTypes.BOOLEAN,
-    day:DataTypes.STRING,
-    schedule:DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Schedule',
-  });
+  Schedule.init(
+    {
+      where: DataTypes.STRING,
+      active: DataTypes.BOOLEAN,
+      day: DataTypes.STRING,
+      schedule: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "Schedule",
+    }
+  );
   return Schedule;
 };

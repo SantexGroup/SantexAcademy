@@ -9,9 +9,11 @@ const ScheduleProvider = require("./scheduleProvider");
 
 const createCourse = async (CourseOptions) => {
   try {
-    console.log(CourseOptions.name)
-    const checkExist = await Course.findOne({where: {name: CourseOptions.name} });
-    console.log(checkExist)
+    console.log(CourseOptions.name);
+    const checkExist = await Course.findOne({
+      where: { name: CourseOptions.name },
+    });
+    console.log(checkExist);
     if (checkExist) throw new Error("course already exists");
     //obtiene el objeto
     const getObjetCategory = await CategoryProvider.getCategoryByName(
@@ -19,7 +21,7 @@ const createCourse = async (CourseOptions) => {
     );
     const newCourse = await Course.create({
       name: CourseOptions.name,
-      image:CourseOptions.image,
+      image: CourseOptions.image,
       description: CourseOptions.description,
       maxStudents: CourseOptions.maxStudents,
       start: CourseOptions.start,
@@ -38,7 +40,6 @@ const createCourse = async (CourseOptions) => {
 
 const getCourse = async (courseId) => {
   try {
-
     const CourseSelect = await Course.findOne({
       where: { id: courseId },
       include: [
@@ -84,7 +85,6 @@ const getCourses = async () => {
     throw error;
   }
 };
-
 
 const updateCourse = async (CourseId, CourseOptions) => {
   try {

@@ -25,7 +25,7 @@ const createSchedule = async (req, res) => {
       where,
       course,
       day,
-      schedule
+      schedule,
     });
 
     res.status(201).json(newSchedule);
@@ -60,7 +60,7 @@ const updateSchedule = async (req, res) => {
       active,
       where,
       day,
-      schedule
+      schedule,
     });
     res.status(200).json(newSchedule);
   } catch (error) {

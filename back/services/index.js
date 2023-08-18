@@ -21,7 +21,6 @@ const {
 } = require("./scheduleService");
 
 
-
 const CourseService = {
   createCourse,
   deleteCourse,

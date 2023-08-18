@@ -7,7 +7,6 @@ const createSchedule = async (options) => {
       where: { day: options.day, schedule: options.schedule },
     });
 
-    
     if (checkExist) {
       if (options.where == checkExist.dataValues.where) {
         throw new Error(

@@ -1,4 +1,4 @@
-const logger = require('../utils/winston.logger');
+const logger = require("../utils/winston.logger");
 
 // eslint-disable-next-line consistent-return,func-names
 const handler = function (err, req, res, next) {

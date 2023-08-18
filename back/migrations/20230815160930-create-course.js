@@ -1,66 +1,66 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Courses', {
+    await queryInterface.createTable("Courses", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       name: {
-        unique:true,
-        type: Sequelize.STRING
+        unique: true,
+        type: Sequelize.STRING,
       },
-      image:{
-        type:Sequelize.STRING(1000)
+      image: {
+        type: Sequelize.STRING(1000),
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       maxStudents: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       start: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       end: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       active: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       price: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       requirement: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       teacher: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
-      CourseCategoryId:{
-        allowNull:true,
-        type:Sequelize.INTEGER,
-        references:{
-        model:'CourseCategories',
-        key:'id'
+      CourseCategoryId: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "CourseCategories",
+          key: "id",
         },
-        onDelete:'CASCADE',
-        onUpdate:'CASCADE'
-       },
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+      },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Courses');
-  }
+    await queryInterface.dropTable("Courses");
+  },
 };

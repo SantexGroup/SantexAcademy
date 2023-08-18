@@ -6,12 +6,7 @@ const { body, query } = require("express-validator");
 router.get("/", CategoryController.getCategories);
 router.get("/:CategoryId", CategoryController.getByIdCategory);
 
-router.post(
-  "/",
-  body("name").isString(),
-
-  CategoryController.createCategory
-);
+router.post("/", body("name").isString(), CategoryController.createCategory);
 
 router.put(
   "/:CategoryId",

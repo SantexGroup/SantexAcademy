@@ -20,6 +20,7 @@ const {
   updateSchedule,
 } = require("./scheduleProvider");
 
+
 const CourseProvider = {
   createCourse,
   deleteCourse,
