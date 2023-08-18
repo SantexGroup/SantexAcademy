@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IntroductionComponent } from './components/introduction/introduction.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -6,7 +6,6 @@ import { SliderOrganizationsComponent } from './components/slider-organizations/
 import { CardsAgendahoursComponent } from './components/cards-agendahours/cards-agendahours.component';
 import { VolunteeringSearchComponent } from './components/volunteering-search/volunteering-search.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
-
 
 @NgModule({
   declarations: [
@@ -17,9 +16,7 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
     VolunteeringSearchComponent,
     TestimonialsComponent,
   ],
-  imports: [
-    CommonModule,
-  ],
-
+  imports: [CommonModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class HomeModule { }
+export class HomeModule {}

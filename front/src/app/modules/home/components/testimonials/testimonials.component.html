@@ -1,12 +1,21 @@
 <div class="flex flex-wrap justify-center gap-[55px]">
   <div class="card w-[364px] h-[469px] border-1 border-[lightGray] rounded-md">
-    <div class="card-head absolute bg-midnightBlue/[.6] w-[364px] h-[102px] rounded-t-lg z-0">
-      <img [src]="image" class="photo rounded-full mx-auto mt-[50px] space-y-[50px] z-10">
+    <div
+      class="card-head absolute bg-midnightBlue/[.6] w-[364px] h-[102px] rounded-t-lg z-0"
+    >
+      <img
+        [src]="image"
+        class="photo rounded-full mx-auto mt-[50px] space-y-[50px] z-10"
+      />
     </div>
     <div class="mt-[150px]">
-      <h3 class="name-volunteer text-center font-poppins font-semibold">{{ name }}</h3>
-      <p class="volunteer-place text-center text-[dimGray]">{{ volunteerPlace }}</p>
-      <hr class="m-4 text-[lightGray] ">
+      <h3 class="name-volunteer text-center font-poppins font-semibold">
+        {{ name }}
+      </h3>
+      <p class="volunteer-place text-center text-[dimGray]">
+        {{ volunteerPlace }}
+      </p>
+      <hr class="m-4 text-[lightGray]" />
       <p class="testimonial text-justify px-[25px]">{{ testimonial }}</p>
     </div>
   </div>
