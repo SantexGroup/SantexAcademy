@@ -9,11 +9,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      start: {
-        type: Sequelize.DATE
+      day:{
+        type:Sequelize.STRING
       },
-      end: {
-        type: Sequelize.DATE
+      schedule:{
+        type:Sequelize.STRING
       },
       where: {
         type: Sequelize.STRING

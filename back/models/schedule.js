@@ -17,10 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Schedule.init({
-    start: DataTypes.DATE,
-    end: DataTypes.DATE,
     where: DataTypes.STRING,
-    active: DataTypes.BOOLEAN
+    active: DataTypes.BOOLEAN,
+    day:DataTypes.STRING,
+    schedule:DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Schedule',

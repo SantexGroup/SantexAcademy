@@ -18,14 +18,14 @@ const createSchedule = async (req, res) => {
   if (!result.isEmpty()) {
     return res.status(403).send({ errors: result.array() });
   }
-  const { start, end, active, where, course } = req.body;
+  const { active, where, course, day, schedule } = req.body;
   try {
     const newSchedule = await ScheduleService.createSchedule({
-      start,
-      end,
       active,
       where,
       course,
+      day,
+      schedule
     });
 
     res.status(201).json(newSchedule);
@@ -54,13 +54,14 @@ const updateSchedule = async (req, res) => {
     return res.status(403).send({ errors: result.array() });
   }
   const ScheduleId = req.params.ScheduleId;
-  const { start, end, active, where } = req.body;
+  const { active, where, day, schedule } = req.body;
   try {
     const newSchedule = await ScheduleService.updateSchedule(ScheduleId, {
-      start,
-      end,
+
       active,
       where,
+      day,
+      schedule
     });
     res.status(200).json(newSchedule);
   } catch (error) {

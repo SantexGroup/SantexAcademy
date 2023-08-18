@@ -10,10 +10,14 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       idCourse: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete:'CASCADE',
+        onUpdate:'CASCADE'
       },
       idSchedule: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete:'CASCADE',
+        onUpdate:'CASCADE'
       },
       createdAt: {
         allowNull: false,

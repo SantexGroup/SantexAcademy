@@ -1,24 +1,27 @@
-const {Schedule,ScheduleCourses,Course} = require("../models");
-const CourseProvider= require('./courseProvider')
-
+const { Schedule, ScheduleCourses, Course } = require("../models");
+const CourseProvider = require("./courseProvider");
 
 const createSchedule = async (options) => {
   try {
-    const checkExist = await Schedule.findOne({where:{start:options.start, end:options.end}})
-    if(checkExist)throw new Error("Schedule already exists");
+    const checkExist = await Schedule.findOne({
+      where: { day: options.day, schedule: options.schedule },
+    });
+    if (checkExist) throw new Error("Schedule already exists");
 
     // no funciona si lo hago con el provider de Course
-    const CourseSelect = await Course.findOne({where: { name:options.course},});
-    if (!CourseSelect){
+    const CourseSelect = await Course.findOne({
+      where: { name: options.course },
+    });
+    if (!CourseSelect) {
       throw new Error("no get Course found");
     }
     //crea el horario
-    const  newSchedule = await Schedule.create(options);
+    const newSchedule = await Schedule.create(options);
     //crea la relacion de las tablas
     const relation = await ScheduleCourses.create({
-      idSchedule:newSchedule.id,
-      idCourse: CourseSelect.id
-    })
+      idSchedule: newSchedule.id,
+      idCourse: CourseSelect.id,
+    });
 
     return newSchedule;
   } catch (error) {
@@ -26,9 +29,9 @@ const createSchedule = async (options) => {
   }
 };
 
-const getScheduleByTime=async (start) =>{
+const getScheduleByTime = async (start) => {
   try {
-    const scheduleSelect = await Schedule.findOne({where: { start},});
+    const scheduleSelect = await Schedule.findOne({ where: { start } });
     if (scheduleSelect) {
       return scheduleSelect;
     } else {
@@ -37,7 +40,7 @@ const getScheduleByTime=async (start) =>{
   } catch (error) {
     throw error;
   }
-}
+};
 
 const getSchedules = async () => {
   try {
@@ -52,11 +55,12 @@ const getSchedules = async () => {
   }
 };
 
-const getSchedule = async (id) => {
+const getSchedule = async (ScheduleId) => {
   try {
-    const Schedule = await Schedule.findByPk(id);
-    if (Schedule) {
-      return Schedule;
+    const scheduleSelect = await Schedule.findByPk(ScheduleId);
+
+    if (scheduleSelect) {
+      return scheduleSelect;
     } else {
       throw new Error("no get Schedule found");
     }
@@ -67,7 +71,7 @@ const getSchedule = async (id) => {
 
 const updateSchedule = async (ScheduleId, ScheduleOptions) => {
   try {
-    await getSchedule (ScheduleId);
+    await getSchedule(ScheduleId);
     await Schedule.update(ScheduleOptions, { where: { id: ScheduleId } });
     return Schedule.findByPk(ScheduleId);
   } catch (error) {
@@ -77,6 +81,7 @@ const updateSchedule = async (ScheduleId, ScheduleOptions) => {
 
 const deleteSchedule = async (ScheduleId) => {
   try {
+    ScheduleCourses.destroy({ where: { id: ScheduleId } });
     return Schedule.destroy({ where: { id: ScheduleId } });
   } catch (error) {
     throw error;
@@ -89,5 +94,5 @@ module.exports = {
   getSchedule,
   getSchedules,
   updateSchedule,
-  getScheduleByTime
+  getScheduleByTime,
 };

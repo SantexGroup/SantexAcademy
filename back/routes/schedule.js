@@ -8,20 +8,20 @@ router.get("/:ScheduleId", ScheduleController.getByIdSchedule);
 
 router.post(
   "/",
-  body("start").isString(),
-  body("end").isString(),
   body("active").isBoolean(),
   body("where").isString(),
   body("course").isString(),
+  body("day").isString(),
+  body("schedule").isString(),
   ScheduleController.createSchedule
 );
 
 router.put(
   "/:ScheduleId",
-  body("start").isString(),
-  body("end").isString(),
   body("active").isBoolean(),
   body("where").isString(),
+  body("day").isString(),
+  body("schedule").isString(),
   ScheduleController.updateSchedule
 );
 

@@ -1,11 +1,18 @@
-const { Course, ScheduleCourses } = require("../models");
+const {
+  Course,
+  ScheduleCourses,
+  Schedule,
+  CourseCategory,
+} = require("../models");
 const CategoryProvider = require("./categoryProvider");
 const ScheduleProvider = require("./scheduleProvider");
 
 const createCourse = async (CourseOptions) => {
   try {
-    const checkExist = await Course.findOne({name : CourseOptions.name})
-    if(checkExist)throw new Error("course already exists");
+    console.log(CourseOptions.name)
+    const checkExist = await Course.findOne({where: {name: CourseOptions.name} });
+    console.log(checkExist)
+    if (checkExist) throw new Error("course already exists");
     //obtiene el objeto
     const getObjetCategory = await CategoryProvider.getCategoryByName(
       CourseOptions.CourseCategoryName
@@ -28,10 +35,21 @@ const createCourse = async (CourseOptions) => {
   }
 };
 
-const getCourse = async (id) => {
+const getCourse = async (courseId) => {
   try {
-    let options = { include: [{ all: true }] };
-    const CourseSelect = await Course.findByPk(id, options);
+
+    const CourseSelect = await Course.findOne({
+      where: { id: courseId },
+      include: [
+        {
+          model: ScheduleCourses,
+          include: [Schedule],
+        },
+        {
+          model: CourseCategory,
+        },
+      ],
+    });
     if (CourseSelect) {
       return CourseSelect;
     } else {
@@ -44,8 +62,18 @@ const getCourse = async (id) => {
 
 const getCourses = async () => {
   try {
-    let options = { include: [{ all: true }] };
-    const Courses = await Course.findAll(options);
+    const Courses = await Course.findAll({
+      include: [
+        {
+          model: ScheduleCourses,
+          include: [Schedule],
+        },
+        {
+          model: CourseCategory,
+        },
+      ],
+    });
+
     if (Courses) {
       return Courses;
     } else {
@@ -55,6 +83,7 @@ const getCourses = async () => {
     throw error;
   }
 };
+
 
 const updateCourse = async (CourseId, CourseOptions) => {
   try {
