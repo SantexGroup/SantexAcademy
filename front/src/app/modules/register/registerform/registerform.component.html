@@ -1,0 +1,30 @@
+<div>
+    <div class="register-form">
+        <h2>Registro de Usuario</h2>
+        <form (ngSubmit)="submitForm()">
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" [(ngModel)]="userData.username" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" [(ngModel)]="userData.password" required>
+          </div>
+          <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" [(ngModel)]="userData.apellido" required>
+          </div>
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" [(ngModel)]="userData.nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" [(ngModel)]="userData.email" required>
+          </div>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+      
+      
+</div>

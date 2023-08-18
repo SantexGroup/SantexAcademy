@@ -61,7 +61,7 @@ app.use(express.urlencoded(
 const whitelist = process.env.CORS.split(' ');
 
 const corsOptions = {
-  origin(origin, callback) {
+  origin: (origin, callback) => {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
@@ -69,6 +69,7 @@ const corsOptions = {
       callback(new Error('Not allowed by CORS'));
     }
   },
+//  optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
 

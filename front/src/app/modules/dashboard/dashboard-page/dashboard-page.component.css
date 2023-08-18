@@ -1,0 +1,32 @@
+.header {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .body {
+    min-height: 100vh;
+    background-color: #571d81;
+    color: #0ded1c;
+    padding: 50px;
+    text-align: center;
+  }
+  .showregisterform {
+    background-color: #00ced1;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  .header button {
+    background-color: transparent;
+    border: 2px solid #040000;
+    color: #f7f711;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .hidden {
+    display: none;
+  }
