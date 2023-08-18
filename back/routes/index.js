@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 
 // // Middlewares:
 // const rootPath = require('../middleware/root_path.middleware');
@@ -7,19 +7,19 @@ const express = require("express");
 const routes = express();
 
 // Rutas
-const catalogoRouter = require("./catalogo");
-const orgRoutes = require("./organizaciones");
-const productRouter = require("./producto");
+const catalogoRouter = require('./catalogo');
+const orgRoutes = require('./organizaciones');
+const productRouter = require('./producto');
 
-routes.use("/ping", (req, res) => {
+routes.use('/ping', (req, res) => {
   res.json({
-    response: "pong!",
+    response: 'pong!',
   });
 });
 
-routes.use("/catalogo", catalogoRouter);
-routes.use("/org", orgRoutes);
-routes.use("/producto", productRouter);
+routes.use('/catalogo', catalogoRouter);
+routes.use('/org', orgRoutes);
+routes.use('/productos', productRouter);
 
 // routes.use('/', rootPath.handler);
 // routes.use(rootPath.setHeaders);
