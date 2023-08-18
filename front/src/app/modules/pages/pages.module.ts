@@ -9,7 +9,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { CarritoComponent } from './carrito/carrito.component';
 import { LoginFormComponent } from 'src/app/components/forms/login-form/login-form.component';
 import { RegisterFormComponent } from 'src/app/components/forms/register-form/register-form.component';
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +25,8 @@ import { RegisterFormComponent } from 'src/app/components/forms/register-form/re
   ],
   imports: [
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   exports: [
     HomeComponent,

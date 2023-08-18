@@ -2,39 +2,49 @@
     <!-- LOGOTIPO -->
     <img src="../../../../assets/345270431_766231688363871_4341753288289659002_n.jpg" width="100" alt="logotipo">
 </div>
-<h2 class="font-weight-bold text-center py-5" id="titleForm">Registrate para acceder a todos los beneficios de la incubadora NOC</h2>
+<h2 class="font-weight-bold text-center py-5" id="titleForm">Registrate para acceder a todos los beneficios de la
+    incubadora NOC</h2>
 <!-- LOGIN -->
-<form>
+<form #form="ngForm">
     <div class="row">
         <div class="col">
             <div class="mb-4">
-            <label for="correo" class="form-label">Nombre Completo</label>
-            <input type="email" class="form-control" id="email">
+                <label for="firstName" class="form-label">Nombre</label>
+                <input type="text" class="form-control" name="firstName" placeholder="Nombre"
+                    [(ngModel)]="model.firstName" required>
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-4">
+                <label for="lastName" class="form-label">Apellido</label>
+                <input type="text" class="form-control" name="lastName" placeholder="Apellido"
+                    [(ngModel)]="model.lastName" required>
             </div>
         </div>
         <div class="col">
             <div class="mb-4">
                 <label for="correo" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email">
+                <input type="email" class="form-control" name="email" placeholder="E-mail" [(ngModel)]="model.email"
+                    required>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col">
             <div class="mb-4">
-                <label for="pass" class="form-label"> Password</label>
-                <input type="password" class="form-control" required id="password">
+                <label for="password" class="form-label"> Password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="model.password" required>
             </div>
         </div>
         <div class="col">
             <div class="mb-4">
                 <label for="pass" class="form-label"> Confirmar password</label>
-                <input type="password" class="form-control" required id="password">
+                <input type="password" class="form-control" required id="password2">
             </div>
         </div>
     </div>
     <div class="d-grid">
-        <button type="submit" name="submit" class="btn btn-primary">Registrar</button>
+        <button type="submit" name="submit" class="btn btn-primary" (click)="signUp(form)">Registrar</button>
     </div>
 </form>
 <div class="my-3">

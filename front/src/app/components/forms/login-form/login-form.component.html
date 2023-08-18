@@ -4,17 +4,17 @@
 </div>
 <h2 class="font-weight-bold text-center py-5" id="titleForm">Iniciar sesión en la Incubadora del NOC</h2>
 <!-- LOGIN -->
-<form>
+<form #form="ngForm">
     <div class="mb-4">
         <label for="correo" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email">
+        <input type="email" class="form-control" name="email" [(ngModel)]="model.email" required>
     </div>
     <div class="mb-4">
         <label for="pass" class="form-label"> Password</label>
-        <input type="password" class="form-control" required id="password">
+        <input type="password" name="password" class="form-control" [(ngModel)]="model.password" required>
     </div>
     <div class="d-grid">
-        <button type="submit" name="submit" class="btn btn-primary">Iniciar sesion</button>
+        <button type="button" name="submit" class="btn btn-primary" (click)="logIn(form)">Iniciar sesion</button>
     </div>
 </form>
 <div class="my-3">

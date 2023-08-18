@@ -7,10 +7,11 @@ import { CarritoComponent } from './modules/pages/carrito/carrito.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent},
-  { path: 'cursos', component: CursosComponent},
-  { path: 'precios', component: PreciosComponent},
-  { path: 'carrito', component: CarritoComponent}
+  { path: 'home', component: HomeComponent },
+  { path: 'cursos', component: CursosComponent },
+  { path: 'precios', component: PreciosComponent },
+  { path: 'carrito', component: CarritoComponent },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
   // ,
   // { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)}
   // },

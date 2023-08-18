@@ -17,7 +17,7 @@ export class ApiService {
    * HTTP headers applied to all requests made through this
    * service.
    */
-   public httpHeaders = new HttpHeaders();
+  public httpHeaders = new HttpHeaders();
 
   /**
    * Creates a new HttpApiService instance and initializes it.
@@ -144,7 +144,10 @@ export class ApiService {
     };
 
     if (!postBody) {
-      postBody = {};
+      postBody = {
+        // email: "admin1",
+        // password: "iamadmin1"
+      };
     }
 
     return this.http.post<T>(this.apiUrl + url, postBody, opts);
