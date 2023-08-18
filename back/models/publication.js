@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Publication.init({
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+    },
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     image: DataTypes.STRING,
@@ -22,6 +26,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Publication',
+    createdAt: false,
+    updatedAt: false,
   });
   return Publication;
 };

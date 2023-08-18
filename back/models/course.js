@@ -9,8 +9,10 @@ module.exports = (sequelize, DataTypes) => {
   // Initialize the model
   Course.init({
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       primaryKey: true,
+      unique: true,
+      allowNull: false,
     },
     courseName: {
       type: DataTypes.STRING,

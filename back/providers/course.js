@@ -1,8 +1,10 @@
+const crypto = require('crypto');
+
 const { Course } = require('../models');
+// eslint-disable-next-line import/order
 
 const newCourseProv = async (course) => {
   const {
-    id,
     courseName,
     courseStartDate,
     courseEndDate,
@@ -13,11 +15,12 @@ const newCourseProv = async (course) => {
     // eslint-disable-next-line no-unused-vars
     const newCourse = await Course.create({
       // eslint-disable-next-line no-undef
-      id,
+      id: crypto.randomUUID(),
       courseName,
       courseStartDate,
       courseEndDate,
     });
+    return newCourse;
   } catch (error) {
     throw error;
   }
