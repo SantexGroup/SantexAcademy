@@ -22,6 +22,10 @@ import { PrimeflexModule } from '../lib/primeFlex/primeflex/primeflex.module';
 import { ComponentsRoutingModule } from './components-routing.module';
 import { AllCoursesComponent } from './courses/all-courses/all-courses.component';
 
+import { CardModule } from 'primeng/card'; 
+import { ButtonModule } from 'primeng/button'; 
+import { SplitButtonModule } from 'primeng/splitbutton';
+
 
 @NgModule({
   declarations: [ CoursesComponent, CoursesDetailComponent, LandingCoursesComponent, HeaderComponent, HomeComponent, FooterComponent, BannerComponent, CompaniesComponent, TestimonialsComponent, EventsComponent, AdvertisementsComponent, ContactComponent, LoginComponent, RecordComponent, FormInscCourseComponent, PayTransfCourseComponent, AllCoursesComponent,],
@@ -29,7 +33,10 @@ import { AllCoursesComponent } from './courses/all-courses/all-courses.component
     CommonModule,
     ComponentsRoutingModule,
     PrimengModule,
-    PrimeflexModule
+    PrimeflexModule,
+    CardModule,
+    ButtonModule,
+    SplitButtonModule,
     
   ],
   exports: [
