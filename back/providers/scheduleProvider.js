@@ -6,15 +6,23 @@ const createSchedule = async (options) => {
     const checkExist = await Schedule.findOne({
       where: { day: options.day, schedule: options.schedule },
     });
-    if (checkExist) throw new Error("Schedule already exists");
 
-    // no funciona si lo hago con el provider de Course
+    
+    if (checkExist) {
+      if (options.where == checkExist.dataValues.where) {
+        throw new Error(
+          "Duplicate 'where' conditions are not allowed. Please be more specific, for example: classroom 1 or second door on the right."
+        );
+      }
+      throw new Error("Schedule already exists");
+    }
     const CourseSelect = await Course.findOne({
       where: { name: options.course },
     });
     if (!CourseSelect) {
       throw new Error("no get Course found");
     }
+
     //crea el horario
     const newSchedule = await Schedule.create(options);
     //crea la relacion de las tablas
