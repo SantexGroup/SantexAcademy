@@ -11,12 +11,14 @@ const courseRoutes = require('./course');
 const userRoutes = require('./user');
 const coursesDetailRoutes = require('./courseDetail');
 const teacherRoutes = require('./teacher');
+const studentRoutes = require('./student');
 
 // use=
 app.use('/coursesDetail', coursesDetailRoutes);
 app.use('/courses', courseRoutes);
 app.use('/teachers', teacherRoutes);
 app.use('/user', userRoutes);
+app.use('/student', studentRoutes);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
