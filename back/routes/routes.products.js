@@ -7,7 +7,7 @@ const controller = require('../controllers/products.controller');
 //local.../products/
 router.post('/', controller.create);
 router.get("/",controller.getAll);
-//router.get("/get/:id",null /**controller.getByID*/);
-//router.put("/edit",null /**controller.edit*/);
+router.get("/:id",controller.getByID);
+router.put("/:id",controller.editByID);
 //router.delete("/delete",null /**controller.delete*/);
 module.exports = router;
