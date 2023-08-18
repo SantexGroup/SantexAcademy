@@ -75,8 +75,11 @@ Listo!
 ```
 $ ./node_modules/.bin/sequelize db:seed:undo:all
 ```
-### Crear Seeders e Insertarlos
+### Crear Seeders
 ```
 npx sequelize-cli seed:generate --name Users --seeders-path seeders
+```
+### Insertar Seeders
+```
 npm run db:seed:all
 ```
