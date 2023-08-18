@@ -223,7 +223,7 @@ section {
 
 #background {
     width: 100%;
-    background-image: url('/maquetacion/img/back-attached.jpg');
+    background-image: url('./img/back-attached.jpg');
     background-size: cover;
     background-attachment: fixed;
     height: 500px;
