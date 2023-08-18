@@ -1,24 +1,6 @@
-.bg-image {
-  background-image: url(https://res.cloudinary.com/carina-bosio/image/upload/v1691970346/xAcademy/img-volunteering-search_sm0vvp.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.text-centered {
-  text-align: center;
-  font-family: Poppins;
-  font-size: clamp(1.25rem, 0.893rem + 1.79vw, 2.5rem);
-}
-
-.flex {
-  display: flex;
-  /* gap: 76px; */
-  gap: clamp(1.563rem, 0.652rem + 4.55vw, 4.75rem);
-}
-
 .items-center {
   align-items: center;
+
 }
 
 .justify-center {

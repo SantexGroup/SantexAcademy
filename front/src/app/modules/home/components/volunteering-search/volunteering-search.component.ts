@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-volunteering-search',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./volunteering-search.component.css']
 })
 export class VolunteeringSearchComponent {
-
+  @Input() image!: string;
+  @Input() title!: string;
+  @Input() backgroundColor!: string;
+  constructor() { }
 }
+
+
+
