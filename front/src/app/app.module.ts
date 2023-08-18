@@ -7,20 +7,14 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HomeModule } from './modules/home/home.module';
 
+import { register } from 'swiper/element/bundle';
+// register Swiper custom elements
+register();
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    FooterComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HomeModule
-  ],
+  declarations: [AppComponent, NavbarComponent, FooterComponent],
+  imports: [BrowserModule, AppRoutingModule, HomeModule],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { 
-  
-}
+export class AppModule {}
