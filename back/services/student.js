@@ -18,7 +18,17 @@ const getStudentById = async (id) => {
   }
 };
 
+const createStudent = async (student) => {
+  try {
+    const newStudent = await StudentProvider.createStudent(student);
+    return newStudent;
+  } catch (error) {
+    throw new Error('Error al crear el estudiante');
+  }
+};
+
 module.exports = {
   getAllStudents,
   getStudentById,
+  createStudent,
 };

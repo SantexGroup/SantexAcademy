@@ -19,7 +19,18 @@ const getStudentById = async (req, res) => {
   }
 };
 
+const createStudent = async (req, res) => {
+  const studentData = req.body;
+  try {
+    const createdStudent = await studentService.createStudent(studentData);
+    res.status(201).json(createdStudent);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al crear el estudiante' });
+  }
+};
+
 module.exports = {
   getAllStudents,
   getStudentById,
+  createStudent,
 };
