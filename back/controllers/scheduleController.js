@@ -57,7 +57,6 @@ const updateSchedule = async (req, res) => {
   const { active, where, day, schedule } = req.body;
   try {
     const newSchedule = await ScheduleService.updateSchedule(ScheduleId, {
-
       active,
       where,
       day,

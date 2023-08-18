@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Course.init({
     name: DataTypes.STRING,
+    image:DataTypes.STRING(1000),
     description: DataTypes.STRING,
     maxStudents: DataTypes.INTEGER,
     start: DataTypes.DATE,

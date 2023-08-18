@@ -9,6 +9,7 @@ const createCourse = async (req, res) => {
   }
   const {
     name,
+    image,
     description,
     maxStudents,
     start,
@@ -23,6 +24,7 @@ const createCourse = async (req, res) => {
   try {
     const newCourse = await CourseService.createCourse({
       name,
+      image,
       description,
       maxStudents,
       start,
@@ -75,6 +77,7 @@ const updateCourse = async (req, res) => {
   const CourseId = req.params.CourseId;
   const {
     name,
+    image,
     description,
     maxStudents,
     start,
@@ -87,6 +90,7 @@ const updateCourse = async (req, res) => {
   try {
     const newCourse = await CourseService.updateCourse(CourseId, {
       name,
+      image,
       description,
       maxStudents,
       start,

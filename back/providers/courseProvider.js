@@ -19,6 +19,7 @@ const createCourse = async (CourseOptions) => {
     );
     const newCourse = await Course.create({
       name: CourseOptions.name,
+      image:CourseOptions.image,
       description: CourseOptions.description,
       maxStudents: CourseOptions.maxStudents,
       start: CourseOptions.start,

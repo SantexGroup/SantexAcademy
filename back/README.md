@@ -70,3 +70,19 @@ Listo!
 ```
 $ ./node_modules/.bin/sequelize db:seed:undo:all`
 ```
+
+
+
+
+
+----------------IMPORTANTE--------------
+### instalar dependencias
+PRIMERO CORRER EL: npm install 
+### crea las tablas en la BD
+SEGUNDO: ./node_modules/.bin/sequelize db:migrate
+### Popula la BD
+TERCERO: node ./utils/load.js 
+### Inicia la api
+Ahora ya se puede utilizar el: npm start
+----------------IMPORTANTE--------------
+

@@ -13,6 +13,9 @@ module.exports = {
         unique:true,
         type: Sequelize.STRING
       },
+      image:{
+        type:Sequelize.STRING(1000)
+      },
       description: {
         type: Sequelize.STRING
       },

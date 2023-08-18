@@ -13,6 +13,7 @@ router.post(
   body("course").isString(),
   body("day").isString(),
   body("schedule").isString(),
+  body("course").isString(),
   ScheduleController.createSchedule
 );
 
