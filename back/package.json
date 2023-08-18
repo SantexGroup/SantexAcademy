@@ -5,7 +5,7 @@
   "config": {},
   "scripts": {
     "prod": "node ./bin/www",
-    "start": "node ./bin/www",
+    "start": "nodemon ./bin/www",
     "clean": "rimraf ./node_modules",
     "lint-staged": "npx lint-staged",
     "live": "nodemon server.js",
