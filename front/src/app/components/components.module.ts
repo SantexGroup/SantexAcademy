@@ -25,6 +25,7 @@ import { AllCoursesComponent } from './courses/all-courses/all-courses.component
 import { CardModule } from 'primeng/card'; 
 import { ButtonModule } from 'primeng/button'; 
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { AllCoursesRoutingModule } from './all-courses-routing.module';
 
 
 @NgModule({
@@ -37,11 +38,12 @@ import { SplitButtonModule } from 'primeng/splitbutton';
     CardModule,
     ButtonModule,
     SplitButtonModule,
+    AllCoursesRoutingModule
     
   ],
   exports: [
     CoursesComponent,
-    LandingCoursesComponent
+    LandingCoursesComponent,
   ],
   providers: [],
 })
