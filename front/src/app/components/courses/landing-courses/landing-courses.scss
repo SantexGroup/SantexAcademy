@@ -3,10 +3,35 @@
 
     .article__cards {
 
-        .title__courses {
+        .header__courses {
 
-            text-align: center;
-            font-weight: 500;
+            .title__courses {
+
+                text-align: center;
+                font-weight: 500;
+    
+            }
+    
+            .parrafo__courses {
+    
+                text-align: center;
+                font-weight: 200;
+                white-space: pre-line;
+    
+            }
+
+            .container__button {
+
+                display: grid;
+                place-items: center;
+
+                .button__all {
+
+                    margin-top: 1rem;
+
+                }
+
+            }
 
         }
 
