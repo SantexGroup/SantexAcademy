@@ -16,8 +16,9 @@ const logger = require('./utils/winston.logger');
 const models = require('./models');
 
 // Rutes:
-const routes = require('./routes');
+// const routes = require('./routes');
 
+// Conexión con base de datos
 const config = require('./config/config');
 const validateEnv = require('./utils/validateEnv');
 
@@ -90,7 +91,7 @@ models.sequelize.authenticate()
     logger.api.error(err);
   });
 
-app.use('/', routes);
+app.use('/', require('./routes/index'));
 
 // Seteamos el motor de plantillas
 app.set('view engine', 'ejs');
@@ -100,13 +101,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Seteamos las variables de entorno
-dotenv.config({ path: '/back/env/env.production' });
+dotenv.config({ path: '/back/env/.env' });
 
-/*  Para trabajar con las cookies
-app.use(cookieParser); */
-
-app.get('/', (req, res) => {
-  res.send('Hola Mundo');
-});
+// Para trabajar con las cookies
+// app.use(cookieParser);
 
 module.exports = app;
