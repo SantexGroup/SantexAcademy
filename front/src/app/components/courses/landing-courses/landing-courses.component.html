@@ -2,7 +2,20 @@
 
     <article class="article__cards">
 
-        <h1 class="title__courses">Nuestros cursos</h1>
+        <header class="header__courses">
+        
+            <h1 class="title__courses">Nuestros cursos</h1>
+        
+            <p class="parrafo__courses">
+                Potencia tu aprendizaje con nuestros cursos dinámicos y adquiere habilidades claves para
+                destacar en tu carrera profesional
+            </p>
+
+            <div class="container__button">
+                <a routerLink="/all-courses" pButton class="button__all" label="Ver todos los cursos"></a>
+            </div>
+        
+        </header>
 
         <p-carousel [value]="coursesService.courses" [numVisible]="3" [numScroll]="1" [circular]="false"
             [responsiveOptions]="coursesService.responsiveOptions">
