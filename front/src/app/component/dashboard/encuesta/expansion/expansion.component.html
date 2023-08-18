@@ -1,0 +1,133 @@
+
+
+<div class="body">
+
+  <div class="formulario">
+
+    <form [formGroup]="pasoUno"  (ngSubmit)="enviar()">
+
+      
+
+      <mat-accordion class="example-headers-align">
+
+        <!--step 0-->
+        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              DATOS PERSONALES
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput autocomplete="off" formControlName="pregunta1">
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill">
+            <mat-label >Email</mat-label>
+            <input matInput autocomplete="off" formControlName="pregunta2">
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill">
+            <mat-label >Edad</mat-label>
+            <input matInput autocomplete="off" formControlName="pregunta3">
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill">
+            <mat-label >Sexo</mat-label>
+            <input matInput autocomplete="off" formControlName="pregunta4">
+          </mat-form-field>
+
+          <p>Porcedencia</p>
+          <mat-form-field appearance="fill">
+            <mat-label>Localidad</mat-label>
+            <input matInput autocomplete="off" formControlName="pregunta5">
+          </mat-form-field>   
+
+          <mat-form-field appearance="fill">  
+            <mat-label>Provincia</mat-label>
+            <input matInput autocomplete="off" formControlName="pregunta6">
+          </mat-form-field>   
+
+          <mat-form-field appearance="fill">  
+            <mat-label>País</mat-label>
+            <input matInput autocomplete="off" formControlName="pregunta7">
+          </mat-form-field> 
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Con quién vino?</mat-label>
+            <input matInput autocomplete="off" formControlName="pregunta8">
+          </mat-form-field>  
+
+          <mat-action-row>
+            <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+          </mat-action-row>
+
+        </mat-expansion-panel>
+
+
+        <!--step 1-->
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              POR QUE ELIGIÓ MINA CLAVERO?
+            </mat-panel-title>        
+          </mat-expansion-panel-header>
+
+
+          <p>A través de qué medio conoció Mina Clavero?</p> 
+          
+          <section class="example-section" [formGroup]="pasoUno"> 
+            <mat-checkbox formControlName="television">Televisión</mat-checkbox>
+            <p><mat-checkbox formControlName="pagina">Pagina web</mat-checkbox></p>
+            <p><mat-checkbox formControlName="radio">Radio</mat-checkbox></p>
+            <p><mat-checkbox formControlName="medios">Medios gráficos</mat-checkbox></p>
+            <p><mat-checkbox formControlName="facebook">facebook</mat-checkbox></p>
+            <p><mat-checkbox formControlName="recomendaciones">Recomendaciones</mat-checkbox></p> 
+          
+            <mat-form-field appearance="legacy">
+              <mat-label>Otro? Cuál?</mat-label>
+              <input matInput  placeholder="" autocomplete="off" formControlName="otro"> 
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+          </section>
+                
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Siguiente</button>
+            <button mat-button color="primary" (click)="nextStep()">Anterior</button>
+          </mat-action-row>
+
+        </mat-expansion-panel>
+
+
+
+
+      </mat-accordion>  
+
+      <br>
+      <br>
+    <!--Botón enviar encuesta-->
+    <button  type="submit" mat-raised-button color="primary"  class="botonEnviar">Enviar Encuesta</button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+

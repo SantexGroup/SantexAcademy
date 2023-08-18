@@ -1,0 +1,36 @@
+.body{
+  display: flex;
+  justify-content: center;
+  /*height: 100%;*/
+}
+
+.formulario{
+  width: 100%;
+  max-width: 84%;
+  justify-content: center;
+}
+
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: center;
+    
+}
+  
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 5px;
+}
+
+
+.example-section {
+  margin: 12px 0;
+  justify-content: space-between;
+
+}
+  
+ 
+.botonEnviar{
+  justify-content: center;
+  width: 20%;
+  height: 50px;
+  background-color: #FEA31C; 
+}
