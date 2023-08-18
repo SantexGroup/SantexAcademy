@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import swal from 'sweetalert2'
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-form-delete',
@@ -14,36 +14,39 @@ export class FormDeleteComponent implements OnInit {
   }
   titularAlerta: string ='';
   showDelete() {
-    const swalWithBootstrapButtons = swal.mixin({
+    
+    const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
+        confirmButton: 'custom-confirm-button-class',
+        cancelButton: 'custom-confirm-button-class '
       },
-      buttonsStyling: false
+      buttonsStyling: true
     })
     
     swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: '¿Estás seguro?',
+      text: "¡No serás capaz de revertir esto!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel!',
+      confirmButtonText: '¡Si, eliminar!',
+      confirmButtonColor: '#3085d6',
+      cancelButtonText: '¡No, cancelar!',
+      cancelButtonColor: '#d33',
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
         swalWithBootstrapButtons.fire(
-          'Deleted!',
-          'Your file has been deleted.',
+          'Eliminado!',
+          'Tu producto ha sido eliminado.',
           'success'
         )
       } else if (
         /* Read more about handling dismissals below */
-        result.dismiss === swal.DismissReason.cancel
+        result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
+          'Cancelado',
+          'Producto seguro :)',
           'error'
         )
       }
@@ -51,7 +54,7 @@ export class FormDeleteComponent implements OnInit {
     return false;
   }
   mostrar() {
-    swal.fire('Registro exitoso .... ', this.titularAlerta);
+    Swal.fire('Registro exitoso .... ', this.titularAlerta);
     return false;
   }
 }

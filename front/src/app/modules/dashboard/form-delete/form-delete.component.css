@@ -1,6 +1,6 @@
 .containerGral {
     display: flex;
-    margin-top: 80px;
+    
   }
   .column4col {
       flex-basis: 30%;
@@ -217,3 +217,9 @@
    box-shadow: inset 5px 5px 5px #115DFC,
                inset -5px -5px 5px #00c2ff;
   }
+/* Estilos para los botones de confirmación y cancelación */
+.custom-confirm-button-class {
+  background-color: #3085d6 !important;
+  color: white !important;
+  /* Agrega otros estilos personalizados según tus necesidades */
+}
