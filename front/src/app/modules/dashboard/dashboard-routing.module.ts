@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
+import { FormUpdateComponent } from './form-update/form-update.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardPageComponent,
-    children: [
-      
-    ]
+    loadChildren: () => import('./dashboard-page/dashboard-page.module').then(m => m.DashboardPageModule),
   }
 ];
 
