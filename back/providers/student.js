@@ -9,4 +9,16 @@ const getAllStudents = async () => {
   }
 };
 
-module.exports = { getAllStudents };
+const getStudentById = async (id) => {
+  try {
+    const student = await Student.findByPk(id);
+    return student;
+  } catch (error) {
+    throw new Error('Error al obtener el estudiante');
+  }
+};
+
+module.exports = {
+  getAllStudents,
+  getStudentById,
+};

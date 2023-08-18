@@ -9,6 +9,16 @@ const getAllStudents = async () => {
   }
 };
 
+const getStudentById = async (id) => {
+  try {
+    const student = await StudentProvider.getStudentById(id);
+    return student;
+  } catch (error) {
+    throw new Error('Error al obtener el estudiante');
+  }
+};
+
 module.exports = {
   getAllStudents,
+  getStudentById,
 };
