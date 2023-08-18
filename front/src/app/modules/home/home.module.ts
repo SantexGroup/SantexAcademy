@@ -10,7 +10,7 @@ import { CardsAgendahoursComponent } from './components/cards-agendahours/cards-
     IntroductionComponent,
     HomePageComponent,
     SliderOrganizationsComponent,
-    CardsAgendahoursComponent
+    CardsAgendahoursComponent,
   ],
   imports: [
     CommonModule,
