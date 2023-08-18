@@ -1,56 +1,13 @@
-<div class="w-full bg-white p-[84px]">
-  <h2 class="title-testimonials text-center font-poppins font-bold mb-[77px]">Voces Voluntarias: Experiencias compartidas en
-    horas de compromiso</h2>
-  <div class="flex flex-wrap justify-center gap-[55px]">
-       <div class="card w-[364px] h-[469px] border-1 border-[lightGray] rounded-md">
-      <div class="card-head absolute bg-midnightBlue/[.6] w-[364px] h-[102px] rounded-t-lg z-0">
-        <img src="https://res.cloudinary.com/carina-bosio/image/upload/v1692024797/xAcademy/persona1_lwfikx.jpg"
-          class="photo rounded-full mx-auto mt-[50px] space-y-[50px] z-10">
-      </div>
-      <div class="mt-[150px]">
-        <h3 class="name-volunteer text-center font-poppins font-semibold">María Celeste Siro</h3>
-        <p class="volunteer-place text-center  text-[dimGray]">Voluntaria en Fundación Manos Abiertas</p>
-        <hr class="m-4">
-        <p class="testimonial text-justify px-[25px]">“Fue una experiencia gratificante trabajar como vuluntaria en la Fundación Manos
-        Abiertas.
-        Contribuir al bienestar de
-        quienes más lo necesitan y formar parte de un equipo comprometido fue realmente enriquecedor. ¡Espero seguir
-        apoyando su
-        noble labor en el futuro!”</p>
-      </div>
+<div class="flex flex-wrap justify-center gap-[55px]">
+  <div class="card w-[364px] h-[469px] border-1 border-[lightGray] rounded-md">
+    <div class="card-head absolute bg-midnightBlue/[.6] w-[364px] h-[102px] rounded-t-lg z-0">
+      <img [src]="image" class="photo rounded-full mx-auto mt-[50px] space-y-[50px] z-10">
     </div>
-    <div class="card border-1 border-[lightGray] rounded-md">
-      <div class="card-head absolute bg-midnightBlue/[.6] rounded-t-lg z-0">
-        <img src="https://res.cloudinary.com/carina-bosio/image/upload/v1692024801/xAcademy/persona2_rtflfq.jpg"
-          class="photo rounded-full w-[90px] h-[90px] mx-auto mt-[50px] space-y-[50px] z-10">
-      </div>
-      <div class="mt-[150px]">
-        <h3 class="name-volunteer text-center font-poppins text-[16px] font-semibold">Franco Corvalán</h3>
-        <p class="volunteer-place text-center  text-[dimGray]">Voluntario en Greenpeace</p>
-        <hr class="m-4">
-        <p class="testimonial text-justify px-[25px]">“Mi tiempo como voluntario en Greenpeace fue increíblemente inspirador.
-          Colaborar en la
-          defensa del medio ambiente y
-          unirme a otros apasionados por el cambio marcó una experiencia que atesoro. Sigamos trabajando juntos por un
-          mundo más
-          verde y sostenible”</p>
-      </div>
+    <div class="mt-[150px]">
+      <h3 class="name-volunteer text-center font-poppins font-semibold">{{ name }}</h3>
+      <p class="volunteer-place text-center text-[dimGray]">{{ volunteerPlace }}</p>
+      <hr class="m-4 text-[lightGray] ">
+      <p class="testimonial text-justify px-[25px]">{{ testimonial }}</p>
     </div>
-    <div class="card w-[364px] h-[469px] border-1 border-[lightGray] rounded-md">
-      <div class="card-head absolute bg-midnightBlue/[.6] w-[364px] h-[102px] rounded-t-lg z-0">
-        <img src="https://res.cloudinary.com/carina-bosio/image/upload/v1692024809/xAcademy/persona_3_vkojkh.jpg"
-          class="photo rounded-full w-[90px] h-[90px] mx-auto mt-[50px] space-y-[50px] z-10">
-      </div>
-      <div class="mt-[150px]">
-        <h3 class="name-volunteer text-center font-poppins text-[16px] font-semibold">Blanca López</h3>
-        <p class="volunteer-place text-center text-[dimGray]">Voluntario en Greenpeace</p>
-        <hr class="m-4">
-        <p class="testimonial text-justify px-[25px]">“Ser voluntaria en Cruz Roja Argentina fue una experiencia humana
-        inigualable. Brindar
-        ayuda en momentos de necesidad y
-        formar parte de una red solidaria me llenó de gratitud. Sigamos construyendo un futuro más resiliente y
-        compasivo
-        juntos.”</p>
-      </div>
-    </div>
-
+  </div>
+</div>
