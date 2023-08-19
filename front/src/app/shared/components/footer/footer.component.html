@@ -1,9 +1,9 @@
 <footer class="w-full flex flex-col p-4">
   <div
-    class="w-full flex flex-col p-4 gap-8 md:flex-row md:items-center md:justify-center"
+    class="w-full flex flex-col p-4 gap-8 lg:flex-row lg:items-center lg:justify-center"
   >
     <article
-      class="w-full flex flex-col items-center justify-center text-center gap-2 md:w-[40%] md:border-r border-lightGray"
+      class="w-full flex flex-col items-center justify-center gap-2 lg:w-[60%] lg:border-r border-lightGfrfay lg:items-start lg:pb-8"
     >
       <figure class="flex items-center gap-2">
         <img
@@ -17,17 +17,33 @@
           class="w-[80px] sm:w-[100px]"
         />
       </figure>
-      <p class="text-sm w-[80%] sm:text-base">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae
-        maximus dui. Nulla facilisi.
-      </p>
-      <button
-        class="px-12 bg-orangeRed text-white text-sm rounded-md mb-2 sm:text-base"
+      <div
+        class="w-full flex flex-col gap-2 text-center items-center justify-center lg:items-start lg:gap-4"
       >
-        Donar
-      </button>
+        <b class="">Suscribite a nuestro boletín</b>
+        <p class="text-sm sm:text-base md:w-[80%]">
+          ¿Querés estar al tanto de las últimas actividades, proyectos
+          inspiradores y oportunidades de voluntariado?
+        </p>
+        <form class="w-full flex items-center justify-center gap-2 lg:px-4">
+          <label for="email_user">
+            <input
+              id="email_user"
+              type="email"
+              name="email"
+              placeholder="Email"
+              class="w-full h-full outline-none shadow-md py-2 px-4 rounded-md"
+            />
+          </label>
+          <button
+            class="px-4 py-2 bg-darkSlateBlue text-white font-semibold text-sm shadow-md rounded-md sm:text-base"
+          >
+            Subscribite
+          </button>
+        </form>
+      </div>
     </article>
-    <hr class="boder border-lightGray md:hidden" />
+    <hr class="boder border-lightGray lg:hidden" />
     <article class="w-full items-center justify-center">
       <ul
         class="grid grid-cols-1 gap-x-8 gap-y-4 justify-items-center text-center text-sm mb-2 m:grid-cols-2 sm:grid-cols-4 sm:text-base"
