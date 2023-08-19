@@ -1,19 +1,21 @@
 <header
   class="fixed top-0 left-0 w-full flex flex-col p-6 bg-white z-20 lg:gap-4 lg:relative"
+  id="arriba"
 >
   <div class="w-full flex items-center justify-between">
-    <figure class="flex items-center gap-2">
-      <img
-        src="/assets/logo/logohand.svg"
-        alt="logo"
-        class="w-[50px] m:w-[70px]"
-      />
-      <img
-        src="/assets/logo/logovoluntime.svg"
-        alt="logo"
-        class="w-[80px] m:w-[100px]"
-      />
-    </figure>
+    <a routerLink="/"
+      ><figure class="flex items-center gap-2">
+        <img
+          src="/assets/logo/logohand.svg"
+          alt="logo"
+          class="w-[50px] m:w-[70px]"
+        />
+        <img
+          src="/assets/logo/logovoluntime.svg"
+          alt="logo"
+          class="w-[80px] m:w-[100px]"
+        /></figure
+    ></a>
 
     <i
       [ngClass]="!isOpen ? 'hidden' : 'visible'"
