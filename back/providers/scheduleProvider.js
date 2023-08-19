@@ -1,5 +1,4 @@
 const { Schedule, ScheduleCourses, Course } = require("../models");
-const CourseProvider = require("./courseProvider");
 
 const createSchedule = async (options) => {
   try {
