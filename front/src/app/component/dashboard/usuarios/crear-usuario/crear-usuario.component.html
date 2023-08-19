@@ -1,0 +1,86 @@
+
+<div class="container">
+    <mat-toolbar>
+      <span >Crear Usuario</span>
+    </mat-toolbar>
+
+    <mat-card style="margin-top: 10px;">
+        <form [formGroup]="form" (ngSubmit)="agregarUsuario()">
+          
+            <mat-grid-list cols="4" rowHeight="50px">
+
+            <!--nombre-->
+                <mat-grid-tile [colspan]="1" [rowspan]="1" > 
+                    <mat-form-field class="ancho">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput autocomplete="off" formControlName="nombre">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+            <!--imagen-->
+            <mat-grid-tile [colspan]="3" [rowspan]="8" [style.background]="'#f5f5f5'"> <img src="./assets/img/anadir-usuario.png" width="180" height="180">
+            </mat-grid-tile>
+
+             <!--apellido-->
+                <mat-grid-tile [colspan]="1" [rowspan]="1" > 
+                    <mat-form-field class="ancho">
+                        <mat-label>Apellido</mat-label>
+                        <input matInput autocomplete="off" formControlName="apellido">
+                      </mat-form-field>
+                </mat-grid-tile>
+
+            <!--nombre de usuario-->
+                <mat-grid-tile [colspan]="1" [rowspan]="1"> 
+                    <mat-form-field class="ancho">
+                        <mat-label>Nombre de Usuario</mat-label>
+                        <input matInput autocomplete="off" formControlName="usuario">
+                    </mat-form-field>
+                </mat-grid-tile>
+            
+            <!--contraseña-->
+                <mat-grid-tile [colspan]="1" [rowspan]="1"> 
+                    <mat-form-field class="ancho">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput autocomplete="off" formControlName="contraseña">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+            <!--email-->
+            <mat-grid-tile [colspan]="1" [rowspan]="1"> 
+                <mat-form-field class="ancho">
+                    <mat-label>Email</mat-label>
+                    <input matInput autocomplete="off" formControlName="email">
+                </mat-form-field>
+            </mat-grid-tile>
+            
+            <!--rol-->    
+                <mat-grid-tile [colspan]="1" [rowspan]="1" > 
+                    <mat-form-field class="ancho">
+                        <mat-label>Rol</mat-label>
+                        <mat-select formControlName="rol">
+                          <mat-option *ngFor="let item of rol" [value]="item">
+                            {{item}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </mat-grid-tile>
+
+            <!--telefono-->
+            <mat-grid-tile [colspan]="1" [rowspan]="1"> 
+                <mat-form-field class="ancho">
+                    <mat-label>Teléfono</mat-label>
+                    <input matInput autocomplete="off" formControlName="telefono">
+                </mat-form-field>
+            </mat-grid-tile>    
+
+            <!--botón-->
+                <mat-grid-tile [colspan]="1" [rowspan]="1" > 
+                    <button mat-raised-button style="margin-right: 20px;" >Volver</button>
+
+                    <button type="submit"  class="botonAceptar" mat-raised-button color="primary" [disabled]="form.invalid">Aceptar</button>
+                </mat-grid-tile>
+            
+            </mat-grid-list>
+        </form>
+    </mat-card>
+</div>

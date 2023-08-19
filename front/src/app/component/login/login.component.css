@@ -1,0 +1,28 @@
+
+.body{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    /*background-color: #7EA0BD;*/
+}
+
+
+.login{
+    width: 100%;
+    max-width: 330px;
+    text-align: center; 
+}
+
+.ancho{
+    width: 70%;
+}
+
+.button{
+    height: 50px;
+    background-color: #FEA31C;
+}
+
+.spinner{
+    margin: 0 auto;
+}
