@@ -33,10 +33,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      status: {
+        type: Sequelize.ENUM('activo', 'eliminado', 'archivado'),
+        defaultValue: 'activo',
+      },
     });
   },
 
-  down: async (queryInterface, Sequelize) => {
+  down: async (queryInterface) => {
     await queryInterface.dropTable('Surveys');
   },
 };

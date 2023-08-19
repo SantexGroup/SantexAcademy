@@ -1,7 +1,8 @@
+/* eslint-disable no-plusplus */
 const faker = require('faker');
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  up: async (queryInterface) => {
     const surveyors = [];
     const numSurveyors = 20;
 
@@ -18,7 +19,7 @@ module.exports = {
     await queryInterface.bulkInsert('Surveyors', surveyors, {});
   },
 
-  down: async (queryInterface, Sequelize) => {
+  down: async (queryInterface) => {
     await queryInterface.bulkDelete('Surveyors', null, {});
   },
 };

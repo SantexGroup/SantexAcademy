@@ -27,10 +27,14 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
+      status: {
+        type: Sequelize.ENUM('activo', 'inactivo'),
+        defaultValue: 'activo',
+      },
     });
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.dropTable('Surveyors');
   },
 };

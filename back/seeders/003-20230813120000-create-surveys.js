@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 const faker = require('faker');
 
 // Genera una respuesta aleatoria para cada pregunta
@@ -38,7 +39,6 @@ const generateSurveyResults = (count, numSurveyors) => {
     const email = faker.internet.email();
     const answers = generateRandomAnswers();
     const surveyorId = faker.random.number({ min: 1, max: numSurveyors });
-    
     surveyResults.push({
       email,
       surveyorId,
@@ -52,11 +52,11 @@ const generateSurveyResults = (count, numSurveyors) => {
 
 const surveyResults = generateSurveyResults(50, 20); // Genera 10 encuestas aleatorias
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface) {
     await queryInterface.bulkInsert('Surveys', surveyResults, {});
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.bulkDelete('Surveys', null, {});
   },
 };

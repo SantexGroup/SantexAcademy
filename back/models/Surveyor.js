@@ -21,6 +21,10 @@ module.exports = (sequelize) => {
           isEmail: true,
         },
       },
+      status: {
+        type: DataTypes.ENUM('activo', 'inactivo'),
+        defaultValue: 'activo',
+      },
     },
     {
       sequelize,
