@@ -1,5 +1,10 @@
 const coordinatorServices = require('../services/coordinator-services');
 
+function getDataOrganizacion(req, res) {
+  const { usuario } = req;
+  res.status(200).send(usuario);
+}
+
 async function getAllCoordinators(req, res) {
   const user = await coordinatorServices.getAll();
   res.status(200).send(user);
@@ -59,5 +64,5 @@ async function loginCoordinator(req, res) {
 
 module.exports = {
   // eslint-disable-next-line max-len
-  getAllCoordinators, getCoordinatorById, createCoordinator, editCoordinator, deleteCoordinator, loginCoordinator,
+  getAllCoordinators, getCoordinatorById, createCoordinator, editCoordinator, deleteCoordinator, loginCoordinator, getDataOrganizacion,
 };
