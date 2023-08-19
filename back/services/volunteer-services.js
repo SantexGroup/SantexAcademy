@@ -91,7 +91,7 @@ async function login(email, password) {
   const user = await Volunteer.findOne({
     where: {
       email:email,
-      password:password,
+      password: password,
     },
   });
 
@@ -99,7 +99,7 @@ async function login(email, password) {
     throw new Error('Email o contraseña incorrectos');
   }
 
-  const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+  const token = jwt.sign({ id: user.id, tipoUsuario: 'voluntario' }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
   return token;
 }
