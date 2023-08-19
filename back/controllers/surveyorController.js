@@ -1,4 +1,4 @@
-/* eslint-disable consistent-return */
+const { Op } = require('sequelize');
 const { Surveyor, Survey } = require('../models');
 
 // Operación de Creación de Encuestador
@@ -86,5 +86,32 @@ exports.deleteSurveyor = async (req, res) => {
     return res.status(204).end();
   } catch (error) {
     return res.status(500).json({ error: 'Error al eliminar el encuestador.' });
+  }
+};
+
+exports.getSurveysByDateRange = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { startDate, endDate } = req.query;
+
+    // Buscar el encuestador por su ID
+    const surveyor = await Surveyor.findByPk(id);
+    if (!surveyor) {
+      return res.status(404).json({ error: 'Encuestador no encontrado.' });
+    }
+
+    // Obtener las encuestas realizadas por el encuestador entre las fechas dadas
+    const surveys = await Survey.findAll({
+      where: {
+        surveyorId: id,
+        createdAt: {
+          [Op.between]: [new Date(startDate), new Date(endDate)],
+        },
+      },
+    });
+
+    return res.status(200).json(surveys);
+  } catch (error) {
+    return res.status(500).json({ error: 'Error al obtener las encuestas.' });
   }
 };

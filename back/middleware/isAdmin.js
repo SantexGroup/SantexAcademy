@@ -1,8 +1,8 @@
 module.exports = (req, res, next) => {
-  const userIsAdmin = true;
-  if (!userIsAdmin) {
-    return res.status(403).json({ error: 'Acceso no autorizado.' });
+  const userRoles = req.user.roles;
+  if (userRoles.includes('admin')) {
+    next();
+  } else {
+    res.status(403).json({ error: 'Acceso denegado. Se requiere rol de administrador.' });
   }
-  // Si el usuario es un administrador, continúa con la siguiente función
-  next();
 };

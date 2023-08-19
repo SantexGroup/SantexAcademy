@@ -8,7 +8,7 @@ const isAdmin = require('../middleware/isAdmin'); // Debes implementar un middle
 router.post('/', isAdmin, surveyorController.createSurveyor);
 
 // Ruta para obtener todos los encuestadores
-router.get('/', surveyorController.getAllSurveyors);
+router.get('/', isAdmin, surveyorController.getAllSurveyors);
 
 // Ruta para obtener un encuestador por su id
 router.get('/:id', surveyorController.getSurveyorById);
@@ -21,5 +21,8 @@ router.delete('/:id', isAdmin, surveyorController.deleteSurveyor);
 
 // Ruta para traer todos los encuestadores que han realizado encuestas
 router.get('/:id/surveys', isAdmin, surveyorController.getSurveysBySurveyorId);
+
+// Ruta para traer las encuestas realizadas por determinado encuestador entre determinadas fechas
+router.get('/:id/surveys/by-dates', isAdmin, surveyorController.getSurveysByDateRange);
 
 module.exports = router;
