@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const { Op } = require('sequelize');
 const { Surveyor, Survey } = require('../models');
 
@@ -55,7 +56,10 @@ exports.getSurveysBySurveyorId = async (req, res) => {
     });
 
     // Responder con las encuestas encontradas
-    return res.status(200).json(surveys);
+    return res.status(200).json({
+      surveys,
+      totalEncuestas: surveys.length,
+    });
   } catch (error) {
     return res.status(500).json({ error: 'Error al obtener las encuestas.' });
   }
