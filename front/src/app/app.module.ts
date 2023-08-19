@@ -8,6 +8,7 @@ import { LogoprincipalComponent } from './components/logoprincipal/logoprincipal
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './component/registro/registro.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
