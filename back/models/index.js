@@ -59,10 +59,12 @@ CestaRecompensas.hasMany(ProductoEnCestaRecompensas, {
 Usuario.belongsTo(CestaRecompensas, {
   as: 'cestaRecompensa',
   foreignKey: 'cestaRecompensasId',
+  onDelete: 'SET NULL',
 });
 CestaRecompensas.hasOne(Usuario, {
-  as: 'usuario',
+  as: 'usuario_cesto',
   foreignKey: 'cestaRecompensasId',
+  onDelete: 'SET NULL',
 });
 Voluntariado.belongsTo(Organizacion, {
   as: 'organizacion',
