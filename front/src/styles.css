@@ -3,14 +3,3 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-color:#240d8d ;
-    font-family: 'Lobster', cursive; 
-   
-}
-.fondoemail{
-    background-color: #3448b8;
-}
-.button{
-    background-color:#210892 ;
-}
