@@ -17,15 +17,17 @@ async function getSurveysByEmail(email) {
     });
     return surveys;
   } catch (error) {
-    throw new Error(
-      `Error al obtener las encuestas por email: ${error.message}`,
-    );
+    throw new Error(`Error al obtener las encuestas por email: ${error.message}`);
   }
 }
 
 async function findAll() {
   try {
-    const surveys = await Survey.findAll();
+    const surveys = await Survey.findAll({
+      where: {
+        status: 'activo',
+      },
+    });
     return surveys;
   } catch (error) {
     throw new Error('Error al traer todos los registros');
@@ -35,20 +37,21 @@ async function findAll() {
 async function findById(id) {
   try {
     const survey = await Survey.findByPk(id);
-    if (survey) {
+    if (survey && survey.status === 'activo') {
       return survey;
     }
-    throw new Error('Usuario no encontrado');
+    throw new Error('Encuesta no encontrada');
   } catch (error) {
-    throw error(`Error en la consulta de un survey con id ${id}:`, error);
+    throw new Error(`Error en la consulta de un survey con id ${id}: ${error.message}`);
   }
 }
 
 async function deleteSurvey(id) {
   try {
     const survey = await Survey.findByPk(id);
-    if (survey) {
-      await survey.destroy();
+    if (survey && survey.status === 'activo') {
+      survey.status = 'eliminado';
+      await survey.save();
       return survey;
     }
     throw new Error('Encuesta no encontrada');
@@ -61,12 +64,11 @@ async function updateSurvey(id, newData) {
   try {
     const survey = await Survey.findByPk(id);
 
-    if (!survey) {
+    if (!survey || survey.status !== 'activo') {
       throw new Error('Encuesta no encontrada');
     }
 
     // Actualizar los campos de la encuesta con los nuevos datos
-    // await survey.update(newData);
     if (newData.email) {
       survey.email = newData.email;
     }
@@ -77,9 +79,7 @@ async function updateSurvey(id, newData) {
     await survey.save();
     return survey;
   } catch (error) {
-    throw new Error(
-      `Error al actualizar la encuesta con id ${id}: ${error.message}`,
-    );
+    throw new Error(`Error al actualizar la encuesta con id ${id}: ${error.message}`);
   }
 }
 
