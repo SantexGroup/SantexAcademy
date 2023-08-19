@@ -32,27 +32,31 @@ const generateRandomAnswers = () => {
   return answers;
 };
 
-// Genera resultados de encuestas con datos aleatorios
-const generateSurveyResults = (count, numSurveyors) => {
+const generateSurveyResults = async (count, surveyorIds) => {
   const surveyResults = [];
   for (let i = 0; i < count; i++) {
     const email = faker.internet.email();
     const answers = generateRandomAnswers();
-    const surveyorId = faker.random.number({ min: 1, max: numSurveyors });
+    const randomSurveyorId = surveyorIds[Math.floor(Math.random() * surveyorIds.length)];
     surveyResults.push({
       email,
-      surveyorId,
+      userId: randomSurveyorId,
       questions: JSON.stringify(answers),
-      createdAt: faker.date.between('2020-01-01', '2023-08-15'), // Fechas aleatorias entre 2020-01-01 y la fecha actual
-      updatedAt: faker.date.between('2020-01-01', '2023-08-15'), // Fechas aleatorias entre 2020-01-01 y la fecha actual
+      createdAt: faker.date.between('2020-01-01', '2023-08-15'),
+      updatedAt: faker.date.between('2020-01-01', '2023-08-15'),
     });
   }
   return surveyResults;
 };
 
-const surveyResults = generateSurveyResults(50, 20); // Genera 10 encuestas aleatorias
 module.exports = {
   async up(queryInterface) {
+    const surveyors = await queryInterface.sequelize.query(
+      'SELECT id FROM Users WHERE role LIKE \'%encuestador%\'',
+    );
+    const surveyorIds = surveyors[0].map((surveyor) => surveyor.id);
+
+    const surveyResults = await generateSurveyResults(50, surveyorIds);
     await queryInterface.bulkInsert('Surveys', surveyResults, {});
   },
 

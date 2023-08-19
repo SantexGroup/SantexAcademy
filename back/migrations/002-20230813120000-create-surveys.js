@@ -15,11 +15,11 @@ module.exports = {
         type: Sequelize.JSON,
         allowNull: false,
       },
-      surveyorId: { // Agregar este campo para la asociación
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Surveyors',
+          model: 'Users',
           key: 'id',
         },
         onUpdate: 'CASCADE',

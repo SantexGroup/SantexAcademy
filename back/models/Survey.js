@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
         type: DataTypes.JSON,
         allowNull: false,
       },
-      surveyorId: {
+      userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -29,9 +29,10 @@ module.exports = (sequelize) => {
   );
 
   Survey.associate = (models) => {
-    Survey.belongsTo(models.Surveyor, {
-      foreignKey: 'surveyorId',
+    Survey.belongsTo(models.User, {
+      foreignKey: 'userId',
     });
   };
+
   return Survey;
 };

@@ -1,21 +1,30 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-plusplus */
+const faker = require('faker');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('Users', [{
-      nombre: 'John',
-      apellido: 'Perez',
-      nombreUsuario: 'John1',
-      contrasena: '1234',
-      email: 'lala@gmail.com',
-      role: 'admin',
-      cel: '1234',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    }], {});
+  async up(queryInterface) {
+    const fakeUsers = [];
+    const numFakeUsers = 10; // Cantidad de usuarios falsos que deseas crear
+
+    for (let i = 0; i < numFakeUsers; i++) {
+      fakeUsers.push({
+        nombre: faker.name.firstName(),
+        apellido: faker.name.lastName(),
+        nombreUsuario: faker.internet.userName(),
+        contrasena: faker.internet.password(),
+        email: faker.internet.email(),
+        role: faker.random.arrayElement(['admin', 'encuestador']),
+        cel: faker.phone.phoneNumber(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+    }
+
+    await queryInterface.bulkInsert('Users', fakeUsers, {});
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.bulkDelete('Users', null, {});
   },
 };
