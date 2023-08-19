@@ -28,6 +28,23 @@ const findUser = async (id) => {
   }
 };
 
+const userValidate = async (data) => {
+  try {
+    const { email } = data;
+    const userFound = await db.User.findOne({ where: { email } });
+
+    if (!userFound) {
+      return false;
+    }
+    const passIsCorrect = await bcrypt.compare(data.password, userFound.password);
+
+    return passIsCorrect;
+  } catch (error) {
+    console.error('I can not find the user. Error: ', error);
+    throw error;
+  }
+};
+
 const find = async () => {
   try {
     const userFound = await db.User.findAll();
@@ -61,6 +78,7 @@ const deleteUser = async (id) => {
 module.exports = {
   userCreate,
   findUser,
+  userValidate,
   find,
   modifyUser,
   deleteUser,
