@@ -23,15 +23,16 @@ const getUser = async (req, res) => {
 };
 
 const logIn = async (req, res) => {
-  const { email, password } = req.body;
-  /* console.log para engañar a husky/eslint */
-  console.log(`Usuario con ${email} / ${password}`);
-  /* momentaneamente redirecciona a todos los usuarios */
-  res.redirect('http://localhost:4001/api/user');
-  /* Esta respuesta para que solo de este mensaje:
-  res.json({
-    response: `Usuario con ${email} y pass ${password} logueado con éxito`,
-  }); */
+  try {
+    const searchUser = await userService.loginUser(req.body);
+    if (searchUser) {
+      res.status(200).json('Login exitoso');
+    } else {
+      res.status(404).json({ message: 'El usuario no existe o la contraseña es incorrecta' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error en el servidor' });
+  }
 };
 
 const getAllUsers = async (req, res) => {

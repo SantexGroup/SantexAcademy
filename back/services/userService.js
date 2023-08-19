@@ -10,6 +10,11 @@ const findUserById = async (user) => {
   return found;
 };
 
+const loginUser = async (data) => {
+  const found = await userProvider.userValidate(data);
+  return found;
+};
+
 const findUsers = async () => {
   const found = await userProvider.find();
   return found;
@@ -28,6 +33,7 @@ const deleteById = async (userId) => {
 module.exports = {
   createUser,
   findUserById,
+  loginUser,
   findUsers,
   modifyAUser,
   deleteById,

@@ -6,14 +6,16 @@ const userController = require('../controllers/userController');
 // importando middleware de validación
 const { checkValidationResult } = require('../middleware/validation.middleware');
 const loginValidations = require('../middleware/login.validation.middleware');
+const userCreateValidations = require('../middleware/user.validation.middleware');
 
 // crear un usuario (falta AUTH)
-router.post('/create', userController.createAUser);
+router.post('/create', userCreateValidations, checkValidationResult, userController.createAUser);
 
 /* obtener un usuario (falta AUTH) */
 router.get('/:userId', userController.getUser);
 
 /* autentificarse */
+/* esto deberia ir en otro controller? */
 router.post('/login', loginValidations, checkValidationResult, userController.logIn);
 
 /* obtener todos los usuarios (falta AUTH) */
