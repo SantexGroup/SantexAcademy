@@ -9,8 +9,7 @@ const helmet = require('helmet');
 const session = require('express-session');
 // Winston logger Dependencies
 const cors = require('cors');
-const passport = require('passport');
-const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
+require('envalid');
 const logger = require('./utils/winston.logger');
 
 // Models:
@@ -20,8 +19,7 @@ const models = require('./models');
 const routes = require('./routes');
 const config = require('./config/config');
 const validateEnv = require('./utils/validateEnv');
-const { DataTypes } = require('sequelize');
-const { email } = require('envalid');
+const { initializeAuthentication } = require('./auth/auth');
 
 const app = express();
 validateEnv.validate();
@@ -59,43 +57,9 @@ app.use(express.urlencoded(
     parameterLimit: 10,
   },
 ));
-
-// JWT y passport config
-
-// ...
-
-// Configurar Passport con JWT
-const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: process.env.JWT_SECRET,
-};
-
-passport.use(new JwtStrategy(jwtOptions, async (jwtPayload, done) => {
-  try {
-    const volunteerModel = require('./models/volunteer-model');
-    const coordinatorModel = require('./models/coordinator-model');
-    const Volunteer = volunteerModel(sequelize, DataTypes);
-    const Coordinator = coordinatorModel(sequelize, DataTypes);
-
-    const user = await Volunteer.findByPk(jwtPayload.id);
-    if (user) {
-      return done(null, user.email);
-    }
-
-    const cord = await Coordinator.findByPk(jwtPayload.id);
-
-    if (cord) {
-      return done(null, cord.email);
-    }
-
-    return done(null, false);
-  } catch (error) {
-    return done(error, false);
-  }
-}));
-
+initializeAuthentication();
 // Cors configuration
-const whitelist = process.env.CORS.split(' ');
+// const whitelist = process.env.CORS.split(' ');
 
 app.use(cors());
 

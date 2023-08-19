@@ -1,5 +1,10 @@
 const volunteerServices = require('../services/volunteer-services');
 
+function getDataVoluntario(req, res) {
+  const { usuario } = req;
+  res.status(200).send(usuario);
+}
+
 async function getAllVolunteer(req, res) {
   const users = await volunteerServices.getAll();
   res.send(users);
@@ -60,5 +65,5 @@ async function loginVolunteer(req, res) {
 
 module.exports = {
   // eslint-disable-next-line max-len
-  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, loginVolunteer,
+  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, loginVolunteer, getDataVoluntario,
 };
