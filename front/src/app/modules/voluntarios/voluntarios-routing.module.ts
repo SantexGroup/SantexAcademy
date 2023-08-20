@@ -1,11 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { VoluntariosComponent } from './voluntarios.component';
+import { DashboardVoluntarioComponent } from './dashboard-voluntario/dashboard-voluntario.component';
 
 const routes: Routes = [
   {
     path:'',
-    component:VoluntariosComponent
+    component:VoluntariosComponent,
+    children:[
+      {
+        path:'dashboard',
+        component:DashboardVoluntarioComponent
+      }
+    ]
   },
   {
     path:'**',
