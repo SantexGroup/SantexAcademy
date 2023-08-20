@@ -1,10 +1,10 @@
 const { body } = require('express-validator');
 
 const userCreateValidations = [
-  body('nombre')
+  body('firstName')
     .notEmpty()
     .withMessage('Por favor, ingrese su nombre'),
-  body('apellido')
+  body('lastName')
     .notEmpty()
     .withMessage('Por favor, ingrese su apellido'),
   body('email')
