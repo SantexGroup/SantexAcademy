@@ -1,6 +1,4 @@
 const Express = require('express');
-//const db = require('../models');
-//db.sequelize.sync();
 
 // Middlewares:
 const rootPath = require('../middleware/root_path.middleware');

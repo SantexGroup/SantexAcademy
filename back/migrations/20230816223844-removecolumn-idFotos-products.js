@@ -5,11 +5,15 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    
-    await queryInterface.removeColumn('Products', 'idFotos', {});
+    try {
+      await queryInterface.removeColumn('Products', 'idFotos', {});
+      
+    } catch (error) {
+      console.log('idFotos no existe');
+    }
   },
 
   async down (queryInterface, Sequelize) {
-    
+
   }
 };
