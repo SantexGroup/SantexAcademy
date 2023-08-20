@@ -4,11 +4,19 @@ import { CommonModule } from '@angular/common';
 import { VoluntariosRoutingModule } from './voluntarios-routing.module';
 import { VoluntariosComponent } from './voluntarios.component';
 import { CoreModule } from 'src/app/core/core.module';
+import { DashboardVoluntarioComponent } from './dashboard-voluntario/dashboard-voluntario.component';
+import { TareasVoluntarioComponent } from './tareas-voluntario/tareas-voluntario.component';
+import { PremiosVoluntarioComponent } from './premios-voluntario/premios-voluntario.component';
+import { DatosVoluntarioComponent } from './datos-voluntario/datos-voluntario.component';
 
 
 @NgModule({
   declarations: [
-    VoluntariosComponent
+    VoluntariosComponent,
+    DashboardVoluntarioComponent,
+    TareasVoluntarioComponent,
+    PremiosVoluntarioComponent,
+    DatosVoluntarioComponent
   ],
   imports: [
     CommonModule,
