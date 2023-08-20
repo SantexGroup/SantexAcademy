@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { VoluntarioService } from 'src/app/core/services/voluntario.service';
 
@@ -12,9 +13,28 @@ export class VoluntariosComponent implements OnInit {
   @ViewChild('sideNav') sideNav!:MatSidenav;
 
 
-  constructor(private voluntarioService:VoluntarioService, private router:Router) { }
+  constructor(private voluntarioService:VoluntarioService, private router:Router,private matSnackBar:MatSnackBar) { }
 
   ngOnInit(): void {
+
+    this.voluntarioService.obtenerDatosVoluntario().subscribe({
+      next:()=>{
+        
+        this.router.navigate(['/voluntarios/dashboard']);
+      },
+      error:()=>{
+        this.voluntarioService.setCredencialesVoluntario = null;
+        
+        this.matSnackBar.open('Sesión Caducada','ERROR',{
+          duration:3000,
+        horizontalPosition:'center',
+        verticalPosition:'top'}
+        );
+        this.router.navigate(['/index']);
+      }
+    }
+      
+    );
   }
 
   redireccionarA(ruta:string):void{
