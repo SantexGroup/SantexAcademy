@@ -1,13 +1,16 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { FormLoginComponent } from './components/form-login/form-login.component';
-import { OptionsRegisterComponent } from './components/options-register/options-register.component';
-import { OptionsregisterPageComponent } from './optionsregister-page/optionsregister-page.component';
+import { LoginComponent } from './pages/login/login.component';
+import { VolunteerRegisterComponent } from './pages/volunteer-register/volunteer-register.component';
+import { OptionsRegisterComponent } from './pages/options-register/options-register.component';
 
 @NgModule({
-  declarations: [LoginPageComponent, FormLoginComponent, OptionsRegisterComponent, OptionsregisterPageComponent],
+  declarations: [
+    LoginComponent,
+    VolunteerRegisterComponent,
+    OptionsRegisterComponent,
+  ],
   imports: [CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
