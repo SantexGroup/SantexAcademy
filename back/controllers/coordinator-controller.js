@@ -2,6 +2,8 @@ const coordinatorServices = require('../services/coordinator-services');
 
 function getDataOrganizacion(req, res) {
   const { usuario } = req;
+
+  delete usuario.dataValues.password;
   res.status(200).send(usuario);
 }
 
