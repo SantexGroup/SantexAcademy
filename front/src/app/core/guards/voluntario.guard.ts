@@ -24,8 +24,6 @@ export class VoluntarioGuard implements CanLoad {
         next:(res)=> this.credencialesUsuario = res
       });
 
-      console.log(this.credencialesUsuario);
-
       if(this.credencialesUsuario == null){
         
         return this.router.createUrlTree(['/index']);
