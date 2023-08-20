@@ -23,7 +23,7 @@ export class VoluntariosComponent implements OnInit {
   }
 
   cerrarSesion(){
-    this.voluntarioService.credencialesVoluntario.next(null);
+    this.voluntarioService.setCredencialesVoluntario = null;
     this.router.navigate(['/index']);
 
   }

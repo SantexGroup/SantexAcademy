@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { VoluntarioService } from '../services/voluntario.service';
+import { Credencial } from '../interfaces/credencial';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +12,23 @@ export class VoluntarioGuard implements CanLoad {
 
   }
 
+  credencialesUsuario!:Credencial|null;
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       
       //Controlamos que si el valor del observable credenciales usuario es nulo, no lo deje pasar y lo redirija al index, de lo contrario lo deja pasar
-      if(this.voluntarioService.credencialesVoluntario.value == null){
+      this.voluntarioService.getCredencialesVoluntario.pipe(
+        take(1)
+      ).subscribe({
+        next:(res)=> this.credencialesUsuario = res
+      });
+
+      console.log(this.credencialesUsuario);
+
+      if(this.credencialesUsuario == null){
         
-        this.router.navigate(['/index']);
-        return false;
+        return this.router.createUrlTree(['/index']);
       }
     
     

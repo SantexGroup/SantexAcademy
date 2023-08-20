@@ -16,8 +16,15 @@ export class VoluntarioService {
   }
 
   //Se declara el observable para controlar las credenciales del voluntario pero no se inicializa.
-  credencialesVoluntario:BehaviorSubject<Credencial | null>;
+  private credencialesVoluntario:BehaviorSubject<Credencial | null>;
 
+  get getCredencialesVoluntario(){
+    return this.credencialesVoluntario.asObservable();
+  }
+
+  set setCredencialesVoluntario(valor:Credencial| null){
+    this.credencialesVoluntario.next(valor);
+  }
 
   crearVoluntario(voluntario:Voluntario):Observable<Voluntario>{
 
