@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-else-return */
 /* eslint-disable no-useless-catch */
 /* eslint-disable eol-last */
@@ -31,6 +32,7 @@ const createUser = async (userAttributes) => {
   }
 };
 
+// eslint-disable-next-line no-unused-vars
 const getUsers = async (conditions) => {
   try {
     let options = { include: [{ all: true }] };
@@ -39,7 +41,7 @@ const getUsers = async (conditions) => {
       // eslint-disable-next-line max-len
     } // opciones tiene username y/o role, capturado en la url. Op nos permite buscar por distintos operadores logicos
     const users = await User.findAll(options);
-
+    // const users = await User.findAll({ paranoid: false });
     if (users) {
       return users;
     } else {
@@ -52,8 +54,51 @@ const getUsers = async (conditions) => {
   }
 };
 
+const deleteUser = async (idUser) => {
+  // eslint-disable-next-line no-useless-catch
+  try {
+    await getUser(idUser);
+    return User.destroy({ where: { id: idUser } });
+  } catch (error) {
+    throw error;
+  }
+};
+
+const updateUser = async (idUser, attributes) => {
+  // eslint-disable-next-line no-useless-catch
+  try {
+    await getUser(idUser);
+    // eslint-disable-next-line no-unused-vars
+    const [numRowsUpdated] = await User.update(attributes, {
+      where: { id: idUser },
+    });
+
+    return User.findByPk(idUser, { attributes: { exclude: ['contrasena'] } });
+  } catch (error) {
+    throw error;
+  }
+};
+
+const validateUser = async (nombreusuario, contrasena) => {
+  try {
+    const user = await User.findOne({
+      where: { nombreusuario, contrasena },
+    });
+    if (user) {
+      return user;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   getUser,
   createUser,
   getUsers,
+  updateUser,
+  deleteUser,
+  validateUser,
 };

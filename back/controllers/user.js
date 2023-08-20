@@ -1,4 +1,5 @@
 // eslint-disable-next-line import/no-unresolved
+const { validationResult } = require('express-validator');
 const userService = require('../services/user');
 
 // const { userService } = services;
@@ -14,18 +15,17 @@ const getUser = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
-  // const result = validationResult(req)
-  // if(!result.isEmpty()){
-  //     console.log(result)
-  //     return  res.status(400).send({errors: result.array})
-  // }
+  const result = validationResult(req);
+  if (!result.isEmpty()) {
+    return res.status(400).send({ errors: result.array });
+  }
   // eslint-disable-next-line object-curly-newline
-  const { nombre, apellido, nombreUsuario, contrasena, email, role, cel } = req.body;
+  const { nombre, apellido, nombreusuario, contrasena, email, role, cel } = req.body;
   try {
     const newUser = await userService.createUser({
       nombre,
       apellido,
-      nombreUsuario,
+      nombreusuario,
       contrasena,
       email,
       role,
@@ -58,8 +58,49 @@ const getUsers = async (req, res) => {
   }
 };
 
+const deleteUser = async (req, res) => {
+  // eslint-disable-next-line prefer-destructuring
+  const idUser = req.params.idUser;
+  try {
+    const user = await userService.deleteUser(idUser);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// eslint-disable-next-line consistent-return
+const updateUser = async (req, res) => {
+  // eslint-disable-next-line prefer-destructuring
+  const idUser = req.params.idUser;
+  const result = validationResult(req);
+  // eslint-disable-next-line keyword-spacing, space-before-blocks
+  if (!result.isEmpty()){
+    return res.status(400).send({ errors: result.array });
+  }
+  // eslint-disable-next-line object-curly-newline
+  const { nombre, apellido, nombreusuario, contrasena, email, role, cel } = req.body;
+  try {
+    // eslint-disable-next-line no-undef
+    const newUser = await userService.updateUser(idUser, {
+      nombre,
+      apellido,
+      nombreusuario,
+      contrasena,
+      email,
+      role,
+      cel,
+    });
+    res.status(200).json(newUser);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getUser,
   createUser,
   getUsers,
+  updateUser,
+  deleteUser,
 };

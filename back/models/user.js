@@ -1,4 +1,6 @@
-const { Model } = require('sequelize');
+const {
+  Model,
+} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -11,35 +13,19 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  User.init(
-    {
-      nombre: {
-        type: DataTypes.STRING,
-      },
-      apellido: {
-        type: DataTypes.STRING,
-      },
-      nombreUsuario: {
-        type: DataTypes.STRING,
-      },
-      contrasena: {
-        type: DataTypes.STRING,
-      },
-      email: {
-        type: DataTypes.STRING,
-      },
-      role: {
-        type: DataTypes.ARRAY(DataTypes.STRING), // Aquí se define como un array de strings
-      },
-      cel: {
-        type: DataTypes.STRING,
-      },
-    },
-    {
-      sequelize,
-      modelName: 'User',
-    },
-  );
-
+  User.init({
+    nombre: DataTypes.STRING,
+    apellido: DataTypes.STRING,
+    nombreusuario: DataTypes.STRING,
+    contrasena: DataTypes.STRING,
+    email: DataTypes.STRING,
+    role: DataTypes.STRING,
+    cel: DataTypes.STRING,
+  }, {
+    sequelize,
+    paranoid: true,
+    timestamps: true,
+    modelName: 'User',
+  });
   return User;
 };

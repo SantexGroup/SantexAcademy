@@ -12,6 +12,7 @@ module.exports = {
       cel: '1234',
       createdAt: new Date(),
       updatedAt: new Date(),
+      deletedAt: null,
     }], {});
   },
 
