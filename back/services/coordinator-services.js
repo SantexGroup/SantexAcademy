@@ -1,16 +1,19 @@
+/* eslint-disable import/order */
+/* eslint-disable object-shorthand */
+// eslint-disable-next-line no-unused-vars
 const { DataTypes, Sequelize } = require('sequelize');
 const coordinatorModel = require('../models/coordinator-model');
 const { sequelize } = require('../models');
 const jwt = require('jsonwebtoken');
 
+const Coordinator = coordinatorModel(sequelize, DataTypes);
+
 async function getAll() {
-  const Coordinator = coordinatorModel(sequelize, DataTypes);
   const listCoord = await Coordinator.findAll();
   return listCoord;
 }
 
 async function getById(id) {
-  const Coordinator = coordinatorModel(sequelize, DataTypes);
   const user = await Coordinator.findByPk(id);
 
   if (user == null) {
@@ -21,7 +24,6 @@ async function getById(id) {
 }
 
 async function createUser(name, description, email, password, address, phone) {
-  const Coordinator = coordinatorModel(sequelize, DataTypes);
   const user = new Coordinator();
 
   user.name = name;
@@ -37,7 +39,6 @@ async function createUser(name, description, email, password, address, phone) {
 }
 
 async function editUser(id, name, description, email, password, address, phone) {
-  const Coordinator = coordinatorModel(sequelize, DataTypes);
   const user = await getById(id);
 
   if (name) {
@@ -64,18 +65,16 @@ async function editUser(id, name, description, email, password, address, phone) 
 }
 
 async function deleteUser(id) {
-  const Coordinator = coordinatorModel(sequelize, DataTypes);
   const user = await getById(id);
 
   await user.destroy();
 }
 
 async function login(email, password) {
-  const Coordinator = coordinatorModel(sequelize, DataTypes);
   const user = await Coordinator.findOne({
     where: {
-      email:email,
-      password:password,
+      email: email,
+      password: password,
     },
   });
 

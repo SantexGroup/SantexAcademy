@@ -1,16 +1,19 @@
+/* eslint-disable object-shorthand */
+/* eslint-disable import/order */
+// eslint-disable-next-line no-unused-vars
 const { DataTypes, Sequelize } = require('sequelize');
 const volunteerModel = require('../models/volunteer-model');
 const jwt = require('jsonwebtoken');
 const { sequelize } = require('../models');
 
+const Volunteer = volunteerModel(sequelize, DataTypes);
+
 async function getAll() {
-  const Volunteer = volunteerModel(sequelize, DataTypes);
   const listVolunteer = await Volunteer.findAll();
   return listVolunteer;
 }
 
 async function getById(id) {
-  const Volunteer = volunteerModel(sequelize, DataTypes);
   const user = await Volunteer.findByPk(id);
 
   if (user == null) {
@@ -21,7 +24,6 @@ async function getById(id) {
 }
 
 async function createUser(name, lastname, dni, email, password, address, phone) {
-  const Volunteer = volunteerModel(sequelize, DataTypes);
   const user = new Volunteer();
 
   user.name = name;
@@ -39,7 +41,6 @@ async function createUser(name, lastname, dni, email, password, address, phone) 
 }
 
 async function editUser(id, name, lastname, dni, email, password, address, phone, points) {
-  const Volunteer = volunteerModel(sequelize, DataTypes);
   const user = await getById(id);
 
   if (name) {
@@ -80,17 +81,15 @@ async function editUser(id, name, lastname, dni, email, password, address, phone
 }
 
 async function deleteUser(id) {
-  const Volunteer = volunteerModel(sequelize, DataTypes);
   const user = await getById(id);
 
   await user.destroy();
 }
 
 async function login(email, password) {
-  const Volunteer = volunteerModel(sequelize, DataTypes);
   const user = await Volunteer.findOne({
     where: {
-      email:email,
+      email: email,
       password: password,
     },
   });

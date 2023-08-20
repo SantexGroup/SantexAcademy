@@ -1,28 +1,35 @@
 const passport = require('passport');
 
-const isAuthenticatedVoluntario = (req, res, next) => {
-  // eslint-disable-next-line consistent-return
-  passport.authenticate('jwt', { session: false }, (err, user, info) => {
-    if (err || !user || info.tipo !== 'voluntario') {
-      const error = ('Usuario no autorizado');
-      return next(error);
-    }
-    req.usuario = user;
-    next();
-  })(req, res, next);
+const isAuthenticatedVoluntario = async (req, res, next) => {
+  try {
+    await passport.authenticate('jwt', { session: false }, (err, user, info) => {
+      if (err || !user || info.tipo !== 'voluntario') {
+        const error = new Error('Usuario no autorizado');
+        error.status = 401;
+        return next(error);
+      }
+      req.usuario = user;
+      next();
+    })(req, res, next);
+  } catch (err) {
+    next(err);
+  }
 };
 
-const isAuthenticatedOrganizacion = (req, res, next) => {
-  // eslint-disable-next-line consistent-return
-  passport.authenticate('jwt', { session: false }, (err, user, info) => {
-    if (err || !user || info.tipo !== 'organizacion') {
-      const error = ('Usuario no autorizado');
-
-      return next(error);
-    }
-    req.usuario = user;
-    next();
-  })(req, res, next);
+const isAuthenticatedOrganizacion = async (req, res, next) => {
+  try {
+    await passport.authenticate('jwt', { session: false }, (err, user, info) => {
+      if (err || !user || info.tipo !== 'organizacion') {
+        const error = new Error('Usuario no autorizado');
+        error.status = 401;
+        return next(error);
+      }
+      req.usuario = user;
+      next();
+    })(req, res, next);
+  } catch (err) {
+    next(err);
+  }
 };
 
 module.exports = { isAuthenticatedVoluntario, isAuthenticatedOrganizacion };
