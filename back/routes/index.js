@@ -10,13 +10,6 @@ const { verificarUsuario } = require('../controllers/verificarUsuario');
 
 const app = Express();
 
-// use=
-app.use('/ping', (req, res) => {
-  res.json({
-    // eslint-disable-next-line no-tabs
-    response: 'pong!',
-  });
-});
 app.use(rootPath.setHeaders);
 app.use('/user', userRouter);
 app.use('/api/surveys', surveyRouter);
