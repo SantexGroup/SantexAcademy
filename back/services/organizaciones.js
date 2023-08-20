@@ -5,8 +5,8 @@ const getOrganizations = async () => {
   return organizations;
 };
 
-const getOrganizationByCriteria = async (options) => {
-  const organization = await orgProvider.getOrganizationByCriteria(options);
+const getOrganizationByCriteria = async (queryOptions, bodyOptions) => {
+  const organization = await orgProvider.getOrganizationByCriteria(queryOptions, bodyOptions);
   return organization;
 };
 

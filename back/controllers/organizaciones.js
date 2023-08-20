@@ -10,18 +10,16 @@ const getOrganizations = async (req, res) => {
   }
 };
 
+
+//Se pasan req.query y req.body por que son los parametros que se pasan por la url y por el body
 const getOrganizationByCriteria = async (req, res) => {
   try {
-    const organization = await orgService.getOrganizationByCriteria(req.query);
-    if (!organization)
-      return res.status(404).json({
-        action: "getOrganizationsById",
-        error: `Organization not found`,
-      });
-
-    res.json(organization);
-  } catch (err) {
-    res.status(500).json({ action: "getOrganizationById", error: err.message });
+    const queryOptions = req.query;
+    const bodyOptions = req.body;
+    const organizations = await orgService.getOrganizationByCriteria(queryOptions, bodyOptions);
+    res.json(organizations);
+  }catch (err) {
+    res.status(500).json({ action: "getUserByCriteria", error: err.message });
   }
 };
 
