@@ -9,25 +9,25 @@
 </div>
 
 
-<div *ngFor="let courses of coursesService.courses" class="card-container">
+<div class="card-container">
     <div class="flex justify-content-evenly flex-wrap card-container">
         <p-card [style]="{ width: '360px' }" class="flex justify-content-center font-bold text-white border-round m-2">
             <div class="card__content">
                 <h2>
-                    {{ courses.title }}
+                    title
                 </h2>
                 <p>
-                    {{ courses.description }}
+                    description
                 </p>
 
                 <h3>
-                    {{courses.price | currency}}
+                    price
                 </h3>
                 <p>
                     Hasta 6 cuotas sin interés de <span class="card__price--bold">$1200</span>
                 </p>
                 <p class="card__starter mb-3">
-                    fecha de inicio: {{ courses.starter_date }}
+                    fecha de inicio: date
                 </p>
                 <footer class="flex flex-column justify-content-center footer">
                     <p-button label="Ver detalle del curso"
