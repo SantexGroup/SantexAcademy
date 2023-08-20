@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-login',
@@ -10,6 +11,8 @@ export class FormLoginComponent {
   password: string = '';
   showPassword: boolean = false;
 
+  constructor(private router: Router) {}
+
   sendValues() {
     console.log(this.email, this.password);
   }
@@ -18,5 +21,9 @@ export class FormLoginComponent {
     !this.showPassword
       ? (this.showPassword = true)
       : (this.showPassword = false);
+  }
+
+  navegarAOptionsRegister() {
+    this.router.navigate(['/options-register']);
   }
 }

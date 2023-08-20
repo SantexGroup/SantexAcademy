@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './modules/home/home-page/home-page.component';
 import { LoginPageComponent } from './modules/auth/login-page/login-page.component';
+import { OptionsregisterPageComponent } from './modules/auth/optionsregister-page/optionsregister-page.component';
 
 const routes: Routes = [
   { path: '', title: 'VolunTime - Inicio', component: HomePageComponent },
@@ -9,6 +10,11 @@ const routes: Routes = [
     path: 'login',
     title: 'VolunTime - Iniciar sesión',
     component: LoginPageComponent,
+  },
+  {
+    path: 'options-register',
+    title: 'VolunTime - Opciones de registro',
+    component: OptionsregisterPageComponent,
   },
 ];
 
