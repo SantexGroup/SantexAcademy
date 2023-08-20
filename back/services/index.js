@@ -4,3 +4,4 @@ const userService = require('./usuario');
 
 module.exports = { catalogoService, orgService, userService };
 
+module.exports = { catalogoService, orgService, productService };
