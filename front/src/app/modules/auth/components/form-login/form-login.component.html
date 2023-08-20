@@ -45,17 +45,21 @@
           [(ngModel)]="email"
         />
       </div>
-      <div class="w-full flex flex-col gap-1">
+      <div class="w-full flex flex-col gap-1 relative">
         <label for="password" class="text-start"><b>Contraseña</b></label>
         <input
           id="password"
-          type="password"
+          [type]="showPassword ? 'text' : 'password'"
           name="password"
           placeholder="Introduce tu contraseña"
           class="border border-dimGray rounded-md py-2 pl-2"
           [(ngModel)]="password"
         />
-        <p class="text-end text-blueViolet text-sm">
+        <i
+          class="bx bx-low-vision absolute top-9 right-4 text-xl cursor-pointer"
+          (click)="sendShowPassword()"
+        ></i>
+        <p class="text-end text-blueViolet text-sm cursor-pointer">
           ¿Olvidaste tu contraseña?
         </p>
       </div>
@@ -76,7 +80,9 @@
         </button>
         <p class="text-sm">
           ¿Todavía no tienes una cuenta?
-          <a routerLink="/register" class="text-blueViolet">Regístrate.</a>
+          <a routerLink="/register" class="text-blueViolet cursor-pointer"
+            >Regístrate.</a
+          >
         </p>
       </div>
     </form>
