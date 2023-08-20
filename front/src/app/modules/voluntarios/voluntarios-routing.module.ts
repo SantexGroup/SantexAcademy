@@ -4,6 +4,7 @@ import { VoluntariosComponent } from './voluntarios.component';
 import { DashboardVoluntarioComponent } from './dashboard-voluntario/dashboard-voluntario.component';
 import { PremiosVoluntarioComponent } from './premios-voluntario/premios-voluntario.component';
 import { TareasVoluntarioComponent } from './tareas-voluntario/tareas-voluntario.component';
+import { DatosVoluntarioComponent } from './datos-voluntario/datos-voluntario.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path:'tareas',
         component:TareasVoluntarioComponent
+      },
+      {
+        path:'datos',
+        component:DatosVoluntarioComponent
       }
     ]
   },
