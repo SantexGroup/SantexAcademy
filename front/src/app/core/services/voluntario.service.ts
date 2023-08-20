@@ -66,4 +66,9 @@ export class VoluntarioService {
       })
     );
   }
+
+  obtenerDatosVoluntario():Observable<Voluntario>{
+
+    return this.apiService.get<Voluntario>("/volunteer/datos");
+  }
 }
