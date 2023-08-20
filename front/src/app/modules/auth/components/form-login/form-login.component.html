@@ -30,7 +30,7 @@
   </figure>
   <div class="w-full flex flex-col items-center justify-center gap-12">
     <header class="w-full flex flex-col items-center justify-center gap-4">
-      <h2 class="font-bold text-2xl">¡Hola!</h2>
+      <h2 class="font-semibold text-2xl">¡Hola!</h2>
       <p>Iniciá sesión en tu cuenta VolunTime</p>
     </header>
     <form class="w-full flex flex-col px-4 gap-4 max-w-[600px]">
@@ -80,9 +80,12 @@
         </button>
         <p class="text-sm">
           ¿Todavía no tienes una cuenta?
-          <a routerLink="/register" class="text-blueViolet cursor-pointer"
-            >Regístrate.</a
+          <span
+            class="text-blueViolet cursor-pointer"
+            (click)="navegarAOptionsRegister()"
           >
+            Regístrate.
+          </span>
         </p>
       </div>
     </form>

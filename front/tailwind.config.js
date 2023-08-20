@@ -38,6 +38,7 @@ module.exports = {
       mediumViolet: "#B1237D",
       midnightBlue: "#1E165F",
       dimGray: "#717375",
+      bgOptionsRegister: "rgba(63, 40, 131, 0.36)",
     },
     fontFamily: {
       sans: ["Open Sans"],
