@@ -9,9 +9,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idFotos: {
-        type: Sequelize.INTEGER
-      },
       idUsuario: {
         type: Sequelize.INTEGER
       },

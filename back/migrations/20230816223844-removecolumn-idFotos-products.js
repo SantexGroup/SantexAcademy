@@ -11,8 +11,5 @@ module.exports = {
 
   async down (queryInterface, Sequelize) {
     
-    await queryInterface.addColumn('Products', 'idFotos', {
-      type: Sequelize.DataTypes.INTEGER
-    });
   }
 };

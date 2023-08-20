@@ -1,11 +1,14 @@
 const { User } = require('../models');
+const { Products } = require('../models');
 
 async function login(alias, password) {
+  
   const users = await User.findOne({
     where: {
       alias,
       password,
     },
+    include: [{model: Products}]
   });
 
   if (!users) {
