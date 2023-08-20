@@ -8,36 +8,22 @@ module.exports = (sequelize) => {
       });
     }
   }
-
   User.init(
     {
-      nombre: {
-        type: DataTypes.STRING,
-      },
-      apellido: {
-        type: DataTypes.STRING,
-      },
-      nombreUsuario: {
-        type: DataTypes.STRING,
-      },
-      contrasena: {
-        type: DataTypes.STRING,
-      },
-      email: {
-        type: DataTypes.STRING,
-      },
-      role: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-      },
-      cel: {
-        type: DataTypes.STRING,
-      },
+      nombre: DataTypes.STRING,
+      apellido: DataTypes.STRING,
+      nombreusuario: DataTypes.STRING,
+      contrasena: DataTypes.STRING,
+      email: DataTypes.STRING,
+      role: DataTypes.STRING,
+      cel: DataTypes.STRING,
     },
     {
       sequelize,
+      paranoid: true,
+      timestamps: true,
       modelName: 'User',
     },
   );
-
   return User;
 };

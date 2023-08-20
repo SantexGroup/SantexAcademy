@@ -1,5 +1,5 @@
 /* eslint-disable no-plusplus */
-const faker = require('faker');
+const faker = require("faker");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -14,17 +14,17 @@ module.exports = {
         nombreUsuario: faker.internet.userName(),
         contrasena: faker.internet.password(),
         email: faker.internet.email(),
-        role: faker.random.arrayElement(['admin', 'encuestador']),
+        role: faker.random.arrayElement(["admin", "encuestador"]),
         cel: faker.phone.phoneNumber(),
         createdAt: new Date(),
         updatedAt: new Date(),
       });
     }
 
-    await queryInterface.bulkInsert('Users', fakeUsers, {});
+    await queryInterface.bulkInsert("Users", fakeUsers, {});
   },
 
   async down(queryInterface) {
-    await queryInterface.bulkDelete('Users', null, {});
+    await queryInterface.bulkDelete("Users", null, {});
   },
 };

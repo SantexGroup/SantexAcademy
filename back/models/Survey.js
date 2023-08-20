@@ -13,10 +13,10 @@ module.exports = (sequelize) => {
         type: DataTypes.JSON,
         allowNull: false,
       },
-      userId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
+      // surveyorId: {
+      //   type: DataTypes.INTEGER,
+      //   allowNull: false,
+      // },
       status: {
         type: DataTypes.ENUM('activo', 'eliminado', 'archivado'),
         defaultValue: 'activo',
@@ -28,11 +28,10 @@ module.exports = (sequelize) => {
     },
   );
 
-  Survey.associate = (models) => {
-    Survey.belongsTo(models.User, {
-      foreignKey: 'userId',
-    });
-  };
-
+  // Survey.associate = (models) => {
+  //   Survey.belongsTo(models.Surveyor, {
+  //     foreignKey: 'surveyorId',
+  //   });
+  // };
   return Survey;
 };

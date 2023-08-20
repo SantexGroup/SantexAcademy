@@ -15,8 +15,23 @@ const getUsers = async (options) => {
   return await userProvider.getUsers(options);
 };
 
+const deleteUser = async (id) => {
+  return await userProvider.deleteUser(id);
+};
+
+const updateUser = async (id, user) => {
+  return await userProvider.updateUser(id, user);
+};
+
+const validateUser = async (nombreusuario, contrasena) => {
+  return await userProvider.validateUser(nombreusuario, contrasena);
+};
+
 module.exports = {
   getUser,
   createUser,
   getUsers,
+  deleteUser,
+  updateUser,
+  validateUser,
 };
