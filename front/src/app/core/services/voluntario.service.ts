@@ -13,6 +13,8 @@ export class VoluntarioService {
    
     //Se crea el observable en null cuando arranca la aplicación, porque todavia no inició sesión el voluntario.
     this.credencialesVoluntario = new BehaviorSubject<Credencial | null>(null);
+
+    this.datosVoluntario = new BehaviorSubject<Voluntario | null>(null);
   }
 
   //Se declara el observable para controlar las credenciales del voluntario pero no se inicializa.
@@ -24,6 +26,12 @@ export class VoluntarioService {
 
   set setCredencialesVoluntario(valor:Credencial| null){
     this.credencialesVoluntario.next(valor);
+  }
+
+  private datosVoluntario:BehaviorSubject<Voluntario | null>;
+
+  get getDatosVoluntario():Observable<Voluntario|null>{
+    return this.datosVoluntario.asObservable();
   }
 
   crearVoluntario(voluntario:Voluntario):Observable<Voluntario>{
@@ -69,6 +77,11 @@ export class VoluntarioService {
 
   obtenerDatosVoluntario():Observable<Voluntario>{
 
-    return this.apiService.get<Voluntario>("/volunteer/datos");
+    return this.apiService.get<Voluntario>("/volunteer/datos").pipe(
+      map((res)=>{
+        this.datosVoluntario.next(res);
+        return res;
+      })
+    );
   }
 }
