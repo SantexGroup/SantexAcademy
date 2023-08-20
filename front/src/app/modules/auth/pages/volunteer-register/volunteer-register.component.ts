@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-form-login',
-  templateUrl: './form-login.component.html',
-  styleUrls: ['./form-login.component.css'],
+  selector: 'app-volunteer-register',
+  templateUrl: './volunteer-register.component.html',
+  styleUrls: ['./volunteer-register.component.css'],
 })
-export class FormLoginComponent {
+export class VolunteerRegisterComponent {
+  full_name: string = '';
   email: string = '';
+  phone: string = '';
   password: string = '';
   showPassword: boolean = false;
 
@@ -23,7 +25,7 @@ export class FormLoginComponent {
       : (this.showPassword = false);
   }
 
-  navegarAOptionsRegister() {
-    this.router.navigate(['/options-register']);
+  navigateToLogin() {
+    this.router.navigate(['/login']);
   }
 }

@@ -30,10 +30,21 @@
   </figure>
   <div class="w-full flex flex-col items-center justify-center gap-12">
     <header class="w-full flex flex-col items-center justify-center gap-4">
-      <h2 class="font-semibold text-2xl">¡Hola!</h2>
-      <p>Iniciá sesión en tu cuenta VolunTime</p>
+      <h2 class="font-semibold text-2xl">¡Bienvenido!</h2>
+      <p>Registrate en tu cuenta VolunTime</p>
     </header>
     <form class="w-full flex flex-col px-4 gap-4 max-w-[600px]">
+      <div class="w-full flex flex-col text-start gap-1">
+        <label for="full_name"><b>Apellido y nombre</b></label>
+        <input
+          id="full_name"
+          type="text"
+          name="full_name"
+          placeholder="Introduce tu apellido y nombre"
+          class="border border-dimGray rounded-md py-2 pl-2"
+          [(ngModel)]="full_name"
+        />
+      </div>
       <div class="w-full flex flex-col text-start gap-1">
         <label for="email"><b>Correo electrónico</b></label>
         <input
@@ -43,6 +54,17 @@
           placeholder="Introduce tu correo electrónico"
           class="border border-dimGray rounded-md py-2 pl-2"
           [(ngModel)]="email"
+        />
+      </div>
+      <div class="w-full flex flex-col text-start gap-1">
+        <label for="phone"><b>Teléfono</b></label>
+        <input
+          id="phone"
+          type="number"
+          name="phone"
+          placeholder="Introduce tu número telefónico"
+          class="border border-dimGray rounded-md py-2 pl-2"
+          [(ngModel)]="phone"
         />
       </div>
       <div class="w-full flex flex-col gap-1 relative">
@@ -69,22 +91,23 @@
           class="w-full py-2 bg-darkSlateBlue text-white rounded-md font-semibold"
           (click)="sendValues()"
         >
-          Iniciar sesión
+          Registrate
         </button>
         <b>o</b>
         <button
           class="w-full flex items-center justify-center gap-2 py-2 border border-darkSlateBlue rounded-md font-normal"
         >
           <img src="/assets/logo/logo-google.svg" />
-          Iniciar sesión con Google
+          Registrate con Google
         </button>
         <p class="text-sm">
-          ¿Todavía no tienes una cuenta?
+          ¿Ya tienes una cuenta?
+
           <span
             class="text-blueViolet cursor-pointer"
-            (click)="navegarAOptionsRegister()"
+            (click)="navigateToLogin()"
           >
-            Regístrate.
+            Iniciar sesión.
           </span>
         </p>
       </div>
