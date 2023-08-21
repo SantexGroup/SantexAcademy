@@ -7,6 +7,26 @@ import { OptionsRegisterComponent } from './pages/options-register/options-regis
 import { FormLoginComponent } from './components/form-login/form-login.component';
 import { CardOptionregisterComponent } from './components/card-optionregister/card-optionregister.component';
 import { FormVolunteerregisterComponent } from './components/form-volunteerregister/form-volunteerregister.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: 'login',
+    title: 'VolunTime - Iniciar sesión',
+    component: LoginComponent,
+  },
+  {
+    path: 'options-register',
+    title: 'VolunTime - Opciones de registro',
+    component: OptionsRegisterComponent,
+  },
+
+  {
+    path: 'volunteer-register',
+    title: 'VolunTime - Registro de voluntarios',
+    component: VolunteerRegisterComponent,
+  },
+];
 
 @NgModule({
   declarations: [
@@ -17,7 +37,7 @@ import { FormVolunteerregisterComponent } from './components/form-volunteerregis
     CardOptionregisterComponent,
     FormVolunteerregisterComponent,
   ],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule.forChild(routes)],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class authModule {}
