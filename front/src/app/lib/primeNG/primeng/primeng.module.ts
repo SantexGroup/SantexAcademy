@@ -7,7 +7,7 @@ import { AccordionModule } from 'primeng/accordion';
 import {CarouselModule} from 'primeng/carousel';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskModule } from 'primeng/inputmask';
-
+import { TreeSelectModule } from 'primeng/treeselect';
 @NgModule({
   declarations: [],
   imports: [
@@ -20,7 +20,8 @@ import { InputMaskModule } from 'primeng/inputmask';
     AccordionModule,
     CarouselModule,
     InputTextModule,
-    InputMaskModule
+    InputMaskModule,
+    TreeSelectModule
 
   ]
 })
