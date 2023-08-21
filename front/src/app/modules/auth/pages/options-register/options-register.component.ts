@@ -28,4 +28,7 @@ export class OptionsRegisterComponent {
   navigateToVolunteerRegister() {
     this.router.navigate(['/volunteer-register']);
   }
+  navigateToCoordinatorRegister() {
+    this.router.navigate(['/coordinator-register']);
+  }
 }

@@ -36,6 +36,8 @@ const routes: Routes = [
     FormLoginComponent,
     CardOptionregisterComponent,
     FormVolunteerregisterComponent,
+    CoordinatorRegisterComponent,
+    FormCoordinatorregisterComponent,
   ],
   imports: [CommonModule, FormsModule, RouterModule.forChild(routes)],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
