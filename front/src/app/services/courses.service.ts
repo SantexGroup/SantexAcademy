@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class CoursesService {
 
+  courses: Course[] = [];
+
   private endpoint = 'http://localhost:4001/courses' //creamos una variable para el endpoint de los cursos
 
   constructor(private http: HttpClient) {} //creamos una variable para el modulo de HttpClient
@@ -15,6 +17,13 @@ export class CoursesService {
   getPosts():Observable<Course[]> { //creamos un metodo que va a devolver un observable con el array de cursos
 
     return this.http.get<Course[]>(this.endpoint) //hacemos un get del endpoint que será el array de cursos
+
+  }
+
+
+  getRoundedPrice(price: number, due: number): number { //este metodo me redondea el valor de la cuota
+
+    return Math.round(price / due); //me redondea el precio que se divide por la cuota
 
   }
 
