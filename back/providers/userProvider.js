@@ -9,7 +9,7 @@ const { User } = require('../models');
 const getUser = async (id) => {
   // eslint-disable-next-line no-useless-catch
   try {
-    const user = await User.findByPk(id, { include: [{ all: true }] });
+    const user = await User.findByPk(id, { attributes: { exclude: ['contrasena'] } });
     // eslint-disable-next-line max-len
     // eslint-disable-next-line spaced-comment
     if (user) {
@@ -35,7 +35,7 @@ const createUser = async (userAttributes) => {
 // eslint-disable-next-line no-unused-vars
 const getUsers = async (conditions) => {
   try {
-    let options = { include: [{ all: true }] };
+    let options = { include: [{ all: true }], attributes: { exclude: ['contrasena'] } };
     if (conditions) {
       options = { ...options, where: { [Op.or]: conditions } };
       // eslint-disable-next-line max-len
