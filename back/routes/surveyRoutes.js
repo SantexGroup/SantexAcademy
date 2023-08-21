@@ -6,8 +6,8 @@ const surveyController = require('../controllers/surveyController');
 const isAdminOrSurveyorMiddleware = require('../middleware/isAdminOrSurveyorMiddleware');
 
 router.post('/', isAdminOrSurveyorMiddleware, surveyController.createSurvey);
-router.get('/email/:email', surveyController.getSurveysByEmail);
-// router.get('/', surveyController.getAllSurveys);
+router.get('/email/:email', isAdminOrSurveyorMiddleware, surveyController.getSurveysByEmail);
+router.get('/', isAdminOrSurveyorMiddleware, surveyController.getAllSurveys);
 // router.put('/:id/', surveyController.updateSurvey);
 // router.patch('/:id/', surveyController.updateSurvey);
 // router.get('/id/:id', surveyController.getSurveyById);
