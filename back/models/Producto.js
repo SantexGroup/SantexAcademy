@@ -15,7 +15,7 @@ const Producto = sequelize.define(
       allowNull: false,
     },
     costoEnHoras: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     catalogoId: {

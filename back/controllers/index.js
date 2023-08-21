@@ -1,3 +1,4 @@
 const catalogoController = require('./catalogo');
+const orgController = require('./organizaciones');
 
-module.exports = { catalogoController };
+module.exports = { catalogoController, orgController };
