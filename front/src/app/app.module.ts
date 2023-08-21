@@ -10,9 +10,10 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HomeModule } from './modules/home/home.module';
 import { authModule } from './modules/auth/auth.module';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, FooterComponent],
+  declarations: [AppComponent, NavbarComponent, FooterComponent, NotfoundComponent],
   imports: [BrowserModule, AppRoutingModule, HomeModule, authModule],
   providers: [],
   bootstrap: [AppComponent],
