@@ -2,6 +2,9 @@ const volunteerServices = require('../services/volunteer-services');
 
 function getDataVoluntario(req, res) {
   const { usuario } = req;
+
+  delete usuario.dataValues.password;
+
   res.status(200).send(usuario);
 }
 

@@ -1,7 +1,29 @@
-<div class="fondo-degradado">
+<nav class="navbar">
+    <mat-icon class="icono-menu" (click)="sideNav.toggle()">menu</mat-icon>
+    <p class="logo icono-menu" (click)="redireccionarA('/index')">Página de Inicio</p>
+</nav>
 
-    <h2 class="titulo">Iniciaste sesión exitosamente!</h2>
-    
-    <button (click)="cerrarSesion()" mat-raised-button color="warn">Cerrar Sesión</button>
-</div>
+<mat-sidenav-container >
+    <mat-sidenav #sideNav mode="over" >
+        <mat-nav-list >
+            <a mat-list-item class="icono-menu" (click)="redireccionarA('/voluntarios/dashboard')" >Dashboard</a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item class="icono-menu" (click)="redireccionarA('/voluntarios/tareas')" >Tareas</a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item class="icono-menu" (click)="redireccionarA('/voluntarios/premios')" >Premios</a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item class="icono-menu" (click)="redireccionarA('/voluntarios/datos')">Mis datos</a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item class="icono-menu" (click)="cerrarSesion()">Cerrar Sesión</a>
+        </mat-nav-list>
+      <mat-nav-list>
+        <a mat-list-item class="icono-menu" (click)="sideNav.toggle()" >Ocultar</a>
+      </mat-nav-list>
+    </mat-sidenav>
 
+        <router-outlet></router-outlet>
+  </mat-sidenav-container>

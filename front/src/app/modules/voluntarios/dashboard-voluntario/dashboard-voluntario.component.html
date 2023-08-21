@@ -1,0 +1,16 @@
+<div class="fondo-degradado">
+    <div *ngIf="datosVoluntario$ | async as voluntario; else cargando">
+
+        <h2 class="titulo">Bienvenido {{voluntario.name}}!</h2>
+        <p>Tu email es: {{voluntario.email}}.</p>
+        <p>Tu dirección es: {{voluntario.address}}.</p>
+        <p>Tu número de teléfono es {{voluntario.phone}}.</p>
+        <p>Tienes {{voluntario.points}} puntos.</p>
+
+    </div>
+    <ng-template #cargando>
+        <div >
+            <h2 class="titulo">Cargando ...</h2>
+        </div>
+    </ng-template>
+</div>

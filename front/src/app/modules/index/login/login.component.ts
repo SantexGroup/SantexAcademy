@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { take } from 'rxjs';
+import { Credencial } from 'src/app/core/interfaces/credencial';
 import { DatosLogin } from 'src/app/core/interfaces/datosLogin';
 import { OrganizacionService } from 'src/app/core/services/organizacion.service';
 import { VoluntarioService } from 'src/app/core/services/voluntario.service';
@@ -24,11 +26,21 @@ export class LoginComponent implements OnInit {
     this.organizacion = false;
     this.titulo = '';
     this.mostrarPassword = false;
+    this.organizacionService.getCredencialesOrganizacion.pipe(take(1)).subscribe({
+      next:(res)=> this.credencialesOrganizacion = res
+    });
 
+    this.voluntarioService.getCredencialesVoluntario.pipe(take(1)).subscribe({
+      next:(res)=> this.credencialesVoluntario = res
+    });
+    
    }
 
   ngOnInit(): void {
-    
+
+    if(this.credencialesVoluntario !== null || this.credencialesOrganizacion !== null) this.router.navigate(['/index']);
+
+
     this.routeActive.queryParams.subscribe(params=>{
       
       this.formLogin.reset();
@@ -64,6 +76,8 @@ export class LoginComponent implements OnInit {
   titulo:string;
   formLogin:FormGroup;
   mostrarPassword:boolean;
+  credencialesOrganizacion!:Credencial|null;
+  credencialesVoluntario!:Credencial|null;
 
   iniciarSesion(){
     const credenciales:DatosLogin = {
