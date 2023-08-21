@@ -14,7 +14,16 @@ export class OrganizacionesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.router.navigate(['organizaciones/dashboard']);
+    this.organizacionService.obtenerDatosOrganizacion().subscribe({
+      next:()=>{
+        
+        this.router.navigate(['organizaciones/dashboard']);
+      },
+      error:()=>{
+        this.organizacionService.setCredencialesOrganizacion = null;
+        this.router.navigate(['/index']);
+      }
+    });
 
   }
 
