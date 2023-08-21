@@ -63,7 +63,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/surveys/id/18",
+							"raw": "http://localhost:3000/api/surveys/id/151",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -73,7 +73,7 @@
 								"api",
 								"surveys",
 								"id",
-								"18"
+								"151"
 							]
 						}
 					},
@@ -175,7 +175,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/surveys/email/Silas45@yahoo.com",
+							"raw": "http://localhost:3000/api/surveys/email/elsemper@gmail.com",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -185,7 +185,7 @@
 								"api",
 								"surveys",
 								"email",
-								"Silas45@yahoo.com"
+								"elsemper@gmail.com"
 							]
 						}
 					},
@@ -240,7 +240,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"elsemper@gmail.com\",\r\n  \"questions\": {\r\n    \"¿Cuánto tiempo planeas quedarte en Mina Clavero?\": \"Nulla mollitia omnis commodi sed necessitatibus.\",\r\n   \"¿Recomendarías Mina Clavero como destino turístico?\": \"Mollitia molestias excepturi quasi nostrum commodi vel occaecati eveniet voluptas.\",\r\n    \"¿Consideras a Mina Clavero como un destino completo en cuanto a su oferta y servicios?\": \"Est similique accusantium veniam sequi aliquid.\"\r\n  }\r\n}",
+							"raw": "{\r\n  \"email\": \"elsemper@gmail.com\",\r\n  \"questions\": {\r\n    \"¿Cuánto tiempo planeas quedarte en Mina Clavero?\": \"Nulla mollitia omnis commodi sed necessitatibus.\",\r\n   \"¿Recomendarías Mina Clavero como destino turístico?\": \"Mollitia molestias excepturi quasi nostrum commodi vel occaecati eveniet voluptas.\",\r\n    \"¿Consideras a Mina Clavero como un destino completo en cuanto a su oferta y servicios?\": \"Est similique accusantium veniam sequi aliquid.\"\r\n  },\r\n  \"surveyorId\": 8\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -308,7 +308,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/surveys/17",
+							"raw": "http://localhost:3000/api/surveys/151",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -317,7 +317,7 @@
 							"path": [
 								"api",
 								"surveys",
-								"17"
+								"151"
 							]
 						}
 					},
@@ -373,7 +373,7 @@
 						}
 					],
 					"request": {
-						"method": "PUT",
+						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -385,7 +385,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/surveys/18",
+							"raw": "http://localhost:3000/api/surveys/151",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -394,7 +394,415 @@
 							"path": [
 								"api",
 								"surveys",
-								"18"
+								"151"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Surveyor",
+			"item": [
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Semeper\",\r\n    \"lastName\": \"Evincere\",\r\n    \"email\": \"semper@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/surveyors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"surveyors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/surveyors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"surveyors"
+							],
+							"query": [
+								{
+									"key": "roles",
+									"value": "admin",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSurveysBySurveyorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/surveyors/12/surveys",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"surveyors",
+								"12",
+								"surveys"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSurveyorById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/surveyors/22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"surveyors",
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/surveyors/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"surveyors",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Semper\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/surveyors/22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"surveyors",
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSurveysByDate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"semper_admin\",\r\n    \"password\": \"passAdmin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJ1c2VyTmFtZSI6InNlbXBlcl9hZG1pbiIsInJvbCI6IkFkbWluIiwiaWF0IjoxNjkyNjUyODY3LCJleHAiOjE2OTI3MzkyNjd9.0uNK0EGDpBomrNiAFBOtKF-k4xnKSjakdDsYVTTHkkg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJ1c2VyTmFtZSI6Im5vbWJyZXVzdWFyaW8xMjMiLCJyb2wiOiJBZG1pbiIsImlhdCI6MTY5MjU4NzcwMiwiZXhwIjoxNjkyNTkxMzAyfQ.NvCGSJ-Sa7yLElY9m8s1bCWUXL7uPodcOxl7hP1QmoQ",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"\",\r\n  \"lastName\": \"\",\r\n  \"userName\": \"\",\r\n  \"password\": \"\",\r\n  \"email\": \"\",\r\n  \"rol\": \"\",\r\n  \"phone\": \"\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJ1c2VyTmFtZSI6InNlbXBlcl9hZG1pbiIsInJvbCI6IkFkbWluIiwiaWF0IjoxNjkyNjMyMTk0LCJleHAiOjE2OTI3MTg1OTR9.O-jEsn8AeZABf4CcHGPUJxkUdgSHJKCSYd_le8fd838",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Sergio\",\r\n  \"lastName\": \"Pereyra\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "softDelete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJ1c2VyTmFtZSI6InNlbXBlcl9hZG1pbiIsInJvbCI6IkFkbWluIiwiaWF0IjoxNjkyNjMyMTk0LCJleHAiOjE2OTI3MTg1OTR9.O-jEsn8AeZABf4CcHGPUJxkUdgSHJKCSYd_le8fd838",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "restoreUserDeleted",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user/10/restore",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"10",
+								"restore"
 							]
 						}
 					},
