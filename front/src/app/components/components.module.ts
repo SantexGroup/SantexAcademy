@@ -26,10 +26,27 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button'; 
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { AllCoursesRoutingModule } from './all-courses-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [ CoursesComponent, CoursesDetailComponent, LandingCoursesComponent, HeaderComponent, HomeComponent, FooterComponent, BannerComponent, CompaniesComponent, TestimonialsComponent, EventsComponent, AdvertisementsComponent, ContactComponent, LoginComponent, RecordComponent, FormInscCourseComponent, PayTransfCourseComponent, AllCoursesComponent,],
+  declarations: [ CoursesComponent, 
+                  CoursesDetailComponent, 
+                  LandingCoursesComponent, 
+                  HeaderComponent, 
+                  HomeComponent, 
+                  FooterComponent, 
+                  BannerComponent, 
+                  CompaniesComponent, 
+                  TestimonialsComponent, 
+                  EventsComponent, 
+                  AdvertisementsComponent, 
+                  ContactComponent, 
+                  LoginComponent, 
+                  RecordComponent, 
+                  FormInscCourseComponent, 
+                  PayTransfCourseComponent, 
+                  AllCoursesComponent,],
   imports: [
     CommonModule,
     ComponentsRoutingModule,
@@ -38,7 +55,8 @@ import { AllCoursesRoutingModule } from './all-courses-routing.module';
     CardModule,
     ButtonModule,
     SplitButtonModule,
-    AllCoursesRoutingModule
+    AllCoursesRoutingModule,
+    ReactiveFormsModule
     
   ],
   exports: [
