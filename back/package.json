@@ -15,7 +15,7 @@
     "db:seed:all": "./node_modules/.bin/sequelize db:seed:all"
   },
   "dependencies": {
-    "bcrypt": "^5.1.0",
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "debug": "^4.3.4",
     "dotenv": "^8.6.0",

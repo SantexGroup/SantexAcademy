@@ -5,6 +5,7 @@ const { DataTypes, Sequelize } = require('sequelize');
 const volunteerModel = require('../models/volunteer-model');
 const jwt = require('jsonwebtoken');
 const { sequelize } = require('../models');
+const bcrypt = require('bcrypt');
 
 const Volunteer = volunteerModel(sequelize, DataTypes);
 
@@ -30,7 +31,7 @@ async function createUser(name, lastname, dni, email, password, address, phone) 
   user.lastname = lastname;
   user.dni = dni;
   user.email = email;
-  user.password = password;
+  user.password = await bcrypt.hash(password, 10);
   user.address = address;
   user.phone = phone;
 
@@ -60,7 +61,8 @@ async function editUser(id, name, lastname, dni, email, password, address, phone
   }
 
   if (password) {
-    user.password = password;
+    const hasedPassword = await bcrypt.hash(password, 10);
+    user.password = hasedPassword;
   }
 
   if (address) {
@@ -77,6 +79,8 @@ async function editUser(id, name, lastname, dni, email, password, address, phone
 
   const userEdited = await user.save();
 
+  delete userEdited.dataValues.password;
+
   return userEdited;
 }
 
@@ -90,7 +94,6 @@ async function login(email, password) {
   const user = await Volunteer.findOne({
     where: {
       email: email,
-      password: password,
     },
   });
 
@@ -98,6 +101,11 @@ async function login(email, password) {
     throw new Error('Email o contraseña incorrectos');
   }
 
+  const passwordMatch = await bcrypt.compare(password, user.password);
+
+  if (!passwordMatch) {
+    throw new Error('Email o contraseña incorrectos');
+  }
   const token = jwt.sign({ id: user.id, tipoUsuario: 'voluntario' }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
   return token;
