@@ -8,9 +8,9 @@ const isAdminOrSurveyorMiddleware = require('../middleware/isAdminOrSurveyorMidd
 router.post('/', isAdminOrSurveyorMiddleware, surveyController.createSurvey);
 router.get('/email/:email', isAdminOrSurveyorMiddleware, surveyController.getSurveysByEmail);
 router.get('/', isAdminOrSurveyorMiddleware, surveyController.getAllSurveys);
-// router.put('/:id/', surveyController.updateSurvey);
-// router.patch('/:id/', surveyController.updateSurvey);
-// router.get('/id/:id', surveyController.getSurveyById);
+router.get('/:id', isAdminOrSurveyorMiddleware, surveyController.getSurveyById);
+// router.patch('/:id', surveyController.updateSurvey);
+// router.put('/:id', surveyController.updateSurvey);
 // router.delete('/:id', surveyController.deleteSurvey);
 
 module.exports = router;
