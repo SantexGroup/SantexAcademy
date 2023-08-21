@@ -5,7 +5,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { LoginComponent } from './modules/auth/pages/login/login.component';
 import { OptionsRegisterComponent } from './modules/auth/pages/options-register/options-register.component';
 import { VolunteerRegisterComponent } from './modules/auth/pages/volunteer-register/volunteer-register.component';
-import { CoordinatorRegisterComponent } from './modules/auth/pages/coordinator-register/coordinator-register.component';
+// import { CoordinatorRegisterComponent } from './modules/auth/pages/coordinator-register/coordinator-register.component';
 
 
 const routes: Routes = [
@@ -20,12 +20,7 @@ const routes: Routes = [
     title: 'VolunTime - Página no encontrada!',
     component: NotfoundComponent,
   },
-  {
-    path: 'coordinator-register',
-    title: 'VolunTime - Registro de coordinatores',
-    component: CoordinatorRegisterComponent,
-  },
-];
+ ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

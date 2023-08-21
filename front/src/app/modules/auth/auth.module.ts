@@ -8,6 +8,8 @@ import { FormLoginComponent } from './components/form-login/form-login.component
 import { CardOptionregisterComponent } from './components/card-optionregister/card-optionregister.component';
 import { FormVolunteerregisterComponent } from './components/form-volunteerregister/form-volunteerregister.component';
 import { RouterModule, Routes } from '@angular/router';
+import { FormCoordinatorsRegisterComponent } from './components/form-coordinators-register/form-coordinators-register.component';
+import { CoordinatorRegisterComponent } from './pages/coordinator-register/coordinator-register.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,11 @@ const routes: Routes = [
     title: 'VolunTime - Registro de voluntarios',
     component: VolunteerRegisterComponent,
   },
+  {
+    path: 'coordinator-register',
+    title: 'VolunTime - Registro de coordinadores',
+    component: CoordinatorRegisterComponent,
+  },
 ];
 
 @NgModule({
@@ -36,8 +43,9 @@ const routes: Routes = [
     FormLoginComponent,
     CardOptionregisterComponent,
     FormVolunteerregisterComponent,
+    FormCoordinatorsRegisterComponent,
     CoordinatorRegisterComponent,
-    FormCoordinatorregisterComponent,
+
   ],
   imports: [CommonModule, FormsModule, RouterModule.forChild(routes)],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
