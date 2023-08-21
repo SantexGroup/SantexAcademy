@@ -26,7 +26,7 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button'; 
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { AllCoursesRoutingModule } from './all-courses-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -56,7 +56,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ButtonModule,
     SplitButtonModule,
     AllCoursesRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
     
   ],
   exports: [
