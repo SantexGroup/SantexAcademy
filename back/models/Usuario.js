@@ -30,31 +30,39 @@ const Usuario = sequelize.define(
     reputation: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 0,
     },
     recompensasAcumuladas: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     rolesId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      defaultValue: 2,
       references: {
         model: 'roles',
         key: 'id',
       },
     },
+    deletedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
     cestaRecompensasId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
+      allowNull: true,
+      defaultValue: 0,
       references: {
-        model: 'cestaRecompensas',
-        key: 'id',
+        model: 'cestaRecompensas', // Nombre de la tabla referenciada
+        key: 'id',                  // Columna referenciada
       },
     },
   }, {
     sequelize,
+    paranoid:true,
     tableName: 'usuario',
     timestamps: false,
     indexes: [

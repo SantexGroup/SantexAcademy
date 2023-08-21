@@ -43,6 +43,14 @@ const Organizacion = sequelize.define(
         isUrl: true,
       },
     },
+
+    category: {
+      type: DataTypes.ENUM({
+        values: ['medio ambiente y fauna', 'asistencia social', 'salud y discapacidad'],
+      }),
+      allowNull: false,
+    },
+
     deletedAt: {
       type: DataTypes.DATE,
       allowNull: true,
