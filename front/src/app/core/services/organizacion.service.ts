@@ -15,7 +15,18 @@ export class OrganizacionService {
     this.credencialesOrganizacion = new BehaviorSubject<Credencial | null>(null);
   }
 
-  credencialesOrganizacion:BehaviorSubject<Credencial | null>;
+  private credencialesOrganizacion:BehaviorSubject<Credencial | null>;
+
+  get getCredencialesOrganizacion():Observable<Credencial| null>{
+    
+    return this.credencialesOrganizacion.asObservable();
+  }
+
+  set setCredencialesOrganizacion(value:Credencial|null){
+    this.credencialesOrganizacion.next(value);
+  }
+
+
   
 
   crearOrganizacion(organizacion:Organizacion):Observable<Organizacion>{

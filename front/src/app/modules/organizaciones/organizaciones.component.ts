@@ -15,7 +15,7 @@ export class OrganizacionesComponent implements OnInit {
   }
 
   cerrarSesion(){
-    this.organizacionService.credencialesOrganizacion.next(null);
+    this.organizacionService.setCredencialesOrganizacion = null;
     this.router.navigate(['/index']);
 
   }
