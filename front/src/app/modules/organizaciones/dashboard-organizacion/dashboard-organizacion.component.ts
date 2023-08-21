@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Organizacion } from 'src/app/core/interfaces/organizacion';
+import { OrganizacionService } from 'src/app/core/services/organizacion.service';
 
 @Component({
   selector: 'app-dashboard-organizacion',
@@ -7,7 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardOrganizacionComponent implements OnInit {
 
-  constructor() { }
+  constructor(organizacionService:OrganizacionService) {
+    this.datosOrganizacion$ = organizacionService.getDatosOrganizacion;
+  }
+
+  datosOrganizacion$:Observable<Organizacion|null>;
+
 
   ngOnInit(): void {
   }
