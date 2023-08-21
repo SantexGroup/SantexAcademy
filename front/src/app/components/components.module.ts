@@ -16,7 +16,6 @@ import { AdvertisementsComponent } from './advertisements/advertisements.compone
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { RecordComponent } from './record/record.component';
-import { FormInscCourseComponent } from './courses/form-insc-course/form-insc-course.component';
 import { PayTransfCourseComponent } from './courses/pay-transf-course/pay-transf-course.component';
 import { PrimeflexModule } from '../lib/primeFlex/primeflex/primeflex.module';
 import { ComponentsRoutingModule } from './components-routing.module';
@@ -27,6 +26,8 @@ import { ButtonModule } from 'primeng/button';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { AllCoursesRoutingModule } from './all-courses-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormInscrCoursesComponent } from './courses/form-inscr-courses/form-inscr-courses.component';
+
 
 
 @NgModule({
@@ -44,9 +45,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
                   ContactComponent, 
                   LoginComponent, 
                   RecordComponent, 
-                  FormInscCourseComponent, 
                   PayTransfCourseComponent, 
-                  AllCoursesComponent,],
+                  AllCoursesComponent, 
+                  FormInscrCoursesComponent,
+                ],
   imports: [
     CommonModule,
     ComponentsRoutingModule,
