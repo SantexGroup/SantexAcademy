@@ -13,25 +13,25 @@
 </div>
 
 <div  class="flex justify-content-center flex-wrap">
-<div class="card-container">
+<div class="card-container" *ngFor="let course of coursesService.courses">
     <div class="card-container flex align-items-center justify-content-center">
         <p-card [style]="{ width: '360px' }" class=" font-bold text-white border-round m-2">
-            <div >
+            <div>
                 <h2>
-                    <!-- {{ courses.title }} -->
+                    {{ course.title }}
                 </h2>
                 <p>
-                    <!-- {{ courses.description }} -->
+                    {{ course.description }}
                 </p>
                 <p-divider></p-divider>
                 <h3>
-                    <!-- {{courses.price | currency}} -->
+                    {{course.price | currency}}
                 </h3>
                 <p>
-                    Hasta 6 cuotas sin interés de <span class="card__price--bold">$1200</span>
+                    Hasta {{course.due}} cuotas sin interés de <span class="card__price--bold">{{coursesService.getRoundedPrice(course.price,course.due)}}</span>
                 </p>
                 <p class="card__starter mb-3">
-                    <!-- fecha de inicio: {{ courses.starter_date }} -->
+                    fecha de inicio: {{ course.start_date }}
                 </p>
                 <p-divider></p-divider>
                 <footer class="flex flex-column justify-content-center footer">
