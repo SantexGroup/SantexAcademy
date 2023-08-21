@@ -41,7 +41,15 @@
 
                 .button__all {
 
-                    margin-top: 1rem;
+                    margin-top: 2rem;
+                    border: 1px solid $wireframe;
+                    background-color: white;
+
+                    &[label~='Ver'] {
+
+                        color: $wireframe
+
+                    }
 
                 }
 
