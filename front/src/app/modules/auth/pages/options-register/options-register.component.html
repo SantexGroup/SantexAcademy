@@ -1,4 +1,4 @@
-<div
+<section
   class="min-w-full flex flex-col gap-12 p-4 pt-16 pb-16 items-center justify-center mt-[90px] mb-16 bg-bgOptionsRegister lg:mt-[0px] lg:pb-28 lg:pt-20"
 >
   <header class="w-full flex flex-col gap-2 text-center">
@@ -8,88 +8,19 @@
   <div
     class="w-full flex flex-col items-center justify-center gap-20 lg:flex-row lg:gap-28"
   >
-    <article
-      class="min-w-[100px] max-w-[350px] flex flex-col items-center justify-center gap-6 bg-white rounded-md p-4"
-    >
-      <i class="bx bxs-user text-4xl text-mediumViolet"></i>
-      <button
-        (click)="navigateToOptionsRegister()"
-        class="py-2 px-4 rounded-md bg-mediumViolet bg-opacity-[.3] text-mediumViolet font-medium"
-      >
-        Voluntario
-      </button>
-      <p class="text-sm text-center">
-        Registrate, explorá las oportunidades, participá y compartí tu
-        experiencia
-      </p>
-      <ul class="flex flex-col gap-4">
-        <li class="flex items-center justify-start text-start gap-2">
-          <span class="w-[8px] h-[8px] rounded-full bg-mediumViolet"></span>
-          Flexibilidad
-        </li>
-        <li class="flex items-center justify-start text-start gap-2">
-          <span class="w-[8px] h-[8px] rounded-full bg-mediumViolet"></span>
-          Variedad de oportunidades
-        </li>
-        <li class="flex items-center justify-start text-start gap-2">
-          <span class="w-[8px] h-[8px] rounded-full bg-mediumViolet"></span>
-          Desarrollo personal
-        </li>
-        <li class="flex items-center justify-start text-start gap-2">
-          <span class="w-[8px] h-[8px] rounded-full bg-mediumViolet"></span>
-          Relaciones significativas
-        </li>
-        <li class="flex items-center justify-start text-start gap-2">
-          <span class="w-[8px] h-[8px] rounded-full bg-mediumViolet"></span>
-          Impacto directo
-        </li>
-      </ul>
-      <button
-        (click)="navigateToOptionsRegister()"
-        class="w-full py-2 bg-mediumViolet text-white rounded-md font-semibold lg:w-[90%]"
-      >
-        Crear una cuenta
-      </button>
-    </article>
-    <article
-      class="min-w-[100px] max-w-[350px] flex flex-col items-center justify-center gap-6 bg-white rounded-md p-4"
-    >
-      <i class="bx bxs-extension text-4xl text-darkSlateBlue"></i>
-      <button
-        class="py-2 px-4 rounded-md bg-darkSlateBlue bg-opacity-[.3] text-darkSlateBlue font-medium"
-      >
-        Coordinador (ONG)
-      </button>
-      <p class="text-sm text-center">
-        Registrate, publicá tus proyectos, conectá con voluntarios
-      </p>
-      <ul class="flex flex-col gap-4">
-        <li class="flex items-center justify-start text-start gap-2">
-          <span class="w-[8px] h-[8px] rounded-full bg-darkSlateBlue"></span>
-          Potencia tu misión
-        </li>
-        <li class="flex items-center justify-start text-start gap-2">
-          <span class="w-[8px] h-[8px] rounded-full bg-darkSlateBlue"></span>
-          Acceso a talento diverso
-        </li>
-        <li class="flex items-center justify-start text-start gap-2">
-          <span class="w-[8px] h-[8px] rounded-full bg-darkSlateBlue"></span>
-          Flexibilidad en la colaboración
-        </li>
-        <li class="flex items-center justify-start text-start gap-2">
-          <span class="w-[8px] h-[8px] rounded-full bg-darkSlateBlue"></span>
-          Mayor visibilidad
-        </li>
-        <li class="flex items-center justify-start text-start gap-2">
-          <span class="w-[8px] h-[8px] rounded-full bg-darkSlateBlue"></span>
-          Networking y colaboración
-        </li>
-      </ul>
-      <button
-        class="w-full py-2 bg-darkSlateBlue text-white rounded-md font-semibold lg:w-[90%]"
-      >
-        Crear una cuenta
-      </button>
-    </article>
+    <app-card-optionregister
+      textBtnOne="Voluntario"
+      textBtnTwo="Crear una cuenta"
+      subtitle="Registrate, explorá las oportunidades, participá y compartí tu experiencia"
+      [itemsList]="itemsVolunteer"
+      route="/volunteer-register"
+    ></app-card-optionregister>
+    <app-card-optionregister
+      textBtnOne="Coordinador (ONG)"
+      textBtnTwo="Crear una cuenta"
+      subtitle="Registrate, publicá tus proyectos, conectá con voluntarios"
+      [itemsList]="itemsCordinator"
+      route="/volunteer-register"
+    ></app-card-optionregister>
   </div>
-</div>
+</section>
