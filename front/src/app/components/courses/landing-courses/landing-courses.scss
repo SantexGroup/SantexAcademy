@@ -13,6 +13,17 @@
     
             }
     
+            .title__highlited {
+
+                border-bottom: .3rem solid $wireframe;
+
+            }
+    
+            .parrafo__container {
+
+                display: flex;
+                justify-content: center;
+
             .parrafo__courses {
     
                 text-align: center;
