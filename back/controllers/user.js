@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 const { validationResult } = require('express-validator');
-const userService = require('../services/user');
+const userService = require('../services/userService');
 
 // const { userService } = services;
 const getUser = async (req, res) => {
@@ -75,7 +75,7 @@ const updateUser = async (req, res) => {
   const idUser = req.params.idUser;
   const result = validationResult(req);
   // eslint-disable-next-line keyword-spacing, space-before-blocks
-  if (!result.isEmpty()){
+  if (!result.isEmpty()) {
     return res.status(400).send({ errors: result.array });
   }
   // eslint-disable-next-line object-curly-newline

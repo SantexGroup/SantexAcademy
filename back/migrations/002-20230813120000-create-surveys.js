@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Surveys", {
+    await queryInterface.createTable('Surveys', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -19,11 +19,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Users",
-          key: "id",
+          model: 'Users',
+          key: 'id',
         },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       createdAt: {
         allowNull: false,
@@ -34,13 +34,13 @@ module.exports = {
         type: Sequelize.DATE,
       },
       status: {
-        type: Sequelize.ENUM("activo", "eliminado", "archivado"),
-        defaultValue: "activo",
+        type: Sequelize.ENUM('activo', 'eliminado', 'archivado'),
+        defaultValue: 'activo',
       },
     });
   },
 
   down: async (queryInterface) => {
-    await queryInterface.dropTable("Surveys");
+    await queryInterface.dropTable('Surveys');
   },
 };

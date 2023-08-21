@@ -52,7 +52,7 @@ const generateSurveyResults = async (count, surveyorIds) => {
 module.exports = {
   async up(queryInterface) {
     const surveyors = await queryInterface.sequelize.query(
-      'SELECT id FROM Users WHERE role LIKE \'%encuestador%\'',
+      'SELECT id FROM Users WHERE rol LIKE \'%encuestador%\'',
     );
     const surveyorIds = surveyors[0].map((surveyor) => surveyor.id);
 
