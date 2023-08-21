@@ -21,6 +21,7 @@ import { InputMaskModule } from 'primeng/inputmask';
     CarouselModule,
     InputTextModule,
     InputMaskModule
+
   ]
 })
 export class PrimengModule { }
