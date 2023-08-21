@@ -9,7 +9,7 @@ router.post('/', isAdminOrSurveyorMiddleware, surveyController.createSurvey);
 router.get('/email/:email', isAdminOrSurveyorMiddleware, surveyController.getSurveysByEmail);
 router.get('/', isAdminOrSurveyorMiddleware, surveyController.getAllSurveys);
 router.get('/:id', isAdminOrSurveyorMiddleware, surveyController.getSurveyById);
-// router.patch('/:id', surveyController.updateSurvey);
+router.patch('/:id', isAdminOrSurveyorMiddleware, surveyController.updateSurvey);
 // router.put('/:id', surveyController.updateSurvey);
 // router.delete('/:id', surveyController.deleteSurvey);
 
