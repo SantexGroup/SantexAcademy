@@ -4,12 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { VolunteerRegisterComponent } from './pages/volunteer-register/volunteer-register.component';
 import { OptionsRegisterComponent } from './pages/options-register/options-register.component';
+import { FormLoginComponent } from './components/form-login/form-login.component';
+import { CardOptionregisterComponent } from './components/card-optionregister/card-optionregister.component';
+import { FormVolunteerregisterComponent } from './components/form-volunteerregister/form-volunteerregister.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     VolunteerRegisterComponent,
     OptionsRegisterComponent,
+    FormLoginComponent,
+    CardOptionregisterComponent,
+    FormVolunteerregisterComponent,
   ],
   imports: [CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
