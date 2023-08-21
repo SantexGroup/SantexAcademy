@@ -13,6 +13,7 @@ export class OrganizacionService {
   constructor(private apiService:ApiService) {
 
     this.credencialesOrganizacion = new BehaviorSubject<Credencial | null>(null);
+    this.datosOrganizacion = new BehaviorSubject<Organizacion | null>(null);
   }
 
   private credencialesOrganizacion:BehaviorSubject<Credencial | null>;
@@ -24,6 +25,12 @@ export class OrganizacionService {
 
   set setCredencialesOrganizacion(value:Credencial|null){
     this.credencialesOrganizacion.next(value);
+  }
+
+  private datosOrganizacion:BehaviorSubject<Organizacion | null >;
+
+  get getDatosOrganizacion():Observable<Organizacion|null>{
+    return this.datosOrganizacion.asObservable();
   }
 
 
@@ -43,7 +50,7 @@ export class OrganizacionService {
   }
 
   modificarOrganizacion(organizacion:Organizacion):Observable<Organizacion>{
-   return this.apiService.put<Organizacion>(`/coordinator/edit-user/${organizacion.id_coordinator}`);
+   return this.apiService.put<Organizacion>(`/coordinator/edit-user/${organizacion.id}`);
   }
 
   eliminarOrganizacion(id:number):Observable<boolean>{
@@ -61,6 +68,15 @@ export class OrganizacionService {
         
         this.credencialesOrganizacion.next(credenciales);
         return credenciales;
+      })
+    );
+  }
+
+  obtenerDatosOrganizacion():Observable<Organizacion>{
+    return this.apiService.get<Organizacion>('/coordinator/datos').pipe(
+      map((res)=>{
+        this.datosOrganizacion.next(res);
+        return res;
       })
     );
   }
