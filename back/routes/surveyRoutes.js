@@ -2,10 +2,11 @@ const express = require('express');
 
 const router = express.Router();
 router.use(express.json());
-// const surveyController = require('../controllers/surveyController');
+const surveyController = require('../controllers/surveyController');
+const isAdminOrSurveyorMiddleware = require('../middleware/isAdminOrSurveyorMiddleware');
 
-// router.post('/', surveyController.createSurvey);
-// router.get('/email/:email', surveyController.getSurveysByEmail);
+router.post('/', isAdminOrSurveyorMiddleware, surveyController.createSurvey);
+router.get('/email/:email', surveyController.getSurveysByEmail);
 // router.get('/', surveyController.getAllSurveys);
 // router.put('/:id/', surveyController.updateSurvey);
 // router.patch('/:id/', surveyController.updateSurvey);

@@ -40,7 +40,7 @@ const generateSurveyResults = async (count, surveyorIds) => {
     const randomSurveyorId = surveyorIds[Math.floor(Math.random() * surveyorIds.length)];
     surveyResults.push({
       email,
-      userId: randomSurveyorId,
+      surveyorId: randomSurveyorId,
       questions: JSON.stringify(answers),
       createdAt: faker.date.between('2020-01-01', '2023-08-15'),
       updatedAt: faker.date.between('2020-01-01', '2023-08-15'),

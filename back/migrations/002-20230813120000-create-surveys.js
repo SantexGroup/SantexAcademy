@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.JSON,
         allowNull: false,
       },
-      userId: {
+      surveyorId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
