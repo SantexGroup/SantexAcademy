@@ -6,6 +6,7 @@ import { DividerModule } from 'primeng/divider';
 import { AccordionModule } from 'primeng/accordion';
 import {CarouselModule} from 'primeng/carousel';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @NgModule({
   declarations: [],
@@ -18,7 +19,8 @@ import { InputTextModule } from 'primeng/inputtext';
     DividerModule,
     AccordionModule,
     CarouselModule,
-    InputTextModule
+    InputTextModule,
+    InputMaskModule
   ]
 })
 export class PrimengModule { }
