@@ -7,21 +7,18 @@
   <ng-container *ngIf="textBtnOne == 'Coordinador (ONG)'">
     <i class="bx bxs-extension text-4xl text-darkSlateBlue"></i>
   </ng-container>
-  <ng-container *ngIf="textBtnOne == 'Voluntario'">
-    <button
-      (click)="navigateToRegister()"
-      class="py-2 px-4 rounded-md bg-mediumViolet bg-opacity-[.3] text-mediumViolet font-medium"
-    >
-      {{ textBtnOne }}
-    </button>
-  </ng-container>
-  <ng-container *ngIf="textBtnOne == 'Coordinador (ONG)'">
-    <button
-      class="py-2 px-4 rounded-md bg-darkSlateBlue bg-opacity-[.3] text-darkSlateBlue font-medium"
-    >
-      {{ textBtnOne }}
-    </button>
-  </ng-container>
+  <button
+    (click)="navigateToRegister()"
+    [ngClass]="{
+      'bg-mediumViolet': textBtnOne == 'Voluntario',
+      'bg-darkSlateBlue': textBtnOne == 'Coordinador (ONG)',
+      'text-mediumViolet': textBtnOne == 'Voluntario',
+      'text-darkSlateBlue ': textBtnOne == 'Coordinador (ONG)'
+    }"
+    class="py-2 px-4 rounded-md bg-opacity-[.3] font-medium"
+  >
+    {{ textBtnOne }}
+  </button>
   <p class="text-sm text-center">
     {{ subtitle }}
   </p>
@@ -30,30 +27,21 @@
       *ngFor="let item of itemsList"
       class="flex items-center justify-start text-start gap-2"
     >
-      <ng-container *ngIf="textBtnOne == 'Voluntario'">
-        <span class="w-[8px] h-[8px] rounded-full bg-mediumViolet"></span>
-      </ng-container>
-      <ng-container *ngIf="textBtnOne == 'Coordinador (ONG)'">
-        <span class="w-[8px] h-[8px] rounded-full bg-darkSlateBlue"></span>
-      </ng-container>
+      <span
+        class="w-[8px] h-[8px] rounded-full"
+        [ngClass]="{'bg-mediumViolet': textBtnOne == 'Voluntario',
+        'bg-darkSlateBlue': textBtnOne == 'Coordinador (ONG)',}"
+      ></span>
 
       {{ item }}
     </li>
   </ul>
-  <ng-container *ngIf="textBtnOne == 'Voluntario'">
-    <button
-      (click)="navigateToRegister()"
-      class="w-full py-2 bg-mediumViolet text-white rounded-md font-semibold lg:w-[90%]"
-    >
-      {{ textBtnTwo }}
-    </button>
-  </ng-container>
-  <ng-container *ngIf="textBtnOne == 'Coordinador (ONG)'">
-    <button
-      (click)="navigateToRegister()"
-      class="w-full py-2 bg-darkSlateBlue text-white rounded-md font-semibold lg:w-[90%]"
-    >
-      {{ textBtnTwo }}
-    </button>
-  </ng-container>
+  <button
+    [ngClass]="{'bg-mediumViolet': textBtnOne == 'Voluntario',
+        'bg-darkSlateBlue': textBtnOne == 'Coordinador (ONG)',}"
+    (click)="navigateToRegister()"
+    class="w-full py-2 text-white rounded-md font-semibold lg:w-[90%]"
+  >
+    {{ textBtnTwo }}
+  </button>
 </article>
