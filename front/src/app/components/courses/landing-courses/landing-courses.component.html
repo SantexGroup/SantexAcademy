@@ -18,7 +18,7 @@
         </header>
 
         <p-carousel [numVisible]="3" [numScroll]="1" [circular]="true"
-            [responsiveOptions]="coursesService.responsiveOptions" [value]="courses">
+            [responsiveOptions]="coursesService.responsiveOptions" [value]="coursesService.courses">
             <ng-template let-course pTemplate="item" class="course__list-template">
                 <div class="flex justify-content-center align-items-center py-5 px-3">
                     <div class="card">
@@ -34,7 +34,7 @@
                                 {{course.price | currency}}
                             </h3>
                             <p class="card__cuotes">
-                                Hasta {{course.due}} cuotas sin interés de <span class="card__price--bold">{{getRoundedPrice(course.price, course.due)}}</span>
+                                Hasta {{course.due}} cuotas sin interés de <span class="card__price--bold">{{coursesService.getRoundedPrice(course.price, course.due)}}</span>
                             </p>
                             <p class="card__starter mb-3">
                                 Fecha de inicio: {{course.start_date | date: 'yy-mm-dd'}}
