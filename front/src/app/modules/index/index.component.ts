@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Credencial } from 'src/app/core/interfaces/credencial';
+import { OrganizacionService } from 'src/app/core/services/organizacion.service';
+import { VoluntarioService } from 'src/app/core/services/voluntario.service';
 
 @Component({
   selector: 'app-index',
@@ -12,11 +16,19 @@ export class IndexComponent implements OnInit {
 
   
   @ViewChild('sideNav') sideNav!:MatSidenav;
-  constructor(private router:Router) {
-   }
+  constructor(private router:Router, organizacionService:OrganizacionService,voluntarioService:VoluntarioService) {
+
+    this.credencialesOrganizacion$ = organizacionService.getCredencialesOrganizacion;
+
+    this.credencialesVoluntario$ = voluntarioService.getCredencialesVoluntario;
+  }
+  
+  credencialesOrganizacion$!:Observable<Credencial|null>;
+  credencialesVoluntario$!:Observable<Credencial|null>;
 
   ngOnInit(): void {
   }
+
   irLoginVoluntarios(){
     this.router.navigate(['/index/login'],{queryParams:{tipo:'voluntario'}});
     this.sideNav.close();
