@@ -35,13 +35,29 @@ const Organizacion = sequelize.define(
       type: DataTypes.STRING(45),
       allowNull: false,
     },
+
+    image: {
+      type: DataTypes.STRING(),
+      allowNull: false,
+      validate: {
+        isUrl: true,
+      },
+    },
+
+    category: {
+      type: DataTypes.ENUM({
+        values: ['medio ambiente y fauna', 'asistencia social', 'salud y discapacidad'],
+      }),
+      allowNull: false,
+    },
+
     deletedAt: {
       type: DataTypes.DATE,
       allowNull: true,
     },
   }, {
     sequelize,
-    paranoid:true,
+    paranoid: true,
     tableName: 'organizacion',
     timestamps: false,
     indexes: [
