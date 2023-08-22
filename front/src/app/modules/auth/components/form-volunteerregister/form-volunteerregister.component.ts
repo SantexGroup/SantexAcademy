@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { volunterData } from '../../models/volunteerRegister.model';
+import { volunterData } from '../../models/dataForms.model';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-form-volunteerregister',
@@ -9,16 +9,13 @@ import { volunterData } from '../../models/volunteerRegister.model';
   styleUrls: ['./form-volunteerregister.component.css'],
 })
 export class FormVolunteerregisterComponent {
-  http = inject(HttpClient);
-
   full_name: string = '';
   email: string = '';
   phone: string = '';
   password: string = '';
   showPassword: boolean = false;
-  dataUser!: volunterData;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   sendValues() {
     const userData: volunterData = {
@@ -28,8 +25,15 @@ export class FormVolunteerregisterComponent {
       password: this.password,
     };
 
-    this.dataUser = userData;
-    this.ngOnInit();
+    this.authService.registerVolunteer(userData).subscribe({
+      next: (response) => {
+        console.log('Registro exitoso:', response);
+      },
+      error: (error) => {
+        console.error('Error en el registro:', error);
+      },
+      complete: () => {},
+    });
   }
 
   sendShowPassword() {
@@ -40,11 +44,5 @@ export class FormVolunteerregisterComponent {
 
   navigateToLogin() {
     this.router.navigate(['/login']);
-  }
-
-  ngOnInit() {
-    this.http.post('http:localhost:4200', this.dataUser).subscribe((data) => {
-      console.log(data);
-    });
   }
 }
