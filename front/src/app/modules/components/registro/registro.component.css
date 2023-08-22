@@ -1,0 +1,85 @@
+:root{
+    --color-dark: #15181f;
+    --color-dark-x:#2d343f;
+    --color-dark-xx:#1f232b;
+    --color-light: #ffffff;
+    --color-grey: #f5f6f8;
+
+}
+body{
+    font-family: 'Roboto', sans-serif;    
+    font-size: 1.1rem;
+    font-weight: 300;
+    background-color: var(--color-grey);
+    color: var(--color-light);
+    letter-spacing: 0.5rem;
+
+}
+bg-light{
+    background-color: var(--color-light)!important;
+
+}
+bg-dark{
+    background-color: var(--color-dark)!important;
+}
+.p-6{
+    padding: 4rem 7rem;
+}
+.contact-box{
+    padding: 3rem;
+
+}
+#icono{
+    width: 15px;
+    height: 15px;
+
+}
+.btn{
+    font-weight: 400;
+    padding: 1rem 2rem;
+    border-radius: 5rem;
+    -webkit-border-radius: 5rem;
+    -moz-border-radius: 5rem;
+    -ms-border-radius: 5rem;
+    -o-border-radius: 5rem;
+    min-width: 10rem; 
+}
+.btn-outline-dark{
+    border: 2px solid var(--color-dark)!important;
+
+}
+
+form-control{
+    background-color: var(--color-dark-xx);
+    border: 2px solid var(--color-dark-xx) ;
+    border-radius:.2rem;
+    padding: 1.5rem 1rem;
+}
+.register-bg{    
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+.testimonial{
+    bottom: 10px;
+
+}
+@media(max-width: 575.98px){
+    .p-6{
+        padding: 2rem;
+        
+    }
+    .contact-box{
+        padding: 0;
+    }
+    .width-100{
+        width: 100%;
+    }
+}
+/**para la imagen **/
+@media(max-width: 1200px){
+    .register-bg{
+        min-height: 50vh;
+    }
+
+}
