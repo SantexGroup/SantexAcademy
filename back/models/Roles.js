@@ -14,23 +14,11 @@ const Roles = sequelize.define(
       type: DataTypes.STRING(50),
       allowNull: false,
     },
-  }, {
-    sequelize,
-    tableName: 'roles',
-    timestamps: false,
-    indexes: [
-      {
-        name: 'PRIMARY',
-        unique: true,
-        using: 'BTREE',
-        fields: [
-          { name: 'id' },
-        ],
-      },
-    ],
+  },
+  {
+    paranoid: true,
   },
 );
-
 
 Roles.bulkCreateDefaultRoles = async () => {
   const rolesData = [
@@ -41,6 +29,5 @@ Roles.bulkCreateDefaultRoles = async () => {
 
   await Roles.bulkCreate(rolesData);
 };
-
 
 module.exports = Roles;

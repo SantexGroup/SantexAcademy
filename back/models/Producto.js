@@ -11,40 +11,16 @@ const Producto = sequelize.define(
       primaryKey: true,
     },
     nombre: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(100),
       allowNull: false,
     },
     costoEnHoras: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    catalogoId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      references: {
-        model: 'catalogo',
-        key: 'id',
-      },
-    },
   },
   {
-    sequelize,
-    tableName: 'producto',
-    timestamps: false,
-    indexes: [
-      {
-        name: 'PRIMARY',
-        unique: true,
-        using: 'BTREE',
-        fields: [{ name: 'id' }, { name: 'catalogoId' }],
-      },
-      {
-        name: 'fk_producto_catalogo1_idx',
-        using: 'BTREE',
-        fields: [{ name: 'catalogoId' }],
-      },
-    ],
+    paranoid: true,
   },
 );
 

@@ -18,45 +18,9 @@ const Voluntariado = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    organizacionId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      references: {
-        model: 'organizacion',
-        key: 'id',
-      },
-    },
-  }, {
-    sequelize,
-    tableName: 'voluntariado',
-    timestamps: false,
-    indexes: [
-      {
-        name: 'PRIMARY',
-        unique: true,
-        using: 'BTREE',
-        fields: [
-          { name: 'idVoluntariado' },
-          { name: 'organizacionId' },
-        ],
-      },
-      {
-        name: 'id_voluntariado_UNIQUE',
-        unique: true,
-        using: 'BTREE',
-        fields: [
-          { name: 'idVoluntariado' },
-        ],
-      },
-      {
-        name: 'fk_voluntariado_organizacion1_idx',
-        using: 'BTREE',
-        fields: [
-          { name: 'organizacionId' },
-        ],
-      },
-    ],
+  },
+  {
+    paranoid: true,
   },
 );
 

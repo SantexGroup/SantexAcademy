@@ -1,11 +1,11 @@
-const { Producto } = require("../models");
+const { Producto } = require('../models');
 
 const createProduct = async (product) => {
   try {
     const newProduct = await Producto.create(product);
     return newProduct;
   } catch (err) {
-    console.error("Error creating product", err);
+    console.error('Error creating product', err);
     throw err;
   }
 };
@@ -15,7 +15,7 @@ const getProduct = async (id) => {
     const product = await Producto.findByPk(id);
     return product;
   } catch (err) {
-    console.error("Error getting product", err);
+    console.error('Error getting product', err);
     throw err;
   }
 };
@@ -25,7 +25,7 @@ const getAllProducts = async () => {
     const products = await Producto.findAll();
     return products;
   } catch (err) {
-    console.error("Error getting products", err);
+    console.error('Error getting products', err);
     throw err;
   }
 };
@@ -33,11 +33,11 @@ const getAllProducts = async () => {
 const updateProduct = async (id, product) => {
   try {
     const updatedProduct = await Producto.update(product, {
-      where: { id: id },
+      where: { id },
     });
     return updatedProduct;
   } catch (err) {
-    console.error("Error updating product", err);
+    console.error('Error updating product', err);
     throw err;
   }
 };
@@ -45,11 +45,11 @@ const updateProduct = async (id, product) => {
 const deleteProduct = async (id) => {
   try {
     const deletedProduct = await Producto.destroy({
-      where: { id: id },
+      where: { id },
     });
     return deletedProduct;
   } catch (err) {
-    console.error("Error deleting product", err);
+    console.error('Error deleting product', err);
     throw err;
   }
 };

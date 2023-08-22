@@ -6,10 +6,7 @@ const getOrganizations = async () => {
     const organizations = await Organizacion.findAll();
     return organizations;
   } catch (err) {
-    console.error(
-      'The organizations could not be listed due to an error.',
-      err,
-    );
+    console.error('The organizations could not be listed due to an error.', err);
     throw err;
   }
 };
@@ -34,16 +31,10 @@ const getOrganizationByCriteria = async (queryOptions, bodyOptions) => {
 
     return organizations;
   } catch (error) {
-    console.error(
-      'The organization/s could not be retrieved due to an error.',
-      error
-    );
+    console.error('The organization/s could not be retrieved due to an error.', error);
     throw error;
   }
 };
-
-
-
 
 const updateOrganizationById = async (id, organization) => {
   try {
@@ -58,10 +49,7 @@ const updateOrganizationById = async (id, organization) => {
     });
     return organizationModified;
   } catch (err) {
-    console.error(
-      'The organization could not be updated due to an error.',
-      err,
-    );
+    console.error('The organization could not be updated due to an error.', err);
     throw err;
   }
 };
@@ -116,10 +104,7 @@ const createOrganization = async (organization) => {
     // Devolver el nuevo registro
     return newOrganization;
   } catch (err) {
-    console.error(
-      'The organization could not be created due to an error.',
-      err,
-    );
+    console.error('The organization could not be created due to an error.', err);
     throw err;
   }
 };

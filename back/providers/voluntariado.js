@@ -18,10 +18,7 @@ const getVoluntariadosByCriteria = async (queryOptions, bodyOptions) => {
 
     return voluntariados;
   } catch (error) {
-    console.error(
-      'The volunteer/s could not be retrieved due to an error.',
-      error,
-    );
+    console.error('The volunteer/s could not be retrieved due to an error.', error);
     throw error;
   }
 };
@@ -31,10 +28,7 @@ const createVoluntariado = async (voluntariado) => {
     const newVoluntariado = await Voluntariado.create(voluntariado);
     return newVoluntariado;
   } catch (error) {
-    console.error(
-      'The volunteer/s could not be created due to an error.',
-      error,
-    );
+    console.error('The volunteer/s could not be created due to an error.', error);
     throw error;
   }
 };
@@ -46,10 +40,7 @@ const updateVoluntariadoById = async (id, voluntariado) => {
     });
     return updatedVoluntariado;
   } catch (error) {
-    console.error(
-      'The volunteer/s could not be updated due to an error.',
-      error,
-    );
+    console.error('The volunteer/s could not be updated due to an error.', error);
     throw error;
   }
 };
@@ -62,14 +53,14 @@ const deleteVoluntariadoById = async (id) => {
     );
     return deletedVoluntariado;
   } catch (error) {
-    console.error(
-      'The volunteer/s could not be deleted due to an error.',
-      error,
-    );
+    console.error('The volunteer/s could not be deleted due to an error.', error);
     throw error;
   }
 };
 
 module.exports = {
-  getVoluntariadosByCriteria, createVoluntariado, updateVoluntariadoById, deleteVoluntariadoById,
+  getVoluntariadosByCriteria,
+  createVoluntariado,
+  updateVoluntariadoById,
+  deleteVoluntariadoById,
 };
