@@ -2,40 +2,37 @@ const { addRelation, updateRelation } = require('../helpers/relations.helper');
 const { Profile, Language, ProfileLanguage } = require('../models');
 
 async function getLanguage(id) {
-  // const language = await Language.findByPk(id, {
-  //   include: [{
-  //     model: ProfileLanguage,
-  //     as: 'ProfileLanguages',
-  //     attributes: ['id', 'profiles_id', 'level'],
-  //   }],
-  // });
   const language = await Language.findByPk(id);
   if (language) {
     return language;
   }
-  throw new Error(' Lenguaje no encontrado ');
+  throw new Error(' Lenguaje no encontrado');
 }
 
 // service que trae todos los idiomas de un usuario
 async function getAllLanguage(id) {
-  const language = await Language.findAll({
-    include: [
-      {
-        model: Profile,
-        // as: 'LanguageToProfile',
-        attributes: [],
-        where: {
-          user_id: id,
-        },
-      },
-    ],
+  const language = await Profile.findAll({
+    attributes: [],
+    where: {
+      user_id: id,
+    },
+    include: [{
+      model: ProfileLanguage,
+      attributes: ['level'],
+      include: [{
+        model: Language,
+        attributes: ['language'],
+      }],
+    }],
     distinct: true,
+    group: ['language'],
   });
   if (language) {
     return language;
   }
   throw new Error(`No existe el lenguaje para el usuario ${id}`);
 }
+
 // servicio que Agrega un lenguaje
 async function addLanguage(
   language,

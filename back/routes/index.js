@@ -18,7 +18,7 @@ const app = Express();
 
 // Rutas
 
-app.use('/language', languageRoutes);
+app.use('/languages', languageRoutes);
 app.use('/optionals', optinalsRoutes);
 app.use('/profiles', profileRoutes);
 app.use('/formations', formationRoutes);
