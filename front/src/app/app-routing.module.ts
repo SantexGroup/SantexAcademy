@@ -1,31 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserComponent } from './modules/user/user.component';
-import { LoginComponent } from './modules/components/login/login.component';
-import { RegistroComponent } from './modules/components/registro/registro.component';
 
 
 const routes: Routes = [
-  { 
-    path: 'login', component: LoginComponent 
-  },
-  { 
-    path: 'registro', component: RegistroComponent 
-  },
-  { 
-    path: 'user', component: UserComponent 
-  },
-  {
-    path: 'dashboard',
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
-  },
-  { 
-    path: '', redirectTo: '/login', pathMatch: 'full' 
-  },
-  {
-    path: '**',
-    redirectTo: 'dashboard'
-  }
+  { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) },
+  { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
+  { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
+  // { path: 'register', loadChildren: () => import('./modules/register/register.module').then(m => m.RegisterModule) },
+  { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule) },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({
