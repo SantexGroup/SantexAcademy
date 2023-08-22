@@ -4,7 +4,6 @@ const { sequelize } = require('../config/db-config');
 const Organizacion = sequelize.define(
   'organizacion',
   {
-
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -22,7 +21,7 @@ const Organizacion = sequelize.define(
       unique: 'email_UNIQUE',
     },
     telefono: {
-      type: DataTypes.STRING(25),
+      type: DataTypes.STRING(20),
       allowNull: true,
       unique: 'telefono_UNIQUE',
     },
@@ -32,52 +31,12 @@ const Organizacion = sequelize.define(
       unique: 'cuit_UNIQUE',
     },
     password: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.STRING(50),
       allowNull: false,
     },
-
-    image: {
-      type: DataTypes.STRING(),
-      allowNull: false,
-      validate: {
-        isUrl: true,
-      },
-    },
-
-    category: {
-      type: DataTypes.ENUM({
-        values: ['medio ambiente y fauna', 'asistencia social', 'salud y discapacidad'],
-      }),
-      allowNull: false,
-    },
-
-    deletedAt: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
-  }, {
-    sequelize,
+  },
+  {
     paranoid: true,
-    tableName: 'organizacion',
-    timestamps: false,
-    indexes: [
-      {
-        name: 'PRIMARY',
-        unique: true,
-        using: 'BTREE',
-        fields: [
-          { name: 'id' },
-        ],
-      },
-      {
-        name: 'cuit_UNIQUE',
-        unique: true,
-        using: 'BTREE',
-        fields: [
-          { name: 'cuit' },
-        ],
-      },
-    ],
   },
 );
 

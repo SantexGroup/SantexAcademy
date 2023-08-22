@@ -11,32 +11,13 @@ const CestaRecompensas = sequelize.define(
       primaryKey: true,
     },
     name: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(100),
       allowNull: false,
       unique: 'name_UNIQUE',
     },
-  }, {
-    sequelize,
-    tableName: 'cestaRecompensas',
-    timestamps: false,
-    indexes: [
-      {
-        name: 'PRIMARY',
-        unique: true,
-        using: 'BTREE',
-        fields: [
-          { name: 'id' },
-        ],
-      },
-      {
-        name: 'name_UNIQUE',
-        unique: true,
-        using: 'BTREE',
-        fields: [
-          { name: 'name' },
-        ],
-      },
-    ],
+  },
+  {
+    paranoid: true,
   },
 );
 
