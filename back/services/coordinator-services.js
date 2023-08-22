@@ -79,7 +79,6 @@ async function login(email, password) {
   const user = await Coordinator.findOne({
     where: {
       email: email,
-      password: password,
     },
   });
 
