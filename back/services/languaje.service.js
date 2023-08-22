@@ -2,7 +2,12 @@ const { addRelation, updateRelation } = require('../helpers/relations.helper');
 const { Profile, Language, ProfileLanguage } = require('../models');
 
 async function getLanguage(id) {
-  const language = await Language.findByPk(id);
+  const language = await Language.findByPk(id, {
+    include: [{
+      model: ProfileLanguage,
+      attributes: ['id', 'profiles_id', 'level'],
+    }],
+  });
   if (language) {
     return language;
   }
