@@ -47,6 +47,9 @@ module.exports = (sequelize, DataTypes) => {
       models.Profile.hasMany(models.ProfileLanguage, {
         foreignKey: 'profiles_id',
       });
+      models.Profile.hasMany(models.ProfileSkill, {
+        foreignKey: 'profiles_id',
+      });
     }
   }
   Profile.init({
