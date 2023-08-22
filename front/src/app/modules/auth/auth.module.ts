@@ -10,6 +10,7 @@ import { FormVolunteerregisterComponent } from './components/form-volunteerregis
 import { RouterModule, Routes } from '@angular/router';
 import { FormCoordinatorsRegisterComponent } from './components/form-coordinators-register/form-coordinators-register.component';
 import { CoordinatorRegisterComponent } from './pages/coordinator-register/coordinator-register.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -45,9 +46,13 @@ const routes: Routes = [
     FormVolunteerregisterComponent,
     FormCoordinatorsRegisterComponent,
     CoordinatorRegisterComponent,
-
   ],
-  imports: [CommonModule, FormsModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule.forChild(routes),
+    HttpClientModule,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class authModule {}
