@@ -5,6 +5,7 @@ const { DataTypes, Sequelize } = require('sequelize');
 const coordinatorModel = require('../models/coordinator-model');
 const { sequelize } = require('../models');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 const Coordinator = coordinatorModel(sequelize, DataTypes);
 
@@ -29,7 +30,7 @@ async function createUser(name, description, email, password, address, phone) {
   user.name = name;
   user.description = description;
   user.email = email;
-  user.password = password;
+  user.password = await bcrypt.hash(password, 10);
   user.address = address;
   user.phone = phone;
 
@@ -51,7 +52,8 @@ async function editUser(id, name, description, email, password, address, phone) 
     user.email = email;
   }
   if (password) {
-    user.password = password;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    user.password = hashedPassword;
   }
   if (address) {
     user.address = address;
@@ -60,7 +62,10 @@ async function editUser(id, name, description, email, password, address, phone) 
     user.phone = phone;
   }
 
-  const userEdited = user.save();
+  const userEdited = await user.save();
+
+  delete userEdited.dataValues.password;
+
   return userEdited;
 }
 
@@ -79,6 +84,12 @@ async function login(email, password) {
   });
 
   if (!user) {
+    throw new Error('Email o contraseña incorrectos');
+  }
+
+  const passwordMatch = await bcrypt.compare(password, user.password);
+
+  if (!passwordMatch) {
     throw new Error('Email o contraseña incorrectos');
   }
 
