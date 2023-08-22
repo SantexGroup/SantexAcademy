@@ -1,5 +1,5 @@
 export interface Voluntario {
-    id_volunteer?:number,
+    id?:number,
     name:string,
     lastname: string
     email: string,
