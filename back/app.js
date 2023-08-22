@@ -12,6 +12,8 @@ const cors = require('cors');
 const logger = require('./utils/winston.logger');
 
 // Models:
+const userRoutes = require('./routes/userRoutes');
+const authRoutes = require('./routes/authRoutes');
 const models = require('./models');
 
 // Rutes:
@@ -49,6 +51,11 @@ if (config.environment === 'production') {
 }
 app.use(session(sess));
 app.use(express.json());
+app.use(cors());
+
+app.use('/api/users', userRoutes);
+app.use('/api/auth', authRoutes);
+
 app.use(express.urlencoded(
   {
     extended: false,
@@ -70,7 +77,6 @@ const corsOptions = {
     }
   },
 };
-app.use(cors(corsOptions));
 
 if (config.environment === 'production') {
   app.set('trust proxy', 1); // trust first proxy

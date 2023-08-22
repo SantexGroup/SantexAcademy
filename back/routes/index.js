@@ -7,7 +7,7 @@ const errors = require('../middleware/error_handler.middleware');
 const app = Express();
 
 // Rutas
-const loginRouter = require('./userRouters');
+const loginRouter = require('./userRoutes');
 // use=
 app.use('/api/user', loginRouter);
 app.use('/', rootPath.handler);
