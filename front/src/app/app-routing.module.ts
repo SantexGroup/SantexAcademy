@@ -12,6 +12,8 @@ const routes: Routes = [
   { path: '**', redirectTo: 'home' }
 ];
 
+// el register no encuentro donde solucionarlo, o lo arregla otro, o directamente lo borro
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
