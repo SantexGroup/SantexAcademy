@@ -3,18 +3,21 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable, take } from 'rxjs';
+import { Observable, catchError, take, throwError } from 'rxjs';
 import { VoluntarioService } from '../services/voluntario.service';
 import { Credencial } from '../interfaces/credencial';
 import { ApiService } from '../http/api.service';
 import { OrganizacionService } from '../services/organizacion.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
-  constructor(private voluntarioService:VoluntarioService, private organizacionService:OrganizacionService) {}
+  constructor(private voluntarioService:VoluntarioService, private organizacionService:OrganizacionService,private router:Router, private matSnackBar:MatSnackBar) {}
   credencialesVoluntario!:Credencial|null;
   credencialesOrganizacion!:Credencial|null;
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -33,7 +36,19 @@ export class JwtInterceptor implements HttpInterceptor {
           Authorization:`Bearer ${this.credencialesVoluntario.token}`
         }
       });
-      return next.handle(request);  
+      
+      return next.handle(request).pipe(catchError((error:HttpErrorResponse)=>{
+       if(error.status === 401){
+
+        this.voluntarioService.setCredencialesVoluntario = null;
+        this.mostrarAlertaSesionCaducada();
+        this.router.navigate(['/index/login'],{queryParams:{tipo:'voluntario'}});
+        
+      };
+        
+        return throwError(()=>error); 
+      }
+      ));  
     }
     else if(this.credencialesOrganizacion!= null){
       request = request.clone({
@@ -41,12 +56,34 @@ export class JwtInterceptor implements HttpInterceptor {
           Authorization:`Bearer ${this.credencialesOrganizacion.token}`
         }
       });
-      return next.handle(request);
+      return next.handle(request).pipe(catchError((err:HttpErrorResponse)=>{
+        if(err.status ===401){
+
+          this.organizacionService.setCredencialesOrganizacion = null;
+          this.mostrarAlertaSesionCaducada();
+          this.router.navigate(['/index/login'],{queryParams:{tipo:'organizacion'}});
+          
+
+        }
+
+        return throwError(()=>err);
+      }));    
     }
     else{
-      
       return next.handle(request);
     }
     
   }
+
+
+  mostrarAlertaSesionCaducada():void{
+    this.matSnackBar.open('Sesión Caducada','ERROR',{
+      duration:3000,
+    horizontalPosition:'center',
+    verticalPosition:'top'}
+    );
+  }
+
+
+
 }
