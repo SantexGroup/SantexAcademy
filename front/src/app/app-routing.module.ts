@@ -3,10 +3,9 @@ import { InputLoginComponent } from './modules/input-login/input-login.component
 import { RouterModule, Routes } from  '@angular/router'; 
 
 const routes: Routes=[  
-  {
-    path: '',
-    component: InputLoginComponent
-  },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: InputLoginComponent },
+  //ingresar  componente passwd.
   
 ];
 
