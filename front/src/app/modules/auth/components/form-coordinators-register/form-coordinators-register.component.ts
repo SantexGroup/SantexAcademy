@@ -11,13 +11,15 @@ export class FormCoordinatorsRegisterComponent {
   full_name: string = '';
   email: string = '';
   phone: string = '';
+  ngo: string = '';
+  cuit: string = '';
   password: string = '';
   showPassword: boolean = false;
 
   constructor(private router: Router) { }
 
   sendValues() {
-    console.log(this.full_name, this.email, this.phone, this.password);
+    console.log(this.full_name, this.email, this.phone, this.ngo, this.cuit,  this.password);
   }
 
   sendShowPassword() {
