@@ -49,8 +49,15 @@ export class OrganizacionService {
    return this.apiService.get<Organizacion>(`/coordinator/get-coordinator-by-id/${id}`);
   }
 
-  modificarOrganizacion(organizacion:Organizacion):Observable<Organizacion>{
-   return this.apiService.put<Organizacion>(`/coordinator/edit-user/${organizacion.id}`);
+  modificarOrganizacion(id:number, organizacion:Organizacion):Observable<Organizacion>{
+   return this.apiService.put<Organizacion>(`/coordinator/edit-user/${id}`,organizacion).pipe(
+    map((res)=>{
+      
+      this.datosOrganizacion.next(res);
+
+      return res;
+    })
+   );
   }
 
   eliminarOrganizacion(id:number):Observable<boolean>{
