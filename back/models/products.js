@@ -24,13 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Products',
   });
-/*
-  Products.associate = function(models) {
-    Products.belongsTo(models.User, {
-      foreignKey: 'idUsuario',
-      as: 'User'
-    });
-  }
-*/
+  
   return Products;
 };
