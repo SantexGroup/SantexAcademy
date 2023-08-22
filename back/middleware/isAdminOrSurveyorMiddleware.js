@@ -1,7 +1,9 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 module.exports = function (req, res, next) {
   const auth = req.header('Authorization');
+  const secretKey = process.env.SECRET_KEY;
   if (!auth) {
     return res
       .status(401)
@@ -9,8 +11,8 @@ module.exports = function (req, res, next) {
   }
   const token = auth.replace('Bearer', ' ').trim();
   try {
-    const decodedToken = jwt.verify(token, 'secret');
-    if (decodedToken.rol === 'Admin' || decodedToken.rol === 'Encuestador') {
+    const decodedToken = jwt.verify(token, secretKey);
+    if (decodedToken.rol.toUpperCase === 'Admin'.toUpperCase || decodedToken.rol.toUpperCase === 'Encuestador'.toUpperCase) {
       return next();
     }
     return res

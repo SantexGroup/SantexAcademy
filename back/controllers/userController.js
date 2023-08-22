@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const userService = require('../services/userService');
-// const config = require('../config/config');
+require('dotenv').config();
 
 async function login(req, res, next) {
   const { userName, password } = req.body;
@@ -10,13 +10,14 @@ async function login(req, res, next) {
     if (!user) {
       return res.status(401).json({ message: 'Credenciales inválidas' });
     }
+    const secretKey = process.env.SECRET_KEY;
     const token = jwt.sign(
       {
         userId: user.id,
         userName: user.userName,
         rol: user.rol,
       },
-      'secret',
+      secretKey,
       {
         expiresIn: '1d',
       },
