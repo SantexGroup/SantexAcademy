@@ -1,5 +1,6 @@
 const userService = require('../services/user-service');
 
+// login
 async function login(req, res, next) {
   const { alias, password } = req.body;
 
