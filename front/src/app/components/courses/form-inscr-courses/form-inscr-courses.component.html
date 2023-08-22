@@ -1,0 +1,63 @@
+
+<div class="flex flex-column align-items-center pt-8 ">
+
+    <h1 class="text-center pb-5">Registro</h1>
+    
+    <form class="" [formGroup]="userForm" (ngSubmit)="addUser()">
+
+        <div class="pb-4 flex flex-column lg:flex-row lg:gap-5">
+            <div class="field pb-4">
+
+                <label for="firstName" class="block">Nombre</label>
+                <input class="" type="text" pInputText placeholder="Nombre" formControlName="firstName">
+            </div>
+            <div class="field pb-4">
+    
+                <label for="lastName" class="block">Apellido</label>
+                <input type="text" pInputText placeholder="Apellido" formControlName="lastName">
+            </div>
+            <div class="field pb-4">
+    
+                <label for="idCard" class="block">DNI</label>
+                <input type="text" pInputText placeholder="99999999" formControlName="idCard">
+            </div>
+        </div>
+
+        <div class="flex flex-column lg:flex-row lg:gap-5 pb-4">
+            <div class="field ">
+
+                <label for="birthdate" class="block">Fecha de Nacimiento</label>
+                <input class="" type="text" pInputText placeholder="99/99/9999" formControlName="birthdate">
+            </div>
+            <div class="field ">
+    
+                <label for="email" class="block">Email</label>
+                <input type="text" pInputText placeholder="ejempplo@gmail.com" formControlName="email">
+            </div>
+            <div class="field ">
+    
+                <label for="phone" class="block">Telefono</label>
+                <input type="text" pInputText placeholder="(+99) 9 999 999-9999" formControlName="email">
+            </div>
+        </div>
+
+        <div class="lg:flex justify-content-center lg:gap-5">
+
+            <div class="card flex justify-content-center  pb-4 lg:pb-0">
+                <p-treeSelect class="md:w-20rem w-full" containerStyleClass="w-full"  [options]="" placeholder="Seleccione el Curso"></p-treeSelect>
+            </div>
+            <div class="card flex justify-content-center ">
+                <p-treeSelect class="md:w-20rem w-full" containerStyleClass="w-full"  [options]="" placeholder="Seleccione el Curso"></p-treeSelect>
+            </div>
+        </div>
+        
+        <div class="card flex justify-content-center pt-8">
+            <a routerLink="" pButton label="Siguiente" type="button" class="font-bold text-xl w-12 lg:w-3"></a>
+        </div>
+
+    </form>
+    
+</div>
+
+
+

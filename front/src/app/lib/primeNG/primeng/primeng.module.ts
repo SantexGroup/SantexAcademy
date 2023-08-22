@@ -4,8 +4,10 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { AccordionModule } from 'primeng/accordion';
-import {CarouselModule} from 'primeng/carousel'
-
+import {CarouselModule} from 'primeng/carousel';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputMaskModule } from 'primeng/inputmask';
+import { TreeSelectModule } from 'primeng/treeselect';
 @NgModule({
   declarations: [],
   imports: [
@@ -16,7 +18,11 @@ import {CarouselModule} from 'primeng/carousel'
     ButtonModule,
     DividerModule,
     AccordionModule,
-    CarouselModule
+    CarouselModule,
+    InputTextModule,
+    InputMaskModule,
+    TreeSelectModule,
+
   ]
 })
 export class PrimengModule { }
