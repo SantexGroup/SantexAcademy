@@ -1,4 +1,4 @@
-export interface user {
+export interface volunterData {
   fullName: string;
   telefono: string;
   email: string;

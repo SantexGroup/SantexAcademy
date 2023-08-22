@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { user } from '../../models/volunteerRegister.model';
+import { volunterData } from '../../models/volunteerRegister.model';
 
 @Component({
   selector: 'app-form-volunteerregister',
@@ -16,17 +16,20 @@ export class FormVolunteerregisterComponent {
   phone: string = '';
   password: string = '';
   showPassword: boolean = false;
-  dataUser!: user;
+  dataUser!: volunterData;
 
   constructor(private router: Router) {}
 
   sendValues() {
-    console.log({
-      full_name: this.full_name,
+    const userData: volunterData = {
+      fullName: this.full_name,
       telefono: this.phone,
       email: this.email,
       password: this.password,
-    });
+    };
+
+    this.dataUser = userData;
+    this.ngOnInit();
   }
 
   sendShowPassword() {
@@ -40,10 +43,8 @@ export class FormVolunteerregisterComponent {
   }
 
   ngOnInit() {
-    this.http
-      .get('https://api.escuelajs.co/api/v1/products')
-      .subscribe((data) => {
-        console.log(data);
-      });
+    this.http.post('http:localhost:4200', this.dataUser).subscribe((data) => {
+      console.log(data);
+    });
   }
 }
