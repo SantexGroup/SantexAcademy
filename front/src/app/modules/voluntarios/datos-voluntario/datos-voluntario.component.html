@@ -1,4 +1,136 @@
 <div class="fondo-degradado">
+    <div *ngIf="!editarDatos && datosVoluntario ; else editarDatosTemplate" style="display: flex; flex-direction: column; align-items: center;">
 
-    <h2 class="titulo">DATOS VOLUNTARIO</h2>
+
+    <h2 class="titulo">Mis Datos</h2>
+
+    <div class="contenedor-card" >
+        <div class="card">
+            <div class="propiedad">
+                <h3 class="titulo-propiedad">Nombre</h3>
+                <p class="contenido-propiedad">{{datosVoluntario.name}}</p>
+            </div>
+            <div class="propiedad">
+                <h3 class="titulo-propiedad">Apellido</h3>
+                <p class="contenido-propiedad">{{datosVoluntario.lastname}}</p>
+            </div>
+            <div class="propiedad">
+                <h3 class="titulo-propiedad">Dirección</h3>
+                <p class="contenido-propiedad">{{datosVoluntario.address}}</p>
+            </div>
+            <div class="propiedad">
+                <h3 class="titulo-propiedad">Teléfono</h3>
+                <p class="contenido-propiedad">{{datosVoluntario.phone}}</p>
+            </div>
+            <div class="propiedad">
+                <h3 class="titulo-propiedad">Puntos</h3>
+                <p class="contenido-propiedad">{{datosVoluntario.points}}</p>
+            </div>
+            <div class="propiedad">
+                <h3 class="titulo-propiedad">Email</h3>
+                <p class="contenido-propiedad">{{datosVoluntario.email}}</p>
+            </div>
+            
+        </div>
+    </div>
+
+    <button mat-raised-button color="primary" style="margin-top: 20px;" (click)="irModificar()">EDITAR</button>
+
+</div>
+
+    <ng-template #editarDatosTemplate>
+        <div>
+            <h2 class="titulo">Editar Datos</h2>
+
+            <form class="contenedor-card" [formGroup]="formVoluntario">
+                <div class="card">
+                    
+                    <!-- *** NOMBRE *** -->
+                    <div class="propiedad">
+                        <h3 class="titulo-propiedad margin-left-10">Nombre</h3>
+                        <input type="text" class="input-full-width" formControlName="nombre"  placeholder="Ingresá un nombre *"
+                        [ngClass]="{'input-invalid':formVoluntario.get('nombre')?.touched && formVoluntario.get('nombre')?.invalid,
+                                     'input-valid':formVoluntario.get('nombre')?.touched && formVoluntario.get('nombre')?.valid}">
+                        <p *ngIf="formVoluntario.get('nombre')?.touched && formVoluntario.get('nombre')?.value == ''" 
+                        class="mensaje-error">Este campo es obligatorio</p>
+            
+                        <p *ngIf="formVoluntario.get('nombre')?.touched && formVoluntario.get('nombre')?.value != '' && formVoluntario.get('nombre')?.errors" 
+                        class="mensaje-error">El nombre como mínimo debe tener {{formVoluntario.get('nombre')?.errors?.['minlength'].requiredLength}} letras</p>
+
+                        
+                    </div>
+                    <!-- *** APELLIDO *** -->
+                    <div class="propiedad">
+                        <h3 class="titulo-propiedad margin-left-10">Apellido</h3>
+                        
+                        <input type="text" class="input-full-width"  formControlName="apellido"  placeholder="Ingresa un apellido *"
+                        [ngClass]="{'input-invalid':formVoluntario.get('apellido')?.touched && formVoluntario.get('apellido')?.invalid,
+                        'input-valid':formVoluntario.get('apellido')?.touched && formVoluntario.get('apellido')?.valid}">
+                        
+                        <p *ngIf="formVoluntario.get('apellido')?.touched && formVoluntario.get('apellido')?.value == ''" 
+                        class="mensaje-error">Este campo es obligatorio</p>
+            
+                        <p *ngIf="formVoluntario.get('apellido')?.touched && formVoluntario.get('apellido')?.value != '' && formVoluntario.get('apellido')?.errors" 
+                        class="mensaje-error">El apellido como mínimo debe tener {{formVoluntario.get('apellido')?.errors?.['minlength'].requiredLength}} letras</p>
+                    </div>
+                    
+                    <!-- *** DIRECCION *** -->
+                    <div class="propiedad">
+                        <h3 class="titulo-propiedad margin-left-10">Dirección</h3>
+                        <input type="text" class="input-full-width"   formControlName="direccion"  placeholder="Ingresá una dirección *"
+                        [ngClass]="{'input-invalid':formVoluntario.get('direccion')?.touched && formVoluntario.get('direccion')?.invalid,
+                        'input-valid':formVoluntario.get('direccion')?.touched && formVoluntario.get('direccion')?.valid}">
+                        
+                        <p *ngIf="formVoluntario.get('direccion')?.touched && formVoluntario.get('direccion')?.value == ''" 
+                        class="mensaje-error">Este campo es obligatorio</p>
+            
+                        <p *ngIf="formVoluntario.get('direccion')?.touched && formVoluntario.get('direccion')?.value != '' && formVoluntario.get('direccion')?.errors" 
+                        class="mensaje-error">La dirección como mínimo debe tener {{formVoluntario.get('direccion')?.errors?.['minlength'].requiredLength}} caracteres</p>
+
+
+                    </div>
+
+                    <!-- *** TELEFONO *** -->
+                    <div class="propiedad">
+                        <h3 class="titulo-propiedad margin-left-10">Teléfono</h3>
+                        <input type="number" class="input-full-width"  formControlName="telefono"  placeholder="Ingresá un número de teléfono *"
+                        [ngClass]="{'input-invalid':formVoluntario.get('telefono')?.touched && formVoluntario.get('telefono')?.invalid,
+                        'input-valid':formVoluntario.get('telefono')?.touched && formVoluntario.get('telefono')?.valid}">
+                        
+                        <p *ngIf="formVoluntario.get('telefono')?.touched && formVoluntario.get('telefono')?.errors?.['required']" 
+                        class="mensaje-error">Este campo es obligatorio</p>
+            
+                        <p *ngIf="formVoluntario.get('telefono')?.touched && formVoluntario.get('telefono')?.value && formVoluntario.get('telefono')?.errors" 
+                        class="mensaje-error">El teléfono como mínimo debe tener 8 números</p>
+                    </div>
+                   <!-- *** EMAIL *** -->
+                    <div class="propiedad">
+                        <h3 class="titulo-propiedad margin-left-10">Email</h3>
+                        <input type="email"  class="input-full-width"  formControlName="email"  placeholder="Ingresá un email *"
+                        [ngClass]="{'input-invalid':formVoluntario.get('email')?.touched && formVoluntario.get('email')?.invalid,
+                        'input-valid':formVoluntario.get('email')?.touched && formVoluntario.get('email')?.valid}">
+                        
+                        <p *ngIf="formVoluntario.get('email')?.touched && formVoluntario.get('email')?.value == ''" 
+                        class="mensaje-error">Este campo es obligatorio</p>
+            
+                        <p *ngIf="formVoluntario.get('email')?.touched && formVoluntario.get('email')?.value != '' && formVoluntario.get('email')?.errors" 
+                        class="mensaje-error">Ingrese un email válido</p>
+                    </div>
+                    
+                </div>
+            </form>
+
+            
+                
+            
+            <div class="contenedor-botones">
+
+                <button mat-raised-button color="primary" style="margin-top: 20px;" [disabled]="formVoluntario.invalid" (click)="actualizarDatos()">ACTUALIZAR</button>
+                <button mat-raised-button color="warn" style="margin-top: 20px;" (click)="editarDatos = !editarDatos" >CANCELAR</button>
+            </div>
+        </div>
+    </ng-template>
+
+
+
 </div>

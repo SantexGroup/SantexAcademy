@@ -1,15 +1,96 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Organizacion } from 'src/app/core/interfaces/organizacion';
+import { OrganizacionService } from 'src/app/core/services/organizacion.service';
 
 @Component({
   selector: 'app-datos-organizacion',
   templateUrl: './datos-organizacion.component.html',
   styleUrls: ['./datos-organizacion.component.css']
 })
-export class DatosOrganizacionComponent implements OnInit {
+export class DatosOrganizacionComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  constructor(private organizacionService:OrganizacionService, fb:FormBuilder, private matSnackBar:MatSnackBar) {
 
+    this.suscripcionDatos = this.organizacionService.getDatosOrganizacion.subscribe({
+      next:(res)=> this.datosOrganizacion = res!
+    });
+    
+    this.formOrganizacion = fb.group({
+      nombre:['',[Validators.required, Validators.minLength(2)]],
+      direccion:['',[Validators.required, Validators.minLength(5)]],
+      telefono:['',[Validators.required, Validators.pattern(/^[0-9]{8,}$/)]],
+      descripcion:['',[Validators.required,Validators.minLength(20)]],
+      email:['',[Validators.required,Validators.email]]
+    });
+
+    this.editarDatos = false;
+
+   }
+   
+   datosOrganizacion!:Organizacion;
+   formOrganizacion:FormGroup;
+   editarDatos:Boolean;
+   suscripcionDatos;
+   
   ngOnInit(): void {
+  }
+  
+  ngOnDestroy(): void {
+    if(this.suscripcionDatos){
+      this.suscripcionDatos.unsubscribe();
+    }
+  }
+  irModificar():void{
+    this.formOrganizacion.patchValue({
+      nombre: this.datosOrganizacion.name,
+      direccion:this.datosOrganizacion.address,
+      telefono:this.datosOrganizacion.phone,
+      descripcion:this.datosOrganizacion.description,
+      email:this.datosOrganizacion.email
+    });
+    this.editarDatos = true;
+  }
+
+
+  actualizarDatos():void{
+    const dataForm = this.formOrganizacion.value;
+
+    const organizacion:Organizacion = {
+      name:dataForm.nombre,
+      address:dataForm.direccion,
+      description:dataForm.descripcion,
+      email:dataForm.email,
+      phone:dataForm.telefono,
+      password:this.datosOrganizacion.password
+    }
+
+    this.organizacionService.modificarOrganizacion(this.datosOrganizacion.id!, organizacion).subscribe({
+      next:()=>{
+        this.matSnackBar.open("Los datos se actualizaron correctamente", "OK",{
+          horizontalPosition:'center',
+          verticalPosition:'top',
+          duration:3000
+        });
+        this.formOrganizacion.reset();
+        this.editarDatos = false;
+
+      },
+      error:()=>{
+        this.matSnackBar.open("No se pudieron actualizar los datos","ERROR",{
+          verticalPosition:'top',
+          horizontalPosition:'center',
+          duration:3000
+        });
+      }
+    });
+
+  }
+
+  cancelarModificacion():void{
+    this.editarDatos = false;
+    this.formOrganizacion.reset();
   }
 
 }
