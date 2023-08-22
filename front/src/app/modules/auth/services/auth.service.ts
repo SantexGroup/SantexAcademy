@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   registerVolunteer(userData: volunterData): Observable<any> {
-    const url = `${this.apiUrl}`;
+    const url = `${this.apiUrl}/usuarios/create`;
     return this.http.post(url, userData);
   }
 }
