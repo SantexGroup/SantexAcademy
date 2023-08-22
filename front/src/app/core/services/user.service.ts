@@ -10,10 +10,10 @@ export class UserService {
 
   private apiUrl= 'http://localhost:4001/api/users'
 
-  constructor(private httpUsers: HttpClient) { }
+  constructor(private httpUser: HttpClient) { }
 
-  postCourses(user: User){
-    return this.httpUsers.post(this.apiUrl, user)
+  postUser(user: User){
+    return this.httpUser.post(this.apiUrl, user)
   }
 
 }

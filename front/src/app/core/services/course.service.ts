@@ -13,23 +13,21 @@ export class CourseService {
 
   constructor(private httpCourse: HttpClient) { }
 
-  getCourses() {
+  getCourse() {
     return this.httpCourse.get<Course>(this.apiUrl)
   };
   
-  getCoursesById(id:number){
+  getCourseById(id:number){
     return this.httpCourse.get<Course>(this.apiUrl+'/'+id)
   }
 
-  postCourses(course: Course){
+  postCourse(course: Course){
     return this.httpCourse.post(this.apiUrl, course)
   }
 
-  putCourses(course: Course, id:number){
+  putCourse(course: Course, id:number){
     return this.httpCourse.put(this.apiUrl+'/'+id, course)
   }
-  
-
 
 }
 
