@@ -4,5 +4,8 @@ const userController = require('./usuario');
 const productController = require('./producto');
 
 module.exports = {
-  catalogoController, orgController, userController, productController,
+  catalogoController,
+  orgController,
+  userController,
+  productController,
 };

@@ -1,16 +1,12 @@
 const { voluntariadoService } = require('../services');
 
 const getVoluntariadosByCriteria = async (criteria) => {
-  const voluntariados = await voluntariadoService.getVoluntariadosByCriteria(
-    criteria,
-  );
+  const voluntariados = await voluntariadoService.getVoluntariadosByCriteria(criteria);
   return voluntariados;
 };
 
 const createVoluntariado = async (voluntariado) => {
-  const newVoluntariado = await voluntariadoService.createVoluntariado(
-    voluntariado,
-  );
+  const newVoluntariado = await voluntariadoService.createVoluntariado(voluntariado);
   return newVoluntariado;
 };
 
@@ -23,12 +19,13 @@ const updateVoluntariadoById = async (id, voluntariado) => {
 };
 
 const deleteVoluntariadoById = async (id) => {
-  const deletedVoluntariado = await voluntariadoService.deleteVoluntariadoById(
-    id,
-  );
+  const deletedVoluntariado = await voluntariadoService.deleteVoluntariadoById(id);
   return deletedVoluntariado;
 };
 
 module.exports = {
-  getVoluntariadosByCriteria, createVoluntariado, updateVoluntariadoById, deleteVoluntariadoById,
+  getVoluntariadosByCriteria,
+  createVoluntariado,
+  updateVoluntariadoById,
+  deleteVoluntariadoById,
 };

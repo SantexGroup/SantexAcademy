@@ -9,9 +9,7 @@ const getVoluntariadosByCriteria = async (queryOptions, bodyOptions) => {
 };
 
 const createVoluntariado = async (voluntariado) => {
-  const newVoluntariado = await voluntariadoProvider.createVoluntariado(
-    voluntariado,
-  );
+  const newVoluntariado = await voluntariadoProvider.createVoluntariado(voluntariado);
   return newVoluntariado;
 };
 
@@ -24,12 +22,13 @@ const updateVoluntariadoById = async (id, voluntariado) => {
 };
 
 const deleteVoluntariadoById = async (id) => {
-  const deletedVoluntariado = await voluntariadoProvider.deleteVoluntariadoById(
-    id,
-  );
+  const deletedVoluntariado = await voluntariadoProvider.deleteVoluntariadoById(id);
   return deletedVoluntariado;
 };
 
 module.exports = {
-  getVoluntariadosByCriteria, createVoluntariado, updateVoluntariadoById, deleteVoluntariadoById,
+  getVoluntariadosByCriteria,
+  createVoluntariado,
+  updateVoluntariadoById,
+  deleteVoluntariadoById,
 };

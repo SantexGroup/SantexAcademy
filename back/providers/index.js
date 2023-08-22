@@ -4,5 +4,8 @@ const productProvider = require('./producto');
 const userProvider = require('./usuario');
 
 module.exports = {
-  catalogoProvider, orgProvider, userProvider, productProvider,
+  catalogoProvider,
+  orgProvider,
+  userProvider,
+  productProvider,
 };
