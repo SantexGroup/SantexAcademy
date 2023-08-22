@@ -21,7 +21,7 @@ import { TreeSelectModule } from 'primeng/treeselect';
     CarouselModule,
     InputTextModule,
     InputMaskModule,
-    TreeSelectModule
+    TreeSelectModule,
 
   ]
 })
