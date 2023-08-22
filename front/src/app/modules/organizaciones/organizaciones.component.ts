@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { OrganizacionService } from 'src/app/core/services/organizacion.service';
 
@@ -10,7 +11,7 @@ import { OrganizacionService } from 'src/app/core/services/organizacion.service'
 })
 export class OrganizacionesComponent implements OnInit {
   @ViewChild('sideNav')sideNav!:MatSidenav;
-  constructor(private organizacionService:OrganizacionService, private router:Router) { }
+  constructor(private organizacionService:OrganizacionService, private router:Router, private matSnackBar:MatSnackBar) { }
 
   ngOnInit(): void {
 
@@ -20,8 +21,15 @@ export class OrganizacionesComponent implements OnInit {
         this.router.navigate(['organizaciones/dashboard']);
       },
       error:()=>{
+        this.matSnackBar.open('Sesión Caducada','ERROR',{
+          duration:3000,
+        horizontalPosition:'center',
+        verticalPosition:'top'}
+        );
+        
         this.organizacionService.setCredencialesOrganizacion = null;
-        this.router.navigate(['/index']);
+        localStorage.removeItem('credencialesOrganizacion');
+        this.router.navigate(['/index/login'],{queryParams:{tipo:'organizacion'}});
       }
     });
 
@@ -33,6 +41,7 @@ export class OrganizacionesComponent implements OnInit {
   }
   cerrarSesion(){
     this.organizacionService.setCredencialesOrganizacion = null;
+    localStorage.removeItem('credencialesOrganizacion');
     this.router.navigate(['/index']);
 
   }

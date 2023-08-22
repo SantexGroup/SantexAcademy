@@ -12,7 +12,7 @@ export class OrganizacionService {
 
   constructor(private apiService:ApiService) {
 
-    this.credencialesOrganizacion = new BehaviorSubject<Credencial | null>(null);
+    this.credencialesOrganizacion = new BehaviorSubject<Credencial | null>(JSON.parse(localStorage.getItem('credencialesOrganizacion')!));
     this.datosOrganizacion = new BehaviorSubject<Organizacion | null>(null);
   }
 
@@ -67,6 +67,8 @@ export class OrganizacionService {
         };
         
         this.credencialesOrganizacion.next(credenciales);
+
+        localStorage.setItem('credencialesOrganizacion', JSON.stringify(credenciales));
         return credenciales;
       })
     );
