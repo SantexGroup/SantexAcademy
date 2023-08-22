@@ -12,7 +12,7 @@ export class VoluntarioService {
   constructor(private apiService:ApiService) {
    
     //Se crea el observable en null cuando arranca la aplicación, porque todavia no inició sesión el voluntario.
-    this.credencialesVoluntario = new BehaviorSubject<Credencial | null>(null);
+    this.credencialesVoluntario = new BehaviorSubject<Credencial | null>(JSON.parse(localStorage.getItem('credencialesVoluntario')!));
 
     this.datosVoluntario = new BehaviorSubject<Voluntario | null>(null);
   }
@@ -68,6 +68,8 @@ export class VoluntarioService {
         }
 
         this.credencialesVoluntario.next(credenciales);
+
+        localStorage.setItem('credencialesVoluntario', JSON.stringify(credenciales));
         
         return credenciales;
 

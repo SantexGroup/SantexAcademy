@@ -30,7 +30,10 @@ export class VoluntariosComponent implements OnInit {
         horizontalPosition:'center',
         verticalPosition:'top'}
         );
-        this.router.navigate(['/index']);
+        
+        localStorage.removeItem('credencialesVoluntario');
+        this.router.navigate(['/index/login'],{queryParams:{tipo:'voluntario'}});
+        
       }
     }
       
@@ -44,6 +47,7 @@ export class VoluntariosComponent implements OnInit {
 
   cerrarSesion(){
     this.voluntarioService.setCredencialesVoluntario = null;
+    localStorage.removeItem('credencialesVoluntario');
     this.router.navigate(['/index']);
 
   }
