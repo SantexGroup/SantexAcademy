@@ -45,7 +45,7 @@ async function getSurveyById(req, res) {
 
 async function deleteSurvey(req, res) {
   try {
-    const id = Number.parseInt(req.params.id, 10);
+    const { id } = req.params;
     await surveyService.deleteSurvey(id);
     res.status(200).json({ message: `Se ha borrado el registro con id ${id}` });
   } catch (error) {
@@ -66,6 +66,22 @@ async function updateSurvey(req, res) {
   }
 }
 
+async function restoreSurvey(req, res) {
+  const { id } = req.params;
+
+  try {
+    const restoredSurvey = await surveyService.restoreSurvey(id);
+
+    if (!restoredSurvey) {
+      return res.status(404).json({ message: 'Encuesta no encontrada' });
+    }
+
+    return res.status(200).json({ message: 'Encuesta restaurada con éxito' });
+  } catch (error) {
+    res.status(500).json({ message: `Error al intentar restaurar la encuesta con id: ${id}` });
+  }
+}
+
 module.exports = {
   createSurvey,
   getSurveysByEmail,
@@ -73,4 +89,5 @@ module.exports = {
   getSurveyById,
   deleteSurvey,
   updateSurvey,
+  restoreSurvey,
 };

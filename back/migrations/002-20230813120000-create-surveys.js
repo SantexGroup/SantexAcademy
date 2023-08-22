@@ -33,9 +33,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      status: {
-        type: Sequelize.ENUM('activo', 'eliminado', 'archivado'),
-        defaultValue: 'activo',
+      deletedAt: {
+        allowNull: true,
+        type: Sequelize.DATE,
       },
     });
   },

@@ -63,8 +63,6 @@ async function updateSurvey(id, newData) {
       throw new Error('Encuesta no encontrada');
     }
 
-    // Actualizar los campos de la encuesta con los nuevos datos
-    // await survey.update(newData);
     if (newData.email) {
       survey.email = newData.email;
     }
@@ -81,6 +79,25 @@ async function updateSurvey(id, newData) {
   }
 }
 
+async function restoreSurvey(id) {
+  try {
+    const deletedSurvey = await Survey.findByPk(id, { paranoid: false });
+
+    if (!deletedSurvey) {
+      throw new Error('Encuesta no encontrada');
+    }
+
+    if (deletedSurvey.deletedAt === null) {
+      throw new Error('La encuesta no está eliminada');
+    }
+
+    const restoredSurvey = await Survey.restore({ where: { id } });
+    return restoredSurvey;
+  } catch (error) {
+    throw new Error(`Error al restaurar la encuesta con id ${id}: ${error.message}`);
+  }
+}
+
 module.exports = {
   createSurvey,
   getSurveysByEmail,
@@ -88,4 +105,5 @@ module.exports = {
   findById,
   deleteSurvey,
   updateSurvey,
+  restoreSurvey,
 };
