@@ -64,7 +64,20 @@ async function loginCoordinator(req, res) {
   }
 }
 
+async function modifyPassword(req, res) {
+  try {
+    const { id } = req.params;
+    const { password } = req.body;
+
+    const user = await coordinatorServices.modifyPassword(id, password);
+
+    res.status(201).send(user);
+  } catch (error) {
+    res.status(401).json({ message: 'Contraseña igual a la original' });
+  }
+}
+
 module.exports = {
   // eslint-disable-next-line max-len
-  getAllCoordinators, getCoordinatorById, createCoordinator, editCoordinator, deleteCoordinator, loginCoordinator, getDataOrganizacion,
+  getAllCoordinators, getCoordinatorById, createCoordinator, editCoordinator, deleteCoordinator, loginCoordinator, getDataOrganizacion, modifyPassword,
 };

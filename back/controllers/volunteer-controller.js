@@ -66,7 +66,20 @@ async function loginVolunteer(req, res) {
   }
 }
 
+async function modifyPassword(req, res) {
+  try {
+    const { id } = req.params;
+    const { password } = req.body;
+
+    const user = await volunteerServices.modifyPassword(id, password);
+
+    res.status(201).send(user);
+  } catch (error) {
+    res.status(401).json({ message: 'Contraseña igual a la original' });
+  }
+}
+
 module.exports = {
   // eslint-disable-next-line max-len
-  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, loginVolunteer, getDataVoluntario,
+  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, loginVolunteer, getDataVoluntario, modifyPassword,
 };

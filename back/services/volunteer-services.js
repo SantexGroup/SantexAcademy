@@ -41,7 +41,7 @@ async function createUser(name, lastname, dni, email, password, address, phone) 
   return userCreated;
 }
 
-async function editUser(id, name, lastname, dni, email, password, address, phone, points) {
+async function editUser(id, name, lastname, dni, email, address, phone, points) {
   const user = await getById(id);
 
   if (name) {
@@ -58,11 +58,6 @@ async function editUser(id, name, lastname, dni, email, password, address, phone
 
   if (dni) {
     user.dni = dni;
-  }
-
-  if (password) {
-    const hasedPassword = await bcrypt.hash(password, 10);
-    user.password = hasedPassword;
   }
 
   if (address) {
@@ -82,6 +77,32 @@ async function editUser(id, name, lastname, dni, email, password, address, phone
   delete userEdited.dataValues.password;
 
   return userEdited;
+}
+
+async function modifyPassword(id, newPassword) {
+  // eslint-disable-next-line no-useless-catch
+  try {
+    const user = await getById(id);
+
+    let passwordMatch;
+    try {
+      passwordMatch = await bcrypt.compare(newPassword, user.password);
+    } catch (compareError) {
+      throw new Error('Error al comparar las contraseñas encriptadas');
+    }
+
+    if (!passwordMatch) {
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      user.password = hashedPassword;
+
+      const userEdited = await user.save();
+      delete userEdited.dataValues.password;
+
+      return userEdited;
+    }
+  } catch (error) {
+    throw new Error('la contraseña debe ser distinta a la original');
+  }
 }
 
 async function deleteUser(id) {
@@ -112,5 +133,5 @@ async function login(email, password) {
 }
 
 module.exports = {
-  getAll, getById, createUser, editUser, deleteUser, login,
+  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword,
 };
