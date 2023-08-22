@@ -1,4 +1,138 @@
 <div class="fondo-degradado">
+    <div *ngIf="!editarDatos && datosOrganizacion ; else editarDatosTemplate" style="display: flex; flex-direction: column; align-items: center;">
 
-    <h2 class="titulo">DATOS ORGANIZACION</h2>
+
+    <h2 class="titulo">Datos Organización</h2>
+
+    <div class="contenedor-card" >
+        <div class="card">
+            <div class="propiedad">
+                <h3 class="titulo-propiedad">Nombre</h3>
+                <p class="contenido-propiedad">{{datosOrganizacion.name}}</p>
+            </div>
+            
+            <div class="propiedad">
+                <h3 class="titulo-propiedad">Dirección</h3>
+                <p class="contenido-propiedad">{{datosOrganizacion.address}}</p>
+            </div>
+            <div class="propiedad">
+                <h3 class="titulo-propiedad">Teléfono</h3>
+                <p class="contenido-propiedad">{{datosOrganizacion.phone}}</p>
+            </div>
+            <div class="propiedad">
+                <h3 class="titulo-propiedad">Descripción</h3>
+                <p class="contenido-propiedad">{{datosOrganizacion.description}}</p>
+            </div>
+            <div class="propiedad">
+                <h3 class="titulo-propiedad">Email</h3>
+                <p class="contenido-propiedad">{{datosOrganizacion.email}}</p>
+            </div>
+            
+        </div>
+    </div>
+
+    <button mat-raised-button color="primary" style="margin-top: 20px;" (click)="irModificar()">EDITAR</button>
+
+</div>
+
+    <ng-template #editarDatosTemplate>
+        <div>
+            <h2 class="titulo">Editar Datos</h2>
+
+            <form class="contenedor-card" [formGroup]="formOrganizacion">
+                <div class="card">
+                    
+                    <!-- *** NOMBRE *** -->
+                    <div class="propiedad">
+                        <h3 class="titulo-propiedad margin-left-10">Nombre</h3>
+                        <input type="text" class="input-full-width" formControlName="nombre"  placeholder="Ingresá el nombre *"
+                        [ngClass]="{'input-invalid':formOrganizacion.get('nombre')?.touched && formOrganizacion.get('nombre')?.invalid,
+                        'input-valid':formOrganizacion.get('nombre')?.touched && formOrganizacion.get('nombre')?.valid}">
+                        
+                        <p *ngIf="formOrganizacion.get('nombre')?.touched && formOrganizacion.get('nombre')?.value == ''" 
+                        class="mensaje-error">Este campo es obligatorio</p>
+                        
+                        <p *ngIf="formOrganizacion.get('nombre')?.touched && formOrganizacion.get('nombre')?.value != '' && formOrganizacion.get('nombre')?.errors" 
+                        class="mensaje-error">El nombre como mínimo debe tener {{formOrganizacion.get('nombre')?.errors?.['minlength'].requiredLength}} letras</p>
+
+                        
+                    </div>
+                    
+                    <!-- *** DIRECCION *** -->
+                    <div class="propiedad">
+                        <h3 class="titulo-propiedad margin-left-10">Dirección</h3>
+                        <input type="text" class="input-full-width"  formControlName="direccion"  placeholder="Ingresá una dirección *"
+                        [ngClass]="{'input-invalid':formOrganizacion.get('direccion')?.touched && formOrganizacion.get('direccion')?.invalid,
+                        'input-valid':formOrganizacion.get('direccion')?.touched && formOrganizacion.get('direccion')?.valid}">
+                        
+                        <p *ngIf="formOrganizacion.get('direccion')?.touched && formOrganizacion.get('direccion')?.value == ''" 
+                        class="mensaje-error">Este campo es obligatorio</p>
+                        
+                        <p *ngIf="formOrganizacion.get('direccion')?.touched && formOrganizacion.get('direccion')?.value != '' && formOrganizacion.get('direccion')?.errors" 
+                        class="mensaje-error">La dirección debe tener como mínimo {{formOrganizacion.get('direccion')?.errors?.['minlength'].requiredLength}} caracteres</p>
+
+
+                    </div>
+
+                    <!-- *** TELEFONO *** -->
+                    <div class="propiedad">
+                        <h3 class="titulo-propiedad margin-left-10">Teléfono</h3>
+                        <input type="number" class="input-full-width" formControlName="telefono"  placeholder="Ingresá un número de teléfono *"
+                        [ngClass]="{'input-invalid':formOrganizacion.get('telefono')?.touched && formOrganizacion.get('telefono')?.invalid,
+                        'input-valid':formOrganizacion.get('telefono')?.touched && formOrganizacion.get('telefono')?.valid}">
+                        
+                        <p *ngIf="formOrganizacion.get('telefono')?.touched && formOrganizacion.get('telefono')?.errors?.['required']" 
+                        class="mensaje-error">Este campo es obligatorio</p>
+            
+                        <p *ngIf="formOrganizacion.get('telefono')?.touched && formOrganizacion.get('telefono')?.value && formOrganizacion.get('telefono')?.errors" 
+                        class="mensaje-error">El teléfono como mínimo debe tener 8 números</p>
+                    </div>
+
+                    <!-- *** DESCRIPCION *** -->
+
+                    <div class="propiedad">
+                        <h3 class="titulo-propiedad margin-left-10">Descripción</h3>
+                        
+                        <textarea class="input-full-width" cols="30" rows="3" placeholder="Ingresá una breve descripción ..." 
+                        formControlName="descripcion" 
+                        [ngClass]="{'input-invalid':formOrganizacion.get('descripcion')?.touched && formOrganizacion.get('descripcion')?.invalid,
+                        'input-valid':formOrganizacion.get('descripcion')?.touched && formOrganizacion.get('descripcion')?.valid}"></textarea>
+                        
+                        <p *ngIf="formOrganizacion.get('descripcion')?.touched && formOrganizacion.get('descripcion')?.value == ''" 
+                        class="mensaje-error">Este campo es obligatorio</p>
+                        
+                        <p *ngIf="formOrganizacion.get('descripcion')?.touched && formOrganizacion.get('descripcion')?.value != '' && formOrganizacion.get('descripcion')?.errors" 
+                        class="mensaje-error">La descripción debe tener como mínimo {{formOrganizacion.get('descripcion')?.errors?.['minlength'].requiredLength}} caracteres</p>
+                    </div>
+
+                   <!-- *** EMAIL *** -->
+                   <div class="propiedad">
+                       <h3 class="titulo-propiedad margin-left-10">Email</h3>
+                       <input type="email" class="input-full-width" formControlName="email"  placeholder="Ingresá un email *"
+                       [ngClass]="{'input-invalid':formOrganizacion.get('email')?.touched && formOrganizacion.get('email')?.invalid,
+                       'input-valid':formOrganizacion.get('email')?.touched && formOrganizacion.get('email')?.valid}">
+                       
+                       <p *ngIf="formOrganizacion.get('email')?.touched && formOrganizacion.get('email')?.value == ''" 
+                       class="mensaje-error">Este campo es obligatorio</p>
+           
+                       <p *ngIf="formOrganizacion.get('email')?.touched && formOrganizacion.get('email')?.value != '' && formOrganizacion.get('email')?.errors" 
+                       class="mensaje-error">Ingrese un email válido</p>
+                    </div>
+                    
+                </div>
+            </form>
+
+            
+                
+            
+            <div class="contenedor-botones">
+
+                <button mat-raised-button color="primary" style="margin-top: 20px;" [disabled]="formOrganizacion.invalid" (click)="actualizarDatos()">ACTUALIZAR</button>
+                <button mat-raised-button color="warn" style="margin-top: 20px;" (click)="cancelarModificacion()" >CANCELAR</button>
+            </div>
+        </div>
+    </ng-template>
+
+
+
 </div>
