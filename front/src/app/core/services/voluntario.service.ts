@@ -47,8 +47,12 @@ export class VoluntarioService {
    return this.apiService.get<Voluntario>(`/volunteer/get-volunteer-by-id/${id}`);
   }
 
-  modificarVoluntario(voluntario:Voluntario):Observable<Voluntario>{
-   return this.apiService.put<Voluntario>(`/volunteer/edit-user/${voluntario.id_volunteer}`);
+  modificarVoluntario(id:number, voluntario:Voluntario):Observable<Voluntario>{
+   return this.apiService.put<Voluntario>(`/volunteer/edit-user/${id}`,voluntario).pipe(
+    map((res)=>{
+      this.datosVoluntario.next(res);
+    return res;
+   }));
   }
 
   eliminarVoluntario(id:number):Observable<boolean>{
