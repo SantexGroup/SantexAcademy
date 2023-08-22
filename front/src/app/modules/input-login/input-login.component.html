@@ -1,10 +1,7 @@
 <section class="h-screen  w-full bg-azul-bg">
     <h1 class=" text-white font-lobster text-center text-6xl pt-16 mb-[128px] ">Turisticapp</h1>
     <div class=" flex ">
-
         <div class="px-5 bg-gris-contenedor/20  w-full m-5 py-12 rounded-lg">
-
-
             <form class="space-y-5">
                 <div>
                     <label for="email" class=" block mb-2  text-white text-lg font-farro">Ingrese su email</label>
@@ -12,11 +9,10 @@
                         class="bg-white/50 border-gray-300 text-black rounded-lg block w-full p-2  ">
                 </div>
                 <div class=" flex flex-row-reverse ">
-                    <button
-                        class="bg-azul-button text-white rounded-lg  px-8 py-3 font-farro uppercase tracking-widest  ">Iniciar</button>
+                    <button (click)="redirectToContra()" class="bg-azul-button text-white rounded-lg  px-8 py-3 font-farro uppercase tracking-widest  ">Iniciar</button>
+
                 </div>
             </form>
-
         </div>
     </div>
 </section>
