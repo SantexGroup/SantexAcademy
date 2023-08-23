@@ -7,12 +7,12 @@
     <br>
     <div class="input_container">
         <label class="input_label" for="name_field">Nombre del Producto</label>
-        <input placeholder="ProductoX" title="Nombre del Producto" name="input-name" type="text" class="input_field" id="name_field" formControlName="nombreProducto">
+        <input placeholder="ProductoX" title="Nombre del Producto" name="input-name" type="text" class="input_field" id="name_field" formControlName="name">
         <p class="errorInput" *ngIf="myForm.get('nombreProducto')?.touched && myForm.get('nombreProducto')?.hasError('required')">Campo Obligatorio</p>
     </div>
     <div class="input_container">
         <label class="input_label" for="name_field">Cantidad</label>
-        <input placeholder="3" title="Cantidad" name="input-cantidad" type="number" class="input_field" id="cantidad_field" formControlName="cantidad">
+        <input placeholder="3" title="Cantidad" name="input-cantidad" type="number" class="input_field" id="cantidad_field" formControlName="quantity">
         <p class="errorInput" *ngIf="myForm.get('cantidad')?.touched && myForm.get('cantidad')?.hasError('required')">Campo Obligatorio</p>
     </div>
     <div class="input_container">
@@ -27,17 +27,17 @@
     </div>
     <div class="input_container">
         <label class="input_label" for="url_field">URL de la imagen</label>
-        <input placeholder="url" title="url" name="input-url" type="url" class="input_field" id="url_field" formControlName="urlImagen">
+        <input placeholder="url" title="url" name="input-url" type="url" class="input_field" id="url_field" formControlName="image">
         <p class="errorInput" *ngIf="myForm.get('urlImagen')?.touched && myForm.get('urlImagen')?.hasError('required')">Campo Obligatorio</p>
     </div>
     <div class="input_container">
         <label class="input_label" for="precio_field">Precio</label>
-        <input placeholder="$ 1500" title="Precio" name="input-precio" type="number" class="input_field" id="precio_field" formControlName="precio">
+        <input placeholder="$ 1500" title="Precio" name="input-precio" type="number" class="input_field" id="precio_field" formControlName="price">
         <p class="errorInput" *ngIf="myForm.get('precio')?.touched && myForm.get('precio')?.hasError('required')">Campo Obligatorio</p>
     </div>
     <div class="input_container">
         <label class="input_label" for="password_field">Descripción</label>
-        <textarea placeholder="Descripción de producto" title="Descripción del Producto" name="input-name" class="input_field input-description" id="password_field" formControlName="descripcion"></textarea>
+        <textarea placeholder="Descripción de producto" title="Descripción del Producto" name="input-name" class="input_field input-description" id="password_field" formControlName="description"></textarea>
         <p class="errorInput" *ngIf="myForm.get('descripcion')?.touched && myForm.get('descripcion')?.hasError('required')">Campo Obligatorio</p>
     </div>
     
