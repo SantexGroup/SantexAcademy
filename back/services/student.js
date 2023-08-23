@@ -39,9 +39,22 @@ const updateStudent = async (id, studentData) => {
   }
 };
 
+const deleteStudent = async (id) => {
+  try {
+    const deletedStudentCount = await StudentProvider.deleteStudent(id);
+    if (deletedStudentCount === 0) {
+      throw new Error('Estudiante no encontrado');
+    }
+    return deletedStudentCount;
+  } catch (error) {
+    throw new Error('Error al eliminar el estudiante');
+  }
+};
+
 module.exports = {
   getAllStudents,
   getStudentById,
   createStudent,
   updateStudent,
+  deleteStudent,
 };

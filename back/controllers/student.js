@@ -40,9 +40,20 @@ const updateStudent = async (req, res) => {
   }
 };
 
+const deleteStudent = async (req, res) => {
+  const studentId = req.params.id;
+  try {
+    const deleteStudentCount = await studentService.deleteStudent(studentId);
+    res.json({ message: 'Estudiante eliminado exitosamente', count: deleteStudentCount });
+  } catch (error) {
+    res.status(500).json({ error: 'Error al eleminar al estudiante' });
+  }
+};
+
 module.exports = {
   getAllStudents,
   getStudentById,
   createStudent,
   updateStudent,
+  deleteStudent,
 };

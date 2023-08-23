@@ -40,9 +40,23 @@ const updateStudent = async (id, student) => {
   }
 };
 
+const deleteStudent = async (id) => {
+  try {
+    const deletedStudentCount = await Student.destroy({
+      where: {
+        id,
+      },
+    });
+    return deletedStudentCount;
+  } catch (error) {
+    throw new Error('Error al eliminar el estudiante');
+  }
+};
+
 module.exports = {
   getAllStudents,
   getStudentById,
   createStudent,
   updateStudent,
+  deleteStudent,
 };
