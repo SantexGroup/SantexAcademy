@@ -1,0 +1,67 @@
+<div class="formulario-container">
+  <h2 class="title">Crear cuenta</h2>
+  <hr class="divider">
+  <form class="form-square" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <label class="form-item">Nombre Completo</label>
+      <input class="form-input" matInput placeholder="Ingrese Nombre Completo" formControlName="nombreCompleto">
+      <div *ngIf="myForm.get('nombreCompleto')?.invalid && myForm.get('nombreCompleto')?.touched" class="error-message">
+        Este campo es requerido
+      </div>
+      <hr class="div-item">
+    </mat-form-field>
+
+    <mat-form-field>
+      <label class="form-item">Correo Electrónico</label>
+      <input class="form-input" matInput type="email" placeholder="Ingrese Correo Electrónico" formControlName="correoElectronico">
+      <div *ngIf="myForm.get('correoElectronico')?.invalid && myForm.get('correoElectronico')?.touched" class="error-message">
+        Este campo es requerido
+      </div>
+      <hr class="div-item">
+    </mat-form-field>
+
+    <mat-form-field>
+      <label class="form-item">Usuario</label>
+      <input class="form-input" matInput placeholder="Ingrese su Usuario" formControlName="usuario">
+      <div *ngIf="myForm.get('usuario')?.invalid && myForm.get('usuario')?.touched" class="error-message">
+        Este campo es requerido
+      </div>
+      <hr class="div-item">
+    </mat-form-field>
+
+    <mat-form-field>
+      <label class="form-item">Contraseña</label>
+      <input class="form-input" matInput type="password" placeholder="Ingrese su Contraseña" formControlName="password">
+      <div *ngIf="myForm.get('contrasena')?.invalid && myForm.get('contrasena')?.touched" class="error-message">
+        Este campo es requerido
+      </div>
+      <hr class="div-item">
+    </mat-form-field>
+
+    <mat-form-field>
+      <label class="form-item">Confirmar Contraseña</label>
+      <input class="form-input" matInput type="password" placeholder="Confirmar Contraseña" formControlName="confirmarPassword">
+      <div *ngIf="myForm.get('confirmarContrasena')?.invalid && myForm.get('confirmarContrasena')?.touched" class="error-message">
+        Este campo es requerido
+      </div>
+      <hr class="div-item">
+    </mat-form-field>
+
+    <mat-form-field>
+      <label class="form-item"> Género </label>
+      <select class="form-input-genero">
+        <option value="0">Seleccionar</option>
+        <option value="1">Masculino</option>
+        <option value="2">Femenino</option>
+      </select><br/><br/>
+      <div *ngIf="myForm.get('genero')?.invalid && myForm.get('genero')?.touched" class="error-message">
+        Este campo es requerido
+      </div>
+    </mat-form-field>
+
+    <button class="button-create" mat-raised-button color="primary" type="button" [disabled]="myForm.invalid" (click)="onSubmit()">Crear Cuenta</button>
+  </form>
+  <p class="mensaje-iniciar-sesion">
+    ¿Ya tienes una cuenta? Haz clic en <a class="login-button" routerLink="/iniciar-sesion"> INICIAR SESIÓN</a>
+  </p>
+</div>
