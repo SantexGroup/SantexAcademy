@@ -6,9 +6,15 @@
 
     display: flex;    
     flex-flow: row wrap;
-    justify-content: space-around ;
+    justify-content: space-around;
     align-items: center;  
       
+}
+
+.loginHeader{
+    width: 20rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 .logoHeader{
@@ -20,17 +26,18 @@
     width: 10em;
     font-weight: 600;
 }
+
 .itemsHeader{
     display: flex;
-    
     justify-content: center;
     align-items: center;
 }
 
 .lista-header{
+    width: 30rem;
     display: flex;
     flex-flow: nowrap;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     color: white;
 }
@@ -66,7 +73,7 @@ button{
 }
 
 .li-header:hover{
-    font-weight: 700;
+    font-weight: bold;
     transition: 0.5s;
     cursor: pointer;
 
