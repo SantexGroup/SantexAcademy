@@ -1,4 +1,124 @@
-/* You can add global styles to this file, and also import other style files */
-html,body{
+
+@import '~bootstrap/dist/css/bootstrap.css';
+
+/* 
+    1) en lo posible usar siempre rems (no px), esta seteado para que 10 px sean 1 rem
+
+    2) ejemplo de como se usan estas variables
+        etiquetaRandom{
+            box-shadow: var(--box-shadow-1);
+            border-radius: var(--border-radius);
+            background-color: var(--color-2);
+            font-size: var(--font-size-2);
+        }
+
+    3) no borrar cosas de aqui, si se pueden agregar si hacen falta (por ej, font-size mas grandes
+*/
+
+:root {
+    /* guia de colores sacada de incubadoraNOC_logo  */
+    --color-1: #f1ede3;
+    --color-2: #f26d0d;
+    --color-3: #6464ca;
+    --color-4: #2c44a3;
+    --color-5: #09349b;
+    --color-6: #040564;
+
+    --font-family-1: 'Poppins', sans-serif;
+    --box-shadow-1: rgb(0 0 0 / 10%) 0 0 10px;
+    --font-size-1: 1rem;
+    --font-size-2: 1.2rem;
+    --border-radius: 3px;
+
+    --separation: 5rem;
+}
+
+html{
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-1);
+    font-family: var(--font-family-1);
     height: 100%;
+    box-sizing: border-box;
+    font-size: 62.5%;   /*convierte 1rem en 10px*/
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-1);
+    font-family: var(--font-family-1);
+    height: 100%;
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+input, button{
+    font-family: var(--font-family);
+}
+
+button{
+    cursor: pointer;
+    border:0;
+    background-color: transparent;
+}
+
+.btn-primary{
+    width: 100%;
+    color: var(--color-6);
+    border-radius: var(--border-radius);
+    background-color: var(--color-2);
+    padding: .5rem;
+    font-weight: 600;
+    letter-spacing: .5px;
+}
+
+.btn-default{
+    width: 100%;
+    padding: .65rem;
+    font-weight: 600;
+    box-shadow: var(--box-shadow-1);
+}
+
+
+button:disabled{
+    opacity: .5;
+    background-color: var(--color-4);
+}
+
+.d-flex{
+    display: flex;
+}
+
+.d-grid{
+    display: grid;
+}
+
+.d-all-center{
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.text-label{
+    font-weight: 600;
+    color:var(--color-4);
+    font-size: 16px;
+}
+
+.form-input{
+    width: 100%;
+    display: flex;
+}
+
+.form-input input::placeholder{
+    color: rgba(0,0,0,.4)
+}
+
+input.ng-invalid.ng-touched{
+    border-color:tomato
 }
