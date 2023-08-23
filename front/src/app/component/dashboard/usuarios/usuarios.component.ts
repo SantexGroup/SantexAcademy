@@ -6,11 +6,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
-
-
-
-
-
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
@@ -24,10 +19,8 @@ export class UsuariosComponent implements OnInit {
   
   dataSource!: MatTableDataSource<any>;
 
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
 
   constructor(private _usuarioService: UsuarioService, private _snackBar: MatSnackBar) { }
 
@@ -40,12 +33,10 @@ export class UsuariosComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.listUsuarios);
   }
 
-
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -64,5 +55,4 @@ export class UsuariosComponent implements OnInit {
       verticalPosition:"bottom"
     })
   }
-
 }
