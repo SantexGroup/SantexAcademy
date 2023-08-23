@@ -34,6 +34,11 @@ const restoreSurvey = async (id) => {
   return surveyRestored;
 };
 
+const getSurveysBySurveyorAndDates = async (id, startDate, endDate) => {
+  const surveys = await surveyProvider.getSurveysBySurveyorAndDates(id, startDate, endDate);
+  return surveys;
+};
+
 module.exports = {
   createSurvey,
   findByEmail,
@@ -42,4 +47,5 @@ module.exports = {
   deleteSurvey,
   updateSurvey,
   restoreSurvey,
+  getSurveysBySurveyorAndDates,
 };

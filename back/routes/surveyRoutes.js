@@ -13,5 +13,5 @@ router.get('/:id', isAdminOrSurveyorMiddleware, surveyController.getSurveyById);
 router.patch('/:id', isAdminOrSurveyorMiddleware, surveyController.updateSurvey);
 router.delete('/:id', isAdminMiddleware, surveyController.deleteSurvey);
 router.patch('/:id/restore', isAdminMiddleware, surveyController.restoreSurvey);
-
+router.get('/surveyor/:surveyorId', isAdminOrSurveyorMiddleware, surveyController.getSurveysBySurveyorAndDates);
 module.exports = router;

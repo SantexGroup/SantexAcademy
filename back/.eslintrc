@@ -1,18 +1,27 @@
 {
-    "extends": "airbnb-base",
-    "env": {
-        "browser": true,
-        "node": true,
-        "jest": true
-    },
-    "rules": {
-        "no-param-reassign": [
-            2,
-            {
-                "props": false
-            }
-        ],
-        "linebreak-style": ["off"],
-        "consistent-return": "off"
-    }
+  "extends": "airbnb-base",
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "plugins": ["import"],
+  "rules": {
+    "no-param-reassign": [
+      2,
+      {
+        "props": false
+      }
+    ],
+    "linebreak-style": ["off"],
+    "consistent-return": "off",
+    "import/no-unresolved": [
+      "error",
+      { "commonjs": true, "caseSensitive": true }
+    ],
+    "import/named": "error",
+    "import/namespace": "error",
+    "import/default": "error",
+    "import/export": "error"
+  }
 }

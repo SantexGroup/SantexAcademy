@@ -116,6 +116,26 @@ async function restoreSurvey(req, res) {
   }
 }
 
+async function getSurveysBySurveyorAndDates(req, res) {
+  const { surveyorId } = req.params;
+  const { startDate, endDate } = req.query;
+
+  try {
+    const surveys = await surveyService.getSurveysBySurveyorAndDates(
+      surveyorId,
+      startDate,
+      endDate,
+    );
+    if (surveys) {
+      res.status(200).json(surveys);
+    } else {
+      res.status(404).json({ message: 'No hay encuestas en el rango de fechas indicado' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Existe un problema con las fechas indicadas.', startDate, endDate });
+  }
+}
+
 module.exports = {
   createSurvey,
   getSurveysByEmail,
@@ -124,4 +144,5 @@ module.exports = {
   deleteSurvey,
   updateSurvey,
   restoreSurvey,
+  getSurveysBySurveyorAndDates,
 };
