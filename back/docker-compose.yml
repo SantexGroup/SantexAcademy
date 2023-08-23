@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  db-lounge-rent:
+    image: mysql:latest
+    container_name: db-lounge-rent
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: lounge_rent
+    ports:
+      - "3306:3306"
