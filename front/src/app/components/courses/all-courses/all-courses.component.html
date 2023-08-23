@@ -12,15 +12,15 @@
     <p-button  class="flex  align-items-center" label="Buscar" styleClass="p-button-raised p-button-text p-button-secondary"></p-button>
 </div>
 
-<div  class="flex justify-content-center flex-wrap">
-<div class="card-container" *ngFor="let course of coursesService.courses">
-    <div class="card-container flex align-items-center justify-content-center">
-        <p-card [style]="{ width: '360px' }" class=" font-bold text-white border-round m-2">
-            <div>
-                <h2>
+<div class="flex justify-content-center flex-wrap">
+    <div class="card-container flex justify-content-center flex-wrap" *ngFor="let course of coursesService.courses">
+        <p-card [style]="{ width: '360px', height: '25em'}" styleClass="shadow-2"
+            class=" font-bold text-white border-round m-2">
+            <div class="card" style="height: 100%;">
+                <h2 [style]="{height: '3em'}">
                     {{ course.title }}
                 </h2>
-                <p>
+                <p [style]="{height: '2em'}">
                     {{ course.description }}
                 </p>
                 <p-divider></p-divider>
@@ -28,21 +28,25 @@
                     {{course.price | currency}}
                 </h3>
                 <p>
-                    Hasta {{course.due}} cuotas sin interés de <span class="card__price--bold">{{coursesService.getRoundedPrice(course.price,course.due)}}</span>
+                    Hasta {{course.due}} cuotas sin interés de 
+                    <span class="card__price--bold">{{coursesService.getRoundedPrice(course.price, course.due)}}</span>
                 </p>
                 <p class="card__starter mb-3">
                     fecha de inicio: {{ course.start_date }}
                 </p>
                 <p-divider></p-divider>
-                <footer class="flex flex-column justify-content-center footer">
-                    <p-button label="Ver detalle del curso" class="flex justify-content-center"
-                        styleClass="p-button-raised p-button-text p-button-secondary"></p-button>
-                    <p-button label="Inscribite" icon="pi pi-times" class="flex justify-content-center buttons"
-                        styleClass="p-button-raised p-button-text p-button-secondary"
-                        [style]="{ 'margin-left': '.5em' }"></p-button>
-                </footer>
+                    <div class="flex justify-content-start flex-wrap button">
+                        <p-button label="Ver detalle"
+                            class="flex align-items-center justify-content-center w-10rem h-2rem"
+                            styleClass="p-button-raised p-button-text p-button-secondary">
+                        </p-button>
+                        <p-button label="Inscribite" icon="pi pi-times"
+                            class="flex align-items-center justify-content-center w-10rem h-2rem"
+                            styleClass="p-button-raised p-button-text p-button-secondary"
+                            [style]="{ 'margin-left': '.5em' }">
+                        </p-button>
+                    </div>
             </div>
         </p-card>
     </div>
-</div>
 </div>
