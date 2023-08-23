@@ -44,10 +44,16 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'profiles_id',
         otherKey: 'optionals_id',
       });
+      models.Profile.hasMany(models.ProfileLanguage, {
+        foreignKey: 'profiles_id',
+      });
+      models.Profile.hasMany(models.ProfileSkill, {
+        foreignKey: 'profiles_id',
+      });
     }
   }
   Profile.init({
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       field: 'user_id',
