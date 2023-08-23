@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { volunterData } from '../../models/dataForms.model';
 import { AuthService } from '../../services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-form-volunteerregister',
@@ -14,6 +15,7 @@ export class FormVolunteerregisterComponent {
   phone: string = '';
   password: string = '';
   showPassword: boolean = false;
+  subscription: Subscription | null = null;
 
   constructor(private router: Router, private authService: AuthService) {}
 
@@ -44,5 +46,11 @@ export class FormVolunteerregisterComponent {
 
   navigateToLogin() {
     this.router.navigate(['/login']);
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
