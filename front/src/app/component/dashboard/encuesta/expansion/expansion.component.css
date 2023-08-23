@@ -1,7 +1,6 @@
 .body{
   display: flex;
   justify-content: center;
-  /*height: 100%;*/
 }
 
 .formulario{
@@ -10,6 +9,15 @@
   justify-content: center;
 }
 
+.title {
+  font-weight:580;
+  color:rgb(119, 118, 118);
+}
+
+.mat-expansion-panel{
+  margin-top: 8px;
+  background-color: rgb(244, 245, 248);
+}
 
 .example-headers-align .mat-expansion-panel-header-description {
   justify-content: center;
@@ -20,17 +28,41 @@
   margin-left: 5px;
 }
 
-
 .example-section {
   margin: 12px 0;
   justify-content: space-between;
 
 }
-  
- 
-.botonEnviar{
+
+/* Estilos para el botón limpiar */
+.botonLimpiar{
+  width: 20%;
+  height: 50px;
+  font-size: 16px; 
+  display: flex; 
+  align-items: center; 
   justify-content: center;
+}
+
+  
+/* Estilos para el botón enviar*/
+.botonEnviar {
   width: 20%;
   height: 50px;
   background-color: #FEA31C; 
+  font-size: 16px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
 }
+
+/* Media query para ajustar el botón en pantallas más pequeñas */
+@media (max-width: 768px) {
+  .botonEnviar {
+    font-size: 14px;
+    padding: 8px 16px; 
+    min-width: 120px; 
+    margin-bottom: 25px;
+  }
+}
+

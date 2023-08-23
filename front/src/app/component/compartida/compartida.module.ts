@@ -23,6 +23,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 
 
@@ -51,7 +53,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatGridListModule,
     MatSelectModule,
     MatExpansionModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatRadioModule
   ],
   exports:[
     
@@ -72,7 +75,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatGridListModule,
     MatSelectModule,
     MatExpansionModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatRadioModule
   ]
 })
 export class CompartidaModule { }
