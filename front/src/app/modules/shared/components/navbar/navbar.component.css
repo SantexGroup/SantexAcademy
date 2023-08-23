@@ -1,0 +1,19 @@
+.custom-navbar {
+    background-color: var(--color-5);
+}
+
+.custom-navbar .navbar-nav .nav-link {
+    color: var(--color-1);
+}
+
+.custom-navbar .navbar-toggler-icon {
+    background-color: var(--color-1);
+}
+
+.image-container {
+    max-width: 250px;
+}
+
+.image {
+    max-width: 8rem;
+}

@@ -14,6 +14,11 @@ import { SearchCoursesComponent } from './components/search-courses/search-cours
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    FooterComponent,
+    NavbarComponent,
+    SearchCoursesComponent,
   ]
 })
 export class SharedModule { }
