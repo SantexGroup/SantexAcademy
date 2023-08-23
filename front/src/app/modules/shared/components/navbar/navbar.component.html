@@ -2,7 +2,9 @@
     <div class="container-fluid">
         <div class="d-flex align-items-center">
             <div class="image-container">
-                <img class="image" src="../../../../../assets/imagen/IncubadoraNOC_logo-noBackground.png" alt="foto-logo">
+                <a class="nav-link active" aria-current="page" routerLink="/home">
+                    <img class="image" src="../../../../../assets/imagen/IncubadoraNOC_logo-noBackground.png" alt="foto-logo">
+                </a>
             </div>
         </div>
 
@@ -14,19 +16,19 @@
         <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto"> 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Noticias</a>
+                    <a class="nav-link" routerLink="/noticias">Noticias</a>
                 </li>
             </ul>
 
             <ul class="navbar-nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Registrarse</a>
+                    <a class="nav-link" routerLink="/register">Registrarse</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
+                    <a class="nav-link" routerLink="/login">Login</a>
                 </li>
             </ul>
         </div>
