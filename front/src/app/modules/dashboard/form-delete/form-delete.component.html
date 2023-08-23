@@ -1,70 +1,55 @@
 <!--<p>form-delete works!</p>-->
 <div class="containerGral">
-    <div class="column4col positionInic">
+    <div class="column4col positionInic" *ngIf="hasProducts">
         <ul class="list-group">
-            <li >
+            <li *ngFor="let product of productList">
                 <div class="card">
                     <div class="img"></div>
                       <div class="info">
-                        <span>Product 1</span>
-                        <p>$2000 </p>
+                        <span>{{product.nombreProd}}</span>
+                        <p>{{product.precio | currency}} </p>
                       </div>
-                      <a href="#">Seleccionar</a>
-                </div>
-            </li>
-            <li>
-                <div class="card">
-                    <div class="img"></div>
-                      <div class="info">
-                        <span>Product 2</span>
-                        <p>$3000</p>
-                      </div>
-                      <a href="#">Seleccionar</a>
-                </div>
-            </li>
-            <li>
-                <div class="card">
-                    <div class="img"></div>
-                      <div class="info">
-                        <span>Product3</span>
-                        <p>$3500</p>
-                      </div>
-                      <a href="#">Seleccionar</a>
+                      <!--<a  (click)="selectedProduct = product">Seleccionar</a>-->
+                      <button (click)="selectProduct(product)">Seleccionar</button>
+
                 </div>
             </li>
         </ul>
     </div>
-    <div class="column8col positionInic">
-      <form class="form_container">
+    <div class="column8col positionInic" *ngIf="hasProducts">
+      <form class="form_container" [formGroup]="myForm">
         <div class="title_container">
           <p class="title">Eliminar Producto</p>
           <span class="subtitle">Datos del producto.</span>
         </div>
         <br>
-        <div class="input_container">
+        <div *ngIf="selectedProduct" class="input_container">
           <label class="input_label" for="name_field">Nombre del Producto</label>
-          <input placeholder="ProductoX" title="Input nameProduc" name="input-name" type="text" class="input_field" id="name_field">
+          <input [value]="selectedProduct.nombreProd" type="text" class="input_field" id="name_field" disabled>
         </div>
-        <div class="input_container">
+        <div *ngIf="selectedProduct" class="input_container">
           <label class="input_label" for="categoria_field">Categoria</label>
-          <input placeholder="CategoriaX" title="Input title" name="input-categoria" type="text" class="input_field" id="categoria_field">
+          <input [value]="selectedProduct.categoria" title="Input category" type="text" class="input_field" id="categoria_field" disabled>
         </div>
     
-        <div class="input_container">
+        <div *ngIf="selectedProduct" class="input_container">
           <label class="input_label" for="precio_field">Precio</label>
-          <input placeholder="$ 1500" title="Input title" name="input-precio" type="number" class="input_field" id="precio_field">
+          <input [value]="selectedProduct.precio" title="Input precious" type="number" class="input_field" id="precio_field" disabled>
         </div>
-        <div class="input_container">
-          <label class="input_label" for="password_field">Descripción</label>
-          <textarea placeholder="Descripción de producto" title="Input title" name="input-name" class="input_field input-description" id="password_field"></textarea>
+        <div *ngIf="selectedProduct" class="input_container">
+          <label class="input_label" for="description_field">Descripción</label>
+          <textarea [value]="selectedProduct.descripcion" title="Input description" class="input_field input-description" id="password_field" disabled></textarea>
         </div>
         
-        <button title="Delete" type="submit"  class="sign-in_btn" (click)="showDelete()">
+        <button title="Delete" type="submit"  class="sign-in_btn" (click)="showDelete()" [disabled]="!selectedProduct">
           Eliminar
         </button>
         <!--<button (click)="mostrar()">Aloha</button>-->
       </form>
     
+    </div>
+    <div class="hit-the-floor" *ngIf="!hasProducts">
+      No hay productos cargados aún.
     </div>
 </div> 
 
