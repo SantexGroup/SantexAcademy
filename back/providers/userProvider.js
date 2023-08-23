@@ -7,6 +7,7 @@ async function getUserByUsername(userName) {
       where: { userName },
     });
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('Error while querying user by username:', error);
     throw error;
   }
