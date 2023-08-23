@@ -1,12 +1,38 @@
 const surveyService = require('../services/surveyService');
+const emailService = require('../utils/sendgrid');
 
 async function createSurvey(req, res) {
   try {
     const { email, questions, surveyorId } = req.body;
-    const newSurvey = await surveyService.createSurvey({ email, questions, surveyorId });
-    res.status(201).json(newSurvey);
+    const newSurvey = await surveyService.createSurvey({
+      email,
+      questions,
+      surveyorId,
+    });
+    // Enviar correo de confirmación
+    let formattedQuestions = '';
+    const fromName = 'Municipalidad Mina Clavero';
+    const subject = 'Confirmación de encuesta realizada';
+    const bodyText = 'Gracias por su participación';
+    // eslint-disable-next-line no-restricted-syntax
+    for (const [index, question] of Object.entries(questions)) {
+      formattedQuestions += `<p><strong>Pregunta ${index}:</strong> ${question}</p>`;
+    }
+    await emailService.sendConfirmationEmail(
+      email,
+      fromName,
+      subject,
+      bodyText,
+      formattedQuestions,
+    );
+    return res.status(201).json({
+      message: 'Encuesta creada exitosamente y correo de confirmación enviado',
+      newSurvey,
+    });
   } catch (error) {
-    res.status(500).json({ message: `Error al crear la encuesta: ${error.message}` });
+    res
+      .status(500)
+      .json({ message: `Error al crear la encuesta: ${error.message}` });
   }
 }
 
@@ -16,7 +42,11 @@ async function getSurveysByEmail(req, res) {
     const surveys = await surveyService.findByEmail(email);
     res.status(200).json(surveys);
   } catch (error) {
-    res.status(500).json({ message: `Error al obtener las encuestas por email: ${error.message}` });
+    res
+      .status(500)
+      .json({
+        message: `Error al obtener las encuestas por email: ${error.message}`,
+      });
   }
 }
 
@@ -78,7 +108,11 @@ async function restoreSurvey(req, res) {
 
     return res.status(200).json({ message: 'Encuesta restaurada con éxito' });
   } catch (error) {
-    res.status(500).json({ message: `Error al intentar restaurar la encuesta con id: ${id}` });
+    res
+      .status(500)
+      .json({
+        message: `Error al intentar restaurar la encuesta con id: ${id}`,
+      });
   }
 }
 

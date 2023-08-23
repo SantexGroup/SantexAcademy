@@ -15,6 +15,7 @@
     "db:seed:all": "./node_modules/.bin/sequelize db:seed:all"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "debug": "^4.3.4",
@@ -31,6 +32,7 @@
     "moment": "^2.29.4",
     "morgan": "~1.10.0",
     "mysql2": "^2.3.3",
+    "nodemailer": "^6.9.4",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "sequelize": "^6.32.1",
