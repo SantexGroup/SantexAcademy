@@ -7,13 +7,13 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.addConstraint('Users', {
-      fields: ['nombreusuario'],
+      fields: ['userName'],
       type: 'unique',
-      name: 'users_nombreusuario_unique_constraint',
+      name: 'users_userName_unique_constraint',
     });
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeConstraint('Users', 'users_nombreusuario_unique_constraint');
+    await queryInterface.removeConstraint('Users', 'users_userName_unique_constraint');
   },
 };

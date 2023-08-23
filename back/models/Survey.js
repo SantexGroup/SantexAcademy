@@ -13,25 +13,22 @@ module.exports = (sequelize) => {
         type: DataTypes.JSON,
         allowNull: false,
       },
-      // surveyorId: {
-      //   type: DataTypes.INTEGER,
-      //   allowNull: false,
-      // },
-      status: {
-        type: DataTypes.ENUM('activo', 'eliminado', 'archivado'),
-        defaultValue: 'activo',
+      surveyorId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
     },
     {
       sequelize,
+      paranoid: true,
       modelName: 'Survey',
     },
   );
 
-  // Survey.associate = (models) => {
-  //   Survey.belongsTo(models.Surveyor, {
-  //     foreignKey: 'surveyorId',
-  //   });
-  // };
+  Survey.associate = (models) => {
+    Survey.belongsTo(models.User, {
+      foreignKey: 'surveyorId',
+    });
+  };
   return Survey;
 };

@@ -17,6 +17,7 @@ const config = {
     host: process.env.DB_HOST,
     dialect: 'mysql',
     operatorsAliases: '0',
+    jwtSecret: process.env.JWT_SECRET || 'clave_secreta',
   },
   test: {
     logging: (msg) => logger.api.debug(`Database: ${process.env.DB_DATABASE} - ${msg}`),
@@ -27,6 +28,7 @@ const config = {
     host: process.env.DB_HOST,
     dialect: 'mysql',
     operatorsAliases: '0',
+    jwtSecret: process.env.JWT_SECRET || 'clave_secreta',
   },
   production: {
     logging: (msg) => logger.api.debug(`Database: ${process.env.DB_DATABASE} - ${msg}`),
@@ -37,6 +39,7 @@ const config = {
     host: process.env.DB_HOST,
     dialect: 'mysql',
     operatorsAliases: '0',
+    jwtSecret: process.env.JWT_SECRET || 'clave_secreta',
   },
 };
 
