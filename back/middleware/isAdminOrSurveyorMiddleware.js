@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
+// eslint-disable-next-line func-names
 module.exports = function (req, res, next) {
   const auth = req.header('Authorization');
   const secretKey = process.env.SECRET_KEY;
