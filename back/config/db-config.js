@@ -1,6 +1,5 @@
 const { Sequelize } = require('sequelize'); // Take the Sequelize Class
 require('dotenv').config();
-const { Roles } = require('../models');
 
 // Se crea la instancia de sequelize con los datos de conexión a la base de datos en el CONSTRUCTOR
 const sequelize = new Sequelize(
@@ -24,6 +23,7 @@ const initializeDB = async () => {
     await sequelize.sync({ force: false }); // force: if true, each start deletes DB
 
     // Create default roles
+    const { Roles } = require('../models');
     await Roles.bulkCreateDefaultRoles();
   } catch (err) {
     console.error('Error initializing DB.', err.message);
