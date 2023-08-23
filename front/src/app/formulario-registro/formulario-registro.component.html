@@ -3,53 +3,53 @@
   <hr class="divider">
   <form class="form-square" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
-      <label class="form-item">Nombre Completo</label>
+      <mat-label class="form-item">Nombre Completo</mat-label>
       <input class="form-input" matInput placeholder="Ingrese Nombre Completo" formControlName="nombreCompleto">
       <div *ngIf="myForm.get('nombreCompleto')?.invalid && myForm.get('nombreCompleto')?.touched" class="error-message">
         Este campo es requerido
       </div>
-      <hr class="div-item">
+      <!-- <hr class="div-item"> -->
     </mat-form-field>
 
     <mat-form-field>
-      <label class="form-item">Correo Electrónico</label>
+      <mat-label class="form-item">Correo Electrónico</mat-label>
       <input class="form-input" matInput type="email" placeholder="Ingrese Correo Electrónico" formControlName="correoElectronico">
       <div *ngIf="myForm.get('correoElectronico')?.invalid && myForm.get('correoElectronico')?.touched" class="error-message">
         Este campo es requerido
       </div>
-      <hr class="div-item">
+      <!-- <hr class="div-item"> -->
     </mat-form-field>
 
     <mat-form-field>
-      <label class="form-item">Usuario</label>
+      <mat-label class="form-item">Usuario</mat-label>
       <input class="form-input" matInput placeholder="Ingrese su Usuario" formControlName="usuario">
       <div *ngIf="myForm.get('usuario')?.invalid && myForm.get('usuario')?.touched" class="error-message">
         Este campo es requerido
       </div>
-      <hr class="div-item">
+      <!-- <hr class="div-item"> -->
     </mat-form-field>
 
     <mat-form-field>
-      <label class="form-item">Contraseña</label>
+      <mat-label class="form-item">Contraseña</mat-label>
       <input class="form-input" matInput type="password" placeholder="Ingrese su Contraseña" formControlName="password">
       <div *ngIf="myForm.get('contrasena')?.invalid && myForm.get('contrasena')?.touched" class="error-message">
         Este campo es requerido
       </div>
-      <hr class="div-item">
+      <!-- <hr class="div-item"> -->
     </mat-form-field>
 
     <mat-form-field>
-      <label class="form-item">Confirmar Contraseña</label>
+      <mat-label class="form-item">Confirmar Contraseña</mat-label>
       <input class="form-input" matInput type="password" placeholder="Confirmar Contraseña" formControlName="confirmarPassword">
       <div *ngIf="myForm.get('confirmarContrasena')?.invalid && myForm.get('confirmarContrasena')?.touched" class="error-message">
         Este campo es requerido
       </div>
-      <hr class="div-item">
+      <!-- <hr class="div-item"> -->
     </mat-form-field>
 
     <mat-form-field>
-      <label class="form-item"> Género </label>
-      <select class="form-input-genero">
+      <mat-label class="form-item"> Género </mat-label>
+      <select class="form-input-genero" matNativeControl>
         <option value="0">Seleccionar</option>
         <option value="1">Masculino</option>
         <option value="2">Femenino</option>
@@ -58,8 +58,9 @@
         Este campo es requerido
       </div>
     </mat-form-field>
+    <p>{{myForm.value | json}}</p>
 
-    <button class="button-create" mat-raised-button color="primary" type="button" [disabled]="myForm.invalid" (click)="onSubmit()">Crear Cuenta</button>
+    <button class="button-create" mat-raised-button color="primary" type="button" (click)="onSubmit()">Crear Cuenta</button>
   </form>
   <p class="mensaje-iniciar-sesion">
     ¿Ya tienes una cuenta? Haz clic en <a class="login-button" routerLink="/iniciar-sesion"> INICIAR SESIÓN</a>

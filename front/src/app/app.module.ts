@@ -11,6 +11,7 @@ import { FormularioRegistroComponent } from './formulario-registro/formulario-re
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MensajeErrorComponent } from './mensaje-error/mensaje-error.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
     AppRoutingModule,
