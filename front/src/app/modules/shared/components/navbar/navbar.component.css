@@ -1,5 +1,6 @@
 .custom-navbar {
     background-color: var(--color-5);
+    padding: 1rem 0;
 }
 
 .custom-navbar .navbar-nav .nav-link {
@@ -11,7 +12,10 @@
 }
 
 .image-container {
-    max-width: 250px;
+    margin: 0 0 0 2rem;
+    max-width: 25rem;
+    border-radius: 4rem;
+    background: radial-gradient(circle, var(--color-0) 0%, var(--color-1) 40%, var(--color-5) 80%);
 }
 
 .image {
