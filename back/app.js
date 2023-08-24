@@ -62,8 +62,6 @@ const whitelist = process.env.CORS.split(' ');
 
 const corsOptions = {
   origin(origin, callback) {
-    console.log("lista",whitelist)
-    console.log(origin)
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
