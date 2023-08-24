@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { InputLoginComponent } from './modules/input-login/input-login.component';
 import { RouterModule, Routes } from  '@angular/router'; 
+/*importar componente passw*/
 
 const routes: Routes=[  
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: InputLoginComponent },
-  //ingresar  componente passwd.
+  /*ingresar  componente passwd.*/
   
 ];
 
