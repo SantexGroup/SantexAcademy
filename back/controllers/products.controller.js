@@ -70,6 +70,26 @@ productscontroller.editByID =  async (req, res) => {
       res.status(400).json({ error: error.message });
     }
 }
+/**
+ * @method DELETE
+ * @name delete
+ * @body {}
+ * @param {id}
+ * @description metodo para elimiar un producto almacenado en la base de datos
+ */
+ productscontroller.delete =  async (req, res) => { 
+  try {
+    //buscamos el produto
+    const producto = await Products.findByPk(req.params.id);
+    if (!producto) {//si no lo encontramos informamos que no existe
+      return res.status(404).json({ message: 'Product not found' });
+    }
+    await Products.destroy({ where: { id: req.params.id } });
+    res.status(201).json("Product correctly deleted");
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+}
 
 
 

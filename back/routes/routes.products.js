@@ -9,5 +9,5 @@ router.post('/', controller.create);
 router.get("/",controller.getAll);
 router.get("/:id",controller.getByID);
 router.put("/:id",controller.editByID);
-//router.delete("/delete",null /**controller.delete*/);
+router.delete("/:id",controller.delete);
 module.exports = router;

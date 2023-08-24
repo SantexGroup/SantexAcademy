@@ -6,8 +6,8 @@
                 <div class="card">
                     <div class="img"></div>
                       <div class="info">
-                        <span>{{product.nombreProd}}</span>
-                        <p>{{product.precio | currency}} </p>
+                        <span>{{product.name}}</span>
+                        <p>{{product.price | currency}} </p>
                       </div>
                       <!--<a  (click)="selectedProduct = product">Seleccionar</a>-->
                       <button (click)="selectProduct(product)">Seleccionar</button>
@@ -25,20 +25,20 @@
         <br>
         <div *ngIf="selectedProduct" class="input_container">
           <label class="input_label" for="name_field">Nombre del Producto</label>
-          <input [value]="selectedProduct.nombreProd" type="text" class="input_field" id="name_field" disabled>
+          <input [value]="selectedProduct.name" type="text" class="input_field" id="name_field" disabled>
         </div>
-        <div *ngIf="selectedProduct" class="input_container">
+        <!-- <div *ngIf="selectedProduct" class="input_container">
           <label class="input_label" for="categoria_field">Categoria</label>
           <input [value]="selectedProduct.categoria" title="Input category" type="text" class="input_field" id="categoria_field" disabled>
-        </div>
+        </div> -->
     
         <div *ngIf="selectedProduct" class="input_container">
           <label class="input_label" for="precio_field">Precio</label>
-          <input [value]="selectedProduct.precio" title="Input precious" type="number" class="input_field" id="precio_field" disabled>
+          <input [value]="selectedProduct.price" title="Input precious" type="number" class="input_field" id="precio_field" disabled>
         </div>
         <div *ngIf="selectedProduct" class="input_container">
           <label class="input_label" for="description_field">Descripción</label>
-          <textarea [value]="selectedProduct.descripcion" title="Input description" class="input_field input-description" id="password_field" disabled></textarea>
+          <textarea [value]="selectedProduct.description" title="Input description" class="input_field input-description" id="password_field" disabled></textarea>
         </div>
         
         <button title="Delete" type="submit"  class="sign-in_btn" (click)="showDelete()" [disabled]="!selectedProduct">

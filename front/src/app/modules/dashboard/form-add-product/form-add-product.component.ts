@@ -9,7 +9,7 @@ import { BackServiceService } from 'src/app/services/back-service.service';
 })
 export class FormAddProductComponent implements OnInit {
 
-  constructor(private loginService: BackServiceService, private myFormAddProduct: FormBuilder) { }
+  constructor(private backService: BackServiceService, private myFormAddProduct: FormBuilder) { }
 
   myForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -23,7 +23,7 @@ export class FormAddProductComponent implements OnInit {
 
   addProduct() {
     console.log('Agregar', this.myForm.value)
-    this.loginService.addProduct(this.myForm.value).subscribe((result) => {console.log(result)});
+    this.backService.addProduct(this.myForm.value).subscribe((result) => {console.log(result)});
     
     this.myForm.reset();
   } 
