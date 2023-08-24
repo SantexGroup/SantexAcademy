@@ -6,18 +6,18 @@ import { FormAddProductComponent } from '../form-add-product/form-add-product.co
 import { FormDeleteComponent } from '../form-delete/form-delete.component';
 
 const routes: Routes = [
-  {
-    path: 'add-product',
-    component: FormAddProductComponent
-  },
-  {
-    path: 'form-update',
-    component: FormUpdateComponent
-  },
-  {
-    path: 'form-delete',
-    component: FormDeleteComponent
-  }
+  // {
+  //   path: 'add-product',
+  //   component: FormAddProductComponent
+  // },
+  // {
+  //   path: 'form-update',
+  //   component: FormUpdateComponent
+  // },
+  // {
+  //   path: 'form-delete',
+  //   component: FormDeleteComponent
+  // }
 ];
 
 @NgModule({
