@@ -13,7 +13,12 @@ import { authModule } from './modules/auth/auth.module';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, FooterComponent, NotfoundComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    NotfoundComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, HomeModule, authModule],
   providers: [],
   bootstrap: [AppComponent],

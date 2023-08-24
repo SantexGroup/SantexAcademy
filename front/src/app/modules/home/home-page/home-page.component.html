@@ -3,13 +3,13 @@
   <app-slider-organizations></app-slider-organizations>
 
   <!-- ------START VOLUNTEERING-SEARCH------ -->
-  <div class="bg-image w-full h-full">
-    <h1
-      class="title-volunteering-search text-center mb-10 font-poppins font-bold"
+  <section class="bg-image w-full h-full py-16 mb-16">
+    <h2
+      class="text-2xl text-center font-bold pb-12 px-4 sm:text-3xl lg:text-4xl"
     >
       BUSCÁ UN VOLUNTARIADO SEGÚN TUS PREFERENCIAS
-    </h1>
-    <div class="flex flex-wrap justify-center">
+    </h2>
+    <div class="flex flex-wrap justify-center gap-8">
       <app-volunteering-search
         *ngFor="let item of volunteeringData"
         [image]="item.image"
@@ -17,14 +17,16 @@
         [backgroundColor]="item.backgroundColor"
       ></app-volunteering-search>
     </div>
-  </div>
+  </section>
   <!-- ------END VOLUNTEERING-SEARCH------ -->
 
   <app-cards-agendahours></app-cards-agendahours>
 
   <!-- ------START TESTIMONIALS------ -->
-  <div class="w-full bg-white pb-16 pt-8">
-    <h2 class="title-testimonials text-center mb-[60px] font-poppins font-bold">
+  <section class="w-full flex flex-col gap-12 px-4 mb-16">
+    <h2
+      class="text-center text-2xl font-bold sm:text-3xl lg:text-4xl uppercase"
+    >
       Voces Voluntarias: Experiencias compartidas en horas de compromiso
     </h2>
     <div class="flex flex-wrap justify-center gap-[55px]">
@@ -36,6 +38,6 @@
         [testimonial]="item.testimonial"
       ></app-testimonials>
     </div>
-  </div>
+  </section>
   <!-- ------END TESTIMONIALS------ -->
 </section>

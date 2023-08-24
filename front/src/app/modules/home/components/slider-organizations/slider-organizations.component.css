@@ -1,3 +1,11 @@
-.mySwiper{
-    width: 95vw !important;
+.mySwiper {
+  width: 100vw !important;
+  max-width: 1500px;
 }
+
+/* .swiper-button-prev,
+.swiper-button-next {
+  color: #f3f4f6 !important;
+  width: calc(1em / 10px * 10px) !important;
+  height: 2em !important;
+} */

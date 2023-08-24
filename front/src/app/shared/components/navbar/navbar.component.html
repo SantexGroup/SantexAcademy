@@ -27,10 +27,24 @@
       class="bx bx-x text-3xl cursor-pointer m:text-4xl lg:hidden"
       (click)="handleMenu()"
     ></i>
-    <ul class="hidden lg:flex items-center justify-center gap-6 text-base">
-      <li>Quienes somos</li>
-      <li>¿Tienes dudas? <i class="bx bx-chevron-down"></i></li>
-      <li>Contacto</li>
+    <ul
+      class="hidden lg:flex items-center justify-center gap-6 text-base lg:items-start lg:text-lg"
+    >
+      <li class="cursor-pointer">Quienes somos</li>
+      <li>
+        <div
+          class="w-full flex items-center justify-center cursor-pointer"
+          (click)="openOpTwo()"
+        >
+          ¿Tienes dudas? <i class="bx bx-chevron-down text-2xl"></i>
+        </div>
+        <ul [ngClass]="openOptionTwo ? 'flex flex-col items-center' : 'hidden'">
+          <li class="cursor-pointer">Tipos de voluntariados</li>
+          <li class="cursor-pointer">Derechos y deberes</li>
+          <li class="cursor-pointer">Preguntas frecuentes (FAQ)</li>
+        </ul>
+      </li>
+      <li class="cursor-pointer">Contacto</li>
       <li class="font-bold"><a routerLink="/auth/login">Iniciar sesión</a></li>
       <li>
         <a
@@ -45,15 +59,28 @@
 
   <nav [ngClass]="isOpen ? 'navbar' : 'navbar navbar-closed'">
     <ul
-      class="w-full flex flex-col items-center justify-center gap-4 m:text-lg lg:flex-row lg:justify-around lg:uppercase lg:pt-6"
+      class="w-full flex flex-col items-center justify-center gap-4 m:text-lg lg:flex-row lg:justify-evenly lg:items-start lg:uppercase lg:pt-6"
     >
-      <li>Inicio</li>
-      <li class="lg:hidden">Acerca de nosotros</li>
-      <li>Voluntariado</li>
-      <li>Registro de voluntarios</li>
-      <li>Testimonios de voluntarios</li>
-      <li class="lg:hidden">Contacto</li>
-      <li>FAQ</li>
+      <li class="uppercase">
+        <div
+          class="w-full flex items-center justify-center cursor-pointer"
+          (click)="openOpOne()"
+        >
+          HAZTE VOLUNTARIO/A <i class="bx bx-chevron-down text-2xl"></i>
+        </div>
+
+        <ul [ngClass]="openOptionOne ? 'flex flex-col items-center' : 'hidden'">
+          <li class="cursor-pointer">6 pasos para ser voluntario</li>
+          <li class="cursor-pointer">Colabora con una ONG</li>
+          <li class="cursor-pointer">Tipos de voluntariado</li>
+          <li class="cursor-pointer">Preguntas frecuentes (FAQ)</li>
+        </ul>
+      </li>
+      <li class="lg:hidden uppercase">Acerca de nosotros</li>
+      <li class="cursor-pointer">COLABORA CON UNA ONG</li>
+      <li class="cursor-pointer uppercase">Testimonios de voluntarios</li>
+      <li class="lg:hidden uppercase">Contacto</li>
+      <li class="cursor-pointer uppercase">FAQ</li>
       <div class="w-[90%] h-[.5px] my-4 bg-lightGray lg:hidden"></div>
       <li
         class="flex flex-col items-center justify-center gap-4 font-bold lg:hidden"

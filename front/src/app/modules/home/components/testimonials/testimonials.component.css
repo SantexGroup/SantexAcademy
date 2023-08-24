@@ -1,26 +1,14 @@
-.card {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  width: clamp(18.75rem, 17.607rem + 5.71vw, 22.75rem);
-  height: 400px;
-
-}
-
-.card-head {
-  width: clamp(18.75rem, 17.607rem + 5.71vw, 22.75rem);
-  height: clamp(5.25rem, 4.929rem + 1.61vw, 6.375rem);
-}
-
 .photo {
   width: clamp(3.75rem, 3.214rem + 2.68vw, 5.625rem);
   height: clamp(3.75rem, 3.214rem + 2.68vw, 5.625rem);
 }
 
 .name-volunteer {
-  font-size: clamp(0.875rem, 0.839rem + 0.18vw, 1rem)
+  font-size: clamp(0.875rem, 0.839rem + 0.18vw, 1rem);
 }
 
 .volunteer-place {
-  font-size: clamp(0.875rem, 0.839rem + 0.18vw, 1rem)
+  font-size: clamp(0.875rem, 0.839rem + 0.18vw, 1rem);
 }
 
 .testimonial {
