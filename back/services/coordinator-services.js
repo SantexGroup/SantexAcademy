@@ -66,29 +66,25 @@ async function editUser(id, name, description, email, address, phone) {
   return userEdited;
 }
 
-async function modifyPassword(id, newPassword) {
-  // eslint-disable-next-line no-useless-catch
+async function modifyPassword(id, currentPassword, newPassword) {
   try {
     const user = await getById(id);
 
-    let passwordMatch;
-    try {
-      passwordMatch = await bcrypt.compare(newPassword, user.password);
-    } catch (compareError) {
-      throw new Error('Error al comparar las contraseñas encriptadas');
-    }
+    const passwordMatch = await bcrypt.compare(currentPassword, user.password);
 
     if (!passwordMatch) {
+      throw new Error('La contraseña actual es incorrecta');
+    } else {
       const hashedPassword = await bcrypt.hash(newPassword, 10);
+
       user.password = hashedPassword;
 
       const userEdited = await user.save();
       delete userEdited.dataValues.password;
-
       return userEdited;
     }
   } catch (error) {
-    throw new Error('la contraseña debe ser distinta a la original');
+    throw new Error('Error al modificar la contraseña');
   }
 }
 

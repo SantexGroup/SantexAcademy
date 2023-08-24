@@ -10,6 +10,6 @@ router.post('/create-user', coordinatorController.createCoordinator);
 router.put('/edit-user/:id', isAuthenticatedOrganizacion, coordinatorController.editCoordinator);
 router.delete('/delete-user/:id', isAuthenticatedOrganizacion, coordinatorController.deleteCoordinator);
 router.post('/login', coordinatorController.loginCoordinator);
-router.put('/modify-password/:id', coordinatorController.modifyPassword);
+router.put('/modify-password/:id', coordinatorController.modifyPasswordController);
 
 module.exports = router;
