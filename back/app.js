@@ -10,8 +10,8 @@ const helmet = require('helmet');
 const session = require('express-session');
 // Winston logger Dependencies
 const cors = require('cors');
+// eslint-disable-next-line import/no-unresolved
 const logger = require('./utils/winston.logger');
-
 // Models:
 const models = require('./models');
 
@@ -26,6 +26,7 @@ const app = express();
 app.listen(3000, () => {
   console.log('servidor corriendo en el localhost 3000');
 });
+
 validateEnv.validate();
 app.use(helmet());
 app.use(helmet.ieNoOpen());
@@ -91,7 +92,7 @@ models.sequelize.authenticate()
     logger.api.error(err);
   });
 
-app.use('/', require('./routes/index'));
+// app.use('/', require('./routes/index'));
 
 // Seteamos el motor de plantillas
 app.set('view engine', 'ejs');

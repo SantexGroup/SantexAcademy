@@ -1,6 +1,5 @@
 const Express = require('express');
-const authController = require('../controllers/adminController');
-// const passportJwt = require('passport-jwt');
+const adminRoutes = require('./adminRoutes');
 
 // Middlewares:
 const rootPath = require('../middleware/root_path.middleware');
@@ -19,7 +18,6 @@ app.use('/ping', (req, res) => {
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
-// app.use(passportJwt);
 
 // Router para las vistas
 app.get('/', (req, res) => {
@@ -34,8 +32,6 @@ app.get('/register', (req, res) => {
   res.send('register');
 });
 
-// Router para los métodos del controler
+app.use('/admins', adminRoutes);
 
-app.post('/register', authController.register);
-app.post('/login', authController.login);
 module.exports = app;
