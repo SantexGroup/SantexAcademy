@@ -13,6 +13,7 @@ const experienceRoutes = require('./experience.routes');
 const referencesRoutes = require('./references.routes');
 const skillsRoutes = require('./skills.routes');
 const optinalsRoutes = require('./optional.routes');
+const contryRoutes = require('./countries.routes');
 
 const app = Express();
 
@@ -26,6 +27,7 @@ app.use('/user', userRoutes);
 app.use('/experiences', experienceRoutes);
 app.use('/references', referencesRoutes);
 app.use('/skills', skillsRoutes);
+app.use('/countries', contryRoutes);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
