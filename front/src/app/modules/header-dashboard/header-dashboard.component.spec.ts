@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderAdminComponent } from './header-admin.component';
+import { HeaderAdminComponent } from './header-dashboard.component';
 
 describe('HeaderAdminComponent', () => {
   let component: HeaderAdminComponent;
