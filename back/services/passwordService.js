@@ -12,6 +12,7 @@ async function createPassword(password, limit_time) {
   const passwordCreate = await pass.save();
   return passwordCreate;
 }
+
 // Obtener password
 async function getAll() {
   const userList = await Password.findAll();

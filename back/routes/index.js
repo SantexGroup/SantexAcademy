@@ -15,23 +15,24 @@ app.use('/ping', (req, res) => {
   });
 });
 
-app.use('/', rootPath.handler);
-app.use(rootPath.setHeaders);
-app.use(errors.handler);
-
 // Router para las vistas
-app.get('/', (req, res) => {
-  res.send('Vista Index');
-});
 
-app.get('/login', (req, res) => {
+/* app.get('/login', (req, res) => {
   res.send('login');
-});
+}); */
 
 app.get('/register', (req, res) => {
   res.send('register');
 });
 
 app.use('/admins', adminRoutes);
+
+app.use('/', rootPath.handler);
+app.use(rootPath.setHeaders);
+app.use(errors.handler);
+
+app.get('/', (req, res) => {
+  res.send('Vista Index');
+});
 
 module.exports = app;

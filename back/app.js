@@ -92,7 +92,7 @@ models.sequelize.authenticate()
     logger.api.error(err);
   });
 
-// app.use('/', require('./routes/index'));
+app.use('/', require('./routes/index'));
 
 // Seteamos el motor de plantillas
 app.set('view engine', 'ejs');
@@ -103,8 +103,5 @@ app.use(express.json());
 
 // Seteamos las variables de entorno
 dotenv.config({ path: '/back/env/.env' });
-
-// Para trabajar con las cookies
-// app.use(cookieParser);
 
 module.exports = app;
