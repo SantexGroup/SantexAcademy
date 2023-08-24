@@ -2,29 +2,93 @@
 
 <!-- 
 id -- no se ingresa -- NN
-marital_id -- se ingresa desde Maritals -- NN
-sexs_id -- se ingresa desde Sexs -- NN
-countries_id -- se ingresa desde Countries -- NN
-profile
-webPage
-linkedIn
-hobbies
-aptitudes
-driverLicense
-aboutMe
-achievements
-address
-zipCode
+marital_id -- se ingresa desde Maritals -- NN * 
+sexs_id -- se ingresa desde Sexs -- NN *
+countries_id -- se ingresa desde Countries -- NN *
+profile *
+webPage *
+linkedIn *
+hobbies *
+aptitudes *
+driverLicense *
+aboutMe *
+achievements *
+address *
+zipCode * 
 deletedAt -- no se ingresa
  -->
 
- <div>
-    <div>
-        <label for="profile">Perfil:</label><br/>
-        <textarea name="profile" cols="30" rows="10"></textarea>
+<div class="optionalsInput">
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <label for="profile">Perfil:</label><br>
+                <textarea name="profile" cols="30" rows="10"></textarea><br>
+                <label for="webPage">Pagina Web:</label><br>
+                <input type="text" name="webPage"><br>
+                <label for="linkedIn">linkedIn:</label><br>
+                <input type="text" name="linkedIn"><br>
+                <label for="zipCode">Codigo postal:</label><br>
+                <input type="number" name="zipCode">
+            </div>
+            <div class="carousel-item">
+                <label for="aboutMe">Sobre Mi:</label><br>
+                <textarea name="aboutMe" cols="30" rows="10"></textarea><br>
+                <label for="driverLicense">Licensia de conducir:</label><br>
+                <select name="driverLicense" id="">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select><br>
+                <label for="countries">Nacionalidad:</label><br>
+                <select name="driverLicense" id="">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select><br>
+                <label for="address">Direccion:</label><br>
+                <input type="text" name="address">
+            </div>
+            <div class="carousel-item">
+                <label for="marital">Estado Civil:</label><br>
+                <select name="marital" id="">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select><br>
+                <label for="sexs">Genero:</label><br>
+                <select name="sexs" id="">
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select><br>
+                <label for="hobbies">Pasatiempos:</label><br>
+                <input type="text" name="hobbies"><br>
+                <input type="text" name="hobbies"><br>
+                <input type="text" name="hobbies"><br>
+                <label for="achievements">Logros:</label><br>
+                <input type="text" name="achievements"><br>
+                <input type="text" name="achievements"><br>
+                <input type="text" name="achievements"><br>
+                <label for="aptitudes">Aptitudes:</label><br>
+                <input type="text" name="aptitudes"><br>
+                <input type="text" name="aptitudes"><br>
+                <input type="text" name="aptitudes"><br>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <div>
-        <button>Anterior</button>
-        <Button>Siguiente</Button>
-    </div>
- </div>
+</div>
