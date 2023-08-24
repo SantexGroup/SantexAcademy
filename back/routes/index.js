@@ -5,6 +5,7 @@ const catalogoRouter = require('./catalogo');
 const orgRouter = require('./organizacion');
 const productRouter = require('./producto');
 const userRouter = require('./usuario');
+const voluntariadoRouter = require('./voluntariado');
 
 // // Middlewares:
 // const rootPath = require('../middleware/root_path.middleware');
@@ -20,6 +21,7 @@ routes.use('/catalogo', catalogoRouter);
 routes.use('/org', orgRouter);
 routes.use('/productos', productRouter);
 routes.use('/usuarios', userRouter);
+routes.use('/voluntariado', voluntariadoRouter);
 
 // routes.use('/', rootPath.handler);
 // routes.use(rootPath.setHeaders);
