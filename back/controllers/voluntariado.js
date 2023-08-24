@@ -1,6 +1,4 @@
-const { voluntariadoService } = require('../services');
-
-
+const { voluntariadoService } = require("../services");
 
 const createVoluntariado = async (req, res) => {
   try {
@@ -16,20 +14,31 @@ const getVoluntariadosByCriteria = async (req, res) => {
   try {
     const queryOptions = req.query;
     const bodyOptions = req.body;
-    const voluntariados = await voluntariadoService.getVoluntariadosByCriteria(queryOptions, bodyOptions);
+    const voluntariados = 
+      await voluntariadoService.getVoluntariadosByCriteria(
+        queryOptions,
+        bodyOptions
+    );
     res.json(voluntariados);
   } catch (err) {
-    res.status(500).json({ action: 'getVoluntariadosByCriteria', error: err.message });
+    res
+      .status(500)
+      .json({ action: "getVoluntariadosByCriteria", error: err.message });
   }
 };
 
 const updateVoluntariadoById = async (req, res) => {
   try {
     const { id } = req.params;
-    const voluntariado = await voluntariadoService.updateVoluntariadoById(id, req.body); 
+    const voluntariado = await voluntariadoService.updateVoluntariadoById(
+      id,
+      req.body
+    );
     res.json(voluntariado);
   } catch (err) {
-    res.status(500).json({ action: 'updateVoluntariadoById', error: err.message });
+    res
+      .status(500)
+      .json({ action: "updateVoluntariadoById", error: err.message });
   }
 };
 
@@ -39,7 +48,9 @@ const deleteVoluntariadoById = async (req, res) => {
     const volunteer = await voluntariadoService.deleteVoluntariadoById(id);
     res.json(volunteer);
   } catch (err) {
-    res.status(500).json({ action: 'deleteVoluntariadoById', error: err.message });
+    res
+      .status(500)
+      .json({ action: "deleteVoluntariadoById", error: err.message });
   }
 };
 module.exports = {
