@@ -6,9 +6,10 @@ import { FormAddProductComponent } from './form-add-product/form-add-product.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormUpdateComponent } from './form-update/form-update.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { FormDeleteComponent } from './form-delete/form-delete.component';
 
 @NgModule({
-  declarations: [DashboardPageComponent, FormAddProductComponent, FormUpdateComponent, NavBarComponent],
+  declarations: [DashboardPageComponent, FormAddProductComponent, FormUpdateComponent, NavBarComponent, FormDeleteComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
