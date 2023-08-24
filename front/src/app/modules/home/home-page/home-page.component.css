@@ -5,18 +5,4 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-
-}
-
-.title-volunteering-search {
-  font-size: clamp(1.125rem, 0.732rem + 1.96vw, 2.5rem);
- justify-content: center;
- text-align: center;
-}
-
-
-/* ------TESTIMONIALS------ */
-
-.title-testimonials {
-  font-size: clamp(1.25rem, 1.107rem + 0.71vw, 1.75rem);
 }

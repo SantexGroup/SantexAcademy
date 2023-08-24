@@ -1,10 +1,15 @@
-<section class="w-full flex items-center justify-center mb-16">
-  <swiper-container
-    slides-per-view="3"
-    loop="true"
-    navigation="true"
-    class="mySwiper"
-  >
+<section
+  class="w-full flex flex-col items-center justify-center mb-16 gap-8 lg:gap-16"
+>
+  <header class="w-full flex flex-col items-center gap-4 px-4">
+    <h2 class="font-bold text-2xl sm:text-3xl lg:text-4xl uppercase">
+      ¡Un mundo de voluntariado!
+    </h2>
+    <p class="font-bold sm:text-lg lg:text-2xl text-center">
+      Descubre las Organizaciones y Fundaciones que hacen la diferencia
+    </p>
+  </header>
+  <swiper-container slides-per-view="3" navigation="true" class="mySwiper">
     <ng-container *ngFor="let image of images">
       <swiper-slide class="flex items-center justify-center">
         <figure class="w-[150px]">

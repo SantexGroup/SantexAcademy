@@ -3,29 +3,19 @@
 @tailwind utilities;
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #FFF;
-    font-family: 'Open Sans', sans-serif;
-    display: flex;
-    justify-content: center;    
-}
-
-.a{
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-}
-
-.a span{
-background-color: black;
-padding: .3em;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
 }
