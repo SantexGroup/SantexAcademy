@@ -12,6 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MensajeErrorComponent } from './mensaje-error/mensaje-error.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -25,13 +28,16 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     RouterModule,
     MatDialogModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

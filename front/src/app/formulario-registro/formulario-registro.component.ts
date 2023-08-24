@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MensajeErrorComponent } from '../mensaje-error/mensaje-error.component';
+
+interface Genero {
+  genero: string;
+}
 
 @Component({
   selector: 'app-formulario-registro',
@@ -9,6 +13,18 @@ import { MensajeErrorComponent } from '../mensaje-error/mensaje-error.component'
   styleUrls: ['./formulario-registro.component.css'],
 })
 export class FormularioRegistroComponent implements OnInit {
+
+  hide = true;
+
+  generoControl = new FormControl<Genero | null>(null, Validators.required);
+  selectFormControl = new FormControl('', Validators.required);
+  genero: Genero[] = [
+
+    {genero: 'Masculino'},
+    {genero: 'Femenino'},
+  ];
+
+
   myForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder, public dialog: MatDialog) {}
@@ -16,27 +32,30 @@ export class FormularioRegistroComponent implements OnInit {
   ngOnInit(): void {
     this.myForm = this.formBuilder.group({
       nombreCompleto: ['', [Validators.required]],
-      correoElectronico: ['', [Validators.required, Validators.email]],
       usuario: ['', [Validators.required]],
       password: ['', [Validators.required]],
       confirmarPassword: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       genero: ['', [Validators.required]],
+
     });
+
+
   }
+
+  
 
   onSubmit() {
-    if (this.myForm.invalid) {
-      const errorMessage = 'Por favor complete todos los campos antes de continuar.';
-      this.openErrorMessageDialog(errorMessage);
-    } 
   }
 
-  openErrorMessageDialog(errorMessage: string): void {
-    const dialogRef = this.dialog.open(MensajeErrorComponent, {
-      width: '250px',
-      data: errorMessage,
-    });
-  }
+  getErrorMessage(controlName: string) {
+    const control = this.myForm.get(controlName);
 
+    if (controlName === 'email' && control?.hasError('email')) {
+      return 'No es un correo válido';
+    }
+
+    return '';
+  }
   
 }

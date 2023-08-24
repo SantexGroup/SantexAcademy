@@ -2,9 +2,9 @@
     display: grid;
     place-content: center;
     padding: 20px;
-    border: 1px solid black;
+    border: 0.5px solid rgba(0, 0, 0, 0.071);
     border-radius: 55px;
-    width: 370px;
+    width: 450px;
     margin: 135px auto;
   }
 
@@ -44,21 +44,24 @@
     font-weight: 700;
     line-height: normal;
     padding-bottom: 2px;
+    width: 220px;
   }
 
-  .form-input{
-    width: 180px;
-    height: 15px;
-    flex-shrink: 0;
-    color: #8E8E8E;
-    font-family: Arimo;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  h4.form-item{
+    margin-top: 10px;
+    margin-bottom: 0px;
   }
 
-  .form-input::placeholder {
+  .mat-form-field{
+    width: 220px;
+    margin: 5px;
+  }
+
+  
+
+
+
+  /* .form-input::placeholder {
     text-align: center;
   }
 
@@ -67,7 +70,7 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s, visibility 0.2s;
-  }
+  } */
 
   .form-input-genero{
     display: flex;
@@ -108,6 +111,13 @@
 
   }
 
+  .button-create:disabled {
+    border: 1px solid #ccc;
+    background-color: #ccc;
+    color: #666; 
+    cursor: not-allowed;
+  }
+
   .formulario-container form {
     width: 100%;
   }
@@ -137,23 +147,18 @@
   margin-left: 5px;
 }
 
-.login-button:hover {
+a.login-button:hover {
   color: #f5670e;
   cursor: pointer; 
 }
 
-.login-button:visited {
-  color: #f5670e; 
-}
-
-
  input{
     border: none;
-  }
-
-input{
     outline: none;
   }
+
+
+
 
 
   
