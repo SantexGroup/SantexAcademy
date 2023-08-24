@@ -18,12 +18,15 @@ module.exports = (sequelize, DataTypes) => {
     dni: DataTypes.INTEGER,
     mail: DataTypes.STRING,
     password: DataTypes.STRING,
-    estadoDeVendedor: DataTypes.BOOLEAN,
+    estadoDeVendedor: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     alias: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'User',
-    //tableName: 'users'
+    // tableName: 'users'
   });
   return User;
 };

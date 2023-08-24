@@ -23,4 +23,17 @@ async function createUser(req, res) {
   res.status(201).send(user);
 }
 
-module.exports = { login, createUser };
+// cambiar estado de vendedor
+
+async function cambiarEstadoVendedorUser(req, res, next) {
+  const { id } = req.params;
+  const { estadoDeVendedor } = req.body;
+  try {
+    const user = await userService.cambiarEstadoVendedor(id, estadoDeVendedor);
+    res.status(200).send(user);
+  } catch (error) {
+    next(error);
+  }
+}
+
+module.exports = { login, createUser, cambiarEstadoVendedorUser };
