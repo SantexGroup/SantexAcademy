@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
+import { BackServiceService } from 'src/app/services/back-service.service';
 
 @Component({
   selector: 'app-form-add-product',
@@ -8,22 +9,22 @@ import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms'
 })
 export class FormAddProductComponent implements OnInit {
 
-  constructor(private myFormAddProduct: FormBuilder) { }
+  constructor(private loginService: BackServiceService, private myFormAddProduct: FormBuilder) { }
 
   myForm = new FormGroup({
-    nombreProducto: new FormControl('', [Validators.required]),
-    cantidad: new FormControl('', [Validators.required, ]),
+    name: new FormControl('', [Validators.required]),
+    quantity: new FormControl('', [Validators.required, ]),
     categoria: new FormControl('', [Validators.required]),
     tipoMaterial: new FormControl('', [Validators.required]),
-    urlImagen: new FormControl('', [Validators.required]),
-    precio: new FormControl('', [Validators.required]),
-    descripcion: new FormControl('', [Validators.required])
+    image: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required])
   })
 
   addProduct() {
     console.log('Agregar', this.myForm.value)
+    this.loginService.addProduct(this.myForm.value).subscribe((result) => {console.log(result)});
     
-    // Resetea el formulario para limpiar los inputs
     this.myForm.reset();
   } 
 
