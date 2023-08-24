@@ -8,10 +8,12 @@ import { Component } from '@angular/core';
 export class SliderOrganizationsComponent {
   images: string[] = [
     '/assets/logotypes_organizations/orgOne.svg',
-    '/assets/logotypes_organizations/orgTwo.svg',
+    '/assets/logotypes_organizations/Banco_de_alimentos_Córdoba.png',
     '/assets/logotypes_organizations/orgThree.svg',
+    '/assets/logotypes_organizations/Cruz_Roja_Argentina redimensionada.png',
+
     '/assets/logotypes_organizations/orgOne.svg',
-    '/assets/logotypes_organizations/orgTwo.svg',
+    '/assets/logotypes_organizations/Banco_de_alimentos_Córdoba.png',
     '/assets/logotypes_organizations/orgThree.svg',
   ];
 }
