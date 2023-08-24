@@ -1,42 +1,48 @@
 <div>
     <h1 class="text-center">Nuestros Cursos</h1>
 </div>
+<p class="parrafo__courses text-center">
+    Potencia tu aprendizaje con nuestros cursos dinámicos y adquiere habilidades claves para
+    destacar en tu carrera profesional
+</p>
+<p-divider></p-divider>
 
-
-<div class="card-container botones">
-    <p-splitButton label="Categoria" styleClass="p-button-raised p-button-text p-button-secondary" icon="pi pi-plus"></p-splitButton>
-    <p-button label="Buscar" styleClass="p-button-raised p-button-text p-button-secondary"></p-button>
+<div class="card-container botones flex justify-content-evenly buttons">
+    <p-splitButton class="flex align-items-center" label="Categoria" styleClass="p-button-raised p-button-text p-button-secondary" icon="pi pi-plus"></p-splitButton>
+    <p-button  class="flex  align-items-center" label="Buscar" styleClass="p-button-raised p-button-text p-button-secondary"></p-button>
 </div>
 
-
-<div *ngFor="let courses of coursesService.courses" class="card-container">
-    <div class="flex justify-content-evenly flex-wrap card-container">
-        <p-card [style]="{ width: '360px' }" class="flex justify-content-center font-bold text-white border-round m-2">
-            <div class="card__content">
+<div  class="flex justify-content-center flex-wrap">
+<div class="card-container" *ngFor="let course of coursesService.courses">
+    <div class="card-container flex align-items-center justify-content-center">
+        <p-card [style]="{ width: '360px' }" class=" font-bold text-white border-round m-2">
+            <div>
                 <h2>
-                    {{ courses.title }}
+                    {{ course.title }}
                 </h2>
                 <p>
-                    {{ courses.description }}
+                    {{ course.description }}
                 </p>
-
+                <p-divider></p-divider>
                 <h3>
-                    {{courses.price | currency}}
+                    {{course.price | currency}}
                 </h3>
                 <p>
-                    Hasta 6 cuotas sin interés de <span class="card__price--bold">$1200</span>
+                    Hasta {{course.due}} cuotas sin interés de <span class="card__price--bold">{{coursesService.getRoundedPrice(course.price,course.due)}}</span>
                 </p>
                 <p class="card__starter mb-3">
-                    fecha de inicio: {{ courses.starter_date }}
+                    fecha de inicio: {{ course.start_date }}
                 </p>
+                <p-divider></p-divider>
                 <footer class="flex flex-column justify-content-center footer">
-                    <p-button label="Ver detalle del curso"
+                    <p-button label="Ver detalle del curso" class="flex justify-content-center"
                         styleClass="p-button-raised p-button-text p-button-secondary"></p-button>
-                    <p-button label="Inscribite" icon="pi pi-times"
+                    <p-button label="Inscribite" icon="pi pi-times" class="flex justify-content-center buttons"
                         styleClass="p-button-raised p-button-text p-button-secondary"
                         [style]="{ 'margin-left': '.5em' }"></p-button>
                 </footer>
             </div>
         </p-card>
     </div>
+</div>
 </div>
