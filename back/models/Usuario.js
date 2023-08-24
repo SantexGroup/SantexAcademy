@@ -32,7 +32,12 @@ const Usuario = sequelize.define(
       allowNull: false,
       defaultValue: 0,
     },
-    recompensasAcumuladas: {
+    puntosAcumulados: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: 0,
+    },
+    puntosCanjeados: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 0,

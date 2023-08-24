@@ -1,45 +1,45 @@
 const Catalogo = require('./Catalogo');
-const CestaRecompensas = require('./CestaRecompensas');
+const Carrito = require('./Carrito');
 const Organizacion = require('./Organizacion');
-const Producto = require('./Producto');
+const Recompensa = require('./Recompensa');
 const Roles = require('./Roles');
 const Usuario = require('./Usuario');
-const Voluntariado = require('./Voluntariado');
+const Vacante = require('./Vacante');
 
 // relations
-Usuario.hasMany(CestaRecompensas);
-CestaRecompensas.belongsTo(Usuario);
+Usuario.hasMany(Carrito);
+Carrito.belongsTo(Usuario);
 
-CestaRecompensas.belongsToMany(Producto, {
-  through: 'ProductoEnCestaRecompensas',
+Carrito.belongsToMany(Recompensa, {
+  through: 'RecompensaEnCarrito',
 });
-Producto.belongsToMany(CestaRecompensas, {
-  through: 'ProductoEnCestaRecompensas',
+Recompensa.belongsToMany(Carrito, {
+  through: 'RecompensaEnCarrito',
 });
 
 Usuario.belongsTo(Roles);
 Roles.hasMany(Usuario);
 
-Producto.belongsTo(Catalogo);
-Catalogo.hasMany(Producto);
+Recompensa.belongsTo(Catalogo);
+Catalogo.hasMany(Recompensa);
 
-Usuario.belongsToMany(Voluntariado, {
-  through: 'UsuarioEnVoluntariado',
+Usuario.belongsToMany(Vacante, {
+  through: 'UsuarioEnVacante',
 });
-Voluntariado.belongsToMany(Usuario, {
-  through: 'UsuarioEnVoluntariado',
+Vacante.belongsToMany(Usuario, {
+  through: 'UsuarioEnVacante',
 });
 
-Voluntariado.belongsTo(Organizacion);
-Organizacion.hasMany(Voluntariado);
+Vacante.belongsTo(Organizacion);
+Organizacion.hasMany(Vacante);
 
 // exports
 module.exports = {
   Catalogo,
-  CestaRecompensas,
+  Carrito,
   Organizacion,
-  Producto,
+  Recompensa,
   Roles,
   Usuario,
-  Voluntariado,
+  Vacante,
 };

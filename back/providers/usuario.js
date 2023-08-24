@@ -1,6 +1,6 @@
 const { Op } = require('sequelize');
 const { Usuario } = require('../models');
-const { CestaRecompensas } = require('../models');
+const { Carrito } = require('../models');
 const { sequelize } = require('../config/db-config');
 
 const createUser = async (usuario) => {
@@ -24,17 +24,17 @@ const createUser = async (usuario) => {
       await existingDeletedUser.destroy();
     }
 
-    // Crear un registro en la tabla cestaRecompensas
-    const newCestaRecompensas = await CestaRecompensas.create(
-      { name: `Cesta de ${usuario.fullName}` },
+    // Crear un registro en la tabla Carrito
+    const newCarrito = await Carrito.create(
+      { name: `Carrito de ${usuario.fullName}` },
       { transaction },
     );
 
-    // Crear el nuevo registro de usuario con el id de la cestaRecompensas creada
+    // Crear el nuevo registro de usuario con el id del Carrito creada
     const newUser = await Usuario.create(
       {
         ...usuario,
-        cestaRecompensasId: newCestaRecompensas.id,
+        CarritoId: newCarrito.id,
       },
       { transaction },
     );
@@ -109,8 +109,8 @@ const deleteUserById = async (id) => {
     // Aplicar borrado lógico estableciendo la columna deletedAt
     await Usuario.update({ deletedAt: new Date() }, { where: { id } });
 
-    // todo! --Eliminar físicamente el registro de la tabla CestaRecompensas--
-    await CestaRecompensas.destroy({ where: { id } });
+    // todo! --Eliminar físicamente el registro de la tabla Carrito--
+    await Carrito.destroy({ where: { id } });
 
     return user;
   } catch (error) {

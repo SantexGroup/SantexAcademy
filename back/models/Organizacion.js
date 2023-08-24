@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db-config');
 
 const Organizacion = sequelize.define(
-  'organizacion',
+  'organizaciones',
   {
     id: {
       autoIncrement: true,
