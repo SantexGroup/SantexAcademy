@@ -1,154 +1,150 @@
-<div class="containerDetail lg:w-8 lg:m-auto lg:flex-colum ">
 
-    <div class="containerDetailCourse my-o mx-2 relative ">
-
-        <img class="imgBanner w-screen h-20rem" 
-        src="https://hellonails.es/wp-content/uploads/2020/06/Tipos-de-manicura-img3.jpg" alt="">
-        
-        <div class="containerCourse lg:pr-5 lg:pl-5 absolute flex justify-content-between bottom-0 gap-6 w-12">
+<div  *ngFor="let detail of courseDetailService.courses">
+    <div class="containerDetail lg:w-8 lg:m-auto lg:flex-colum ">
     
-            <div class="title lg:text-5xl mt-5 ml-2 w-rem font-medium">Curso Semipermanente</div>
-            <div class="containerCost flex-colum border-circle 
-            h-7rem w-7rem m-2 text-gray-900 font-bold text-center">
-                <p class="text mt-5">Desde solo</p>
-                <p>$999</p>
+        <div class="containerDetailCourse my-o mx-2 relative ">
+
+            <img class="imgBanner w-screen h-20rem" 
+            src="https://hellonails.es/wp-content/uploads/2020/06/Tipos-de-manicura-img3.jpg" alt="">
+            
+            <div class="containerCourse lg:pr-5 lg:pl-5 absolute flex justify-content-between bottom-0 gap-6 w-12">
+        
+                <div class="title lg:text-5xl mt-5 ml-2 w-rem font-medium">Curso Semipermanente</div>
+                <div class="containerCost flex-colum border-circle 
+                h-7rem w-7rem m-2 text-gray-900 font-bold text-center">
+                    <p class="text mt-5">Desde solo</p>
+                    <p>$999</p>
+                </div>
+                
             </div>
+        </div>
+    
+        <div class="containerDetailDownload mx-2 lg:flex lg:justify-content-between align-items-center">
+            <p-button label="Programa" styleClass="p-button-secondary
+             relative flex justify-content-center font-bold text-xl w-12 lg:w-13rem y-2 my-2" icon="pi pi-download" iconPos="right">
+            </p-button>
+    
+            <a routerLink="/form-inscr-courses" pButton label="Inscríbete" type="button" class="p-button-warning 
+            font-bold text-xl w-12 lg:w-14rem justify-content-center lg: my-2
+            "></a>
             
         </div>
-    </div>
-
-    <div class="containerDetailDownload mx-2 lg:flex lg:justify-content-between align-items-center">
-        <p-button label="Programa" styleClass="p-button-secondary
-         relative flex justify-content-center font-bold text-xl w-12 lg:w-13rem y-2 my-2" icon="pi pi-download" iconPos="right">
-        </p-button>
-
-        <a routerLink="/form-inscr-courses" pButton label="Inscríbete" type="button" class="p-button-warning 
-        font-bold text-xl w-12 lg:w-14rem justify-content-center lg: my-2
-        "></a>
+    
+        <div class="containerDetailText mx-3 mt-7 mb-3 flex-colum lg:flex lg: gap-6">
+            <p class="detailText">{{detail.paragraph1}}
+            </p>
+            <div class="imgLogo lg:max-w-30rem">
+                <img class="w-12 m-auto" 
+                src="https://scontent.fcor2-1.fna.fbcdn.net/v/t39.30808-6/345270431_766231688363871_4341753288289659002_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=be3454&_nc_ohc=QGnWw-AdrIYAX828Pa8&_nc_ht=scontent.fcor2-1.fna&oh=00_AfB9q-dIPbwlNg0cYqzf-7mwXbD9J24RrhQo31uIUz8aLA&oe=64DDF161" alt="">           
+            </div>
+        </div>
+    
+        <div class="ontainerDetailDivider grid py-5 mx-2 ">
+            <div class="col-4 md:col-6 lg:col-2 text-center divCard">
+                <p><i class="pi pi-history font-bold text-2xl pt-4"></i></p>
+                <p class="my-2">Duracion</p>
+                <p class="font-bold">3 Meses</p>
+            </div>
+            <div class="col-4 md:col-6 lg:col-2 text-center divCard">
+                <p><i class="pi pi-desktop font-bold text-2xl pt-4"></i></p>
+                <p class="my-2">Modalidad</p>
+                <p class="font-bold">Online</p>
+            </div>
+            <div class="col-4 md:col-6 lg:col-2 text-center divCard">
+                <p><i class="pi pi-stopwatch font-bold text-2xl pt-4"></i></p>
+                <p class="my-2">Horario</p>
+                <p class="font-bold">Consultar</p>
+            </div>
+            <div class="col-4 md:col-6 lg:col-2 text-center divCard">
+                <p><i class="pi pi-calendar font-bold text-2xl pt-4"></i></p>
+                <p class="my-2" >Fecha Inicio</p>
+                <p class="font-bold">20/08/2023</p>
+            </div>
+            <div class="col-4 md:col-6 lg:col-2 text-center divCard">
+                <p><i class="pi pi-calendar font-bold text-2xl pt-4"></i></p>
+                <p class="my-2">Fecha Finalizacion</p>
+                <p class="font-bold">20/10/2023</p>
+            </div>
+            <div class="col-4 md:col-6 lg:col-2 text-center divCard">
+                <p><i class="pi pi-money-bill font-bold text-2xl pt-4"></i></p>
+                <p class="my-3" >Precio</p>
+                <p class="font-bold">$999</p>
+            </div>
+        </div>
         
-    </div>
-
-    <div class="containerDetailText mx-3 mt-7 mb-3 flex-colum lg:flex lg: gap-6">
-        <p class="detailText">La educación es sin duda el camino para el desarrollo social. 
-            Cada año, profesionales de esta área buscan los medios para mejorar 
-            los procesos por los cuales se transmiten y afianzan los conocimientos. 
-            Sin embargo, también buscan analizar, comprender y explicar los problemas 
-            complejos que acontecen en los espacios educativos. Todo ello, con el 
-            objetivo de mejorar a nivel integral el proceso de aprendizaje. Así, 
-            para hacer esto posible, es necesario que se adquieran una serie de 
-            herramientas y habilidades en investigación educativa que potencien conclusiones 
-            óptimas para mejorar la educación en su conjunto. Con este programa de Incubadora NOC, 
-            el estudiante se encuentra ante una oportunidad académica única en modalidad 100% 
-            virtual que le permitirá alcanzar el máximo nivel Nombre del curso.
-        </p>
-        <div class="imgLogo lg:max-w-30rem">
-            <img class="w-12 m-auto" 
-            src="https://scontent.fcor2-1.fna.fbcdn.net/v/t39.30808-6/345270431_766231688363871_4341753288289659002_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=be3454&_nc_ohc=QGnWw-AdrIYAX828Pa8&_nc_ht=scontent.fcor2-1.fna&oh=00_AfB9q-dIPbwlNg0cYqzf-7mwXbD9J24RrhQo31uIUz8aLA&oe=64DDF161" alt="">           
-        </div>
-    </div>
-
-    <div class="ontainerDetailDivider grid py-5 mx-2 ">
-        <div class="col-4 md:col-6 lg:col-2 text-center divCard">
-            <p><i class="pi pi-history font-bold text-2xl pt-4"></i></p>
-            <p class="my-2">Duracion</p>
-            <p class="font-bold">3 Meses</p>
-        </div>
-        <div class="col-4 md:col-6 lg:col-2 text-center divCard">
-            <p><i class="pi pi-desktop font-bold text-2xl pt-4"></i></p>
-            <p class="my-2">Modalidad</p>
-            <p class="font-bold">Online</p>
-        </div>
-        <div class="col-4 md:col-6 lg:col-2 text-center divCard">
-            <p><i class="pi pi-stopwatch font-bold text-2xl pt-4"></i></p>
-            <p class="my-2">Horario</p>
-            <p class="font-bold">Consultar</p>
-        </div>
-        <div class="col-4 md:col-6 lg:col-2 text-center divCard">
-            <p><i class="pi pi-calendar font-bold text-2xl pt-4"></i></p>
-            <p class="my-2" >Fecha Inicio</p>
-            <p class="font-bold">20/08/2023</p>
-        </div>
-        <div class="col-4 md:col-6 lg:col-2 text-center divCard">
-            <p><i class="pi pi-calendar font-bold text-2xl pt-4"></i></p>
-            <p class="my-2">Fecha Finalizacion</p>
-            <p class="font-bold">20/10/2023</p>
-        </div>
-        <div class="col-4 md:col-6 lg:col-2 text-center divCard">
-            <p><i class="pi pi-money-bill font-bold text-2xl pt-4"></i></p>
-            <p class="my-3" >Precio</p>
-            <p class="font-bold">$999</p>
-        </div>
-    </div>
+        <div class="containerAccordion pb-8">
+            <p-accordion [multiple]="true" [activeIndex]="[0]">
+               
+                <p-accordionTab header="Presentacion">
+                    <div class="lg:flex ">
+                        <p class="lg: mr-4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                             veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+                             commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <img class="lg:max-w-17rem" src="https://scontent.fctc1-1.fna.fbcdn.net/v/t39.30808-6/345270431_766231688363871_4341753288289659002_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=UM2fRhq7zZMAX_oCL61&_nc_ht=scontent.fctc1-1.fna&oh=00_AfCcwDAgWWvIY7F975mUvvtDe9ZtYBfO9igxNhGJf31Bcg&oe=64E3E021" alt="">
+                    </div>
+                </p-accordionTab>
+                
+                <p-accordionTab header="Periodo de Formacion">
     
-    <div class="containerAccordion pb-8">
-        <p-accordion [multiple]="true" [activeIndex]="[0]">
-           
-            <p-accordionTab header="Presentacion">
-                <div class="lg:flex ">
-                    <p class="lg: mr-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-                         commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <img class="lg:max-w-17rem" src="https://scontent.fctc1-1.fna.fbcdn.net/v/t39.30808-6/345270431_766231688363871_4341753288289659002_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=UM2fRhq7zZMAX_oCL61&_nc_ht=scontent.fctc1-1.fna&oh=00_AfCcwDAgWWvIY7F975mUvvtDe9ZtYBfO9igxNhGJf31Bcg&oe=64E3E021" alt="">
-                </div>
-            </p-accordionTab>
-            
-            <p-accordionTab header="Periodo de Formacion">
-
-                <div class="lg:flex">
-                    <p class="lg: mr-4">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
-                        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore 
-                        veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-                        ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                         consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
-                         Consectetur, adipisci velit, sed quia non numquam eius modi.
-                    </p>
-                    <img class="max-w-17rem" src="https://www.elegircarrera.net/blog/wp-content/uploads/2017/02/tomar-notas-en-clase-2000x1200.jpg" alt="">
+                    <div class="lg:flex">
+                        <p class="lg: mr-4">
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
+                            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore 
+                            veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+                            ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                             consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
+                             Consectetur, adipisci velit, sed quia non numquam eius modi.
+                        </p>
+                        <img class="max-w-17rem" src="https://www.elegircarrera.net/blog/wp-content/uploads/2017/02/tomar-notas-en-clase-2000x1200.jpg" alt="">
+        
+                    </div>
     
-                </div>
-
-            </p-accordionTab>
-            
-            <p-accordionTab header="Requisitos previos para la cursada">
-                <div class="lg:flex">
-                    <p class="lg:mr-4">
-                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                         praesentium voluptatum deleniti atque corrupti quos dolores et quas 
-                         molestias excepturi sint occaecati cupiditate non provident, similique 
-                         sunt in culpa qui officia deserunt mollitia animi, id est laborum et 
-                         dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. 
-                         Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
-                    </p>
-                    <img class="lg:max-w-18rem" src="https://www.multycasetas.com/wp-content/uploads/2016/10/requisitos-del-producto-768x576.jpg" alt="">
+                </p-accordionTab>
+                
+                <p-accordionTab header="Requisitos previos para la cursada">
+                    <div class="lg:flex">
+                        <p class="lg:mr-4">
+                            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+                             praesentium voluptatum deleniti atque corrupti quos dolores et quas 
+                             molestias excepturi sint occaecati cupiditate non provident, similique 
+                             sunt in culpa qui officia deserunt mollitia animi, id est laborum et 
+                             dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. 
+                             Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
+                        </p>
+                        <img class="lg:max-w-18rem" src="https://www.multycasetas.com/wp-content/uploads/2016/10/requisitos-del-producto-768x576.jpg" alt="">
+        
+                    </div>
+                </p-accordionTab>
     
-                </div>
-            </p-accordionTab>
-
-            <p-accordionTab header="¿Por que nuestro programa?">
-                <div class="lg:flex">
-                    <p class="lg:mr-4">
-                        At vero eos et accusamus et iusto odio dignissimos ducimus qui 
-                        blanditiis praesentium voluptatum deleniti atque corrupti quos 
-                        dolores et quas molestias excepturi sint occaecati cupiditate non 
-                        provident, similique sunt in culpa
-                        qui officia deserunt mollitia animi, id est laborum et dolorum fuga. 
-                        Et harum quidem rerum facilis est et expedita distinctio. Nam libero 
-                        tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo
-                         minus.
-                    </p>
-                    <img class="lg:max-w-19rem" src="https://scontent.fctc1-1.fna.fbcdn.net/v/t39.30808-6/261505663_4357163594406859_4582290419759012092_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=a26aad&_nc_ohc=zrmm19_FvVYAX9LrpLe&_nc_ht=scontent.fctc1-1.fna&oh=00_AfDW_w82_kEV-TorbTRAcQ-0LzLFE_402SWJSk3wy4J-cA&oe=64E3A645" alt="">
+                <p-accordionTab header="¿Por que nuestro programa?">
+                    <div class="lg:flex">
+                        <p class="lg:mr-4">
+                            At vero eos et accusamus et iusto odio dignissimos ducimus qui 
+                            blanditiis praesentium voluptatum deleniti atque corrupti quos 
+                            dolores et quas molestias excepturi sint occaecati cupiditate non 
+                            provident, similique sunt in culpa
+                            qui officia deserunt mollitia animi, id est laborum et dolorum fuga. 
+                            Et harum quidem rerum facilis est et expedita distinctio. Nam libero 
+                            tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo
+                             minus.
+                        </p>
+                        <img class="lg:max-w-19rem" src="https://scontent.fctc1-1.fna.fbcdn.net/v/t39.30808-6/261505663_4357163594406859_4582290419759012092_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=a26aad&_nc_ohc=zrmm19_FvVYAX9LrpLe&_nc_ht=scontent.fctc1-1.fna&oh=00_AfDW_w82_kEV-TorbTRAcQ-0LzLFE_402SWJSk3wy4J-cA&oe=64E3A645" alt="">
+        
+                    </div>
+                </p-accordionTab>
     
-                </div>
-            </p-accordionTab>
-
-        </p-accordion>
-    </div>
-
+            </p-accordion>
+        </div>
+    </div>   
 </div>
+
+
+
+
 
