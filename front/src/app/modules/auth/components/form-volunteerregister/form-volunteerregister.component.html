@@ -41,9 +41,20 @@
           type="text"
           name="full_name"
           placeholder="Introduce tu apellido y nombre"
-          class="border border-dimGray rounded-md py-2 pl-2"
+          class="border border-dimGray rounded-md py-2 pl-2 outline-none"
           [(ngModel)]="full_name"
         />
+        <div class="w-full items-center justify-end">
+          <p
+            [ngClass]="
+              errorName && full_name.length == 0
+                ? 'flex-initial text-end text-deepPink'
+                : 'hidden'
+            "
+          >
+            {{ errorName }}
+          </p>
+        </div>
       </div>
       <div class="w-full flex flex-col text-start gap-1">
         <label for="email"><b>Correo electrónico</b></label>
@@ -52,9 +63,29 @@
           type="email"
           name="email"
           placeholder="Introduce tu correo electrónico"
-          class="border border-dimGray rounded-md py-2 pl-2"
+          class="border border-dimGray rounded-md py-2 pl-2 outline-none"
           [(ngModel)]="email"
         />
+        <div class="w-full items-center justify-end">
+          <p
+            [ngClass]="
+              errorEmail.length !== 0 && email.length == 0
+                ? 'flex-initial text-end text-deepPink'
+                : 'hidden'
+            "
+          >
+            {{ errorEmail }}
+          </p>
+          <p
+            [ngClass]="
+              errorEmailTwo.length !== 0 && !email.includes('@')
+                ? 'flex-initial text-end text-deepPink'
+                : 'hidden'
+            "
+          >
+            {{ errorEmailTwo }}
+          </p>
+        </div>
       </div>
       <div class="w-full flex flex-col text-start gap-1">
         <label for="phone"><b>Teléfono</b></label>
@@ -63,9 +94,20 @@
           type="number"
           name="phone"
           placeholder="Introduce tu número telefónico"
-          class="border border-dimGray rounded-md py-2 pl-2"
+          class="border border-dimGray rounded-md py-2 pl-2 outline-none"
           [(ngModel)]="phone"
         />
+        <div class="w-full items-center justify-end">
+          <p
+            [ngClass]="
+              errorPhone && phone.length == 0
+                ? 'flex-initial text-end text-deepPink'
+                : 'hidden'
+            "
+          >
+            {{ errorPhone }}
+          </p>
+        </div>
       </div>
       <div class="w-full flex flex-col gap-1 relative">
         <label for="password" class="text-start"><b>Contraseña</b></label>
@@ -74,9 +116,20 @@
           [type]="showPassword ? 'text' : 'password'"
           name="password"
           placeholder="Introduce tu contraseña"
-          class="border border-dimGray rounded-md py-2 pl-2"
+          class="border border-dimGray rounded-md py-2 pl-2 outline-none"
           [(ngModel)]="password"
         />
+        <div class="w-full items-center justify-end">
+          <p
+            [ngClass]="
+              errorPassword && password.length == 0
+                ? 'flex-initial text-end text-deepPink'
+                : 'hidden'
+            "
+          >
+            {{ errorPassword }}
+          </p>
+        </div>
         <i
           class="bx bx-low-vision absolute top-9 right-4 text-xl cursor-pointer"
           (click)="sendShowPassword()"
