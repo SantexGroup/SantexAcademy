@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header-dashboard.component.css']
 })
 export class HeaderDashboardComponent implements OnInit {
+  isLogoutModalOpen: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  openLogoutModal(){
+    this.isLogoutModalOpen = true
   }
 
 }
