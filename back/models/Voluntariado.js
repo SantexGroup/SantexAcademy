@@ -4,7 +4,7 @@ const { sequelize } = require('../config/db-config');
 const Voluntariado = sequelize.define(
   'voluntariado',
   {
-    idVoluntariado: {
+    id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
