@@ -9,11 +9,16 @@
       Descubre las Organizaciones y Fundaciones que hacen la diferencia
     </p>
   </header>
-  <swiper-container slides-per-view="3" autoplay loop="true" navigation="true" class="mySwiper ">
+  <swiper-container
+    slides-per-view="3"
+    loop="true"
+    navigation="true"
+    class="mySwiper"
+  >
     <ng-container *ngFor="let image of images">
       <swiper-slide class="flex items-center justify-center mx-4 lg:mx-0">
-        <figure class="w-[150px] md:w-[250px]">
-          <img [src]="image" class="w-full h-full object-cover" />
+        <figure class="w-[150px] h-[105px] md:w-[250px]">
+          <img [src]="image" class="w-full h-full object-contain" />
         </figure>
       </swiper-slide>
     </ng-container>
