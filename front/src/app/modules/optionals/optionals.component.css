@@ -13,6 +13,24 @@ body{
     height: 70vh;
 }
 
+.carousel-item textarea{
+    resize: none;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.carousel-item input{
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.carousel-item select{
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+}
 
 .carousel-control-prev{
     left: -70px;

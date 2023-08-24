@@ -1,0 +1,17 @@
+export interface Optionals {
+    id: number,
+    marital_id: number,
+    sexs_id: number,
+    countries_id: number,
+    profile: string,
+    webPage: string,
+    linkedIn: string,
+    hobbies: string,
+    aptitudes: string,
+    driverLicense: string,
+    aboutMe: string,
+    achievements: string,
+    address: string,
+    zipCode: number,
+    deletedAt: Date,
+}
