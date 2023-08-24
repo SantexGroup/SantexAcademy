@@ -46,7 +46,6 @@ export class FormDeleteComponent implements OnInit {
   ngOnInit(): void {
     this.backService.getProducts().subscribe((result) => {
       this.productList = result;
-      console.log('Productos: ', this.productList);
       this.hasProducts = this.productList.length > 0;
     });
   }
@@ -84,7 +83,6 @@ export class FormDeleteComponent implements OnInit {
               this.backService
                 .deleteProduct(this.selectedProduct.id)
                 .subscribe((result) => {
-                  console.log('Producto eliminado: ', result);
                   this.titularAlerta = 'Producto eliminado .... ';
                 });
             }
