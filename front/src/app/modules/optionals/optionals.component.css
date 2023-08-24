@@ -1,6 +1,29 @@
+body{
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,114,187,1) 100%);
+}
+
 .optionalsInput{
-    background: red;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.carousel-item{
+    width: 60vh;
+    height: 70vh;
+}
+
+
+.carousel-control-prev{
+    left: -70px;
+}
+
+.carousel-control-next{
+    right:-70px;
+}
+
+.botonera{
+    display: flex;
+    justify-content: center ;
+    align-items: center;
 }
