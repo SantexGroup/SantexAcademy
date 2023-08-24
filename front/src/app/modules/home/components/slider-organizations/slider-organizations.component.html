@@ -1,5 +1,5 @@
 <section
-  class="w-full flex flex-col items-center justify-center mb-16 gap-8 lg:gap-16"
+  class="w-full flex flex-col items-center justify-center mb-16 gap-8 lg:gap-16 overflow-x-hidden"
 >
   <header class="w-full flex flex-col items-center gap-4 px-4">
     <h2 class="font-bold text-2xl sm:text-3xl lg:text-4xl uppercase">
@@ -11,8 +11,8 @@
   </header>
   <swiper-container slides-per-view="3" navigation="true" class="mySwiper">
     <ng-container *ngFor="let image of images">
-      <swiper-slide class="flex items-center justify-center">
-        <figure class="w-[150px]">
+      <swiper-slide class="flex items-center justify-center mx-4">
+        <figure class="w-[150px] md:w-[250px]">
           <img [src]="image" class="w-full h-full object-cover" />
         </figure>
       </swiper-slide>

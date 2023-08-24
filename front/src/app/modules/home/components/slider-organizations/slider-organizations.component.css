@@ -1,6 +1,7 @@
 .mySwiper {
   width: 100vw !important;
   max-width: 1500px;
+  padding-inline: 1em;
 }
 
 /* .swiper-button-prev,
