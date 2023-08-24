@@ -2,6 +2,9 @@
   width: 100vw !important;
   max-width: 1500px;
   padding-inline: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* .swiper-button-prev,
