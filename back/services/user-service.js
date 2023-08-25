@@ -21,9 +21,7 @@ async function login(alias, password) {
     alias: users.alias
   }, 'ClaveUltraSecreta', {expiresIn: '5m'});
 
-  return {
-      accessToken: token
-  }
+  return {token};
 }
 
 // creacion de usuario

@@ -5,8 +5,8 @@ async function login(req, res, next) {
   const { alias, password } = req.body;
 
   try {
-    const result = await userService.login(alias, password);
-    res.status(200).send(result);
+    const accesToken = await userService.login(alias, password);
+    res.status(200).send(accesToken);
   } catch (error) {
     next(error);
   }
