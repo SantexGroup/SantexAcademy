@@ -1,7 +1,17 @@
-const { Op } = require('sequelize');
-const { Usuario } = require('../models');
-const { CestaRecompensas } = require('../models');
-const { sequelize } = require('../config/db-config');
+const { Op } = require("sequelize");
+const { Usuario } = require("../models");
+const { CestaRecompensas } = require("../models");
+const { sequelize } = require("../config/db-config");
+
+const loginUser = async (email) => {
+  const user = await Usuario.findOne({
+    where: { email: email },
+  });
+  if (!user) {
+    return null;
+  }
+  return user;
+};
 
 const createUser = async (usuario) => {
   let transaction;
@@ -27,7 +37,7 @@ const createUser = async (usuario) => {
     // Crear un registro en la tabla cestaRecompensas
     const newCestaRecompensas = await CestaRecompensas.create(
       { name: `Cesta de ${usuario.fullName}` },
-      { transaction },
+      { transaction }
     );
 
     // Crear el nuevo registro de usuario con el id de la cestaRecompensas creada
@@ -35,8 +45,9 @@ const createUser = async (usuario) => {
       {
         ...usuario,
         cestaRecompensasId: newCestaRecompensas.id,
+        rolesId: 2,
       },
-      { transaction },
+      { transaction }
     );
 
     await transaction.commit();
@@ -51,7 +62,7 @@ const createUser = async (usuario) => {
     if (transaction) {
       await transaction.rollback();
     }
-    console.error('The user could not be created due to an error.', err);
+    console.error("The user could not be created due to an error.", err);
     throw err;
   }
 };
@@ -60,7 +71,7 @@ const getUsersByCriteria = async (queryOptions, bodyOptions) => {
   try {
     const options = { ...queryOptions, ...bodyOptions }; // Combinar las opciones de búsqueda
     const where = {}; // Excluir registros eliminados lógicamente
-    const validOptions = ['id', 'fullName', 'telefono', 'email'];
+    const validOptions = ["id", "fullName", "telefono", "email"];
 
     validOptions.forEach((option) => {
       if (options[option]) where[option] = options[option];
@@ -69,12 +80,15 @@ const getUsersByCriteria = async (queryOptions, bodyOptions) => {
 
     const organizations = await Usuario.findAll({
       where,
-      attributes: { exclude: ['deletedAt'] },
+      attributes: { exclude: ["deletedAt"] },
     });
 
     return organizations;
   } catch (error) {
-    console.error('The organization/s could not be retrieved due to an error.', error);
+    console.error(
+      "The organization/s could not be retrieved due to an error.",
+      error
+    );
     throw error;
   }
 };
@@ -83,12 +97,12 @@ const updateUserById = async (id, usuario) => {
   try {
     const user = await Usuario.findByPk(id);
     if (!user) {
-      throw new Error('The user does not exist.');
+      throw new Error("The user does not exist.");
     }
     const updatedUser = await user.update(usuario);
     return updatedUser;
   } catch (error) {
-    console.error('The user could not be updated due to an error.', error);
+    console.error("The user could not be updated due to an error.", error);
     throw error;
   }
 };
@@ -103,7 +117,7 @@ const deleteUserById = async (id) => {
     });
 
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     // Aplicar borrado lógico estableciendo la columna deletedAt
@@ -114,11 +128,15 @@ const deleteUserById = async (id) => {
 
     return user;
   } catch (error) {
-    console.error('Ocurrió un error al eliminar el usuario.', error);
+    console.error("Ocurrió un error al eliminar el usuario.", error);
     throw error;
   }
 };
 
 module.exports = {
-  createUser, getUsersByCriteria, updateUserById, deleteUserById,
+  loginUser,
+  createUser,
+  getUsersByCriteria,
+  updateUserById,
+  deleteUserById,
 };

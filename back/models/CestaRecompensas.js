@@ -16,9 +16,7 @@ const CestaRecompensas = sequelize.define(
       unique: 'name_UNIQUE',
     },
   },
-  {
-    paranoid: true,
-  },
+
 );
 
 module.exports = CestaRecompensas;
