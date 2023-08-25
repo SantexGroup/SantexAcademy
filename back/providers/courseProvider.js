@@ -9,12 +9,6 @@ const ScheduleProvider = require("./scheduleProvider");
 
 const createCourse = async (CourseOptions) => {
   try {
-    console.log(CourseOptions.name);
-    const checkExist = await Course.findOne({
-      where: { name: CourseOptions.name },
-    });
-    console.log(checkExist);
-    if (checkExist) throw new Error("course already exists");
     //obtiene el objeto
     const getObjetCategory = await CategoryProvider.getCategoryByName(
       CourseOptions.CourseCategoryName
