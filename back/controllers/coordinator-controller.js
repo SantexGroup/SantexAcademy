@@ -37,7 +37,7 @@ async function createCoordinator(req, res) {
 async function editCoordinator(req, res) {
   const { id } = req.params;
   const {
-    name, description, email, password, address, phone,
+    name, description, email, address, phone,
   } = req.body;
 
   // eslint-disable-next-line max-len
@@ -64,7 +64,19 @@ async function loginCoordinator(req, res) {
   }
 }
 
+async function modifyPasswordController(req, res) {
+  try {
+    const { id } = req.params;
+    const { currentPassword, newPassword } = req.body;
+
+    const user = await coordinatorServices.modifyPassword(id, currentPassword, newPassword);
+    res.status(200).json({ user, message: 'contraseña actualizada correctamente' });
+  } catch (error) {
+    res.status(500).json({ error: 'Error al modificar la contraseña' });
+  }
+}
+
 module.exports = {
   // eslint-disable-next-line max-len
-  getAllCoordinators, getCoordinatorById, createCoordinator, editCoordinator, deleteCoordinator, loginCoordinator, getDataOrganizacion,
+  getAllCoordinators, getCoordinatorById, createCoordinator, editCoordinator, deleteCoordinator, loginCoordinator, getDataOrganizacion, modifyPasswordController,
 };

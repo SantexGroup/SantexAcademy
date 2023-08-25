@@ -10,7 +10,7 @@ function getDataVoluntario(req, res) {
 
 async function getAllVolunteer(req, res) {
   const users = await volunteerServices.getAll();
-  res.send(users);
+  res.status(200).send(users);
 }
 
 async function getVolunteerById(req, res, next) {
@@ -38,7 +38,7 @@ async function createVolunteer(req, res) {
 async function editVolunteer(req, res) {
   const { id } = req.params;
   const {
-    name, lastname, dni, email, password, address, phone,
+    name, lastname, dni, email, address, phone,
   } = req.body;
 
   // eslint-disable-next-line max-len
@@ -66,7 +66,19 @@ async function loginVolunteer(req, res) {
   }
 }
 
+async function modifyPasswordController(req, res) {
+  try {
+    const { id } = req.params;
+    const { currentPassword, newPassword } = req.body;
+
+    const user = await volunteerServices.modifyPassword(id, currentPassword, newPassword);
+    res.status(200).json({ user, message: 'contraseña actualizada correctamente' });
+  } catch (error) {
+    res.status(500).json({ error: 'Error al modificar la contraseña' });
+  }
+}
+
 module.exports = {
   // eslint-disable-next-line max-len
-  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, loginVolunteer, getDataVoluntario,
+  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, loginVolunteer, getDataVoluntario, modifyPasswordController,
 };

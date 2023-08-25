@@ -39,7 +39,7 @@ async function createUser(name, description, email, password, address, phone) {
   return userCreated;
 }
 
-async function editUser(id, name, description, email, password, address, phone) {
+async function editUser(id, name, description, email, address, phone) {
   const user = await getById(id);
 
   if (name) {
@@ -51,10 +51,7 @@ async function editUser(id, name, description, email, password, address, phone) 
   if (email) {
     user.email = email;
   }
-  if (password) {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    user.password = hashedPassword;
-  }
+
   if (address) {
     user.address = address;
   }
@@ -67,6 +64,28 @@ async function editUser(id, name, description, email, password, address, phone) 
   delete userEdited.dataValues.password;
 
   return userEdited;
+}
+
+async function modifyPassword(id, currentPassword, newPassword) {
+  try {
+    const user = await getById(id);
+
+    const passwordMatch = await bcrypt.compare(currentPassword, user.password);
+
+    if (!passwordMatch) {
+      throw new Error('La contraseña actual es incorrecta');
+    } else {
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+      user.password = hashedPassword;
+
+      const userEdited = await user.save();
+      delete userEdited.dataValues.password;
+      return userEdited;
+    }
+  } catch (error) {
+    throw new Error('Error al modificar la contraseña');
+  }
 }
 
 async function deleteUser(id) {
@@ -98,5 +117,5 @@ async function login(email, password) {
 }
 
 module.exports = {
-  getAll, getById, createUser, editUser, deleteUser, login,
+  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword,
 };
