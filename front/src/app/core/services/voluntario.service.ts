@@ -90,4 +90,13 @@ export class VoluntarioService {
       })
     );
   }
+
+  modificarPassword(id:number, passwordActual:string, passwordNueva:string):Observable<any>{
+    const passwords = {
+      currentPassword : passwordActual,
+      newPassword: passwordNueva
+    }
+
+    return this.apiService.put("/volunteer/modify-password/"+id, passwords );
+  }
 }
