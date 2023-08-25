@@ -52,7 +52,7 @@ export class CreateComponent implements OnInit {
       // add
       this.usersService.addUser(this.user)
         .subscribe( user => {
-          this.router.navigate(['/users/edit', user.id ])
+          this.router.navigate(['/users/index' ])
         })
     }
    
