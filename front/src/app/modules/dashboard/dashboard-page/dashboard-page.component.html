@@ -1,14 +1,16 @@
 <body>
+    <link href="https://fonts.googleapis.com/css2?family=Aoboshi+One&display=swap" rel="stylesheet">
     <div class="subheader">
         <h2>¡Empieza a aprender con nuestros cursos!</h2>
     </div>
     <h3>Hacé click en el curso que te interese para conocer más.</h3>
     <div class="coursebox">
         <div class = "courseinfo" *ngFor = "let course of courses"> 
-            <button><img src={{course.img}}>
+            <button><img src={{course.image}}>
             <h2>{{course.name}}</h2>
             <p>{{course.description}}</p></button>
         </div>    
     </div>
     <div class="button1"><button>Ver más cursos</button></div>
 </body>
+
