@@ -12,4 +12,6 @@
 <app-logout-modal
     class="fixed top-0 left-0 flex items-center justify-center w-screen min-h-screen"
     *ngIf="isLogoutModalOpen"
+    (closeModal)="closeLogoutModal($event)"
+    (logoutConfirmed)="logout($event)"
 ></app-logout-modal>

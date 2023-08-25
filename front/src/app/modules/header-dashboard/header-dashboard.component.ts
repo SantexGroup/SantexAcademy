@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-dashboard',
@@ -8,13 +9,29 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderDashboardComponent implements OnInit {
   isLogoutModalOpen: boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   openLogoutModal(){
     this.isLogoutModalOpen = true
+  }
+
+  closeLogoutModal(event: boolean){
+    if(!event){
+      this.isLogoutModalOpen = false;
+    }    
+  }
+
+  logout(event: boolean){
+    //borrar el token del localstorage
+    console.log('Token eliminado')
+
+    //redireccionar a la vista de send-otp
+    if(event){
+      this.router.navigate(['/']);
+    }
   }
 
 }
