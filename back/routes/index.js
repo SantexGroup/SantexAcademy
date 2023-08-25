@@ -25,6 +25,7 @@ app.get('/register', (req, res) => {
   res.send('register');
 });
 
+// Agregar aqui las rutas
 app.use('/admins', adminRoutes);
 
 app.use('/', rootPath.handler);
