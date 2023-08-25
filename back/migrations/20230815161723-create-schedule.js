@@ -16,6 +16,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       where: {
+        unique: true,
         type: Sequelize.STRING,
       },
       active: {
