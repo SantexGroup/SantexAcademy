@@ -6,14 +6,7 @@ const createSchedule = async (options) => {
       where: { day: options.day, schedule: options.schedule },
     });
 
-    if (checkExist) {
-      if (options.where == checkExist.dataValues.where) {
-        throw new Error(
-          "Duplicate 'where' conditions are not allowed. Please be more specific, for example: classroom 1 or second door on the right."
-        );
-      }
-      throw new Error("Schedule already exists");
-    }
+    if (checkExist)throw new Error("Schedule already exists");
     const CourseSelect = await Course.findOne({
       where: { name: options.course },
     });
