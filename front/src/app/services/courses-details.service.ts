@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { CoursesDetail } from '../core/interface/courses-detail.interface';
 import { HttpClient } from '@angular/common/http';
@@ -8,15 +9,21 @@ import { Observable } from 'rxjs';
 })
 export class CoursesDetailsService {
 
-  courses: CoursesDetail[] = []
+  coursesDetail: any = {}
 
   private endpointDetail = 'http://localhost:4001/coursesDetail' 
 
   constructor(private http: HttpClient) {} 
 
-  getPosts():Observable<CoursesDetail[]> { 
+  getCoursesDetail(id: number):Observable<CoursesDetail[]> { 
 
-    return this.http.get<CoursesDetail[]>(this.endpointDetail) 
+    const url = `${this.endpointDetail}/${id}`
+
+    return this.http.get<CoursesDetail[]>(url)
 
   }
+
+
 }
+
+
