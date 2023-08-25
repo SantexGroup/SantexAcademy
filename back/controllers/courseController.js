@@ -1,6 +1,5 @@
 const { CourseService } = require("../services");
 const { validationResult } = require("express-validator");
-const a = require("../providers/categoryProvider");
 
 const createCourse = async (req, res) => {
   const result = validationResult(req);
