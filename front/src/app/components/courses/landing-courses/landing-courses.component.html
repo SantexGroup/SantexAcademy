@@ -45,10 +45,9 @@
 
                             <footer class="flex flex-column justify-content-center footer">
 
-                                <a routerLink="/course-detail" pButton label="ver detalle del curso" type="button"
+                                <a [routerLink]="['/course-detail', course.id]" pButton label="ver detalle del curso" type="button"
                                     styleClass="p-mr-2 w-full uppercase" class="footer__button--info">
                                 </a>
-
                                 <a routerLink="/form-inscr-courses" pButton label="Inscríbete" type="button" styleClass="p-mr-2 mt-5 w-full uppercase"
                                     class="footer__button--apply"></a>
 
