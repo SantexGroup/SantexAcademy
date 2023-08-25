@@ -4,12 +4,6 @@
        <img src="../../../../assets/Imagenes/cvassistantlogo.png" alt="logo cvassistant">
     </div>
 
-    <div class="loginHeader">
-        <button class="iniciar-sesion">Iniciar sesión</button>
-    </div>
-
-    
-
         <button class="abrir-menu"
         (click)="activarNav()">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -25,6 +19,11 @@
                 <li class="li-header"><a href="#"></a>Preguntas frecuentes</li>
             </ul>
         </nav>
+
+        <div class="loginHeader">
+            <button class="iniciar-sesion" routerLink="/login">Iniciar sesión</button>
+            <button class="iniciar-sesion" routerLink="/registro">Registrarse</button>
+        </div>
 
 
 </Header>
