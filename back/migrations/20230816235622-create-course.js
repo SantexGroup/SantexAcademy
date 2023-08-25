@@ -39,6 +39,13 @@ module.exports = {
       surcharge_percentage: {
         type: Sequelize.INTEGER
       },
+      idcourseDetail: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'courseDetails',	
+          key: 'id'
+        }
+      }, 
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

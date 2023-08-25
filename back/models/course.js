@@ -9,8 +9,12 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate() {
+    static associate(models) {
       // define association here
+      Course.belongsTo(models.courseDetail, {
+        foreignKey: 'id',
+        target_Key: 'idcourseDetail',
+      });
     }
   }
   Course.init({
@@ -24,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     due: DataTypes.INTEGER,
     has_surcharge: DataTypes.BOOLEAN,
     surcharge_percentage: DataTypes.INTEGER,
+    idcourseDetail: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Course',
