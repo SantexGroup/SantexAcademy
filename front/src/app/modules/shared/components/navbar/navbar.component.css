@@ -1,0 +1,23 @@
+.custom-navbar {
+    background-color: var(--color-5);
+    padding: 1rem 0;
+}
+
+.custom-navbar .navbar-nav .nav-link {
+    color: var(--color-1);
+}
+
+.custom-navbar .navbar-toggler-icon {
+    background-color: var(--color-1);
+}
+
+.image-container {
+    margin: 0 0 0 2rem;
+    max-width: 25rem;
+    border-radius: 4rem;
+    background: radial-gradient(circle, var(--color-0) 0%, var(--color-1) 40%, var(--color-5) 80%);
+}
+
+.image {
+    max-width: 8rem;
+}

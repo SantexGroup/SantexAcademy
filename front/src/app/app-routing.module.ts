@@ -3,13 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) },
-  { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
+  { path: '', loadChildren: () => import('./modules/landing/landing.module').then(m => m.LandingModule) },
+  { path: 'home', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
   { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
   { path: 'register', loadChildren: () => import('./modules/register/register.module').then(m => m.RegisterModule) },
   { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule) },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', redirectTo: 'home' }
+  { path: 'news', loadChildren: () => import('./modules/news/news.module').then(m => m.NewsModule) },
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, //supongo que home tendra algo para sacarlo si no esta logueado, no lo se aun
+  { path: '**', redirectTo: 'home' }  //lo mismo que arriba
 ];
 
 
