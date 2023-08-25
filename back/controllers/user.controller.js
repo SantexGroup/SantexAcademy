@@ -5,7 +5,7 @@ const userService = require('../services/user.service');
 // controlador que redirige al servicio para registrar un usuario
 async function recordUser(req, res) {
   const {
-    /* Extraer los datos del cuerpo de la solicitud */
+    /*  Extraer los datos del cuerpo de la solicitud */
     rolesId,
     nick,
     password,
