@@ -3,17 +3,8 @@ import Swal from 'sweetalert2';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BackServiceService } from 'src/app/services/back-service.service';
+import { Product } from 'src/app/core/interfaces/product';
 
-export interface Product {
-  id: string;
-  name: string;
-  quantity: number;
-  categoria: string;
-  tipoMaterial: string;
-  image: string;
-  price: number;
-  description: string;
-}
 
 @Component({
   selector: 'app-form-delete',

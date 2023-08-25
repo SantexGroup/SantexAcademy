@@ -1,16 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackServiceService } from 'src/app/services/back-service.service';
-
-export interface Product {
-  id: string;
-  name: string;
-  quantity: number;
-  categoria: string;
-  tipoMaterial: string;
-  image: string;
-  price: number;
-  description: string;
-}
+import { Product } from 'src/app/core/interfaces/product';
 
 @Component({
   selector: 'app-home',
