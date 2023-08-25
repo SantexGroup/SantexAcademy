@@ -24,6 +24,10 @@ import { AllCoursesComponent } from './courses/all-courses/all-courses.component
 import { CardModule } from 'primeng/card'; 
 import { ButtonModule } from 'primeng/button'; 
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { MenuModule } from 'primeng/menu';
+import { PanelModule } from 'primeng/panel';
+import { ToolbarModule } from 'primeng/toolbar';
+
 import { AllCoursesRoutingModule } from './all-courses-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormInscrCoursesComponent } from './courses/form-inscr-courses/form-inscr-courses.component';
@@ -57,6 +61,9 @@ import { FormInscrCoursesComponent } from './courses/form-inscr-courses/form-ins
     CardModule,
     ButtonModule,
     SplitButtonModule,
+    MenuModule,
+    PanelModule,
+    ToolbarModule,
     AllCoursesRoutingModule,
     ReactiveFormsModule,
     FormsModule
@@ -65,6 +72,8 @@ import { FormInscrCoursesComponent } from './courses/form-inscr-courses/form-ins
   exports: [
     CoursesComponent,
     LandingCoursesComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   providers: [],
 })
