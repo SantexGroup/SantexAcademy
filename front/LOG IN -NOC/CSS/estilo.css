@@ -1,0 +1,190 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url(../img/fondo.png);
+    background-size: cover;
+    font-family: sans-serif;
+    height: 100vh;
+}
+
+.signup-a{
+    width: 900px;
+    height: 600px;
+    background: white;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgb(5, 34, 112);
+}
+
+.signup-a h1{
+    margin: 0;
+    padding: 40px 0px 1px 200px;
+    text-align: center;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:bolder;
+}
+
+.signup-a .texto{
+    margin: 0;
+    padding: 0 0px 40px 450px;
+    text-align:left;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:normal;
+    color: rgb(164, 163, 163);
+}
+
+.signup-a .texto a{
+    margin: 0;
+    padding:1px;
+    font-size: 13px;
+    color: orange;
+    cursor: pointer;
+}
+
+.signup-a label{
+    margin: 0;
+    padding: 0px 0px 0px 450px;
+    font-weight: bold;
+    display: block;
+    font-size: 15px;
+    height: 35px;
+}
+
+.signup-a .rm{
+    display:inline-flex;
+}
+
+.signup-a .rm label{
+    padding: 0px;
+}
+.signup-a input{
+    width: 100%;
+    margin-bottom: 20px;
+    margin-left: 450px;
+}
+
+.signup-a input[type="text"],
+.signup-a input[type="password"]{
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    background: transparent;
+    outline: none;
+    height: 20px;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+}
+
+::placeholder{
+    color: rgb(213, 213, 213);
+    font-style: italic;
+}
+
+form button{
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 300px;
+    margin: 30px 0px 20px 490px;
+    background: orange;
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px rgb(128, 128, 128);
+    cursor: pointer;
+}
+
+.btn:active{
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+.signup-a input[type="submit"]:hover{
+    color:black;
+}
+
+.signup-a  .contra{
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 40px;
+    color: gray;
+    padding: 0px 0px 0px 50px;
+    margin: 0px 0px 0px 600px; 
+}
+
+.signup-a a:hover{
+    color:orange;
+}
+
+/* .signup-a .remember{
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 40px;
+    color: gray;
+    padding: 0px 0px 0px 50px;
+    margin: 0px 0px 0px 430px; 
+} */
+.signup-a .avatar{
+    height: 600px;
+    width: 490px;
+    position: absolute;
+    top: 0px;
+    left: calc(0% - 50px);
+    border-radius: 10px;
+}
+
+.signup-a .redes {
+    display:flex;
+    height: 20px;
+    margin: 0px 0px 0px 520px;
+}
+
+.signup-a .redes ul li{
+    display:inline-block;
+    margin: 0px 10px;
+    height: 10px;
+    text-align: center;
+}
+
+.signup-a .redes ul li a{
+    display: block;
+    padding: 0 10px;
+    background: rgb(83, 83, 84);
+    color: white;
+    line-height: 30px;
+    font-size: 18px;
+    box-shadow: 0 3px 5px 0px gray;
+    border-radius: 5px;
+}
+
+.redes ul li a:hover{
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 5px 5px 0px gray;
+}
+
+:root{
+    --facebook:#3b5999;
+    --instagram: #e4405f;
+    --twitter:#55acee;
+}
+
+.redes ul li .facebook:hover{
+    background: var(--facebook);
+}
+
+.redes ul li .instagram:hover{
+    background: var(--instagram);
+}
+
+.redes ul li .twitter:hover{
+    background: var(--twitter);
+}
