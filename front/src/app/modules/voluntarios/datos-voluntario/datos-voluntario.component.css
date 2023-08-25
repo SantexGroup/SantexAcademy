@@ -79,4 +79,32 @@
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
+    margin-top: 20px;
 }
+
+.password{
+    margin-top: 20px;
+}
+
+.input-password{
+    width:85%;
+
+}
+
+.contenedor-cambio-password{
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icono-password{
+    cursor: pointer;
+    
+}
+
+.icono-password:hover{
+    color: rgba(0, 0, 0, .5);
+}
+
