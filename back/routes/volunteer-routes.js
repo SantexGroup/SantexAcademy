@@ -10,6 +10,6 @@ router.post('/create-user', volunteerController.createVolunteer);
 router.put('/edit-user/:id', isAuthenticatedVoluntario, volunteerController.editVolunteer);
 router.delete('/delete-user/:id', isAuthenticatedVoluntario, volunteerController.deleteVolunteer);
 router.post('/login', volunteerController.loginVolunteer);
-router.put('/modify-password/:id', volunteerController.modifyPasswordController);
+router.put('/modify-password/:id', isAuthenticatedVoluntario, volunteerController.modifyPasswordController);
 
 module.exports = router;
