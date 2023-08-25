@@ -1,10 +1,8 @@
-
 .body{
     display: flex;
     justify-content: center;
     height: 100%;
     align-items: center;
-    /*background-color: #7EA0BD;*/
 }
 
 

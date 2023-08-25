@@ -46,10 +46,8 @@ export class CrearUsuarioComponent implements OnInit {
       telefono: this.form.value.telefono
     }
 
-
     this._usuarioService.agregarUsuario(user);
     this.router.navigate(['/dashboard/usuarios']);
-
 
     this._snackBar.open("El usuario fue agregado con éxito!", "" ,{
       duration:1500,
@@ -58,5 +56,9 @@ export class CrearUsuarioComponent implements OnInit {
     })
   }
 
-
+  volver(event: Event) {
+    event.preventDefault();
+    this.router.navigate(['/dashboard/usuarios']);
+  }
+ 
 }

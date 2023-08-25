@@ -1,0 +1,393 @@
+
+
+<div class="body">
+  <div class="formulario">
+    <form [formGroup]="pasoUno"  (ngSubmit)="enviar()">
+      <mat-accordion class="example-headers-align">
+
+        <!--Panel 1 DATOS PERSONALES-->
+        <mat-expansion-panel [expanded]=false (opened)="setStep(0)" hideToggle>
+
+          <mat-expansion-panel-header >
+            <mat-panel-title class="title">
+              DATOS PERSONALES
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput autocomplete="off" formControlName="pregunta1">
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill">
+            <mat-label >Email</mat-label>
+            <input matInput autocomplete="off" formControlName="pregunta2">
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill">
+            <mat-label >Edad</mat-label>
+            <input matInput autocomplete="off" formControlName="pregunta3">
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill">
+            <mat-label >Sexo</mat-label>
+            <input matInput autocomplete="off" formControlName="pregunta4">
+          </mat-form-field>
+
+          <p>Porcedencia</p>
+          <mat-form-field appearance="fill">
+            <mat-label>Localidad</mat-label>
+            <input matInput autocomplete="off" formControlName="pregunta5">
+          </mat-form-field>   
+
+          <mat-form-field appearance="fill">  
+            <mat-label>Provincia</mat-label>
+            <input matInput autocomplete="off" formControlName="pregunta6">
+          </mat-form-field>   
+
+          <mat-form-field appearance="fill">  
+            <mat-label>País</mat-label>
+            <input matInput autocomplete="off" formControlName="pregunta7">
+          </mat-form-field> 
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Con quién vino?</mat-label>
+            <input matInput autocomplete="off" formControlName="pregunta8">
+          </mat-form-field>  
+
+          <mat-action-row>
+            <button mat-button color="primary" (click)="nextStep($event)">Siguiente</button>
+          </mat-action-row>
+
+        </mat-expansion-panel>
+
+        <!--Panel 2 POR QUE ELIGIÓ MINA CLAVERO?-->
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+
+          <mat-expansion-panel-header>
+            <mat-panel-title class="title" >
+              POR QUE ELIGIÓ MINA CLAVERO?
+            </mat-panel-title>        
+          </mat-expansion-panel-header>
+
+          <!--Pregunta 9-->
+        <section class="example-section" [formGroup]="pregunta9">
+          <h3>A través de qué medio conoció Mina Clavero?</h3>
+            <p><mat-checkbox formControlName="television">Televisión</mat-checkbox></p>
+            <p><mat-checkbox formControlName="pagina">Pagina web</mat-checkbox></p>
+            <p><mat-checkbox formControlName="radio">Radio</mat-checkbox></p>
+            <p><mat-checkbox formControlName="medios">Medios gráficos</mat-checkbox></p>
+            <p><mat-checkbox formControlName="facebook">facebook</mat-checkbox></p>
+            <p><mat-checkbox formControlName="recomendaciones">Recomendaciones</mat-checkbox></p> 
+          
+            <mat-form-field appearance="legacy">
+              <mat-label>Otro? Cuál?</mat-label>
+              <input matInput  placeholder="" autocomplete="off" formControlName="otro"> 
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+        </section>
+         
+          <!--Pregunta 10-->
+        <section class="example-section" [formGroup]="pregunta10">
+          <h3>Por qué eligió Mina Clavero para pasar sus vacaciones?</h3> 
+            <p><mat-checkbox formControlName="conocer">Por que ya conocía y le gustó el lugar?</mat-checkbox></p>
+            <p><mat-checkbox formControlName="recomendacion">Por que se lo recomendaron?</mat-checkbox></p>
+            <p><mat-checkbox formControlName="promocion">Por que vió alguna promoción en los medios?</mat-checkbox></p>
+            <p><mat-checkbox formControlName="tranquilidad">Por que es un lugar tranquilo para la familia?</mat-checkbox></p>
+            <p><mat-checkbox formControlName="paisajes">Por sus paisajes?</mat-checkbox></p>
+            <p><mat-checkbox formControlName="eventos">Por sus eventos?</mat-checkbox></p> 
+            <p><mat-checkbox formControlName="amabilidad">Por la amabilidad de los vecinos?</mat-checkbox></p> 
+          
+            <mat-form-field appearance="legacy">
+              <mat-label>Otro? Cuál?</mat-label>
+              <input matInput  placeholder="" autocomplete="off" formControlName="otro"> 
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+        </section>
+                              
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep($event)">Anterior</button>
+          <button mat-button color="primary" (click)="nextStep($event)">Siguiente</button>           
+        </mat-action-row>
+
+        </mat-expansion-panel>
+
+        <!--Panel 3 Hospedaje-->
+        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="title">
+              HOSPEDAJE
+            </mat-panel-title>        
+          </mat-expansion-panel-header>
+           
+          <!--Pregunta 11-->
+        <section class="example-section" [formGroup]="pregunta11">
+          <h3>¿Usted llegó a Mina Clavero?</h3>
+          <mat-radio-group formControlName="reservacion">
+            <mat-radio-button  style="margin-right: 20px"  value="reserva">Con Reserva</mat-radio-button>
+
+            <mat-form-field appearance="legacy">
+              <mat-label>A través de que medio?</mat-label>
+              <input matInput  placeholder="" autocomplete="off" formControlName="cual"> 
+            </mat-form-field>
+
+            <mat-radio-button style="margin-left: 40px" value="sinReserva">Sin Reserva</mat-radio-button>
+          </mat-radio-group>      
+        </section>
+        <br>
+        
+          <!--Pregunta 12-->
+          <section class="example-section" [formGroup]="pregunta12">
+            <h3>¿Qué tipo de hospedaje ha tomado?</h3>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="hotel">Hotel</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="cabaña">Cabaña</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="hosteria">Hostería</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="camping">Camping</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="casa">Casa de alquiler</mat-checkbox>
+  
+              <mat-form-field appearance="legacy">
+                <mat-label>Cuál?</mat-label>
+                <input matInput  placeholder="" autocomplete="off" formControlName="otro"> 
+              </mat-form-field>
+          </section>
+          <br>
+
+          <!--Pregunta 13-->
+          <section class="example-section" [formGroup]="pregunta13">
+            <h3>¿Cómo es el servicio en el Hospedaje que ha contratado?</h3>
+              <mat-radio-group formControlName="satisfaccion">
+                <mat-radio-button  style="margin-right: 20px"  value="excelente">Excelente</mat-radio-button>
+                <mat-radio-button style="margin-right: 20px" value="muyBuena">Muy Buena</mat-radio-button>
+                <mat-radio-button style="margin-right: 20px" value="buena">Buena</mat-radio-button>
+                <mat-radio-button style="margin-right: 20px" value="regular">Regular</mat-radio-button>
+                <mat-radio-button style="margin-right: 20px" value="mala">Mala</mat-radio-button>
+                <mat-radio-button style="margin-right: 20px" value="muyMala">Muy Mala</mat-radio-button>
+                <mat-radio-button style="margin-right: 20px" value="pesima">Pésima</mat-radio-button>
+              </mat-radio-group>
+          </section>
+          <br>
+
+          <!--Pregunta 14-->
+          <section class="example-section" [formGroup]="pregunta14">
+            <h3>¿Recibió material informativo de la secretaría de turismo en el hospedaje donde se alojó?</h3>
+            <mat-radio-group formControlName="informacion">
+              <mat-radio-button  style="margin-right: 20px"  value="si">Sí</mat-radio-button>
+              <mat-form-field appearance="legacy">
+                <mat-label>Cúal?</mat-label>
+                <input matInput  placeholder="" autocomplete="off" formControlName="cual"> 
+              </mat-form-field>
+              <mat-radio-button style="margin-left: 40px" value="no">No</mat-radio-button>
+            </mat-radio-group>      
+          </section>
+
+
+        <!--Boton Anterior y Seguiente-->                            
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep($event)">Anterior</button>
+          <button mat-button color="primary" (click)="nextStep($event)">Siguiente</button>           
+        </mat-action-row>
+
+        </mat-expansion-panel>
+
+        <!--Panel 4 PROCEDENCIA DE LA INFORMACIÓN-->
+        <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="title">
+              PROCEDENCIA DE LA INFORMACIÓN
+            </mat-panel-title>        
+          </mat-expansion-panel-header>
+
+          <!--Pregunta 15-->
+          <section class="example-section" [formGroup]="pregunta15">
+            <h3>¿Ud. pidió información en las oficinas de Turismo de Mina Clavero?</h3>
+            <mat-radio-group formControlName="informes">
+              <mat-radio-button  style="margin-right: 20px"  value="si">Sí</mat-radio-button>
+              <mat-radio-button style="margin-left: 40px" value="no">No</mat-radio-button>
+            </mat-radio-group>      
+          </section>
+          <br>
+
+          <!--Pregunta 16-->
+          <section class="example-section" [formGroup]="pregunta16">
+            <h3>¿En qué oficina lo hizo?</h3>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="rotonda">Oficina de la Rotonda de ingreso</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="merlo">Oficina de Plazoleta Merlo</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="terminal">Oficina de la Terminal</mat-checkbox>
+          </section>
+          <br>
+
+          <!--Pregunta 17-->
+          <section class="example-section" [formGroup]="pregunta17">
+            <h3>¿Qué tipo de información solicitó en las oficinas de turismo?</h3>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="hospedaje">Hospedaje</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="paseos">Paseos</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="eventos">Eventos</mat-checkbox>            
+              <mat-checkbox style="margin-right: 20px;"  formControlName="gastronomia">Gastronomía</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="aventura">Turismo Aventura</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="servicios">Servicios</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="rutas">Rutas</mat-checkbox>
+
+              <mat-form-field appearance="legacy">
+                <mat-label>Otros? Cuáles?</mat-label>
+                <input matInput  placeholder="" autocomplete="off" formControlName="otro"> 
+              </mat-form-field>
+          </section>
+          <br>
+
+          <!--Pregunta 18-->
+          <section class="example-section" [formGroup]="pregunta18">
+            <h3>¿A través de que medio solicitó información en las oficinas de turismo?</h3>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="personalmente">Personalmente</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="mail">Vía mail</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="facebook">Vía Facebook</mat-checkbox>            
+              <mat-checkbox style="margin-right: 20px;"  formControlName="telefono">Vía Telefónica</mat-checkbox>
+              
+              <mat-form-field appearance="legacy">
+                <mat-label>Otro? Cuál?</mat-label>
+                <input matInput  placeholder="" autocomplete="off" formControlName="otro"> 
+              </mat-form-field>
+          </section>
+
+          <!--Boton Anterior y Seguiente-->                            
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep($event)">Anterior</button>
+            <button mat-button color="primary" (click)="nextStep($event)">Siguiente</button>           
+          </mat-action-row>
+        </mat-expansion-panel>
+
+        <!--Panel 5 TIPO DE INFORMACIÓN-->
+        <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="title">
+              TIPO DE INFORMACIÓN
+            </mat-panel-title>        
+          </mat-expansion-panel-header>
+
+          <!--Pregunta 19-->
+          <section class="example-section" [formGroup]="pregunta19">
+            <h3>¿Qué tipo de material se le entregó en las oficinas de turismo?</h3>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="folleto">Folletos</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="revista">Revistas</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="plano">Planos</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="calcomania">Calcomanías</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="guia">Guía de Servicios</mat-checkbox>
+          </section>
+          <br>
+
+          <!--Pregunta 20-->
+          <section class="example-section" [formGroup]="pregunta20">
+            <h3>¿Cómo evalúa el tipo de información brindada por las oficinas de turismo de Mina Clavero?</h3>
+              <mat-radio-group formControlName="calidadInformacion">
+                <mat-radio-button  style="margin-right: 20px"  value="excelente">Excelente</mat-radio-button>
+                <mat-radio-button style="margin-right: 20px" value="muyBuena">Muy Buena</mat-radio-button>
+                <mat-radio-button style="margin-right: 20px" value="buena">Buena</mat-radio-button>
+                <mat-radio-button style="margin-right: 20px" value="regular">Regular</mat-radio-button>
+                <mat-radio-button style="margin-right: 20px" value="mala">Mala</mat-radio-button>
+                <mat-radio-button style="margin-right: 20px" value="muyMala">Muy Mala</mat-radio-button>
+                <mat-radio-button style="margin-right: 20px" value="pesima">Pésima</mat-radio-button>
+              </mat-radio-group>
+          </section>
+          <br>
+
+          <!--Pregunta 21-->
+          <section class="example-section" [formGroup]="pregunta21">
+            <h3>¿Aparte de la información solicitada, se le brindó algún otro tipo de información de su interés?</h3>
+            <mat-radio-group formControlName="otraInfo">
+              <mat-radio-button  style="margin-right: 20px"  value="si">Sí</mat-radio-button>
+              <mat-radio-button style="margin-left: 40px" value="no">No</mat-radio-button>
+            </mat-radio-group>      
+          </section>
+          <br>
+
+          <!--Pregunta 22-->
+          <section class="example-section" [formGroup]="pregunta22">
+            <h3>¿Qué información se le brindó?</h3>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="espectaculo">Espectáculos en Mina Clavero</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="espectaculoCercano">Espectáculos en localidades cercanas</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="recreacion">Recreación</mat-checkbox>            
+              <mat-checkbox style="margin-right: 20px;"  formControlName="deporte">Actividades Deportivas</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="aventura">Turismo Aventura</mat-checkbox>
+              <mat-checkbox style="margin-right: 20px;"  formControlName="paseo">Paseos</mat-checkbox>
+
+              <mat-form-field appearance="legacy">
+                <mat-label>Otros? Cuáles?</mat-label>
+                <input matInput  placeholder="" autocomplete="off" formControlName="otro"> 
+              </mat-form-field>
+          </section>
+          <br>
+
+          <!--Boton Anterior y Seguiente-->                            
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep($event)">Anterior</button>
+            <button mat-button color="primary" (click)="nextStep($event)">Siguiente</button>           
+          </mat-action-row>
+        </mat-expansion-panel>
+
+        <!--Panel 6 ACERCA DE MINA CLAVERO-->
+        <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="title">
+              ACERCA DE MINA CLAVERO
+            </mat-panel-title>        
+          </mat-expansion-panel-header>
+
+            <!--Pregunta 23-->
+        <section class="example-section" [formGroup]="pregunta23">
+          <h3>¿Concidera a Mina Clavero como un destino completo en cuanto a su oferta y servicios?</h3>
+          <mat-radio-group formControlName="destinoCompleto">
+            <mat-radio-button  style="margin-right: 20px"  value="si">Sí</mat-radio-button>
+            <mat-radio-button style="margin-right: 20px" value="no">No</mat-radio-button>
+            <mat-form-field appearance="legacy">
+              <mat-label>Por qué?</mat-label>
+              <input matInput placeholder="" autocomplete="off" formControlName="porQue"> 
+            </mat-form-field>
+          </mat-radio-group>      
+        </section>
+
+            <!--Pregunta 24-->
+        <section class="example-section" [formGroup]="pregunta24">
+          <h3>¿Recomendaría Mina Clavero como destino turístico?</h3>
+          <mat-radio-group formControlName="recomendacion">
+            <mat-radio-button  style="margin-right: 20px"  value="si">Sí</mat-radio-button>
+            <mat-radio-button style="margin-right: 20px" value="no">No</mat-radio-button>
+            <mat-form-field appearance="legacy">
+              <mat-label>Por qué?</mat-label>
+              <input matInput placeholder="" autocomplete="off" formControlName="porQue"> 
+            </mat-form-field>
+          </mat-radio-group>      
+        </section>
+
+          <!--Boton Anterior y Seguiente-->                            
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep($event)">Anterior</button>
+            <button mat-button color="primary" (click)="nextStep($event)">Listo</button>           
+          </mat-action-row>
+        </mat-expansion-panel>
+
+      </mat-accordion>  
+      <br>
+      <br>
+
+      <div class="botonContainer">
+        <button mat-raised-button color="primary" class="botonLimpiar" (click)="resetForm($event)">Limpiar Encuesta</button>
+        <button type="submit" mat-raised-button class="botonEnviar" [disabled]="!pasoUno.valid" (click)="enviado()">Enviar Encuesta</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+

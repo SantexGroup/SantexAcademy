@@ -1,7 +1,27 @@
-.ancho{
-    width: 80%;
+
+.campo{
+    width: 90%;
+    height:54px;   
 }
 
 .botonAceptar{   
     background-color: #FEA31C;
 }
+
+
+/* Estilos para pantallas más pequeñas */
+@media screen and (max-width: 768px) {
+    .campo {
+      width: 100%; /* O ajusta según tu diseño */
+      height: auto; /* Permite que la altura se ajuste automáticamente */
+    }  
+    .ocultar{
+        display: none;
+    }
+    .columResponsive{
+        width: 100%; /* Ocupa todo el ancho disponible */
+    }
+  }
+
+
+  

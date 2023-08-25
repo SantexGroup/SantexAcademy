@@ -9,8 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { EncuestaComponent } from './encuesta/encuesta.component';
 import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
-
-
+import { ExpansionComponent } from './encuesta/expansion/expansion.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +18,8 @@ import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.co
     NavbarComponent,
     UsuariosComponent,
     EncuestaComponent,
-    CrearUsuarioComponent
-   
+    CrearUsuarioComponent,
+    ExpansionComponent
   ],
   imports: [
     CommonModule,

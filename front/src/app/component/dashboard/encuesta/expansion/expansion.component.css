@@ -1,0 +1,63 @@
+.body{
+  display: flex;
+  justify-content: center;
+}
+
+.formulario{
+  width: 100%;
+  max-width: 84%;
+  justify-content: center;
+}
+
+.title {
+  font-weight:580;
+  color:rgb(119, 118, 118);
+}
+
+.mat-expansion-panel{
+  margin-top: 12px;
+  background-color: rgb(244, 245, 248);
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: center;    
+}
+  
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 5px;
+}
+
+.example-section {
+  margin: 12px 0;
+  justify-content: space-between;
+}
+
+.botonContainer {
+  display: flex; 
+  justify-content: center; 
+}
+
+.botonLimpiar, .botonEnviar{
+  width: 20%;
+  height: 50px;
+  font-size: 16px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+  
+.botonEnviar {
+  background-color: #FEA31C; 
+  margin-left: 40px;
+}
+
+/* Media query para ajustar el botón en pantallas más pequeñas */
+@media (max-width: 768px) {
+  .botonLimpiar, .botonEnviar  {
+    font-size: 14px;
+    padding: 8px 16px; 
+    min-width: 120px; 
+    margin-bottom: 25px;
+  }
+}
+
