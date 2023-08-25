@@ -26,13 +26,24 @@ export class DatosOrganizacionComponent implements OnInit, OnDestroy {
     });
 
     this.editarDatos = false;
+    this.editarPassword = false;
 
+    this.formPassword = fb.group({
+      passwordActual:['',Validators.required],
+      passwordNuevo:['',Validators.required]
+    });
+    this.mostrarPasswordActual = false;
+    this.mostrarPasswordNuevo = false;
    }
    
    datosOrganizacion!:Organizacion;
    formOrganizacion:FormGroup;
-   editarDatos:Boolean;
+   editarDatos:boolean;
    suscripcionDatos;
+   editarPassword:boolean;
+   formPassword:FormGroup;
+   mostrarPasswordNuevo:boolean;
+   mostrarPasswordActual:boolean;
    
   ngOnInit(): void {
   }
@@ -91,6 +102,38 @@ export class DatosOrganizacionComponent implements OnInit, OnDestroy {
   cancelarModificacion():void{
     this.editarDatos = false;
     this.formOrganizacion.reset();
+  }
+
+  cancelarModificacionPassword():void{
+    this.editarPassword = false;
+    this.formPassword.reset();
+    this.mostrarPasswordActual = false;
+    this.mostrarPasswordNuevo = false;
+  }
+
+  actualizarPassword():void{
+
+    const formValue = this.formPassword.value;
+
+    this.organizacionService.modificarPassword(this.datosOrganizacion.id!, formValue.passwordActual,formValue.passwordNuevo).subscribe({
+      next:()=>{
+        this.matSnackBar.open("La contraseña se actualizó correctamente", "OK",{
+          horizontalPosition:'center',
+          verticalPosition:'top',
+          duration:3000
+        });
+        this.cancelarModificacionPassword();
+        
+      },
+      error:()=>{
+        this.matSnackBar.open("Error al actualizar la contraseña", "ERROR",{
+          horizontalPosition:'center',
+          verticalPosition:'top',
+          duration:3000
+        });
+
+      }
+    });
   }
 
 }
