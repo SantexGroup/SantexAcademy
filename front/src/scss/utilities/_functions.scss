@@ -1,0 +1,19 @@
+@use 'sass:math'; // se utiliza la función math.div porque en versiones recientes de Sass ya no se utiliza el operador de división /, esto principalmente para resolver problemas de ambiguedad y consistencia del preprocesador
+
+
+//Función para pasar de px a rem con scss
+
+@function toRem($pixels) {
+
+    $remSize: 16px; 
+    @return math.div($pixels, $remSize) * 1rem;
+}
+
+//Función para pasar de px a em con scss 
+
+@function toEm($pixels) {
+
+    $emSize: 16px; 
+    @return math.div($pixels,$emSize) * 1em;
+
+}

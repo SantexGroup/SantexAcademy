@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Dr",
+    "description": "curabitur in libero ut massa volutpat convallis morbi odio odio",
+    "price": 2000,
+    "duration": "13/08/2022",
+    "starter_date": "20/09/2022"
+  },
+  {
+    "id": 2,
+    "title": "Ms",
+    "description": "lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum",
+    "price": 2000,
+    "duration": "24/12/2022",
+    "starter_date": "20/01/2023"
+  },
+  {
+    "id": 3,
+    "title": "Dr",
+    "description": "odio porttitor id consequat in consequat ut nulla sed accumsan felis",
+    "price": 2000,
+    "duration": "17/10/2022",
+    "starter_date": "13/05/2023"
+  },
+  {
+    "id": 4,
+    "title": "Honorable",
+    "description": "justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit",
+    "price": 2000,
+    "duration": "23/03/2023",
+    "starter_date": "24/08/2022"
+  },
+  {
+    "id": 5,
+    "title": "Mr",
+    "description": "mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit",
+    "price": 2000,
+    "duration": "12/09/2022",
+    "starter_date": "29/09/2022"
+  }
+]

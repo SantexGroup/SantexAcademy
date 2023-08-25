@@ -1,0 +1,41 @@
+<section class="section__testimonials">
+
+    <h1 class="testimonials__title">Testimonios inspiradores</h1>
+
+    <article class="article__cards">
+
+        <div class="container__card" *ngFor="let testi of testimonials"> 
+
+            <div class="card__content">                
+
+                <div class="card__image">
+
+                    <img alt="{{testi.alt}}" src="{{testi.image}}" class="person__image"/>
+
+                </div>
+
+                <div class="card__description">
+
+                    <p class="paragraph__description">
+                        {{testi.description}}
+                    </p>
+
+                </div>
+
+                <div class="card__personal">
+
+                    <h2 class="personal__fullName">{{testi.full_name}}</h2>
+
+                    <h3 class="personal__role">{{testi.role}}</h3>
+
+                </div>
+    
+            </div>
+
+        </div>
+
+
+    </article>
+
+
+</section>

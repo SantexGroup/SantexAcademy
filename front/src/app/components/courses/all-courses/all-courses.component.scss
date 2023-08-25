@@ -1,0 +1,35 @@
+@use '../../../../scss/utilities/barrel' as *;
+
+
+@media screen and (min-width: $large) {
+
+    .card {
+
+        max-width: toEm(425px);
+
+        .card__content {
+
+            max-width: toEm(425px);
+
+            .footer {
+
+                &__button--info {
+
+                    max-width: toEm(425px);
+
+                }
+
+                &__button--apply {
+
+                    max-width: toEm(425px);
+
+                }
+
+            }
+
+
+        }
+
+    }
+
+}

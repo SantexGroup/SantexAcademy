@@ -1,0 +1,19 @@
+@use '../utilities/functions';
+
+//Colores
+
+$color-primario1: #F26B16;
+$color-primario2: #1E40A5;
+$color-secundario1: #060662;
+$color-secundario2: #070741;
+$color-secundario3: #748BB3;
+$wireframe: #A1AEB7;
+
+//Medias queries
+
+$small: functions.toEm(320px);
+$medium: functions.toEm(375px);
+$large: functions.toEm(425px);
+$tablet: functions.toEm(768px);
+$laptop: functions.toEm(1024px);
+$laptopL: functions.toEm(1440px);
