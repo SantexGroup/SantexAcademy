@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('courseDetails', [
+    await queryInterface.bulkInsert('courseDetail', [
       {
         paragraph1: 'En este curso aprenderás los conceptos fundamentales de programación en C++.',
         paragraph2: 'Con ejemplos prácticos y ejercicios, dominarás la sintaxis y las estructuras básicas de C++.',
