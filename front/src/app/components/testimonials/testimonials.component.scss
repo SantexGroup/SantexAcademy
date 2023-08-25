@@ -1,0 +1,112 @@
+@use '../../../scss/utilities/barrel' as *;
+
+.section__testimonials {
+
+    display: grid;
+    place-items: center;
+    margin-bottom: 5rem;
+
+    .testimonials__title {
+
+        text-align: center;
+        margin-bottom: 2rem;
+
+    }
+
+    .article__cards {
+
+        display: flex;
+        flex-direction: column;
+        margin-right: 0;
+        gap: 2rem;
+
+        .container__card {
+
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            border: 1px solid $wireframe;
+            width: 100%;
+            height: auto;
+
+            .card__content {
+
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                padding: 2rem;
+
+                .card__image {
+
+                    .person__image {
+
+                        border-radius: 100%;
+                        border: 2px solid $wireframe;
+                        object-fit: cover;
+
+                    }
+
+                }
+
+                .card__description {
+
+                    margin: 1rem 0 1rem
+                }
+
+                .card__personal {
+
+                    .personal__fullName {
+
+                        font-size: 1.5rem;
+
+                    }
+
+                    .personal__role {
+
+                        font-size: 1rem;
+                        font-weight: 500;
+                        color: $wireframe;
+
+                    }
+
+                }
+
+
+
+            }
+
+
+        }
+
+
+    }
+
+}
+
+
+@media screen and (min-width: $large) {
+
+    .section__testimonials {
+
+        .article__cards {
+
+            max-width: 425px;
+
+        }
+
+    }
+
+}
+
+@media screen and (min-width: $laptop) {
+
+    .section__testimonials {
+
+        .article__cards {
+
+            flex-direction: row;
+            max-width: 1024px;
+
+        }
+
+    }
+
+}
