@@ -4,12 +4,17 @@ import { FormUpdateComponent } from '../form-update/form-update.component';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { FormAddProductComponent } from '../form-add-product/form-add-product.component';
 import { FormDeleteComponent } from '../form-delete/form-delete.component';
+import { HomeComponent } from '../home/home.component';
 
 const routes: Routes = [
   {
     path: '',
     component: NavBarComponent,
     children: [
+      {
+        path: 'home',
+        component: HomeComponent
+      },
       {
         path: 'form-add-product',
         component: FormAddProductComponent
