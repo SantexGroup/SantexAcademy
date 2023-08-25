@@ -1,8 +1,8 @@
-const { DataTypes } = require("sequelize");
-const { sequelize } = require("../config/db-config");
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../config/db-config');
 
 const Usuario = sequelize.define(
-  "usuario",
+  'usuario',
   {
     id: {
       autoIncrement: true,
@@ -21,11 +21,10 @@ const Usuario = sequelize.define(
     email: {
       type: DataTypes.STRING(100),
       allowNull: false,
-      // unique: 'email_UNIQUE',
     },
     uniqueEmail: {
       type: DataTypes.STRING,
-      // unique: true,
+      unique: true,
       allowNull: true,
     },
     password: {
@@ -59,7 +58,7 @@ const Usuario = sequelize.define(
       },
     },
     paranoid: true,
-  }
+  },
 );
 
 module.exports = Usuario;
