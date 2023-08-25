@@ -1,19 +1,19 @@
 
-<div  *ngFor="let detail of courseDetailService.courses">
+<div  *ngIf="courseDetailService.coursesDetail">
     <div class="containerDetail lg:w-8 lg:m-auto lg:flex-colum ">
     
         <div class="containerDetailCourse my-o mx-2 relative ">
-
             <img class="imgBanner w-screen h-20rem" 
             src="https://hellonails.es/wp-content/uploads/2020/06/Tipos-de-manicura-img3.jpg" alt="">
+    
             
             <div class="containerCourse lg:pr-5 lg:pl-5 absolute flex justify-content-between bottom-0 gap-6 w-12">
-        
-                <div class="title lg:text-5xl mt-5 ml-2 w-rem font-medium">Curso Semipermanente</div>
+                <div class="title lg:text-5xl mt-5 ml-2 w-rem font-medium">Curso Semipermante</div>
+                
                 <div class="containerCost flex-colum border-circle 
                 h-7rem w-7rem m-2 text-gray-900 font-bold text-center">
                     <p class="text mt-5">Desde solo</p>
-                    <p>$999</p>
+                    <p>$9999</p>
                 </div>
                 
             </div>
@@ -31,8 +31,9 @@
         </div>
     
         <div class="containerDetailText mx-3 mt-7 mb-3 flex-colum lg:flex lg: gap-6">
-            <p class="detailText">{{detail.paragraph1}}
-            </p>
+            <p class="detailText">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque nulla, magnam animi, libero architecto possimus esse necessitatibus impedit, ducimus dolore minus ipsum illo aspernatur debitis laudantium. Enim laboriosam temporibus veniam.
+            Voluptates, in assumenda explicabo aut impedit eveniet voluptate accusantium, ratione odit debitis ullam, commodi distinctio cumque adipisci quam alias repellendus molestiae nobis maxime pariatur culpa ipsam. Quidem tempora quasi illum.
+            Numquam labore mollitia sed. Officia saepe, maxime quia quod delectus exercitationem culpa ab eius accusantium doloremque natus aliquid atque corrupti quidem libero ea consequuntur iure similique. Corporis alias sit obcaecati!</p>
             <div class="imgLogo lg:max-w-30rem">
                 <img class="w-12 m-auto" 
                 src="https://scontent.fcor2-1.fna.fbcdn.net/v/t39.30808-6/345270431_766231688363871_4341753288289659002_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=be3454&_nc_ohc=QGnWw-AdrIYAX828Pa8&_nc_ht=scontent.fcor2-1.fna&oh=00_AfB9q-dIPbwlNg0cYqzf-7mwXbD9J24RrhQo31uIUz8aLA&oe=64DDF161" alt="">           
@@ -43,7 +44,7 @@
             <div class="col-4 md:col-6 lg:col-2 text-center divCard">
                 <p><i class="pi pi-history font-bold text-2xl pt-4"></i></p>
                 <p class="my-2">Duracion</p>
-                <p class="font-bold">3 Meses</p>
+                <p class="font-bold">3 meses</p>
             </div>
             <div class="col-4 md:col-6 lg:col-2 text-center divCard">
                 <p><i class="pi pi-desktop font-bold text-2xl pt-4"></i></p>
@@ -63,12 +64,12 @@
             <div class="col-4 md:col-6 lg:col-2 text-center divCard">
                 <p><i class="pi pi-calendar font-bold text-2xl pt-4"></i></p>
                 <p class="my-2">Fecha Finalizacion</p>
-                <p class="font-bold">20/10/2023</p>
+                <p class="font-bold">25/09/2023</p>
             </div>
             <div class="col-4 md:col-6 lg:col-2 text-center divCard">
                 <p><i class="pi pi-money-bill font-bold text-2xl pt-4"></i></p>
                 <p class="my-3" >Precio</p>
-                <p class="font-bold">$999</p>
+                <p class="font-bold">$99999</p>
             </div>
         </div>
         
@@ -78,15 +79,13 @@
                 <p-accordionTab header="Presentacion">
                     <div class="lg:flex ">
                         <p class="lg: mr-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                             veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-                             commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut neque cupiditate repellendus debitis ullam, alias odio! Voluptatem molestias tempora perferendis provident velit consequuntur neque! Esse deserunt alias illum quod iure.
+                           Quae, ab laudantium ex aperiam iste esse quidem quia alias fuga totam ipsa ut, pariatur laboriosam minima vitae molestias inventore? Et quis perferendis dolorum enim similique optio error omnis magnam?
+                           Odio ipsam hic magni asperiores, nisi voluptatum consequatur nemo cum soluta ullam obcaecati perspiciatis, consectetur recusandae itaque, ut rem. Excepturi ab temporibus commodi dolorum qui vero soluta debitis eius illum.
                         </p>
-                        <img class="lg:max-w-17rem" src="https://scontent.fctc1-1.fna.fbcdn.net/v/t39.30808-6/345270431_766231688363871_4341753288289659002_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=UM2fRhq7zZMAX_oCL61&_nc_ht=scontent.fctc1-1.fna&oh=00_AfCcwDAgWWvIY7F975mUvvtDe9ZtYBfO9igxNhGJf31Bcg&oe=64E3E021" alt="">
+        
+                        <img class="lg:max-w-18rem bg-cover" src="https://picsum.photos/200/300.webp" alt="">
+                       
                     </div>
                 </p-accordionTab>
                 
@@ -94,14 +93,13 @@
     
                     <div class="lg:flex">
                         <p class="lg: mr-4">
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
-                            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore 
-                            veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-                            ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                             consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
-                             Consectetur, adipisci velit, sed quia non numquam eius modi.
-                        </p>
-                        <img class="max-w-17rem" src="https://www.elegircarrera.net/blog/wp-content/uploads/2017/02/tomar-notas-en-clase-2000x1200.jpg" alt="">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut neque cupiditate repellendus debitis ullam, alias odio! Voluptatem molestias tempora perferendis provident velit consequuntur neque! Esse deserunt alias illum quod iure.
+                            Quae, ab laudantium ex aperiam iste esse quidem quia alias fuga totam ipsa ut, pariatur laboriosam minima vitae molestias inventore? Et quis perferendis dolorum enim similique optio error omnis magnam?
+                            Odio ipsam hic magni asperiores, nisi voluptatum consequatur nemo cum soluta ullam obcaecati perspiciatis, consectetur recusandae itaque, ut rem. Excepturi ab temporibus commodi dolorum qui vero soluta debitis eius illum.
+                         </p>
+                    
+                        <img class="max-w-18rem bg-cover" src="https://picsum.photos/200/500.webp" alt="">
+                   
         
                     </div>
     
@@ -109,32 +107,27 @@
                 
                 <p-accordionTab header="Requisitos previos para la cursada">
                     <div class="lg:flex">
-                        <p class="lg:mr-4">
-                            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                             praesentium voluptatum deleniti atque corrupti quos dolores et quas 
-                             molestias excepturi sint occaecati cupiditate non provident, similique 
-                             sunt in culpa qui officia deserunt mollitia animi, id est laborum et 
-                             dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. 
-                             Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
-                        </p>
-                        <img class="lg:max-w-18rem" src="https://www.multycasetas.com/wp-content/uploads/2016/10/requisitos-del-producto-768x576.jpg" alt="">
+                        <p class="lg: mr-4">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut neque cupiditate repellendus debitis ullam, alias odio! Voluptatem molestias tempora perferendis provident velit consequuntur neque! Esse deserunt alias illum quod iure.
+                            Quae, ab laudantium ex aperiam iste esse quidem quia alias fuga totam ipsa ut, pariatur laboriosam minima vitae molestias inventore? Et quis perferendis dolorum enim similique optio error omnis magnam?
+                            Odio ipsam hic magni asperiores, nisi voluptatum consequatur nemo cum soluta ullam obcaecati perspiciatis, consectetur recusandae itaque, ut rem. Excepturi ab temporibus commodi dolorum qui vero soluta debitis eius illum.
+                         </p>
+
+                        <img class="lg:max-w-18rem bg-cover" src="https://picsum.photos/200/200.webp" alt="">
         
                     </div>
                 </p-accordionTab>
     
                 <p-accordionTab header="¿Por que nuestro programa?">
                     <div class="lg:flex">
-                        <p class="lg:mr-4">
-                            At vero eos et accusamus et iusto odio dignissimos ducimus qui 
-                            blanditiis praesentium voluptatum deleniti atque corrupti quos 
-                            dolores et quas molestias excepturi sint occaecati cupiditate non 
-                            provident, similique sunt in culpa
-                            qui officia deserunt mollitia animi, id est laborum et dolorum fuga. 
-                            Et harum quidem rerum facilis est et expedita distinctio. Nam libero 
-                            tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo
-                             minus.
-                        </p>
-                        <img class="lg:max-w-19rem" src="https://scontent.fctc1-1.fna.fbcdn.net/v/t39.30808-6/261505663_4357163594406859_4582290419759012092_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=a26aad&_nc_ohc=zrmm19_FvVYAX9LrpLe&_nc_ht=scontent.fctc1-1.fna&oh=00_AfDW_w82_kEV-TorbTRAcQ-0LzLFE_402SWJSk3wy4J-cA&oe=64E3A645" alt="">
+                        <p class="lg: mr-4">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut neque cupiditate repellendus debitis ullam, alias odio! Voluptatem molestias tempora perferendis provident velit consequuntur neque! Esse deserunt alias illum quod iure.
+                            Quae, ab laudantium ex aperiam iste esse quidem quia alias fuga totam ipsa ut, pariatur laboriosam minima vitae molestias inventore? Et quis perferendis dolorum enim similique optio error omnis magnam?
+                            Odio ipsam hic magni asperiores, nisi voluptatum consequatur nemo cum soluta ullam obcaecati perspiciatis, consectetur recusandae itaque, ut rem. Excepturi ab temporibus commodi dolorum qui vero soluta debitis eius illum.
+                         </p>
+
+                        <img class="lg:max-w-18rem bg-cover" src="https://picsum.photos/200/400.webp" alt="">
+                        
         
                     </div>
                 </p-accordionTab>
