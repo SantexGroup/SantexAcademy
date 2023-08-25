@@ -14,6 +14,7 @@ import { UsuarioModule } from './modules/usuario/usuario.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OptionalsComponent } from './modules/optionals/optionals.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -33,8 +34,8 @@ import { OptionalsComponent } from './modules/optionals/optionals.component';
     UsuarioModule,
     FormsModule,
     ReactiveFormsModule, 
-    HttpClientModule
-
+    HttpClientModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent,BodyPageComponent]

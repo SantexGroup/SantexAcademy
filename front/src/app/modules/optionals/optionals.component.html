@@ -35,30 +35,41 @@ deletedAt -- no se ingresa
                 <div class="carousel-item">
                     <label for="aboutMe">Sobre Mi:</label><br>
                     <textarea name="aboutMe" cols="30" rows="10"></textarea><br>
-                    <label for="driverLicense">Licensia de conducir:</label><br>
-                    <select name="driverLicense" id="">
-                        <option value="Si">Si</option>
-                        <option value="No">No</option>
-                    </select><br>
-                    <label for="countries">Nacionalidad:</label><br>
-                    <select name="driverLicense" id="">
-                        <option value="Si">Si</option>
-                        <option value="No">No</option>
-                    </select><br>
+                    <mat-form-field>
+                        <mat-label>Licensia de conducir</mat-label>
+                        <mat-select name="driverLicense" id="">
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field><br>
+                    <mat-form-field>
+                        <mat-label>Nacionalidad</mat-label>
+                        <mat-select name="countries" id="">
+                            <mat-option *ngFor="let country of countries" [value]="country.country">
+                                {{country.country}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field><br>
                     <label for="address">Direccion:</label><br>
                     <input type="text" name="address">
                 </div>
                 <div class="carousel-item">
-                    <label for="marital">Estado Civil:</label><br>
-                    <select name="marital" id="">
-                        <option value="Si">Si</option>
-                        <option value="No">No</option>
-                    </select><br>
-                    <label for="sexs">Genero:</label><br>
-                    <select name="sexs" id="">
-                        <option value="Si">Si</option>
-                        <option value="No">No</option>
-                    </select><br>
+                    <mat-form-field>
+                        <mat-label>Estado Civil</mat-label>
+                        <mat-select name="marital" id="">
+                            <mat-option *ngFor="let condition of marital" [value]="condition.condition">
+                                {{condition.condition}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field><br>
+                    <mat-form-field>
+                        <mat-label>Genero</mat-label>
+                        <mat-select name="sexs" id="">
+                            <mat-option *ngFor="let sex of sexs" [value]="sex.gender">
+                                {{sex.gender}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field><br>
                     <label for="hobbies">Pasatiempos:</label><br>
                     <textarea name="aptitudes" cols="30" rows="3"></textarea><br>
                     <label for="achievements">Logros:</label><br>

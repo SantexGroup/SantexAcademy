@@ -10,7 +10,7 @@ body{
 
 .carousel-item{
     width: 60vh;
-    height: 70vh;
+    height: 75vh;
 }
 
 .carousel-item textarea{
@@ -26,7 +26,7 @@ body{
     width: 100%;
 }
 
-.carousel-item select{
+.carousel-item mat-form-field{
     border: none;
     border-radius: 5px;
     width: 100%;
