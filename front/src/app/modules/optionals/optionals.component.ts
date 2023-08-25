@@ -1,8 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Countries } from 'src/app/interfaces/country.interface';
 import { Marital } from 'src/app/interfaces/marital.interface';
 import { Sexs } from 'src/app/interfaces/sex.interface';
+import { CountriesService } from 'src/app/services/countries.service';
+import { GenderService } from 'src/app/services/gender.service';
+import { MaritalsService } from 'src/app/services/maritals.service';
 
 @Component({
   selector: 'app-optionals',
@@ -11,27 +13,45 @@ import { Sexs } from 'src/app/interfaces/sex.interface';
 })
 export class OptionalsComponent implements OnInit {
 
+  constructor(
+    private _countriesService: CountriesService,
+    private _maritalsService: MaritalsService,
+    private _genderServices: GenderService
+    ) {}
+
+  //Countries
+  getListCountries(){
+    this._countriesService.getCountries().subscribe((countriesList: Countries[])=>{
+      this.countries = countriesList;
+    });
+  }
+
   countries: Countries[] = [];
 
-  sexs: Sexs[] = [];
+  //Maritals
+  getListMaritals(){
+    this._maritalsService.getMaritals().subscribe((maritalsList: Marital[])=>{
+      this.marital= maritalsList;
+    });
+  }
 
   marital: Marital[] = [];
 
-  constructor(private http: HttpClient) { 
+  //Gender  
+  getListGender(){
+    this._genderServices.getSexs().subscribe((genderList: Sexs[])=>{
+      this.gender  = genderList ;
+    });
   }
 
+  gender: Sexs[] = [];
+
+ 
   ngOnInit(): void {
-    this.http.get<Countries[]>('http://localhost:3000/countries/all').subscribe((countriesList: Countries[]) => {
-      this.countries = countriesList;
-    });
+    this.getListCountries();
 
-    this.http.get<Sexs[]>('http://localhost:3000/gender/all').subscribe((genderList: Sexs[]) => {
-      this.sexs = genderList;
-    });
+    this.getListGender();
 
-    this.http.get<Marital[]>('http://localhost:3000/marital/all').subscribe((maritalList: Marital[]) => {
-      this.marital = maritalList;
-    });
+    this.getListMaritals();
   }
-
 }

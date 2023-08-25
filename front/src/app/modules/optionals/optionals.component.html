@@ -1,47 +1,39 @@
 <body>
-    <h1>OPCIONALES</h1>
-
-    <!-- 
-id -- no se ingresa -- NN
-marital_id -- se ingresa desde Maritals -- NN * 
-sexs_id -- se ingresa desde Sexs -- NN *
-countries_id -- se ingresa desde Countries -- NN *
-profile *
-webPage *
-linkedIn *
-hobbies *
-aptitudes *
-driverLicense *
-aboutMe *
-achievements *
-address *
-zipCode * 
-deletedAt -- no se ingresa
- -->
+    <h1 class="title">OPCIONALES</h1>
 
     <div class="optionalsInput">
         <div id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <label for="profile">Perfil:</label><br>
-                    <textarea name="profile" cols="30" rows="10"></textarea><br>
-                    <label for="webPage">Pagina Web:</label><br>
-                    <input type="text" name="webPage"><br>
-                    <label for="linkedIn">linkedIn:</label><br>
-                    <input type="text" name="linkedIn"><br>
-                    <label for="zipCode">Codigo postal:</label><br>
-                    <input type="number" name="zipCode">
+                    <mat-form-field>
+                        <mat-label>Perfil:</mat-label>
+                        <textarea matInput cols="30" rows="10"></textarea>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label for="webPage">Pagina Web:</mat-label>
+                        <input matInput type="text" name="webPage">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label for="linkedIn">linkedIn:</mat-label>
+                        <input matInput type="text" name="linkedIn">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label for="zipCode">Codigo postal:</mat-label>
+                        <input matInput type="number" name="zipCode">
+                    </mat-form-field>
                 </div>
                 <div class="carousel-item">
-                    <label for="aboutMe">Sobre Mi:</label><br>
-                    <textarea name="aboutMe" cols="30" rows="10"></textarea><br>
+                    <mat-form-field>
+                        <mat-label for="aboutMe">Sobre Mi:</mat-label>
+                        <textarea matInput name="aboutMe" cols="30" rows="10"></textarea>
+                    </mat-form-field>
                     <mat-form-field>
                         <mat-label>Licensia de conducir</mat-label>
                         <mat-select name="driverLicense" id="">
                             <mat-option value="Si">Si</mat-option>
                             <mat-option value="No">No</mat-option>
                         </mat-select>
-                    </mat-form-field><br>
+                    </mat-form-field>
                     <mat-form-field>
                         <mat-label>Nacionalidad</mat-label>
                         <mat-select name="countries" id="">
@@ -49,9 +41,11 @@ deletedAt -- no se ingresa
                                 {{country.country}}
                             </mat-option>
                         </mat-select>
-                    </mat-form-field><br>
-                    <label for="address">Direccion:</label><br>
-                    <input type="text" name="address">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label for="address">Direccion:</mat-label>
+                        <input matInput type="text" name="address">
+                    </mat-form-field>
                 </div>
                 <div class="carousel-item">
                     <mat-form-field>
@@ -61,21 +55,27 @@ deletedAt -- no se ingresa
                                 {{condition.condition}}
                             </mat-option>
                         </mat-select>
-                    </mat-form-field><br>
+                    </mat-form-field>
                     <mat-form-field>
                         <mat-label>Genero</mat-label>
                         <mat-select name="sexs" id="">
-                            <mat-option *ngFor="let sex of sexs" [value]="sex.gender">
+                            <mat-option *ngFor="let sex of gender" [value]="sex.gender">
                                 {{sex.gender}}
                             </mat-option>
                         </mat-select>
-                    </mat-form-field><br>
-                    <label for="hobbies">Pasatiempos:</label><br>
-                    <textarea name="aptitudes" cols="30" rows="3"></textarea><br>
-                    <label for="achievements">Logros:</label><br>
-                    <textarea name="aptitudes" cols="30" rows="3"></textarea><br>
-                    <label for="aptitudes">Aptitudes:</label><br>
-                    <textarea name="aptitudes" cols="30" rows="3"></textarea>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label for="hobbies">Pasatiempos:</mat-label>
+                        <textarea matInput name="aptitudes" cols="30" rows="3"></textarea>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label for="achievements">Logros:</mat-label>
+                        <textarea matInput name="aptitudes" cols="30" rows="3"></textarea>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label for="aptitudes">Aptitudes:</mat-label>
+                        <textarea matInput name="aptitudes" cols="30" rows="3"></textarea>
+                    </mat-form-field>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -89,9 +89,11 @@ deletedAt -- no se ingresa
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-    </div>
-    <div class="botonera">
-        <button mat-raised-button color="primary">Guardar</button>
-        <button mat-raised-button color="warn">Salir</button>
+        <div class="botonera">
+            <div class="botones">
+                <button mat-flat-button color="primary">Guardar</button>
+                <button mat-flat-button color="warn">Salir</button>
+            </div>
+        </div>
     </div>
 </body>
