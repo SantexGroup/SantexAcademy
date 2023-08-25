@@ -12,6 +12,13 @@ async function login(req, res, next) {
   }
 }
 
+// logout
+async function logout(req, res) {
+  console.log('eliminando token');
+  res.cookie('jwt', '', {maxAge: 1});
+  res.redirect('/');
+};
+
 // crear usuario
 async function createUser(req, res) {
   const {
@@ -24,4 +31,4 @@ async function createUser(req, res) {
   res.status(201).send(user);
 }
 
-module.exports = { login, createUser };
+module.exports = { login, createUser, logout };
