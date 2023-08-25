@@ -1,8 +1,8 @@
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/db-config');
+const { DataTypes } = require("sequelize");
+const { sequelize } = require("../config/db-config");
 
 const Usuario = sequelize.define(
-  'usuario',
+  "usuario",
   {
     id: {
       autoIncrement: true,
@@ -21,7 +21,12 @@ const Usuario = sequelize.define(
     email: {
       type: DataTypes.STRING(100),
       allowNull: false,
-      unique: 'email_UNIQUE',
+      // unique: 'email_UNIQUE',
+    },
+    uniqueEmail: {
+      type: DataTypes.STRING,
+      // unique: true,
+      allowNull: true,
     },
     password: {
       type: DataTypes.STRING(50),
@@ -44,8 +49,17 @@ const Usuario = sequelize.define(
     },
   },
   {
+    hooks: {
+      beforeSave: (usuario) => {
+        if (usuario.deletedAt) {
+          usuario.uniqueEmail = null;
+        } else {
+          usuario.uniqueEmail = usuario.email;
+        }
+      },
+    },
     paranoid: true,
-  },
+  }
 );
 
 module.exports = Usuario;

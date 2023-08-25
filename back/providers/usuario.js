@@ -7,46 +7,22 @@ const createUser = async (usuario) => {
   let transaction;
   try {
     transaction = await sequelize.transaction();
-
-    const existingDeletedUser = await Usuario.findOne({
-      where: {
-        [Op.and]: [
-          { deletedAt: { [Op.not]: null } }, // Buscar registros eliminados
-          {
-            [Op.or]: [{ fullName: usuario.fullName }, { email: usuario.email }],
-          },
-        ],
-      },
+    const newUser = await Usuario.create(usuario, {
+      transaction,
+      returning: true,
     });
-
-    if (existingDeletedUser) {
-      // Borrar el registro eliminado lógicamente
-      await existingDeletedUser.destroy();
-    }
-
-    // Crear un registro en la tabla Carrito
-    const newCarrito = await Carrito.create(
+    const newCarrito = await newUser.createCarrito(
       { name: `Carrito de ${usuario.fullName}` },
-      { transaction },
-    );
-
-    // Crear el nuevo registro de usuario con el id del Carrito creada
-    const newUser = await Usuario.create(
       {
-        ...usuario,
-        CarritoId: newCarrito.id,
-      },
-      { transaction },
+        transaction,
+        returning: true,
+      }
     );
 
     await transaction.commit();
 
     // Devolver el nuevo registro de usuario
-    return {
-      id: newUser.id,
-      fullName: newUser.fullName,
-      email: newUser.email,
-    };
+    return [newUser, newCarrito];
   } catch (err) {
     if (transaction) {
       await transaction.rollback();
@@ -120,5 +96,8 @@ const deleteUserById = async (id) => {
 };
 
 module.exports = {
-  createUser, getUsersByCriteria, updateUserById, deleteUserById,
+  createUser,
+  getUsersByCriteria,
+  updateUserById,
+  deleteUserById,
 };
