@@ -3,11 +3,11 @@ const adminController = require('../controllers/adminController');
 
 const router = express.Router();
 
-router.get('/obtener-todos', adminController.getAllAdmin);
-router.get('/obtener-por.id', adminController.getAdminById);
+router.get('/obtener-admin', adminController.getAllAdmin);
+router.get('/obtener/:id', adminController.getAdminById);
 router.post('/crear', adminController.createAdmin);
 router.put('/actualizar/:id', adminController.editAdmin);
 router.delete('/eliminar', adminController.deleteAdmin);
-router.post('/login', adminController.login);
+router.post('/login', adminController.sendOtpLogin);
 
 module.exports = router;

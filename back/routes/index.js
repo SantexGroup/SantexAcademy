@@ -17,12 +17,12 @@ app.use('/ping', (req, res) => {
 
 // Router para las vistas
 
-/* app.get('/login', (req, res) => {
+app.get('/login', (req, res) => {
   res.send('login');
-}); */
+});
 
-app.get('/register', (req, res) => {
-  res.send('register');
+app.get('/', (req, res) => {
+  res.send('Vista Index');
 });
 
 // Agregar aqui las rutas
@@ -31,9 +31,5 @@ app.use('/admins', adminRoutes);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
-
-app.get('/', (req, res) => {
-  res.send('Vista Index');
-});
 
 module.exports = app;

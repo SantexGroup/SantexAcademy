@@ -84,11 +84,11 @@ async function deleteAdmin(req, res) {
 }
 
 // Login
-async function login(req, res, next) {
-  const { email, password } = req.body;
+async function sendOtpLogin(req, res, next) {
+  const email = req.body;
 
   try {
-    const result = await adminService.login(email, password);
+    const result = await adminService.emailLogin(email);
     res.status(200).send(result);
   } catch (error) {
     next(error);
@@ -101,5 +101,5 @@ module.exports = {
   getAllAdmin,
   editAdmin,
   deleteAdmin,
-  login,
+  sendOtpLogin,
 };

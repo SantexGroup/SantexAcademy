@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 const { Admin } = require('../models/Admin');
 
 // Crear un administrador
@@ -81,11 +81,10 @@ async function deleteAdmin(id) {
 }
 
 // login
-async function login(email, password) {
-  const admin = await Admin.findOne({
+async function emailLogin(email) {
+  const admin = await Admin.findAll({
     where: {
       email,
-      password,
     },
   });
 
@@ -93,7 +92,7 @@ async function login(email, password) {
     throw new Error('El email o la contraseña son incorrectos');
   }
 
-  const token = jwt.sign(
+  /* const token = jwt.sign(
     {
       id: admin.id,
       email: admin.email,
@@ -104,11 +103,11 @@ async function login(email, password) {
 
   return {
     accessToken: token,
-  };
+  }; */
 }
 
 module.exports = {
-  login,
+  emailLogin,
   createAdmin,
   editAdmin,
   getAll,
