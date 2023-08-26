@@ -44,7 +44,7 @@ export class CrearUsuarioComponent implements OnInit {
           horizontalPosition: "center",
           verticalPosition: "bottom"
         });
-        this.router.navigate(['/list-users']);
+        this.router.navigate(['/dashboard/usuarios']);
       } catch (error) {
         console.error('Error al crear usuario:', error);
       }

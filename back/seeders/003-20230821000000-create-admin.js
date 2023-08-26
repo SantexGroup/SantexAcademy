@@ -8,11 +8,11 @@ module.exports = {
 
     await queryInterface.bulkInsert('Users', [
       {
-        firstName: 'nameEncuestador',
-        lastName: 'apellidoEncuestador',
-        userName: 'mix-x',
+        firstName: 'Administrador',
+        lastName: 'ApellidoDelAdministrador',
+        userName: 'mixx',
         password: hashedPassword,
-        email: 'mixx@gmail.com',
+        email: 'admin@gmail.com',
         rol: 'Admin',
         phone: faker.phone.phoneNumber(),
         createdAt: new Date(),
@@ -22,7 +22,6 @@ module.exports = {
   },
 
   async down(queryInterface) {
-    // Elimina el usuario administrador
-    await queryInterface.bulkDelete('Users', { userName: 'semper_admin' });
+    await queryInterface.bulkDelete('Users', { userName: 'mixx' });
   },
 };
