@@ -63,3 +63,9 @@
 .registrarse p:hover {
     color: blue;
 }
+
+/* quería probar que haciendo hover en un elemento se modifique otro
+.registrarse p:hover #prueba  {
+    color: blue;
+}
+*/
