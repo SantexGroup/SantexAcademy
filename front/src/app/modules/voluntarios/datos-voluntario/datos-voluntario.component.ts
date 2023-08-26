@@ -121,22 +121,20 @@ export class DatosVoluntarioComponent implements OnInit, OnDestroy {
 
 
     this.voluntarioService.modificarPassword(this.datosVoluntario.id!, this.formPassword.value.passwordActual, this.formPassword.value.passwordNueva).subscribe({
-      next:(res)=>{
+      next:()=>{
         this.matSnackBar.open("La contraseña se actualizó correctamente", "OK",{
           horizontalPosition:'center',
           verticalPosition:'top',
           duration:3000
         });
         this.cancelarEdicionPassword();
-        console.log(res);
       },
-      error:(res)=>{
+      error:()=>{
         this.matSnackBar.open("Error al actualizar la contraseña", "ERROR",{
           horizontalPosition:'center',
           verticalPosition:'top',
           duration:3000
         });
-        console.log(res);
       }
     });
   }
