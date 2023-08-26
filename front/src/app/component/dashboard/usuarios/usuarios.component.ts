@@ -3,13 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-<<<<<<< HEAD
-import { Usuario } from 'src/app/interfaces/usuario';
-import { UsuarioService } from 'src/app/services/usuario.service';
-=======
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/usuario.service';
->>>>>>> semper_dev
 
 @Component({
   selector: 'app-usuarios',
@@ -27,12 +22,8 @@ export class UsuariosComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-<<<<<<< HEAD
-  constructor(private _usuarioService: UsuarioService, private _snackBar: MatSnackBar) { }
-=======
 
   constructor(private userService: UserService, private _snackBar: MatSnackBar) { }
->>>>>>> semper_dev
 
   ngOnInit(): void {
     this.cargarUsuarios(); 

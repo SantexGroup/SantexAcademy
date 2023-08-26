@@ -78,9 +78,10 @@
           
             <mat-grid-tile [colspan]="1" [rowspan]="1" > 
                  <!--botón volver-->
-                <button mat-raised-button style="margin-right: 20px;" (click)="volver($event)">Volver</button>
+                <button mat-raised-button style="margin-right: 20px;">Volver</button>
+                <!-- <button mat-raised-button style="margin-right: 20px;" (click)="volver($event)">Volver</button> -->
                 <!--botón aceptar-->
-                <button type="submit" class="botonAceptar" mat-raised-button color="primary"  (click)="agregarUsuario()" [disabled]="form.invalid">Aceptar</button>
+                <button type="submit" class="botonAceptar" mat-raised-button color="primary"  (click)="createUser()" [disabled]="form.invalid">Aceptar</button>
             </mat-grid-tile>
             
             </mat-grid-list>
