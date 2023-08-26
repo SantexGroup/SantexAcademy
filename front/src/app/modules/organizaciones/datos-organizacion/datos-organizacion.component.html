@@ -36,7 +36,7 @@
 </div>
 
     <ng-template #editarDatosTemplate>
-        <div>
+        <div *ngIf="!editarPassword;else editarPasswordTemplate">
             <h2 class="titulo">Editar Datos</h2>
 
             <form class="contenedor-card" [formGroup]="formOrganizacion">
@@ -118,6 +118,18 @@
                        <p *ngIf="formOrganizacion.get('email')?.touched && formOrganizacion.get('email')?.value != '' && formOrganizacion.get('email')?.errors" 
                        class="mensaje-error">Ingrese un email válido</p>
                     </div>
+
+                    <!-- CONTRASEÑA-->
+
+                    <div class="propiedad">
+                        <div style="display: flex; justify-content: space-between;">
+
+                            <h3 class="titulo-propiedad margin-left-10">Contraseña</h3>
+                            <button (click)="editarPassword = true" mat-icon-button color="accent"> <mat-icon>edit</mat-icon></button>
+                        </div>
+                        <input type="password" value="password" class="input-full-width" disabled>
+                        
+                    </div>
                     
                 </div>
             </form>
@@ -131,7 +143,57 @@
                 <button mat-raised-button color="warn" style="margin-top: 20px;" (click)="cancelarModificacion()" >CANCELAR</button>
             </div>
         </div>
+
+        <ng-template #editarPasswordTemplate>
+            <div>   
+                <h2 class="titulo">Cambiar Contraseña</h2>
+                <form class="contenedor-card" [formGroup]="formPassword">
+
+                    <div class="propiedad password">
+
+                        <h3 class="titulo-propiedad margin-left-10">Contraseña Actual</h3>
+                        
+                        <div class="contenedor-cambio-password">
+                            <input [type]="mostrarPasswordActual?'text':'password'" class="input-full-width input-password "  formControlName="passwordActual"  placeholder="Ingresá tu contraseña actual *" autocomplete="current-password"
+                            [ngClass]="{'input-invalid':formPassword.get('passwordActual')?.touched && formPassword.get('passwordActual')?.invalid,
+                            'input-valid':formPassword.get('passwordActual')?.touched && formPassword.get('passwordActual')?.valid}">
+                            <mat-icon class="icono-password" (click)="mostrarPasswordActual= !mostrarPasswordActual ">{{mostrarPasswordActual?'visibility_off':'visibility'}}</mat-icon>
+
+                        </div>
+                        
+                        <p *ngIf="formPassword.get('passwordActual')?.touched && formPassword.get('passwordActual')?.value == ''" 
+                        class="mensaje-error">Este campo es obligatorio</p>
+            
+                    </div>
+
+                    <div class="propiedad password">
+                        <h3 class="titulo-propiedad margin-left-10">Contraseña Nueva</h3>
+                        <div class="contenedor-cambio-password">
+                            <input [type]="mostrarPasswordNuevo?'text':'password'" class="input-full-width input-password"  formControlName="passwordNuevo"  placeholder="Ingresá una contraseña *" autocomplete="current-password"
+                            [ngClass]="{'input-invalid':formPassword.get('passwordNuevo')?.touched && formPassword.get('passwordNuevo')?.invalid,
+                            'input-valid':formPassword.get('passwordNuevo')?.touched && formPassword.get('passwordNuevo')?.valid}">
+                            <mat-icon class="icono-password" (click)="mostrarPasswordNuevo= !mostrarPasswordNuevo ">{{mostrarPasswordNuevo?'visibility_off':'visibility'}}</mat-icon>
+                        </div>
+                        <p *ngIf="formPassword.get('passwordNuevo')?.touched && formPassword.get('passwordNuevo')?.value == ''" 
+                        class="mensaje-error">Este campo es obligatorio</p>
+                        
+                        <p *ngIf="formPassword.get('passwordActual')?.value === formPassword.get('passwordNuevo')?.value
+                         && formPassword.get('passwordActual')?.touched "  class="mensaje-error">
+                         No puede ser igual la contraseña nueva que la contraseña actual.</p>
+
+                    </div>
+
+
+                </form>
+                <div class="contenedor-botones">
+                    <button mat-raised-button color="primary" [disabled]="formPassword.invalid" (click)="actualizarPassword()">Actualizar</button>
+                    <button mat-raised-button color="warn" (click)="cancelarModificacionPassword()">Cancelar</button>
+                </div>
+            </div>
+        </ng-template>
+
     </ng-template>
+    
 
 
 

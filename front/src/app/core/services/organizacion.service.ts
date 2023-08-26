@@ -89,4 +89,13 @@ export class OrganizacionService {
       })
     );
   }
+
+  modificarPassword(id:number, passwordActual:string, passwordNueva:string):Observable<any>{
+    const passwords = {
+      currentPassword : passwordActual,
+      newPassword: passwordNueva
+    }
+
+    return this.apiService.put("/coordinator/modify-password/"+id, passwords );
+  }
 }

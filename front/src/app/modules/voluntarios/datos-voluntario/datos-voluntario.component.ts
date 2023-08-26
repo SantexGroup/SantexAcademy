@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
 import { Voluntario } from 'src/app/core/interfaces/voluntario';
 import { VoluntarioService } from 'src/app/core/services/voluntario.service';
 
@@ -24,13 +23,29 @@ export class DatosVoluntarioComponent implements OnInit, OnDestroy {
       telefono:['',[Validators.required, Validators.pattern(/^[0-9]{8,}$/)]]  
     });
 
+    this.formPassword = fb.group({
+      passwordActual:['',Validators.required],
+      passwordNueva:['',Validators.required],
+
+    });
+
     this.editarDatos = false;
+    this.editarPassword = false;
+
+    this.mostrarPasswordActual = false;
+    this.mostrarPasswordNueva = false;
+
    }
    suscripcionObservable;
    formVoluntario:FormGroup;
    datosVoluntario!:Voluntario;
    editarDatos:boolean;
-   
+   editarPassword:boolean;
+   formPassword:FormGroup;
+
+   mostrarPasswordActual:boolean;
+   mostrarPasswordNueva:boolean;
+
    ngOnInit(): void {
      
   }
@@ -86,6 +101,40 @@ export class DatosVoluntarioComponent implements OnInit, OnDestroy {
           duration:3000
         });
         console.log(err);
+      }
+    });
+  }
+
+  cancelarEdicionDatos():void{
+    this.editarDatos = false;
+    this.formVoluntario.reset();
+  }
+
+  cancelarEdicionPassword():void{
+    this.editarPassword = false;
+    this.formPassword.reset();
+    this.mostrarPasswordActual = false;
+    this.mostrarPasswordNueva = false;
+  }
+
+  actualizarPassword():void{
+
+
+    this.voluntarioService.modificarPassword(this.datosVoluntario.id!, this.formPassword.value.passwordActual, this.formPassword.value.passwordNueva).subscribe({
+      next:()=>{
+        this.matSnackBar.open("La contraseña se actualizó correctamente", "OK",{
+          horizontalPosition:'center',
+          verticalPosition:'top',
+          duration:3000
+        });
+        this.cancelarEdicionPassword();
+      },
+      error:()=>{
+        this.matSnackBar.open("Error al actualizar la contraseña", "ERROR",{
+          horizontalPosition:'center',
+          verticalPosition:'top',
+          duration:3000
+        });
       }
     });
   }
