@@ -17,6 +17,10 @@ const models = require('./models');
 // Rutes:
 const routes = require('./routes');
 
+// Authentication
+const { initializeAuthentication } = require('./auth/auth');
+initializeAuthentication();
+
 const config = require('./config/config');
 const validateEnv = require('./utils/validateEnv');
 
