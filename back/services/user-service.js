@@ -2,14 +2,14 @@ const { User, Products } = require('../models');
 const jwt = require('jsonwebtoken');
 
 // login
-async function login(alias, password) {
+async function login(mail, password) {
 
   const users = await User.findOne({
     where: {
-      alias,
+      mail,
       password,
     },
-    include: [{model: Products}]
+    //include: [{model: Products}]
   });
 
   if (!users) {
@@ -18,7 +18,7 @@ async function login(alias, password) {
 
   const token = jwt.sign({
     id: users.id,
-    alias: users.alias
+    mail: users.mail
   }, 'ClaveUltraSecreta', {expiresIn: '5m'});
 
   return {token};

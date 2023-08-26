@@ -2,10 +2,10 @@ const userService = require('../services/user-service');
 
 // login
 async function login(req, res, next) {
-  const { alias, password } = req.body;
+  const { mail, password } = req.body;
 
   try {
-    const accesToken = await userService.login(alias, password);
+    const accesToken = await userService.login(mail, password);
     res.status(200).send(accesToken);
   } catch (error) {
     next(error);
