@@ -15,7 +15,7 @@ export class UsuariosComponent implements OnInit {
 
   listUsuarios: User[]= [];
 
-  displayedColumns: string[] = [ "nombre", "apellido", "usuario", "email", "password", "telefono", "rol", "acciones"];
+  displayedColumns: string[] = [ "firstName", "lastName", "username", "email", "phone", "rol", "acciones"];
   
   dataSource!: MatTableDataSource<any>;
 
@@ -24,18 +24,30 @@ export class UsuariosComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private usuarioService: UserService, private _snackBar: MatSnackBar) { }
+  constructor(private userService: UserService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.cargarUsuarios(); 
   }
 
-  cargarUsuarios(){
-    this.listUsuarios= [];
-    // this.listUsuarios= this._usuarioService.getUsuario();
-    this.dataSource = new MatTableDataSource(this.listUsuarios);
+  async cargarUsuarios() {
+    this.listUsuarios = [];
+    const token = localStorage.getItem('token');
+    if (token !== null) {
+      try {
+        this.listUsuarios = await this.userService.getUsers(token);
+        this.dataSource = new MatTableDataSource(this.listUsuarios);
+      } catch (error) {
+        console.error('Error al cargar usuarios:', error);
+      } 
+      } else {
+        this._snackBar.open('Debe iniciar sesión con rol Admin para acceder a la lista de usuarios', '', {
+          duration: 3000, // Duración en milisegundos
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom'
+        });
+    }
   }
-
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -51,7 +63,7 @@ export class UsuariosComponent implements OnInit {
   eliminarUsuario(index: number){
     console.log (index);
 
-    this.usuarioService.eliminarUsuario(index); 
+    this.userService.eliminarUsuario(index); 
     this.cargarUsuarios();
 
     this._snackBar.open("El usuario fue eliminado con éxito!", "" ,{

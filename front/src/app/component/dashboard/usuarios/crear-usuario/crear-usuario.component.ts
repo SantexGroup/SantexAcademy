@@ -43,12 +43,14 @@ export class CrearUsuarioComponent implements OnInit {
             horizontalPosition: "center",
             verticalPosition: "bottom"
           });
+          this.router.navigate(['/list-users']);
         },
         error => {
           console.error('Error al crear usuario:', error);
           // Mostrar mensaje de error u otras acciones
         }
       );
+      
     }
   }
 }
