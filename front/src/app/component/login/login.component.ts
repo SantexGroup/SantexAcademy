@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { UserLogin } from '../../interfaces/user';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,26 +29,25 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   async login() {
-    // if (this.form.invalid) {
-    //   return;
-    // }
-
+    if (this.form.invalid) {
+      return;
+    }
     this.loading = true;
     const user: UserLogin = {
       username: this.form.value.username,
       password: this.form.value.password
     }
-    this.authService.login(user).subscribe((response) => {
+
+    try {
+      const response = await this.authService.login(user);
       localStorage.setItem('token', response.token);
       this.router.navigate(['/dashboard']);
-    },
-    (error) => {
+    } catch (error) {
       this.error();
       this.form.reset();
       this.loading = false;
     }
-  );
-}
+  }
 
   error() {
     this._snackBar.open('Usuario o contraseña inválidos!', '', {
