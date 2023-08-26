@@ -4,8 +4,9 @@
       <div class="dropdown-menu">
         <p>Iniciar sesión</p>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Usuario">
-            <input type="password" class="form-control" placeholder="Contraseña">
+            <input [(ngModel)]="corLog" id="inputCorreo"  type="text" class="form-control"  placeholder="Correo">
+            <input [(ngModel)]="pasLog" id="inputContraseña" type="password" class="form-control" placeholder="Contraseña">
+            <button (click)="botonLogin()" type="button" >Ingresar</button>
         </div>
         <a class="registrarse" >
             <p routerLink="/registro">¿No tienes una cuenta?</p>
