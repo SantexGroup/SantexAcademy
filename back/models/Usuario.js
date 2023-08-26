@@ -49,12 +49,11 @@ const Usuario = sequelize.define(
   },
   {
     hooks: {
-      beforeSave: (usuario) => {
-        if (usuario.deletedAt) {
-          usuario.uniqueEmail = null;
-        } else {
-          usuario.uniqueEmail = usuario.email;
-        }
+      beforeSave: (user) => {
+        user.uniqueEmail = user.deletedAt ? null : user.email;
+      },
+      afterDestroy: (user) => {
+        user.save();
       },
     },
     paranoid: true,

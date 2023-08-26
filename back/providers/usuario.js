@@ -52,12 +52,12 @@ const getUsersByCriteria = async (queryOptions, bodyOptions) => {
     });
     where.deletedAt = null;
 
-    const organizations = await Usuario.findAll({
+    const users = await Usuario.findAll({
       where,
       attributes: { exclude: ['deletedAt'] },
     });
 
-    return organizations;
+    return users;
   } catch (error) {
     console.error('The organization/s could not be retrieved due to an error.', error);
     throw error;
@@ -80,26 +80,22 @@ const updateUserById = async (id, usuario) => {
 
 const deleteUserById = async (id) => {
   try {
-    const user = await Usuario.findOne({
+    const deletedUser = await Usuario.findOne({
       where: {
         id,
-        deletedAt: null,
       },
     });
 
-    if (!user) {
+    if (!deletedUser) {
       throw new Error('User not found');
     }
 
-    // Aplicar borrado lógico estableciendo la columna deletedAt
-    await Usuario.update({ deletedAt: new Date() }, { where: { id } });
+    deletedUser.destroy();
+    await Carrito.destroy({ where: { usuarioId: id } });
 
-    // todo! --Eliminar físicamente el registro de la tabla Carrito--
-    await Carrito.destroy({ where: { id } });
-
-    return user;
+    return deletedUser;
   } catch (error) {
-    console.error('Ocurrió un error al eliminar el usuario.', error);
+    console.error('Error deleting user.', error);
     throw error;
   }
 };

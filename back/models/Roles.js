@@ -23,7 +23,6 @@ const Roles = sequelize.define(
 Roles.initializeRoles = async () => {
   const roles = ['voluntario', 'admin'];
   const promises = roles.map((roleName) => Roles.findOrCreate({ where: { name: roleName } }));
-
   await Promise.all(promises);
 };
 
