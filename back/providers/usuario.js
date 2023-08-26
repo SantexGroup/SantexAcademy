@@ -1,16 +1,26 @@
-const { Op } = require('sequelize');
-const { Usuario } = require('../models');
-const { Carrito } = require('../models');
+const { Usuario, Carrito, Roles } = require('../models');
 const { sequelize } = require('../config/db-config');
 
-const createUser = async (usuario) => {
+const createUser = async (usuario, roleName) => {
   let transaction;
   try {
     transaction = await sequelize.transaction();
+
     const newUser = await Usuario.create(usuario, {
       transaction,
       returning: true,
     });
+
+    const role = await Roles.findOne(
+      { where: { name: roleName } },
+      {
+        transaction,
+        returning: true,
+      }
+    );
+
+    await newUser.setRole(role, { transaction });
+
     const newCarrito = await newUser.createCarrito(
       { name: `Carrito de ${usuario.fullName}` },
       {
@@ -21,7 +31,6 @@ const createUser = async (usuario) => {
 
     await transaction.commit();
 
-    // Devolver el nuevo registro de usuario
     return [newUser, newCarrito];
   } catch (err) {
     if (transaction) {

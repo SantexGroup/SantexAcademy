@@ -10,7 +10,7 @@ const Roles = sequelize.define(
       allowNull: false,
       primaryKey: true,
     },
-    nombre: {
+    name: {
       type: DataTypes.STRING(50),
       allowNull: false,
     },
