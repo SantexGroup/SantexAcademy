@@ -1,3 +1,4 @@
+const { sequelize } = require('../config/db-config');
 const Catalogo = require('./Catalogo');
 const Carrito = require('./Carrito');
 const Organizacion = require('./Organizacion');
@@ -33,6 +34,20 @@ Vacante.belongsToMany(Usuario, {
 Vacante.belongsTo(Organizacion);
 Organizacion.hasMany(Vacante);
 
+// Initialize
+const initializeDB = async () => {
+  await sequelize.authenticate();
+  await sequelize
+    .sync({ force: true }) // force: if true, each start deletes DB
+    .then(() => Roles.initializeRoles())
+    .then(() => {
+      console.log('Database & roles initialized.');
+    })
+    .catch((error) => {
+      console.error('Error setting up the database: ', error);
+    });
+};
+
 // exports
 module.exports = {
   Catalogo,
@@ -42,4 +57,5 @@ module.exports = {
   Roles,
   Usuario,
   Vacante,
+  initializeDB,
 };

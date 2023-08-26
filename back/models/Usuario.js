@@ -21,7 +21,11 @@ const Usuario = sequelize.define(
     email: {
       type: DataTypes.STRING(100),
       allowNull: false,
-      unique: 'email_UNIQUE',
+    },
+    uniqueEmail: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: true,
     },
     password: {
       type: DataTypes.STRING(50),
@@ -44,6 +48,14 @@ const Usuario = sequelize.define(
     },
   },
   {
+    hooks: {
+      beforeSave: (user) => {
+        user.uniqueEmail = user.deletedAt ? null : user.email;
+      },
+      afterDestroy: (user) => {
+        user.save();
+      },
+    },
     paranoid: true,
   },
 );

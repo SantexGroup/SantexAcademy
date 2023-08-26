@@ -14,21 +14,4 @@ const sequelize = new Sequelize(
   },
 );
 
-const initializeDB = async () => {
-  try {
-    await sequelize.authenticate(); // Tests connection by trying to authenticate
-    console.log('Conection to DB established.');
-
-    // Sync all defined models to DB
-    await sequelize.sync({ force: false }); // force: if true, each start deletes DB
-
-    // Create default roles
-    const { Roles } = require('../models');
-    await Roles.bulkCreateDefaultRoles();
-  } catch (err) {
-    console.error('Error initializing DB.', err.message);
-    throw err;
-  }
-};
-
-module.exports = { sequelize, initializeDB };
+module.exports = { sequelize };
