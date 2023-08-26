@@ -20,14 +20,11 @@ const Roles = sequelize.define(
   },
 );
 
-Roles.bulkCreateDefaultRoles = async () => {
-  const rolesData = [
-    { nombre: 'Visitante' },
-    { nombre: 'Voluntario' },
-    { nombre: 'Administrador' },
-  ];
+Roles.initializeRoles = async () => {
+  const roles = ['voluntario', 'admin'];
+  const promises = roles.map((roleName) => Roles.findOrCreate({ where: { name: roleName } }));
 
-  await Roles.bulkCreate(rolesData);
+  await Promise.all(promises);
 };
 
 module.exports = Roles;
