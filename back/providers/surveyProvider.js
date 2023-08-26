@@ -1,4 +1,4 @@
-// const { Op } = require('sequelize');
+const { Op } = require('sequelize');
 const { Survey } = require('../models');
 
 const createSurvey = async (surveyAttr) => {
@@ -94,8 +94,23 @@ async function restoreSurvey(id) {
     const restoredSurvey = await Survey.restore({ where: { id } });
     return restoredSurvey;
   } catch (error) {
-    throw new Error(`Error al restaurar la encuesta con id ${id}: ${error.message}`);
+    throw new Error(
+      `Error al restaurar la encuesta con id ${id}: ${error.message}`,
+    );
   }
+}
+
+async function getSurveysBySurveyorAndDates(surveyorId, startDate, endDate) {
+  const surveys = await Survey.findAll({
+    where: {
+      surveyorId,
+      createdAt: {
+        [Op.between]: [startDate, endDate],
+      },
+    },
+  });
+
+  return surveys;
 }
 
 module.exports = {
@@ -106,4 +121,5 @@ module.exports = {
   deleteSurvey,
   updateSurvey,
   restoreSurvey,
+  getSurveysBySurveyorAndDates,
 };

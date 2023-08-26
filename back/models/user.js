@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
     {
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
-      userName: DataTypes.STRING,
+      username: DataTypes.STRING,
       password: DataTypes.STRING,
       email: DataTypes.STRING,
       rol: DataTypes.STRING,

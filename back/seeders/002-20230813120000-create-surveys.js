@@ -38,12 +38,15 @@ const generateSurveyResults = async (count, surveyorIds) => {
     const email = faker.internet.email();
     const answers = generateRandomAnswers();
     const randomSurveyorId = surveyorIds[Math.floor(Math.random() * surveyorIds.length)];
+    const createdAt = faker.date.between('2015-01-01', '2023-08-15');
+    const updatedAt = faker.date.between(createdAt, '2023-08-15');
+
     surveyResults.push({
       email,
       surveyorId: randomSurveyorId,
       questions: JSON.stringify(answers),
-      createdAt: faker.date.between('2020-01-01', '2023-08-15'),
-      updatedAt: faker.date.between('2020-01-01', '2023-08-15'),
+      createdAt,
+      updatedAt,
     });
   }
   return surveyResults;
@@ -52,7 +55,7 @@ const generateSurveyResults = async (count, surveyorIds) => {
 module.exports = {
   async up(queryInterface) {
     const surveyors = await queryInterface.sequelize.query(
-      'SELECT id FROM Users WHERE rol LIKE \'%encuestador%\'',
+      "SELECT id FROM Users WHERE rol LIKE '%encuestador%'",
     );
     const surveyorIds = surveyors[0].map((surveyor) => surveyor.id);
 

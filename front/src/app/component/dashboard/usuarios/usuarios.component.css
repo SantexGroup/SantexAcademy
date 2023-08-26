@@ -2,12 +2,7 @@ table {
     width: 100%;
     margin-top: 10px;
   }
-
-
-  th{
-    width: 2%;
-  }
-
+  
 .pointer{
   cursor: pointer;
   color: #1f516f;
@@ -20,12 +15,14 @@ table {
 
 .mat-form-field {
   font-size: 15px;
-  width: 100%;
 }
 
 .botonagregar{
   background-color: #FEA31C;
   color: white;
 }
-
-
+.mat-cell-content-long {
+  white-space: nowrap; /* Evita el salto de línea */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Agrega puntos suspensivos si el contenido es muy largo */
+}

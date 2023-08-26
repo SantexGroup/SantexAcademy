@@ -5,7 +5,7 @@
     </mat-toolbar>
 
     <mat-card style="margin-top: 10px;">
-        <form [formGroup]="form" (ngSubmit)="agregarUsuario"> 
+        <form [formGroup]="form" (ngSubmit)="createUser()">
           
             <mat-grid-list cols="4" rowHeight="55px">
 
@@ -13,7 +13,7 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1" class="columResponsive"> 
                     <mat-form-field class="campo">
                         <mat-label>Nombre</mat-label>
-                        <input matInput autocomplete="off" formControlName="nombre">
+                        <input matInput autocomplete="off" formControlName="firstName">
                     </mat-form-field>
                 </mat-grid-tile>
 
@@ -28,15 +28,15 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1" > 
                     <mat-form-field class="campo">
                         <mat-label>Apellido</mat-label>
-                        <input matInput autocomplete="off" formControlName="apellido">
-                    </mat-form-field>
+                        <input matInput autocomplete="off" formControlName="lastName">
+                      </mat-form-field>
                 </mat-grid-tile>
 
             <!--nombre de usuario-->
                 <mat-grid-tile [colspan]="1" [rowspan]="1"> 
                     <mat-form-field class="campo">
                         <mat-label>Nombre de Usuario</mat-label>
-                        <input matInput autocomplete="off" formControlName="usuario">
+                        <input matInput autocomplete="off" formControlName="username">
                     </mat-form-field>
                 </mat-grid-tile>
             
@@ -44,7 +44,7 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1"> 
                     <mat-form-field class="campo">
                         <mat-label>Contraseña</mat-label>
-                        <input type="password" matInput autocomplete="off" formControlName="password">
+                        <input matInput autocomplete="off" formControlName="password">
                     </mat-form-field>
                 </mat-grid-tile>
 
@@ -72,7 +72,7 @@
             <mat-grid-tile [colspan]="1" [rowspan]="1"> 
                 <mat-form-field class="campo">
                     <mat-label>Teléfono</mat-label>
-                    <input type="number" matInput autocomplete="off" formControlName="telefono">
+                    <input matInput autocomplete="off" formControlName="phone">
                 </mat-form-field>
             </mat-grid-tile>    
           

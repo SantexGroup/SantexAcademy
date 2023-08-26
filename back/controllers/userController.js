@@ -3,10 +3,10 @@ const userService = require('../services/userService');
 require('dotenv').config();
 
 async function login(req, res, next) {
-  const { userName, password } = req.body;
+  const { username, password } = req.body;
 
   try {
-    const user = await userService.authenticateUser(userName, password);
+    const user = await userService.authenticateUser(username, password);
     if (!user) {
       return res.status(401).json({ message: 'Credenciales inválidas' });
     }
@@ -14,7 +14,7 @@ async function login(req, res, next) {
     const token = jwt.sign(
       {
         userId: user.id,
-        userName: user.userName,
+        userName: user.username,
         rol: user.rol,
       },
       secretKey,
@@ -24,7 +24,7 @@ async function login(req, res, next) {
     );
 
     return res.status(200).json({
-      message: `Credenciales válidas, acceso al usuario: ${userName}`,
+      message: `Credenciales válidas, acceso al usuario: ${username}`,
       token,
     });
   } catch (error) {
@@ -34,7 +34,6 @@ async function login(req, res, next) {
 
 async function createUser(req, res, next) {
   const userDetails = req.body;
-
   try {
     const user = await userService.registerUser(userDetails);
     return res

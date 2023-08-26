@@ -2,7 +2,7 @@
     <mat-toolbar>
       <span >Usuarios</span>
       <div class="example-spacer"></div>
-      <button mat-raised-button class="botonagregar" routerLink="/dashboard/crear-usuario">Agregar</button>
+      <button mat-raised-button class="botonagregar" routerLink="/dashboard/crear-usuario">Crear</button>
     </mat-toolbar>
 
 
@@ -18,51 +18,51 @@
       <!-- tabla -->
       <table mat-table [dataSource]="dataSource" matSort >
         <!-- nombre Column -->
-        <ng-container matColumnDef="nombre">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="mat-column-firstName"> Nombre </th>
+          <td mat-cell *matCellDef="let element" [style.width.%]="10" class="mat-cell-content-long">{{element.firstName}}</td>
         </ng-container>
 
         <!-- apellido Column -->
-        <ng-container matColumnDef="apellido">
+        <ng-container matColumnDef="lastName">
           <th mat-header-cell *matHeaderCellDef> Apellido </th>
-          <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+          <td mat-cell *matCellDef="let element" [style.width.%]="10" class="mat-cell-content-long">{{element.lastName}}</td>
         </ng-container>
 
         <!-- usuario Column -->
-        <ng-container matColumnDef="usuario">
+        <ng-container matColumnDef="username">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </th>
-          <td mat-cell *matCellDef="let element"> {{element.usuario}} </td>
+          <td mat-cell *matCellDef="let element" [style.width.%]="10" class="mat-cell-content-long">{{element.username}}</td>
         </ng-container>
 
          <!-- contraseña Column -->
-         <ng-container matColumnDef="password">
+         <!-- <ng-container matColumnDef="password">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Contraseña </th>
-          <td mat-cell *matCellDef="let element"> {{element.password}} </td>
-        </ng-container>
+          <td mat-cell *matCellDef="let element" [style.width.%]="10" class="mat-cell-content-long">{{element.password}}</td>
+        </ng-container> -->
 
         <!-- email Column -->
         <ng-container matColumnDef="email">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          <td mat-cell *matCellDef="let element" [style.width.%]="10" class="mat-cell-content-long">{{element.email}}</td>
         </ng-container>
 
         <!-- rol Column -->
         <ng-container matColumnDef="rol">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Rol </th>
-          <td mat-cell *matCellDef="let element"> {{element.rol}} </td>
+          <td mat-cell *matCellDef="let element" [style.width.%]="10" class="mat-cell-content-long">{{element.rol}}</td>
         </ng-container>
 
         <!-- telefono Column -->
-        <ng-container matColumnDef="telefono">
+        <ng-container matColumnDef="phone">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </th>
-          <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+          <td mat-cell *matCellDef="let element" [style.width.%]="10" class="mat-cell-content-long">{{element.phone}}</td>
         </ng-container>
 
         <!-- icon Column -->
         <ng-container matColumnDef="acciones">
-          <th mat-header-cell *matHeaderCellDef>  </th>
-          <td mat-cell *matCellDef="let element; let i = index" style="text-align: right;"> 
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let element; let i = index" style="text-align: right;" [style.width.%]="10" class="mat-cell-content-long"> 
             <a>
               <mat-icon class="pointer" matTooltip="ver usuario">search</mat-icon>
             </a>
@@ -87,7 +87,7 @@
     </div>
   </div>
 
-<h2 *ngIf="listUsuarios.length==0">   No hay usuarios para mostrar! </h2>
+<h2 *ngIf="listUsuarios.length==0">No hay usuarios para mostrar!</h2>
 
 </div>
 

@@ -4,15 +4,15 @@ exports.validateUserFields = [
   body('firstName', 'El nombre debe tener más de dos caracteres')
     .exists()
     .isLength({ min: 3 }),
-  body('lastName', 'El apellido debe tener más de tres caracteres')
+  body('lastName', 'El apellido debe tener más de dos caracteres')
+    .exists()
+    .isLength({ min: 3 }),
+  body('username', 'El nombre de usuario debe tener más de 3 caracteres')
     .exists()
     .isLength({ min: 4 }),
-  body('userName', 'El nombre de usuario debe tener más de siete caracteres')
+  body('password', 'La contraseña debe tener al menos 6 caracteres')
     .exists()
-    .isLength({ min: 8 }),
-  body('password', 'La contraseña debe tener al menos 8 caracteres')
-    .exists()
-    .isLength({ min: 8 }),
+    .isLength({ min: 6 }),
   body('email', 'Email no válido').exists().isEmail(),
   body('rol', 'Debe ingresar Admin ó encuestador')
     .exists()
@@ -23,7 +23,7 @@ exports.validateUserFields = [
 ];
 
 exports.validateLoginRequest = [
-  body('userName')
+  body('username')
     .notEmpty()
     .withMessage('El nombre de usuario es requerido')
     .isLength({ min: 3 })
@@ -35,6 +35,6 @@ exports.validateLoginRequest = [
   body('password')
     .notEmpty()
     .withMessage('La contraseña es requerida')
-    .isLength({ min: 8 })
-    .withMessage('La contraseña debe tener al menos 8 caracteres'),
+    .isLength({ min: 6 })
+    .withMessage('La contraseña debe tener al menos 6 caracteres'),
 ];
