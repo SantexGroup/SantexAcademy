@@ -41,7 +41,7 @@ export class UsuariosComponent implements OnInit {
       } 
       } else {
         this._snackBar.open('Debe iniciar sesión con rol Admin para acceder a la lista de usuarios', '', {
-          duration: 3000, // Duración en milisegundos
+          duration: 3000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom'
         });
@@ -58,16 +58,41 @@ export class UsuariosComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  eliminarUsuario(index: number){
-    console.log (index);
-
-    this.userService.eliminarUsuario(index); 
-    this.cargarUsuarios();
-
-    this._snackBar.open("El usuario fue eliminado con éxito!", "" ,{
-      duration:1500,
-      horizontalPosition:"center",
-      verticalPosition:"bottom"
-    })
+  async deleteUser(id: number) {
+    const token = localStorage.getItem('token');
+    console.log(id);
+    if (!token) {
+      this._snackBar.open(
+        'Debe iniciar sesión con rol Admin para acceder a la lista de usuarios',
+        '',
+        {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom'
+        }
+      );
+      return; // Salir de la función si no hay token
+    }
+  
+    try {
+      await this.userService.deleteUser({ userId: id, token });
+      this.cargarUsuarios();
+      this._snackBar.open('Usuario eliminado con éxito.', '', {
+        duration: 1500,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      });
+    } catch (error) {
+      this._snackBar.open(
+        'Ocurrió un error al eliminar el usuario. Por favor, inténtalo nuevamente.',
+        '',
+        {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom'
+        }
+      );
+    }
   }
+  
 }

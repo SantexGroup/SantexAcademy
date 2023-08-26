@@ -62,7 +62,7 @@
         <!-- icon Column -->
         <ng-container matColumnDef="acciones">
           <th mat-header-cell *matHeaderCellDef>Acciones</th>
-          <td mat-cell *matCellDef="let element; let i = index" style="text-align: right;" [style.width.%]="10" class="mat-cell-content-long"> 
+          <td mat-cell *matCellDef="let element; let i = index" style="text-align: center;" [style.width.%]="10" class="mat-cell-content-long"> 
             <a>
               <mat-icon class="pointer" matTooltip="ver usuario">search</mat-icon>
             </a>
@@ -70,7 +70,7 @@
               <mat-icon class="pointer" matTooltip="editar usuario">edit</mat-icon>
             </a>
             <a>
-              <mat-icon class="pointer" (click)="eliminarUsuario(i)" matTooltip="eliminar usuario">delete</mat-icon>
+              <mat-icon class="pointer" (click)="deleteUser(element.id)" matTooltip="eliminar usuario">delete</mat-icon>
             </a>
           </td>
         </ng-container>
