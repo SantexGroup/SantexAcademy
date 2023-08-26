@@ -4,15 +4,15 @@ const faker = require('faker');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface) {
-    const hashedPassword = await bcrypt.hash('passAdmin', 10);
+    const hashedPassword = await bcrypt.hash('admin123', 10);
 
     await queryInterface.bulkInsert('Users', [
       {
-        firstName: 'Sergio',
-        lastName: 'Pereyra',
-        userName: 'semper_admin',
+        firstName: 'nameEncuestador',
+        lastName: 'apellidoEncuestador',
+        userName: 'mix-x',
         password: hashedPassword,
-        email: 'elsemper@gmail.com',
+        email: 'mixx@gmail.com',
         rol: 'Admin',
         phone: faker.phone.phoneNumber(),
         createdAt: new Date(),
