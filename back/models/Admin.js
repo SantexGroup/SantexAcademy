@@ -1,6 +1,7 @@
 const { Model } = require('sequelize');
+const { DataTypes } = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
   class Admin extends Model {
     /**
      * Helper method for defining associations.
@@ -11,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
+
   Admin.init({
     firstname: DataTypes.STRING,
     lastname: DataTypes.STRING,
@@ -23,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     roll: DataTypes.STRING,
   }, {
     sequelize,
+    timestamps: false,
     modelName: 'admin',
   });
   return Admin;

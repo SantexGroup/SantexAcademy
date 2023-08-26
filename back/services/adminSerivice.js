@@ -1,5 +1,24 @@
 // const jwt = require('jsonwebtoken');
-const { Admin } = require('../models/Admin');
+const Admin = require('../models');
+const db = require('../models');
+
+// Buscar todos los administradores
+async function getAll() {
+  const adminList = await db.admin.findAll();
+
+  return adminList;
+}
+
+// Buscar administrador por id
+async function getById(id) {
+  const admin = await db.admin.findByPk(id);
+
+  if (admin == null) {
+    throw new Error('Administrador no encontrado');
+  }
+
+  return admin;
+}
 
 // Crear un administrador
 async function createAdmin(
@@ -19,31 +38,13 @@ async function createAdmin(
   admin.adress = adress;
   admin.email = email;
   admin.roll = roll;
-  const adminCreate = await admin.save();
+  const adminCreate = await db.admin.save();
   return adminCreate;
-}
-
-// Buscar todos los administradores
-async function getAll() {
-  const adminList = await Admin.findAll();
-
-  return adminList;
-}
-
-// Buscar administrador por id
-async function getById(id) {
-  const admin = await Admin.findByPk(id);
-
-  if (admin == null) {
-    throw new Error('Administrador no encontrado');
-  }
-
-  return admin;
 }
 
 //  Editar un administrador
 async function editAdmin(id, firstname, lastname, dni, phone, adress, email) {
-  const admin = await getById(id);
+  const admin = await db.admin.getById();
 
   if (firstname) {
     admin.firstname = firstname;
@@ -69,7 +70,7 @@ async function editAdmin(id, firstname, lastname, dni, phone, adress, email) {
     admin.email = email;
   }
 
-  const adminEdited = await admin.save();
+  const adminEdited = await db.admin.save();
   return adminEdited;
 }
 
@@ -82,7 +83,7 @@ async function deleteAdmin(id) {
 
 // login
 async function emailLogin(email) {
-  const admin = await Admin.findAll({
+  const admin = await db.admin.findAll({
     where: {
       email,
     },
