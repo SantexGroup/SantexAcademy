@@ -31,28 +31,26 @@ export class CrearUsuarioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createUser() {
+  async createUser() {
     if (this.form.valid) {
       const userData = this.form.value;
       const token = localStorage.getItem('token');
       userData.token = token;
-      this.userService.createUser(userData).subscribe(
-        response => {
-          this._snackBar.open("El usuario fue creado con éxito!", "", {
-            duration: 1500,
-            horizontalPosition: "center",
-            verticalPosition: "bottom"
-          });
-          this.router.navigate(['/list-users']);
-        },
-        error => {
-          console.error('Error al crear usuario:', error);
-          // Mostrar mensaje de error u otras acciones
-        }
-      );
-      
+  
+      try {
+        await this.userService.createUser(userData);
+        this._snackBar.open("El usuario fue creado con éxito!", "", {
+          duration: 1500,
+          horizontalPosition: "center",
+          verticalPosition: "bottom"
+        });
+        this.router.navigate(['/list-users']);
+      } catch (error) {
+        console.error('Error al crear usuario:', error);
+      }
     }
   }
+  
 }
 
 

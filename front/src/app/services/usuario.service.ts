@@ -13,11 +13,17 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  createUser(user: User) {
+  async createUser(user: User) {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${user.token}`
     });
-    return this.http.post(`${this.appUrl}user/`, user, {headers});
+    try {
+      const usersObservable = this.http.post(`${this.appUrl}user/`, user, {headers});
+      return await firstValueFrom(usersObservable);
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 
   async getUsers(token: string): Promise<User[]> {
@@ -26,8 +32,7 @@ export class UserService {
     });
     try {
       const usersObservable = this.http.get<User[]>(`${this.appUrl}user/`, { headers });
-      const usersArray = await firstValueFrom(usersObservable);
-      return usersArray;
+      return await firstValueFrom(usersObservable);
     } catch (error) {
       console.error(error);
       throw error;
