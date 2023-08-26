@@ -1,0 +1,32 @@
+const { Model, DataTypes } = require('sequelize');
+
+module.exports = (sequelize) => {
+  class category extends Model {}
+  category.init({
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    dificulty: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  }, {
+    sequelize,
+    modelName: 'category',
+    timestamps: false,
+    underscored: false,
+    createdAt: false,
+    updatedAt: false,
+  });
+  return category;
+};

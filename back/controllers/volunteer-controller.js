@@ -42,7 +42,7 @@ async function editVolunteer(req, res) {
   } = req.body;
 
   // eslint-disable-next-line max-len
-  const user = await volunteerServices.editUser(id, name, lastname, dni, email, password, address, phone);
+  const user = await volunteerServices.editUser(id, name, lastname, dni, email, address, phone);
 
   res.status(201).send(user);
 }
