@@ -41,7 +41,7 @@ async function editCoordinator(req, res) {
   } = req.body;
 
   // eslint-disable-next-line max-len
-  const user = await coordinatorServices.editUser(id, name, description, email, password, address, phone);
+  const user = await coordinatorServices.editUser(id, name, description, email, address, phone);
 
   res.status(201).send(user);
 }
