@@ -18,13 +18,9 @@ function comparePasswords(password, hashedPassword) {
 }
 
 async function createUser(userDetails) {
-  try {
-    const hashedPassword = await bcrypt.hash(userDetails.password, 10);
-    return User.create({ ...userDetails, password: hashedPassword });
-  } catch (error) {
-    throw error;
-  }
-} 
+  const hashedPassword = await bcrypt.hash(userDetails.password, 10);
+  return User.create({ ...userDetails, password: hashedPassword });
+}
 
 async function findAll() {
   try {
@@ -64,13 +60,9 @@ async function updateUser(id, newData) {
 }
 
 async function deleteUser(id) {
-  try {
-    const user = await User.findByPk(id);
-    return user.destroy();
-  } catch (error) {
-    throw error;
-  }
-};
+  const user = await User.findByPk(id);
+  return user.destroy();
+}
 
 async function restoreUser(id) {
   try {
@@ -87,7 +79,9 @@ async function restoreUser(id) {
     const restoredUser = await User.restore({ where: { id } });
     return restoredUser;
   } catch (error) {
-    throw new Error(`Error al restaurar el usuario con id ${id}: ${error.message}`);
+    throw new Error(
+      `Error al restaurar el usuario con id ${id}: ${error.message}`,
+    );
   }
 }
 

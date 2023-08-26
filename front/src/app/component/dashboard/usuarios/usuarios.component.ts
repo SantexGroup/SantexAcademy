@@ -3,13 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Usuario } from 'src/app/interfaces/usuario';
-import { UsuarioService } from 'src/app/services/usuario.service';
-
-
-
-
-
+import { User } from 'src/app/interfaces/user';
+import { UserService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -18,7 +13,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class UsuariosComponent implements OnInit {
 
-  listUsuarios: Usuario[]= [];
+  listUsuarios: User[]= [];
 
   displayedColumns: string[] = [ "nombre", "apellido", "usuario", "email", "password", "telefono", "rol", "acciones"];
   
@@ -29,14 +24,15 @@ export class UsuariosComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private _usuarioService: UsuarioService, private _snackBar: MatSnackBar) { }
+  constructor(private usuarioService: UserService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.cargarUsuarios(); 
   }
 
   cargarUsuarios(){
-    this.listUsuarios= this._usuarioService.getUsuario();
+    this.listUsuarios= [];
+    // this.listUsuarios= this._usuarioService.getUsuario();
     this.dataSource = new MatTableDataSource(this.listUsuarios);
   }
 
@@ -55,7 +51,7 @@ export class UsuariosComponent implements OnInit {
   eliminarUsuario(index: number){
     console.log (index);
 
-    this._usuarioService.eliminarUsuario(index); 
+    this.usuarioService.eliminarUsuario(index); 
     this.cargarUsuarios();
 
     this._snackBar.open("El usuario fue eliminado con éxito!", "" ,{

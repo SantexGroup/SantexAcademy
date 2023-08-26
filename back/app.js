@@ -61,6 +61,9 @@ app.use(express.urlencoded(
 // Cors configuration
 const whitelist = process.env.CORS.split(' ');
 
+// const corsOptions = {
+//   origin: '*',
+// };
 const corsOptions = {
   origin(origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {

@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/interfaces/usuario';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { UserService } from '../../../../services/usuario.service';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -11,52 +10,47 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./crear-usuario.component.css']
 })
 export class CrearUsuarioComponent implements OnInit {
-
-  rol: any[] = ["Administrador" , "Encuestador"];
-
+  rol: any[] = ["Admin" , "Encuestador"];
   form: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private _usuarioService:UsuarioService,
+              private userService:UserService,
               private router: Router,
-              private _snackBar: MatSnackBar) { 
-    this.form= this.fb.group({
-      nombre:["", Validators.required],
-      apellido:["", Validators.required],
-      usuario:["", Validators.required],
-      password:["", Validators.required],
-      email:["", Validators.required],
-      rol:["", Validators.required],
-      telefono:["", Validators.required],
-    })
-  }
+              private _snackBar: MatSnackBar) {
+                this.form = this.fb.group({
+                  firstName: ['', Validators.required],
+                  lastName: ['', Validators.required],
+                  username: ['', Validators.required],
+                  password: ['', Validators.required],
+                  email: ['', [Validators.required, Validators.email]],
+                  rol: ['', Validators.required],
+                  phone: ['', Validators.required]
+                });
+              }
 
   ngOnInit(): void {
   }
 
-  agregarUsuario(){
-
-    const user: Usuario={
-      nombre: this.form.value.nombre,
-      apellido: this.form.value.apellido,
-      usuario: this.form.value.usuario,
-      password: this.form.value.password,
-      email: this.form.value.email,
-      rol: this.form.value.rol,
-      telefono: this.form.value.telefono
+  createUser() {
+    if (this.form.valid) {
+      const userData = this.form.value;
+      const token = localStorage.getItem('token');
+      userData.token = token;
+      this.userService.createUser(userData).subscribe(
+        response => {
+          this._snackBar.open("El usuario fue creado con éxito!", "", {
+            duration: 1500,
+            horizontalPosition: "center",
+            verticalPosition: "bottom"
+          });
+        },
+        error => {
+          console.error('Error al crear usuario:', error);
+          // Mostrar mensaje de error u otras acciones
+        }
+      );
     }
-
-
-    this._usuarioService.agregarUsuario(user);
-    this.router.navigate(['/dashboard/usuarios']);
-
-
-    this._snackBar.open("El usuario fue agregado con éxito!", "" ,{
-      duration:1500,
-      horizontalPosition:"center",
-      verticalPosition:"bottom"
-    })
   }
-
-
 }
+
+

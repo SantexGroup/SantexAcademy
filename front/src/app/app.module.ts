@@ -6,11 +6,10 @@ import { AppComponent } from './app.component';
 
 import { CompartidaModule } from './component/compartida/compartida.module';
 
-
-
 //componentes
 import { LoginComponent } from './component/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 //import { InicioComponent } from './component/dasboard/inicio/inicio.component';
 
 
@@ -24,9 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CompartidaModule
-
-
+    CompartidaModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

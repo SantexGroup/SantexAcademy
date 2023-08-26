@@ -25,7 +25,7 @@ export class ApiService {
   constructor(
     public http: HttpClient,
   ) {
-    this.apiUrl = environment.API_URL;
+    this.apiUrl = environment.APP_URL;
     this.setDefaultHeaders();
   }
 
