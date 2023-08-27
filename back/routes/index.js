@@ -3,8 +3,9 @@ const express = require('express');
 const routes = express();
 const catalogoRouter = require('./catalogo');
 const orgRouter = require('./organizacion');
-const productRouter = require('./producto');
+const recompensaRouter = require('./recompensa');
 const userRouter = require('./usuario');
+const vacanteRouter = require('./vacante');
 
 // // Middlewares:
 // const rootPath = require('../middleware/root_path.middleware');
@@ -18,8 +19,9 @@ routes.use('/ping', (req, res) => {
 
 routes.use('/catalogo', catalogoRouter);
 routes.use('/org', orgRouter);
-routes.use('/productos', productRouter);
+routes.use('/recompensas', recompensaRouter);
 routes.use('/usuarios', userRouter);
+routes.use('/vacante', vacanteRouter);
 
 // routes.use('/', rootPath.handler);
 // routes.use(rootPath.setHeaders);

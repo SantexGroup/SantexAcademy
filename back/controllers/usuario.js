@@ -4,33 +4,59 @@ const jwt = require("jsonwebtoken");
 
 const loginUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const {  fullName, email, password } = req.body;
 
-    //Verificar credenciales
+    // Verificar credenciales
     const user = await userService.loginUser(email, password);
 
     if (!user) {
-      res.status(401).json({ message: "Invalid credentials" });
+      return res.status(401).json({ message: "Invalid credentials" }); // Retorna aquí para evitar el envío doble de respuestas
     }
 
-    //Generar token
-    const token = jwt.sign({ id: user.id }, process.env.SESSION_SECRET, {
-      expiresIn: "1h",
-    });
-    res.status(200).json({ token });
+    // Generar token
+    const token = jwt.sign(
+      {
+        id: user.id,
+        fullName: user.fullName,
+        telefono: user.telefono,
+        email: user.email,
+        password: user.password,
+        reputation: user.reputation,
+        recompensasAcumuladas: user.recompensasAcumuladas,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
+        deletedAt: user.deletedAt,
+        cestaRecompensasId: user.cestaRecompensasId,
+        rolesId: user.rolesId,
+      },
+      process.env.SESSION_SECRET,
+      // {
+      //   expiresIn: "1h",
+      // }
+    );
+
+    console.log(token)
+    // Envía la respuesta una vez que tengas el token
+    return res.status(200).json({ token });
   } catch (error) {
     console.error(error);
-    res.status(500).send(error.message);
+    return res.status(500).send(error.message);
   }
 };
 
+
 const createUser = async (req, res) => {
   try {
-    const user = await userService.createUser(req.body);
-    res.status(201).json(user);
+    const userData = req.body;
+    const role = req.params.role;
+    const newUser = await userService.createUser(userData, role);
+    res.status(201).json(newUser);
   } catch (err) {
-    console.error(err);
-    res.status(500).send(err.message);
+    if (err.message == 'Validation error') {
+      res.status(409).json({ action: 'createUser', error: err.message });
+    } else {
+      res.status(500).json({ action: 'createUser', error: err.message });
+    }
   }
 };
 
@@ -98,7 +124,6 @@ const deleteUserById = async (req, res) => {
 };
 
 module.exports = {
-  loginUser,
   createUser,
   getUsersByCriteria,
   updateUserById,

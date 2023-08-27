@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db-config');
 
-const CestaRecompensas = sequelize.define(
-  'cestaRecompensas',
+const Carrito = sequelize.define(
+  'carrito',
   {
     id: {
       autoIncrement: true,
@@ -13,10 +13,9 @@ const CestaRecompensas = sequelize.define(
     name: {
       type: DataTypes.STRING(100),
       allowNull: false,
-      unique: 'name_UNIQUE',
     },
   },
 
 );
 
-module.exports = CestaRecompensas;
+module.exports = Carrito;

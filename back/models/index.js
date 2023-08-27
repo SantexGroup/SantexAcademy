@@ -1,117 +1,61 @@
+const { sequelize } = require('../config/db-config');
 const Catalogo = require('./Catalogo');
-const CestaRecompensas = require('./CestaRecompensas');
+const Carrito = require('./Carrito');
 const Organizacion = require('./Organizacion');
-const Producto = require('./Producto');
-const ProductoEnCestaRecompensas = require('./ProductoEnCestaRecompensas');
+const Recompensa = require('./Recompensa');
 const Roles = require('./Roles');
 const Usuario = require('./Usuario');
-const UsuarioEnVoluntariado = require('./UsuarioEnVoluntariado.js');
-const Voluntariado = require('./Voluntariado');
+const Vacante = require('./Vacante');
 
 // relations
+Usuario.hasMany(Carrito);
+Carrito.belongsTo(Usuario);
 
-Usuario.belongsTo(CestaRecompensas, {
-  as: 'cestaRecompensa',
-  foreignKey: 'cestaRecompensasId',
-  onDelete: 'SET NULL',
+Carrito.belongsToMany(Recompensa, {
+  through: 'RecompensaEnCarrito',
 });
-CestaRecompensas.hasOne(Usuario, {
-  as: 'usuario_cesto',
-  foreignKey: 'cestaRecompensasId',
-  onDelete: "SET NULL",
-});
-CestaRecompensas.belongsToMany(Producto, {
-  as: 'productoId_productos',
-  through: ProductoEnCestaRecompensas,
-  foreignKey: 'cestaRecompensasId',
-  otherKey: 'productoId',
-});
-CestaRecompensas.belongsToMany(Roles, {
-  as: 'rolesId_roles',
-  through: Usuario,
-  foreignKey: 'cestaRecompensasId',
-  otherKey: 'rolesId',
-});
-Producto.belongsToMany(CestaRecompensas, {
-  as: 'cestaRecompensasId_cestaRecompensas',
-  through: ProductoEnCestaRecompensas,
-  foreignKey: 'productoId',
-  otherKey: 'cestaRecompensasId',
-});
-Roles.belongsToMany(CestaRecompensas, {
-  as: 'cestaRecompensasId_cestaRecompensas_usuarios',
-  through: Usuario,
-  foreignKey: 'rolesId',
-  otherKey: 'cestaRecompensasId',
-});
-Usuario.belongsToMany(Voluntariado, {
-  as: 'voluntariadoId_voluntariados',
-  through: UsuarioEnVoluntariado,
-  foreignKey: 'usuarioId',
-  otherKey: 'voluntariadoId',
-});
-Voluntariado.belongsToMany(Usuario, {
-  as: 'usuarioId_usuarios',
-  through: UsuarioEnVoluntariado,
-  foreignKey: 'voluntariadoId',
-  otherKey: 'usuarioId',
-});
-Producto.belongsTo(Catalogo, { as: 'catalogo', foreignKey: 'catalogoId' });
-Catalogo.hasMany(Producto, { as: 'productos', foreignKey: 'catalogoId' });
-ProductoEnCestaRecompensas.belongsTo(CestaRecompensas, {
-  as: 'cestaRecompensa',
-  foreignKey: 'cestaRecompensasId',
-});
-CestaRecompensas.hasMany(ProductoEnCestaRecompensas, {
-  as: 'productoEnCestaRecompensas',
-  foreignKey: 'cestaRecompensasId',
+Recompensa.belongsToMany(Carrito, {
+  through: 'RecompensaEnCarrito',
 });
 
-Voluntariado.belongsTo(Organizacion, {
-  as: 'organizacion',
-  foreignKey: 'organizacionId',
-});
-Organizacion.hasMany(Voluntariado, {
-  as: 'voluntariados',
-  foreignKey: 'organizacionId',
-});
-ProductoEnCestaRecompensas.belongsTo(Producto, {
-  as: 'producto',
-  foreignKey: 'productoId',
-});
-Producto.hasMany(ProductoEnCestaRecompensas, {
-  as: 'productoEnCestaRecompensas',
-  foreignKey: 'productoId',
-});
-Usuario.belongsTo(Roles, { as: 'role', foreignKey: 'rolesId' });
-Roles.hasMany(Usuario, { as: 'usuarios', foreignKey: 'rolesId' });
+Usuario.belongsTo(Roles);
+Roles.hasMany(Usuario);
 
-UsuarioEnVoluntariado.belongsTo(Usuario, {
-  as: 'usuario_test',
-  foreignKey: 'usuarioId',
+Recompensa.belongsTo(Catalogo);
+Catalogo.hasMany(Recompensa);
+
+Usuario.belongsToMany(Vacante, {
+  through: 'UsuarioEnVacante',
 });
-Usuario.hasMany(UsuarioEnVoluntariado, {
-  as: 'usuarioEnVoluntariados',
-  foreignKey: 'usuarioId',
+Vacante.belongsToMany(Usuario, {
+  through: 'UsuarioEnVacante',
 });
-UsuarioEnVoluntariado.belongsTo(Voluntariado, {
-  as: 'voluntariado',
-  foreignKey: 'voluntariadoId',
-});
-Voluntariado.hasMany(UsuarioEnVoluntariado, {
-  as: 'usuarioEnVoluntariados',
-  foreignKey: 'voluntariadoId',
-});
+
+Vacante.belongsTo(Organizacion);
+Organizacion.hasMany(Vacante);
+
+// Initialize
+const initializeDB = async () => {
+  await sequelize.authenticate();
+  await sequelize
+    .sync({ force: true }) // force: if true, each start deletes DB
+    .then(() => Roles.initializeRoles())
+    .then(() => {
+      console.log('Database & roles initialized.');
+    })
+    .catch((error) => {
+      console.error('Error setting up the database: ', error);
+    });
+};
 
 // exports
 module.exports = {
   Catalogo,
-  CestaRecompensas,
+  Carrito,
   Organizacion,
-  Producto,
-  ProductoEnCestaRecompensas,
+  Recompensa,
   Roles,
   Usuario,
-  UsuarioEnVoluntariado,
-  Voluntariado,
+  Vacante,
+  initializeDB,
 };
