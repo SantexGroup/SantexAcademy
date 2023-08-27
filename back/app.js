@@ -79,4 +79,5 @@ models.sequelize.authenticate()
 // app.use('/', routes);
 app.use('/volunteer', routes.volunteer);
 app.use('/coordinator', routes.coordinator);
+app.use('/category', routes.category);
 module.exports = app;
