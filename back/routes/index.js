@@ -8,27 +8,8 @@ const app = Express();
 
 const volunteerRoutes = require('./volunteer-routes');
 const coordinatorRoutes = require('./coordinator-routes');
-
-// use=
-
-/*
-app.use('/ping', (req, res) => {
-  res.json({
-    response: 'pong!',
-  });
-});
-app.use('/hola', (req, res) => {
-  res.json({
-    response: 'chau!',
-  });
-});
-
-app.use('/buenos/dias', (req, res) => {
-  res.json({
-    response: 'buenos dias',
-  });
-});
-*/
+// const tareaRoutes = require('./tareas-routes');
+const categoryRoutes = require('./category-routes');
 
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
@@ -36,5 +17,8 @@ app.use(errors.handler);
 
 app.use('/volunteer', volunteerRoutes);
 app.use('/coordinator', coordinatorRoutes);
+// app.use('/tarea', tareaRoutes);
+app.use('/category', categoryRoutes);
 
-module.exports = { volunteer: volunteerRoutes, coordinator: coordinatorRoutes };
+// eslint-disable-next-line max-len
+module.exports = { volunteer: volunteerRoutes, coordinator: coordinatorRoutes, category: categoryRoutes };
