@@ -17,17 +17,11 @@ export class UsuarioService {
   dataUser: BehaviorSubject<any> = new BehaviorSubject<any> ({});
 
   //* metodo para registrar un usuario
-  registro(user: registroUsuario) : Observable <any> {
-    return this.http.post('http://localhost:3000/record', user).pipe(
-      tap((user: any) => {
-        this.dataUser.next(user);
-        this.registrodeUsuario.next(true);
-      }), 
-      catchError(this.handleError)
-    );
+  registro(user: any) : Observable <any> {
+    return this.http.post<any>('http://localhost:3000/record/', user );
   }
 
-  //* metodo para loguear un usuario
+  //* metodo para loguear un usuario  
   login(user: any) : Observable <any> {
     console.log("desde servicio login");
     return this.http.get('../../assets/data.json').pipe(

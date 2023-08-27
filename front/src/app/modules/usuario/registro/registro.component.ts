@@ -25,10 +25,6 @@ export class RegistroComponent implements OnInit {
     return this.registroForm.controls.lastName;
   }
 
-  get phone() {
-    return this.registroForm.controls.phone;
-  }
-
   get email() {
     return this.registroForm.controls.email;
   }
@@ -46,7 +42,6 @@ export class RegistroComponent implements OnInit {
   registroForm = this.fb.group({
     name: ['', [ Validators.required ]],
     lastName: ['', [ Validators.required ]],
-    phone: ['', [ Validators.required, Validators.pattern('^[0-9]*$'), Validators.maxLength(10) ]],
     email: ['', [ Validators.required, Validators.email ]],
     nick: ['', [ Validators.required ]],
     password: ['', [ Validators.required, Validators.minLength(6) ]],
@@ -55,7 +50,7 @@ export class RegistroComponent implements OnInit {
 
   //* Metodo para registrar
   submit(myForm: FormGroup) {
-    console.log(myForm)
+    console.log(myForm.value)
     if(myForm.status == 'VALID') {
       this.userService.registro(myForm.value).subscribe({
         next: (data) => { console.log(data); }, 
