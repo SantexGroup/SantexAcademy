@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db-config');
 
-const Producto = sequelize.define(
-  'producto',
+const Carrito = sequelize.define(
+  'carrito',
   {
     id: {
       autoIncrement: true,
@@ -10,12 +10,8 @@ const Producto = sequelize.define(
       allowNull: false,
       primaryKey: true,
     },
-    nombre: {
+    name: {
       type: DataTypes.STRING(100),
-      allowNull: false,
-    },
-    costoEnHoras: {
-      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
@@ -24,5 +20,4 @@ const Producto = sequelize.define(
   },
 );
 
-// Se exporta el modelo SIN DESESTRUCTURAR
-module.exports = Producto;
+module.exports = Carrito;

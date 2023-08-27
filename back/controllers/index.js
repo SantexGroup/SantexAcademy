@@ -1,13 +1,13 @@
 const catalogoController = require("./catalogo");
 const orgController = require("./organizacion");
 const userController = require("./usuario");
-const productController = require("./producto");
-const voluntariadoController = require("./voluntariado");
+const recompensaController = require("./recompensa");
+const vacanteController = require("./vacante");
 
 module.exports = {
   catalogoController,
   orgController,
   userController,
-  productController,
-  voluntariadoController,
+  recompensaController,
+  vacanteController,
 };

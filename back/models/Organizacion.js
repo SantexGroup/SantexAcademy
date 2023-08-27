@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db-config');
 
 const Organizacion = sequelize.define(
-  'organizacion',
+  'organizaciones',
   {
     id: {
       autoIncrement: true,
@@ -13,22 +13,22 @@ const Organizacion = sequelize.define(
     nombre: {
       type: DataTypes.STRING(100),
       allowNull: false,
-      unique: 'nombre_UNIQUE',
+      unique: true,
     },
     email: {
       type: DataTypes.STRING(100),
       allowNull: false,
-      unique: 'email_UNIQUE',
+      unique: true,
     },
     telefono: {
       type: DataTypes.STRING(20),
       allowNull: true,
-      unique: 'telefono_UNIQUE',
+      unique: true,
     },
     cuit: {
       type: DataTypes.STRING(11),
       allowNull: false,
-      unique: 'cuit_UNIQUE',
+      unique: true,
     },
     password: {
       type: DataTypes.STRING(50),

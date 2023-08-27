@@ -1,52 +1,37 @@
-const { Op } = require('sequelize');
-const { Usuario } = require('../models');
-const { CestaRecompensas } = require('../models');
+const { Usuario, Carrito, Roles } = require('../models');
 const { sequelize } = require('../config/db-config');
 
-const createUser = async (usuario) => {
+const createUser = async (usuario, roleName) => {
   let transaction;
   try {
     transaction = await sequelize.transaction();
 
-    const existingDeletedUser = await Usuario.findOne({
-      where: {
-        [Op.and]: [
-          { deletedAt: { [Op.not]: null } }, // Buscar registros eliminados
-          {
-            [Op.or]: [{ fullName: usuario.fullName }, { email: usuario.email }],
-          },
-        ],
-      },
+    const newUser = await Usuario.create(usuario, {
+      transaction,
+      returning: true,
     });
 
-    if (existingDeletedUser) {
-      // Borrar el registro eliminado lógicamente
-      await existingDeletedUser.destroy();
-    }
-
-    // Crear un registro en la tabla cestaRecompensas
-    const newCestaRecompensas = await CestaRecompensas.create(
-      { name: `Cesta de ${usuario.fullName}` },
-      { transaction },
+    const role = await Roles.findOne(
+      { where: { name: roleName } },
+      {
+        transaction,
+        returning: true,
+      }
     );
 
-    // Crear el nuevo registro de usuario con el id de la cestaRecompensas creada
-    const newUser = await Usuario.create(
+    await newUser.setRole(role, { transaction });
+
+    const newCarrito = await newUser.createCarrito(
+      { name: `Carrito de ${usuario.fullName}` },
       {
-        ...usuario,
-        cestaRecompensasId: newCestaRecompensas.id,
-      },
-      { transaction },
+        transaction,
+        returning: true,
+      }
     );
 
     await transaction.commit();
 
-    // Devolver el nuevo registro de usuario
-    return {
-      id: newUser.id,
-      fullName: newUser.fullName,
-      email: newUser.email,
-    };
+    return [newUser, newCarrito];
   } catch (err) {
     if (transaction) {
       await transaction.rollback();
@@ -67,12 +52,12 @@ const getUsersByCriteria = async (queryOptions, bodyOptions) => {
     });
     where.deletedAt = null;
 
-    const organizations = await Usuario.findAll({
+    const users = await Usuario.findAll({
       where,
       attributes: { exclude: ['deletedAt'] },
     });
 
-    return organizations;
+    return users;
   } catch (error) {
     console.error('The organization/s could not be retrieved due to an error.', error);
     throw error;
@@ -95,30 +80,29 @@ const updateUserById = async (id, usuario) => {
 
 const deleteUserById = async (id) => {
   try {
-    const user = await Usuario.findOne({
+    const deletedUser = await Usuario.findOne({
       where: {
         id,
-        deletedAt: null,
       },
     });
 
-    if (!user) {
+    if (!deletedUser) {
       throw new Error('User not found');
     }
 
-    // Aplicar borrado lógico estableciendo la columna deletedAt
-    await Usuario.update({ deletedAt: new Date() }, { where: { id } });
+    deletedUser.destroy();
+    await Carrito.destroy({ where: { usuarioId: id } });
 
-    // todo! --Eliminar físicamente el registro de la tabla CestaRecompensas--
-    await CestaRecompensas.destroy({ where: { id } });
-
-    return user;
+    return deletedUser;
   } catch (error) {
-    console.error('Ocurrió un error al eliminar el usuario.', error);
+    console.error('Error deleting user.', error);
     throw error;
   }
 };
 
 module.exports = {
-  createUser, getUsersByCriteria, updateUserById, deleteUserById,
+  createUser,
+  getUsersByCriteria,
+  updateUserById,
+  deleteUserById,
 };

@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db-config');
 
-const CestaRecompensas = sequelize.define(
-  'cestaRecompensas',
+const Vacante = sequelize.define(
+  'vacante',
   {
     id: {
       autoIncrement: true,
@@ -10,10 +10,13 @@ const CestaRecompensas = sequelize.define(
       allowNull: false,
       primaryKey: true,
     },
-    name: {
-      type: DataTypes.STRING(100),
+    descripcion: {
+      type: DataTypes.STRING(255),
       allowNull: false,
-      unique: 'name_UNIQUE',
+    },
+    recompensa: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
   },
   {
@@ -21,4 +24,4 @@ const CestaRecompensas = sequelize.define(
   },
 );
 
-module.exports = CestaRecompensas;
+module.exports = Vacante;

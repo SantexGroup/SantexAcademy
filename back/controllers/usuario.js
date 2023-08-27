@@ -2,11 +2,16 @@ const { userService } = require('../services');
 
 const createUser = async (req, res) => {
   try {
-    const user = await userService.createUser(req.body);
-    res.status(201).json(user);
+    const userData = req.body;
+    const role = req.params.role;
+    const newUser = await userService.createUser(userData, role);
+    res.status(201).json(newUser);
   } catch (err) {
-    console.error(err);
-    res.status(500).send(err.message);
+    if (err.message == 'Validation error') {
+      res.status(409).json({ action: 'createUser', error: err.message });
+    } else {
+      res.status(500).json({ action: 'createUser', error: err.message });
+    }
   }
 };
 
@@ -43,5 +48,8 @@ const deleteUserById = async (req, res) => {
 };
 
 module.exports = {
-  createUser, getUsersByCriteria, updateUserById, deleteUserById,
+  createUser,
+  getUsersByCriteria,
+  updateUserById,
+  deleteUserById,
 };
