@@ -1,6 +1,18 @@
 const { Usuario, Carrito, Roles } = require('../models');
 const { sequelize } = require('../config/db-config');
 
+
+const loginUser = async (email) => {
+  const user = await Usuario.findOne({
+    where: { email: email },
+  });
+  if (!user) {
+    return null;
+  }
+  return user;
+};
+
+
 const createUser = async (usuario, roleName) => {
   let transaction;
   try {
@@ -104,6 +116,7 @@ const deleteUserById = async (id) => {
 };
 
 module.exports = {
+  loginUser,
   createUser,
   getUsersByCriteria,
   updateUserById,

@@ -27,7 +27,7 @@ const loginUser = async (req, res) => {
         updatedAt: user.updatedAt,
         deletedAt: user.deletedAt,
         cestaRecompensasId: user.cestaRecompensasId,
-        rolesId: user.rolesId,
+        rolesId: user.roleId,
       },
       process.env.SESSION_SECRET,
       // {
@@ -47,16 +47,11 @@ const loginUser = async (req, res) => {
 
 const createUser = async (req, res) => {
   try {
-    const userData = req.body;
-    const role = req.params.role;
-    const newUser = await userService.createUser(userData, role);
-    res.status(201).json(newUser);
+    const user = await userService.createUser(req.body);
+    res.status(201).json(user);
   } catch (err) {
-    if (err.message == 'Validation error') {
-      res.status(409).json({ action: 'createUser', error: err.message });
-    } else {
-      res.status(500).json({ action: 'createUser', error: err.message });
-    }
+    console.error(err);
+    res.status(500).send(err.message);
   }
 };
 
@@ -124,6 +119,7 @@ const deleteUserById = async (req, res) => {
 };
 
 module.exports = {
+  loginUser,
   createUser,
   getUsersByCriteria,
   updateUserById,

@@ -10,24 +10,30 @@ const loginUser = async (email, password) => {
 };
 
 
-const createUser = async (user, role) => {
-  const createdUser = await userProvider.createUser(user, role);
-  return createdUser;
+const createUser = async (organization) => {
+  const createdOrganization = await userProvider.createUser(organization);
+  return createdOrganization;
 };
 
 const getUsersByCriteria = async (queryOptions, bodyOptions) => {
-  const users = await userProvider.getUsersByCriteria(queryOptions, bodyOptions);
-  return users;
+  const organization = await userProvider.getUsersByCriteria(
+    queryOptions,
+    bodyOptions
+  );
+  return organization;
 };
 
-const updateUserById = async (id, user) => {
-  const updatedUser = await userProvider.updateUserById(id, user);
-  return updatedUser;
+const updateUserById = async (id, organization) => {
+  const updatedOrganization = await userProvider.updateUserById(
+    id,
+    organization
+  );
+  return updatedOrganization;
 };
 
 const deleteUserById = async (id) => {
-  const deletedUser = await userProvider.deleteUserById(id);
-  return deletedUser;
+  const deletedOrganization = await userProvider.deleteUserById(id);
+  return deletedOrganization;
 };
 
 module.exports = {
