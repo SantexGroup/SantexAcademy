@@ -13,6 +13,9 @@ import { HeaderPageComponent } from './modules/header-page/header-page.component
 import { UsuarioModule } from './modules/usuario/usuario.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './modules/home/home/home.component';
+
+
 
 
 @NgModule({
@@ -20,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     BodyPageComponent,
     FooterPageComponent,
-    HeaderPageComponent
+    HeaderPageComponent,
+    HomeComponent
+     
   ],
   imports: [
     BrowserModule,
@@ -32,8 +37,9 @@ import { HttpClientModule } from '@angular/common/http';
     UsuarioModule,
     FormsModule,
     ReactiveFormsModule, 
-    HttpClientModule
-
+    HttpClientModule,
+    
+   
   ],
   providers: [],
   bootstrap: [AppComponent,BodyPageComponent]

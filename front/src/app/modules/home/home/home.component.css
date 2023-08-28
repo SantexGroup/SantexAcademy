@@ -1,0 +1,39 @@
+
+div.container {
+    display: flex;    
+    background-color: rgb(113, 113, 114);
+    margin: 10px;
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;   
+}
+.container-button {
+    min-width: 20%;
+}
+
+.button{
+    width: 100%;
+    margin: 5px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+.footer-home{
+    display: flex;
+    background-color: blue;
+    color: white;
+    height: 15%;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-home{
+    display: flex;
+    background-color: blue;
+    color: white;
+    height: 15%;
+    align-items: center;
+    justify-content: center;
+}
