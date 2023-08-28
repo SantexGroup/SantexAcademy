@@ -1,4 +1,4 @@
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const Admin = require('../models');
 const db = require('../models');
 
@@ -93,7 +93,7 @@ async function emailLogin(email) {
     throw new Error('El email o la contraseña son incorrectos');
   }
 
-  /* const token = jwt.sign(
+  const token = jwt.sign(
     {
       id: admin.id,
       email: admin.email,
@@ -104,7 +104,7 @@ async function emailLogin(email) {
 
   return {
     accessToken: token,
-  }; */
+  };
 }
 
 module.exports = {

@@ -85,7 +85,7 @@ async function deleteAdmin(req, res) {
 
 // Login
 async function sendOtpLogin(req, res, next) {
-  const email = req.body;
+  const { email } = req.body;
 
   try {
     const result = await adminService.emailLogin(email);
