@@ -8,8 +8,11 @@ const StrategyJwt = passportJwt.Strategy;
 
 const coordinatorModel = require('../models/coordinator-model');
 
+const administratorModel = require('../models/administrator-model');
+
 const Coordinator = coordinatorModel(sequelize, DataTypes);
 const Volunteer = volunteerModel(sequelize, DataTypes);
+const Administrator = administratorModel(sequelize, DataTypes);
 
 const PassportStrategy = new StrategyJwt({
   jwtFromRequest: ExctractJwt.fromAuthHeaderAsBearerToken(),
@@ -32,6 +35,15 @@ const PassportStrategy = new StrategyJwt({
         tipo: 'organizacion',
       };
       next(false, organizacion, info);
+    }
+  } else if (jwtPayload.tipoUsuario === 'admin') {
+    const admin = await Administrator.findByPk(jwtPayload.id);
+
+    if (admin) {
+      const info = {
+        tipo: 'admin',
+      };
+      next(false, admin, info);
     }
   } else {
     next(true, null, null);

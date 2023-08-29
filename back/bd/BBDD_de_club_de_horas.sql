@@ -1,6 +1,13 @@
 CREATE DATABASE club_de_horas;
 USE club_de_horas;
 
+CREATE TABLE administrators (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  email VARCHAR(100) NOT NULL,
+  password VARCHAR(100) NOT NULL
+);
+
+
 CREATE TABLE volunteers (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(100) NOT NULL,
