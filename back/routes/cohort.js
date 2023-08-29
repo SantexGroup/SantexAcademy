@@ -4,5 +4,6 @@ const router = express.Router();
 const { cohortController } = require('../controllers');
 
 router.post('/', cohortController.enrollStudentInCourse);
+router.get('/', cohortController.getAllCohorts);
 
 module.exports = router;

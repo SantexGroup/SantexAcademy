@@ -9,6 +9,16 @@ const enrollStudentInCourse = (courseId, studentId) => {
   }
 };
 
+const getAllCohorts = () => {
+  try {
+    const cohorts = cohortProvider.getAllCohorts();
+    return cohorts;
+  } catch (error) {
+    throw new Error('Error al obtener las cohortes ser');
+  }
+};
+
 module.exports = {
   enrollStudentInCourse,
+  getAllCohorts,
 };
