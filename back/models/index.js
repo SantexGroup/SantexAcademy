@@ -38,5 +38,10 @@ db.CourseDetail = require('./coursedetail')(sequelize, Sequelize.DataTypes);
 db.User = require('./user')(sequelize, Sequelize.DataTypes);
 db.Teacher = require('./teacher')(sequelize, Sequelize.DataTypes);
 db.Student = require('./student')(sequelize, Sequelize.DataTypes);
+db.Cohort = require('./cohort')(sequelize, Sequelize.DataTypes);
+
+// Asociaciones de Cohort
+db.Cohort.belongsTo(db.Course, { foreignKey: 'courseId' });
+db.Cohort.belongsTo(db.Student, { foreignKey: 'studentId' });
 
 module.exports = db;
