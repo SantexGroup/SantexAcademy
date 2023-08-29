@@ -41,7 +41,7 @@ const Usuario = sequelize.define(
       allowNull: true,
       defaultValue: 0,
     },
-    puntosRedeemed: {
+    pointsRedeemed: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 0,
