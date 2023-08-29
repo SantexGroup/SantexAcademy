@@ -10,10 +10,14 @@ export class SliderOrganizationsComponent {
     '/assets/logotypes_organizations/orgOne.svg',
     '/assets/logotypes_organizations/Banco_de_alimentos_Córdoba.png',
     '/assets/logotypes_organizations/orgThree.svg',
-    '/assets/logotypes_organizations/Cruz_Roja_Argentina redimensionada.png',
+    '/assets/logotypes_organizations/Cruz_Roja_Argentina.png',
+    '/assets/logotypes_organizations/Fundación_sí.png',
+    '/assets/logotypes_organizations/Greenpeace.png',
+    '/assets/logotypes_organizations/Techo.png',
+    '/assets/logotypes_organizations/Voluntarios-largo.png',
 
-    '/assets/logotypes_organizations/orgOne.svg',
-    '/assets/logotypes_organizations/Banco_de_alimentos_Córdoba.png',
-    '/assets/logotypes_organizations/orgThree.svg',
+    // '/assets/logotypes_organizations/orgOne.svg',
+    // '/assets/logotypes_organizations/Banco_de_alimentos_Córdoba.png',
+    // '/assets/logotypes_organizations/orgThree.svg',
   ];
 }
