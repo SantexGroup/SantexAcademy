@@ -10,11 +10,11 @@ const Vacante = sequelize.define(
       allowNull: false,
       primaryKey: true,
     },
-    descripcion: {
+    description: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    recompensa: {
+    reward: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

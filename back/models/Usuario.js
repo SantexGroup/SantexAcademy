@@ -14,7 +14,7 @@ const Usuario = sequelize.define(
       type: DataTypes.STRING(100),
       allowNull: true,
     },
-    telefono: {
+    phone: {
       type: DataTypes.STRING(20),
       allowNull: false,
     },
@@ -36,12 +36,12 @@ const Usuario = sequelize.define(
       allowNull: false,
       defaultValue: 0,
     },
-    puntosAcumulados: {
+    pointsAccumulated: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 0,
     },
-    puntosCanjeados: {
+    puntosRedeemed: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 0,

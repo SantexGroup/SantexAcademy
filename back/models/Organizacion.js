@@ -10,7 +10,7 @@ const Organizacion = sequelize.define(
       allowNull: false,
       primaryKey: true,
     },
-    nombre: {
+    name: {
       type: DataTypes.STRING(100),
       allowNull: false,
       unique: true,
@@ -20,7 +20,7 @@ const Organizacion = sequelize.define(
       allowNull: false,
       unique: true,
     },
-    telefono: {
+    phone: {
       type: DataTypes.STRING(20),
       allowNull: true,
       unique: true,
