@@ -13,6 +13,9 @@ const experienceRoutes = require('./experience.routes');
 const referencesRoutes = require('./references.routes');
 const skillsRoutes = require('./skills.routes');
 const optinalsRoutes = require('./optional.routes');
+const contryRoutes = require('./countries.routes');
+const sexsRoutes = require('./sexs.routes');
+const maritalRoutes = require('./marital.routes');
 
 const app = Express();
 
@@ -26,6 +29,9 @@ app.use('/user', userRoutes);
 app.use('/experiences', experienceRoutes);
 app.use('/references', referencesRoutes);
 app.use('/skills', skillsRoutes);
+app.use('/countries', contryRoutes);
+app.use('/gender', sexsRoutes);
+app.use('/marital', maritalRoutes);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);

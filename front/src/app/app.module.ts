@@ -13,13 +13,16 @@ import { HeaderPageComponent } from './modules/header-page/header-page.component
 import { UsuarioModule } from './modules/usuario/usuario.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { OptionalsComponent } from './modules/optionals/optionals.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
     AppComponent,
     BodyPageComponent,
     FooterPageComponent,
-    HeaderPageComponent
+    HeaderPageComponent,
+    OptionalsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,8 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     UsuarioModule,
     FormsModule,
     ReactiveFormsModule, 
-    HttpClientModule
-
+    HttpClientModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent,BodyPageComponent]
