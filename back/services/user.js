@@ -10,7 +10,7 @@ const show = async (id) => {
   return user;
 };
 
-const store = async (body) => {
+const createUser = async (body) => {
   const user = await User.create(body);
   return user;
 };
@@ -30,7 +30,7 @@ const destroy = async (id) => {
 module.exports = {
   index,
   show,
-  store,
+  createUser,
   update,
   destroy,
 };

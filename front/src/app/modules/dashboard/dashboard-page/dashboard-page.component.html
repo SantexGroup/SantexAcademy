@@ -1,20 +1,31 @@
 <div>
-    <div class="header">
-      <h1>ACADEMY INCUBADORA NOC</h1>
-      <app-registerbutton (click)="toggleRegisterForm()"></app-registerbutton>
-    </div>
+  <div class="header">
+    <img src="assets/images/nuevologo.png" alt="logo">
+    <h1>ACADEMY INCUBADORA NOC</h1>
+    <app-registerbutton *ngIf="!showRegisterAnswer" (click)="toggleRegisterForm()"></app-registerbutton>
+    
+  </div>
 </div>
 
 <div>
-    <div class="body" [class.hidden]="showRegisterForm">
-      <h2>BIENVENIDOS!</h2>
-      <H3>esta es la página principal del proyecto donde todo se verá bonito</H3>
-      <p>Desde la terminal, estando parados en la dirección de la carpeta front y ejecutando npm start o ng serve -o, es el archivo: front > src > app > modules\dashboard > dashboard-page > dashboard-page.component.html, el que mostramos como página principal</p>
-    </div>
-
-    <div class="showregisterform">
-    <!-- Mostrar el formulario solo si showRegisterForm es verdadero -->
-    <app-registerform *ngIf="showRegisterForm"></app-registerform>
+  <div class="body" [class.hidden]="showRegisterForm">
+    <h2>BIENVENIDOS!</h2>
+    <h3>Esta es la página principal del proyecto donde todo se verá bonito</h3>
+    <p>Desde la terminal, estando parados en la dirección de la carpeta front y ejecutando npm start o ng serve -o, es el archivo: front > src > app > modules\dashboard > dashboard-page > dashboard-page.component.html, el que mostramos como página principal</p>
   </div>
-
 </div>
+
+  <!-- Muestra formulario solo si showRegisterForm es verdadero -->
+  <div class="contenedorForm" [class.hidden]="!showRegisterForm">
+    <div *ngIf="showRegisterForm">
+      <div class="showregisterform">
+         <app-registerform (submit)="toggleRegisterAnswer()"></app-registerform>
+      </div>
+    </div>
+  </div>
+  
+  <div class="contenedorAnswer" [class.hidden]="!showRegisterAnswer">
+    <div *ngIf="showRegisterAnswer">
+       <app-registeranswer></app-registeranswer>
+    </div>
+  </div>

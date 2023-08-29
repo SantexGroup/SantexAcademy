@@ -7,17 +7,22 @@
     align-items: center;
   }
   .body {
-    min-height: 100vh;
+    min-height: 60vh;
     background-color: #571d81;
     color: #0ded1c;
     padding: 50px;
     text-align: center;
   }
+  .contenedorForm {
+    margin: 10px 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #00ced1;
+  }
   .showregisterform {
     background-color: #00ced1;
-    padding: 20px;
+    margin: 20px 0;
     border-radius: 5px;
-    margin-top: 20px;
   }
   .header button {
     background-color: transparent;
@@ -29,4 +34,23 @@
   }
   .hidden {
     display: none;
+  }
+    .register-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 10px solid #00ced1;
+    border-radius: 40px;
+    background-color: #f4f4f4;
+  }
+  .contenedorAnswer {
+    min-height: 67vh;
+    background-color: #0bf439;
+    border-radius: 5px;
+    justify-content: center;
+    text-align: center;
+  }
+  .showregisterAnswer {
+    background-color: #0bf439;
+    border-radius: 5px;
   }

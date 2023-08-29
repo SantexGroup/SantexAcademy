@@ -1,4 +1,4 @@
-const { userService } = require('../services');
+const { userService, emailService } = require('../services');
 
 const index = async (req, res) => {
   const users = await userService.index();
@@ -11,10 +11,19 @@ const show = async (req, res) => {
   res.json(user);
 };
 
-const store = async (req, res) => {
+const createUser = async (req, res) => {
   const { body } = req;
-  const user = await userService.store(body);
+  try {
+  const user = await userService.createUser(body);
+  console.log('Email del usuario:', user.email);// BORRAR es para ver captura de mail
+  await emailService.sendConfirmationEmail(user.email, user.username);// Envia email a emailService
+
   res.json(user);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error en el registro en controllers' });
+  }
 };
 
 const update = async (req, res) => {
@@ -33,7 +42,7 @@ const destroy = async (req, res) => {
 module.exports = {
   index,
   show,
-  store,
+  createUser,
   update,
   destroy,
 };
