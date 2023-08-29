@@ -1,7 +1,7 @@
 const { profileService } = require('../services');
 
 /**
- * Controlador para obtener un PROFILE por su ID.
+ * Controlador para obtener un PROFILE por su ID. 
  *
  * Se Extrae los valores de los parametros de la solicitud HTTP mediante la
  * destructuracion del req.params
