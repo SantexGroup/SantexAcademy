@@ -4,7 +4,7 @@ const { CategoryController } = require("../controllers");
 const { body, query } = require("express-validator");
 
 router.get("/", CategoryController.getCategories);
-router.get("/:CategoryId", CategoryController.getByIdCategory);
+router.get("/:CategoryId", CategoryController.getCategoryById);
 
 router.post("/", body("name").isString(), CategoryController.createCategory);
 
