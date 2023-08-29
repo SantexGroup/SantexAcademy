@@ -21,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import { FormationsComponent } from './modules/crud-data/formations/formations.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MatDividerModule} from '@angular/material/divider';
     FooterPageComponent,
     HeaderPageComponent,
     OptionalsComponent,
-    ExperiencesComponent
+    ExperiencesComponent,
+    FormationsComponent
   ],
   imports: [
     BrowserModule,
