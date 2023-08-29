@@ -1,0 +1,14 @@
+<p>show works!</p>
+
+
+
+<div class="card">
+    <div class="card-body">
+      <h4 class="card-title">{{ user.username}}</h4>
+      <p class="card-subtitle">{{ user.nombre}} {{ user.apellido}}</p>
+      <p class="card-subtitle">{{user.email}}</p>
+      <button type="button" class="btn btn-primary" [routerLink]="['/users/index' ]">Index</button>
+      <button type="button" class="btn btn-danger" (click)="deleteUser()">Delete</button>
+    </div>
+  </div>
+  
