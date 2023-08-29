@@ -2,23 +2,28 @@ const { ScheduleService } = require("../services");
 const { validationResult } = require("express-validator");
 
 const getSchedules = async (req, res) => {
-  const result = validationResult(req);
-  if (!result.isEmpty()) {
-    return res.status(403).send({ errors: result.array() });
-  }
   try {
-    const Schedules = await ScheduleService.getSchedules();
-    res.status(200).json(Schedules);
+    const schedules = await ScheduleService.getSchedules();
+    res.status(200).json(schedules);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ 
+      message: error.message 
+    });
   }
 };
 const createSchedule = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-    return res.status(403).send({ errors: result.array() });
+    return res.status(400).send({ 
+      errors: result.array() 
+    });
   }
-  const { active, where, course, day, schedule } = req.body;
+  const {  active,
+    where,
+    course,
+    day,
+    schedule, 
+  } = req.body;
   try {
     const newSchedule = await ScheduleService.createSchedule({
       active,
@@ -30,33 +35,35 @@ const createSchedule = async (req, res) => {
 
     res.status(201).json(newSchedule);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ 
+      message: error.message 
+    });
   }
 };
 
-const getByIdSchedule = async (req, res) => {
-  const result = validationResult(req);
-  if (!result.isEmpty()) {
-    return res.status(403).send({ errors: result.array() });
-  }
-  const ScheduleId = req.params.ScheduleId;
+const getScheduleById = async (req, res) => {
+  const scheduleId = req.params.ScheduleId;
   try {
-    const Schedule = await ScheduleService.getSchedule(ScheduleId);
-    res.status(200).json(Schedule);
+    const schedule = await ScheduleService.getSchedule(scheduleId);
+    res.status(200).json(schedule);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ 
+      message: error.message 
+    });
   }
 };
 
 const updateSchedule = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-    return res.status(403).send({ errors: result.array() });
+    return res.status(400).send({ 
+      errors: result.array() 
+    });
   }
-  const ScheduleId = req.params.ScheduleId;
+  const scheduleId = req.params.ScheduleId;
   const { active, where, day, schedule } = req.body;
   try {
-    const newSchedule = await ScheduleService.updateSchedule(ScheduleId, {
+    const newSchedule = await ScheduleService.updateSchedule(scheduleId, {
       active,
       where,
       day,
@@ -64,27 +71,27 @@ const updateSchedule = async (req, res) => {
     });
     res.status(200).json(newSchedule);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ 
+      message: error.message 
+    });
   }
 };
 
 const deleteSchedule = async (req, res) => {
-  const result = validationResult(req);
-  if (!result.isEmpty()) {
-    return res.status(403).send({ errors: result.array() });
-  }
-  const ScheduleId = req.params.ScheduleId;
+  const scheduleId = req.params.ScheduleId;
   try {
-    const Schedule = await ScheduleService.deleteSchedule(ScheduleId);
-    res.status(200).json(Schedule);
+    const schedule = await ScheduleService.deleteSchedule(scheduleId);
+    res.status(200).json(schedule);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ 
+      message: error.message 
+    });
   }
 };
 
 module.exports = {
   createSchedule,
-  getByIdSchedule,
+  getScheduleById,
   getSchedules,
   updateSchedule,
   deleteSchedule,

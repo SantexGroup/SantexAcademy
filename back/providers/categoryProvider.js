@@ -1,7 +1,6 @@
 const { CourseCategory } = require("../models");
 
 const createCategory = async (options) => {
-  console.log(options);
   try {
     const newCategory = await CourseCategory.create(options);
     return newCategory;
@@ -12,37 +11,28 @@ const createCategory = async (options) => {
 
 const getCategories = async () => {
   try {
-    const Categories = await CourseCategory.findAll();
-    if (Categories) {
-      return Categories;
-    } else {
-      throw new Error("no Categories found");
-    }
+    const categories = await CourseCategory.findAll();
+    return categories;
+
   } catch (error) {
     throw error;
   }
 };
 
-const getCategory = async (id) => {
+const getCategoryById = async (id) => {
   try {
-    const Category = await CourseCategory.findByPk(id);
-    if (Category) {
-      return Category;
-    } else {
-      throw new Error("no get Category found");
-    }
+    const category = await CourseCategory.findByPk(id);
+    return category;
+
   } catch (error) {
     throw error;
   }
 };
 const getCategoryByName = async (name) => {
   try {
-    const user = await CourseCategory.findOne({ where: { name } });
-    if (user) {
-      return user;
-    } else {
-      throw new Error("no get Category found");
-    }
+    const category = await CourseCategory.findOne({ where: { name } });
+    return category;
+
   } catch (error) {
     throw error;
   }
@@ -68,7 +58,7 @@ const deleteCategory = async (CategoryId) => {
 module.exports = {
   createCategory,
   deleteCategory,
-  getCategory,
+  getCategoryById,
   getCategories,
   updateCategory,
   getCategoryByName,

@@ -1,7 +1,7 @@
 const {CourseProvider} = require("../providers");
 
 const getCourse= async (id) => {
-  return await CourseProvider.getCourse(id);
+  return await CourseProvider.getCourseById(id);
 };
 
 const getCourses = async () => {

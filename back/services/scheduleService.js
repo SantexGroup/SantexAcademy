@@ -5,7 +5,7 @@ const getSchedules = async () => {
 };
 
 const getSchedule= async (id) => {
-  return await ScheduleProvider.getSchedule(id);
+  return await ScheduleProvider.getScheduleById(id);
 };
 
 const createSchedule = async (options) => {

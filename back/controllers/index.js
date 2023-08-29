@@ -1,20 +1,20 @@
 const {
   createCourse,
-  getByIdCourse,
+  getCourseById,
   getCourses,
   updateCourse,
   deleteCourse,
 } = require("./courseController");
 const {
   createCategory,
-  getByIdCategory,
+  getCategoryById,
   getCategories,
   updateCategory,
   deleteCategory,
 } = require("./categoryController");
 const {
   createSchedule,
-  getByIdSchedule,
+  getScheduleById,
   getSchedules,
   updateSchedule,
   deleteSchedule,
@@ -24,7 +24,7 @@ const {
 
 const CourseController = {
   createCourse,
-  getByIdCourse,
+  getCourseById,
   getCourses,
   updateCourse,
   deleteCourse,
@@ -32,14 +32,14 @@ const CourseController = {
 
 const CategoryController = {
   createCategory,
-  getByIdCategory,
+  getCategoryById,
   getCategories,
   updateCategory,
   deleteCategory,
 };
 const ScheduleController = {
   createSchedule,
-  getByIdSchedule,
+  getScheduleById,
   getSchedules,
   updateSchedule,
   deleteSchedule,

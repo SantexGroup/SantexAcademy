@@ -31,11 +31,8 @@ const createSchedule = async (options) => {
 const getScheduleByTime = async (start) => {
   try {
     const scheduleSelect = await Schedule.findOne({ where: { start } });
-    if (scheduleSelect) {
-      return scheduleSelect;
-    } else {
-      throw new Error("no get Schedule found");
-    }
+    return scheduleSelect;
+
   } catch (error) {
     throw error;
   }
@@ -43,26 +40,19 @@ const getScheduleByTime = async (start) => {
 
 const getSchedules = async () => {
   try {
-    const Schedules = await Schedule.findAll();
-    if (Schedules) {
-      return Schedules;
-    } else {
-      throw new Error("no Schedules found");
-    }
+    const schedules = await Schedule.findAll();
+    return schedules;
+
   } catch (error) {
     throw error;
   }
 };
 
-const getSchedule = async (ScheduleId) => {
+const getScheduleById = async (ScheduleId) => {
   try {
     const scheduleSelect = await Schedule.findByPk(ScheduleId);
+    return scheduleSelect;
 
-    if (scheduleSelect) {
-      return scheduleSelect;
-    } else {
-      throw new Error("no get Schedule found");
-    }
   } catch (error) {
     throw error;
   }
@@ -90,7 +80,7 @@ const deleteSchedule = async (ScheduleId) => {
 module.exports = {
   createSchedule,
   deleteSchedule,
-  getSchedule,
+  getScheduleById,
   getSchedules,
   updateSchedule,
   getScheduleByTime,

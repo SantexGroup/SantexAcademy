@@ -4,7 +4,9 @@ const { validationResult } = require("express-validator");
 const createCourse = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-    return res.status(403).send({ errors: result.array() });
+    return res.status(400).send({ 
+      errors: result.array() 
+    });
   }
   const {
     name,
@@ -37,43 +39,42 @@ const createCourse = async (req, res) => {
 
     res.status(201).json(newCourse);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ 
+      message: error.message 
+    });
   }
 };
-const getByIdCourse = async (req, res) => {
-  const result = validationResult(req);
-  if (!result.isEmpty()) {
-    return res.status(403).send({ errors: result.array() });
-  }
-  const CourseId = req.params.CourseId;
-  console.log(CourseId);
+const getCourseById = async (req, res) => {
+  const courseId = req.params.CourseId;
   try {
-    const Course = await CourseService.getCourse(CourseId);
-    res.status(200).json(Course);
+    const course = await CourseService.getCourse(courseId);
+    res.status(200).json(course);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ 
+      message: error.message 
+    });
   }
 };
 
 const getCourses = async (req, res) => {
-  const result = validationResult(req);
-  if (!result.isEmpty()) {
-    return res.status(403).send({ errors: result.array() });
-  }
   try {
-    const Course = await CourseService.getCourses();
-    res.status(200).json(Course);
+    const course = await CourseService.getCourses();
+    res.status(200).json(course);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ 
+      message: error.message 
+    });
   }
 };
 
 const updateCourse = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-    return res.status(403).send({ errors: result.array() });
+    return res.status(400).send({ 
+      errors: result.array() 
+    });
   }
-  const CourseId = req.params.CourseId;
+  const courseId = req.params.CourseId;
   const {
     name,
     image,
@@ -87,7 +88,7 @@ const updateCourse = async (req, res) => {
     teacher,
   } = req.body;
   try {
-    const newCourse = await CourseService.updateCourse(CourseId, {
+    const newCourse = await CourseService.updateCourse(courseId, {
       name,
       image,
       description,
@@ -101,27 +102,27 @@ const updateCourse = async (req, res) => {
     });
     res.status(200).json(newCourse);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ 
+      message: error.message 
+    });
   }
 };
 
 const deleteCourse = async (req, res) => {
-  const result = validationResult(req);
-  if (!result.isEmpty()) {
-    return res.status(403).send({ errors: result.array() });
-  }
-  const CourseId = req.params.CourseId;
+  const courseId = req.params.CourseId;
   try {
-    const Course = await CourseService.deleteCourse(CourseId);
+    const Course = await CourseService.deleteCourse(courseId);
     res.status(200).json(Course);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ 
+      message: error.message 
+    });
   }
 };
 
 module.exports = {
   createCourse,
-  getByIdCourse,
+  getCourseById,
   getCourses,
   updateCourse,
   deleteCourse,

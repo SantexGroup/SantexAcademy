@@ -4,7 +4,7 @@ const { ScheduleController } = require("../controllers");
 const { body, query } = require("express-validator");
 
 router.get("/", ScheduleController.getSchedules);
-router.get("/:ScheduleId", ScheduleController.getByIdSchedule);
+router.get("/:ScheduleId", ScheduleController.getScheduleById);
 
 router.post(
   "/",

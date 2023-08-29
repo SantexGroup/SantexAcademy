@@ -5,7 +5,7 @@ const getCategories = async () => {
 };
 
 const getCategory= async (id) => {
-  return await CategoryProvider.getCategory(id);
+  return await CategoryProvider.getCategoryById(id);
 };
 
 const createCategory = async (options) => {

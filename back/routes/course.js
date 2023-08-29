@@ -5,7 +5,7 @@ const { body, query } = require("express-validator");
 
 router.get("/", CourseController.getCourses);
 
-router.get("/:CourseId", CourseController.getByIdCourse);
+router.get("/:CourseId", CourseController.getCourseById);
 
 router.post(
   "/",

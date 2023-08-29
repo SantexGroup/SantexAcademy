@@ -1,21 +1,21 @@
 const {
   createCourse,
   deleteCourse,
-  getCourse,
+  getCourseById,
   getCourses,
   updateCourse,
 } = require("./courseProvider");
 const {
   createCategory,
   deleteCategory,
-  getCategory,
+  getCategoryById,
   getCategories,
   updateCategory,
 } = require("./categoryProvider");
 const {
   createSchedule,
   deleteSchedule,
-  getSchedule,
+  getScheduleById,
   getSchedules,
   updateSchedule,
 } = require("./scheduleProvider");
@@ -24,21 +24,21 @@ const {
 const CourseProvider = {
   createCourse,
   deleteCourse,
-  getCourse,
+  getCourseById,
   getCourses,
   updateCourse,
 };
 const CategoryProvider = {
   createCategory,
   deleteCategory,
-  getCategory,
+  getCategoryById,
   getCategories,
   updateCategory,
 };
 const ScheduleProvider = {
   createSchedule,
   deleteSchedule,
-  getSchedule,
+  getScheduleById,
   getSchedules,
   updateSchedule,
 };

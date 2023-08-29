@@ -32,9 +32,9 @@ const createCourse = async (CourseOptions) => {
   }
 };
 
-const getCourse = async (courseId) => {
+const getCourseById = async (courseId) => {
   try {
-    const CourseSelect = await Course.findOne({
+    const courseSelect = await Course.findOne({
       where: { id: courseId },
       include: [
         {
@@ -46,11 +46,8 @@ const getCourse = async (courseId) => {
         },
       ],
     });
-    if (CourseSelect) {
-      return CourseSelect;
-    } else {
-      throw new Error("no Course found");
-    }
+    return courseSelect;
+
   } catch (error) {
     throw error;
   }
@@ -58,7 +55,7 @@ const getCourse = async (courseId) => {
 
 const getCourses = async () => {
   try {
-    const Courses = await Course.findAll({
+    const courses = await Course.findAll({
       include: [
         {
           model: ScheduleCourses,
@@ -70,11 +67,8 @@ const getCourses = async () => {
       ],
     });
 
-    if (Courses) {
-      return Courses;
-    } else {
-      throw new Error("no Courses found");
-    }
+    return courses;
+
   } catch (error) {
     throw error;
   }
@@ -104,7 +98,7 @@ const deleteCourse = async (CourseId) => {
 module.exports = {
   createCourse,
   deleteCourse,
-  getCourse,
+  getCourseById,
   getCourses,
   updateCourse,
 };
