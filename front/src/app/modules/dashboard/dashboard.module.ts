@@ -17,7 +17,7 @@ import { RegisteranswerComponent } from '../../components/register/registeranswe
     DashboardPageComponent,
     RegisterbuttonComponent,
     RegisterformComponent,
-    RegisteranswerComponent
+    RegisteranswerComponent,
     HeaderComponent,
     NavComponent,
     FooterComponent,
