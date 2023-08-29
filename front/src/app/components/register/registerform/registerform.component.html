@@ -1,7 +1,7 @@
-<div>
+<div [class.hidden]="showRegisterAnswer">
     <div class="register-form">
         <h2>Registro de Usuario</h2>
-        <form (ngSubmit)="submitForm()">
+        <form (submit)="submitForm()">
           <div class="form-group">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" [(ngModel)]="userData.username" required>
@@ -22,9 +22,8 @@
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" [(ngModel)]="userData.email" required>
           </div>
-          <button type="submit">Enviar</button>
+          <button class="Enviar" type="submit">Enviar</button>
         </form>
       </div>
-      
       
 </div>

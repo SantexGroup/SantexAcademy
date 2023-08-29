@@ -10,12 +10,14 @@ import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { CarouselComponent } from 'src/app/components/carousel/carousel.component';
+import { RegisteranswerComponent } from '../../components/register/registeranswer/registeranswer.component';
 
 @NgModule({
   declarations: [
     DashboardPageComponent,
     RegisterbuttonComponent,
     RegisterformComponent,
+    RegisteranswerComponent
     HeaderComponent,
     NavComponent,
     FooterComponent,

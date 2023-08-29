@@ -7,8 +7,13 @@ import { Component } from '@angular/core';
 })
 export class DashboardPageComponent {
   showRegisterForm: boolean = false;
+  showRegisterAnswer: boolean = false;
 
   toggleRegisterForm(): void {
     this.showRegisterForm = !this.showRegisterForm;
+  }
+
+  toggleRegisterAnswer(): void {
+    this.showRegisterAnswer = !this.showRegisterAnswer;
   }
 }

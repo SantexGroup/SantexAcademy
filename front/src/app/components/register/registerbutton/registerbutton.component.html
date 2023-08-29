@@ -1,4 +1,6 @@
 <div class="register-container">
-    <button (click)="toggleRegisterForm()">Registrarse</button>
+  <button *ngIf="!showRegisterAnswer" (click)="toggleRegisterForm()">
+      {{ showRegisterForm ? 'Atrás' : 'Registrarse' }}
+  </button>
 
 </div>
