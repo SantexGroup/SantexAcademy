@@ -4,10 +4,10 @@ const { validationResult } = require("express-validator");
 const getCategories = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-    return res.status(403).send({ errors: result.array() });
+    return res.status(400).send({ errors: result.array() });
   }
   try {
-    const Categories = await CategoryService.getCategories();
+    const categories = await CategoryService.getCategories();
     res.status(200).json(Categories);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -16,10 +16,9 @@ const getCategories = async (req, res) => {
 const createCategory = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-    return res.status(403).send({ errors: result.array() });
+    return res.status(400).send({ errors: result.array() });
   }
   const { name } = req.body;
-  console.log(req.body);
   try {
     const newCategory = await CategoryService.createCategory({
       name,
@@ -31,15 +30,15 @@ const createCategory = async (req, res) => {
   }
 };
 
-const getByIdCategory = async (req, res) => {
+const getCategoryById = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-    return res.status(403).send({ errors: result.array() });
+    return res.status(400).send({ errors: result.array() });
   }
-  const CategoryId = req.params.CategoryId;
+  const categoryId = req.params.CategoryId;
   try {
-    const Category = await CategoryService.getCategory(CategoryId);
-    res.status(200).json(Category);
+    const category = await CategoryService.getCategory(categoryId);
+    res.status(200).json(category);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -48,12 +47,12 @@ const getByIdCategory = async (req, res) => {
 const updateCategory = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-    return res.status(403).send({ errors: result.array() });
+    return res.status(400).send({ errors: result.array() });
   }
-  const CategoryId = req.params.CategoryId;
+  const categoryId = req.params.CategoryId;
   const { name } = req.body;
   try {
-    const newCategory = await CategoryService.updateCategory(CategoryId, {
+    const newCategory = await CategoryService.updateCategory(categoryId, {
       name,
     });
     res.status(200).json(newCategory);
@@ -65,12 +64,12 @@ const updateCategory = async (req, res) => {
 const deleteCategory = async (req, res) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-    return res.status(403).send({ errors: result.array() });
+    return res.status(400).send({ errors: result.array() });
   }
-  const CategoryId = req.params.CategoryId;
+  const categoryId = req.params.CategoryId;
   try {
-    const Category = await CategoryService.deleteCategory(CategoryId);
-    res.status(200).json(Category);
+    const category = await CategoryService.deleteCategory(categoryId);
+    res.status(200).json(category);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -78,7 +77,7 @@ const deleteCategory = async (req, res) => {
 
 module.exports = {
   createCategory,
-  getByIdCategory,
+  getCategoryById,
   getCategories,
   updateCategory,
   deleteCategory,
