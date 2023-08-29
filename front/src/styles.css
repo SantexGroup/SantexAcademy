@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+header.fondo {
+  padding-top: 8rem;
+  padding-bottom: 6rem;
+  padding-right: 2rem;
+  text-align: right;
+  color: #fff;
+  background-image: url("https://cdn.pixabay.com/photo/2018/01/17/04/14/stock-exchange-3087396_1280.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+}
+
+h1.mensaje-bienvenida {
+  line-height: 1.5rem;
+  margin-bottom: 25px;
+}

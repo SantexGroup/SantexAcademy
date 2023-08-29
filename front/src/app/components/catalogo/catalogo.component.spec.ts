@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { CatalogoComponent } from './catalogo.component';
 
-
-/*describe(, () => {
-  let component: ;
-  let fixture: ComponentFixture<>;
+describe('CatalogoComponent', () => {
+  let component: CatalogoComponent;
+  let fixture: ComponentFixture<CatalogoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [  ]
+      declarations: [ CatalogoComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent;
+    fixture = TestBed.createComponent(CatalogoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -20,4 +20,4 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});*/
+});

@@ -1,0 +1,36 @@
+.uk-container {
+  box-sizing: content-box;
+  max-width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  /* Centrar horizontalmente */
+  align-items: flex-start;
+  /* Alinear elementos en la parte superior verticalmente */
+}
+
+@media (min-width: 960px) {
+  .uk-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+.cursos--grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+}
+
+@media screen and (min-width: 40em) {
+  .cursos--grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 62em) {
+  .cursos--grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

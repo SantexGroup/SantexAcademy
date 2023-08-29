@@ -21,7 +21,7 @@ export class RegisterformComponent implements OnInit {
   constructor(private http: HttpClient, private registroService: RegistroService) {};
 
   ngOnInit(): void {
-    
+
   }
 
 submitForm() {
