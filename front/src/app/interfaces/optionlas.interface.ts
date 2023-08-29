@@ -1,8 +1,8 @@
 export interface Optionals {
-    id: number,
-    marital_id: number,
-    sexs_id: number,
-    countries_id: number,
+    id?: number,
+    maritalId: number,
+    sexsId: number,
+    countriesId: number,
     profile: string,
     webPage: string,
     linkedIn: string,
@@ -13,5 +13,5 @@ export interface Optionals {
     achievements: string,
     address: string,
     zipCode: number,
-    deletedAt: Date,
+    deletedAt?: Date,
 }

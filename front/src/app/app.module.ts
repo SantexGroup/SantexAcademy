@@ -5,16 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BodyPageComponent } from './modules/body-page/body-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { FooterPageComponent } from './modules/footer-page/footer-page.component';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { HeaderPageComponent } from './modules/header-page/header-page.component';
 import { UsuarioModule } from './modules/usuario/usuario.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { OptionalsComponent } from './modules/optionals/optionals.component';
-import {MatSelectModule} from '@angular/material/select';
+import { OptionalsComponent } from './modules/crud-data/optionals/optionals.component';
+import { MatSelectModule } from '@angular/material/select';
+import { ExperiencesComponent } from './modules/crud-data/experiences/experiences.component';
+import { MatDatepickerModule } from '@angular/material/datepicker'; 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -22,7 +28,8 @@ import {MatSelectModule} from '@angular/material/select';
     BodyPageComponent,
     FooterPageComponent,
     HeaderPageComponent,
-    OptionalsComponent
+    OptionalsComponent,
+    ExperiencesComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,12 @@ import {MatSelectModule} from '@angular/material/select';
     FormsModule,
     ReactiveFormsModule, 
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatIconModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent,BodyPageComponent]

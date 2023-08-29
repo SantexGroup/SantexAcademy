@@ -13,4 +13,8 @@ export class OptionalsService {
   addOptionals(optionals: Optionals): Observable<Optionals> {
     return this.http.post<Optionals>('http://localhost:3000/optionals/', optionals)
   }
+
+  updateOptionals(optionals: Optionals): Observable<Optionals>{
+    return this.http.put<Optionals>('http://localhost:3000/optionals/:id', optionals)
+  }
 }
