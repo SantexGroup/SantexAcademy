@@ -1,6 +1,5 @@
-const { Sequelize } = require('sequelize'); // Take the Sequelize Class
-require('dotenv').config();
-
+const { Sequelize } = require("sequelize"); // Take the Sequelize Class
+require("dotenv").config();
 
 // Se crea la instancia de sequelize con los datos de conexión a la base de datos en el CONSTRUCTOR
 const sequelize = new Sequelize(
@@ -11,25 +10,23 @@ const sequelize = new Sequelize(
   // luego se pasa un objeto de configuración con el host y el dialecto
   {
     host: process.env.DB_HOST,
-    dialect: 'mysql',
-  },
+    dialect: "mysql",
+  }
 );
 
 const initializeDB = async () => {
   try {
     await sequelize.authenticate(); // Tests connection by trying to authenticate
-    console.log('Conection to DB established.');
-
+    console.log("Conection to DB established.");
 
     // Sync all defined models to DB
     await sequelize.sync({ force: true }); // force: if true, each start deletes DB
 
     // Create default roles
-    const {Roles} = require('../models');
-    await Roles.bulkCreateDefaultRoles()
-    
+    const { Roles } = require("../models");
+    await Roles.bulkCreateDefaultRoles();
   } catch (err) {
-    console.error('Error initializing DB.', err.message);
+    console.error("Error initializing DB.", err.message);
     throw err;
   }
 };
