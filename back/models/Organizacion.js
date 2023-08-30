@@ -2,8 +2,9 @@ const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db-config');
 
 const Organizacion = sequelize.define(
-  'organizaciones',
+  'organizacion',
   {
+
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -13,30 +14,70 @@ const Organizacion = sequelize.define(
     nombre: {
       type: DataTypes.STRING(100),
       allowNull: false,
-      unique: true,
+      unique: 'nombre_UNIQUE',
     },
     email: {
       type: DataTypes.STRING(100),
       allowNull: false,
-      unique: true,
+      unique: 'email_UNIQUE',
     },
     telefono: {
-      type: DataTypes.STRING(20),
+      type: DataTypes.STRING(25),
       allowNull: true,
-      unique: true,
+      unique: 'telefono_UNIQUE',
     },
     cuit: {
       type: DataTypes.STRING(11),
       allowNull: false,
-      unique: true,
+      unique: 'cuit_UNIQUE',
     },
     password: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(45),
       allowNull: false,
     },
-  },
-  {
+
+    image: {
+      type: DataTypes.STRING(),
+      allowNull: false,
+      validate: {
+        isUrl: true,
+      },
+    },
+
+    category: {
+      type: DataTypes.ENUM({
+        values: ['medio ambiente y fauna', 'asistencia social', 'salud y discapacidad'],
+      }),
+      allowNull: false,
+    },
+
+    deletedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+  }, {
+    sequelize,
     paranoid: true,
+    tableName: 'organizacion',
+    timestamps: false,
+    indexes: [
+      {
+        name: 'PRIMARY',
+        unique: true,
+        using: 'BTREE',
+        fields: [
+          { name: 'id' },
+        ],
+      },
+      {
+        name: 'cuit_UNIQUE',
+        unique: true,
+        using: 'BTREE',
+        fields: [
+          { name: 'cuit' },
+        ],
+      },
+    ],
   },
 );
 
