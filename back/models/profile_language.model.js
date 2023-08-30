@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   class ProfileLanguage extends Model {
     static associate(models) {
       models.ProfileLanguage.belongsTo(models.Language, {
-        foreingKey: 'languages_id',
+        foreignKey: 'languages_id',
       });
     }
   }

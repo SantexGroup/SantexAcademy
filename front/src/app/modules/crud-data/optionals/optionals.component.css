@@ -1,0 +1,60 @@
+body {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(0, 114, 187, 1) 100%);
+}
+
+.title {
+    text-align: center;
+    font-weight: bold;
+}
+
+.optionalsInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-item {
+    width: 60vh;
+    height: 75vh;
+}
+
+.carousel-item textarea {
+    resize: none;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.carousel-item input {
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.carousel-item mat-form-field {
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.carousel-control-prev {
+    left: -70px;
+}
+
+.carousel-control-next {
+    right: -70px;
+}
+
+.botonera {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botones {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}

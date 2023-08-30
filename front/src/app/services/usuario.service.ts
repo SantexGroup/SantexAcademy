@@ -1,10 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError, BehaviorSubject, tap } from 'rxjs';
+import { registroUsuario } from './registroUsuario';
 
 @Injectable({
   providedIn: 'root'
-})
+})  
 export class UsuarioService {
   constructor( private http: HttpClient ) { }
 
@@ -17,16 +18,10 @@ export class UsuarioService {
 
   //* metodo para registrar un usuario
   registro(user: any) : Observable <any> {
-    return this.http.get('../../assets/data.json').pipe(
-      tap((user: any) => {
-        this.dataUser.next(user);
-        this.registrodeUsuario.next(true);
-      }), 
-      catchError(this.handleError)
-    );
+    return this.http.post<any>('http://localhost:3000/record/', user );
   }
 
-  //* metodo para loguear un usuario
+  //* metodo para loguear un usuario  
   login(user: any) : Observable <any> {
     console.log("desde servicio login");
     return this.http.get('../../assets/data.json').pipe(

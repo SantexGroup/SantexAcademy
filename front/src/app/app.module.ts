@@ -5,17 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BodyPageComponent } from './modules/body-page/body-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { FooterPageComponent } from './modules/footer-page/footer-page.component';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { HeaderPageComponent } from './modules/header-page/header-page.component';
 import { UsuarioModule } from './modules/usuario/usuario.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './modules/home/home/home.component';
-
-
 
 
 @NgModule({
@@ -23,9 +20,7 @@ import { HomeComponent } from './modules/home/home/home.component';
     AppComponent,
     BodyPageComponent,
     FooterPageComponent,
-    HeaderPageComponent,
-    HomeComponent
-     
+    HeaderPageComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +32,8 @@ import { HomeComponent } from './modules/home/home/home.component';
     UsuarioModule,
     FormsModule,
     ReactiveFormsModule, 
-    HttpClientModule,
-    
-   
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent,BodyPageComponent]

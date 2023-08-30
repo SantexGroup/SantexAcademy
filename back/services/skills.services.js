@@ -2,10 +2,14 @@ const { addRelation, updateRelation } = require('../helpers/relations.helper');
 const { Profile, Skill, ProfileSkill } = require('../models');
 
 async function getSkill(id) {
-  const skill = await Skill.findByPk(id, {
+  const skill = await ProfileSkill.findOne({
+    attributes: ['level'],
+    where: {
+      skills_id: id,
+    },
     include: [{
-      model: ProfileSkill,
-      attributes: ['id', 'profiles_id', 'level'],
+      model: Skill,
+      attributes: ['id', 'skill'],
     }],
   });
   if (skill) {
@@ -15,18 +19,22 @@ async function getSkill(id) {
 }
 
 async function getAllSkill(id) {
-  const skills = await Skill.findAll({
+  const skills = await Profile.findAll({
+    attributes: [],
+    where: {
+      userId: id,
+    },
     include: [
       {
-        model: Profile,
-        attributes: [],
-        where: {
-          // buscamos donde el Profgiles.user_id sea igual al id indicadno por params
-          user_id: id,
-        },
-      },
-    ],
+        model: ProfileSkill,
+        attributes: ['level'],
+        include: [{
+          model: Skill,
+          attributes: ['skill'],
+        }],
+      }],
     distinct: true,
+    group: ['skill'],
   });
   if (skills) {
     return skills;
