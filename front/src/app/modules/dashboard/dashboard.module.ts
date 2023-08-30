@@ -29,7 +29,10 @@ import { RegisteranswerComponent } from '../../components/register/registeranswe
     DashboardRoutingModule,
   ],
   exports: [
-    DashboardPageComponent
+    DashboardPageComponent,
+    HeaderComponent,
+    NavComponent,
+    FooterComponent,
   ],
   providers: [],
 })
