@@ -1,8 +1,8 @@
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/db-config');
+const { DataTypes } = require("sequelize");
+const { sequelize } = require("../config/db-config");
 
 const Roles = sequelize.define(
-  'roles',
+  "roles",
   {
     id: {
       autoIncrement: true,
@@ -16,14 +16,24 @@ const Roles = sequelize.define(
     },
   },
   {
-    paranoid: true,
-  },
+    sequelize,
+    tableName: "roles",
+    timestamps: false,
+    indexes: [
+      {
+        name: "PRIMARY",
+        unique: true,
+        using: "BTREE",
+        fields: [{ name: "id" }],
+      },
+    ],
+  }
 );
 
-Roles.initializeRoles = async () => {
-  const roles = ['voluntario', 'admin'];
-  const promises = roles.map((roleName) => Roles.findOrCreate({ where: { name: roleName } }));
-  await Promise.all(promises);
+Roles.bulkCreateDefaultRoles = async () => {
+  const rolesData = [{ nombre: "Voluntario" }, { nombre: "Administrador" }];
+
+  await Roles.bulkCreate(rolesData);
 };
 
 module.exports = Roles;
