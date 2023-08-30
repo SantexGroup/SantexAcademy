@@ -15,10 +15,18 @@ const Organizacion = sequelize.define(
       allowNull: false,
       unique: true,
     },
+    description: {
+      type: DataTypes.STRING(500),
+      allowNull: false,
+    },
     email: {
       type: DataTypes.STRING(100),
       allowNull: false,
       unique: true,
+    },
+    password: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
     },
     phone: {
       type: DataTypes.STRING(20),
@@ -30,8 +38,12 @@ const Organizacion = sequelize.define(
       allowNull: false,
       unique: true,
     },
-    password: {
-      type: DataTypes.STRING(50),
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    opportunityType: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
   },
