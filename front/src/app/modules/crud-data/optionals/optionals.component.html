@@ -1,0 +1,105 @@
+<body>
+    <h1 class="title">OPCIONALES</h1>
+
+    <div class="optionalsInput">
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <form [formGroup]="optionalsForm" (ngSubmit)="postOptionals()">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <mat-form-field>
+                            <mat-label>Perfil:</mat-label>
+                            <textarea matInput formControlName="profile" cols="30" rows="10"></textarea>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label for="webPage">Pagina Web:</mat-label>
+                            <input matInput formControlName="webPage" type="text" name="webPage">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label for="linkedIn">linkedIn:</mat-label>
+                            <input matInput formControlName="linkedIn" type="text" name="linkedIn">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label for="zipCode">Codigo postal:</mat-label>
+                            <input matInput formControlName="zipCode" type="number" name="zipCode">
+                        </mat-form-field>
+                    </div>
+                    <div class="carousel-item">
+                        <mat-form-field>
+                            <mat-label for="aboutMe">Sobre Mi:</mat-label>
+                            <textarea matInput formControlName="aboutMe" cols="30" rows="10"></textarea>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Licensia de conducir</mat-label>
+                            <mat-select formControlName="driverLicense" name="driverLicense">
+                                <mat-option value="Si">Si</mat-option>
+                                <mat-option value="No">No</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Nacionalidad</mat-label>
+                            <mat-select formControlName="countriesId">
+                                <mat-option *ngFor="let country of countries" [value]="country.id">
+                                    {{country.country}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label for="address">Direccion:</mat-label>
+                            <input matInput formControlName="address" type="text" name="address">
+                        </mat-form-field>
+                    </div>
+                    <div class="carousel-item">
+                        <mat-form-field>
+                            <mat-label>Estado Civil</mat-label>
+                            <mat-select name="marital" formControlName="maritalId">
+                                <mat-option *ngFor="let condition of marital" [value]="condition.id">
+                                    {{condition.condition}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Genero</mat-label>
+                            <mat-select name="sexs" formControlName="sexsId">
+                                <mat-option *ngFor="let sex of gender" [value]="sex.id">
+                                    {{sex.gender}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label for="hobbies">Pasatiempos:</mat-label>
+                            <textarea matInput formControlName="hobbies" cols="30" rows="3"></textarea>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label for="achievements">Logros:</mat-label>
+                            <textarea matInput formControlName="achievements" cols="30" rows="3"></textarea>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label for="aptitudes">Aptitudes:</mat-label>
+                            <textarea matInput formControlName="aptitudes" cols="30" rows="3"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="botonera">
+                    <div class="botones">
+                        <button mat-flat-button color="primary" type="submit">
+                            Guardar
+                        </button>
+                        <button mat-flat-button color="warn">
+                            Salir
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</body>

@@ -20,6 +20,7 @@
 .logoHeader{
     display: flex;
     height: 10em;
+    cursor: pointer;
 }
 
 .iniciar-sesion{
