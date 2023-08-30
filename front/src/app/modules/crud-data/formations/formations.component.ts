@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { Formations } from 'src/app/interfaces/formation.interface';
-import { FormationsStatus } from 'src/app/interfaces/formationsStatus.interface';
-import { FormationsTypes } from 'src/app/interfaces/formationsTypes.interface';
-import { FormationsStatusService } from 'src/app/services/formations-status.service';
-import { FormationsTypeService } from 'src/app/services/formations-type.service';
-import { FormationsService } from 'src/app/services/formations.service';
+import { Formations } from 'src/app/core/interfaces/formation.interface';
+import { FormationsStatus } from 'src/app/core/interfaces/formationsStatus.interface';
+import { FormationsTypes } from 'src/app/core/interfaces/formationsTypes.interface';
+import { FormationsStatusService } from 'src/app/core/services/formations-status.service';
+import { FormationsTypeService } from 'src/app/core/services/formations-type.service';
+import { FormationsService } from 'src/app/core/services/formations.service';
 
 
 @Component({

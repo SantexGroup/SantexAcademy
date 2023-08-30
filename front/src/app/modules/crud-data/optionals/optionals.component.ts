@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Countries } from 'src/app/interfaces/country.interface';
-import { Marital } from 'src/app/interfaces/marital.interface';
-import { Optionals } from 'src/app/interfaces/optionlas.interface';
-import { Sexs } from 'src/app/interfaces/sex.interface';
+import { Countries } from 'src/app/core/interfaces/country.interface';
+import { Marital } from 'src/app/core/interfaces/marital.interface';
+import { Optionals } from 'src/app/core/interfaces/optionlas.interface';
+import { Sexs } from 'src/app/core/interfaces/sex.interface';
 import { CountriesService } from 'src/app/core/services/countries.service';
-import { GenderService } from 'src/app/services/gender.service';
-import { MaritalsService } from 'src/app/services/maritals.service';
-import { OptionalsService } from 'src/app/services/optionals.service';
+import { GenderService } from 'src/app/core/services/gender.service';
+import { MaritalsService } from 'src/app/core/services/maritals.service';
+import { OptionalsService } from 'src/app/core/services/optionals.service';
 
 @Component({
   selector: 'app-optionals',
