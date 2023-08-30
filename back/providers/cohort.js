@@ -29,7 +29,29 @@ const getAllCohorts = async () => {
   }
 };
 
+const getCohortById = async (cohortId) => {
+  try {
+    const cohort = await Cohort.findByPk(cohortId, {
+      include: [
+        {
+          model: Course,
+        },
+        {
+          model: Student,
+        },
+      ],
+    });
+    if (cohort === null) {
+      throw new Error('Cohort no encontrada');
+    }
+    return cohort;
+  } catch (error) {
+    throw new Error('Error al obtener la cohorte');
+  }
+};
+
 module.exports = {
   enrollStudentInCourse,
   getAllCohorts,
+  getCohortById,
 };

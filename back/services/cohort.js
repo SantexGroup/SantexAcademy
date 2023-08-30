@@ -18,7 +18,17 @@ const getAllCohorts = () => {
   }
 };
 
+const getCohortById = (cohortId) => {
+  try {
+    const cohort = cohortProvider.getCohortById(cohortId);
+    return cohort;
+  } catch (error) {
+    throw new Error('Error al obtener la cohorte');
+  }
+};
+
 module.exports = {
   enrollStudentInCourse,
   getAllCohorts,
+  getCohortById,
 };

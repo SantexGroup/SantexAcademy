@@ -20,7 +20,18 @@ const getAllCohorts = async (req, res) => {
   }
 };
 
+const getCohortById = async (req, res) => {
+  const cohortId = req.params.id;
+  try {
+    const cohort = await cohortService.getCohortById(cohortId);
+    return res.status(200).json(cohort);
+  } catch (error) {
+    return res.status(404).json({ error: 'Cohorte no encontrada' });
+  }
+};
+
 module.exports = {
   enrollStudentInCourse,
   getAllCohorts,
+  getCohortById,
 };
