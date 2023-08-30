@@ -1,6 +1,8 @@
-const jwt = require('jsonwebtoken');
+/* eslint-disable prefer-const */
+// const jwt = require('jsonwebtoken');
 const Admin = require('../models');
 const db = require('../models');
+const password = require('./passwordService');
 
 // Buscar todos los administradores
 async function getAll() {
@@ -83,17 +85,43 @@ async function deleteAdmin(id) {
 
 // login
 async function emailLogin(email) {
-  const admin = await db.admin.findAll({
+  let existeAdmin;
+
+  const admin = await db.admin.findOne({
     where: {
       email,
     },
   });
 
   if (!admin) {
-    throw new Error('El email o la contraseña son incorrectos');
+    throw new Error('El email es incorrecto');
   }
 
-  const token = jwt.sign(
+  // Llamar función generadora de OTP
+  // code here
+  const pwd = password.generarOtp();
+
+  // Llamar al método que genera limite de tiempo de uso del OTP
+  // obtenerHoraActual(); Es un ejemplo, no es limite de uso
+  // eslint-disable-next-line camelcase
+  const limit_time = password.limiTime();
+
+  // Llamar al método que hace el Insert a la tabla del password
+  password.createPassword(pwd, limit_time);
+
+  // Llamar al método que actualiza el password_id en la tabla de admin
+  editAdmin(/* completar aqui */);
+
+  // Confirmar variable de control
+  existeAdmin = true;
+
+  // Llama al sendgrid
+  // code here
+
+  return { existeAdmin };
+}
+
+/* const token = jwt.sign(
     {
       id: admin.id,
       email: admin.email,
@@ -104,8 +132,7 @@ async function emailLogin(email) {
 
   return {
     accessToken: token,
-  };
-}
+  }; */
 
 module.exports = {
   emailLogin,

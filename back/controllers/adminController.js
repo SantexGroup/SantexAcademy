@@ -76,7 +76,7 @@ async function editAdmin(req, res) {
 async function deleteAdmin(req, res) {
   const { id } = req.params;
 
-  await adminService.deleteUser(id);
+  await adminService.deleteAdmin(id);
 
   res
     .status(200)
