@@ -4,7 +4,7 @@ import { Countries } from 'src/app/interfaces/country.interface';
 import { Experience } from 'src/app/interfaces/experience.interface';
 import { ExperienceStatus } from 'src/app/interfaces/experienceStatus.interface';
 import { ExperienceType } from 'src/app/interfaces/experienceType.interface';
-import { CountriesService } from 'src/app/services/countries.service';
+import { CountriesService } from 'src/app/core/services/countries.service';
 import { ExperiencesStatusService } from 'src/app/services/experiences-status.service';
 import { ExperiencesTypeService } from 'src/app/services/experiences-type.service';
 import { ExperiencesService } from 'src/app/services/experiences.service';

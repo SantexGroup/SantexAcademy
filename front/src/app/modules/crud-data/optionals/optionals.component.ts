@@ -4,7 +4,7 @@ import { Countries } from 'src/app/interfaces/country.interface';
 import { Marital } from 'src/app/interfaces/marital.interface';
 import { Optionals } from 'src/app/interfaces/optionlas.interface';
 import { Sexs } from 'src/app/interfaces/sex.interface';
-import { CountriesService } from 'src/app/services/countries.service';
+import { CountriesService } from 'src/app/core/services/countries.service';
 import { GenderService } from 'src/app/services/gender.service';
 import { MaritalsService } from 'src/app/services/maritals.service';
 import { OptionalsService } from 'src/app/services/optionals.service';

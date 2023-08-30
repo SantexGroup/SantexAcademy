@@ -1,17 +1,17 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Marital } from '../interfaces/marital.interface';
+import { ApiService } from '../http/api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MaritalsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private api: ApiService) { }
 
   getMaritals(): Observable<Marital[]>{
-    return this.http.get<Marital[]>('http://localhost:3000/marital/all');
+    return this.api.get<Marital[]>('marital/all');
   }
 
 }

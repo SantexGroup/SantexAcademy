@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormationsTypes } from '../interfaces/formationsTypes.interface';
+import { ApiService } from '../http/api.service';
 
 
 @Injectable({
@@ -9,11 +9,9 @@ import { FormationsTypes } from '../interfaces/formationsTypes.interface';
 })
 export class FormationsTypeService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private api: ApiService) { }
 
   getFormationType(): Observable<FormationsTypes[]>{
-    return this.http.get<FormationsTypes[]>('http://localhost:3005/formations/types');
+    return this.api.get<FormationsTypes[]>('formations/types');
   }
-
-
 }

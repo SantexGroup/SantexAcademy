@@ -22,6 +22,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import { FormationsComponent } from './modules/crud-data/formations/formations.component';
+import { LanguageComponent } from './modules/crud-data/language/language.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FormationsComponent } from './modules/crud-data/formations/formations.c
     HeaderPageComponent,
     OptionalsComponent,
     ExperiencesComponent,
-    FormationsComponent
+    FormationsComponent,
+    LanguageComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,6 @@ import { FormationsComponent } from './modules/crud-data/formations/formations.c
     MatDividerModule,
   ],
   providers: [],
-  bootstrap: [AppComponent,BodyPageComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

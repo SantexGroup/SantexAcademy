@@ -1,17 +1,16 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Formations } from '../interfaces/formation.interface';
 import { Observable } from 'rxjs';
+import { ApiService } from '../http/api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormationsService {
 
-  constructor(private http:HttpClient ) { }
+  constructor(private api: ApiService ) { }
 
   addFormation(formation: Formations): Observable<Formations> {
-    return this.http.post<Formations>('http://localhost:3005/formations/', formation);
+    return this.api.post<Formations>('formations/', formation);
   }
-
 }
