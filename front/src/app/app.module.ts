@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { PagesModule } from './modules/pages/pages.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    PagesModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

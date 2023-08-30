@@ -11,6 +11,7 @@ import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { CarouselComponent } from 'src/app/components/carousel/carousel.component';
 import { RegisteranswerComponent } from '../../components/register/registeranswer/registeranswer.component';
+import { PagesModule } from '../pages/pages.module';
 
 @NgModule({
   declarations: [
@@ -27,9 +28,14 @@ import { RegisteranswerComponent } from '../../components/register/registeranswe
     CommonModule,
     FormsModule,
     DashboardRoutingModule,
+    PagesModule //Importo el módulo de pages para hacer uso por ejemplo de quienessomoscomponent
   ],
   exports: [
-    DashboardPageComponent
+    DashboardPageComponent,
+    HeaderComponent,
+    NavComponent,
+    FooterComponent,
+    CarouselComponent //Exporto mis componentes por si quiero que se usen desde otro lado
   ],
   providers: [],
 })

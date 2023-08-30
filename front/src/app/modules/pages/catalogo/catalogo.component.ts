@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Curso } from '../models/curso.model';
+import { Curso } from '../../../components/models/curso.model';
 
 @Component({
   selector: 'app-catalogo',
