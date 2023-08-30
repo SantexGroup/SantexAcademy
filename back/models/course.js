@@ -11,9 +11,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Course.belongsTo(models.courseDetail, {
-        foreignKey: 'id',
-        target_Key: 'idcourseDetail',
+      this.hasMany(models.courseDetail,
+        { foreignKey: 'courseId' },
+        {
+          onDelete: 'cascade',
+          onUpdate: 'cascade',
+          hooks: true,
+        });
+
+      models.courseDetail.belongsTo(Course, {
+        foreignKey: 'courseId',
+        target_key: 'id',
       });
     }
   }
@@ -29,7 +37,6 @@ module.exports = (sequelize, DataTypes) => {
     has_surcharge: DataTypes.BOOLEAN,
     surcharge_percentage: DataTypes.INTEGER,
     modality: DataTypes.STRING,
-    idcourseDetail: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Course',

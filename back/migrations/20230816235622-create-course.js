@@ -42,13 +42,6 @@ module.exports = {
       modality: {
         type: Sequelize.STRING
       },
-      idcourseDetail: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'courseDetail',	
-          key: 'id'
-        }
-      }, 
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
