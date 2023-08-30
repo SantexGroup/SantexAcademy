@@ -4,27 +4,26 @@ import { ErrorPageComponent } from './modules/share/error-page/error-page.compon
 import { UsersModule } from './modules/users/users.module';
 
 const routes: Routes = [
-  // {
-  //   path: 'dashboard',
-  //   loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
-  // },
-  // {
-  //   path: '**',
-  //   redirectTo: 'dashboard'
-  // }
-
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+  },
   {
     path: 'users',
     loadChildren: () => import('./modules/users/users.module').then( m => UsersModule)
   },
-
   {
     path: '404',
     component: ErrorPageComponent
   },
   {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full'
+  },
+  {
     path: '**',
-    redirectTo: 'users'
+    redirectTo: '404'
   },
 ];
 
