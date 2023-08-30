@@ -1,14 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BuyerRegistrationComponent } from './buyer-registration/buyer-registration.component';
+import { SellerRegistrationComponent } from './seller-registration/seller-registration.component';
+
 
 const routes: Routes = [
-  {
-    path: 'dashboard',
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+ 
+  { 
+    path: '', 
+    redirectTo: '/comprador',
+    pathMatch: 'full'
   },
-  {
-    path: '**',
-    redirectTo: 'dashboard'
+  { 
+    path: 'comprador',
+    component: BuyerRegistrationComponent
+  },
+  { 
+    path: 'vendedor', 
+  component: SellerRegistrationComponent
   }
 ];
 

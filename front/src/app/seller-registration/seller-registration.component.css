@@ -1,0 +1,17 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+.complete-line{
+    display: inline-grid;
+    width: 100%; 
+    max-width: 225px;
+}
+.mat-raised-button:hover{
+    background-color: #F06BF2;
+}
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+  }
+  
