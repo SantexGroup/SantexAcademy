@@ -10,7 +10,7 @@
     background-color: white;
     transition: 0.3s ease;
   }
-  
+
   .navbar-closed {
     left: 0;
     transition: 0.3s ease;
