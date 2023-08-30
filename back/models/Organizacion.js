@@ -48,7 +48,7 @@ const Organizacion = sequelize.define(
     },
     image: {
       type: DataTypes.STRING(),
-      allowNull: false,
+      allowNull: true,
       validate: {
         isUrl: true,
       },
