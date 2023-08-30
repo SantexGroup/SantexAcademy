@@ -5,7 +5,6 @@
   "config": {},
   "scripts": {
     "prod": "node ./bin/www",
-    "dev": "nodemon ./bin/www",
     "start": "node ./bin/www",
     "clean": "rimraf ./node_modules",
     "lint-staged": "npx lint-staged",
@@ -37,7 +36,7 @@
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
+    "eslint": "^7.27.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.27.5",
     "husky": "^4.3.8",
@@ -52,8 +51,8 @@
   },
   "lint-staged": {
     "*.js": [
-      "./node_modules/.bin/eslint --fix"
-      
+      "./node_modules/.bin/eslint --fix",
+      "git add"
     ]
   }
 }

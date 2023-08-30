@@ -1,34 +1,30 @@
-const userService = require('../services/userService')
+// const userService = require('../services/userService')
+const {User} = require('../models')
 console.log("estoy en userController")
 
 //createUser
 //nombreCompleto, nombreUsuario, fechaNacimiento, genero, correoElectronico, contraseña
 async function createUser(req, res) {
 
-    const {nombreCompleto, nombreUsuario, fechaNacimiento, genero, correoElectronico, contraseña} = req.body;
-    
-    console.log("estoy en createUser en userController")
+    // Crear un usuario que no existia
+    try {
+        const nuevoUsuario = req.body;
+        //Verificar que si existe un usuario con igual nombre de usuario 
 
-    const user = await userService.createUser(nombreCompleto, nombreUsuario, fechaNacimiento, genero, correoElectronico, contraseña)
-    // console.log(user)
-    res.status(200)
+        // Si no existe un usuario
+        const usuarioCreado = await User.create(nuevoUsuario);
+        return res.status(201).json(usuarioCreado);
+    } catch (error) {
+        console.error('Error al crear usuario: ', error);
+        return res.status(500).json({mensaje: 'Error al crear usuario'})
+        
+    }
+
+
+
+
 }
 
-// async function getUserById(req, res){
-//     const idParams = req.params.id
-//     let user;
-//     try {
-//         user = await userService.getUserById(idParams);
-//     } catch (error) {
-//         console.log(error)
-//         res.status(500).json(error)
-//     }
-
-//     res.status(200).json(user)
-    
-    
-
-// }
 
 
 module.exports = {createUser}

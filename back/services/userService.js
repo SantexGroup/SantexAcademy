@@ -2,12 +2,22 @@
 const {User} = require('../models/user')
 
 
+async function crearUsuario(datosUsuario) {
+    try {
+      const usuarioCreado = await User.create(datosUsuario);
+      console.log('Usuario creado:', usuarioCreado.toJSON());
+      return usuarioCreado;
+    } catch (error) {
+      console.error('Error al crear usuario:', error);
+      throw error;
+    }
+}
 
-async function createUser(nombreCompleto, nombreUsuario, fechaNacimiento, genero, correoElectronico, contraseña) {
+// async function createUser(nombreCompleto, nombreUsuario, fechaNacimiento, genero, correoElectronico, contraseña) {
 
-    User.create({
-        nombreCompleto: nombreCompleto
-    }).then(console.log)
+//     User.create({
+//         nombreCompleto: nombreCompleto
+//     }).then(console.log)
     // const user = new User();
     // console.log("estoy en createUser en userService")
 
@@ -20,7 +30,7 @@ async function createUser(nombreCompleto, nombreUsuario, fechaNacimiento, genero
 
     // const userCreated = await user.save();
     // return userCreated;
-}
+// }
 
 // async function getUserById(id){
 //     let account = User.findByPK(id)
@@ -28,4 +38,4 @@ async function createUser(nombreCompleto, nombreUsuario, fechaNacimiento, genero
 //     return account;
 // }
 
-module.exports = {createUser}
+module.exports = {crearUsuario}
