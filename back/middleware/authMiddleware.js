@@ -40,19 +40,8 @@ const verifyToken = async (req, res, next) => {
 
     // creamos un objeto con los datos del usuario que se logueo
     const userData = {
-      userId: decoded.id,
-      fullName: decoded.fullName,
-      telefono: decoded.telefono,
       email: decoded.email,
-      password: decoded.password,
-      reputation: decoded.reputation,
-      recompensasAcumuladas: decoded.recompensasAcumuladas,
-      createdAt: decoded.createdAt,
-      updatedAt: decoded.updatedAt,
-      deletedAt: decoded.deletedAt,
-      cestaRecompensasId: decoded.cestaRecompensasId,
-      rolesId: decoded.rolesId,
-
+      password: decoded.password
     }
 
     console.log(userData)

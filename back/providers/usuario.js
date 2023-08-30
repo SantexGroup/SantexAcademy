@@ -1,57 +1,114 @@
-const { Usuario, Carrito, Roles } = require('../models');
+const { Usuario } = require('../models');
+const { CestaRecompensas } = require('../models');
+
 const { sequelize } = require('../config/db-config');
+const { Op } = require('sequelize');
 
+const loginUser = async (email, password) => {
+  try {
+    const user = await Usuario.findOne({
+      where: {
+        email: email,
+      },
+    });
 
-const loginUser = async (email) => {
-  const user = await Usuario.findOne({
-    where: { email: email },
-  });
-  if (!user) {
-    return null;
+    if (!user) {
+      throw new Error("El usuario no existe");
+    }
+
+    if (user.password !== password) {
+      throw new Error("Contraseña incorrecta");
+    }
+
+    return user;
+  } catch (error) {
+    throw new Error(error);
   }
-  return user;
+};
+
+const getUserProfile = async (id) => {
+  try {
+    const userProfile = await Usuario.findOne({
+      where: {
+        id: id,
+        deletedAt: null,
+      },
+      include: [{ model: Carrito }],
+      exclude: ["password"],
+      attributes: { exclude: ["deletedAt"] },
+    });
+
+    if (!userProfile) {
+      throw new Error("El usuario no existe");
+    }
+    return userProfile;
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 
 
-const createUser = async (usuario, roleName) => {
+const createUser = async (usuario) => {
   let transaction;
   try {
     transaction = await sequelize.transaction();
 
-    const newUser = await Usuario.create(usuario, {
-      transaction,
-      returning: true,
+    const existingDeletedUser = await Usuario.findOne({
+      where: {
+        [Op.and]: [
+          { deletedAt: { [Op.not]: null } }, // Buscar registros eliminados
+          {
+            [Op.or]: [
+              { fullName: usuario.fullName },
+              { email: usuario.email },
+            ],
+          },
+        ],
+      },
     });
 
-    const role = await Roles.findOne(
-      { where: { name: roleName } },
-      {
-        transaction,
-        returning: true,
-      }
+    if (existingDeletedUser) {
+      // Borrar el registro eliminado lógicamente
+      await existingDeletedUser.destroy()
+    }
+
+    // Crear un registro en la tabla cestaRecompensas
+    const newCestaRecompensas = await CestaRecompensas.create(
+      { name: `Cesta de ${usuario.fullName}` },
+      { transaction }
     );
 
-    await newUser.setRole(role, { transaction });
-
-    const newCarrito = await newUser.createCarrito(
-      { name: `Carrito de ${usuario.fullName}` },
+    // Crear el nuevo registro de usuario con el id de la cestaRecompensas creada
+    const newUser = await Usuario.create(
       {
-        transaction,
-        returning: true,
-      }
+        ...usuario,
+        cestaRecompensasId: newCestaRecompensas.id,
+
+    
+      //Si en el body no se pasa un valor para la columna rol, se le asigna el rol 1
+      rolesId: usuario.rolesId ? usuario.rolesId : 1,        
+      },
+      { transaction }
     );
 
     await transaction.commit();
 
-    return [newUser, newCarrito];
+    // Devolver el nuevo registro de usuario
+    return{
+      id:newUser.id,
+      fullName:newUser.fullName,
+      email:newUser.email,
+    }
   } catch (err) {
     if (transaction) {
       await transaction.rollback();
     }
-    console.error("The user could not be created due to an error.", err);
+    console.error('The user could not be created due to an error.', err);
     throw err;
   }
 };
+
+
 
 const getUsersByCriteria = async (queryOptions, bodyOptions) => {
   try {
@@ -95,28 +152,40 @@ const updateUserById = async (id, usuario) => {
 
 const deleteUserById = async (id) => {
   try {
-    const deletedUser = await Usuario.findOne({
+    const user = await Usuario.findOne({
       where: {
         id,
+        deletedAt: null,
       },
     });
 
-    if (!deletedUser) {
+    if (!user) {
       throw new Error('User not found');
     }
 
-    deletedUser.destroy();
-    await Carrito.destroy({ where: { usuarioId: id } });
+    // Aplicar borrado lógico estableciendo la columna deletedAt
+    await Usuario.update({ deletedAt: new Date() }, { where: { id } });
 
-    return deletedUser;
+
+    await CestaRecompensas.destroy({ where: { id: id } });
+
+
+    
+
+    return user;
   } catch (error) {
-    console.error('Error deleting user.', error);
+    console.error('Ocurrió un error al eliminar el usuario.', error);
     throw error;
   }
 };
 
 module.exports = {
   loginUser,
+  getUserProfile,
+  createUser,
+  getUsersByCriteria,
+  updateUserById,
+  deleteUserById,
   createUser,
   getUsersByCriteria,
   updateUserById,

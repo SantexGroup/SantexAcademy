@@ -1,30 +1,35 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db-config');
 
-const ProductoEnCestaRecompensas = sequelize.define(
-  'productoEnCestaRecompensas',
+const Voluntariado = sequelize.define(
+  'voluntariado',
   {
-    productoId: {
+    idVoluntariado: {
+      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      references: {
-        model: 'producto',
-        key: 'id',
-      },
     },
-    cestaRecompensasId: {
+    descripcion: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    recompensa: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    organizacionId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       references: {
-        model: 'cestaRecompensas',
+        model: 'organizacion',
         key: 'id',
       },
     },
   }, {
     sequelize,
-    tableName: 'productoEnCestaRecompensas',
+    tableName: 'voluntariado',
     timestamps: false,
     indexes: [
       {
@@ -32,26 +37,27 @@ const ProductoEnCestaRecompensas = sequelize.define(
         unique: true,
         using: 'BTREE',
         fields: [
-          { name: 'productoId' },
-          { name: 'cestaRecompensasId' },
+          { name: 'idVoluntariado' },
+          { name: 'organizacionId' },
         ],
       },
       {
-        name: 'fk_producto_has_cestaRecompensas_cestaRecompensas1_idx',
+        name: 'id_voluntariado_UNIQUE',
+        unique: true,
         using: 'BTREE',
         fields: [
-          { name: 'cestaRecompensasId' },
+          { name: 'idVoluntariado' },
         ],
       },
       {
-        name: 'fk_producto_has_cestaRecompensas_producto1_idx',
+        name: 'fk_voluntariado_organizacion1_idx',
         using: 'BTREE',
         fields: [
-          { name: 'productoId' },
+          { name: 'organizacionId' },
         ],
       },
     ],
   },
 );
 
-module.exports = ProductoEnCestaRecompensas;
+module.exports = Voluntariado;

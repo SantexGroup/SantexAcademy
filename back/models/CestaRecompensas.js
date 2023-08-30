@@ -1,10 +1,8 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db-config');
 
-// INSERT INTO volunTimeDB2.catalogo (id, name) VALUES(0, 'catalogo1');
-
-const Catalogo = sequelize.define(
-  'catalogo',
+const CestaRecompensas = sequelize.define(
+  'cestaRecompensas',
   {
     id: {
       autoIncrement: true,
@@ -15,21 +13,31 @@ const Catalogo = sequelize.define(
     name: {
       type: DataTypes.STRING(50),
       allowNull: false,
+      unique: 'name_UNIQUE',
     },
-  },
-  {
-    tableName: 'catalogo',
+  }, {
+    sequelize,
+    tableName: 'cestaRecompensas',
     timestamps: false,
     indexes: [
       {
         name: 'PRIMARY',
         unique: true,
         using: 'BTREE',
-        fields: [{ name: 'id' }],
+        fields: [
+          { name: 'id' },
+        ],
+      },
+      {
+        name: 'name_UNIQUE',
+        unique: true,
+        using: 'BTREE',
+        fields: [
+          { name: 'name' },
+        ],
       },
     ],
   },
 );
 
-// Se exporta el modelo SIN DESESTRUCTURAR
-module.exports = Catalogo;
+module.exports = CestaRecompensas;

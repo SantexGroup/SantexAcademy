@@ -1,10 +1,13 @@
 // const jwt = require('jsonwebtoken');
 const { userService } = require("../services");
 const jwt = require("jsonwebtoken");
+require('dotenv').config();
+
+
 
 const loginUser = async (req, res) => {
   try {
-    const {  fullName, email, password } = req.body;
+    const { fullName, email, password } = req.body;
 
     // Verificar credenciales
     const user = await userService.loginUser(email, password);
@@ -16,24 +19,12 @@ const loginUser = async (req, res) => {
     // Generar token
     const token = jwt.sign(
       {
-        id: user.id,
-        fullName: user.fullName,
-        telefono: user.telefono,
-        email: user.email,
-        password: user.password,
-        reputation: user.reputation,
-        recompensasAcumuladas: user.recompensasAcumuladas,
-        createdAt: user.createdAt,
-        updatedAt: user.updatedAt,
-        deletedAt: user.deletedAt,
-        cestaRecompensasId: user.cestaRecompensasId,
-        rolesId: user.roleId,
+        userEmail: user.email,
+        userPassword: user.password,
       },
       process.env.SESSION_SECRET,
-      // {
-      //   expiresIn: "1h",
-      // }
-    );
+      { expiresIn: "1h" }
+    )
 
     console.log(token)
     // Envía la respuesta una vez que tengas el token
@@ -44,44 +35,34 @@ const loginUser = async (req, res) => {
   }
 };
 
+const getUserProfile = async (req, res) => {
+  try {
+    const userProfile = await userService.getUserProfile(req.user.userId);
+    res.status(200).json(userProfile);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ action: 'getUserProfile', error: err.message });
+  }
+
+}
+
 
 const createUser = async (req, res) => {
   try {
-    const user = await userService.createUser(req.body);
-    res.status(201).json(user);
+    const userData = req.body;
+    const newUser = await userService.createUser(userData);
+    res.status(201).json(newUser);
   } catch (err) {
-    console.error(err);
-    res.status(500).send(err.message);
+    if (err.message == 'Validation error') {
+      res.status(409).json({ action: 'createUser', error: err.message });
+    } else {
+      res.status(500).json({ action: 'createUser', error: err.message });
+    }
   }
 };
 
-// const createUser = async (req, res) => {
-//   try {
-//     Verifica la autenticación del usuario que está realizando la creación
-//     passport.authenticate('jwt', { session: false }, async (err, user, info) => {
-//       if (err) {
-//         console.error(err);
-//         return res.status(500).send(err.message);
-//       }
-//       if (!user) {
-//         Usuario no autenticado
-//         return res.status(401).json({ message: 'Unauthorized' });
-//       }
 
-//       Solo los usuarios autenticados con el rol 'admin' pueden crear otros usuarios
-//       if (user.roleId !== 1) {
-//         return res.status(403).json({ message: 'Permission denied' });
-//       }
 
-//       Creación del usuario
-//       const newUser = await userService.createUser(req.body);
-//       res.status(201).json(newUser);
-//     })(req, res);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).send(err.message);
-//   }
-// };
 
 // Se pasan req.query y req.body por que son los parametros que se pasan por la url y por el body
 const getUsersByCriteria = async (req, res) => {
@@ -120,6 +101,11 @@ const deleteUserById = async (req, res) => {
 
 module.exports = {
   loginUser,
+  getUserProfile,
+  createUser,
+  getUsersByCriteria,
+  updateUserById,
+  deleteUserById,
   createUser,
   getUsersByCriteria,
   updateUserById,
