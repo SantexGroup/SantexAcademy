@@ -1,1 +1,27 @@
-<p>admin-panel works!</p>
+<div class="container-fluid" style="background-color: var(--colorBlue)">
+  <button class="btn btn-primary" routerLink="add">Agregar categoria</button>
+  <button class="btn btn-primary" routerLink="add">Agregar curso</button>
+  <div *ngFor="let course of courses">
+    <div class="row rounded m-2" style="background-color: var(--colorOrange)">
+      <div class="col">
+        <h2>{{ course.name }}</h2>
+        <div *ngIf="course.active">
+          <h1>✔</h1>
+        </div>
+        <div *ngIf="!course.active">
+          <h1>❌</h1>
+        </div>
+      </div>
+      <div class="col">
+        <button class="btn btn-primary" (click)="editar(course.id)">
+          Editar
+        </button>
+      </div>
+      <div class="col">
+        <button class="btn btn-danger" (click)="deleteCourse(course.id)">
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
