@@ -22,6 +22,7 @@ export class UsersService {
   }
 
   addUser( user: User): Observable<User> {
+    console.log('addUser :', this.http.post<User>(`${ this.baseUrl }user`, user))
     return this.http.post<User>(`${ this.baseUrl }user`, user)
   }
   

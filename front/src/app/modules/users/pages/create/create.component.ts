@@ -17,6 +17,7 @@ export class CreateComponent implements OnInit {
     apellido: '',
     nombre: '',
     email: '',
+    estado: true,
     createdAt: new Date,
     updatedAt: new Date
   }
@@ -44,14 +45,19 @@ export class CreateComponent implements OnInit {
       return;
     }
 
+
     if ( this.user.id ){
       // edit
       this.usersService.editUser( this.user )
-        .subscribe( user => console.log('edit', user) )
+        .subscribe( user => {
+          console.log('edit', user)
+          this.router.navigate(['/users/index' ])
+         })
     }else{
       // add
       this.usersService.addUser(this.user)
         .subscribe( user => {
+          console.log('add :', user)
           this.router.navigate(['/users/index' ])
         })
     }
