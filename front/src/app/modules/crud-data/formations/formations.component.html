@@ -1,19 +1,19 @@
 <body>
-    <h1 class="title">EXPERIENCIAS</h1>
+    <h1 class="title">FORMACION</h1>
 
-    <div class="experiencesInput">
-        <form [formGroup]="experienceForm" (ngSubmit)="addExperience()">
+    <div class="formationsInput">
+        <form [formGroup]="formationForm" (ngSubmit)="formationAdd()">
             <mat-form-field>
                 <mat-label for="description">Descripcion:</mat-label>
                 <textarea matInput formControlName="description" cols="30" rows="5"></textarea>
             </mat-form-field>
             <mat-form-field>
-                <mat-label for="company">Compania:</mat-label>
-                <input matInput formControlName="company" type="text">
+                <mat-label for="company">Instituto:</mat-label>
+                <input matInput formControlName="institute" type="text">
             </mat-form-field>
             <mat-form-field>
-                <mat-label for="position">Posicion:</mat-label>
-                <input matInput formControlName="position" type="text">
+                <mat-label for="position">Titulo:</mat-label>
+                <input matInput formControlName="title" type="text">
             </mat-form-field>
             <mat-form-field>
                 <mat-label for="type">Tipo:</mat-label>
@@ -24,18 +24,10 @@
                 </mat-select>
             </mat-form-field>
             <mat-form-field>
-                <mat-label for="estate">Estado:</mat-label>
+                <mat-label for="status">Estado:</mat-label>
                 <mat-select formControlName="statusId">
                     <mat-option *ngFor="let state of status" [value]="state.id">
                         {{state.status}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label for="country">Pais:</mat-label>
-                <mat-select name="sexs" formControlName="countriesId">
-                    <mat-option *ngFor="let country of countries" [value]="country.id">
-                        {{country.country}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>

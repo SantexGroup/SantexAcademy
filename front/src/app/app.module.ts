@@ -21,15 +21,23 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import { FormationsComponent } from './modules/crud-data/formations/formations.component';
+import { LanguageComponent } from './modules/crud-data/language/language.component';
+import { HomeComponent } from './modules/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BodyPageComponent,
     FooterPageComponent,
+
     HeaderPageComponent,
     OptionalsComponent,
-    ExperiencesComponent
+    ExperiencesComponent,
+    FormationsComponent,
+    LanguageComponent,
+    HomeComponent
+  
   ],
   imports: [
     BrowserModule,
@@ -50,6 +58,6 @@ import {MatDividerModule} from '@angular/material/divider';
     MatDividerModule,
   ],
   providers: [],
-  bootstrap: [AppComponent,BodyPageComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

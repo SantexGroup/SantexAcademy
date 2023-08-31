@@ -106,6 +106,16 @@ async function fetchFormationssByUserId(userId) {
   return formations;
 }
 
+async function getFormationType() {
+  const type = await FormationType.findAll();
+  return type;
+}
+
+async function getFormationStatus() {
+  const status = await FormationStatus.findAll();
+  return status;
+}
+
 module.exports = {
   fetchFormations,
   fetchFormationById,
@@ -113,4 +123,6 @@ module.exports = {
   saveFormationData,
   deleteFormationData,
   fetchFormationssByUserId,
+  getFormationStatus,
+  getFormationType,
 };

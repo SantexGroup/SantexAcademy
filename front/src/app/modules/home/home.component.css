@@ -1,0 +1,24 @@
+.button-nav{
+    margin: 10px;
+    width: 300px;
+    font-size: large;
+}
+
+.mat-raised-button{
+    width: 100%;
+}
+
+.bienvenido{
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+}
+.textArea{
+    margin: 10px;
+    width: 100%;
+}
+textarea{
+    width: 100%;
+}
