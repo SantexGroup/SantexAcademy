@@ -129,6 +129,32 @@ async function experienceUpdate(
     next(error);
   }
 }
+
+async function experienceStatusGet(
+  req,
+  res,
+  next,
+) {
+  try {
+    const status = await ExperienceService.getExperienceStatus();
+    res.status(200).send(status);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function experienceTypesGet(
+  req,
+  res,
+  next,
+) {
+  try {
+    const types = await ExperienceService.getExperienceTypes();
+    res.status(200).send(types);
+  } catch (error) {
+    next(error);
+  }
+}
 // Exportacion de las funciones.
 module.exports = {
   experienceAdd,
@@ -136,4 +162,6 @@ module.exports = {
   experienceGetAll,
   experienceDelete,
   experienceUpdate,
+  experienceStatusGet,
+  experienceTypesGet,
 };
