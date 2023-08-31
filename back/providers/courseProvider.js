@@ -76,7 +76,7 @@ const getCourses = async () => {
 
 const updateCourse = async (CourseId, CourseOptions) => {
   try {
-    await getCourse(CourseId);
+    await getCourseById(CourseId);
     await Course.update(CourseOptions, { where: { id: CourseId } });
     return Course.findByPk(CourseId);
   } catch (error) {
@@ -86,7 +86,7 @@ const updateCourse = async (CourseId, CourseOptions) => {
 
 const deleteCourse = async (CourseId) => {
   try {
-    const select = await getCourse(CourseId)
+    const select = await getCourseById(CourseId)
     select.active = "false"
     return select
   } catch (error) {
