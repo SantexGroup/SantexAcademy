@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError, BehaviorSubject, tap } from 'rxjs';
 import { registroInterface } from '../interfaces/registro.interface';
+import { loginInterface } from '../interfaces/login.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,26 +17,29 @@ export class UsuarioService {
   //* sirve para llevar los datos del usuario a otro componente
   dataUser: BehaviorSubject<any> = new BehaviorSubject<any> ({});
 
+
   //* metodo para registrar un usuario
   registro(user: registroInterface) : Observable <registroInterface> {
     user.rolesId = 1;
     return this.http.post<registroInterface>('http://localhost:3000/user/record', user);
   }
 
+
   //* metodo para loguear un usuario  
-  login(user: any) : Observable <any> {
+  login(user: loginInterface) : Observable <loginInterface> {
     console.log("desde servicio login");
-    return this.http.get('../../assets/data.json').pipe(
+    return this.http.post<loginInterface>('http://localhost:3000/user/login', user);
+/*     .pipe(
       tap((user: any) => {
         this.dataUser.next(user);
         this.logindeUsuario.next(true);
       }), 
-      catchError(this.handleError)
-    );
+      catchError(this.handleError) 
+    );*/
   }
 
   //* metodo para manejar errores
-  private handleError(error: HttpErrorResponse) {
+/*   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error);
@@ -51,6 +55,6 @@ export class UsuarioService {
 
   get registroUsuario(): Observable<boolean> {
     return this.registrodeUsuario.asObservable();
-  }
+  } */
 }
 

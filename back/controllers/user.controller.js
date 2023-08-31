@@ -25,8 +25,8 @@ async function recordUser(req, res) {
 async function login(req, res, next) {
   const {
     // Extraer el nick y password de la solicitud
-    nick,
-    password,
+      nick,
+      password,
   } = req.body;
   try {
     // LLamar al service para hacer el login de un usuario
