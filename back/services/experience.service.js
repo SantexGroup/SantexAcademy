@@ -136,6 +136,16 @@ async function updateExperience(
   // Manejador de errores.
   throw new Error();
 }
+
+async function getExperienceStatus() {
+  const status = await ExperienceStatus.findAll();
+  return status;
+}
+
+async function getExperienceTypes() {
+  const types = await ExperienceType.findAll();
+  return types;
+}
 // Exportacion de las funciones.
 module.exports = {
   getExperience,
@@ -143,4 +153,6 @@ module.exports = {
   addExperience,
   deleteExperience,
   updateExperience,
+  getExperienceStatus,
+  getExperienceTypes,
 };
