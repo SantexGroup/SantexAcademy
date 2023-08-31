@@ -7,6 +7,8 @@ import { ApiService } from '../http/api.service';
   providedIn: 'root'
 })  
 export class UsuarioService {
+  private userData1: BehaviorSubject<{ name: string, lastName: string }> = new BehaviorSubject<{ name: string, lastName: string }>({ name: '', lastName: '' });
+
   constructor( private api: ApiService ) { }
 
   //* informa si se llevo al cabo el registro
@@ -50,6 +52,13 @@ export class UsuarioService {
 
   get registroUsuario(): Observable<boolean> {
     return this.registrodeUsuario.asObservable();
+  }
+
+  setUserData(name: string, lastName: string) {
+    this.userData1.next({ name, lastName });
+  }
+  getUserData(): Observable<{ name: string, lastName: string }> {
+    return this.userData1.asObservable();
   }
 }
 

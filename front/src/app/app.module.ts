@@ -23,17 +23,21 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import { FormationsComponent } from './modules/crud-data/formations/formations.component';
 import { LanguageComponent } from './modules/crud-data/language/language.component';
+import { HomeComponent } from './modules/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BodyPageComponent,
     FooterPageComponent,
+
     HeaderPageComponent,
     OptionalsComponent,
     ExperiencesComponent,
     FormationsComponent,
-    LanguageComponent
+    LanguageComponent,
+    HomeComponent
+  
   ],
   imports: [
     BrowserModule,
