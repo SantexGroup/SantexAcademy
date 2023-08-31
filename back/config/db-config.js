@@ -20,7 +20,7 @@ const initializeDB = async () => {
     console.log("Conection to DB established.");
 
     // Sync all defined models to DB
-    await sequelize.sync({ force: true }); // force: if true, each start deletes DB
+    await sequelize.sync({ force: false }); // force: if true, each start deletes DB
 
     // Create default roles
     const { Roles } = require("../models");

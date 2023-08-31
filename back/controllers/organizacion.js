@@ -1,4 +1,40 @@
 const { orgService } = require("../services");
+const jwt = require("jsonwebtoken");
+require('dotenv').config();
+
+
+const loginOrganization = async (req, res) => {
+  try {
+    const { cuit, password } = req.body;
+
+    // Verificar credenciales
+    const organization = await orgService.getOrganizationByCriteria({ cuit });
+
+    if (!organization) {
+      return res.status(401).json({ message: "Invalid credentials" }); // Retorna aquí para evitar el envío doble de respuestas
+    }
+
+    // Generar token
+    const token = jwt.sign(
+      {
+        orgCuit: organization.cuit,
+        orgPassword: organization.password,
+      },
+      process.env.SESSION_SECRET,
+      { expiresIn: "1h" }
+    )
+
+    console.log(token)
+    // Envía la respuesta una vez que tengas el token
+    return res.status(200).json({ token });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send(error.message);
+  }
+};
+
+
+
 
 const createOrganization = async (req, res) => {
   try {
@@ -107,6 +143,7 @@ const getOrganizationByLocation = async (req, res, next) => {
 };
 
 module.exports = {
+  loginOrganization,
   getOrganizations,
   getOrganizationByCriteria,
   createOrganization,
