@@ -35,7 +35,7 @@ const routes: Routes = [
     component: FormationsComponent
   },
   {
-    path: 'optionales',
+    path: 'opcionales',
     component: OptionalsComponent
   },
   {
