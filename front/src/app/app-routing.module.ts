@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './modules/share/error-page/error-page.component';
-import { UsersModule } from './modules/users/users.module';
 import { RegisterformComponent } from './components/register/registerform/registerform.component';
 
 const routes: Routes = [
@@ -12,6 +11,10 @@ const routes: Routes = [
   {
     path: 'users',
     loadChildren: () => import('./modules/users/users.module').then( m => m.UsersModule)
+  },
+  {
+    path: 'cursos',
+    loadChildren: () => import('./modules/cursos/cursos.module').then( m => m.CursosModule)
   },
   {
     path: 'register',
