@@ -86,8 +86,10 @@ const updateCourse = async (CourseId, CourseOptions) => {
 
 const deleteCourse = async (CourseId) => {
   try {
-    const select = await getCourseById(CourseId)
-    select.active = "false"
+    const select =await Course.update(
+      { active: false },
+      { where: { id: CourseId, active: true } }
+    );
     return select
   } catch (error) {
     throw error;
