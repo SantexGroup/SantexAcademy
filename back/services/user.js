@@ -1,6 +1,6 @@
 const { User } = require('../models');
 
-const allCurso = async () => {
+const allUser = async () => {
   const users = await User.findAll({
     where: {
       estado: true,
@@ -32,7 +32,7 @@ const deleteUser = async (id) => {
 };
 
 module.exports = {
-  allCurso,
+  allUser,
   getUser,
   createUser,
   updateUser,
