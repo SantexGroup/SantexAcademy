@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { authService } from 'src/app/core/services/auth.service';
+import { HttpClient } from '@angular/common/http';
 
+type email={
+  email:string
+}
 @Component({
   selector: 'app-input-login',
   templateUrl: './input-login.component.html',
@@ -15,9 +19,9 @@ export class InputLoginComponent implements OnInit {
 
 
 
-  constructor(private authservice: authService,  private router: Router) { }
+  constructor(private http: HttpClient,  private authservice: authService,  private router: Router) { }
   ngOnInit(): void {
-  
+    this.http.get('http://localhots:3306').subscribe();
   }
 
   redirectToContra() {
