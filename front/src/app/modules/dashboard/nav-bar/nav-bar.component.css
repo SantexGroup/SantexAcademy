@@ -40,6 +40,18 @@
     justify-content: center;
 }
 
+.cart {
+    padding: 0.5rem 1rem;
+    margin: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.shopping-cart {
+    font-size: 1.5rem;
+    fill: #eeebe7;
+}
+
 .header-user {
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
