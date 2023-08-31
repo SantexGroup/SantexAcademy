@@ -19,7 +19,7 @@ export class UsuarioService {
   //* metodo para registrar un usuario
   registro(user: registroInterface) : Observable <registroInterface> {
     user.rolesId = 1;
-    return this.http.post<registroInterface>('http://localhost:4001/user/record', user );
+    return this.http.post<registroInterface>('http://localhost:3000/user/record', user);
   }
 
   //* metodo para loguear un usuario  
