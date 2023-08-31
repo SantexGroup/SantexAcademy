@@ -8,6 +8,10 @@ const formationController = require('../controllers/formation.controller');
 const createValidation = [formationValidations.create, checkValidationResult];
 const updateValidation = [formationValidations.update, checkValidationResult];
 
+router.get('/types', formationController.getFormationType);
+
+router.get('/status', formationController.getFormationStatus);
+
 /**
  * Ruta para obtener una lista de FORMATIONES (GET /formations).
  *

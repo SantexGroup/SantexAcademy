@@ -149,6 +149,24 @@ async function deleteFormation(req, res, next) {
   }
 }
 
+async function getFormationStatus(req, res, next) {
+  try {
+    const status = await formationService.getFormationStatus();
+    res.status(200).send(status);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function getFormationType(req, res, next) {
+  try {
+    const type = await formationService.getFormationType();
+    res.status(200).send(type);
+  } catch (error) {
+    next(error);
+  }
+}
+
 module.exports = {
   getFormations,
   getFormationById,
@@ -156,4 +174,6 @@ module.exports = {
   updateFormation,
   deleteFormation,
   getFormationsByUser,
+  getFormationStatus,
+  getFormationType,
 };
