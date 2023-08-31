@@ -1,0 +1,87 @@
+.barraNavegacion {
+    margin: 0;
+    height: 90px;
+    border-bottom: 2px solid #874421;
+    display: flex;
+}
+
+img {
+    width: 80px;
+    padding-left: 30px;
+} 
+
+/* si hago esto no funciona no sé porqué
+.logoBarra {
+    width: 70px;
+}*/ 
+
+/* menu */
+
+.dropdown-menu {
+    border: 1px solid #e6b68b;
+    border-radius: 20px;
+}
+
+.dropdown-item {
+    border-bottom: 1px solid #e6b68b;
+}
+
+#iteminicial {
+    border-radius: 0px;
+}
+
+#itemfinal {
+    border-bottom: none;
+    border-radius: 8px;
+}
+
+.dropdown button {
+    background-color: #e6b68b;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid #874421;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+}
+
+.categorias {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    /*lo de abajo no funciona */
+    width: 80px;
+    max-width: 200px;
+}
+
+#buscador {
+    display: flex;
+    align-items: center;
+}
+
+#buscador input {
+    border: 1px solid #874421;
+    color: white;
+    height: 27px;
+    background-color: #e6b68b;
+}
+
+::placeholder {
+    color: white;
+    font-size: 0.8em;
+}
+
+app-login {
+    display:flex;
+    align-items: center;
+    justify-content: right;
+    width: 100%;
+    padding-right: 60px;
+}
+
+*:focus {
+    outline: 1px solid #874421;
+    box-shadow: none;
+}

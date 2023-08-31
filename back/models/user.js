@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate() {
-      // define association here
+      
     }
   }
   User.init({
@@ -25,8 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     alias: DataTypes.STRING,
   }, {
     sequelize,
-    modelName: 'User',
-    // tableName: 'users'
+    modelName: 'User'
   });
   return User;
 };

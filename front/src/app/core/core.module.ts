@@ -1,14 +1,16 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { throwIfAlreadyLoaded } from './core-import.guard';
-
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RefreshTokenInterceptor } from './interceptors/refresh-token.interceptor';
-
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+
+/*
+import { HttpClient } from '@angular/common/http';
+import { ModeloUsuario } from './interfaces/modelo-usuario';
+*/
 
 @NgModule({
   declarations: [],

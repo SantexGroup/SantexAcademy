@@ -1,18 +1,27 @@
-const { User } = require('../models');
+const { User, Products } = require('../models');
+const jwt = require('jsonwebtoken');
 
+// login
 async function login(alias, password) {
+
   const users = await User.findOne({
     where: {
       alias,
       password,
     },
+    include: [{model: Products}]
   });
 
   if (!users) {
     throw new Error('Alias o Contraseña incorrectos');
   }
 
-  return users;
+  const token = jwt.sign({
+    id: users.id,
+    alias: users.alias
+  }, 'ClaveUltraSecreta', {expiresIn: '5m'});
+
+  return {token};
 }
 
 // creacion de usuario

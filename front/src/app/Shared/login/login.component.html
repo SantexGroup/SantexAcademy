@@ -1,0 +1,17 @@
+<div class="categorias">
+    <div class="dropdown">
+      <img src="assets/iconousuario.png" data-bs-toggle="dropdown">      
+      <div class="dropdown-menu">
+        <p>Iniciar sesión</p>
+        <div class="form-group">
+            <input [(ngModel)]="corLog" id="inputCorreo"  type="text" class="form-control"  placeholder="Correo">
+            <input [(ngModel)]="pasLog" id="inputContraseña" type="password" class="form-control" placeholder="Contraseña">
+            <button (click)="botonLogin()" type="button" >Ingresar</button>
+        </div>
+        <a class="registrarse" >
+            <p routerLink="/registro">¿No tienes una cuenta?</p>
+            <p id="prueba" routerLink="/registro">Regístrate</p>
+        </a>
+      </div>
+    </div>
+  </div>

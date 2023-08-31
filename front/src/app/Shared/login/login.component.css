@@ -1,0 +1,71 @@
+.dropdown img {
+    width: 30px;
+    display: flex;
+}
+
+.dropdown-menu {
+    height: 450px;
+    width: 300px;
+    background-color: #e6b68b;
+    border-radius: 15px;
+    
+}
+
+.dropdown-menu p {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 60px;
+}
+.form-group input {
+    width: 70%;
+    margin-top: 10px;
+}
+
+*:focus {
+    outline: 2px solid #874421;
+    box-shadow: none;
+}
+
+.form-group {
+    margin-top: 50px;
+}
+
+.dropdown-menu div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.dropdown-menu a {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.registrarse p {
+    font-size: 15px;
+    font-weight: 400;
+    size: 100%;
+    margin: 0;
+    margin-top: 15px;
+    display: inline-block;
+    color: black;
+}
+
+.registrarse p:hover {
+    cursor: pointer;
+}
+
+.registrarse p:hover {
+    color: blue;
+}
+
+/* quería probar que haciendo hover en un elemento se modifique otro
+.registrarse p:hover #prueba  {
+    color: blue;
+}
+*/

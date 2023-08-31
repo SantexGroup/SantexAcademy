@@ -10,11 +10,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate() {
-      // define association here
+      
     }
   }
   Products.init({
-    idFotos: DataTypes.INTEGER, // quitar
     idUsuario: DataTypes.INTEGER,
     idTipoProducto: DataTypes.INTEGER,
     nombre: DataTypes.STRING,
@@ -25,5 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Products',
   });
+  
   return Products;
 };
