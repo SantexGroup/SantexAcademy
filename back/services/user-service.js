@@ -6,8 +6,8 @@ async function login(mail, password) {
 
   const users = await User.findOne({
     where: {
-      mail,
-      password,
+      mail: mail,
+      password: password
     },
     //include: [{model: Products}]
   });

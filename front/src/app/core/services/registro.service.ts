@@ -30,9 +30,9 @@ export class RegistroService {
     dirRegServ: string,
     codRegServ: string) {
     const body = {
-      firstNames: this.nomRegServ,
-      lastName: this.apeRegServ,
-      dni: this.dniRegServ,
+      firstName: nomRegServ,
+      lastName: apeRegServ,
+      dni: dniRegServ,
       mail: corRegServ,
       password: pasRegServ,
       //CalleYAltura: this.dirRegServ,

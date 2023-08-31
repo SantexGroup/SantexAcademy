@@ -27,6 +27,7 @@ async function createUser(req, res) {
 
   const user = await userService.userRegister(firstName, lastName, dni, mail, password);
 
+  console.log(user);
   res.status(201).send(user);
 }
 
