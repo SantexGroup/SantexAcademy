@@ -1,8 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError, BehaviorSubject, tap } from 'rxjs';
-import { registroInterface } from '../interfaces/registro.interface';
-import { loginInterface } from '../interfaces/login.interface';
+import { registroInterface } from '../../interfaces/registro.interface';
+import { loginInterface } from '../../interfaces/login.interface';
 
 @Injectable({
   providedIn: 'root'
