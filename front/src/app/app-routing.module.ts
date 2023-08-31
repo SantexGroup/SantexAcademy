@@ -6,6 +6,8 @@ import { LoginComponent } from './modules/usuario/login/login.component';
 import { ExperiencesComponent } from './modules/crud-data/experiences/experiences.component';
 import { FormationsComponent } from './modules/crud-data/formations/formations.component';
 import { OptionalsComponent } from './modules/crud-data/optionals/optionals.component';
+import { HomeComponent } from './modules/home/home.component';
+import { LanguageComponent } from './modules/crud-data/language/language.component';
 
 const routes: Routes = [
   {
@@ -35,6 +37,14 @@ const routes: Routes = [
   {
     path: 'optionales',
     component: OptionalsComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'lenguajes',
+    component: LanguageComponent
   }
 ];
 
