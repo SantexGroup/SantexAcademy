@@ -24,6 +24,9 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
+      estado: {
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

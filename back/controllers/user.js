@@ -1,8 +1,8 @@
 const { userService, emailService } = require('../services');
 
-const index = async (req, res, next) => {
+const allUser = async (req, res, next) => {
   try {
-    const users = await userService.index();
+    const users = await userService.allUser();
     res.status(201).json(users);
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -11,10 +11,16 @@ const index = async (req, res, next) => {
   }
 };
 
-const show = async (req, res) => {
+const getUser = async (req, res, next) => {
   const { id } = req.params;
-  const user = await userService.show(id);
-  res.json(user);
+  try {
+    const user = await userService.getUser(id);
+    res.status(200).json(user);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    next(error);
+  }
 };
 
 const createUser = async (req, res) => {
@@ -37,23 +43,35 @@ const createUser = async (req, res) => {
   }
 };
 
-const update = async (req, res) => {
+const updateUser = async (req, res, next) => {
   const { id } = req.params;
   const { body } = req;
-  const user = await userService.update(id, body);
-  res.json(user);
+  try {
+    const user = await userService.updateUser(id, body);
+    res.status(200).json(user);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    next(error);
+  }
 };
 
-const destroy = async (req, res) => {
+const deleteUser = async (req, res, next) => {
   const { id } = req.params;
-  const user = await userService.destroy(id);
-  res.json(user);
+  try {
+    const user = await userService.deleteUser(id);
+    res.json(user);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    next(error);
+  }
 };
 
 module.exports = {
-  index,
-  show,
+  allUser,
+  getUser,
   createUser,
-  update,
-  destroy,
+  updateUser,
+  deleteUser,
 };

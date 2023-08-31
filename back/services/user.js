@@ -1,11 +1,15 @@
 const { User } = require('../models');
 
-const index = async () => {
-  const users = await User.findAll();
+const allCurso = async () => {
+  const users = await User.findAll({
+    where: {
+      estado: true,
+    },
+  });
   return users;
 };
 
-const show = async (id) => {
+const getUser = async (id) => {
   const user = await User.findByPk(id);
   return user;
 };
@@ -15,22 +19,22 @@ const createUser = async (body) => {
   return user;
 };
 
-const update = async (id, body) => {
+const updateUser = async (id, body) => {
   const user = await User.findByPk(id);
   await user.update(body);
   return user;
 };
 
-const destroy = async (id) => {
+const deleteUser = async (id) => {
   const user = await User.findByPk(id);
-  await user.destroy();
+  await user.update({ estado: false });
   return user;
 };
 
 module.exports = {
-  index,
-  show,
+  allCurso,
+  getUser,
   createUser,
-  update,
-  destroy,
+  updateUser,
+  deleteUser,
 };
