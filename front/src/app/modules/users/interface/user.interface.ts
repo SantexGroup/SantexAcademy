@@ -11,6 +11,7 @@ export interface User {
     apellido:  string;
     nombre:    string;
     email:     string;
+    estado: boolean;
     createdAt?: Date;
     updatedAt?: Date;
 }
