@@ -10,12 +10,21 @@ import { User } from '../../interface/user.interface';
 export class IndexComponent implements OnInit {
 
   users: User[] = [];
-
+  errorMensaje: string | undefined;
+  
   constructor( private usersService: UsersService ) { }
 
   ngOnInit(): void {
-    this.usersService.getUsers()
-      .subscribe( users => this.users = users);
+    this.usersService.getUsers().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.users = response; // Extraer el array de usuarios de la respuesta
+      },
+      error: (error) => {
+        console.error(error);
+        this.errorMensaje = 'Ocurrió un error al obtener los usuarios. Por favor, inténtalo de nuevo más tarde.';
+      }
+  });
   }
 
 }

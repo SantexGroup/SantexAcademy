@@ -5,6 +5,7 @@ import { ShowComponent } from './pages/show/show.component';
 import { IndexComponent } from './pages/index/index.component';
 import { UsersRoutingModule } from './users-routing.module';
 import { FormsModule } from '@angular/forms';
+import { EstadoUsuarioDirective } from 'src/app/directivas/estado-usuario.directive';
 
 
 
@@ -13,6 +14,7 @@ import { FormsModule } from '@angular/forms';
     CreateComponent,
     ShowComponent,
     IndexComponent,
+    EstadoUsuarioDirective
   ],
   imports: [
     CommonModule,

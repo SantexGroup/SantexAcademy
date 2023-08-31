@@ -16,7 +16,6 @@ export class IntegranteComponent implements OnInit {
     console.log("Hola");
     this.rutaActiva.params.subscribe((params: Params) => {
       this.id = params['id'];
-      // Aquí puedes cargar los datos del miembro del equipo según el ID, por ejemplo.
     });
   }
 }

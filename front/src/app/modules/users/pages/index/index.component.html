@@ -1,8 +1,4 @@
-<p>index works!</p>
-
-<button type="button" class="btn btn-primary" [routerLink]="['/users/create' ]">Crear User</button>
-
-<div class="container" *ngFor="let user of users" >
+<!--<div class="container" *ngFor="let user of users" >
     <div class="card" [routerLink]="['/users/show/', user.id ]">
         <div class="card-body">
             <h4 class="card-title">{{ user.username }}</h4>
@@ -10,6 +6,99 @@
             {{ user.email }}
             </p>
             <div [routerLink]="['/users/edit/', user.id ]" class="btn btn-primary">Edit</div>
+        </div>
+    </div>
+</div>-->
+
+<div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary"> 
+    <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+        <header class="bg-surface-primary border-bottom pt-6">
+            <div class="container-fluid">
+                <div class="mb-npx">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                            <h1 id="titulo" class="h2 mb-0 ls-tight" style="padding-top: 10px; padding-bottom: 10px;">Gestión de usuarios</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="card shadow border-0 mb-7">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <h5 class="mb-0 me-3" style="width: 250px;">Filtrar usuarios:</h5>
+                    <input id="buscarusuario" type="search" class="form-control" placeholder="Buscar"
+                        aria-controls="example">
+                        <!--Llamar método buscar-->
+                        <button id="botonalta" type="button" class="btn btn-sm btn-primary" style="margin-left: 10px;">
+                            Buscar
+                        </button>
+                </div>
+                <button id="botonalta" type="button" class="btn btn-sm btn-primary" [routerLink]="['/users/create']">
+                    Agregar usuario
+                </button>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover table-nowrap">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Identificador</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Nombre de usuario</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Tipo de usuario</th>
+                        <th scope="col">Estado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>
+                            {{ user.id }}
+                        </td>
+                        <td>
+                            {{ user.nombre }}
+                        </td>
+                        <td>
+                            {{ user.apellido }}
+                        </td>
+                        <td>
+                            {{ user.username }}
+                        </td>
+                        <td>
+                            {{ user.email }}
+                        </td>
+                        <td>
+                            {{ user.email }}
+                        </td>
+                        <td>
+                            <span [appEstadoUsuario]="user.estado"></span>
+                        </td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-primary" [routerLink]="['/users/show/', user.id ]">Ver</a>
+                            <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                            <a class="btn btn-sm btn-primary" [routerLink]="['/users/edit/', user.id ]">Editar</a>
+                            <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                            <!--Llamar método eliminar-->
+                            <a class="btn btn-sm btn-primary">Eliminar</a>
+                            <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer border-0 py-5">
+            <span class="text-muted text-sm">Mostrando 10 registros de 100 resultados encontrados</span>
         </div>
     </div>
 </div>

@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './modules/share/error-page/error-page.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { EstadoUsuarioDirective } from './directivas/estado-usuario.directive';
 
 @NgModule({
   declarations: [
