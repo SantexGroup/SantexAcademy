@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError, BehaviorSubject, tap } from 'rxjs';
-import { registroUsuario } from './registroUsuario';
+import { registroInterface } from '../interfaces/registro.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +17,9 @@ export class UsuarioService {
   dataUser: BehaviorSubject<any> = new BehaviorSubject<any> ({});
 
   //* metodo para registrar un usuario
-  registro(user: any) : Observable <any> {
-    return this.http.post<any>('http://localhost:3000/record/', user );
+  registro(user: registroInterface) : Observable <registroInterface> {
+    user.rolesId = 1;
+    return this.http.post<registroInterface>('http://localhost:4001/user/record', user );
   }
 
   //* metodo para loguear un usuario  

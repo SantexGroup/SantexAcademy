@@ -1,5 +1,5 @@
-export interface registroUsuario {
-  rolesId? : number; 
+export interface registroInterface {
+  rolesId : number; 
   name: string;
   lastName: string;
   phone?: string;
