@@ -1,0 +1,70 @@
+<body>
+    <h1 class="title">EXPERIENCIAS</h1>
+
+    <div class="experiencesInput">
+        <form [formGroup]="experienceForm" (ngSubmit)="addExperience()">
+            <mat-form-field>
+                <mat-label for="description">Descripcion:</mat-label>
+                <textarea matInput formControlName="description" cols="30" rows="5"></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="company">Compania:</mat-label>
+                <input matInput formControlName="company" type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="position">Posicion:</mat-label>
+                <input matInput formControlName="position" type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="type">Tipo:</mat-label>
+                <mat-select formControlName="typesId">
+                    <mat-option *ngFor="let type of types" [value]="type.id">
+                        {{type.type}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="estate">Estado:</mat-label>
+                <mat-select name="marital" formControlName="statusId">
+                    <mat-option *ngFor="let state of status" [value]="state.id">
+                        {{state.status}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="country">Pais:</mat-label>
+                <mat-select name="sexs" formControlName="countriesId">
+                    <mat-option *ngFor="let country of countries" [value]="country.id">
+                        {{country.country}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="dates">
+                <mat-form-field>
+                    <mat-label>Fecha de inicio:</mat-label>
+                    <input matInput [matDatepicker]="start" formControlName="startDate">
+                    <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+                    <mat-datepicker #start></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field *ngIf="endDateShow()">
+                    <mat-label>Fecha de fin:</mat-label>
+                    <input matInput [matDatepicker]="end" formControlName="endDate">
+                    <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+                    <mat-datepicker #end></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="botonera">
+                <div class="botones">
+                    <div class="addExperience">
+                        <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+                            <mat-icon>plus_one</mat-icon>
+                        </button>
+                    </div>
+                    <button mat-flat-button color="warn">
+                        Salir
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
