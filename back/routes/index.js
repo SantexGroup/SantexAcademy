@@ -9,7 +9,7 @@ const app = Express();
 
 // Rutas
 
-//use=
+// use=
 app.use('/ping', (req, res) => {
   res.json({
     response: 'deje que corra, que al recibir: pong! Indica que todo marcha bien.',

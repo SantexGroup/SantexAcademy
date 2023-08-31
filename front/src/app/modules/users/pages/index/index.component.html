@@ -1,0 +1,15 @@
+<p>index works!</p>
+
+<button type="button" class="btn btn-primary" [routerLink]="['/users/create' ]">Crear User</button>
+
+<div class="container" *ngFor="let user of users" >
+    <div class="card" [routerLink]="['/users/show/', user.id ]">
+        <div class="card-body">
+            <h4 class="card-title">{{ user.username }}</h4>
+            <p class="card-text">
+            {{ user.email }}
+            </p>
+            <div [routerLink]="['/users/edit/', user.id ]" class="btn btn-primary">Edit</div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { QuienessomosComponent } from './quienessomos/quienessomos.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { CursoComponent } from './curso/curso.component';
