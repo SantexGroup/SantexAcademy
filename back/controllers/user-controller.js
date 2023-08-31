@@ -22,11 +22,10 @@ async function logout(req, res) {
 // crear usuario
 async function createUser(req, res) {
   const {
-    idDireccion, firstName, lastName, dni, mail, password, estadoDeVendedor, alias,
+    firstName, lastName, dni, mail, password
   } = req.body;
 
-  const user = await userService.userRegister(idDireccion, firstName, lastName, dni, mail,
-    password, estadoDeVendedor, alias);
+  const user = await userService.userRegister(firstName, lastName, dni, mail, password);
 
   res.status(201).send(user);
 }

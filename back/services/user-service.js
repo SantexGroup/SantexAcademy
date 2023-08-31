@@ -25,18 +25,17 @@ async function login(mail, password) {
 }
 
 // creacion de usuario
-async function userRegister(idDireccion, firstName, lastName, dni, mail, password,
-  estadoDeVendedor, alias) {
+async function userRegister(firstName, lastName, dni, mail, password) {
   const user = new User();
 
-  user.idDireccion = idDireccion;
+  //user.idDireccion = idDireccion;
   user.firstName = firstName;
   user.lastName = lastName;
   user.dni = dni;
   user.mail = mail;
   user.password = password;
-  user.estadoDeVendedor = estadoDeVendedor;
-  user.alias = alias;
+  //user.estadoDeVendedor = estadoDeVendedor;
+  //user.alias = alias;
 
   const userCreated = await user.save();
   return userCreated;
