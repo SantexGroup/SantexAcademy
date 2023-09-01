@@ -22,7 +22,7 @@ export class BackServiceService {
    }
    //metodo para actualizar un producto en el backend
    public updateProduct(id:string,product:any): Observable<any> {
-    return this._http.put(this.ProductUrl+id,product);
+    return this._http.put(this.ProductUrl+id, product);
   }
   //metodo para eliminar un producto en el backend
    public deleteProduct(id:string): Observable<any> {

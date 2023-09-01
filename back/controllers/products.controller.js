@@ -64,6 +64,7 @@ productscontroller.editByID =  async (req, res) => {
     if (!producto) {//si no lo encontramos informamos que no existe
       return res.status(404).json({ message: 'Product not found' });
     }
+    //solucion brusca, preguntar como mandar mejor del front
     await Products.update(req.body, { where: { id: req.params.id } });
     res.status(201).json("Product correctly updated");
     } catch (error) {

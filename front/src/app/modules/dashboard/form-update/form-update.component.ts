@@ -1,89 +1,96 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-
-export interface Product {
-  nombreProd: string;
-  cantidad: number;
-  categoria: string;
-  tipoMaterial: string;
-  urlImagen: string;
-  precio: number;
-  descripcion: string;
-};
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { Product } from 'src/app/core/interfaces/product';
+import { BackServiceService } from 'src/app/services/back-service.service';
 
 @Component({
   selector: 'app-form-update',
   templateUrl: './form-update.component.html',
-  styleUrls: ['./form-update.component.css']
+  styleUrls: ['./form-update.component.css'],
 })
-
 export class FormUpdateComponent implements OnInit {
+  constructor(private backService: BackServiceService) {}
 
   // Creamos una lista de productos como ejemplo
-  productList: Product[] = [
-    {nombreProd: 'Mesa', cantidad: 30, categoria: 'Mesa', tipoMaterial: 'Madera', urlImagen: './img/mesa.png', precio: 4500, descripcion: 'Mesa cuadrada'},
-    {nombreProd: 'Silla', cantidad: 30, categoria: 'Silla', tipoMaterial: 'plastico', urlImagen: './img/silla.png', precio: 1500, descripcion: 'Silla de plastico color blanco'},
-  ];
-  
+  productList: Product[] = [];
+
   searchForm = new FormGroup({
-    buscarProducto: new FormControl('', Validators.required)
-  })
-  
-  myForm = new FormGroup({
-    nombreProducto: new FormControl('', [Validators.required]),
-    cantidad: new FormControl('', [Validators.required, ]),
-    categoria: new FormControl('', [Validators.required]),
-    tipoMaterial: new FormControl('', [Validators.required]),
-    urlImagen: new FormControl('', [Validators.required]),
-    precio: new FormControl('', [Validators.required]),
-    descripcion: new FormControl('', [Validators.required])
+    buscarProducto: new FormControl('', Validators.required),
   });
 
-  
+  myForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    quantity: new FormControl(0, [Validators.required]),
+    categoria: new FormControl('', [Validators.required]),
+    tipoMaterial: new FormControl('', [Validators.required]),
+    image: new FormControl('', [Validators.required]),
+    price: new FormControl(0, [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+  });
+
   foundProduct: boolean | undefined;
   noFoundProduct: boolean | undefined;
   query: Product | undefined;
-  
+
   // Función para buscar un producto
   searchProduct() {
-        
-    this.query = this.productList.find(product => product.nombreProd.toLowerCase() === this.searchForm.get('buscarProducto')?.value?.toLowerCase());
-    
-    console.log('El producto se encontro: ', this.query)
+    this.query = this.productList.find(
+      (product) =>
+        product.name.toLowerCase() ===
+        this.searchForm.get('buscarProducto')?.value?.toLowerCase()
+    );
+
+    console.log('El producto se encontro: ', this.query);
     if (this.query) {
       this.foundProduct = true;
       this.noFoundProduct = false;
 
       // Agregamos los valores del producto al formulario
       this.myForm.patchValue({
-        nombreProducto: this.query?.nombreProd,
-        cantidad: this.query?.cantidad.toString(),
+        name: this.query?.name,
+        quantity: this.query?.quantity,
         categoria: this.query?.categoria,
         tipoMaterial: this.query?.tipoMaterial,
-        urlImagen: this.query?.urlImagen,
-        precio: this.query?.precio.toString(),
-        descripcion: this.query?.descripcion
+        image: this.query?.image,
+        price: this.query?.price,
+        description: this.query?.description,
       });
     } else {
       this.foundProduct = false;
       this.noFoundProduct = true;
     }
   }
-  
+
   ngOnInit(): void {
+    this.backService.getProducts().subscribe((result) => {
+      this.productList = result;
+    });
   }
 
   // Función para actualizar un producto
   updateProduct() {
-    console.log('Producto Actualizado', this.myForm.value)
-    
-    // Resetea el formulario para limpiar los inputs
+    // Actualiza el producto
+    if(this.query?.id != undefined){
+    this.backService.updateProduct(this.query.id, this.myForm.value).subscribe((result) => {
+      if(result.status == 200){
+        alert("Producto actualizado correctamente")
+      }else{
+        alert("Error al actualizar el producto")
+      }
+    }
+    );}
+    //seteo del form y de la nueva lista
     this.myForm.reset();
-  } 
-  
-  
+    this.backService.getProducts().subscribe((result) => {
+      this.productList = result;
+    });
+  }
 }
 // function buscarProducto() {
-  //   throw new Error('Function not implemented.');
-  // }
-
+//   throw new Error('Function not implemented.');
+// }
