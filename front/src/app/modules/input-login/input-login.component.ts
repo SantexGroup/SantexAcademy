@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 type email={
   email:string
 }
+
 @Component({
   selector: 'app-input-login',
   templateUrl: './input-login.component.html',
@@ -21,7 +22,7 @@ export class InputLoginComponent implements OnInit {
 
   constructor(private http: HttpClient,  private authservice: authService,  private router: Router) { }
   ngOnInit(): void {
-    this.http.get('http://localhots:3306').subscribe();
+    this.http.post('http://localhost:3000',{email:this.email}).subscribe();
   }
 
   redirectToContra() {
