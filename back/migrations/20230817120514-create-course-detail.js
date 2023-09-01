@@ -9,6 +9,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      title: {
+        type: Sequelize.STRING
+      },
       paragraph1: {
         type: Sequelize.STRING
       },
@@ -18,8 +21,15 @@ module.exports = {
       image1url: {
         type: Sequelize.STRING
       },
-      image2ur2: {
+      image2url: {
         type: Sequelize.STRING
+      },
+      courseId: { 
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Courses', 
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
