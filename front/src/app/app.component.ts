@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavBarService } from './core/services/nav-bar.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'santex-academy';
+
+  constructor(public views: NavBarService){
+
+  }
 }

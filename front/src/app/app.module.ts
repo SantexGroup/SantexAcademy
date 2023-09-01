@@ -3,13 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BodyPageComponent } from './modules/body-page/body-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { FooterPageComponent } from './modules/footer-page/footer-page.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { HeaderPageComponent } from './modules/header-page/header-page.component';
 import { UsuarioModule } from './modules/usuario/usuario.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,20 +21,18 @@ import {MatDividerModule} from '@angular/material/divider';
 import { FormationsComponent } from './modules/crud-data/formations/formations.component';
 import { LanguageComponent } from './modules/crud-data/language/language.component';
 import { HomeComponent } from './modules/home/home.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { NavBarComponent } from './modules/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BodyPageComponent,
-    FooterPageComponent,
-
-    HeaderPageComponent,
     OptionalsComponent,
     ExperiencesComponent,
     FormationsComponent,
     LanguageComponent,
-    HomeComponent
-  
+    HomeComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +51,8 @@ import { HomeComponent } from './modules/home/home.component';
     MatNativeDateModule,
     MatIconModule,
     MatDividerModule,
+    MatMenuModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
