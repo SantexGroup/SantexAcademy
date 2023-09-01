@@ -6,7 +6,7 @@ import { CatalogoComponent } from './catalogo/catalogo.component';
 import { CursoComponent } from './curso/curso.component';
 import { IntegranteComponent } from './integrante/integrante.component';
 import { Pagina404Component } from './pagina404/pagina404.component';
-import { AppRoutingModule } from 'src/app/app-routing.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';//Error encontrado y solucionado por Franco
 
 @NgModule({
   declarations: [
