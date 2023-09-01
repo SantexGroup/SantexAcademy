@@ -20,11 +20,15 @@ export class NavBarService{
    const ruta = window.location.pathname 
 
    if(ruta == "/login"){
-    this.titulo="Iniciar Sesion"
+    this.titulo="Iniciar Sesion";
    }
 
    if(ruta == "/registro"){
-    this.titulo="Registrarse"
+    this.titulo="Registrarse";
+   }
+
+   if(ruta == "/home"){
+    this.titulo="Bienvenido!";
    }
 
   }
