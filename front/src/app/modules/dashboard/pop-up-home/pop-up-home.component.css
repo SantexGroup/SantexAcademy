@@ -1,0 +1,23 @@
+mat-dialog-content {
+    max-height: 90vh; /* Ajusta el valor según tus necesidades */
+    overflow-y: auto; /* Agrega desplazamiento vertical si es necesario */
+}
+mat-dialog-content img {
+    display: block; /* Asegura que la imagen se comporte como un bloque */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+  
+.mat-raised-button.custom-color {
+    background-color: green;
+    color: white;
+}
+.button-container {
+    margin-top: 10px; 
+ }
+  
+.button-container button {
+    margin: 3px; 
+}
+
+
+  

@@ -1,0 +1,22 @@
+<button mat-icon-button style="float: right;" matDialogClose>
+    <mat-icon>close</mat-icon>
+</button>
+<mat-dialog-content>
+    <header>
+        <h1>Información</h1>
+    </header>
+
+    <img mat-card-image [src]="product.image" width="300px" alt="Product Image">
+    <p>Nombre: {{ product.name }}</p>
+    <p>Precio: {{ product.price | currency}}</p>
+    <p>Descripción: {{ product.description }}</p>
+</mat-dialog-content>
+<mat-dialog-actions  align="end" class="button-container">
+    <!--<button mat-raised-button (click)="agregarAlCarrito()" class="custom-color">Agregar al Carrito
+        <mat-icon>shopping_cart</mat-icon>
+    </button>-->
+    <button mat-raised-button (click)="guardarParaMasTarde()"color="primary">Guardar para Más Tarde
+        <mat-icon>update</mat-icon>
+    </button>
+</mat-dialog-actions>
+
