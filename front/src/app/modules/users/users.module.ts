@@ -4,7 +4,7 @@ import { CreateComponent } from './pages/create/create.component';
 import { ShowComponent } from './pages/show/show.component';
 import { IndexComponent } from './pages/index/index.component';
 import { UsersRoutingModule } from './users-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EstadoUsuarioDirective } from 'src/app/directivas/estado-usuario.directive';
 
 
@@ -19,7 +19,8 @@ import { EstadoUsuarioDirective } from 'src/app/directivas/estado-usuario.direct
   imports: [
     CommonModule,
     UsersRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class UsersModule { }
