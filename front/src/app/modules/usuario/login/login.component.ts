@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         },
         complete: () => { 
           console.log("Done") 
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigateByUrl('/home');
         }
       });
     }

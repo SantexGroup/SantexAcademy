@@ -15,6 +15,10 @@ const routes: Routes = [
     component: AppComponent
   },
   {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
     path: 'registro',
     component: RegistroComponent
   },
@@ -33,10 +37,6 @@ const routes: Routes = [
   {
     path: 'opcionales',
     component: OptionalsComponent
-  },
-  {
-    path: 'home',
-    component: HomeComponent
   },
   {
     path: 'lenguajes',

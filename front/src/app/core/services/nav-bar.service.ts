@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class NavBarService {
+export class NavBarService{
 
   constructor(public router: Router) { }
 
@@ -14,7 +14,7 @@ export class NavBarService {
 
   externalComponent: boolean = false;
 
-  titulo: string = "Bienvenido!"
+  titulo: string = "";
 
   getRoute(){
    const ruta = window.location.pathname 
