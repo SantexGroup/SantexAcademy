@@ -16,13 +16,9 @@ type email={
 export class InputLoginComponent implements OnInit {
   email = new FormControl("",[Validators.email,Validators.required])
   
-
-
-
-
-  constructor(private http: HttpClient,  private authservice: authService,  private router: Router) { }
+constructor(private http: HttpClient,  private authservice: authService,  private router: Router) { }
   ngOnInit(): void {
-    this.http.post('http://localhost:3000',{email:this.email}).subscribe();
+   
   }
 
   redirectToContra() {
