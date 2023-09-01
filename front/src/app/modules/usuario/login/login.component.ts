@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NavBarService } from 'src/app/core/services/nav-bar.service';
 import { UsuarioService } from 'src/app/core/services/usuario.service';
 
 @Component({
@@ -11,9 +12,15 @@ import { UsuarioService } from 'src/app/core/services/usuario.service';
 export class LoginComponent implements OnInit {
   mensajeError: string = "";
 
-  constructor(private fb: FormBuilder, private router: Router, private userService: UsuarioService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private router: Router, 
+    private userService: UsuarioService,
+    public views: NavBarService
+    ) { }
 
   ngOnInit(): void {
+    this.views.getRoute();
   }
 
   get nick() {
