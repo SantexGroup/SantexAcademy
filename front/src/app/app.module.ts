@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardAdminComponent } from './modules/dashboard-admin/dashboard-admin.component';
 import { HeaderDashboardComponent } from './modules/header-dashboard/header-dashboard.component';
-import { LogoutModalComponent } from './modules/header-dashboard/logout-modal/logout-modal.component';
+import { LogoutModalComponent } from './modules/logout-modal/logout-modal.component';
 
 
 @NgModule({
