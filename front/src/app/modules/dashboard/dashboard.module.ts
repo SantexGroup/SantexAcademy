@@ -8,9 +8,10 @@ import { FormUpdateComponent } from './form-update/form-update.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FormDeleteComponent } from './form-delete/form-delete.component';
 import { HomeComponent } from './home/home.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @NgModule({
-  declarations: [DashboardPageComponent, FormAddProductComponent, FormUpdateComponent, NavBarComponent, FormDeleteComponent, HomeComponent],
+  declarations: [DashboardPageComponent, FormAddProductComponent, FormUpdateComponent, NavBarComponent, FormDeleteComponent, HomeComponent, ShoppingCartComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

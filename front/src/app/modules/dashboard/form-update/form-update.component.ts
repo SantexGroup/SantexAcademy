@@ -85,12 +85,11 @@ export class FormUpdateComponent implements OnInit {
     }
     );}
     //seteo del form y de la nueva lista
+
     this.myForm.reset();
     this.backService.getProducts().subscribe((result) => {
       this.productList = result;
     });
   }
 }
-// function buscarProducto() {
-//   throw new Error('Function not implemented.');
-// }
+
