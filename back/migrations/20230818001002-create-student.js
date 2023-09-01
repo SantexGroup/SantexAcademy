@@ -30,6 +30,10 @@ module.exports = {
       },
       id_user: {
         type: Sequelize.INTEGER,
+        references: {
+          model: 'User',
+          key: 'id'
+        },
       },
       birth_date: {
         type: Sequelize.DATE,

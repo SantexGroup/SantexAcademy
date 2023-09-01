@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'id_contact_information',
         targetKey: 'id',
       });
+      this.belongsTo(models.User, {
+        foreignKey: 'id_user',
+        targetKey: 'id',
+      });
     }
   }
   Student.init({

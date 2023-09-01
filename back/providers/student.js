@@ -1,19 +1,20 @@
 const { Student } = require('../models');
+const { ContactInformation } = require('../models');
+const { User } = require('../models');
 
 const getAllStudents = async () => {
   try {
     const students = await Student.findAll({
-      include: {
-        all: true,
-        // Atributos del contacto
-        attributes: [
-          'phone_number',
-          'country',
-          'state',
-          'address',
-          'email',
-        ],
-      },
+      include: [
+        {
+          model: ContactInformation,
+          attributes: ['phone_number', 'country', 'state', 'address', 'email'],
+        },
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
     });
     return students;
   } catch (error) {
@@ -23,7 +24,18 @@ const getAllStudents = async () => {
 
 const getStudentById = async (id) => {
   try {
-    const student = await Student.findByPk(id);
+    const student = await Student.findByPk(id, {
+      include: [
+        {
+          model: ContactInformation,
+          attributes: ['phone_number', 'country', 'state', 'address', 'email'],
+        },
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
     return student;
   } catch (error) {
     throw new Error('Error al obtener el estudiante');
