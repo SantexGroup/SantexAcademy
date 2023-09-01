@@ -75,15 +75,10 @@ export class FormUpdateComponent implements OnInit {
 
   // Función para actualizar un producto
   updateProduct() {
-    console.log('Producto Actualizado', this.myForm.value)
-    
     // Resetea el formulario para limpiar los inputs
     this.myForm.reset();
   } 
   
   
 }
-// function buscarProducto() {
-  //   throw new Error('Function not implemented.');
-  // }
 

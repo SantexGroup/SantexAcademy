@@ -5,12 +5,17 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { FormAddProductComponent } from '../form-add-product/form-add-product.component';
 import { FormDeleteComponent } from '../form-delete/form-delete.component';
 import { HomeComponent } from '../home/home.component';
+import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   {
     path: '',
     component: NavBarComponent,
     children: [
+      {
+        path: '',
+        component: HomeComponent
+      },
       {
         path: 'home',
         component: HomeComponent
@@ -26,6 +31,10 @@ const routes: Routes = [
       {
         path: 'form-delete',
         component: FormDeleteComponent
+      },
+      {
+        path: 'shopping-cart',
+        component: ShoppingCartComponent
       }
     ]
   }

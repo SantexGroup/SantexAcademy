@@ -1,0 +1,47 @@
+<div class="empty" *ngIf="productList.length <= 0">
+    <span>El Carrito esta Vacio...</span>
+  </div>
+  
+  <main class="main" *ngIf="productList.length > 0">
+    <h2 class="h2">Carrito de Compras</h2>
+    <section class="shopping-cart">
+      <div class="card" *ngFor="let product of productList; let i = index">
+        <button class="buton-delete" type="submit" (click)="removeProducto(i)">x</button>
+        <div class="card_img">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            viewBox="0 -960 960 960"
+            width="48"
+          >
+            <path
+              d="M450-80v-520H80l400-280 400 280H510v520h-60Zm30-580h210-420 210ZM120-80v-211L88-466l58-10 32 166h162v230h-60v-170H180v170h-60Zm500 0v-230h162l32-166 58 10-32 175v211h-60v-170H680v170h-60ZM270-660h420L480-807 270-660Z"
+            />
+          </svg>
+        </div>
+        <span class="card_title">{{product.nombreProd}}</span>
+        <span class="card-stock">{{ product.cantidad }} u.</span>
+        <span class="card-price">$ {{ product.precio }}</span>
+      </div>
+    </section>
+    <button type="submit" class="button empty-cart" (click)="emptyCart()">Vaciar Carrito</button>
+    <section class="summary">
+      <h2 class="h2">Resumen de Compras</h2>
+      <div class="price-shopping">
+        <div class="summary-item">
+          <span class="product-cost">Productos ({{ productList.length }})</span>
+          <span class="product-cost">$ {{ total() }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="shipping-cost">Costo de Envio</span>
+          <span class="shipping-cost">$ {{"envio"}}</span>
+        </div>
+        <div class="summary-item total">
+          <span class="total-price">Total</span>
+          <span class="total-price">$ {{ total() }}</span>
+        </div>
+        <button type="submit" class="button button-buy">Comprar</button>
+      </div>
+    </section>
+  </main>
+  

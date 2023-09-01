@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
-import { FormUpdateComponent } from './form-update/form-update.component';
 
 const routes: Routes = [
   {

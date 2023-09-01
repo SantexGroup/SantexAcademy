@@ -1,0 +1,194 @@
+.empty {
+    margin: 1rem;
+    font-size: 2rem;
+    line-height: 5rem;
+    color: #76777c;
+    text-align: center;
+    background-color: #f7f7f7;
+    border-radius: 11px;
+    box-shadow: 0px 0px 42px rgba(0, 0, 0, 0.01), 0px 0px 26px rgba(0, 0, 0, 0.05),
+      0px 0px 26px rgba(0, 0, 0, 0.09), 0px 0px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .main {
+    min-height: 100%;
+    padding: 1.5rem;
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #76777c;
+  }
+  .shopping-cart {
+    width: 100%;
+    font-size: 1.2rem;
+    font-family: "Inter", sans-serif;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 1rem;
+    justify-content: start;
+    justify-items: stretch;
+  }
+  
+  .card {
+    position: relative;
+    min-width: 8rem;
+    max-width: 13rem;
+    min-height: 15rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0.25rem;
+    background-color: #f7f7f7;
+    border-radius: 11px;
+    box-shadow: 0px 0px 42px rgba(0, 0, 0, 0.01), 0px 0px 26px rgba(0, 0, 0, 0.05),
+      0px 0px 26px rgba(0, 0, 0, 0.09), 0px 0px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .buton-delete {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: inherit;
+    align-self: flex-end;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .buton-delete:hover {
+    border-radius: 50%;
+    background-color: #115dfc;
+    color: #f7f7f7;
+    font-weight: bold;
+  }
+  
+  .card_title {
+    color: #212121;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .card_img {
+    width: auto;
+    height: 70%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .card_img svg {
+    width: 100%;
+  }
+  
+  .card-price,
+  .card-stock {
+    text-align: left;
+    align-self: flex-start;
+    font-size: 0.8rem;
+    color: #76777c;
+  }
+  
+  .button {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    background: #115dfc;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .summary {
+    border-left: solid rgb(145, 146, 148, 8%);
+    padding: 0 1rem;
+  }
+  
+  .price-shopping {
+    position: sticky;
+    top: 1rem;
+    padding: 1rem;
+    margin-top: 1rem;
+    background-color: #f7f7f7;
+    border-radius: 11px;
+    box-shadow: 0px 0px 42px rgba(0, 0, 0, 0.01), 0px 0px 26px rgba(0, 0, 0, 0.05),
+      0px 0px 26px rgba(0, 0, 0, 0.09), 0px 0px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .price-shopping {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .summary-item {
+    margin: 0.25rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+  }
+  
+  .shipping-cost {
+    font-size: .9rem;
+    color: #76777c;
+  }
+  
+  .total {
+    margin-top: 2rem;
+    font-weight: bold;
+  }
+  
+  .button-buy {
+    align-self: baseline;  
+  }
+  
+  
+  .h2 {
+    grid-area: title_cart;
+  }
+  
+  .shopping-cart {
+    grid-area: cart;
+  }
+  
+  .empty-cart {
+    grid-area: empty;
+  }
+  
+  .summary {
+    grid-area: summary;
+  }
+  
+  .main {
+    grid-template: 
+      "title_cart  summary" auto
+      "cart        summary" auto
+      "empty       summary" auto/
+        70%           30%;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .main {
+      grid-template: 
+      "title_cart" auto
+      "cart"       auto
+      "empty"      auto
+      "summary"    auto/
+        auto;
+  
+    }
+  
+    .summary {
+      padding: 1rem 0;
+      margin-top: .5rem;
+      border-left: none;
+      border-top: solid rgb(145, 146, 148, 8%);
+    }
+  }
+  
