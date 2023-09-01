@@ -1,0 +1,12 @@
+<p>all-cursos works!</p>
+
+<div class="container" *ngFor="let curso of cursos" >
+    <div class="card" [routerLink]="['/curso/index/', curso.id ]">
+        <div class="card-body">
+            <h4 class="card-title">{{ curso.nombre }}</h4>
+            <p class="card-text">
+            {{ curso.descripcion }}
+            </p>
+        </div>
+    </div>
+</div>

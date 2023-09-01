@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Curso } from '../../../components/models/curso.model';
+import { Curso } from '../../../components/models/curso.interface';
 
 @Component({
   selector: 'app-curso',

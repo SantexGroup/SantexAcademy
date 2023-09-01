@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Curso } from '../../../components/models/curso.model';
+import { Curso } from '../../../components/models/curso.interface';
 
 @Component({
   selector: 'app-catalogo',
@@ -10,49 +10,49 @@ export class CatalogoComponent implements OnInit {
 
   cursos: Curso[] = [
     {
-      id: '1',
+      id: 1,
       name: 'Microsoft SQL Server',
       price: 565,
       image: './assets/images/Curso1.jpg'
     },
     {
-      id: '2',
+      id: 2,
       name: 'MySQL',
       price: 356,
       image: './assets/images/Curso2.jpg'
     },
     {
-      id: '3',
+      id: 3,
       name: 'Microsoft Visual Studio',
       price: 23,
       image: './assets/images/Curso4.jpg'
     },
     {
-      id: '4',
+      id: 4,
       name: 'Angular',
       price: 23,
       image: './assets/images/Curso5.jpg'
     },
     {
-      id: '5',
+      id: 5,
       name: 'Microsoft SQL Server',
       price: 565,
       image: './assets/images/Curso1.jpg'
     },
     {
-      id: '6',
+      id: 6,
       name: 'MySQL',
       price: 356,
       image: './assets/images/Curso2.jpg'
     },
     {
-      id: '7',
+      id: 7,
       name: 'Microsoft Visual Studio',
       price: 23,
       image: './assets/images/Curso4.jpg'
     },
     {
-      id: '8',
+      id: 8,
       name: 'Angular',
       price: 23,
       image: './assets/images/Curso5.jpg'
