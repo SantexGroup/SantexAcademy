@@ -23,21 +23,29 @@
 }
 
 .nav-item {
-    padding: 0.5rem;
     list-style: none;
     cursor: pointer;
     text-align: center;
 }
 
-.active, .nav-item:hover {
+.nav-item:hover {
+    padding: .5rem 0;
     background-color: #979797;
-    border-radius: .8rem;
+    border-radius: .4rem;
 }
 
-.nav-item a {
+.nav-item>a {
+    padding: .5rem 1rem;
     text-decoration: none;
     color: inherit;
-    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.active {
+    padding: .5rem 0;
+    background-color: #979797;
+    border-radius: .4rem;
 }
 
 .cart {
