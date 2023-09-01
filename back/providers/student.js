@@ -2,7 +2,19 @@ const { Student } = require('../models');
 
 const getAllStudents = async () => {
   try {
-    const students = await Student.findAll();
+    const students = await Student.findAll({
+      include: {
+        all: true,
+        // Atributos del contacto
+        attributes: [
+          'phone_number',
+          'country',
+          'state',
+          'address',
+          'email',
+        ],
+      },
+    });
     return students;
   } catch (error) {
     throw new Error('Error al obtener los estudiantes');
