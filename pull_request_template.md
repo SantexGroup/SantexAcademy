@@ -1,4 +1,4 @@
-## ¿Que tipos de cambios has hecho?
+## ¿Que tipos de cambios has hecho? (selecciona varios si hace falta)
 
 - [ ] Refactor
 - [ ] Feature
