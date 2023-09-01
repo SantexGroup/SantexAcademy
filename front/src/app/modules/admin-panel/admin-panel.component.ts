@@ -6,35 +6,32 @@ import { CourseService } from 'src/app/core/services/course.service';
 @Component({
   selector: 'app-admin-panel',
   templateUrl: './admin-panel.component.html',
-  styleUrls: ['./admin-panel.component.css']
+  styleUrls: ['./admin-panel.component.css'],
 })
 export class AdminPanelComponent implements OnInit {
-  courses: Course[]=[];
-  constructor(private courseService : CourseService, private router:Router) { 
+  courses: Course[] = [];
+  constructor(private courseService: CourseService, private router: Router) {
     this.getCourses();
   }
 
-  ngOnInit(): void {
-  }
-  getCourses(){
+  ngOnInit(): void {}
+  getCourses() {
     this.courseService.getCourse().subscribe(
       (res) => {
         this.courses = <any>res;
-        console.log(this.courses)
+        console.log(this.courses);
       },
       (err) => console.log(err)
     );
-    
   }
 
-  deleteCourse(id:number) {
+  deleteCourse(id: number) {
     this.courseService.deleteCourse(id).subscribe(
-      (res) => {console.log("ok")},
+      (res) => {
+        window.location.reload();
+      },
       (err) => console.log(err)
     );
-  }
-  editar(id:number) {
-    this.router.navigate(['/editar/' + id]);
   }
 
 }

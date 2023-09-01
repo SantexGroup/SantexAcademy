@@ -70,42 +70,7 @@
           <select [(ngModel)]="course.CourseCategoryName" name="CourseCategoryName">
             <option value="">Selecciona una categoría</option>
             <option *ngFor="let category of categories" [value]="category.name"><h1>{{ category.name }}</h1></option>
-          </select>
-         
-
-          <!--
-          
-          -->
-          <!-- <div class="border row" *ngFor="let objeto of categories;let i = index">
-            <select
-              name="miselect"
-              [(ngModel)]="dato[i]"
-              (change)="update(dato[i])"
-              style="width: 100%;"
-            > -->
-            <!--   <option [ngValue]="objeto" *ngFor="let objeto of categories" >
-                <input
-              class="border"
-              type="number"
-              
-            />
-                {{ objeto.name }}
-              </option> -->
-        <!--     </select>
-          </div> -->
-
-  <!--<label class="form-label">Categoria del curso</label>
-          <input
-            [(ngModel)]="course.CourseCategoryName"
-            type="text"
-            class="form-control"
-            name="courseCategoryName"
-          />
-          
-          -->
-
-
-          
+          </select>      
           <div class="row">
             <input
             [(ngModel)]="course.active"
