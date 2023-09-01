@@ -42,6 +42,11 @@
     right: -70px;
 }
 
+.carousel-control{
+    font-weight: bold;
+    color: #3f6ad8;
+}
+
 .botonera {
     width: 100%;
     display: flex;
