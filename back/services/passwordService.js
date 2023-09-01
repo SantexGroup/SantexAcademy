@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 const ms = require('ms');
 const Password = require('../models/Password');
 const db = require('../models');
@@ -32,9 +31,9 @@ function generarOtp() {
 
 // Funcion para obtener un limite de tiempo
 
-async function limiTime(minValidos) {
-  const tiempoActual = new Date();
-  const tiempoExpi = new Date(tiempoActual.getTime() + ms(`${minValidos}m`));
+function limiTime(minValidos) {
+  const tiempoActual = new Date().getTime();
+  const tiempoExpi = new Date(tiempoActual + ms(`${minValidos}m`)).getTime();
   return tiempoExpi;
 }
 

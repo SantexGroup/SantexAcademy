@@ -8,6 +8,5 @@ router.get('/obtener/:id', adminController.getAdminById);
 router.post('/crear', adminController.createAdmin);
 router.put('/actualizar/:id', adminController.editAdmin);
 router.delete('/eliminar', adminController.deleteAdmin);
-router.post('/login', adminController.sendOtpLogin);
 
 module.exports = router;

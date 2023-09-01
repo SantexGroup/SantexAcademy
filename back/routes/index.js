@@ -1,5 +1,6 @@
 const Express = require('express');
 const adminRoutes = require('./adminRoutes');
+const loginRoutes = require('./loginRoutes');
 
 // Middlewares:
 const rootPath = require('../middleware/root_path.middleware');
@@ -27,6 +28,7 @@ app.get('/', (req, res) => {
 
 // Agregar aqui las rutas
 app.use('/admins', adminRoutes);
+app.use('/login', loginRoutes);
 
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
