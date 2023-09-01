@@ -13,13 +13,13 @@ export class ShowComponent implements OnInit {
 
   user!: User;
 
-  constructor(private activateRoute: ActivatedRoute,
+  constructor(private activatedRoute: ActivatedRoute,
               private usersService: UsersService,
               private router: Router) { }
 
   ngOnInit(): void {
 
-    this.activateRoute.params
+    this.activatedRoute.params
       .pipe(
         switchMap( ({id})=> this.usersService.getUserPorId(id))
       )

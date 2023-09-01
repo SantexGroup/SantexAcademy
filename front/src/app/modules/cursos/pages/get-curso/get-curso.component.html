@@ -1,0 +1,11 @@
+<p>get-curso works!</p>
+
+<div class="card">
+    <div class="card-body">
+      <h4 class="card-title">{{ curso.nombre}}</h4>
+      <p class="card-subtitle">{{ curso.descripcion}}</p>
+      <p class="card-subtitle">{{curso.imagen}}</p>
+      <button type="button" class="btn btn-primary" [routerLink]="['/cursos/index' ]">Index</button>
+      <button type="button" class="btn btn-danger" (click)="deleteCurso()">Delete</button>
+    </div>
+  </div>
