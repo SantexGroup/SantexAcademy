@@ -26,7 +26,10 @@ export class HeaderDashboardComponent implements OnInit {
 
   logout(event: boolean){
     //borrar el token del localstorage
-    console.log('Token eliminado')
+    localStorage.removeItem('jwt');
+
+    //reset variable mostrar modal
+    this.isLogoutModalOpen = false;
 
     //redireccionar a la vista de send-otp
     if(event){
