@@ -24,6 +24,7 @@ import { HomeComponent } from './modules/home/home.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { NavBarComponent } from './modules/nav-bar/nav-bar.component';
 import { HomeRoutingModule } from './modules/home/home-routing.module';
+import { SkillComponent } from './modules/crud-data/skill/skill.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { HomeRoutingModule } from './modules/home/home-routing.module';
     LanguageComponent,
     HomeComponent,
     NavBarComponent,
+    SkillComponent,
   ],
   imports: [
     BrowserModule,
