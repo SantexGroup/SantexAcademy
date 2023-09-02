@@ -12,20 +12,13 @@ async function login(req, res, next) {
   }
 }
 
-// logout
-async function logout(req, res) {
-  console.log('eliminando token');
-  res.cookie('jwt', '', {maxAge: 1});
-  res.redirect('/');
-};
-
 // crear usuario
 async function createUser(req, res) {
   const {
-    firstName, lastName, dni, mail, password
+    firstName, lastName, dni, mail, password, alias
   } = req.body;
 
-  const user = await userService.userRegister(firstName, lastName, dni, mail, password);
+  const user = await userService.userRegister(firstName, lastName, dni, mail, password, alias);
 
   console.log(user);
   res.status(201).send(user);
@@ -44,4 +37,4 @@ async function cambiarEstadoVendedorUser(req, res, next) {
   }
 }
 
-module.exports = { login, createUser, cambiarEstadoVendedorUser, logout };
+module.exports = { login, createUser, cambiarEstadoVendedorUser };
