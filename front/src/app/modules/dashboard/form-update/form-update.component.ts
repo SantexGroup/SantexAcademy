@@ -74,10 +74,11 @@ export class FormUpdateComponent implements OnInit {
 
   // Función para actualizar un producto
   updateProduct() {
+    console.log(this.myForm.value);
     // Actualiza el producto
     if(this.query?.id != undefined){
     this.backService.updateProduct(this.query.id, this.myForm.value).subscribe((result) => {
-      if(result.status == 200){
+      if(result.status == 1){
         alert("Producto actualizado correctamente")
       }else{
         alert("Error al actualizar el producto")

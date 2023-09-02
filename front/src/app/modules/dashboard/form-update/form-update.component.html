@@ -54,7 +54,7 @@
         <textarea placeholder="Descripción de producto" title="Descripción del Producto" name="input-name" class="input_field input-description" id="password_field" formControlName="description"></textarea>
         <p class="errorInput" *ngIf="myForm.get('descripcion')?.touched && myForm.get('descripcion')?.hasError('required')">Campo Obligatorio</p>
       </div>
-      <button (click)="updateProduct()"  title="Sign In" class="sign-in_btn"  >
+      <button type="submit"  title="Sign In" class="sign-in_btn"  >
         Guardar Cambios
       </button>
     </form>
