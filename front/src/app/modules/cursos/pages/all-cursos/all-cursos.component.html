@@ -1,12 +1,15 @@
 <p>all-cursos works!</p>
 
+<button type="button" class="btn btn-primary" [routerLink]="['/cursos/create' ]">Crear Curso</button>
+
 <div class="container" *ngFor="let curso of cursos" >
-    <div class="card" [routerLink]="['/curso/index/', curso.id ]">
+    <div class="card" [routerLink]="['/cursos/show/', curso.id ]">
         <div class="card-body">
             <h4 class="card-title">{{ curso.nombre }}</h4>
             <p class="card-text">
             {{ curso.descripcion }}
             </p>
+            <div [routerLink]="['/cursos/edit/', curso.id ]" class="btn btn-primary">Edit</div>
         </div>
     </div>
 </div>

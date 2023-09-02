@@ -5,7 +5,7 @@
 //   const curso = Convert.toCurso(json);
 
 export interface Curso {
-    id:                    number;
+    id?:                    number;
     nombre:                string;
     descripcion:           string;
     imagen:                string;

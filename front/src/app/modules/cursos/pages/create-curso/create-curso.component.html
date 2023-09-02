@@ -1,0 +1,27 @@
+<p>create-curso works!</p>
+<button type="button" class="btn btn-primary" [routerLink]="['/cursos/index' ]">Index</button>
+<h1>{{ ( curso.id )? 'Editar' : 'Nuevo' }} Curso</h1>
+<div class="container">
+    <form>
+        <div class="form-group">
+          <label for="formGroupNombreInput">Nombre</label>
+          <input type="text" class="form-control" id="formGroupNombreInput" placeholder="nombre" [(ngModel)]="curso.nombre" name="nombre">
+        </div>
+        <div class="form-group">
+          <label for="formGroupDescripcionInput">Descripcion</label>
+          <input type="text" class="form-control" id="formGroupDescripcionInput" placeholder="descripcion" [(ngModel)]="curso.descripcion" name="descripcion">
+        </div>
+        <div class="form-group">
+            <label for="formGroupImagenInput">Imagen</label>
+            <input type="text" class="form-control" id="formGroupImagenInput" placeholder="imagen" [(ngModel)]="curso.imagen" name="imagen">
+        </div>
+        <div class="form-group">
+            <label for="formGroupRequisitosInput">Requisitos</label>
+            <input type="text" class="form-control" id="formGroupRequisitosInput" placeholder="requisitos" [(ngModel)]="curso.requisitos" name="requisitos">
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" (click)="guardar()">{{ ( curso.id )? 'Actualizar' : 'Crear' }}</button>
+        </div>
+      </form>
+      
+</div>
