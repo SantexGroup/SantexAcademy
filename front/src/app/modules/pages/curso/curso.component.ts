@@ -8,7 +8,7 @@ import { Curso } from '../../../components/models/curso.interface';
 })
 export class CursoComponent implements OnInit {
   @Input() curso: Curso = {
-    id: '',
+    id: 0,// Cambiar cuando se requiera string
     name: '',
     price: 0,
     image: ''

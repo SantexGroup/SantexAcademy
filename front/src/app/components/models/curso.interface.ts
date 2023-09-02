@@ -5,22 +5,29 @@
 //   const curso = Convert.toCurso(json);
 
 export interface Curso {
-  id:                    number;
-  nombre:                string;
-  descripcion:           string;
-  imagen:                string;
-  duracion:              number;
-  capacidad:             number;
-  idnivel:               null;
-  requisitos:            string;
-  habilitado:            boolean;
-  fechaInicio:           Date;
-  fechafin:              null;
-  idusuarioalta:         null;
-  estado:                boolean;
-  idusuariomodificacion: null;
-  createdAt:             Date;
-  updatedAt:             Date;
+  // id:                    number;
+  // nombre:                string;
+  // descripcion:           string;
+  // imagen:                string;
+  // duracion:              number;
+  // capacidad:             number;
+  // idnivel:               null;
+  // requisitos:            string;
+  // habilitado:            boolean;
+  // fechaInicio:           Date;
+  // fechafin:              null;
+  // idusuarioalta:         null;
+  // estado:                boolean;
+  // idusuariomodificacion: null;
+  // createdAt:             Date;
+  // updatedAt:             Date;
+  
+  //Descomentar las lineas anteriores y comentar o eliminar las 4 siguientes cuando se implemente DB tabla cursos
+    id: number;
+    name: string;
+    price: number;
+    image: string;
+  
 }
 
 // Converts JSON strings to/from your types
