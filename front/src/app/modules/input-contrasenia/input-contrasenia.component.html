@@ -5,11 +5,21 @@
       <form class="space-y-5">
         <div>
           <label for="password" class=" block mb-2  text-white text-lg font-farro">Ingrese su contraseña</label>
-          <input type="password" id="password"
+          <input type="password" id="password" [formControl]="password" required
             class="bg-white/50 border-gray-300 text-black rounded-lg block w-full p-2  ">
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+
+            <div *ngIf="password.errors?.['required']">
+              La contraseña es requerido.
+            </div>
+            <div *ngIf="password.errors?.['password']">
+              Su contraseña es incorrecta
+            </div>
+          </div>
         </div>
+
         <div class=" flex flex-row-reverse ">
-          <button
+          <button (click)="redirectToData()"
             class="bg-azul-button text-white rounded-lg  px-8 py-3 font-farro uppercase tracking-widest  ">INGRESARr</button>
         </div>
       </form>

@@ -3,12 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { InputContraseniaComponent } from './modules/input-contrasenia/input-contrasenia.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: InputContraseniaComponent
-    
-  },
-  
+  { path: '', redirectTo: '/Contrasenia', pathMatch: 'full' },
+  { path: 'Contrasenia', component: InputContraseniaComponent },
+
+
 ];
 
 @NgModule({
@@ -16,3 +14,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
