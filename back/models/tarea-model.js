@@ -1,8 +1,9 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class tareas extends Model {}
-  tareas.init(
+  class Tarea extends Model {
+  }
+  Tarea.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -21,10 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       id_coordinator: {
         type: DataTypes.INTEGER,
       },
-      id_volunteer: {
-        type: DataTypes.INTEGER,
-      },
-      point: {
+      points: {
         type: DataTypes.BIGINT,
         allowNull: true,
         defaultValue: 0,
@@ -47,12 +45,17 @@ module.exports = (sequelize, DataTypes) => {
 
     }, {
       sequelize,
-      modelName: 'tareas',
+      modelName: 'tarea',
       timestamps: false,
       underscored: false,
       createdAt: false,
       updatedAt: false,
     },
   );
-  return tareas;
+  Tarea.associate = (models) => {
+    Tarea.belongsToMany(models.volunteer, { through: models.tareasVoluntario });
+    Tarea.belongsTo(models.category, { foreignKey: 'id_category' });
+    Tarea.belongsTo(models.coordinator, { foreignKey: 'id_coordinator' });
+  };
+  return Tarea;
 };

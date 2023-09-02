@@ -1,9 +1,8 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class volunteer extends Model {}
-
-  volunteer.init(
+  class Volunteer extends Model { }
+  Volunteer.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -49,5 +48,8 @@ module.exports = (sequelize, DataTypes) => {
       updatedAt: false,
     },
   );
-  return volunteer;
+  Volunteer.associate = (models) => {
+    Volunteer.belongsToMany(models.tarea, { through: models.tareasVoluntario });
+  };
+  return Volunteer;
 };
