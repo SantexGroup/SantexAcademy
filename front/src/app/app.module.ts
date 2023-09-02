@@ -13,7 +13,7 @@ import { EditCategoryComponent } from './modules/admin-panel/categories/edit-cat
 import { AddScheduleComponent } from './modules/admin-panel/schedules/add-schedule/add-schedule.component';
 import { EditScheduleComponent } from './modules/admin-panel/schedules/edit-schedule/edit-schedule.component';
 import { CategoryComponent } from './modules/admin-panel/categories/category.component';
-import { ScheduleComponent } from './modules/admin-panel/schedule/schedule.component';
+import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.component';
 @NgModule({
   declarations: [
     AppComponent,
