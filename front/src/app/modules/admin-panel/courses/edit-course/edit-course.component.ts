@@ -13,9 +13,7 @@ import { CourseCategory } from 'src/app/core/interfaces/courseCategory';
 export class EditCourseComponent implements OnInit {
   categories: CourseCategory[] = [];
   form: FormGroup;
-  /*   form2:FormGroup */
   id: number;
-  operacion: string = 'Agregar ';
   recursos: any = [];
   course: Course = {
     id: 0,

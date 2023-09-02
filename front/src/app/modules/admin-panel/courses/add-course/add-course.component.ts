@@ -12,9 +12,7 @@ import { CourseCategory } from 'src/app/core/interfaces/courseCategory';
 })
 export class AddCourseComponent {
   categories: CourseCategory[] = [];
-  value: number = 0;
   selectedCategory: string = '';
-  cant: number = 0;
   course: Course = {
     id: 0,
     name: '',
@@ -49,7 +47,6 @@ export class AddCourseComponent {
     );
   }
   add() {
-    console.log(this.course)
     this.courseService.postCourse(this.course).subscribe(
       () => {
         this.router.navigate(['/admin/panel']);
@@ -58,10 +55,5 @@ export class AddCourseComponent {
         console.log(error);
       }
     );
-  }
-  update(courseCategory: CourseCategory) {
-    console.log(courseCategory.id);
-    this.value = courseCategory.id;
-    console.log(this.value);
   }
 }

@@ -1,0 +1,99 @@
+<div class="row mt-3 offset-lg-2">
+  <div
+    class="card text-white mb-3"
+    style="max-width: 50rem; background-color: var(--colorBlue)"
+  >
+    <div class="card-header text-center">Editar curso</div>
+    <div class="card-body">
+      <form>
+        <label class="form-label">Nombre del curso</label>
+        <input
+          [(ngModel)]="course.name"
+          type="text"
+          class="form-control"
+          name="name"
+        />
+
+        <label class="form-label">Descripcion del curso</label>
+        <input
+          [(ngModel)]="course.description"
+          type="text"
+          class="form-control"
+          name="description"
+        />
+        <label class="form-label">Imagen del curso</label>
+        <input
+          [(ngModel)]="course.image"
+          type="text"
+          class="form-control"
+          name="name"
+        />
+        <label class="form-label">maximo de estudiantes del curso</label>
+        <input
+          [(ngModel)]="course.maxStudents"
+          type="number"
+          class="form-control"
+          name="maxStudents"
+        />
+        <label class="form-label">Inicio del curso</label>
+        <input
+          [(ngModel)]="course.start"
+          type="date"
+          class="form-control"
+          name="start"
+        />
+        <label class="form-label">final del curso</label>
+        <input
+          [(ngModel)]="course.end"
+          type="date"
+          class="form-control"
+          name="end"
+        />
+
+        <label class="form-label">Precio del curso</label>
+        <input
+          [(ngModel)]="course.price"
+          type="number"
+          class="form-control"
+          name="price"
+        />
+        <label class="form-label">Requisitos del curso</label>
+        <input
+          [(ngModel)]="course.requirement"
+          type="text"
+          class="form-control"
+          name="requirement"
+        />
+        <label class="form-label">Profesor/a del curso</label>
+        <input
+          [(ngModel)]="course.teacher"
+          type="text"
+          class="form-control"
+          name="teacher"
+        />
+        <select
+          [(ngModel)]="course.CourseCategoryName"
+          name="CourseCategoryName"
+          class="row form-control mt-2"
+          style="margin-left: 0px"
+        >
+          <option value="">Selecciona una categoría</option>
+          <option *ngFor="let category of categories" [value]="category.name">
+            <h1>{{ category.name }}</h1>
+          </option>
+        </select>
+
+        <input
+          [(ngModel)]="course.active"
+          type="checkbox"
+          class="form-check-input mt-2"
+          name="active"
+        />
+        <label class="form-label p-1">Esta activo el curso?</label>
+        <div class="row">
+        <button (click)="add()" class="btn btn-danger row " style="margin-left: 4px;">Agregra</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

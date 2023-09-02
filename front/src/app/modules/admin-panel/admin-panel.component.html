@@ -1,31 +1,28 @@
-<div class="container-fluid" style="background-color: var(--colorBlue)">
-  <div class="container-md pt-5 pb-4">
-    <table class="table rounded">
+<div class="container-fluid" style="padding: 0;">
+  <div>
+    <div class="row" style="background-color: #fff;">
+      <div class="col">
+        <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Agregar
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" routerLink="addCourse">Curso</a></li>
+        <li><a class="dropdown-item" routerLink="categories/addCourseCategory">Categoria</a></li>
+        <li><a class="dropdown-item" href="#">Horario</a></li>
+      </ul>
+      </div>
+      <div class="col">
+        <a routerLink="categories" style="text-decoration: none; color: #000;">Categorias</a>
+      </div>
+    </div>
+    <table class="table rounded" >
       <thead>
-        <tr>
-          <!-- <button class="btn col" style="background-color: var(--colorOrange);" routerLink="add">
-            Agregar categoria
-          </button>
-          <button class="btn btn-primary col" routerLink="add">
-            Agregar curso
-          </button> -->
-          <th style="position: relative; right: 0">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Agregar
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" routerLink="add">Curso</a></li>
-              <li><a class="dropdown-item" href="#">Categoria</a></li>
-              <li><a class="dropdown-item" href="#">Horario</a></li>
-            </ul>
-          </th>
-        </tr>
         <tr>
           <th scope="col fs-1">Curso</th>
           <th scope="col">Activo
@@ -74,9 +71,8 @@
           <th scope="row">
             <button
               class="btn border rounded"
-              
               style="background-color: var(--colorOrange)"
-              routerLink="edit/{{ course.id }}"
+              routerLink="editCourse/{{ course.id }}"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

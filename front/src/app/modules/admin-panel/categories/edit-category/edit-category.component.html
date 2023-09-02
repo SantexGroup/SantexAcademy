@@ -1,0 +1,46 @@
+
+<div class="row mt-3 offset-lg-2">
+    <div class="card text-white mb-3" style="max-width: 50rem; background-color: var(--colorBlue);">
+      <div class="card-header text-center">Editar curso</div>
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="update()">
+          <label class="form-label">Nombre</label>
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            placeholder="Ingrese Nombre"
+          />
+          <span
+            *ngIf="
+              form.get('name')?.hasError('required') &&
+              form.get('name')?.touched
+            "
+          >
+            El campo nombre es <strong>requerido</strong>
+          </span>
+          <div class="row mt-2 text-center">
+            <div class="col-lg-6">
+              <button
+                routerLink="/admin/panel"
+                type="button"
+                class="btn btn-secondary"
+              >
+                Volver
+              </button>
+            </div>
+            <div class="col-lg-6">
+              <button
+                [disabled]="form.invalid"
+                type="submit"
+                class="btn btn-primary"
+              >
+                Aceptar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
