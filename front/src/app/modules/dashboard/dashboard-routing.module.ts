@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
-import { RegisteranswerComponent } from '../../components/register/registeranswer/registeranswer.component';
+import { RegisteranswerComponent } from '../register/registeranswer/registeranswer.component';
 
 const routes: Routes = [
   {

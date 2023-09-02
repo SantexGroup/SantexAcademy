@@ -1,13 +1,11 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
 import { QuienessomosComponent } from './modules/pages/quienessomos/quienessomos.component';
 import { IntegranteComponent } from './modules/pages/integrante/integrante.component';
 import { CatalogoComponent } from './modules/pages/catalogo/catalogo.component';
-import { RegisterformComponent } from './components/register/registerform/registerform.component';
-import { Pagina404Component } from './modules/pages/pagina404/pagina404.component';
-// import { ErrorPageComponent } from './modules/share/error-page/error-page.component';//Aprovechar componente para otra cosa
+import { RegisterformComponent } from './modules/register/registerform/registerform.component';
+import { ErrorPageComponent } from './modules/share/error-page/error-page.component';
 
 const routes: Routes = [
   {
@@ -45,7 +43,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component:Pagina404Component
+    component:ErrorPageComponent
   },
   // {
   //   path: '404',

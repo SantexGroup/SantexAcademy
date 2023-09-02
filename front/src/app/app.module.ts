@@ -8,6 +8,8 @@ import { ErrorPageComponent } from './modules/share/error-page/error-page.compon
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { EstadoUsuarioDirective } from './directivas/estado-usuario.directive';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PagesModule } from './modules/pages/pages.module';
+import { ShareModule } from './modules/share/shares.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    DashboardModule
+    DashboardModule,
+    PagesModule,
+    ShareModule
   ],
   providers: [],
   bootstrap: [AppComponent]

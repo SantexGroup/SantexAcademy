@@ -5,7 +5,6 @@ import { QuienessomosComponent } from './quienessomos/quienessomos.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { CursoComponent } from './curso/curso.component';
 import { IntegranteComponent } from './integrante/integrante.component';
-import { Pagina404Component } from './pagina404/pagina404.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';//Error encontrado y solucionado por Franco
 
 @NgModule({
@@ -14,7 +13,6 @@ import { AppRoutingModule } from 'src/app/app-routing.module';//Error encontrado
     CatalogoComponent,
     CursoComponent,
     IntegranteComponent,
-    Pagina404Component
   ],
   imports: [
     CommonModule,
@@ -25,7 +23,6 @@ import { AppRoutingModule } from 'src/app/app-routing.module';//Error encontrado
     CatalogoComponent,
     CursoComponent,
     IntegranteComponent,
-    Pagina404Component
   ]
 })
 export class PagesModule { }
