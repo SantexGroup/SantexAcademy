@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './modules/share/error-page/error-page.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { EstadoUsuarioDirective } from './directivas/estado-usuario.directive';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { EstadoUsuarioDirective } from './directivas/estado-usuario.directive';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    DashboardModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

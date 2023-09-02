@@ -1,30 +1,114 @@
 <button type="button" class="btn btn-primary" [routerLink]="['/users/index' ]">Index</button>
-<h1>{{ ( user.id )? 'Editar' : 'Nuevo' }} User</h1>
+<h2 class="text-center">{{ ( user.id )? 'Editar' : 'Nuevo' }} usuario </h2>
 <div class="container">
-    <form>
-        <div class="form-group">
-          <label for="formGroupUsernameInput">Username</label>
-          <input type="text" class="form-control" id="formGroupUsernameInput" placeholder="username" [(ngModel)]="user.username" name="username">
+  <div class="row justify-content-center">
+    <div class="col-md-5"> 
+      <form [formGroup]="form" (ngSubmit)="onEnviar($event, user)">
+        <div class="form-outline mb-2">
+          <label class="form-label" for="form3Example1cg">Nombre</label>
+          <input type="text" id="nombre" class="form-control form-control-s" formControlName="nombre"
+            [(ngModel)]="user.nombre" />
+          <div
+            *ngIf="form.get('nombre')?.invalid && (form.get('nombre')?.dirty || form.get('nombre')?.touched)"
+            class="text-danger">
+            <div *ngIf="form.get('nombre')?.errors?.['required']">El nombre es obligatorio.</div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="formGroupPasswordInput">Password</label>
-          <input type="password" class="form-control" id="formGroupPasswordInput" placeholder="password" [(ngModel)]="user.password" name="password">
+    
+        <div class="form-outline mb-2">
+          <label class="form-label" for="form3Example1cg">Apellido</label>
+          <input type="text" id="apellido" class="form-control form-control-s" formControlName="apellido"
+            [(ngModel)]="user.apellido" />   
+          <div
+            *ngIf="form.get('apellido')?.invalid && (form.get('apellido')?.dirty || form.get('apellido')?.touched)"
+            class="text-danger">
+            <div *ngIf="form.get('apellido')?.errors?.['required']">El apellido es obligatorio.</div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="formGroupApellidoInput">Apellido</label>
-            <input type="text" class="form-control" id="formGroupApellidoInput" placeholder="apellido" [(ngModel)]="user.apellido" name="apellido">
+    
+        <div class="form-outline mb-2">
+          <label class="form-label" for="form3Example1cg">Nombre de usuario</label>
+          <input type="text" id="username" class="form-control form-control-s" formControlName="username"
+            [(ngModel)]="user.username" />     
+          <div
+            *ngIf="form.get('username')?.invalid && (form.get('username')?.dirty || form.get('username')?.touched)"
+            class="text-danger">
+            <div *ngIf="form.get('username')?.errors?.['required']">El nombre de usuario es obligatorio.</div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="formGroupNombreInput">Nombre</label>
-            <input type="text" class="form-control" id="formGroupNombreInput" placeholder="nombre" [(ngModel)]="user.nombre" name="nombre">
+    
+        <div class="form-outline mb-2">
+          <label class="form-label" for="form3Example3cg">Email</label>
+          <input type="email" id="email" class="form-control form-control-s" formControlName="email"
+            [(ngModel)]="user.email" />
+          <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)"
+            class="text-danger">
+            <div *ngIf="form.get('email')?.errors?.['required']">El email es obligatorio.</div>
+            <div *ngIf="form.get('email')?.errors?.['email']">El email debe ser un correo
+              electrónico válido.</div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="formGroupEmailInput">Email</label>
-            <input type="email" class="form-control" id="formGroupEmailInput" placeholder="Email" [(ngModel)]="user.email" name="email">
+    
+        <div class="form-outline mb-2">
+          <label class="form-label" for="form3Example4cg">Contraseña</label>
+          <input type="password" id="password" class="form-control form-control-s" formControlName="password"
+            [(ngModel)]="user.password" />     
+          <div
+            *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)"
+            class="text-danger">
+            <div *ngIf="form.get('password')?.errors?.['required']">La contraseña es obligatoria.</div>
+            <div *ngIf="form.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 8 caracteres.</div>
+          </div>
         </div>
-        <div class="form-group">
-            <button type="button" class="btn btn-primary" (click)="guardar()">{{ ( user.id )? 'Actualizar' : 'Crear' }}</button>
+        <div class="form-outline mb-2">
+          <label class="form-label" for="userType">Tipo de Usuario</label>
+          <select id="userType" class="form-select" formControlName="userType">
+            <option value="Seleccione">Seleccione</option>
+            <option value="normal">Usuario Normal</option>
+            <option value="admin">Administrador</option>
+            <option value="guest">Invitado</option>
+          </select>
+          <div
+          *ngIf="form.get('userType')?.invalid && (form.get('userType')?.dirty || form.get('userType')?.touched)"
+          class="text-danger">
+          <div *ngIf="form.get('userType')?.hasError('invalidUserType')" class="text-danger">
+            Debe seleccionar un tipo de usuario.
+          </div>
         </div>
+        </div>
+        <!--Para register
+        <div class="form-outline mb-3">
+          <label class="form-label" for="form3Example4cdg">Repite la contraseña</label>
+          <input type="password" id="confirmPassword" class="form-control form-control-lg"
+            formControlName="confirmPassword" />   
+          <div
+            *ngIf="form.get('confirmPassword')?.invalid && (form.get('confirmPassword')?.dirty || form.get('confirmPassword')?.touched)"
+            class="text-danger">
+            <div *ngIf="form.get('confirmPassword')?.errors?.['required']">Debes repetir la
+              contraseña.</div>
+          </div>
+        </div>-->
+        <!--Para register
+        <div class="form-outline mb-3">
+          <input class="form-check-input me-2" type="checkbox" id="form2Example3cg" formControlName="agreeTerms" />
+          <label class="form-check-label" for="form2Example3g">
+            Acepto todos los términos en <a href="#!" class="text-body"><u>Términos de servicio</u></a>
+          </label>
+          <div *ngIf="!form.get('agreeTerms')?.value && (form.get('agreeTerms')?.dirty || form.get('agreeTerms')?.touched)"
+            class="text-danger">
+            <div *ngIf="form.get('agreeTerms')?.errors?.['required']">Acepte los términos.</div>
+        </div>
+        </div>-->
+        
+        <div class="d-flex justify-content-center mb-4">
+          <button class="btn btn-primary">Guardar</button>
+        </div>
+                
+        <!--Para register
+        <p class="text-center text-muted mt-5 mb-0">¿Ya tienes una cuenta?<a href="/login"
+            class="fw-bold text-body"><u>Iniciar Sesión</u></a></p>
+        -->
       </form>
-      
+    </div>
+  </div>
 </div>
