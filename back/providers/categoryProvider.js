@@ -39,7 +39,7 @@ const getCategoryByName = async (name) => {
 };
 const updateCategory = async (CategoryId, CategoryOptions) => {
   try {
-    await getCategory(CategoryId);
+    await getCategoryById(CategoryId);
     await CourseCategory.update(CategoryOptions, { where: { id: CategoryId } });
     return CourseCategory.findByPk(CategoryId);
   } catch (error) {
