@@ -1,7 +1,7 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class category extends Model {}
+  class category extends Model { }
   category.init({
     id: {
       type: DataTypes.INTEGER,
@@ -28,5 +28,8 @@ module.exports = (sequelize, DataTypes) => {
     createdAt: false,
     updatedAt: false,
   });
+  category.associate = (models) => {
+    category.belongsToMany(models.tarea, { through: models.tareasVoluntario });
+  };
   return category;
 };

@@ -80,5 +80,12 @@ async function modifyPasswordController(req, res) {
 
 module.exports = {
   // eslint-disable-next-line max-len
-  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, loginVolunteer, getDataVoluntario, modifyPasswordController,
+  getAllVolunteer,
+  getVolunteerById,
+  createVolunteer,
+  editVolunteer,
+  deleteVolunteer,
+  loginVolunteer,
+  getDataVoluntario,
+  modifyPasswordController,
 };
