@@ -1,35 +1,38 @@
 const jwt = require('jsonwebtoken');
-const admin = require('../models');
-const password = require('./passwordService');
+// const admin = require('../models');
+const passwordService = require('./passwordService');
 const adminService = require('./adminSerivice');
 const db = require('../models');
 
 async function emailLogin(email) {
   let existeAdmin = false;
-  console.log(email);
 
-  const adminEmail = await db.admin.findOne({
+  const admin = await db.admin.findOne({
     where: {
       email,
     },
   });
 
-  if (!adminEmail) {
+  if (!admin) {
     throw new Error('El email es incorrecto');
   }
 
   // Llamar función generadora de OTP
-  const pwd = password.generarOtp();
+  const pwd = passwordService.generarOtp();
 
   // Llamar al método que genera limite de tiempo de uso del OTP
   // eslint-disable-next-line camelcase
-  const limit_time = password.limiTime();
-  const passCreate = password.createPassword(pwd, limit_time);
-  console.log(passCreate);
+  const limit_time = passwordService.limiTime();
+  const passCreate = await passwordService.createPassword(pwd, limit_time);
+  console.log('passCreate', passCreate);
+  admin.password_id = passCreate.id;
+  console.log('pass' , passCreate.id);
+  console.log('admin', admin);
+  await admin.save();
 
   // Llamar al método que hace el Insert a la tabla del password
   // Llamar al método que actualiza el password_id en la tabla de admin
-  adminService.editAdmin(password);
+  // adminService.editAdmin();
 
   // Confirmar variable de control
   // eslint-disable-next-line prefer-const

@@ -44,7 +44,8 @@ async function createAdmin(
 //  Editar un administrador
 // eslint-disable-next-line camelcase
 async function editAdmin(id, firstname, lastname, dni, phone, adress, email, password_id) {
-  const admin = await db.admin.getById(id);
+  console.log(id);
+  const admin = await getById(id);
 
   if (firstname) {
     admin.firstname = firstname;

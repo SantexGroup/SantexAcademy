@@ -8,9 +8,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   Password.init({
     password: DataTypes.STRING,
-    limit_time: DataTypes.TIME,
+    limit_time: DataTypes.DATE,
   }, {
     sequelize,
+    timestamps: false,
     modelName: 'password',
   });
   return Password;

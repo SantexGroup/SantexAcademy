@@ -1,18 +1,19 @@
 const ms = require('ms');
-const { Password } = require('../models');
+// const Password = require('../models/Password');
 const db = require('../models');
 
 // Crear una password
 
 // eslint-disable-next-line camelcase
 async function createPassword(password, limit_time) {
-  console.log('password a crear');
-  const pass = new Password();
-  console.log('password a creada');
+  // console.log(db.password);
+  const pass = new db.password();
+  console.log(' pass ', pass);
   pass.password = password;
   // eslint-disable-next-line camelcase
   pass.limit_time = limit_time;
   const passwordCreate = await pass.save();
+  console.log('passwordCreate', passwordCreate);
   return passwordCreate;
 }
 
@@ -35,8 +36,10 @@ function generarOtp() {
 
 function limiTime(minValidos) {
   const tiempoActual = new Date().getTime();
-  const tiempoExpi = new Date(tiempoActual + ms(`${minValidos}m`)).getTime();
-  return tiempoExpi;
+  // const tiempoExpi = new Date(tiempoActual + ms(`${minValidos}m`));
+  const tiempoExpi = new Date(tiempoActual + 1000000);
+  // console.log('Tiempo expi', tiempoExpi.toISOString());
+  return tiempoExpi.toLocaleString();
 }
 
 const minValidos = 10;
