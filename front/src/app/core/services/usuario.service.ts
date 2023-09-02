@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError, BehaviorSubject, tap } from 'rxjs';
-import { registroInterface } from '../../core/interfaces/registro.interface';
+import { registroInterface } from '../interfaces/registro.interface';
 import { loginInterface } from '../../core/interfaces/login.interface';
 import { ApiService } from '../http/api.service';
 
