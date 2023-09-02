@@ -54,8 +54,8 @@ module.exports = (sequelize, DataTypes) => {
   );
   Tarea.associate = (models) => {
     Tarea.belongsToMany(models.volunteer, { through: models.tareasVoluntario });
-    Tarea.belongsToMany(models.category, { through: models.tarea });
-    Tarea.belongsToMany(models.coordinator, { through: models.tarea });
+    Tarea.belongsTo(models.category, { foreignKey: 'id_category' });
+    Tarea.belongsTo(models.coordinator, { foreignKey: 'id_coordinator' });
   };
   return Tarea;
 };

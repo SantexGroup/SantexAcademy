@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   );
   Coordinator.associate = (models) => {
-    Coordinator.belongsToMany(models.tarea, { through: models.tareasVoluntario });
+    Coordinator.hasMany(models.tarea);
   };
   return Coordinator;
 };

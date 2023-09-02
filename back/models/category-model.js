@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: false,
   });
   category.associate = (models) => {
-    category.belongsToMany(models.tarea, { through: models.tareasVoluntario });
+    category.hasMany(models.tarea);
   };
   return category;
 };
