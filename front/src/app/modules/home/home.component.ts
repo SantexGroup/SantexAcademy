@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { UsuarioService } from '../../core/services/usuario.service'
 import { NavBarService } from 'src/app/core/services/nav-bar.service';
 
@@ -15,8 +15,11 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router, 
     private userDataService: UsuarioService,
+    private thisRoute: ActivatedRoute,
     public views: NavBarService
-    ) { }
+    ) {
+      this.thisRoute.params.subscribe(params => console.log(params));
+     }
 
   ngOnInit(): void {
  /*    this.userDataService.getUserData().subscribe((data: { name: string, lastName: string }) => {

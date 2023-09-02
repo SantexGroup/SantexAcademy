@@ -30,7 +30,6 @@ export class NavBarService{
    if(ruta == "/home"){
     this.titulo="Bienvenido!";
    }
-
   }
 
   hideLanding(){

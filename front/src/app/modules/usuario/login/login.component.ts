@@ -39,14 +39,15 @@ export class LoginComponent implements OnInit {
   submit(myForm: FormGroup) {
     if(myForm.status == 'VALID') {
       this.userService.login(myForm.value).subscribe({
-        next: (data) => { console.log(data); }, 
+        next: (data) => { console.log(data); 
+        this.router.navigate(['/home', data.profile.id]);
+        }, 
         error: (err) => { 
           console.log(err); 
           this.mensajeError = err;
         },
         complete: () => { 
           console.log("Done") 
-          this.router.navigateByUrl('/home');
         }
       });
     }

@@ -11,13 +11,13 @@
             <div class="collapse navbar-collapse" id="nosotros">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Quienes somos</a>
+                        <a class="nav-link" href="#nosotrosContacto">Quienes somos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Preguntas frecuentes</a>
+                        <a class="nav-link" href="#nosotrosContacto">Preguntas frecuentes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
+                        <a class="nav-link" href="#contacto">Contacto</a>
                     </li>
                 </ul>
                 <button mat-button [matMenuTriggerFor]="menu">Cuenta</button>
@@ -110,7 +110,7 @@
         </div>
     </div>
 
-    <div class="informacion">
+    <div class="informacion" id="nosotrosContacto">
         <div class="quienes-somos">
             <h1>¿Quienes somos?</h1>
             <p>
@@ -198,12 +198,12 @@
     </div>
 
     <footer>
-        <div class="formulario-enlaces">
+        <div class="formulario-enlaces" id="contacto">
             <div class="enlaces">
                 <h1>Enlaces directos</h1>
-                <a href="">Preguntas Frecuentes</a>
-                <a href="">Quienes somos</a>
-                <a href="">Iniciar sesion</a>
+                <a href="#nosotrosContacto">Preguntas Frecuentes</a>
+                <a href="#nosotrosContacto">Quienes somos</a>
+                <a routerLink="login" (click)="views.hideLanding()">Iniciar sesion</a>
             </div>
             <div class="fomulario-contacto">
                 <form class="formulario">
