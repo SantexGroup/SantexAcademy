@@ -8,6 +8,7 @@ const app = Express();
 
 // Rutas
 const userRouter = require('./userRouter');
+const authRouter = require('./authenticationRouter');
 
 // use=
 app.use('/ping', (req, res) => {
@@ -18,5 +19,6 @@ app.use('/ping', (req, res) => {
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
 app.use('/api/users', userRouter);
+app.use('/api/auth', authRouter);
 
 module.exports = app;
