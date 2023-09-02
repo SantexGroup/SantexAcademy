@@ -2,7 +2,7 @@
 Este proyecto fue generado con Angular CLI versión 14.2.11.
 
 # Servidor de desarrollo
-Ejecuta ng serve para levantar un servidor de desarrollo. Navega a http://localhost:4200/. La aplicación se recargará automáticamente si cambias alguno de los archivos de origen.
+Ejecuta ng serve -o para levantar un servidor de desarrollo. Navega a http://localhost:4200/. La aplicación se recargará automáticamente si cambias alguno de los archivos de origen.
 
 # Generando código
 Ejecuta ng generate component nombre-componente para generar un nuevo componente. También puedes utilizar ng generate directive|pipe|service|class|guard|interface|enum|module.

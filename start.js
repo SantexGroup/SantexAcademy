@@ -2,10 +2,10 @@
 
 exec('code -n', (error, stdout, stderr) => {
   if (error) {
-    console.error(`Error al abrir la terminal front: ${error}`);
+    console.error(`Error al abrir la terminal desde front: ${error}`);
     return;
   }
-  console.log(`Terminal front abierta exitosamente: ${stdout}`);
+  console.log(`Terminal desde front abierta exitosamente: ${stdout}`);
 
   // Comando para cambiar de directorio y ejecutar 'npm start'
   const commandToExecute = 'cd front && npm start';
