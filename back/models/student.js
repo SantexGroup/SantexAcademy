@@ -18,13 +18,18 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'id_user',
         targetKey: 'id',
       });
+      this.belongsToMany(models.Cohort, {
+        through: 'CohortStudents',
+        foreignKey: 'studentId',
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      });
     }
   }
   Student.init({
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
     document_number: DataTypes.INTEGER,
-    id_cohort: DataTypes.INTEGER,
     id_contact_information: DataTypes.INTEGER,
     id_user: DataTypes.INTEGER,
     birth_date: DataTypes.DATE,

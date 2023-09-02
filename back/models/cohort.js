@@ -3,14 +3,15 @@ const { Model, DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   class Cohort extends Model {
     static associate(models) {
-      Cohort.belongsTo(models.Course, {
-        foreignKey: 'courseId',
+      this.belongsToMany(models.Student, {
+        through: 'CohortStudents',
+        foreignKey: 'cohortId',
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       });
 
-      Cohort.belongsTo(models.Student, {
-        foreignKey: 'studentId',
+      this.belongsTo(models.Course, {
+        foreignKey: 'courseId',
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       });
@@ -18,16 +19,38 @@ module.exports = (sequelize) => {
   }
 
   Cohort.init({
-    // ... otros campos
+    teacherId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    startDate: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        isDate: true,
+      },
+    },
+    finishDate: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        isDate: true,
+      },
+    },
+    countStudents: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     courseId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    studentId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-  }, {
+  },
+  {
     sequelize,
     modelName: 'Cohort',
   });

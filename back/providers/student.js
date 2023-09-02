@@ -1,6 +1,7 @@
 const { Student } = require('../models');
 const { ContactInformation } = require('../models');
 const { User } = require('../models');
+const { Cohort } = require('../models');
 
 const getAllStudents = async () => {
   try {
@@ -14,10 +15,14 @@ const getAllStudents = async () => {
           model: User,
           attributes: ['name'],
         },
+        {
+          model: Cohort,
+        },
       ],
     });
     return students;
   } catch (error) {
+    console.error('Error al obtener los estudiantes:', error);
     throw new Error('Error al obtener los estudiantes');
   }
 };
@@ -33,6 +38,9 @@ const getStudentById = async (id) => {
         {
           model: User,
           attributes: ['name'],
+        },
+        {
+          model: Cohort,
         },
       ],
     });

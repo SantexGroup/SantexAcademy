@@ -17,9 +17,6 @@ module.exports = {
       document_number: {
         type: Sequelize.INTEGER,
       },
-      id_cohort: {
-        type: Sequelize.INTEGER,
-      },
       id_contact_information: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -31,7 +28,7 @@ module.exports = {
       id_user: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'User',
+          model: 'Users',
           key: 'id'
         },
       },

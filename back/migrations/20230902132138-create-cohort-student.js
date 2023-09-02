@@ -1,52 +1,28 @@
 'use strict';
-const { DataTypes } = require('sequelize');
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Cohorts', {
+    await queryInterface.createTable('CohortStudents', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      teacherId: {
+      studentId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Teachers',
+          model: 'Students',
           key: 'id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      startDate: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        validate: {
-          isDate: true,
-        },
-      },
-      finishDate: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        validate: {
-          isDate: true,
-        },
-      },
-      countStudents: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      price: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      courseId: {
+      cohortId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Courses',
+          model: 'Cohorts',
           key: 'id'
         },
         onUpdate: 'CASCADE',
@@ -63,6 +39,7 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Cohorts');
+    await queryInterface.dropTable('CohortStudents');
   }
 };
+
