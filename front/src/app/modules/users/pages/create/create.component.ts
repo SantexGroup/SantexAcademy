@@ -82,7 +82,6 @@ export class CreateComponent implements OnInit {
         this.usersService.addUser(this.user)
           .subscribe( user => {
             console.log('add :', user)
-            alert("El registro ha sido creado satisfactoriamente. A continuación, por favor inicie Sesión.");
             this.router.navigate(['/users/index' ])
           })
       }
