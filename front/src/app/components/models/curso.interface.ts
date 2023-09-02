@@ -23,7 +23,7 @@ export interface Curso {
   // updatedAt:             Date;
   
   //Descomentar las lineas anteriores y comentar o eliminar las 4 siguientes cuando se implemente DB tabla cursos
-    id: number;
+    id: string;
     name: string;
     price: number;
     image: string;
