@@ -69,23 +69,10 @@ async function deletePollster(req, res) {
   res.status(200).send(`EL encuestador con el id: ${id}, ha sido eliminado correctamente`);
 }
 
-// Login
-
-async function login(req, res, next) {
-  const { email } = req.body;
-  try {
-    const result = await pollsterService.login(email);
-    res.status(200).send(result);
-  } catch (error) {
-    next(error);
-  }
-}
-
 module.exports = {
   createPollster,
   getAllPollster,
   getPollsterById,
   editPollster,
   deletePollster,
-  login,
 };

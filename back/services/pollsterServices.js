@@ -64,31 +64,6 @@ async function deletePollster(id) {
 
   await pollster.destroy();
 }
-// login
-async function login(email) {
-  const user = await Pollster.findOne({
-    where: {
-      email,
-    },
-  });
-
-  if (!user) {
-    throw new Error('El email es incorrecto');
-  }
-}
-/* const token = jwt.sign(
-    {
-      id: user.id,
-      email: user.email,
-      name: user.name,
-    },
-    'ClaveSecreta',
-  );
-
-  return {
-    accessToken: token,
-  };
-} */
 
 module.exports = {
   getAll,
@@ -96,5 +71,4 @@ module.exports = {
   createPollster,
   editPollster,
   deletePollster,
-  login,
 };
