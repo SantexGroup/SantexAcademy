@@ -5,7 +5,8 @@ const adminService = require('./adminSerivice');
 const db = require('../models');
 
 async function emailLogin(email) {
-  let existeAdmin;
+  let existeAdmin = false;
+  console.log(email);
 
   const adminEmail = await db.admin.findOne({
     where: {
@@ -65,6 +66,7 @@ async function verificarPassword(pwd) {
 }
 
 // Con el id de password buscamos en la tabla de admin el password_id
+// SELECT roll, password_id FROM admins a WHERE id = 1
 
 module.exports = {
   emailLogin,

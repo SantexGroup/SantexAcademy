@@ -12,6 +12,18 @@ async function sendOtpLogin(req, res, next) {
   }
 }
 
+// Verificar password
+async function verificarPassword(req, res, next) {
+  const { password } = req.body;
+  try {
+    const result = await loginService.verificarPassword(password);
+    res.status(200).send(result);
+  } catch (error) {
+    next(error);
+  }
+}
+
 module.exports = {
   sendOtpLogin,
+  verificarPassword,
 };

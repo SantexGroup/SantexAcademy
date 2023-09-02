@@ -16,16 +16,6 @@ app.use('/ping', (req, res) => {
   });
 });
 
-// Router para las vistas
-
-app.get('/login', (req, res) => {
-  res.send('login');
-});
-
-app.get('/', (req, res) => {
-  res.send('Vista Index');
-});
-
 // Agregar aqui las rutas
 app.use('/admins', adminRoutes);
 app.use('/login', loginRoutes);

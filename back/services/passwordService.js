@@ -1,16 +1,18 @@
 const ms = require('ms');
-const Password = require('../models/Password');
+const { Password } = require('../models');
 const db = require('../models');
 
 // Crear una password
 
 // eslint-disable-next-line camelcase
 async function createPassword(password, limit_time) {
+  console.log('password a crear');
   const pass = new Password();
+  console.log('password a creada');
   pass.password = password;
   // eslint-disable-next-line camelcase
   pass.limit_time = limit_time;
-  const passwordCreate = await db.pass.save();
+  const passwordCreate = await pass.save();
   return passwordCreate;
 }
 

@@ -32,6 +32,10 @@ async function createAdmin(req, res) {
       phone,
       adress,
       email,
+      password,
+      // eslint-disable-next-line camelcase
+      poll_id,
+      roll,
     } = req.body;
     const admin = await adminService.createAdmin(
       firstname,
@@ -40,6 +44,9 @@ async function createAdmin(req, res) {
       phone,
       adress,
       email,
+      password,
+      poll_id,
+      roll,
     );
     res.status(200).send(admin);
   } catch (error) {
@@ -83,23 +90,10 @@ async function deleteAdmin(req, res) {
     .send(`Administrador con el id ${id}, se ha eliminado correctamente`);
 }
 
-// Login
-async function sendOtpLogin(req, res, next) {
-  const { email } = req.body;
-
-  try {
-    const result = await adminService.emailLogin(email);
-    res.status(200).send(result);
-  } catch (error) {
-    next(error);
-  }
-}
-
 module.exports = {
   createAdmin,
   getAdminById,
   getAllAdmin,
   editAdmin,
   deleteAdmin,
-  sendOtpLogin,
 };
