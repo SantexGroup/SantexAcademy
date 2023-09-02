@@ -1,6 +1,4 @@
 <body>
-    <h1 class="title">OPCIONALES</h1>
-
     <div class="optionalsInput">
         <div id="carouselExampleIndicators" class="carousel slide">
             <form [formGroup]="optionalsForm" (ngSubmit)="postOptionals()">
@@ -90,14 +88,14 @@
                     </div>
                 </div>
             </form>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            <button id="indicador" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="carousel-control"> <<< </span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            <button id="indicador" class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="carousel-control"> >>> </span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>

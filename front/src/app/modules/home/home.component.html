@@ -1,19 +1,42 @@
 <body>
-    <div class="bienvenido">
-        <h1> Bienvenido, {{ fullName }}! </h1>
-    </div>
-    <div style="display: flex;" >
+    <div style="display: flex;">
         <div class="button-conteiner">
-            <div class="button-nav"><button mat-raised-button color="primary">Mis datos personales</button></div>
-            <div (click)="formacion()"Class="button-nav"><button mat-raised-button color="primary">Mi Formación</button></div>
-            <div (click)="experiencias()"Class="button-nav"><button mat-raised-button color="primary">Mi Experiencia</button></div>
-            <div (click)="lenguajes()"Class="button-nav"><button mat-raised-button color="primary">Idiomas</button></div>
-            <div Class="button-nav"><button mat-raised-button color="primary">Mis Habilidades</button></div>
-            <div (click)="optionales()" Class="button-nav"><button mat-raised-button color="primary">Opcionales</button></div>
-            <div Class="button-nav"><button mat-raised-button color="primary">Mas datos</button></div>
+            <div class="button-nav">
+                <button routerLink="experiencias" mat-raised-button color="primary">Mis datos personales</button>
+            </div>
+            <div routerLink="formaciones" class="button-nav">
+                <button mat-raised-button color="primary">Mi Formación</button>
+            </div>
+            <div class="button-nav">
+                <button routerLink="experiencias" mat-raised-button color="primary">Mi Experiencia</button>
+            </div>
+            <div routerLink="lenguajes" class="button-nav">
+                <button mat-raised-button color="primary">Idiomas</button>
+            </div>
+            <div class="button-nav">
+                <button mat-raised-button color="primary">Mis Habilidades</button>
+            </div>
+            <div routerLink="opcionales" class="button-nav">
+                <button mat-raised-button color="primary">Opcionales</button>
+            </div>
+            <div class="button-nav">
+                <button mat-raised-button color="primary">Mas datos</button>
+            </div>
         </div>
         <div class="textArea">
-            <textarea name="datos" id="" cols="30" rows="10"></textarea>
+            <router-outlet></router-outlet>
+        </div>
+        <div class="lista">
+            <ul>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Elemento 1</h5>
+                        <p class="card-text">Aca se carga la lista de experiencias, formaciones..etc</p>
+                        <button mat-raised-button color="primary">Editar</button>
+                        <button mat-raised-button color="warn">Eliminar</button>
+                    </div>
+                </div>
+            </ul>
         </div>
     </div>
 </body>

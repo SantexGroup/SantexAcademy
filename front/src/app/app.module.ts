@@ -23,6 +23,7 @@ import { LanguageComponent } from './modules/crud-data/language/language.compone
 import { HomeComponent } from './modules/home/home.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { NavBarComponent } from './modules/nav-bar/nav-bar.component';
+import { HomeRoutingModule } from './modules/home/home-routing.module';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { NavBarComponent } from './modules/nav-bar/nav-bar.component';
     MatIconModule,
     MatDividerModule,
     MatMenuModule,
+    HomeRoutingModule,
 
   ],
   providers: [],
