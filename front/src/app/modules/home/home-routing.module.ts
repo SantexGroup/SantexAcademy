@@ -9,7 +9,7 @@ import { LanguageComponent } from '../crud-data/language/language.component';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: 'home/:id',
     component: HomeComponent
   },
   {
