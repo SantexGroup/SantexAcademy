@@ -27,6 +27,18 @@ const createStudent = async (student) => {
   }
 };
 
+const assignCohortToStudent = async (studentId, cohortId) => {
+  try {
+    const updatedStudentCount = await StudentProvider.assignCohortToStudent(studentId, cohortId);
+    if (updatedStudentCount === 0) {
+      throw new Error('Estudiante no encontrado');
+    }
+    return updatedStudentCount;
+  } catch (error) {
+    throw new Error('Error al asignar el cohorte al estudiante');
+  }
+};
+
 const updateStudent = async (id, studentData) => {
   try {
     const updatedStudentCount = await StudentProvider.updateStudent(id, studentData);
@@ -57,4 +69,5 @@ module.exports = {
   createStudent,
   updateStudent,
   deleteStudent,
+  assignCohortToStudent,
 };

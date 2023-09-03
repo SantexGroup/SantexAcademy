@@ -29,6 +29,17 @@ const createStudent = async (req, res) => {
   }
 };
 
+const assignCohortToStudent = async (req, res) => {
+  const studentId = req.params.id;
+  const { cohortId } = req.body;
+  try {
+    const updatedStudentCount = await studentService.assignCohortToStudent(studentId, cohortId);
+    res.json({ message: 'Cohorte asignada exitosamente', count: updatedStudentCount });
+  } catch (error) {
+    res.status(500).json({ error: 'Error al asignar cohorte al estudiante' });
+  }
+};
+
 const updateStudent = async (req, res) => {
   const studentId = req.params.id;
   const studentData = req.body;
@@ -56,4 +67,5 @@ module.exports = {
   createStudent,
   updateStudent,
   deleteStudent,
+  assignCohortToStudent,
 };

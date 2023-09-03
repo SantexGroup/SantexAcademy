@@ -22,7 +22,7 @@ const getAllStudents = async () => {
     });
     return students;
   } catch (error) {
-    console.error('Error al obtener los estudiantes:', error);
+    // console.error('Error al obtener los estudiantes:', error);
     throw new Error('Error al obtener los estudiantes');
   }
 };
@@ -59,6 +59,19 @@ const createStudent = async (student) => {
   }
 };
 
+const assignCohortToStudent = async (studentId, cohortId) => {
+  try {
+    const student = await Student.findByPk(studentId);
+    const updatedStudentCount = await student.addCohort(
+      cohortId,
+    );
+    return updatedStudentCount;
+  } catch (error) {
+    // console.log(error);
+    throw new Error('Error al asignar el cohorte al estudiante');
+  }
+};
+
 const updateStudent = async (id, student) => {
   try {
     const [updatedStudentCount] = await Student.update(student, {
@@ -91,4 +104,5 @@ module.exports = {
   createStudent,
   updateStudent,
   deleteStudent,
+  assignCohortToStudent,
 };
