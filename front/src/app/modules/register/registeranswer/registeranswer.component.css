@@ -2,7 +2,7 @@
     display: none;
   }
   .registeranswer {
-    min-height: 67vh;
+    /* min-height: 67vh; */
     background-color: #e78325;
     border-radius: 5px;
     /* display: flex; */
