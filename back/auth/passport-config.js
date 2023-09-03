@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const passportJwt = require('passport-jwt');
 const { User } = require('../models');
 
@@ -6,7 +8,7 @@ const StrategyJwt = passportJwt.Strategy;
 
 const PassportStrategy = new StrategyJwt({
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: 'ClaveUltraSecreta'
+    secretOrKey: process.env.JWT_CLAVE
 }, async (jwtPayload, next) => {
     const user = await User.findByPk(jwtPayload.id);
 

@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const { User, Products } = require('../models');
 const jwt = require('jsonwebtoken');
 
@@ -19,7 +21,7 @@ async function login(mail, password) {
   const token = jwt.sign({
     id: users.id,
     mail: users.mail
-  }, 'ClaveUltraSecreta', {expiresIn: '5m'});
+  }, process.env.JWT_CLAVE, {expiresIn: '5m'});
 
   return {token};
 }
