@@ -6,5 +6,6 @@ export interface Tarea{
     points:number,
     date:Date,
     place:string,
-    id_category:number
+    id_category:number,
+    cant_participantes:number
 }
