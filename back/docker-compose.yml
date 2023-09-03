@@ -13,3 +13,21 @@ services:
       - "3306:3306"
     volumes:
       - ./db_scripts:/docker-entrypoint-initdb.d
+
+  ngrok_tunneler:
+    image : ngrok/ngrok:latest
+    restart: unless-stopped
+    
+    command:
+      - "start"
+      - "--all"
+      - "--config"
+      - "/etc/ngrok.yml"
+    volumes:
+      - ./ngrok.yml:/etc/ngrok.yml
+    ports:
+      - 4000:4000
+
+
+
+

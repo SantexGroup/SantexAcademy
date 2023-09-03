@@ -1,0 +1,8 @@
+authtoken: 2UWV2I7mpYwOxVk3Cws6A9fIC0t_64ms6vYewPX4gSx9vJFrM
+version: 2
+tunnels:
+  your_tunnel_name:
+    proto: http
+    hostname: hound-popular-vertically.ngrok-free.app
+    addr: 127.0.0.1:4000
+
