@@ -60,7 +60,7 @@ const getScheduleById = async (ScheduleId) => {
 
 const updateSchedule = async (ScheduleId, ScheduleOptions) => {
   try {
-    await getSchedule(ScheduleId);
+    await getScheduleById(ScheduleId);
     await Schedule.update(ScheduleOptions, { where: { id: ScheduleId } });
     return Schedule.findByPk(ScheduleId);
   } catch (error) {
