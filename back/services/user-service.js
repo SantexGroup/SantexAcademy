@@ -21,7 +21,7 @@ async function login(mail, password) {
   const token = jwt.sign({
     id: users.id,
     mail: users.mail
-  }, process.env.JWT_CLAVE, {expiresIn: '5m'});
+  }, process.env.JWT_CLAVE, {expiresIn: process.env.JWT_EXPIRATION_TOKEN});
 
   return {token};
 }
