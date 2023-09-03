@@ -34,3 +34,9 @@
   .hidden {
     display: none;
   }
+
+  .checkboxAgreeTerms {
+    width: 18px; 
+    height: 18px; 
+  }
+  

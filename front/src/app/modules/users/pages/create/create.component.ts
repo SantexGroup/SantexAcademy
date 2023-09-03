@@ -21,6 +21,7 @@ export class CreateComponent implements OnInit {
     email: '',
     estado: true,
     confirmPassword: '',
+    tipodeusuario: 0,
     createdAt: new Date,
     updatedAt: new Date
   }
