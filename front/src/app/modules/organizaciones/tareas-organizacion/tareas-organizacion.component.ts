@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CrearTareaModalComponent } from '../modales-organizacion/crear-tarea-modal/crear-tarea-modal.component';
 
 @Component({
   selector: 'app-tareas-organizacion',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TareasOrganizacionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog:MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  crearTarea():void{
+    this.dialog.open(CrearTareaModalComponent);
+  }
 }
