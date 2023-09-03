@@ -1,4 +1,4 @@
-const Admin = require('../models');
+// const Admin = require('../models');
 const db = require('../models');
 
 // Buscar todos los administradores
@@ -27,17 +27,24 @@ async function createAdmin(
   phone,
   adress,
   email,
+  password,
+  // eslint-disable-next-line camelcase
+  poll_id,
   roll,
 ) {
-  const admin = new Admin();
+  // eslint-disable-next-line new-cap
+  const admin = new db.admin();
   admin.firstname = firstname;
   admin.lastname = lastname;
   admin.dni = dni;
   admin.phone = phone;
   admin.adress = adress;
   admin.email = email;
+  admin.password = password;
+  // eslint-disable-next-line camelcase
+  admin.poll_id = poll_id;
   admin.roll = roll;
-  const adminCreate = await db.admin.save();
+  const adminCreate = await admin.save();
   return adminCreate;
 }
 

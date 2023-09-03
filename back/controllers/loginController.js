@@ -1,4 +1,5 @@
 const loginService = require('../services/loginService');
+// const db = require('../models');
 
 // Login
 async function sendOtpLogin(req, res, next) {
@@ -23,7 +24,15 @@ async function verificarPassword(req, res, next) {
   }
 }
 
+// Prueba tiempo
+// async function pruebasTiempo(req, res) {
+//   const limitTime = await db.password.findByPk(19);
+//   console.log(limitTime.limit_time.toLocaleString());
+//   res.status(200).send(limitTime);
+// }
+
 module.exports = {
   sendOtpLogin,
   verificarPassword,
+// pruebasTiempo,
 };

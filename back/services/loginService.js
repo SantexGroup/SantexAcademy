@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 // const admin = require('../models');
 const passwordService = require('./passwordService');
-const adminService = require('./adminSerivice');
+// const adminService = require('./adminSerivice');
 const db = require('../models');
 
 async function emailLogin(email) {
@@ -26,7 +26,7 @@ async function emailLogin(email) {
   const passCreate = await passwordService.createPassword(pwd, limit_time);
   console.log('passCreate', passCreate);
   admin.password_id = passCreate.id;
-  console.log('pass' , passCreate.id);
+  console.log('pass', passCreate.id);
   console.log('admin', admin);
   await admin.save();
 
@@ -58,9 +58,9 @@ async function verificarPassword(pwd) {
   }
 
   const token = jwt.sign({
-    id: admin.id,
-    email: admin.email,
-    name: admin.name,
+    id: db.admin.id,
+    email: db.admin.email,
+    name: db.admin.name,
     is_admin: false,
   });
   return {
