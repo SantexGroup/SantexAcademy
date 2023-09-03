@@ -98,7 +98,6 @@ export class EditCourseComponent implements OnInit {
       teacher: this.form.value.teacher,
       CourseCategoryName: this.form.value.CourseCategoryName,
     };
-    console.log(this.course)
     this.courseService.putCourse(this.course, this.id).subscribe(
       (data) => {
         this.router.navigate(['/admin/panel']);

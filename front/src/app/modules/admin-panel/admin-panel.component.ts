@@ -19,7 +19,6 @@ export class AdminPanelComponent implements OnInit {
     this.courseService.getCourse().subscribe(
       (res) => {
         this.courses = <any>res;
-        console.log(this.courses);
       },
       (err) => console.log(err)
     );

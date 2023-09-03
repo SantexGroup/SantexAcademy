@@ -1,31 +1,131 @@
-<div class="container-fluid" style="padding: 0;">
+<div class="container-fluid" style="padding: 0">
   <div>
-    <div class="row" style="background-color: #fff;">
-      <div class="col">
-        <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        role="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
+<!--     <div class="d-grid gap-2 col-6 mx-auto">
+      <button
+        class="btn btn-primary"
+        type="button"
+        style="box-shadow: 3px 3px 5px #273c9b"
       >
-        Agregar
-      </a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" routerLink="addCourse">Curso</a></li>
-        <li><a class="dropdown-item" routerLink="categories/addCourseCategory">Categoria</a></li>
-        <li><a class="dropdown-item" href="#">Horario</a></li>
-      </ul>
+        Categorias
+      </button>
+      <button
+        class="btn btn-primary"
+        type="button"
+        style="
+          box-shadow: 2px 2px 5px #000000;
+          text-shadow: 1px 1px 2px #000000;
+        "
+      >
+        Horarios
+      </button>
+    </div>
+   
+    <div class="row mt-5">
+      <div class="col">
+        <button
+          class="btn"
+          style="
+            background-color: var(--colorOrange);
+            width: 100%;
+            border-color: #000;
+            border-width: 2px;
+          "
+        >
+          Categorias
+        </button>
       </div>
       <div class="col">
-        <a routerLink="categories" style="text-decoration: none; color: #000;">Categorias</a>
+        <button
+          class="btn"
+          style="
+            width: 200px;
+            background-color: #4f75bd;
+            border-radius: 2px;
+            border-color: #000;
+            box-shadow: 3px 3px 5px #4e66d1;
+            text-shadow: 1px 1px 5px #fff;
+          "
+        >
+          Horarios
+        </button>
+      </div>
+      <div class="col">
+        <button
+          type="submit"
+          class="btn"
+          style="
+            border-color: var(--colorOrange);
+            box-shadow: 5px 5px 0 var(--colorOrange);
+            margin: 0;
+          "
+        >
+          Categorias
+        </button>
+      </div>
+      <div class="col">
+        <button
+          type="submit"
+          class="btn focus"
+          style="
+            border-color: var(--colorBlue);
+            box-shadow: 0px 0px 5px var(--colorBlue);
+            margin: 0;
+          "
+        >
+          Categorias
+        </button>
       </div>
     </div>
-    <table class="table rounded" >
+
+    <div class="row">
+      <div class="col">
+        <button
+          class="btn btn"
+          style="
+            background-color: var(--colorOrange);
+            border-radius: 15px;
+            padding-left: 30px;
+            padding-right: 30px;
+            color: #fff;
+          "
+        >
+          Categorias
+        </button>
+      </div>
+    </div> -->
+    <div class="row" style="background-color: #fff">
+      <div class="col">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Agregar
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" routerLink="addCourse">Curso</a></li>
+          <li>
+            <a class="dropdown-item" routerLink="categories/addCourseCategory"
+              >Categoria</a
+            >
+          </li>
+          <li><a class="dropdown-item" routerLink="schedule">Horario</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <a routerLink="categories" style="text-decoration: none; color: #000"
+          >Categorias</a
+        >
+      </div>
+    </div>
+    <table class="table rounded">
       <thead>
         <tr>
           <th scope="col fs-1">Curso</th>
-          <th scope="col">Activo
+          <th scope="col">
+            Activo
             <i class="fa fa-check-circle"></i>
           </th>
           <th scope="col">Editar</th>

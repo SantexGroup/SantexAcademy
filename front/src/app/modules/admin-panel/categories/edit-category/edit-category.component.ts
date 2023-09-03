@@ -53,7 +53,6 @@ export class EditCategoryComponent implements OnInit {
       id: this.id,
       name: this.form.value.name,
     };
-    console.log(this.categories);
       this.courseCategoryService.putCourseCategory(this.categories, this.id)
       .subscribe(
         (data) => {

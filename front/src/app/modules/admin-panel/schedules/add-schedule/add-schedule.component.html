@@ -1,1 +1,67 @@
-<p>add-schedule works!</p>
+<div class="row mt-3 offset-lg-2">
+  <div
+    class="card text-white mb-3"
+    style="max-width: 50rem; background-color: var(--colorBlue)"
+  >
+    <div class="card-body">
+      <div class="card-header text-center">Agregar Horario</div>
+      <form>
+        <label class="form-label">Donde se realizara</label>
+        <input
+          [(ngModel)]="schedule.where"
+          type="text"
+          class="form-control"
+          name="name"
+        />
+
+        <label class="form-label">Curso al que quiere asignar este curso</label>
+        <select
+          [(ngModel)]="schedule.course"
+          name="course"
+          class="row form-control mt-2"
+          style="margin-left: 0px"
+        >
+          <option value="">Selecciona un curso</option>
+          <option *ngFor="let course of courses" [value]="course.name">
+            <h1>{{ course.name }}</h1>
+          </option>
+        </select>
+
+
+
+
+        <label class="form-label">Dia/s</label>
+        <input
+          [(ngModel)]="schedule.day"
+          type="text"
+          class="form-control"
+          name="name"
+        />
+
+        <label class="form-label">Horarios</label>
+        <input
+          [(ngModel)]="schedule.schedule"
+          type="text"
+          class="form-control"
+          name="name"
+        />
+        <input
+          [(ngModel)]="schedule.active"
+          type="checkbox"
+          class="form-check-input mt-2"
+          name="active"
+        />
+        <label class="form-label p-1">Esta activo el horario?</label>
+        <div class="row">
+          <button
+            (click)="add()"
+            class="btn btn-danger row"
+            style="margin-left: 4px"
+          >
+            Agregra
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

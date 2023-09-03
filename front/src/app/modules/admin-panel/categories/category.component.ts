@@ -19,13 +19,12 @@ export class CategoryComponent implements OnInit {
     this.courseCategoryService.getCourseCategory().subscribe(
       (res) => {
         this.categories = <any>res;
-        console.log(this.categories);
       },
       (err) => console.log(err)
     );
   }
 
-  deleteCourse(id: number) {
+  deleteCourseCategory(id: number) {
     this.courseCategoryService.deleteCourseCategory(id).subscribe(
       (res) => {
         window.location.reload();
