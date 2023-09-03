@@ -3,9 +3,10 @@
   }
   .registeranswer {
     min-height: 67vh;
-    background-color: #0bf439;
+    background-color: #e78325;
     border-radius: 5px;
     /* display: flex; */
     justify-content: center;
     text-align: center;
+    color: blue;
   }

@@ -10,8 +10,8 @@ const routes: Routes = [
     component: DashboardPageComponent,
     children: [
      { path: 'registeranswer', component: RegisteranswerComponent },
-     { path: 'registeranswer/:showRegisterAnswer', component: RegisteranswerComponent },
-     { path: 'registeranswer-success', component: RegisteranswerComponent }
+//     { path: 'registeranswer/:showRegisterAnswer', component: RegisteranswerComponent },
+//     { path: 'dashboard/registeranswer', component: RegisteranswerComponent }
     ]
   }
 ];

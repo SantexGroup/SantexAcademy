@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
 import { QuienessomosComponent } from './modules/pages/quienessomos/quienessomos.component';
 import { IntegranteComponent } from './modules/pages/integrante/integrante.component';
@@ -14,11 +15,11 @@ const routes: Routes = [
   },
   {
     path: 'cursos',
-    loadChildren: () => import('./modules/cursos/cursos.module').then( m => m.CursosModule)
+    loadChildren: () => import('./modules/cursos/cursos.module').then( m => m.CursosModule),
   },
   {
     path: 'dashboard',
-    component:DashboardPageComponent
+    component:DashboardPageComponent,
   },
   {
     path: 'quienes-somos',
@@ -26,7 +27,7 @@ const routes: Routes = [
   },
   {
     path: 'quienes-somos/:id',
-    component:IntegranteComponent
+    component:IntegranteComponent,
   },
   {
     path: 'catalogo-cursos',
@@ -34,16 +35,16 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    component: RegisterformComponent
+    component: RegisterformComponent,
   },
   {
     path: '',
     redirectTo: 'dashboard',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: '**',
-    component:ErrorPageComponent
+    component:ErrorPageComponent,
   },
   // {
   //   path: '404',

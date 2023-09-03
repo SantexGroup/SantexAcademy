@@ -21,7 +21,11 @@ export class RegisterformComponent implements OnInit {
     password: '',
     apellido: '',
     nombre: '',
-    email: ''
+    email: '',
+    estado: true,
+    confirmPassword: '',
+    createdAt: new Date,
+    updatedAt: new Date
   };
 
   constructor(
@@ -36,7 +40,7 @@ export class RegisterformComponent implements OnInit {
   }
 
 redirregistersuccess() {
-  this.router.navigate(['dashboard/registeranswer']);// Funcion que redirige a la página de respuesta
+  this.router.navigate(['registeranswer']);// Funcion que redirige a la página de respuesta
 }
 
 submitForm() {
