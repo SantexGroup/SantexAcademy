@@ -8,13 +8,15 @@ import { HomeComponent } from './modules/home/home.component';
 import { LanguageComponent } from './modules/crud-data/language/language.component';
 import { AppComponent } from './app.component';
 import { ExperiencesComponent } from './modules/crud-data/experiences/experiences.component';
+import { PersonalComponent } from './modules/crud-data/personal/personal.component';
 
 const routes: Routes = [
-  {
+  // TODO: DESCOMENTAR ANTES DE SUBIR Y CONFIGURAR DIRECCIONAMIENTO
+/*   {
     path: '',
     component: AppComponent
-  },
-  {
+  }, */
+  /* {
     path: 'home/:id',
     component: HomeComponent,
     children: [
@@ -35,7 +37,7 @@ const routes: Routes = [
         component: LanguageComponent
       }
     ]
-  },
+  }, */
   {
     path: 'registro',
     component: RegistroComponent
@@ -43,6 +45,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  // TODO: ELIMINAR ANTE DE SUBIR
+  {
+    path: 'personal',
+    component: PersonalComponent
   },
 ];
 

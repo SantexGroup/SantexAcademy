@@ -1,0 +1,53 @@
+.title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.experiencesInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  width: 60vh;
+  height: 82vh;
+}
+
+.addExperience{
+  float: left;
+}
+
+form textarea {
+  resize: none;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+form input {
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+form mat-form-field {
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.dates{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.botonera {
+  width: 100%;
+  display: flex;
+  margin-top: 15px;
+  justify-content: center;
+  align-items: center;
+}
