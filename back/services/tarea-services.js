@@ -21,17 +21,17 @@ async function getById(id) {
 }
 
 // eslint-disable-next-line max-len
-async function createTarea(name, description, idCoordinator, points, date, place, idCategory, cantParticipantes) {
+async function createTarea(name, description, id_coordinator, points, date, place, id_category, cant_participantes) {
   const tarea = new Tarea();
 
   tarea.name = name;
   tarea.description = description;
-  tarea.id_coordinator = idCoordinator;
+  tarea.id_coordinator = id_coordinator;
   tarea.points = points;
   tarea.date = date;
   tarea.place = place;
-  tarea.id_category = idCategory;
-  tarea.cant_participantes = cantParticipantes;
+  tarea.id_category = id_category;
+  tarea.cant_participantes = cant_participantes;
 
   const tareaCreated = await tarea.save();
   return tareaCreated;

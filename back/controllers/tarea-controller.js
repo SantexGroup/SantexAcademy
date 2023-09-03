@@ -17,11 +17,12 @@ async function getTareaById(req, res, next) {
 
 async function createTarea(req, res) {
   const {
-    name, description, idCoordinator, points, date, place, idCategory, cantParticipantes,
+    // eslint-disable-next-line camelcase
+    name, description, id_coordinator, points, date, place, id_category, cant_participantes,
   } = req.body;
 
   // eslint-disable-next-line max-len
-  const tarea = await tareaServices.createTarea(name, description, idCoordinator, points, date, place, idCategory, cantParticipantes);
+  const tarea = await tareaServices.createTarea(name, description, id_coordinator, points, date, place, id_category, cant_participantes);
 
   res.status(201).send(tarea);
 }
