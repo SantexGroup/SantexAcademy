@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
 // const admin = require('../models');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const sgMail = require('@sendgrid/mail');
 const passwordService = require('./passwordService');
 // const adminService = require('./adminSerivice');
 const db = require('../models');
@@ -30,18 +32,46 @@ async function emailLogin(email) {
   console.log('admin', admin);
   await admin.save();
 
-  // Llamar al método que hace el Insert a la tabla del password
-  // Llamar al método que actualiza el password_id en la tabla de admin
-  // adminService.editAdmin();
-
   // Confirmar variable de control
   // eslint-disable-next-line prefer-const
   existeAdmin = true;
 
-  // Llama al sendgrid
-  // code here
-
   return { existeAdmin };
+}
+
+// Llama al sendgrid
+function sendEmail() {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  const msg = {
+    to: 'nanyque02@gmail.com',
+    from: 'leo.vm.cba@gmail.com', // Use the email address or domain you verified above
+    subject: 'Sending with Twilio SendGrid is Fun',
+    text: 'and easy to do anywhere, even with Node.js',
+    // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+  };
+  // ES6
+  // sgMail.send(msg).then(
+  //   () => {},
+  //   (error) => {
+  //     console.error(error);
+
+  //     if (error.response) {
+  //       console.error(error.response.body);
+  //     }
+  //   },
+  // );
+  // ES8
+  (async () => {
+    try {
+      await sgMail.send(msg);
+    } catch (error) {
+      console.error(error);
+
+      if (error.response) {
+        console.error(error.response.body);
+      }
+    }
+  })();
 }
 
 // Función para verificar password
@@ -73,5 +103,6 @@ async function verificarPassword(pwd) {
 
 module.exports = {
   emailLogin,
+  sendEmail,
   verificarPassword,
 };

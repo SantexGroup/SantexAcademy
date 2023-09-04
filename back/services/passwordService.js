@@ -53,7 +53,6 @@ if (tiempoActual.toLocaleString() <= limiteTiempo) {
 }
 
 // Prueba para ver si los datos recibidos en la base de datos están pasados correctamente.
-console.log();
 
 module.exports = {
   createPassword,

@@ -84,7 +84,7 @@ async function editAdmin(id, firstname, lastname, dni, phone, adress, email, pas
     admin.password_id = password_id;
   }
 
-  const adminEdited = await db.admin.save();
+  const adminEdited = await admin.save();
   return adminEdited;
 }
 
