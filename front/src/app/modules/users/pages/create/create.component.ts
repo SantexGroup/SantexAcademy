@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../interface/user.interface';
-import { UsersService } from '../../services/users.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { User } from '../../interface/user.interface';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-create',
@@ -44,7 +45,7 @@ export class CreateComponent implements OnInit {
           )
     }
 
-  // Función para validar selección de tipo de usuario
+  // Función para validar selección de tipo de usuario // Llevar a Services o Middleware o Directivas
   validateUserType(control: any) {
     if (control.value === 'Seleccione') {
       return { invalidUserType: true };

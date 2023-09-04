@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Curso } from '../../interface/cursos.interface';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CursosService } from '../../services/cursos.service';
 import { switchMap } from 'rxjs';
+
+import { CursosService } from '../../services/cursos.service';
+import { Curso } from '../../interface/cursos.interface';
 
 @Component({
   selector: 'app-get-curso',

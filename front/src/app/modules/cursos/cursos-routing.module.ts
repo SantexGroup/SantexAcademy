@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AllCursosComponent } from './pages/all-cursos/all-cursos.component';
 import { CreateCursoComponent } from './pages/create-curso/create-curso.component';
 import { GetCursoComponent } from './pages/get-curso/get-curso.component';
