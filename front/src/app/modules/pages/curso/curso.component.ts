@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Curso } from '../../../models/curso.interface';
+
+import { Curso } from '../../cursos/interface/cursos.interface';
+// import { Curso } from '../../../models/curso.interface';
+
 
 @Component({
   selector: 'app-curso',
@@ -8,10 +11,21 @@ import { Curso } from '../../../models/curso.interface';
 })
 export class CursoComponent implements OnInit {
   @Input() curso: Curso = {
-    id: '',// Cambiar cuando se requiera string
-    name: '',
-    price: 0,
-    image: ''
+    nombre: '',
+    descripcion: '',
+    imagen: '',
+    duracion: 0,
+    capacidad: 0,
+    idnivel: null,
+    requisitos:  '',
+    habilitado: true,
+    fechaInicio: new Date,
+    fechafin: null,
+    idusuarioalta: null,
+    estado: true,
+    idusuariomodificacion: null,
+    createdAt: new Date,
+    updatedAt: new Date,
   }
 
   constructor() { }

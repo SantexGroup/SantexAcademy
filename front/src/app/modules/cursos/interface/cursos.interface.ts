@@ -8,7 +8,7 @@ export interface Curso {
     id?:                    number;
     nombre:                string;
     descripcion:           string;
-    imagen:                string;
+    imagen?:                string;
     duracion:              number;
     capacidad:             number;
     idnivel:               null;
