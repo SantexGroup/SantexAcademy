@@ -17,6 +17,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from'@angular/material/select';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -42,7 +44,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCardModule,
+    MatTableModule
    
     
   ],
