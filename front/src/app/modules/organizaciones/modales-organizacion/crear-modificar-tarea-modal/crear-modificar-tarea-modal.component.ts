@@ -20,31 +20,31 @@ export class CrearModificarTareaModalComponent implements OnInit {
 
   constructor(private categoriaService:CategoriaService, organizacionService:OrganizacionService, fb:FormBuilder, 
               private tareaService:TareaService, private matSnackBar:MatSnackBar,private dialogoActual:MatDialogRef<CrearModificarTareaModalComponent>,
-              @Inject(MAT_DIALOG_DATA)dataTarea:Tarea) { 
+              @Inject(MAT_DIALOG_DATA)private dataTarea:Tarea) { 
     
                 this.datosOrganizacion$ = organizacionService.getDatosOrganizacion;
                 
     if(dataTarea){
       
       this.titulo ='Modificar Tarea';
-      this.accion = 'MODIFICAR'
+      this.modificar = true;
 
-      const fechaMoment = moment(dataTarea.date);
+      const fechaMoment = moment(this.dataTarea.date);
       
       this.form = fb.group({
-        nombre:[dataTarea.name, Validators.required],
-        descripcion:[dataTarea.description,Validators.required],
-        puntos:[dataTarea.points,Validators.required],
+        nombre:[this.dataTarea.name, Validators.required],
+        descripcion:[this.dataTarea.description,Validators.required],
+        puntos:[this.dataTarea.points,Validators.required],
         fecha:[fechaMoment.toDate(),Validators.required],
-        lugar:[dataTarea.place,Validators.required],
-        idCategoria:[dataTarea.id_category,Validators.required],
-        cantidadParticipantes:[dataTarea.cant_participantes,Validators.required]
+        lugar:[this.dataTarea.place,Validators.required],
+        idCategoria:[this.dataTarea.id_category,Validators.required],
+        cantidadParticipantes:[this.dataTarea.cant_participantes,Validators.required]
   
       });  
     }
     else{
       this.titulo = 'Crear Tarea';
-      this.accion = 'CREAR';
+      this.modificar = false;
       this.form = fb.group({
         nombre:['', Validators.required],
         descripcion:['',Validators.required],
@@ -69,7 +69,7 @@ export class CrearModificarTareaModalComponent implements OnInit {
   datosOrganizacion$:Observable<Organizacion | null>;
   form:FormGroup;
   titulo:string;
-  accion:string;
+  modificar:boolean;
 
 
   cargarCategorias():void{
@@ -127,6 +127,31 @@ export class CrearModificarTareaModalComponent implements OnInit {
       this.matSnackBar.open("No se pudo crear la Tarea","ERROR",{horizontalPosition:'center', verticalPosition:'top', duration:3000});
     }
   }
+
+  modificarTarea():void{
+    const formValue = this.form.value;
+    const tareaModificada:Tarea = {
+      name: formValue.nombre,
+      description: formValue.descripcion,
+      points: formValue.puntos,
+      date: formValue.fecha,
+      place: formValue.lugar,
+      id_category: formValue.idCategoria,
+      cant_participantes: formValue.cantidadParticipantes
+    }
+    
+    this.tareaService.modificarTarea(this.dataTarea.id!, tareaModificada).subscribe({
+      next:()=>{
+        this.matSnackBar.open("Tarea Modificada","OK",{horizontalPosition:'center', verticalPosition:'top', duration:3000});
+          this.dialogoActual.close(true);
+      },
+      error:(err)=>{
+        this.matSnackBar.open("No se pudo modificar la Tarea","ERROR",{horizontalPosition:'center', verticalPosition:'top', duration:3000});
+      }
+    });
+  }
+
+
 
 
 }
