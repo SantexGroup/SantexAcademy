@@ -12,14 +12,18 @@ import { PersonalComponent } from './modules/crud-data/personal/personal.compone
 
 const routes: Routes = [
   // TODO: DESCOMENTAR ANTES DE SUBIR Y CONFIGURAR DIRECCIONAMIENTO
-/*   {
+/* */  {
     path: '',
     component: AppComponent
-  }, */
-  /* {
+  }, 
+  /* */{
     path: 'home/:id',
     component: HomeComponent,
     children: [
+      {
+        path: 'personal',
+        component: PersonalComponent
+      },
       {
         path: 'experiencias',
         component: ExperiencesComponent
@@ -37,7 +41,7 @@ const routes: Routes = [
         component: LanguageComponent
       }
     ]
-  }, */
+  }, 
   {
     path: 'registro',
     component: RegistroComponent
@@ -47,10 +51,10 @@ const routes: Routes = [
     component: LoginComponent
   },
   // TODO: ELIMINAR ANTE DE SUBIR
-  {
+/*   {
     path: 'personal',
     component: PersonalComponent
-  },
+  }, */
 ];
 
 @NgModule({
