@@ -27,8 +27,10 @@
 
     --font-family-1: 'Poppins', sans-serif;
     --box-shadow-1: rgb(0 0 0 / 10%) 0 0 10px;
+    --size-1: 1rem;
     --font-size-1: 1rem;
     --font-size-2: 1.2rem;
+    --font-size-3: 1.5rem;
     --border-radius: 3px;
 
     --separation: 5rem;

@@ -1,6 +1,44 @@
-.footer{
+.footer {
     background-color: var(--color-5);
     color: var(--color-1);
     text-align: center;
+    padding: var(--size-1);
 }
 
+.footer h6 {
+    font-size: var(--font-size-3);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+}
+
+.footer-left div {
+    margin-right: var(--size-1);
+}
+
+.image-container {
+    max-width: 25rem;
+    border-radius: 4rem;
+    background: radial-gradient(circle, var(--color-0) 0%, var(--color-1) 40%, var(--color-5) 80%);
+}
+
+.image {
+    max-width: 8rem;
+}
+
+.icon-image {
+    max-width: 3.5rem;
+    margin: 0.4rem;
+}
+
+.icon-container {
+    max-width: 10rem;
+}
