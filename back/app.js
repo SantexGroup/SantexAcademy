@@ -4,10 +4,10 @@ require('dotenv').config();
 const express = require('express');
 // Sanitizacion XSS
 const xss = require('xss-clean');
-// Custom Dependencies:
+// // Custom Dependencies:
 const helmet = require('helmet');
 const session = require('express-session');
-// Winston logger Dependencies
+// // Winston logger Dependencies
 const cors = require('cors');
 const logger = require('./utils/winston.logger');
 
@@ -24,7 +24,7 @@ const app = express();
 validateEnv.validate();
 app.use(helmet());
 app.use(helmet.ieNoOpen());
-// Sets "Strict-Transport-Security: max-age=5184000; includeSubDomains".
+// // Sets "Strict-Transport-Security: max-age=5184000; includeSubDomains".
 const sixtyDaysInSeconds = 5184000;
 app.use(helmet.hsts({
   maxAge: sixtyDaysInSeconds,
@@ -72,10 +72,6 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-if (config.environment === 'production') {
-  app.set('trust proxy', 1); // trust first proxy
-}
-
 models.sequelize.authenticate()
   .then(() => {
     logger.api.debug('Conexión con la Base de Datos: EXITOSA');
@@ -85,5 +81,7 @@ models.sequelize.authenticate()
     logger.api.error(err);
   });
 
+console.log("Estoy en app.js")
 app.use('/', routes);
+
 module.exports = app;
