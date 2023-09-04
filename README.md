@@ -1,6 +1,9 @@
 #Novedades
-Ultima fusión en rama develop: Lunes 4 de agosto de 2023 
+Ultima fusión en rama develop: Lunes 4 de agosto de 2023 18:47 hs
 Se trabajó:
+Se agrega gestion de cursos para crud en front de Administrador
+
+
 unificación de formularios de registro y validaciones de campos
 se agrego validación de password y su confirmación
 se repararon errores por el descarte de registerbutton y registeranswer
@@ -8,7 +11,6 @@ se reconecto formulario de registro lado usuario para que muestre los ingresos d
 
 Se habilita en DB: cursos para guardados
 Se cambia Catalogo-cursos para mostrar DB:cursos
-Se agrega cursos/index en barra de navegador para crud en front
 
 
 # Santex Academy
