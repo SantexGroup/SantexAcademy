@@ -67,7 +67,7 @@
             <div *ngIf="form.get('confirmPassword')?.invalid && (form.get('confirmPassword')?.dirty || form.get('confirmPassword')?.touched)"
               class="text-danger">
               <div *ngIf="form.get('confirmPassword')?.errors?.['required']">Debes repetir la contraseña.</div>
-              <!--<div *ngIf="form.get('confirmPassword')?.errors?.['coincidePassword']">Las contraseñas no coinciden.</div>-->
+              <div *ngIf="form.get('confirmPassword')?.errors?.['coincidePassword']">Las contraseñas no coinciden.</div>
             </div>
           </div>
           <div class="form-outline mb-2">

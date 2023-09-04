@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 import { RegistroService } from '../../../core/services/registro.service';
 import { User } from '../../users/interface/user.interface';
@@ -54,6 +55,11 @@ export class RegisterformComponent implements OnInit {
           userType: ['Seleccione', [Validators.required, this.validateUserType]]
         },
       );
+        // Agrego validadores para poder usar funcion* que compare valores de password
+        this.form.get('confirmPassword')?.setValidators([
+        Validators.required,
+        this.passwordCompare.bind(this)
+        ]);
     };
 
     // Función para validar selección de tipo de usuario
@@ -66,6 +72,18 @@ export class RegisterformComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+    // *Funcion para validar coincidencia de contraseñas
+  passwordCompare(control: AbstractControl): { [key: string]: any } | null {
+  const password = this.form.get('password')?.value;
+  const confirmPassword = control.value;
+
+  if (password === confirmPassword) {
+    return null; // Las contraseñas coinciden, no hay error
+  } else {
+    return { coincidePassword: true }; // Las contraseñas no coinciden, se manda el error
+  }
   }
 
   //Falta manejo de errores
@@ -155,6 +173,10 @@ submitForm() {
   {
     return this.Password?.touched && !this.Password?.valid;
   }
+  //   // Agregado por funcion passwordCompare
+  // get ConfirmPasswordValid() {
+  //   return this.form.get('confirmPassword')?.touched && this.form.get('confirmPassword')?.hasError('coincidePassword');
+  // }
 
   get NombreValid()
   {
