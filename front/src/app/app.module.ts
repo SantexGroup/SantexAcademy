@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -17,14 +19,20 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatMomentDateModule
   ],
   providers: [
     {
       provide:HTTP_INTERCEPTORS,
       useClass:JwtInterceptor,
       multi:true
-    }],
+    },
+    {
+      provide:MAT_DATE_LOCALE, useValue:'es-ES'
+    }
+    
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

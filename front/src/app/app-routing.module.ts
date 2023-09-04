@@ -5,10 +5,6 @@ import { OrganizacionGuard } from './core/guards/organizacion.guard';
 
 const routes: Routes = [
   {
-    path: 'dashboard',
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
-  },
-  {
     path:'index',
     loadChildren: ()=> import ('./modules/index/index.module').then(m=>m.IndexModule)
   },
