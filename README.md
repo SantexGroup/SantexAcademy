@@ -1,5 +1,5 @@
 #Novedades
-Ultima fusión de ramas: Lunes 4 de agosto de 2023 (Actualización completa de todas las ramas sin errores)
+Ultima fusión en rama develop: Lunes 4 de agosto de 2023 
 Se trabajó:
 unificación de formularios de registro y validaciones de campos
 se agrego validación de password y su confirmación
