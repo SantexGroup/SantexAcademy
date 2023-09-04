@@ -13,6 +13,9 @@ const logger = require('./utils/winston.logger');
 
 // Models:
 const models = require('./models');
+// const userModels = require('./models').user;
+// const adminModels = require('./models').admin;
+// const passwordModels = require('./models').password;
 
 // Rutes:
 const routes = require('./routes');
@@ -21,6 +24,9 @@ const config = require('./config/config');
 const validateEnv = require('./utils/validateEnv');
 
 const app = express();
+app.listen(3000, () => {
+  console.log('servidor corriendo en el localhost 3000');
+});
 validateEnv.validate();
 app.use(helmet());
 app.use(helmet.ieNoOpen());
@@ -86,4 +92,5 @@ models.sequelize.authenticate()
   });
 
 app.use('/', routes);
+
 module.exports = app;
