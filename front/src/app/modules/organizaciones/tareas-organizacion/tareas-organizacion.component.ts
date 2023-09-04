@@ -57,4 +57,8 @@ export class TareasOrganizacionComponent implements OnInit {
     this.dialog.open(DetalleTareaComponent, {data:tarea});
   }
 
+  editarTarea(tarea:Tarea):void{
+    this.dialog.open(CrearModificarTareaModalComponent,{data:tarea});
+  }
+
 }
