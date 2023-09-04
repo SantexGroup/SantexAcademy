@@ -30,11 +30,11 @@ async function createTarea(req, res) {
 async function editTarea(req, res) {
   const { id } = req.params;
   const {
-    name, description, idCoordinator, points, date, place, idCategory, cantParticipantes,
+    name, description, id_coordinator, points, date, place, id_category, cant_participantes,
   } = req.body;
 
   // eslint-disable-next-line max-len
-  const tarea = await tareaServices.editTarea(id, name, description, idCoordinator, points, date, place, idCategory, cantParticipantes);
+  const tarea = await tareaServices.editTarea(id, name, description, id_coordinator, points, date, place, id_category, cant_participantes);
   res.status(201).send(tarea);
 }
 

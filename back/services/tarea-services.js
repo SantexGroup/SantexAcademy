@@ -38,7 +38,7 @@ async function createTarea(name, description, id_coordinator, points, date, plac
 }
 
 // eslint-disable-next-line max-len
-async function editTarea(id, name, description, idCoordinator, points, date, place, idCategory, cantParticipantes) {
+async function editTarea(id, name, description, id_coordinator, points, date, place, id_category, cant_participantes) {
   const tarea = await getById(id);
 
   if (name) {
@@ -47,8 +47,8 @@ async function editTarea(id, name, description, idCoordinator, points, date, pla
   if (description) {
     tarea.description = description;
   }
-  if (idCoordinator) {
-    tarea.id_coordinator = idCoordinator;
+  if (id_coordinator) {
+    tarea.id_coordinator = id_coordinator;
   }
   if (points) {
     tarea.points = points;
@@ -59,11 +59,11 @@ async function editTarea(id, name, description, idCoordinator, points, date, pla
   if (place) {
     tarea.place = place;
   }
-  if (idCategory) {
-    tarea.id_category = idCategory;
+  if (id_category) {
+    tarea.id_category = id_category;
   }
-  if (cantParticipantes) {
-    tarea.cant_participantes = cantParticipantes;
+  if (cant_participantes) {
+    tarea.cant_participantes = cant_participantes;
   }
 
   const tareaEdited = await tarea.save();
