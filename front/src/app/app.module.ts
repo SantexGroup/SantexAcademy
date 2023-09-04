@@ -6,10 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './modules/share/error-page/error-page.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
-import { EstadoUsuarioDirective } from './directivas/estado-usuario.directive';
-import { ReactiveFormsModule } from '@angular/forms';
 import { PagesModule } from './modules/pages/pages.module';
 import { ShareModule } from './modules/share/shares.module';
+import { RegisterModule } from './modules/register/register.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,8 @@ import { ShareModule } from './modules/share/shares.module';
     HttpClientModule,
     DashboardModule,
     PagesModule,
-    ShareModule
+    ShareModule,
+    RegisterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

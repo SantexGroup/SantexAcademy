@@ -1,4 +1,115 @@
 <div [class.hidden]="showRegisterAnswer">
+<h2 class="text-center">Registro de usuario</h2>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-5"> 
+        <form [formGroup]="form" (ngSubmit)="onEnviar($event, userData)">
+          <div class="form-outline mb-2">
+            <label class="form-label" for="form3Example1cg">Nombre</label>
+            <input type="text" id="nombre" class="form-control form-control-s" formControlName="nombre"
+              [(ngModel)]="userData.nombre" />
+            <div
+              *ngIf="form.get('nombre')?.invalid && (form.get('nombre')?.dirty || form.get('nombre')?.touched)"
+              class="text-danger">
+              <div *ngIf="form.get('nombre')?.errors?.['required']">El nombre es obligatorio.</div>
+            </div>
+          </div>
+      
+          <div class="form-outline mb-2">
+            <label class="form-label" for="form3Example1cg">Apellido</label>
+            <input type="text" id="apellido" class="form-control form-control-s" formControlName="apellido"
+              [(ngModel)]="userData.apellido" />   
+            <div
+              *ngIf="form.get('apellido')?.invalid && (form.get('apellido')?.dirty || form.get('apellido')?.touched)"
+              class="text-danger">
+              <div *ngIf="form.get('apellido')?.errors?.['required']">El apellido es obligatorio.</div>
+            </div>
+          </div>
+      
+          <div class="form-outline mb-2">
+            <label class="form-label" for="form3Example1cg">Nombre de usuario</label>
+            <input type="text" id="username" class="form-control form-control-s" formControlName="username"
+              [(ngModel)]="userData.username" />     
+            <div
+              *ngIf="form.get('username')?.invalid && (form.get('username')?.dirty || form.get('username')?.touched)"
+              class="text-danger">
+              <div *ngIf="form.get('username')?.errors?.['required']">El nombre de usuario es obligatorio.</div>
+            </div>
+          </div>
+      
+          <div class="form-outline mb-2">
+            <label class="form-label" for="form3Example3cg">Email</label>
+            <input type="email" id="email" class="form-control form-control-s" formControlName="email"
+              [(ngModel)]="userData.email" />
+            <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)"
+              class="text-danger">
+              <div *ngIf="form.get('email')?.errors?.['required']">El email es obligatorio.</div>
+              <div *ngIf="form.get('email')?.errors?.['email']">El email debe ser un correo
+                electrónico válido.</div>
+            </div>
+          </div>
+      
+          <div class="form-outline mb-2">
+            <label class="form-label" for="form3Example4cg">Contraseña</label>
+            <input type="password" id="password" class="form-control form-control-s" formControlName="password"
+              [(ngModel)]="userData.password" />     
+            <div
+              *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)"
+              class="text-danger">
+              <div *ngIf="form.get('password')?.errors?.['required']">La contraseña es obligatoria.</div>
+              <div *ngIf="form.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 8 caracteres.</div>
+            </div>
+          </div>
+          <div class="form-outline mb-3">
+            <label class="form-label" for="form3Example4cdg">Repite la contraseña</label>
+            <input type="password" id="confirmPassword" class="form-control form-control-lg"
+              formControlName="confirmPassword" />
+            <div *ngIf="form.get('confirmPassword')?.invalid && (form.get('confirmPassword')?.dirty || form.get('confirmPassword')?.touched)"
+              class="text-danger">
+              <div *ngIf="form.get('confirmPassword')?.errors?.['required']">Debes repetir la contraseña.</div>
+              <!--<div *ngIf="form.get('confirmPassword')?.errors?.['coincidePassword']">Las contraseñas no coinciden.</div>-->
+            </div>
+          </div>
+          <div class="form-outline mb-2">
+            <label class="form-label" for="userType">Tipo de Usuario</label>
+            <select id="userType" class="form-select" formControlName="userType">
+              <option value="Seleccione">Seleccione</option>
+              <option value="admin">Administrador</option>
+              <option value="docente">Docente</option>
+              <option value="alumno">Alumno</option>
+            </select>
+            <div
+            *ngIf="form.get('userType')?.invalid && (form.get('userType')?.dirty || form.get('userType')?.touched)"
+            class="text-danger">
+            <div *ngIf="form.get('userType')?.hasError('invalidUserType')" class="text-danger">
+              Debe seleccionar un tipo de usuario.
+            </div>
+          </div>
+          </div>   
+          <div class="form-check mb-2">
+            <input class="form-check-input checkboxAgreeTerms" type="checkbox" id="form2Example3cg" formControlName="agreeTerms" />
+            <label class="form-check-label" for="form2Example3cg">
+              Acepto todos los términos en <a href="#!" class="text-body"><u>Términos de servicio</u></a>
+            </label>
+          </div>
+          <div *ngIf="!form.get('agreeTerms')?.value && (form.get('agreeTerms')?.dirty || form.get('agreeTerms')?.touched)" class="text-danger">
+            <div *ngIf="form.get('agreeTerms')?.errors?.['required']">Acepte los términos.</div>
+          </div>         
+          <div class="d-flex flex-column align-items-center">
+            <button class="btn btn-primary mb-2">Guardar</button>
+            <div class="form-outline mb-2 mt-1"> <!-- Ajusta mt-1 para un margen superior más pequeño -->
+              <p>Ya tienes una cuenta?
+                <a href="/login" class="fw-bold text-body"><u>Iniciar Sesión</u></a>
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div [class.hidden]="showRegisterAnswer">
     <div class="register-form">
         <h2>Registro de Usuario</h2>
         <form (submit)="submitForm()">
@@ -27,3 +138,4 @@
       </div>
       
 </div>
+-->

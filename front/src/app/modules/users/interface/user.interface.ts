@@ -13,6 +13,7 @@ export interface User {
     email:     string;
     confirmPassword: string;
     estado: boolean;
+    tipodeusuario: number;
     createdAt?: Date;
     updatedAt?: Date;
 }
