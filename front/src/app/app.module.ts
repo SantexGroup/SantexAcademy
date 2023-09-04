@@ -9,11 +9,13 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { PagesModule } from './modules/pages/pages.module';
 import { ShareModule } from './modules/share/shares.module';
 import { RegisterModule } from './modules/register/register.module';
+import { EstadoUsuarioDirective } from './directivas/estado-usuario.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
+    EstadoUsuarioDirective
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,7 @@ import { RegisterModule } from './modules/register/register.module';
     DashboardModule,
     PagesModule,
     ShareModule,
-    RegisterModule
+    RegisterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

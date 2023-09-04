@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllCursosComponent } from './pages/all-cursos/all-cursos.component';
 import { CreateCursoComponent } from './pages/create-curso/create-curso.component';
 import { GetCursoComponent } from './pages/get-curso/get-curso.component';
+import { AdminComponent } from '../pages/admin/admin.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
     children: [
       {
         path: 'index',
-        component: AllCursosComponent
+        component: AdminComponent
       },
       {
         path: 'create',
