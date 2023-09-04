@@ -24,4 +24,9 @@ export class TareaService {
     return this.apiService.put('/tarea/edit-tarea/'+id,tarea);
   }
 
+  eliminarTarea(id:number):Observable<any>{
+
+    return this.apiService.delete('/tarea/delete-tarea/'+id);
+  }
+
 }
