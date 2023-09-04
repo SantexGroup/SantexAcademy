@@ -42,7 +42,7 @@ async function deleteTarea(req, res) {
   const { id } = req.params;
 
   await tareaServices.deleteTarea(id);
-  res.status(200).send(`Usuario con el id ${id} ha sido eliminado correctamente`);
+  res.status(200).json({message:`Usuario con el id ${id} ha sido eliminado correctamente`});
 }
 
 module.exports = {

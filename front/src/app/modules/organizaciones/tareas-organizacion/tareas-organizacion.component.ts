@@ -5,6 +5,7 @@ import { TareaService } from 'src/app/core/services/tarea.service';
 import { Tarea } from 'src/app/core/interfaces/tarea';
 import { MatTableDataSource } from '@angular/material/table';
 import { DetalleTareaComponent } from '../modales-organizacion/detalle-tarea/detalle-tarea.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tareas-organizacion',
@@ -65,6 +66,45 @@ export class TareasOrganizacionComponent implements OnInit {
         }
       }
     });
+  }
+
+  eliminarTarea(tarea:Tarea):void{
+    Swal.fire({
+      title: 'Estas seguro/a?',
+      text: "No podrás revertir esto.",
+      icon: 'warning',
+      iconColor:'#d33',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Si, eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        this.tareaService.eliminarTarea(tarea.id!).subscribe({
+          next:()=>{
+               
+            Swal.fire(
+              'Eliminado!',
+              `La tarea "${tarea.name}" ha sido eliminada.`,
+              'success'
+            );
+            this.mostrarTareas();
+          
+          },
+          error:(err)=>{
+            console.log(err);
+            Swal.fire(
+              'Error',
+              'No se pudo eliminar la tarea.',
+              'error'
+            );
+          }
+        });
+        
+      }
+    })
   }
 
 }
