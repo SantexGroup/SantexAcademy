@@ -1,4 +1,5 @@
 export interface Language{
-    id?: number,
+    level: number,
+    profileId: number,
     language: string,
 }

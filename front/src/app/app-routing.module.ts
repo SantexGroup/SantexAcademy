@@ -15,6 +15,9 @@ const routes: Routes = [
     component: AppComponent
   },
   {
+    path: '#nosotrosContacto', 
+    component: AppComponent},
+  {
     path: 'home/:id',
     component: HomeComponent,
     children: [

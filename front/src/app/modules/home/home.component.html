@@ -2,25 +2,51 @@
     <div style="display: flex;">
         <div class="button-conteiner">
             <div class="button-nav">
-                <button routerLink="experiencias" mat-raised-button color="primary">Mis datos personales</button>
-            </div>
-            <div routerLink="formaciones" class="button-nav">
-                <button mat-raised-button color="primary">Mi Formación</button>
-            </div>
-            <div class="button-nav">
-                <button routerLink="experiencias" mat-raised-button color="primary">Mi Experiencia</button>
-            </div>
-            <div routerLink="lenguajes" class="button-nav">
-                <button mat-raised-button color="primary">Idiomas</button>
+                <button routerLink="experiencias"
+                 mat-raised-button 
+                 color="primary"
+                 (click)="dataUrl.title = 'Datos Personales'"
+                 >Mis datos personales</button>
             </div>
             <div class="button-nav">
-                <button mat-raised-button color="primary">Mis Habilidades</button>
-            </div>
-            <div routerLink="opcionales" class="button-nav">
-                <button mat-raised-button color="primary">Opcionales</button>
+                <button routerLink="formaciones"
+                 mat-raised-button 
+                 color="primary"
+                 (click)="dataUrl.title = 'Formaciones'"
+                 >Mi Formación</button>
             </div>
             <div class="button-nav">
-                <button mat-raised-button color="primary">Mas datos</button>
+                <button routerLink="experiencias"
+                 mat-raised-button 
+                 color="primary"
+                 (click)="dataUrl.title = 'Experiencias'"
+                 >Mi Experiencia</button>
+            </div>
+            <div class="button-nav">
+                <button routerLink="lenguajes"
+                 mat-raised-button 
+                 color="primary"
+                 (click)="dataUrl.title = 'Idiomas' "
+                 >Idiomas</button>
+            </div>
+            <div class="button-nav">
+                <button mat-raised-button 
+                 color="primary"
+                 (click)="dataUrl.title = 'Habilidades'"
+                 >Mis Habilidades</button>
+            </div>
+            <div class="button-nav">
+                <button routerLink="opcionales"
+                 mat-raised-button 
+                 color="primary"
+                 (click)="dataUrl.title = 'Datos Opcionales'"
+                 >Opcionales</button>
+            </div>
+            <div class="button-nav">
+                <button mat-raised-button 
+                 color="primary"
+                 (click)="dataUrl.title = 'Datos Extras'"
+                 >Mas datos</button>
             </div>
         </div>
         <div class="textArea">

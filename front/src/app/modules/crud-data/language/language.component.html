@@ -1,1 +1,30 @@
-<p>language works!</p>
+<body>
+    <div class="formationsInput">
+        <form [formGroup]="languageForm" (ngSubmit)="languageAdd()">
+            <mat-form-field>
+                <mat-label for="company">Idioma:</mat-label>
+                <input matInput formControlName="language" type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="position">Nivel:</mat-label>
+                <input matInput formControlName="level" type="number">
+            </mat-form-field>
+            <div class="botonera">
+                <div class="botones">
+                    <div class="addExperience">
+                        <button 
+                        mat-mini-fab 
+                        color="accent" 
+                        aria-label=""
+                        type="submit">
+                            <mat-icon>plus_one</mat-icon>
+                        </button>
+                    </div>
+                    <button mat-flat-button color="warn">
+                        Salir
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
