@@ -16,6 +16,9 @@
     height: 20%;
 }
 .textArea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 10px;
     width: 100%;
 }

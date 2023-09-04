@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NavBarService } from 'src/app/core/services/nav-bar.service';
+import { GetURLdataService } from 'src/app/core/services/toolServices/get-urldata.service';
+import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UsuarioService } from 'src/app/core/services/usuario.service';
 
 @Component({
@@ -11,16 +12,17 @@ import { UsuarioService } from 'src/app/core/services/usuario.service';
 })
 export class LoginComponent implements OnInit {
   mensajeError: string = "";
-
+  
   constructor(
     private fb: FormBuilder, 
     private router: Router, 
     private userService: UsuarioService,
-    public views: NavBarService
+    public dataUrl: GetURLdataService,
+    private views: NavBarService
     ) { }
 
   ngOnInit(): void {
-    this.views.getRoute();
+    this.dataUrl.getRoute();
   }
 
   get nick() {
@@ -39,7 +41,8 @@ export class LoginComponent implements OnInit {
   submit(myForm: FormGroup) {
     if(myForm.status == 'VALID') {
       this.userService.login(myForm.value).subscribe({
-        next: (data) => { console.log(data); 
+        next: (data) => { console.log(data);
+        this.dataUrl.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
         this.router.navigate(['/home', data.profile.id]);
         }, 
         error: (err) => { 

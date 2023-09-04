@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router'
-import { UsuarioService } from '../../core/services/usuario.service'
-import { NavBarService } from 'src/app/core/services/nav-bar.service';
+import { Router } from '@angular/router'
+import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
+import { GetURLdataService } from 'src/app/core/services/toolServices/get-urldata.service';
 
 @Component({
   selector: 'app-home',
@@ -10,23 +10,15 @@ import { NavBarService } from 'src/app/core/services/nav-bar.service';
 })
 export class HomeComponent implements OnInit {
 
-  fullName: string = '';
-
   constructor(
     private router: Router, 
-    private userDataService: UsuarioService,
-    private thisRoute: ActivatedRoute,
+    public dataUrl: GetURLdataService,
     public views: NavBarService
     ) {
-      this.thisRoute.params.subscribe(params => console.log(params));
      }
 
   ngOnInit(): void {
- /*    this.userDataService.getUserData().subscribe((data: { name: string, lastName: string }) => {
-      this.fullName = `${data.name} ${data.lastName}`;
-    });
-    this.views.titulo=this.fullName; */
-    this.views.getRoute();
+    this.dataUrl.getRoute()
   }
 
   optionales(){

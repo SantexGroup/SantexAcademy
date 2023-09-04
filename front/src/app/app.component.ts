@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavBarService } from './core/services/nav-bar.service';
+import { NavBarService } from './core/services/toolServices/nav-bar.service';
+import { GetURLdataService } from './core/services/toolServices/get-urldata.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,12 @@ import { NavBarService } from './core/services/nav-bar.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'santex-academy';
+  
+  constructor(
+    public views: NavBarService,
+    public dataUrl: GetURLdataService
+    ){  }
 
-  constructor(public views: NavBarService){
+    
 
-  }
 }
