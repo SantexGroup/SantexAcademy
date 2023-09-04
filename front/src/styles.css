@@ -1,17 +1,51 @@
-header.fondo {
-  padding-top: 8rem;
-  padding-bottom: 6rem;
+.nuevo {
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 65%; /* Ajusta el ancho de la imagen según tus necesidades */
+  height:auto; /* Ajusta la altura de la imagen según tus necesidades */
+  background-image: url(assets/images/nuevo.jpg)
+   /* Ajusta el tamaño de la imagen para cubrir el elemento */
+
+}
+
+.nuevo5 {
+  position:absolute;
+  top: 0;
+  left: 60%;
+  width: 40%; /* Ajusta el ancho de la imagen según tus necesidades */
+  height: 370px; /* Ajusta la altura de la imagen según tus necesidades */
+  background-image: url(assets/images/nuevo5.png)
+   /* Ajusta el tamaño de la imagen para cubrir el elemento */
+}
+
+
+
+
+/*header.fondo {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
   padding-right: 2rem;
-  text-align: right;
-  color: #fff;
-  background-image: url("https://cdn.pixabay.com/photo/2018/01/17/04/14/stock-exchange-3087396_1280.jpg");
+  text-align:center;
+  color: white;
+  background-color: #033E8C;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
   background-size: cover;
 }
 
-h1.mensaje-bienvenida {
+/*h1.mensaje-bienvenida {
+  text-align:center;
   line-height: 1.5rem;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
+  font-family:Arial, Helvetica, sans-serif;
 }
+.logo {
+  width: 200px;
+  text-align: center; /* Ajusta el tamaño según tus necesidades */
+ /* margin-right: 50px; /* Agrega margen a la derecha si es necesario */
+ /*margin-left: 200px;
+  /* Otros estilos personalizados */
+
+
