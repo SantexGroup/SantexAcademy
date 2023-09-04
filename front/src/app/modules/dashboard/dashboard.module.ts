@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { CarouselComponent } from 'src/app/modules/dashboard/carousel/carousel.component';
