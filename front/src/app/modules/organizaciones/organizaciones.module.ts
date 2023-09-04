@@ -8,6 +8,7 @@ import { DashboardOrganizacionComponent } from './dashboard-organizacion/dashboa
 import { DatosOrganizacionComponent } from './datos-organizacion/datos-organizacion.component';
 import { TareasOrganizacionComponent } from './tareas-organizacion/tareas-organizacion.component';
 import { CrearTareaModalComponent } from './modales-organizacion/crear-tarea-modal/crear-tarea-modal.component';
+import { DetalleTareaComponent } from './modales-organizacion/detalle-tarea/detalle-tarea.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { CrearTareaModalComponent } from './modales-organizacion/crear-tarea-mod
     DashboardOrganizacionComponent,
     DatosOrganizacionComponent,
     TareasOrganizacionComponent,
-    CrearTareaModalComponent
+    CrearTareaModalComponent,
+    DetalleTareaComponent
   ],
   imports: [
     CommonModule,

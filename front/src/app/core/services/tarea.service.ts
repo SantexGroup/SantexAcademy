@@ -10,7 +10,13 @@ export class TareaService {
 
   constructor(private apiService:ApiService) { }
 
+  
+  getTareas():Observable<Tarea[]>{
+    return this.apiService.get('/tarea/get-all');
+  }
   crearTarea(nuevaTarea:Tarea):Observable<Tarea>{
     return this.apiService.post('/tarea/create-tarea', nuevaTarea);
   }
+
+
 }

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CrearTareaModalComponent } from '../modales-organizacion/crear-tarea-modal/crear-tarea-modal.component';
+import { TareaService } from 'src/app/core/services/tarea.service';
+import { Tarea } from 'src/app/core/interfaces/tarea';
+import { MatTableDataSource } from '@angular/material/table';
+import { DetalleTareaComponent } from '../modales-organizacion/detalle-tarea/detalle-tarea.component';
 
 @Component({
   selector: 'app-tareas-organizacion',
@@ -9,12 +13,48 @@ import { CrearTareaModalComponent } from '../modales-organizacion/crear-tarea-mo
 })
 export class TareasOrganizacionComponent implements OnInit {
 
-  constructor(private dialog:MatDialog) { }
+  constructor(private dialog:MatDialog, private tareaService:TareaService) { }
+
+  
+  columnasTabla: string[] = ['nombre','fecha','acciones'];
+  dataSource = new MatTableDataSource();
 
   ngOnInit(): void {
+    this.mostrarTareas();
   }
 
-  crearTarea():void{
-    this.dialog.open(CrearTareaModalComponent);
+
+  filtrar(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+
+
+  crearTarea():void{
+    this.dialog.open(CrearTareaModalComponent).afterClosed().subscribe({
+      next:(res)=>{
+        if(res === true){
+          this.mostrarTareas();
+        }
+      }
+    });
+  }
+
+  mostrarTareas():void{
+   
+    this.tareaService.getTareas().subscribe({
+      next:(res)=>{
+        this.dataSource.data = res;
+      },
+      error:()=>{
+        
+      }
+    });
+  }
+
+  verDetalleTarea(tarea:Tarea):void{
+    this.dialog.open(DetalleTareaComponent, {data:tarea});
+  }
+
 }
