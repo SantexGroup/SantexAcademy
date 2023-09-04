@@ -17,7 +17,6 @@ Agregar un archivo nuevo dentro de la carpeta back con el nombre  ".env" y copia
 Por ultimo para levantar el proyecto, se tienen que correr los siguientes comandos:
 
 ```bash
-  npm run build
   npx start
 ```
 
@@ -71,10 +70,6 @@ Listo!
 $ ./node_modules/.bin/sequelize db:seed:undo:all`
 ```
 
-
-
-
-
 ----------------IMPORTANTE--------------
 ### instalar dependencias
 PRIMERO CORRER EL: npm install 
@@ -84,5 +79,4 @@ SEGUNDO: ./node_modules/.bin/sequelize db:migrate
 TERCERO: node ./utils/load.js 
 ### Inicia la api
 Ahora ya se puede utilizar el: npm start
-----------------IMPORTANTE--------------
 
