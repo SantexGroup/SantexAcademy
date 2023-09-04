@@ -2,7 +2,7 @@
 // eliminar un usuario y Login.
 const jwt = require('jsonwebtoken');
 const AuthenticationException = require('../exceptions/authentication.exceptions');
-const { User } = require('../models');
+const { Profile, User } = require('../models');
 
 async function recordUser(rolesId, nick, password, name, lastName, email, phone) {
   const userCreated = await User.create({
@@ -15,7 +15,17 @@ async function recordUser(rolesId, nick, password, name, lastName, email, phone)
     phone,
   });
   if (userCreated) {
-    return userCreated;
+    const profile = await Profile.create({
+      userId: userCreated.id,
+      profileName: 'Profile Inicial',
+    });
+    return {
+      user: {
+        name: userCreated.name,
+        lastName: userCreated.lastName,
+      },
+      profile,
+    };
   }
   throw new Error(); // Re-lanzamos el error para que el llamador lo maneje adecuadamente
 }
@@ -35,6 +45,15 @@ async function login(nick, password) {
     throw new AuthenticationException('El nick o contraseña son incorrectos');
   }
 
+  const profile = await Profile.findOne({
+    where: {
+      userId: user.id,
+    },
+    order: [
+      ['id', 'ASC'],
+    ],
+  });
+
   const jwtSecret = process.env.JWT_SECRET;
 
   const token = jwt.sign({
@@ -43,6 +62,11 @@ async function login(nick, password) {
   }, jwtSecret);
   // Devolver un objeto con el token de acceso
   return {
+    user: {
+      name: user.name,
+      lastName: user.lastName,
+    },
+    profile,
     accessToken: token,
   };
 }
