@@ -15,12 +15,11 @@ async function login(req, res, next) {
 // crear usuario
 async function createUser(req, res) {
   const {
-    firstName, lastName, dni, mail, password, alias
+    firstName, lastName, dni, mail, password, alias, idLocalidad, calleYAltura
   } = req.body;
 
-  const user = await userService.userRegister(firstName, lastName, dni, mail, password, alias);
+  const user = await userService.userRegister(firstName, lastName, dni, mail, password, alias, idLocalidad, calleYAltura);
 
-  console.log(user);
   res.status(201).send(user);
 }
 

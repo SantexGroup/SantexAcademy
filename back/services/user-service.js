@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { User, Products } = require('../models');
+const { User, Products, direccion } = require('../models');
 const jwt = require('jsonwebtoken');
 
 // login
@@ -15,7 +15,7 @@ async function login(mail, password) {
   });
 
   if (!users) {
-    throw new Error('Alias o Contraseña incorrectos');
+    throw new Error('email o contraseña incorrectos');
   }
 
   const token = jwt.sign({
@@ -27,10 +27,18 @@ async function login(mail, password) {
 }
 
 // creacion de usuario
-async function userRegister(firstName, lastName, dni, mail, password, alias) {
+async function userRegister(firstName, lastName, dni, mail, password, alias, idLocalidad, calleYAltura) {
+
+  const direction = new direccion();
+
+  direction.idLocalidad = idLocalidad;
+  direction.calleYAltura = calleYAltura;
+
+  const direccionCreated = await direction.save();
+
   const user = new User();
 
-  //user.idDireccion = idDireccion;
+  user.idDireccion = direccionCreated.id;
   user.firstName = firstName;
   user.lastName = lastName;
   user.dni = dni;
@@ -39,10 +47,8 @@ async function userRegister(firstName, lastName, dni, mail, password, alias) {
   user.alias = alias;
 
   const userCreated = await user.save();
-
-  if(userCreated) {
-    console.log('usuario registrado');
-  }
+  
+  return userCreated;
 }
 
 // cambiar estado de vendedor
