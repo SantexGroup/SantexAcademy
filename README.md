@@ -1,6 +1,13 @@
-# Santex Academy
-Ultima fusión de ramas: Sábado 2 de agosto de 2023 (Actualización completa de todas las ramas)
+#Novedades
+Ultima fusión de ramas: Lunes 4 de agosto de 2023 (Actualización completa de todas las ramas sin errores)
+Se trabajó:
+unificación de formularios de registro y validaciones de campos
+se agrego validación de password y su confirmación
+se repararon errores por el descarte de registerbutton y registeranswer
+se reconecto formulario de registro lado usuario para que muestre los ingresos de nuevo en .json localhost:4001/user/ en el navegador
 
+
+# Santex Academy
 XAcademy es un programa de formación en programación nativo llevado adelante por la Fundación Tecnología con Propósito junto a Santex que busca promover un cambio positivo en la comunidad a través de la educación en IT, apuntando a lograr la inserción laboral de personas en el mundo tecnológico. 
 
 ### Proyecto elegido: 
