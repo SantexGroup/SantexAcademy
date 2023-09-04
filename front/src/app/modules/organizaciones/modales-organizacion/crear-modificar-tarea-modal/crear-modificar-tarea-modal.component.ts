@@ -12,13 +12,13 @@ import { TareaService } from 'src/app/core/services/tarea.service';
 
 @Component({
   selector: 'app-crear-tarea-modal',
-  templateUrl: './crear-tarea-modal.component.html',
-  styleUrls: ['./crear-tarea-modal.component.css']
+  templateUrl: './crear-modificar-tarea-modal.component.html',
+  styleUrls: ['./crear-modificar-tarea-modal.component.css']
 })
-export class CrearTareaModalComponent implements OnInit {
+export class CrearModificarTareaModalComponent implements OnInit {
 
   constructor(private categoriaService:CategoriaService, organizacionService:OrganizacionService, fb:FormBuilder, 
-              private tareaService:TareaService, private matSnackBar:MatSnackBar,private dialogoActual:MatDialogRef<CrearTareaModalComponent>) { 
+              private tareaService:TareaService, private matSnackBar:MatSnackBar,private dialogoActual:MatDialogRef<CrearModificarTareaModalComponent>) { 
     
                 this.datosOrganizacion$ = organizacionService.getDatosOrganizacion;
     
