@@ -1,4 +1,6 @@
-
+.navbar-brand {
+  color: #F77F00;
+}
 .nav-link {
 color: #f7efe5;
 }
@@ -10,7 +12,7 @@ color: #f7efe5;
 }
 
 .navbar-custom {
-  background-color:#2B2D42;;
+  background-color:#3A0CA3;
 
 }
 .nav-link:hover {
@@ -23,7 +25,7 @@ color: #f7efe5;
 }
 
 .container-fluid{
-  background-color:#2B2D42;
+  background-color:#3A0CA3; 
 }
 
 

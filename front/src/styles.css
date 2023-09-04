@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 65%; /* Ajusta el ancho de la imagen según tus necesidades */
-  height:auto; /* Ajusta la altura de la imagen según tus necesidades */
+  height: 370px;; /* Ajusta la altura de la imagen según tus necesidades */
   background-image: url(assets/images/nuevo.jpg)
    /* Ajusta el tamaño de la imagen para cubrir el elemento */
 
@@ -14,7 +14,7 @@
   top: 0;
   left: 60%;
   width: 40%; /* Ajusta el ancho de la imagen según tus necesidades */
-  height: 370px; /* Ajusta la altura de la imagen según tus necesidades */
+  height:370px; /* Ajusta la altura de la imagen según tus necesidades */
   background-image: url(assets/images/nuevo5.png)
    /* Ajusta el tamaño de la imagen para cubrir el elemento */
 }
