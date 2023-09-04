@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CrearTareaModalComponent } from '../modales-organizacion/crear-tarea-modal/crear-tarea-modal.component';
+import { CrearModificarTareaModalComponent } from '../modales-organizacion/crear-modificar-tarea-modal/crear-modificar-tarea-modal.component';
 import { TareaService } from 'src/app/core/services/tarea.service';
 import { Tarea } from 'src/app/core/interfaces/tarea';
 import { MatTableDataSource } from '@angular/material/table';
@@ -32,7 +32,7 @@ export class TareasOrganizacionComponent implements OnInit {
 
 
   crearTarea():void{
-    this.dialog.open(CrearTareaModalComponent).afterClosed().subscribe({
+    this.dialog.open(CrearModificarTareaModalComponent).afterClosed().subscribe({
       next:(res)=>{
         if(res === true){
           this.mostrarTareas();
@@ -55,6 +55,16 @@ export class TareasOrganizacionComponent implements OnInit {
 
   verDetalleTarea(tarea:Tarea):void{
     this.dialog.open(DetalleTareaComponent, {data:tarea});
+  }
+
+  editarTarea(tarea:Tarea):void{
+    this.dialog.open(CrearModificarTareaModalComponent,{data:tarea}).afterClosed().subscribe({
+      next:(res)=>{
+        if(res === true){
+          this.mostrarTareas();
+        }
+      }
+    });
   }
 
 }

@@ -14,9 +14,14 @@ export class TareaService {
   getTareas():Observable<Tarea[]>{
     return this.apiService.get('/tarea/get-all');
   }
+  
   crearTarea(nuevaTarea:Tarea):Observable<Tarea>{
     return this.apiService.post('/tarea/create-tarea', nuevaTarea);
   }
 
+  modificarTarea(id:number, tarea:Tarea):Observable<Tarea>{
+    
+    return this.apiService.put('/tarea/edit-tarea/'+id,tarea);
+  }
 
 }
