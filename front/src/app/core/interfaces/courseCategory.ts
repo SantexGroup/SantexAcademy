@@ -1,4 +1,4 @@
 export interface CourseCategory{
-    id?: number;
+    id: number;
     name: string;
 }

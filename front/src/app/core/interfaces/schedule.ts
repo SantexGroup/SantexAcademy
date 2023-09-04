@@ -1,5 +1,5 @@
 export interface Schedule{
-    id?: number;
+    id: number;
     active: boolean;
     where: string,
     course: string,
