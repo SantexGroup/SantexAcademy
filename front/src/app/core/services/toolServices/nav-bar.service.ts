@@ -13,6 +13,7 @@ export class NavBarService{
   landing: boolean = true;
 
   externalComponent: boolean = false;
+
   
   hideLanding(){
     this.landing = false;

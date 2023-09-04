@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GetURLdataService } from 'src/app/core/services/toolServices/get-urldata.service';
+import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UsuarioService } from 'src/app/core/services/usuario.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder, 
     private router: Router, 
     private userService: UsuarioService,
-    public dataUrl: GetURLdataService
+    public dataUrl: GetURLdataService,
+    private views: NavBarService
     ) { }
 
   ngOnInit(): void {
