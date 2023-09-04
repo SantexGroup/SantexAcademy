@@ -24,6 +24,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
 
 @NgModule({
   declarations: [],
@@ -47,7 +50,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatSelectModule,
     MatExpansionModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule,
   ],
   exports:[
     
@@ -69,7 +73,9 @@ import {MatRadioModule} from '@angular/material/radio';
     MatSelectModule,
     MatExpansionModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule
+
   ]
 })
 export class CompartidaModule { }

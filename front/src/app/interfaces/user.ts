@@ -4,12 +4,15 @@ export interface UserLogin{
 }
 
 export interface User {
+    id: number;
     firstName: string;
     lastName: string;
     username: string;
     password: string;
     email: string;
-    phoneNumber: number;
+    phone: number;
     rol: string;
-    token: string;
+    token:string;
+    createdAt: Date;
+    updatedAt: Date;
 }

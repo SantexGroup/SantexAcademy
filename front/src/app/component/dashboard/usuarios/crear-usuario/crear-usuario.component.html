@@ -1,11 +1,11 @@
 
 <div class="container">
     <mat-toolbar>
-      <span >Crear Usuario</span>
+      <span >{{operacion}} Usuario</span>
     </mat-toolbar>
 
     <mat-card style="margin-top: 10px;">
-        <form [formGroup]="form" (ngSubmit)="createUser()">
+        <form [formGroup]="form" (ngSubmit)="createEditUser(id)">
           
             <mat-grid-list cols="4" rowHeight="55px">
 
@@ -78,10 +78,9 @@
           
             <mat-grid-tile [colspan]="1" [rowspan]="1" > 
                  <!--botón volver-->
-                <button mat-raised-button style="margin-right: 20px;">Volver</button>
-                <!-- <button mat-raised-button style="margin-right: 20px;" (click)="volver($event)">Volver</button> -->
-                <!--botón aceptar-->
-                <button type="submit" class="botonAceptar" mat-raised-button color="primary"  (click)="createUser()" [disabled]="form.invalid">Aceptar</button>
+                <button routerLink="/dashboard/usuarios" mat-raised-button style="margin-right: 20px;">Volver</button>
+                
+                <button type="submit" class="botonAceptar" mat-raised-button color="primary"  (click)="createEditUser(id)" [disabled]="form.invalid">Aceptar</button>
             </mat-grid-tile>
             
             </mat-grid-list>

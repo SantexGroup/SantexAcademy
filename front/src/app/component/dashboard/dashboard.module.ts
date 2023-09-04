@@ -10,6 +10,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { EncuestaComponent } from './encuesta/encuesta.component';
 import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
 import { ExpansionComponent } from './encuesta/expansion/expansion.component';
+import { VerUsuarioComponent } from './usuarios/ver-usuario/ver-usuario.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { ExpansionComponent } from './encuesta/expansion/expansion.component';
     UsuariosComponent,
     EncuestaComponent,
     CrearUsuarioComponent,
-    ExpansionComponent
+    ExpansionComponent,
+    VerUsuarioComponent
+
   ],
   imports: [
     CommonModule,

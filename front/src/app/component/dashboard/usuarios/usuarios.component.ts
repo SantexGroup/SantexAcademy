@@ -5,6 +5,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/usuario.service';
+import { VerUsuarioComponent } from './ver-usuario/ver-usuario.component';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-usuarios',
@@ -21,9 +24,11 @@ export class UsuariosComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  router: any;
+  user: any;
 
 
-  constructor(private userService: UserService, private _snackBar: MatSnackBar) { }
+  constructor(private userService: UserService, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.cargarUsuarios(); 
@@ -94,5 +99,17 @@ export class UsuariosComponent implements OnInit {
       );
     }
   }
-  
+    
+  search(){
+    this.router.navigate('/dashboard');
+  }
+
+  abrirVistaDeUsuario(id: any): void {
+    const dialogRef = this.dialog.open(VerUsuarioComponent, {
+      width: '700px',
+      disableClose:true, 
+      data: {id: id},
+    });
+  }
+
 }

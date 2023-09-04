@@ -5,8 +5,7 @@
       <button mat-raised-button class="botonagregar" routerLink="/dashboard/crear-usuario">Crear</button>
     </mat-toolbar>
 
-
-  <div *ngIf="listUsuarios.length >0">
+  <div   *ngIf="listUsuarios.length >0">
       <!-- filtros -->
     <mat-form-field appearance="standard">
       <mat-label>Filter</mat-label>
@@ -35,12 +34,6 @@
           <td mat-cell *matCellDef="let element" [style.width.%]="10" class="mat-cell-content-long">{{element.username}}</td>
         </ng-container>
 
-         <!-- contraseña Column -->
-         <!-- <ng-container matColumnDef="password">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Contraseña </th>
-          <td mat-cell *matCellDef="let element" [style.width.%]="10" class="mat-cell-content-long">{{element.password}}</td>
-        </ng-container> -->
-
         <!-- email Column -->
         <ng-container matColumnDef="email">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
@@ -62,12 +55,13 @@
         <!-- icon Column -->
         <ng-container matColumnDef="acciones">
           <th mat-header-cell *matHeaderCellDef>Acciones</th>
-          <td mat-cell *matCellDef="let element; let i = index" style="text-align: center;" [style.width.%]="10" class="mat-cell-content-long"> 
+          <td mat-cell *matCellDef="let element; let i = index" style="text-align: center;" [style.width.%]="10" class="mat-cell-content-long">      
             <a>
-              <mat-icon class="pointer" matTooltip="ver usuario">search</mat-icon>
+              <mat-icon class="pointer" matTooltip="ver usuario" (click)="abrirVistaDeUsuario(element.id)">search</mat-icon>
             </a>
+            
             <a>
-              <mat-icon class="pointer" matTooltip="editar usuario">edit</mat-icon>
+              <mat-icon  routerLink="/dashboard/edit-user/{{element.id}}"  class="pointer" matTooltip="editar usuario" >edit</mat-icon>
             </a>
             <a>
               <mat-icon class="pointer" (click)="deleteUser(element.id)" matTooltip="eliminar usuario">delete</mat-icon>
@@ -81,13 +75,21 @@
       </table>
       
       <!-- paginador -->
-      <mat-paginator [pageSizeOptions]="[5, 10, 20]"showFirstLastButtons 
+      <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      [pageSize]="10"
+      [showFirstLastButtons]="true"
+      [length]="listUsuarios.length">
+      </mat-paginator>
+     
+
+ <!--     <mat-paginator [pageSizeOptions]="[5, 10, 20]"showFirstLastButtons 
                       aria-label="Select page of periodic elements">
-        </mat-paginator>
+      </mat-paginator>   -->
     </div>
   </div>
 
-<h2 *ngIf="listUsuarios.length==0">No hay usuarios para mostrar!</h2>
+
 
 </div>
 

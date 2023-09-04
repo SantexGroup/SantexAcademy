@@ -1,0 +1,25 @@
+
+<h2 mat-dialog-title>Usuario</h2>
+
+<mat-dialog-content>
+
+    <div *ngIf="user != null">
+        <mat-card class="card">            
+            <mat-card-content>
+                <p><strong>id: </strong>{{user.id}}</p>
+                <p><strong>nick: </strong>{{user.username}}</p>
+                <p><strong>nombre: </strong>{{user.firstName}}</p>
+                <p><strong>apellido: </strong>{{user.lastName}}</p>
+                <p><strong>email: </strong>{{user.email}}</p>
+                <p><strong>teléfono: </strong>{{user.phone}}</p>
+                <p><strong>rol: </strong>{{user.rol}}</p>
+                <p><strong>Alta: </strong>{{user.createdAt | date:'dd/MM/yyyy'}}</p>
+                <p><strong>Última modificación: </strong>{{ user.updatedAt | date:'dd/MM/yyyy'}}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button (click)="close()" mat-button  class="buttonClose" >Cerrar</button>
+</mat-dialog-actions>
