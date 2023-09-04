@@ -1,0 +1,27 @@
+<mat-dialog-content>
+        
+    <mat-card-header>
+            <mat-card-title>{{dataTarea.name}}</mat-card-title>
+            
+    </mat-card-header>
+        <mat-card-content>
+            <p class="titulo-propiedad">Fecha:</p>
+            <p class="contenido-propiedad">{{ dataTarea.date | date:'dd/MM/yyyy' }}</p>
+            
+            <p class="titulo-propiedad">Lugar:</p>
+            <p class="contenido-propiedad">{{ dataTarea.place }}</p>
+
+            <p class="titulo-propiedad">Descripción:</p>
+            <p class="contenido-propiedad">{{ dataTarea.description }}</p>
+
+            <p class="titulo-propiedad">Puntos:</p>
+            <p class="contenido-propiedad">{{ dataTarea.points }}</p>
+
+            <p class="titulo-propiedad">Cantidad de participantes:</p>
+            <p class="contenido-propiedad">{{ dataTarea.cant_participantes }}</p>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" mat-dialog-close>ACEPTAR</button>
+        </mat-card-actions>
+</mat-dialog-content>
