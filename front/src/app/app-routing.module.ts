@@ -8,6 +8,7 @@ import { CatalogoComponent } from './modules/pages/catalogo/catalogo.component';
 import { RegisterformComponent } from './modules/register/registerform/registerform.component';
 import { RegisteranswerComponent } from './modules/register/registeranswer/registeranswer.component';
 import { ErrorPageComponent } from './modules/share/error-page/error-page.component';
+import { AdminComponent } from './modules/pages/admin/admin.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'registeranswer',
     component: RegisteranswerComponent,
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
   },
   {
     path: '',
