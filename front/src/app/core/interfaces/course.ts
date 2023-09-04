@@ -1,5 +1,5 @@
 export interface Course {
-    id?: number;
+    id: number;
     name: string,
     descripcion: string,
     maxStudents: number,
@@ -9,6 +9,6 @@ export interface Course {
     price: number;
     requirement: string,
     teacher: string,
-    courseCategoryName: string,
+    CourseCategoryName: string,
 
 }

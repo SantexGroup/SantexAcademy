@@ -29,5 +29,8 @@ export class CourseService {
     return this.httpCourse.put(this.apiUrl+'/'+id, course)
   }
 
+  deleteCourse(id:number){
+    return this.httpCourse.delete(this.apiUrl+'/'+id)
+  }
 }
 

@@ -27,4 +27,8 @@ export class CourseCategoryService {
   putCourseCategory(courseCategory: CourseCategory, id:number){
     return this.httpCourseCategory.put(this.apiUrl+'/'+id, courseCategory)
   }
+
+  deleteCourseCategory(id:number){
+    return this.httpCourseCategory.delete(this.apiUrl+'/'+id)
+  }  
 }

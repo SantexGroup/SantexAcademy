@@ -27,4 +27,8 @@ export class ScheduleService {
   putSchedule(schedule: Schedule, id:number){
     return this.httpSchedule.put(this.apiUrl+'/'+id, schedule)
   }
+
+  deleteSchedule(id:number){
+    return this.httpSchedule.delete(this.apiUrl+'/'+id)
+  }
 }
