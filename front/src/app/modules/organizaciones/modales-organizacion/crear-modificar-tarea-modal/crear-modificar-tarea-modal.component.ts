@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, take } from 'rxjs';
 import { Categoria } from 'src/app/core/interfaces/categoria';
@@ -9,6 +9,7 @@ import { Tarea } from 'src/app/core/interfaces/tarea';
 import { CategoriaService } from 'src/app/core/services/categoria.service';
 import { OrganizacionService } from 'src/app/core/services/organizacion.service';
 import { TareaService } from 'src/app/core/services/tarea.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-crear-tarea-modal',
@@ -18,20 +19,44 @@ import { TareaService } from 'src/app/core/services/tarea.service';
 export class CrearModificarTareaModalComponent implements OnInit {
 
   constructor(private categoriaService:CategoriaService, organizacionService:OrganizacionService, fb:FormBuilder, 
-              private tareaService:TareaService, private matSnackBar:MatSnackBar,private dialogoActual:MatDialogRef<CrearModificarTareaModalComponent>) { 
+              private tareaService:TareaService, private matSnackBar:MatSnackBar,private dialogoActual:MatDialogRef<CrearModificarTareaModalComponent>,
+              @Inject(MAT_DIALOG_DATA)dataTarea:Tarea) { 
     
                 this.datosOrganizacion$ = organizacionService.getDatosOrganizacion;
-    
-    this.form = fb.group({
-      nombre:['', Validators.required],
-      descripcion:['',Validators.required],
-      puntos:['',Validators.required],
-      fecha:['',Validators.required],
-      lugar:['',Validators.required],
-      idCategoria:['',Validators.required],
-      cantidadParticipantes:['',Validators.required]
+                
+    if(dataTarea){
+      
+      this.titulo ='Modificar Tarea';
+      this.accion = 'MODIFICAR'
 
-    });
+      const fechaMoment = moment(dataTarea.date);
+      
+      this.form = fb.group({
+        nombre:[dataTarea.name, Validators.required],
+        descripcion:[dataTarea.description,Validators.required],
+        puntos:[dataTarea.points,Validators.required],
+        fecha:[fechaMoment.toDate(),Validators.required],
+        lugar:[dataTarea.place,Validators.required],
+        idCategoria:[dataTarea.id_category,Validators.required],
+        cantidadParticipantes:[dataTarea.cant_participantes,Validators.required]
+  
+      });  
+    }
+    else{
+      this.titulo = 'Crear Tarea';
+      this.accion = 'CREAR';
+      this.form = fb.group({
+        nombre:['', Validators.required],
+        descripcion:['',Validators.required],
+        puntos:['',Validators.required],
+        fecha:['',Validators.required],
+        lugar:['',Validators.required],
+        idCategoria:['',Validators.required],
+        cantidadParticipantes:['',Validators.required]
+  
+      });
+    }
+
   }
     
 
@@ -43,6 +68,8 @@ export class CrearModificarTareaModalComponent implements OnInit {
   listCategorias:Categoria[] = [];
   datosOrganizacion$:Observable<Organizacion | null>;
   form:FormGroup;
+  titulo:string;
+  accion:string;
 
 
   cargarCategorias():void{
