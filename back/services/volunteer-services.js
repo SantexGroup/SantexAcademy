@@ -6,6 +6,7 @@ const volunteerModel = require('../models/volunteer-model');
 const jwt = require('jsonwebtoken');
 const { sequelize } = require('../models');
 const bcrypt = require('bcrypt');
+const models = require('../models/index');
 
 const Volunteer = volunteerModel(sequelize, DataTypes);
 
@@ -128,6 +129,39 @@ async function login(email, password) {
   return token;
 }
 
+async function agregarTareaVolunteer(idVolunteer, idTarea) {
+  const voluntario = await models.volunteer.findByPk(idVolunteer);
+
+  try {
+    if (!voluntario) {
+      throw new Error('No se encuentra voluntrios con el id proporcionado');
+    }
+
+    const tarea = await models.tarea.findByPk(idTarea);
+
+    if (!tarea) {
+      throw new Error('No se encuentra tarea con el id proporcionado');
+    }
+
+    await voluntario.addTarea(tarea, { through: { asistio: false } });
+    await voluntario.save();
+
+    const voluntarioConTrea = await models.voluntario.findOne({
+      where: {
+        id: idVolunteer,
+      },
+      include: [
+        {
+          model: models.tarea,
+        },
+      ],
+    });
+    return voluntarioConTrea;
+  } catch (error) {
+    return error;
+  }
+}
+
 module.exports = {
-  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword,
+  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, agregarTareaVolunteer,
 };
