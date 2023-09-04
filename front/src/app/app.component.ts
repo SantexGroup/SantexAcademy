@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { NavBarService } from './core/services/toolServices/nav-bar.service';
 import { GetURLdataService } from './core/services/toolServices/get-urldata.service';
 

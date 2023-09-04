@@ -1,14 +1,12 @@
 <body>
-    <h1 class="title">SKILL</h1>
-
     <div class="experiencesInput">
         <form [formGroup]="skillForm" (ngSubmit)="addSkillToProfile()">
             <mat-form-field>
-                <mat-label for="skill">Descripcion:</mat-label>
+                <mat-label for="skill">Habilidad:</mat-label>
                 <textarea matInput formControlName="skill" cols="30" rows="5"></textarea>
             </mat-form-field>
             <mat-form-field>
-                <mat-label for="level">Posicion:</mat-label>
+                <mat-label for="level">Nivel:</mat-label>
                 <input matInput formControlName="level" type="text">
             </mat-form-field>
             
