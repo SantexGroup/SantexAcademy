@@ -8,14 +8,25 @@ import { CourseServiceService } from 'src/app/core/services/course-service.servi
 })
 export class DashboardPageComponent implements OnInit {
 
-  courses: Course[] = [];
 
-  constructor(private courseSvc: CourseServiceService) {}
+  courses: Course[] = [];
+  moreCourses: Course[] = []
+  allCourses = false;
+  showAllCourses() {
+    this.allCourses = !this.allCourses
+  }
+  constructor(private courseSvc: CourseServiceService) {
+    
+  }
 
   ngOnInit(): void {
+  
     this.courseSvc.getCourses().subscribe((courseList: Course[]) => {
-        this.courses = courseList;
-    });
+        this.courses = courseList.filter((course) => courseList.indexOf(course) < 6);
+        this.moreCourses = courseList.filter((course) => courseList.indexOf(course) >= 6);
+  
+  });
+
   }
-   
+  
 }

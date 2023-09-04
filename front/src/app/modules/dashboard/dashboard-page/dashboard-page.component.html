@@ -5,12 +5,23 @@
     </div>
     <h3>Hacé click en el curso que te interese para conocer más.</h3>
     <div class="coursebox">
-        <div class = "courseinfo" *ngFor = "let course of courses"> 
-            <button><img src={{course.image}}>
+        <div class = "courseinfo" *ngFor = "let course of courses">
+            <button>
+                <img src={{course.image}}>
             <h2>{{course.name}}</h2>
-            <p>{{course.description}}</p></button>
+            <p>{{course.description}}</p>
+        </button>
         </div>    
     </div>
-    <div class="button1"><button>Ver más cursos</button></div>
-</body>
+    <div class="button1" *ngIf = "!allCourses"><button (click) = "showAllCourses()">Ver más cursos</button></div>
+    <div class="coursebox" *ngIf = allCourses>
+        <div class = "courseinfo" *ngFor = "let course of moreCourses">
+            <button>
+                <img src={{course.image}}>
+            <h2>{{course.name}}</h2>
+            <p>{{course.description}}</p>
+        </button>
+        </div>    
+    </div>
+    <div class="button1" *ngIf = "allCourses"><button (click) = "showAllCourses()">Ver menos cursos</button></div>
 
