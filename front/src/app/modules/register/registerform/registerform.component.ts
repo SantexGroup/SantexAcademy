@@ -173,10 +173,6 @@ submitForm() {
   {
     return this.Password?.touched && !this.Password?.valid;
   }
-  //   // Agregado por funcion passwordCompare
-  // get ConfirmPasswordValid() {
-  //   return this.form.get('confirmPassword')?.touched && this.form.get('confirmPassword')?.hasError('coincidePassword');
-  // }
 
   get NombreValid()
   {
