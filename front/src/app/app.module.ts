@@ -22,7 +22,7 @@ import { RegisterModule } from './modules/register/register.module';
     DashboardModule,
     PagesModule,
     ShareModule,
-    RegisterModule
+    RegisterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,10 +3,10 @@
   }
   .registeranswer {
     /* min-height: 67vh; */
-    background-color: #e78325;
+    background-color: #d87920;
     border-radius: 5px;
     /* display: flex; */
     justify-content: center;
     text-align: center;
-    color: blue;
+    color: rgb(2, 2, 126);
   }

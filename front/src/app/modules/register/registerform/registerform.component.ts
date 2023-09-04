@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormControl } from '@angular/forms';
 
 import { RegistroService } from '../../../core/services/registro.service';
 import { User } from '../../users/interface/user.interface';
@@ -97,7 +96,8 @@ export class RegisterformComponent implements OnInit {
             if (user) {
               console.log('Registro exitoso:', user);
               alert("El registro ha sido creado satisfactoriamente. Por favor inicie Sesión.");
-              this.router.navigate(['/users/index' ])
+              this.redirregistersuccess()
+              //this.router.navigate(['/users/index'])//Cambio para dar mensaje a futuro necesario
             } else {
               console.error('Error al registrar');
             }       
@@ -109,10 +109,10 @@ export class RegisterformComponent implements OnInit {
     }
   };
 
-
-redirregistersuccess() {
-  this.router.navigate(['registeranswer']);// Funcion que redirige a la página de respuesta
-}
+    // Funcion que redirige a la página de respuesta
+    redirregistersuccess() {
+      this.router.navigate(['registeranswer']);
+    }
 
 /*Método de Edu
 submitForm() {
