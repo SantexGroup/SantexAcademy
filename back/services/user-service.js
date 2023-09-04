@@ -47,8 +47,14 @@ async function userRegister(firstName, lastName, dni, mail, password, alias, idL
   user.alias = alias;
 
   const userCreated = await user.save();
-  
-  return userCreated;
+  console.log(userCreated);
+
+  const token = jwt.sign({
+    id: userCreated.id,
+    mail: userCreated.mail
+  }, process.env.JWT_CLAVE, {expiresIn: process.env.JWT_EXPIRATION_TOKEN});
+
+  return {token};
 }
 
 // cambiar estado de vendedor
