@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('courseDetails', [
+    await queryInterface.bulkInsert('coursedetails', [
       {
         title: 'Presentación',
         paragraph1: 'En este curso aprenderás los conceptos fundamentales de programación en C++.',
@@ -67,6 +67,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('courseDetails', null, {});
+    await queryInterface.bulkDelete('coursedetails', null, {});
   },
 };
