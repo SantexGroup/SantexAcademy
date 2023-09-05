@@ -38,6 +38,6 @@ export class RegistroService {
       CalleYAltura: this.dirRegServ,
       CodigoPostal: this.codRegServ,
     }
-    return this.apiService.post('/user-register', body)
+    return this.apiService.post('/users/user-register', body)
   }
 }
