@@ -14,7 +14,7 @@ export class PasswordService {
 
   login(password:any): Observable<any> {
     const loginData = { password };
-    return this.http.post(`${this.apiUrl}/login`, loginData);
+    return this.http.post(`${this.apiUrl}/login/confirm-password`, loginData);
   }
 }
 
