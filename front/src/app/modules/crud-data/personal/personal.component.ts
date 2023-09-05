@@ -1,5 +1,3 @@
-// TODO: Configurar direccionamiento correcto
-
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,5 +11,6 @@ export class PersonalComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }
