@@ -13,21 +13,25 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        children: [
+          {
+            path: 'form-update',
+            component: FormUpdateComponent,
+          },
+        ],
       },
       {
         path: 'form-add-product',
         component: FormAddProductComponent
       },
-      {
-        path: 'form-update',
-        component: FormUpdateComponent
-      },
+      
       {
         path: 'form-delete',
         component: FormDeleteComponent
       }
     ]
+    
   }
 ];
 

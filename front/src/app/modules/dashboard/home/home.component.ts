@@ -21,12 +21,7 @@ export class HomeComponent implements OnInit {
       this.productList = result;
     });
   }
-  /*
-  openDialog(){
-    this.matDialog.open(PopUpHomeComponent, {
-      width:'350px',
-    })
-  }*/
+
   openDialog(product: Product): void {
     this.matDialog.open(PopUpHomeComponent, {
       width: '500px',

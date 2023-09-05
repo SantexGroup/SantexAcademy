@@ -7,8 +7,15 @@ mat-dialog-content img {
     margin: 0 auto; /* Centra la imagen horizontalmente */
 }
   
-.mat-raised-button.custom-color {
-    background-color: green;
+/* Clase de estilo para el botón "Agregar al Carrito" */
+.agregar-al-carrito-button {
+    background-color: blue; /* Cambia el color a azul */
+    color: white;
+}
+
+/* Clase de estilo para el botón "Editar" */
+.editar-button {
+    background-color: rgb(250, 141, 16); /* Mantén el color naranja */
     color: white;
 }
 .button-container {
