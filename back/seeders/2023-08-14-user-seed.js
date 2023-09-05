@@ -8,37 +8,37 @@ module.exports = {
 
     await queryInterface.bulkInsert('Users', [
       {
-        name: 'John Doe',
+        userName: 'John Doe',
         password: passwordHash,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Jane Smith',
+        userName: 'Jane Smith',
         password: passwordHash,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Michael Johnson',
+        userName: 'Michael Johnson',
         password: passwordHash,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Emily Brown',
+        userName: 'Emily Brown',
         password: passwordHash,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'David Williams',
+        userName: 'David Williams',
         password: passwordHash,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Sophia Jones',
+        userName: 'Sophia Jones',
         password: passwordHash,
         createdAt: new Date(),
         updatedAt: new Date(),
