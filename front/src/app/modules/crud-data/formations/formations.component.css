@@ -5,9 +5,6 @@
 
 .formationsInput{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 
@@ -68,4 +65,22 @@ form mat-form-field {
     width: 100%;
     display: flex;
     justify-content: space-around;
+}
+
+.lista{
+    margin: 1rem 0 0 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+}
+
+.card{
+    border: none;
+}
+
+.card-body{
+    margin-bottom: 1rem;
+    border: 1px solid #3f6ad8;
+    border-radius: 14px;
 }
