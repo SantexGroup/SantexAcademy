@@ -1,5 +1,6 @@
 .navbar-brand img {
     width: 5rem;
+    cursor: pointer;
 }
 
 #nosotros {
