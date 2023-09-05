@@ -86,7 +86,7 @@ export class OptionalsComponent implements OnInit {
   getMyOptionals(){
     this._optionalsService.getMyOptionals(this.dataUrl.userId).subscribe((myOptionals: Optionals[]) => {
       this.optional = myOptionals;
-      console.log(this.optional)
+      console.log(this.optional);
     })
   }
 
@@ -112,5 +112,7 @@ export class OptionalsComponent implements OnInit {
     this._optionalsService.addOptionals(newOptionals).subscribe((data) => {
       console.log(data);
     });
+
+
   }
 }

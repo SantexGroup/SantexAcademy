@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       this.userService.login(myForm.value).subscribe({
         next: (data) => { console.log(data);
         this.dataUrl.userId = data.profile.userId;
-        console.log(this.dataUrl.userId);
+        this.dataUrl.id = data.profile.id;
         this.dataUrl.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
         this.router.navigate(['/home', data.profile.id]);
         }, 
