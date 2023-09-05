@@ -217,7 +217,10 @@
                 <h1>Enlaces directos</h1>
                 <a href="#nosotrosContacto">Preguntas Frecuentes</a>
                 <a href="#nosotrosContacto">Quienes somos</a>
-                <a routerLink="login" (click)="views.hideLanding()">Iniciar sesion</a>
+                <a routerLink="login" 
+                (click)="dataUrl.title = 'Iniciar Sesion'"
+                (click)="views.hideLanding()"
+                >Iniciar sesion</a>
             </div>
             <div class="fomulario-contacto">
                 <form class="formulario">
