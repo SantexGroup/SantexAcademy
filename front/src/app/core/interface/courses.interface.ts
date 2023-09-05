@@ -10,7 +10,13 @@ export interface Course {
   due: number;
   has_surcharge: boolean;
   surchage_percentage: number;
-  createdAt: Date;
-  updateAt: Date;
-
+  modality:string,
+  courseDetails:[{
+    id: number;
+    title: string;
+    paragraph1: string;
+    paragraph2: string;
+    image1url: string;
+    image2ur2: string;
+  }]
 }
