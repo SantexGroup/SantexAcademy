@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(700)
       },
       duration: {
         type: Sequelize.INTEGER
@@ -42,6 +42,9 @@ module.exports = {
       modality: {
         type: Sequelize.STRING
       },
+    schedules: {
+      type: Sequelize.STRING
+    },
       banner: {
         type: Sequelize.STRING
       },
