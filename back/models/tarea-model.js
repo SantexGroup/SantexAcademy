@@ -41,9 +41,11 @@ module.exports = (sequelize, DataTypes) => {
       cantParticipantes: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        defaultValue: 0,
       },
       cantInscriptos: {
         type: DataTypes.INTEGER,
+        allowNull: true,
         defaultValue: 0,
       },
       duracion: {
@@ -51,8 +53,8 @@ module.exports = (sequelize, DataTypes) => {
       },
       estado: {
         type: DataTypes.ENUM('activa', 'finalizada'),
-        allowNull: false,
         defaultValue: 'activa',
+        allowNull: true,
       },
 
     }, {

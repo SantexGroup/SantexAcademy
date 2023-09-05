@@ -39,6 +39,22 @@ async function editTarea(req, res) {
   res.status(201).send(tarea);
 }
 
+async function editEstado(req, res) {
+  const { id } = req.params;
+  const { nuevoEstado } = req.body; // Obtén nuevoEstado desde el cuerpo de la solicitud
+
+  try {
+    const tarea = await tareaServices.cambiarEstado(id, nuevoEstado);
+    if (!tarea) {
+      return res.status(404).json({ error: 'Tarea no encontrada' });
+    }
+
+    res.status(200).json(tarea);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
+
 async function deleteTarea(req, res) {
   const { id } = req.params;
 
@@ -47,5 +63,5 @@ async function deleteTarea(req, res) {
 }
 
 module.exports = {
-  getAllTarea, getTareaById, createTarea, editTarea, deleteTarea,
+  getAllTarea, getTareaById, createTarea, editTarea, deleteTarea, editEstado,
 };

@@ -40,9 +40,7 @@ async function createTarea(name, description, coordinatorId, points, date, place
   tarea.date = date;
   tarea.place = place;
   tarea.cantParticipantes = cantParticipantes;
-  tarea.cantInscriptos = cantInscriptos;
   tarea.duracion = duracion;
-  tarea.estado = estado;
 
   if (models.tarea.findByPk(coordinatorId)) {
     tarea.coordinatorId = coordinatorId;
@@ -53,14 +51,10 @@ async function createTarea(name, description, coordinatorId, points, date, place
   const category = await models.category.findByPk(categoryId);
   if (!category) {
     throw new Error('la categoria no fue encontrada');
+  } else {
+    tarea.categoryId = categoryId;
   }
   tarea.points = duracion * category.puntosPorHora;
-
-  if (models.tarea.findByPk(categoryId)) {
-    tarea.categoryId = categoryId;
-  } else {
-    throw new Error('El id proporcionado no coincide con las tareas almacenadas');
-  }
 
   const tareaCreated = await tarea.save();
   return tareaCreated;
@@ -79,38 +73,48 @@ async function editTarea(id, name, description, coordinatorId, points, date, pla
   if (coordinatorId) {
     tarea.coordinatorId = coordinatorId;
   }
-  if (points) {
-    // tarea.points = points;
-    const category = await models.category.findByPk(categoryId);
-    if (!category) {
-      throw new Error('la categoria no fue encontrada');
+  // eslint-disable-next-line max-len
+
+  if (duracion || categoryId) {
+    if (tarea.duracion !== duracion) tarea.duracion = duracion;
+
+    if (tarea.categoryId !== categoryId) {
+      const category = await models.category.findByPk(categoryId);
+      if (!category) {
+        throw new Error('la categoria no fue encontrada');
+      }
+      tarea.categoryId = categoryId;
+      tarea.points = tarea.duracion * category.puntosPorHora;
     }
-    tarea.points = duracion * category.puntosPorHora;
   }
+
   if (date) {
     tarea.date = date;
   }
   if (place) {
     tarea.place = place;
   }
-  if (categoryId) {
-    tarea.categoryId = categoryId;
-  }
   if (cantParticipantes) {
     tarea.cantParticipantes = cantParticipantes;
   }
-  if (cantInscriptos) {
-    tarea.cantInscriptos = cantInscriptos;
-  }
-  if (duracion) {
-    tarea.duracion = duracion;
-  }
-  if (estado) {
+  if (estado) { // Hacer un método especial para cambiar el estado
     tarea.estado = estado;
   }
 
   const tareaEdited = await tarea.save();
   return tareaEdited;
+}
+
+async function cambiarEstado(id, nuevoEstado) {
+  const tarea = await models.tarea.findByPk(id);
+  if (nuevoEstado) {
+    tarea.estado = nuevoEstado;
+    const tareaEditada = tarea.save();
+    return tareaEditada;
+  // eslint-disable-next-line no-else-return
+  } else {
+    throw new Error('No se ha proporcionado el estado de la tarea');
+  }
 }
 
 async function deleteTarea(id) {
@@ -128,5 +132,5 @@ async function tareaPorOrganizacion(coordinatorId) {
 }
 
 module.exports = {
-  getAll, getById, createTarea, editTarea, deleteTarea, tareaPorOrganizacion,
+  getAll, getById, createTarea, editTarea, deleteTarea, tareaPorOrganizacion, cambiarEstado,
 };
