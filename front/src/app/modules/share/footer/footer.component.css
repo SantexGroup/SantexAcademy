@@ -1,0 +1,56 @@
+footer{
+    background-color: #0f226d;
+}
+
+#cont1{
+    background-color: #0f226d;
+    padding: 20px;
+    
+}
+#cont2{
+    padding: 20px;
+}
+
+#cont3{
+    padding: 20px;
+}
+
+.accordion-button{
+    background-color: #0f226d;
+    color: aliceblue;
+    outline: none;
+}
+#accordionFlushExample{
+    background-color: #0f226d;
+}
+button{
+    background-color: #0f226d;
+    color: aliceblue;
+    outline: none;
+}
+button:hover{
+    background-color: #ff6501;
+}
+#flush-collapseOne{
+    background-color: #0f226d;
+    color: aliceblue;
+}
+#flush-collapseTwo{
+    background-color: #0f226d;
+    color: aliceblue;
+}
+#flush-collapseThree{
+    background-color: #0f226d;
+    color: aliceblue;
+}
+a{
+    color: grey ;
+    text-decoration:none;
+}
+h1{
+    color: #ff6501;
+    padding: 20px;
+}
+#copy{
+    color: gray
+}
