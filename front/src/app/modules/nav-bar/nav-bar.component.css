@@ -17,6 +17,7 @@
 }
 
 #nosotros button {
+    margin-right: 3rem;
     margin-left: 40%;
 }
 
@@ -26,4 +27,5 @@
 
 .botonesInicio:hover {
     color: #FFF;
+    background: #3f6ad8;
 }

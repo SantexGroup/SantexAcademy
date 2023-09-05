@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GetURLdataService } from 'src/app/core/services/toolServices/get-urldata.service';
+import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UsuarioService } from 'src/app/core/services/usuario.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class RegistroComponent implements OnInit {
     private fb: FormBuilder, 
     private router: Router, 
     private userService: UsuarioService,
-    public dataUrl: GetURLdataService
+    public dataUrl: GetURLdataService,
+    public views: NavBarService
     ) { }
 
   ngOnInit(): void { 
@@ -64,6 +66,8 @@ export class RegistroComponent implements OnInit {
       this.userService.registro(myForm.value).subscribe({
         next: (data) => { console.log(data);
         this.dataUrl.id = data.profile.id;
+        this.views.quickButton = true;
+        this.views.accountButton = false;
         this.dataUrl.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
         this.router.navigate(['/home', data.profile.id]) 
         }, 
