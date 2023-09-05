@@ -6,6 +6,7 @@ import { SliderOrganizationsComponent } from './components/slider-organizations/
 import { CardsAgendahoursComponent } from './components/cards-agendahours/cards-agendahours.component';
 import { VolunteeringSearchComponent } from './components/volunteering-search/volunteering-search.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
+import { WhatsappButtonComponent } from './components/whatsapp-button/whatsapp-button.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
     CardsAgendahoursComponent,
     VolunteeringSearchComponent,
     TestimonialsComponent,
+    WhatsappButtonComponent,
   ],
   imports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
