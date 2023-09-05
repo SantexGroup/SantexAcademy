@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CoursesDetailsService } from 'src/app/services/courses-details.service';
+import { CoursesService } from 'src/app/services/courses.service';
 
 @Component({
   selector: 'app-courses-detail',
@@ -10,19 +10,17 @@ import { CoursesDetailsService } from 'src/app/services/courses-details.service'
 })
 export class CoursesDetailComponent implements OnInit{
 
-  constructor(public courseDetailService: CoursesDetailsService, private activateRoute: ActivatedRoute){}
+  constructor(public courseService: CoursesService, private activateRoute: ActivatedRoute){}
 
   subscription: Subscription | null = null;
 
   ngOnInit(){
 
     const id = this.activateRoute.snapshot.params["id"]
-    let exists: boolean = false;
-    this.subscription = this.courseDetailService.getCoursesDetail(id).subscribe(
+    this.subscription = this.courseService.getCoursesDetail(id).subscribe(
       (response) => {
-        this.courseDetailService.coursesDetail = response
+        this.courseService.courses = response
         console.log("Esta es la respuesta ", response)
-        exists = true;
         
       }, 
       (error) => {
