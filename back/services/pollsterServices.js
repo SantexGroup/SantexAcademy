@@ -1,4 +1,4 @@
-const Pollster = require('../models');
+// const Pollster = require('../models');
 const db = require('../models');
 
 // Busqueda  de todos los encuestadores
@@ -18,21 +18,46 @@ async function getById(id) {
 }
 
 // Crear un usuario
-async function createPollster(firstname, lastname, dni, phone, adress, email, roll) {
-  const pollster = new Pollster();
+async function createPollster(
+  // eslint-disable-next-line camelcase
+  firstname,
+  lastname,
+  dni,
+  phone,
+  adress,
+  email,
+  password,
+  roll,
+) {
+  // eslint-disable-next-line new-cap
+  console.log('enscuestador a crear');
+  // eslint-disable-next-line new-cap
+  const pollster = new db.pollster();
   pollster.firstname = firstname;
   pollster.lastname = lastname;
   pollster.dni = dni;
   pollster.phone = phone;
   pollster.adress = adress;
   pollster.email = email;
+  pollster.password = password;
   pollster.roll = roll;
-  const pollsterCreate = await db.pollster.save();
+  const pollsterCreate = await pollster.save();
+
   return pollsterCreate;
 }
 
 // editar encuestador
-async function editPollster(id, firstname, lastname, dni, phone, adress, email) {
+async function editPollster(
+  id,
+  firstname,
+  lastname,
+  dni,
+  phone,
+  adress,
+  email,
+  // eslint-disable-next-line camelcase
+  password_id,
+) {
   const pollster = await getById(id);
 
   if (firstname) {
@@ -53,7 +78,12 @@ async function editPollster(id, firstname, lastname, dni, phone, adress, email) 
   if (adress) {
     pollster.adress = adress;
   }
-  const pollsterEdit = await db.pollster.save();
+  // eslint-disable-next-line camelcase
+  if (password_id) {
+    // eslint-disable-next-line camelcase
+    pollster.password_id = password_id;
+  }
+  const pollsterEdit = await pollster.save();
   return pollsterEdit;
 }
 

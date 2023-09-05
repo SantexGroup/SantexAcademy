@@ -15,7 +15,7 @@ const logger = require('./utils/winston.logger');
 const models = require('./models');
 
 // Rutes:
-const routes = require('./routes');
+// const routes = require('./routes');
 
 const config = require('./config/config');
 const validateEnv = require('./utils/validateEnv');
@@ -88,7 +88,7 @@ models.sequelize.authenticate()
     logger.api.error(err);
   });
 
-app.use('/', routes);
+// app.use('/', routes);
 app.use('/', require('./routes/index'));
 
 // para procesar datos enviados del form

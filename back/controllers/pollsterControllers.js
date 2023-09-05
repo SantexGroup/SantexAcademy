@@ -32,10 +32,11 @@ async function createPollster(req, res) {
       phone,
       adress,
       email,
+      password,
       roll,
     } = req.body;
     // eslint-disable-next-line max-len
-    const pollster = await pollsterService.createPollster(firstname, lastname, dni, phone, adress, email, roll);
+    const pollster = await pollsterService.createPollster(firstname, lastname, dni, phone, adress, email, password, roll);
     res.status(200).send(pollster);
   } catch (error) {
     throw Error('error');
@@ -53,9 +54,11 @@ async function editPollster(req, res) {
     phone,
     adress,
     email,
+    // eslint-disable-next-line camelcase
+    password_id,
   } = req.body;
   // eslint-disable-next-line max-len
-  const pollster = await pollsterService.editPollster(id, firstname, lastname, dni, phone, adress, email);
+  const pollster = await pollsterService.editPollster(id, firstname, lastname, dni, phone, adress, email, password_id);
 
   res.status(200).send(pollster);
 }

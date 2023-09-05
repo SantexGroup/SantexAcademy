@@ -1,17 +1,18 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class password extends Model {
+  class Password extends Model {
     static associate() {
       // define association here
     }
   }
-  password.init({
+  Password.init({
     password: DataTypes.STRING,
-    limit_time: DataTypes.TIME,
+    limit_time: DataTypes.DATE,
   }, {
     sequelize,
     modelName: 'password',
+    timestamps: false,
   });
-  return password;
+  return Password;
 };
