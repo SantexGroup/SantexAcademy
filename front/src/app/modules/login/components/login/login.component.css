@@ -1,19 +1,21 @@
 .wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(178, 211, 211);
-  height: 100%;
+  margin-top: 0; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 68vh;  
 }
-.logo{
-    height: 100px;
-    margin-bottom: 10px;
-    
-}
+
 .body {
-    max-width: 300px;
-    width: 100%;
-    text-align: center;
+  text-align: center;
+  margin-top: 0; 
+}
+
+.form-container {
+  background-color: VAR(--color-0);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: VAR(--box-shadow-1)
 }
 
 input {
@@ -21,5 +23,10 @@ input {
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  border-color: aqua;
+  border-color: var(--color-3);
+}
+
+.btn-custom {
+  background-color: VAR(--color-primary); 
+  color: var(--color-0); 
 }

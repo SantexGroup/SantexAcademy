@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="wrapper">
-  <div class="body">
-    <img class="logo" src="../../assets/imagen/login.png" alt="img login" srcset="">
+  <div class="body">  
+    <div class="form-container">  
     <h1>Login</h1>
     <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
       <div class="form-group">
@@ -34,11 +34,15 @@
           <div *ngIf="loginForm.controls.password?.errors?.minlength">La contraseña debe tener al menos 8 caracteres.</div>
         </div>
       </div>
-      <button type="submit" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+      <button type="submit" class="btn btn-primary btn-custom btn-lg" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+
     </form>
     <div>
-      <a routerLink="/registro">Registrarse</a>
+      <a routerLink="/register">¿No tenes cuenta? Registrate aquí</a>
     </div>
   </div>
 </div>
-<app-footer></app-footer>
+</div>
+
+  <app-footer></app-footer>
+
