@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SkillService } from 'src/app/core/services/skill.service';
 
@@ -7,7 +7,7 @@ import { SkillService } from 'src/app/core/services/skill.service';
   templateUrl: './skill.component.html',
   styleUrls: ['./skill.component.css']
 })
-export class SkillComponent implements OnInit {
+export class SkillComponent {
   skillForm: FormGroup;
   @Input() profileId?: number;
 
@@ -16,10 +16,6 @@ export class SkillComponent implements OnInit {
       skill: '',
       level: ''
     });
-  }
-
-  ngOnInit(): void {
-
   }
 
   addSkillToProfile(): void {

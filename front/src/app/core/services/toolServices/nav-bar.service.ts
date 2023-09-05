@@ -17,6 +17,8 @@ export class NavBarService{
   quickButton: boolean = false;
 
   accountButton: boolean = true;
+  /* Titulo de la navBar */
+  title: string = "";
 
   
   hideLanding(){

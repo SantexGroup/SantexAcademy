@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { GetURLdataService } from 'src/app/core/services/toolServices/get-urldata.service';
+import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UsuarioService } from 'src/app/core/services/usuario.service';
 
@@ -10,7 +10,7 @@ import { UsuarioService } from 'src/app/core/services/usuario.service';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent implements OnInit {
+export class RegistroComponent{
   mensajeError: string = "";
 
   constructor
@@ -18,14 +18,9 @@ export class RegistroComponent implements OnInit {
     private fb: FormBuilder, 
     private router: Router, 
     private userService: UsuarioService,
-    public dataUrl: GetURLdataService,
+    public dataUser: UserDataService,
     public views: NavBarService
     ) { }
-
-  ngOnInit(): void { 
-    this.dataUrl.getRoute();
-  }
-
 
   //* Getters para validar los campos del formulario
   get name() {
@@ -65,10 +60,10 @@ export class RegistroComponent implements OnInit {
     if(myForm.status == 'VALID') {
       this.userService.registro(myForm.value).subscribe({
         next: (data) => { console.log(data);
-        this.dataUrl.id = data.profile.id;
+        this.dataUser.profileId = data.profile.id;
         this.views.quickButton = true;
         this.views.accountButton = false;
-        this.dataUrl.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
+        this.views.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
         this.router.navigate(['/home', data.profile.id]) 
         }, 
         error: (err) => { 
