@@ -10,10 +10,10 @@
 }
 
 .titulo{
-    margin-left: 15%;
-    font-size:3em ;
+    margin: auto;
     font-weight: bold;
     align-items: center;
+    text-align: center;
 }
 
 #nosotros button {

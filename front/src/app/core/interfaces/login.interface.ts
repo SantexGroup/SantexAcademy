@@ -1,4 +1,8 @@
 export interface loginInterface {
+  user:{
+    name:string,
+    lastName:string,
+  },
   profile: {
     id:number,
   }

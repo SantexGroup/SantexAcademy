@@ -14,24 +14,7 @@ export class NavBarService{
 
   externalComponent: boolean = false;
 
-  titulo: string = "";
-
-  getRoute(){
-   const ruta = window.location.pathname 
-
-   if(ruta == "/login"){
-    this.titulo="Iniciar Sesion";
-   }
-
-   if(ruta == "/registro"){
-    this.titulo="Registrarse";
-   }
-
-   if(ruta == "/home"){
-    this.titulo="Bienvenido!";
-   }
-  }
-
+  
   hideLanding(){
     this.landing = false;
     this.externalComponent = true;

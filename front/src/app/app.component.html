@@ -1,9 +1,9 @@
-<!-- TODO: DESCOMENTAR ANTES DE SUBIR -->
-    <div *ngIf="views.landing">
+<app-loading></app-loading>
+<div *ngIf="views.landing">
     <nav class="navbar navbar-expand-lg bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" routerLink="/">
-                <img src="../assets/Imagenes/cvassistantlogo.png" alt="logo cvassistant">
+                <img src="assets/Imagenes/cvassistantlogo.png" alt="logo cvassistant">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,8 +23,18 @@
                 </ul>
                 <button mat-button [matMenuTriggerFor]="menu">Cuenta</button>
                 <mat-menu #menu="matMenu">
-                    <button routerLink="login" (click)="views.hideLanding()" class="botonesInicio" mat-menu-item>Inciar Sesion</button>
-                    <button routerLink="registro" (click)="views.hideLanding()" class="botonesInicio" mat-menu-item>Registrarse</button>
+                    <button routerLink="login" 
+                    (click)="views.hideLanding()" 
+                    class="botonesInicio" 
+                    mat-menu-item
+                    (click)="dataUrl.title = 'Iniciar Sesion'"
+                    >Iniciar Sesion</button>
+                    <button routerLink="registro" 
+                    (click)="views.hideLanding()" 
+                    class="botonesInicio" 
+                    mat-menu-item
+                    (click)="dataUrl.title = 'Registrarse'"
+                    >Registrarse</button>
                 </mat-menu>
             </div>
         </div>
@@ -33,7 +43,7 @@
     <div class="eslogan">
         <p class="eslogan-frase">Destaca entre la multitud: Tu CV perfecto con
             <br>
-            <img src="../assets/Imagenes/cvassistantlogo2.png" alt=""><span>CV-ASSISTANT</span>
+            <img src="assets/Imagenes/cvassistantlogo2.png" alt=""><span>CV-ASSISTANT</span>
         </p>
     </div>
 
@@ -55,22 +65,22 @@
         <div id="carrusel-plantillas" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="1500">
-                    <img src="../../../assets/Imagenes/CV1.png" class="d-block w-100" alt="CV1">
+                    <img src="assets/Imagenes/CV1.png" class="d-block w-100" alt="CV1">
                 </div>
                 <div class="carousel-item" data-bs-interval="1500">
-                    <img src="../../../assets/Imagenes/CV2.png" class="d-block w-100" alt="CV2">
+                    <img src="assets/Imagenes/CV2.png" class="d-block w-100" alt="CV2">
                 </div>
                 <div class="carousel-item" data-bs-interval="1500">
-                    <img src="../../../assets/Imagenes/CV3.png" class="d-block w-100" alt="CV3">
+                    <img src="assets/Imagenes/CV3.png" class="d-block w-100" alt="CV3">
                 </div>
                 <div class="carousel-item" data-bs-interval="1500">
-                    <img src="../../../assets/Imagenes/CV4.png" class="d-block w-100" alt="CV4">
+                    <img src="assets/Imagenes/CV4.png" class="d-block w-100" alt="CV4">
                 </div>
                 <div class="carousel-item" data-bs-interval="1500">
-                    <img src="../../../assets/Imagenes/CV5.png" class="d-block w-100" alt="CV5">
+                    <img src="assets/Imagenes/CV5.png" class="d-block w-100" alt="CV5">
                 </div>
                 <div class="carousel-item" data-bs-interval="1500">
-                    <img src="../../../assets/Imagenes/CV6.png" class="d-block w-100" alt="CV6">
+                    <img src="assets/Imagenes/CV6.png" class="d-block w-100" alt="CV6">
                 </div>
             </div>
         </div>
@@ -80,7 +90,7 @@
 
         <div class="card-objetivos">
 
-            <img class="imagen-objetivo" src="../../../assets/Imagenes/diana.png" alt="diana">
+            <img class="imagen-objetivo" src="assets/Imagenes/diana.png" alt="diana">
 
 
             <h5 class="titulo-objetivo">Diseño Intuitivo</h5>
@@ -91,7 +101,7 @@
         </div>
         <div class="card-objetivos">
 
-            <img class="imagen-objetivo" src="../../../assets/Imagenes/paleta-de-color.png" alt="">
+            <img class="imagen-objetivo" src="assets/Imagenes/paleta-de-color.png" alt="">
 
 
             <h5 class="titulo-objetivo">Personalización Sencilla</h5>
@@ -101,7 +111,7 @@
         </div>
         <div class="card-objetivos">
 
-            <img class="imagen-objetivo" src="../../../assets/Imagenes/reloj-de-arena.png" alt="">
+            <img class="imagen-objetivo" src="assets/Imagenes/reloj-de-arena.png" alt="">
 
 
             <h5 class="titulo-objetivo">Resultados Rápidos</h5>

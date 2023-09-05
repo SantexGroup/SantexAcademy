@@ -8,11 +8,23 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="nosotros">
-            <h1 class="titulo">{{views.titulo}}</h1>
+            <h1 class="titulo">{{dataUrl.title}}</h1>
             <button mat-button [matMenuTriggerFor]="menu">Cuenta</button>
             <mat-menu #menu="matMenu">
-                <button routerLink="login" class="botonesInicio" mat-menu-item>Inciar Sesion</button>
-                <button routerLink="registro" class="botonesInicio" mat-menu-item>Registrarse</button>
+                <button 
+                routerLink="login" 
+                class="botonesInicio" 
+                mat-menu-item
+                (click)="dataUrl.title = 'Iniciar Sesion'"
+                >Iniciar Sesion
+            </button>
+                <button 
+                routerLink="registro" 
+                class="botonesInicio" 
+                mat-menu-item
+                (click)="dataUrl.title = 'Registrarse'"
+                >Registrarse
+            </button>
             </mat-menu>
         </div>
     </div>

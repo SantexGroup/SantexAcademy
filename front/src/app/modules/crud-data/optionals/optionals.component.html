@@ -1,6 +1,6 @@
 <body>
     <div class="optionalsInput">
-        <div id="carouselExampleIndicators" class="carousel slide">
+        <div id="carouselExampleIndicators" class="carousel">
             <form [formGroup]="optionalsForm" (ngSubmit)="postOptionals()">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -77,17 +77,17 @@
                         </mat-form-field>
                     </div>
                 </div>
-                <div class="botonera">
-                    <div class="botones">
-                        <button mat-flat-button color="primary" type="submit">
-                            Guardar
-                        </button>
-                        <button mat-flat-button color="warn">
-                            Salir
-                        </button>
-                    </div>
-                </div>
             </form>
+            <div class="botonera">
+                <div class="botones">
+                    <button mat-flat-button color="primary" type="submit">
+                        Guardar
+                    </button>
+                    <button mat-flat-button color="warn">
+                        Salir
+                    </button>
+                </div>
+            </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="prev">
                 <span class="carousel-control"> <<< </span>

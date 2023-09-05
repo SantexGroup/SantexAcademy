@@ -25,6 +25,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { NavBarComponent } from './modules/nav-bar/nav-bar.component';
 import { HomeRoutingModule } from './modules/home/home-routing.module';
 import { PersonalComponent } from './modules/crud-data/personal/personal.component';
+import { SkillComponent } from './modules/crud-data/skill/skill.component';
+import { LoadingComponent } from './modules/loading/loading.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptor } from './core/services/toolServices/interceptor/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,8 @@ import { PersonalComponent } from './modules/crud-data/personal/personal.compone
     HomeComponent,
     NavBarComponent,
     PersonalComponent,
+    SkillComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -56,9 +62,14 @@ import { PersonalComponent } from './modules/crud-data/personal/personal.compone
     MatDividerModule,
     MatMenuModule,
     HomeRoutingModule,
-
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
