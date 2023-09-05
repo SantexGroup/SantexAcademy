@@ -10,7 +10,8 @@ const volunteerRoutes = require('./volunteer-routes');
 const coordinatorRoutes = require('./coordinator-routes');
 // const tareaRoutes = require('./tareas-routes');
 const categoryRoutes = require('./category-routes');
-const administratorRoutes = require('./administrator-routes');
+// const administratorRoutes = require('./administrator-routes');
+const premiosRoutes = require('./premios-routes');
 
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
@@ -21,10 +22,14 @@ app.use('/coordinator', coordinatorRoutes);
 // app.use('/tarea', tareaRoutes);
 app.use('/category', categoryRoutes);
 
-app.use('/admin', administratorRoutes);
+// app.use('/administrator', administratorRoutes);
+app.use('/premios', premiosRoutes);
 
 // eslint-disable-next-line max-len
 module.exports = {
   // eslint-disable-next-line max-len
-  volunteer: volunteerRoutes, coordinator: coordinatorRoutes, category: categoryRoutes, admin: administratorRoutes,
+  volunteer: volunteerRoutes,
+  coordinator: coordinatorRoutes,
+  category: categoryRoutes,
+  premios: premiosRoutes,
 };
