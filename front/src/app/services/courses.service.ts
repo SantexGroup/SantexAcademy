@@ -8,15 +8,23 @@ import { Observable } from 'rxjs';
 })
 export class CoursesService {
 
-  courses: Course[] = [];
+  courses: any = [];
 
-  private endpoint = 'http://localhost:4001/courses' //creamos una variable para el endpoint de los cursos
+  private endpoint = 'http://localhost:4001/courses'; //creamos una variable para el endpoint de los cursos
 
   constructor(private http: HttpClient) {} //creamos una variable para el modulo de HttpClient
 
   getPosts():Observable<Course[]> { //creamos un metodo que va a devolver un observable con el array de cursos
 
     return this.http.get<Course[]>(this.endpoint) //hacemos un get del endpoint que será el array de cursos
+
+  }
+
+  getCoursesDetail(id: number):Observable<Course[]> { 
+
+    const url = `${this.endpoint}/${id}`
+
+    return this.http.get<Course[]>(url)
 
   }
 
