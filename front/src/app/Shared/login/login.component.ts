@@ -15,6 +15,14 @@ export class LoginComponent implements OnInit {
 
   corLog: string = '';
   pasLog: string = '';
+  resLog:  string[] = [];
+  prueba: object = {};
+  noLogeado: boolean = false;
+  logeadoComprador: boolean = false;
+  logeadoVendedor: boolean = false;
+  logeado: boolean = true;
+  token: any[] = [];
+
 
   constructor(private service: LoginService) { }
 
@@ -22,11 +30,20 @@ export class LoginComponent implements OnInit {
   }
 
   botonLogin() {
-    console.log(this.corLog + this.pasLog);
     this.service.login(this.corLog, this.pasLog).subscribe(respuesta => {
       console.log(respuesta)
-    })
+      this.token = respuesta;
+      console.log(this.token)
+    }) 
+      console.log(this.token)  
   }
+
+  // deslogear() {
+  //   if (this.logeadoVendedor = true) {
+  //     this.logeadoVendedor = false;
+  //   }
+  // }
+  // if (logeadoVendedor = true) {
+  //   console.log("cerró sesión")
+  // }
 }
-
-

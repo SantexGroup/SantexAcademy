@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../http/api.service';
 
 @Injectable({
@@ -18,9 +17,9 @@ export class LoginService {
       mail: corLogServ,
       password: pasLogServ,
     }
-    return this.apiService.post('/login', body)
+    return this.apiService.post<any>('/users/login', body)
   }
-
+  
 }  
        
 

@@ -2,10 +2,10 @@ const userService = require('../services/user-service');
 
 // login
 async function login(req, res, next) {
-  const { alias, password } = req.body;
+  const { mail, password } = req.body;
 
   try {
-    const accesToken = await userService.login(alias, password);
+    const accesToken = await userService.login(mail, password);
     res.status(200).send(accesToken);
   } catch (error) {
     next(error);
@@ -22,12 +22,10 @@ async function logout(req, res) {
 // crear usuario
 async function createUser(req, res) {
   const {
-    idDireccion, firstName, lastName, dni, mail, password, estadoDeVendedor, alias,
+    idDireccion, alias, firstName, lastName, dni, mail, password,
   } = req.body;
 
-  const user = await userService.userRegister(idDireccion, firstName, lastName, dni, mail,
-    password, estadoDeVendedor, alias);
-
+  const user = await userService.userRegister(idDireccion, alias, firstName, lastName, dni, mail, password);
   res.status(201).send(user);
 }
 
