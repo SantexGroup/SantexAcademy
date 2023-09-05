@@ -7,7 +7,7 @@
   background-position: center;
 }
 
-.foto-fija {
+/* .foto-fija {
   background-color: rgba(255, 255, 255, 0);
   background-image: url("https://res.cloudinary.com/carina-bosio/image/upload/v1693270223/xAcademy/grupo-manos-diversas-multietnicas-levantadas_wu1nu5.jpg");
   background-position: center center;
@@ -19,4 +19,12 @@
   background-attachment: fixed;
   height: calc(100vh - 10rem);
   width: 100%;
+  } */
+
+
+@media (max-width: 768px) {
+  .foto-fija {
+    display: none;
   }
+}
+
