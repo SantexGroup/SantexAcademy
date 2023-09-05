@@ -20,19 +20,20 @@ async function getById(id) {
   return cat;
 }
 
-async function createCategory(name, description, dificulty) {
+async function createCategory(name, description, dificulty, puntosPorHora) {
   const cat = new Category();
 
   cat.name = name;
   cat.description = description;
   cat.dificulty = dificulty;
+  cat.puntosPorHora = puntosPorHora;
 
   const catCreated = await cat.save();
 
   return catCreated;
 }
 
-async function editCategory(id, name, description, dificulty) {
+async function editCategory(id, name, description, dificulty, puntosPorHora) {
   const cat = await getById(id);
   if (name) {
     cat.name = name;
@@ -42,6 +43,9 @@ async function editCategory(id, name, description, dificulty) {
   }
   if (dificulty) {
     cat.dificulty = dificulty;
+  }
+  if (puntosPorHora) {
+    cat.puntosPorHora = puntosPorHora;
   }
 
   const catEdited = await cat.save();

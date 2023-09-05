@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      id_coordinator: {
+      coordinatorId: {
         type: DataTypes.INTEGER,
       },
       points: {
@@ -35,12 +35,26 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      id_category: {
+      categoryId: {
         type: DataTypes.INTEGER,
       },
-      cant_participantes: {
+      cantParticipantes: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        defaultValue: 0,
+      },
+      cantInscriptos: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: 0,
+      },
+      duracion: {
+        type: DataTypes.INTEGER,
+      },
+      estado: {
+        type: DataTypes.ENUM('activa', 'finalizada'),
+        defaultValue: 'activa',
+        allowNull: true,
       },
 
     }, {
@@ -54,8 +68,8 @@ module.exports = (sequelize, DataTypes) => {
   );
   Tarea.associate = (models) => {
     Tarea.belongsToMany(models.volunteer, { through: models.tareasVoluntario });
-    Tarea.belongsTo(models.category, { foreignKey: 'id_category' });
-    Tarea.belongsTo(models.coordinator, { foreignKey: 'id_coordinator' });
+    Tarea.belongsTo(models.category);
+    Tarea.belongsTo(models.coordinator);
   };
   return Tarea;
 };
