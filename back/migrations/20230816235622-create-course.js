@@ -22,7 +22,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       start_date: {
-        type: Sequelize.STRING
+        type: Sequelize.DATE
       },
       capacity: {
         type: Sequelize.INTEGER
@@ -40,6 +40,9 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       modality: {
+        type: Sequelize.STRING
+      },
+      banner: {
         type: Sequelize.STRING
       },
       createdAt: {
