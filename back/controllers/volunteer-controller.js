@@ -78,15 +78,6 @@ async function modifyPasswordController(req, res) {
   }
 }
 
-async function agregarTareaVolunteer(req, res) {
-  const { idVolunteer, idTarea } = req.params;
-  try {
-    const resp = await volunteerServices.agregarTareaVolunteer(idVolunteer, idTarea);
-    res.status(200).json({ resp });
-  } catch (error) {
-    res.status(500).json({ error });
-  }
-}
 module.exports = {
   // eslint-disable-next-line max-len
   getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, loginVolunteer, getDataVoluntario, modifyPasswordController,
