@@ -27,13 +27,13 @@
                     (click)="views.hideLanding()" 
                     class="botonesInicio" 
                     mat-menu-item
-                    (click)="dataUrl.title = 'Iniciar Sesion'"
+                    (click)="views.title = 'Iniciar Sesion'"
                     >Iniciar Sesion</button>
                     <button routerLink="registro" 
                     (click)="views.hideLanding()" 
                     class="botonesInicio" 
                     mat-menu-item
-                    (click)="dataUrl.title = 'Registrarse'"
+                    (click)="views.title = 'Registrarse'"
                     >Registrarse</button>
                 </mat-menu>
             </div>
@@ -59,7 +59,7 @@
             <button class="boton-creatucv"
             routerLink="login"
             (click)="views.hideLanding()"
-            (click)="dataUrl.title = 'Iniciar Sesion'">
+            (click)="views.title = 'Iniciar Sesion'">
                 Crea tu CV
             </button>
 
@@ -218,7 +218,7 @@
                 <a href="#nosotrosContacto">Preguntas Frecuentes</a>
                 <a href="#nosotrosContacto">Quienes somos</a>
                 <a routerLink="login" 
-                (click)="dataUrl.title = 'Iniciar Sesion'"
+                (click)="views.title = 'Iniciar Sesion'"
                 (click)="views.hideLanding()"
                 >Iniciar sesion</a>
             </div>

@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { NavBarService } from './core/services/toolServices/nav-bar.service';
-import { GetURLdataService } from './core/services/toolServices/get-urldata.service';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +10,5 @@ export class AppComponent {
   
   constructor(
     public views: NavBarService,
-    public dataUrl: GetURLdataService
     ){  }
-
-    
-
 }

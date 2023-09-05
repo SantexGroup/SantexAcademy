@@ -1,5 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
-import { GetURLdataService } from 'src/app/core/services/toolServices/get-urldata.service';
+import { Component } from '@angular/core';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 
 @Component({
@@ -7,16 +6,9 @@ import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.servic
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit{
+export class NavBarComponent {
 
   constructor(
-    public dataUrl: GetURLdataService,
     public views: NavBarService
     ) { }
-
-  /* Se trae desde app.component */
-  
-  ngOnInit(): void { 
-
-  }
 }
