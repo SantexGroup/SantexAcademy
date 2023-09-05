@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BuyerRegistrationComponent } from './buyer-registration/buyer-registration.component';
-import { SellerRegistrationComponent } from './seller-registration/seller-registration.component';
+import { BuyerRegistrationComponent } from './component/buyer-registration/buyer-registration.component';
+
 
 
 const routes: Routes = [
@@ -15,10 +15,7 @@ const routes: Routes = [
     path: 'comprador',
     component: BuyerRegistrationComponent
   },
-  { 
-    path: 'vendedor', 
-  component: SellerRegistrationComponent
-  }
+  
 ];
 
 @NgModule({
