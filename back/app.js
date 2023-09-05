@@ -8,13 +8,13 @@ const routes = require('./routes');
 
 const app = express();
 const { PORT } = process.env;
-
 app.use(express.json());
 app.use(
   cors({
     origin: 'http://localhost:4200',
   }),
 );
+app.use('/api/v1', routes);
 
 app.listen(PORT, async () => {
   try {
@@ -27,6 +27,26 @@ app.listen(PORT, async () => {
   }
 });
 
-app.use('/api/v1', routes);
+app.get('/', (req, res) => {
+  const projectInfo = {
+    author: 'Exe Dev',
+    description: 'Un cra',
+  };
+
+  const htmlResponse = `
+    <html>
+      <head>
+        <title>Información del Proyecto</title>
+      </head>
+      <body>
+        <h1>Proyecto</h1>
+        <p>Autor: ${projectInfo.author}</p>
+        <p>Descripción: ${projectInfo.description}</p>
+      </body>
+    </html>
+  `;
+
+  res.status(200).send(htmlResponse);
+});
 
 // router controller service provider
