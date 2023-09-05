@@ -13,10 +13,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       paragraph1: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(700)
       },
       paragraph2: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(700)
       },
       image1url: {
         type: Sequelize.STRING

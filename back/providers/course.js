@@ -29,6 +29,8 @@ const getAllCourses = async () => {
         'has_surcharge',
         'surcharge_percentage',
         'modality',
+        'schedules',
+        'banner',
       ],
     });
     return courses;
@@ -65,6 +67,8 @@ const getCourseById = async (id) => {
         'has_surcharge',
         'surcharge_percentage',
         'modality',
+        'schedules',
+        'banner',
       ],
     });
     return course;
