@@ -56,7 +56,10 @@
                 herramienta perfecta para presentar una imagen profesional y atractiva. Impulsa tu carrera con
                 confianza,
                 sabiendo que tu CV refleja lo mejor de ti.</p>
-            <button class="boton-creatucv">
+            <button class="boton-creatucv"
+            routerLink="login"
+            (click)="views.hideLanding()"
+            (click)="dataUrl.title = 'Iniciar Sesion'">
                 Crea tu CV
             </button>
 

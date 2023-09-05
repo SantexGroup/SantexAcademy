@@ -10,7 +10,7 @@ import { ApiService } from '../http/api.service';
 export class ExperiencesStatusService {
 
   constructor(private api: ApiService) { }
-
+  /* Metodo para obtener todos los estados dispobiles desde la APP */
   getExperieceStatus(): Observable<ExperienceStatus[]>{
     return this.api.get<ExperienceStatus[]>('experiences/status');
   }

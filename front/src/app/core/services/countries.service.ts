@@ -11,7 +11,8 @@ export class CountriesService {
   constructor(
     private api: ApiService,
     ) { }
-
+    
+  /* Metodo para obtener las lista de paises publicados en la Base de datos.*/
   getCountries(): Observable<Countries[]> {
     return this.api.get<Countries[]>('countries/all');
   }
