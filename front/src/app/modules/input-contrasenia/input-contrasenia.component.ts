@@ -11,16 +11,19 @@ type password={
   selector: 'app-input-contrasenia',
   templateUrl: './input-contrasenia.component.html',
   styleUrls: ['./input-contrasenia.component.css']
-})
+})//min 3
 export class InputContraseniaComponent implements OnInit {
-  password = new FormControl("",[Validators.password, Validators.required])
+  password = new FormControl("",[Validators.minLength(8), Validators.required])
 
-  constructor(private http:HttpClient, private passwordservice: PasswordService,  private router: Router) { }
+  constructor(private passwordservice: PasswordService,  private router: Router) { }
 
   ngOnInit(): void {
+  
   }
 
   redirectToData() {
+    console.log(console.log(this.password.errors?.['minlength']));
+    
     if(this.password.valid==false){
       console.log("error");
       return;
