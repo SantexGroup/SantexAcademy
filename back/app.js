@@ -30,7 +30,7 @@ app.listen(PORT, async () => {
 app.get('/', (req, res) => {
   const projectInfo = {
     author: 'Exe Dev',
-    description: 'Un cra',
+    description: 'Un tipaso',
   };
 
   const htmlResponse = `
