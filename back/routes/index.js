@@ -1,6 +1,6 @@
 const express = require('express');
 
-const routes = express();
+const  routes = express();
 const catalogoRouter = require('./catalogo');
 const orgRouter = require('./organizacion');
 const recompensaRouter = require('./recompensa');
