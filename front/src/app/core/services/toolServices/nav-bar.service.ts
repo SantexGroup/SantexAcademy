@@ -14,6 +14,10 @@ export class NavBarService{
 
   externalComponent: boolean = false;
 
+  quickButton: boolean = false;
+
+  accountButton: boolean = true;
+
   
   hideLanding(){
     this.landing = false;
@@ -23,6 +27,17 @@ export class NavBarService{
   notShow(){
     this.landing = true;
     this.externalComponent = false;
+  }
+
+  buttonQuick(){
+    this.landing = true;
+    this.externalComponent = false;
+    this.accountButton = true;
+    this.quickButton = false;
+  }
+
+  buttonAccount(){
+    this.quickButton = false;
   }
 
 }

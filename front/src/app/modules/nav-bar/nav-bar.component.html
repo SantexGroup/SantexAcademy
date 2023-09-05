@@ -9,23 +9,21 @@
         </button>
         <div class="collapse navbar-collapse" id="nosotros">
             <h1 class="titulo">{{dataUrl.title}}</h1>
-            <button mat-button [matMenuTriggerFor]="menu">Cuenta</button>
+            <button mat-button [matMenuTriggerFor]="menu" *ngIf="views.accountButton">Cuenta</button>
             <mat-menu #menu="matMenu">
-                <button 
-                routerLink="login" 
-                class="botonesInicio" 
-                mat-menu-item
-                (click)="dataUrl.title = 'Iniciar Sesion'"
-                >Iniciar Sesion
-            </button>
-                <button 
-                routerLink="registro" 
-                class="botonesInicio" 
-                mat-menu-item
-                (click)="dataUrl.title = 'Registrarse'"
-                >Registrarse
-            </button>
+                <button routerLink="login" class="botonesInicio" mat-menu-item
+                    (click)="dataUrl.title = 'Iniciar Sesion'"
+                    (click)="views.buttonAccount()">Iniciar Sesion
+                </button>
+                <button routerLink="registro" class="botonesInicio" mat-menu-item
+                    (click)="dataUrl.title = 'Registrarse'" 
+                    (click)="views.buttonAccount()">Registrarse
+                </button>
             </mat-menu>
+            <button routerLink="/" mat-flat-button color="warn" class="botonesInicio" 
+            *ngIf="views.quickButton"
+            (click)="views.buttonQuick()">Salir
+            </button>
         </div>
     </div>
 </nav>

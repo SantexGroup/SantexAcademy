@@ -63,6 +63,7 @@ export class RegistroComponent implements OnInit {
     if(myForm.status == 'VALID') {
       this.userService.registro(myForm.value).subscribe({
         next: (data) => { console.log(data);
+        this.dataUrl.id = data.profile.id;
         this.dataUrl.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
         this.router.navigate(['/home', data.profile.id]) 
         }, 

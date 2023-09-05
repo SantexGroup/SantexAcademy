@@ -44,6 +44,8 @@ export class LoginComponent implements OnInit {
         next: (data) => { console.log(data);
         this.dataUrl.userId = data.profile.userId;
         this.dataUrl.id = data.profile.id;
+        this.views.quickButton = true;
+        this.views.accountButton = false;
         this.dataUrl.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
         this.router.navigate(['/home', data.profile.id]);
         }, 
