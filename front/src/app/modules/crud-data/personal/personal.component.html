@@ -1,39 +1,38 @@
 <body>
   <div class="experiencesInput">
-    <form >
+    <form [formGroup]="personalForm">
       <mat-form-field>
         <mat-label>Nombres</mat-label>
-        <input matInput>
+        <input matInput formControlName= "firstName">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Apellido</mat-label>
-        <input matInput>
+        <input matInput formControlName="lastName">
       </mat-form-field>
 
       <div class="dates">
         <mat-form-field>
             <mat-label>Fecha de Nacimiento:</mat-label>
-            <input matInput [matDatepicker]="picker">
+            <input matInput [matDatepicker]="picker" formControlName="bornDate">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
       </div>
       
-
       <mat-form-field>
         <mat-label>Numero de Contacto</mat-label>
-        <input matInput>
+        <input matInput formControlName="phone">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Correo</mat-label>
-        <input matInput>
+        <input matInput formControlName="email">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Foto</mat-label>
-        <input matInput>
+        <input matInput formControlName="pictureLink">
       </mat-form-field>
       
       <div class="botonera">

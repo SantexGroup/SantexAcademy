@@ -1,4 +1,5 @@
 export interface registroUsuario {
+  id?: number
   rolesId? : number; 
   name: string;
   lastName: string;
@@ -6,4 +7,6 @@ export interface registroUsuario {
   mail: string;
   nick: string;
   password: string;
+  bornDate?: Date;
+  pitureLink?: string;
 }
