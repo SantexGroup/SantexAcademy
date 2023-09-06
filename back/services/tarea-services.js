@@ -22,7 +22,7 @@ async function getAll() {
 }
 
 async function getById(id) {
-  const tarea = await Tarea.findByPk(id, { include: [{ model: models.category }, { model: models.coordinator, attributes: { exclude: ['email', 'password'] } }] });
+  const tarea = await models.tarea.findByPk(id, { include: [{ model: models.category }, { model: models.coordinator, attributes: { exclude: ['email', 'password'] } }] });
 
   if (tarea == null) {
     throw new Error('Tarea no encontrada');
@@ -108,6 +108,7 @@ async function editTarea(id, name, description, coordinatorId, points, date, pla
 async function cambiarEstado(id, nuevoEstado) {
   const tarea = await models.tarea.findByPk(id);
   if (nuevoEstado) {
+    if (tarea.estado === nuevoEstado) throw new Error('La tarea ya posee ese estado');
     tarea.estado = nuevoEstado;
     const tareaEditada = tarea.save();
     return tareaEditada;
