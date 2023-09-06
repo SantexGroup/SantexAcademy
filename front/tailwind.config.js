@@ -57,6 +57,7 @@ module.exports = {
     fontFamily: {
       sans: ["Open Sans"],
       poppins: ["Poppins"],
+      dosis: ["Dosis", "sans"],
     },
     fontSize: {
       xs: ["0.75rem", { lineHeight: "1rem" }],
