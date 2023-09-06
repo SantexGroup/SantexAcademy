@@ -4,9 +4,9 @@
   "private": true,
   "config": {},
   "scripts": {
-    "prod": "node ./app.js",
-    "start": "node ./app.js",
-    "start:dev": "nodemon ./app.js",
+    "prod": "node ./index.js",
+    "start": "node ./index.js",
+    "start:dev": "nodemon ./index.js",
     "clean": "rimraf ./node_modules",
     "lint-staged": "npx lint-staged",
     "live": "nodemon server.js",
