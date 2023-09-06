@@ -1,14 +1,15 @@
 #Novedades
-Ultima fusión en rama develop: Lunes 4 de agosto de 2023 18:47 hs
+Ultima fusión en rama develop: Martes 5 de agosto de 2023 21:01 hs
 Se trabajó:
+Se agrega footer by marianomiranda
+
+
+Previusly:
 Se agrega gestion de cursos para crud en front de Administrador
-
-
 unificación de formularios de registro y validaciones de campos
 se agrego validación de password y su confirmación
 se repararon errores por el descarte de registerbutton y registeranswer
 se reconecto formulario de registro lado usuario para que muestre los ingresos de nuevo en .json localhost:4001/user/ en el navegador
-
 Se habilita en DB: cursos para guardados
 Se cambia Catalogo-cursos para mostrar DB:cursos
 
