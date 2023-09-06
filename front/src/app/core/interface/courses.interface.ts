@@ -3,14 +3,20 @@ export interface Course {
   title: string;
   subtitle: string;
   description?: string;
-  duration: string;
-  start_date: string;
+  duration: number;
+  start_date: Date;
   capacity: number;
   price: number;
   due: number;
   has_surcharge: boolean;
   surchage_percentage: number;
-  createdAt: Date;
-  updateAt: Date;
-
+  modality:string,
+  courseDetails:[{
+    id: number;
+    title: string;
+    paragraph1: string;
+    paragraph2: string;
+    image1url: string;
+    image2ur2: string;
+  }]
 }

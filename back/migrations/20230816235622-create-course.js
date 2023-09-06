@@ -16,13 +16,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(700)
       },
       duration: {
         type: Sequelize.INTEGER
       },
       start_date: {
-        type: Sequelize.STRING
+        type: Sequelize.DATE
       },
       capacity: {
         type: Sequelize.INTEGER
@@ -40,6 +40,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       modality: {
+        type: Sequelize.STRING
+      },
+    schedules: {
+      type: Sequelize.STRING
+    },
+      banner: {
         type: Sequelize.STRING
       },
       createdAt: {
