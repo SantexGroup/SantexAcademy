@@ -20,6 +20,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -48,7 +49,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatGridListModule,
     MatCardModule,
     MatTableModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatMenuModule
    
     
   ],
