@@ -1,4 +1,4 @@
-@use '../utilities/functions' as *;
+@use '../utilities/functions';
 
 //Colores
 
@@ -11,9 +11,9 @@ $wireframe: #A1AEB7;
 
 //Medias queries
 
-$small: toEm(320px);
-$medium: toEm(375px);
-$large: toEm(425px);
-$tablet: toEm(768px);
-$laptop: toEm(1024px);
-$laptopL: toEm(1440px);
+$small: functions.toEm(320px);
+$medium: functions.toEm(375px);
+$large: functions.toEm(425px);
+$tablet: functions.toEm(768px);
+$laptop: functions.toEm(1024px);
+$laptopL: functions.toEm(1440px);

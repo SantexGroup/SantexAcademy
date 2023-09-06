@@ -10,7 +10,7 @@ const routes: Routes = [
 
   {
 
-    path: 'course-detail',
+    path: 'course-detail/:id',
     loadChildren: () => import('../app/components/components.module').then(m => m.ComponentsModule)
 
   },
@@ -37,3 +37,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
