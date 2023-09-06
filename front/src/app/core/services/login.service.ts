@@ -19,7 +19,6 @@ export class LoginService {
     }
     return this.apiService.post<any>('/users/login', body)
   }
-  
 }  
        
 

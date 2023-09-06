@@ -40,4 +40,18 @@ async function userRegister(idDireccion, alias, firstName, lastName, dni, mail, 
   return userCreated;
 }
 
-module.exports = { login, userRegister };
+// cambiar estado de vendedor
+
+async function cambiarEstadoVendedor(id, estadoDeVendedor) {
+  const user = await User.findByPk(id);
+  if (!user) {
+    throw new Error('Usuario no encontrado');
+  }
+
+  user.estadoDeVendedor = estadoDeVendedor;
+  await user.save();
+
+  return user;
+}
+
+module.exports = { login, userRegister, cambiarEstadoVendedor };
