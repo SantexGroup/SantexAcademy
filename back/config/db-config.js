@@ -1,8 +1,6 @@
 const { Sequelize } = require("sequelize"); // Take the Sequelize Class
 require("dotenv").config();
 
-// Se importa el módulo sequelize
-const { Sequelize } = require('sequelize');
 
 // Se crea la instancia de sequelize con los datos de conexión a la base de datos en el CONSTRUCTOR
 // Se puede usar una sola variable de entorno DB_URL que contenga todos los datos necesarios
