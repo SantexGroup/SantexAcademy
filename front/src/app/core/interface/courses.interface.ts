@@ -3,8 +3,8 @@ export interface Course {
   title: string;
   subtitle: string;
   description?: string;
-  duration: string;
-  start_date: string;
+  duration: number;
+  start_date: Date;
   capacity: number;
   price: number;
   due: number;
