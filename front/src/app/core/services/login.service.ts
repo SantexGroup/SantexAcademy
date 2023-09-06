@@ -8,7 +8,7 @@ export class LoginService {
 
   corLogServ: string = '';
   pasLogServ: string = '';
-  usuarioLogeado: boolean = false;
+  
 
   constructor(private apiService: ApiService) {}    
 
@@ -17,12 +17,11 @@ export class LoginService {
       mail: corLogServ,
       password: pasLogServ,
     }
-    return this.apiService.post<any>('/users/login', body)
+    return this.apiService.post<string>('/users/login', body)
   }
-  
-}  
-       
 
-
-
-      
+  usuarioLogeado(usuarioLogeado: boolean) {
+    usuarioLogeado = true;
+    return usuarioLogeado;
+  }
+}

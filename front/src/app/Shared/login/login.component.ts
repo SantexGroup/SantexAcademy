@@ -22,9 +22,11 @@ export class LoginComponent implements OnInit {
   logeadoVendedor: boolean = false;
   logeado: boolean = true;
   token: any[] = [];
+  usuarioLogeado: boolean = false;
 
 
   constructor(private service: LoginService) { }
+  
 
   ngOnInit(): void {
   }
@@ -32,12 +34,25 @@ export class LoginComponent implements OnInit {
   botonLogin() {
     this.service.login(this.corLog, this.pasLog).subscribe(respuesta => {
       console.log(respuesta)
-      this.token = respuesta;
-      console.log(this.token)
-    }) 
-      console.log(this.token)  
+      if (respuesta) {
+        localStorage.setItem( "token", respuesta);
+        const usuario = this.service.usuarioLogeado(this.usuarioLogeado);
+        if (usuario) {
+          this.usuarioLogeado = true;
+          this.estadoLogin();
+        }
+      }
+    })     
   }
+  estadoLogin() {
+    console.log(this.usuarioLogeado);
+    this.logeadoVendedor = true;
+  }
+  
 
+  // estadoLogin() {
+  //   console.log(this.usuarioLogeado)
+  // }
   // deslogear() {
   //   if (this.logeadoVendedor = true) {
   //     this.logeadoVendedor = false;
