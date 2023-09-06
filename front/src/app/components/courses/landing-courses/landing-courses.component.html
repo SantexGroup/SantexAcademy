@@ -28,8 +28,8 @@
                             <h2 class="card__title mb-2">
                                 {{course.title}}
                             </h2>
-                            <p class="card__description mb-2">
-                                {{course.description}}
+                            <p class="card__subtitle mb-2">
+                                {{course.subtitle}}
                             </p>
                             <div class="card__line"></div>
                             <h3 class="mt-3 card__price">
@@ -39,11 +39,11 @@
                                 Hasta {{course.due}} cuotas sin interés de <span class="card__price--bold">{{coursesService.getRoundedPrice(course.price, course.due)}}</span>
                             </p>
                             <p class="card__starter mb-3">
-                                Fecha de inicio: {{course.start_date | date: 'yy-mm-dd'}}
+                                Fecha de inicio: {{course.start_date | date}}
                             </p>
                             <div class="card__line"></div>
 
-                            <footer class="flex flex-column justify-content-center footer">
+                            <footer class="footer">
 
                                 <a [routerLink]="['/courses', course.id]" pButton label="ver detalle del curso" type="button"
                                     styleClass="p-mr-2 w-full uppercase" class="footer__button--info">
