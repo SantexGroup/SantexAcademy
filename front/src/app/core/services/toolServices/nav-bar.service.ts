@@ -42,4 +42,11 @@ export class NavBarService{
     this.quickButton = false;
   }
 
+  restart(){
+    window.addEventListener('popstate', (e)=> {
+      this.navBarShow=false;
+      this.landing=true;
+      this.externalComponent=false;
+    });
+  }
 }
