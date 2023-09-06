@@ -1,5 +1,5 @@
 <header
-  class="w-full p-4 bg-darkSlateBlue rounded-b-3xl shadow-md shadow-dimGray"
+  class="relative w-full p-4 bg-darkSlateBlue rounded-b-3xl shadow-md shadow-dimGray"
 >
   <article class="flex items-center justify-start gap-2">
     <figure class="w-[50px] aspect-square rounded-full border-2 border-white">
@@ -18,8 +18,12 @@
       </ul>
     </div>
   </article>
-  <div class="min-w-[100px] max-w-[200px]">
-    <article class="p-4 flex items-center justify-center gap-2 bg-white">
+  <div
+    class="absolute top-4 right-2 flex flex-col gap-2 min-w-[100px] max-w-[200px] m:right-8 m:top-6"
+  >
+    <article
+      class="p-4 flex items-center justify-center gap-2 bg-white rounded-md shadow-lg"
+    >
       <figure class="w-[80px]">
         <img
           src="/assets/imgs/clock.svg"
@@ -28,9 +32,14 @@
         />
       </figure>
       <div class="flex flex-col text-center">
-        <h2>44</h2>
-        <p>Tus horas acumuladas</p>
+        <h2 class="font-bold text-darkSlateBlue text-5xl">44</h2>
+        <p class="text-xs font-bold">Tus horas acumuladas</p>
       </div>
     </article>
+    <button
+      class="w-full bg-mediumViolet text-white border-none py-1 px-2 rounded-md font-semibold uppercase shadow-lg"
+    >
+      Canjear tus horas
+    </button>
   </div>
 </header>
