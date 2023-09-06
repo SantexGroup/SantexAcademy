@@ -1,3 +1,4 @@
+const { validationResult } = require('express-validator');
 const { userService, emailService } = require('../services');
 
 const allUser = async (req, res, next) => {
@@ -24,6 +25,14 @@ const getUser = async (req, res, next) => {
 };
 
 const createUser = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      ok: false,
+      errors: errors.mapped(),
+    });
+  }
+
   const { body } = req;
   try {
     const user = await userService.createUser(body);
@@ -42,6 +51,28 @@ const createUser = async (req, res) => {
     return res.status(500).json({ message: 'Error en el registro en controllers' });
   }
 };
+
+const login = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      ok: false,
+      errors: errors.mapped(),
+    });
+  }
+
+  const { email, password } = req.body;
+  console.log(email, password);
+  return res.json({
+    ok: true,
+    msg: 'Login de usuario /',
+  });
+};
+
+const revalidarToken = async (req, res) => res.json({
+  ok: true,
+  msg: 'Renew',
+});
 
 const updateUser = async (req, res, next) => {
   const { id } = req.params;
@@ -72,6 +103,8 @@ module.exports = {
   allUser,
   getUser,
   createUser,
+  login,
+  revalidarToken,
   updateUser,
   deleteUser,
 };

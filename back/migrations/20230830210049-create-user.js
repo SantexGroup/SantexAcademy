@@ -27,6 +27,9 @@ module.exports = {
       estado: {
         type: Sequelize.BOOLEAN
       },
+      rol: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
