@@ -1,4 +1,4 @@
-//const ExpressValidator = require('express-validator');
+// const ExpressValidator = require('express-validator');
 
 // exports.checkValidationResult = function checkValidationResult(req, res, next) {
 //   const result = ExpressValidator.validationResult(req);
@@ -14,11 +14,11 @@ const { body, validationResult } = require('express-validator');
 const createCourse = [
   body('title')
     .isString().withMessage('[title] is require String')
-    .isLength({ max: 255})
+    .isLength({ max: 255 })
     .withMessage('[title] less than 255 characters.'),
   body('subtitle')
     .isString().withMessage('[subtitle] is require String')
-    .isLength({ max: 255})
+    .isLength({ max: 255 })
     .withMessage('[subtitle] less than 255 characters.'),
   body('description')
     .isString()
@@ -65,19 +65,19 @@ const createCourse = [
     .withMessage('[Schedules] are required'),
   body('banner')
     .isURL()
-    .withMessage('The URL of the banner] image is invalid')
+    .withMessage('The URL of the banner] image is invalid'),
 ];
 
 const updateCourse = [
   body('title')
     .optional()
     .isString().withMessage('[title] is require String')
-    .isLength({ max: 255})
+    .isLength({ max: 255 })
     .withMessage('[title] less than 255 characters.'),
   body('subtitle')
     .optional()
     .isString().withMessage('[subtitle] is require String')
-    .isLength({ max: 255})
+    .isLength({ max: 255 })
     .withMessage('[subtitle] less than 255 characters.'),
   body('description')
     .optional()
@@ -132,8 +132,66 @@ const updateCourse = [
   body('banner')
     .optional()
     .isURL()
-    .withMessage('The URL of the banner] image is invalid')
-]
+    .withMessage('The URL of the banner] image is invalid'),
+];
+
+// Course Details Validations Rules
+const createCourseDetail = [
+  body('title')
+    .isString()
+    .withMessage('[title] is require String')
+    .isLength({ max: 255 })
+    .withMessage('[title] less than 255 characters.'),
+  body('paragraph1')
+    .optional()
+    .isString()
+    .withMessage('[paragraph1] is require String')
+    .isLength({ max: 700 })
+    .withMessage('[paragraph1] must be less than 700 words'),
+  body('paragraph2')
+    .optional()
+    .isString()
+    .withMessage('[paragraph2] is require String')
+    .isLength({ max: 700 })
+    .withMessage('[paragraph2] must be less than 700 words'),
+  body('image1url')
+    .optional()
+    .isURL()
+    .withMessage('The URL of the [image1] is invalid'),
+  body('image1url')
+    .optional()
+    .isURL()
+    .withMessage('The URL of the [image1] is invalid'),
+];
+
+const updateCourseDetail = [
+  body('title')
+    .optional()
+    .isString()
+    .withMessage('[title] is require String')
+    .isLength({ max: 255 })
+    .withMessage('[title] less than 255 characters.'),
+  body('paragraph1')
+    .optional()
+    .isString()
+    .withMessage('[paragraph1] is require String')
+    .isLength({ max: 700 })
+    .withMessage('[paragraph1] must be less than 700 words'),
+  body('paragraph2')
+    .optional()
+    .isString()
+    .withMessage('[paragraph2] is require String')
+    .isLength({ max: 700 })
+    .withMessage('[paragraph2] must be less than 700 words'),
+  body('image1url')
+    .optional()
+    .isURL()
+    .withMessage('The URL of the [image1] is invalid'),
+  body('image2url')
+    .optional()
+    .isURL()
+    .withMessage('The URL of the [image2] is invalid'),
+];
 
 const checkValidationResult = (req, res, next) => {
   const result = validationResult(req);
@@ -143,4 +201,6 @@ const checkValidationResult = (req, res, next) => {
   return res.status(400).json({ errors: result.array() });
 };
 
-module.exports = { createCourse, updateCourse, checkValidationResult }
+module.exports = {
+  createCourse, updateCourse, createCourseDetail, updateCourseDetail, checkValidationResult,
+};
