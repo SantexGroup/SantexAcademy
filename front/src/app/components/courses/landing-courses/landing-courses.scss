@@ -65,6 +65,7 @@
             border: 1px solid $wireframe;
             padding: 1rem;
             margin-top: 1.5rem;
+            width: min-content;
 
             &__title {
 
@@ -73,13 +74,9 @@
 
             }
 
-            &__description {
+            &__subtitle {
 
-                display: -webkit-box;
-                -webkit-line-clamp: 2; 
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                text-overflow: ellipsis;
+
                 color: $wireframe;
                 
             }
@@ -110,9 +107,15 @@
 
             .card__content {
 
+                display: flex;
+                flex-direction: column;
 
                 .footer {
 
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: .3rem;
                     margin-top: 1rem;
 
                     &__button--info {

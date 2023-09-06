@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('courseDetails', [
+    await queryInterface.bulkInsert('coursedetails', [
       {
         title: 'Presentación',
         paragraph1: 'Adéntrate en el emocionante mundo de la belleza y el cuidado de las uñas con nuestro curso de Uñas Semipermanentes. Este programa te llevará a través de las últimas tendencias en manicura, enseñándote técnicas avanzadas para aplicar esmalte semipermanente con precisión y estilo. Aprenderás a crear diseños únicos y duraderos que impresionarán a tus clientes y elevarán tu carrera en el mundo de la estética. ¡Únete a nosotros y conviértete en un experto en el arte de las uñas semipermanentes!',
@@ -190,6 +190,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('courseDetails', null, {});
+    await queryInterface.bulkDelete('coursedetails', null, {});
   },
 };
