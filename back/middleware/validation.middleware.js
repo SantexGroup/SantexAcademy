@@ -9,6 +9,7 @@
 // };
 
 const { body, validationResult } = require('express-validator');
+const { courseProvider } = require('../providers');
 
 // Course Validations Rules
 const createCourse = [
@@ -162,6 +163,13 @@ const createCourseDetail = [
     .optional()
     .isURL()
     .withMessage('The URL of the [image1] is invalid'),
+  body('courseId')
+    .custom(async (value) => {
+      const course = await courseProvider.getCourseById(value);
+      if (!course) {
+        throw new Error('[courseId] is not found');
+      }
+    }),
 ];
 
 const updateCourseDetail = [
@@ -191,6 +199,14 @@ const updateCourseDetail = [
     .optional()
     .isURL()
     .withMessage('The URL of the [image2] is invalid'),
+  body('courseId')
+    .optional()
+    .custom(async (value) => {
+      const course = await courseProvider.getCourseById(value);
+      if (!course) {
+        throw new Error('[courseId] is not found');
+      }
+    }),
 ];
 
 const checkValidationResult = (req, res, next) => {
