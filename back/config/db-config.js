@@ -1,17 +1,19 @@
 const { Sequelize } = require("sequelize"); // Take the Sequelize Class
 require("dotenv").config();
 
+// Se crea la instancia de sequelize con los datos de conexión a la base de datos en el CONSTRUCTOR
+const sequelize = new Sequelize(
+  // process.env.DB_DATABASE,
+  // process.env.DB_USERNAME,
+  // process.env.DB_PASSWORD,
+  process.env.DB_URL,
 
-const url = require('url');
-const dbUrl = process.env.DB_URL;
-const dbConfig = url.parse(dbUrl);
-const sequelize = new Sequelize(dbConfig.path.substring(1), dbConfig.auth.split(':')[0], dbConfig.auth.split(':')[1], {
-  host: dbConfig.host.split(':')[0],
-  port: dbConfig.host.split(':')[1],
-  dialect: 'mysql'
-});
-
-
+  // luego se pasa un objeto de configuración con el host y el dialecto
+  // {
+  //   host: process.env.DB_HOST,
+  //   dialect: "mysql",
+  // }
+);
 
 const initializeDB = async () => {
   try {
