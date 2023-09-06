@@ -80,6 +80,6 @@ models.sequelize.authenticate()
 app.use('/volunteer', routes.volunteer);
 app.use('/coordinator', routes.coordinator);
 app.use('/category', routes.category);
-// app.use('/administrator', routes.administrator);
+app.use('/administrator', routes.administrator);
 app.use('/premios', routes.premios);
 module.exports = app;
