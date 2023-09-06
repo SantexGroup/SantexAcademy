@@ -3,9 +3,9 @@ require("dotenv").config();
 
 // Se crea la instancia de sequelize con los datos de conexión a la base de datos en el CONSTRUCTOR
 const sequelize = new Sequelize(
-  process.env.DB_DATABASE,
-  process.env.DB_USERNAME,
-  process.env.DB_PASSWORD,
+  // process.env.DB_DATABASE,
+  // process.env.DB_USERNAME,
+  // process.env.DB_PASSWORD,
   process.env.DB_URL,
 
   // luego se pasa un objeto de configuración con el host y el dialecto
