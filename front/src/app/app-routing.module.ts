@@ -2,11 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './modules/home/home-page/home-page.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
-import { LoginComponent } from './modules/auth/pages/login/login.component';
-import { OptionsRegisterComponent } from './modules/auth/pages/options-register/options-register.component';
-import { VolunteerRegisterComponent } from './modules/auth/pages/volunteer-register/volunteer-register.component';
-// import { CoordinatorRegisterComponent } from './modules/auth/pages/coordinator-register/coordinator-register.component';
-
+import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
 
 const routes: Routes = [
   { path: '', title: 'VolunTime - Inicio', component: HomePageComponent },
@@ -16,11 +12,17 @@ const routes: Routes = [
       import('./modules/auth/auth.module').then((m) => m.authModule),
   },
   {
+    path: 'dashboard',
+    title: 'VolunTime - Panel',
+    component: DashboardPageComponent,
+  },
+
+  {
     path: '**',
     title: 'VolunTime - Página no encontrada!',
     component: NotfoundComponent,
   },
- ];
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -11,6 +11,8 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { HomeModule } from './modules/home/home.module';
 import { authModule } from './modules/auth/auth.module';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,13 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
     FooterComponent,
     NotfoundComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HomeModule, authModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HomeModule,
+    authModule,
+    DashboardModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
