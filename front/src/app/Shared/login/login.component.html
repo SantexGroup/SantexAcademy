@@ -2,15 +2,22 @@
     <div class="dropdown">
       <img src="assets/iconousuario.png" data-bs-toggle="dropdown">      
       <div class="dropdown-menu">
-        <p>Iniciar sesión</p>
+        <p *ngIf="!logeadoComprador && !logeadoVendedor">Iniciar sesión</p>
+        <p *ngIf="logeadoComprador">Bienvenido comprador</p>
+        <p *ngIf="logeadoVendedor">Bienvenido vendedor</p>
         <div class="form-group">
-            <input [(ngModel)]="corLog" id="inputCorreo"  type="text" class="form-control"  placeholder="Correo">
-            <input [(ngModel)]="pasLog" id="inputContraseña" type="password" class="form-control" placeholder="Contraseña">
-            <button (click)="botonLogin()" type="button" >Ingresar</button>
+            <input *ngIf="!logeadoComprador && !logeadoVendedor" [(ngModel)]="corLog" id="inputCorreo"  type="text" class="form-control"  placeholder="Correo">
+            <input *ngIf="!logeadoComprador && !logeadoVendedor" [(ngModel)]="pasLog" id="inputContraseña" type="password" class="form-control" placeholder="Contraseña">
+            <button *ngIf="!logeadoComprador && !logeadoVendedor" (click)="botonLogin()" type="button" >Ingresar</button>
+            <!-- <button *ngIf="logeadoComprador" (click)="botonVendedor()" type="button" >Conviertase en vendedor</button> -->
+            <p *ngIf="logeadoComprador" routerLink="/misCompras">Mis compras</p>
+            <p *ngIf="logeadoVendedor" routerLink="/misVentas">Mis ventas</p>            
         </div>
         <a class="registrarse" >
-            <p routerLink="/registro">¿No tienes una cuenta?</p>
-            <p id="prueba" routerLink="/registro">Regístrate</p>
+            <p *ngIf="!logeadoComprador && !logeadoVendedor" routerLink="/registro">¿No tienes una cuenta? Registrate</p>
+            <p *ngIf="logeadoComprador">Ya está logueado como comprador</p>
+            <p *ngIf="logeadoVendedor">Ya está logueado como vendedor</p>
+            <a *ngIf="logeadoComprador || logeadoVendedor" click()="deslogear()">Cerrar sesión</a>
         </a>
       </div>
     </div>

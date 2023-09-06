@@ -30,13 +30,13 @@ export class RegistroService {
     dirRegServ: string,
     codRegServ: string) {
     const body = {
-      nombre: this.nomRegServ,
-      apelido: this.apeRegServ,
-      DNI: this.dniRegServ,
+      idDireccion: pas2RegServ,
+      alias: nacRegServ,
+      firstName: nomRegServ,
+      lastName: apeRegServ,
+      dni: dniRegServ,
       mail: corRegServ,
-      password: pasRegServ,
-      CalleYAltura: this.dirRegServ,
-      CodigoPostal: this.codRegServ,
+      password: pasRegServ,     
     }
     return this.apiService.post('/users/user-register', body)
   }

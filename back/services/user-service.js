@@ -6,14 +6,14 @@ async function login(mail, password) {
 
   const users = await User.findOne({
     where: {
-      mail,
-      password,
+      mail: mail,
+      password: password,
     },
-    //include: [{model: Products}]
+    // include: [{model: Products}]
   });
 
   if (!users) {
-    throw new Error('Alias o Contraseña incorrectos');
+    throw new Error('Correo o Contraseña incorrectos');
   }
 
   const token = jwt.sign({
@@ -25,18 +25,16 @@ async function login(mail, password) {
 }
 
 // creacion de usuario
-async function userRegister(idDireccion, firstName, lastName, dni, mail, password,
-  estadoDeVendedor, alias) {
+async function userRegister(idDireccion, alias, firstName, lastName, dni, mail, password) {
   const user = new User();
 
   user.idDireccion = idDireccion;
+  user.alias = alias;
   user.firstName = firstName;
   user.lastName = lastName;
   user.dni = dni;
   user.mail = mail;
   user.password = password;
-  user.estadoDeVendedor = estadoDeVendedor;
-  user.alias = alias;
 
   const userCreated = await user.save();
   return userCreated;
