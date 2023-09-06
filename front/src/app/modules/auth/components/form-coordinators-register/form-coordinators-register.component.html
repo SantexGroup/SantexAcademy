@@ -10,32 +10,93 @@
         <label for="full_name"><b>Apellido y nombre</b></label>
         <input id="full_name" type="text" name="full_name" placeholder="Introduce tu apellido y nombre"
           class="border border-dimGray rounded-md py-2 pl-2" [(ngModel)]="full_name" />
+        <div class="w-full items-center justify-end">
+          <p [ngClass]="
+                          errorName && full_name.length == 0
+                            ? 'flex-initial text-end text-redError'
+                            : 'hidden'
+                        ">
+            {{ errorName }}
+          </p>
+        </div>
       </div>
       <div class="w-full flex flex-col text-start gap-1">
         <label for="email"><b>Correo electrónico</b></label>
         <input id="email" type="email" name="email" placeholder="Introduce tu correo electrónico"
           class="border border-dimGray rounded-md py-2 pl-2" [(ngModel)]="email" />
+        <div class="w-full items-center justify-end">
+          <p [ngClass]="
+                          errorEmail.length !== 0 && email.length == 0
+                            ? 'flex-initial text-end text-redError'
+                            : 'hidden'
+                        ">
+            {{ errorEmail }}
+          </p>
+          <p [ngClass]="
+                          errorEmailTwo.length !== 0 && !email.includes('@')
+                            ? 'flex-initial text-end text-redError'
+                            : 'hidden'
+                        ">
+            {{ errorEmailTwo }}
+          </p>
+        </div>
       </div>
       <div class="w-full flex flex-col text-start gap-1">
         <label for="phone"><b>Teléfono</b></label>
         <input id="phone" type="number" name="phone" placeholder="Introduce tu número telefónico"
           class="border border-dimGray rounded-md py-2 pl-2" [(ngModel)]="phone" />
+        <div class="w-full items-center justify-end">
+          <p [ngClass]="
+              errorPhone && phone.length == 0
+                ? 'flex-initial text-end text-redError'
+                : 'hidden'
+            ">
+            {{ errorPhone }}
+          </p>
+        </div>
       </div>
       <div class="w-full flex flex-col text-start gap-1">
         <label for="phone"><b>ONG a la que representa</b></label>
         <input id="ngo" type="text" name="ngo" placeholder="Introduce el nombre de la ONG"
           class="border border-dimGray rounded-md py-2 pl-2" [(ngModel)]="ngo" />
+          <div class="w-full items-center justify-end">
+            <p [ngClass]="
+                        errorNgo && ngo.length == 0
+                          ? 'flex-initial text-end text-redError'
+                          : 'hidden'
+                      ">
+              {{ errorNgo }}
+            </p>
+          </div>
       </div>
       <div class="w-full flex flex-col text-start gap-1">
         <label for="phone"><b>CUIT de ONG</b></label>
         <input id="cuit" type="number" name="cuit" placeholder="Introduce el número de CUIT de ONG"
           class="border border-dimGray rounded-md py-2 pl-2" [(ngModel)]="cuit" />
+            <div class="w-full items-center justify-end">
+              <p [ngClass]="
+                                    errorCuit && cuit.length == 0
+                                      ? 'flex-initial text-end text-redError'
+                                      : 'hidden'
+                                  ">
+                {{ errorCuit }}
+              </p>
+            </div>
       </div>
       <div class="w-full flex flex-col gap-1 relative">
         <label for="password" class="text-start"><b>Contraseña</b></label>
         <input id="password" [type]="showPassword ? 'text' : 'password'" name="password"
           placeholder="Introduce tu contraseña" class="border border-dimGray rounded-md py-2 pl-2"
           [(ngModel)]="password" />
+          <div class="w-full items-center justify-end">
+            <p [ngClass]="
+                        errorPassword && password.length == 0
+                          ? 'flex-initial text-end text-redError'
+                          : 'hidden'
+                      ">
+              {{ errorPassword }}
+            </p>
+          </div>
         <i class="bx bx-low-vision absolute top-9 right-4 text-xl cursor-pointer" (click)="sendShowPassword()"></i>
       </div>
       <div class="w-full flex flex-col items-center justify-center gap-4 mt-2">
@@ -60,7 +121,9 @@
     </form>
   </article>
   <figure class="w-full h-[500px] bg-darkSlateBlue relative lg:h-[872px]">
-    <img src="https://res.cloudinary.com/carina-bosio/image/upload/v1692627567/xAcademy/cerrar-personas-cogidas-mano_wnslhq.jpg" alt="" class="w-full h-full object-cover opacity-[0.8]" />
+    <img
+      src="https://res.cloudinary.com/carina-bosio/image/upload/v1692627567/xAcademy/cerrar-personas-cogidas-mano_wnslhq.jpg"
+      alt="" class="w-full h-full object-cover opacity-[0.8]" />
     <div
       class="p-4 bg-white opacity-[.7] flex flex-col items-center justify-center gap-4 text-center min-w-[100px] w-[220px] h-[250px] rounded-md absolute top-[5em] left-0 right-0 bottom-0 m-auto lg:gap-12 lg:top-[-3em] lg:w-[300px] lg:h-[350px]">
       <figure class="flex items-center gap-2">
@@ -73,4 +136,3 @@
     </div>
   </figure>
 </section>
-

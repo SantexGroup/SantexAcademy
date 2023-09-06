@@ -1,45 +1,24 @@
 <footer class="w-full flex flex-col p-4 bg-darkSlateBlue bg-opacity-10">
-  <div
-    class="w-full flex flex-col p-4 gap-8 lg:flex-row lg:items-center lg:justify-center"
-  >
+  <div class="w-full flex flex-col p-4 gap-8 lg:flex-row lg:items-center lg:justify-center">
     <article
-      class="w-full flex flex-col items-center justify-center gap-2 lg:w-[50%] lg:border-r border-lightGray lg:items-start lg:pb-8"
-    >
+      class="w-full flex flex-col items-center justify-center gap-2 lg:w-[50%] lg:border-r border-lightGray lg:items-start lg:pb-8">
       <figure class="flex items-center gap-2">
-        <img
-          src="/assets/logo/logohand.svg"
-          alt="logo"
-          class="w-[50px] sm:w-[70px]"
-        />
-        <img
-          src="/assets/logo/logovoluntime.svg"
-          alt="logo"
-          class="w-[80px] sm:w-[100px]"
-        />
+        <img src="/assets/logo/logohand.svg" alt="logo" class="w-[50px] sm:w-[70px]" />
+        <img src="/assets/logo/logovoluntime.svg" alt="logo" class="w-[80px] sm:w-[100px]" />
       </figure>
-      <div
-        class="w-full flex flex-col gap-2 text-center items-center justify-center lg:items-start lg:gap-4"
-      >
+      <div class="w-full flex flex-col gap-2 text-center items-center justify-center lg:items-start lg:gap-4">
         <b class="text-lg lg:text-xl">Suscribite a nuestro boletín</b>
         <p class="text-sm sm:text-base md:w-[80%] lg:text-start">
           ¿Querés estar al tanto de las últimas actividades, proyectos
           inspiradores y oportunidades de voluntariado?
         </p>
-        <form
-          class="w-full flex items-center justify-center gap-2 lg:pr-4 lg:justify-start"
-        >
+        <form class="w-full flex items-center justify-center gap-2 lg:pr-4 lg:justify-start">
           <label for="email_user" class="lg:w-[250px] border border-lightGray rounded-md">
-            <input
-              id="email_user"
-              type="email"
-              name="email"
-              placeholder="Email"
-              class="w-full h-full outline-none shadow-md py-2 px-4 rounded-md"
-            />
+            <input id="email_user" type="email" name="email" placeholder="Email" required
+              class="w-full h-full outline-none shadow-md py-2 px-4 rounded-md" />
           </label>
           <button
-            class="px-4 py-2 bg-darkSlateBlue text-white font-semibold text-sm shadow-md rounded-md sm:text-base btn-shadow"
-          >
+            class="px-4 py-2 bg-darkSlateBlue text-white font-semibold text-sm shadow-md rounded-md sm:text-base btn-shadow">
             Subscribite
           </button>
         </form>
@@ -48,8 +27,7 @@
     <hr class="boder border-lightGray lg:hidden" />
     <article class="w-full items-center justify-center">
       <ul
-        class="grid grid-cols-1 gap-x-8 gap-y-4 justify-items-center text-center text-sm mb-2 m:grid-cols-2 sm:grid-cols-4 sm:text-base"
-      >
+        class="grid grid-cols-1 gap-x-8 gap-y-4 justify-items-center text-center text-sm mb-2 m:grid-cols-2 sm:grid-cols-4 sm:text-base">
         <li>
           <b class="text-lg lg:text-xl">Descubrir</b>
           <p class="lg:text-lg">Organizaciones</p>
@@ -66,27 +44,18 @@
         </li>
         <li>
           <b class="text-lg lg:text-xl">Síguenos</b>
-          <div
-            class="text-base text-dimGray flex items-center gap-2 sm:text-xl lg:text-2xl pt-1"
-          >
-            <i class="bx bxl-facebook-square cursor-pointer"></i
-            ><i class="bx bxl-twitter cursor-pointer"></i
-            ><i class="bx bxl-instagram cursor-pointer"></i>
+          <div class="text-base text-dimGray flex items-center gap-2 sm:text-xl lg:text-2xl pt-1">
+            <i class="bx bxl-facebook-square cursor-pointer"></i><i class="bx bxl-twitter cursor-pointer"></i><i
+              class="bx bxl-instagram cursor-pointer"></i>
           </div>
         </li>
       </ul>
     </article>
     <hr class="boder border-lightGray md:hidden" />
   </div>
-  <div
-    class="relative md:border-t border-lightGray text-center md:pt-4 lg:pb-4 lg:pt-8"
-  >
-    <span class="text-xs text-center sm:text-sm"
-      >Copyright © 2023 VolunTime - Todos los derechos reservados</span
-    >
-    <i
-      class="bx bx-chevron-up absolute bottom-0 right-1.5 rounded-full px-1 bg-dimGray text-white text-2xl cursor-pointer"
-      (click)="scrollToTop()"
-    ></i>
+  <div class="relative md:border-t border-lightGray text-center md:pt-4 lg:pb-4 lg:pt-8">
+    <span class="text-xs text-center sm:text-sm">Copyright © 2023 VolunTime - Todos los derechos reservados</span>
+    <i class="bx bx-chevron-up absolute bottom-0 right-1.5 rounded-full px-1 bg-dimGray text-white text-2xl cursor-pointer"
+      (click)="scrollToTop()"></i>
   </div>
 </footer>
