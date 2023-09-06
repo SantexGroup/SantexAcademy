@@ -19,15 +19,18 @@ import * as moment from 'moment';
 export class CrearModificarTareaModalComponent implements OnInit {
 
   constructor(private categoriaService:CategoriaService, organizacionService:OrganizacionService, fb:FormBuilder, 
-              private tareaService:TareaService, private matSnackBar:MatSnackBar,private dialogoActual:MatDialogRef<CrearModificarTareaModalComponent>,
+              private tareaService:TareaService, private matSnackBar:MatSnackBar,
+              private dialogoActual:MatDialogRef<CrearModificarTareaModalComponent>,
               @Inject(MAT_DIALOG_DATA)private dataTarea:Tarea) { 
     
-                this.datosOrganizacion$ = organizacionService.getDatosOrganizacion;
+    this.datosOrganizacion$ = organizacionService.getDatosOrganizacion;
                 
     if(dataTarea){
       
       this.titulo ='Modificar Tarea';
       this.modificar = true;
+      this.duracion = this.dataTarea.duracion;
+      this.puntos = this.dataTarea.category?.puntosPorHora!;
 
       const fechaMoment = moment(this.dataTarea.date);
       
@@ -37,12 +40,15 @@ export class CrearModificarTareaModalComponent implements OnInit {
         puntos:[this.dataTarea.points,Validators.required],
         fecha:[fechaMoment.toDate(),Validators.required],
         lugar:[this.dataTarea.place,Validators.required],
-        idCategoria:[this.dataTarea.id_category,Validators.required],
-        cantidadParticipantes:[this.dataTarea.cant_participantes,Validators.required]
+        categoriaId:['',Validators.required],
+        cantidadParticipantes:[this.dataTarea.cantParticipantes,Validators.required],
+        duracion:[this.dataTarea.duracion, Validators.required]
   
-      });  
+      }); 
+       
     }
     else{
+
       this.titulo = 'Crear Tarea';
       this.modificar = false;
       this.form = fb.group({
@@ -51,25 +57,30 @@ export class CrearModificarTareaModalComponent implements OnInit {
         puntos:['',Validators.required],
         fecha:['',Validators.required],
         lugar:['',Validators.required],
-        idCategoria:['',Validators.required],
-        cantidadParticipantes:['',Validators.required]
+        categoriaId:['',Validators.required],
+        cantidadParticipantes:['',Validators.required],
+        duracion:['',Validators.required]
   
       });
     }
 
   }
     
-
-  ngOnInit(): void {
-    
-    this.cargarCategorias();
-  }
-
+  
   listCategorias:Categoria[] = [];
   datosOrganizacion$:Observable<Organizacion | null>;
   form:FormGroup;
   titulo:string;
   modificar:boolean;
+  listHoras:number[]=[1,2,3,4,5,6,7,8,9,10,11,12];
+  duracion:number = 0;
+  puntos:number = 0;
+
+  ngOnInit(): void {
+    
+    this.cargarCategorias();
+    
+  }
 
 
   cargarCategorias():void{
@@ -77,6 +88,14 @@ export class CrearModificarTareaModalComponent implements OnInit {
       next:(res)=>{
         
         this.listCategorias = res;
+
+        //Una vez que ya se tienen las categorias, se modifica el valor de la categoria en el form para que se seleccione en el matSelect
+
+        if(this.modificar){
+          this.form.patchValue({
+            categoriaId:this.dataTarea.category?.id,
+       })
+       };
       
       },
       error:(err)=> {
@@ -102,15 +121,16 @@ export class CrearModificarTareaModalComponent implements OnInit {
       const nuevaTarea:Tarea = {
         name: formValue.nombre,
         description: formValue.descripcion,
-        id_coordinator: idCoordinador!,
+        coordinatorId: idCoordinador!,
         points: formValue.puntos,
         date: formValue.fecha,
         place: formValue.lugar,
-        id_category: formValue.idCategoria,
-        cant_participantes:formValue.cantidadParticipantes
+        categoryId: formValue.categoriaId,
+        cantParticipantes:formValue.cantidadParticipantes,
+        duracion:formValue.duracion
 
       } 
-
+      
       this.tareaService.crearTarea(nuevaTarea).subscribe({
         next:()=>{
           this.matSnackBar.open("Tarea Creada","OK",{horizontalPosition:'center', verticalPosition:'top', duration:3000});
@@ -136,10 +156,11 @@ export class CrearModificarTareaModalComponent implements OnInit {
       points: formValue.puntos,
       date: formValue.fecha,
       place: formValue.lugar,
-      id_category: formValue.idCategoria,
-      cant_participantes: formValue.cantidadParticipantes
+      categoryId: formValue.categoriaId,
+      cantParticipantes: formValue.cantidadParticipantes,
+      duracion:formValue.duracion
     }
-    
+    console.log(tareaModificada);
     this.tareaService.modificarTarea(this.dataTarea.id!, tareaModificada).subscribe({
       next:()=>{
         this.matSnackBar.open("Tarea Modificada","OK",{horizontalPosition:'center', verticalPosition:'top', duration:3000});
@@ -150,8 +171,20 @@ export class CrearModificarTareaModalComponent implements OnInit {
       }
     });
   }
+  
+  calcularPuntos(categoria:Categoria = null!):void{
+    
+    if(categoria != null){
+      
+      if(this.form.value.categoriaId) this.puntos = categoria.puntosPorHora;
+    }
 
-
+    if(this.form.value.duracion) this.duracion = this.form.value.duracion;
+   
+    this.form.patchValue({
+      puntos: this.puntos*this.duracion
+    });
+  }
 
 
 }
