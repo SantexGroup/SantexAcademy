@@ -1,11 +1,17 @@
+import { Categoria } from "./categoria"
+
 export interface Tarea{
     id?:number,
     name:string,
     description:string,
-    id_coordinator?:number,
+    coordinatorId?:number,
     points:number,
     date:Date,
     place:string,
-    id_category:number,
-    cant_participantes:number
+    categoryId:number,
+    category?:Categoria,
+    cantParticipantes:number,
+    cantInscriptos?:number,
+    duracion:number,
+    estado?:string
 }
