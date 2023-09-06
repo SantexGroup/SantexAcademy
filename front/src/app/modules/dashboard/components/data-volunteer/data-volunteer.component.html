@@ -1,54 +1,56 @@
 <article class="mt-16 w-full flex flex-col px-4">
-  <div class="w-full flex flex-col shadow-lg p-2 bg-white">
-    <h2 class="text-2xl font-bold">Tus datos</h2>
-    <ul class="mt-4" *ngIf="!editData">
+  <div
+    class="w-full flex flex-col shadow-lg p-2 bg-white rounded-lg sm:w-[400px] xl:w-[500px]"
+  >
+    <h2 class="text-2xl font-bold sm:text-3xl">Tus datos</h2>
+    <ul class="mt-4 sm:text-lg" *ngIf="!editData">
       <li>{{ fullName }}</li>
       <li>{{ email }}</li>
       <li>{{ phone }}</li>
     </ul>
     <form class="w-full mt-4 flex flex-col gap-2" *ngIf="editData">
       <div class="w-full flex flex-col text-start gap-1">
-        <label id="full_name">Nombre Completo</label>
+        <label id="full_name" class="text-dimGray">Nombre Completo</label>
         <input
           id="full_name"
           name="fullName"
           type="text"
           [value]="fullName"
           (input)="captureData('fullName', $event)"
-          class="pl-2 border border-lightGray outline-none rounded-md"
+          class="pl-2 py-1 border border-lightGray outline-none rounded-md sm:text-lg"
         />
       </div>
       <div class="w-full flex flex-col text-start gap-1">
-        <label id="email">Email</label>
+        <label id="email" class="text-dimGray">Email</label>
         <input
           id="email"
           name="email"
           type="email"
           [value]="email"
           (input)="captureData('email', $event)"
-          class="pl-2 border border-lightGray outline-none rounded-md"
+          class="pl-2 py-1 border border-lightGray outline-none rounded-md sm:text-lg"
         />
       </div>
       <div class="w-full flex flex-col text-start gap-1">
-        <label id="phone">Telefono</label>
+        <label id="phone" class="text-dimGray">Telefono</label>
         <input
           id="phone"
           name="phone"
           type="text"
           [value]="phone"
           (input)="captureData('phone', $event)"
-          class="pl-2 border border-lightGray outline-none rounded-md"
+          class="pl-2 py-1 border border-lightGray outline-none rounded-md sm:text-lg"
         />
       </div>
       <div class="w-full flex flex-col text-start gap-1">
-        <label id="password">Contraseña</label>
+        <label id="password " class="text-dimGray">Contraseña</label>
         <input
           id="password"
           name="password"
           type="password"
           [value]="password"
           (input)="captureData('password', $event)"
-          class="pl-2 border border-lightGray outline-none rounded-md"
+          class="pl-2 py-1 border border-lightGray outline-none rounded-md sm:text-lg"
         />
       </div>
       <button
