@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'form-inscr-courses',
     loadChildren: () => import('../app/components/form-inscr-courses-routing.module').then(m => m.FormInscrCoursesRoutingModule)
   },
+  {
+    path: 'pay-transf-course',
+    loadChildren: () => import('../app/components/pay-transf-course.module').then(m => m.PayTransfCourseModule)
+  },
 
   {
 
