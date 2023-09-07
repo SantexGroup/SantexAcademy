@@ -1,4 +1,3 @@
-
 @import '~bootstrap/dist/css/bootstrap.css';
 
 /* 
@@ -24,24 +23,29 @@
     --color-4: #2c44a3;
     --color-5: #09349b;
     --color-6: #040564;
+    --color-primary: rgba(9, 52, 155, 0.7);
 
     --font-family-1: 'Poppins', sans-serif;
     --box-shadow-1: rgb(0 0 0 / 10%) 0 0 10px;
+    --size-1: 1rem;
     --font-size-1: 1rem;
     --font-size-2: 1.2rem;
+    --font-size-3: 1.5rem;
+    --font-size-7: 3rem;
     --border-radius: 3px;
 
     --separation: 5rem;
 }
 
-html{
+html {
     margin: 0;
     padding: 0;
     background-color: var(--color-1);
     font-family: var(--font-family-1);
     height: 100%;
     box-sizing: border-box;
-    font-size: 62.5%;   /*convierte 1rem en 10px*/
+    font-size: 62.5%;
+    /*convierte 1rem en 10px*/
 }
 
 body {
@@ -54,17 +58,18 @@ body {
     line-height: 1.5;
 }
 
-input, button{
+input,
+button {
     font-family: var(--font-family);
 }
 
-button{
+button {
     cursor: pointer;
-    border:0;
+    border: 0;
     background-color: transparent;
 }
 
-.btn-primary{
+.btn-primary {
     width: 100%;
     color: var(--color-6);
     border-radius: var(--border-radius);
@@ -74,7 +79,7 @@ button{
     letter-spacing: .5px;
 }
 
-.btn-default{
+.btn-default {
     width: 100%;
     padding: .65rem;
     font-weight: 600;
@@ -82,44 +87,44 @@ button{
 }
 
 
-button:disabled{
+button:disabled {
     opacity: .5;
     background-color: var(--color-4);
 }
 
-.d-flex{
+.d-flex {
     display: flex;
 }
 
-.d-grid{
+.d-grid {
     display: grid;
 }
 
-.d-all-center{
+.d-all-center {
     align-items: center;
     align-content: center;
     justify-content: center;
 }
 
-.text-center{
+.text-center {
     text-align: center;
 }
 
-.text-label{
+.text-label {
     font-weight: 600;
-    color:var(--color-4);
+    color: var(--color-4);
     font-size: 16px;
 }
 
-.form-input{
+.form-input {
     width: 100%;
     display: flex;
 }
 
-.form-input input::placeholder{
-    color: rgba(0,0,0,.4)
+.form-input input::placeholder {
+    color: rgba(0, 0, 0, .4)
 }
 
-input.ng-invalid.ng-touched{
-    border-color:tomato
+input.ng-invalid.ng-touched {
+    border-color: tomato
 }

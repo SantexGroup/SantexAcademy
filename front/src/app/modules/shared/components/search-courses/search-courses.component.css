@@ -1,0 +1,12 @@
+.background-courses {
+    /* background-color: tomato; */
+    /* background: radial-gradient(circle, #ff0000, #00ff00); */
+    /* background: radial-gradient(circle, var(--color-2), var(--color-1)); */
+
+    /* background: var(--color-6); */
+    /* background: radial-gradient(circle, var(--color-6) 0%, var(--color-4) 43%, var(--color-0) 100%); */
+
+    /* background: radial-gradient(circle, var(--color-5) 0%, var(--color-4) 43%, #00d4ff 100%); */
+    background: radial-gradient(circle, #08008f 0%, #0868da 43%, #00d4ff 100%);
+
+}

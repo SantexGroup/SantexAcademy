@@ -4,6 +4,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchCoursesComponent } from './components/search-courses/search-courses.component';
 import { RouterModule } from '@angular/router';
+import { CardComponent } from './components/card/card.component';
 
 
 
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     FooterComponent,
     NavbarComponent,
-    SearchCoursesComponent
+    SearchCoursesComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
