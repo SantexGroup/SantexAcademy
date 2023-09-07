@@ -40,7 +40,7 @@
                             class="flex align-items-center justify-content-center w-10rem h-2rem"
                             styleClass="p-button-raised p-button-text p-button-secondary">
                         </p-button>
-                        <p-button label="Inscribite" icon="pi pi-times"
+                        <p-button label="Inscribite" [routerLink]="['/form-inscr-courses', course.id]" icon="pi pi-times"
                             class="flex align-items-center justify-content-center w-10rem h-2rem"
                             styleClass="p-button-raised p-button-text p-button-secondary"
                             [style]="{ 'margin-left': '.5em' }">
