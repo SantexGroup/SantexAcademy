@@ -144,7 +144,12 @@ async function asignarTareaVoluntario(idVolunteer, idTarea) {
       return { error: 'No se encuentra tarea con el ID proporcionado' };
     }
 
+    const inscripto = await voluntario.hasTarea(tarea);
+    if (inscripto) {
+      return { error: 'El voluntario ya está inscripto en esta tarea' };
+    }
     tarea.cantInscriptos += 1;
+    await tarea.save();
     await voluntario.addTarea(tarea, { through: { asistio: false } });
 
     const voluntarioConTarea = await models.volunteer.findOne({

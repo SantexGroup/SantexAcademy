@@ -46,7 +46,6 @@ module.exports = (sequelize, DataTypes) => {
       cantInscriptos: {
         type: DataTypes.INTEGER,
         allowNull: true,
-        defaultValue: 0,
       },
       duracion: {
         type: DataTypes.INTEGER,
@@ -56,7 +55,28 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: 'activa',
         allowNull: true,
       },
+      hora: {
+        type: DataTypes.TIME,
+        allowNull: true,
+      },
+      latitud: {
+        type: DataTypes.DOUBLE,
+        allowNull: true,
+        validate: {
+          min: -90,
+          max: 90,
+        },
+      },
+      longitud: {
+        type: DataTypes.DOUBLE,
+        allowNull: false,
+        validate: {
+          min: -180,
+          max: 180,
+        },
+      }
 
+      ,
     }, {
       sequelize,
       modelName: 'tarea',

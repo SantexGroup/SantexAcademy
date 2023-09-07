@@ -18,11 +18,11 @@ async function getTareaById(req, res, next) {
 async function createTarea(req, res) {
   const {
     // eslint-disable-next-line camelcase, max-len
-    name, description, coordinatorId, points, date, place, categoryId, cantParticipantes, cantInscriptos, duracion, estado,
+    name, description, coordinatorId, date, place, categoryId, cantParticipantes, cantInscriptos, duracion, hora, latitud, longitud,
   } = req.body;
 
   // eslint-disable-next-line max-len
-  const tarea = await tareaServices.createTarea(name, description, coordinatorId, points, date, place, categoryId, cantParticipantes, cantInscriptos, duracion, estado);
+  const tarea = await tareaServices.createTarea(name, description, coordinatorId, date, place, categoryId, cantParticipantes, cantInscriptos, duracion, hora, latitud, longitud);
 
   res.status(201).send(tarea);
 }
@@ -31,11 +31,11 @@ async function editTarea(req, res) {
   const { id } = req.params;
   const {
     // eslint-disable-next-line max-len
-    name, description, coordinatorId, points, date, place, categoryId, cantParticipantes, cantInscriptos, duracion, estado,
+    name, description, coordinatorId, points, date, place, categoryId, cantParticipantes, cantInscriptos, duracion, estado, hora, latitud, longitud
   } = req.body;
 
   // eslint-disable-next-line max-len
-  const tarea = await tareaServices.editTarea(id, name, description, coordinatorId, points, date, place, categoryId, cantParticipantes, cantInscriptos, duracion, estado);
+  const tarea = await tareaServices.editTarea(id, name, description, coordinatorId, points, date, place, categoryId, cantParticipantes, cantInscriptos, duracion, estado, hora, latitud, longitud);
   res.status(201).send(tarea);
 }
 
