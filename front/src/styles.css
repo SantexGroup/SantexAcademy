@@ -23,8 +23,8 @@
     --color-4: #2c44a3;
     --color-5: #09349b;
     --color-6: #040564;
-    --color-primary: rgba(9, 52, 155, 0.7);
 
+    --color-primary: rgba(9, 52, 155, 0.9);
     --font-family-1: 'Poppins', sans-serif;
     --box-shadow-1: rgb(0 0 0 / 10%) 0 0 10px;
     --size-1: 1rem;
@@ -125,6 +125,6 @@ button:disabled {
     color: rgba(0, 0, 0, .4)
 }
 
-input.ng-invalid.ng-touched {
-    border-color: tomato
+input.ng-invalid.ng-touched{
+    border-color:tomato
 }
