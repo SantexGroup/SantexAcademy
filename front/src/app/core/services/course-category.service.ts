@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CourseCategoryService {
 
-  private apiUrl= 'http://localhost:4001/'; //falta completar con datos de la ruta  
+  private apiUrl= 'http://localhost:4001/category'; 
   
 
   constructor(private httpCourseCategory: HttpClient) { }
