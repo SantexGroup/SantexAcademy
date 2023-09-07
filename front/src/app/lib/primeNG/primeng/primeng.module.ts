@@ -8,6 +8,8 @@ import {CarouselModule} from 'primeng/carousel';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskModule } from 'primeng/inputmask';
 import { TreeSelectModule } from 'primeng/treeselect';
+import { CheckboxModule } from 'primeng/checkbox';
+import { RadioButtonModule } from 'primeng/radiobutton';
 @NgModule({
   declarations: [],
   imports: [
@@ -22,7 +24,8 @@ import { TreeSelectModule } from 'primeng/treeselect';
     InputTextModule,
     InputMaskModule,
     TreeSelectModule,
-
+    CheckboxModule,
+    RadioButtonModule
   ]
 })
 export class PrimengModule { }
