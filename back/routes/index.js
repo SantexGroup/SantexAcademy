@@ -1,4 +1,5 @@
 const Express = require('express');
+const pollsterRoutes = require('./pollsterRoutes');
 const adminRoutes = require('./adminRoutes');
 const loginRoutes = require('./loginRoutes');
 
@@ -15,8 +16,8 @@ app.use('/ping', (req, res) => {
     response: 'pong!',
   });
 });
-
 // Agregar aqui las rutas
+app.use('/pollsters', pollsterRoutes);
 app.use('/admins', adminRoutes);
 app.use('/login', loginRoutes);
 
