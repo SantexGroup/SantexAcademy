@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistroService } from 'src/app/core/services/registro.service';
 import { MensajeService } from 'src/app/core/services/mensaje.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -21,7 +22,7 @@ export class RegistroComponent implements OnInit {
   listprovincias: any[] = [];
   listlocalidades: any[] = [];
 
-  constructor(private service: RegistroService, private mensajeService: MensajeService) { }
+  constructor(private service: RegistroService, private mensajeService: MensajeService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -51,6 +52,7 @@ export class RegistroComponent implements OnInit {
       ).subscribe(respuesta => {
         console.log(respuesta);
         this.mensajeService.mensajeRegistro('Registro completado con éxito.');
+        this.router.navigate(['home-page']);
       });
     } else {
       this.mensajeService.mensajeRegistro('Campos incompletos. Por favor, complete todos los campos.');
