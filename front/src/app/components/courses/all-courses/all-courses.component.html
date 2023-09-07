@@ -7,19 +7,18 @@
 </p>
 <p-divider></p-divider>
 
-<div class="card-container botones flex justify-content-evenly buttons">
-    <p-splitButton class="flex align-items-center" label="Categoria" styleClass="p-button-raised p-button-text p-button-secondary" icon="pi pi-plus"></p-splitButton>
-    <p-button  class="flex  align-items-center" label="Buscar" styleClass="p-button-raised p-button-text p-button-secondary"></p-button>
+<div class="card-container botones flex justify-content-center">
+    <input type="text" placeholder="Buscar..." name="filterPost" style="border: 1px solid; border-radius: 10px" [(ngModel)]="filterPost"/>   
 </div>
 
 <div class="flex justify-content-center flex-wrap">
-    <div class="card-container flex justify-content-center flex-wrap" *ngFor="let course of coursesService.courses">
+    <div class="card-container flex justify-content-center flex-wrap" *ngFor="let course of coursesService.courses | filter:filterPost ">
         <p-card [style]="{ width: '360px', height: '25em'}" styleClass="shadow-2"
             class=" font-bold text-white border-round m-2">
             <div class="card" style="height: 100%;">
                 <h2 [style]="{height: '3em'}">
                     {{ course.title }}
-                </h2>
+                </h2>   
                 <p [style]="{height: '2em'}">
                     {{ course.subtitle }}
                 </p>
@@ -27,20 +26,19 @@
                 <h3>
                     {{course.price | currency}}
                 </h3>
-                <p>
-                    Hasta {{course.due}} cuotas sin interés de 
-                    <span class="card__price--bold">{{coursesService.getRoundedPrice(course.price, course.due)}}</span>
+                <p class="card__cuotes">
+                    Hasta {{course.due}} cuotas sin interés de <span class="card__price--bold">{{coursesService.getRoundedPrice(course.price, course.due)}}</span>
                 </p>
                 <p class="card__starter mb-3">
                     fecha de inicio: {{ course.start_date }}
                 </p>
                 <p-divider></p-divider>
                     <div class="flex justify-content-start flex-wrap button">
-                        <p-button label="Ver detalle" routerLink="/course-detail"
+                        <p-button label="Ver detalle" [routerLink]="['/courses', course.id]"
                             class="flex align-items-center justify-content-center w-10rem h-2rem"
                             styleClass="p-button-raised p-button-text p-button-secondary">
                         </p-button>
-                        <p-button label="Inscribite" icon="pi pi-times"
+                        <p-button label="Inscribite" routerLink="/form-inscr-courses" icon="pi pi-times"
                             class="flex align-items-center justify-content-center w-10rem h-2rem"
                             styleClass="p-button-raised p-button-text p-button-secondary"
                             [style]="{ 'margin-left': '.5em' }">
@@ -48,5 +46,6 @@
                     </div>
             </div>
         </p-card>
+        
     </div>
 </div>
