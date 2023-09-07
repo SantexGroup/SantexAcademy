@@ -11,5 +11,6 @@ router.put('/edit-user/:id', isAuthenticatedVoluntario, volunteerController.edit
 router.delete('/delete-user/:id', isAuthenticatedVoluntario, volunteerController.deleteVolunteer);
 router.post('/login', volunteerController.loginVolunteer);
 router.put('/modify-password/:id', isAuthenticatedVoluntario, volunteerController.modifyPasswordController);
+router.put('/asign-work/:id', isAuthenticatedVoluntario, volunteerController.asingVolunteerWork);
 
 module.exports = router;

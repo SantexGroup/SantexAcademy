@@ -78,7 +78,19 @@ async function modifyPasswordController(req, res) {
   }
 }
 
+// eslint-disable-next-line consistent-return
+async function asingVolunteerWork(req, res) {
+  const { idVolunteer, idTarea } = req.body;
+
+  const result = await volunteerServices.asignarTareaVoluntario(idVolunteer, idTarea);
+
+  if (result.error) {
+    return res.status(400).json({ error: result.error });
+  }
+
+  res.status(200).json({ success: true, voluntario: result.voluntario });
+}
 module.exports = {
   // eslint-disable-next-line max-len
-  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, loginVolunteer, getDataVoluntario, modifyPasswordController,
+  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, loginVolunteer, getDataVoluntario, modifyPasswordController, asingVolunteerWork,
 };
