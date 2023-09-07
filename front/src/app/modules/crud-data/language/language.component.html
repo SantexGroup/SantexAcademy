@@ -22,11 +22,11 @@
         </form>
         <div class="lista">
             <ul>
-                <li>
+                <li *ngFor="let language of languages">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Titulo</h5>
-                            <p class="card-text">Detalle</p>
+                            <h5 class="card-title">Idioma: {{language.Language.language}}</h5>
+                            <p class="card-text"> Nivel: {{language.level}}</p>
                             <div class="botonera-card">
                                 <button>
                                     <img src="/assets/Imagenes/editar.png" alt="Editar">
