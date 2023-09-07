@@ -1,7 +1,7 @@
 body {
     margin: 0;
 }
-p { /*si sirve al finalizar pasar todo al archivo estilos*/
+p { 
     margin-right: 40px;
 }
 h1 {
@@ -44,7 +44,7 @@ h1 {
 .txt_programa{
     background-image: linear-gradient(to bottom, orangered,white);
     text-align: left;
-    background-color: orangered;  /*si sirve al finalizar pasar todo al archivo estilos*/
+    background-color: orangered;  
     font-size: 25px;
     color: blue;
 
@@ -62,7 +62,7 @@ h1 {
 
 
 
-.equipo{      /*si sirve al finalizar pasar todo al archivo estilos*/
+.equipo{      
     display: flex;
     padding: 1rem;
     justify-content: space-between ;  
@@ -75,14 +75,8 @@ h1 {
     padding: 1rem;
     background: #fdfdfd;
 }  
-/*
-.descripcion {
-    font-size: 1.4375rem;
-    line-height: 1.5;
-    text-align: justify;
-    height: 200px;
-}   
-*/
+
+
 .imagen_equipo{
     height: 200px;
 }
@@ -95,7 +89,7 @@ text-align: center;
 .footer{
     background-image: linear-gradient(to bottom,white,orangered);
     background-color: orangered;
-    height: 250px;      /*si sirve al finalizar pasar todo al archivo estilos*/
+    height: 250px;      
     color: blue;
 
 }
@@ -117,7 +111,7 @@ text-align: center;
 
 .Siguenos{
     font-size: 30px;
-    vertical-align:top;/*si sirve al finalizar pasar todo al archivo estilos*/
+    vertical-align:top;
    
 }
 .redes-sociales{
