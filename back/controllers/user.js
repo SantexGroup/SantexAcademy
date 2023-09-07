@@ -37,12 +37,12 @@ const createUser = async (req, res) => {
   try {
     const user = await userService.createUser(body);
     // eslint-disable-next-line no-console
-    if (user.username === 'admin' && user.password === 'admin') {
-      return res.json({ redirectTo: '/users' });
-    }
-    console.log('Email del usuario:', user.email);// BORRAR es para ver captura de mail
+    // if (user.username === 'admin' && user.password === 'administrador') {
+    //  return res.json({ redirectTo: '/users' });
+    // }
+    console.log('Email del usuario en user controller:', user.email);// BORRAR es para ver captura de mail
     // eslint-disable-next-line max-len
-    await emailService.sendConfirmationEmail(user.email, user.username);// Envia email a emailService
+    await emailService.sendMail(user);// Envia email a emailService
 
     return res.json(user);
   } catch (error) {

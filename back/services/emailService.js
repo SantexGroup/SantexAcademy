@@ -1,29 +1,40 @@
-const { Resend } = require('resend');
-const resend = new Resend('re_EshLx1Eb_Eo1dtF2zTLxa6WZWmggP9XwF');
+const nodemailer = require('nodemailer');
 
-//resend.domains.create({ name: 'example.com' });
-
-const sendConfirmationEmail = async (toEmail, username) => {
-  try {
-    const data = await resend.emails.send({
-      from: 'Academy In NOC <onboarding@resend.dev>',
-      to: [toEmail, 'delivered@resend.dev'],
-      subject: 'Confirmación de registro',
-      html: `
-        <p>Hola ${username},</p>
-        <p>Gracias por registrarte en nuestro sitio.</p>
-        <p>Haga clic <a href="https://localhost4200/confirmacion? codigo="$"{codigo}">aquí</a> para confirmar su registro.</p>
-      `,
-    });
-
-    console.log(data);
-  } catch (error) {
-    console.error(error);
-  }
+// Configuracion SMTP creando objeto transporter
+const createTrans = () => {
+  const transport = nodemailer.createTransport({
+    host: 'sandbox.smtp.mailtrap.io',
+    port: 2525, // 25 or 465 or 587 or 2525
+    secure: false, // True para 465, false para otros puertos
+    auth: {
+      user: '3f9c45e86a000b',
+      pass: '109a2dce09f36a',
+    },
+  });
+  return transport;
 };
 
-module.exports = {
-  sendConfirmationEmail,
+// Funcion para enviar correo de confirmacion
+const sendMail = (user) => {
+  // Datos del transporte creado
+  const transporter = createTrans();
+  // Datos del correo electronico
+  const mailOptions = {
+    from: '"Academy del NOC" <academyinnoc@gmail.com>',
+    to: user.email,
+    subject: `Confirmación de Registro para ${user.username}`,
+    text: 'Haga clic en el enlace para confirmar su registro: http://localhost4200/confirmacion?codigo=(generarUnCodigo)',
+    html: `<b>Por favor copie y pegue en su navegador el siguiente link o haga click sobre el, para comenzar a usar su cuenta:</b>
+        <a href="http://localhost:4200/dashboard">http://local:4200/dashboard</a>`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(`Correo enviado: ${info.response}`);
+    }
+  });
 };
 
-
+module.exports = { sendMail };
