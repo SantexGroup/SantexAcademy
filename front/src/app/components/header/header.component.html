@@ -1,29 +1,50 @@
-<div class="flex border-1 border-400">
-    <div
-        class="border-primary flex align-items-center justify-content-center h-8rem bg-white font-bold border-round m-2 ">
-        <div class="border-circle border-yellow-500 w-6rem h-6rem m-2 surface-300 font-bold flex align-items-center justify-content-center">
-            logo
-        </div>
+<!-- Menu ppal-->
+  <nav class="menuppal">
+    <div 
+      class="border-circle border-yellow-500 w-6rem h-6rem m-2 surface-300 font-bold flex align-items-center justify-content-center">
+      logo
     </div>
-    <div
-        class="border-primary flex flex-row-reverse flex-grow-1 align-items-center h-8rem bg-white font-bold border-round m-2 ">
+    <ul class="nav list">
+      <li><a routerLink="/">Home</a></li>
+      <li><a href="#cursos">Cursos</a></li>
+      <li><a href="#">Alianzas</a></li>
+      <ul class="dropdown" type="none">
+        <li><a href="index.html">Experiencias destacadas</a>
+          <ul class="cursos" type="none">
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="">Publicaciones</a></li>
+          </ul>
+        </li>
+      </ul>
+      <li><a href="#">Contacto</a></li>
+      <li><a href="#">Loguin</a></li>
+    </ul>
+  </nav> 
 
 
-        <div
-            class="border-500 surface-overlay border-2 border-round flex align-items-center justify-content-center bg-white  m-2 px-5 py-3 border-round">
-            <a href="">Contacto</a>
-        </div>
-        <div
-            class="border-500 surface-overlay border-2 border-round flex align-items-center justify-content-center bg-white  m-2 px-5 py-3 border-round">
-            <a href="">Sobre Nosotros</a>
-        </div>
-        <div
-            class="border-500 surface-overlay border-2 border-round flex align-items-center justify-content-center bg-white m-2 px-5 py-3 border-round">
-            <a href="" routerLink="/all-courses">Todos los Cursos</a>
-        </div>
-        <div
-            class="border-500 surface-overlay border-2 border-round flex align-items-center justify-content-center bg-white m-1 px-5 py-3 border-round">
-            <a href="">Home</a>
-        </div>
-    </div>
-</div>
+
+  <div class="menu-hamburguesa">
+    <input id="check" type="checkbox">
+    <label for="check">
+      <div class="menu-hamb">
+        <span class="hamburguer"></span>
+      </div>
+    </label>
+  
+    <ul class="ul-mbl">
+      <li><a routerLink="/">Home</a></li>
+      <li><a href="#cursos">Cursos</a></li>
+      <li><a href="#">Alianzas</a></li>
+      <ul class="dropdown" type="none">
+        <li><a href="index.html">Exp. destacadas</a>
+          <ul class="cursos" type="none">
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="">Publicaciones</a></li>
+          </ul>
+        </li>
+      </ul>
+      <li><a href="#">Contacto</a></li>
+      <li><a href="#">Loguin</a></li>
+    </ul>
+  </div>
+

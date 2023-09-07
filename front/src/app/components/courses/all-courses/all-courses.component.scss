@@ -1,5 +1,13 @@
 @use '../../../../scss/utilities/barrel' as *;
 
+div{
+    top: 50em;
+}
+
+.botones input{
+    text-align: center;
+    padding: 0.5em;
+}
 
 @media screen and (min-width: $large) {
 
