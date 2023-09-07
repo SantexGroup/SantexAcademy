@@ -81,7 +81,7 @@ models.sequelize.authenticate()
     logger.api.error(err);
   });
 
-console.log("Estoy en app.js")
+
 app.use('/', routes);
 
 module.exports = app;
