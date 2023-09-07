@@ -83,3 +83,7 @@ npx sequelize-cli seed:generate --name Users --seeders-path seeders
 ```
 npm run db:seed:all
 ```
+### Crear Migracion
+```
+npx sequelize-cli migration:generate --name migration-name
+```

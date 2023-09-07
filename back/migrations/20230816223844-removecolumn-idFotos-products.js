@@ -7,9 +7,10 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     try {
       await queryInterface.removeColumn('Products', 'idFotos', {});
+      console.log('columna idFotos eliminada');
       
-    } catch (error) {
-      console.log('idFotos no existe');
+    } catch {
+      console.log('no se puedo eliminar la columna idFotos');
     }
   },
 

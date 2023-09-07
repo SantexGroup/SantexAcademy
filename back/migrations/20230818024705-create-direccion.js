@@ -15,9 +15,6 @@ module.exports = {
       calleYAltura: {
         type: Sequelize.STRING
       },
-      codigoPostal: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

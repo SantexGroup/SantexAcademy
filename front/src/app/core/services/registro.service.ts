@@ -8,13 +8,14 @@ export class RegistroService {
 
   corRegServ: string = '';
   pasRegServ: string = '';
-  pas2RegServ: string = '';
+  aliRegServ: string = '';
   nomRegServ: string = '';
   apeRegServ: string = '';
   dniRegServ: string = '';
-  nacRegServ: string = '';
+  locRegServ: string = '';
   dirRegServ: string = '';
-  codRegServ: string = '';
+
+  idProv: string = '';
 
 
   constructor(private apiService: ApiService) { }
@@ -22,22 +23,32 @@ export class RegistroService {
   registro(
     corRegServ: string, 
     pasRegServ: string, 
-    pas2RegServ: string, 
+    aliRegServ: string, 
     nomRegServ: string, 
     apeRegServ: string,
     dniRegServ: string,
-    nacRegServ: string,
-    dirRegServ: string,
-    codRegServ: string) {
+    locRegServ: string,
+    dirRegServ: string) {
     const body = {
-      idDireccion: pas2RegServ,
-      alias: nacRegServ,
       firstName: nomRegServ,
       lastName: apeRegServ,
       dni: dniRegServ,
       mail: corRegServ,
-      password: pasRegServ,     
+      password: pasRegServ,
+      alias: aliRegServ,
+      idLocalidad: locRegServ,
+      calleYAltura: dirRegServ
     }
+    console.log(body);
     return this.apiService.post('/users/user-register', body)
   }
+
+  getProvincias() {
+    return this.apiService.get<any>('/direccion/provincias');
+  }
+
+  getLocalidades(idProv: string) {
+    return this.apiService.get<any>('/direccion/localidades/' + idProv);
+  }
 }
+
