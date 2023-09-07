@@ -15,34 +15,62 @@ export class LoginComponent implements OnInit {
 
   corLog: string = '';
   pasLog: string = '';
-  resLog:  string[] = [];
-  prueba: object = {};
-  noLogeado: boolean = false;
   logeadoComprador: boolean = false;
   logeadoVendedor: boolean = false;
-  logeado: boolean = true;
-  token: any[] = [];
+  infoLocal: string = '';
+  usuarioLogeado: boolean = false;
 
-
-  constructor(private service: LoginService) { }
+  constructor(private service: LoginService) { }  
 
   ngOnInit(): void {
+    let infoLocal = localStorage.getItem('token')
+    console.log('token')
+    if (infoLocal && !users.estadoVendedor) {
+      this.logeadoComprador = true;
+    }
+    if (infoLocal && users.estadoVendedor) {
+      this.logeadoVendedor = true;
+    }
   }
-
+  
   botonLogin() {
-    this.service.login(this.corLog, this.pasLog).subscribe(respuesta => {
-      console.log(respuesta)
-      this.token = respuesta;
-      console.log(this.token)
-    }) 
-      console.log(this.token)  
+    if (this.infoLocal) {
+      
+    }
+    this.service.login(this.corLog, this.pasLog).subscribe(res => {
+      if (res) {
+        localStorage.setItem( "token", JSON.stringify(res));
+        const usuario = this.service.usuarioLogeado(this.usuarioLogeado);
+        if (usuario) {
+          if (!users.estadoVendedor) {
+            this.logeadoComprador = true;
+          }
+          if (users.estadoVendedor) {
+            this.logeadoVendedor = true;
+          }
+          // this.estadoLogin();                              
+        }
+      }
+    })     
   }
 
-  // deslogear() {
-  //   if (this.logeadoVendedor = true) {
-  //     this.logeadoVendedor = false;
-  //   }
+  // estadoLogin() {
+  //   this.logeadoComprador = true;
   // }
+  
+
+  // estadoLogin() {
+  //   console.log(this.usuarioLogeado)
+  // }
+  deslogear() {
+    if (this.infoLocal) {
+      if (this.logeadoVendedor || this.logeadoComprador) {
+        this.logeadoVendedor = false;
+        this.logeadoComprador = false;
+      }
+      localStorage.clear()
+    }
+  }
   // if (logeadoVendedor = true) {
   //   console.log("cerró sesión")
   // }
