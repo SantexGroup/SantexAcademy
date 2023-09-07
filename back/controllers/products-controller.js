@@ -11,5 +11,11 @@ async function products(req, res, next) {
     next(error);
   }
 }
+// categorias
+async function getCategories(req, res) {
+  const categories = await productsService.getAllCategories();
 
-module.exports = { products };
+  res.status(200).send(categories);
+}
+
+module.exports = { products, getCategories };
