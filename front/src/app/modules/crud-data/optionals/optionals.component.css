@@ -4,12 +4,20 @@
 }
 
 .optionalsInput {
+    width: 100%;
+    height: 500px;
     display: flex;
+    justify-content: space-between;
+}
+
+.carousel{
+    justify-content: center;
+    width: 60%;
 }
 
 .carousel-item {
+    margin-left: 8rem;
     width: 60vh;
-    height: 75vh;
 }
 
 .carousel-item textarea {
@@ -31,20 +39,31 @@
     width: 100%;
 }
 
-.carousel-control-prev {
-    left: -70px;
+/* .carousel-control-prev {
+    margin-top: -20rem;
 }
 
 .carousel-control-next {
-    right: -70px;
-}
+    margin-top: -20rem
+} */
 
 .carousel-control{
     font-weight: bold;
     color: #3f6ad8;
 }
 
+.carousel-control img{
+    width: 3rem;
+    height: 3rem;
+}
+
+.carousel-control img:hover{
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
 .botonera {
+    margin-top: 2rem;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -58,19 +77,23 @@
 }
 
 .lista{
-    margin: 1rem 0 0 5rem;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 60%;
+    justify-content: center;
+    width: 35%;
 }
 
 .card{
     border: none;
+    width: 18rem;
 }
 
 .card-body{
     margin-bottom: 1rem;
     border: 1px solid #3f6ad8;
     border-radius: 14px;
+    width: 20rem;
+}
+
+.card-body button{
+    margin-left: 1rem;
 }

@@ -24,12 +24,14 @@
                 <button mat-button [matMenuTriggerFor]="menu">Cuenta</button>
                 <mat-menu #menu="matMenu">
                     <button routerLink="login" 
+                    (click)="views.navBarShow = true"
                     (click)="views.hideLanding()" 
                     class="botonesInicio" 
                     mat-menu-item
                     (click)="views.title = 'Iniciar Sesion'"
                     >Iniciar Sesion</button>
                     <button routerLink="registro" 
+                    (click)="views.navBarShow = true"
                     (click)="views.hideLanding()" 
                     class="botonesInicio" 
                     mat-menu-item

@@ -17,6 +17,10 @@ export class NavBarService{
   quickButton: boolean = false;
 
   accountButton: boolean = true;
+
+  plusOne = true;
+
+  saveButton = false;
   /* Titulo de la navBar */
   title: string = "";
 
@@ -42,4 +46,14 @@ export class NavBarService{
     this.quickButton = false;
   }
 
+  restart(){
+    window.addEventListener('popstate', (e)=> {
+      this.navBarShow=false;
+      this.landing=true;
+      this.externalComponent=false;
+      this.plusOne = true;
+      this.saveButton = false;
+    });
+  }
+  
 }
