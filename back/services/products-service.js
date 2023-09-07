@@ -1,4 +1,4 @@
-const { Products } = require('../models');
+const { Products, tipoProducto } = require('../models');
 // const jwt = require('jsonwebtoken')
 
 /* async function login(name, password) {
@@ -31,4 +31,12 @@ async function products() {
   return productos;
 }
 
-module.exports = { products };
+// categorias
+
+async function getAllCategories() {
+  const CategoriesList = await tipoProducto.findAll();
+
+  return CategoriesList;
+}
+
+module.exports = { products, getAllCategories };

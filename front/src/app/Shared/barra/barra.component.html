@@ -8,9 +8,10 @@
     <div class="dropdown">
       <button data-bs-toggle="dropdown">Categorías</button>
       <div class="dropdown-menu">
-        <a id="iteminicial" class="dropdown-item" href="localhost:4200">Mesas</a>
+        <a class="dropdown-item" *ngFor="let categoria of listCategorias">{{categoria.name}}</a>
+        <!--<a id="iteminicial" class="dropdown-item" href="localhost:4200">Mesas</a>
         <a class="dropdown-item" href="localhost:4200">Sillas</a>
-        <a id="itemfinal" class="dropdown-item" href="localhost:4200">Mesas</a>
+        <a id="itemfinal" class="dropdown-item" href="localhost:4200">Mesas</a> -->
       </div>
     </div>
   </div>

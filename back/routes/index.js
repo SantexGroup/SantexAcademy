@@ -12,6 +12,7 @@ const app = Express();
 
 // Rutas
 app.use('/users', userRoutes);
+app.use('/productos', productsRoutes);
 app.use('/direccion', direccionRoutes);
 
 // use=
