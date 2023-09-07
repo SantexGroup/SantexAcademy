@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { InputLoginComponent } from './modules/input-login/input-login.component';
+import { RouterModule, Routes } from  '@angular/router'; 
+/*importar componente passw*/
 
-const routes: Routes = [
-  {
-    path: 'dashboard',
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
-  },
-  {
-    path: '**',
-    redirectTo: 'dashboard'
-  }
+const routes: Routes=[  
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: InputLoginComponent },
+  /*ingresar  componente passwd.*/
+  
 ];
 
 @NgModule({
