@@ -23,7 +23,7 @@ async function login(mail, password) {
     mail: users.mail
   }, process.env.JWT_CLAVE, {expiresIn: process.env.JWT_EXPIRATION_TOKEN});
 
-  return {token};
+  return token;
 }
 
 // creacion de usuario

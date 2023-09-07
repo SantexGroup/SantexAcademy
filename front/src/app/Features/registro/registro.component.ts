@@ -18,10 +18,20 @@ export class RegistroComponent implements OnInit {
   proReg: string = '0';
   locReg: string = '0';
   dirReg: string = '';
+  listprovincias: any[] = [];
+  listlocalidades: any[] = [];
 
   constructor(private service: RegistroService, private mensajeService: MensajeService) { }
 
   ngOnInit(): void {
+
+    this.service.getProvincias().subscribe(provincias => {this.listprovincias = provincias});
+
+  }
+
+  actualizarLocalidades() {
+
+    this.service.getLocalidades(this.proReg).subscribe(localidades => {this.listlocalidades = localidades});
   }
 
   mensajeRegistro: string = '';
@@ -45,22 +55,6 @@ export class RegistroComponent implements OnInit {
       });
     } else {
       this.mensajeService.mensajeRegistro('Campos incompletos. Por favor, complete todos los campos.');
-    }
-  }
-
-  provincias: string[] = ['Córdoba', 'Buenos Aires', 'Formosa'];
-
-  localidades: { [key: string]: string[] } = {
-    'Córdoba': ['Córdoba Capital', 'Villa Carlos Paz', 'Río Cuarto'],
-    'Buenos Aires': ['La Plata', 'Mar del Plata', 'Quilmes'],
-    'Formosa': ['Formosa', 'Clorinda', 'Pirané']
-  };
-
-  actualizarLocalidades() {
-    if (this.proReg in this.localidades) {
-      this.locReg = '0';
-    } else {
-      this.locReg = '';
     }
   }
 }

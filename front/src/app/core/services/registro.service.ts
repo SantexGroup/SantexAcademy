@@ -16,6 +16,8 @@ export class RegistroService {
   locRegServ: string = '';
   dirRegServ: string = '';
 
+  idProv: string = '';
+
 
   constructor(private apiService: ApiService) { }
 
@@ -35,12 +37,18 @@ export class RegistroService {
       dni: dniRegServ,
       mail: corRegServ,
       password: pasRegServ,
-      //alias: aliRegServ,
-      //provincia: proRegServ,
-      //localidad: locRegServ,
-      //CalleYAltura: this.dirRegServ acordarse que no lleva el this,
+      alias: aliRegServ,
+      CalleYAltura: dirRegServ
     }
     return this.apiService.post('/users/user-register', body)
+  }
+
+  getProvincias() {
+    return this.apiService.get<any>('/direccion/provincias');
+  }
+
+  getLocalidades(idProv: string) {
+    return this.apiService.get<any>('/direccion/localidades/' + idProv);
   }
 }
 

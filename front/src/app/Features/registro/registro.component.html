@@ -37,7 +37,7 @@
                         <div class="input_field select_option">
                             <select [(ngModel)]="proReg" name="provincia" (change)="actualizarLocalidades()">
                                 <option value="0">Seleccione Provincia</option>
-                                <option *ngFor="let provincia of provincias" [value]="provincia">{{ provincia }}
+                                <option *ngFor="let provincia of listprovincias" [value]="provincia.id">{{ provincia.nombre }}
                                 </option>
                             </select>
                             <div class="select_arrow"></div>
@@ -45,7 +45,7 @@
                         <div class="input_field select_option">
                             <select [(ngModel)]="locReg" name="localidad">
                                 <option value="0">Seleccione Localidad</option>
-                                <option *ngFor="let localidad of localidades[proReg]" [value]="localidad">{{ localidad
+                                <option *ngFor="let localidad of listlocalidades" [value]="localidad.id">{{ localidad.nombre
                                     }}</option>
                             </select>
                             <div class="select_arrow"></div>
