@@ -8,6 +8,7 @@ import { CountriesService } from 'src/app/core/services/countries.service';
 import { ExperiencesStatusService } from 'src/app/core/services/experiences-status.service';
 import { ExperiencesTypeService } from 'src/app/core/services/experiences-type.service';
 import { ExperiencesService } from 'src/app/core/services/experiences.service';
+import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 
 @Component({
   selector: 'app-experiences',
@@ -24,6 +25,7 @@ export class ExperiencesComponent implements OnInit {
     private _countriesService: CountriesService,
     private _experiencesService: ExperiencesService,
     private fb: FormBuilder,
+    public views: NavBarService
   ) {
     this.experienceForm = this.fb.group({
       description: '',

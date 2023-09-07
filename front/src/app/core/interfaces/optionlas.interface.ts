@@ -14,4 +14,5 @@ export interface Optionals {
     address: string,
     zipCode: number,
     deletedAt?: Date,
+    profileId: number,
 }

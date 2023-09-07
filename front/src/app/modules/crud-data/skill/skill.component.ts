@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SkillService } from 'src/app/core/services/skill.service';
+import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 
 @Component({
   selector: 'app-skill',
@@ -11,7 +12,11 @@ export class SkillComponent {
   skillForm: FormGroup;
   @Input() profileId?: number;
 
-  constructor(private service: SkillService, private fb: FormBuilder,) {
+  constructor(
+    private service: SkillService, 
+    private fb: FormBuilder,
+    public views: NavBarService
+    ) {
     this.skillForm = this.fb.group({
       skill: '',
       level: ''
