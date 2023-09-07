@@ -68,6 +68,7 @@ export class LoginComponent implements OnInit {
         this.logeadoVendedor = false;
         this.logeadoComprador = false;
       }
+      localStorage.clear()
     }
   }
   // if (logeadoVendedor = true) {
