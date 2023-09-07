@@ -6,7 +6,7 @@ export interface registroInterface {
     lastName: string,
   },
   profile: {
-    id?:number,
+    id:number,
   },
   rolesId:number,
   userId: number,

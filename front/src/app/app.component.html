@@ -24,16 +24,18 @@
                 <button mat-button [matMenuTriggerFor]="menu">Cuenta</button>
                 <mat-menu #menu="matMenu">
                     <button routerLink="login" 
+                    (click)="views.navBarShow = true"
                     (click)="views.hideLanding()" 
                     class="botonesInicio" 
                     mat-menu-item
-                    (click)="dataUrl.title = 'Iniciar Sesion'"
+                    (click)="views.title = 'Iniciar Sesion'"
                     >Iniciar Sesion</button>
-                    <button routerLink="registro" 
+                    <button routerLink="registro"
+                    (click)="views.navBarShow = true" 
                     (click)="views.hideLanding()" 
                     class="botonesInicio" 
                     mat-menu-item
-                    (click)="dataUrl.title = 'Registrarse'"
+                    (click)="views.title = 'Registrarse'"
                     >Registrarse</button>
                 </mat-menu>
             </div>
@@ -56,7 +58,10 @@
                 herramienta perfecta para presentar una imagen profesional y atractiva. Impulsa tu carrera con
                 confianza,
                 sabiendo que tu CV refleja lo mejor de ti.</p>
-            <button class="boton-creatucv">
+            <button class="boton-creatucv"
+            routerLink="login"
+            (click)="views.hideLanding()"
+            (click)="views.title = 'Iniciar Sesion'">
                 Crea tu CV
             </button>
 
@@ -214,7 +219,10 @@
                 <h1>Enlaces directos</h1>
                 <a href="#nosotrosContacto">Preguntas Frecuentes</a>
                 <a href="#nosotrosContacto">Quienes somos</a>
-                <a routerLink="login" (click)="views.hideLanding()">Iniciar sesion</a>
+                <a routerLink="login" 
+                (click)="views.title = 'Iniciar Sesion'"
+                (click)="views.hideLanding()"
+                >Iniciar sesion</a>
             </div>
             <div class="fomulario-contacto">
                 <form class="formulario">

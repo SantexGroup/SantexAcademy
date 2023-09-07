@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LoadingService } from 'src/app/core/services/toolServices/loading.service';
 
 @Component({
@@ -14,13 +14,10 @@ import { LoadingService } from 'src/app/core/services/toolServices/loading.servi
   `,
   styleUrls: ['./loading.component.css']
 })
-export class LoadingComponent implements OnInit {
+export class LoadingComponent {
 
   loading = this.loadingServ.consulting;
 
   constructor(private loadingServ: LoadingService) { }
-
-  ngOnInit(): void {
-  }
 
 }

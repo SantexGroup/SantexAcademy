@@ -46,15 +46,26 @@
             <div class="botonera">
                 <div class="botones">
                     <div class="addExperience">
-                        <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+                        <button type="submit" mat-mini-fab color="primary">
                             <mat-icon>plus_one</mat-icon>
                         </button>
                     </div>
-                    <button mat-flat-button color="warn">
-                        Salir
-                    </button>
                 </div>
             </div>
         </form>
+        <div class="lista">
+            <ul>
+                <li>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Elemento 1</h5>
+                            <p class="card-text">Aca se carga la lista de experiencias, formaciones..etc</p>
+                            <button mat-raised-button color="primary">Editar</button>
+                            <button mat-raised-button color="warn">Eliminar</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </body>

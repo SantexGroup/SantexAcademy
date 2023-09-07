@@ -25,16 +25,3 @@
 textarea{
     width: 100%;
 }
-
-.lista{
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-}
-
-.card{
-    width: 60%;
-    border: 1px solid #3f6ad8;
-}

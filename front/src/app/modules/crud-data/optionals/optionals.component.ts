@@ -8,6 +8,7 @@ import { CountriesService } from 'src/app/core/services/countries.service';
 import { GenderService } from 'src/app/core/services/gender.service';
 import { MaritalsService } from 'src/app/core/services/maritals.service';
 import { OptionalsService } from 'src/app/core/services/optionals.service';
+import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 
 @Component({
   selector: 'app-optionals',
@@ -23,6 +24,8 @@ export class OptionalsComponent implements OnInit {
     this.getListGender();
 
     this.getListMaritals();
+    
+    this.getMyOptionals();
 
   }
 
@@ -33,6 +36,7 @@ export class OptionalsComponent implements OnInit {
     private _maritalsService: MaritalsService,
     private _genderServices: GenderService,
     private _optionalsService: OptionalsService,
+    private dataUser: UserDataService,
     private fb: FormBuilder
     ) {
       this.optionalsForm = this.fb.group({
@@ -79,6 +83,15 @@ export class OptionalsComponent implements OnInit {
 
   gender: Sexs[] = [];
 
+  getMyOptionals(){
+    this._optionalsService.getMyOptionals(this.dataUser.userId).subscribe((myOptionals: Optionals[]) => {
+      this.optional = myOptionals;
+      console.log(this.optional);
+    })
+  }
+
+  optional: Optionals[] = [];
+
   postOptionals(){
     const newOptionals: Optionals = {
       maritalId: this.optionalsForm.get('maritalId')?.value,
@@ -99,5 +112,7 @@ export class OptionalsComponent implements OnInit {
     this._optionalsService.addOptionals(newOptionals).subscribe((data) => {
       console.log(data);
     });
+
+
   }
 }

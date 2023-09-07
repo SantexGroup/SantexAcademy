@@ -14,6 +14,12 @@ export class NavBarService{
 
   externalComponent: boolean = false;
 
+  quickButton: boolean = false;
+
+  accountButton: boolean = true;
+  /* Titulo de la navBar */
+  title: string = "";
+
   
   hideLanding(){
     this.landing = false;
@@ -25,4 +31,22 @@ export class NavBarService{
     this.externalComponent = false;
   }
 
+  buttonQuick(){
+    this.landing = true;
+    this.externalComponent = false;
+    this.accountButton = true;
+    this.quickButton = false;
+  }
+
+  buttonAccount(){
+    this.quickButton = false;
+  }
+
+  restart(){
+    window.addEventListener('popstate', (e)=> {
+      this.navBarShow=false;
+      this.landing=true;
+      this.externalComponent=false;
+    });
+  }
 }

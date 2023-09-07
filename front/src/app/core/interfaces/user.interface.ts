@@ -1,5 +1,9 @@
 export interface registroUsuario {
+<<<<<<< HEAD
   id?: number
+=======
+  id?:number;
+>>>>>>> main
   rolesId? : number; 
   name: string;
   lastName: string;
