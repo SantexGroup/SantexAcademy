@@ -1,4 +1,5 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
+// const cookieParser = require('cookie-parser');
 
 // Express Dependencies:
 const express = require('express');
@@ -9,21 +10,30 @@ const helmet = require('helmet');
 const session = require('express-session');
 // Winston logger Dependencies
 const cors = require('cors');
+// eslint-disable-next-line import/no-unresolved
 const logger = require('./utils/winston.logger');
-
 // Models:
 const models = require('./models');
+// const userModels = require('./models').user;
+// const adminModels = require('./models').admin;
+// const passwordModels = require('./models').password;
 
 // Rutes:
-const routes = require('./routes');
+// const routes = require('./routes');
 
+// Conexión con base de datos
 const config = require('./config/config');
 const validateEnv = require('./utils/validateEnv');
 
 const app = express();
+app.listen(3000, () => {
+  console.log('servidor corriendo en el localhost 3000');
+});
+
 validateEnv.validate();
 app.use(helmet());
 app.use(helmet.ieNoOpen());
+
 // Sets "Strict-Transport-Security: max-age=5184000; includeSubDomains".
 const sixtyDaysInSeconds = 5184000;
 app.use(helmet.hsts({
@@ -85,5 +95,16 @@ models.sequelize.authenticate()
     logger.api.error(err);
   });
 
-app.use('/', routes);
+app.use('/', require('./routes/index'));
+
+// Seteamos el motor de plantillas
+app.set('view engine', 'ejs');
+
+// Para procesar datos enviados del form
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Seteamos las variables de entorno
+dotenv.config({ path: '/back/env/.env' });
+
 module.exports = app;

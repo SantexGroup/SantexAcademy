@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
+
 import { RouterModule, Routes } from '@angular/router';
+import { InputLoginComponent } from './modules/input-login/input-login.component';
 import { DashboardAdminComponent } from './modules/dashboard-admin/dashboard-admin.component';
 import { PermissionsAdminGuard } from './core/guards/permissions-admin.guard';
 
 const routes: Routes = [
+  { path: 'login', component: InputLoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'dashboard-admin',
     component: DashboardAdminComponent,
@@ -15,6 +19,7 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'dashboard-admin'
   }
+
 ];
 
 @NgModule({

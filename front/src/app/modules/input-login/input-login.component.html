@@ -1,0 +1,32 @@
+<section class="h-screen  w-full bg-azul-bg">
+    <h1 class=" text-white font-lobster text-center text-6xl pt-16 mb-[128px] ">Turisticapp</h1>
+    <div class=" flex ">
+
+        <div class="px-5 bg-gris-contenedor/20  w-full m-5 py-12 rounded-lg">
+
+
+            <form class="space-y-5">
+                <div>
+                    <label for="email" class=" block mb-2  text-white text-lg font-farro">Ingrese su email</label>
+                    <input type="email" id="email" name="email" [formControl]="email" required
+                        class="bg-white/50 border-gray-300 text-black rounded-lg block w-full p-2  ">
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+
+                        <div *ngIf="email.errors?.['required']">
+                            El email es requerido.
+                        </div>
+                        <div *ngIf="email.errors?.['email']">
+                            debe escribir un email valido
+                        </div>
+                    </div>
+                </div>
+                <div class=" flex flex-row-reverse ">
+                    <button (click)="redirectToContra()"
+                        class="bg-azul-button text-white rounded-lg  px-8 py-3 font-farro uppercase tracking-widest  ">Iniciar</button>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>
