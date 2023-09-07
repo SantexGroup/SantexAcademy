@@ -1,1 +1,81 @@
-<p>pay-transf-course works!</p>
+<div class="flex flex-column align-items-center pt-5 pb-5" [formGroup]="formPay" >
+    <h1 class="text-2xl lg:text-5xl text-center pb-2">Estas a un paso de obtener tu Curso</h1>
+
+    <div class="container-pay flex flex-column lg:flex-row justify-content-around w-8">
+        <div class="container-destination line-height-4">
+            <h2 class="text-2xl pb-2">Cuenta Destino</h2>
+            <p class="">Banco</p>
+            <p class="font-semibold pb-3">Banco Santander</p>
+            <p>CBU ALIAS</p>
+            <p class="font-semibold pb-3">incubadora.NOC</p>
+            <p>CBU</p>
+            <p class="font-semibold pb-3">00696845-20006547307541</p>
+            <p>Cuenta Corriente</p>
+            <p class="font-semibold pb-3">7799-5 055-0</p>
+            <p>CUIT</p>
+            <p class="font-semibold pb-3">30-78594205-9</p>
+            <p>Razon Social</p> 
+            <p class="font-semibold">Incubadora NOC</p>
+        </div>
+    
+        <div class="container-sender pt-7 lg:pt-0">
+            <h2 class="text-2xl pb-3">Comprobante</h2>
+            <div class="mb-4">
+                <p>CUIT/CUIL del titular de la cuenta</p>
+                <input class="surface-200 " type="text" pInputText formControlName="cuit" />
+                <span class="text-red-600" *ngIf="cuit?.invalid && cuit?.touched 
+                && cuit?.hasError('required')">campo obligatorio</span>
+            </div>
+            <div class="mb-4">
+                <p>Nombre completo del titular de la cuenta</p>
+                <input class="surface-200" type="text" pInputText formControlName="name" />
+                <span class="text-red-600" *ngIf="name?.invalid && name?.touched 
+                && name?.hasError('required')">campo obligatorio</span>
+            </div>
+            <div class="mb-4">
+                Fecha de la transferencia
+                <input class="surface-200" type="date" pInputText formControlName="date" />
+                <span class="text-red-600" *ngIf="date?.invalid && date?.touched 
+                && date?.hasError('required')">campo obligatorio</span>
+            </div>
+            <div class="mb-4">
+                <p>Importe</p>
+                <input class="surface-200" type="text" pInputText formControlName="amount"/>
+                <span class="text-red-600" *ngIf="amount?.invalid && amount?.touched 
+                && amount?.hasError('required')">campo obligatorio</span>
+            </div>
+            <div class="card flex flex-column justify-content-center" >
+                <p class="pb-2">¿Envio Comprobante?</p>
+                <div class="flex flex-wrap gap-3">
+                    <div class="flex align-items-center" >
+                        <p-radioButton name="pizza" value="Cheese" formControlName="check"
+                        [(ngModel)]="ingredient" inputId="ingredient1"></p-radioButton>
+                        <label for="ingredient1" class="ml-2">SI</label>
+                    </div>
+                    
+                    <div class="flex align-items-center" >
+                        <p-radioButton name="pizza" value="Mushroom" formControlName="check"
+                        [(ngModel)]="ingredient" inputId="ingredient2"></p-radioButton>
+                        <label for="ingredient2" class="ml-2" >NO</label>
+                    </div>
+                </div>
+                
+            </div>
+            <span class="text-red-600" *ngIf="check?.invalid && check?.touched 
+            && check?.hasError('required')">campo obligatorio</span>
+            
+            <!-- <div class="card flex justify-content-center gap-3" disabled>
+                <p-checkbox name="groupname" value="val1" label="SI"  formControlName="check"></p-checkbox>
+                <p-checkbox name="groupname" value="val2" label="NO"  formControlName="check"></p-checkbox>
+            </div>
+            <span class="text-red-600" *ngIf="check?.invalid && check?.touched 
+            && check?.hasError('required')">campo obligatorio</span> -->
+            
+        </div>
+    </div>
+    <div class="btns w-full lg:w-8 flex justify-content-around pt-5">
+        <a routerLink="/form-inscr-courses" pButton label="Volver" class="surface-0 border-400 text-bluegray-600 pr-6 pl-6 text-xl"></a>
+        <a pButton label="Enviar" type="submit" class="pr-6 pl-6 text-xl"></a>
+    </div>
+
+</div>
