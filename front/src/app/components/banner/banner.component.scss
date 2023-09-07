@@ -1,0 +1,39 @@
+header {
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: url(../../../assets/banner.jpg) no-repeat;
+    height: 50em;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+header h1 {
+    color:black;    
+    font-size: 8vw;
+    margin-top: 0;
+    padding-left: 0.5em;
+    text-align: left;
+
+}
+
+header h1 span {
+    display: block;
+    font-size: 8.75vw;
+}
+
+main {
+    background: #fff;
+    position: relative;
+    border: 1px solid #fff;
+    font-size: 1.4rem;
+    padding: 2rem 25%;
+    line-height: 1.6;
+}
+
+@media all and (max-width: 400px) {
+    main {
+        padding: 2rem;
+    }
+}
