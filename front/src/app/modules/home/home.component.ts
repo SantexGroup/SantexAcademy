@@ -12,16 +12,7 @@ export class HomeComponent {
   constructor(
     private router: Router, 
     public views: NavBarService
-<<<<<<< HEAD
-    ) {
-  }
-
-  ngOnInit(): void {
-    this.dataUrl.getRoute()
-  }
-=======
     ) { }
->>>>>>> main
 
   optionales(){
     this.router.navigate(['/optionales'])
