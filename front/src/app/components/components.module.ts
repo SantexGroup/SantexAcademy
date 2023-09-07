@@ -32,7 +32,6 @@ import { InputTextModule } from 'primeng/inputtext';
 import { AllCoursesRoutingModule } from './all-courses-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormInscrCoursesComponent } from './courses/form-inscr-courses/form-inscr-courses.component';
-import { Error404Component } from './error404/error404.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ResultPipe } from './pipes/result.pipe';
 
@@ -57,7 +56,7 @@ import { ResultPipe } from './pipes/result.pipe';
                   PayTransfCourseComponent, 
                   AllCoursesComponent, 
                   FormInscrCoursesComponent, 
-                  Error404Component, FilterPipe, ResultPipe, 
+                  FilterPipe, ResultPipe, 
                 ],
   imports: [
     CommonModule,
