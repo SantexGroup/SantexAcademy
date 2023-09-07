@@ -49,5 +49,9 @@ module.exports = (sequelize, DataTypes) => {
       updatedAt: false,
     },
   );
+  volunteer.associate = (models) => {
+    volunteer.belongsToMany(models.premios, { through: models.premios_mid });
+  };
+
   return volunteer;
 };
