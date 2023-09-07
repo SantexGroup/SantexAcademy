@@ -1,4 +1,5 @@
 export interface loginInterface {
+  accessToken: string,
   user:{
     name:string,
     lastName:string,

@@ -55,5 +55,4 @@ export class NavBarService{
       this.saveButton = false;
     });
   }
-  
 }
