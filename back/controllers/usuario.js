@@ -7,10 +7,10 @@ require('dotenv').config();
 
 const loginUser = async (req, res) => {
   try {
-    const { fullName, email, password } = req.body;
+    const {  email, password } = req.body;
 
     // Verificar credenciales
-    const user = await userService.loginUser(fullName,email, password);
+    const user = await userService.loginUser(email, password);
 
     if (!user) {
       return res.status(401).json({ message: "Invalid credentials" }); // Retorna aquí para evitar el envío doble de respuestas
