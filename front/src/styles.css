@@ -1,1 +1,136 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+}
+p { /*si sirve al finalizar pasar todo al archivo estilos*/
+    margin-right: 40px;
+}
+h1 {
+    margin: 0px 400px;
+    text-align: center;
+}
+
+.Inicio:hover{
+    text-decoration: underline;
+}
+
+.Cursos:hover{
+    text-decoration: underline;
+}
+
+.Sesion:hover{
+    text-decoration: underline;
+}
+
+.Registro:hover{
+    text-decoration: underline;
+}
+
+
+
+#bienvenidos{       
+    background-color: blue;
+    width:"100px";
+    height: "500px";
+    color:white;
+    font-size: 50px;
+    background-image: linear-gradient(to bottom, blue,orangered);
+}
+.presentacion{
+    font-size: 30px;
+
+}
+
+
+.txt_programa{
+    background-image: linear-gradient(to bottom, orangered,white);
+    text-align: left;
+    background-color: orangered;  /*si sirve al finalizar pasar todo al archivo estilos*/
+    font-size: 25px;
+    color: blue;
+
+}
+
+
+.detalles{
+    color: white;       
+    background-color: blue;  /*si sirve al finalizar pasar todo al archivo estilos*/
+    width:150px;
+    height: 40px;
+    font-size: 20px;
+    
+}
+
+
+
+.equipo{      /*si sirve al finalizar pasar todo al archivo estilos*/
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between ;  
+   
+}
+
+.integrantes{
+    display:flex;
+    flex-direction: column;
+    padding: 1rem;
+    background: #fdfdfd;
+}  
+/*
+.descripcion {
+    font-size: 1.4375rem;
+    line-height: 1.5;
+    text-align: justify;
+    height: 200px;
+}   
+*/
+.imagen_equipo{
+    height: 200px;
+}
+
+.descripcion ,h4,p{
+text-align: center;
+}
+
+
+.footer{
+    background-image: linear-gradient(to bottom,white,orangered);
+    background-color: orangered;
+    height: 250px;      /*si sirve al finalizar pasar todo al archivo estilos*/
+    color: blue;
+
+}
+.sobre{
+    font-size:30px;
+    text-align: left;
+    padding-left: 50px;
+    padding-top: 40px;
+    text-decoration: none;
+   
+}
+.pago{
+    font-size: 30px;
+    text-decoration: none;
+    text-align: right;
+    padding-left: 50px;
+    padding-top: 40px;
+}
+
+.Siguenos{
+    font-size: 30px;
+    vertical-align:top;/*si sirve al finalizar pasar todo al archivo estilos*/
+   
+}
+.redes-sociales{
+ display:flex;
+ padding-left: 10px;
+ justify-content: center;   
+}
+
+#header-right{
+    color: blue;
+    
+  
+    
+}
+
+
