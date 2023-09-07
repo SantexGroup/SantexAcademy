@@ -24,4 +24,12 @@ export class LoginService {
     usuarioLogeado = true;
     return usuarioLogeado;
   }
+
+  cambioVendedorServ(user: object) {
+    const body = {
+      id: user.id,
+      estadoDeVendedor: user.estadoDeVendedor,
+    }
+    return this.apiService.post('/users/estado-vendedor/:id', body)
+  }
 }

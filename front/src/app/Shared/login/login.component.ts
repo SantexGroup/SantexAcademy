@@ -28,10 +28,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     let infoLocal = localStorage.getItem('token')
     console.log('token') //no se está encontrando el token 
-    if (infoLocal && !users.estadoDeVendedor) {
+    if (infoLocal && !infoLocal.users.estadoDeVendedor) {
       this.logeadoComprador = true;
     }
-    if (infoLocal && users.estadoDeVendedor) {
+    if (infoLocal && infoLocal.users.estadoDeVendedor) {
       this.logeadoVendedor = true;
     }
   }
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     }
     this.service.login(this.corLog, this.pasLog).subscribe(res => {
       if (res) {
-        localStorage.setItem( "token", JSON.stringify(res));
+        localStorage.setItem("token", JSON.stringify(res));
         const usuario = this.service.usuarioLogeado(this.usuarioLogeado); //no se si hace falta usar la variable usuarioLogeado
         if (usuario) {
           if (!users.estadoDeVendedor) {
@@ -66,6 +66,19 @@ export class LoginComponent implements OnInit {
       localStorage.clear()
       this.router.navigateByUrl('/'); //no sé porque no lee el router 
       this.router.navigate(['/']);
+    }
+  }
+
+  botonVendedor() {
+    if (this.infoLocal && users.estadoDeVendedor = 0) {
+      const cambioVendedor = this.service.cambioVendedorServ(user).subscribe(res => {
+        if (cambioVendedor) {
+          localStorage.clear();
+          localStorage.setItem( "token", JSON.stringify(res));
+          this.logeadoVendedor = true;
+          this.router.navigateByUrl('/');
+        }
+      }) 
     }
   }
 
