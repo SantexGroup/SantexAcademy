@@ -31,21 +31,29 @@
         
         <!-- Categoria -->
 
-        <mat-form-field appearance="outline">
+        <mat-form-field  appearance="outline">
             <mat-label>Seleccioná una categoria</mat-label>
-            <mat-select disableRipple formControlName="idCategoria">
-                <mat-option *ngFor="let categoria of listCategorias" [value]="categoria.id">{{categoria.name}}</mat-option>
+            <mat-select disableRipple formControlName="categoriaId" >
+                <mat-option *ngFor="let categoria of listCategorias" [value]="categoria.id" (click)="calcularPuntos(categoria)">{{categoria.name}}</mat-option>
             </mat-select>
         </mat-form-field>
-        
+
+         <!-- Duracion -->
+
+         <mat-form-field appearance="outline">
+            <mat-label>Seleccioná una duración</mat-label>
+            <mat-select disableRipple formControlName="duracion" >
+                <mat-option *ngFor="let hora of listHoras" [value]="hora" (click)="calcularPuntos()">{{hora}} {{(hora===1)?'hora.':'horas.'}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
         
         <!-- Puntos -->
-        <mat-form-field appearance="outline">
+        <mat-form-field  appearance="outline">
             <mat-label>Puntaje</mat-label>
-            <input type="number" matInput placeholder="Ingresá un puntaje" formControlName="puntos">
+            <input type="number" matInput readonly formControlName="puntos">
             <mat-icon matSuffix>more_time</mat-icon>
         </mat-form-field>
-        
         
         
         

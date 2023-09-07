@@ -29,4 +29,8 @@ export class TareaService {
     return this.apiService.delete('/tarea/delete-tarea/'+id);
   }
 
+  modificarEstado(id:number,nuevoEstado:string):Observable<void>{
+    return this.apiService.put('/tarea/cambiar-estado/'+id, {nuevoEstado});
+  }
+
 }

@@ -5,6 +5,7 @@ mat-dialog-content{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    overflow-y: scroll;
 }
 
 mat-card-content{
@@ -14,15 +15,22 @@ mat-card-content{
     justify-content: space-around;
     align-items: flex-start;
     margin: 20px 10px;
+    padding-top: 150px;
 }
 
 .titulo-propiedad{
    
    font-weight: 500; 
+   
+   
 }
-
+.titulo{
+    text-align: center;
+    margin-bottom: 30px;
+}
 .contenido-propiedad{
     margin-top: 5px;
+    
 }
 
 @media (min-width:650px) {
