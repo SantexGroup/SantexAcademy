@@ -27,10 +27,15 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { MenuModule } from 'primeng/menu';
 import { PanelModule } from 'primeng/panel';
 import { ToolbarModule } from 'primeng/toolbar';
+import { InputTextModule } from 'primeng/inputtext';
 
 import { AllCoursesRoutingModule } from './all-courses-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormInscrCoursesComponent } from './courses/form-inscr-courses/form-inscr-courses.component';
+import { Error404Component } from './error404/error404.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { ResultPipe } from './pipes/result.pipe';
+
 
 
 
@@ -51,7 +56,8 @@ import { FormInscrCoursesComponent } from './courses/form-inscr-courses/form-ins
                   RecordComponent, 
                   PayTransfCourseComponent, 
                   AllCoursesComponent, 
-                  FormInscrCoursesComponent,
+                  FormInscrCoursesComponent, 
+                  Error404Component, FilterPipe, ResultPipe, 
                 ],
   imports: [
     CommonModule,
@@ -66,14 +72,16 @@ import { FormInscrCoursesComponent } from './courses/form-inscr-courses/form-ins
     ToolbarModule,
     AllCoursesRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    InputTextModule
     
   ],
   exports: [
     CoursesComponent,
     LandingCoursesComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    BannerComponent
   ],
   providers: [],
 })
