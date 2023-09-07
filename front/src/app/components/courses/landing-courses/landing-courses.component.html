@@ -48,7 +48,7 @@
                                 <a [routerLink]="['/courses', course.id]" pButton label="ver detalle del curso" type="button"
                                     styleClass="p-mr-2 w-full uppercase" class="footer__button--info">
                                 </a>
-                                <a routerLink="/form-inscr-courses" pButton label="Inscríbete" type="button" styleClass="p-mr-2 mt-5 w-full uppercase"
+                                <a [routerLink]="['/form-inscr-courses', course.id]" pButton label="Inscríbete" type="button" styleClass="p-mr-2 mt-5 w-full uppercase"
                                     class="footer__button--apply"></a>
 
                             </footer>

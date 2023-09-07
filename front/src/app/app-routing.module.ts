@@ -15,7 +15,7 @@ const routes: Routes = [
 
   },
   {
-    path: 'form-inscr-courses',
+    path: 'form-inscr-courses/:id',
     loadChildren: () => import('../app/components/form-inscr-courses-routing.module').then(m => m.FormInscrCoursesRoutingModule)
   },
   {
