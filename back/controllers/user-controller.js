@@ -19,7 +19,6 @@ async function createUser(req, res) {
   } = req.body;
 
   const user = await userService.userRegister(firstName, lastName, dni, mail, password, alias, idLocalidad, calleYAltura);
-
   res.status(201).send(user);
 }
 

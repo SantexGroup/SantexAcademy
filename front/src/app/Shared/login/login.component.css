@@ -30,7 +30,11 @@
 
 .form-group {
     margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 
 .dropdown-menu div {
     display: flex;

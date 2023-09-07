@@ -11,11 +11,11 @@ async function login(mail, password) {
       mail: mail,
       password: password
     },
-    //include: [{model: Products}]
+    // include: [{model: Products}]
   });
 
   if (!users) {
-    throw new Error('email o contraseña incorrectos');
+    throw new Error('Correo o Contraseña incorrectos');
   }
 
   const token = jwt.sign({
