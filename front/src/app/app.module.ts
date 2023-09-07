@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { DashboardAdminComponent } from './modules/dashboard-admin/dashboard-admin.component';
 import { HeaderDashboardComponent } from './modules/header-dashboard/header-dashboard.component';
 import { LogoutModalComponent } from './modules/logout-modal/logout-modal.component';
-
+import { InputContraseniaComponent } from './modules/input-contrasenia/input-contrasenia.component';
 import { InputLoginComponent } from './modules/input-login/input-login.component';
 import { ReactiveFormsModule } from '@angular/forms'; 
 @NgModule({
@@ -16,14 +16,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardAdminComponent,
     HeaderDashboardComponent,
     LogoutModalComponent,
-    InputLoginComponent
+    InputLoginComponent,
+    InputContraseniaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
