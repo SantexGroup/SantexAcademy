@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BarraService } from 'src/app/core/services/barra.service';
 
 @Component({
   selector: 'app-barra',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarraComponent implements OnInit {
 
-  constructor() { }
+  listCategorias: any[]=[]
+
+  constructor (private service: BarraService) { }
 
   ngOnInit(): void {
+    this.service.getCategories().subscribe(categorias => {console.log(categorias)
+    this.listCategorias = categorias
+    })
   }
 
 }

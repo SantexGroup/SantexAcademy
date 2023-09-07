@@ -11,6 +11,7 @@ const app = Express();
 
 // Rutas
 app.use('/users', userRoutes);
+app.use('/productos', productsRoutes);
 
 // use=
 app.use('/ping', (req, res) => {
