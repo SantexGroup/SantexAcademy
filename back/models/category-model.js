@@ -1,7 +1,7 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class category extends Model {}
+  class category extends Model { }
   category.init({
     id: {
       type: DataTypes.INTEGER,
@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    puntosPorHora: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'category',
@@ -28,5 +32,8 @@ module.exports = (sequelize, DataTypes) => {
     createdAt: false,
     updatedAt: false,
   });
+  category.associate = (models) => {
+    category.hasMany(models.tarea);
+  };
   return category;
 };

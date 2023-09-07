@@ -3,9 +3,11 @@
 // eslint-disable-next-line no-unused-vars
 const { DataTypes, Sequelize } = require('sequelize');
 const volunteerModel = require('../models/volunteer-model');
+
 const jwt = require('jsonwebtoken');
 const { sequelize } = require('../models');
 const bcrypt = require('bcrypt');
+// const models = require('../models/index');
 
 const Volunteer = volunteerModel(sequelize, DataTypes);
 

@@ -17,18 +17,22 @@ async function getCategoryById(req, res, next) {
 }
 
 async function createCategory(req, res) {
-  const { name, description, dificulty } = req.body;
+  const {
+    name, description, dificulty, puntosPorHora,
+  } = req.body;
 
-  const cat = await categoryServices.createCategory(name, description, dificulty);
+  const cat = await categoryServices.createCategory(name, description, dificulty, puntosPorHora);
 
   res.status(201).send(cat);
 }
 
 async function editCategory(req, res) {
   const { id } = req.params;
-  const { name, description, dificulty } = req.body;
+  const {
+    name, description, dificulty, puntosPorHora,
+  } = req.body;
 
-  const cat = await categoryServices.editCategory(id, name, description, dificulty);
+  const cat = await categoryServices.editCategory(id, name, description, dificulty, puntosPorHora);
   res.status(201).send(cat);
 }
 

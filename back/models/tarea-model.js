@@ -1,8 +1,9 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class tareas extends Model {}
-  tareas.init(
+  class Tarea extends Model {
+  }
+  Tarea.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -18,13 +19,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      id_coordinator: {
+      coordinatorId: {
         type: DataTypes.INTEGER,
       },
-      id_volunteer: {
-        type: DataTypes.INTEGER,
-      },
-      point: {
+      points: {
         type: DataTypes.BIGINT,
         allowNull: true,
         defaultValue: 0,
@@ -37,22 +35,41 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      id_category: {
+      categoryId: {
         type: DataTypes.INTEGER,
       },
-      cant_participantes: {
+      cantParticipantes: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        defaultValue: 0,
+      },
+      cantInscriptos: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: 0,
+      },
+      duracion: {
+        type: DataTypes.INTEGER,
+      },
+      estado: {
+        type: DataTypes.ENUM('activa', 'finalizada'),
+        defaultValue: 'activa',
+        allowNull: true,
       },
 
     }, {
       sequelize,
-      modelName: 'tareas',
+      modelName: 'tarea',
       timestamps: false,
       underscored: false,
       createdAt: false,
       updatedAt: false,
     },
   );
-  return tareas;
+  Tarea.associate = (models) => {
+    Tarea.belongsToMany(models.volunteer, { through: models.tareasVoluntario });
+    Tarea.belongsTo(models.category);
+    Tarea.belongsTo(models.coordinator);
+  };
+  return Tarea;
 };

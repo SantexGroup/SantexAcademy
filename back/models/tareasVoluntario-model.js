@@ -1,31 +1,28 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class tareasMid extends Model {}
-
-  tareasMid.init(
+  class TareasVoluntario extends Model { }
+  TareasVoluntario.init(
     {
       id: {
         type: DataTypes.INTEGER,
-        primaryKey: true,
         autoIncrement: true,
+        primaryKey: true,
         allowNull: false,
       },
-      id_volunteer: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      asistencia: {
+      asistio: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       },
-    },
-    {
+    }, {
       sequelize,
-      modelName: 'tareas_mid',
+      modelName: 'tareasVoluntario',
       timestamps: false,
+      underscored: false,
+      createdAt: false,
+      updatedAt: false,
     },
   );
 
-  return tareasMid;
+  return TareasVoluntario;
 };
