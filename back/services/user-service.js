@@ -21,7 +21,7 @@ async function login(mail, password) {
     mail: users.mail
   }, 'ClaveUltraSecreta', {expiresIn: '5m'});
 
-  return {token};
+  return {token, users};
 }
 
 // creacion de usuario

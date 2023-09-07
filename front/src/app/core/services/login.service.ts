@@ -17,7 +17,7 @@ export class LoginService {
       mail: corLogServ,
       password: pasLogServ,
     }
-    return this.apiService.post<string>('/users/login', body)
+    return this.apiService.post('/users/login', body)
   }
 
   usuarioLogeado(usuarioLogeado: boolean) {
