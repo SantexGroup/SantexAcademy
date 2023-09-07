@@ -1,5 +1,15 @@
 const { orgProvider } = require('../providers');
 
+const loginOrg = async (email, cuit, password) => {
+  const org = await orgProvider.loginOrg(email, cuit, password);
+
+  if (!org || org.password !== password) {
+    return null;
+  }
+  return org;
+};
+
+
 const createOrganization = async (organization) => {
   const createdOrganization = await orgProvider.createOrganization(
     organization,
@@ -44,6 +54,7 @@ const getOrganizationByLocation = async (location, opportunityType) => {
 };
 
 module.exports = {
+  loginOrg,
   getOrganizations,
   getOrganizationByCriteria,
   createOrganization,

@@ -10,7 +10,7 @@ const loginUser = async (req, res) => {
     const { fullName, email, password } = req.body;
 
     // Verificar credenciales
-    const user = await userService.loginUser(email, password);
+    const user = await userService.loginUser(fullName,email, password);
 
     if (!user) {
       return res.status(401).json({ message: "Invalid credentials" }); // Retorna aquí para evitar el envío doble de respuestas
