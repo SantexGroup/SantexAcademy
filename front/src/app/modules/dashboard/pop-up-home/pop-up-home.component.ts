@@ -4,6 +4,7 @@ import { Product } from 'src/app/core/interfaces/product';
 import { FormUpdateComponent } from '../form-update/form-update.component';
 
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-pop-up-home',
   templateUrl: './pop-up-home.component.html',
@@ -16,7 +17,8 @@ export class PopUpHomeComponent implements OnInit {
     public dialogRef: MatDialogRef<PopUpHomeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { product: Product },
     private dialog:MatDialog ,// Inyecta el servicio MatDialog
-    private router:Router
+    private router:Router,
+    private activatedRoute: ActivatedRoute
   ) {
     this.product = data.product;
   }
@@ -33,8 +35,8 @@ export class PopUpHomeComponent implements OnInit {
   // funcionalidad cierra el dialog y te redirige a template FormUpdate
   closeDialog(): void {
     this.dialogRef.close();
-    console.log('Intentando navegar a form-update')
-    this.router.navigate(['/form-update']);
+    //console.log('Intentando navegar a form-update')
+    this.router.navigate(['/dashboard/form-update', this.product.id]);
   } 
   agregarAlCarrito() {
     // fcion

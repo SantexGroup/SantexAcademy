@@ -1,5 +1,5 @@
 <div>
-  <form class="form_container" [formGroup]="searchForm" >
+ <!-- <form class="form_container" [formGroup]="searchForm" >
     <div class="title_container">
       <p class="title">Buscar Producto</p>
       <span class="subtitle">Ingrese los datos del nuevo producto.</span>
@@ -12,16 +12,17 @@
         <button type="submit" class="search-button sign-in_btn" (click)="searchProduct()">Buscar</button>
       </div>
       <br>
-      <p class="errorInput" *ngIf="noFoundProduct">Producto no encontrado...</p>
+      <span class="errorInput" *ngIf="noFoundProduct">Producto no encontrado...</span>
   
     </div>
-  </form>
+  </form>-->
   
-  <form class="form_container" [formGroup]="myForm"  (ngSubmit)="updateProduct()" *ngIf="foundProduct">
+  <form class="form_container" [formGroup]="myForm"  (ngSubmit)="updateProduct()">
     
     <div class="input_container">
       <label class="input_label" for="name_field">Nombre del Producto</label>
-      <input placeholder="ProductoX" title="Nombre del Producto" name="input-name" type="text" class="input_field" id="name_field" formControlName="nombreProducto">
+      {{selectedProduct?.nombreProd}}
+      <input placeholder="ProductoX" title="Nombre del Producto" name="input-name" type="text" class="input_field" id="name_field" formControlName="nombreProducto" >
       <p class="errorInput" *ngIf="myForm.get('nombreProducto')?.touched && myForm.get('nombreProducto')?.hasError('required')">Campo Obligatorio</p>
     </div>
     <div class="input_container">

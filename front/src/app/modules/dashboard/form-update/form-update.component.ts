@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { of, switchMap } from 'rxjs';
+import { BackServiceService } from 'src/app/services/back-service.service';
+
 
 export interface Product {
   nombreProd: string;
@@ -43,6 +47,56 @@ export class FormUpdateComponent implements OnInit {
   foundProduct: boolean | undefined;
   noFoundProduct: boolean | undefined;
   query: Product | undefined;
+
+  //variable id y selectProduct
+  id : string | undefined;
+  selectedProduct: Product | undefined;
+  
+
+  constructor(
+    private backService: BackServiceService,
+    private router: Router,
+    private activateRoute: ActivatedRoute,
+    //private dataRouter: DataRouter,
+  ) {
+  }
+
+  ngOnInit() {
+    
+    this.activateRoute.paramMap.pipe(
+      switchMap(
+        (params: ParamMap) => {
+          let id: string | null = params.get('id');
+          if (id == "") {
+            return of(undefined);
+          }
+          return this.backService.getProduct(String(params.get('id')));
+        }
+      )
+    ).subscribe(product => {
+      // Asigna el producto obtenido a selectedProduct
+      this.selectedProduct = product;
+  
+      // Si se encontró un producto, actualiza el formulario
+      if (product) {
+        console.log('Producto ', this.selectedProduct);
+        this.myForm.patchValue({
+          nombreProducto: product.nombreProd,
+          cantidad: product.cantidad ? product.cantidad.toString(): '',
+          categoria: product.categoria,
+          tipoMaterial: product.tipoMaterial,
+          urlImagen: product.urlImagen,
+          precio: product.precio ? product.precio.toString(): '',
+          descripcion: product.descripcion
+        });
+      }else {
+        // El producto no se encontró o no es válido, puedes manejar este caso aquí
+        console.log('El producto no se encontró o no es válido.');
+
+      }
+    });
+  }
+  
   
   // Función para buscar un producto
   searchProduct() {
@@ -70,8 +124,6 @@ export class FormUpdateComponent implements OnInit {
     }
   }
   
-  ngOnInit(): void {
-  }
 
   // Función para actualizar un producto
   updateProduct() {

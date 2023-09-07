@@ -14,12 +14,10 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
-        children: [
-          {
-            path: 'form-update',
-            component: FormUpdateComponent,
-          },
-        ],
+      },
+      {
+        path: 'form-update/:id',
+        component: FormUpdateComponent,
       },
       {
         path: 'form-add-product',
