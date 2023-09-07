@@ -12,7 +12,6 @@ export class RegistroService {
   nomRegServ: string = '';
   apeRegServ: string = '';
   dniRegServ: string = '';
-  proRegServ: string = '';
   locRegServ: string = '';
   dirRegServ: string = '';
 
@@ -28,7 +27,6 @@ export class RegistroService {
     nomRegServ: string, 
     apeRegServ: string,
     dniRegServ: string,
-    proRegServ: string,
     locRegServ: string,
     dirRegServ: string) {
     const body = {
@@ -38,8 +36,10 @@ export class RegistroService {
       mail: corRegServ,
       password: pasRegServ,
       alias: aliRegServ,
-      CalleYAltura: dirRegServ
+      idLocalidad: locRegServ,
+      calleYAltura: dirRegServ
     }
+    console.log(body);
     return this.apiService.post('/users/user-register', body)
   }
 

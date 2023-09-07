@@ -46,7 +46,6 @@ export class RegistroComponent implements OnInit {
         this.nomReg,
         this.apeReg,
         this.dniReg,
-        this.proReg,
         this.locReg,
         this.dirReg
       ).subscribe(respuesta => {
