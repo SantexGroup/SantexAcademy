@@ -1,5 +1,5 @@
 <body>
-  <div class="experiencesInput">
+  <div class="personalInput">
     <form [formGroup]="personalForm">
       <mat-form-field>
         <mat-label>Nombres</mat-label>
@@ -13,10 +13,10 @@
 
       <div class="dates">
         <mat-form-field>
-            <mat-label>Fecha de Nacimiento:</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="bornDate">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+          <mat-label>Fecha de Nacimiento:</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="bornDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
       </div>
       
@@ -41,5 +41,20 @@
         </button>
       </div>
     </form>
+
+    <div class="lista">
+      <ul>
+        <li>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Elemento 1</h5>
+              <p class="card-text">Aca se carga la lista de experiencias, formaciones..etc</p>
+              <button mat-raised-button color="primary">Editar</button>
+              <button mat-raised-button color="warn">Eliminar</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </body>

@@ -3,11 +3,8 @@
   font-weight: bold;
 }
 
-.experiencesInput {
+.personalInput {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 form {
@@ -15,16 +12,12 @@ form {
   height: 82vh;
 }
 
-.addExperience{
-  float: left;
-}
-
-form textarea {
+/* form textarea {
   resize: none;
   border: none;
   border-radius: 5px;
   width: 100%;
-}
+} */
 
 form input {
   border: none;
@@ -50,4 +43,22 @@ form mat-form-field {
   margin-top: 15px;
   justify-content: center;
   align-items: center;
+}
+
+.lista{
+  margin: 1rem 0 0 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+}
+
+.card{
+  border: none;
+}
+
+.card-body{
+  margin-bottom: 1rem;
+  border: 1px solid #3f6ad8;
+  border-radius: 14px;
 }
