@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     limit_time: DataTypes.DATE,
   }, {
     sequelize,
+    timestamps: false,
     modelName: 'password',
     timestamps: false,
   });

@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       limit_time: {
-        type: Sequelize.TIME,
+        type: Sequelize.DATE,
       },
     });
   },

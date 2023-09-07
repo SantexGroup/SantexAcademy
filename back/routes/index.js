@@ -1,5 +1,7 @@
 const Express = require('express');
 const pollsterRoutes = require('./pollsterRoutes');
+const adminRoutes = require('./adminRoutes');
+const loginRoutes = require('./loginRoutes');
 
 // Middlewares:
 const rootPath = require('../middleware/root_path.middleware');
@@ -7,9 +9,8 @@ const errors = require('../middleware/error_handler.middleware');
 
 const app = Express();
 
-// Rutas
-
 // use=
+
 app.use('/ping', (req, res) => {
   res.json({
     response: 'pong!',
@@ -17,6 +18,8 @@ app.use('/ping', (req, res) => {
 });
 // Agregar aqui las rutas
 app.use('/pollsters', pollsterRoutes);
+app.use('/admins', adminRoutes);
+app.use('/login', loginRoutes);
 
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);

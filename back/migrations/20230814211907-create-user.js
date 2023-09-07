@@ -32,6 +32,9 @@ module.exports = {
       poll_id: {
         type: Sequelize.INTEGER,
       },
+      roll: {
+        type: Sequelize.ENUM(['user']),
+      },
     });
   },
   async down(queryInterface) {

@@ -8,7 +8,6 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate() {
-      // define association here
     }
   }
   Admin.init({
@@ -20,8 +19,10 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password_id: DataTypes.INTEGER,
     poll_id: DataTypes.INTEGER,
+    roll: DataTypes.STRING,
   }, {
     sequelize,
+    timestamps: false,
     modelName: 'admin',
     timestamps: false,
   });
