@@ -38,8 +38,20 @@ async function login(req, res, next) {
   }
 }
 
-// Controlador que redirige al servicio para actulizar un usuario
+//* agregado
+async function getUser(req, res, next) {
+  const { id } = req.params;
+  
+  try {
+    const user = await userService.getUser(id);
+    res.status(200).send(user);
+  } catch (error) {
+    next(error);
+  }
+}
 
+
+// Controlador que redirige al servicio para actulizar un usuario
 async function updateUser(req, res, next) {
   try {
     // Extraer el ID del usuario de los parámetros de la solicitud
@@ -70,6 +82,7 @@ async function userDeleted(req, res, next) {
 module.exports = {
   recordUser,
   updateUser,
+  getUser, //* agregado
   login,
   userDeleted,
 };

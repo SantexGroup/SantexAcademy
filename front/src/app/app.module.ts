@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { UsuarioModule } from './modules/usuario/usuario.module';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OptionalsComponent } from './modules/crud-data/optionals/optionals.component';
@@ -29,6 +29,7 @@ import { SkillComponent } from './modules/crud-data/skill/skill.component';
 import { LoadingComponent } from './modules/loading/loading.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './core/services/toolServices/interceptor/loading.interceptor';
+import { UsuarioModule } from './modules/usuario/usuario.module';
 
 @NgModule({
   declarations: [

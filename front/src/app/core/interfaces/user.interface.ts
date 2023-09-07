@@ -1,9 +1,5 @@
-export interface registroUsuario {
-<<<<<<< HEAD
-  id?: number
-=======
+export interface userInterface {
   id?:number;
->>>>>>> main
   rolesId? : number; 
   name: string;
   lastName: string;
