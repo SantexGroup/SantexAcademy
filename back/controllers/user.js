@@ -1,5 +1,7 @@
-const { validationResult } = require('express-validator');
+const bcript = require('bcrypt');
+const { generarJWT } = require('../helpers/jwt');
 const { userService, emailService } = require('../services');
+const { User } = require('../models');
 
 const allUser = async (req, res, next) => {
   try {
@@ -25,26 +27,28 @@ const getUser = async (req, res, next) => {
 };
 
 const createUser = async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({
-      ok: false,
-      errors: errors.mapped(),
-    });
-  }
-
   const { body } = req;
+  const { password } = body;
+  const salt = bcript.genSaltSync();
+  body.password = bcript.hashSync(password, salt);
+  // console.log(body);
   try {
     const user = await userService.createUser(body);
     // eslint-disable-next-line no-console
     if (user.username === 'admin' && user.password === 'admin') {
       return res.json({ redirectTo: '/users' });
     }
+    // eslint-disable-next-line no-console
     console.log('Email del usuario:', user.email);// BORRAR es para ver captura de mail
     // eslint-disable-next-line max-len
     await emailService.sendConfirmationEmail(user.email, user.username);// Envia email a emailService
 
-    return res.json(user);
+    const token = await generarJWT(user.id, user.username);
+
+    return res.json({
+      user,
+      token,
+    });
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(error);
@@ -53,26 +57,61 @@ const createUser = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findOne({
+      where: {
+        email,
+      },
+    });
+
+    if (!user) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'El email no existe',
+      });
+    }
+
+    const validPassword = bcript.compareSync(password, user.password);
+
+    if (!validPassword) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'La contraseña no coincide',
+      });
+    }
+
+    const token = await generarJWT(user.id, user.username);
+
+    return res.json({
+      ok: true,
+      id: user.id,
+      username: user.username,
+      token,
+    });
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+
+    return res.status(500).json({
       ok: false,
-      errors: errors.mapped(),
+      msg: 'Hable con el administrador',
     });
   }
-
-  const { email, password } = req.body;
-  console.log(email, password);
-  return res.json({
-    ok: true,
-    msg: 'Login de usuario /',
-  });
 };
 
-const revalidarToken = async (req, res) => res.json({
-  ok: true,
-  msg: 'Renew',
-});
+const revalidarToken = async (req, res) => {
+  const { id, username } = req;
+
+  const token = await generarJWT(id, username);
+  return res.json({
+    ok: true,
+    id,
+    username,
+    token,
+  });
+};
 
 const updateUser = async (req, res, next) => {
   const { id } = req.params;
