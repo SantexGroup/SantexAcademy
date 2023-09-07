@@ -48,8 +48,10 @@ module.exports = (sequelize, DataTypes) => {
       updatedAt: false,
     },
   );
-  Volunteer.associate = (models) => {
-    Volunteer.belongsToMany(models.tarea, { through: models.tareasVoluntario });
+
+  volunteer.associate = (models) => {
+    volunteer.belongsToMany(models.premios, { through: models.premios_mid });
+    volunteer.belongsToMany(models.tarea, { through: models.tareasVoluntario });
   };
-  return Volunteer;
-};
+
+  return volunteer;
