@@ -9,19 +9,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormularioRegistroComponent } from './formulario-registro/formulario-registro.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MensajeErrorComponent } from './mensaje-error/mensaje-error.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatNativeDateModule} from '@angular/material/core';
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormularioRegistroComponent,
-    MensajeErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,4 +39,4 @@ import {MatNativeDateModule} from '@angular/material/core';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {  }
+export class AppModule { }
