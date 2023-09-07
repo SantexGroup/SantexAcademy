@@ -79,18 +79,12 @@
                 </div>
                 <div class="botonera">
                     <div class="botones">
-                        <button type="submit" 
-                        mat-mini-fab 
-                        color="primary" 
-                        *ngIf="views.plusOne"
-                        (click)="postOptionals()">
-                            <mat-icon>plus_one</mat-icon>
+                        <button class="plus" type="submit" *ngIf="views.plusOne"
+                            (click)="postOptionals()">
+                            <img src="/assets/Imagenes/plus.png" alt="+">
                         </button>
-                        <button type="submit" 
-                        mat-raised-button 
-                        color="primary"
-                        *ngIf="views.saveButton"
-                        (click)="updateOptionals()">
+                        <button type="submit" mat-raised-button color="primary" *ngIf="views.saveButton"
+                            (click)="updateOptionals()">
                             Guardar
                         </button>
                     </div>
@@ -99,14 +93,14 @@
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="prev">
                 <span class="carousel-control">
-                    <img src="/assets/Imagenes/arrow.png" alt="<<<">      
+                    <img src="/assets/Imagenes/arrow.png" alt="<<<">
                 </span>
                 <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="next">
-                <span class="carousel-control"> 
-                    <img src="/assets/Imagenes/arrowR.png" alt=">>>">    
+                <span class="carousel-control">
+                    <img src="/assets/Imagenes/arrowR.png" alt=">>>">
                 </span>
                 <span class="visually-hidden">Next</span>
             </button>
@@ -119,8 +113,15 @@
                         <div class="card-body">
                             <h5 class="card-title">{{option.profile}}</h5>
                             <p class="card-text">{{option.aboutMe}}</p>
-                            <button mat-raised-button color="primary" (click)="changeViews()" (click)="getOptional(option.id)">Editar</button>
-                            <button mat-raised-button color="warn" (click)="removeOptional(option.id)">Eliminar</button>
+                            <div class="botonera-card">
+                                <button (click)="changeViews()"
+                                    (click)="getOptional(option.id)">
+                                    <img src="/assets/Imagenes/editar.png" alt="Editar">
+                                </button>
+                                <button (click)="removeOptional(option.id)">
+                                    <img src="/assets/Imagenes/delete.png" alt="Eliminar">
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </li>

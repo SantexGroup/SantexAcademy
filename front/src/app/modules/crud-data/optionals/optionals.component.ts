@@ -99,7 +99,7 @@ export class OptionalsComponent implements OnInit {
     this._optionalsService.getMyOptionals(this.dataUser.userId).subscribe((myOptionals: Optionals[]) => {
       this.optional = myOptionals;
       console.log(this.optional);
-    })
+    });
   }
 
   optional: Optionals[] = [];
@@ -126,8 +126,10 @@ export class OptionalsComponent implements OnInit {
     this._optionalsService.addOptionals(newOptionals).subscribe((data) => {
       console.log(data);
     });
+
     this.optional.push(newOptionals);
 
+    this.optionalsForm.reset();
   }
 
   getOptional(id?: number,) {
@@ -174,7 +176,12 @@ export class OptionalsComponent implements OnInit {
 
     this._optionalsService.updateOptionals(this.optionalId, newDataOptional).subscribe(() => {
       this.getMyOptionals();
-    })
+    });
+
+    this.optionalsForm.reset();
+
+    this.views.saveButton = false;
+    this.views.plusOne = true;
 
   }
 

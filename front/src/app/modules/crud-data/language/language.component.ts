@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Language } from 'src/app/core/interfaces/language.interface';
 import { LanguagesService } from 'src/app/core/services/languages.service';
+import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class LanguageComponent {
     private dataUser: UserDataService,
     private _languageService: LanguagesService,
     private fb: FormBuilder,
+    public views: NavBarService
   ) { 
     this.languageForm = this.fb.group({
       level: '',

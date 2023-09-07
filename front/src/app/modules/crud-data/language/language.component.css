@@ -3,17 +3,21 @@
     font-weight: bold;
 }
 
-.formationsInput{
+.languageInput {
+    width: 100%;
+    height: 500px;
     display: flex;
+    justify-content: space-between;
 }
 
 form {
-    width: 60vh;
-    height: 82vh;
+    justify-content: center;
+    width: 60%;
 }
 
-.addExperience{
-    float: left;
+form {
+    margin-left: 8rem;
+    width: 60vh;
 }
 
 form textarea {
@@ -35,29 +39,29 @@ form mat-form-field {
     width: 100%;
 }
 
-.carousel-control-prev {
-    left: -70px;
-}
-
-.carousel-control-next {
-    right: -70px;
-}
-
-.dates{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.dates mat-form-field{
-    width: 45%;
-}
-
 .botonera {
+    margin-top: 2rem;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.botonera .plus {
+    background: none;
+    border: none;
+}
+
+.botonera .plus img {
+    width: 4rem;
+    height: 4rem;
+    filter: opacity(0.4);
+}
+
+.botonera .plus img:hover {
+    width: 4.5rem;
+    height: 4.5rem;
+    filter: opacity(1);
 }
 
 .botones {
@@ -66,20 +70,43 @@ form mat-form-field {
     justify-content: space-around;
 }
 
-.lista{
-    margin: 1rem 0 0 5rem;
-    display: flex;
+.lista {
     flex-direction: column;
-    align-items: center;
-    width: 60%;
+    justify-content: center;
+    width: 35%;
 }
 
-.card{
-    border: none;
-}
-
-.card-body{
+.card {
     margin-bottom: 1rem;
     border: 1px solid #3f6ad8;
     border-radius: 14px;
+    width: 20rem;
+    -webkit-box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.57);
+    -moz-box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.57);
+    box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.57);
+}
+
+.card-body .botonera-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-body .botonera-card button {
+    border: none;
+    background: none;
+    width: 3rem;
+    height: 3rem;
+}
+
+.card-body .botonera-card img{
+    width: 2rem;
+    height: 2rem;
+    filter: opacity(0.4);
+}
+
+.card-body .botonera-card img:hover{
+    width: 2.5rem;
+    height: 2.5rem;
+    filter: opacity(1);
 }

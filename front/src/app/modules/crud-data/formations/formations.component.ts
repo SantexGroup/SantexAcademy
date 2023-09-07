@@ -6,6 +6,7 @@ import { FormationsTypes } from 'src/app/core/interfaces/formationsTypes.interfa
 import { FormationsStatusService } from 'src/app/core/services/formations-status.service';
 import { FormationsTypeService } from 'src/app/core/services/formations-type.service';
 import { FormationsService } from 'src/app/core/services/formations.service';
+import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class FormationsComponent implements OnInit {
     private _formationsTypesServices: FormationsTypeService,
     private _formationsStatusServices: FormationsStatusService,
     private _formationsServices: FormationsService,
+    public views: NavBarService,
     private fb: FormBuilder
     ) {
       this.formationForm = this.fb.group({

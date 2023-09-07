@@ -1,7 +1,23 @@
+.button-conteiner{
+    background: #0D6EFD;
+    height: 100vh;
+}
+
 .button-nav{
     margin: 10px;
     width: 300px;
     font-size: large;
+}
+
+.button-nav button{
+    background: #FFF;
+    color: #0D6EFD;
+}
+
+.button-nav button:hover{
+    background: #0D6EFD;
+    border: 1px solid #FFF;
+    color: #FFF;
 }
 
 .mat-raised-button{
