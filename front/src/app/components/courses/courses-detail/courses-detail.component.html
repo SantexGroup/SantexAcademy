@@ -1,0 +1,97 @@
+
+<div>
+    <div class="containerDetail lg:w-8 lg:m-auto lg:flex-colum ">
+    
+        <div class="containerDetailCourse my-o mx-2 relative ">
+            <img class="imgBanner w-screen h-20rem" 
+            src="https://hellonails.es/wp-content/uploads/2020/06/Tipos-de-manicura-img3.jpg" alt="">
+    
+            
+            <div class="containerCourse lg:pr-5 lg:pl-5 absolute flex justify-content-between bottom-0 gap-6 w-12">
+                <div class="title lg:text-5xl mt-5 ml-2 w-rem font-medium">{{courseService.courses.title}}</div>
+                
+                <div class="containerCost flex-colum border-circle 
+                h-7rem w-7rem m-2 text-gray-900 font-bold text-center">
+                    <p class="text mt-5">Desde solo</p>
+                    <p>{{courseService.courses.price | currency}}</p>
+                </div>
+                
+            </div>
+        </div>
+    
+        <div class="containerDetailDownload mx-2 lg:flex lg:justify-content-between align-items-center">
+            <p-button label="Programa" styleClass="p-button-secondary
+             relative flex justify-content-center font-bold text-xl w-12 lg:w-13rem y-2 my-2" icon="pi pi-download" iconPos="right">
+            </p-button>
+           
+            <a [routerLink]="['/form-inscr-courses', courseService.course.id]" pButton label="Inscríbete" type="button" class="p-button-warning 
+            font-bold text-xl w-12 lg:w-14rem justify-content-center lg: my-2
+            "></a>
+            
+        </div>
+    
+        <div class="containerDetailText mx-3 mt-7 mb-3 flex-colum lg:flex lg: gap-6">
+            <p class="detailText">{{courseService.courses.description}}</p>
+            <div class="imgLogo lg:max-w-30rem">
+                <img class="w-12 m-auto" 
+                src="https://scontent.fcor2-1.fna.fbcdn.net/v/t39.30808-6/345270431_766231688363871_4341753288289659002_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=be3454&_nc_ohc=QGnWw-AdrIYAX828Pa8&_nc_ht=scontent.fcor2-1.fna&oh=00_AfB9q-dIPbwlNg0cYqzf-7mwXbD9J24RrhQo31uIUz8aLA&oe=64DDF161" alt="">           
+            </div>
+        </div>
+    
+        <div class="ontainerDetailDivider grid py-5 mx-2 ">
+            <div class="col-4 md:col-6 lg:col-2 text-center divCard">
+                <p><i class="pi pi-history font-bold text-2xl pt-4"></i></p>
+                <p class="my-2">Duracion</p>
+                <p class="font-bold">{{courseService.courses.duration}} días</p>
+            </div>
+            <div class="col-4 md:col-6 lg:col-2 text-center divCard">
+                <p><i class="pi pi-desktop font-bold text-2xl pt-4"></i></p>
+                <p class="my-2">Modalidad</p>
+                <p class="font-bold">{{courseService.courses.modality}}</p>
+            </div>
+            <div class="col-4 md:col-6 lg:col-2 text-center divCard">
+                <p><i class="pi pi-stopwatch font-bold text-2xl pt-4"></i></p>
+                <p class="my-2">Horario</p>
+                <p class="font-bold">Consultar</p>
+            </div>
+            <div class="col-4 md:col-6 lg:col-2 text-center divCard">
+                <p><i class="pi pi-calendar font-bold text-2xl pt-4"></i></p>
+                <p class="my-2" >Fecha Inicio</p>
+                <p class="font-bold">28/07/2023</p>
+            </div>
+            <div class="col-4 md:col-6 lg:col-2 text-center divCard">
+                <p><i class="pi pi-calendar font-bold text-2xl pt-4"></i></p>
+                <p class="my-2">Fecha Finalización</p>
+                <p class="font-bold">28/07/2023</p>
+            </div>
+            <div class="col-4 md:col-6 lg:col-2 text-center divCard">
+                <p><i class="pi pi-money-bill font-bold text-2xl pt-4"></i></p>
+                <p class="my-3" >Precio</p>
+                <p class="font-bold">{{courseService.courses.price | currency}}</p>
+            </div>
+        </div>
+        
+        <div class="containerAccordion pb-8">
+
+            <p-accordion  [activeIndex]="[0]" *ngFor="let detail of courseService.courses.courseDetails">
+        
+                <p-accordionTab header={{detail.title}}>
+
+                    <div class="lg:flex">
+        
+                        <p>{{detail.paragraph1 ? detail.paragraph1 : detail.paragraph2}}</p> 
+                        <img *ngIf="detail.image1url" class="max-w-18rem bg-cover" src={{detail.image1url}} alt="">
+        
+                    </div>
+
+                </p-accordionTab>
+        
+            </p-accordion>
+        </div>
+    </div>   
+</div>
+
+
+
+
+
