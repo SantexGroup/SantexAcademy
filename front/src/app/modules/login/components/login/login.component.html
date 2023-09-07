@@ -14,7 +14,7 @@
           required
           email
         />
-        <div *ngIf="loginForm.controls.email.invalid && (loginForm.controls.email.dirty || loginForm.controls.email.touched)">
+        <div *ngIf="loginForm.controls.email?.invalid && (loginForm.controls.email.dirty || loginForm.controls.email.touched)">
           <div *ngIf="loginForm.controls.email?.errors?.required">El correo electrónico es requerido.</div>
           <div *ngIf="loginForm.controls.email?.errors?.email">Ingresa un correo electrónico válido.</div>
         </div>
@@ -29,7 +29,7 @@
           required
           minlength="8"
         />
-        <div *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
+        <div *ngIf="loginForm.controls.password?.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
           <div *ngIf="loginForm.controls.password?.errors?.required">La contraseña es requerida.</div>
           <div *ngIf="loginForm.controls.password?.errors?.minlength">La contraseña debe tener al menos 8 caracteres.</div>
         </div>
