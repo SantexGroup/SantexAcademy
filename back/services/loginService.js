@@ -1,43 +1,77 @@
 const jwt = require('jsonwebtoken');
-const admin = require('../models');
-const password = require('./passwordService');
-const adminService = require('./adminSerivice');
+// const admin = require('../models');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const sgMail = require('@sendgrid/mail');
+const passwordService = require('./passwordService');
+// const adminService = require('./adminSerivice');
 const db = require('../models');
 
 async function emailLogin(email) {
-  let existeAdmin;
+  let existeAdmin = false;
 
-  const adminEmail = await db.admin.findOne({
+  const admin = await db.admin.findOne({
     where: {
       email,
     },
   });
 
-  if (!adminEmail) {
+  if (!admin) {
     throw new Error('El email es incorrecto');
   }
 
   // Llamar función generadora de OTP
-  const pwd = password.generarOtp();
+  const pwd = passwordService.generarOtp();
 
   // Llamar al método que genera limite de tiempo de uso del OTP
   // eslint-disable-next-line camelcase
-  const limit_time = password.limiTime();
-  const passCreate = password.createPassword(pwd, limit_time);
-  console.log(passCreate);
-
-  // Llamar al método que hace el Insert a la tabla del password
-  // Llamar al método que actualiza el password_id en la tabla de admin
-  adminService.editAdmin(password);
+  const limit_time = passwordService.limiTime();
+  const passCreate = await passwordService.createPassword(pwd, limit_time);
+  console.log('passCreate', passCreate);
+  admin.password_id = passCreate.id;
+  console.log('pass', passCreate.id);
+  console.log('admin', admin);
+  await admin.save();
 
   // Confirmar variable de control
   // eslint-disable-next-line prefer-const
   existeAdmin = true;
 
-  // Llama al sendgrid
-  // code here
-
   return { existeAdmin };
+}
+
+// Llama al sendgrid
+function sendEmail() {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  const msg = {
+    to: 'nanyque02@gmail.com',
+    from: 'leo.vm.cba@gmail.com', // Use the email address or domain you verified above
+    subject: 'Sending with Twilio SendGrid is Fun',
+    text: 'and easy to do anywhere, even with Node.js',
+    // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+  };
+  // ES6
+  // sgMail.send(msg).then(
+  //   () => {},
+  //   (error) => {
+  //     console.error(error);
+
+  //     if (error.response) {
+  //       console.error(error.response.body);
+  //     }
+  //   },
+  // );
+  // ES8
+  (async () => {
+    try {
+      await sgMail.send(msg);
+    } catch (error) {
+      console.error(error);
+
+      if (error.response) {
+        console.error(error.response.body);
+      }
+    }
+  })();
 }
 
 // Función para verificar password
@@ -54,9 +88,9 @@ async function verificarPassword(pwd) {
   }
 
   const token = jwt.sign({
-    id: admin.id,
-    email: admin.email,
-    name: admin.name,
+    id: db.admin.id,
+    email: db.admin.email,
+    name: db.admin.name,
     is_admin: false,
   });
   return {
@@ -65,8 +99,10 @@ async function verificarPassword(pwd) {
 }
 
 // Con el id de password buscamos en la tabla de admin el password_id
+// SELECT roll, password_id FROM admins a WHERE id = 1
 
 module.exports = {
   emailLogin,
+  sendEmail,
   verificarPassword,
 };

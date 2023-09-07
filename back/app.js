@@ -97,9 +97,6 @@ models.sequelize.authenticate()
 
 app.use('/', require('./routes/index'));
 
-// Seteamos el motor de plantillas
-app.set('view engine', 'ejs');
-
 // Para procesar datos enviados del form
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

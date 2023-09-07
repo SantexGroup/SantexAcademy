@@ -15,6 +15,7 @@
     "db:seed:all": "./node_modules/.bin/sequelize db:seed:all"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",

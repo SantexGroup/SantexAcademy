@@ -1,16 +1,20 @@
-const ms = require('ms');
-const Password = require('../models/Password');
+// const ms = require('ms');
+// const Password = require('../models/Password');
 const db = require('../models');
 
 // Crear una password
 
 // eslint-disable-next-line camelcase
 async function createPassword(password, limit_time) {
-  const pass = new Password();
+  // console.log(db.password);
+  // eslint-disable-next-line new-cap
+  const pass = new db.password();
+  console.log(' pass ', pass);
   pass.password = password;
   // eslint-disable-next-line camelcase
   pass.limit_time = limit_time;
-  const passwordCreate = await db.pass.save();
+  const passwordCreate = await pass.save();
+  console.log('passwordCreate', passwordCreate);
   return passwordCreate;
 }
 
@@ -31,23 +35,24 @@ function generarOtp() {
 
 // Funcion para obtener un limite de tiempo
 
-function limiTime(minValidos) {
+function limiTime() {
   const tiempoActual = new Date().getTime();
-  const tiempoExpi = new Date(tiempoActual + ms(`${minValidos}m`)).getTime();
-  return tiempoExpi;
+  const tiempoExpi = new Date(tiempoActual + 1000000);
+  return tiempoExpi.toLocaleString();
 }
 
-const minValidos = 10;
-const limiteTiempo = limiTime(minValidos);
+const limiteTiempo = limiTime();
 console.log(`El OTP será valido hasta: ${limiteTiempo}`);
 
 // Comprobación de validez de OTP
 const tiempoActual = new Date();
-if (tiempoActual <= limiteTiempo) {
+if (tiempoActual.toLocaleString() <= limiteTiempo) {
   console.log('El OTP es válido');
 } else {
   console.log('El OTP ha expirado');
 }
+
+// Prueba para ver si los datos recibidos en la base de datos están pasados correctamente.
 
 module.exports = {
   createPassword,
