@@ -34,6 +34,15 @@ export class LoginComponent implements OnInit {
   }
   
   botonLogin() {
+
+    this.service.login(this.corLog, this.pasLog).subscribe(res => {
+      if (res) {
+        localStorage.setItem( "token", JSON.stringify(res));
+        const usuario = this.service.usuarioLogeado(this.usuarioLogeado);
+      }
+    })
+
+    /*
     if (this.infoLocal) {
       
     }
@@ -51,7 +60,8 @@ export class LoginComponent implements OnInit {
           // this.estadoLogin();                              
         }
       }
-    })     
+    })
+    */  
   }
 
   // estadoLogin() {
