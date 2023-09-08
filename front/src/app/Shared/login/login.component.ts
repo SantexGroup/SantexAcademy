@@ -21,19 +21,22 @@ export class LoginComponent implements OnInit {
   logeadoVendedor: boolean = false;
   usuarioLogeado: boolean = false;
   infoLocal: any[] = [];
+  resLogin: any[] = [];
   
 
-  constructor(private service: LoginService, router: Router) { } 
+  constructor(private service: LoginService, private router: Router) { } 
 
   ngOnInit(): void {
     let infoLocal = localStorage.getItem('token')
-    console.log('token') //no se está encontrando lo guardado en local con nombre token
+    console.log(infoLocal) //no se está encontrando lo guardado en local con nombre token
+    /*
     if (infoLocal && !infoLocal.users.estadoDeVendedor) {
       this.logeadoComprador = true;
     }
     if (infoLocal && infoLocal.users.estadoDeVendedor) {
       this.logeadoVendedor = true;
     }
+    */
     console.log('hola') //no se está ejecutando ¿Es por los errores generales?
   }
   
@@ -41,8 +44,11 @@ export class LoginComponent implements OnInit {
 
     this.service.login(this.corLog, this.pasLog).subscribe(res => {
       if (res) {
+        console.log(res[0].token);
+        /*
         localStorage.setItem( "token", JSON.stringify(res));
         const usuario = this.service.usuarioLogeado(this.usuarioLogeado);
+        */
       }
     })
 
@@ -81,6 +87,7 @@ export class LoginComponent implements OnInit {
   }
 
   botonVendedor() {
+    /*
     if (this.infoLocal && !this.infoLocal.users.estadoDeVendedor) { //esto es un error ya que users no está declarado, es un resultado deuna petición 
       const cambioVendedor = this.service.cambioVendedorServ(user).subscribe(res => {
         if (cambioVendedor) {
@@ -91,6 +98,7 @@ export class LoginComponent implements OnInit {
         }
       }) 
     }
+    */
   }
 
   
