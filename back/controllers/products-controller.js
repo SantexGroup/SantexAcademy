@@ -18,4 +18,17 @@ async function getCategories(req, res) {
   res.status(200).send(categories);
 }
 
-module.exports = { products, getCategories };
+// cargar producto
+
+async function chargeProduct(req, res) {
+  const {
+    idUsuario, idTipoProducto, nombre, detalles, precio, envio,
+  } = req.body;
+
+  const product = await productsService.chargeProducts(idUsuario, idTipoProducto, nombre,
+    detalles, precio, envio);
+
+  res.status(201).send(product);
+}
+
+module.exports = { products, getCategories, chargeProduct };
