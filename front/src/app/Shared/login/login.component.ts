@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
       this.logeadoVendedor = true;
     }
     */
-    console.log('hola') //no se está ejecutando ¿Es por los errores generales?
   }
   
   botonLogin() {
@@ -45,10 +44,10 @@ export class LoginComponent implements OnInit {
     this.service.login(this.corLog, this.pasLog).subscribe(res => {
       if (res) {
         console.log(res[0].token);
-        /*
-        localStorage.setItem( "token", JSON.stringify(res));
-        const usuario = this.service.usuarioLogeado(this.usuarioLogeado);
-        */
+
+        localStorage.setItem( "token", JSON.stringify(res[0].token));
+        //const usuario = this.service.usuarioLogeado(this.usuarioLogeado);
+        
       }
     })
 
