@@ -3,18 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { of, switchMap } from 'rxjs';
 import { BackServiceService } from 'src/app/services/back-service.service';
-
-
-export interface Product {
-  nombreProd: string;
-  cantidad: number;
-  categoria: string;
-  tipoMaterial: string;
-  urlImagen: string;
-  precio: number;
-  descripcion: string;
-};
-
+import { Product } from 'src/app/core/interfaces/product';
 @Component({
   selector: 'app-form-update',
   templateUrl: './form-update.component.html',
@@ -24,10 +13,7 @@ export interface Product {
 export class FormUpdateComponent implements OnInit {
 
   // Creamos una lista de productos como ejemplo
-  productList: Product[] = [
-    {nombreProd: 'Mesa', cantidad: 30, categoria: 'Mesa', tipoMaterial: 'Madera', urlImagen: './img/mesa.png', precio: 4500, descripcion: 'Mesa cuadrada'},
-    {nombreProd: 'Silla', cantidad: 30, categoria: 'Silla', tipoMaterial: 'plastico', urlImagen: './img/silla.png', precio: 1500, descripcion: 'Silla de plastico color blanco'},
-  ];
+
   
   searchForm = new FormGroup({
     buscarProducto: new FormControl('', Validators.required)
@@ -44,7 +30,7 @@ export class FormUpdateComponent implements OnInit {
   });
 
   
-  foundProduct: boolean | undefined;
+  foundProduct: boolean = false;
   noFoundProduct: boolean | undefined;
   query: Product | undefined;
 
@@ -59,10 +45,11 @@ export class FormUpdateComponent implements OnInit {
     private activateRoute: ActivatedRoute,
     //private dataRouter: DataRouter,
   ) {
+       
   }
 
   ngOnInit() {
-    
+     
     this.activateRoute.paramMap.pipe(
       switchMap(
         (params: ParamMap) => {
@@ -70,61 +57,34 @@ export class FormUpdateComponent implements OnInit {
           if (id == "") {
             return of(undefined);
           }
-          return this.backService.getProduct(String(params.get('id')));
+          return  this.backService.getProduct(String(params.get('id')));
         }
       )
     ).subscribe(product => {
       // Asigna el producto obtenido a selectedProduct
       this.selectedProduct = product;
-  
-      // Si se encontró un producto, actualiza el formulario
+      console.log(this.selectedProduct)
+      // Si se encontró un producto,  se muestra el formulario con los valores del producto
       if (product) {
-        console.log('Producto ', this.selectedProduct);
         this.myForm.patchValue({
-          nombreProducto: product.nombreProd,
-          cantidad: product.cantidad ? product.cantidad.toString(): '',
+          nombreProducto: product.name,
+          cantidad: product.quantity ? product.quantity.toString(): '',
           categoria: product.categoria,
           tipoMaterial: product.tipoMaterial,
-          urlImagen: product.urlImagen,
-          precio: product.precio ? product.precio.toString(): '',
-          descripcion: product.descripcion
+          urlImagen: product.image,
+          precio: product.price ? product.price.toString(): '',
+          descripcion: product.description
         });
+        this.foundProduct = true;
+        console.log(this.foundProduct)
       }else {
         // El producto no se encontró o no es válido, puedes manejar este caso aquí
-        console.log('El producto no se encontró o no es válido.');
-
+        alert('El producto no se encontrón o no es válido');
       }
     });
-  }
-  
-  
-  // Función para buscar un producto
-  searchProduct() {
-        
-    this.query = this.productList.find(product => product.nombreProd.toLowerCase() === this.searchForm.get('buscarProducto')?.value?.toLowerCase());
-    
-    console.log('El producto se encontro: ', this.query)
-    if (this.query) {
-      this.foundProduct = true;
-      this.noFoundProduct = false;
 
-      // Agregamos los valores del producto al formulario
-      this.myForm.patchValue({
-        nombreProducto: this.query?.nombreProd,
-        cantidad: this.query?.cantidad.toString(),
-        categoria: this.query?.categoria,
-        tipoMaterial: this.query?.tipoMaterial,
-        urlImagen: this.query?.urlImagen,
-        precio: this.query?.precio.toString(),
-        descripcion: this.query?.descripcion
-      });
-    } else {
-      this.foundProduct = false;
-      this.noFoundProduct = true;
-    }
+ 
   }
-  
-
   // Función para actualizar un producto
   updateProduct() {
     console.log('Producto Actualizado', this.myForm.value)
@@ -135,7 +95,29 @@ export class FormUpdateComponent implements OnInit {
   
   
 }
-// function buscarProducto() {
-  //   throw new Error('Function not implemented.');
+  // Función para buscar un producto
+  // searchProduct() {
+        
+  //   this.query = this.productList.find(product => product.nombreProd.toLowerCase() === this.searchForm.get('buscarProducto')?.value?.toLowerCase());
+    
+  //   console.log('El producto se encontro: ', this.query)
+  //   if (this.query) {
+  //     this.foundProduct = true;
+  //     this.noFoundProduct = false;
+
+  //     // Agregamos los valores del producto al formulario
+  //     this.myForm.patchValue({
+  //       nombreProducto: this.query?.nombreProd,
+  //       cantidad: this.query?.cantidad.toString(),
+  //       categoria: this.query?.categoria,
+  //       tipoMaterial: this.query?.tipoMaterial,
+  //       urlImagen: this.query?.urlImagen,
+  //       precio: this.query?.precio.toString(),
+  //       descripcion: this.query?.descripcion
+  //     });
+  //   } else {
+  //     this.foundProduct = false;
+  //     this.noFoundProduct = true;
+  //   }
   // }
 

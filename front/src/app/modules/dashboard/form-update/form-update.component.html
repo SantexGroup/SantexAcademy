@@ -16,12 +16,10 @@
   
     </div>
   </form>-->
-  
-  <form class="form_container" [formGroup]="myForm"  (ngSubmit)="updateProduct()">
-    
+  <form *ngIf="this.foundProduct == true" class="form_container" [formGroup]="myForm"  (ngSubmit)="updateProduct()">
+    <h2>Editar Objeto</h2>
     <div class="input_container">
       <label class="input_label" for="name_field">Nombre del Producto</label>
-      {{selectedProduct?.nombreProd}}
       <input placeholder="ProductoX" title="Nombre del Producto" name="input-name" type="text" class="input_field" id="name_field" formControlName="nombreProducto" >
       <p class="errorInput" *ngIf="myForm.get('nombreProducto')?.touched && myForm.get('nombreProducto')?.hasError('required')">Campo Obligatorio</p>
     </div>
