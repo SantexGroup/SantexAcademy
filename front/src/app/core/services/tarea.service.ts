@@ -33,4 +33,14 @@ export class TareaService {
     return this.apiService.put('/tarea/cambiar-estado/'+id, {nuevoEstado});
   }
 
+  inscribirVoluntario(idTarea:number, idVoluntario:number):Observable<void>{
+
+    const parametros = {
+      idVolunteer:idVoluntario,
+      idTarea
+    }
+    return this.apiService.put('/volunteer/asign-work/'+idTarea, parametros);
+
+  }
+
 }

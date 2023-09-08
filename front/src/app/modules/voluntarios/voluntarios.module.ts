@@ -8,6 +8,7 @@ import { DashboardVoluntarioComponent } from './dashboard-voluntario/dashboard-v
 import { TareasVoluntarioComponent } from './tareas-voluntario/tareas-voluntario.component';
 import { PremiosVoluntarioComponent } from './premios-voluntario/premios-voluntario.component';
 import { DatosVoluntarioComponent } from './datos-voluntario/datos-voluntario.component';
+import { ListadoTareasComponent } from './listado-tareas/listado-tareas.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { DatosVoluntarioComponent } from './datos-voluntario/datos-voluntario.co
     DashboardVoluntarioComponent,
     TareasVoluntarioComponent,
     PremiosVoluntarioComponent,
-    DatosVoluntarioComponent
+    DatosVoluntarioComponent,
+    ListadoTareasComponent
   ],
   imports: [
     CommonModule,
