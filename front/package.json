@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "@types/google-maps": "^3.2.3",
     "moment": "^2.29.4",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.6.13",

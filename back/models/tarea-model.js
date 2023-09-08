@@ -56,7 +56,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
       },
       hora: {
-        type: DataTypes.TIME,
+        type: DataTypes.INTEGER,
         allowNull: true,
       },
       latitud: {
