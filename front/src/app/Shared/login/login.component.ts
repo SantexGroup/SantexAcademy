@@ -44,27 +44,13 @@ export class LoginComponent implements OnInit {
         if (!newObject[1].users.estadoDeVendedor) {
           this.logeadoComprador = true;
           this.logeadoVendedor = false;
+        }else {
+          this.logeadoComprador = false;
+          this.logeadoVendedor = false;
         }
       }
     }
   }
-
-
-  deslogear() {
-    let infoLocal = localStorage.getItem('resLog')
-    if (infoLocal) {
-      if (this.logeadoComprador || this.logeadoVendedor) {
-        this.logeadoVendedor = false;
-        this.logeadoComprador = false;
-        localStorage.clear()
-        this.router.navigateByUrl('/'); 
-        this.router.navigate(['/']);
-      }      
-    }
-  }
-  
-   
-  
 
   botonLogin() {
     let infoLocal = localStorage.getItem('resLog')
@@ -86,17 +72,30 @@ export class LoginComponent implements OnInit {
       }
     })
   }
+
+  deslogear() {
+    let infoLocal = localStorage.getItem('resLog')
+    if (infoLocal) {
+      if (this.logeadoComprador || this.logeadoVendedor) {
+        this.logeadoVendedor = false;
+        this.logeadoComprador = false;
+        localStorage.clear()
+        this.router.navigateByUrl('/'); 
+      }      
+    }
+  }
   
   botonVendedor() {
-    let infoLocal = localStorage.getItem('resLog')
-    if (infoLocal && (this.logeadoComprador == true || this.logeadoVendedor == true)) {
-      let newObject = JSON.parse(infoLocal);
-      if (newObject) {
-        if (!newObject[1].users.estadoDeVendedor) {
-          const id = newObject[1].users.id;
-          const estadoVen = newObject[1].users.estadoDeVendedor;
-          let user = {id, estadoVen}
-          const cambioVendedor = this.service.cambioVendedorServ(user).subscribe(res => {
+    if(confirm("¿Seguro que quiere activar su perfil de vendedor?")) {
+      let infoLocal = localStorage.getItem('resLog')
+      if (infoLocal && (this.logeadoComprador == true || this.logeadoVendedor == true)) {
+        let newObject = JSON.parse(infoLocal);
+        if (newObject) {
+          if (!newObject[1].users.estadoDeVendedor) {
+            const id = newObject[1].users.id;
+            const estadoVen = newObject[1].users.estadoDeVendedor;
+            let user =[id, estadoVen];
+            const cambioVendedor = this.service.cambioVendedorServ(user).subscribe(res => {
             if (cambioVendedor) {
               localStorage.clear();
               localStorage.setItem( "token", JSON.stringify(res));
@@ -108,6 +107,8 @@ export class LoginComponent implements OnInit {
       }
     }
   }
+}
+
 
 
 
