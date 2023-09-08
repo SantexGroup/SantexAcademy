@@ -9,7 +9,7 @@ export class NavbarComponent {
   isOpen: boolean = false;
   openOptionOne: boolean = false;
   openOptionTwo: boolean = false;
-
+  maxHeight: number = 500; // Ajusta esto al valor deseado
   constructor() {
     // Obtener el valor de isOpen desde el LocalStorage (si existe)
     const isOpenValue = localStorage.getItem('isOpen');
