@@ -1,4 +1,32 @@
 
+# Mailtrap + cuenta Google 
+
+
+link Mailtrap:
+https://mailtrap.io/inboxes
+
+ATENCION!! antes de realizar esta tarea, aseguresé que estoy online para enviarle un código necesario.
+
+copiar y pegar este link en una nueva pantalla del navegador
+se abrirá una pantalla de Login, seleccionar loguearse con google
+se abre pantalla para seleccionar la cuenta google que usará para loguearse
+elegir abajo: "Usar otra cuenta"
+ingrese el siguiente mail: academyinnoc@gmail.com
+ingrese la siguiente contraseña: 4cademy1nN0C
+Autentificación en dos pasos necesaria seleccione enviar código al celular
+ingrese el siguiente número en Argentina: 3512924949
+me llegará un mensaje con el código ami celular y yo le tengo que pasar ese número a Uds.
+una vez ingresado el código seleccione abajo antes de hacer click seleccionar la casilla
+"Guardar en este dispositivo" o "No preguntar de nuevo en este dispositivo"
+
+Google cuenta:
+cta: academyinnoc@gmail.com
+password: 4cademy1nN0C
+
+USO de Mailtrap: al abrir la pantalla del navegador en Mailtrap, aparecerá una barra lateral a su izquierda, 
+busque Email Testing y luego inboxes, listo allí ud. recibirá los mail que le envienenviamos, desde la página de registro,
+a nuestros usuarios. Verá como es el mail que reciben y podrá ingresar desde ese mail a nuestra página de Login.
+
 # Proyecto NodeJs + Express Academy 
 
 Este proyecto en [NodeJs](https://nodejs.org/en/), [Express](https://expressjs.com/) y [Sequelize](https://sequelize.org/) esta pensado para empezar como base para los desarrollos del curso.

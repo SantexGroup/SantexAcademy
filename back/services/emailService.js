@@ -22,7 +22,9 @@ const sendMail = (user) => {
   // Conecta a traves de emalHtml este archivo y la plantilla html para pasar username
   const emailHtml = fs.readFileSync('./themes/email/email-register.html', 'utf8');
   // Reemplazar {{username}} con el nombre de usuario real
-  const personalizedHtml = emailHtml.replace(/{{username}}/g, user.username);
+  const personalizedHtml = emailHtml.replace(/{{username}}/g, user.username)
+    .replace(/{{nombre}}/g, user.nombre)
+    .replace(/{{password}}/g, user.password);
   // Datos del correo electronico
   const mailOptions = {
     from: '"Academy del NOC" <academyinnoc@gmail.com>',
