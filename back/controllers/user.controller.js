@@ -17,7 +17,7 @@ async function recordUser(req, res) {
   // Llamas al servicio para registrar un usuario
   const user = await userService.recordUser(rolesId, nick, password, name, lastName, email, phone);
   // Enviar respuesta con el usuario registrado
-  res.status(201).send(user);
+  res.status(200).send(user);
 }
 
 // Controlador que redirige al servicio para Login

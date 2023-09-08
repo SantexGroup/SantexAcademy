@@ -1,23 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
+import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
+import { UsuarioService } from 'src/app/core/services/usuario.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   mensajeError: string = "";
+  
+  constructor(
+    private fb: FormBuilder, 
+    private router: Router, 
+    private userService: UsuarioService,
+    public dataUser: UserDataService,
+    private views: NavBarService
+    ) { }
 
-  constructor(private fb: FormBuilder, private router: Router, private userService: UsuarioService) { }
-
-  ngOnInit(): void {
-  }
-
-  get email() {
-    return this.loginForm.controls.email;
+  get nick() {
+    return this.loginForm.controls.nick;
   }
 
   get password() {  
@@ -25,21 +30,27 @@ export class LoginComponent implements OnInit {
   }
 
   loginForm = this.fb.group({
-    email: ['', [ Validators.required, Validators.email ]],
+    nick: ['', [ Validators.required ]],
     password: ['', [ Validators.required, Validators.minLength(6) ]],
   })
   
   submit(myForm: FormGroup) {
     if(myForm.status == 'VALID') {
       this.userService.login(myForm.value).subscribe({
-        next: (data) => { console.log(data); }, 
+        next: (data) => { console.log(data);
+        this.dataUser.userId = data.profile.userId;
+        this.dataUser.profileId = data.profile.id;
+        this.views.quickButton = true;
+        this.views.accountButton = false;
+        this.views.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
+        this.router.navigate(['/home', data.profile.id]);
+        }, 
         error: (err) => { 
           console.log(err); 
           this.mensajeError = err;
         },
         complete: () => { 
           console.log("Done") 
-          this.router.navigateByUrl('/dashboard');
         }
       });
     }

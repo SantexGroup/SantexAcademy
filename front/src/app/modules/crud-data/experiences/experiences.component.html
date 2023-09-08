@@ -1,6 +1,4 @@
 <body>
-    <h1 class="title">EXPERIENCIAS</h1>
-
     <div class="experiencesInput">
         <form [formGroup]="experienceForm" (ngSubmit)="addExperience()">
             <mat-form-field>
@@ -25,7 +23,7 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-label for="estate">Estado:</mat-label>
-                <mat-select name="marital" formControlName="statusId">
+                <mat-select formControlName="statusId">
                     <mat-option *ngFor="let state of status" [value]="state.id">
                         {{state.status}}
                     </mat-option>
@@ -55,16 +53,34 @@
             </div>
             <div class="botonera">
                 <div class="botones">
-                    <div class="addExperience">
-                        <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
-                            <mat-icon>plus_one</mat-icon>
-                        </button>
-                    </div>
-                    <button mat-flat-button color="warn">
-                        Salir
+                    <button class="plus" type="submit" *ngIf="views.plusOne">
+                        <img src="/assets/Imagenes/plus.png" alt="+">
+                    </button>
+                    <button type="submit" mat-raised-button color="primary" *ngIf="views.saveButton">
+                        Guardar
                     </button>
                 </div>
             </div>
         </form>
+        <div class="lista">
+            <ul>
+                <li>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Titulo</h5>
+                            <p class="card-text">Detalle</p>
+                            <div class="botonera-card">
+                                <button>
+                                    <img src="/assets/Imagenes/editar.png" alt="Editar">
+                                </button>
+                                <button>
+                                    <img src="/assets/Imagenes/delete.png" alt="Eliminar">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </body>

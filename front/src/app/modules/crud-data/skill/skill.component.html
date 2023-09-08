@@ -1,0 +1,44 @@
+<body>
+    <div class="skiilsInput">
+        <form [formGroup]="skillForm" (ngSubmit)="addSkillToProfile()">
+            <mat-form-field>
+                <mat-label for="skill">Habilidad:</mat-label>
+                <textarea matInput formControlName="skill" cols="30" rows="5"></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="level">Nivel:</mat-label>
+                <input matInput formControlName="level" type="text">
+            </mat-form-field>
+            <div class="botonera">
+                <div class="botones">
+                    <button class="plus" type="submit" *ngIf="views.plusOne">
+                        <img src="/assets/Imagenes/plus.png" alt="+">
+                    </button>
+                    <button type="submit" mat-raised-button color="primary" *ngIf="views.saveButton">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="lista">
+            <ul>
+                <li>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Titulo</h5>
+                            <p class="card-text">Detalle</p>
+                            <div class="botonera-card">
+                                <button>
+                                    <img src="/assets/Imagenes/editar.png" alt="Editar">
+                                </button>
+                                <button>
+                                    <img src="/assets/Imagenes/delete.png" alt="Eliminar">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,36 @@
+<body>
+    <div style="display: flex;">
+        <div class="button-conteiner">
+            <div class="button-nav">
+                <button routerLink="experiencias" mat-raised-button color="primary"
+                    (click)="views.title = 'Datos Personales'">Mis datos personales</button>
+            </div>
+            <div class="button-nav">
+                <button routerLink="formaciones" mat-raised-button color="primary"
+                    (click)="views.title = 'Formaciones'">Mi Formación</button>
+            </div>
+            <div class="button-nav">
+                <button routerLink="experiencias" mat-raised-button color="primary"
+                    (click)="views.title = 'Experiencias'">Mi Experiencia</button>
+            </div>
+            <div class="button-nav">
+                <button routerLink="lenguajes" mat-raised-button color="primary"
+                    (click)="views.title = 'Idiomas' ">Idiomas</button>
+            </div>
+            <div class="button-nav">
+                <button routerLink="habilidades" mat-raised-button color="primary"
+                    (click)="views.title = 'Habilidades'">Mis Habilidades</button>
+            </div>
+            <div class="button-nav">
+                <button routerLink="opcionales" mat-raised-button color="primary"
+                    (click)="views.title = 'Datos Opcionales'">Opcionales</button>
+            </div>
+            <div class="button-nav">
+                <button mat-raised-button color="primary" (click)="views.title = 'Datos Extras'">Mas datos</button>
+            </div>
+        </div>
+        <div class="textArea">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</body>

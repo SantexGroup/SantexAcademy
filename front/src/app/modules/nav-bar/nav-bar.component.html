@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg bg-primary" *ngIf="views.navBarShow">
+    <div class="container-fluid">
+        <a class="navbar-brand" (click)="views.notShow()">
+            <img src="assets/Imagenes/cvassistantlogo.png" alt="logo cvassistant">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nosotros">
+            <h1 class="titulo">{{views.title}}</h1>
+            <button mat-button [matMenuTriggerFor]="menu" *ngIf="views.accountButton">Cuenta</button>
+            <mat-menu #menu="matMenu">
+                <button routerLink="login" class="botonesInicio" mat-menu-item
+                    (click)="views.title = 'Iniciar Sesion'"
+                    (click)="views.buttonAccount()">Iniciar Sesion
+                </button>
+                <button routerLink="registro" class="botonesInicio" mat-menu-item
+                    (click)="views.title = 'Registrarse'" 
+                    (click)="views.buttonAccount()">Registrarse
+                </button>
+            </mat-menu>
+            <button routerLink="/" mat-flat-button color="warn" class="botonesInicio" 
+            *ngIf="views.quickButton"
+            (click)="views.buttonQuick()">Salir
+            </button>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,32 @@
+.navbar-brand img {
+    width: 5rem;
+    cursor: pointer;
+}
+
+#nosotros {
+    color: #FFF;
+    font-weight: bold;
+    margin-left: 25%;
+    text-align: center;
+}
+
+.titulo{
+    margin: auto;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+}
+
+#nosotros button {
+    margin-right: 3rem;
+    margin-left: 40%;
+}
+
+#nosotros button:hover {
+    border: 1px solid #FFF;
+}
+
+.botonesInicio:hover {
+    color: #FFF;
+    background: #3f6ad8;
+}

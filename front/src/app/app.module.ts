@@ -3,24 +3,53 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BodyPageComponent } from './modules/body-page/body-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { FooterPageComponent } from './modules/footer-page/footer-page.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { HeaderPageComponent } from './modules/header-page/header-page.component';
 import { UsuarioModule } from './modules/usuario/usuario.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
 
+=======
+import { OptionalsComponent } from './modules/crud-data/optionals/optionals.component';
+import { MatSelectModule } from '@angular/material/select';
+import { ExperiencesComponent } from './modules/crud-data/experiences/experiences.component';
+import { MatDatepickerModule } from '@angular/material/datepicker'; 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { FormationsComponent } from './modules/crud-data/formations/formations.component';
+import { LanguageComponent } from './modules/crud-data/language/language.component';
+import { HomeComponent } from './modules/home/home.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { NavBarComponent } from './modules/nav-bar/nav-bar.component';
+import { HomeRoutingModule } from './modules/home/home-routing.module';
+import { SkillComponent } from './modules/crud-data/skill/skill.component';
+import { LoadingComponent } from './modules/loading/loading.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptor } from './core/services/toolServices/interceptor/loading.interceptor';
+>>>>>>> main
 
 @NgModule({
   declarations: [
     AppComponent,
+<<<<<<< HEAD
     BodyPageComponent,
     FooterPageComponent,
     HeaderPageComponent
+=======
+    OptionalsComponent,
+    ExperiencesComponent,
+    FormationsComponent,
+    LanguageComponent,
+    HomeComponent,
+    NavBarComponent,
+    SkillComponent,
+    LoadingComponent
+>>>>>>> main
   ],
   imports: [
     BrowserModule,
@@ -32,10 +61,28 @@ import { HttpClientModule } from '@angular/common/http';
     UsuarioModule,
     FormsModule,
     ReactiveFormsModule, 
+<<<<<<< HEAD
     HttpClientModule
 
+=======
+    HttpClientModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatIconModule,
+    MatDividerModule,
+    MatMenuModule,
+    HomeRoutingModule,
+>>>>>>> main
   ],
-  providers: [],
-  bootstrap: [AppComponent,BodyPageComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true
+    }
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

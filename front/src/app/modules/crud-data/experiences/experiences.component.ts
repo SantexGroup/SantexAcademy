@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup} from '@angular/forms';
-import { Countries } from 'src/app/interfaces/country.interface';
-import { Experience } from 'src/app/interfaces/experience.interface';
-import { ExperienceStatus } from 'src/app/interfaces/experienceStatus.interface';
-import { ExperienceType } from 'src/app/interfaces/experienceType.interface';
-import { CountriesService } from 'src/app/services/countries.service';
-import { ExperiencesStatusService } from 'src/app/services/experiences-status.service';
-import { ExperiencesTypeService } from 'src/app/services/experiences-type.service';
-import { ExperiencesService } from 'src/app/services/experiences.service';
+import { Countries } from 'src/app/core/interfaces/country.interface';
+import { Experience } from 'src/app/core/interfaces/experience.interface';
+import { ExperienceStatus } from 'src/app/core/interfaces/experienceStatus.interface';
+import { ExperienceType } from 'src/app/core/interfaces/experienceType.interface';
+import { CountriesService } from 'src/app/core/services/countries.service';
+import { ExperiencesStatusService } from 'src/app/core/services/experiences-status.service';
+import { ExperiencesTypeService } from 'src/app/core/services/experiences-type.service';
+import { ExperiencesService } from 'src/app/core/services/experiences.service';
+import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 
 @Component({
   selector: 'app-experiences',
@@ -24,6 +25,7 @@ export class ExperiencesComponent implements OnInit {
     private _countriesService: CountriesService,
     private _experiencesService: ExperiencesService,
     private fb: FormBuilder,
+    public views: NavBarService
   ) {
     this.experienceForm = this.fb.group({
       description: '',

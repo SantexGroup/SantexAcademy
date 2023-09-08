@@ -1,9 +1,7 @@
 <body>
-    <h1 class="title">OPCIONALES</h1>
-
     <div class="optionalsInput">
-        <div id="carouselExampleIndicators" class="carousel slide">
-            <form [formGroup]="optionalsForm" (ngSubmit)="postOptionals()">
+        <div id="carouselExampleIndicators" class="carousel">
+            <form [formGroup]="optionalsForm">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <mat-form-field>
@@ -29,7 +27,7 @@
                             <textarea matInput formControlName="aboutMe" cols="30" rows="10"></textarea>
                         </mat-form-field>
                         <mat-form-field>
-                            <mat-label>Licensia de conducir</mat-label>
+                            <mat-label>Licencia de conducir</mat-label>
                             <mat-select formControlName="driverLicense" name="driverLicense">
                                 <mat-option value="Si">Si</mat-option>
                                 <mat-option value="No">No</mat-option>
@@ -81,25 +79,53 @@
                 </div>
                 <div class="botonera">
                     <div class="botones">
-                        <button mat-flat-button color="primary" type="submit">
-                            Guardar
+                        <button class="plus" type="submit" *ngIf="views.plusOne"
+                            (click)="postOptionals()">
+                            <img src="/assets/Imagenes/plus.png" alt="+">
                         </button>
-                        <button mat-flat-button color="warn">
-                            Salir
+                        <button type="submit" mat-raised-button color="primary" *ngIf="views.saveButton"
+                            (click)="updateOptionals()">
+                            Guardar
                         </button>
                     </div>
                 </div>
             </form>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="carousel-control">
+                    <img src="/assets/Imagenes/arrow.png" alt="<<<">
+                </span>
                 <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="carousel-control">
+                    <img src="/assets/Imagenes/arrowR.png" alt=">>>">
+                </span>
                 <span class="visually-hidden">Next</span>
             </button>
+        </div>
+        <!-- Lista de opciones cargadas -->
+        <div class="lista">
+            <ul>
+                <li *ngFor="let option of optional">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{option.profile}}</h5>
+                            <p class="card-text">{{option.aboutMe}}</p>
+                            <div class="botonera-card">
+                                <button (click)="changeViews()"
+                                    (click)="getOptional(option.id)">
+                                    <img src="/assets/Imagenes/editar.png" alt="Editar">
+                                </button>
+                                <button (click)="removeOptional(option.id)">
+                                    <img src="/assets/Imagenes/delete.png" alt="Eliminar">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </body>

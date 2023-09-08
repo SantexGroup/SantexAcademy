@@ -1,0 +1,44 @@
+<body>
+    <div class="languageInput">
+        <form [formGroup]="languageForm" (ngSubmit)="languageAdd()">
+            <mat-form-field>
+                <mat-label for="company">Idioma:</mat-label>
+                <input matInput formControlName="language" type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="position">Nivel:</mat-label>
+                <input matInput formControlName="level" type="number">
+            </mat-form-field>
+            <div class="botonera">
+                <div class="botones">
+                    <button class="plus" type="submit" *ngIf="views.plusOne">
+                        <img src="/assets/Imagenes/plus.png" alt="+">
+                    </button>
+                    <button type="submit" mat-raised-button color="primary" *ngIf="views.saveButton">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="lista">
+            <ul>
+                <li *ngFor="let language of languages">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Idioma: {{language.Language.language}}</h5>
+                            <p class="card-text"> Nivel: {{language.level}}</p>
+                            <div class="botonera-card">
+                                <button>
+                                    <img src="/assets/Imagenes/editar.png" alt="Editar">
+                                </button>
+                                <button>
+                                    <img src="/assets/Imagenes/delete.png" alt="Eliminar">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
