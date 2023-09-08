@@ -35,43 +35,36 @@ async function emailLogin(email) {
   // Confirmar variable de control
   // eslint-disable-next-line prefer-const
   existeAdmin = true;
+  enviarEmail(passCreate.password, admin.email)
 
   return { existeAdmin };
 }
 
-// Llama al sendgrid
-function sendEmail() {
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  const msg = {
-    to: 'nanyque02@gmail.com',
-    from: 'leo.vm.cba@gmail.com', // Use the email address or domain you verified above
-    subject: 'Sending with Twilio SendGrid is Fun',
-    text: 'and easy to do anywhere, even with Node.js',
-    // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-  };
-  // ES6
-  // sgMail.send(msg).then(
-  //   () => {},
-  //   (error) => {
-  //     console.error(error);
+// Función para enviar mail
 
-  //     if (error.response) {
-  //       console.error(error.response.body);
-  //     }
-  //   },
-  // );
-  // ES8
-  (async () => {
-    try {
-      await sgMail.send(msg);
-    } catch (error) {
+function enviarEmail(pass, email) {
+  sgMail.setApiKey(process.env.SENDGRID_KEY);
+
+  const textMail = `Tu contraseña es: ${pass}`;
+  const msg = {
+    to: email,
+    from: "leo.vm.cba@gmail.com", // Use the email address or domain you verified above
+    subject: "Prueba de envío del código",
+    text: textMail,
+    //html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+  };
+
+  //ES6
+  sgMail.send(msg).then(
+    () => {},
+    (error) => {
       console.error(error);
 
       if (error.response) {
         console.error(error.response.body);
       }
     }
-  })();
+  );
 }
 
 // Función para verificar password
@@ -103,6 +96,5 @@ async function verificarPassword(pwd) {
 
 module.exports = {
   emailLogin,
-  sendEmail,
   verificarPassword,
 };
