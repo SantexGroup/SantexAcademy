@@ -46,6 +46,11 @@ export class NavBarService{
     this.quickButton = false;
   }
 
+  changeViews() {
+    this.plusOne = false;
+    this.saveButton = true;
+  }
+
   restart(){
     window.addEventListener('popstate', (e)=> {
       this.navBarShow=false;

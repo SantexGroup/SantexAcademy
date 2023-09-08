@@ -90,11 +90,6 @@ export class OptionalsComponent implements OnInit {
 
   gender: Sexs[] = [];
 
-  changeViews() {
-    this.views.plusOne = false;
-    this.views.saveButton = true;
-  }
-
   getMyOptionals() {
     this._optionalsService.getMyOptionals(this.dataUser.userId).subscribe((myOptionals: Optionals[]) => {
       this.optional = myOptionals;
@@ -130,7 +125,7 @@ export class OptionalsComponent implements OnInit {
     this.optionalsForm.reset();
   }
 
-  getOptional(id?: number,) {
+  getOptional(id?: number) {
     const index = this.optional.findIndex(option => option.id === id);
     const element = this.optional[index];
 

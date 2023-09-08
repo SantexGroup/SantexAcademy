@@ -88,7 +88,9 @@
 .lista {
     flex-direction: column;
     justify-content: center;
-    width: 35%;
+    overflow-y: auto;
+    width: 37%;
+    height: 95vh;
 }
 
 .card {
