@@ -12,6 +12,6 @@ module.exports = {
   }
 };
 
-// Ejecutar desde la carpeta back
+// Para añadir este campo a la tabla users ejecutar desde la carpeta back
 // Windows back> ./node_modules/.bin/sequelize db:migrate --to 20230307002718-add-verificationCode.js
 // Linux /back$ ./node_modules/.bin/sequelize db:migrate --to 20230307002718-add-verificationCode.js
