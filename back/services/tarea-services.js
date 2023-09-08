@@ -32,7 +32,7 @@ async function getById(id) {
 }
 
 // eslint-disable-next-line max-len
-async function createTarea(name, description, coordinatorId, points, date, place, categoryId, cantParticipantes, cantInscriptos, duracion, estado) {
+async function createTarea(name, description, coordinatorId, hora, date, place, categoryId, cantParticipantes, duracion, latitud, longitud) {
   const tarea = new Tarea();
 
   tarea.name = name;
@@ -41,6 +41,9 @@ async function createTarea(name, description, coordinatorId, points, date, place
   tarea.place = place;
   tarea.cantParticipantes = cantParticipantes;
   tarea.duracion = duracion;
+  tarea.hora = hora;
+  tarea.longitud = longitud;
+  tarea.latitud = latitud;
 
   if (models.tarea.findByPk(coordinatorId)) {
     tarea.coordinatorId = coordinatorId;
@@ -61,7 +64,7 @@ async function createTarea(name, description, coordinatorId, points, date, place
 }
 
 // eslint-disable-next-line max-len
-async function editTarea(id, name, description, coordinatorId, points, date, place, categoryId, cantParticipantes, cantInscriptos, duracion, estado) {
+async function editTarea(id, name, description, coordinatorId, date, place, categoryId, cantParticipantes, duracion, estado, hora, latitud, longitud) {
   const tarea = await getById(id);
 
   if (name) {
@@ -99,6 +102,17 @@ async function editTarea(id, name, description, coordinatorId, points, date, pla
   }
   if (estado) { // Hacer un método especial para cambiar el estado
     tarea.estado = estado;
+  }
+
+  if (hora) {
+    tarea.hora = hora;
+  }
+  if (longitud) {
+    tarea.longitud = longitud;
+  }
+
+  if (latitud) {
+    tarea.latitud = latitud;
   }
 
   const tareaEdited = await tarea.save();
