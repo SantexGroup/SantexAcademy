@@ -103,6 +103,11 @@
     box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.57);
 }
 
+.card-title{
+    text-align: center;
+    font-weight: bold;
+}
+
 .card-body .botonera-card {
     display: flex;
     align-items: center;
