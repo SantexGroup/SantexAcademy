@@ -27,7 +27,7 @@
 
       <mat-form-field>
         <mat-label>Correo</mat-label>
-        <input matInput formControlName="email">
+        <input matInput type="email" formControlName="email">
       </mat-form-field>
 
       <mat-form-field>
@@ -36,7 +36,7 @@
       </mat-form-field>
       
       <div class="botonera">
-        <button mat-flat-button color="primary">
+        <button mat-flat-button color="primary" type="submit" (click)="updateUser(personalForm)">
           Guardar
         </button>
       </div>

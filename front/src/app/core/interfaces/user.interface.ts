@@ -4,7 +4,7 @@ export interface userInterface {
   name: string;
   lastName: string;
   phone?: string;
-  mail: string;
+  email: string;
   nick: string;
   password: string;
   bornDate?: Date;

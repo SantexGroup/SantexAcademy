@@ -40,6 +40,11 @@ private userData1: BehaviorSubject<{ name: string, lastName: string }> = new Beh
     return this.api.get<userInterface>(`user/getUser/${id}`);
   }
   
+  //* Actualizar el usuario
+  updateUser(id: number, user: userInterface) : Observable <userInterface> {
+    return this.api.put<userInterface>(`user/update/${id}`, user);
+  }
+
   setUserData(name: string, lastName: string) {
     this.userData1.next({ name, lastName });
   }
