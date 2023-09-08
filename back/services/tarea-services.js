@@ -52,6 +52,7 @@ async function createTarea(name, description, coordinatorId, hora, date, place, 
   }
 
   const category = await models.category.findByPk(categoryId);
+  console.log(`valor de category: ${category}`);
   if (!category) {
     throw new Error('la categoria no fue encontrada');
   } else {
