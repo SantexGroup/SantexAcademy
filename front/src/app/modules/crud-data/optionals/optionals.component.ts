@@ -118,8 +118,8 @@ export class OptionalsComponent implements OnInit {
       profileId: this.dataUser.profileId,
     }
 
-    this._optionalsService.addOptionals(newOptionals).subscribe(() => {
-      this.optional.push(newOptionals);
+    this._optionalsService.addOptionals(newOptionals).subscribe((optional) => {
+      this.optional.push(optional);
     });
     
     this.optionalsForm.reset();

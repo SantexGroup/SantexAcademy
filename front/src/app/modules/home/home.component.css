@@ -3,6 +3,10 @@
     height: 100vh;
 }
 
+#first{
+    margin-top: 3rem;
+}
+
 .button-nav{
     margin: 10px;
     width: 300px;

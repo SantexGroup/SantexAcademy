@@ -54,15 +54,20 @@ export class LanguageComponent implements OnInit {
       level: this.languageForm.get('level')?.value,
       profileId: this.dataUser.profileId,
     }
-    this._languageService.addLanguage(newLanguage).subscribe(() => {
-      this.languages.push(newLanguage);
+    this._languageService.addLanguage(newLanguage).subscribe((language) => {
+      this.languages.push(language);
     })
+
+    this.languageGet();
+
+    console.log(this.languages);
 
     this.languageForm.reset();
   }
 
   getSelectedLanguage(id?:number){
     const index = this.languages.findIndex(language => language.id === id);
+    const elementId = Number(this.languages[index].id);
     const element = (this.languages[index]);
 
     this.languageForm.patchValue({
@@ -70,7 +75,7 @@ export class LanguageComponent implements OnInit {
       level: element.level,
     });
 
-    this.languageId = Number(element.id);
+    this.languageId = elementId
     console.log(this.languageId)
   }
 
