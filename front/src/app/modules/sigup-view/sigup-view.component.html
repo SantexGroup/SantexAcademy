@@ -1,26 +1,67 @@
 <div class="signup-a">
     <h1>SIGN UP</h1>
-<form action="" method="POST" id="form">
+<form action="" id="form" [formGroup]="form" (ngSubmit)="createUser()">
    
-    <label for="username"> <i class="fa-solid fa-user"></i> Nombres y Apellidos</label>
-    <input id="name" type="text" placeholder="Escribe tus Nombres y Apellidos">
+    <label> <i class="fa-solid fa-user" ></i> Nombres </label>
+    <input formControlName="firstName" type="text" placeholder="Escribe tus Nombres y Apellidos">
+    <span
+            *ngIf="
+              form.get('firstName')?.hasError('required') &&
+              form.get('firstName')?.touched
+            "
+          >
+            El campo donde es <strong>requerido</strong>
+          </span>
+    <label> <i class="fa-solid fa-user" ></i> Apellidos </label>
+      <input formControlName="lastName" type="text" placeholder="Escribe tus Nombres y Apellidos">
+          <span
+                  *ngIf="
+                    form.get('lastName')?.hasError('required') &&
+                    form.get('lastName')?.touched
+                  "
+                >
+                  El campo donde es <strong>requerido</strong>
+                </span>
+      
+    <label ><i class="fa-solid fa-square-phone"></i> Numero telefonico <b style="color: rgb(181, 179, 179);">(Opcional)</b></label>
+    <input formControlName="phone"  type="text" placeholder="Escribe tu numero telefonico">
+    <span
+            *ngIf="
+              form.get('phone')?.hasError('maxLength') &&
+              form.get('phone')?.touched
+            "
+          >
+            El campo donde es <strong>requerido</strong>
+          </span>
 
-    <label for="phone"><i class="fa-solid fa-square-phone"></i> Numero telefonico <b style="color: rgb(181, 179, 179);">(Opcional)</b></label>
-    <input  id="phone" type="tel" placeholder="Escribe tu numero telefonico">
-
-    <label for="mail"><i class="fa-solid fa-envelope"></i> Email</label>
-    <input id="email" type="email" placeholder="Escribe tu email">
-
-    <label for="password"> <i class="fa-solid fa-lock"></i> Contraseña</label>
-    <input  id="password" type="password" placeholder="************">
+    <label><i class="fa-solid fa-envelope"></i> Email</label>
+    <input formControlName="email" type="email" placeholder="Escribe tu email">
+    <span
+            *ngIf="
+            form.get('email')?.hasError('required') &&
+            form.get('email')?.touched
+            "
+          >
+            El campo donde es <strong>requerido</strong>
+          </span>
+    <label> <i class="fa-solid fa-lock"></i> Contraseña</label>
+    <input  formControlName="password" type="password" placeholder="************">
+    <span
+            *ngIf="
+              form.get('password')?.hasError('required') &&
+              form.get('password')?.touched
+            "
+          >
+            El campo donde es <strong>requerido</strong>
+          </span>
     <br>
     <br>
-    <button class="submit" type="submit">Suscribirse</button>
+    <button [disabled]="form.invalid" class="submit" type="submit">Suscribirse</button>
     <p class="warnings" id="warnings"></p>
     <div>
     <a href="#">Ya tienes una cuenta?</a><br>
     </div>
-    <img class="avatar" src="img/fondo-signup.png" alt="">
+    <img class="avatar" src="../../../assets/signup.img/fondo-signup.png" alt="">
 
 </form>
 </div>
