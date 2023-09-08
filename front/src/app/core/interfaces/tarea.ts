@@ -15,6 +15,6 @@ export interface Tarea{
     duracion:number,
     estado?:string,
     hora:number,
-    latitud?:number,
-    longitud?:number
+    latitud:number,
+    longitud:number
 }
