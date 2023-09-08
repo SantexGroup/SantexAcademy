@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   logeadoComprador: boolean = false;
   logeadoVendedor: boolean = false;
   usuarioLogeado: boolean = false;
-  infoLocal: any[] = [];
+  infoLoc: any[] = [];
   resLogin: any[] = [];
   
 
@@ -28,7 +28,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     let infoLocal = localStorage.getItem('token')
-    console.log(infoLocal) //no se está encontrando lo guardado en local con nombre token
+    
+    if (infoLocal) {
+    let newObject = JSON.parse(infoLocal);
+    console.log(newObject);
+    }
     /*
     if (infoLocal && !infoLocal.users.estadoDeVendedor) {
       this.logeadoComprador = true;
@@ -43,10 +47,10 @@ export class LoginComponent implements OnInit {
 
     this.service.login(this.corLog, this.pasLog).subscribe(res => {
       if (res) {
-        console.log(res[0].token);
-
-        localStorage.setItem( "token", JSON.stringify(res[0].token));
-        //const usuario = this.service.usuarioLogeado(this.usuarioLogeado);
+        localStorage.setItem( "token", JSON.stringify(res));
+        const usuarioLog = this.service.usuarioLogeado();
+        this.usuarioLogeado = usuarioLog;
+        console.log(this.usuarioLogeado);
         
       }
     })
@@ -74,7 +78,7 @@ export class LoginComponent implements OnInit {
   }
 
   deslogear() {
-    if (this.infoLocal) {
+    if (this.infoLoc) {
       if (this.logeadoVendedor || this.logeadoComprador) {
         this.logeadoVendedor = false;
         this.logeadoComprador = false;

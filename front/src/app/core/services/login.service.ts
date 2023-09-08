@@ -20,9 +20,9 @@ export class LoginService {
     return this.apiService.post<any>('/users/login', body)
   }
 
-  usuarioLogeado(usuarioLogeado: boolean) {
-    usuarioLogeado = true;
-    return usuarioLogeado;
+  usuarioLogeado() {
+    const usuarioLog = true;
+    return usuarioLog;
   }
 
   cambioVendedorServ(user: object) {
