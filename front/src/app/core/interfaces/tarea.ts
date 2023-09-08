@@ -13,5 +13,8 @@ export interface Tarea{
     cantParticipantes:number,
     cantInscriptos?:number,
     duracion:number,
-    estado?:string
+    estado?:string,
+    hora:number,
+    latitud?:number,
+    longitud?:number
 }
