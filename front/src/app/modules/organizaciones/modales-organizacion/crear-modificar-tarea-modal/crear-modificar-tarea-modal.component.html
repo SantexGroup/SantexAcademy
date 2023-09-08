@@ -26,7 +26,14 @@
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker #picker color="primary"></mat-datepicker>
         </mat-form-field>
-        
+         <!-- Hora de inicio -->
+
+         <mat-form-field appearance="outline">
+            <mat-label>Horario de inicio:</mat-label>
+            <mat-select disableRipple formControlName="horaInicio" >
+                <mat-option *ngFor="let horario of horariosDisponibles" [value]="horario" (click)="calcularPuntos()">{{horario}}:00 hs. </mat-option>
+            </mat-select>
+        </mat-form-field>
         
         
         <!-- Categoria -->

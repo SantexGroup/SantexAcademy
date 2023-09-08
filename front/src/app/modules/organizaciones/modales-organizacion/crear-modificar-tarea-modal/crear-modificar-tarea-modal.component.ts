@@ -42,7 +42,8 @@ export class CrearModificarTareaModalComponent implements OnInit {
         lugar:[this.dataTarea.place,Validators.required],
         categoriaId:['',Validators.required],
         cantidadParticipantes:[this.dataTarea.cantParticipantes,Validators.required],
-        duracion:[this.dataTarea.duracion, Validators.required]
+        duracion:[this.dataTarea.duracion, Validators.required],
+        horaInicio:[this.dataTarea.hora, Validators.required]
   
       }); 
        
@@ -59,7 +60,8 @@ export class CrearModificarTareaModalComponent implements OnInit {
         lugar:['',Validators.required],
         categoriaId:['',Validators.required],
         cantidadParticipantes:['',Validators.required],
-        duracion:['',Validators.required]
+        duracion:['',Validators.required],
+        horaInicio:['', Validators.required]
   
       });
     }
@@ -75,6 +77,7 @@ export class CrearModificarTareaModalComponent implements OnInit {
   listHoras:number[]=[1,2,3,4,5,6,7,8,9,10,11,12];
   duracion:number = 0;
   puntos:number = 0;
+  horariosDisponibles : number[] = [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
 
   ngOnInit(): void {
     
@@ -127,7 +130,10 @@ export class CrearModificarTareaModalComponent implements OnInit {
         place: formValue.lugar,
         categoryId: formValue.categoriaId,
         cantParticipantes:formValue.cantidadParticipantes,
-        duracion:formValue.duracion
+        duracion:formValue.duracion,
+        hora:formValue.horaInicio,
+        latitud:0,
+        longitud:0
 
       } 
       
@@ -158,15 +164,17 @@ export class CrearModificarTareaModalComponent implements OnInit {
       place: formValue.lugar,
       categoryId: formValue.categoriaId,
       cantParticipantes: formValue.cantidadParticipantes,
-      duracion:formValue.duracion
+      duracion:formValue.duracion,
+      hora:formValue.horaInicio,
+      latitud:0,
+      longitud:0
     }
-    console.log(tareaModificada);
     this.tareaService.modificarTarea(this.dataTarea.id!, tareaModificada).subscribe({
       next:()=>{
         this.matSnackBar.open("Tarea Modificada","OK",{horizontalPosition:'center', verticalPosition:'top', duration:3000});
           this.dialogoActual.close(true);
       },
-      error:(err)=>{
+      error:()=>{
         this.matSnackBar.open("No se pudo modificar la Tarea","ERROR",{horizontalPosition:'center', verticalPosition:'top', duration:3000});
       }
     });
