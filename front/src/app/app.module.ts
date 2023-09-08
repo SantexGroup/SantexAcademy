@@ -13,6 +13,7 @@ import { authModule } from './modules/auth/auth.module';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
+import { VolunteersComponent } from './pages/volunteers/volunteers.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashb
     NavbarComponent,
     FooterComponent,
     NotfoundComponent,
+    VolunteersComponent,
   ],
   imports: [
     BrowserModule,
