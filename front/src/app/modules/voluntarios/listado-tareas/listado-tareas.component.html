@@ -19,7 +19,7 @@
         </div>
 
         <div class="card-actions">
-            <button mat-raised-button [disabled]=" tarea.cantInscriptos! >= tarea.cantParticipantes!" color="accent">INSCRIBIRME</button>
+            <button mat-raised-button [disabled]=" tarea.cantInscriptos! >= tarea.cantParticipantes!" color="accent" (click)="inscribirVoluntario(tarea)">INSCRIBIRME</button>
             <button mat-raised-button  color="primary" (click)="mostrarDetalles(tarea)">DETALLES</button>
         </div>
     </div>
