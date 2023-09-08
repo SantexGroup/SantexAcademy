@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 import { CommonModule } from '@angular/common';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
@@ -18,6 +22,13 @@ import { VolunteerHistoryComponent } from './components/volunteer-history/volunt
     DataVolunteerComponent,
     VolunteerHistoryComponent,
   ],
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule,
+  ],
 })
 export class DashboardModule {}
