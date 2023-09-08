@@ -1,15 +1,15 @@
 <article class="w-full mt-16 px-4 pb-16 overflow-auto">
   <div
-    class="w-full flex items-center flex-col gap-4 shadow-lg p-2 bg-white rounded-lg"
+    class="w-full flex items-center flex-col gap-4 shadow-md shadow-dimGray p-2 bg-white rounded-lg xl:p-8"
   >
     <div class="w-full">
-      <h2 class="text-2xl font-bold text-start sm:text-3xl">
+      <h2 class="text-2xl font-bold text-start sm:text-3xl xl:pb-4">
         Historial de Voluntariados
       </h2>
     </div>
 
     <div
-      class="w-[300px] max-h-[400px] overflow-auto customScroll m:w-[450px] lg:w-[500px] xl:w-full"
+      class="w-[360px] max-h-[400px] overflow-auto customScroll m:w-[450px] sm:w-full lg:w-[500px] xl:w-full"
     >
       <table class="w-full divide-y divide-lightGray">
         <thead class="w-full bg-mediumViolet">
@@ -39,7 +39,46 @@
             <td class="px-6 py-4 whitespace-no-wrap">
               {{ dato.horasEstimadas }}
             </td>
-            <td class="px-6 py-4 whitespace-no-wrap">{{ dato.estado }}</td>
+            <td
+              class="py-4 whitespace-no-wrap text-center flex items-center justify-center"
+            >
+              <p
+                [ngClass]="{
+                'bg-forestGreen': dato.estado === 'Finalizado',
+                'bg-red': dato.estado === 'Cancelado',
+                'bg-darkSlateBlue': dato.estado === 'En Proceso',
+
+              }"
+                class="text-white py-1 font-semibold rounded-md w-[105px] xl:px-0"
+              >
+                {{ dato.estado }}
+              </p>
+              <button
+                mat-icon-button
+                [matMenuTriggerFor]="menu"
+                class="flex items-center justify-center text-center mb-1"
+              >
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item *ngIf="dato.estado == 'En Proceso'">
+                  <mat-icon>cancel</mat-icon>
+                  <span>Abandonar</span>
+                </button>
+                <button mat-menu-item *ngIf="dato.estado == 'Cancelado'">
+                  <mat-icon>delete</mat-icon>
+                  <span>Eliminar</span>
+                </button>
+                <button mat-menu-item *ngIf="dato.estado == 'Finalizado'">
+                  <mat-icon>delete</mat-icon>
+                  <span>Eliminar</span>
+                </button>
+                <button mat-menu-item *ngIf="dato.estado == 'Finalizado'">
+                  <mat-icon>list</mat-icon>
+                  <span>Ver resultados</span>
+                </button>
+              </mat-menu>
+            </td>
           </tr>
         </tbody>
       </table>
