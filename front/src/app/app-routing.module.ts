@@ -9,6 +9,7 @@ import { RegisterformComponent } from './modules/register/registerform/registerf
 import { RegisteranswerComponent } from './modules/register/registeranswer/registeranswer.component';
 import { ErrorPageComponent } from './modules/share/error-page/error-page.component';
 import { AdminComponent } from './modules/pages/admin/admin.component';
+import { ValidarTokenGuard } from './core/guards/validar-token.guard';
 
 const routes: Routes = [
   {
@@ -18,6 +19,16 @@ const routes: Routes = [
   {
     path: 'cursos',
     loadChildren: () => import('./modules/cursos/cursos.module').then( m => m.CursosModule),
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule),
+  },
+  {
+    path: 'protected',
+    loadChildren: () => import('./modules/protected/protected.module').then(m => m.ProtectedModule),
+    canActivate: [ ValidarTokenGuard ],
+    canLoad: [ ValidarTokenGuard ]
   },
   {
     path: 'dashboard',
@@ -49,7 +60,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'catalogo-cursos',
     pathMatch: 'full',
   },
   {

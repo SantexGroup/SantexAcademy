@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     rol: DataTypes.STRING,
   }, {
     sequelize,
+    timestamps: false,
     modelName: 'User',
   });
   return User;

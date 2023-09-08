@@ -24,8 +24,6 @@ export class CursoComponent implements OnInit {
     idusuarioalta: null,
     estado: true,
     idusuariomodificacion: null,
-    createdAt: new Date,
-    updatedAt: new Date,
   }
 
   constructor() { }

@@ -29,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     idusuariomodificacion: DataTypes.INTEGER,
   }, {
     sequelize,
+    timestamps: false,
     modelName: 'Curso',
   });
   return Curso;

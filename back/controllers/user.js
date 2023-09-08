@@ -28,31 +28,61 @@ const getUser = async (req, res, next) => {
 
 const createUser = async (req, res) => {
   const { body } = req;
-  const { password } = body;
-  const salt = bcript.genSaltSync();
-  body.password = bcript.hashSync(password, salt);
+  const { email, username, password } = body;
+
   // console.log(body);
   try {
-    const user = await userService.createUser(body);
-    // eslint-disable-next-line no-console
-    if (user.username === 'admin' && user.password === 'admin') {
-      return res.json({ redirectTo: '/users' });
+    // Verificar email
+    let user = await User.findOne({
+      where: {
+        email,
+      },
+    });
+
+    if (user) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'El usuario ya existe con ese email',
+      });
     }
-    // eslint-disable-next-line no-console
-    console.log('Email del usuario:', user.email);// BORRAR es para ver captura de mail
+
+    // Verificar username
+    user = await User.findOne({
+      where: {
+        username,
+      },
+    });
+
+    if (user) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'El usuario ya existe con ese username',
+      });
+    }
+
+    // Hashear contraseña
+    const salt = bcript.genSaltSync();
+    body.password = bcript.hashSync(password, salt);
+
+    // crear usuario en db
+    user = await userService.createUser(body);
     // eslint-disable-next-line max-len
     await emailService.sendConfirmationEmail(user.email, user.username);// Envia email a emailService
 
     const token = await generarJWT(user.id, user.username);
 
     return res.json({
+      ok: true,
       user,
       token,
     });
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(error);
-    return res.status(500).json({ message: 'Error en el registro en controllers' });
+    return res.status(500).json({
+      ok: false,
+      msg: 'Por favor hable con el administrador',
+    });
   }
 };
 

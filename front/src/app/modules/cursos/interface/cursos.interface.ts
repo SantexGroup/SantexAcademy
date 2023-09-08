@@ -19,8 +19,6 @@ export interface Curso {
     idusuarioalta:         null;
     estado:                boolean;
     idusuariomodificacion: null;
-    createdAt:             Date;
-    updatedAt:             Date;
 }
 
 // Converts JSON strings to/from your types

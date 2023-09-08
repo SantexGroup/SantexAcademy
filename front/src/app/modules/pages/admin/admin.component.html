@@ -61,10 +61,10 @@
                             {{ user.email }}
                         </td>
                         <td>
-                            {{ user.email }}
+                            {{ user.rol }}
                         </td>
                         <td>
-                            <!--<span [appEstadoUsuario]="user.estado"></span>-->
+                            {{ user.estado }}
                         </td>
                         <td class="text-end">
                             <a class="btn btn-sm btn-primary" [routerLink]="['/users/show/', user.id ]">Ver</a>
@@ -174,7 +174,7 @@
                             {{ curso.fechafin }}
                         </td>
                         <td>
-                            <!--<span [appEstadoUsuario]="user.estado"></span>-->
+                            {{ curso.estado }}
                         </td>
                         <td class="text-end">
                             <a class="btn btn-sm btn-primary" [routerLink]="['/cursos/show/', curso.id ]">Ver</a>

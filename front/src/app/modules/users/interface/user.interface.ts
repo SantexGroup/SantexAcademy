@@ -13,9 +13,7 @@ export interface User {
     email:     string;
     confirmPassword: string;
     estado: boolean;
-    tipodeusuario: number;
-    createdAt?: Date;
-    updatedAt?: Date;
+    rol: string;
 }
 
 // Converts JSON strings to/from your types
