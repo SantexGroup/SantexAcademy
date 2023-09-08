@@ -44,6 +44,7 @@ async function createTarea(name, description, coordinatorId, hora, date, place, 
   tarea.hora = hora;
   tarea.longitud = longitud;
   tarea.latitud = latitud;
+  tarea.cantInscriptos = 0;
 
   if (models.tarea.findByPk(coordinatorId)) {
     tarea.coordinatorId = coordinatorId;
