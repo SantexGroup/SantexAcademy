@@ -17,11 +17,19 @@ export class LoginService {
       mail: corLogServ,
       password: pasLogServ,
     }
-    return this.apiService.post('/users/login', body)
+    return this.apiService.post<any>('/users/login', body)
   }
 
   usuarioLogeado(usuarioLogeado: boolean) {
     usuarioLogeado = true;
     return usuarioLogeado;
+  }
+
+  cambioVendedorServ(user: object) {
+    const body = {
+      id: user.id,
+      estadoDeVendedor: user.estadoDeVendedor,
+    }
+    return this.apiService.put('/users/estado-vendedor/:id', body)
   }
 }
