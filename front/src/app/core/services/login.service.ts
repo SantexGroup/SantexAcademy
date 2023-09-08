@@ -27,10 +27,8 @@ export class LoginService {
 
   cambioVendedorServ(user: object) {
     const body = {
-      /*
       id: user.id,
-      estadoDeVendedor: user.estadoDeVendedor,
-      */
+      estadoDeVendedor: user.estadoVen,
     }
     return this.apiService.put('/users/estado-vendedor/:id', body)
   }

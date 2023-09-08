@@ -21,14 +21,40 @@ export class LoginComponent implements OnInit {
   logeadoVendedor: boolean = false;
   usuarioLogeado: boolean = false;
   infoLocal: any[] = [];
+  // infoLocal: any;
+  // infoLocal: string = '';
   resLogin: any[] = [];
   
 
   constructor(private service: LoginService, private router: Router) { } 
 
   ngOnInit(): void {
-    let infoLocal = localStorage.getItem('token')
-    console.log(infoLocal) //no se está encontrando lo guardado en local con nombre token
+    // this.infoLocal = localStorage.getItem(JSON.parse('resLog'));
+    const tokenLocal = localStorage.getItem('token');
+    // this.infoLocal = localStorage.getItem('resLog');
+    const venLocal = localStorage.getItem('estadoDeVendedor');
+    // const venLocal = localStorage.getItem('estadoDeVendedor');
+    console.log(tokenLocal)
+    console.log(venLocal)    
+    // console.log(this.infoLocal[1].users.dni);
+    if (tokenLocal && venLocal == 'false') {
+      this.logeadoComprador = true;
+      this.logeadoVendedor = false;
+    }
+    if (tokenLocal && venLocal == 'true') {
+      this.logeadoVendedor = true;
+      this.logeadoComprador = false;
+    }
+
+    // let newObject = window.localStorage.getItem("resLog");
+    // console.log(JSON.parse(this.newObject));
+
+
+    // const newObject = localStorage.getItem('token');
+    // const tokenLoc = localStorage.getItem(JSON.parse('resLog'))
+    // console.log(tokenLoc)
+    // console.log('tokenLoc2', JSON.parse(tokenLoc))
+
     /*
     if (infoLocal && !infoLocal.users.estadoDeVendedor) {
       this.logeadoComprador = true;
@@ -37,20 +63,29 @@ export class LoginComponent implements OnInit {
       this.logeadoVendedor = true;
     }
     */
-    console.log('hola') //no se está ejecutando ¿Es por los errores generales?
+    
   }
   
   botonLogin() {
-
+    if (this.infoLocal) {
+      localStorage.clear()
+    }
     this.service.login(this.corLog, this.pasLog).subscribe(res => {
       if (res) {
-        console.log(res[0].token);
-        /*
-        localStorage.setItem( "token", JSON.stringify(res));
-        const usuario = this.service.usuarioLogeado(this.usuarioLogeado);
-        */
+        localStorage.setItem( 'resLog', JSON.stringify(res));
+        localStorage.setItem( 'token', JSON.stringify(res[0].token));
+        localStorage.setItem( 'estadoDeVendedor', JSON.stringify(res[1].users.estadoDeVendedor));
+        localStorage.setItem( 'id', JSON.stringify(res[1].users.id));
+        if (!res[1].users.estadoDeVendedor) {
+          this.logeadoComprador = true;
+        }
+        if (res[1].users.estadoDeVendedor) {
+          this.logeadoVendedor = true;
+        }
+        this.router.navigateByUrl('/'); 
       }
     })
+  }
 
     /*
     if (this.infoLocal) {
@@ -72,7 +107,8 @@ export class LoginComponent implements OnInit {
       }
     })
     */  
-  }
+  
+  
 
   deslogear() {
     if (this.infoLocal) {
@@ -87,6 +123,25 @@ export class LoginComponent implements OnInit {
   }
 
   botonVendedor() {
+    const tokenLocal = localStorage.getItem('token');
+    const venLocal = localStorage.getItem('estadoDeVendedor');
+    const id = localStorage.getItem('id')
+    let estadoVen = false
+    if (tokenLocal && venLocal == 'false') {
+      estadoVen = true
+    }
+    const user = {id, estadoVen}
+    console.log(user)
+    const cambioVendedor = this.service.cambioVendedorServ(user).subscribe(res => {
+      if (cambioVendedor) {
+        localStorage.clear();
+        localStorage.setItem( "token", JSON.stringify(res));
+        this.logeadoVendedor = true;
+        this.router.navigateByUrl('/');
+      }
+    })
+  }   
+}
     /*
     if (this.infoLocal && !this.infoLocal.users.estadoDeVendedor) { //esto es un error ya que users no está declarado, es un resultado deuna petición 
       const cambioVendedor = this.service.cambioVendedorServ(user).subscribe(res => {
@@ -99,7 +154,7 @@ export class LoginComponent implements OnInit {
       }) 
     }
     */
-  }
+  
 
   
   // estadoLogin() {
@@ -114,4 +169,3 @@ export class LoginComponent implements OnInit {
   // if (logeadoVendedor = true) {
   //   console.log("cerró sesión")
   // }
-}
