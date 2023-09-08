@@ -69,7 +69,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       longitud: {
         type: DataTypes.DOUBLE,
-        allowNull: false,
+        allowNull: true,
         validate: {
           min: -180,
           max: 180,
