@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SkillService } from 'src/app/core/services/skill.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
@@ -8,7 +8,7 @@ import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.servic
   templateUrl: './skill.component.html',
   styleUrls: ['./skill.component.css']
 })
-export class SkillComponent {
+export class SkillComponent implements OnInit{
   skillForm: FormGroup;
   @Input() profileId?: number;
 
@@ -21,6 +21,14 @@ export class SkillComponent {
       skill: '',
       level: ''
     });
+  }
+  ngOnInit(): void {
+    this.views.plusOne = true;
+    this.views.saveButton = false;
+  }
+
+  getSkill(){
+    
   }
 
   addSkillToProfile(): void {

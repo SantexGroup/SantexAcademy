@@ -61,6 +61,7 @@
             <button class="boton-creatucv"
             routerLink="login"
             (click)="views.hideLanding()"
+            (click)="views.navBarShow = true"
             (click)="views.title = 'Iniciar Sesion'">
                 Crea tu CV
             </button>
@@ -220,6 +221,7 @@
                 <a href="#nosotrosContacto">Preguntas Frecuentes</a>
                 <a href="#nosotrosContacto">Quienes somos</a>
                 <a routerLink="login" 
+                (click)="views.navBarShow = true"
                 (click)="views.title = 'Iniciar Sesion'"
                 (click)="views.hideLanding()"
                 >Iniciar sesion</a>

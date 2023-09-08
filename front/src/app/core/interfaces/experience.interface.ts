@@ -1,12 +1,13 @@
 export interface Experience{
     id?: number,
-    statusId: number,
-    countriesId: number,
-    typesId: number,
+    description: string,
     position: string,
     company: string,
-    description: string,
+    typesId: number,
+    statusId: number,
+    countriesId: number, 
     startDate: Date,
-    endDate: Date,
+    endDate?: Date,
     deletedAt?: Date,
+    profileId?: number
 }
