@@ -3,6 +3,8 @@
     <form [formGroup]="form">
         
         <h3>{{titulo}}</h3>
+
+
         <!-- Nombre -->
         <mat-form-field appearance="outline">
             <mat-label>Nombre</mat-label>
@@ -64,10 +66,10 @@
         
         
         
-        <!-- Lugar -->
+        <!-- Dirección -->
         <mat-form-field appearance="outline">
-            <mat-label>Lugar</mat-label>
-            <input matInput placeholder="Ingresá un lugar" formControlName="lugar">
+            <mat-label>Dirección</mat-label>
+            <input matInput placeholder="Ingresá una dirección" #inputDireccion  formControlName="direccion">
             <mat-icon matSuffix>my_location</mat-icon>
         </mat-form-field> 
 
@@ -86,7 +88,7 @@
         </mat-form-field>
     
         <div class="contenedor-botones">
-            <button *ngIf="!modificar" mat-raised-button color="primary" (click)="crearTarea()" [disabled]="form.invalid">CREAR</button>
+            <button *ngIf="!modificar" mat-raised-button color="primary" (click)="crearTarea()" [disabled]="form.invalid || direccionFormateada===''">CREAR</button>
             <button *ngIf="modificar" mat-raised-button color="primary" (click)="modificarTarea()" [disabled]="form.invalid">MODIFICAR</button>
             <button mat-raised-button color="warn" mat-dialog-close>CERRAR</button>
         </div>

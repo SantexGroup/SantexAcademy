@@ -1,4 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+///<reference path="../../../../../../node_modules/@types/google-maps/index.d.ts"/>
+
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,13 +12,14 @@ import { CategoriaService } from 'src/app/core/services/categoria.service';
 import { OrganizacionService } from 'src/app/core/services/organizacion.service';
 import { TareaService } from 'src/app/core/services/tarea.service';
 import * as moment from 'moment';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-crear-tarea-modal',
   templateUrl: './crear-modificar-tarea-modal.component.html',
   styleUrls: ['./crear-modificar-tarea-modal.component.css']
 })
-export class CrearModificarTareaModalComponent implements OnInit {
+export class CrearModificarTareaModalComponent implements OnInit, AfterViewInit {
 
   constructor(private categoriaService:CategoriaService, organizacionService:OrganizacionService, fb:FormBuilder, 
               private tareaService:TareaService, private matSnackBar:MatSnackBar,
@@ -31,6 +34,9 @@ export class CrearModificarTareaModalComponent implements OnInit {
       this.modificar = true;
       this.duracion = this.dataTarea.duracion;
       this.puntos = this.dataTarea.category?.puntosPorHora!;
+      this.longitud = this.dataTarea.longitud;
+      this.latitud = this.dataTarea.latitud;
+      this.direccionFormateada = this.dataTarea.place;
 
       const fechaMoment = moment(this.dataTarea.date);
       
@@ -39,7 +45,7 @@ export class CrearModificarTareaModalComponent implements OnInit {
         descripcion:[this.dataTarea.description,Validators.required],
         puntos:[this.dataTarea.points,Validators.required],
         fecha:[fechaMoment.toDate(),Validators.required],
-        lugar:[this.dataTarea.place,Validators.required],
+        direccion:[this.dataTarea.place,Validators.required],
         categoriaId:['',Validators.required],
         cantidadParticipantes:[this.dataTarea.cantParticipantes,Validators.required],
         duracion:[this.dataTarea.duracion, Validators.required],
@@ -57,7 +63,7 @@ export class CrearModificarTareaModalComponent implements OnInit {
         descripcion:['',Validators.required],
         puntos:['',Validators.required],
         fecha:['',Validators.required],
-        lugar:['',Validators.required],
+        direccion:['',Validators.required],
         categoriaId:['',Validators.required],
         cantidadParticipantes:['',Validators.required],
         duracion:['',Validators.required],
@@ -67,7 +73,8 @@ export class CrearModificarTareaModalComponent implements OnInit {
     }
 
   }
-    
+  
+  @ViewChild('inputDireccion') inputDireccion!: ElementRef;
   
   listCategorias:Categoria[] = [];
   datosOrganizacion$:Observable<Organizacion | null>;
@@ -78,14 +85,38 @@ export class CrearModificarTareaModalComponent implements OnInit {
   duracion:number = 0;
   puntos:number = 0;
   horariosDisponibles : number[] = [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
+  autocomplete: google.maps.places.Autocomplete | undefined;
+  latitud:number = 0;
+  longitud:number = 0;
+  direccionFormateada:string = '';
 
+  autocompleteOptions = {
+    types: ['geocode'], // Puedes ajustar los tipos según tus necesidades.
+    componentRestrictions: { country: 'AR' }, // 'AR' es el código de país para Argentina.
+  };
+  
   ngOnInit(): void {
     
     this.cargarCategorias();
     
   }
+  
+  ngAfterViewInit(): void {
+    
+    this.autocomplete = new google.maps.places.Autocomplete(this.inputDireccion.nativeElement,this.autocompleteOptions);
+    
+    this.autocomplete.addListener('place_changed',()=>{
+      const direccion = this.autocomplete?.getPlace();
+      this.latitud = direccion?.geometry?.location?.lat()!;
+      this.longitud = direccion?.geometry?.location?.lng()!;
+      this.direccionFormateada = direccion?.formatted_address!;
 
-
+      // console.log('direccion:'+ lugar?.formatted_address);
+      // console.log('latitud:'+ lugar?.geometry?.location?.lat());
+      // console.log('longitud:'+ lugar?.geometry?.location?.lng());
+    });
+  }
+  
   cargarCategorias():void{
     this.categoriaService.getCategorias().subscribe({
       next:(res)=>{
@@ -110,6 +141,7 @@ export class CrearModificarTareaModalComponent implements OnInit {
   }
 
   crearTarea():void{
+
     let idCoordinador = null;
     this.datosOrganizacion$.pipe(take(1)).subscribe({
       next:(res)=>{
@@ -127,13 +159,13 @@ export class CrearModificarTareaModalComponent implements OnInit {
         coordinatorId: idCoordinador!,
         points: formValue.puntos,
         date: formValue.fecha,
-        place: formValue.lugar,
+        place: this.direccionFormateada,
         categoryId: formValue.categoriaId,
         cantParticipantes:formValue.cantidadParticipantes,
         duracion:formValue.duracion,
         hora:formValue.horaInicio,
-        latitud:0,
-        longitud:0
+        latitud:this.latitud,
+        longitud:this.longitud
 
       } 
       
@@ -161,13 +193,13 @@ export class CrearModificarTareaModalComponent implements OnInit {
       description: formValue.descripcion,
       points: formValue.puntos,
       date: formValue.fecha,
-      place: formValue.lugar,
+      place: this.direccionFormateada,
       categoryId: formValue.categoriaId,
       cantParticipantes: formValue.cantidadParticipantes,
       duracion:formValue.duracion,
       hora:formValue.horaInicio,
-      latitud:0,
-      longitud:0
+      latitud:this.latitud,
+      longitud:this.longitud
     }
     this.tareaService.modificarTarea(this.dataTarea.id!, tareaModificada).subscribe({
       next:()=>{
@@ -193,6 +225,5 @@ export class CrearModificarTareaModalComponent implements OnInit {
       puntos: this.puntos*this.duracion
     });
   }
-
 
 }
