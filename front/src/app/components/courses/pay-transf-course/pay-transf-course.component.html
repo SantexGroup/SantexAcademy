@@ -1,4 +1,4 @@
-<div class="flex flex-column align-items-center pt-5 pb-5" [formGroup]="formPay" >
+<form class="flex flex-column align-items-center pt-5 pb-5" [formGroup]="formPay" (ngSubmit)="validationMock()">
     <h1 class="text-2xl lg:text-5xl text-center pb-2">Estas a un paso de obtener tu Curso</h1>
 
     <div class="container-pay flex flex-column lg:flex-row justify-content-around w-8">
@@ -48,15 +48,15 @@
                 <p class="pb-2">¿Envio Comprobante?</p>
                 <div class="flex flex-wrap gap-3">
                     <div class="flex align-items-center" >
-                        <p-radioButton name="pizza" value="Cheese" formControlName="check"
-                        [(ngModel)]="ingredient" inputId="ingredient1"></p-radioButton>
-                        <label for="ingredient1" class="ml-2">SI</label>
+                        <p-radioButton name="option1" value="si" formControlName="check"
+                        [(ngModel)]="transferOption" inputId="option1"></p-radioButton>
+                        <label for="option1" class="ml-2">SI</label>
                     </div>
                     
                     <div class="flex align-items-center" >
-                        <p-radioButton name="pizza" value="Mushroom" formControlName="check"
-                        [(ngModel)]="ingredient" inputId="ingredient2"></p-radioButton>
-                        <label for="ingredient2" class="ml-2" >NO</label>
+                        <p-radioButton name="option2" value="no" formControlName="check"
+                        [(ngModel)]="transferOption" inputId="option2"></p-radioButton>
+                        <label for="option2" class="ml-2" >NO</label>
                     </div>
                 </div>
                 
@@ -75,7 +75,8 @@
     </div>
     <div class="btns w-full lg:w-8 flex justify-content-around pt-5">
         <a routerLink="/form-inscr-courses" pButton label="Volver" class="surface-0 border-400 text-bluegray-600 pr-6 pl-6 text-xl"></a>
-        <a pButton label="Enviar" type="submit" class="pr-6 pl-6 text-xl"></a>
+        <!-- <a pButton label="Enviar" type="submit" class="pr-6 pl-6 text-xl"></a> -->
+        <button class="bg-primary border-round pr-6 pl-6 text-xl font-semibold">Enviar</button>
     </div>
 
-</div>
+</form>
