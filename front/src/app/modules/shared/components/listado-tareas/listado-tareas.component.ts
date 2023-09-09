@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Tarea } from 'src/app/core/interfaces/tarea';
 import { TareaService } from 'src/app/core/services/tarea.service';
-import { DetalleTareaComponent } from '../../organizaciones/modales-organizacion/detalle-tarea/detalle-tarea.component';
+import { DetalleTareaComponent } from '../../../organizaciones/modales-organizacion/detalle-tarea/detalle-tarea.component';
 import { VoluntarioService } from 'src/app/core/services/voluntario.service';
 import Swal from 'sweetalert2';
 
@@ -18,7 +18,8 @@ export class ListadoTareasComponent implements OnInit {
   ngOnInit(): void {
     this.mostrarTareas();
   }
-
+  @Input() esVoluntario:boolean = false;
+   
   listadoTareas:Tarea[] = [];
 
 

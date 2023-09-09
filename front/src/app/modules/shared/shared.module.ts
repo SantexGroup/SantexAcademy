@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ListadoTareasComponent } from './components/listado-tareas/listado-tareas.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ListadoTareasComponent
+  ],
   imports: [
     CommonModule
   ]
