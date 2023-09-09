@@ -1,0 +1,30 @@
+mat-dialog-content {
+    max-height: 90vh; /* Ajusta el valor según tus necesidades */
+    overflow-y: auto; /* Agrega desplazamiento vertical si es necesario */
+}
+mat-dialog-content img {
+    display: block; /* Asegura que la imagen se comporte como un bloque */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+  
+/* Clase de estilo para el botón "Agregar al Carrito" */
+.agregar-al-carrito-button {
+    background-color: blue; /* Cambia el color a azul */
+    color: white;
+}
+
+/* Clase de estilo para el botón "Editar" */
+.editar-button {
+    background-color: rgb(250, 141, 16); /* Mantén el color naranja */
+    color: white;
+}
+.button-container {
+    margin-top: 10px; 
+ }
+  
+.button-container button {
+    margin: 3px; 
+}
+
+
+  

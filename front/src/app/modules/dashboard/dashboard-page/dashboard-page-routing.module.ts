@@ -18,16 +18,17 @@ const routes: Routes = [
       },
       {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+      },
+      {
+        path: 'form-update/:id',
+        component: FormUpdateComponent,
       },
       {
         path: 'form-add-product',
         component: FormAddProductComponent
       },
-      {
-        path: 'form-update',
-        component: FormUpdateComponent
-      },
+      
       {
         path: 'form-delete',
         component: FormDeleteComponent
@@ -37,6 +38,7 @@ const routes: Routes = [
         component: ShoppingCartComponent
       }
     ]
+    
   }
 ];
 
