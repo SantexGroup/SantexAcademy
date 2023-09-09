@@ -20,22 +20,21 @@ export class FormUpdateComponent implements OnInit {
   })
   
   myForm = new FormGroup({
-    nombreProducto: new FormControl('', [Validators.required]),
-    cantidad: new FormControl('', [Validators.required, ]),
+    name: new FormControl('', [Validators.required]),
+    quantity: new FormControl(0, [Validators.required]),
     categoria: new FormControl('', [Validators.required]),
     tipoMaterial: new FormControl('', [Validators.required]),
-    urlImagen: new FormControl('', [Validators.required]),
-    precio: new FormControl('', [Validators.required]),
-    descripcion: new FormControl('', [Validators.required])
+    image: new FormControl('', [Validators.required]),
+    price: new FormControl(0, [Validators.required]),
+    description: new FormControl('', [Validators.required]),
   });
 
-  
   foundProduct: boolean = false;
   noFoundProduct: boolean | undefined;
   query: Product | undefined;
 
   //variable id y selectProduct
-  id : string | undefined;
+
   selectedProduct: Product | undefined;
   
 
@@ -53,7 +52,7 @@ export class FormUpdateComponent implements OnInit {
     this.activateRoute.paramMap.pipe(
       switchMap(
         (params: ParamMap) => {
-          let id: string | null = params.get('id');
+          let id = params.get('id');
           if (id == "") {
             return of(undefined);
           }
@@ -67,14 +66,16 @@ export class FormUpdateComponent implements OnInit {
       // Si se encontró un producto,  se muestra el formulario con los valores del producto
       if (product) {
         this.myForm.patchValue({
-          nombreProducto: product.name,
-          cantidad: product.quantity ? product.quantity.toString(): '',
+          name: product.name,
+          quantity: product.quantity,
           categoria: product.categoria,
           tipoMaterial: product.tipoMaterial,
-          urlImagen: product.image,
-          precio: product.price ? product.price.toString(): '',
-          descripcion: product.description
+          image: product.image,
+          price: product.price,
+          description: product.description,
         });
+        console.log(this.myForm.value)
+      
         this.foundProduct = true;
         console.log(this.foundProduct)
       }else {
@@ -86,12 +87,29 @@ export class FormUpdateComponent implements OnInit {
  
   }
   // Función para actualizar un producto
+
+
   updateProduct() {
-    console.log('Producto Actualizado', this.myForm.value)
     
-    // Resetea el formulario para limpiar los inputs
+    console.log(this.myForm.value);
+    // Actualiza el producto
+    // id conseguido de la url del producto
+    let id = this.activateRoute.snapshot.paramMap.get('id') 
+    if (id != null){
+    this.backService.updateProduct( id, this.myForm.value).subscribe((result) => {
+      console.log("hola")
+      if(result.status == 1){
+        alert("Producto actualizado correctamente")
+      }else{
+        alert("Error al actualizar el producto")
+      }
+    }
+    );}
+    //seteo del form y de la nueva lista
+
     this.myForm.reset();
-  } 
+    
+  }
   
   
 }
@@ -107,13 +125,13 @@ export class FormUpdateComponent implements OnInit {
 
   //     // Agregamos los valores del producto al formulario
   //     this.myForm.patchValue({
-  //       nombreProducto: this.query?.nombreProd,
-  //       cantidad: this.query?.cantidad.toString(),
-  //       categoria: this.query?.categoria,
-  //       tipoMaterial: this.query?.tipoMaterial,
-  //       urlImagen: this.query?.urlImagen,
-  //       precio: this.query?.precio.toString(),
-  //       descripcion: this.query?.descripcion
+  //       nombreProducto: product.nombreProd,
+  //       cantidad: product.cantidad.toString(),
+  //       categoria: product.categoria,
+  //       tipoMaterial: product.tipoMaterial,
+  //       urlImagen: product.urlImagen,
+  //       precio: product.precio.toString(),
+  //       descripcion: product.descripcion
   //     });
   //   } else {
   //     this.foundProduct = false;
