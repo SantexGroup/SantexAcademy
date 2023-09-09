@@ -27,7 +27,6 @@ export class ListadoTareasComponent implements OnInit {
     this.tareaService.getTareas().subscribe({
       next:(res)=>{
         this.listadoTareas = res;
-        console.log(res);
       },
       error:()=>{
       }
