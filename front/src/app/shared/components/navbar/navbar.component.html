@@ -52,7 +52,9 @@
             "
             [ngStyle]="{ 'max-height.px': openOptionOne ? maxHeight : 0 }"
           >
-            <li class="cursor-pointer">Buscar voluntariados</li>
+            <li class="cursor-pointer">
+              <a routerLink="/voluntariados">Buscar voluntariados</a>
+            </li>
 
             <li class="cursor-pointer">6 pasos para ser voluntario</li>
           </ul>
@@ -84,11 +86,11 @@
         <li class="lg:hidden text-xl cursor-pointer">Contacto</li>
         <div class="w-[90%] h-[.5px] my-4 bg-lightGray lg:hidden"></div>
         <li
-          class="flex flex-col items-center justify-center gap-4 lg:flex-row font-semibold"
+          class="flex flex-col items-center justify-center gap-4 lg:flex-row font-semibold lg:items-start"
         >
           <a routerLink="/auth/login" class="lg:text-xl">Iniciar sesión</a>
           <a
-            routerLink="/auth/differential-register"
+            routerLink="/auth/options-register"
             class="py-1 px-4 bg-darkSlateBlue text-white rounded-md"
             >Registrarse</a
           >
