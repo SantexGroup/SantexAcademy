@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
+import { AdminService } from 'src/app/core/services/admin.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router, private adminService:AdminService) { }
+
+  @ViewChild('sideNav')sideNav!:MatSidenav;
 
   ngOnInit(): void {
   }
+  redireccionarA(ruta:string):void{
+    this.router.navigate([ruta]);
+    this.sideNav.close();
+  }
+  cerrarSesion(){
+    this.adminService.setCredencialesAdmin = null;
+    localStorage.removeItem('credencialesAdmin');
+    this.router.navigate(['/index']);
 
+  }
 }
