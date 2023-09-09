@@ -18,4 +18,10 @@ async function getData(req, res) {
   res.status(200).send(usuario);
 }
 
-module.exports = { login, getData };
+async function createAdmin(req, res) {
+  const { email, password } = req.body;
+
+  const admin = await adminService.create(email, password);
+  res.status(201).send(admin);
+}
+module.exports = { login, getData, createAdmin };
