@@ -15,6 +15,7 @@ export class AdminComponent implements OnInit {
   @ViewChild('sideNav')sideNav!:MatSidenav;
 
   ngOnInit(): void {
+    this.router.navigate(['admin/tareas']);
   }
   redireccionarA(ruta:string):void{
     this.router.navigate([ruta]);
