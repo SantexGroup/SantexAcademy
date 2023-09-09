@@ -8,6 +8,7 @@ import { FormUpdateComponent } from './form-update/form-update.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FormDeleteComponent } from './form-delete/form-delete.component';
 import { HomeComponent } from './home/home.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 import { PopUpHomeComponent } from './pop-up-home/pop-up-home.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,7 +20,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
-  declarations: [DashboardPageComponent, FormAddProductComponent, FormUpdateComponent, NavBarComponent, FormDeleteComponent, HomeComponent, PopUpHomeComponent],
+
+  declarations: [DashboardPageComponent, FormAddProductComponent, FormUpdateComponent, NavBarComponent, FormDeleteComponent, HomeComponent, PopUpHomeComponent, ShoppingCartComponent],
+
   imports: [
     CommonModule,
     DashboardRoutingModule,

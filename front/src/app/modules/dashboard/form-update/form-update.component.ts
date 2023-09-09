@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { of, switchMap } from 'rxjs';
 import { BackServiceService } from 'src/app/services/back-service.service';
 import { Product } from 'src/app/core/interfaces/product';
+
 @Component({
   selector: 'app-form-update',
   templateUrl: './form-update.component.html',
-  styleUrls: ['./form-update.component.css']
+  styleUrls: ['./form-update.component.css'],
 })
-
 export class FormUpdateComponent implements OnInit {
+  constructor(private backService: BackServiceService) {}
 
   // Creamos una lista de productos como ejemplo
 
-  
   searchForm = new FormGroup({
-    buscarProducto: new FormControl('', Validators.required)
-  })
-  
+    buscarProducto: new FormControl('', Validators.required),
+  });
+
   myForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     quantity: new FormControl(0, [Validators.required]),
@@ -28,6 +29,7 @@ export class FormUpdateComponent implements OnInit {
     price: new FormControl(0, [Validators.required]),
     description: new FormControl('', [Validators.required]),
   });
+
 
   foundProduct: boolean = false;
   noFoundProduct: boolean | undefined;
@@ -45,6 +47,7 @@ export class FormUpdateComponent implements OnInit {
     //private dataRouter: DataRouter,
   ) {
        
+
   }
 
   ngOnInit() {
@@ -90,6 +93,7 @@ export class FormUpdateComponent implements OnInit {
 
 
   updateProduct() {
+
     
     console.log(this.myForm.value);
     // Actualiza el producto
@@ -98,6 +102,7 @@ export class FormUpdateComponent implements OnInit {
     if (id != null){
     this.backService.updateProduct( id, this.myForm.value).subscribe((result) => {
       console.log("hola")
+
       if(result.status == 1){
         alert("Producto actualizado correctamente")
       }else{
@@ -108,6 +113,7 @@ export class FormUpdateComponent implements OnInit {
     //seteo del form y de la nueva lista
 
     this.myForm.reset();
+
     
   }
   
@@ -138,4 +144,5 @@ export class FormUpdateComponent implements OnInit {
   //     this.noFoundProduct = true;
   //   }
   // }
+
 
