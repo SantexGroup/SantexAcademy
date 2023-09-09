@@ -72,12 +72,12 @@ export class FormationsComponent implements OnInit {
       endDate: this.formationForm.get('endDate')?.value,
       description: this.formationForm.get('description')?.value,
     }
-
+    this.listFormation.push(newFormation);
     this._formationsServices.addFormation(newFormation).subscribe((data)=>{
       console.log(data);
-    });
-
+    });    
     this.formationForm.reset();
+  
   }
 
   endDateShow():boolean{

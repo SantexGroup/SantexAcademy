@@ -45,7 +45,7 @@
             </div>
             <div class="botonera">
                 <div class="botones">
-                    <button class="plus" type="submit" *ngIf="views.plusOne">
+                    <button (click)="getListFormations" class="plus" type="submit" *ngIf="views.plusOne">
                         <img src="/assets/Imagenes/plus.png" alt="+">
                     </button>
                     <button type="submit" mat-raised-button color="primary" *ngIf="views.saveButton"(click)="saveFormation()" >
