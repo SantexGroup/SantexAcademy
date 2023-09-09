@@ -39,4 +39,20 @@ async function getAllCategories() {
   return CategoriesList;
 }
 
-module.exports = { products, getAllCategories };
+// carga producto
+
+async function chargeProducts(idUsuario, idTipoProducto, nombre, detalles, precio, envio) {
+  const producto = new Products();
+
+  producto.idUsuario = idUsuario;
+  producto.idTipoProducto = idTipoProducto;
+  producto.nombre = nombre;
+  producto.detalles = detalles;
+  producto.precio = precio;
+  producto.envio = envio;
+
+  const productCreated = await producto.save();
+  return productCreated;
+}
+
+module.exports = { products, getAllCategories, chargeProducts };
