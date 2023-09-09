@@ -10,25 +10,29 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   email: string = '';
-  password: string = '';
+  password: string = ''; 
+  formSubmitted: boolean = false;
 
   constructor(private authService: AuthService) {}
 
-  login(loginForm: NgForm) {
-    if (loginForm.valid) {
-      const email = this.email; 
-      const password = this.password; 
-
-      this.authService.login(email, password).subscribe(
-        (response: any) => {
-          console.log('Inicio de sesión exitoso', response);
-          // Manejar la respuesta para almacenar el token en el local storage
-        },
-        (error: any) => {
-          console.error('Error al iniciar sesión:', error);
-        }
-      );
+  login(loginForm: NgForm) {    
+    if (!loginForm.valid) {
+      this.formSubmitted = true;
+      return;
     }
+    this.formSubmitted = false; 
+    const email = this.email; 
+    const password = this.password; 
+
+    this.authService.login(email, password).subscribe(
+      (response: any) => {
+        console.log('Inicio de sesión exitoso', response);
+        // Aqui tenemos que manejar la respuesta para almacenar el token en el local storage
+      },
+      (error: any) => {
+        console.error('Error al iniciar sesión:', error);
+      }
+    );
   }
 
   ngOnInit(): void {}
