@@ -13,4 +13,17 @@ export class FormationsService {
   addFormation(formation: Formations): Observable<Formations> {
     return this.api.post<Formations>('formations/', formation);
   }
+  
+
+  getFormationByUser(): Observable<Formations[]>{
+    return this.api.get<Formations[]>('formations/');
+  }
+
+  deleteFormation(id: number): Observable<void>{
+    return this.api.delete<void>(`formations/${id}`)
+  }
+  updateFormation(formation: Formations): Observable<Formations> {
+    return this.api.put<Formations>(`formations/${formation.id}`, formation);
+  }
+  
 }

@@ -15,13 +15,14 @@ import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.servic
   styleUrls: ['./formations.component.css']
 })
 export class FormationsComponent implements OnInit {
-
+  listFormation: Formations[] = []  
   formationForm: FormGroup;
+  editedFormation: Formations | null = null;
 
   constructor(
     private _formationsTypesServices: FormationsTypeService,
     private _formationsStatusServices: FormationsStatusService,
-    private _formationsServices: FormationsService,
+    private _formationsServices: FormationsService,    
     public views: NavBarService,
     private fb: FormBuilder
     ) {
@@ -33,11 +34,13 @@ export class FormationsComponent implements OnInit {
         startDate: '',
         endDate: '',
         description: '',
-      })
+      })      
      }
 
   ngOnInit(): void {
 
+    this.getListFormations();
+    
     this.formationsStatusGet();
 
     this.formationsTypesGet();
@@ -79,5 +82,38 @@ export class FormationsComponent implements OnInit {
 
   endDateShow():boolean{
     return this.formationForm.get('statusId')?.value !== 1;
+  }
+
+  getListFormations(){
+    this._formationsServices.getFormationByUser().subscribe((data) => {
+      this.listFormation = data;
+      console.log(this.listFormation)
+    } )
+  }
+
+  deleteFormation(id: number) {
+    this._formationsServices.deleteFormation(id).subscribe(() =>{
+      this.getListFormations()
+    })
+  }
+  editFormation(formation: Formations) {
+    this.editedFormation = { ...formation }; // Clonar el objeto
+    this.formationForm.patchValue(this.editedFormation); // Cargar datos en el formulario
+  }
+   // Función para guardar los cambios realizados en el formulario de edición
+   saveFormation() {
+    if (this.editedFormation) {
+      const updatedFormation: Formations = this.formationForm.value;
+      updatedFormation.id = this.editedFormation.id;
+
+      this._formationsServices.updateFormation(updatedFormation).subscribe(() => {
+        console.log('Formación actualizada');        
+        this.getListFormations(); // Actualizar la lista después de editar
+    });
+
+      // this.editedFormation = null; // Restablecer la formación editada
+      this.formationForm.reset(); // Restablecer el formulario
+    
+    }   
   }
 }
