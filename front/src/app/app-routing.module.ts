@@ -23,10 +23,10 @@ const routes: Routes = [
     path:'admin/panel/courses', component:CourseComponent
   },
   {
-    path:'admin/panel/addCourses', component:AddCourseComponent
+    path:'admin/panel/courses/addCourse', component:AddCourseComponent
   },
   {
-    path:'admin/panel/editCourse/:id', component:EditCourseComponent
+    path:'admin/panel/courses/editCourse/:id', component:EditCourseComponent
   },
   {
     path:'admin/panel/categories', component:CategoryComponent

@@ -59,7 +59,7 @@ export class EditScheduleComponent implements OnInit {
       this.scheduleService.putSchedule(this.schedules, this.id)
       .subscribe(
         (data) => {
-          this.router.navigate(['/admin/panel/schedule']);
+          this.router.navigate(['/admin/panel/schedules']);
         },
         (error) => {
           console.log(error);

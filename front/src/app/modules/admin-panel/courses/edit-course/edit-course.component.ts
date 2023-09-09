@@ -100,7 +100,7 @@ export class EditCourseComponent implements OnInit {
     };
     this.courseService.putCourse(this.course, this.id).subscribe(
       (data) => {
-        this.router.navigate(['/admin/panel']);
+        this.router.navigate(['/admin/panel/courses']);
       },
       (error) => {
         console.log(error);

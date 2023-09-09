@@ -15,6 +15,8 @@
               form.get('where')?.hasError('required') &&
               form.get('where')?.touched
             "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px; "
           >
             El campo donde es <strong>requerido</strong>
           </span>
@@ -30,6 +32,8 @@
               form.get('day')?.hasError('required') &&
               form.get('day')?.touched
             "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px; "
           >
             El campo dia/s es <strong>requerido</strong>
           </span>
@@ -45,6 +49,8 @@
               form.get('schedule')?.hasError('required') &&
               form.get('schedule')?.touched
             "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px; "
           >
             El campo horario es <strong>requerido</strong>
           </span>
@@ -59,19 +65,14 @@
 
           <div class="row mt-2 text-center">
             <div class="col-lg-6">
-              <button
-                routerLink="/admin/panel"
-                type="button"
-                class="btn btn-secondary"
-              >
-                Volver
-              </button>
+              <button class="boton" routerLink="/admin/panel/schedules">Volver</button>
+
             </div>
             <div class="col-lg-6">
               <button
                 [disabled]="form.invalid"
                 type="submit"
-                class="btn btn-primary"
+                class="boton"
               >
                 Aceptar
               </button>

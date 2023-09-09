@@ -3,6 +3,23 @@
     --colorOrange:#FA8F21;
     --colorBlue:#3C5A9A;
 }
-.body{
-    background-color: #dddddd;
+body{
+    background-color: #0011ff;
+}
+.boton{
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 150px;
+    background: orange;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px rgb(128, 128, 128);
+    transition: 0.2;
+}
+.boton:hover{
+    transform: scale(1.01);
+    background: rgb(231, 150, 0);
 }
