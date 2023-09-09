@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Tarea } from 'src/app/core/interfaces/tarea';
 import { TareaService } from 'src/app/core/services/tarea.service';
-import { DetalleTareaComponent } from '../../../organizaciones/modales-organizacion/detalle-tarea/detalle-tarea.component';
+import { DetalleTareaComponent } from '../detalle-tarea/detalle-tarea.component';
 import { VoluntarioService } from 'src/app/core/services/voluntario.service';
 import Swal from 'sweetalert2';
 
