@@ -1,0 +1,64 @@
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    width: 100%;
+
+}
+.card-title{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.card-container{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px 20px;
+    margin: 20px 20px;
+   
+    
+}
+.card-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100px;
+}
+
+.card-actions{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo{
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.subtitulo{
+    color: #555;
+}
+
+.inscriptos span{
+    font-size: 16px;
+    font-weight: 500;
+
+}
+
+button{
+    font-size: 12px;
+    margin: 10px 15px;
+    
+}
