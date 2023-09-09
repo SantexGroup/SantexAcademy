@@ -13,13 +13,16 @@ import { ApiService } from '../http/api.service';
 import { OrganizacionService } from '../services/organizacion.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AdminService } from '../services/admin.service';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
-  constructor(private voluntarioService:VoluntarioService, private organizacionService:OrganizacionService,private router:Router, private matSnackBar:MatSnackBar) {}
-  credencialesVoluntario!:Credencial|null;
-  credencialesOrganizacion!:Credencial|null;
+  constructor(private voluntarioService:VoluntarioService, private organizacionService:OrganizacionService,private router:Router, private matSnackBar:MatSnackBar,
+    private adminService:AdminService) {}
+  credencialesVoluntario:Credencial|null = null;
+  credencialesOrganizacion:Credencial|null = null;
+  credencialesAdmin:Credencial|null = null;
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     
     this.voluntarioService.getCredencialesVoluntario.pipe(take(1)).subscribe({
@@ -29,6 +32,12 @@ export class JwtInterceptor implements HttpInterceptor {
     this.organizacionService.getCredencialesOrganizacion.pipe(take(1)).subscribe({
       next:(res)=> this.credencialesOrganizacion = res
     });
+
+    this.adminService.getCredencialesAdmin.pipe(take(1)).subscribe({
+      next:(res)=>this.credencialesAdmin = res
+    });
+
+    
 
     if(this.credencialesVoluntario!= null){
       request = request.clone({
@@ -62,6 +71,25 @@ export class JwtInterceptor implements HttpInterceptor {
           this.organizacionService.setCredencialesOrganizacion = null;
           this.mostrarAlertaSesionCaducada();
           this.router.navigate(['/index/login'],{queryParams:{tipo:'organizacion'}});
+          
+
+        }
+
+        return throwError(()=>err);
+      }));    
+    }
+    else if(this.credencialesAdmin != null){
+      request = request.clone({
+        setHeaders:{
+          Authorization:`Bearer ${this.credencialesAdmin.token}`
+        }
+      });
+      return next.handle(request).pipe(catchError((err:HttpErrorResponse)=>{
+        if(err.status ===401){
+
+          this.adminService.setCredencialesAdmin = null;
+          this.mostrarAlertaSesionCaducada();
+          this.router.navigate(['/index/login'],{queryParams:{tipo:'admin'}});
           
 
         }
