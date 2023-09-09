@@ -20,11 +20,6 @@ export class LoginService {
     return this.apiService.post<any>('/users/login', body)
   }
 
-  usuarioLogeado() {
-    const usuarioLog = true;
-    return usuarioLog;
-  }
-
   cambioVendedorServ(user: object) {
     const body = {
       //id: user[0].id,
