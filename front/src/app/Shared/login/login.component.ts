@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   pasLog: string = '';
   logeadoComprador: boolean = false;
   logeadoVendedor: boolean = false;
-  usuarioLogeado: boolean = false;
+  //usuarioLogeado: boolean = false;
   infoLoc: any[] = [];
   // infoLocal: any[] = [];
   // infoLocal: any;
@@ -30,42 +30,12 @@ export class LoginComponent implements OnInit {
   constructor(private service: LoginService, private router: Router) { } 
 
   ngOnInit(): void {
-    let infoLocal = localStorage.getItem('token')
-    
-    if (infoLocal) {
-    let newObject = JSON.parse(infoLocal);
-    console.log(newObject);
-    }
-    /*
-    if (infoLocal && !infoLocal.users.estadoDeVendedor) {
-      this.logeadoComprador = true;
-    }
-    if (infoLocal && infoLocal.users.estadoDeVendedor) {
-      this.logeadoVendedor = true;
-    }
-    */
-  }
-    this.corroborarLogeo();    
-  }
 
-  corroborarLogeo() {    
-    let infoLocal = localStorage.getItem('resLog')
-    if (infoLocal) {
-      let newObject = JSON.parse(infoLocal);
-      if (newObject) {
-        if (newObject[1].users.estadoDeVendedor) {
-          this.logeadoVendedor = true;
-          this.logeadoComprador = false;
-        }
-        if (!newObject[1].users.estadoDeVendedor) {
-          this.logeadoComprador = true;
-          this.logeadoVendedor = false;
-        }else {
-          this.logeadoComprador = false;
-          this.logeadoVendedor = false;
-        }
-      }
-    }
+    this.corroborarLogeo();
+
+    console.log('vendedor: ' + this.logeadoVendedor);
+    console.log('comprador: ' + this.logeadoComprador);
+
   }
 
   botonLogin() {
@@ -73,6 +43,7 @@ export class LoginComponent implements OnInit {
     if (infoLocal) {
       localStorage.clear();
     }
+
     this.service.login(this.corLog, this.pasLog).subscribe(res => {
       if (res) {
         localStorage.setItem( 'resLog', JSON.stringify(res));
@@ -87,6 +58,26 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/'); 
       }
     })
+  }
+
+  corroborarLogeo() {    
+    let infoLocal = localStorage.getItem('resLog')
+    if (infoLocal) {
+      let newObject = JSON.parse(infoLocal);
+      if (newObject) {
+        if (newObject[1].users.estadoDeVendedor) {
+          this.logeadoVendedor = true;
+          this.logeadoComprador = false;
+        }
+        else if (!newObject[1].users.estadoDeVendedor) {
+          this.logeadoComprador = true;
+          this.logeadoVendedor = false;
+        } else {
+          this.logeadoComprador = false;
+          this.logeadoVendedor = false;
+        }
+      }
+    }
   }
 
   deslogear() {
@@ -126,13 +117,9 @@ export class LoginComponent implements OnInit {
 }
 
 
+  }
 
-
-
-
-
-
-   // botonVendedor() {
+  // botonVendedor() {
   //   const tokenLocal = localStorage.getItem('token');
   //   const venLocal = localStorage.getItem('estadoDeVendedor');
   //   const id = localStorage.getItem('id')
@@ -190,6 +177,7 @@ if (infoLocal && infoLocal.users.estadoDeVendedor) {
 }
 */
   
+/*
   botonLogin() {
 
     this.service.login(this.corLog, this.pasLog).subscribe(res => {
@@ -218,7 +206,6 @@ if (infoLocal && infoLocal.users.estadoDeVendedor) {
         // localStorage.setItem( 'estadoDeVendedor', JSON.stringify(res[1].users.estadoDeVendedor));
         // localStorage.setItem( 'id', JSON.stringify(res[1].users.id));
 
-    /*
     if (this.infoLocal) {
       
     }
@@ -237,9 +224,10 @@ if (infoLocal && infoLocal.users.estadoDeVendedor) {
           // this.estadoLogin();                              
       }
     })
-    */  
-  }
+    
+  }*/
 
+  /*
   deslogear() {
     if (this.infoLoc) {
       if (this.logeadoVendedor || this.logeadoComprador) {
@@ -254,10 +242,6 @@ if (infoLocal && infoLocal.users.estadoDeVendedor) {
 
   botonVendedor() {
   
-    
-
-  
-
     // if (this.infoLocal) {
     //   if (this.logeadoVendedor || this.logeadoComprador) {
     //     this.logeadoVendedor = false;
@@ -267,10 +251,9 @@ if (infoLocal && infoLocal.users.estadoDeVendedor) {
     //   this.router.navigateByUrl('/'); 
     //   this.router.navigate(['/']);
     // }
-
-  
-
 }
+*/
+
     /*
     if (this.infoLocal && !this.infoLocal.users.estadoDeVendedor) { //esto es un error ya que users no está declarado, es un resultado deuna petición 
       const cambioVendedor = this.service.cambioVendedorServ(user).subscribe(res => {
