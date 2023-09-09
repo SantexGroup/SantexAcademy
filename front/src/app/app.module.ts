@@ -14,6 +14,7 @@ import { AddScheduleComponent } from './modules/admin-panel/schedules/add-schedu
 import { EditScheduleComponent } from './modules/admin-panel/schedules/edit-schedule/edit-schedule.component';
 import { CategoryComponent } from './modules/admin-panel/categories/category.component';
 import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.component';
+import { CourseComponent } from './modules/admin-panel/courses/course.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.comp
     AddScheduleComponent,
     EditScheduleComponent,
     CategoryComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,

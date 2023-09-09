@@ -9,6 +9,7 @@ import { EditCategoryComponent } from './modules/admin-panel/categories/edit-cat
 import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.component';
 import { AddScheduleComponent } from './modules/admin-panel/schedules/add-schedule/add-schedule.component';
 import { EditScheduleComponent } from './modules/admin-panel/schedules/edit-schedule/edit-schedule.component';
+import { CourseComponent } from './modules/admin-panel/courses/course.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,10 @@ const routes: Routes = [
     path:'admin/panel', component:AdminPanelComponent
   },
   {
-    path:'admin/panel/addCourse', component:AddCourseComponent
+    path:'admin/panel/courses', component:CourseComponent
+  },
+  {
+    path:'admin/panel/addCourses', component:AddCourseComponent
   },
   {
     path:'admin/panel/editCourse/:id', component:EditCourseComponent
@@ -34,13 +38,13 @@ const routes: Routes = [
     path:'admin/panel/categories/editCourseCategory/:id', component:EditCategoryComponent
   },
   {
-    path:'admin/panel/schedule', component:ScheduleComponent
+    path:'admin/panel/schedules', component:ScheduleComponent
   },
   {
-    path:'admin/panel/schedule/addSchedule', component:AddScheduleComponent
+    path:'admin/panel/schedules/addSchedule', component:AddScheduleComponent
   },
   {
-    path:'admin/panel/schedule/editSchedule/:id', component:EditScheduleComponent
+    path:'admin/panel/schedules/editSchedule/:id', component:EditScheduleComponent
   },
   {
     path: '**',
