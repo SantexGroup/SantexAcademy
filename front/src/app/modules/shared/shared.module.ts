@@ -10,6 +10,9 @@ import { ListadoTareasComponent } from './components/listado-tareas/listado-tare
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    ListadoTareasComponent
   ]
 })
 export class SharedModule { }
