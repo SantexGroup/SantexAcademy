@@ -28,19 +28,24 @@ export class LoginComponent implements OnInit {
     this.admin = false;
     this.titulo = '';
     this.mostrarPassword = false;
-    this.organizacionService.getCredencialesOrganizacion.pipe(take(1)).subscribe({
-      next:(res)=> this.credencialesOrganizacion = res
-    });
 
-    this.voluntarioService.getCredencialesVoluntario.pipe(take(1)).subscribe({
-      next:(res)=> this.credencialesVoluntario = res
-    });
+    this.obtenerCredenciales();
     
    }
+   
+   admin:boolean;
+   organizacion:boolean;
+   voluntario:boolean;
+   titulo:string;
+   formLogin:FormGroup;
+   mostrarPassword:boolean;
+   credencialesOrganizacion:Credencial|null = null;
+   credencialesVoluntario:Credencial|null = null;
+   credencialesAdmin:Credencial|null = null;
 
   ngOnInit(): void {
 
-    if(this.credencialesVoluntario !== null || this.credencialesOrganizacion !== null) this.router.navigate(['/index']);
+    this.verificarSesion();
 
 
     this.routeActive.queryParams.subscribe(params=>{
@@ -83,14 +88,6 @@ export class LoginComponent implements OnInit {
     });
 
   }
-  admin:boolean;
-  organizacion:boolean;
-  voluntario:boolean;
-  titulo:string;
-  formLogin:FormGroup;
-  mostrarPassword:boolean;
-  credencialesOrganizacion!:Credencial|null;
-  credencialesVoluntario!:Credencial|null;
 
   iniciarSesion(){
     const credenciales:DatosLogin = {
@@ -147,7 +144,7 @@ export class LoginComponent implements OnInit {
     if(this.admin){
       
       this.adminService.iniciarSesion(credenciales).subscribe({
-        next:(res)=>{
+        next:()=>{
           this.matSnackBar.open('Inicio de sesión exitoso!','OK',{
             duration:3000,
           horizontalPosition:'center',
@@ -180,6 +177,24 @@ export class LoginComponent implements OnInit {
       
     }
 
+  }
+
+  obtenerCredenciales():void{
+    this.organizacionService.getCredencialesOrganizacion.pipe(take(1)).subscribe({
+      next:(res)=> this.credencialesOrganizacion = res
+    });
+
+    this.voluntarioService.getCredencialesVoluntario.pipe(take(1)).subscribe({
+      next:(res)=> this.credencialesVoluntario = res
+    });
+
+    this.adminService.getCredencialesAdmin.pipe(take(1)).subscribe({
+      next:(res)=> this.credencialesAdmin = res
+    });
+  }
+
+  verificarSesion():void{
+    if(this.credencialesVoluntario !== null || this.credencialesOrganizacion !== null || this.credencialesAdmin !== null) this.router.navigate(['/index']);
   }
 
 }
