@@ -21,7 +21,7 @@ async function login(mail, password) {
   const token = jwt.sign({
     id: users.id,
     mail: users.mail
-  }, process.env.JWT_CLAVE, {expiresIn: process.env.JWT_EXPIRATION_TOKEN});
+  }, process.env.JWT_CLAVE);
 
   return [{token}, {users}];
 }
@@ -46,29 +46,35 @@ async function userRegister(firstName, lastName, dni, mail, password, alias, idL
   user.password = password;
   user.alias = alias;
 
-  const userCreated = await user.save();
-  console.log(userCreated);
+  const users = await user.save();
 
   const token = jwt.sign({
-    id: userCreated.id,
-    mail: userCreated.mail
-  }, process.env.JWT_CLAVE, {expiresIn: process.env.JWT_EXPIRATION_TOKEN});
+    id: users.id,
+    mail: users.mail
+  }, process.env.JWT_CLAVE);
 
-  return {token};
+  return [{token}, {users}];
 }
 
 // cambiar estado de vendedor
 
-async function cambiarEstadoVendedor(id, estadoDeVendedor) {
+async function cambiarEstadoVendedor(id) {
+
   const user = await User.findByPk(id);
+
   if (!user) {
     throw new Error('Usuario no encontrado');
   }
 
-  user.estadoDeVendedor = estadoDeVendedor;
-  await user.save();
+  user.estadoDeVendedor = true;
+  const users = await user.save();
 
-  return user;
+  const token = jwt.sign({
+    id: users.id,
+    mail: users.mail
+  }, process.env.JWT_CLAVE);
+
+  return [{token}, {users}];
 }
 
 module.exports = { login, userRegister, cambiarEstadoVendedor };

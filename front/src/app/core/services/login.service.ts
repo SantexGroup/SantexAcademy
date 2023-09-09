@@ -20,13 +20,7 @@ export class LoginService {
     return this.apiService.post<any>('/users/login', body)
   }
 
-  cambioVendedorServ(user: object) {
-    const body = {
-      //id: user[0].id,
-      // id: user[0],
-      //estadoDeVendedor: user.estadoVen,
-      // estadoDeVendedor: estadoVen,
-    }
-    return this.apiService.put('/users/estado-vendedor/:id', body)
+  cambioVendedorServ(userId: string) {
+    return this.apiService.put('/users/estado-vendedor/' + userId);
   }
 }

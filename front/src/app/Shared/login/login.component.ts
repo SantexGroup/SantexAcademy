@@ -19,11 +19,7 @@ export class LoginComponent implements OnInit {
   pasLog: string = '';
   logeadoComprador: boolean = false;
   logeadoVendedor: boolean = false;
-  //usuarioLogeado: boolean = false;
   infoLoc: any[] = [];
-  // infoLocal: any[] = [];
-  // infoLocal: any;
-  // infoLocal: string = '';
   resLogin: any[] = [];
   
 
@@ -95,17 +91,16 @@ export class LoginComponent implements OnInit {
   botonVendedor() {
     if(confirm("¿Seguro que quiere activar su perfil de vendedor?")) {
       let infoLocal = localStorage.getItem('resLog')
-      if (infoLocal && (this.logeadoComprador == true || this.logeadoVendedor == true)) {
+      if (infoLocal && (this.logeadoComprador || this.logeadoVendedor)) {
         let newObject = JSON.parse(infoLocal);
         if (newObject) {
           if (!newObject[1].users.estadoDeVendedor) {
-            const id = newObject[1].users.id;
-            const estadoVen = newObject[1].users.estadoDeVendedor;
-            let user =[id, estadoVen];
-            const cambioVendedor = this.service.cambioVendedorServ(user).subscribe(res => {
+            const userId = newObject[1].users.id;
+            const cambioVendedor = this.service.cambioVendedorServ(userId).subscribe(res => {
             if (cambioVendedor) {
+              console.log(res);
               localStorage.clear();
-              localStorage.setItem( "token", JSON.stringify(res));
+              localStorage.setItem("resLog", JSON.stringify(res));
               this.logeadoVendedor = true;
               this.router.navigateByUrl('/');
             }
@@ -116,25 +111,4 @@ export class LoginComponent implements OnInit {
   }
 }
 
-
-  }
-
-  // botonVendedor() {
-  //   const tokenLocal = localStorage.getItem('token');
-  //   const venLocal = localStorage.getItem('estadoDeVendedor');
-  //   const id = localStorage.getItem('id')
-  //   let estadoVen = false
-  //   if (tokenLocal && venLocal == 'false') {
-  //     estadoVen = true
-  //   }
-  //   const user = {id, estadoVen}
-  //   console.log(user)
-  //   const cambioVendedor = this.service.cambioVendedorServ(user).subscribe(res => {
-  //     if (cambioVendedor) {
-  //       localStorage.clear();
-  //       localStorage.setItem( "token", JSON.stringify(res));
-  //       this.logeadoVendedor = true;
-  //       this.router.navigateByUrl('/');
-  //     }
-  //   })
-  // }  
+}
