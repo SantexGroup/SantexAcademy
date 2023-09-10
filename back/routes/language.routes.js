@@ -7,6 +7,6 @@ router.get('/:id', languageController.languageGet);
 router.get('/all/:id', languageController.languageGetAll);
 router.post('/add', languageController.languageAdd);
 router.put('/update/:id', languageController.languageUpdate);
-// router.delete('/delete/:id', languageController.languageDelete);
+router.delete('/delete/:id', languageController.languageDelete);
 
 module.exports = router;

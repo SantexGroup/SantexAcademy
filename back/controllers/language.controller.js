@@ -74,9 +74,24 @@ async function languageUpdate(
   }
 }
 
+async function languageDelete(
+  req,
+  res,
+  next,
+) {
+  const { id } = req.params;
+  try {
+    await languageService.deleteLanguage(id);
+    res.status(200).send();
+  } catch (error) {
+    next(error);
+  }
+}
+
 module.exports = {
   languageGet,
   languageGetAll,
   languageAdd,
   languageUpdate,
+  languageDelete,
 };
