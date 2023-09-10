@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { PayTransfCourseComponent } from './courses/pay-transf-course/pay-transf-course.component';
 
 
-
 const routes: Routes = [
   {
     path: '',
     component: PayTransfCourseComponent
   }
+
 ]
 
 @NgModule({

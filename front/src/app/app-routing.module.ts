@@ -7,6 +7,12 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent
   },
+  {
+
+    path: 'all-courses',
+    loadChildren: () => import('../app/components/all-courses-routing.module').then(m => m.AllCoursesRoutingModule)
+
+  },
 
   {
 
@@ -20,14 +26,15 @@ const routes: Routes = [
   },
   {
     path: 'pay-transf-course',
-    loadChildren: () => import('../app/components/pay-transf-course.module').then(m => m.PayTransfCourseModule)
+    loadChildren: () => import('./components/pay-transf-course-routing.module').then(m => m.PayTransfCourseModule)
   },
-
   {
-
-    path: 'all-courses',
-    loadChildren: () => import('../app/components/all-courses-routing.module').then(m => m.AllCoursesRoutingModule)
-
+    path: 'success',
+    loadChildren: () => import('./components/courses-mockSuccess-routing.module').then(m => m.CoursesMockSuccessModule)
+  },
+  {
+    path: 'unsuccessfully',
+    loadChildren: () => import('./components/courses-mockUnseccesfully-routing.module').then(m => m.CoursesMockUnseccesfullyModule)
   },
 
   {
