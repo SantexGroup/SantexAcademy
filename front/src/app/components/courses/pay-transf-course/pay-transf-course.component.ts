@@ -38,7 +38,6 @@ export class PayTransfCourseComponent {
   }
 
   validationMock() {
-    console.log('funcion validar')
     if(this.transferOption === 'si'){
       this.router.navigate(['/success']);
     }else{
@@ -47,10 +46,12 @@ export class PayTransfCourseComponent {
   }
   sendTransfer() {
     console.log(this.formPay.value)
-    
-    // if(this.formPay.valid){
-    //   console.log(this.formPay.value)
-    // }
+    this.validationMock()
+    if(this.formPay.valid){
+      console.log(this.formPay.value)
+    }else{
+      alert('llenar los campo')
+    }
   }
 
 
