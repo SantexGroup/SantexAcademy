@@ -126,7 +126,4 @@ export class ReferencesComponent implements OnInit {
       this.referenceList.splice(index, 1);
     });
   }
-
-
-
 }
