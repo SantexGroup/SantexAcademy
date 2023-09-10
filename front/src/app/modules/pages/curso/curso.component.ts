@@ -11,19 +11,20 @@ import { Curso } from '../../cursos/interface/cursos.interface';
 })
 export class CursoComponent implements OnInit {
   @Input() curso: Curso = {
+    id: 0,
     nombre: '',
     descripcion: '',
     imagen: '',
     duracion: 0,
     capacidad: 0,
-    idnivel: null,
+    idnivel: 0,
     requisitos:  '',
     habilitado: true,
-    fechaInicio: new Date,
-    fechafin: null,
-    idusuarioalta: null,
-    estado: true,
-    idusuariomodificacion: null,
+    fechainicio: new Date,
+    fechafin: new Date,
+    idusuarioalta: 0,
+    idusuariomodificacion: 0,
+    estado: '',
     createdAt: new Date,
     updatedAt: new Date,
   }

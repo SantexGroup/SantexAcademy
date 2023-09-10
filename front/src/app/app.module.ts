@@ -9,13 +9,12 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { PagesModule } from './modules/pages/pages.module';
 import { ShareModule } from './modules/share/shares.module';
 import { RegisterModule } from './modules/register/register.module';
-import { EstadoUsuarioDirective } from './directivas/estado-usuario.directive';
+import { ActivardesactivarcursoDirective } from './directivas/activardesactivarcurso.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
-    EstadoUsuarioDirective
   ],
   imports: [
     BrowserModule,

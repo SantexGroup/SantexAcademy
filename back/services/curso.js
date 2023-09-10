@@ -3,7 +3,7 @@ const { Curso } = require('../models');
 const allCurso = async () => {
   const cursos = await Curso.findAll({
     where: {
-      estado: true,
+      estado: 'A',
     },
   });
   return cursos;
@@ -27,7 +27,13 @@ const updateCurso = async (id, body) => {
 
 const deleteCurso = async (id) => {
   const curso = await Curso.findByPk(id);
-  await curso.update({ estado: false });
+  await curso.update({ estado: 'B' });
+  return curso;
+};
+
+const activardesactivarCurso = async (id, estahabilitado) => {
+  const curso = await Curso.findByPk(id);
+  await curso.update({ habilitado: estahabilitado });
   return curso;
 };
 
@@ -37,4 +43,5 @@ module.exports = {
   createCurso,
   updateCurso,
   deleteCurso,
+  activardesactivarCurso,
 };

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Curso } from '../interface/cursos.interface'
 import { environment } from 'src/environments/environment';
+import { Nivel } from 'src/app/models/nivel.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,10 @@ export class CursosService {
 
   getCursos(): Observable<Curso[]>{
     return this.http.get<Curso[]>(`${this.baseUrl}curso`)
+  }
+
+  getNiveles(): Observable<Nivel[]>{
+    return this.http.get<Nivel[]>(`${this.baseUrl}nivel`)
   }
 
   getCursoPorId(id: number): Observable<Curso>{
@@ -34,4 +39,8 @@ export class CursosService {
   deleteCurso( id: number ): Observable<any>{
     return this.http.delete<any>(`${ this.baseUrl }curso/${id}`)
   }
-}
+
+  activardesactivar( curso: Curso): Observable<Curso> {
+    return this.http.put<Curso>(`${ this.baseUrl }curso/${curso.id}`, curso)
+  }
+  }
