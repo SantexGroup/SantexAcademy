@@ -111,7 +111,6 @@ export class ExperiencesComponent implements OnInit {
   getExperience() {
     this._experiencesService.getExperience(this.userData.userId).subscribe((experieceList: Experience[])=>{
       this.experiences = experieceList;
-      console.log(this.experiences);
     });
   }
 
@@ -131,9 +130,7 @@ export class ExperiencesComponent implements OnInit {
       profileId: this.userData.profileId,
     });
 
-    console.log("Elemento: ", element);
     this.experienceId = Number(element.id);
-    console.log("Id del elemeto: ", this.experienceId)
 
   }
 
@@ -153,6 +150,8 @@ export class ExperiencesComponent implements OnInit {
     this._experiencesService.updateExperience(this.experienceId, newDataExperience).subscribe(() => {
       this.getExperience();
     });
+    
+    console.log(this.userData.companies);
 
     this.experienceForm.reset();
 

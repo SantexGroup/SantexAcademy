@@ -10,4 +10,6 @@ export class UserDataService {
   /* userId que se escribe desde el servicio de login */
   userId: number = 0;
 
+  companies: string[] = [];
+
 }

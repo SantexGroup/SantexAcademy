@@ -22,7 +22,7 @@ export class LanguageComponent implements OnInit {
     private dataUser: UserDataService,
     private _languageService: LanguagesService,
     private fb: FormBuilder,
-    public views: NavBarService
+    public views: NavBarService,
   ) {
     this.languageForm = this.fb.group({
       language: '',
@@ -44,7 +44,6 @@ export class LanguageComponent implements OnInit {
   languageGet() {
     this._languageService.getLanguages(this.dataUser.userId).subscribe((languagesList: Language[]) => {
       this.languages = languagesList;
-      console.log(this.languages);
     })
   }
 
