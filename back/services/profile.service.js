@@ -44,7 +44,7 @@ const OPTIONAL = {
 async function getProfileById(id) {
   // Consulta el perfil por su ID, incluyendo las relaciones definidas en User, Experience ...
   const profiles = await Profile.findByPk(id, {
-    include: [USERS, EXPERIENCE, Reference, Language, Skill, FORMATION, OPTIONAL],
+    include: [USERS, EXPERIENCE, Reference, Language, FORMATION, OPTIONAL],
   });
   // En caso de no encontrar el perfil, se lanza un error
   if (!profiles) {
