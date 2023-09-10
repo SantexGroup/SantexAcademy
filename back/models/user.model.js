@@ -70,6 +70,7 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
       },
       pictureLink: DataTypes.STRING,
+      bornDate: DataTypes.DATE,
       deletedAt: DataTypes.DATE,
     },
     {
