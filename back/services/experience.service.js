@@ -95,7 +95,7 @@ async function deleteExperience(id) {
   const experience = await Experience.findByPk(id);
   // Si no esta marcado como deleted, entonces lo marcamos como borrado
   if (experience && experience.deletedAt === null) {
-    Experience.update({
+    await Experience.update({
       deletedAt: new Date(),
     }, {
       where: {

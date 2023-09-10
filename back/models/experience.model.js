@@ -42,7 +42,10 @@ module.exports = (sequelize, DataTypes) => {
     company: DataTypes.STRING,
     description: DataTypes.STRING,
     startDate: DataTypes.DATE,
-    endDate: DataTypes.DATE,
+    endDate: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
     deletedAt: DataTypes.DATE,
   }, {
     sequelize,

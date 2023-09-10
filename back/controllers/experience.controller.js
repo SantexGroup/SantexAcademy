@@ -86,7 +86,7 @@ async function experienceDelete(
     // constante que reserva el resultado de deleteExperience
     await ExperienceService.deleteExperience(id);
     // Retornamos el valor 200 con el mensaje de eliminacion Ok
-    res.status(200).send('Registro de experience eliminado');
+    res.status(200).send();
   } catch (error) {
     // Manejador de errores
     next(error);
