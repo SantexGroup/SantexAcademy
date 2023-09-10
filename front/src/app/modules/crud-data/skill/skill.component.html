@@ -3,7 +3,7 @@
         <form [formGroup]="skillForm" (ngSubmit)="addSkillToProfile()">
             <mat-form-field>
                 <mat-label for="skill">Habilidad:</mat-label>
-                <textarea matInput formControlName="skill" cols="30" rows="5"></textarea>
+                <input matInput formControlName="skill" type="text">
             </mat-form-field>
             <mat-form-field>
                 <mat-label for="level">Nivel:</mat-label>
