@@ -4,6 +4,8 @@
 //
 //   const curso = Convert.toCurso(json);
 
+import { Nivel } from "src/app/models/nivel.interface";
+
 export interface Curso {
   id: number;
   nombre: string;
@@ -21,6 +23,7 @@ export interface Curso {
   estado: string;
   createdAt: Date;
   updatedAt?: Date;
+  nivel: Nivel;
 }
 
 // Converts JSON strings to/from your types

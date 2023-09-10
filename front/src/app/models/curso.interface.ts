@@ -4,6 +4,8 @@
 //
 //   const curso = Convert.toCurso(json);
 
+import { Nivel } from "./nivel.interface";
+
 export interface Curso {
   id:                    number;
   nombre:                string;
@@ -21,6 +23,7 @@ export interface Curso {
   idusuariomodificacion: null;
   createdAt:             Date;
   updatedAt:             Date;
+  nivel: Nivel;
   
   //Descomentar las lineas anteriores y comentar o eliminar las 4 siguientes cuando se implemente DB tabla cursos
   //  id: string;

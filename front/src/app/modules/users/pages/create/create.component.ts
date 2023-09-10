@@ -95,6 +95,7 @@ export class CreateComponent implements OnInit {
     
     if (this.form.valid) {
       if (this.tipoDeUsuarioSeleccionado !== undefined) {
+        this.user.idtipodeusuario = this.tipoDeUsuarioSeleccionado;
         if (this.user.id) {
           // Editar usuario existente
           this.usersService.editUser(this.user)

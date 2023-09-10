@@ -12,6 +12,11 @@ import { NivelsService } from '../../services/nivelsservice';
   styleUrls: ['./create-curso.component.css'],
 })
 export class CreateCursoComponent implements OnInit {
+  nivelNvo: Nivel = {
+    nombre: 'Vacio',
+    descripcion: 'Vacio',
+  };
+
   curso: Curso = {
     id: 0,
     nombre: '',
@@ -29,6 +34,7 @@ export class CreateCursoComponent implements OnInit {
     estado: 'A',
     createdAt: new Date(),
     updatedAt: new Date(),
+    nivel: this.nivelNvo,
   };
 
   nivel: Nivel = {

@@ -7,7 +7,7 @@
 import { TipoDeUsuario } from "./tipodeusuario.interface";
 
 export interface User {
-    id?:        number;
+    id?:       number;
     nombre:    string;
     apellido:  string;
     email:     string;
