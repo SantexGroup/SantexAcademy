@@ -31,6 +31,17 @@ async function products() {
   return productos;
 }
 
+// obterner por id
+async function getProductoById(id) {
+  const articulos = await Products.findByPk(id);
+
+  if (articulos == null) {
+    throw new Error();
+  }
+
+  return articulos;
+}
+
 // categorias
 
 async function getAllCategories() {
@@ -55,4 +66,6 @@ async function chargeProducts(idUsuario, idTipoProducto, nombre, detalles, preci
   return productCreated;
 }
 
-module.exports = { products, getAllCategories, chargeProducts };
+module.exports = {
+  products, getAllCategories, chargeProducts, getProductoById,
+};
