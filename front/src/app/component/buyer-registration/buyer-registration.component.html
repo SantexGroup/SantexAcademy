@@ -1,0 +1,20 @@
+<div class="form-container">
+  <form class="complete-line"><h3>Registrate</h3>
+    <mat-form-field class="mat-form-field my-custom-form-field">
+      <input matInput placeholder="Correo" [(ngModel)]="email" name="email" required
+             (keyup)="validateEmail()">
+      <mat-error *ngIf="!emailIsValid">Correo electrónico inválido.</mat-error>
+    </mat-form-field>
+    
+    
+    <mat-form-field>
+      <input matInput type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input matInput type="password" placeholder="Repetir Contraseña" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="registerUser()">Registrar</button>
+  </form>
+</div>
