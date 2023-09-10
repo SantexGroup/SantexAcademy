@@ -1,21 +1,22 @@
 const express = require('express');
 
 const router = express.Router();
-const { courseController } = require('../controllers');
+const { CourseController } = require('../controllers');
+const { createCourse, updateCourse, checkValidationResult } = require('../middleware/validation.middleware');
 
 // Obtener todos los cursos
-router.get('/', courseController.getAllCourses);
+router.get('/', CourseController.getAllCourses);
 
 // Obtener un curso por su ID
-router.get('/:id', courseController.getCourseById);
+router.get('/:id', CourseController.getCourseById);
 
 // Crear un nuevo curso
-router.post('/', courseController.createCourse);
+router.post('/', createCourse, checkValidationResult, CourseController.createCourse);
 
 // Actualizar un curso existente
-router.put('/:id', courseController.updateCourse);
+router.put('/:id', updateCourse, checkValidationResult, CourseController.updateCourse);
 
 // Eliminar un curso por su ID
-router.delete('/:id', courseController.deleteCourse);
+router.delete('/:id', CourseController.deleteCourse);
 
 module.exports = router;
