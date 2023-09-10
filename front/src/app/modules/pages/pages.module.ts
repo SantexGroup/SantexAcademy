@@ -9,6 +9,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AdminComponent } from './admin/admin.component';//Error encontrado y solucionado por Franco
 import { EstadoUsuarioDirective } from 'src/app/directivas/estado-usuario.directive';
 import { EstadoCursoDirective } from 'src/app/directivas/estado-curso.directive';
+import { ActivardesactivarcursoDirective } from 'src/app/directivas/activardesactivarcurso.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { EstadoCursoDirective } from 'src/app/directivas/estado-curso.directive'
     IntegranteComponent,
     AdminComponent,
     EstadoUsuarioDirective,
-    EstadoCursoDirective
+    EstadoCursoDirective,
+    ActivardesactivarcursoDirective
   ],
   imports: [
     CommonModule,

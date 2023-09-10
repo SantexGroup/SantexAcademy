@@ -60,10 +60,23 @@ const deleteCurso = async (req, res, next) => {
   }
 };
 
+const activardesactivarCurso = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const curso = await cursoService.activardesactivarCurso(id);
+    res.status(200).json(curso);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    next(error);
+  }
+};
+
 module.exports = {
   allCurso,
   getCurso,
   createCurso,
   updateCurso,
   deleteCurso,
+  activardesactivarCurso,
 };

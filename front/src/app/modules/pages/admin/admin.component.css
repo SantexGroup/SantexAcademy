@@ -1,3 +1,16 @@
 .card-footer {
     padding-top: 0; 
 }
+
+/* Estilo para todos los botones */
+.btn-custom {
+    width: 100px; /* Ajusta el ancho deseado */
+    text-align: center; /* Centra el contenido del botón horizontalmente */
+  }
+  
+  /* Estilo específico para los botones de activar/desactivar */
+  .btn-activar-desactivar {
+    width: 100px; /* Ajusta el ancho deseado */
+    text-align: center; /* Centra el contenido del botón horizontalmente */
+  }
+  
