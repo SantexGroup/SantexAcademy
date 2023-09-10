@@ -29,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
       field: 'skills_id',
     },
     level: DataTypes.INTEGER,
+    deletedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
   }, {
     sequelize,
     timestamps: false,

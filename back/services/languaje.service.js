@@ -49,7 +49,7 @@ async function getAllLanguage(id) {
   });
   if (UserLanguage) {
     const languageList = UserLanguage.reduce(
-      (AllLanguages, language) => AllLanguages.concat(language.ProfileLanguages), [],
+      (allLanguages, language) => allLanguages.concat(language.ProfileLanguages), [],
     );
 
     const allLanguage = languageList.map((language) => ({
@@ -94,10 +94,6 @@ async function updateLanguage(id, level, language) {
     },
   });
 
-  /*  // Obtener el ID de la relación entre idioma y perfil
-   const relationId = language.ProfileLanguages.id; */
-
-  // Actualizar la relación entre idioma y perfil
   await ProfileLanguage.update({
     level,
   }, {
