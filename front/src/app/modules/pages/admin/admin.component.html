@@ -64,7 +64,7 @@
                             {{ user.email }}
                         </td>
                         <td>
-                            <!--<span [appEstadoUsuario]="user.estado"></span>-->
+                            <span [appEstadoUsuario]="user.estado"></span>
                         </td>
                         <td class="text-end">
                             <a class="btn btn-sm btn-primary" [routerLink]="['/users/show/', user.id ]">Ver</a>
@@ -135,10 +135,9 @@
                         <th scope="col">Capacidad</th>
                         <th scope="col">Nivel</th>
                         <th scope="col">Requisitos</th>
-                        <th scope="col">Habilidato</th>
+                        <th scope="col">Estado</th>
                         <th scope="col">Fecha de inicio</th>
                         <th scope="col">Fecha de fin</th>
-                        <th scope="col">Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -165,16 +164,13 @@
                             {{ curso.requisitos }}
                         </td>
                         <td>
-                            {{ curso.habilitado }}
+                            <span [appEstadoCurso]="curso.habilitado"></span>
                         </td>
                         <td>
-                            {{ curso.fechaInicio }}
+                            {{ curso.fechaInicio | date: 'dd/MM/yyyy HH:mm' }}
                         </td>
                         <td>
                             {{ curso.fechafin }}
-                        </td>
-                        <td>
-                            <!--<span [appEstadoUsuario]="user.estado"></span>-->
                         </td>
                         <td class="text-end">
                             <a class="btn btn-sm btn-primary" [routerLink]="['/cursos/show/', curso.id ]">Ver</a>
