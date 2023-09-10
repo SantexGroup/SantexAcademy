@@ -102,6 +102,7 @@ export class LoginComponent implements OnInit {
               localStorage.clear();
               localStorage.setItem("resLog", JSON.stringify(res));
               this.logeadoVendedor = true;
+              this.logeadoComprador = false;
               this.router.navigateByUrl('/');
             }
           })     
