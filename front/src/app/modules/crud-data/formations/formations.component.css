@@ -78,6 +78,15 @@ form mat-form-field {
     height: 95vh;
 }
 
+.dates{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dates mat-form-field{
+    width: 45%;
+}
+
 .card {
     margin-bottom: 1rem;
     border: 1px solid #3f6ad8;
