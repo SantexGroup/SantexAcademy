@@ -44,6 +44,7 @@ export class LanguageComponent implements OnInit {
   languageGet() {
     this._languageService.getLanguages(this.dataUser.userId).subscribe((languagesList: Language[]) => {
       this.languages = languagesList;
+      console.log(this.languages)
     })
   }
 
@@ -82,6 +83,7 @@ export class LanguageComponent implements OnInit {
     const newLanguage: Language = {
       language: this.languageForm.get('language')?.value,
       level: this.languageForm.get('level')?.value,
+
     }
 
     this._languageService.updateLanguage(this.languageId, newLanguage).subscribe(() => {
@@ -97,7 +99,9 @@ export class LanguageComponent implements OnInit {
 
   languageDelete(id?:number){
     const index = this.languages.findIndex(language => language.id === id);
+    console.log("index:", index)
     const elementId = Number((this.languages[index]).id)
+    console.log("Elemento", elementId)
     this._languageService.deleteLanguage(elementId).subscribe(() => {
       this.languages.splice(index, 1)
     });
