@@ -71,6 +71,8 @@ export class FormationsComponent implements OnInit {
       startDate: this.formationForm.get('startDate')?.value,
       endDate: this.formationForm.get('endDate')?.value,
       description: this.formationForm.get('description')?.value,
+      FormationStatus: this.formationForm.get('FormationStatus')?.value,
+      FormationType: this.formationForm.get('FormationType')?.value
     }
     this.listFormation.push(newFormation);
     this._formationsServices.addFormation(newFormation).subscribe((data)=>{
@@ -97,9 +99,22 @@ export class FormationsComponent implements OnInit {
     })
   }
   editFormation(formation: Formations) {
-    this.editedFormation = { ...formation }; // Clonar el objeto
-    this.formationForm.patchValue(this.editedFormation); // Cargar datos en el formulario
+    this.editedFormation = { ...formation };
+    
+    
+    this.formationForm.patchValue({
+      statusId: formation.FormationStatus.id,
+      typesId: formation.FormationType.id,
+      title: formation.title,
+      institute: formation.institute,
+      startDate: formation.startDate,
+      endDate: formation.endDate,
+      description: formation.description,
+    });
   }
+ 
+  
+  
    // Función para guardar los cambios realizados en el formulario de edición
    saveFormation() {
     if (this.editedFormation) {
@@ -108,7 +123,7 @@ export class FormationsComponent implements OnInit {
 
       this._formationsServices.updateFormation(updatedFormation).subscribe(() => {
         console.log('Formación actualizada');        
-        this.getListFormations(); // Actualizar la lista después de editar
+        this.getListFormations();
     });
 
       // this.editedFormation = null; // Restablecer la formación editada
