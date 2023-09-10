@@ -13,7 +13,7 @@ const getAllStudents = async () => {
         },
         {
           model: User,
-          attributes: ['name'],
+          attributes: ['UserName'],
         },
         {
           model: Cohort,
@@ -22,7 +22,7 @@ const getAllStudents = async () => {
     });
     return students;
   } catch (error) {
-    // console.error('Error al obtener los estudiantes:', error);
+    console.error('Error al obtener los estudiantes:', error);
     throw new Error('Error al obtener los estudiantes');
   }
 };
@@ -37,7 +37,7 @@ const getStudentById = async (id) => {
         },
         {
           model: User,
-          attributes: ['name'],
+          attributes: ['UserName'],
         },
         {
           model: Cohort,
