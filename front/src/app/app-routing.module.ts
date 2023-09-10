@@ -45,6 +45,8 @@ const routes: Routes = [
   {
     path: 'catalogo-cursos',
     component:CatalogoComponent,
+    canActivate: [ ValidarTokenGuard ],
+    canLoad: [ ValidarTokenGuard ]
   },
   {
     path: 'register',

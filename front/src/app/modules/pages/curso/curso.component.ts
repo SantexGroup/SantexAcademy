@@ -1,7 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Curso } from '../../cursos/interface/cursos.interface';
+import { AuthService } from '../../auth/services/auth.service';
+import { Matricula } from '../../matriculas/interfaces/interfaces';
 // import { Curso } from '../../../models/curso.interface';
+import { MatriculasService } from '../../matriculas/services/matriculas.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +14,13 @@ import { Curso } from '../../cursos/interface/cursos.interface';
   styleUrls: ['./curso.component.css']
 })
 export class CursoComponent implements OnInit {
+
+  get user() {
+    return this.authService.user;
+  }
+
   @Input() curso: Curso = {
+    id: 0,
     nombre: '',
     descripcion: '',
     imagen: '',
@@ -26,9 +36,32 @@ export class CursoComponent implements OnInit {
     idusuariomodificacion: null,
   }
 
-  constructor() { }
+  matricula: Matricula = {
+  cursoId: 0,
+  userId: 0,
+  }
+
+  constructor(private authService: AuthService,
+              private matriculasService: MatriculasService,
+              private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  inscribir(){
+    if (this.user){
+      this.matriculasService.addMatricula({
+        cursoId: this.curso.id!,
+        userId: this.user.id
+      })
+          .subscribe( matricula => {
+            console.log('add :', matricula)
+            this.router.navigate(['/cursos/index' ])
+          })
+    }else{
+      this.router.navigate(['/auth/login'])
+    }
+    
   }
 
 }
