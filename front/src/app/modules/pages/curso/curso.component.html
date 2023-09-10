@@ -1,29 +1,24 @@
-<div class="p-3 m-0 border-0 bd-example m-0 border-0">
-  <div class="card" style="width: 18rem;">
-    <!--<svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img"
-      aria-label="Marcador de posición: límite de imagen" preserveAspectRatio="xMidYMid slice" focusable="false">
-      <title>Placeholder</title>
-      <rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">
-        Image cap</text>
+<!DOCTYPE html>
+<html lang="es">
+<head>
 
-    </svg>-->
-    <img [src]="curso.imagen" class="bd-placeholder-img card-img-top" width="100%" height="180">
-    <div class="card-body">
-      <h5 class="card-title">
-        <font style="vertical-align: inherit;">
-          <font style="vertical-align: inherit;">{{curso.nombre}}</font>
-        </font>
-      </h5>
-      <p class="card-text">
-        <font style="vertical-align: inherit;">
-          <font style="vertical-align: inherit;">{{curso.descripcion}}</font>
-        </font>
-      </p>
-      <a href="#" class="btn btn-primary">
-        <font style="vertical-align: inherit;">
-          <font style="vertical-align: inherit;">Inscribirme</font>
-        </font>
-      </a>
+  <link rel="stylesheet" href="curso.component.css">
+
+</head>
+  <div class="title-cards">
+  </div>
+  <div class="container-card">
+    <div class="card">
+      <figure>
+        <img src="{{curso.imagen}}">
+      </figure>
+      <div class="contenido-card">
+        <h3>{{curso.nombre}}</h3>
+        <p>{{curso.descripcion}}</p>
+        <a href="#">Leer Más</a>
+      </div>
     </div>
   </div>
-</div>
+  <!-- Fin de la tarjeta -->
+
+</html>
