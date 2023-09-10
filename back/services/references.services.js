@@ -1,4 +1,4 @@
-const { Profile, Reference } = require('../models');
+const { ProfileReference, Profile, Reference } = require('../models');
 
 async function getReferences(id) {
   const reference = await Reference.findByPk(id);
@@ -40,6 +40,7 @@ async function createReference(
   email,
   phone,
   company,
+  profileId,
 ) {
   const reference = await Reference.create({
     name,
@@ -47,9 +48,14 @@ async function createReference(
     email,
     phone,
     company,
+    profileId,
   });
 
   if (reference) {
+    await ProfileReference.create({
+      profilesId: profileId,
+      referencesId: reference.id,
+    });
     return reference;
   }
   throw new Error();

@@ -1,6 +1,6 @@
 // Importacion de los models necesarios
 const {
-  Profile, Experience, ExperienceStatus, ExperienceType, Country,
+  ProfileExperience, Profile, Experience, ExperienceStatus, ExperienceType, Country,
 } = require('../models');
 
 // Obtener un experience especifico
@@ -64,6 +64,7 @@ async function addExperience(
   description,
   startDate,
   endDate,
+  profileId,
 ) {
   // Cremos una instancia del modelo Experience, donde guardamos todos los datos.
   const newExperience = await Experience.create({
@@ -75,8 +76,13 @@ async function addExperience(
     description,
     startDate,
     endDate,
+    profileId,
   });
   if (newExperience) {
+    await ProfileExperience.create({
+      profilesId: profileId,
+      experiencesId: newExperience.id,
+    });
     // Retornamos las intancias de ambos modelos.
     return newExperience;
   }
