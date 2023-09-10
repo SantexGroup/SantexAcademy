@@ -4,7 +4,7 @@ import { CrearModificarTareaModalComponent } from '../modales-organizacion/crear
 import { TareaService } from 'src/app/core/services/tarea.service';
 import { Tarea } from 'src/app/core/interfaces/tarea';
 import { MatTableDataSource } from '@angular/material/table';
-import { DetalleTareaComponent } from '../modales-organizacion/detalle-tarea/detalle-tarea.component';
+import { DetalleTareaComponent } from '../../shared/components/detalle-tarea/detalle-tarea.component';
 import Swal from 'sweetalert2';
 
 @Component({

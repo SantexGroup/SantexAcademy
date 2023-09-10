@@ -8,7 +8,7 @@ import { DashboardVoluntarioComponent } from './dashboard-voluntario/dashboard-v
 import { TareasVoluntarioComponent } from './tareas-voluntario/tareas-voluntario.component';
 import { PremiosVoluntarioComponent } from './premios-voluntario/premios-voluntario.component';
 import { DatosVoluntarioComponent } from './datos-voluntario/datos-voluntario.component';
-import { ListadoTareasComponent } from './listado-tareas/listado-tareas.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -18,12 +18,12 @@ import { ListadoTareasComponent } from './listado-tareas/listado-tareas.componen
     TareasVoluntarioComponent,
     PremiosVoluntarioComponent,
     DatosVoluntarioComponent,
-    ListadoTareasComponent
   ],
   imports: [
     CommonModule,
     VoluntariosRoutingModule,
-    CoreModule
+    CoreModule,
+    SharedModule
   ]
 })
 export class VoluntariosModule { }

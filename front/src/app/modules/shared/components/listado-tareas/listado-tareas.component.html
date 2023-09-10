@@ -14,12 +14,13 @@
 
         <div class="card-content">
             <p>{{tarea.description}}</p>
+            <p>Estado: {{tarea.estado|titlecase}}</p>
             
             <p class="inscriptos">Inscriptos: <span>{{tarea.cantInscriptos}}/{{tarea.cantParticipantes}}</span></p>
         </div>
 
-        <div class="card-actions">
-            <button mat-raised-button [disabled]=" tarea.cantInscriptos! >= tarea.cantParticipantes!" color="accent" (click)="inscribirVoluntario(tarea)">INSCRIBIRME</button>
+        <div class="card-actions" >
+            <button mat-raised-button *ngIf="esVoluntario" [disabled]=" tarea.cantInscriptos! >= tarea.cantParticipantes!" color="accent" (click)="inscribirVoluntario(tarea)">INSCRIBIRME</button>
             <button mat-raised-button  color="primary" (click)="mostrarDetalles(tarea)">DETALLES</button>
         </div>
     </div>
