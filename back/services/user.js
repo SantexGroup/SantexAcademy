@@ -3,7 +3,7 @@ const { User } = require('../models');
 const allUser = async () => {
   const users = await User.findAll({
     where: {
-      estado: true,
+      estado: 'A',
     },
   });
   return users;

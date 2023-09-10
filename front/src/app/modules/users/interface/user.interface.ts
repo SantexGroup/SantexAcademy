@@ -4,20 +4,23 @@
 //
 //   const user = Convert.toUser(json);
 
+import { TipoDeUsuario } from "./tipodeusuario.interface";
+
 export interface User {
     id?:        number;
+    nombre:    string;
+    apellido:  string;
+    email:     string;
     username:  string;
     password:  string;
-    apellido:  string;
-    nombre:    string;
-    email:     string;
     confirmPassword: string;
-    estado: boolean;
-    tipodeusuario: number;
+    activoactualmente: boolean;
+    estado: string;
+    idtipodeusuario: number;
+    tipodeusuario: TipoDeUsuario;
     createdAt?: Date;
     updatedAt?: Date;
 }
-
 // Converts JSON strings to/from your types
 export class Convert {
     public static toUser(json: string): User[] {

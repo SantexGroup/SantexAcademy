@@ -24,6 +24,7 @@ export class AdminComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log("Llamando a obtener todos los usuarios....")
     this.usersService.getUsers().subscribe({
       next: (response) => {
         console.log(response);

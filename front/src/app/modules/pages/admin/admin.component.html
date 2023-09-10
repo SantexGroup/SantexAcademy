@@ -63,10 +63,10 @@
                             {{ user.email }}
                         </td>
                         <td>
-                            {{ user.email }}
+                           
                         </td>
                         <td>
-                            <span [appEstadoUsuario]="user.estado"></span>
+                            <span [appEstadoUsuario]="user.activoactualmente"></span>
                         </td>
                         <td class="text-end">
                             <a class="btn btn-sm btn-primary" [routerLink]="['/users/show/', user.id]">Ver</a>
