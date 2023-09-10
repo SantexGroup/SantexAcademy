@@ -62,7 +62,7 @@ async function referenceDelete(
   const { id } = req.params;
   try {
     await ReferenceService.deleteReference(id);
-    res.status(200).send('Referencia eliminada correctamente');
+    res.status(200).send();
   } catch (error) {
     next(error);
   }

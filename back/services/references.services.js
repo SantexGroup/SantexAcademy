@@ -59,7 +59,7 @@ async function deleteReference(id) {
   const reference = await Reference.findByPk(id);
 
   if (reference && reference.deletedAt === null) {
-    Reference.update({
+    await Reference.update({
       deletedAt: new Date(),
     }, {
       where: {
@@ -67,7 +67,7 @@ async function deleteReference(id) {
       },
     });
   } else {
-    throw new Error('La referencia no existe');
+    throw new Error();
   }
 }
 
