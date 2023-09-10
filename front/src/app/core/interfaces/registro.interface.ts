@@ -7,9 +7,10 @@ export interface registroInterface {
   },
   profile: {
     id:number,
+    userId: number,
   },
   rolesId:number,
-  userId: number,
+  
   profileName: string,
   updatedAt?: Date,
 }
