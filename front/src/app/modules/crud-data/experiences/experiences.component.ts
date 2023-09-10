@@ -165,6 +165,8 @@ export class ExperiencesComponent implements OnInit {
     this._experiencesService.deleteExperience(elementId).subscribe(() => {
       this.experiences.splice(index, 1);
     });
+
+    this.experienceForm.reset();
   }
 
 }

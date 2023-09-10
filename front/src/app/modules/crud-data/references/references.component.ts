@@ -125,5 +125,7 @@ export class ReferencesComponent implements OnInit {
     this._referenceService.deleteReference(elementId).subscribe(()=>{
       this.referenceList.splice(index, 1);
     });
+
+    this.referenceForm.reset();
   }
 }
