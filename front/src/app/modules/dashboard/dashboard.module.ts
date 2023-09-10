@@ -9,7 +9,7 @@ import { CarouselComponent } from 'src/app/modules/dashboard/carousel/carousel.c
 @NgModule({
   declarations: [
     DashboardPageComponent,
-    CarouselComponent
+    CarouselComponent,
   ],
   imports: [
     CommonModule,

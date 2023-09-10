@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { Curso } from '../../cursos/interface/cursos.interface';
 // import { Curso } from '../../../models/curso.interface';
 
