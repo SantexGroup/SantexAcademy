@@ -4,6 +4,7 @@ const administratorModel = require('../models/administrator-model');
 const { sequelize } = require('../models');
 // eslint-disable-next-line import/order
 const bcrypt = require('bcrypt');
+const models = require('../models/index');
 
 const Administrator = administratorModel(sequelize, DataTypes);
 
@@ -39,4 +40,16 @@ async function create(email, password) {
   return adminCreated;
 }
 
-module.exports = { login, create };
+async function createAdminDefault(email = 'admin@gmail.com', password = 'Admin123!') {
+  const admin = await models.admin.findOne({
+    where: {
+      email,
+    },
+  });
+  // eslint-disable-next-line no-useless-return
+  if (admin !== null) return;
+
+  await create(email, password);
+}
+
+module.exports = { login, create, createAdminDefault };

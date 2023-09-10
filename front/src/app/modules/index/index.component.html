@@ -8,7 +8,7 @@
         <mat-nav-list >
             <a mat-list-item class="icono-menu" (click)="redireccionarA('/')" >Inicio</a>
         </mat-nav-list>
-        <div *ngIf="(credencialesOrganizacion$|async) === null && (credencialesVoluntario$|async) === null;else sesionIniciada">
+        <div *ngIf="(credencialesOrganizacion$|async) === null && (credencialesVoluntario$|async) === null && (credencialesAdmin$|async) === null;else sesionIniciada">
             
             <mat-nav-list >
                 <a mat-list-item class="icono-menu" (click)="irLoginVoluntarios()" >Login Voluntarios</a>
@@ -27,15 +27,18 @@
         </div>
 
         <ng-template #sesionIniciada>
-            <mat-nav-list *ngIf="(credencialesOrganizacion$|async) !== null;else voluntario" >
+            <mat-nav-list *ngIf="(credencialesOrganizacion$|async) !== null" >
                 <a mat-list-item class="icono-menu" (click)="redireccionarA('/organizaciones')" >Dashboard</a>
             </mat-nav-list>
-            <ng-template #voluntario>
+            
+            <mat-nav-list *ngIf="(credencialesVoluntario$|async)!== null ">
+                <a mat-list-item class="icono-menu" (click)="redireccionarA('/voluntarios')" >Dashboard</a>
+            </mat-nav-list>
 
-                <mat-nav-list>
-                    <a mat-list-item class="icono-menu" (click)="redireccionarA('/voluntarios')" >Dashboard</a>
-                </mat-nav-list>
-            </ng-template>
+            <mat-nav-list *ngIf="(credencialesAdmin$|async)!== null">
+                <a mat-list-item class="icono-menu" (click)="redireccionarA('/admin')" >Dashboard</a>
+            </mat-nav-list>
+            
         </ng-template>
         <mat-nav-list>
             <a mat-list-item class="icono-menu" (click)="sideNav.toggle()" >Cerrar </a>

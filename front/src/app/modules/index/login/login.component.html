@@ -40,7 +40,7 @@
         
     </form>
  
-        <p >¿No tienes una cuenta? <span class="inicia-sesion" (click)="irRegistro()" >Registrate</span></p>
+        <p *ngIf="!admin" >¿No tienes una cuenta? <span class="inicia-sesion" (click)="irRegistro()" >Registrate</span></p>
 
        
 
