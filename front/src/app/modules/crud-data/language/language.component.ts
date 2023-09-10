@@ -82,7 +82,6 @@ export class LanguageComponent implements OnInit {
     const newLanguage: Language = {
       language: this.languageForm.get('language')?.value,
       level: this.languageForm.get('level')?.value,
-      profileId: this.dataUser.profileId,
     }
 
     this._languageService.updateLanguage(this.languageId, newLanguage).subscribe(() => {

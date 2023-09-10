@@ -16,7 +16,12 @@ async function getLanguage(id) {
     }],
   });
   if (language) {
-    return language;
+    const thisLanguage = {
+      id: language.Language.id,
+      level: language.level,
+      language: language.Language.language,
+    };
+    return thisLanguage;
   }
   throw new Error(' Lenguaje no encontrado');
 }
