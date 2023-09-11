@@ -22,6 +22,10 @@ const routes: Routes = [
     component: ExperiencesComponent
   },
   {
+    path: 'referencias',
+    component: ReferencesComponent
+  },
+  {
     path: 'formaciones',
     component: FormationsComponent
   },
