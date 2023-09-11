@@ -58,5 +58,16 @@ export class ListadoTareasComponent implements OnInit, OnChanges {
   inscribirVoluntario(tarea:Tarea):void{
     this.tareaInscripcion.emit(tarea);
   }
+
+  verificarInscripcion(tarea:Tarea):boolean{
+    //Consultar si afecta mucho el rendimiento
+    let resultado = false;
+    if(this.datosVoluntario){
+
+      resultado = this.datosVoluntario.tareas?.some(t=> t.id === tarea.id)!;
+    }
+    return resultado;
+
+  }
   
 }
