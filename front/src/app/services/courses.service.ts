@@ -41,23 +41,7 @@ export class CoursesService {
 
   getEndDate() {
 
-    const startDate = new Date(this.courses.start_date);
-    const duration = this.courses.duration;
-
-  if (!isNaN(startDate.getTime()) && !isNaN(duration)) {
-    const endDate = new Date(startDate);
-    endDate.setDate(startDate.getDate() + duration);
-
-    console.log('startDate:', startDate);
-    console.log('duration:', duration);
-    console.log('endDate:', endDate);
-
-    this.fechaFinalizacion = endDate;
-    return this.fechaFinalizacion;
-  } else {
-    console.error('Valores de fecha o duración no válidos.');
-    return null; // O puedes devolver un valor por defecto o lanzar una excepción según tus necesidades
-  }
+    return new Date(this.courses.start_date).setDate(new Date(this.courses.start_date).getDate() + this.courses.duration);
 
   }
 
