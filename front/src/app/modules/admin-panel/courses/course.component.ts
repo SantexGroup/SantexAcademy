@@ -10,6 +10,7 @@ import { CourseService } from 'src/app/core/services/course.service';
 })
 export class CourseComponent implements OnInit {
   courses: Course[] = [];
+  id : number= 0;
   constructor(private courseService: CourseService, private router: Router) {
     this.getCourses();
   }
@@ -24,13 +25,15 @@ export class CourseComponent implements OnInit {
     );
   }
 
-  deleteCourse(id: number) {
-    this.courseService.deleteCourse(id).subscribe(
+  deleteCourse() {
+    this.courseService.deleteCourse(this.id).subscribe(
       (res) => {
         window.location.reload();
       },
       (err) => console.log(err)
     );
   }
-
+  selectId(id: number){
+    this.id = id
+  }
 }

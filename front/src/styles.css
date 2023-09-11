@@ -4,7 +4,8 @@
     --colorBlue:#3C5A9A;
 }
 body{
-    background-color: #0011ff;
+    background: url(../src/assets/img/fondo.png);
+    
 }
 .boton{
     border: none;
@@ -22,4 +23,7 @@ body{
 .boton:hover{
     transform: scale(1.01);
     background: rgb(231, 150, 0);
+}
+.userSelect{
+    user-select: none; 
 }

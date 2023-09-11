@@ -9,6 +9,7 @@ import { ScheduleService } from 'src/app/core/services/schedule.service';
 })
 export class ScheduleComponent implements OnInit {
   schedules: Schedule[] = [];
+  id:number=0;
   constructor(private scheduleService: ScheduleService, private router: Router) { 
     this.getCategories();
   }
@@ -24,13 +25,15 @@ export class ScheduleComponent implements OnInit {
     );
   }
 
-  deleteSchedule(id: number) {
-    this.scheduleService.deleteSchedule(id).subscribe(
+  deleteSchedule() {
+    this.scheduleService.deleteSchedule(this.id).subscribe(
       (res) => {
         window.location.reload();
       },
       (err) => console.log(err)
     );
   }
-
+  selectId(id: number){
+    this.id = id
+  }
 }

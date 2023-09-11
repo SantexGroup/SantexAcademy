@@ -9,6 +9,7 @@ import { CourseCategory } from 'src/app/core/interfaces/courseCategory';
 })
 export class CategoryComponent implements OnInit {
   categories: CourseCategory[] = [];
+  id:number=0;
   constructor(private courseCategoryService: CourseCategoryService, private router: Router) { 
     this.getCategories();
   }
@@ -24,12 +25,15 @@ export class CategoryComponent implements OnInit {
     );
   }
 
-  deleteCourseCategory(id: number) {
-    this.courseCategoryService.deleteCourseCategory(id).subscribe(
+  deleteCourseCategory() {
+    this.courseCategoryService.deleteCourseCategory(this.id).subscribe(
       (res) => {
         window.location.reload();
       },
       (err) => console.log(err)
     );
+  }
+  selectId(id: number){
+    this.id = id
   }
 }

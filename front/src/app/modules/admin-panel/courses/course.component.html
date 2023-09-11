@@ -1,32 +1,23 @@
-<div class="container-fluid" style="padding: 0">
+<div class="container-fluid userSelect" style="padding: 0">
   <div
     class="mt-5"
-    style="background-color: #fff; padding: 20px 30px; border-radius: 10px"
+    style="background-color: #fff; padding: 20px 30px; border-radius: 10px;margin-left: 15px;margin-right: 15px;"
   >
     <div class="row">
-      <div class="col-lg-8 col-md-10 col-sm-12">
-        <button class="boton" routerLink="/admin/panel">volver</button>
-      </div>
-      <div class="col-lg-4 col-md-2 col-sm-12">
-        <button 
-          class="boton"
-          style="width: 120px;"
-          routerLink="addCourse"
-        >
-          Agregar
-        </button>
-      </div>
+        <button class="boton" routerLink="/admin/panel">Volver</button>
+
+
     </div>
     <table class="table rounded">
       <thead>
         <tr>
-          <th scope="col fs-1">Curso</th>
-          <th scope="col">
+          <th scope="col" style="font-size: 25px;"> <b>Curso</b> </th>
+          <th scope="col" style="font-size: 20px;">
             Activo
             <i class="fa fa-check-circle"></i>
           </th>
-          <th scope="col">Editar</th>
-          <th scope="col">Eliminar</th>
+          <th scope="col" style="font-size: 20px;"> <b></b> Editar</th>
+          <th scope="col" style="font-size: 20px;"> <b></b> Eliminar</th>
         </tr>
       </thead>
       <tbody *ngFor="let course of courses">
@@ -86,10 +77,14 @@
             </button>
           </th>
           <th scope="row">
+            <!-- Button trigger modal -->
             <button
+              type="button"
               class="btn border rounded"
-              (click)="deleteCourse(course.id)"
               style="background-color: var(--colorOrange)"
+              data-bs-toggle="modal"
+              data-bs-target="#delete"
+              (click)="selectId(course.id)"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -104,9 +99,53 @@
                 />
               </svg>
             </button>
+
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="delete"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <p>¿Está seguro que desea <b>desactivar</b> este curso?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="boton col"
+                      data-bs-dismiss="modal"
+                    >
+                      Volver
+                    </button>
+                    <button
+                      type="button"
+                      class="boton col"
+                      (click)="deleteCourse()"
+                    >
+                      Aceptar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </th>
         </tr>
       </tbody>
     </table>
+    <div class="row">
+    <div class="col-lg-4 col-md-2 col-sm-12">
+      <button 
+        class="boton"
+        style="width: 120px;"
+        routerLink="addCourse"
+      >
+        Agregar
+      </button>
+    </div>
+  </div>
   </div>
 </div>

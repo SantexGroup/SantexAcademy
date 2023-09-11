@@ -1,9 +1,13 @@
-  <div class="row mt-3 offset-lg-2">
-    <div class="card text-white mb-3" style="max-width: 50rem; background-color: var(--colorBlue);">
-      <div class="card-header text-center">Editar curso</div>
-      <div class="card-body">
-        <form [formGroup]="form" (ngSubmit)="update()">
-          <label class="form-label">Nombre</label>
+<div class="row offset-lg-2 offset-md-1 offset-sm-0 userSelect">
+  <div
+    class="card text-white mb-3"
+    style="max-width: 50rem; background-color: var(--colorBlue)"
+  >
+    <div class="card-header text-center fs-3" style="text-shadow: 2px 2px 5px #000000;"><b>EDITAR CURSO</b></div>
+    <div class="card-body">
+      <form [formGroup]="form" (ngSubmit)="update()">
+        <div class="row mb-3">
+          <label class="form-label mb-0 p-0"><b>Nombre</b></label>
           <input
             formControlName="name"
             type="text"
@@ -15,10 +19,14 @@
               form.get('name')?.hasError('required') &&
               form.get('name')?.touched
             "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px"
           >
             El campo nombre es <strong>requerido</strong>
           </span>
-          <label class="form-label">description</label>
+        </div>
+        <div class="row mb-3">
+          <label class="form-label mb-0 p-0"><b>Descripción</b></label>
           <input
             formControlName="description"
             type="text"
@@ -30,10 +38,14 @@
               form.get('description')?.hasError('required') &&
               form.get('description')?.touched
             "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px"
           >
             El campo descripcion es <strong>requerido</strong>
           </span>
-          <label class="form-label">image</label>
+        </div>
+        <div class="row mb-3">
+          <label class="form-label mb-0 p-0"><b>Imagen</b></label>
           <input
             formControlName="image"
             type="text"
@@ -45,10 +57,16 @@
               form.get('image')?.hasError('required') &&
               form.get('image')?.touched
             "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px"
           >
-            El campo descripcion es <strong>requerido</strong>
+            El campo imagen es <strong>requerido</strong>
           </span>
-          <label class="form-label">maxStudents</label>
+        </div>
+        <div class="row mb-3">
+          <label class="form-label mb-0 p-0"
+            ><b>Cantidad de estudiantes</b></label
+          >
           <input
             formControlName="maxStudents"
             type="number"
@@ -60,10 +78,14 @@
               form.get('maxStudents')?.hasError('required') &&
               form.get('maxStudents')?.touched
             "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px"
           >
-            El campo descripcion es <strong>requerido</strong>
+            El campo cantidad de estudiantes es <strong>requerido</strong>
           </span>
-          <label class="form-label">start</label>
+        </div>
+        <div class="row mb-3">
+          <label class="form-label mb-0 p-0"><b>Comienzo</b></label>
           <input
             formControlName="start"
             type="text"
@@ -75,10 +97,14 @@
               form.get('start')?.hasError('required') &&
               form.get('start')?.touched
             "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px"
           >
-            El campo descripcion es <strong>requerido</strong>
+            El campo comienzo es <strong>requerido</strong>
           </span>
-          <label class="form-label">end</label>
+        </div>
+        <div class="row mb-3">
+          <label class="form-label mb-0 p-0"><b>Finalización</b></label>
           <input
             formControlName="end"
             type="text"
@@ -89,10 +115,14 @@
             *ngIf="
               form.get('end')?.hasError('required') && form.get('end')?.touched
             "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px"
           >
-            El campo descripcion es <strong>requerido</strong>
+            El campo finalización <strong>requerido</strong>
           </span>
-          <label class="form-label">price</label>
+        </div>
+        <div class="row mb-3">
+          <label class="form-label mb-0 p-0"><b>Precío</b></label>
           <input
             formControlName="price"
             type="number"
@@ -104,10 +134,14 @@
               form.get('price')?.hasError('required') &&
               form.get('price')?.touched
             "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px"
           >
-            El campo descripcion es <strong>requerido</strong>
+            El campo precío es <strong>requerido</strong>
           </span>
-          <label class="form-label">requirement</label>
+        </div>
+        <div class="row mb-3">
+          <label class="form-label mb-0 p-0"><b>Requisitos</b></label>
           <input
             formControlName="requirement"
             type="text"
@@ -119,10 +153,14 @@
               form.get('requirement')?.hasError('required') &&
               form.get('requirement')?.touched
             "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px"
           >
-            El campo descripcion es <strong>requerido</strong>
+            El campo requisitos es <strong>requerido</strong>
           </span>
-          <label class="form-label">CourseCategoryName</label>
+        </div>
+        <div class="row mb-3">
+          <label class="form-label mb-0 p-0"><b>Categoria del curso</b></label>
           <select
             formControlName="CourseCategoryName"
             name="CourseCategoryName"
@@ -133,32 +171,38 @@
               <h1>{{ category.name }}</h1>
             </option>
           </select>
+          <span
+            *ngIf="
+              form.get('CourseCategoryName')?.hasError('required') &&
+              form.get('CourseCategoryName')?.touched
+            "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px"
+          >
+            El campo categoria es <strong>requerido</strong>
+          </span>
+        </div>
+        <input
+          formControlName="active"
+          type="checkbox"
+          class="form-check-input mt-2"
+          placeholder="Ingrese si se encuentra activo"
+        />
+        <label class="form-label p-1"> Esta activo el curso?</label>
 
-          <input
-            formControlName="active"
-            type="checkbox"
-            class="form-check-input mt-2"
-            placeholder="Ingrese si se encuentra activo"
-          />
-          <label class="form-label p-1"> Esta activo el curso?</label>
-
-          <div class="row mt-2 text-center">
-            <div class="col-lg-6">
-              <button class="boton" routerLink="/admin/panel/courses">Volver</button>
-
-            </div>
-            <div class="col-lg-6">
-              <button
-                [disabled]="form.invalid"
-                type="submit"
-                class="boton"
-              >
-                Aceptar
-              </button>
-            </div>
+        <div class="row mt-2 text-center">
+          <div class="col-lg-6">
+            <button class="boton" routerLink="/admin/panel/courses">
+              Volver
+            </button>
           </div>
-        </form>
-      </div>
+          <div class="col-lg-6">
+            <button [disabled]="form.invalid" type="submit" class="boton">
+              Aceptar
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-
+</div>

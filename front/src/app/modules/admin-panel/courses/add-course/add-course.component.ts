@@ -94,7 +94,7 @@ export class AddCourseComponent {
       teacher: this.form.value.teacher,
       CourseCategoryName: this.form.value.CourseCategoryName,
     };
-    this.courseService.putCourse(this.course, this.id).subscribe(
+    this.courseService.postCourse(this.course).subscribe(
       (data) => {
         this.router.navigate(['/admin/panel/courses']);
       },
