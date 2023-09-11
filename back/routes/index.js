@@ -7,6 +7,7 @@ const errors = require('../middleware/error_handler.middleware');
 const userRoutes = require('./user');
 const direccionRoutes = require('./direccion');
 const productsRoutes = require('./products-route');
+const alquileresVendedorRoutes = require('./alquileres-vendedor-route');
 
 const app = Express();
 
@@ -14,6 +15,7 @@ const app = Express();
 app.use('/users', userRoutes);
 app.use('/productos', productsRoutes);
 app.use('/direccion', direccionRoutes);
+app.use('/alquileres-vendedor', alquileresVendedorRoutes);
 
 // use=
 app.use('/ping', (req, res) => {
@@ -23,6 +25,7 @@ app.use('/ping', (req, res) => {
 });
 
 app.use('/user', userRoutes);
+app.use('/vendedor', alquileresVendedorRoutes);
 app.use('/', productsRoutes);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
