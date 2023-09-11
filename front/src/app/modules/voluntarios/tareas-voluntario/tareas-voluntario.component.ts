@@ -44,7 +44,7 @@ export class TareasVoluntarioComponent implements OnInit {
                 `Te has inscripto a la tarea: ${tarea.name}`,
                 'success'
               );
-              this.datosVoluntario = res;
+              this.voluntarioService.setDatosVoluntario = res;
             },
             error:()=>{
               Swal.fire(
