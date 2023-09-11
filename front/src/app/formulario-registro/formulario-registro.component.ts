@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { MensajeErrorComponent } from '../mensaje-error/mensaje-error.component';
 
-interface Genero {
-  genero: string;
+interface Generos {
+  generos: string;
 }
 
 @Component({
@@ -16,12 +15,12 @@ export class FormularioRegistroComponent implements OnInit {
 
   hide = true;
 
-  generoControl = new FormControl<Genero | null>(null, Validators.required);
+  generoControl = new FormControl<Generos | null>(null, Validators.required);
   selectFormControl = new FormControl('', Validators.required);
-  genero: Genero[] = [
+  generos: Generos[] = [
 
-    {genero: 'Masculino'},
-    {genero: 'Femenino'},
+    {generos: 'Masculino'},
+    {generos: 'Femenino'},
   ];
 
 
@@ -36,12 +35,20 @@ export class FormularioRegistroComponent implements OnInit {
       password: ['', [Validators.required]],
       confirmarPassword: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      genero: ['', [Validators.required]],
+      generos: ['', [Validators.required]],
 
-    });
+    }, { validator: this.checkPasswords });
 
 
   }
+
+  checkPasswords(group: FormGroup) {
+    const password = group.get('password')?.value;
+    const confirmPassword = group.get('confirmarPassword')?.value;
+  
+    return password === confirmPassword ? null : { notMatching: true };
+  }
+  
 
   
 
