@@ -44,7 +44,7 @@ export class TareasOrganizacionComponent implements OnInit {
 
   mostrarTareas():void{
    
-    this.tareaService.getTareas().subscribe({
+    this.tareaService.getTareasPorIdOrg().subscribe({
       next:(res)=>{
         this.dataSource.data = res;
       },

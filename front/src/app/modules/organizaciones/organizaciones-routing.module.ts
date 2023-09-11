@@ -4,6 +4,7 @@ import { OrganizacionesComponent } from './organizaciones.component';
 import { DashboardOrganizacionComponent } from './dashboard-organizacion/dashboard-organizacion.component';
 import { DatosOrganizacionComponent } from './datos-organizacion/datos-organizacion.component';
 import { TareasOrganizacionComponent } from './tareas-organizacion/tareas-organizacion.component';
+import { TareasComponent } from './tareas/tareas.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
     {
       path:'mis-tareas',
       component:TareasOrganizacionComponent
+    },
+    {
+      path:'tareas',
+      component:TareasComponent
     }
   ]
   },
