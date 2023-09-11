@@ -1,6 +1,7 @@
 // Importacion de userService para inyectar en el controlador.
 
 const userService = require('../services/user.service');
+const bcrypt = require('bcrypt'); //* prueba
 //
 // controlador que redirige al servicio para registrar un usuario
 async function recordUser(req, res) {
@@ -14,8 +15,13 @@ async function recordUser(req, res) {
     email,
     phone,
   } = req.body;
+  
+  //* prueba
+  const salt = await bcrypt.genSalt();
+  const passwordCrypt = await bcrypt.hash(password, salt);
+
   // Llamas al servicio para registrar un usuario
-  const user = await userService.recordUser(rolesId, nick, password, name, lastName, email, phone);
+  const user = await userService.recordUser(rolesId, nick, passwordCrypt/* variable de prueba */, name, lastName, email, phone);
   // Enviar respuesta con el usuario registrado
   res.status(200).send(user);
 }
@@ -57,6 +63,8 @@ async function updateUser(req, res, next) {
     // Extraer el ID del usuario de los parámetros de la solicitud
     const { id } = req.params;
     const userData = req.body;
+
+    console.log("Desde user.controller", userData)
 
     // Llamar al servicio para actualizar los datos del usuario
     const user = await userService.updateUser(id, userData);

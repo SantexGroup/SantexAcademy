@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
       models.User.hasOne(models.Rol, { foreignKey: 'id' });
     }
 
-    async save() {
+    //* se comenta para realizar prueba
+/*     async save() {
       // Encripta la contraseña antes de ser guardada.
       // Utiliza bcrypt, para generar el hash de la contraseña
       const salt = await bcrypt.genSalt();
@@ -24,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
 
       await super.save();
       return this;
-    }
+    } */
 
     /**
      * Verifica si una contraseña coincide con la contrase a encriptada.

@@ -8,5 +8,5 @@ export interface userInterface {
   nick: string;
   password: string;
   bornDate?: Date;
-  pitureLink?: string;
+  pictureLink?: string;
 }

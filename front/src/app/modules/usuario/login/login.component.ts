@@ -32,7 +32,7 @@ export class LoginComponent {
 
   loginForm = this.fb.group({
     // TODO: ELIMINAR VALORES DE LOS CAMPOS
-    nick: ['javierCV', [ Validators.required ]],
+    nick: ['javkhall2', [ Validators.required ]],
     password: ['qwerty', [ Validators.required, Validators.minLength(6) ]],
   })
   

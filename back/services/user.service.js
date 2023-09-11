@@ -83,7 +83,7 @@ async function getUser(id) {
 }
 
 // Servicio que actualiza datos de un usuario
-async function updateUser(id, data) {
+async function updateUser(id, { name, lastName, phone, email, dateBorn, pictureLink }) {
   // Buscar al usuario en la base de datos por su ID
   const user = await User.findByPk(id);
 
@@ -91,7 +91,17 @@ async function updateUser(id, data) {
     throw new Error('El ID del usuario no existe en la base de datos');
   }
   // Guardar el usuario actualizado
-  const userEdited = await user.update(data);
+  //* Se edita funcion
+  //* const userEdited = await user.update(data);
+  const userEdited = await user.update({ 
+    name: name,
+    lastName: lastName,
+    email: email,
+    phone: phone,
+    dateBorn: dateBorn,
+    pictureLink: pictureLink,
+  });
+
   // Devolver el objeto del usuario actualizado
   return userEdited;
 }

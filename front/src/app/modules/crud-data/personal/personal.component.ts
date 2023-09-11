@@ -14,7 +14,7 @@ import { UserService } from 'src/app/core/services/usuario.service';
 
 export class PersonalComponent implements OnInit {
   mensajeError: string = "";
-  user: any = {} as userInterface;
+  user = {} as userInterface;
 
   constructor(
     private fb: FormBuilder,
@@ -38,7 +38,7 @@ export class PersonalComponent implements OnInit {
     lastName: [''],
     email: [''],
     phone: ['', [Validators.maxLength(10)]],
-    bornDate: [''],
+    bornDate: '',
     pictureLink: [''],
   })
 
@@ -50,8 +50,8 @@ export class PersonalComponent implements OnInit {
           lastName: data.lastName,
           email: data.email,
           phone: data.phone,
-          bornDate: String(data.bornDate),
-          pictureLink: data.pitureLink
+          bornDate: String(data.bornDate?.getDate),
+          pictureLink: data.pictureLink
         })
         this.user = data; 
       },
@@ -67,12 +67,15 @@ export class PersonalComponent implements OnInit {
   
   updateUser(personalForm: FormGroup){ 
     //** ???
-    this.user.name = personalForm.value.firstName;
-    this.user.lastName = personalForm.value.lastName;
-    this.user.email = personalForm.value.email;
-    this.user.phone = personalForm.value.phone;
-    this.user.bornDate = new Date(personalForm.value.bornDate);
-    this.user.pitureLink = personalForm.value.pictureLink;
+    this.user.name = personalForm.get('firstName')?.value;
+    this.user.lastName = personalForm.get('lastName')?.value;
+    this.user.email = personalForm.get('email')?.value;
+    this.user.phone = personalForm.get('phone')?.value;
+    this.user.bornDate = personalForm.get('bornDate')?.value;
+    this.user.pictureLink = personalForm.get('pictureLink')?.value;
+
+    console.log("formulario personal", personalForm)
+    console.log("contenido user", this.user)
 
     this.userService.updateUser(this.userData.userId, this.user).subscribe({
       next: (data) => { console.log (data) },
