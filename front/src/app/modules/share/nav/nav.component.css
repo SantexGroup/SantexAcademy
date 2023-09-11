@@ -1,22 +1,27 @@
 .navbar-brand {
-  color: #F77F00;
+  color: #ff6501;
 }
 .nav-link {
 color: #f7efe5;
 }
 .nav-item:hover, .nav-item-2:hover {
 	background:linear-gradient(to bottom, #fcebd5 5%, #f7efe5 100%);
-	background-color:#033E8C;
+	background-color:#0f226d;
   border-color:cadetblue ;
   border-radius:6px;
 }
 
 .navbar-custom {
-  background-color:#3A0CA3;
+  background-color:#0f226d;
 
 }
+
+.nav-link.active {
+  color: #ff6501;
+}
+
 .nav-link:hover {
-  color:#F24405;
+  color:#ff6501 ;
   font-weight: bold;
 }
 
@@ -25,9 +30,8 @@ color: #f7efe5;
 }
 
 .container-fluid{
-  background-color:#3A0CA3; 
+  background-color:#0f226d; 
 }
-
 
 
 

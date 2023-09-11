@@ -6,7 +6,7 @@ import { IntegranteComponent } from './modules/pages/integrante/integrante.compo
 import { CatalogoComponent } from './modules/pages/catalogo/catalogo.component';
 import { RegisterformComponent } from './modules/register/registerform/registerform.component';
 import { ErrorPageComponent } from './modules/share/error-page/error-page.component';
-
+import { PerfilAlumnoComponent } from './modules/pages/perfil-alumno/perfil-alumno.component';
 const routes: Routes = [
   {
     path: 'users',
@@ -35,6 +35,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterformComponent
+  },
+
+  {
+     path: 'perfil-alumno',
+     component: PerfilAlumnoComponent, 
   },
   {
     path: '',

@@ -1,0 +1,103 @@
+
+/* Aplicar box-sizing: border-box a todos los elementos dentro del componente */
+.perfil-alumno-container * {
+    box-sizing: border-box;
+    padding-top: 10rem;
+  padding-bottom: 11rem;
+  padding-right: 10rem; ;
+  }
+  
+  /* Estilo adicional para otros elementos en el perfil del alumno */
+  .perfil-alumno-titulo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .perfil-alumno-texto {
+    font-size: 16px;
+    font-family: sans-serif;
+  }
+  
+  h2{
+      font-size: 30px; /* Tamaño de fuente */
+      color:#8A5A44;
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    }
+    
+
+
+/* Estilos para ambos botones */
+.boton-personalizado{
+  background-color: #0f226d;
+  color: #fff;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 50px; /* Establece un borde redondo para el círculo */
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative; /* Posición relativa para alinear el ícono */
+  overflow: hidden; /* Oculta el ícono fuera del círculo */
+  transition: background-color 0.3s; /* Transición de color de fondo al pasar el mouse */
+  margin-right: 10px; /* Espacio entre los botones */
+  margin-bottom: 10px;
+  width: 200px;
+}
+
+.boton-derecho{
+  background-color: #0f226d;
+  color: #fff;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 50px; /* Establece un borde redondo para el círculo */
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative; /* Posición relativa para alinear el ícono */
+  overflow: hidden; /* Oculta el ícono fuera del círculo */
+  transition: background-color 0.3s; /* Transición de color de fondo al pasar el mouse */
+  margin-right: 10px; /* Espacio entre los botones */
+  margin-bottom: 10px;
+  width: 160px;
+  margin-left:500px;
+  
+
+}
+.contenedor-titulo-y-boton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Estilos para los íconos de flecha */
+.boton-personalizado .icono-flecha i
+ {
+  color: white;
+  font-size: 18px;
+  margin-left: 20px;
+}
+
+
+  /* Estilos adicionales para el botón al pasar el mouse */
+  .boton-personalizado:hover {
+    background-color: #ff6501/* Cambia el color de fondo al pasar el mouse */
+  }
+
+  .boton-derecho:hover{
+    background-color:#08D96D;
+  }
+  .pagina-perfil {
+    width: 100%; /* Ancho deseado (puedes usar porcentajes o unidades como px) */
+    height: 600px; /* Alto deseado (ajusta según sea necesario) */
+    margin: 0 auto; /* Centra el contenido horizontalmente en la página */
+    padding: 20px; /* Agrega un espacio interior alrededor del contenido */
+    background-color:#fff; /* Color de fondo opcional */
+  
+  }
+
+  .col-8 p {
+    color:#0f226d;
+    font-size: 40px;
+    
+    
+    
+  }

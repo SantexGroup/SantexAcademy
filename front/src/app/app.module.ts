@@ -10,11 +10,13 @@ import { EstadoUsuarioDirective } from './directivas/estado-usuario.directive';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PagesModule } from './modules/pages/pages.module';
 import { ShareModule } from './modules/share/shares.module';
+import { PerfilAlumnoComponent } from './modules/pages/perfil-alumno/perfil-alumno.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
+    PerfilAlumnoComponent,
   ],
   imports: [
     BrowserModule,
