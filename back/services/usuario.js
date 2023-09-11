@@ -1,19 +1,46 @@
-const { userProvider } = require('../providers');
+const { userProvider } = require("../providers");
 
-const createUser = async (user, role) => {
-  const createdUser = await userProvider.createUser(user, role);
+const loginUser = async (email, password) => {
+  const user = await userProvider.loginUser(email, password);
+  
+
+  if (!user || user.password !== password) {
+    return null;
+    
+  }
+  return user;
+};
+
+ const getUserProfile = async (id) => {
+  try {
+    const userProfile = await userProvider.getUserProfile(id);
+    return userProfile;
+  } catch (error) {
+    throw new Error(error);
+  }
+ }
+
+const createUser = async (user) => {
+  const createdUser = await userProvider.createUser(user);
   return createdUser;
 };
 
 const getUsersByCriteria = async (queryOptions, bodyOptions) => {
-  const users = await userProvider.getUsersByCriteria(queryOptions, bodyOptions);
-  return users;
+  const organization = await userProvider.getUsersByCriteria(
+    queryOptions,
+    bodyOptions
+  );
+  return organization;
+
 };
 
-const updateUserById = async (id, user) => {
-  const updatedUser = await userProvider.updateUserById(id, user);
-  return updatedUser;
-};
+const updateUserById = async (id, organization) => {
+  const updatedOrganization = await userProvider.updateUserById(
+    id,
+    organization
+  );
+  return updatedOrganization;
+}
 
 const deleteUserById = async (id) => {
   const deletedUser = await userProvider.deleteUserById(id);
@@ -21,5 +48,10 @@ const deleteUserById = async (id) => {
 };
 
 module.exports = {
-  createUser, getUsersByCriteria, updateUserById, deleteUserById,
+  loginUser,
+  getUserProfile,
+  createUser,
+  getUsersByCriteria,
+  updateUserById,
+  deleteUserById,
 };
