@@ -1,3 +1,5 @@
+import { Tarea } from "./tarea"
+
 export interface Voluntario {
     id?:number,
     name:string,
@@ -6,5 +8,6 @@ export interface Voluntario {
     password: string,
     address: string,
     points?: number,
-    phone: string
+    phone: string,
+    tareas?:Tarea[]
 }

@@ -62,3 +62,8 @@ button{
     margin: 10px 15px;
     
 }
+
+.boton-inscripto{
+    background-color: #13c92b;
+    cursor: auto;
+}

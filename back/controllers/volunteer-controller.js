@@ -1,11 +1,10 @@
 const volunteerServices = require('../services/volunteer-services');
 
-function getDataVoluntario(req, res) {
+async function getDataVoluntario(req, res) {
   const { usuario } = req;
 
-  delete usuario.dataValues.password;
-
-  res.status(200).send(usuario);
+  const voluntario = await volunteerServices.getById(usuario.id);
+  res.status(200).send(voluntario);
 }
 
 async function getAllVolunteer(req, res) {
@@ -88,7 +87,7 @@ async function asingVolunteerWork(req, res) {
     return res.status(400).json({ error: result.error });
   }
 
-  res.status(200).json({ success: true, voluntario: result.voluntario });
+  res.status(200).send(result.voluntario);
 }
 module.exports = {
   // eslint-disable-next-line max-len

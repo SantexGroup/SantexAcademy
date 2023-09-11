@@ -18,13 +18,16 @@ async function getAll() {
 }
 
 async function getById(id) {
-  const user = await Volunteer.findByPk(id);
+  const voluntarioConTarea = await models.volunteer.findOne({
+    where: { id },
+    include: [{ model: models.tarea }],
+  });
 
-  if (user == null) {
+  if (voluntarioConTarea == null) {
     throw new Error('Usuario no encontrado');
   }
-
-  return user;
+  delete voluntarioConTarea.dataValues.password;
+  return voluntarioConTarea;
 }
 
 async function createUser(name, lastname, dni, email, password, address, phone) {
@@ -157,9 +160,10 @@ async function asignarTareaVoluntario(idVolunteer, idTarea) {
       include: [{ model: models.tarea }],
     });
 
+    delete voluntarioConTarea.dataValues.password;
+
     return { success: true, voluntario: voluntarioConTarea };
   } catch (error) {
-    console.error(error);
     return { error: 'Error interno en el servidor' };
   }
 }
