@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background: -webkit-linear-gradient(90deg, white 10%, rgb(250, 185, 65) 90%);
+    display: flex;
+}
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
