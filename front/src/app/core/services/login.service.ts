@@ -8,7 +8,7 @@ export class LoginService {
 
   corLogServ: string = '';
   pasLogServ: string = '';
-  usuarioLogeado: boolean = false;
+  
 
   constructor(private apiService: ApiService) {}    
 
@@ -19,9 +19,8 @@ export class LoginService {
     }
     return this.apiService.post<any>('/users/login', body)
   }
-}  
-       
 
-
-
-      
+  cambioVendedorServ(userId: string) {
+    return this.apiService.put('/users/estado-vendedor/' + userId);
+  }
+}
