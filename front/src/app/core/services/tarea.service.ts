@@ -15,6 +15,11 @@ export class TareaService {
   getTareas():Observable<Tarea[]>{
     return this.apiService.get('/tarea/get-all');
   }
+
+  getTareasPorIdOrg():Observable<Tarea[]>{
+
+    return this.apiService.get('/tarea/get-by-id-organizacion');
+  }
   
   crearTarea(nuevaTarea:Tarea):Observable<Tarea>{
     return this.apiService.post('/tarea/create-tarea', nuevaTarea);
