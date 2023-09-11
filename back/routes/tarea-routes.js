@@ -1,13 +1,15 @@
 const Express = require('express');
 const tareaController = require('../controllers/tarea-controller');
+const { isAuthenticatedOrganizacion } = require('../middleware/authentication');
 
 const router = Express.Router();
 
 router.get('/get-all', tareaController.getAllTarea);
 router.get('/get-by-id/:id', tareaController.getTareaById);
-router.post('/create-tarea', tareaController.createTarea);
-router.put('/edit-tarea/:id', tareaController.editTarea);
-router.delete('/delete-tarea/:id', tareaController.deleteTarea);
-router.put('/cambiar-estado/:id', tareaController.editEstado);
+router.get('/get-by-id-organizacion', isAuthenticatedOrganizacion, tareaController.getTareaByIdOrganizacion);
+router.post('/create-tarea', isAuthenticatedOrganizacion, tareaController.createTarea);
+router.put('/edit-tarea/:id', isAuthenticatedOrganizacion, tareaController.editTarea);
+router.delete('/delete-tarea/:id', isAuthenticatedOrganizacion, tareaController.deleteTarea);
+router.put('/cambiar-estado/:id', isAuthenticatedOrganizacion, tareaController.editEstado);
 
 module.exports = router;

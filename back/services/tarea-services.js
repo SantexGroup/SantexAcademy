@@ -53,7 +53,6 @@ async function createTarea(name, description, coordinatorId, hora, date, place, 
   }
 
   const category = await models.category.findByPk(categoryId);
-  console.log(`valor de category: ${category}`);
   if (!category) {
     throw new Error('la categoria no fue encontrada');
   } else {
@@ -140,14 +139,18 @@ async function deleteTarea(id) {
   await tarea.destroy();
 }
 
-async function tareaPorOrganizacion(coordinatorId) {
-  const tarea = await models.tarea.findAll(coordinatorId);
+async function getByIdOrganizacion(coordinatorId) {
+  try {
+    const organizacion = await models.coordinator.findByPk(coordinatorId);
 
-  if (!tarea) {
-    throw new Error('No se encuentra tarea con el id proporcionado');
+    const tareas = await organizacion.getTareas();
+
+    return tareas;
+  } catch (error) {
+    throw new Error('Error interno del servidor');
   }
 }
 
 module.exports = {
-  getAll, getById, createTarea, editTarea, deleteTarea, tareaPorOrganizacion, cambiarEstado,
+  getAll, getById, createTarea, editTarea, deleteTarea, getByIdOrganizacion, cambiarEstado,
 };
