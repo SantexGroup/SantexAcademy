@@ -36,12 +36,17 @@
                 <h4>Telefono: {{ profileData?.User?.phone }}</h4>
                 <h4>Email: {{ profileData?.User?.email }}</h4>
                 <h2>Formacion</h2>
+                <h4>Titulo: {{this.profileData.Formations[1]}}</h4>
+                <h4>Institucion: </h4>
+                <h4>Categoria: </h4>
                 <h2>Experiencias</h2>
                 <h4>Puesto: {{ profileData?.Experiences[0]?.position}}</h4>
                 <h4>Empresa: {{ profileData?.Experiences[0]?.company}}</h4>
                 <h4>Descripcion del puesto: {{ profileData?.Experiences[0]?.description}}</h4>
-
-
+                <h2>Idiomas</h2>
+                <h4> Lenguaje: {{this.profileData.Languages[0]?.language}}, Nivel: {{ this.profileData.Languages[0]?.ProfileLanguage?.level }}</h4>
+                <h4> Lenguaje: {{this.profileData.Languages[2]?.language}}, Nivel: {{ this.profileData.Languages[2]?.ProfileLanguage?.level }}</h4>
+                <h4> Lenguaje: {{this.profileData.Languages[12]?.language}}, Nivel: {{ this.profileData.Languages[12]?.ProfileLanguage?.level }}</h4>
                 <h2>Opcionales</h2>
                 <h4>Estado Civil : {{ profileData?.Optionals[0]?.Marital?.condition}}</h4>
             

@@ -55,6 +55,9 @@ export class HomeComponent implements OnInit {
       this.listProfile= this.profileData.Experiences.position;
       this.listProfile= this.profileData.Experiences.company;
       this.listProfile= this.profileData.Experiences.description;
+    //acceder a los lenguajes
+      this.listProfile= this.profileData.Languages.language;
+      this.listProfile= this.profileData.Languages.ProfileLanguage.level
 
       //accedes a datos opcionales
       this.listProfile = this.profileData.Optionals.Marital.condition;
