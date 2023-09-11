@@ -62,11 +62,9 @@
                         <td>
                             {{ user.email }}
                         </td>
+                        <td>{{ user?.tipodeusuario?.nombre }}</td>
                         <td>
-                            {{ user.email }}
-                        </td>
-                        <td>
-                            <span [appEstadoUsuario]="user.estado"></span>
+                            <span [appEstadoUsuario]="user.activoactualmente"></span>
                         </td>
                         <td class="text-end">
                             <a class="btn btn-sm btn-primary" [routerLink]="['/users/show/', user.id]">Ver</a>
@@ -77,11 +75,13 @@
                             <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
                             </button>
-                            <!--Llamar método eliminar-->
-                            <a class="btn btn-sm btn-primary">Eliminar</a>
-                            <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+
+                            <a class="btn btn-sm btn-danger">Eliminar</a>
+                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover"
+                                (click)="deleteUsuario(user.id!)">
                                 <i class="bi bi-trash"></i>
                             </button>
+
                         </td>
                     </tr>
                 </tbody>
@@ -161,16 +161,15 @@
                             {{ curso.capacidad }}
                         </td>
                         <td>
-                            {{ curso.idnivel }}
+                            {{ curso?.nivel?.nombre }}
                         </td>
                         <td>
                             {{ curso.requisitos }}
                         </td>
                         <td>
-                            <!--<span [appEstadoCurso]="curso.habilitado"></span>-->
-                            <a class="btn btn-sm btn-primary" style="width: 100px;" >
+                            <a class="btn btn-sm btn-primary" style="width: 100px;">
                                 <span [appActivardesactivarcurso]="curso.habilitado"></span></a>
-                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover" 
+                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover"
                                 (click)="activardesactivar(curso, !curso.habilitado)">
                                 <i class="bi bi-trash"></i>
                             </button>
@@ -179,7 +178,7 @@
                             {{ curso.fechainicio | date : "dd/MM/yyyy HH:mm" }}
                         </td>
                         <td>
-                            {{ curso.fechafin }}
+                            {{ curso.fechafin | date : "dd/MM/yyyy HH:mm" }}
                         </td>
                         <td class="text-end">
                             <a class="btn btn-sm btn-primary" [routerLink]="['/cursos/show/', curso.id]">Ver</a>
@@ -196,13 +195,6 @@
                                 (click)="deleteCurso(curso.id)">
                                 <i class="bi bi-trash"></i>
                             </button>
-
-                            <!--<a class="btn btn-sm btn-primary" style="width: 100px;" >
-                                <span [appActivardesactivarcurso]="curso.habilitado"></span></a>
-                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover" 
-                                (click)="activardesactivar(curso, !curso.habilitado)">
-                                <i class="bi bi-trash"></i>
-                            </button>-->
                         </td>
                     </tr>
                 </tbody>

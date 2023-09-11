@@ -9,9 +9,13 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    // static associate(models) {
+    static associate(models) {
     // define association here
-    // }
+      User.belongsTo(models.TipoDeUsuario, {
+        foreignKey: 'idtipodeusuario',
+        as: 'tipodeusuario', // Esto define el nombre de la propiedad en User
+      });
+    }
   }
   User.init({
     nombre: DataTypes.STRING,
@@ -20,8 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     password: DataTypes.STRING,
     estado: DataTypes.BOOLEAN,
-    rol: DataTypes.STRING,
-    verificationCode: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'User',

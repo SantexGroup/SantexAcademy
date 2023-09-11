@@ -5,6 +5,8 @@ import { switchMap } from 'rxjs/operators'
 
 import { User } from '../../interface/user.interface';
 import { UsersService } from '../../services/users.service';
+import { TipoDeUsuario } from '../../interface/tipodeusuario.interface';
+import { TiposDeUsuarioService } from '../../services/tiposdeusuarioservice';
 
 @Component({
   selector: 'app-create',
@@ -14,23 +16,34 @@ import { UsersService } from '../../services/users.service';
 export class CreateComponent implements OnInit {
   form:FormGroup;
   
+  tipoUsuarioNvo: TipoDeUsuario = {
+    nombre: 'Vacio',
+    descripcion: 'Vacio'
+  };
+
   user: User = {
     username: '',
     password: '',
     apellido: '',
     nombre: '',
     email: '',
-    estado: true,
+    estado: 'A',
     confirmPassword: '',
-    tipodeusuario: 0,
+    idtipodeusuario: 0,
+    activoactualmente: true,
     createdAt: new Date,
-    updatedAt: new Date
+    updatedAt: new Date,
+    tipodeusuario: this.tipoUsuarioNvo,
   }
 
+  tipoDeUsuarioSeleccionado: number | undefined = undefined;
+  tiposDeUsuario: TipoDeUsuario[] = [];
+  
   constructor(private formBuilder: FormBuilder,
               private usersService: UsersService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) 
+              private router: Router,
+              private tipoDeUsuarioService: TiposDeUsuarioService,) 
     { 
       this.form= this.formBuilder.group(
           {
@@ -55,6 +68,11 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.tipoDeUsuarioService.getTiposDeUsuario().subscribe((data: TipoDeUsuario[]) => {
+      this.tiposDeUsuario = data;
+      this.tipoDeUsuarioSeleccionado = undefined;
+      console.log(this.tiposDeUsuario);
+    });
 
     if( !this.router.url.includes('edit') ) {
       return;
@@ -67,33 +85,51 @@ export class CreateComponent implements OnInit {
       .subscribe( user => this.user = user )
   }
 
-  onEnviar(event: Event, usuario:User): void {
-    event.preventDefault; 
-    const userType = this.form.get('userType')?.value;
-    if (this.form.valid)
-    {
-      if ( this.user.id ){
-        // edit
-        this.usersService.editUser( this.user )
-          .subscribe( user => {
-            console.log('edit', user)
-            this.router.navigate(['/users/index' ])
-           })
-      }else{
-        // add
-        this.usersService.addUser(this.user)
-          .subscribe( user => {
-            console.log('add :', user)
-            this.router.navigate(['/users/index' ])
-          })
-      }
-    }
-    else
-    {
-      this.form.markAllAsTouched(); 
-    }
-  };
+  onTipoDeUsuarioChange(event: any): void {
+    this.tipoDeUsuarioSeleccionado = event.target.value; 
+  }
 
+  onEnviar(event: Event, usuario: User): void {
+    event.preventDefault();
+    const userType = this.form.get('userType')?.value;
+    
+    if (this.form.valid) {
+      if (this.tipoDeUsuarioSeleccionado !== undefined) {
+        this.user.idtipodeusuario = this.tipoDeUsuarioSeleccionado;
+        if (this.user.id) {
+          // Editar usuario existente
+          this.usersService.editUser(this.user)
+            .subscribe(
+              user => {
+                console.log('Usuario editado:', user);
+                this.router.navigate(['/users/index']);
+              },
+              error => {
+                console.error('Error al editar usuario:', error);
+              }
+            );
+        } else {
+          // Agregar nuevo usuario
+          this.usersService.addUser(this.user)
+            .subscribe(
+              user => {
+                console.log('Usuario agregado:', user);
+                this.router.navigate(['/users/index']);
+              },
+              error => {
+                console.error('Error al agregar usuario:', error);
+              }
+            );
+        }
+      } else {
+        console.error('El tipo de usuario seleccionado es undefined.');
+      } 
+    } else {
+      this.form.markAllAsTouched();
+      console.error('Formulario inválido. Por favor, complete todos los campos correctamente.');
+    }
+  }
+  
   get Password()
   {
     return this.form.get("password");

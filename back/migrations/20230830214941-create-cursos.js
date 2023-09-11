@@ -43,7 +43,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       estado: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.STRING
       },
       idusuariomodificacion: {
         type: Sequelize.INTEGER

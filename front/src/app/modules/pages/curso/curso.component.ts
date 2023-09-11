@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Curso } from '../../cursos/interface/cursos.interface';
+import { Nivel } from "src/app/models/nivel.interface";
+import { FormGroup } from '@angular/forms';
 // import { Curso } from '../../../models/curso.interface';
 
 
@@ -9,7 +11,15 @@ import { Curso } from '../../cursos/interface/cursos.interface';
   templateUrl: './curso.component.html',
   styleUrls: ['./curso.component.css']
 })
+
 export class CursoComponent implements OnInit {
+  //form:FormGroup;
+  
+  nivelNvo: Nivel = {
+    nombre: 'Vacio',
+    descripcion: 'Vacio',
+  };
+  
   @Input() curso: Curso = {
     id: 0,
     nombre: '',
@@ -27,6 +37,7 @@ export class CursoComponent implements OnInit {
     estado: '',
     createdAt: new Date,
     updatedAt: new Date,
+    nivel: this.nivelNvo,
   }
 
   constructor() { }
