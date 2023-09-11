@@ -19,7 +19,7 @@ const routes: Routes = [
       component:DatosOrganizacionComponent
     },
     {
-      path:'tareas',
+      path:'mis-tareas',
       component:TareasOrganizacionComponent
     }
   ]
