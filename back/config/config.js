@@ -9,7 +9,8 @@ const logger = require('../utils/winston.logger');
 
 const config = {
   development: {
-    logging: (msg) => logger.api.debug(`Database: ${process.env.DB_DATABASE} - ${msg}`),
+    logging: (msg) =>
+      logger.api.debug(`Database: ${process.env.DB_DATABASE} - ${msg}`),
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
@@ -19,7 +20,8 @@ const config = {
     operatorsAliases: '0',
   },
   test: {
-    logging: (msg) => logger.api.debug(`Database: ${process.env.DB_DATABASE} - ${msg}`),
+    logging: (msg) =>
+      logger.api.debug(`Database: ${process.env.DB_DATABASE} - ${msg}`),
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
@@ -29,7 +31,8 @@ const config = {
     operatorsAliases: '0',
   },
   production: {
-    logging: (msg) => logger.api.debug(`Database: ${process.env.DB_DATABASE} - ${msg}`),
+    logging: (msg) =>
+      logger.api.debug(`Database: ${process.env.DB_DATABASE} - ${msg}`),
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
