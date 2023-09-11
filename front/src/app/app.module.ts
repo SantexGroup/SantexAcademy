@@ -28,8 +28,12 @@ import { SkillComponent } from './modules/crud-data/skill/skill.component';
 import { LoadingComponent } from './modules/loading/loading.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './core/services/toolServices/interceptor/loading.interceptor';
+<<<<<<< HEAD
+import { CVComponent } from './modules/cv/cv.component';
+=======
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
 
+>>>>>>> main
 
 @NgModule({
   declarations: [
@@ -42,7 +46,11 @@ import { ReferencesComponent } from './modules/crud-data/references/references.c
     NavBarComponent,
     SkillComponent,
     LoadingComponent,
+<<<<<<< HEAD
+    CVComponent
+=======
     ReferencesComponent,
+>>>>>>> main
   ],
   imports: [
     BrowserModule,

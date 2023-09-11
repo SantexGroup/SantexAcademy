@@ -9,6 +9,7 @@ import { LanguageComponent } from './modules/crud-data/language/language.compone
 import { AppComponent } from './app.component';
 import { ExperiencesComponent } from './modules/crud-data/experiences/experiences.component';
 import { SkillComponent } from './modules/crud-data/skill/skill.component';
+import { CVComponent } from './modules/cv/cv.component';
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
 
 const routes: Routes = [
@@ -24,6 +25,10 @@ const routes: Routes = [
     path: 'home/:id',
     component: HomeComponent,
     children: [
+      {
+        path: 'cv',
+        component: CVComponent
+      },
       {
         path: 'experiencias',
         component: ExperiencesComponent
