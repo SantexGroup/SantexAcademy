@@ -41,6 +41,17 @@
             </div>
         </div>
     </nav>
+    <div class="container-fluid">
+        <button
+            type="button"
+            class="btn btn-primary" me-2
+            placement="end"
+            ngbPopover="Puedes colocar tus experiencias laborales en orden cronologico donde lo mas nuevo esta primero y tus trabajos anteriores ultimos"
+            popoverTitle="IMPORTANTE"
+        >
+            Tip sobre experiencia
+        </button>
+    </div>
 
     <div class="eslogan">
         <p class="eslogan-frase">Destaca entre la multitud: Tu CV perfecto con
@@ -251,5 +262,6 @@
         <p>© 2023 - CV Assistant. Todos los derechos reservados.</p>
     </div>
 </div>
+<app-experiences></app-experiences>
 <app-nav-bar *ngIf="views.externalComponent"></app-nav-bar>
 <router-outlet *ngIf="views.externalComponent"></router-outlet>

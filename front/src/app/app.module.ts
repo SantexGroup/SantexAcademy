@@ -28,6 +28,7 @@ import { SkillComponent } from './modules/crud-data/skill/skill.component';
 import { LoadingComponent } from './modules/loading/loading.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './core/services/toolServices/interceptor/loading.interceptor';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { LoadingInterceptor } from './core/services/toolServices/interceptor/loa
     MatDividerModule,
     MatMenuModule,
     HomeRoutingModule,
+    NgbModule,
   ],
   providers: [
     {
