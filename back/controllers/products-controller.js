@@ -11,6 +11,20 @@ async function products(req, res, next) {
     next(error);
   }
 }
+
+// obtener por id
+async function getProductFromId(req, res) {
+  const { id } = req.params;
+
+  try {
+    const articulo = await productsService.getProductoById(id);
+
+    res.status(200).send(articulo);
+  } catch (error) {
+    res.status(404).send('Producto no encontrado');
+  }
+}
+
 // categorias
 async function getCategories(req, res) {
   const categories = await productsService.getAllCategories();
@@ -31,4 +45,6 @@ async function chargeProduct(req, res) {
   res.status(201).send(product);
 }
 
-module.exports = { products, getCategories, chargeProduct };
+module.exports = {
+  products, getCategories, chargeProduct, getProductFromId,
+};
