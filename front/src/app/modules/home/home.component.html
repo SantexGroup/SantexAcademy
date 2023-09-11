@@ -1,13 +1,12 @@
 <body>
     <div style="display: flex;">
         <div class="button-conteiner">
-<<<<<<< HEAD
-            
-            <div class="button-nav">
-=======
             <div class="button-nav" id="first">
->>>>>>> main
-                <button routerLink="experiencias" mat-raised-button color="primary"
+                <button routerLink="cv" mat-raised-button color="primary"
+                    >Home</button>
+            </div>
+            <div class="button-nav">
+                <button routerLink="#" mat-raised-button color="primary"
                     (click)="views.title = 'Datos Personales'">Mis datos personales</button>
             </div>
             <div class="button-nav">
@@ -38,8 +37,7 @@
                 <button mat-raised-button color="primary" (click)="views.title = 'Datos Extras'">Mas datos</button>
             </div>
         </div>
-        <div class="textArea"> 
-            <app-cv></app-cv>               
+        <div class="textArea">             
             <router-outlet></router-outlet>
         </div>
     </div>
