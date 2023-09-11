@@ -1,6 +1,5 @@
 // const userService = require('../services/userService')
 const {User} = require('../models')
-console.log("estoy en userController")
 
 //createUser
 //nombreCompleto, nombreUsuario, fechaNacimiento, genero, correoElectronico, contraseña

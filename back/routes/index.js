@@ -17,6 +17,6 @@ app.use('/users' , userRoutes);
 
 app.use('/', rootPath.handler);
 
-console.log("estoy en index.js de routes")
+
 
 module.exports = app;
