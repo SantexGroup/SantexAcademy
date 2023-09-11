@@ -109,7 +109,11 @@
     
       
       <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No hay valores que coincidad con "{{input.value}}"</td>
+        <td class="mat-cell" colspan="4" *ngIf="dataSource.data.length>0; else sinDatos">No hay valores que coincidad con "{{input.value}}"</td>
+        <ng-template #sinDatos>
+
+          <td class="mat-cell" colspan="4">No hay tareas para mostrar.</td>
+        </ng-template>
       </tr>
     </table>
 
