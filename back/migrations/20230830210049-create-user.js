@@ -29,7 +29,7 @@ module.exports = {
       estado: {
         type: Sequelize.BOOLEAN
       },
-      rol: {
+      IdTipoDeUsuario: {
         type: Sequelize.STRING
       },
     });

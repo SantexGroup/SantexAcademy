@@ -19,7 +19,7 @@ export class RegisterComponent {
     email: ['test1@test.com', [Validators.required, Validators.email]],
     password: ['12345678', [Validators.required, Validators.minLength(8)]],
     estado: [ true , [Validators.required]],
-    rol: ['alumno', [Validators.required]]
+    IdTipoDeUsuario: ['alumno', [Validators.required]]
   });
 
   constructor( private fb: FormBuilder,

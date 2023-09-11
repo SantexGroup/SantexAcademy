@@ -25,10 +25,10 @@ export class AuthService {
     email: string,
     password: string,
     estado: boolean,
-    rol: string
+    IdTipoDeUsuario: string
   ){
     const url = `${ this.baseUrl}user`;
-    const body = {nombre, apellido, username, email, password, estado, rol};
+    const body = {nombre, apellido, username, email, password, estado, IdTipoDeUsuario};
 
     return this.http.post<AuthResponse>( url, body )
       .pipe(

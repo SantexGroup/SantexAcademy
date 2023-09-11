@@ -56,10 +56,10 @@ export class CursoComponent implements OnInit {
       })
           .subscribe( matricula => {
             console.log('add :', matricula)
-            this.router.navigate(['/cursos/index' ])
+            this.router.navigateByUrl('/cursos/index')
           })
     }else{
-      this.router.navigate(['/auth/login'])
+      this.router.navigateByUrl('/auth/login');
     }
     
   }

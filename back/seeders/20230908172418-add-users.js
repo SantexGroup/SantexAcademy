@@ -24,7 +24,7 @@ module.exports = {
         username: 'johndoe',
         password: bcrypt.hashSync('12345678', bcrypt.genSaltSync()),
         estado: true,
-        rol: 'alumno',
+        IdTipoDeUsuario: 'alumno',
       },
       {
         nombre: 'Admin',
@@ -33,7 +33,7 @@ module.exports = {
         username: 'admin',
         password: bcrypt.hashSync('12345678', bcrypt.genSaltSync()),
         estado: true,
-        rol: 'admin',
+        IdTipoDeUsuario: 'admin',
       },
     ], {});
   },
