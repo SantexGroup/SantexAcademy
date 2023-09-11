@@ -1,28 +1,29 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  class alquiler extends Model {
+  class Alquiler extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate() {
       // define association here
     }
   }
-  alquiler.init({
+  Alquiler.init({
     idProducto: DataTypes.INTEGER,
     idEstado: DataTypes.INTEGER,
     idComprador: DataTypes.INTEGER,
     modoEnvio: DataTypes.BOOLEAN,
     dias: DataTypes.INTEGER,
-    formaPago: DataTypes.STRING
+    formaPago: DataTypes.STRING,
   }, {
     sequelize,
-    modelName: 'alquiler',
+    modelName: 'Alquiler',
+    tableName: 'alquilers',
   });
-  return alquiler;
+  return Alquiler;
 };
