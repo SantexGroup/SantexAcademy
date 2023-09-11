@@ -1,7 +1,8 @@
 export interface Course {
     id: number;
     name: string,
-    descripcion: string,
+    description: string,
+    image: string,
     maxStudents: number,
     start: Date;
     end: Date;
