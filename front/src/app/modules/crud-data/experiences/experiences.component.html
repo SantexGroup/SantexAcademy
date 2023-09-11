@@ -1,6 +1,6 @@
 <body>
     <div class="experiencesInput">
-        <form [formGroup]="experienceForm" (ngSubmit)="addExperience()">
+        <form [formGroup]="experienceForm">
             <mat-form-field>
                 <mat-label for="description">Descripcion:</mat-label>
                 <textarea matInput formControlName="description" cols="30" rows="5"></textarea>
@@ -53,23 +53,41 @@
             </div>
             <div class="botonera">
                 <div class="botones">
-                    <div class="addExperience">
-                        <button type="submit" mat-mini-fab color="primary">
-                            <mat-icon>plus_one</mat-icon>
-                        </button>
-                    </div>
+                    <button 
+                    class="plus" 
+                    type="submit" 
+                    *ngIf="views.plusOne"
+                    (click)="addExperience()">
+                        <img src="/assets/Imagenes/plus.png" alt="+">
+                    </button>
+                    <button type="submit" 
+                    mat-raised-button color="primary" 
+                    *ngIf="views.saveButton"
+                    (click)="updateExperience()">
+                        Guardar
+                    </button>
                 </div>
             </div>
         </form>
         <div class="lista">
             <ul>
-                <li>
+                <li *ngFor="let experience of experiences">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Elemento 1</h5>
-                            <p class="card-text">Aca se carga la lista de experiencias, formaciones..etc</p>
-                            <button mat-raised-button color="primary">Editar</button>
-                            <button mat-raised-button color="warn">Eliminar</button>
+                            <h5 class="card-title">{{experience.company}}</h5>
+                            <p class="card-text">{{experience.description}}</p>
+                            <div class="botonera-card">
+                                <button
+                                (click)="views.changeViews()"
+                                (click)="selectedExperience(experience.id)"                                
+                                >
+                                    <img src="/assets/Imagenes/editar.png" alt="Editar">
+                                </button>
+                                <button
+                                (click)="deleteExperience(experience.id)">
+                                    <img src="/assets/Imagenes/delete.png" alt="Eliminar">
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </li>

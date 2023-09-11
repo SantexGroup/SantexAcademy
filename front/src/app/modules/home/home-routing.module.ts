@@ -7,7 +7,11 @@ import { FormationsComponent } from '../crud-data/formations/formations.componen
 import { OptionalsComponent } from '../crud-data/optionals/optionals.component';
 import { LanguageComponent } from '../crud-data/language/language.component';
 import { SkillComponent } from '../crud-data/skill/skill.component';
+<<<<<<< HEAD
 import { PersonalComponent } from '../crud-data/personal/personal.component';
+=======
+import { ReferencesComponent } from '../crud-data/references/references.component';
+>>>>>>> main
 
 const routes: Routes = [
   {
@@ -21,6 +25,10 @@ const routes: Routes = [
   {
     path: 'experiencias',
     component: ExperiencesComponent
+  },
+  {
+    path: 'referencias',
+    component: ReferencesComponent
   },
   {
     path: 'formaciones',

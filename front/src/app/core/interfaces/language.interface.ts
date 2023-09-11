@@ -1,5 +1,6 @@
-export interface Language{
-    level: number,
-    profileId: number,
+export interface Language {
+    id?: number,
     language: string,
+    level: number,
+    profileId?: number,
 }

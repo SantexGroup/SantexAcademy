@@ -65,7 +65,7 @@ export class RegistroComponent{
         this.views.quickButton = true;
         this.views.accountButton = false;
         this.views.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
-        this.router.navigate(['/home', data.profile.id]) 
+        this.router.navigate(['/home', data.profile.userId]) 
         }, 
         error: (err) => { 
           console.log(err); 

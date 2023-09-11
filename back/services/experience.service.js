@@ -1,6 +1,6 @@
 // Importacion de los models necesarios
 const {
-  Profile, Experience, ExperienceStatus, ExperienceType, Country,
+  ProfileExperience, Profile, Experience, ExperienceStatus, ExperienceType, Country,
 } = require('../models');
 
 // Obtener un experience especifico
@@ -64,6 +64,7 @@ async function addExperience(
   description,
   startDate,
   endDate,
+  profileId,
 ) {
   // Cremos una instancia del modelo Experience, donde guardamos todos los datos.
   const newExperience = await Experience.create({
@@ -75,8 +76,13 @@ async function addExperience(
     description,
     startDate,
     endDate,
+    profileId,
   });
   if (newExperience) {
+    await ProfileExperience.create({
+      profilesId: profileId,
+      experiencesId: newExperience.id,
+    });
     // Retornamos las intancias de ambos modelos.
     return newExperience;
   }
@@ -89,7 +95,7 @@ async function deleteExperience(id) {
   const experience = await Experience.findByPk(id);
   // Si no esta marcado como deleted, entonces lo marcamos como borrado
   if (experience && experience.deletedAt === null) {
-    Experience.update({
+    await Experience.update({
       deletedAt: new Date(),
     }, {
       where: {

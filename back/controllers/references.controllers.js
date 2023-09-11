@@ -39,6 +39,7 @@ async function referenceCreate(
     email,
     phone,
     company,
+    profileId,
   } = req.body;
   try {
     const newReference = await ReferenceService.createReference(
@@ -47,6 +48,7 @@ async function referenceCreate(
       email,
       phone,
       company,
+      profileId,
     );
     res.status(200).send(newReference);
   } catch (error) {
@@ -62,7 +64,7 @@ async function referenceDelete(
   const { id } = req.params;
   try {
     await ReferenceService.deleteReference(id);
-    res.status(200).send('Referencia eliminada correctamente');
+    res.status(200).send();
   } catch (error) {
     next(error);
   }

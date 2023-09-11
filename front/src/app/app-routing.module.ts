@@ -9,7 +9,11 @@ import { LanguageComponent } from './modules/crud-data/language/language.compone
 import { AppComponent } from './app.component';
 import { ExperiencesComponent } from './modules/crud-data/experiences/experiences.component';
 import { SkillComponent } from './modules/crud-data/skill/skill.component';
+<<<<<<< HEAD
 import { PersonalComponent } from './modules/crud-data/personal/personal.component';
+=======
+import { ReferencesComponent } from './modules/crud-data/references/references.component';
+>>>>>>> main
 
 const routes: Routes = [
   // TODO: DESCOMENTAR ANTES DE SUBIR Y CONFIGURAR DIRECCIONAMIENTO
@@ -18,8 +22,9 @@ const routes: Routes = [
     component: AppComponent
   },
   {
-    path: '#nosotrosContacto', 
-    component: AppComponent},
+    path: '#nosotrosContacto',
+    component: AppComponent
+  },
   {
     path: 'home/:id',
     component: HomeComponent,
@@ -31,6 +36,10 @@ const routes: Routes = [
       {
         path: 'experiencias',
         component: ExperiencesComponent
+      },
+      {
+        path: 'referencias',
+        component: ReferencesComponent
       },
       {
         path: 'formaciones',
