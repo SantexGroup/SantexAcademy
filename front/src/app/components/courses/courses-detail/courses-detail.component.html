@@ -4,7 +4,7 @@
     
         <div class="containerDetailCourse my-o mx-2 relative ">
             <img class="imgBanner w-screen h-20rem" 
-            src="https://hellonails.es/wp-content/uploads/2020/06/Tipos-de-manicura-img3.jpg" alt="">
+            src="{{courseService.courses.banner}}" alt="{{courseService.courses.title}}">
     
             
             <div class="containerCourse lg:pr-5 lg:pl-5 absolute flex justify-content-between bottom-0 gap-6 w-12">
@@ -57,12 +57,12 @@
             <div class="col-4 md:col-6 lg:col-2 text-center divCard">
                 <p><i class="pi pi-calendar font-bold text-2xl pt-4"></i></p>
                 <p class="my-2" >Fecha Inicio</p>
-                <p class="font-bold">28/07/2023</p>
+                <p class="font-bold">{{courseService.courses.start_date | date: 'dd/M/yy'}}</p>
             </div>
             <div class="col-4 md:col-6 lg:col-2 text-center divCard">
                 <p><i class="pi pi-calendar font-bold text-2xl pt-4"></i></p>
                 <p class="my-2">Fecha Finalización</p>
-                <p class="font-bold">28/07/2023</p>
+                <p class="font-bold">{{courseService.getEndDate() | date: 'dd/mM/yy'}}</p>
             </div>
             <div class="col-4 md:col-6 lg:col-2 text-center divCard">
                 <p><i class="pi pi-money-bill font-bold text-2xl pt-4"></i></p>
@@ -80,7 +80,7 @@
                     <div class="lg:flex">
         
                         <p>{{detail.paragraph1 ? detail.paragraph1 : detail.paragraph2}}</p> 
-                        <img *ngIf="detail.image1url" class="max-w-18rem bg-cover" src={{detail.image1url}} alt="">
+                        <img *ngIf="detail.image1url" class="max-w-18rem bg-cover" src={{detail.image2url}} alt="">
         
                     </div>
 
