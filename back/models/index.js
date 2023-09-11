@@ -40,7 +40,7 @@ db.User = require('./user')(sequelize, Sequelize);
 db.Products = require('./products')(sequelize, Sequelize);
 db.Images = require('./images')(sequelize, Sequelize);
 db.tipoProducto = require('./tipoproducto')(sequelize, Sequelize);
-db.alquiler = require('./alquiler')(sequelize, Sequelize);
+db.Alquiler = require('./alquiler')(sequelize, Sequelize);
 db.estado = require('./estado')(sequelize, Sequelize);
 db.direccion = require('./direccion')(sequelize, Sequelize);
 db.localidad = require('./localidad')(sequelize, Sequelize);
@@ -48,74 +48,74 @@ db.provincia = require('./provincia')(sequelize, Sequelize);
 
 // Relacion User-Products (one-to-many)
 db.User.hasMany(db.Products, {
-  foreignKey: 'idUsuario'
+  foreignKey: 'idUsuario',
 });
 db.Products.belongsTo(db.User, {
-  foreignKey: 'idUsuario'
+  foreignKey: 'idUsuario',
 });
 
 // Relacion Products-Images (one-to-many)
 db.Products.hasMany(db.Images, {
-  foreignKey: 'idProducto'
+  foreignKey: 'idProducto',
 });
 db.Images.belongsTo(db.Products, {
-  foreignKey: 'idProducto'
+  foreignKey: 'idProducto',
 });
 
 // Relacion tipoProducto-Products (one-to-many)
 db.tipoProducto.hasMany(db.Products, {
-  foreignKey: 'idTipoProducto'
+  foreignKey: 'idTipoProducto',
 });
 db.Products.belongsTo(db.tipoProducto, {
-  foreignKey: 'idTipoProducto'
+  foreignKey: 'idTipoProducto',
 });
 
 // Relacion Products-Alquiler (one-to-one)
-db.Products.hasOne(db.alquiler, {
-  foreignKey: 'idProducto'
+db.Products.hasOne(db.Alquiler, {
+  foreignKey: 'idProducto',
 });
-db.alquiler.belongsTo(db.Products, {
-  foreignKey: 'idProducto'
+db.Alquiler.belongsTo(db.Products, {
+  foreignKey: 'idProducto',
 });
 
 // Relacion Usuario-Alquiler (one-to-many)
-db.User.hasMany(db.alquiler, {
-  foreignKey: 'idComprador'
+db.User.hasMany(db.Alquiler, {
+  foreignKey: 'idComprador',
 });
-db.alquiler.belongsTo(db.User, {
-  foreignKey: 'idComprador'
+db.Alquiler.belongsTo(db.User, {
+  foreignKey: 'idComprador',
 });
 
 // Relacion Estado-Alquiler (one-to-many)
-db.estado.hasMany(db.alquiler, {
-  foreignKey: 'idEstado'
+db.estado.hasMany(db.Alquiler, {
+  foreignKey: 'idEstado',
 });
-db.alquiler.belongsTo(db.estado, {
-  foreignKey: 'idEstado'
+db.Alquiler.belongsTo(db.estado, {
+  foreignKey: 'idEstado',
 });
 
 // Relacion Direccion-User (one-to-one)
 db.direccion.hasOne(db.User, {
-  foreignKey: 'idDireccion'
+  foreignKey: 'idDireccion',
 });
 db.User.belongsTo(db.direccion, {
-  foreignKey: 'idDireccion'
+  foreignKey: 'idDireccion',
 });
 
 // Relacion Localidad-Direccion (one-to-many)
 db.localidad.hasMany(db.direccion, {
-  foreignKey: 'idLocalidad'
+  foreignKey: 'idLocalidad',
 });
 db.direccion.belongsTo(db.localidad, {
-  foreignKey: 'idLocalidad'
+  foreignKey: 'idLocalidad',
 });
 
 // Relacion Provincia-Localidad (one-to-many)
 db.provincia.hasMany(db.localidad, {
-  foreignKey: 'idProvincia'
+  foreignKey: 'idProvincia',
 });
 db.localidad.belongsTo(db.provincia, {
-  foreignKey: 'idProvincia'
+  foreignKey: 'idProvincia',
 });
 
 module.exports = db;
