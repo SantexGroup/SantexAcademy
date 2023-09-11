@@ -9,6 +9,7 @@ import { ExperiencesStatusService } from 'src/app/core/services/experiences-stat
 import { ExperiencesTypeService } from 'src/app/core/services/experiences-type.service';
 import { ExperiencesService } from 'src/app/core/services/experiences.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
+import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 
 @Component({
   selector: 'app-experiences',
@@ -19,12 +20,17 @@ export class ExperiencesComponent implements OnInit {
 
   experienceForm: FormGroup;
 
+  experiences: Experience[] = [];
+
+  experienceId: number = 0;
+
   constructor(
     private _experienceTypeServices: ExperiencesTypeService,
     private _experienceStatusServices: ExperiencesStatusService,
     private _countriesService: CountriesService,
     private _experiencesService: ExperiencesService,
     private fb: FormBuilder,
+    private userData: UserDataService,
     public views: NavBarService
   ) {
     this.experienceForm = this.fb.group({
@@ -47,31 +53,15 @@ export class ExperiencesComponent implements OnInit {
 
     this.getCountries();
 
+    this.getExperience();
+
   }
 
   endDateShow():boolean{
     return this.experienceForm.get('statusId')?.value !== 1;
   }
 
-  addExperience(){
-    const newExperience: Experience = {
-      description: this.experienceForm.get('description')?.value,
-      company: this.experienceForm.get('company')?.value,
-      position: this.experienceForm.get('position')?.value,
-      typesId: this.experienceForm.get('typesId')?.value,
-      statusId: this.experienceForm.get('statusId')?.value,
-      countriesId: this.experienceForm.get('countriesId')?.value,
-      startDate: this.experienceForm.get('startDate')?.value,
-      endDate: this.experienceForm.get('endDate')?.value,
-    }
-
-    this._experiencesService.addExperience(newExperience).subscribe((data) => {
-      console.log(data);
-    });
-
-    this.experienceForm.reset();
-  }
-  
+ 
   //Experiences Types
   getTypes() {
     this._experienceTypeServices.getExperienceType().subscribe((typesList: ExperienceType[]) => {
@@ -97,5 +87,86 @@ export class ExperiencesComponent implements OnInit {
   }
 
   countries: Countries[] = [];
+
+  addExperience(){
+    const newExperience: Experience = {
+      description: this.experienceForm.get('description')?.value,
+      company: this.experienceForm.get('company')?.value,
+      position: this.experienceForm.get('position')?.value,
+      typesId: this.experienceForm.get('typesId')?.value,
+      statusId: this.experienceForm.get('statusId')?.value,
+      countriesId: this.experienceForm.get('countriesId')?.value,
+      startDate: this.experienceForm.get('startDate')?.value,
+      endDate: this.experienceForm.get('endDate')?.value,
+      profileId: this.userData.profileId,
+    }
+
+    this._experiencesService.addExperience(newExperience).subscribe((experience) => {
+      this.experiences.push(experience);
+    });
+
+    this.experienceForm.reset();
+  }
+
+  getExperience() {
+    this._experiencesService.getExperience(this.userData.userId).subscribe((experieceList: Experience[])=>{
+      this.experiences = experieceList;
+    });
+  }
+
+  selectedExperience(id?:number){
+    const index = this.experiences.findIndex(experience => experience.id === id)
+    const element = this.experiences[index]  
+      
+    this.experienceForm.patchValue({
+      description: element.description,
+      company: element.company,
+      position: element.position,
+      typesId: element.typesId,
+      statusId: element.statusId,
+      countriesId: element.countriesId,
+      startDate: element.startDate,
+      endDate: element.endDate,
+      profileId: this.userData.profileId,
+    });
+
+    this.experienceId = Number(element.id);
+
+  }
+
+  updateExperience(){
+
+    const newDataExperience: Experience = {
+      description: this.experienceForm.get('description')?.value,
+      company: this.experienceForm.get('company')?.value,
+      position: this.experienceForm.get('position')?.value,
+      typesId: this.experienceForm.get('typesId')?.value,
+      statusId: this.experienceForm.get('statusId')?.value,
+      countriesId: this.experienceForm.get('countriesId')?.value,
+      startDate: this.experienceForm.get('startDate')?.value,
+      endDate: this.experienceForm.get('endDate')?.value,
+    } 
+
+    this._experiencesService.updateExperience(this.experienceId, newDataExperience).subscribe(() => {
+      this.getExperience();
+    });
+    
+    console.log(this.userData.companies);
+
+    this.experienceForm.reset();
+
+    this.views.saveButton = false;
+    this.views.plusOne = true;
+  }
+
+  deleteExperience(id?:number){
+    const index = this.experiences.findIndex(experience => experience.id === id)
+    const elementId = Number((this.experiences[index]).id)
+    this._experiencesService.deleteExperience(elementId).subscribe(() => {
+      this.experiences.splice(index, 1);
+    });
+
+    this.experienceForm.reset();
+  }
 
 }

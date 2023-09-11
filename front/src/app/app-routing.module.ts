@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { ExperiencesComponent } from './modules/crud-data/experiences/experiences.component';
 import { SkillComponent } from './modules/crud-data/skill/skill.component';
 import { CVComponent } from './modules/cv/cv.component';
+import { ReferencesComponent } from './modules/crud-data/references/references.component';
 
 const routes: Routes = [
   {
@@ -17,8 +18,9 @@ const routes: Routes = [
     component: AppComponent
   },
   {
-    path: '#nosotrosContacto', 
-    component: AppComponent},
+    path: '#nosotrosContacto',
+    component: AppComponent
+  },
   {
     path: 'home/:id',
     component: HomeComponent,
@@ -30,6 +32,10 @@ const routes: Routes = [
       {
         path: 'experiencias',
         component: ExperiencesComponent
+      },
+      {
+        path: 'referencias',
+        component: ReferencesComponent
       },
       {
         path: 'formaciones',

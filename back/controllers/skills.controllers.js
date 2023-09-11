@@ -60,13 +60,13 @@ async function skillUpdate(
   const { id } = req.params;
   const {
     level,
-    profileId,
+    skill,
   } = req.body;
   try {
     const updateSkill = await SkillService.updateSkill(
       id,
       level,
-      profileId,
+      skill,
     );
     res.status(201).send(updateSkill);
   } catch (error) {

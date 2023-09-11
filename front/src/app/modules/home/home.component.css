@@ -3,6 +3,10 @@
     height: 100vh;
 }
 
+#first{
+    margin-top: 3rem;
+}
+
 .button-nav{
     margin: 10px;
     width: 300px;
@@ -34,7 +38,7 @@
 .textArea{
     margin: 1rem;
     width: 100%;
-    height: 100vh;
+    height: 95vh;
 }
 
 textarea{
