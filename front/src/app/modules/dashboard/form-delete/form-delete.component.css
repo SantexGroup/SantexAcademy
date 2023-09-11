@@ -237,4 +237,7 @@
 .hit-the-floor {
   text-align: center;
 }
-
+.scrollable-list {
+  overflow-y: auto;
+  max-height: 550px;
+}
