@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { userInterface } from 'src/app/core/interfaces/user.interface';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { UserService } from 'src/app/core/services/usuario.service';
@@ -15,13 +14,22 @@ import { UserService } from 'src/app/core/services/usuario.service';
 export class PersonalComponent implements OnInit {
   mensajeError: string = "";
   user = {} as userInterface;
+  personalForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute,
     private userData: UserDataService,
     private userService: UserService
-  ) { }
+  ) { 
+    this.personalForm = this.fb.group({ 
+      firstName: [''],
+      lastName: [''],
+      email: [''],
+      phone: ['', [Validators.maxLength(10)]],
+      bornDate: '',
+      pictureLink: [''],
+    })
+  }
 
   ngOnInit() {
     // TODO: borra ambos console.log antes de subir
@@ -33,14 +41,6 @@ export class PersonalComponent implements OnInit {
 
 
   // * Forumulario de datos personales
-  personalForm = this.fb.group({ 
-    firstName: [''],
-    lastName: [''],
-    email: [''],
-    phone: ['', [Validators.maxLength(10)]],
-    bornDate: '',
-    pictureLink: [''],
-  })
 
   getUser() { 
     this.userService.getUser(this.userData.userId).subscribe({
@@ -50,7 +50,7 @@ export class PersonalComponent implements OnInit {
           lastName: data.lastName,
           email: data.email,
           phone: data.phone,
-          bornDate: String(data.bornDate?.getDate),
+          bornDate: String(data.bornDate),
           pictureLink: data.pictureLink
         })
         this.user = data; 
