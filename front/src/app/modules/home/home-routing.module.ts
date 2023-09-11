@@ -7,11 +7,15 @@ import { FormationsComponent } from '../crud-data/formations/formations.componen
 import { OptionalsComponent } from '../crud-data/optionals/optionals.component';
 import { LanguageComponent } from '../crud-data/language/language.component';
 import { SkillComponent } from '../crud-data/skill/skill.component';
+import { CVComponent } from '../cv/cv.component';
 
 const routes: Routes = [
   {
     path: 'home/:id',
     component: HomeComponent
+  },{
+    path: 'cv',
+    component: CVComponent
   },
   {
     path: 'experiencias',

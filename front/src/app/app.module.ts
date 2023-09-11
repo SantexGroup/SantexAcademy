@@ -28,6 +28,7 @@ import { SkillComponent } from './modules/crud-data/skill/skill.component';
 import { LoadingComponent } from './modules/loading/loading.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './core/services/toolServices/interceptor/loading.interceptor';
+import { CVComponent } from './modules/cv/cv.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { LoadingInterceptor } from './core/services/toolServices/interceptor/loa
     HomeComponent,
     NavBarComponent,
     SkillComponent,
-    LoadingComponent
+    LoadingComponent,
+    CVComponent
   ],
   imports: [
     BrowserModule,
