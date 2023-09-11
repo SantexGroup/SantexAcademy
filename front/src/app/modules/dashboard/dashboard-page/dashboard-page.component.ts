@@ -21,7 +21,7 @@ export class DashboardPageComponent implements OnInit {
 
   ngOnInit(): void {
   
-    this.courseSvc.getCourses().subscribe((courseList: Course[]) => {
+    this.courseSvc.getCourse().subscribe((courseList: Course[]) => {
         this.courses = courseList.filter((course) => courseList.indexOf(course) < 6);
         this.moreCourses = courseList.filter((course) => courseList.indexOf(course) >= 6);
   

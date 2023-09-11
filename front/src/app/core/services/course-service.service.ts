@@ -8,22 +8,24 @@ import { Course } from '../interfaces/course.interface';
 })
 export class CourseServiceService {
 
+  private apiUrl= 'http://localhost:4001/course'
+
   constructor(private httpCourse: HttpClient) {}
 
     getCourses() {
-      return this.httpCourse.get<Course[]>('/api/course')
+      return this.httpCourse.get<Course[]>(this.apiUrl)
     }
   
     getCoursesById(id:number){
-      return this.httpCourse.get<Course>('/api/course'+'/'+id)
+      return this.httpCourse.get<Course>(this.apiUrl+'/'+id)
     }
   
     postCourses(course: Course){
-      return this.httpCourse.post('/api/course', course)
+      return this.httpCourse.post(this.apiUrl, course)
     }
   
     putCourses(course: Course, id:number){
-      return this.httpCourse.put('/api/course'+'/'+id, course)
+      return this.httpCourse.put(this.apiUrl+'/'+id, course)
     }
   }
 

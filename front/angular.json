@@ -64,12 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "santex-academy:build:production",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "santex-academy:build:production"
             },
             "development": {
-              "browserTarget": "santex-academy:build:development",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "santex-academy:build:development"
             }
           },
           "defaultConfiguration": "development"
