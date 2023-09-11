@@ -2,6 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
+import { RegisterverificationComponent } from './modules/register/registerverification/registerverification.component';
 import { QuienessomosComponent } from './modules/pages/quienessomos/quienessomos.component';
 import { IntegranteComponent } from './modules/pages/integrante/integrante.component';
 import { CatalogoComponent } from './modules/pages/catalogo/catalogo.component';
@@ -23,6 +24,8 @@ const routes: Routes = [
     path: 'dashboard',
     component:DashboardPageComponent,
   },
+  { path: 'registerverification',
+   component: RegisterverificationComponent },
   {
     path: 'quienes-somos',
     component:QuienessomosComponent,
@@ -56,10 +59,6 @@ const routes: Routes = [
     path: '**',
     component:ErrorPageComponent,
   },
-  // {
-  //   path: '404',
-  //   component: ErrorPageComponent
-  // },
 ];
 
 @NgModule({
@@ -68,9 +67,3 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule { }
-
-
-  // {
-  //   path: '**',
-  //   redirectTo: '404'
-  // },

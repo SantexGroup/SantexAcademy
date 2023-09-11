@@ -38,23 +38,8 @@
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
-    "eslint": "^7.27.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.27.5",
     "husky": "^4.3.8",
     "nodemon": "^3.0.1",
     "sequelize-cli": "^6.6.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": [
-        "lint-staged"
-      ]
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "./node_modules/.bin/eslint --fix"
-    ]
   }
 }

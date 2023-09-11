@@ -16,21 +16,21 @@ const createTrans = () => {
 };
 
 // Funcion para enviar correo de confirmacion
-const sendMail = (user) => {
+const sendMail = (user, userEmail, verificationLink) => {
   // Datos del transporte creado
   const transporter = createTrans();
-  // Conecta a traves de emalHtml este archivo y la plantilla html para pasar username
+  // Conecta a traves de emailHtml este archivo y la plantilla html para pasar username
   const emailHtml = fs.readFileSync('./themes/email/email-register.html', 'utf8');
-  // Reemplazar {{username}} con el nombre de usuario real
+  // Reemplazar {{loQueDice}} con el nombre de usuario real
   const personalizedHtml = emailHtml.replace(/{{username}}/g, user.username)
-    .replace(/{{nombre}}/g, user.nombre)
-    .replace(/{{password}}/g, user.password);
+                                    .replace(/{{nombre}}/g, user.nombre)
+                                    .replace(/{{verificationLink}}/g, verificationLink)
+                                    .replace(/{{password}}/g, user.password);                           
   // Datos del correo electronico
   const mailOptions = {
     from: '"Academy del NOC" <academyinnoc@gmail.com>',
     to: user.email,
     subject: `Confirmación de Registro para ${user.username}`,
-    // text: 'Haga clic en el enlace para confirmar su registro: http://localhost4200/confirmacion?codigo=(generarUnCodigo)',
     html: `<style> ${fs.readFileSync('./themes/email/email-register.css', 'utf8')} </style>
     <div>${personalizedHtml}</div>`,
   };

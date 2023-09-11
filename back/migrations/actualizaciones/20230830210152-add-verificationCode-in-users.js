@@ -13,5 +13,7 @@ module.exports = {
 };
 
 // Para añadir este campo a la tabla users ejecutar desde la carpeta back
-// Windows back> ./node_modules/.bin/sequelize db:migrate --to 20230307002718-add-verificationCode.js
-// Linux /back$ ./node_modules/.bin/sequelize db:migrate --to 20230307002718-add-verificationCode.js
+// Windows back> ./node_modules/.bin/sequelize db:migrate --name 20230830210152-add-verificationCode-in-users
+// Linux /back$ ./node_modules/.bin/sequelize db:migrate --name 20230830210152-add-verificationCode-in-users
+// Luego ejecute la migracion:
+//./node_modules/.bin/sequelize db:migrate --name 20230830210252-changeType-verificationCode-in-users

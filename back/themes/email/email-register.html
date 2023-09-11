@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido</title>
-    <style>
-        /* Estilos CSS aquí */
-    </style>
+    <!-- <link rel="stylesheet" type="text/css" href="email-register.css"> -->
 </head>
 <body>
     <div class="container">
@@ -20,7 +18,7 @@
             <p>Tu contraseña "password" es: {{password}}</p>
             <p>Guarda estos datos en un lugar seguro, se te pedirán para iniciar sesión.</p>
             <p>Para completar tu registro, por favor haz clic en el botón de abajo:</p>
-            <a href="http://localhost:4200/login" class="button">Ingresar</a>
+            <a href="{{verificationLink}}" class="button">Ingresar a: {{verificationLink}}</a>
             
         </main>
         <footer>
