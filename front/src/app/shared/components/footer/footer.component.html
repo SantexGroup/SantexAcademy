@@ -12,13 +12,21 @@
           ¿Querés estar al tanto de las últimas actividades, proyectos
           inspiradores y oportunidades de voluntariado?
         </p>
-        <form class="w-full flex items-center justify-center gap-2 lg:pr-4 lg:justify-start">
+        <form
+          class="w-full flex items-center justify-center gap-2 lg:pr-4 lg:justify-start"
+        >
           <label for="email_user" class="lg:w-[250px] border border-lightGray rounded-md">
-            <input id="email_user" type="email" name="email" placeholder="Email" required
-              class="w-full h-full outline-none shadow-md py-2 px-4 rounded-md" />
+            <input
+              id="email_user"
+              type="email"
+              name="email"
+              placeholder="Email"
+              class="w-full h-full outline-none shadow-md py-2 px-4 rounded-md"
+            />
           </label>
           <button
-            class="px-4 py-2 bg-darkSlateBlue text-white font-semibold text-sm shadow-md rounded-md sm:text-base btn-shadow">
+            class="px-4 py-2 bg-[#b1237d] text-white font-semibold text-sm shadow-md rounded-md sm:text-base btn-shadow"
+          >
             Subscribite
           </button>
         </form>
@@ -30,17 +38,21 @@
         class="grid grid-cols-1 gap-x-8 gap-y-4 justify-items-center text-center text-sm mb-2 m:grid-cols-2 sm:grid-cols-4 sm:text-base">
         <li>
           <b class="text-lg lg:text-xl">Descubrir</b>
-          <p class="lg:text-lg">Organizaciones</p>
-          <p class="lg:text-lg">Oportunidades <br />de voluntariado</p>
+          <p class="lg:text-lg cursor-pointer">Organizaciones</p>
+          <p class="lg:text-lg cursor-pointer">
+            <a routerLink="voluntariados">
+              Oportunidades <br />de voluntariado
+            </a>
+          </p>
         </li>
         <li>
           <b class="text-lg lg:text-xl">Quienes somos</b>
-          <p class="lg:text-lg">Acerca de nosotros</p>
-          <p class="lg:text-lg">Nuestro equipo</p>
+          <p class="lg:text-lg cursor-pointer">Acerca de nosotros</p>
+          <p class="lg:text-lg cursor-pointer">Nuestro equipo</p>
         </li>
         <li>
           <b class="text-lg lg:text-xl">Contactanos</b>
-          <p class="lg:text-lg">+54 351 1234567</p>
+          <p class="lg:text-lg cursor-pointer">+54 351 1234567</p>
         </li>
         <li>
           <b class="text-lg lg:text-xl">Síguenos</b>

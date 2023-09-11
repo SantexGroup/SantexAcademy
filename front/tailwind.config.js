@@ -40,6 +40,8 @@ module.exports = {
       midnightBlue: "#1E165F",
       dimGray: "#717375",
       bgOptionsRegister: "rgba(63, 40, 131, 0.36)",
+      forestGreen: "#1B830A",
+      red: "#FF0404",
     },
     border: {
       white: "#FFF",
@@ -58,6 +60,7 @@ module.exports = {
     fontFamily: {
       sans: ["Open Sans"],
       poppins: ["Poppins"],
+      dosis: ["Dosis", "sans"],
     },
     fontSize: {
       xs: ["0.75rem", { lineHeight: "1rem" }],

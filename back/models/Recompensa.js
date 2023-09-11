@@ -10,11 +10,11 @@ const Recompensa = sequelize.define(
       allowNull: false,
       primaryKey: true,
     },
-    nombre: {
+    name: {
       type: DataTypes.STRING(100),
       allowNull: false,
     },
-    costoEnHoras: {
+    costHours: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

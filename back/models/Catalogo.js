@@ -13,12 +13,21 @@ const Catalogo = sequelize.define(
       primaryKey: true,
     },
     name: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.STRING(50),
       allowNull: false,
     },
   },
   {
-    paranoid: true,
+    tableName: 'catalogo',
+    timestamps: false,
+    indexes: [
+      {
+        name: 'PRIMARY',
+        unique: true,
+        using: 'BTREE',
+        fields: [{ name: 'id' }],
+      },
+    ],
   },
 );
 
