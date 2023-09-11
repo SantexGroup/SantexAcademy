@@ -8,6 +8,7 @@ const userRoutes = require('./user');
 const direccionRoutes = require('./direccion');
 const productsRoutes = require('./products-route');
 const alquileresVendedorRoutes = require('./alquileres-vendedor-route');
+const alquilerRoutes = require('./alquiler');
 
 const app = Express();
 
@@ -16,6 +17,7 @@ app.use('/users', userRoutes);
 app.use('/productos', productsRoutes);
 app.use('/direccion', direccionRoutes);
 app.use('/alquileres-vendedor', alquileresVendedorRoutes);
+app.use('/alquiler', alquilerRoutes);
 
 // use=
 app.use('/ping', (req, res) => {
