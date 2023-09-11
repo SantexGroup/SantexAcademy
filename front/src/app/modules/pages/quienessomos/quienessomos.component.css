@@ -1,0 +1,178 @@
+/* Estilos para el contenedor del equipo */
+.team-container {
+  background-color: #f1f2f6;
+  padding: 20px;
+}
+
+/* Estilos para las tarjetas de miembros del equipo */
+.team-member {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Estilos para las imágenes de perfil de los miembros del equipo */
+.team-member img {
+  border-radius: 50%;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+/* Estilos para los botones de redes sociales de los miembros del equipo */
+.team-member .social-links a {
+  margin: 5px;
+  font-size: 20px;
+  color: #333;
+}
+
+/* Estilos para el botón "Ver Perfil" de los miembros del equipo */
+.team-member .btn-profile {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.team-member .btn-profile:hover {
+  background-color: #555;
+}
+
+/* Estilos para el área de imagen */
+.image-area {
+  background: #f1f2f6;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  text-align: center;
+}
+
+/* Estilos para el contenedor de la imagen */
+.img-wrapper {
+  width: 300px;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  margin: 20px;
+}
+
+/* Estilos para el efecto de desplazamiento de la imagen */
+.img-wrapper:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 180%;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: 1;
+  transform: skew(45deg);
+  transition: 0.5s;
+}
+
+.img-wrapper:hover:before {
+  left: -180%;
+}
+
+/* Estilos para las imágenes */
+.img-wrapper img {
+  height: 400px;
+  width: 300px;
+  filter: grayscale(100%);
+  transition: 2s;
+}
+
+.img-wrapper:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+/* Estilos para el texto superpuesto */
+.img-wrapper h2 {
+  background:  #ff6501;
+
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transform: perspective(400px) rotateY(90deg);
+  transform-origin: right;
+  transition: 1s;
+}
+
+.img-wrapper:hover h2 {
+  transform: perspective(400px) rotateY(0deg);
+}
+
+/* Estilos para la lista de redes sociales */
+.img-wrapper ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: rgba(255, 255, 255, 0);
+}
+
+.img-wrapper ul li {
+  background: #333;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  line-height: 40px;
+  transform: perspective(800px) rotateY(90deg);
+  transition: 0.5s;
+  transform-origin: left;
+}
+
+.img-wrapper:hover ul li {
+  transform: perspective(800px) rotateY(0deg);
+}
+
+.img-wrapper:hover ul li:nth-child(1) {
+  transition-delay: 0.2s;
+}
+
+.img-wrapper:hover ul li:nth-child(2) {
+  transition-delay: 0.6s;
+}
+
+.img-wrapper:hover ul li:nth-child(3) {
+  transition-delay: 0.8s;
+}
+
+.img-wrapper:hover ul li:nth-child(4) {
+  transition-delay: 1s;
+}
+
+.img-wrapper ul li a {
+  color:  #ff6501;
+  background: rgba(255, 255, 255, 0);
+}
+
+.img-wrapper ul li i {
+  color: tomato;
+  background: rgba(255, 255, 255, 0);
+}
+
+.img-wrapper ul li i:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0);
+}
+
+.img-wrapper h2 a {
+  color: #fff; /* Cambia el color del texto del enlace */
+  text-decoration: none; /* Elimina el subrayado predeterminado del enlace */
+}
+
+

@@ -69,7 +69,7 @@
             <option value="alumno">Alumno</option>
           </select>
           <div
-          *ngIf="form.get('userType')?.invalid && (form.get('userType')?.dirty || form.get('userType')?.touched)"
+          *ngIf="form.get('userType')?.invalid && (form.get('userType')?.dirty || form.get('userType')?.touched)" 
           class="text-danger">
           <div *ngIf="form.get('userType')?.hasError('invalidUserType')" class="text-danger">
             Debe seleccionar un tipo de usuario.

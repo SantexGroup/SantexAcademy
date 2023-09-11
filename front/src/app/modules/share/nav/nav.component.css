@@ -1,32 +1,121 @@
-/*ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
 }
 
-li {
-  float: left;
+body {
+    background-color: #fff59d;
+    margin: 0;
 }
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+.header {
+    background-color: #1b3039;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 85px;
+    padding: 5px 20px;
 }
 
-li a:hover:not(.active) {
-  background-color: #111;
+.header .logo {
+    cursor: pointer;
+    margin-right: auto;
 }
 
-.active {
-  background-color: #04AA6D;
+.header .logo img {
+    height: 70px;
+    width: auto;
+    transition: all 0.3s;
 }
-*/
 
-.nav-item-2 {
-  float: "right";
+.header .logo img:hover {
+    transform: scale(1.2);
+}
+
+.header nav {
+    margin-left: auto;
+}
+
+.header .nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.header .nav-links li {
+    padding: 0 20px;
+}
+
+.header .nav-links li:first-child {
+    padding-right: 0;
+}
+
+.header .nav-links li:hover {
+    transform: scale(1.1);
+}
+
+.header .nav-links a {
+    font-weight: 700;
+    color: #eceff1;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.header .nav-links li a:hover {
+    color: #ffbc0e;
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.menu-button.open {
+    animation: rotateToClose 0.3s forwards;
+    content: "☰"; /* Cambiar el contenido a "☰" cuando esté cerrado */
+}
+
+@keyframes rotateToClose {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(45deg);
+    }
+}
+
+/* Estilos para pantallas más pequeñas, por ejemplo, teléfonos móviles */
+@media screen and (max-width: 768px) {
+  .header {
+      padding: 5px 10px;
+      height: auto;
+  }
+
+  .header .nav-links {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 10px;
+      display: none;
+  }
+
+  .header .nav-links.active {
+      display: flex;
+  }
+
+  .header .nav-links li {
+      padding: 10px 0;
+  }
+
+  .menu-button {
+      font-size: 30px;
+  }
 }
