@@ -30,6 +30,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './core/services/toolServices/interceptor/loading.interceptor';
 import { CVComponent } from './modules/cv/cv.component';
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { ReferencesComponent } from './modules/crud-data/references/references.c
     MatDividerModule,
     MatMenuModule,
     HomeRoutingModule,
+    NgbModule,
   ],
   providers: [
     {
