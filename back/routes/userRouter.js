@@ -1,20 +1,31 @@
 const express = require('express');
-const userService = require('../services/userService');
+const { body } = require('express-validator');
+const { UserController } = require('../controllers');
 
 const router = express.Router();
 
-router.post('/', async (req, res) => {
-  const {
-    firstName, lastName, email, phone, password,
-  } = req.body;
-  try {
-    const user = await userService.createUser({
-      firstName, lastName, email, phone, password,
-    });
-    res.status(201).json(user);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+router.get('/:userId', UserController.getUserById);
+
+router.get('/', UserController.getUsers);
+
+router.post(
+  '/',
+  body('firstName').isString(),
+  body('lastName').isString(),
+  body('email').isEmail(),
+  body('password').isString(),
+  UserController.createUser,
+);
+router.put(
+  '/:userId',
+  body('firstName').isString(),
+  body('lastName').isString(),
+  body('email').isEmail(),
+  body('phone').isString(),
+  body('password').isString(),
+  UserController.updateUser,
+);
+
+router.delete('/:userId', UserController.deleteUser);
 
 module.exports = router;
