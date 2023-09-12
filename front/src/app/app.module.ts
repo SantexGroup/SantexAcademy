@@ -30,6 +30,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './core/services/toolServices/interceptor/loading.interceptor';
 import { CVComponent } from './modules/cv/cv.component';
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
+import { ProfilesComponent } from './modules/profiles/profiles.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ReferencesComponent } from './modules/crud-data/references/references.c
     SkillComponent,
     LoadingComponent,
     CVComponent,
-    ReferencesComponent
+    ReferencesComponent,
+    ProfilesComponent
   ],
   imports: [
     BrowserModule,

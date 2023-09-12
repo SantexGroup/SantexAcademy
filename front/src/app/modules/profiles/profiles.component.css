@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #eee;
+    color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.conteiner-profiles{
+    display: flex;
+}
+
+.profile-1{
+    width: 30%;
+    max-width: 300px;
+    border: 2px solid #000;
+    margin:auto;
+    font-size: 10px;
+    line-height: 5px;
+    text-align: center;
+    display: grid;    
+    grid-gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "header header header"
+                         "item-foto experiencia experiencia"
+                         "item-foto experiencia experiencia"
+                         "sobreMi experiencia experiencia"
+                         "sobreMi formacion formacion"
+                         "links formacion formacion"
+                         "skills opcionales referencias"
+                         "skills opcionales referencias";
+
+}
+.profile-1 > div{
+    display: block;
+    padding: 20px;
+    color: white;
+    /* background: #2f89fc ; */
+    box-shadow: 2px 2px 10px rgba(0,0,0,25);  
+}
+.profile-1 > .header {
+    background: #fcdd2f;
+    grid-area: header;
+   
+}
+.profile-1 > .item-foto {
+    background: #ff8000;
+    grid-row-start: item-foto ;
+    grid-row-end: item-foto ;
+    
+}
+.profile-1 > .experiencia{
+    background: #2f89fc;
+    grid-area: experiencia;
+}
+.profile-1 > .formacion{
+    background: #f84003;
+    grid-area: formacion;
+}
+.profile-1 > .sobre-mi{
+    background: #998f56;
+    grid-area: sobreMi;
+}
+.profile-1 > .links{
+    background: #084191;
+    grid-area: links;
+}
+.profile-1 > .skills{
+    background:#7c8a9b;
+    grid-area: skills;
+}
+.profile-1 > .opcionales{
+    background: #1f7b0f;
+    grid-area: opcionales;
+}
+.profile-1 > .referencias{
+    background: #9df58e;
+    grid-area: referencias;
+}
+.profile-2{
+    height: 30%;
+    max-height: 300px;
+    border: 2px solid #000;
+    margin:auto;
+    font-size: 20px;
+    line-height: 5px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+}
+.profile-2 > div{
+    display: block;
+    padding: 20px;
+    color: white;
+    background: #2f89fc ;
+    box-shadow: 2px 2px 10px rgba(0,0,0,25);  
+}

@@ -11,6 +11,7 @@ import { ExperiencesComponent } from './modules/crud-data/experiences/experience
 import { SkillComponent } from './modules/crud-data/skill/skill.component';
 import { CVComponent } from './modules/cv/cv.component';
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
+import { ProfilesComponent } from './modules/profiles/profiles.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
       {
         path: 'habilidades',
         component: SkillComponent
+      },
+      {
+        path: 'profiles',
+        component: ProfilesComponent
       }
     ]
   },
