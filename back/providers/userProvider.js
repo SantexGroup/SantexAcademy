@@ -32,12 +32,21 @@ const updateUser = async (userId, userOptions) => {
   try {
     await getUserById(userId);
     await User.update(userOptions, { where: { id: userId } });
-    return User.findByPk(userId);
+    return getUserById(userId);
   } catch (error) {
     throw ('Error:', error);
   }
 };
-
+const patchUser = async (userId, newPassword) => {
+  try {
+    const user = await User.findByPk(userId);
+    user.password = newPassword.password;
+    await user.save();
+    return getUserById(userId);
+  } catch (error) {
+    throw ('Error:', error);
+  }
+};
 const deleteUser = async (userId) => {
   try {
     return await User.update(
@@ -55,4 +64,5 @@ module.exports = {
   getUserById,
   getUsers,
   updateUser,
+  patchUser,
 };

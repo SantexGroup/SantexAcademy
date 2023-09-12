@@ -25,6 +25,7 @@ const {
   getUserById,
   getUsers,
   updateUser,
+  patchUser,
 } = require('./userService');
 
 const CourseService = {
@@ -54,6 +55,7 @@ const UserService = {
   getUserById,
   getUsers,
   updateUser,
+  patchUser,
 };
 module.exports = {
   CourseService, CategoryService, ScheduleService, UserService,

@@ -57,13 +57,35 @@ const updateUser = async (req, res) => {
   } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
   try {
-    const newUser = await UserService.updateUser(userId, {
+    // le agrego el dates porque me da error el eslint
+    const updateUserDates = await UserService.updateUser(userId, {
       firstName,
       lastName,
       phone,
       password: hashedPassword,
     });
-    return res.status(200).json(newUser);
+    return res.status(200).json(updateUserDates);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+const updatePassword = async (req, res) => {
+  const result = validationResult(req);
+  if (!result.isEmpty()) {
+    return res.status(400).send({
+      errors: result.array(),
+    });
+  }
+  const { userId } = req.params;
+  const { password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  try {
+    // le agrego el dates porque me da error el eslint
+    const updatePasswordDate = await UserService.patchUser(userId, {
+      password: hashedPassword,
+    });
+    return res.status(200).json(updatePasswordDate);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -80,5 +102,5 @@ const deleteUser = async (req, res) => {
 
 // exports
 module.exports = {
-  createUser, getUserById, getUsers, updateUser, deleteUser,
+  createUser, getUserById, getUsers, updateUser, deleteUser, updatePassword,
 };

@@ -25,6 +25,9 @@ router.put(
   body('password').isString(),
   UserController.updateUser,
 );
+router.patch('/:userId',
+  body('password').isString(),
+  UserController.updatePassword);
 
 router.delete('/:userId', UserController.deleteUser);
 

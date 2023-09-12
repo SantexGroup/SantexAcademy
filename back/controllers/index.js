@@ -25,6 +25,7 @@ const {
   getUsers,
   updateUser,
   deleteUser,
+  updatePassword,
 } = require('./userController');
 
 const CourseController = {
@@ -55,6 +56,7 @@ const UserController = {
   getUsers,
   updateUser,
   deleteUser,
+  updatePassword,
 };
 module.exports = {
   CategoryController, CourseController, ScheduleController, UserController,
