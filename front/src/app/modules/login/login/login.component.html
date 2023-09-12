@@ -1,0 +1,43 @@
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+<div class="wrapper">
+    <div class="body">
+      <img class="logo" src="/assets/images/logo-circular.png" alt="login">
+      <h1>Acceso</h1>
+      <form [formGroup]="loginForm">
+        <div class="form-floating mb-3" >
+          <input type="text" class="form-control" formControlName="username" required placeholder="Ingrese Usuario">
+          <label>Usuario</label>
+
+        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text-danger">
+         <div *ngIf="username.errors?.['required']">
+            El usuario es requerido.
+          </div>
+          <div *ngIf="username.errors?.['email']">
+            El usuario debe tener un formato válido.
+          </div>
+        </div>
+      </div> 
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" formControlName="password" required   placeholder="Ingrese Password">
+          <label>Password</label>
+
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+
+          <div *ngIf="password.errors?.['required']">
+            La contraseña es requerida.
+          </div>
+          <div *ngIf="password.errors?.['minlength']">
+            La contraseña tiene por lo menos ocho caracteres.
+          </div>
+        </div>
+        </div>
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary" type="button" (click)="login()">Ingresar</button>
+        </div>
+      <p class="mb-3">¿No tienes cuenta? <a class="nav-link" routerLink="/register">Registrate aquí</a></p>
+      <p class="mb-3"><a class="nav-link" routerLink="/register">¿Olvidaste tu contraseña? </a></p>
+    </form>
+    </div>
+</div>
