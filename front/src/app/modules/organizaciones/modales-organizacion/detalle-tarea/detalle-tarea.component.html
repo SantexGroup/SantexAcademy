@@ -1,0 +1,47 @@
+<mat-dialog-content>
+        
+  
+        <mat-card-content >
+            
+             <mat-card-title class="titulo">{{dataTarea.name}}</mat-card-title>
+
+            
+            <p class="titulo-propiedad">Estado:</p>
+            <div style="display: flex; align-items: center; justify-content: flex-start; " class="contenido-propiedad">
+                
+                <p style="margin: 0;" > {{dataTarea.estado|titlecase}}</p> 
+                <mat-icon [ngStyle]="{'color':dataTarea.estado==='activa'?'green':'red'}">radio_button_checked</mat-icon>
+                
+            </div>
+            <p class="titulo-propiedad">Fecha:</p>
+            <p class="contenido-propiedad">{{ dataTarea.date | date:'dd/MM/yyyy' }}</p>
+
+            <p class="titulo-propiedad">Hora de Inicio:</p>
+            <p class="contenido-propiedad">{{ dataTarea.hora}}:00 hs.</p>
+            
+            <p class="titulo-propiedad">Lugar:</p>
+            <p class="contenido-propiedad">{{ dataTarea.place }}</p>
+
+            <p class="titulo-propiedad">Descripción:</p>
+            <p class="contenido-propiedad">{{ dataTarea.description }}</p>
+
+            <p class="titulo-propiedad">Categoria:</p>
+            <p class="contenido-propiedad">{{ dataTarea.category?.name }}</p>
+
+            <p class="titulo-propiedad">Duración:</p>
+            <p class="contenido-propiedad">{{ dataTarea.duracion }} {{dataTarea.duracion===1?'hora.':'horas.'}}</p> 
+
+            <p class="titulo-propiedad">Puntos:</p>
+            <p class="contenido-propiedad">{{ dataTarea.points }}</p>
+
+            <p class="titulo-propiedad">Cantidad de participantes:</p>
+            <p class="contenido-propiedad">{{ dataTarea.cantParticipantes }}</p>
+
+            <p class="titulo-propiedad">Cantidad de Inscriptos:</p>
+            <p class="contenido-propiedad">{{ dataTarea.cantInscriptos }}</p>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" mat-dialog-close>ACEPTAR</button>
+        </mat-card-actions>
+</mat-dialog-content>

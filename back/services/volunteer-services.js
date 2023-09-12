@@ -3,9 +3,12 @@
 // eslint-disable-next-line no-unused-vars
 const { DataTypes, Sequelize } = require('sequelize');
 const volunteerModel = require('../models/volunteer-model');
+const models = require('../models/index');
+
 const jwt = require('jsonwebtoken');
 const { sequelize } = require('../models');
 const bcrypt = require('bcrypt');
+// const models = require('../models/index');
 
 const Volunteer = volunteerModel(sequelize, DataTypes);
 
@@ -128,6 +131,38 @@ async function login(email, password) {
   return token;
 }
 
+async function asignarTareaVoluntario(idVolunteer, idTarea) {
+  try {
+    const voluntario = await models.volunteer.findByPk(idVolunteer);
+    const tarea = await models.tarea.findByPk(idTarea);
+
+    if (!voluntario) {
+      return { error: 'No se encuentra voluntario con el ID proporcionado' };
+    }
+
+    if (!tarea) {
+      return { error: 'No se encuentra tarea con el ID proporcionado' };
+    }
+
+    const inscripto = await voluntario.hasTarea(tarea);
+    if (inscripto) {
+      return { error: 'El voluntario ya está inscripto en esta tarea' };
+    }
+    tarea.cantInscriptos += 1;
+    await tarea.save();
+    await voluntario.addTarea(tarea, { through: { asistio: false } });
+
+    const voluntarioConTarea = await models.volunteer.findOne({
+      where: { id: idVolunteer },
+      include: [{ model: models.tarea }],
+    });
+
+    return { success: true, voluntario: voluntarioConTarea };
+  } catch (error) {
+    console.error(error);
+    return { error: 'Error interno en el servidor' };
+  }
+}
 module.exports = {
-  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword,
+  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, asignarTareaVoluntario,
 };

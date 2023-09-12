@@ -1,8 +1,8 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class tareas extends Model {}
-  tareas.init(
+  class premios extends Model {}
+  premios.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -18,41 +18,30 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      id_coordinator: {
-        type: DataTypes.INTEGER,
-      },
-      id_volunteer: {
-        type: DataTypes.INTEGER,
-      },
-      point: {
-        type: DataTypes.BIGINT,
-        allowNull: true,
-        defaultValue: 0,
-      },
-      date: {
-        type: DataTypes.DATEONLY,
-        allowNull: false,
-      },
-      place: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      id_category: {
-        type: DataTypes.INTEGER,
-      },
-      cant_participantes: {
+      costo: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      cantidad: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      
 
     }, {
       sequelize,
-      modelName: 'tareas',
+      modelName: 'premios',
       timestamps: false,
       underscored: false,
       createdAt: false,
       updatedAt: false,
     },
   );
-  return tareas;
+
+  premios.associate = (models) => {
+    premios.belongsToMany(models.volunteer, { through: models.premios_mid });
+  };
+  
+  return premios;
 };
+
