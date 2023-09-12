@@ -12,7 +12,6 @@ import { Product } from 'src/app/core/interfaces/product';
   styleUrls: ['./form-update.component.css'],
 })
 export class FormUpdateComponent implements OnInit {
-  constructor(private backService: BackServiceService) {}
 
   // Creamos una lista de productos como ejemplo
 
