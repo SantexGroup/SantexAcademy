@@ -46,12 +46,11 @@ export class RegistroComponent{
 
   //* Formulario 
   registroForm = this.fb.group({
-    // TODO: eliminar valores antes de realizar el PR
-    name: ['javier', [ Validators.required ]],
-    lastName: ['lenc', [ Validators.required ]],
-    email: ['jav@mail', [ Validators.required, Validators.email ]],
-    nick: ['javkhall3', [ Validators.required ]],
-    password: ['qwerty', [ Validators.required, Validators.minLength(6) ]],
+    name: ['', [ Validators.required ]],
+    lastName: ['', [ Validators.required ]],
+    email: ['', [ Validators.required, Validators.email ]],
+    nick: ['', [ Validators.required ]],
+    password: ['', [ Validators.required, Validators.minLength(6) ]],
   })
   
 

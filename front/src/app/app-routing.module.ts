@@ -9,15 +9,11 @@ import { LanguageComponent } from './modules/crud-data/language/language.compone
 import { AppComponent } from './app.component';
 import { ExperiencesComponent } from './modules/crud-data/experiences/experiences.component';
 import { SkillComponent } from './modules/crud-data/skill/skill.component';
-<<<<<<< HEAD
 import { PersonalComponent } from './modules/crud-data/personal/personal.component';
-=======
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
->>>>>>> main
 
 const routes: Routes = [
-  // TODO: DESCOMENTAR ANTES DE SUBIR Y CONFIGURAR DIRECCIONAMIENTO
-/* */  {
+  {
     path: '',
     component: AppComponent
   },
@@ -67,11 +63,6 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
-  // TODO: ELIMINAR ANTE DE SUBIR
-/*   {
-    path: 'personal',
-    component: PersonalComponent
-  }, */
 ];
 
 @NgModule({

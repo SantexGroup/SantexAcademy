@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { userInterface } from 'src/app/core/interfaces/user.interface';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { UserService } from 'src/app/core/services/usuario.service';
@@ -25,23 +25,20 @@ export class PersonalComponent implements OnInit {
       firstName: [''],
       lastName: [''],
       email: [''],
-      phone: ['', [Validators.maxLength(10)]],
+      phone: [''],
       bornDate: '',
       pictureLink: [''],
     })
   }
 
   ngOnInit() {
-    // TODO: borra ambos console.log antes de subir
-    console.log("desde personal")
-    console.log(this.userData.userId)
+    // console.log("desde personal", this.userData.userId))
 
     this.getUser()
   }
 
 
   // * Forumulario de datos personales
-
   getUser() { 
     this.userService.getUser(this.userData.userId).subscribe({
       next: (data) => { console.log (data)

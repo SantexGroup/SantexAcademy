@@ -29,12 +29,9 @@ import { SkillComponent } from './modules/crud-data/skill/skill.component';
 import { LoadingComponent } from './modules/loading/loading.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './core/services/toolServices/interceptor/loading.interceptor';
-<<<<<<< HEAD
 import { UsuarioModule } from './modules/usuario/usuario.module';
-=======
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
 
->>>>>>> main
 
 @NgModule({
   declarations: [

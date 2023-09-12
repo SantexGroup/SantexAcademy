@@ -1,7 +1,7 @@
 // Importacion de userService para inyectar en el controlador.
 
 const userService = require('../services/user.service');
-const bcrypt = require('bcrypt'); //* prueba
+const bcrypt = require('bcrypt');
 //
 // controlador que redirige al servicio para registrar un usuario
 async function recordUser(req, res) {
@@ -16,7 +16,7 @@ async function recordUser(req, res) {
     phone,
   } = req.body;
   
-  //* prueba
+
   const salt = await bcrypt.genSalt();
   const passwordCrypt = await bcrypt.hash(password, salt);
 
