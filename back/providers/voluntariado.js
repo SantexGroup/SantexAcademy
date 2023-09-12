@@ -19,7 +19,7 @@ const getVoluntariadosByCriteria = async (queryOptions, bodyOptions) => {
     validOptions.forEach((option) => {
       if (options[option]) where[option] = options[option];
     });
-    where.deletedAt = null;
+    // where.deletedAt = null;
 
     const voluntariados = await Voluntariado.findAll({
       where,
