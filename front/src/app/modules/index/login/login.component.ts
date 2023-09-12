@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs';
 import { Credencial } from 'src/app/core/interfaces/credencial';
 import { DatosLogin } from 'src/app/core/interfaces/datosLogin';
+import { AdminService } from 'src/app/core/services/admin.service';
 import { OrganizacionService } from 'src/app/core/services/organizacion.service';
 import { VoluntarioService } from 'src/app/core/services/voluntario.service';
 
@@ -16,7 +17,7 @@ import { VoluntarioService } from 'src/app/core/services/voluntario.service';
 export class LoginComponent implements OnInit {
 
   constructor(fb:FormBuilder,private routeActive:ActivatedRoute, private router:Router, private voluntarioService:VoluntarioService, private matSnackBar:MatSnackBar,
-              private organizacionService:OrganizacionService ) {
+              private organizacionService:OrganizacionService, private adminService:AdminService ) {
 
     this.formLogin = fb.group({
       email:['',[Validators.required,Validators.email]],
@@ -24,21 +25,27 @@ export class LoginComponent implements OnInit {
     });
     this.voluntario = false;
     this.organizacion = false;
+    this.admin = false;
     this.titulo = '';
     this.mostrarPassword = false;
-    this.organizacionService.getCredencialesOrganizacion.pipe(take(1)).subscribe({
-      next:(res)=> this.credencialesOrganizacion = res
-    });
 
-    this.voluntarioService.getCredencialesVoluntario.pipe(take(1)).subscribe({
-      next:(res)=> this.credencialesVoluntario = res
-    });
+    this.obtenerCredenciales();
     
    }
+   
+   admin:boolean;
+   organizacion:boolean;
+   voluntario:boolean;
+   titulo:string;
+   formLogin:FormGroup;
+   mostrarPassword:boolean;
+   credencialesOrganizacion:Credencial|null = null;
+   credencialesVoluntario:Credencial|null = null;
+   credencialesAdmin:Credencial|null = null;
 
   ngOnInit(): void {
 
-    if(this.credencialesVoluntario !== null || this.credencialesOrganizacion !== null) this.router.navigate(['/index']);
+    this.verificarSesion();
 
 
     this.routeActive.queryParams.subscribe(params=>{
@@ -51,13 +58,24 @@ export class LoginComponent implements OnInit {
         if(parametro==='organizacion'){
           this.organizacion = true;
           this.voluntario = false;
+          this.admin = false;
           this.titulo = "Organizaciones"
           
         }
         else if(parametro==='voluntario'){
           this.voluntario = true;
           this.organizacion = false;
+          this.admin = false;
           this.titulo = "Voluntarios"
+        }
+        else if(parametro==='admin'){
+
+          this.voluntario = false;
+          this.organizacion = false;
+          this.admin = true;
+
+          this.titulo = "Administrador"
+
         }
         else{
           this.router.navigate(['index']);
@@ -70,14 +88,6 @@ export class LoginComponent implements OnInit {
     });
 
   }
-
-  organizacion:boolean;
-  voluntario:boolean;
-  titulo:string;
-  formLogin:FormGroup;
-  mostrarPassword:boolean;
-  credencialesOrganizacion!:Credencial|null;
-  credencialesVoluntario!:Credencial|null;
 
   iniciarSesion(){
     const credenciales:DatosLogin = {
@@ -97,13 +107,12 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/voluntarios']);
           
         },
-        error:(err)=>{
+        error:()=>{
           this.matSnackBar.open('Error al iniciar sesión','ERROR',{
             duration:3000,
           horizontalPosition:'center',
           verticalPosition:'top'}
           );
-          console.log(err);
         }
       });
 
@@ -127,10 +136,32 @@ export class LoginComponent implements OnInit {
           horizontalPosition:'center',
           verticalPosition:'top'}
           );
-          console.log(err);
         }
       });
       
+    }
+
+    if(this.admin){
+      
+      this.adminService.iniciarSesion(credenciales).subscribe({
+        next:()=>{
+          this.matSnackBar.open('Inicio de sesión exitoso!','OK',{
+            duration:3000,
+          horizontalPosition:'center',
+          verticalPosition:'top'});
+
+          this.router.navigate(['/admin']);
+          
+        },
+        error:()=>{
+          this.matSnackBar.open('Error al iniciar sesión','ERROR',{
+            duration:3000,
+          horizontalPosition:'center',
+          verticalPosition:'top'}
+          );
+        }
+      });
+
     }
   }
 
@@ -146,6 +177,24 @@ export class LoginComponent implements OnInit {
       
     }
 
+  }
+
+  obtenerCredenciales():void{
+    this.organizacionService.getCredencialesOrganizacion.pipe(take(1)).subscribe({
+      next:(res)=> this.credencialesOrganizacion = res
+    });
+
+    this.voluntarioService.getCredencialesVoluntario.pipe(take(1)).subscribe({
+      next:(res)=> this.credencialesVoluntario = res
+    });
+
+    this.adminService.getCredencialesAdmin.pipe(take(1)).subscribe({
+      next:(res)=> this.credencialesAdmin = res
+    });
+  }
+
+  verificarSesion():void{
+    if(this.credencialesVoluntario !== null || this.credencialesOrganizacion !== null || this.credencialesAdmin !== null) this.router.navigate(['/index']);
   }
 
 }

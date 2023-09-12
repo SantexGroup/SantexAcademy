@@ -21,6 +21,8 @@ const config = require('./config/config');
 const validateEnv = require('./utils/validateEnv');
 const { initializeAuthentication } = require('./auth/auth');
 
+const { createAdminDefault } = require('./services/administrator-service');
+
 const app = express();
 validateEnv.validate();
 app.use(helmet());
@@ -76,6 +78,7 @@ models.sequelize.authenticate()
     logger.api.error(err);
   });
 
+createAdminDefault('admin@gmail.com', 'Admin123');
 // app.use('/', routes);
 app.use('/volunteer', routes.volunteer);
 app.use('/coordinator', routes.coordinator);

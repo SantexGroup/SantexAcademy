@@ -6,7 +6,6 @@ const coordinatorController = require('../controllers/coordinator-controller');
 const { isAuthenticatedAdmin } = require('../middleware/authentication');
 
 const router = Express.Router();
-
 router.get('/datos', isAuthenticatedAdmin, adminController.getData);
 router.get('/get-all-administrator', adminController.getAllAdministrator);
 router.get('/get-administrator-by-id/:id', adminController.getAdministratorById);

@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const administratorModel = require('../models/administrator-model');
 const { sequelize } = require('../models');
+const models = require('../models/index');
+
 
 const Administrator = administratorModel(sequelize, DataTypes);
 
@@ -75,7 +77,6 @@ async function login(email, password) {
   const user = await Administrator.findOne({
     where: {
       email,
-      password,
     },
   });
 
@@ -92,6 +93,22 @@ async function login(email, password) {
   return token;
 }
 
+async function createAdminDefault(email = 'admin@gmail.com', password = 'Admin123!') {
+  const admin = await models.admin.findOne({
+    where: {
+      email,
+    },
+  });
+  // eslint-disable-next-line no-useless-return
+  if (admin !== null) return;
+
+  await create(email, password);
+}
+
 module.exports = {
-  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword,
+  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, createAdminDefault
 };
+
+
+
+

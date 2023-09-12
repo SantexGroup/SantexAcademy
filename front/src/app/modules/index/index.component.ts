@@ -3,6 +3,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Credencial } from 'src/app/core/interfaces/credencial';
+import { AdminService } from 'src/app/core/services/admin.service';
 import { OrganizacionService } from 'src/app/core/services/organizacion.service';
 import { VoluntarioService } from 'src/app/core/services/voluntario.service';
 
@@ -16,15 +17,20 @@ export class IndexComponent implements OnInit {
 
   
   @ViewChild('sideNav') sideNav!:MatSidenav;
-  constructor(private router:Router, organizacionService:OrganizacionService,voluntarioService:VoluntarioService) {
+  constructor(private router:Router, organizacionService:OrganizacionService,voluntarioService:VoluntarioService, adminService:AdminService) {
 
     this.credencialesOrganizacion$ = organizacionService.getCredencialesOrganizacion;
 
     this.credencialesVoluntario$ = voluntarioService.getCredencialesVoluntario;
+
+    this.credencialesAdmin$ = adminService.getCredencialesAdmin;
+
+
   }
   
-  credencialesOrganizacion$!:Observable<Credencial|null>;
-  credencialesVoluntario$!:Observable<Credencial|null>;
+  credencialesOrganizacion$:Observable<Credencial|null>;
+  credencialesVoluntario$:Observable<Credencial|null>;
+  credencialesAdmin$:Observable<Credencial| null>;
 
   ngOnInit(): void {
   }

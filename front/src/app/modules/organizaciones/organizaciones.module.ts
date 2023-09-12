@@ -8,7 +8,8 @@ import { DashboardOrganizacionComponent } from './dashboard-organizacion/dashboa
 import { DatosOrganizacionComponent } from './datos-organizacion/datos-organizacion.component';
 import { TareasOrganizacionComponent } from './tareas-organizacion/tareas-organizacion.component';
 import { CrearModificarTareaModalComponent } from './modales-organizacion/crear-modificar-tarea-modal/crear-modificar-tarea-modal.component';
-import { DetalleTareaComponent } from './modales-organizacion/detalle-tarea/detalle-tarea.component';
+import { SharedModule } from '../shared/shared.module';
+import { TareasComponent } from './tareas/tareas.component';
 
 
 @NgModule({
@@ -18,12 +19,13 @@ import { DetalleTareaComponent } from './modales-organizacion/detalle-tarea/deta
     DatosOrganizacionComponent,
     TareasOrganizacionComponent,
     CrearModificarTareaModalComponent,
-    DetalleTareaComponent
+    TareasComponent,
   ],
   imports: [
     CommonModule,
     OrganizacionesRoutingModule,
-    CoreModule
+    CoreModule,
+    SharedModule
   ]
 })
 export class OrganizacionesModule { }

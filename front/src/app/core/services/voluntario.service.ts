@@ -34,6 +34,10 @@ export class VoluntarioService {
     return this.datosVoluntario.asObservable();
   }
 
+  set setDatosVoluntario(value:Voluntario){
+    this.datosVoluntario.next(value);
+  }
+
   crearVoluntario(voluntario:Voluntario):Observable<Voluntario>{
 
    return this.apiService.post<Voluntario>("/volunteer/create-user",voluntario);

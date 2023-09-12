@@ -15,6 +15,16 @@ async function getTareaById(req, res, next) {
   }
 }
 
+async function getTareaByIdOrganizacion(req, res) {
+  const { usuario } = req;
+  try {
+    const tareas = await tareaServices.getByIdOrganizacion(usuario.id);
+    return res.status(200).send(tareas);
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+}
+
 async function createTarea(req, res) {
   const {
     // eslint-disable-next-line camelcase, max-len
@@ -31,7 +41,7 @@ async function editTarea(req, res) {
   const { id } = req.params;
   const {
     // eslint-disable-next-line max-len
-    name, description, coordinatorId, date, place, categoryId, cantParticipantes, duracion, estado, hora, latitud, longitud
+    name, description, coordinatorId, date, place, categoryId, cantParticipantes, duracion, estado, hora, latitud, longitud,
   } = req.body;
 
   // eslint-disable-next-line max-len
@@ -49,9 +59,9 @@ async function editEstado(req, res) {
       return res.status(404).json({ error: 'Tarea no encontrada' });
     }
 
-    res.status(200).json(tarea);
+    return res.status(200).json(tarea);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    return res.status(400).json({ error: error.message });
   }
 }
 
@@ -63,5 +73,6 @@ async function deleteTarea(req, res) {
 }
 
 module.exports = {
-  getAllTarea, getTareaById, createTarea, editTarea, deleteTarea, editEstado,
+  // eslint-disable-next-line max-len
+  getAllTarea, getTareaById, createTarea, editTarea, deleteTarea, editEstado, getTareaByIdOrganizacion,
 };

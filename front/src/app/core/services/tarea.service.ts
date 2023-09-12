@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from '../http/api.service';
 import { Observable } from 'rxjs';
 import { Tarea } from '../interfaces/tarea';
+import { Voluntario } from '../interfaces/voluntario';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,11 @@ export class TareaService {
   
   getTareas():Observable<Tarea[]>{
     return this.apiService.get('/tarea/get-all');
+  }
+
+  getTareasPorIdOrg():Observable<Tarea[]>{
+
+    return this.apiService.get('/tarea/get-by-id-organizacion');
   }
   
   crearTarea(nuevaTarea:Tarea):Observable<Tarea>{
@@ -33,7 +39,7 @@ export class TareaService {
     return this.apiService.put('/tarea/cambiar-estado/'+id, {nuevoEstado});
   }
 
-  inscribirVoluntario(idTarea:number, idVoluntario:number):Observable<void>{
+  inscribirVoluntario(idTarea:number, idVoluntario:number):Observable<Voluntario>{
 
     const parametros = {
       idVolunteer:idVoluntario,
