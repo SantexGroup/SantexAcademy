@@ -40,7 +40,10 @@ const updateUser = async (userId, userOptions) => {
 
 const deleteUser = async (userId) => {
   try {
-    return User.destroy({ where: { id: userId } });
+    return await User.update(
+      { active: false },
+      { where: { id: userId, active: true } },
+    );
   } catch (error) {
     throw ('Error:', error);
   }
