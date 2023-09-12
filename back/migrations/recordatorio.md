@@ -2,7 +2,7 @@ Para aplicar actualizaciones (SOLO si son necesarias) busquelas en la carpeta ac
 
 El numero de los nombres de los archivos de migraciones, indica el orden en que se ejecutaran en caso de hacer una migracion general sin parametros. Despues del numero siguen el nombre que explica que migracion realiza el archivo. Se migraran todos los archivos de la carpeta migraciones al ejecutar en terminal parados en la carpeta back: 
 
-db:migrate 
+db:migrate (en mysql>DELETE FROM `SequelizeMeta`;)
 o 
 ./node_modules/.bin/sequelize db:migrate
 

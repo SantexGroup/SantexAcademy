@@ -1,10 +1,11 @@
 #Novedades
-Ultima fusión en rama develop: Martes 5 de agosto de 2023 21:01 hs
+Ultima fusión en rama develop: Lunes 11 de septiembre de 2023 20:18 hs
 Se trabajó:
-Se agrega footer by marianomiranda
+(ponga cada uno lo que hizo esta semana)
 
 
 Previusly:
+Se agrega footer by marianomiranda
 Se agrega gestion de cursos para crud en front de Administrador
 unificación de formularios de registro y validaciones de campos
 se agrego validación de password y su confirmación
