@@ -36,7 +36,7 @@ const getVoluntariadosByCriteria = async (queryOptions, bodyOptions) => {
 const updateVoluntariadoById = async (idOrg, idVoluntariado, voluntariado) => {
   try {
     const [affectedRows] = await Voluntariado.update(voluntariado, {
-      where: { idVoluntariado, idOrg, deletedAt: null },
+      where: { idVoluntariado, organizationId:idOrg, deletedAt: null },
     });
     if (affectedRows === 0) {
       throw new Error('No se encontrò el registro.');
