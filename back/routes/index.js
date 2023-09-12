@@ -10,11 +10,11 @@ const app = Express();
 
 // Rutas
 const userRoutes = require('./userRoutes');
-
+const profesorRoutes = require('./profesorRoutes');
 
 // use=
 app.use('/users' , userRoutes);
-
+app.use('/profesors', profesorRoutes);
 app.use('/', rootPath.handler);
 
 
