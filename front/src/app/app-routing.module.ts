@@ -10,6 +10,7 @@ import { RegisterformComponent } from './modules/register/registerform/registerf
 import { RegisteranswerComponent } from './modules/register/registeranswer/registeranswer.component';
 import { ErrorPageComponent } from './modules/share/error-page/error-page.component';
 import { AdminComponent } from './modules/pages/admin/admin.component';
+import { PerfilAlumnoComponent } from './modules/pages/perfil-alumno/perfil-alumno.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+  },
+  {
+    path: 'perfil-alumno',
+    component: PerfilAlumnoComponent, 
   },
   {
     path: '',
