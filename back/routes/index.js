@@ -23,17 +23,18 @@ app.use('/tarea', tareaRoutes);
 app.use('/category', categoryRoutes);
 
 app.use('/administrator', administratorRoutes);
-
 app.use('/premios', premiosRoutes);
 
 // eslint-disable-next-line max-len
 module.exports = {
   // eslint-disable-next-line max-len
+
   volunteer: volunteerRoutes,
   coordinator: coordinatorRoutes,
   category: categoryRoutes,
   premios: premiosRoutes,
   administrator: administratorRoutes,
   tarea: tareaRoutes,
+
 
 };
