@@ -11,6 +11,15 @@ const getUserById = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+const getUserByEmail = async (req, res) => {
+  const { email } = req.body;
+  try {
+    const user = await UserService.getUserByEmail(email);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 const getUsers = async (req, res) => {
   try {
     const users = await UserService.getUsers();
@@ -102,5 +111,5 @@ const deleteUser = async (req, res) => {
 
 // exports
 module.exports = {
-  createUser, getUserById, getUsers, updateUser, deleteUser, updatePassword,
+  createUser, getUserById, getUsers, updateUser, deleteUser, updatePassword, getUserByEmail,
 };

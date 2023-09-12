@@ -17,6 +17,16 @@ const getUserById = async (id) => {
     throw ('Error:', error);
   }
 };
+const getUserByEmail = async (option) => {
+  try {
+    const user = await User.findOne({
+      where: { email: option },
+      attributes: { exclude: ['password'] },
+    }); return user;
+  } catch (error) {
+    throw ('Error:', error);
+  }
+};
 
 const getUsers = async () => {
   try {
@@ -62,6 +72,7 @@ module.exports = {
   createUser,
   deleteUser,
   getUserById,
+  getUserByEmail,
   getUsers,
   updateUser,
   patchUser,

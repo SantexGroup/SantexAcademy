@@ -22,6 +22,7 @@ const {
 const {
   createUser,
   getUserById,
+  getUserByEmail,
   getUsers,
   updateUser,
   deleteUser,
@@ -53,6 +54,7 @@ const ScheduleController = {
 const UserController = {
   createUser,
   getUserById,
+  getUserByEmail,
   getUsers,
   updateUser,
   deleteUser,
