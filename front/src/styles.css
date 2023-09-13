@@ -105,18 +105,27 @@ text-align: center;
 }
 .sobre{
     font-size:30px;
-    text-align: left;
+    
     padding-left: 50px;
     padding-top: 40px;
     text-decoration: none;
+    color:blue;
    
+}
+.sobre:hover{
+    color:red;
+
 }
 .pago{
     font-size: 30px;
     text-decoration: none;
-    text-align: right;
+   
     padding-left: 50px;
     padding-top: 40px;
+    color:blue;
+}
+.pago:hover{
+    color:red;
 }
 
 .Siguenos{
