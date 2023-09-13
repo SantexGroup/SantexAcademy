@@ -8,8 +8,7 @@ const db = require('../models');
 
 // Función para enviar mail
 function enviarEmail(pass, email) {
-  sgMail.setApiKey(process.env.SENDGRID_KEY);
-  console.log('pass: ', pass, 'emai: ', email);
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const textMail = `Tu contraseña es: ${pass}`;
   const msg = {
     to: email,
