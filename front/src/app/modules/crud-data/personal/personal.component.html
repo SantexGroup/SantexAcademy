@@ -3,7 +3,7 @@
     <form [formGroup]="personalForm">
       <mat-form-field>
         <mat-label>Nombres</mat-label>
-        <input matInput formControlName= "firstName">
+        <input matInput formControlName="firstName">
       </mat-form-field>
 
       <mat-form-field>
@@ -19,7 +19,7 @@
           <mat-datepicker #born></mat-datepicker>
         </mat-form-field>
       </div>
-      
+
       <mat-form-field>
         <mat-label>Numero de Contacto</mat-label>
         <input matInput formControlName="phone">
@@ -34,27 +34,40 @@
         <mat-label>Foto</mat-label>
         <input matInput formControlName="pictureLink">
       </mat-form-field>
-      
-      <div class="botonera">
-        <button mat-flat-button color="primary" type="submit" (click)="updateUser(personalForm)">
-          Guardar
-        </button>
-      </div>
-    </form>
 
+      <div class="botonera">
+        <div class="botones">
+            <button class="plus" type="submit" *ngIf="views.plusOne">
+                <img src="/assets/Imagenes/plus.png" alt="+">
+            </button>
+            <button 
+            type="submit" mat-raised-button 
+            color="primary" 
+            *ngIf="views.saveButton">
+                Guardar
+            </button>
+        </div>
+    </div>
+    </form>
     <div class="lista">
       <ul>
-        <li>
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Elemento 1</h5>
-              <p class="card-text">Aca se carga la lista de experiencias, formaciones..etc</p>
-              <button mat-raised-button color="primary">Editar</button>
-              <button mat-raised-button color="warn">Eliminar</button>
-            </div>
-          </div>
-        </li>
+          <li>
+              <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title"> Titulo </h5>
+                      <p class="card-text"> Detalle </p>
+                      <div class="botonera-card">
+                          <button>
+                              <img src="/assets/Imagenes/editar.png" alt="Editar">
+                          </button>
+                          <button>
+                              <img src="/assets/Imagenes/delete.png" alt="Eliminar">
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </li>
       </ul>
-    </div>
+  </div>
   </div>
 </body>
