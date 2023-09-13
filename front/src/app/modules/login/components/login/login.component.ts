@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
 import { NgForm } from '@angular/forms';
 
@@ -10,24 +11,28 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   email: string = '';
-  password: string = ''; 
+  password: string = '';
   formSubmitted: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
-  login(loginForm: NgForm) {    
+  login(loginForm: NgForm) {
     if (!loginForm.valid) {
       this.formSubmitted = true;
       return;
     }
-    this.formSubmitted = false; 
-    const email = this.email; 
-    const password = this.password; 
+    this.formSubmitted = false;
+    const email = this.email;
+    const password = this.password;
 
     this.authService.login(email, password).subscribe(
       (response: any) => {
-        console.log('Inicio de sesión exitoso', response);
-        // Aqui tenemos que manejar la respuesta para almacenar el token en el local storage
+        if (response === 'Login exitoso') { //login exitoso es la "respuesta" del backend
+          return this.router.navigate(['/home']);
+        } else {
+          // redireccionar a /login y ver como mandar error de algun tipo
+          return console.log('desde if negativo', response);
+        }
       },
       (error: any) => {
         console.error('Error al iniciar sesión:', error);
@@ -35,5 +40,5 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
