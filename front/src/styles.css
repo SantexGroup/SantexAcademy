@@ -62,18 +62,25 @@ h1 {
 
 
 
-.equipo{      
+.cursos{      
     display: flex;
     padding: 1rem;
-    justify-content: space-between ;  
+    justify-content:space-between ;  
+
+    
+   
    
 }
 
-.integrantes{
+.taller-seminario{
     display:flex;
     flex-direction: column;
     padding: 1rem;
     background: #fdfdfd;
+    width: 190px;
+   
+   
+   
 }  
 
 
@@ -116,8 +123,8 @@ text-align: center;
 }
 .redes-sociales{
  display:flex;
- padding-left: 10px;
- justify-content: center;   
+ 
+justify-content:space-evenly;
 }
 
 #header-right{
