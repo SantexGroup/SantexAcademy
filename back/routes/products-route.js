@@ -14,4 +14,7 @@ router.get('/categories', productsController.getCategories);
 // cargar producto
 router.post('/cargar-producto', productsController.chargeProduct);
 
+// modificar articulo
+router.put('/modificar-articulo/:id', productsController.editProduct);
+
 module.exports = router;

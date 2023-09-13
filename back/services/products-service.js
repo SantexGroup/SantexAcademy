@@ -66,6 +66,39 @@ async function chargeProducts(idUsuario, idTipoProducto, nombre, detalles, preci
   return productCreated;
 }
 
+// modificar articulo
+
+async function editArticle(id, idUsuario, idTipoProducto, nombre, detalles, precio, envio) {
+  const articulo = await getProductoById(id);
+
+  if (idUsuario) {
+    articulo.idUsuario = idUsuario;
+  }
+  if (idTipoProducto) {
+    articulo.idTipoProducto = idTipoProducto;
+  }
+
+  if (nombre) {
+    articulo.nombre = nombre;
+  }
+
+  if (detalles) {
+    articulo.detalles = detalles;
+  }
+
+  if (precio) {
+    articulo.precio = precio;
+  }
+
+  if (envio) {
+    articulo.envio = envio;
+  }
+
+  const productEdited = await articulo.save();
+
+  return productEdited;
+}
+
 module.exports = {
-  products, getAllCategories, chargeProducts, getProductoById,
+  products, getAllCategories, chargeProducts, getProductoById, editArticle,
 };
