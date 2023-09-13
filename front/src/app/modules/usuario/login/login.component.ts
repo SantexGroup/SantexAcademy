@@ -45,6 +45,7 @@ export class LoginComponent {
         this.views.accountButton = false;
         this.dataUser.userName = data.user.name;
         this.dataUser.lastName = data.user.lastName;
+        localStorage.setItem('accessToken', data.accessToken)
         this.views.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
         this.router.navigate(['/home', data.profile.userId, 'cv']);
         }, 
