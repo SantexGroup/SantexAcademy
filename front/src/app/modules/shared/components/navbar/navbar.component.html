@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="d-flex align-items-center">
             <div class="image-container">
-                <a class="nav-link active" aria-current="page" routerLink="/">
+                <a class="nav-link active" aria-current="page" routerLink="/home">
                     <img class="image" src="../../../../../assets/imagen/IncubadoraNOC_logo-noBackground.png"
                         alt="foto-logo">
                 </a>
@@ -24,12 +24,17 @@
                 </li>
             </ul>
 
-            <ul class="navbar-nav justify-content-end">
+            <ul *ngIf="!isLogged" class="navbar-nav justify-content-end">
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/register">Registrarse</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/login">Login</a>
+                </li>
+            </ul>
+            <ul *ngIf="isLogged" class="navbar-nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/" (click)="logout()">Logout</a>
                 </li>
             </ul>
         </div>
