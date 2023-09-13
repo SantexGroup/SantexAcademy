@@ -89,7 +89,7 @@ export class FormationsComponent implements OnInit {
   }
 
   getListFormations(){
-    this._formationsServices.getFormationByUser(this.userData.userId).subscribe((data) => {
+    this._formationsServices.getFormationByUser(this.userData.userId).subscribe((data) => {      
       this.listFormation = data;
     } )
   }
