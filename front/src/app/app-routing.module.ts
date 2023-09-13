@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth/auth.guard';
 
 
 /**
@@ -17,13 +18,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./modules/landing/landing.module').then(m => m.LandingModule) },
-  { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) },
   { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
   { path: 'register', loadChildren: () => import('./modules/register/register.module').then(m => m.RegisterModule) },
-  { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule) },
   { path: 'news', loadChildren: () => import('./modules/news/news.module').then(m => m.NewsModule) },
-  { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
-  { path: '', redirectTo: '/', pathMatch: 'full' }, 
+
+  { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule), canActivate: [AuthGuard] },
+  { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule), canActivate: [AuthGuard] },
+  { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard] },
+
+  { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', redirectTo: '' }
 ];
 
