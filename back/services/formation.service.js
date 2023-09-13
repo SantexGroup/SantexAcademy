@@ -34,8 +34,11 @@ async function findAndCheckFormationdById(id) {
  * En caso de no encontrar formaciones lanza una
  * excepción NotFoundException.
  */
-async function fetchFormations() {
-  const formations = await Formation.findAll({ include: TYPES_STATUS });
+async function fetchFormations(userId) {
+  const formations = await Formation.findAll({
+    where: { userId },
+    include: TYPES_STATUS,
+  });
 
   if (!formations) {
     throw new NotFoundException('Formations not found');
@@ -109,13 +112,13 @@ async function deleteFormationData(id) {
 /**
  * Obener una lista de FORMACIONES por usuario.
  */
-async function fetchFormationssByUserId(userId) {
+async function fetchFormationssByUserId(id) {
   const PROFILE = [
     {
       model: Profile,
       attributes: [],
       where: {
-        user_id: userId,
+        user_id: id,
       },
     },
   ];
@@ -126,7 +129,7 @@ async function fetchFormationssByUserId(userId) {
   });
 
   if (!formations) {
-    throw new NotFoundException(`Formations with user_id ${userId} not found`);
+    throw new NotFoundException(`Formations with user_id ${id} not found`);
   }
 
   return formations;

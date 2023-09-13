@@ -54,7 +54,7 @@ const update = [
   body('rolesId').optional().custom(validateRole),
   body('nick').optional().custom(isNickUnique),
   //* se quita a modo de prueba
-  //body('password').optional(),
+  // body('password').optional(),
   body('name').optional(),
   body('lastName').optional(),
   body('email').optional().custom(isEmailUnique),

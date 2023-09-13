@@ -10,6 +10,7 @@ import { SkillComponent } from '../crud-data/skill/skill.component';
 import { PersonalComponent } from '../crud-data/personal/personal.component';
 import { ReferencesComponent } from '../crud-data/references/references.component';
 import { CVComponent } from '../cv/cv.component';
+import { ProfilesComponent } from '../profiles/profiles.component';
 
 
 
@@ -49,6 +50,10 @@ const routes: Routes = [
   {
     path: 'habilidades',
     component: SkillComponent
+  },
+  {
+    path: 'profiles',
+    component: ProfilesComponent
   }
 ];
 
