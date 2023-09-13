@@ -36,6 +36,8 @@ export class HomeComponent implements OnInit {
   lenguajes(){
     this.router.navigate(['/lenguajes'])
   }
-
+  profiles(){
+    this.router.navigate(['/profiles'])
+  }
   
 }

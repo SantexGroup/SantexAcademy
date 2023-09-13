@@ -60,7 +60,7 @@ async function getFormationById(req, res, next) {
   const { id } = req.params;
 
   try {
-    const formations = await formationService.fetchFormationById(id);
+    const formations = await formationService.fetchFormationssByUserId(id);
 
     res.status(200).send(formations);
   } catch (error) {

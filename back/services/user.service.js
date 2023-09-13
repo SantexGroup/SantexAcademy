@@ -71,7 +71,7 @@ async function login(nick, password) {
   };
 }
 
-//* agregado  
+//* agregado
 async function getUser(id) {
   const user = await User.findByPk(id);
 
@@ -83,7 +83,9 @@ async function getUser(id) {
 }
 
 // Servicio que actualiza datos de un usuario
-async function updateUser(id, { name, lastName, phone, email, dateBorn, pictureLink }) {
+async function updateUser(id, {
+  name, lastName, phone, email, dateBorn, pictureLink,
+}) {
   // Buscar al usuario en la base de datos por su ID
   const user = await User.findByPk(id);
 
@@ -93,13 +95,13 @@ async function updateUser(id, { name, lastName, phone, email, dateBorn, pictureL
   // Guardar el usuario actualizado
   //* Se edita funcion
   //* const userEdited = await user.update(data);
-  const userEdited = await user.update({ 
-    name: name,
-    lastName: lastName,
-    email: email,
-    phone: phone,
-    dateBorn: dateBorn,
-    pictureLink: pictureLink,
+  const userEdited = await user.update({
+    name,
+    lastName,
+    email,
+    phone,
+    dateBorn,
+    pictureLink,
   });
 
   // Devolver el objeto del usuario actualizado
