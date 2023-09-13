@@ -94,11 +94,22 @@
             ],
             "scripts": []
           }
-        }
+        },
+        "architect": {
+        "serve": {
+        "builder": "@angular-devkit/build-angular:dev-server",
+        "options": {
+        "browserTarget": "your-application-name:build",
+        "proxyConfig": "src/proxy.conf.json"
+      }
       }
     }
   },
   "cli": {
     "analytics": false
   }
+}
+,
+"cli": {
+  "analytics": "0229ac0c-41fe-4ec3-be06-cee7d3a5fc35"
 }

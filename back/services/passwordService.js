@@ -1,5 +1,6 @@
 // const ms = require('ms');
 // const Password = require('../models/Password');
+const moment = require('moment');
 const db = require('../models');
 
 // Crear una password
@@ -38,7 +39,8 @@ function generarOtp() {
 function limiTime() {
   const tiempoActual = new Date().getTime();
   const tiempoExpi = new Date(tiempoActual + 1000000);
-  return tiempoExpi.toLocaleString();
+  const formattedLimitTime = moment(tiempoExpi).format('YYYY-MM-DD HH:mm:ss');
+  return formattedLimitTime;
 }
 
 const limiteTiempo = limiTime();

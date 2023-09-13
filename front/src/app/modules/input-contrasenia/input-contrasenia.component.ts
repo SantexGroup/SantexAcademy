@@ -13,7 +13,7 @@ type password={
   styleUrls: ['./input-contrasenia.component.css']
 })//min 3
 export class InputContraseniaComponent implements OnInit {
-  password = new FormControl("",[Validators.minLength(8), Validators.required])
+  password = new FormControl("",[Validators.minLength(3), Validators.required])
 
   constructor(private passwordservice: PasswordService,  private router: Router) { }
 
@@ -33,7 +33,7 @@ export class InputContraseniaComponent implements OnInit {
     this.passwordservice.login(this.password.value).subscribe({
 
       next:(response) => {
-        localStorage.setItem('jwt', `${response}.accessToken`);
+        localStorage.setItem('jwt', `${response.accessToken}`);
         this.router.navigate(['/dashboard-admin']); // ingresar componente proximo
         
       },
