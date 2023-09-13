@@ -63,7 +63,7 @@ function enviarEmail(pass, email) {
       if (error.response) {
         console.error(error.response.body);
       }
-    }
+    },
   );
 }
 
@@ -72,7 +72,7 @@ function enviarEmail(pass, email) {
 async function verificarPassword(pwd) {
   const pass = await db.password.findOne({
     where: {
-      pwd,
+      password: pwd,
     },
   });
 
@@ -84,8 +84,8 @@ async function verificarPassword(pwd) {
     id: db.admin.id,
     email: db.admin.email,
     name: db.admin.name,
-    is_admin: false,
-  });
+    is_admin: true,
+  }, 'ClaveUltraSecreta');
   return {
     accessToken: token,
   };
