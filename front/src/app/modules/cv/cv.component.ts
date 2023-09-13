@@ -1,8 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { ProfileService } from 'src/app/core/services/profile.service';
 import { Profile } from 'src/app/core/interfaces/profile.interface';
+import { LanguagesService } from 'src/app/core/services/languages.service';
+import { Language } from 'src/app/core/interfaces/language.interface';
+import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
+import { Experience } from 'src/app/core/interfaces/experience.interface';
+import { ExperiencesService } from 'src/app/core/services/experiences.service';
+import { FormationsService } from 'src/app/core/services/formations.service';
+import { Formations } from 'src/app/core/interfaces/formation.interface';
+import { Reference } from 'src/app/core/interfaces/reference.interface';
+import { ReferencesService } from 'src/app/core/services/references.service';
 
 @Component({
   selector: 'app-cv',
@@ -15,47 +23,57 @@ export class CVComponent implements OnInit {
   profileData: any; // Variable para almacenar los datos proporcionados
 
   constructor(
-    private router: Router, 
+    public dataUser: UserDataService,
     public views: NavBarService,    
-    private _profileServices: ProfileService
+    private _profileServices: ProfileService,
+    private _language: LanguagesService,
+    private _experience: ExperiencesService,
+    private _formation: FormationsService,
+    private _reference: ReferencesService
   ) { }
 
+  languages: Language[] = [];
+  experiences: Experience[] = [];
+  formations: Formations[] =[];
+  references: Reference[] =[];
+
   ngOnInit(): void {
-    this.getListProfile();
+
+    this.languageGet();
+    this.getExperience();
+    this.getFormations();
+    this.getReference();
+
   }  
 
-  
-  getListProfile(){
-    const profileId = 14;
-    this._profileServices.getProfile(profileId).subscribe((data) => {
-      this.profileData = data; // Almacena los datos proporcionados en profileData
-      console.log(this.profileData);
-      //acceder a los datos personales
-      const nombreUsuario = this.profileData.User.name;
-      const lastName = this.profileData.User.lastName;
-      const phone = this.profileData.User.phone;
-      const email = this.profileData.User.email;
-    //acceder a las formaciones  
-      this.listProfile = this.profileData.Formations;
-     //acceder a las experiencias 
-      this.listProfile= this.profileData.Experiences.position;
-      this.listProfile= this.profileData.Experiences.company;
-      this.listProfile= this.profileData.Experiences.description;
-    //acceder a los lenguajes
-      this.listProfile= this.profileData.Languages.language;
-      this.listProfile= this.profileData.Languages.ProfileLanguage.level
+  languageGet() {
+    this._language.getLanguages(this.dataUser.userId).subscribe((languagesList: Language[]) => {
+      this.languages = languagesList;
+      console.log(this.languages)
+    })
+  }
 
-      //accedes a datos opcionales
-      this.listProfile = this.profileData.Optionals.Marital.condition;
-      
-     
-
-     
-      
-      
-      console.log(nombreUsuario);
+  getExperience() {
+    this._experience.getExperience(this.dataUser.userId).subscribe((experieceList: Experience[])=>{
+      this.experiences = experieceList;
+      console.log(this.experiences)
     });
   }
+
+  getFormations(){
+    this._formation.getFormationByUser().subscribe((data) => {
+      this.formations = data;
+      console.log(this.formations)
+    } )
+  }
+
+  getReference() {
+    this._reference.getReference(this.dataUser.userId).subscribe((referenceList) => {
+      this.references = referenceList;
+      console.log(this.references)
+    });
+  }
+
 }
 
 

@@ -33,9 +33,12 @@ async function getAllSkill(id) {
       {
         model: ProfileSkill,
         attributes: ['level'],
+        where: {
+          deletedAt: null,
+        },
         include: [{
           model: Skill,
-          attributes: ['skill'],
+          attributes: ['id', 'skill'],
         }],
       }],
     distinct: true,
@@ -67,7 +70,7 @@ async function addSkill(
   });
 
   await ProfileSkill.create({
-    profileId,
+    profilesId: profileId,
     skillsId: createSkill.id,
     level,
   });
@@ -84,6 +87,10 @@ async function updateSkill(
 ) {
   await Skill.update({
     skill,
+  }, {
+    where: {
+      id,
+    },
   });
 
   await ProfileSkill.update({

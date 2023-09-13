@@ -1,5 +1,6 @@
 const NotFoundException = require('../exceptions/not_found.exceptions');
 const {
+  ProfileFormation,
   Profile,
   Formation,
   FormationType,
@@ -59,8 +60,33 @@ async function fetchFormationById(id) {
 /**
  * Guardar los datos de una nueva formacion.
  */
-async function saveNewFormationData(data) {
-  return Formation.create(data);
+async function saveNewFormationData(
+  statusId,
+  typesId,
+  title,
+  institute,
+  startDate,
+  endDate,
+  description,
+  profileId,
+) {
+  const newFormation = await Formation.create({
+    statusId,
+    typesId,
+    title,
+    institute,
+    startDate,
+    endDate,
+    description,
+  });
+
+  if (newFormation) {
+    await ProfileFormation.create({
+      profilesId: profileId,
+      formationsId: newFormation.id,
+    });
+  }
+  return newFormation;
 }
 
 /**

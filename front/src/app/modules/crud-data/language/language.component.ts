@@ -38,9 +38,6 @@ export class LanguageComponent implements OnInit {
     
   }
 
-  /* getLanguage retorna una lista de Objetos, que tiene una lista "ProfileLanguages"
-   que continiene todos los lenguages Se debe acceder a cada ProfileLanguge. para obtener 
-   el lenguage y el level.*/
   languageGet() {
     this._languageService.getLanguages(this.dataUser.userId).subscribe((languagesList: Language[]) => {
       this.languages = languagesList;

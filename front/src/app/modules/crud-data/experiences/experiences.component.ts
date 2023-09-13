@@ -41,7 +41,7 @@ export class ExperiencesComponent implements OnInit {
       statusId: '',
       countriesId: '',
       startDate: '',
-      endDate: '',
+      endDate: null,
     })
   }
 

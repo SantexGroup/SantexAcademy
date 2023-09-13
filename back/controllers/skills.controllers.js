@@ -82,7 +82,7 @@ async function skillDelete(
   const { id } = req.params;
   try {
     await SkillService.deletedSkill(id);
-    res.status(200).send('Skill eliminado correctamente');
+    res.status(200).send();
   } catch (error) {
     next(error);
   }

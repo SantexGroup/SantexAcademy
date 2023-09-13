@@ -30,7 +30,7 @@ async function recordUser(rolesId, nick, password, name, lastName, email, phone)
   throw new Error(); // Re-lanzamos el error para que el llamador lo maneje adecuadamente
 }
 
-// Servicio que autoriza login
+//* Servicio que autoriza login
 async function login(nick, password) {
   // Buscar al usuario en la base de datos por su nick y contraseña
   const user = await User.findOne({
@@ -71,8 +71,21 @@ async function login(nick, password) {
   };
 }
 
+//* agregado
+async function getUser(id) {
+  const user = await User.findByPk(id);
+
+  if (!user) {
+    throw new Error('El ID del usuario no existe en la base de datos');
+  }
+
+  return user;
+}
+
 // Servicio que actualiza datos de un usuario
-async function updateUser(id, data) {
+async function updateUser(id, {
+  name, lastName, phone, email, dateBorn, pictureLink,
+}) {
   // Buscar al usuario en la base de datos por su ID
   const user = await User.findByPk(id);
 
@@ -80,7 +93,17 @@ async function updateUser(id, data) {
     throw new Error('El ID del usuario no existe en la base de datos');
   }
   // Guardar el usuario actualizado
-  const userEdited = await user.update(data);
+  //* Se edita funcion
+  //* const userEdited = await user.update(data);
+  const userEdited = await user.update({
+    name,
+    lastName,
+    email,
+    phone,
+    dateBorn,
+    pictureLink,
+  });
+
   // Devolver el objeto del usuario actualizado
   return userEdited;
 }
@@ -108,5 +131,6 @@ module.exports = {
   recordUser,
   updateUser,
   login,
+  getUser,
   deleteUser,
 };

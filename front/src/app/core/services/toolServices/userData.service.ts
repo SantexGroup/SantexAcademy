@@ -12,4 +12,8 @@ export class UserDataService {
 
   companies: string[] = [];
 
+  userName: string = "";
+
+  lastName: string = "";
+
 }

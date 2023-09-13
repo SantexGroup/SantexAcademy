@@ -60,8 +60,10 @@
                 <li *ngFor="let formation of listFormation" class="card">
                   <div class="card-body">
                     <h4 class="card-title">Titulo: {{ formation.title }}</h4>
-                    <h4 class="card-text">Institucion: {{formation.institute}}</h4>
-                    <h5 class="card-text">Grado: {{formation.FormationType.type}}, Estado: {{formation.FormationStatus.status}} </h5>                    
+                    <h4 class="card-title">Institucion: {{formation.institute}}</h4>
+                    <h5 class="card-te">Descripcion</h5>
+                    <h5 class="card-text">{{ formation.description }}</h5>
+                    <h5 class="card-text">Estado {{formation.statusId}}</h5>
                     <div class="botonera-card">
                       <button (click)="editFormation(formation)" (click)="views.changeViews()" >
                         <img src="/assets/Imagenes/editar.png" alt="Editar">

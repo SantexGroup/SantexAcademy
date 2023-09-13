@@ -2,13 +2,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError, BehaviorSubject, tap } from 'rxjs';
 import { registroInterface } from '../interfaces/registro.interface';
-import { loginInterface } from '../../core/interfaces/login.interface';
+import { userInterface } from '../../core/interfaces/user.interface';
 import { ApiService } from '../http/api.service';
+import { loginInterface } from '../interfaces/login.interface';
 
 @Injectable({
   providedIn: 'root'
 })  
-export class UsuarioService {
+export class UserService {
 
 private userData1: BehaviorSubject<{ name: string, lastName: string }> = new BehaviorSubject<{ name: string, lastName: string }>({ name: '', lastName: '' });
 
@@ -21,56 +22,29 @@ private userData1: BehaviorSubject<{ name: string, lastName: string }> = new Beh
   //* sirve para llevar los datos del usuario a otro componente
   dataUser: BehaviorSubject<any> = new BehaviorSubject<any> ({});
 
-  //* metodo para registrar un usuario
+  //* Registrar un usuario
   registro(user: registroInterface) : Observable <registroInterface> {
     user.rolesId = 1;
     return this.api.post<registroInterface>('user/record', user);
   }
 
 
-  //* metodo para loguear un usuario  
-  login(user: loginInterface) : Observable <loginInterface> {
+  //* Loguear un usuario  
+  login(user: loginInterface) : Observable<loginInterface> {
     console.log("desde servicio login");
     return this.api.post<loginInterface>('user/login', user);
-/*     .pipe(
-  //* metodo para registrar un usuario
-  registro(user: any) : Observable <any> {
-    return this.api.post<any>('record/', user );
   }
 
-  //* metodo para loguear un usuario  
-  login(user: any) : Observable <any> {
-    console.log("desde servicio login");
-    return this.api.get('../../assets/data.json').pipe(
-      tap((user: any) => {
-        this.dataUser.next(user);
-        this.logindeUsuario.next(true);
-      }), 
-
-      catchError(this.handleError) 
-    );*/
-  }
-
-  //* metodo para manejar errores
-/*   private handleError(error: HttpErrorResponse) {
-
-    if (error.status === 0) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error);
-    } else {
-      console.error('Error code:', error.status, error.error)
-    } 
-    return throwError(() => new Error('Se produjo un error. Intente nuevamente.'));
+  //* Recuperar datos de un usuario
+  getUser(id: number) : Observable <userInterface> { 
+    return this.api.get<userInterface>(`user/getUser/${id}`);
   }
   
-  get userData(): Observable<any> {
-    return this.dataUser.asObservable();
+  //* Actualizar el usuario
+  updateUser(id: number, user: userInterface) : Observable <userInterface> {
+    return this.api.put<userInterface>(`user/update/${id}`, user);
   }
 
-  get registroUsuario(): Observable<boolean> {
-    return this.registrodeUsuario.asObservable();
-  } */
-  
   setUserData(name: string, lastName: string) {
     this.userData1.next({ name, lastName });
   }
