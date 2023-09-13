@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:8.0.34
+    container_name: mysql-caecuslab
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_DATABASE=caecuslab
+      - MYSQL_USER=caecus
+      - MYSQL_PASSWORD=caecus
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
