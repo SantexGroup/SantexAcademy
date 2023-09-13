@@ -9,6 +9,9 @@ import { LanguageComponent } from '../crud-data/language/language.component';
 import { SkillComponent } from '../crud-data/skill/skill.component';
 import { PersonalComponent } from '../crud-data/personal/personal.component';
 import { ReferencesComponent } from '../crud-data/references/references.component';
+import { CVComponent } from '../cv/cv.component';
+
+
 
 const routes: Routes = [
   {
@@ -18,6 +21,10 @@ const routes: Routes = [
   {
     path: 'personal',
     component: PersonalComponent
+  },
+  {
+    path: 'cv',
+    component: CVComponent
   },
   {
     path: 'experiencias',

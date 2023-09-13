@@ -76,7 +76,6 @@ async function addExperience(
     description,
     startDate,
     endDate,
-    profileId,
   });
   if (newExperience) {
     await ProfileExperience.create({

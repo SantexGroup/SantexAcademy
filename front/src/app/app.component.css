@@ -49,7 +49,7 @@ ul li a:hover {
     padding: 0 4.5em;
 }
 
-.eslogan-frase img{
+.eslogan-frase img {
     width: 8rem;
 }
 
@@ -249,10 +249,9 @@ footer {
     width: 100%;
     margin-top: 2rem;
     color: #FFF;
-
 }
 
-.formulario-completo button{
+.formulario-completo button {
     border: 1px solid #FFF,
 }
 
@@ -281,14 +280,14 @@ footer {
 }
 
 
-.fomulario-contacto{
+.fomulario-contacto {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 45%;
 }
 
-.formulario{
+.formulario {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -300,7 +299,6 @@ footer {
     text-align: center;
     font-weight: bold;
 }
-
 
 @media screen and (max-width: 720px) {
     .formulario-enlaces {

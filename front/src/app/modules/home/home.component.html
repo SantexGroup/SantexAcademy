@@ -1,6 +1,10 @@
 <body>
     <div style="display: flex;">
         <div class="button-conteiner">
+            <div class="button-nav" id="first">
+                <button routerLink="cv" mat-raised-button color="primary"
+                (click)="views.title = 'Home'">Home</button>
+            </div>
             <div class="button-nav">
                 <button routerLink="personal" mat-raised-button color="primary"
                     (click)="views.title = 'Datos Personales'">Mis datos personales</button>
@@ -33,7 +37,7 @@
                 <button mat-raised-button color="primary" (click)="views.title = 'Datos Extras'">Mas datos</button>
             </div>
         </div>
-        <div class="textArea">
+        <div class="textArea">             
             <router-outlet></router-outlet>
         </div>
     </div>

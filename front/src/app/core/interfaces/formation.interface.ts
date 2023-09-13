@@ -1,18 +1,21 @@
 export interface Formations {
+    Country?:{
+        country: string,
+    },
+    FormationStatus?:{
+        status: string,
+    },
+    FormationType?: {
+        type: string
+    },
     id?: number,
-    statusId: number;
-    typesId: number;
-    title: string;
-    institute: string;
-    startDate: string;
-    endDate: string;
-    description: string;
-    FormationStatus: {
-        id: number;
-        status: string;
-    };
-    FormationType: {
-        id: number;
-        type: string;
-    };
+    statusId: number,
+    typesId: number,
+    title: string,
+    institute: string,
+    startDate: Date,
+    endDate?: Date,
+    description: string,
+    deletedAt?: Date,
+    profileId?: number,
 }

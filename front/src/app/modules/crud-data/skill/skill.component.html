@@ -1,6 +1,6 @@
 <body>
-    <div class="skiilsInput">
-        <form [formGroup]="skillForm" (ngSubmit)="addSkillToProfile()">
+    <div class="skillsInput">
+        <form [formGroup]="skillForm">
             <mat-form-field>
                 <mat-label for="skill">Habilidad:</mat-label>
                 <input matInput formControlName="skill" type="text">
@@ -11,10 +11,14 @@
             </mat-form-field>
             <div class="botonera">
                 <div class="botones">
-                    <button class="plus" type="submit" *ngIf="views.plusOne">
+                    <button class="plus" type="submit" *ngIf="views.plusOne" (click)="addSkillToProfile()">
                         <img src="/assets/Imagenes/plus.png" alt="+">
                     </button>
-                    <button type="submit" mat-raised-button color="primary" *ngIf="views.saveButton">
+                    <button 
+                    type="submit" mat-raised-button 
+                    color="primary" 
+                    (click)="skillUpdate()"
+                    *ngIf="views.saveButton">
                         Guardar
                     </button>
                 </div>
@@ -22,16 +26,16 @@
         </form>
         <div class="lista">
             <ul>
-                <li>
+                <li *ngFor="let skill of skillsList">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Titulo</h5>
-                            <p class="card-text">Detalle</p>
+                            <h5 class="card-title"> Habilidad: {{skill.skill}} </h5>
+                            <p class="card-text"> Nivel: {{skill.level}} </p>
                             <div class="botonera-card">
-                                <button>
+                                <button (click)="getSelectedSkill(skill.id)" (click)="views.changeViews()">
                                     <img src="/assets/Imagenes/editar.png" alt="Editar">
                                 </button>
-                                <button>
+                                <button (click)="skillDelete(skill.id)">
                                     <img src="/assets/Imagenes/delete.png" alt="Eliminar">
                                 </button>
                             </div>

@@ -43,8 +43,10 @@ export class LoginComponent {
         this.dataUser.profileId = data.profile.id;
         this.views.quickButton = true;
         this.views.accountButton = false;
+        this.dataUser.userName = data.user.name;
+        this.dataUser.lastName = data.user.lastName;
         this.views.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
-        this.router.navigate(['/home', data.profile.userId]);
+        this.router.navigate(['/home', data.profile.userId, 'cv']);
         }, 
         error: (err) => { 
           console.log(err); 

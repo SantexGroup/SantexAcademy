@@ -9,6 +9,6 @@ import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.servic
 export class NavBarComponent {
 
   constructor(
-    public views: NavBarService
+    public views: NavBarService,
     ) { }
 }

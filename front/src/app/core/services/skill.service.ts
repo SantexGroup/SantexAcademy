@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../http/api.service';
-import { ProfileSkill } from '../interfaces/skill.interface';
+import { Skill } from '../interfaces/skill.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,31 +10,19 @@ export class SkillService {
 
   constructor(private api: ApiService) { }
 
-  addSkill(skill: string, level: number, profileId: number): Observable<ProfileSkill> {
-    const body = {
-      skill: skill,
-      level: level,
-      profileId: profileId
-    };
-
-    return this.api.post<ProfileSkill>('skills/add', body);
+  addSkill(skill: Skill): Observable<Skill> {
+    return this.api.post<Skill>('skills/add', skill);
   }
 
-  getSkillsByUser() {
-    this.api.get('/skills/').subscribe((data) => {
-      console.log(data);
-    });
+  getSkillsByUser(id:number):Observable<Skill[]> {
+    return this.api.get<Skill[]>(`skills/all/${id}`);
   }
 
-  getSkillById() {
-    throw new Error("Esta función no está implementada todavía.");
+  updateSkill(id: number, skill: Skill): Observable<void> {
+    return this.api.put<void>(`skills/update/${id}`, skill)
   }
 
-  updateSkill() {
-    throw new Error("Esta función no está implementada todavía.");
-  }
-
-  deleteSkill() {
-    throw new Error("Esta función no está implementada todavía.");
+  deleteSkill(id: number): Observable<void> {
+    return this.api.delete<void>(`skills/delete/${id}`)
   }
 }
