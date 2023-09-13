@@ -15,8 +15,8 @@ export class FormationsService {
   }
   
 
-  getFormationByUser(): Observable<Formations[]>{
-    return this.api.get<Formations[]>('formations/');
+  getFormationByUser(id?: number): Observable<Formations[]>{
+    return this.api.get<Formations[]>(`formations/${id}`);
   }
 
   deleteFormation(id: number): Observable<void>{
