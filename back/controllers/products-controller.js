@@ -45,6 +45,20 @@ async function chargeProduct(req, res) {
   res.status(201).send(product);
 }
 
+// modificar articulo
+
+async function editProduct(req, res) {
+  const { id } = req.params;
+  const {
+    idUsuario, idTipoProducto, nombre, detalles, precio, envio,
+  } = req.body;
+
+  const article = await productsService.editArticle(id, idUsuario, idTipoProducto, nombre,
+    detalles, precio, envio);
+
+  res.status(201).send(article);
+}
+
 module.exports = {
-  products, getCategories, chargeProduct, getProductFromId,
+  products, getCategories, chargeProduct, getProductFromId, editProduct,
 };
