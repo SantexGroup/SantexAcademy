@@ -13,7 +13,11 @@ const sequelize = new Sequelize(
   //   host: process.env.DB_HOST,
   //   dialect: "mysql",
   // }
+  
 );
+
+sequelize.options.logging = console.log;
+
 
 const initializeDB = async () => {
   try {
@@ -21,7 +25,7 @@ const initializeDB = async () => {
     console.log("Conection to DB established.");
 
     // Sync all defined models to DB
-    await sequelize.sync({ force: false }); // force: if true, each start deletes DB
+    await sequelize.sync({ force: false  }); // force: if true, each start deletes DB
 
     // Create default roles
     const { Roles } = require("../models");

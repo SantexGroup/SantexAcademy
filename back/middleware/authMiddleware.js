@@ -24,43 +24,38 @@ const authenticateJWT = (req, res, next) => {
   }
 
 
-const verifyToken = async (req, res, next) => {
-  try {
-    // recibimos un token
-    const token = req.headers["x-access-token"];
-
-    // verificamos si existe.
-    if (!token)
-      return res.status(403).json({ message: "I do not provide the token" });
-
-    // si existe, extraemos lo que esta dentro del token
-    const decoded = jwt.verify(token, process.env.SESSION_SECRET);
-
-
-
-    // creamos un objeto con los datos del usuario que se logueo
-    const userData = {
-      email: decoded.email,
-      password: decoded.password
-    }
-
-    console.log(userData)
-
-    // guardamos el id del usuario en una variable de request
-    req.userId = userData.userId;
-
-    // busco ese usuario con ese id del token que lo almacene en req.userId
-    const userFound = await Usuario.findByPk(req.userId, { password: 0 });
-
-    // verifico si existe un usuario con ese id del token
-    if (userFound){
+  const verifyToken = async (req, res, next) => {
+    try {
+      const token = req.headers["x-access-token"];
+  
+      if (!token)
+        return res.status(403).json({ message: "Token not provided" });
+  
+      const decoded = jwt.verify(token, process.env.SESSION_SECRET);
+  
+      const userId = decoded.userId; // Obtener el ID del usuario desde el token
+  
+      // Verificar si el ID del usuario en el token coincide con el ID en la URL
+      if (userId !== Number(req.params.id)) {
+        return res.status(403).json({ message: "No tienes permiso para modificar este usuario" });
+      }
+  
+      // Asignar el ID del usuario a req.userId para que esté disponible en los controladores
+      req.userId = userId;
+  
+      // Continuar con la siguiente función en la cadena de middleware
       next();
+    } catch (error) {
+      console.error("Error en verifyToken:", error);
+      return res.status(401).json({ message: "Unauthorized" });
     }
-  } catch (error) {
-    return res.status(401).json({ message: "Unauthorized" });
-  }
-  next();
-};
+  };
+  
+  module.exports = verifyToken;
+  
+
+
+  
 
 module.exports = { authenticateJWT, verifyToken  }
 
