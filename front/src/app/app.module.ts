@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { UsuarioModule } from './modules/usuario/usuario.module';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OptionalsComponent } from './modules/crud-data/optionals/optionals.component';
@@ -24,10 +24,12 @@ import { HomeComponent } from './modules/home/home.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { NavBarComponent } from './modules/nav-bar/nav-bar.component';
 import { HomeRoutingModule } from './modules/home/home-routing.module';
+import { PersonalComponent } from './modules/crud-data/personal/personal.component';
 import { SkillComponent } from './modules/crud-data/skill/skill.component';
 import { LoadingComponent } from './modules/loading/loading.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './core/services/toolServices/interceptor/loading.interceptor';
+import { UsuarioModule } from './modules/usuario/usuario.module';
 import { CVComponent } from './modules/cv/cv.component';
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
 
@@ -41,6 +43,7 @@ import { ReferencesComponent } from './modules/crud-data/references/references.c
     LanguageComponent,
     HomeComponent,
     NavBarComponent,
+    PersonalComponent,
     SkillComponent,
     LoadingComponent,
     CVComponent,

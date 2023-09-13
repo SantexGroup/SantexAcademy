@@ -1,6 +1,7 @@
 // Importacion de userService para inyectar en el controlador.
 
 const userService = require('../services/user.service');
+const bcrypt = require('bcrypt');
 //
 // controlador que redirige al servicio para registrar un usuario
 async function recordUser(req, res) {
@@ -14,8 +15,13 @@ async function recordUser(req, res) {
     email,
     phone,
   } = req.body;
+  
+
+  const salt = await bcrypt.genSalt();
+  const passwordCrypt = await bcrypt.hash(password, salt);
+
   // Llamas al servicio para registrar un usuario
-  const user = await userService.recordUser(rolesId, nick, password, name, lastName, email, phone);
+  const user = await userService.recordUser(rolesId, nick, passwordCrypt/* variable de prueba */, name, lastName, email, phone);
   // Enviar respuesta con el usuario registrado
   res.status(200).send(user);
 }
@@ -38,13 +44,27 @@ async function login(req, res, next) {
   }
 }
 
-// Controlador que redirige al servicio para actulizar un usuario
+//* agregado
+async function getUser(req, res, next) {
+  const { id } = req.params;
+  
+  try {
+    const user = await userService.getUser(id);
+    res.status(200).send(user);
+  } catch (error) {
+    next(error);
+  }
+}
 
+
+// Controlador que redirige al servicio para actulizar un usuario
 async function updateUser(req, res, next) {
   try {
     // Extraer el ID del usuario de los parámetros de la solicitud
     const { id } = req.params;
     const userData = req.body;
+
+    console.log("Desde user.controller", userData)
 
     // Llamar al servicio para actualizar los datos del usuario
     const user = await userService.updateUser(id, userData);
@@ -70,6 +90,7 @@ async function userDeleted(req, res, next) {
 module.exports = {
   recordUser,
   updateUser,
+  getUser, //* agregado
   login,
   userDeleted,
 };

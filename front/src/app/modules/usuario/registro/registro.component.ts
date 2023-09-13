@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
-import { UsuarioService } from 'src/app/core/services/usuario.service';
+import { UserService } from 'src/app/core/services/usuario.service';
 
 @Component({
   selector: 'app-registro',
@@ -17,8 +17,8 @@ export class RegistroComponent{
   (
     private fb: FormBuilder, 
     private router: Router, 
-    private userService: UsuarioService,
-    public dataUser: UserDataService,
+    private userService: UserService,
+    public dataUser: UserDataService, 
     public views: NavBarService
     ) { }
 

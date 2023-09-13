@@ -101,9 +101,10 @@ async function login(nick, password) {
 }
 // Servicio que actualiza datos de un usuario
 
-async function updateUser(id, nick, password, name, lastName, email, phone) {
+async function updateUser(id, /* nick, password, */ name, lastName, bornDate, email, phone, pictureLink) {
+  //* Se comenta id, nick y password para que que no impacte en la actualización de los datos
   const user = await User.findByPk(id);
-  if (id) {
+  /* if (id) {
     user.id = id;
   }
   if (nick) {
@@ -111,18 +112,24 @@ async function updateUser(id, nick, password, name, lastName, email, phone) {
   }
   if (password) {
     user.password = password;
-  }
+  } */
   if (name) {
     user.name = name;
   }
   if (lastName) {
     user.lastName = lastName;
   }
+  if (bornDate) {
+    user.bornDate = bornDate;
+  }
   if (email) {
     user.email = email;
   }
   if (phone) {
     user.phone = phone;
+  }
+  if (pictureLink) {
+    user.pictureLink = pictureLink;
   }
   const userEdited = await user.save();
   return userEdited;
