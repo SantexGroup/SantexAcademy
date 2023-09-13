@@ -17,9 +17,9 @@ app.use('/ping', (req, res) => {
   });
 });
 // Agregar aqui las rutas
-app.use('/pollsters', pollsterRoutes);
-app.use('/admins', adminRoutes);
-app.use('/login', loginRoutes);
+app.use('/pollsters', pollsterRoutes, rootPath.setHeaders);
+app.use('/admins', adminRoutes, rootPath.setHeaders);
+app.use('/login', loginRoutes, rootPath.setHeaders);
 
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
