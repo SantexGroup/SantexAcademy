@@ -29,3 +29,5 @@ npm-debug.log*
 /logs
 /package-lock.json
 /package.json
+/models/user.js
+/migrtions/20230307002718-create-user.js
