@@ -7,6 +7,7 @@ import { FormationsStatusService } from 'src/app/core/services/formations-status
 import { FormationsTypeService } from 'src/app/core/services/formations-type.service';
 import { FormationsService } from 'src/app/core/services/formations.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
+import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 
 
 @Component({
@@ -24,7 +25,8 @@ export class FormationsComponent implements OnInit {
     private _formationsStatusServices: FormationsStatusService,
     private _formationsServices: FormationsService,    
     public views: NavBarService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private userData: UserDataService
     ) {
       this.formationForm = this.fb.group({
         statusId: '',
@@ -32,7 +34,7 @@ export class FormationsComponent implements OnInit {
         title: '',
         institute: '',
         startDate: '',
-        endDate: '',
+        endDate: null,
         description: '',
       })      
      }
@@ -71,12 +73,12 @@ export class FormationsComponent implements OnInit {
       startDate: this.formationForm.get('startDate')?.value,
       endDate: this.formationForm.get('endDate')?.value,
       description: this.formationForm.get('description')?.value,
-      FormationStatus: this.formationForm.get('FormationStatus')?.value,
-      FormationType: this.formationForm.get('FormationType')?.value
+      profileId: this.userData.profileId
     }
-    this.listFormation.push(newFormation);
-    this._formationsServices.addFormation(newFormation).subscribe((data)=>{
-      console.log(data);
+    console.log(newFormation);
+
+    this._formationsServices.addFormation(newFormation).subscribe((formation)=>{
+      this.listFormation.push(formation);
     });    
     this.formationForm.reset();
   
@@ -89,7 +91,6 @@ export class FormationsComponent implements OnInit {
   getListFormations(){
     this._formationsServices.getFormationByUser().subscribe((data) => {
       this.listFormation = data;
-      console.log(this.listFormation)
     } )
   }
 
@@ -103,8 +104,8 @@ export class FormationsComponent implements OnInit {
     
     
     this.formationForm.patchValue({
-      statusId: formation.FormationStatus.id,
-      typesId: formation.FormationType.id,
+      statusId: formation.statusId,
+      typesId: formation.typesId,
       title: formation.title,
       institute: formation.institute,
       startDate: formation.startDate,

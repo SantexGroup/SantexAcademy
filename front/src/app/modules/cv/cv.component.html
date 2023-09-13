@@ -1,24 +1,82 @@
 <body>
-    
-    <h2>Datos personales</h2>
-                <h4>Nombre: {{ profileData?.User?.name }}</h4>
-                <h4>Apellido: {{ profileData?.User?.lastName }}</h4>
-                <h4>Telefono: {{ profileData?.User?.phone }}</h4>
-                <h4>Email: {{ profileData?.User?.email }}</h4>
-                <h2>Formacion</h2>
-                <h4>Titulo: {{this.profileData.Formations[1]}}</h4>
-                <h4>Institucion: </h4>
-                <h4>Categoria: </h4>
-                <h2>Experiencias</h2>
-                <h4>Puesto: {{ profileData?.Experiences[0]?.position}}</h4>
-                <h4>Empresa: {{ profileData?.Experiences[0]?.company}}</h4>
-                <h4>Descripcion del puesto: {{ profileData?.Experiences[0]?.description}}</h4>
-                <h2>Idiomas</h2>
-                <h4> Lenguaje: {{this.profileData.Languages[0]?.language}}, Nivel: {{ this.profileData.Languages[0]?.ProfileLanguage?.level }}</h4>
-                <h4> Lenguaje: {{this.profileData.Languages[2]?.language}}, Nivel: {{ this.profileData.Languages[2]?.ProfileLanguage?.level }}</h4>
-                <h4> Lenguaje: {{this.profileData.Languages[12]?.language}}, Nivel: {{ this.profileData.Languages[12]?.ProfileLanguage?.level }}</h4>
-                <h2>Opcionales</h2>
-                <h4>Estado Civil : {{ profileData?.Optionals[0]?.Marital?.condition}}</h4>
-            
-
+    <section class="container">
+        <div class="personales_skills_language">
+            <div class="picture">
+                <img src="assets/Imagenes/foto_test.jpg" alt="foto">
+            </div>
+            <p class="aboutMe_text">Sobre mi</p>
+            <div class="aboutMe">
+                <div class="personales">
+                    <h1>DATOS PERSONALES</h1>
+                    <p>Telefono: {{ profileData?.User?.phone }}</p>
+                    <p>Email: {{ profileData?.User?.email }}</p>
+                </div>
+                <div class="skills">
+                    <h1>HABILIDADES</h1>
+                    <p>habilidades</p>
+                </div>
+                <div class="languages">
+                    <h1>IDIOMAS</h1>
+                    <ul>
+                        <li *ngFor="let language of languages">
+                            <p>Idioma: {{language.language}} Nivel: {{language.level}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="identificador">
+            <h1 class="nombre"> {{ dataUser.userName }}</h1>
+            <h1 class="apellido"> {{ dataUser.lastName }}</h1>
+        </div>
+        <div class="informacion">
+            <div class="experiencias">
+                <h1>EXPERIENCIAS</h1>
+                <ul>
+                    <li *ngFor="let experience of experiences">
+                        <div class="fechas">
+                            <p>{{experience.startDate}}</p>
+                            <p>{{experience.endDate}}</p>
+                        </div>
+                        <h2>{{experience.company}}</h2>
+                        <p>Descripcion: {{experience.description}}</p>
+                        <p>Posicion: {{experience.position}} </p>
+                        <p>Pais: {{experience.Country?.country}}</p>
+                        <p>{{experience.ExperienceStatus?.status}}</p>
+                        <p>{{experience.ExperienceTypes?.type}}</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="formacion_referencias">
+                <div class="formacion">
+                    <h1>FORMACION</h1>
+                    <ul>
+                        <li *ngFor="let formation of formations">
+                            <div class="fechas">
+                                <p>{{formation.startDate}}</p>
+                                <p>{{formation.endDate}}</p>
+                            </div>
+                            <h2>Institucion: {{formation.institute}}</h2>
+                            <p>Titulo: {{formation.title}}</p>
+                            <p>Descripcion: {{formation.description}} </p>
+                            <p>{{formation.FormationStatus?.status}}</p>
+                            <p>{{formation.FormationType?.type}}</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="referencias">
+                    <h1>REFERENCIAS</h1>
+                    <ul>
+                        <li *ngFor="let reference of references">
+                            <h2>Nombre: {{reference.name}}</h2>
+                            <p>Apellido: {{reference.lastName}}</p>
+                            <p>Compania: {{reference.company}} </p>
+                            <p>{{reference.email}}</p>
+                            <p>{{reference.phone}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
