@@ -1,4 +1,4 @@
-<div class="signup-a">
+<div class="signup-a" *ngIf="registro">
     <h1>SIGN UP</h1>
 <form action="" id="form" [formGroup]="form" (ngSubmit)="createUser()">
    
@@ -64,4 +64,7 @@
     <img class="avatar" src="../../../assets/signup.img/fondo-signup.png" alt="">
 
 </form>
+</div>
+<div>
+  
 </div>

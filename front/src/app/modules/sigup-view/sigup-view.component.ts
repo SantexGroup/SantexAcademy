@@ -11,6 +11,7 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class SigupViewComponent {
   form: FormGroup;
+  registro:boolean=true;
   user: User = {
     id: 0,
     firstName:"",
@@ -20,6 +21,8 @@ export class SigupViewComponent {
     password:'',
     active: true,
     admin:false,
+   
+
   }
   constructor(private userService: UserService,private fb: FormBuilder,private router: Router,) { 
       this.form = this.fb.group({
@@ -45,9 +48,12 @@ export class SigupViewComponent {
       active: true,
       admin:false,
     }
+    
+    
+
     this.userService.postUser(this.user)
     .subscribe(
-      (data) => {this.router.navigate(['']);},
+      (data) => {this.registro= false;},
       (error) => {
         console.log(error);
       }
