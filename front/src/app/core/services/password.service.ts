@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class PasswordService {
-  private apiUrl = environment.API_URL;
+  private apiUrl = 'http://localhost:3000';
   
 
   constructor(private http: HttpClient) { }
