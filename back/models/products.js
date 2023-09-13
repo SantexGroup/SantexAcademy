@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     detalles: DataTypes.STRING,
     precio: DataTypes.INTEGER,
     envio: DataTypes.BOOLEAN,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    }
   }, {
     sequelize,
     modelName: 'Products',
