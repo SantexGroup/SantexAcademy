@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { userInterface } from 'src/app/core/interfaces/user.interface';
+import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { UserService } from 'src/app/core/services/usuario.service';
 
@@ -19,7 +20,8 @@ export class PersonalComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userData: UserDataService,
-    private userService: UserService
+    private userService: UserService,
+    public views: NavBarService
   ) { 
     this.personalForm = this.fb.group({ 
       firstName: [''],
