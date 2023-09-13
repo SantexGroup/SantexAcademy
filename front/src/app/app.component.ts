@@ -7,6 +7,8 @@ import { NavBarService } from './core/services/toolServices/nav-bar.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
+
+  public active : boolean = false
   
   constructor(
     public views: NavBarService,
@@ -14,5 +16,9 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.views.restart();
+  }
+  
+  activarNav() : void {
+    this.active = !this.active
   }
 }

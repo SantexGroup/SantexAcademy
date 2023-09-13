@@ -31,6 +31,44 @@ ul li a:hover {
     color: #FFF;
 }
 
+.abrir-menu{
+    display: none;
+    width: 3em;
+    height: 3em;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 990px){
+
+    button:hover{
+        border-radius: 40px;
+        background-color: #ffffff;
+        color: black;
+        font-weight: bold;
+        transition: 0.5s;
+    }
+    
+    button{
+        border-radius: 15px;
+        background-color: #0072bb;
+        border: 1px solid #ffffff;
+        padding: 10px;
+        color: #ffffff;
+        
+        
+    }
+
+    .abrir-menu{
+        display: flex;
+        justify-content: center;
+    }
+    .nav-activo{
+        display: flex;
+    }
+}
+
 /* Body */
 
 .eslogan {
@@ -231,6 +269,56 @@ mat-expansion-panel {
 mat-panel-title {
     justify-content: center;
     font-weight: bold;
+
+}
+@media screen and (max-width: 990px){
+
+    .eslogan-frase{
+        font-size: 3em;
+        margin: 3em 0em 4em 0em;
+        padding: 0;
+    }
+    .div-plantillas{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+    }
+    #carrusel-plantillas{
+        width: 70%;
+        margin-top: 3em;
+        
+    }
+
+    .div-objetivos{
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+
+    }
+    .card-objetivos{
+        margin: 0;
+        width: 100%;
+    }
+    #nosotrosContacto.informacion{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+    }
+
+    .quienes-somos p{
+        margin: 0px;
+        width: 100%;
+    }
+    .preguntas-frecuentes{
+        width: 100%;
+
+    }
 
 }
 
