@@ -19,11 +19,16 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Skill.init({
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
     skill: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    deletedAt: DataTypes.DATE,
   }, {
     sequelize,
     timestamps: false,
