@@ -26,7 +26,7 @@ export class PersonalComponent implements OnInit {
       lastName: [''],
       email: [''],
       phone: [''],
-      bornDate: '',
+      bornDate: null,
       pictureLink: [''],
     })
   }
@@ -47,7 +47,7 @@ export class PersonalComponent implements OnInit {
           lastName: data.lastName,
           email: data.email,
           phone: data.phone,
-          bornDate: String(data.bornDate),
+          bornDate: data.bornDate,
           pictureLink: data.pictureLink
         })
         this.user = data; 
