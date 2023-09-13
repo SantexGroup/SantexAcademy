@@ -27,9 +27,6 @@ module.exports = {
       envio: {
         type: Sequelize.BOOLEAN
       },
-      estado: {
-        type: Sequelize.BOOLEAN
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
