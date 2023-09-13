@@ -57,6 +57,9 @@ h1 {
     width:150px;
     height: 40px;
     font-size: 20px;
+
+    display: inline-block; 
+    margin-right: 10px;
     
 }
 
