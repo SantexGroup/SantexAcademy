@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,14 +9,18 @@
     <style>
         body {
             margin: 0;
+
         }
+
         p {
             margin-right: 40px;
         }
+
         h1 {
             margin: 0px 400px;
             text-align: center;
         }
+
         button.redondo {
             background-color: white;
             border: 1px solid black;
@@ -23,14 +28,48 @@
             padding: 0px 20px;
             height: 32px;
         }
+
         div#introduction-actions {
             display: flex;
             justify-content: center;
         }
+
+        .conteo {
+            background-color: black;
+            padding: top 135px;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            margin-top: 200px;
+
+        }
+
+        .footer_text {
+            color: aliceblue;
+            font-size: 2.8em;
+            font-weight: 700;
+            vertical-align: middle;
+            margin: 0;
+            margin-left: 1em;
+            cursor: default
+        }
+
+        .footer_text--light {
+            color: aliceblue;
+            font-size: 1.4em;
+            font-weight: 400;
+            line-height: 2.05em;
+            margin: 0;
+            align-self: center;
+            margin-left: 2em;
+            cursor: default;
+        }
     </style>
 </head>
+
 <body>
-    <div id="header" style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
+    <div id="header"
+        style="border-bottom: 1px solid gray; display: flex; padding: 10px 100px; justify-content: space-between">
         <div id="header-left">
             <img src="logo.svg">
         </div>
@@ -45,12 +84,40 @@
     </div>
     <div id="introduction" style="padding: 48px;">
         <div id="introduction-text">
-            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la tecnología.</h1>
+            <h1>Somos una Fundación dedicada a mejorar la calidad de vida de las personas y su entorno, a través de la
+                tecnología.</h1>
         </div>
         <div id="introduction-actions" style="margin-top: 25px;">
             <button class="redondo">Contactanos -></button>
             <button class="redondo" style="margin-left: 14px;">Sumate +</button>
         </div>
     </div>
+    <div class="conteo">
+        <div>
+            <h1 style="color:aliceblue;font-size: 1.6em; font-weight: 600;">.Impacto</h1>
+            <h2
+                style=" color :aliceblue;text-align: start;width: 27em;font-size: 1.2em;font-weight: 400;line-height: 1.5em;">
+                Buscamos construir alianzas y fortalecer vínculos para generar una transformación real en la comunidad
+                Trabajamos para acercar la tecnología innovadora y disruptiva del sector privado hacia el sector social.
+            </h2>
+        </div>
+        <div style="align-items: center">
+            <p class="footer_text">58 </p>
+            <p class="footer_text--light"> localidades</p>
+        </div>
+        <div>
+            <p class="footer_text">+50 </p>
+            <p class="footer_text--light">mentores</p>
+        </div>
+        <div>
+            <p class="footer_text">301</p>
+            <p class="footer_text--light">participantes</p>
+        </div>
+    </div>
+    <div class="foto_equipo">
+        <img src="https://technologywithpurpose.org/wp-content/uploads/2022/11/twp-home.jpg" alt=""
+            style="width: 100%;">
+    </div>
 </body>
+
 </html>
