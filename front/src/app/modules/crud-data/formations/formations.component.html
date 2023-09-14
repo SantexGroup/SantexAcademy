@@ -45,34 +45,37 @@
             </div>
             <div class="botonera">
                 <div class="botones">
-                    <button class="plus" type="submit" *ngIf="views.plusOne">
+                    <button (click)="getListFormations" class="plus" type="submit" *ngIf="views.plusOne">
                         <img src="/assets/Imagenes/plus.png" alt="+">
                     </button>
-                    <button type="submit" mat-raised-button color="primary" *ngIf="views.saveButton">
+                    <button type="submit" mat-raised-button color="primary" *ngIf="views.saveButton"(click)="saveFormation()" >
                         Guardar
                     </button>
+                    
                 </div>
             </div>
         </form>
         <div class="lista">
             <ul>
-                <li>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Titulo</h5>
-                            <p class="card-text">Detalle</p>
-                            <div class="botonera-card">
-                                <button>
-                                    <img src="/assets/Imagenes/editar.png" alt="Editar">
-                                </button>
-                                <button>
-                                    <img src="/assets/Imagenes/delete.png" alt="Eliminar">
-                                </button>
-                            </div>
-                        </div>
+                <li *ngFor="let formation of listFormation" class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Titulo: {{ formation.title }}</h4>
+                    <h4 class="card-title">Institucion: {{formation.institute}}</h4>
+                    <h5 class="card-text">Descripcion</h5>
+                    <h5 class="card-text">{{ formation.description }}</h5>
+                    <h5 class="card-text">Estado {{formation.statusId}}</h5>
+                    <div class="botonera-card">
+                      <button (click)="editFormation(formation)" (click)="views.changeViews()" >
+                        <img src="/assets/Imagenes/editar.png" alt="Editar">
+                      </button>
+                      <button (click)="deleteFormation(formation.id!)" >
+                        <img src="/assets/Imagenes/delete.png" alt="Eliminar">
+                      </button>
                     </div>
+                  </div>
                 </li>
-            </ul>
+              </ul>
+              
         </div>
     </div>
 </body>

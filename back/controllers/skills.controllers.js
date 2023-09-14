@@ -60,13 +60,13 @@ async function skillUpdate(
   const { id } = req.params;
   const {
     level,
-    profileId,
+    skill,
   } = req.body;
   try {
     const updateSkill = await SkillService.updateSkill(
       id,
       level,
-      profileId,
+      skill,
     );
     res.status(201).send(updateSkill);
   } catch (error) {
@@ -82,7 +82,7 @@ async function skillDelete(
   const { id } = req.params;
   try {
     await SkillService.deletedSkill(id);
-    res.status(200).send('Skill eliminado correctamente');
+    res.status(200).send();
   } catch (error) {
     next(error);
   }

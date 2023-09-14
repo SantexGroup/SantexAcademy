@@ -52,6 +52,7 @@ async function experienceAdd(
     description,
     startDate,
     endDate,
+    profileId,
   } = req.body;
   try {
     // Reservamos todos los datos en la constante
@@ -64,6 +65,7 @@ async function experienceAdd(
       description,
       startDate,
       endDate,
+      profileId,
     );
     // Retornamos que esta ok con el 200 y enviamos la constante al front
     res.status(200).send(newExperience);
@@ -84,7 +86,7 @@ async function experienceDelete(
     // constante que reserva el resultado de deleteExperience
     await ExperienceService.deleteExperience(id);
     // Retornamos el valor 200 con el mensaje de eliminacion Ok
-    res.status(200).send('Registro de experience eliminado');
+    res.status(200).send();
   } catch (error) {
     // Manejador de errores
     next(error);
@@ -112,7 +114,7 @@ async function experienceUpdate(
 
   try {
     // constante que reserva el resultado de updateExperience
-    const experience = await ExperienceService.updateExperience({
+    const experience = await ExperienceService.updateExperience(
       id,
       statusId,
       countriesId,
@@ -122,7 +124,7 @@ async function experienceUpdate(
       description,
       startDate,
       endDate,
-    });
+    );
     // Retornamos que esta ok con el 200 y enviamos la constante al front
     res.status(200).send(experience);
   } catch (error) {

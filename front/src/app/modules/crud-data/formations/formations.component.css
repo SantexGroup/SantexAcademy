@@ -73,7 +73,18 @@ form mat-form-field {
 .lista {
     flex-direction: column;
     justify-content: center;
-    width: 35%;
+    overflow-y: auto;
+    width: 37%;
+    height: 95vh;
+}
+
+.dates{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dates mat-form-field{
+    width: 45%;
 }
 
 .card {
@@ -109,4 +120,8 @@ form mat-form-field {
     width: 2.5rem;
     height: 2.5rem;
     filter: opacity(1);
+}
+.card-title{
+    text-align: center;
+    font-weight: bold;
 }

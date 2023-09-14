@@ -40,7 +40,7 @@ form mat-form-field {
 }
 
 .botonera {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -73,7 +73,18 @@ form mat-form-field {
 .lista {
     flex-direction: column;
     justify-content: center;
-    width: 35%;
+    overflow-y: auto;
+    width: 37%;
+    height: 95vh;
+}
+
+.dates{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dates mat-form-field{
+    width: 45%;
 }
 
 .card {

@@ -1,6 +1,11 @@
+
 .button-conteiner{
     background: #0D6EFD;
     height: 100vh;
+}
+
+#first{
+    margin-top: 3rem;
 }
 
 .button-nav{
@@ -34,7 +39,8 @@
 .textArea{
     margin-top: 1rem;
     width: 100%;
-    height: 100vh;
+    height: 95vh;
+   
 }
 
 textarea{

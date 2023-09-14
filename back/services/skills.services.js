@@ -1,4 +1,3 @@
-const { addRelation, updateRelation } = require('../helpers/relations.helper');
 const { Profile, Skill, ProfileSkill } = require('../models');
 
 async function getSkill(id) {
@@ -13,7 +12,13 @@ async function getSkill(id) {
     }],
   });
   if (skill) {
-    return skill;
+    const thisSkill = {
+      id: skill.Skill.id,
+      level: skill.level,
+      skill: skill.Skill.skill,
+    };
+
+    return thisSkill;
   }
   throw new Error('Skill no encontrada');
 }
@@ -28,16 +33,29 @@ async function getAllSkill(id) {
       {
         model: ProfileSkill,
         attributes: ['level'],
+        where: {
+          deletedAt: null,
+        },
         include: [{
           model: Skill,
-          attributes: ['skill'],
+          attributes: ['id', 'skill'],
         }],
       }],
     distinct: true,
     group: ['skill'],
   });
   if (skills) {
-    return skills;
+    const listSkills = skills.reduce(
+      (allSkills, skill) => allSkills.concat(skill.ProfileSkills), [],
+    );
+
+    const allSkills = listSkills.map((skill) => ({
+      id: skill.Skill.id,
+      level: skill.level,
+      skill: skill.Skill.skill,
+    }));
+
+    return allSkills;
   }
   throw new Error('No existe el skill');
 }
@@ -51,7 +69,11 @@ async function addSkill(
     skill,
   });
 
-  await addRelation(ProfileSkill, createSkill.id, profileId, level);
+  await ProfileSkill.create({
+    profilesId: profileId,
+    skillsId: createSkill.id,
+    level,
+  });
 
   const newSkill = await getSkill(createSkill.id);
 
@@ -61,13 +83,23 @@ async function addSkill(
 async function updateSkill(
   id,
   level,
-  profileId,
+  skill,
 ) {
-  const skill = await getSkill(id);
+  await Skill.update({
+    skill,
+  }, {
+    where: {
+      id,
+    },
+  });
 
-  const relationId = skill.ProfileSkill.id;
-
-  await updateRelation(ProfileSkill, relationId, id, profileId, level);
+  await ProfileSkill.update({
+    level,
+  }, {
+    where: {
+      skillsId: id,
+    },
+  });
 
   const upgradeSkill = await getSkill(id);
 
@@ -77,12 +109,12 @@ async function updateSkill(
 async function deletedSkill(id) {
   const skill = await Skill.findByPk(id);
 
-  if (skill && skill.deletedAt === null) {
-    Skill.update({
+  if (skill) {
+    await ProfileSkill.update({
       deletedAt: new Date(),
     }, {
       where: {
-        id,
+        skillsId: id,
       },
     });
   } else {

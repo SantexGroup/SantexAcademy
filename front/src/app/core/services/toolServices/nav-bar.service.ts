@@ -18,6 +18,8 @@ export class NavBarService{
 
   accountButton: boolean = true;
 
+  
+
   plusOne = true;
 
   saveButton = false;
@@ -44,6 +46,11 @@ export class NavBarService{
 
   buttonAccount(){
     this.quickButton = false;
+  }
+
+  changeViews() {
+    this.plusOne = false;
+    this.saveButton = true;
   }
 
   restart(){

@@ -60,7 +60,7 @@ async function getFormationById(req, res, next) {
   const { id } = req.params;
 
   try {
-    const formations = await formationService.fetchFormationById(id);
+    const formations = await formationService.fetchFormationssByUserId(id);
 
     res.status(200).send(formations);
   } catch (error) {
@@ -82,10 +82,28 @@ async function getFormationById(req, res, next) {
  * lo que permite que el control pase al siguiente middleware que maneja los errores.
  */
 async function createFormation(req, res, next) {
-  const formationData = req.body;
+  const {
+    statusId,
+    typesId,
+    title,
+    institute,
+    startDate,
+    endDate,
+    description,
+    profileId,
+  } = req.body;
 
   try {
-    const formation = await formationService.saveNewFormationData(formationData);
+    const formation = await formationService.saveNewFormationData(
+      statusId,
+      typesId,
+      title,
+      institute,
+      startDate,
+      endDate,
+      description,
+      profileId,
+    );
 
     res.status(201).send(formation);
   } catch (error) {

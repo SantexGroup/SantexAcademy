@@ -60,15 +60,29 @@ async function languageUpdate(
   const { id } = req.params;
   const {
     level,
-    profileId,
+    language,
   } = req.body;
   try {
     const updateLanguage = await languageService.updateLanguage(
       id,
       level,
-      profileId,
+      language,
     );
     res.status(201).send(updateLanguage);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function languageDelete(
+  req,
+  res,
+  next,
+) {
+  const { id } = req.params;
+  try {
+    await languageService.deleteLanguage(id);
+    res.status(200).send();
   } catch (error) {
     next(error);
   }
@@ -79,4 +93,5 @@ module.exports = {
   languageGetAll,
   languageAdd,
   languageUpdate,
+  languageDelete,
 };

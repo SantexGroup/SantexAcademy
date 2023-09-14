@@ -13,7 +13,7 @@ const { profileService } = require('../services');
  * la función captura el error y llama a la función next,
  * lo que permite que el control pase al siguiente middleware que maneja los errores.
  */
-async function getProfile(req, res, next) {
+async function getProfileById(req, res, next) {
   const { id } = req.params;
 
   try {
@@ -40,6 +40,6 @@ async function getProfilesByUserIdController(req, res) {
 }
 
 module.exports = {
-  getProfile,
+  getProfileById,
   getProfilesByUserIdController,
 };

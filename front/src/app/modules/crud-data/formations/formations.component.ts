@@ -7,6 +7,7 @@ import { FormationsStatusService } from 'src/app/core/services/formations-status
 import { FormationsTypeService } from 'src/app/core/services/formations-type.service';
 import { FormationsService } from 'src/app/core/services/formations.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
+import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 
 
 @Component({
@@ -15,15 +16,17 @@ import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.servic
   styleUrls: ['./formations.component.css']
 })
 export class FormationsComponent implements OnInit {
-
+  listFormation: Formations[] = []  
   formationForm: FormGroup;
+  editedFormation: Formations | null = null;
 
   constructor(
     private _formationsTypesServices: FormationsTypeService,
     private _formationsStatusServices: FormationsStatusService,
-    private _formationsServices: FormationsService,
+    private _formationsServices: FormationsService,    
     public views: NavBarService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private userData: UserDataService
     ) {
       this.formationForm = this.fb.group({
         statusId: '',
@@ -31,13 +34,15 @@ export class FormationsComponent implements OnInit {
         title: '',
         institute: '',
         startDate: '',
-        endDate: '',
+        endDate: null,
         description: '',
-      })
+      })      
      }
 
   ngOnInit(): void {
 
+    this.getListFormations();
+    
     this.formationsStatusGet();
 
     this.formationsTypesGet();
@@ -68,16 +73,63 @@ export class FormationsComponent implements OnInit {
       startDate: this.formationForm.get('startDate')?.value,
       endDate: this.formationForm.get('endDate')?.value,
       description: this.formationForm.get('description')?.value,
+      profileId: this.userData.profileId
     }
+    console.log(newFormation);
 
-    this._formationsServices.addFormation(newFormation).subscribe((data)=>{
-      console.log(data);
-    });
-
+    this._formationsServices.addFormation(newFormation).subscribe((formation)=>{
+      this.listFormation.push(formation);
+    });    
     this.formationForm.reset();
+  
   }
 
   endDateShow():boolean{
     return this.formationForm.get('statusId')?.value !== 1;
+  }
+
+  getListFormations(){
+    this._formationsServices.getFormationByUser(this.userData.userId).subscribe((data) => {      
+      this.listFormation = data;
+    } )
+  }
+
+  deleteFormation(id: number) {
+    this._formationsServices.deleteFormation(id).subscribe(() =>{
+      this.getListFormations()
+    })
+  }
+  editFormation(formation: Formations) {
+    this.editedFormation = { ...formation };
+    
+    
+    this.formationForm.patchValue({
+      statusId: formation.statusId,
+      typesId: formation.typesId,
+      title: formation.title,
+      institute: formation.institute,
+      startDate: formation.startDate,
+      endDate: formation.endDate,
+      description: formation.description,
+    });
+  }
+ 
+  
+  
+   // Función para guardar los cambios realizados en el formulario de edición
+   saveFormation() {
+    if (this.editedFormation) {
+      const updatedFormation: Formations = this.formationForm.value;
+      updatedFormation.id = this.editedFormation.id;
+
+      this._formationsServices.updateFormation(updatedFormation).subscribe(() => {
+        console.log('Formación actualizada');        
+        this.getListFormations();
+    });
+
+      // this.editedFormation = null; // Restablecer la formación editada
+      this.formationForm.reset(); // Restablecer el formulario
+    
+    }   
   }
 }

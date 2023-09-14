@@ -1,4 +1,5 @@
 <app-loading></app-loading>
+
 <div *ngIf="views.landing">
     <nav class="navbar navbar-expand-lg bg-primary">
         <div class="container-fluid">
@@ -72,6 +73,7 @@
             <button class="boton-creatucv"
             routerLink="login"
             (click)="views.hideLanding()"
+            (click)="views.navBarShow = true"
             (click)="views.title = 'Iniciar Sesion'">
                 Crea tu CV
             </button>
@@ -231,6 +233,7 @@
                 <a href="#nosotrosContacto">Preguntas Frecuentes</a>
                 <a href="#nosotrosContacto">Quienes somos</a>
                 <a routerLink="login" 
+                (click)="views.navBarShow = true"
                 (click)="views.title = 'Iniciar Sesion'"
                 (click)="views.hideLanding()"
                 >Iniciar sesion</a>
@@ -264,4 +267,6 @@
 </div>
 <app-experiences></app-experiences>
 <app-nav-bar *ngIf="views.externalComponent"></app-nav-bar>
-<router-outlet *ngIf="views.externalComponent"></router-outlet>
+<router-outlet *ngIf="views.externalComponent"></router-outlet> 
+
+<!-- <router-outlet></router-outlet> -->

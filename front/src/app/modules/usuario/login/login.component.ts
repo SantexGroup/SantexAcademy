@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
-import { UsuarioService } from 'src/app/core/services/usuario.service';
+import { UserService } from 'src/app/core/services/usuario.service';
+
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder, 
     private router: Router, 
-    private userService: UsuarioService,
+    private userService: UserService,
     public dataUser: UserDataService,
     private views: NavBarService
     ) { }
@@ -42,8 +43,10 @@ export class LoginComponent {
         this.dataUser.profileId = data.profile.id;
         this.views.quickButton = true;
         this.views.accountButton = false;
+        this.dataUser.userName = data.user.name;
+        this.dataUser.lastName = data.user.lastName;
         this.views.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
-        this.router.navigate(['/home', data.profile.id]);
+        this.router.navigate(['/home', data.profile.userId, 'cv']);
         }, 
         error: (err) => { 
           console.log(err); 

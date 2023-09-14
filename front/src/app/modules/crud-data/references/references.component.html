@@ -1,0 +1,72 @@
+<body>
+    <div class="experienceInput">
+        <form [formGroup]="referenceForm">
+            <mat-form-field>
+                <mat-label for="name">Nombre:</mat-label>
+                <input matInput formControlName="name" type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="lastName">Apellido:</mat-label>
+                <input matInput formControlName="lastName" type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="email">Mail:</mat-label>
+                <input matInput formControlName="email" type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="phone">Telefono:</mat-label>
+                <input matInput formControlName="phone" type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="company">Empresa:</mat-label>
+                <mat-select formControlName="company">
+                    <mat-option *ngFor="let company of userData.companies" [value]="company">
+                        {{company}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="botonera">
+                <div class="botones">
+                    <button 
+                    class="plus" 
+                    type="submit" 
+                    *ngIf="views.plusOne"
+                    (click)="addReference()">
+                        <img src="/assets/Imagenes/plus.png" alt="+">
+                    </button>
+                    <button 
+                    type="submit" 
+                    mat-raised-button 
+                    color="primary" 
+                    (click)="updateReferece()" 
+                    *ngIf="views.saveButton">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="lista">
+            <ul>
+                <li *ngFor="let reference of referenceList">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"> {{reference.name}} {{reference.lastName}}</h5>
+                            <p class="card-text"> {{reference.company}} </p>
+                            <div class="botonera-card">
+                                <button 
+                                (click)="views.changeViews()"
+                                (click)="selectedReference(reference.id)">
+                                    <img src="/assets/Imagenes/editar.png" alt="Editar">
+                                </button>
+                                <button 
+                                (click)="deleteReference(reference.id)">
+                                    <img src="/assets/Imagenes/delete.png" alt="Eliminar">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
