@@ -1,7 +1,6 @@
-export interface ProfileSkill {
-    level: number;
-    Skill: {
-        id: number;
-        skill: string;
-    };
+export interface Skill {
+    id?: number,
+    skill: string,
+    level: number,
+    profileId?: number,
 }

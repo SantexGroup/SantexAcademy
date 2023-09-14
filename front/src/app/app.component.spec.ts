@@ -23,7 +23,7 @@ describe('AppComponent', () => {
   it(`should have as title 'santex-academy'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('santex-academy');
+    expect(app.views.title).toEqual('santex-academy');
   });
 
   it('should render title', () => {

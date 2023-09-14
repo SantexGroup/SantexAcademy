@@ -1,5 +1,6 @@
 const NotFoundException = require('../exceptions/not_found.exceptions');
 const {
+  ProfileFormation,
   Profile,
   Formation,
   FormationType,
@@ -33,8 +34,11 @@ async function findAndCheckFormationdById(id) {
  * En caso de no encontrar formaciones lanza una
  * excepción NotFoundException.
  */
-async function fetchFormations() {
-  const formations = await Formation.findAll({ include: TYPES_STATUS });
+async function fetchFormations(userId) {
+  const formations = await Formation.findAll({
+    where: { userId },
+    include: TYPES_STATUS,
+  });
 
   if (!formations) {
     throw new NotFoundException('Formations not found');
@@ -59,8 +63,33 @@ async function fetchFormationById(id) {
 /**
  * Guardar los datos de una nueva formacion.
  */
-async function saveNewFormationData(data) {
-  return Formation.create(data);
+async function saveNewFormationData(
+  statusId,
+  typesId,
+  title,
+  institute,
+  startDate,
+  endDate,
+  description,
+  profileId,
+) {
+  const newFormation = await Formation.create({
+    statusId,
+    typesId,
+    title,
+    institute,
+    startDate,
+    endDate,
+    description,
+  });
+
+  if (newFormation) {
+    await ProfileFormation.create({
+      profilesId: profileId,
+      formationsId: newFormation.id,
+    });
+  }
+  return newFormation;
 }
 
 /**
@@ -83,13 +112,13 @@ async function deleteFormationData(id) {
 /**
  * Obener una lista de FORMACIONES por usuario.
  */
-async function fetchFormationssByUserId(userId) {
+async function fetchFormationssByUserId(id) {
   const PROFILE = [
     {
       model: Profile,
       attributes: [],
       where: {
-        user_id: userId,
+        user_id: id,
       },
     },
   ];
@@ -100,7 +129,7 @@ async function fetchFormationssByUserId(userId) {
   });
 
   if (!formations) {
-    throw new NotFoundException(`Formations with user_id ${userId} not found`);
+    throw new NotFoundException(`Formations with user_id ${id} not found`);
   }
 
   return formations;

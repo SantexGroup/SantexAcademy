@@ -3,10 +3,10 @@
         <div class="button-conteiner">
             <div class="button-nav" id="first">
                 <button routerLink="cv" mat-raised-button color="primary"
-                    >Home</button>
+                (click)="views.title = 'Home'">Home</button>
             </div>
             <div class="button-nav">
-                <button routerLink="#" mat-raised-button color="primary"
+                <button routerLink="personal" mat-raised-button color="primary"
                     (click)="views.title = 'Datos Personales'">Mis datos personales</button>
             </div>
             <div class="button-nav">
@@ -34,7 +34,7 @@
                     (click)="views.title = 'Datos Opcionales'">Opcionales</button>
             </div>
             <div class="button-nav">
-                <button mat-raised-button color="primary" (click)="views.title = 'Datos Extras'">Mas datos</button>
+                <button routerLink="profiles" mat-raised-button color="primary" (click)="views.title = 'Datos Extras'">Mas datos</button>
             </div>
         </div>
         <div class="textArea">             

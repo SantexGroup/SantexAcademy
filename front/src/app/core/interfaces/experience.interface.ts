@@ -1,4 +1,13 @@
 export interface Experience{
+    Country?:{
+        country:string
+    },
+    ExperienceStatus?:{
+        status: string,
+    },
+    ExperienceTypes?:{
+        type:string,
+    }
     id?: number,
     description: string,
     position: string,
