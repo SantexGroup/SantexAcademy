@@ -10,11 +10,8 @@ import { RegisterformComponent } from './modules/register/registerform/registerf
 import { RegisteranswerComponent } from './modules/register/registeranswer/registeranswer.component';
 import { ErrorPageComponent } from './modules/share/error-page/error-page.component';
 import { AdminComponent } from './modules/pages/admin/admin.component';
-<<<<<<< HEAD
 import { PerfilAlumnoComponent } from './modules/pages/perfil-alumno/perfil-alumno.component';
-=======
 import { ValidarTokenGuard } from './core/guards/validar-token.guard';
->>>>>>> juanjoDiaz
 
 const routes: Routes = [
   {

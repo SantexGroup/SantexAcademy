@@ -14,17 +14,12 @@ export interface User {
     username:  string;
     password:  string;
     confirmPassword: string;
-<<<<<<< HEAD
     activoactualmente: boolean;
     estado: string;
     idtipodeusuario: number;
     tipodeusuario: TipoDeUsuario;
     createdAt?: Date;
     updatedAt?: Date;
-=======
-    estado: boolean;
-    idtipodeusuario: string;
->>>>>>> juanjoDiaz
 }
 // Converts JSON strings to/from your types
 export class Convert {

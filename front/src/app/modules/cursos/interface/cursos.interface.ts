@@ -7,7 +7,6 @@
 import { Nivel } from "src/app/models/nivel.interface";
 
 export interface Curso {
-<<<<<<< HEAD
   id: number;
   nombre: string;
   descripcion: string;
@@ -25,22 +24,6 @@ export interface Curso {
   createdAt: Date;
   updatedAt?: Date;
   nivel: Nivel;
-=======
-    id?:                    number;
-    nombre:                string;
-    descripcion:           string;
-    imagen?:                string;
-    duracion:              number;
-    capacidad:             number;
-    idnivel:               null;
-    requisitos:            string;
-    habilitado:            boolean;
-    fechaInicio:           Date;
-    fechafin:              null;
-    idusuarioalta:         null;
-    estado:                boolean;
-    idusuariomodificacion: null;
->>>>>>> juanjoDiaz
 }
 
 // Converts JSON strings to/from your types

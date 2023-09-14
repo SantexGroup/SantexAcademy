@@ -30,12 +30,16 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       idtipodeusuario: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DataTypes.INTEGER,
+        references: {
+          model: {
+            tableName: 'TipoDeUsuarios',
+            // schema: 'schema',
+          },
+          key: 'id',
+        },
+        allowNull: false,
       },
-<<<<<<< HEAD:back/migrations/20230830210049-create-users.js
-      estado: {
-        type: Sequelize.STRING
-=======
       codeRegister: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -46,7 +50,6 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: true, // El código podría ser nulo hasta que se verifique
         defaultValue: false,
->>>>>>> juanjoDiaz:back/migrations/20230830210049-create-user.js
       },
       createdAt: {
         allowNull: false,

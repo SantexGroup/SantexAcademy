@@ -29,15 +29,11 @@ export class CreateComponent implements OnInit {
     email: '',
     estado: 'A',
     confirmPassword: '',
-<<<<<<< HEAD
     idtipodeusuario: 0,
     activoactualmente: true,
     createdAt: new Date,
     updatedAt: new Date,
     tipodeusuario: this.tipoUsuarioNvo,
-=======
-    idtipodeusuario: '',
->>>>>>> juanjoDiaz
   }
 
   tipoDeUsuarioSeleccionado: number | undefined = undefined;

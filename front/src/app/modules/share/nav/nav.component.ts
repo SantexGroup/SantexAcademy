@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 import { Component, HostListener } from '@angular/core';
-=======
-import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/services/auth.service';
->>>>>>> juanjoDiaz
 
 @Component({
   selector: 'app-nav',
@@ -13,25 +9,18 @@ import { AuthService } from '../../auth/services/auth.service';
 })
 export class NavComponent {
 
-<<<<<<< HEAD
   isMenuOpen = false;
   isSmallScreen = false;
 
-  constructor() {
-    // Detectar el tamaño de pantalla inicial
-    this.checkScreenSize();
-=======
-  get user() {
-    return this.authService.user;
-  }
+
 
   constructor(private router: Router,
               private authService: AuthService) { }
 
+              
   logout(){
     this.router.navigateByUrl('/catalogo-cursos');
     this.authService.logout();
->>>>>>> juanjoDiaz
   }
 
   @HostListener('window:resize', ['$event'])

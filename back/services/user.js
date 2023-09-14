@@ -2,14 +2,14 @@ const { User, TipoDeUsuario } = require('../models');
 
 const allUser = async () => {
   const users = await User.findAll({
-    include: [
-      {
-        model: TipoDeUsuario,
-        as: 'tipodeusuario',
-      },
-    ],
+    // include: [
+    //   {
+    //     model: TipoDeUsuario,
+    //     as: 'tipodeusuario',
+    //   },
+    // ],
     where: {
-      estado: 'A',
+      activoactualmente: true,
     },
   });
   return users;
@@ -21,7 +21,7 @@ const getUser = async (id) => {
       include: [
         {
           model: TipoDeUsuario,
-          as: 'tipodeusuario', // Asegúrate de usar el mismo nombre que definiste en la asociación
+          as: 'idtipodeusuario', // Asegúrate de usar el mismo nombre que definiste en la asociación
         },
       ],
     });
@@ -34,7 +34,7 @@ const getUser = async (id) => {
 const getUserByEmail = async (email) => {
   const user = await User.findOne({
     where: {
-      email: email,
+      email,
     },
   });
   return user;

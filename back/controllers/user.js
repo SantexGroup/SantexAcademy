@@ -45,25 +45,6 @@ const verifyLinkEmail = async (req, res, next) => {
 };
 
 const createUser = async (req, res) => {
-<<<<<<< HEAD
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({
-      ok: false,
-      errors: errors.mapped(),
-    });
-  }
-  const { body } = req;
-  body.verificationCode = false;// Establece false en la verificacion de email hasta que se realice
-  const userEmail = req.body.email;
-  const verificationLink = `http://localhost:4001/user/verifyEmail?email=${userEmail}`;
-  try {
-    const user = await userService.createUser(body);
-    // eslint-disable-next-line no-console
-    // eslint-disable-next-line max-len
-    await emailService.sendMail(user, userEmail, verificationLink);// Envia email y url a emailService
-    return res.json(user);
-=======
   const { body } = req;
   const { email, username, password } = body;
 
@@ -113,7 +94,6 @@ const createUser = async (req, res) => {
       user,
       token,
     });
->>>>>>> juanjoDiaz
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(error);
