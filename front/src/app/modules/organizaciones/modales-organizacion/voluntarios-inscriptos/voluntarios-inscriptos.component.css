@@ -1,0 +1,24 @@
+mat-dialog-content{
+    width: 80vw;
+}
+
+.contenedor-tabla{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+.subtitulo{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+@media (min-width:650px) {
+    mat-dialog-content{
+        width: 500px;
+    }
+
+  
+}
