@@ -52,13 +52,14 @@ ul li a:hover {
     
     button{
         border-radius: 15px;
-        background-color: #0072bb;
         border: 1px solid #ffffff;
         padding: 10px;
-        color: #ffffff;
+        color: black;
         
         
     }
+
+    
 
     .abrir-menu{
         display: flex;
