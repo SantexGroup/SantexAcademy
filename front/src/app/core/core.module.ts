@@ -21,6 +21,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -50,7 +51,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatCardModule,
     MatTableModule,
     MatTooltipModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCheckboxModule
    
     
   ],
