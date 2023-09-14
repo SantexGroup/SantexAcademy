@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth/auth.guard';
+import { NoAuthGuard } from './guards/no-auth/no-auth.guard';
 
 
 /**
@@ -18,8 +19,8 @@ import { AuthGuard } from './guards/auth/auth.guard';
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./modules/landing/landing.module').then(m => m.LandingModule) },
-  { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
-  { path: 'register', loadChildren: () => import('./modules/register/register.module').then(m => m.RegisterModule) },
+  { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule), canActivate: [NoAuthGuard] },
+  { path: 'register', loadChildren: () => import('./modules/register/register.module').then(m => m.RegisterModule), canActivate: [NoAuthGuard] },
   { path: 'news', loadChildren: () => import('./modules/news/news.module').then(m => m.NewsModule) },
 
   { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule), canActivate: [AuthGuard] },
