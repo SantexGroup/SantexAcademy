@@ -1,4 +1,5 @@
 import { Tarea } from "./tarea"
+import { TareasVoluntario } from "./tareasVoluntario"
 
 export interface Voluntario {
     id?:number,
@@ -9,5 +10,6 @@ export interface Voluntario {
     address: string,
     points?: number,
     phone: string,
-    tareas?:Tarea[]
+    tareas?:Tarea[],
+    tareasVoluntario?:TareasVoluntario
 }

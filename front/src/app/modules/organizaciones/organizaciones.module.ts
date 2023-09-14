@@ -10,6 +10,7 @@ import { TareasOrganizacionComponent } from './tareas-organizacion/tareas-organi
 import { CrearModificarTareaModalComponent } from './modales-organizacion/crear-modificar-tarea-modal/crear-modificar-tarea-modal.component';
 import { SharedModule } from '../shared/shared.module';
 import { TareasComponent } from './tareas/tareas.component';
+import { VoluntariosInscriptosComponent } from './modales-organizacion/voluntarios-inscriptos/voluntarios-inscriptos.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { TareasComponent } from './tareas/tareas.component';
     TareasOrganizacionComponent,
     CrearModificarTareaModalComponent,
     TareasComponent,
+    VoluntariosInscriptosComponent,
   ],
   imports: [
     CommonModule,

@@ -49,4 +49,9 @@ export class TareaService {
 
   }
 
+  getInscriptos(idTarea:number):Observable<Voluntario[]>{
+    
+    return this.apiService.get('/tarea/inscriptos/'+idTarea);
+  }
+
 }
