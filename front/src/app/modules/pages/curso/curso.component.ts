@@ -1,9 +1,16 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Curso } from '../../cursos/interface/cursos.interface';
+<<<<<<< HEAD
 import { Nivel } from "src/app/models/nivel.interface";
 import { FormGroup } from '@angular/forms';
+=======
+import { AuthService } from '../../auth/services/auth.service';
+import { Matricula } from '../../matriculas/interfaces/interfaces';
+>>>>>>> juanjoDiaz
 // import { Curso } from '../../../models/curso.interface';
+import { MatriculasService } from '../../matriculas/services/matriculas.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,6 +20,7 @@ import { FormGroup } from '@angular/forms';
 })
 
 export class CursoComponent implements OnInit {
+<<<<<<< HEAD
   //form:FormGroup;
   
   nivelNvo: Nivel = {
@@ -20,6 +28,13 @@ export class CursoComponent implements OnInit {
     descripcion: 'Vacio',
   };
   
+=======
+
+  get user() {
+    return this.authService.user;
+  }
+
+>>>>>>> juanjoDiaz
   @Input() curso: Curso = {
     id: 0,
     nombre: '',
@@ -30,6 +45,7 @@ export class CursoComponent implements OnInit {
     idnivel: 0,
     requisitos:  '',
     habilitado: true,
+<<<<<<< HEAD
     fechainicio: new Date,
     fechafin: new Date,
     idusuarioalta: 0,
@@ -38,11 +54,41 @@ export class CursoComponent implements OnInit {
     createdAt: new Date,
     updatedAt: new Date,
     nivel: this.nivelNvo,
+=======
+    fechaInicio: new Date,
+    fechafin: null,
+    idusuarioalta: null,
+    estado: true,
+    idusuariomodificacion: null,
+>>>>>>> juanjoDiaz
   }
 
-  constructor() { }
+  matricula: Matricula = {
+  cursoId: 0,
+  userId: 0,
+  }
+
+  constructor(private authService: AuthService,
+              private matriculasService: MatriculasService,
+              private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  inscribir(){
+    if (this.user){
+      this.matriculasService.addMatricula({
+        cursoId: this.curso.id!,
+        userId: this.user.id
+      })
+          .subscribe( matricula => {
+            console.log('add :', matricula)
+            this.router.navigateByUrl('/cursos/index')
+          })
+    }else{
+      this.router.navigateByUrl('/auth/login');
+    }
+    
   }
 
 }

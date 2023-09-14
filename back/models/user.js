@@ -10,10 +10,17 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+<<<<<<< HEAD
     // define association here
       User.belongsTo(models.TipoDeUsuario, {
         foreignKey: 'idtipodeusuario',
         as: 'tipodeusuario', // Esto define el nombre de la propiedad en User
+=======
+      // define association here
+      models.User.hasMany(models.Matricula, {
+        foreignKey: 'userId',
+        sourceKey: 'id',
+>>>>>>> juanjoDiaz
       });
     }
   }
@@ -24,6 +31,12 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     password: DataTypes.STRING,
     estado: DataTypes.BOOLEAN,
+<<<<<<< HEAD
+=======
+    idtipodeusuario: DataTypes.INTEGER,
+    codeRegister: DataTypes.STRING,
+    verificationCode: DataTypes.BOOLEAN,
+>>>>>>> juanjoDiaz
   }, {
     sequelize,
     modelName: 'User',

@@ -27,6 +27,7 @@ export class CreateCursoComponent implements OnInit {
     idnivel: 0,
     requisitos: '',
     habilitado: true,
+<<<<<<< HEAD
     fechainicio: new Date(),
     fechafin: new Date(),
     idusuarioalta: 0,
@@ -36,6 +37,14 @@ export class CreateCursoComponent implements OnInit {
     updatedAt: new Date(),
     nivel: this.nivelNvo,
   };
+=======
+    fechaInicio: new Date,
+    fechafin: null,
+    idusuarioalta: null,
+    estado: true,
+    idusuariomodificacion: null,
+  }
+>>>>>>> juanjoDiaz
 
   nivel: Nivel = {
     id: 0,

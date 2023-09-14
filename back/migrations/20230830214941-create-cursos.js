@@ -25,7 +25,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       idnivel: {
-        type: Sequelize.STRING
+        type: Sequelize.DataTypes.INTEGER,
+        references: {
+          model: {
+            tableName: 'Nivels',
+            // schema: 'schema',
+          },
+          key: 'id',
+        },
+        allowNull: false,
       },
       requisitos: {
         type: Sequelize.TEXT

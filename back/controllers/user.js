@@ -1,5 +1,7 @@
-const { validationResult } = require('express-validator');
+const bcript = require('bcrypt');
+const { generarJWT } = require('../helpers/jwt');
 const { userService, emailService } = require('../services');
+const { User } = require('../models');
 
 const allUser = async (req, res, next) => {
   try {
@@ -43,6 +45,7 @@ const verifyLinkEmail = async (req, res, next) => {
 };
 
 const createUser = async (req, res) => {
+<<<<<<< HEAD
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({
@@ -60,34 +63,123 @@ const createUser = async (req, res) => {
     // eslint-disable-next-line max-len
     await emailService.sendMail(user, userEmail, verificationLink);// Envia email y url a emailService
     return res.json(user);
+=======
+  const { body } = req;
+  const { email, username, password } = body;
+
+  // console.log(body);
+  try {
+    // Verificar email
+    let user = await User.findOne({
+      where: {
+        email,
+      },
+    });
+
+    if (user) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'El usuario ya existe con ese email',
+      });
+    }
+
+    // Verificar username
+    user = await User.findOne({
+      where: {
+        username,
+      },
+    });
+
+    if (user) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'El usuario ya existe con ese username',
+      });
+    }
+
+    // Hashear contraseña
+    const salt = bcript.genSaltSync();
+    body.password = bcript.hashSync(password, salt);
+
+    // crear usuario en db
+    user = await userService.createUser(body);
+    // eslint-disable-next-line max-len
+    await emailService.sendConfirmationEmail(user.email, user.username);// Envia email a emailService
+
+    const token = await generarJWT(user.id, user.username);
+
+    return res.json({
+      ok: true,
+      user,
+      token,
+    });
+>>>>>>> juanjoDiaz
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(error);
-    return res.status(500).json({ message: 'Error en el registro en controllers' });
+    return res.status(500).json({
+      ok: false,
+      msg: 'Por favor hable con el administrador',
+    });
   }
 };
 
 const login = async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findOne({
+      where: {
+        email,
+      },
+    });
+
+    if (!user) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'El email no existe',
+      });
+    }
+
+    const validPassword = bcript.compareSync(password, user.password);
+
+    if (!validPassword) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'La contraseña no coincide',
+      });
+    }
+
+    const token = await generarJWT(user.id, user.username);
+
+    return res.json({
+      ok: true,
+      id: user.id,
+      username: user.username,
+      token,
+    });
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+
+    return res.status(500).json({
       ok: false,
-      errors: errors.mapped(),
+      msg: 'Hable con el administrador',
     });
   }
-
-  const { email, password } = req.body;
-  console.log(email, password);
-  return res.json({
-    ok: true,
-    msg: 'Login de usuario /',
-  });
 };
 
-const revalidarToken = async (req, res) => res.json({
-  ok: true,
-  msg: 'Renew',
-});
+const revalidarToken = async (req, res) => {
+  const { id, username } = req;
+
+  const token = await generarJWT(id, username);
+  return res.json({
+    ok: true,
+    id,
+    username,
+    token,
+  });
+};
 
 const updateUser = async (req, res, next) => {
   const { id } = req.params;

@@ -5,8 +5,12 @@ const rootPath = require('../middleware/root_path.middleware');
 const errors = require('../middleware/error_handler.middleware');
 const userRoutes = require('./user');
 const cursoRoutes = require('./curso');
+<<<<<<< HEAD
 const nivelRoutes = require('./nivel');
 const tiposDeUsuarioRoutes = require('./tipodeusuario');
+=======
+const matriculaRoutes = require('./matricula');
+>>>>>>> juanjoDiaz
 
 const app = Express();
 
@@ -20,8 +24,12 @@ app.use('/ping', (req, res) => {
 });
 app.use('/user', userRoutes);
 app.use('/curso', cursoRoutes);
+<<<<<<< HEAD
 app.use('/nivel', nivelRoutes);
 app.use('/tipodeusuario', tiposDeUsuarioRoutes);
+=======
+app.use('/matricula', matriculaRoutes);
+>>>>>>> juanjoDiaz
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
