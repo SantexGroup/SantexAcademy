@@ -6,6 +6,7 @@ import { Tarea } from 'src/app/core/interfaces/tarea';
 import { MatTableDataSource } from '@angular/material/table';
 import { DetalleTareaComponent } from '../../shared/components/detalle-tarea/detalle-tarea.component';
 import Swal from 'sweetalert2';
+import { VoluntariosInscriptosComponent } from '../modales-organizacion/voluntarios-inscriptos/voluntarios-inscriptos.component';
 
 @Component({
   selector: 'app-tareas-organizacion',
@@ -147,6 +148,10 @@ export class TareasOrganizacionComponent implements OnInit {
         
       }
     })
+  }
+
+  verInscriptos(tarea:Tarea):void{
+    this.dialog.open(VoluntariosInscriptosComponent, {data:tarea});
   }
 
 }
