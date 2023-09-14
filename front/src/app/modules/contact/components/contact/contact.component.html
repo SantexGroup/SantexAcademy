@@ -1,0 +1,69 @@
+<app-navbar></app-navbar>
+
+<div class="wrapper">
+  <div class="body">  
+    <div class="form-container">  
+      <h1>Contacto</h1>
+      <form>
+        <div class="form-group">          
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            required
+            placeholder="Tu nombre"   
+            class="form-control" 
+          />
+        </div>
+        <div class="form-group">          
+          <input
+            type="text"
+            id="apellido"
+            name="apellido"
+            required
+            placeholder="Tu apellido"
+            class="form-control" 
+          />
+        </div>
+        <div class="form-group">          
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            email
+            placeholder="Tu correo electrónico"
+            class="form-control" 
+          />
+        </div>
+        <div class="form-group">          
+          <input
+            type="tel"
+            id="telefono"
+            name="telefono"
+            placeholder="Número de teléfono"
+            class="form-control" 
+          />
+        </div>
+        <div class="form-group">          
+          <textarea
+            id="consulta"
+            name="consulta"
+            rows="5"
+            required
+            placeholder="Escribe tu consulta aquí"
+            class="form-control" 
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-custom btn-lg">Enviar Consulta</button>
+      </form>
+
+    </div>
+    
+  </div>
+  
+</div>
+<app-footer></app-footer>
+
+
+
