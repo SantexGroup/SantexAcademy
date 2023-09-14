@@ -1,5 +1,7 @@
 const { validationResult } = require('express-validator');
+
 const { userService, emailService } = require('../services');
+const { codeGenerator } = require('../helpers/codeGenerator');
 
 const allUser = async (req, res, next) => {
   try {
@@ -24,24 +26,6 @@ const getUser = async (req, res, next) => {
   }
 };
 
-const verifyLinkEmail = async (req, res, next) => {
-  const email = req.query.email; // Consulta mail que se recibe en URL del mail
-  //console.log(email);
-  try {
-    const user = await userService.getUserByEmail(email);// Verificacion con DB
-    if (!user) {
-      return res.status(404).json({ message: 'Usuario no encontrado.' });// El usuario no existe en DB
-    }
-    user.verificationCode = true;// Actualiza el campo si es correcto
-    await user.save();
-    return res.status(200).json({ success: 'Correo electrónico verificado con éxito.' });//Se maneja desde front
-  } catch (error) {
-    console.error(error);
-    next(error);
-    return;
-  }
-};
-
 const createUser = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -52,13 +36,15 @@ const createUser = async (req, res) => {
   }
   const { body } = req;
   body.verificationCode = false;// Establece false en la verificacion de email hasta que se realice
+  body.codeRegister = codeGenerator();// Agrega un codigo unico para verificacion de email
+  const userCode = req.body.codeRegister;
   const userEmail = req.body.email;
-  const verificationLink = `http://localhost:4001/user/verifyEmail?email=${userEmail}`;
+  const verificationLink = `http://localhost:4200/user/verifyLink?codeRegister=${userCode}`;//Se crea link para respuesta
   try {
     const user = await userService.createUser(body);
     // eslint-disable-next-line no-console
     // eslint-disable-next-line max-len
-    await emailService.sendMail(user, userEmail, verificationLink);// Envia email y url a emailService
+    await emailService.sendMail(user, userCode, userEmail, verificationLink);// Envia a emailService
     return res.json(user);
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -118,7 +104,6 @@ const deleteUser = async (req, res, next) => {
 module.exports = {
   allUser,
   getUser,
-  verifyLinkEmail,
   createUser,
   login,
   revalidarToken,

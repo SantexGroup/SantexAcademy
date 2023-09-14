@@ -20,6 +20,8 @@ export interface User {
     tipodeusuario: TipoDeUsuario;
     createdAt?: Date;
     updatedAt?: Date;
+    verificationCode: boolean;
+    codeRegister: string;
 }
 // Converts JSON strings to/from your types
 export class Convert {

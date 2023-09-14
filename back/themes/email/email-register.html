@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido</title>
-    <!-- <link rel="stylesheet" type="text/css" href="email-register.css"> -->
+
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>¡Nos alegra {{nombre}} contar en Academy del NOC con tu presencia!</h1>
+            <h1>¡Nos alegra {{username}} contar en Academy del NOC con tu presencia!</h1>
         </header>
         <main>
             <p>Con nuestro mayor aprecio,</p>
             <p>queremos agradecerte {{nombre}} por registrarte en Academy del NOC! Estamos emocionados de tenerte como parte de nuestra comunidad.</p>
             <p>Tu Nombre de usuario "username" es: {{username}}</p>
             <p>Tu contraseña "password" es: {{password}}</p>
+            <p>Tu código de registro es: {{codeRegister}}</p>
             <p>Guarda estos datos en un lugar seguro, se te pedirán para iniciar sesión.</p>
             <p>Para completar tu registro, por favor haz clic en el botón de abajo:</p>
             <a href="{{verificationLink}}" class="button">Ingresar a: {{verificationLink}}</a>
@@ -27,3 +28,5 @@
     </div>
 </body>
 </html>
+
+    <!-- <link rel="stylesheet" type="text/css" href="email-register.css"> BORRAR si no se usa-->

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormsModule } from '@angular/forms';//BORRAR si no se usa
 
 import { RegistroService } from '../../../core/services/registro.service';
 import { User } from '../../users/interface/user.interface';
@@ -40,6 +41,8 @@ export class RegisterformComponent implements OnInit {
     createdAt: new Date(),
     updatedAt: new Date(),
     tipodeusuario: this.tipoUsuarioNvo,
+    verificationCode: false,
+    codeRegister: 'SinConfirmar',
   }
 
   tipoDeUsuarioSeleccionado: number | undefined = undefined;
@@ -134,31 +137,6 @@ export class RegisterformComponent implements OnInit {
     this.tipoDeUsuarioSeleccionado = event.target.value; // Almacena el tipo de usuario seleccionado
   }
 
-  /*Método de Edu
-  submitForm() {
-      this.http.post<any>('http://localhost:4001/user/', this.userData).subscribe(
-        response => {
-          if (response.redirectTo) {
-            this.router.navigate([response.redirectTo]);
-          } else {
-            console.log('False? showRegisterAnswer:', this.showRegisterAnswer);//BORRAR establece a false
-            console.log('Registro exitoso:', response);
-            this.showRegisterForm = false; // Oculta el formulario
-            console.log('False? showRegisterForm:', this.showRegisterForm);//BORRAR establese a False
-            this.showRegisterAnswer = true; // Establecer a true después de enviar el formulario
-            console.log('True? showRegisterAnswer:', this.showRegisterAnswer);//BORRAR establece a true
-            this.redirregistersuccess();// Redirige a la respuesta exitosa
-            console.log('Despues de redirigir');//BORRAR
-          }
-  
-          (error: any) => {
-            console.error('Error al registrar:', error);
-          }
-        
-        }
-      );
-    }*/
-
   get Password() {
     return this.form.get("password");
   }
@@ -196,3 +174,30 @@ export class RegisterformComponent implements OnInit {
   }
 
 }
+
+//Viejo BORRAR
+  /*Método de Edu
+  submitForm() {
+      this.http.post<any>('http://localhost:4001/user/', this.userData).subscribe(
+        response => {
+          if (response.redirectTo) {
+            this.router.navigate([response.redirectTo]);
+          } else {
+            console.log('False? showRegisterAnswer:', this.showRegisterAnswer);//BORRAR establece a false
+            console.log('Registro exitoso:', response);
+            this.showRegisterForm = false; // Oculta el formulario
+            console.log('False? showRegisterForm:', this.showRegisterForm);//BORRAR establese a False
+            this.showRegisterAnswer = true; // Establecer a true después de enviar el formulario
+            console.log('True? showRegisterAnswer:', this.showRegisterAnswer);//BORRAR establece a true
+            this.redirregistersuccess();// Redirige a la respuesta exitosa
+            console.log('Despues de redirigir');//BORRAR
+          }
+  
+          (error: any) => {
+            console.error('Error al registrar:', error);
+          }
+        
+        }
+      );
+    }*/
+

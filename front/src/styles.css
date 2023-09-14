@@ -20,7 +20,27 @@
    /* Ajusta el tamaño de la imagen para cubrir el elemento */
 }
 
-
+/* *{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+header.fondo {
+  padding-top: 8rem;
+  padding-bottom: 6rem;
+  text-align: right;
+  width: 100%;
+  color: #fff;
+  background-image: url("/src/assets/images/fondonoc.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+} */
+h1.mensaje-bienvenida {
+  line-height: 1.5 rem;
+  margin-bottom: 25px;
+  margin-right: 25rem;
+}
 
 
 /*header.fondo {

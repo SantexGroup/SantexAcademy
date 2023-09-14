@@ -11,6 +11,7 @@ import { RegisteranswerComponent } from './modules/register/registeranswer/regis
 import { ErrorPageComponent } from './modules/share/error-page/error-page.component';
 import { AdminComponent } from './modules/pages/admin/admin.component';
 import { PerfilAlumnoComponent } from './modules/pages/perfil-alumno/perfil-alumno.component';
+import { LoginComponent } from './modules/login/login/login.component';
 
 const routes: Routes = [
   {
@@ -25,8 +26,19 @@ const routes: Routes = [
     path: 'dashboard',
     component:DashboardPageComponent,
   },
-  { path: 'registerverification',
-   component: RegisterverificationComponent },
+  {
+    path: 'user/verifyLink',
+    component: RegisterverificationComponent,
+    pathMatch: 'full',
+    runGuardsAndResolvers: 'always',
+    data: {
+      expectedParam: 'codeRegister',
+    },
+  },
+  {
+     path: 'login',
+   component: LoginComponent,
+  },
   {
     path: 'quienes-somos',
     component:QuienessomosComponent,

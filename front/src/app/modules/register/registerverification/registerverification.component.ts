@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-registerverification',
@@ -8,23 +9,48 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class RegisterverificationComponent implements OnInit {
-  responseMessage: string = '';
+    codeRegister: string =''; // Variable para almacenar el codigo de registro
+    //message: string =''; // Variable para almacenar el mensaje de respuesta
 
-  constructor(private route: ActivatedRoute) {}
+    isPopupVisible: boolean = false; // Controla si se muestra la ventana emergente
+
+    constructor(
+      private route: ActivatedRoute,
+      private router: Router,
+      private http: HttpClient
+    ) { }
 
   ngOnInit(): void {
-    this.responseMessage = this.route.snapshot.queryParamMap.get('response') || '';
-    if (this.responseMessage) {
-      // Se encontró un mensaje de respuesta
-      if (this.responseMessage === 'success') {
-        // Respuesta exitosa
-        alert('Registro exitoso');
-        window.location.href = 'http://localhost:4200/login'; // Redirige a la página de inicio de sesión
-      } else {
-        // Respuesta de error
-        alert('Hubo un error en el registro');
-        window.location.href = 'http://localhost:4200/registro'; // Redirige a la página de registro
-      }
-    }
+     this.route.queryParams.subscribe(params => {
+       this.codeRegister = params['codeRegister'];// Capturo codigo de la URL
+    });
+     if (this.codeRegister) {
+       this.vacodigoAnode(this.codeRegister);// Envia codeRegister al backend
+     }
+     console.log(this.isPopupVisible)
+     this.isPopupVisible = true; // Controla si se muestra la ventana emergente
   }
+
+    vacodigoAnode(codeRegister: string): void { 
+      // Realiza una solicitud POST al backend para verificar el código
+      this.http.post<any>('http://localhost:4001/user/verifyLink', { codeRegister }).subscribe(
+        response => {
+          if (response && response.success === 'success') {
+            console.log(this.isPopupVisible)
+             alert('Registro exitoso');
+             this.router.navigate(['login']); // Redirige solo si la respuesta es 'success'
+          } else {// Respuesta de error
+             alert('Hubo un error en el registro');
+             this.router.navigate(['register']);
+          }
+        },
+        error => {
+           console.error(error);// Maneja el error si la solicitud al backend falla
+           alert('Error en la verificación del código de registro.');
+        }
+      )
+    };
+        closePopup() {
+          this.isPopupVisible = false; // Ocultar el popup al hacer clic en el botón "Cerrar"
+        }
 }

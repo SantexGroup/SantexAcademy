@@ -1,7 +1,7 @@
-#Novedades
-Ultima fusión en rama develop: Lunes 11 de septiembre de 2023 20:18 hs
+# Novedades
+Ultima fusión en rama develop: Miércoles 13 de septiembre de 2023 13:18 hs
 Se trabajó:
-(ponga cada uno lo que hizo esta semana)
+- se cambia verificación de mail para que se gestine desde el front y no desde el backend
 
 
 Previusly:
