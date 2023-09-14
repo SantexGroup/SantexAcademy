@@ -9,6 +9,7 @@ const loginUser = async (email, password) => {
     const user = await Usuario.findOne({
       where: {
         email: email,
+        deletedAt: null,
       },
     });
 
@@ -16,8 +17,8 @@ const loginUser = async (email, password) => {
       throw new Error("El usuario no existe");
     }
 
-    if (user.password !== password) {
-      throw new Error("Contraseña incorrecta");
+    if (user.email !== email|| user.password !== password) {
+      throw new Error("Invalid Credentials");
     }
 
     return user;
@@ -25,6 +26,8 @@ const loginUser = async (email, password) => {
     throw new Error(error);
   }
 };
+
+
 const getUserProfile = async (id) => {
   try {
     const userProfile = await Usuario.findOne({

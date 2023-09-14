@@ -5,13 +5,13 @@ require('dotenv').config();
 
 const loginOrganization = async (req, res) => {
   try {
-    const { cuit, password } = req.body;
+    const {email, cuit, password } = req.body;
 
     // Verificar credenciales
-    const organization = await orgService.getOrganizationByCriteria({ cuit });
+    const organization = await orgService.loginOrg(email, cuit, password);
 
     if (!organization) {
-      return res.status(401).json({ message: "Invalid credentials" }); // Retorna aquí para evitar el envío doble de respuestas
+      return res.status(401).json({ message: "Invalid credentials" });
     }
 
     // Generar token
@@ -22,9 +22,9 @@ const loginOrganization = async (req, res) => {
       },
       process.env.SESSION_SECRET,
       { expiresIn: "1h" }
-    )
+    );
 
-    console.log(token)
+    console.log(token);
     // Envía la respuesta una vez que tengas el token
     return res.status(200).json({ token });
   } catch (error) {
