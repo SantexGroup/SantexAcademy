@@ -29,8 +29,27 @@ module.exports = {
       estado: {
         type: Sequelize.BOOLEAN
       },
-      IdTipoDeUsuario: {
-        type: Sequelize.STRING
+      idtipodeusuario: {
+        type: Sequelize.INTEGER
+      },
+      codeRegister: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        // unique: true,
+        defaultValue: 'SinConfirmar',
+      },
+      verificationCode: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true, // El código podría ser nulo hasta que se verifique
+        defaultValue: false,
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       },
     });
   },

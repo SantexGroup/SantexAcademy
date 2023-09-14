@@ -22,7 +22,7 @@ export class CreateComponent implements OnInit {
     email: '',
     estado: true,
     confirmPassword: '',
-    IdTipoDeUsuario: '',
+    idtipodeusuario: '',
   }
 
   constructor(private formBuilder: FormBuilder,

@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'cursoId',
         sourceKey: 'id',
       });
+      models.Curso.belongsTo(models.Nivel, {
+        foreignKey: 'idnivel',
+        target: 'id',
+      });
     }
   }
   Curso.init({
@@ -23,7 +27,11 @@ module.exports = (sequelize, DataTypes) => {
     imagen: DataTypes.STRING,
     duracion: DataTypes.INTEGER,
     capacidad: DataTypes.INTEGER,
-    idnivel: DataTypes.STRING,
+    idnivel: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'idnivel',
+    },
     requisitos: DataTypes.TEXT,
     habilitado: DataTypes.BOOLEAN,
     fechaInicio: DataTypes.DATE,
@@ -33,7 +41,6 @@ module.exports = (sequelize, DataTypes) => {
     idusuariomodificacion: DataTypes.INTEGER,
   }, {
     sequelize,
-    timestamps: false,
     modelName: 'Curso',
   });
   return Curso;

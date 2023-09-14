@@ -28,7 +28,7 @@ export class RegisterformComponent implements OnInit {
     email: '',
     estado: true,
     confirmPassword: '',
-    IdTipoDeUsuario: '',
+    idtipodeusuario: '',
   }
 
 

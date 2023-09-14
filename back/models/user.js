@@ -24,10 +24,11 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     password: DataTypes.STRING,
     estado: DataTypes.BOOLEAN,
-    IdTipoDeUsuario: DataTypes.STRING,
+    idtipodeusuario: DataTypes.INTEGER,
+    codeRegister: DataTypes.STRING,
+    verificationCode: DataTypes.BOOLEAN,
   }, {
     sequelize,
-    timestamps: false,
     modelName: 'User',
   });
   return User;

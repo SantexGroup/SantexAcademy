@@ -13,7 +13,7 @@ export interface User {
     email:     string;
     confirmPassword: string;
     estado: boolean;
-    IdTipoDeUsuario: string;
+    idtipodeusuario: string;
 }
 
 // Converts JSON strings to/from your types
