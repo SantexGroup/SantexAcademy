@@ -5,7 +5,6 @@ const administratorModel = require('../models/administrator-model');
 const { sequelize } = require('../models');
 const models = require('../models/index');
 
-
 const Administrator = administratorModel(sequelize, DataTypes);
 
 async function getAll() {
@@ -102,13 +101,9 @@ async function createAdminDefault(email = 'admin@gmail.com', password = 'Admin12
   // eslint-disable-next-line no-useless-return
   if (admin !== null) return;
 
-  await create(email, password);
+  await createUser(email, password);
 }
 
 module.exports = {
-  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, createAdminDefault
+  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, createAdminDefault,
 };
-
-
-
-
