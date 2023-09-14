@@ -11,9 +11,10 @@ import { NoAuthGuard } from './guards/no-auth/no-auth.guard';
  * /register  para registrarse
  * /user      para que el user vea sus datos
  * /news      noticias para algo... para otro sprint
+ * /contact   formulario de contacto y datos de contacto de la academia
  * /dashboard para que el admin vea dashboard (aca hay que ver si estan los endpoints de TODO para mostrar en tiempo real cosas como cantidad de: alumnos, cursos, profes, "precios", "ganancias?")
  * redirect   supongo que angular tendra algo para si esta logeado mande a "/home", y si no esta logueado mande a "/"
-
+ 
  */
 
 
@@ -22,7 +23,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule), canActivate: [NoAuthGuard] },
   { path: 'register', loadChildren: () => import('./modules/register/register.module').then(m => m.RegisterModule), canActivate: [NoAuthGuard] },
   { path: 'news', loadChildren: () => import('./modules/news/news.module').then(m => m.NewsModule) },
-
+  { path: 'contact', loadChildren: () => import('./modules/contact/contact.module').then(m => m.ContactModule) },
   { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule), canActivate: [AuthGuard] },
   { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule), canActivate: [AuthGuard] },
   { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard] },
