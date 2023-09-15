@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router} from '@angular/router';
 import { UserDataService } from '../services/toolServices/userData.service';
-import { Observable, of } from 'rxjs';
+import { RegistroComponent } from 'src/app/modules/usuario/registro/registro.component';
 
 
 @Injectable({
@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
   ){ }
 
   canActivate():boolean {
-    if(this.userData.isAuthenticated()){
+    if(this.userData.isAuthenticated() || this.userData.newUser){
       return true;
     }else{
       this.router.navigate(['/login']);

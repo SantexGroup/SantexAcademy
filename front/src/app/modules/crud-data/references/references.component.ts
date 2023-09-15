@@ -74,7 +74,7 @@ export class ReferencesComponent implements OnInit {
   getReference() {
     this._referenceService.getReference(this.userData.userId).subscribe((referenceList) => {
       this.referenceList = referenceList;
-      console.log(this.referenceList)
+
     });
   }
 
@@ -82,8 +82,6 @@ export class ReferencesComponent implements OnInit {
     const index = this.referenceList.findIndex(reference => reference.id === id)
     const element = this.referenceList[index]
 
-    console.log(element);
-    console.log(index);
 
     this.referenceForm.patchValue({
       name: element.name,
@@ -95,7 +93,6 @@ export class ReferencesComponent implements OnInit {
     });
 
     this.referenceId = Number(element.id);
-    console.log(this.referenceId)
   }
 
   updateReferece() {

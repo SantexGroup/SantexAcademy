@@ -75,7 +75,6 @@ export class FormationsComponent implements OnInit {
       description: this.formationForm.get('description')?.value,
       profileId: this.userData.profileId
     }
-    console.log(newFormation);
 
     this._formationsServices.addFormation(newFormation).subscribe((formation)=>{
       this.listFormation.push(formation);
@@ -91,7 +90,6 @@ export class FormationsComponent implements OnInit {
   getListFormations(){
     this._formationsServices.getFormationByUser(this.userData.userId).subscribe((data) => {      
       this.listFormation = data;
-      console.log(this.userData.userId);
     } )
   }
 
@@ -123,8 +121,7 @@ export class FormationsComponent implements OnInit {
       const updatedFormation: Formations = this.formationForm.value;
       updatedFormation.id = this.editedFormation.id;
 
-      this._formationsServices.updateFormation(updatedFormation).subscribe(() => {
-        console.log('Formación actualizada');        
+      this._formationsServices.updateFormation(updatedFormation).subscribe(() => {     
         this.getListFormations();
     });
 

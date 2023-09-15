@@ -14,7 +14,6 @@ export class UserDataService {
     const token = localStorage.getItem('accessToken');
     if (token) {
       const tokenData = jwtDecode<Token>(token);
-      console.log(tokenData);
       const currentTime = Math.floor(Date.now() / 1000);
       const expiration = tokenData.exp;
       this.userId = tokenData.id;
@@ -22,6 +21,8 @@ export class UserDataService {
     }
     return false
   }
+
+  newUser:boolean = false;
 
   /* profileId que se escribe desde el servicio de login */
   profileId:number = 0;

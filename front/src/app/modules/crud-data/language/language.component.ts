@@ -96,11 +96,9 @@ export class LanguageComponent implements OnInit {
 
   languageDelete(id?:number){
     const index = this.languages.findIndex(language => language.id === id);
-    console.log("index:", index)
-    const elementId = Number((this.languages[index]).id)
-    console.log("Elemento", elementId)
+    const elementId = Number((this.languages[index]).id);
     this._languageService.deleteLanguage(elementId).subscribe(() => {
-      this.languages.splice(index, 1)
+      this.languages.splice(index, 1);
     });
   }
 

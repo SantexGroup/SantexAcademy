@@ -34,8 +34,6 @@ export class PersonalComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log("desde personal", this.userData.userId))
-
     this.getUser()
   }
 
@@ -72,9 +70,6 @@ export class PersonalComponent implements OnInit {
     this.user.phone = personalForm.get('phone')?.value;
     this.user.bornDate = personalForm.get('bornDate')?.value;
     this.user.pictureLink = personalForm.get('pictureLink')?.value;
-
-    console.log("formulario personal", personalForm)
-    console.log("contenido user", this.user)
 
     this.userService.updateUser(this.userData.userId, this.user).subscribe({
       next: (data) => { console.log (data) },

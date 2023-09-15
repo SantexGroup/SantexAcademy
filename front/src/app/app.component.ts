@@ -23,10 +23,8 @@ export class AppComponent implements OnInit{
       this.views.quickButton = true;
       this.views.title = ("Bienvenido! " + this.userData.userName + " " + this.userData.lastName);
       this.router.navigate([`/home/${this.userData.userId}/cv`])
-      console.log("token valido")
     }else{
       this.router.navigate(['/login']);
-      console.log("token no valido")
     }
     this.views.restart();
   }

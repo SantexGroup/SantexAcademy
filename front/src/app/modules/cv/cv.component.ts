@@ -49,28 +49,24 @@ export class CVComponent implements OnInit {
   languageGet() {
     this._language.getLanguages(this.dataUser.userId).subscribe((languagesList: Language[]) => {
       this.languages = languagesList;
-      console.log(this.languages)
     })
   }
 
   getExperience() {
     this._experience.getExperience(this.dataUser.userId).subscribe((experieceList: Experience[])=>{
       this.experiences = experieceList;
-      console.log(this.experiences)
     });
   }
 
   getFormations(){
     this._formation.getFormationByUser(this.dataUser.userId).subscribe((formationList: Formations[]) => {
       this.formations = formationList;
-      console.log(this.formations)
     } )
   }
 
   getReference() {
     this._reference.getReference(this.dataUser.userId).subscribe((referenceList) => {
       this.references = referenceList;
-      console.log(this.references)
     });
   }
 
