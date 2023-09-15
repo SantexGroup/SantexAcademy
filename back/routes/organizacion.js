@@ -3,8 +3,11 @@ const express = require("express");
 const orgRouter = express.Router();
 const { orgController } = require("../controllers");
 
-orgRouter.get("/", orgController.getOrganizations);
-orgRouter.get("/", orgController.getOrganizationByCriteria);
+const  { verifyToken , isAdmin, isAdminOrSelf }  = require('../middleware/authMiddleware');
+
+
+//orgRouter.get("/", orgController.getOrganizations);
+orgRouter.get("/",verifyToken, isAdmin, orgController.getOrganizationByCriteria);
 orgRouter.get("/search", orgController.getOrganizationByLocation);
 orgRouter.put("/update/:id", orgController.updateOrganizationById);
 orgRouter.delete("/delete/:id", orgController.deleteOrganizationById);
