@@ -25,7 +25,8 @@ module.exports = {
       mediumViolet: "#B1237D",
       midnightBlue: "#1E165F",
       dimGray: "#717375",
-      redError:"#D90429",
+      redError: "#D90429",
+      darkGray: "#9ca3af",
     },
     backgroundColor: {
       white: "#FFF",
