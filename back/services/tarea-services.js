@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 // eslint-disable-next-line no-unused-vars
 const { DataTypes, Sequelize } = require('sequelize');
 const tareaModel = require('../models/tarea-model');
@@ -151,6 +152,21 @@ async function getByIdOrganizacion(coordinatorId) {
   }
 }
 
+async function getInscriptos(id) {
+  try {
+    const tarea = await models.tarea.findByPk(id);
+    if (!tarea) {
+      throw new Error('Tarea no encontrada');
+    }
+
+    const volunteers = await tarea.getVolunteers({ attributes: { exclude: ['password', 'id', 'address'] } });
+    return volunteers;
+  } catch (error) {
+    throw new Error(`Error al obtener voluntarios: ${error.message}`);
+  }
+}
+
 module.exports = {
-  getAll, getById, createTarea, editTarea, deleteTarea, getByIdOrganizacion, cambiarEstado,
+  // eslint-disable-next-line max-len
+  getAll, getById, createTarea, editTarea, deleteTarea, getByIdOrganizacion, cambiarEstado, getInscriptos,
 };

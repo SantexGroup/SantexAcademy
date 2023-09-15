@@ -11,5 +11,5 @@ router.post('/create-tarea', isAuthenticatedOrganizacion, tareaController.create
 router.put('/edit-tarea/:id', isAuthenticatedOrganizacion, tareaController.editTarea);
 router.delete('/delete-tarea/:id', isAuthenticatedOrganizacion, tareaController.deleteTarea);
 router.put('/cambiar-estado/:id', isAuthenticatedOrganizacion, tareaController.editEstado);
-
+router.get('/inscriptos/:id', isAuthenticatedOrganizacion, tareaController.getVolunteersForTask);
 module.exports = router;
