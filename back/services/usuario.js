@@ -34,13 +34,13 @@ const getUsersByCriteria = async (queryOptions, bodyOptions) => {
 
 };
 
-const updateUserById = async (id, organization) => {
-  const updatedOrganization = await userProvider.updateUserById(
-    id,
-    organization
-  );
-  return updatedOrganization;
-}
+  const updateUserById = async (id, organization) => {
+    const updatedOrganization = await userProvider.updateUserById(
+      id,
+      organization
+    );
+    return updatedOrganization;
+  }
 
 const deleteUserById = async (id) => {
   const deletedUser = await userProvider.deleteUserById(id);

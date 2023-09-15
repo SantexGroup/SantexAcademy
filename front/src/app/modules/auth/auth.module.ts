@@ -1,6 +1,8 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { LoginComponent } from './pages/login/login.component';
 import { VolunteerRegisterComponent } from './pages/volunteer-register/volunteer-register.component';
 import { OptionsRegisterComponent } from './pages/options-register/options-register.component';
@@ -11,6 +13,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormCoordinatorsRegisterComponent } from './components/form-coordinators-register/form-coordinators-register.component';
 import { CoordinatorRegisterComponent } from './pages/coordinator-register/coordinator-register.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalStatusFormComponent } from './components/modal-status-form/modal-status-form.component';
+import { ModalOptionsLoginComponent } from './components/modal-options-login/modal-options-login.component';
 
 const routes: Routes = [
   {
@@ -46,10 +50,13 @@ const routes: Routes = [
     FormVolunteerregisterComponent,
     FormCoordinatorsRegisterComponent,
     CoordinatorRegisterComponent,
+    ModalStatusFormComponent,
+    ModalOptionsLoginComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
     HttpClientModule,
   ],

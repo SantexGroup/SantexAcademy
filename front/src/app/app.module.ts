@@ -1,6 +1,14 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { register } from 'swiper/element/bundle';
 register();
@@ -12,7 +20,9 @@ import { HomeModule } from './modules/home/home.module';
 import { authModule } from './modules/auth/auth.module';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
-import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
+import { VolunteersComponent } from './pages/volunteers/volunteers.component';
+import { VolunteerFiltersComponent } from './components/volunteer-filters/volunteer-filters.component';
+import { VolunteerCardComponent } from './components/volunteer-card/volunteer-card.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +30,9 @@ import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashb
     NavbarComponent,
     FooterComponent,
     NotfoundComponent,
+    VolunteersComponent,
+    VolunteerFiltersComponent,
+    VolunteerCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +40,14 @@ import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashb
     HomeModule,
     authModule,
     DashboardModule,
+    FormsModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

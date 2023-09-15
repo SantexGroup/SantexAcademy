@@ -2,7 +2,7 @@
   class="fixed top-0 left-0 w-full flex flex-col p-6 bg-white z-20 lg:gap-4 lg:relative"
   id="arriba"
 >
-  <div class="w-full flex items-center justify-between">
+  <div class="w-full flex items-start justify-between">
     <a routerLink="/"
       ><figure class="flex items-center gap-2">
         <img
@@ -27,7 +27,78 @@
       class="bx bx-x text-3xl cursor-pointer m:text-4xl lg:hidden"
       (click)="handleMenu()"
     ></i>
-    <ul
+
+    <nav [ngClass]="isOpen ? 'navbar' : 'navbar navbar-closed'">
+      <ul
+        class="w-full flex flex-col items-center justify-center gap-4 m:text-lg lg:flex-row lg:justify-end lg:gap-8 lg:items-start lg:pt-4"
+      >
+        <li class="">
+          <div
+            class="w-full flex items-center justify-center cursor-pointer"
+            (click)="openOpOne()"
+          >
+            <span class="text-xl"> Hazte voluntario/a </span>
+            <i
+              class="bx bx-chevron-down text-2xl iconRow"
+              [ngClass]="{ rotate: openOptionOne }"
+            ></i>
+          </div>
+
+          <ul
+            [ngClass]="
+              openOptionOne
+                ? 'flex flex-col items-center openList'
+                : 'hidden viewList'
+            "
+            [ngStyle]="{ 'max-height.px': openOptionOne ? maxHeight : 0 }"
+          >
+            <li class="cursor-pointer">
+              <a routerLink="/voluntariados">Buscar voluntariados</a>
+            </li>
+
+            <li class="cursor-pointer">6 pasos para ser voluntario</li>
+          </ul>
+        </li>
+        <li>
+          <div
+            class="w-full flex items-center justify-center cursor-pointer"
+            (click)="openOpTwo()"
+          >
+            <span class="text-xl"> ¿Tienes dudas? </span>
+
+            <i
+              class="bx bx-chevron-down text-2xl iconRow"
+              [ngClass]="{ rotate: openOptionTwo }"
+            ></i>
+          </div>
+          <ul
+            [ngClass]="openOptionTwo ? 'flex flex-col items-center' : 'hidden'"
+          >
+            <li class="cursor-pointer">¿Quienes Somos?</li>
+            <li class="cursor-pointer">Testimonios de voluntarios</li>
+
+            <li class="cursor-pointer">Tipos de voluntariados</li>
+            <li class="cursor-pointer">Derechos y deberes</li>
+            <li class="cursor-pointer">Preguntas frecuentes (FAQ)</li>
+          </ul>
+        </li>
+        <li class="lg:hidden text-xl cursor-pointer">Acerca de nosotros</li>
+        <li class="lg:hidden text-xl cursor-pointer">Contacto</li>
+        <div class="w-[90%] h-[.5px] my-4 bg-lightGray lg:hidden"></div>
+        <li
+          class="flex flex-col items-center justify-center gap-4 lg:flex-row font-semibold lg:items-start"
+        >
+          <a routerLink="/auth/login" class="lg:text-xl">Iniciar sesión</a>
+          <a
+            routerLink="/auth/options-register"
+            class="py-1 px-4 bg-darkSlateBlue text-white rounded-md"
+            >Registrarse</a
+          >
+          <i class="bx bx-search hidden lg:flex lg:text-xl cursor-pointer"></i>
+        </li>
+      </ul>
+    </nav>
+    <!-- <ul
       class="hidden lg:flex items-center justify-center gap-6 text-base lg:items-start lg:text-lg"
     >
       <li class="cursor-pointer">Quienes somos</li>
@@ -54,44 +125,6 @@
         >
       </li>
       <i class="bx bx-search lg:text-xl"></i>
-    </ul>
+    </ul> -->
   </div>
-
-  <nav [ngClass]="isOpen ? 'navbar' : 'navbar navbar-closed'">
-    <ul
-      class="w-full flex flex-col items-center justify-center gap-4 m:text-lg lg:flex-row lg:justify-evenly lg:items-start lg:uppercase lg:pt-6"
-    >
-      <li class="uppercase">
-        <div
-          class="w-full flex items-center justify-center cursor-pointer"
-          (click)="openOpOne()"
-        >
-          HAZTE VOLUNTARIO/A <i class="bx bx-chevron-down text-2xl"></i>
-        </div>
-
-        <ul [ngClass]="openOptionOne ? 'flex flex-col items-center' : 'hidden'">
-          <li class="cursor-pointer">6 pasos para ser voluntario</li>
-          <li class="cursor-pointer">Colabora con una ONG</li>
-          <li class="cursor-pointer">Tipos de voluntariado</li>
-          <li class="cursor-pointer">Preguntas frecuentes (FAQ)</li>
-        </ul>
-      </li>
-      <li class="lg:hidden uppercase">Acerca de nosotros</li>
-      <li class="cursor-pointer">COLABORA CON UNA ONG</li>
-      <li class="cursor-pointer uppercase">Testimonios de voluntarios</li>
-      <li class="lg:hidden uppercase">Contacto</li>
-      <li class="cursor-pointer uppercase">FAQ</li>
-      <div class="w-[90%] h-[.5px] my-4 bg-lightGray lg:hidden"></div>
-      <li
-        class="flex flex-col items-center justify-center gap-4 font-bold lg:hidden"
-      >
-        <a routerLink="/auth/login">Iniciar sesión</a>
-        <a
-          routerLink="/auth/differential-register"
-          class="py-1 px-4 bg-darkSlateBlue text-white rounded-md font-bold"
-          >Registrarse</a
-        >
-      </li>
-    </ul>
-  </nav>
 </header>

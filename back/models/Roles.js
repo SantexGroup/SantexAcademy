@@ -31,9 +31,22 @@ const Roles = sequelize.define(
 );
 
 Roles.bulkCreateDefaultRoles = async () => {
-  const rolesData = [{ name: "Voluntario" }, { name: "Administrador" }];
+  try {
+    // Verificar si ya existen roles en la base de datos
+    const existingRoles = await Roles.findAll();
 
-  await Roles.bulkCreate(rolesData);
+    // Si no hay roles existentes, entonces crea los roles predeterminados
+    if (existingRoles.length === 0) {
+      const rolesData = [{ name: "Voluntario" }, { name: "Administrador" }];
+      await Roles.bulkCreate(rolesData);
+      console.log("Roles predeterminados creados con éxito.");
+    } else {
+      console.log("Los roles ya existen en la base de datos");
+    }
+  } catch (error) {
+    console.error("Error al crear roles predeterminados:", error);
+  }
 };
+
 
 module.exports = Roles;

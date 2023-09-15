@@ -1,0 +1,44 @@
+<section
+  class="w-full flex flex-col items-center justify-center gap-6 mt-[96px] m:mt-[116px] lg:mt-0 p-4 mb-16 lg:grid containerGrd lg:place-items-start lg:pt-12"
+>
+  <div
+    class="w-full flex flex-col items-center justify-center text-center gap-4 lg:hidden"
+  >
+    <h2 class="uppercase">Oportunidades encontradas: <b>90.000</b></h2>
+    <form class="p-2 flex shadow shadow-lightGray gap-2 rounded-md">
+      <label for="search" class="text-dimGray">Buscar</label>
+      <input
+        id="search"
+        type="text"
+        name="search"
+        (input)="viewDataInput($event)"
+        class="pl-1 border border-lightGray outline-none rounded-md"
+      />
+    </form>
+  </div>
+  <div
+    class="w-full flex flex-col items-center justify-center lg:gap-12 lg:items-start"
+  >
+    <form
+      class="p-2 hidden shadow shadow-lightGray gap-2 rounded-md lg:flex lg:w-[400px] items-center justify-center text-center lg:text-lg"
+    >
+      <label for="search" class="text-dimGray">Buscar</label>
+      <input
+        id="search"
+        type="text"
+        name="search"
+        (input)="viewDataInput($event)"
+        class="pl-1 border border-lightGray outline-none rounded-md w-full py-1"
+      />
+    </form>
+    <app-volunteer-filters></app-volunteer-filters>
+  </div>
+
+  <article class="w-full flex flex-col gap-4">
+    <h2 class="hidden lg:flex uppercase lg:text-xl gap-2">
+      Oportunidades encontradas: <b>90.000</b>
+    </h2>
+
+    <app-volunteer-card></app-volunteer-card>
+  </article>
+</section>

@@ -37,11 +37,11 @@
               type="email"
               name="email"
               placeholder="Email"
-              class="w-full h-full outline-none shadow-md shadow-dimGra py-2 px-4 rounded-md"
+              class="w-full h-full outline-none shadow-lg shadow-DarkGray py-2 px-4 rounded-md"
             />
           </label>
           <button
-            class="px-4 py-2 bg-darkSlateBlue text-white font-semibold text-sm shadow-md shadow-dimGray rounded-md sm:text-base"
+            class="px-4 py-2 bg-[#b1237d] text-white font-semibold text-sm shadow-lg shadow-DarkGray rounded-md sm:text-base"
           >
             Subscribite
           </button>
@@ -55,17 +55,21 @@
       >
         <li>
           <b class="text-lg lg:text-xl">Descubrir</b>
-          <p class="lg:text-lg">Organizaciones</p>
-          <p class="lg:text-lg">Oportunidades <br />de voluntariado</p>
+          <p class="lg:text-lg cursor-pointer">Organizaciones</p>
+          <p class="lg:text-lg cursor-pointer">
+            <a routerLink="voluntariados">
+              Oportunidades <br />de voluntariado
+            </a>
+          </p>
         </li>
         <li>
           <b class="text-lg lg:text-xl">Quienes somos</b>
-          <p class="lg:text-lg">Acerca de nosotros</p>
-          <p class="lg:text-lg">Nuestro equipo</p>
+          <p class="lg:text-lg cursor-pointer">Acerca de nosotros</p>
+          <p class="lg:text-lg cursor-pointer">Nuestro equipo</p>
         </li>
         <li>
           <b class="text-lg lg:text-xl">Contactanos</b>
-          <p class="lg:text-lg">+54 351 1234567</p>
+          <p class="lg:text-lg cursor-pointer">+54 351 1234567</p>
         </li>
         <li>
           <b class="text-lg lg:text-xl">Síguenos</b>

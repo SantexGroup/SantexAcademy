@@ -1,6 +1,14 @@
 <section
   class="w-full flex flex-col items-center justify-center gap-4 mb-16 lg:flex-row"
 >
+  <app-modal-status-form
+    *ngIf="onModal"
+    (changueValueModal)="changeValueModal()"
+    [status]="statusSession"
+    [routeContinue]="routeBtnContinue"
+    [textBtn]="textBtnModal"
+  ></app-modal-status-form>
+
   <figure class="w-full h-[500px] bg-mediumViolet relative lg:h-[700px]">
     <img
       src="/assets/forms/fondo-login.svg"
@@ -33,7 +41,10 @@
       <h2 class="font-semibold text-2xl">¡Bienvenido!</h2>
       <p>Registrate en tu cuenta VolunTime</p>
     </header>
-    <form class="w-full flex flex-col px-4 gap-4 max-w-[600px]">
+    <form
+      [formGroup]="registroForm"
+      class="w-full flex flex-col px-4 gap-4 max-w-[600px]"
+    >
       <div class="w-full flex flex-col text-start gap-1">
         <label for="full_name"><b>Apellido y nombre</b></label>
         <input
@@ -42,17 +53,18 @@
           name="full_name"
           placeholder="Introduce tu apellido y nombre"
           class="border border-dimGray rounded-md py-2 pl-2 outline-none"
-          [(ngModel)]="full_name"
+          formControlName="fullName"
         />
         <div class="w-full items-center justify-end">
           <p
-            [ngClass]="
-              errorName && full_name.length == 0
-                ? 'flex-initial text-end text-deepPink'
-                : 'hidden'
+            *ngIf="
+              registroForm.get('fullName')?.invalid &&
+              (registroForm.get('fullName')?.dirty ||
+                registroForm.get('fullName')?.touched)
             "
+            class="flex-initial text-end text-deepPink"
           >
-            {{ errorName }}
+            Por favor, ingresa un nombre válido.
           </p>
         </div>
       </div>
@@ -64,26 +76,18 @@
           name="email"
           placeholder="Introduce tu correo electrónico"
           class="border border-dimGray rounded-md py-2 pl-2 outline-none"
-          [(ngModel)]="email"
+          formControlName="email"
         />
         <div class="w-full items-center justify-end">
           <p
-            [ngClass]="
-              errorEmail.length !== 0 && email.length == 0
-                ? 'flex-initial text-end text-deepPink'
-                : 'hidden'
+            *ngIf="
+              registroForm.get('email')?.invalid &&
+              (registroForm.get('email')?.dirty ||
+                registroForm.get('email')?.touched)
             "
+            class="flex-initial text-end text-deepPink"
           >
-            {{ errorEmail }}
-          </p>
-          <p
-            [ngClass]="
-              errorEmailTwo.length !== 0 && !email.includes('@')
-                ? 'flex-initial text-end text-deepPink'
-                : 'hidden'
-            "
-          >
-            {{ errorEmailTwo }}
+            Por favor, ingresa un email válido.
           </p>
         </div>
       </div>
@@ -95,17 +99,18 @@
           name="phone"
           placeholder="Introduce tu número telefónico"
           class="border border-dimGray rounded-md py-2 pl-2 outline-none"
-          [(ngModel)]="phone"
+          formControlName="phone"
         />
         <div class="w-full items-center justify-end">
           <p
-            [ngClass]="
-              errorPhone && phone.length == 0
-                ? 'flex-initial text-end text-deepPink'
-                : 'hidden'
+            *ngIf="
+              registroForm.get('phone')?.invalid &&
+              (registroForm.get('phone')?.dirty ||
+                registroForm.get('phone')?.touched)
             "
+            class="flex-initial text-end text-deepPink"
           >
-            {{ errorPhone }}
+            Por favor, ingresa un teléfono válido.
           </p>
         </div>
       </div>
@@ -117,17 +122,18 @@
           name="password"
           placeholder="Introduce tu contraseña"
           class="border border-dimGray rounded-md py-2 pl-2 outline-none"
-          [(ngModel)]="password"
+          formControlName="password"
         />
         <div class="w-full items-center justify-end">
           <p
-            [ngClass]="
-              errorPassword && password.length == 0
-                ? 'flex-initial text-end text-deepPink'
-                : 'hidden'
+            *ngIf="
+              registroForm.get('password')?.invalid &&
+              (registroForm.get('password')?.dirty ||
+                registroForm.get('password')?.touched)
             "
+            class="flex-initial text-end text-deepPink"
           >
-            {{ errorPassword }}
+            Por favor, ingresa una contraseña.
           </p>
         </div>
         <i

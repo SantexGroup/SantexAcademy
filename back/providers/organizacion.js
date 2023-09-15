@@ -1,5 +1,36 @@
-const { Op } = require("sequelize");
+const { Op, or } = require("sequelize");
 const { Organizacion } = require("../models");
+
+const loginOrg = async (email, cuit, password) => {
+  try {
+    const org = await Organizacion.findOne({
+      where: {
+        email: email,
+        cuit: cuit,
+        deletedAt: null,
+      },
+    });
+
+    if (!org) {
+      throw new Error("The organization does not exist");
+    }
+
+    // Verificar si la contraseña coincide
+    if (org.password !== password) {
+      throw new Error("Invalid Credentials");
+    }
+
+    // Verificar si el cuit coincide
+    if (org.cuit !== cuit) {
+      throw new Error("Invalid Credentials");
+    }
+
+    return org;
+  } catch (error) {
+    throw error; // Lanzar el error original, sin envolverlo en otro error
+  }
+};
+
 
 const createOrganization = async (organization) => {
   try {
@@ -143,6 +174,7 @@ const getOrganizationByLocation = async (location, opportunityType) => {
 };
 
 module.exports = {
+  loginOrg,
   getOrganizations,
   getOrganizationByCriteria,
   createOrganization,

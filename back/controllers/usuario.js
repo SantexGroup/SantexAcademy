@@ -7,7 +7,7 @@ require('dotenv').config();
 
 const loginUser = async (req, res) => {
   try {
-    const { fullName, email, password } = req.body;
+    const {  email, password } = req.body;
 
     // Verificar credenciales
     const user = await userService.loginUser(email, password);
@@ -19,6 +19,7 @@ const loginUser = async (req, res) => {
     // Generar token
     const token = jwt.sign(
       {
+        userId: user.id,
         userEmail: user.email,
         userPassword: user.password,
       },
@@ -84,13 +85,31 @@ const getUsersByCriteria = async (req, res) => {
 
 const updateUserById = async (req, res) => {
   try {
-    const { id } = req.params;
-    const user = await userService.updateUserById(id, req.body);
-    res.json(user);
+    const id = Number(req.params.id);
+    const userId = Number(req.userId);
+
+
+    console.log("id: "+id);
+
+    // Verificar si el usuario con el ID proporcionado existe
+    const existingUser = await userService.getUsersByCriteria(id);
+    if (!existingUser) {
+      return res.status(404).json({ message: "El usuario no existe." });
+    }
+
+    // Comprueba si el ID del usuario en el token coincide con el ID del usuario que se está intentando modificar
+    if (id !== userId) {
+      return res.status(403).json({ message: "No tienes permiso para modificar este usuario" });
+    }
+
+    // Actualiza el usuario con los datos enviados en el cuerpo de la solicitud
+    const updatedUser = await userService.updateUserById(id, req.body);
+    res.json(updatedUser);
   } catch (err) {
     res.status(500).json({ action: "updateUserById", error: err.message });
   }
 };
+
 
 const deleteUserById = async (req, res) => {
   try {
