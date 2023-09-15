@@ -68,6 +68,54 @@ alquilercontroller.alquilar = async (req, res) => {
   }
 };
 
+/**
+ * @method GET
+ * @name alquileres
+ * @body 
+ * @description metodo para obtener todos los alquileres acutales
+ */
+
+alquilercontroller.alquileres = async (req, res) => {
+  try {
+    const alquileres = await Alquiler.findAll({
+      include: [
+        {
+          model: Products,
+        },
+      ],
+    });
+    return res.status(200).json(alquileres);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error: error.message });
+  }
+}
+
+/**
+ * @method GET
+ * @name alquileresById
+ * @param {id} id del producto que queremos saber los alquileres
+ * @description metodo para obtener futuros los alquileres de un producto
+ */
+
+alquilercontroller.alquileresById = async (req, res) => {
+  try {
+    const alquileres = await Alquiler.findAll({
+      include: [
+        {
+          model: Products,
+          where: {
+            id: req.params.id
+          }
+        },
+      ],
+    });
+    return res.status(200).json(alquileres);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error: error.message });
+  }
+}
 
 
 
