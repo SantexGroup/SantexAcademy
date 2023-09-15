@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       field: 'idtipodeusuario',
     },
     verificationCode: DataTypes.BOOLEAN,
-    estado: DataTypes.BOOLEAN,
+    estado: DataTypes.CHAR(1),
     codeRegister: DataTypes.CHAR(16),
   }, {
     sequelize,

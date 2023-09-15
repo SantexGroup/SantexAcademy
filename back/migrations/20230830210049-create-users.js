@@ -40,6 +40,9 @@ module.exports = {
         },
         allowNull: false,
       },
+      estado: {
+        type: Sequelize.CHAR(1),
+      },
       codeRegister: {
         type: Sequelize.STRING,
         allowNull: false,
