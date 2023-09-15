@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80%;
+    height: 90%;
+    background: var(--background-gradient);
 }
 
 .body {

@@ -5,6 +5,5 @@
     flex-direction: column;
     justify-content: flex-start;
 
-    background: radial-gradient(circle, #08008f 0%, #0868da 43%, #00d4ff 100%);
-
+    background: var(--background-gradient);
 }
