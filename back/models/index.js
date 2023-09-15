@@ -38,4 +38,6 @@ const User = require('./user')(sequelize, Sequelize.DataTypes);
 
 db.User = User;
 
+sequelize.sync();
+
 module.exports = db;
