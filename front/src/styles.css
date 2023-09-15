@@ -24,7 +24,17 @@
     --color-5: #09349b;
     --color-6: #040564;
 
-    --error:#ff0000;
+    --color-grad-1: #00d4ff;
+    --color-grad-2: #0868da;
+    --color-grad-3: #2c44a3;
+    --color-grad-4: #09349b;
+    --color-grad-5: #08008f;
+    --color-grad-6: #040564;
+
+    --background-gradient: linear-gradient(45deg, var(--color-grad-1) 0%, var(--color-grad-2) 5%, var(--color-grad-4) 10%, var(--color-grad-6) 15%, var(--color-grad-4) 49%, var(--color-grad-4) 51%, var(--color-grad-6) 85%, var(--color-grad-4) 90%, var(--color-grad-2) 95%, var(--color-grad-1) 100%);
+
+
+    --error: #ff0000;
     --color-primary: rgba(9, 52, 155, 0.9);
     --font-family-1: 'Poppins', sans-serif;
     --box-shadow-1: rgb(0 0 0 / 10%) 0 0 10px;
@@ -126,10 +136,10 @@ button:disabled {
     color: rgba(0, 0, 0, .4)
 }
 
-input.ng-invalid.ng-touched{
-    border-color:tomato
+input.ng-invalid.ng-touched {
+    border-color: tomato
 }
 
 .error-text {
     color: var(--error);
-  }
+}
