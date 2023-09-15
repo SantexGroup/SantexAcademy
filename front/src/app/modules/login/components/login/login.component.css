@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90%;
+  height: 100%;
   background: var(--background-gradient);
 }
 
@@ -30,4 +30,10 @@ input {
 .btn-custom {
   background-color: VAR(--color-primary);
   color: var(--color-0);
+}
+
+.image-container {
+  max-width: 25rem;
+  border-radius: 4rem;
+  background: radial-gradient(circle, var(--color-0) 0%, var(--color-1) 40%, var(--color-5) 80%);
 }
