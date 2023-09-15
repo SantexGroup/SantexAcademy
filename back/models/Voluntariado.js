@@ -18,6 +18,10 @@ const Voluntariado = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    deletedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
     organizationId: {
       type: DataTypes.INTEGER,
       allowNull: false,

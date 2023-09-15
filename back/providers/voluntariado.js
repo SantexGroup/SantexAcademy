@@ -14,12 +14,12 @@ const getVoluntariadosByCriteria = async (queryOptions, bodyOptions) => {
   try {
     const options = { ...queryOptions, ...bodyOptions }; // Combinar las opciones de bésqueda
     const where = {}; // Excluir registros eliminados lágicamente
-    const validOptions = ['idVoluntariado', 'organizationId', 'descripcion', 'Reward'];
+    where.deletedAt = null;
+    const validOptions = ['idVoluntariado', 'organizationId', 'descripcion', 'Reward', 'deletedAt'];
 
     validOptions.forEach((option) => {
       if (options[option]) where[option] = options[option];
     });
-    // where.deletedAt = null;
 
     const voluntariados = await Voluntariado.findAll({
       where,
@@ -51,26 +51,26 @@ const updateVoluntariadoById = async (idOrg, idVoluntariado, voluntariado) => {
   }
 };
 
-const deleteVoluntariadoById = async (id) => {
+const deleteVoluntariadoById = async (idVoluntariado) => {
   try {
-    const volunteer = await Voluntariado.findOne({
+    const volunteering = await Voluntariado.findOne({
       where: {
-        id,
+        idVoluntariado,
         deletedAt: null,
       },
     });
 
-    if (!volunteer) {
-      throw new Error('volunteer not found');
+    if (!volunteering) {
+      throw new Error('Volunteering not found');
     }
 
     // Aplicar borrado lógico estableciendo la columna deletedAt
-    await Voluntariado.update({ deletedAt: new Date() }, { where: { id } });
+    await Voluntariado.update({ deletedAt: new Date() }, { where: { idVoluntariado } });
 
     // // todo! --Eliminar físicamente el registro de la tabla CestaRecompensas--
     // await CestaRecompensas.destroy({ where: { id } });
 
-    return volunteer;
+    return volunteering;
   } catch (error) {
     console.error('Ocurrió un error al eliminar el voluntariado.', error);
     throw error;
