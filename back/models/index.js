@@ -18,7 +18,7 @@ Usuario.belongsTo(CestaRecompensas, {
 CestaRecompensas.hasOne(Usuario, {
   as: 'usuario_cesto',
   foreignKey: 'basketRewardsId',
-  onDelete: "SET NULL",
+  onDelete: 'SET NULL',
 });
 CestaRecompensas.belongsToMany(Producto, {
   as: 'productoId_productos',
@@ -68,12 +68,12 @@ CestaRecompensas.hasMany(ProductoEnCestaRecompensas, {
 });
 
 Voluntariado.belongsTo(Organizacion, {
-  as: 'organizacion',
-  foreignKey: 'organizacionId',
+  as: 'organization',
+  foreignKey: 'organizationId',
 });
 Organizacion.hasMany(Voluntariado, {
   as: 'voluntariados',
-  foreignKey: 'organizacionId',
+  foreignKey: 'organizationId',
 });
 ProductoEnCestaRecompensas.belongsTo(Producto, {
   as: 'producto',

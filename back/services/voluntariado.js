@@ -1,0 +1,38 @@
+const { voluntariadoProvider } = require('../providers');
+
+const createVoluntariado = async (idOrg, voluntariado) => {
+  const newVoluntariado = await voluntariadoProvider.createVoluntariado(
+    idOrg,
+    voluntariado,
+  );
+  return newVoluntariado;
+};
+
+const getVoluntariadosByCriteria = async (queryOptions, bodyOptions) => {
+  const voluntariados = await voluntariadoProvider.getVoluntariadosByCriteria(
+    queryOptions,
+    bodyOptions,
+  );
+  return voluntariados;
+};
+
+const updateVoluntariadoById = async (idOrg, idVoluntariado, voluntariado) => {
+  const updatedVolunteering = await voluntariadoProvider.updateVoluntariadoById(
+    idOrg,
+    idVoluntariado,
+    voluntariado,
+  );
+  return updatedVolunteering;
+};
+
+const deleteVoluntariadoById = async (id) => {
+  const deletedVoluntariado = await voluntariadoProvider.deleteVoluntariadoById(id);
+  return deletedVoluntariado;
+};
+
+module.exports = {
+  getVoluntariadosByCriteria,
+  createVoluntariado,
+  updateVoluntariadoById,
+  deleteVoluntariadoById,
+};
