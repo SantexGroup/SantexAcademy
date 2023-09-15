@@ -14,12 +14,12 @@ const getVoluntariadosByCriteria = async (queryOptions, bodyOptions) => {
   try {
     const options = { ...queryOptions, ...bodyOptions }; // Combinar las opciones de bésqueda
     const where = {}; // Excluir registros eliminados lágicamente
-    where.deletedAt = null;
     const validOptions = ['idVoluntariado', 'organizationId', 'descripcion', 'Reward', 'deletedAt'];
-
+    
     validOptions.forEach((option) => {
       if (options[option]) where[option] = options[option];
     });
+    where.deletedAt = null;
 
     const voluntariados = await Voluntariado.findAll({
       where,

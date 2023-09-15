@@ -2,11 +2,11 @@ const { voluntariadoService } = require('../services');
 
 const createVoluntariado = async (req, res) => {
   try {
-    const voluntariado = await voluntariadoService.createVoluntariado(
+    const volunteering = await voluntariadoService.createVoluntariado(
       req.params.idOrg,
       req.body
     );
-    res.status(201).json(voluntariado);
+    res.status(201).json(volunteering);
   } catch (err) {
     console.error(err);
     res.status(500).send(err.message);
@@ -17,11 +17,15 @@ const getVoluntariadosByCriteria = async (req, res) => {
   try {
     const queryOptions = req.query;
     const bodyOptions = req.body;
-    const voluntariados = await voluntariadoService.getVoluntariadosByCriteria(
+    const volunteerings = await voluntariadoService.getVoluntariadosByCriteria(
       queryOptions,
       bodyOptions
     );
-    res.json(voluntariados);
+    if (!volunteerings) {
+      res.status(404).json({ action: 'getVoluntariadosByCriteria', error: 'Voluntariados not found.' });
+    } else {
+      res.json(volunteerings);
+    }
   } catch (err) {
     res.status(500).json({ action: 'getVoluntariadosByCriteria', error: err.message });
   }
@@ -35,7 +39,11 @@ const updateVoluntariadoById = async (req, res) => {
       idVoluntariado,
       req.body
     );
-    res.json(voluntariado);
+    if (!volunteering) {
+      res.status(404).json({ action: 'updateVoluntariadoById', error: 'Voluntariado not found.' });
+    } else {
+      res.json(volunteering);
+    }
   } catch (err) {
     res.status(500).json({ action: 'updateVoluntariadoById', error: err.message });
   }
@@ -45,8 +53,11 @@ const deleteVoluntariadoById = async (req, res) => {
   try {
     const { idVoluntariado } = req.params;
     const volunteering = await voluntariadoService.deleteVoluntariadoById(idVoluntariado);
-    res.json(volunteering);
-  } catch (err) {
+    if (!volunteering) {
+      res.status(404).json({ action: 'deleteVoluntariadoById', error: 'Voluntariado not found.' });
+    } else {
+      res.status(202).json(volunteering);
+    }  } catch (err) {
     res.status(500).json({ action: 'deleteVoluntariadoById', error: err.message });
   }
 };
