@@ -19,7 +19,7 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-      productoId: {
+      ProductId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Products', // Nombre de la tabla de Producto

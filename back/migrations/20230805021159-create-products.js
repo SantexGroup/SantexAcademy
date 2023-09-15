@@ -44,7 +44,8 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-    });await queryInterface.createTable('ProductCategories', {
+    });
+    await queryInterface.createTable('ProductCategories', {
       ProductId: {
         type: Sequelize.INTEGER,
         references: {
