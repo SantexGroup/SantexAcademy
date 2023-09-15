@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OptionalsComponent } from './modules/crud-data/optionals/optionals.component';
@@ -33,6 +32,7 @@ import { CVComponent } from './modules/cv/cv.component';
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
 import { ProfilesComponent } from './modules/profiles/profiles.component';
 import { LoadingModule } from './modules/loading/loading.module';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -69,7 +69,12 @@ import { LoadingModule } from './modules/loading/loading.module';
     MatDividerModule,
     MatMenuModule,
     HomeRoutingModule,
-    LoadingModule
+    LoadingModule,
+    ToastrModule.forRoot({
+      timeOut: 9000,
+      positionClass: 'toast-center-center',
+      preventDuplicates: true
+    })
   ],
   providers: [
     {

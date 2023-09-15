@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserService } from 'src/app/core/services/usuario.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -12,14 +13,14 @@ import { UserService } from 'src/app/core/services/usuario.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  mensajeError: string = "";
   
   constructor(
     private fb: FormBuilder, 
     private router: Router, 
     private userService: UserService,
     public dataUser: UserDataService,
-    private views: NavBarService
+    private views: NavBarService,
+    private toastr: ToastrService
     ) { }
 
   get nick() {
@@ -52,9 +53,8 @@ export class LoginComponent {
         this.views.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
         this.router.navigate([`/home/${data.profile.userId}/cv`]);
         }, 
-        error: (err) => { 
-          console.log(err); 
-          this.mensajeError = err;
+        error: () => { 
+          this.toastr.error("Usuario o contraseña incorrectos!", "VERIFICAR DATOS");
         },
         complete: () => { 
           console.log("Done") 
