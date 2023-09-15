@@ -4,7 +4,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("dispositivos_electronicos", {
+    await queryInterface.createTable("donaciones", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,52 +12,40 @@ module.exports = {
         type: Sequelize.INTEGER
       },
 
-      descripcion: {
+      id_donante: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "donantes",
+          key: "id",
+        },
+      },
+
+      razon_social_donante: {
         type: Sequelize.STRING(50)
       },
 
-      cantidad: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        defaultValue: 0
+      descripcion_donacion: {
+        type: Sequelize.STRING(50)
       },
 
-      fecha_adquisicion: {
+      fecha_donacion: {
         type: Sequelize.DATEONLY,
         allowNull: true,
         defaultValue: Sequelize.DATEONLY,
         onInsert: Sequelize.DATEONLY
       },
 
-      id_descripcion_dispositivo: {
+      id_estado_operacion: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: "descripciones_dispositivos",
+          model: "estados_operaciones",
           key: "id",
         },
-        // onUpdate: 'CASCADE',
-        // onDelete: 'CASCADE',
-        // field: "id_descripcion_distosivo",
       },
 
-      descripcion_dispositivo: {
-        type: Sequelize.STRING(50)
-      },
-
-      id_estado_dispositivo: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: "estados_dispositivos",
-          key: "id",
-        },
-        // onUpdate: 'CASCADE',
-        // onDelete: 'CASCADE',
-        // field: "id_estado_dispositivo",
-      },
-
-      estado_dispositivo: {
+      estado_operacion: {
         type: Sequelize.STRING(50)
       },
 
@@ -79,7 +67,7 @@ module.exports = {
       },
 
       modificado_por: {
-        type: Sequelize.STRING(50),
+        type: Sequelize.STRING(50)
       },
 
       fecha_modificacion: {
@@ -91,37 +79,36 @@ module.exports = {
       }
     });
 
-    await queryInterface.addConstraint('dispositivos_electronicos', {
-      fields: ['id_descripcion_dispositivo'],
+    await queryInterface.addConstraint('donaciones', {
+      fields: ['id_donante'],
       type: 'foreign key',
-      name: 'fk_id_descripcion_dispositivo', // Nombre personalizado de la clave foránea
+      name: 'fk_id_donante', // Nombre personalizado de la clave foránea
       references: {
-        table: 'descripciones_dispositivos', // Nombre de la tabla a la que se hace referencia
+        table: 'donantes', // Nombre de la tabla a la que se hace referencia
         field: 'id',   // Nombre de la columna a la que se hace referencia
       },
       // onDelete: 'cascade', // Comportamiento en cascada al eliminar no estoy seguro si usarla
       // onUpdate: 'cascade', // Comportamiento en cascada al actualizar no estoy seguro si conviene usarla
     });
 
-    await queryInterface.addConstraint('dispositivos_electronicos', {
-      fields: ['id_estado_dispositivo'],
+    await queryInterface.addConstraint('donaciones', {
+      fields: ['id_estado_operacion'],
       type: 'foreign key',
-      name: 'fk_id_estado_dispositivo', // Nombre personalizado de la clave foránea
+      name: 'fk_id_donante', // Nombre personalizado de la clave foránea
       references: {
-        table: 'estados_dispositivos', // Nombre de la tabla a la que se hace referencia
+        table: 'estados_operaciones', // Nombre de la tabla a la que se hace referencia
         field: 'id',   // Nombre de la columna a la que se hace referencia
       },
       // onDelete: 'cascade', // Comportamiento en cascada al eliminar no estoy seguro si usarla
       // onUpdate: 'cascade', // Comportamiento en cascada al actualizar no estoy seguro si conviene usarla
     });
-
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('dispositivos_electronicos');
+    await queryInterface.dropTable('donaciones');
 
-    await queryInterface.removeConstraint('dispositivos_electronicos', 'fk_id_descripcion_dispositivo');
+    await queryInterface.removeConstraint('donaciones', 'fk_id_donante');
 
-    await queryInterface.removeConstraint('dispositivos_electronicos', 'fk_id_estado_dispositivo');
+    await queryInterface.removeConstraint('donaciones', 'id_estado_operacion');
   }
 };

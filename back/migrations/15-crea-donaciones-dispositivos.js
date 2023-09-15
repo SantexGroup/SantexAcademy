@@ -4,16 +4,12 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("dispositivos_electronicos", {
+    await queryInterface.createTable("donaciones_dispositivos", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },
-
-      descripcion: {
-        type: Sequelize.STRING(50)
       },
 
       cantidad: {
@@ -36,9 +32,6 @@ module.exports = {
           model: "descripciones_dispositivos",
           key: "id",
         },
-        // onUpdate: 'CASCADE',
-        // onDelete: 'CASCADE',
-        // field: "id_descripcion_distosivo",
       },
 
       descripcion_dispositivo: {
@@ -52,9 +45,6 @@ module.exports = {
           model: "estados_dispositivos",
           key: "id",
         },
-        // onUpdate: 'CASCADE',
-        // onDelete: 'CASCADE',
-        // field: "id_estado_dispositivo",
       },
 
       estado_dispositivo: {
@@ -91,8 +81,8 @@ module.exports = {
       }
     });
 
-    await queryInterface.addConstraint('dispositivos_electronicos', {
-      fields: ['id_descripcion_dispositivo'],
+    await queryInterface.addConstraint('donaciones_dispositivos', {
+      fields: ['id_estado_operacion'],
       type: 'foreign key',
       name: 'fk_id_descripcion_dispositivo', // Nombre personalizado de la clave foránea
       references: {
@@ -103,8 +93,8 @@ module.exports = {
       // onUpdate: 'cascade', // Comportamiento en cascada al actualizar no estoy seguro si conviene usarla
     });
 
-    await queryInterface.addConstraint('dispositivos_electronicos', {
-      fields: ['id_estado_dispositivo'],
+    await queryInterface.addConstraint('donaciones_dispositivos', {
+      fields: ['id_estado_operacion'],
       type: 'foreign key',
       name: 'fk_id_estado_dispositivo', // Nombre personalizado de la clave foránea
       references: {
@@ -114,14 +104,13 @@ module.exports = {
       // onDelete: 'cascade', // Comportamiento en cascada al eliminar no estoy seguro si usarla
       // onUpdate: 'cascade', // Comportamiento en cascada al actualizar no estoy seguro si conviene usarla
     });
-
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('dispositivos_electronicos');
+    await queryInterface.dropTable('donaciones_dispositivos');
+    
+    await queryInterface.removeConstraint('donaciones_dispositivos', 'fk_id_descripcion_dispositivo');
 
-    await queryInterface.removeConstraint('dispositivos_electronicos', 'fk_id_descripcion_dispositivo');
-
-    await queryInterface.removeConstraint('dispositivos_electronicos', 'fk_id_estado_dispositivo');
+    await queryInterface.removeConstraint('donaciones_dispositivos', 'fk_id_estado_dispositivo');
   }
 };
