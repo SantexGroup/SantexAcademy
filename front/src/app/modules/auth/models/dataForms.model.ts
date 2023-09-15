@@ -1,14 +1,19 @@
 export interface volunterData {
   fullName: string;
-  telefono: string;
+  phone: string;
   email: string;
   password: string;
 }
+
 export interface coordinatorData {
-  fullName: string;
+  name: string;
+  description: string;
   email: string;
-  phone: string;
-  ngo: string;
-  cuit: string;
   password: string;
+  phone: string;
+  ong: string;
+  cuit: string;
+  location: string;
+  opportunityType: string;
+  category: string;
 }

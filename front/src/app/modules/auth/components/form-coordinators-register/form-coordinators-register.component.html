@@ -1,119 +1,269 @@
-<section class="w-full flex flex-col items-center justify-center gap-4 mb-16 lg:flex-row">
-
+<section
+  class="w-full flex flex-col items-center justify-center gap-4 mb-16 lg:flex-row"
+>
+  <app-modal-status-form
+    *ngIf="onModal"
+    (changueValueModal)="changeValueModal()"
+    [status]="statusSession"
+    [routeContinue]="routeBtnContinue"
+  ></app-modal-status-form>
   <article class="w-full flex flex-col items-center justify-center gap-12">
     <header class="w-full flex flex-col items-center justify-center gap-4">
       <h2 class="font-semibold text-2xl">¡Bienvenido!</h2>
-      <p>Registrate en tu cuenta VolunTime</p>
+      <p>Registra tu ONG en VolunTime</p>
     </header>
-    <form class="w-full flex flex-col px-4 gap-4 max-w-[600px]">
+    <form
+      [formGroup]="registerCoordinator"
+      class="w-full flex flex-col px-4 gap-4 max-w-[600px]"
+    >
       <div class="w-full flex flex-col text-start gap-1">
-        <label for="full_name"><b>Apellido y nombre</b></label>
-        <input id="full_name" type="text" name="full_name" placeholder="Introduce tu apellido y nombre"
-          class="border border-dimGray rounded-md py-2 pl-2" [(ngModel)]="full_name" />
+        <label for="name"><b>Nombre</b></label>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          placeholder="Introduce tu apellido y nombre"
+          class="border border-dimGray rounded-md py-2 pl-2"
+          formControlName="name"
+        />
+
         <div class="w-full items-center justify-end">
-          <p [ngClass]="
-                          errorName && full_name.length == 0
-                            ? 'flex-initial text-end text-redError'
-                            : 'hidden'
-                        ">
-            {{ errorName }}
+          <p
+            *ngIf="
+              registerCoordinator.get('name')?.invalid &&
+              (registerCoordinator.get('name')?.dirty ||
+                registerCoordinator.get('name')?.touched)
+            "
+            class="flex-initial text-end text-redError"
+          >
+            Por favor, ingresa un nombre.
+          </p>
+        </div>
+      </div>
+      <div class="w-full flex flex-col text-start gap-1">
+        <label for="description"><b>Breve descripción</b></label>
+        <textarea
+          id="description"
+          type="text"
+          name="description"
+          placeholder="Describe tu ONG"
+          class="border border-dimGray rounded-md h-[120px] pl-2 pt-1 resize-none"
+          formControlName="description"
+        >
+        </textarea>
+
+        <div class="w-full items-center justify-end">
+          <p
+            *ngIf="
+              registerCoordinator.get('description')?.invalid &&
+              (registerCoordinator.get('description')?.dirty ||
+                registerCoordinator.get('description')?.touched)
+            "
+            class="flex-initial text-end text-redError"
+          >
+            Por favor, ingresa una descripción
           </p>
         </div>
       </div>
       <div class="w-full flex flex-col text-start gap-1">
         <label for="email"><b>Correo electrónico</b></label>
-        <input id="email" type="email" name="email" placeholder="Introduce tu correo electrónico"
-          class="border border-dimGray rounded-md py-2 pl-2" [(ngModel)]="email" />
+        <input
+          id="email"
+          type="email"
+          name="email"
+          placeholder="Introduce tu correo electrónico"
+          class="border border-dimGray rounded-md py-2 pl-2"
+          formControlName="email"
+        />
         <div class="w-full items-center justify-end">
-          <p [ngClass]="
-                          errorEmail.length !== 0 && email.length == 0
-                            ? 'flex-initial text-end text-redError'
-                            : 'hidden'
-                        ">
-            {{ errorEmail }}
-          </p>
-          <p [ngClass]="
-                          errorEmailTwo.length !== 0 && !email.includes('@')
-                            ? 'flex-initial text-end text-redError'
-                            : 'hidden'
-                        ">
-            {{ errorEmailTwo }}
+          <p
+            *ngIf="
+              registerCoordinator.get('email')?.invalid &&
+              (registerCoordinator.get('email')?.dirty ||
+                registerCoordinator.get('email')?.touched)
+            "
+            class="flex-initial text-end text-redError"
+          >
+            Por favor, ingresa un email válido.
           </p>
         </div>
       </div>
+      <div class="w-full flex flex-col gap-1 relative">
+        <label for="password" class="text-start"><b>Contraseña</b></label>
+        <input
+          id="password"
+          [type]="showPassword ? 'text' : 'password'"
+          name="password"
+          placeholder="Introduce tu contraseña"
+          class="border border-dimGray rounded-md py-2 pl-2"
+          formControlName="password"
+        />
+        <div class="w-full items-center justify-end">
+          <p
+            *ngIf="
+              registerCoordinator.get('password')?.invalid &&
+              (registerCoordinator.get('password')?.dirty ||
+                registerCoordinator.get('password')?.touched)
+            "
+            class="flex-initial text-end text-redError"
+          >
+            Por favor, ingresa una Contraseña.
+          </p>
+        </div>
+        <i
+          class="bx bx-low-vision absolute top-9 right-4 text-xl cursor-pointer"
+          (click)="sendShowPassword()"
+        ></i>
+      </div>
       <div class="w-full flex flex-col text-start gap-1">
         <label for="phone"><b>Teléfono</b></label>
-        <input id="phone" type="number" name="phone" placeholder="Introduce tu número telefónico"
-          class="border border-dimGray rounded-md py-2 pl-2" [(ngModel)]="phone" />
+        <input
+          id="phone"
+          type="number"
+          name="phone"
+          placeholder="Introduce tu número telefónico"
+          class="border border-dimGray rounded-md py-2 pl-2"
+          formControlName="phone"
+        />
         <div class="w-full items-center justify-end">
-          <p [ngClass]="
-              errorPhone && phone.length == 0
-                ? 'flex-initial text-end text-redError'
-                : 'hidden'
-            ">
-            {{ errorPhone }}
+          <p
+            *ngIf="
+              registerCoordinator.get('phone')?.invalid &&
+              (registerCoordinator.get('phone')?.dirty ||
+                registerCoordinator.get('phone')?.touched)
+            "
+            class="flex-initial text-end text-redError"
+          >
+            Por favor, ingresa un teléfono válido.
           </p>
         </div>
       </div>
       <div class="w-full flex flex-col text-start gap-1">
         <label for="phone"><b>ONG a la que representa</b></label>
-        <input id="ngo" type="text" name="ngo" placeholder="Introduce el nombre de la ONG"
-          class="border border-dimGray rounded-md py-2 pl-2" [(ngModel)]="ngo" />
-          <div class="w-full items-center justify-end">
-            <p [ngClass]="
-                        errorNgo && ngo.length == 0
-                          ? 'flex-initial text-end text-redError'
-                          : 'hidden'
-                      ">
-              {{ errorNgo }}
-            </p>
-          </div>
+        <input
+          id="ngo"
+          type="text"
+          name="ngo"
+          placeholder="Introduce el nombre de la ONG"
+          class="border border-dimGray rounded-md py-2 pl-2"
+          formControlName="ong"
+        />
+
+        <div class="w-full items-center justify-end">
+          <p
+            *ngIf="
+              registerCoordinator.get('ong')?.invalid &&
+              (registerCoordinator.get('ong')?.dirty ||
+                registerCoordinator.get('ong')?.touched)
+            "
+            class="flex-initial text-end text-redError"
+          >
+            Por favor, ingresa una ONG.
+          </p>
+        </div>
       </div>
       <div class="w-full flex flex-col text-start gap-1">
         <label for="phone"><b>CUIT de ONG</b></label>
-        <input id="cuit" type="number" name="cuit" placeholder="Introduce el número de CUIT de ONG"
-          class="border border-dimGray rounded-md py-2 pl-2" [(ngModel)]="cuit" />
-            <div class="w-full items-center justify-end">
-              <p [ngClass]="
-                                    errorCuit && cuit.length == 0
-                                      ? 'flex-initial text-end text-redError'
-                                      : 'hidden'
-                                  ">
-                {{ errorCuit }}
-              </p>
-            </div>
+        <input
+          id="cuit"
+          type="number"
+          name="cuit"
+          placeholder="Introduce el número de CUIT de ONG"
+          class="border border-dimGray rounded-md py-2 pl-2"
+          formControlName="cuit"
+        />
+
+        <div class="w-full items-center justify-end">
+          <p
+            *ngIf="
+              registerCoordinator.get('cuit')?.invalid &&
+              (registerCoordinator.get('cuit')?.dirty ||
+                registerCoordinator.get('cuit')?.touched)
+            "
+            class="flex-initial text-end text-redError"
+          >
+            Por favor, ingresa un CUIT.
+          </p>
+        </div>
       </div>
-      <div class="w-full flex flex-col gap-1 relative">
-        <label for="password" class="text-start"><b>Contraseña</b></label>
-        <input id="password" [type]="showPassword ? 'text' : 'password'" name="password"
-          placeholder="Introduce tu contraseña" class="border border-dimGray rounded-md py-2 pl-2"
-          [(ngModel)]="password" />
-          <div class="w-full items-center justify-end">
-            <p [ngClass]="
-                        errorPassword && password.length == 0
-                          ? 'flex-initial text-end text-redError'
-                          : 'hidden'
-                      ">
-              {{ errorPassword }}
-            </p>
-          </div>
-        <i class="bx bx-low-vision absolute top-9 right-4 text-xl cursor-pointer" (click)="sendShowPassword()"></i>
+
+      <div class="w-full flex flex-col text-start gap-1">
+        <label for="location"><b>Ubicación</b></label>
+        <input
+          id="location"
+          type="text"
+          name="location"
+          placeholder="Introduce la Ubicación de tu ONG"
+          class="border border-dimGray rounded-md py-2 pl-2"
+          formControlName="location"
+        />
+
+        <div class="w-full items-center justify-end">
+          <p
+            *ngIf="
+              registerCoordinator.get('location')?.invalid &&
+              (registerCoordinator.get('location')?.dirty ||
+                registerCoordinator.get('location')?.touched)
+            "
+            class="flex-initial text-end text-redError"
+          >
+            Por favor, ingresa una Ubicación.
+          </p>
+        </div>
       </div>
+
+      <div class="w-full flex flex-col text-start gap-1">
+        <label for="category"><b>Categoría</b></label>
+        <select
+          id="category"
+          name="category"
+          class="border border-dimGray rounded-md py-3 pl-2 bg-white"
+          formControlName="category"
+        >
+          <option value="" disabled selected style="color: #ccc">
+            Seleccione una categoría
+          </option>
+          <option value="medio ambiente y fauna">Medio Ambiente y Fauna</option>
+          <option value="asistencia social">Asistencia Social</option>
+          <option value="salud y discapacidad">Salud y Discapacidad</option>
+        </select>
+
+        <div class="w-full items-center justify-end">
+          <p
+            *ngIf="
+              registerCoordinator.get('category')?.invalid &&
+              (registerCoordinator.get('category')?.dirty ||
+                registerCoordinator.get('category')?.touched)
+            "
+            class="flex-initial text-end text-redError"
+          >
+            Por favor, selecciona una categoría.
+          </p>
+        </div>
+      </div>
+
       <div class="w-full flex flex-col items-center justify-center gap-4 mt-2">
-        <button type="submit" class="w-full py-2 bg-darkSlateBlue text-white rounded-md font-semibold"
-          (click)="sendValues()">
+        <button
+          type="submit"
+          class="w-full py-2 bg-darkSlateBlue text-white rounded-md font-semibold"
+          (click)="sendValues()"
+        >
           Registrate
         </button>
         <b>o</b>
         <button
-          class="w-full flex items-center justify-center gap-2 py-2 border border-darkSlateBlue rounded-md font-normal">
+          class="w-full flex items-center justify-center gap-2 py-2 border border-darkSlateBlue rounded-md font-normal"
+        >
           <img src="/assets/logo/logo-google.svg" />
           Registrate con Google
         </button>
         <p class="text-sm">
           ¿Ya tienes una cuenta?
 
-          <span class="text-darkSlateBlue cursor-pointer" (click)="navigateToLogin()">
+          <span
+            class="text-darkSlateBlue cursor-pointer"
+            (click)="navigateToLogin()"
+          >
             Iniciar sesión.
           </span>
         </p>
@@ -123,15 +273,27 @@
   <figure class="w-full h-[500px] bg-darkSlateBlue relative lg:h-[872px]">
     <img
       src="https://res.cloudinary.com/carina-bosio/image/upload/v1692627567/xAcademy/cerrar-personas-cogidas-mano_wnslhq.jpg"
-      alt="" class="w-full h-full object-cover opacity-[0.8]" />
+      alt=""
+      class="w-full h-full object-cover opacity-[0.8]"
+    />
     <div
-      class="p-4 bg-white opacity-[.7] flex flex-col items-center justify-center gap-4 text-center min-w-[100px] w-[220px] h-[250px] rounded-md absolute top-[5em] left-0 right-0 bottom-0 m-auto lg:gap-12 lg:top-[-3em] lg:w-[300px] lg:h-[350px]">
+      class="p-4 bg-white opacity-[.7] flex flex-col items-center justify-center gap-4 text-center min-w-[100px] w-[220px] h-[250px] rounded-md absolute top-[5em] left-0 right-0 bottom-0 m-auto lg:gap-12 lg:top-[-3em] lg:w-[300px] lg:h-[350px]"
+    >
       <figure class="flex items-center gap-2">
-        <img src="/assets/logo/logohand.svg" alt="logo" class="w-[50px] sm:w-[70px]" />
-        <img src="/assets/logo/logovoluntime.svg" alt="logo" class="w-[80px] sm:w-[100px]" />
+        <img
+          src="/assets/logo/logohand.svg"
+          alt="logo"
+          class="w-[50px] sm:w-[70px]"
+        />
+        <img
+          src="/assets/logo/logovoluntime.svg"
+          alt="logo"
+          class="w-[80px] sm:w-[100px]"
+        />
       </figure>
       <p>
-        Juntos, hagamos el cambio que el mundo necesita, a través proyectos significativos y marquemos la diferencia.
+        Juntos, hagamos el cambio que el mundo necesita, a través proyectos
+        significativos y marquemos la diferencia.
       </p>
     </div>
   </figure>

@@ -3,72 +3,60 @@ import { Router } from '@angular/router';
 import { coordinatorData } from '../../models/dataForms.model';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-coordinators-register',
   templateUrl: './form-coordinators-register.component.html',
-  styleUrls: ['./form-coordinators-register.component.css']
+  styleUrls: ['./form-coordinators-register.component.css'],
 })
 export class FormCoordinatorsRegisterComponent {
-  full_name: string = '';
-  email: string = '';
-  phone: string = '';
-  ngo: string = '';
-  cuit: string = '';
-  password: string = '';
+  registerCoordinator: FormGroup;
+
+  onModal: boolean = false;
+  statusSession: string = '';
+  messageModal: string = '';
+  routeBtnContinue: string = '';
+
   showPassword: boolean = false;
   subscription: Subscription | null = null;
 
-  // Errors Validations
-  errorName: string = '';
-  errorEmail: string = '';
-  errorEmailTwo: string = '';
-  errorPhone: string = '';
-  errorNgo: string = '';
-  errorCuit: string = '';
-  errorPassword: string = '';
-
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private fb: FormBuilder
+  ) {
+    this.registerCoordinator = this.fb.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      phone: ['', Validators.required],
+      ong: ['', Validators.required],
+      cuit: ['', Validators.required],
+      location: ['', Validators.required],
+      category: ['', Validators.required],
+    });
+  }
 
   sendValues() {
-    console.log(this.full_name, this.email, this.phone, this.ngo, this.cuit, this.password);
-
-    const userData: coordinatorData = {
-      fullName: this.full_name,
-      email: this.email,
-      phone: this.phone,
-      ngo: this.ngo,
-      cuit: this.cuit,
-      password: this.password,
-    };
-
-    if (userData.fullName.length == 0) {
-      this.errorName = 'Por favor, ingresa un nombre válido.';
-    } else if (userData.email.length == 0) {
-      this.errorEmail =
-        'Por favor, ingresa una dirección de correo electrónico válida.';
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(userData.email)
-    ) {
-      this.errorEmailTwo =
-        'Eso no parece una dirección de correo electrónico válida.';
-    } else if (userData.phone.length == 0) {
-      this.errorPhone = 'Por favor, ingresa un teléfono válido.';
-    } else if (userData.ngo.length == 0) {
-      this.errorNgo = 'Por favor, ingresa el nombre de tu Organización/Fundación';
-    } else if (userData.cuit.length == 0) {
-      this.errorCuit = 'Por favor, ingresa un cuit válido.';
-    } else if (userData.password.length == 0) {
-      this.errorPassword = 'Por favor, ingresa una contraseña.';
-    } else {
+    if (this.registerCoordinator.valid) {
+      const userData: coordinatorData = this.registerCoordinator
+        .value as coordinatorData;
       this.authService.registerCoordinator(userData).subscribe({
         next: (response) => {
           console.log('Registro exitoso:', response);
+          this.onModal = true;
+          this.statusSession = 'success';
+          this.routeBtnContinue = 'auth/login';
         },
         error: (error) => {
           console.error('Error en el registro:', error);
+          this.onModal = true;
+          this.statusSession = 'failed';
+          this.routeBtnContinue = 'auth/coordinator-register';
         },
-        complete: () => { },
+        complete: () => {},
       });
     }
   }
@@ -88,10 +76,8 @@ export class FormCoordinatorsRegisterComponent {
       this.subscription.unsubscribe();
     }
   }
+
+  changeValueModal() {
+    this.onModal = false;
+  }
 }
-
-
-
-
-
-
