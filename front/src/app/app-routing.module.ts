@@ -13,6 +13,7 @@ import { PersonalComponent } from './modules/crud-data/personal/personal.compone
 import { CVComponent } from './modules/cv/cv.component';
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
 import { ProfilesComponent } from './modules/profiles/profiles.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
   {
     path: 'home/:id',
     component: HomeComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'personal',

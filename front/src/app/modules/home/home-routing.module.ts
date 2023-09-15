@@ -11,12 +11,14 @@ import { PersonalComponent } from '../crud-data/personal/personal.component';
 import { ReferencesComponent } from '../crud-data/references/references.component';
 import { CVComponent } from '../cv/cv.component';
 import { ProfilesComponent } from '../profiles/profiles.component';
+import { AuthGuard } from 'src/app/core/guards/auth.guard';
 
 
 
 const routes: Routes = [
   {
-    path: 'home/:id',
+    path: '',
+    canActivate: [AuthGuard],
     component: HomeComponent
   },
   {

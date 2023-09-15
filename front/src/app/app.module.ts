@@ -76,7 +76,7 @@ import { ProfilesComponent } from './modules/profiles/profiles.component';
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
       multi: true
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

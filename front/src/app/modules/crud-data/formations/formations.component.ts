@@ -91,6 +91,7 @@ export class FormationsComponent implements OnInit {
   getListFormations(){
     this._formationsServices.getFormationByUser(this.userData.userId).subscribe((data) => {      
       this.listFormation = data;
+      console.log(this.userData.userId);
     } )
   }
 

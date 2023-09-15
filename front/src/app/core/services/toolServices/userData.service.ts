@@ -7,15 +7,20 @@ import { Token } from '../../interfaces/token.interface';
 })
 export class UserDataService {
 
-  token: any;
+  constructor( ){
+  }
 
-  isAuthenticated(): boolean {
-    if (this.token) {
-      const tokenData = jwtDecode<Token>(this.token);
+  isAuthenticated() {
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+      const tokenData = jwtDecode<Token>(token);
+      console.log(tokenData);
       const currentTime = Math.floor(Date.now() / 1000);
-      return tokenData.exp > currentTime;
+      const expiration = tokenData.exp;
+      this.userId = tokenData.id;
+      return expiration > currentTime && expiration <= currentTime + 7200;
     }
-    return false;
+    return false
   }
 
   /* profileId que se escribe desde el servicio de login */
@@ -25,8 +30,8 @@ export class UserDataService {
 
   companies: string[] = [];
 
-  userName: string = "";
+  userName = "" || localStorage.getItem('userName');
 
-  lastName: string = "";
+  lastName = "" || localStorage.getItem('lastName');
 
 }

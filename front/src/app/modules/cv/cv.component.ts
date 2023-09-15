@@ -61,8 +61,8 @@ export class CVComponent implements OnInit {
   }
 
   getFormations(){
-    this._formation.getFormationByUser().subscribe((data) => {
-      this.formations = data;
+    this._formation.getFormationByUser(this.dataUser.userId).subscribe((formationList: Formations[]) => {
+      this.formations = formationList;
       console.log(this.formations)
     } )
   }

@@ -38,16 +38,19 @@ export class LoginComponent {
   submit(myForm: FormGroup) {
     if(myForm.status == 'VALID') {
       this.userService.login(myForm.value).subscribe({
-        next: (data) => { console.log(data);
+        next: (data) => { 
+        console.log(data);
         this.dataUser.userId = data.profile.userId;
         this.dataUser.profileId = data.profile.id;
         this.views.quickButton = true;
         this.views.accountButton = false;
         this.dataUser.userName = data.user.name;
         this.dataUser.lastName = data.user.lastName;
-        localStorage.setItem('accessToken', data.accessToken)
+        localStorage.setItem('accessToken', data.accessToken);
+        localStorage.setItem('userName', data.user.name);
+        localStorage.setItem('lastName', data.user.lastName);
         this.views.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
-        this.router.navigate(['/home', data.profile.userId, 'cv']);
+        this.router.navigate([`/home/${data.profile.userId}/cv`]);
         }, 
         error: (err) => { 
           console.log(err); 
