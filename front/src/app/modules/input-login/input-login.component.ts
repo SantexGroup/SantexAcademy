@@ -28,18 +28,18 @@ constructor(private http: HttpClient,  private authservice: authService,  privat
 
     }
    
-    this.authservice.login(this.email.value).subscribe(
+    this.authservice.login(this.email.value).subscribe({
 
-      (response) => {
-        this.router.navigate(['/contra']); // Lógica de manejo de respuesta exitosa (por ejemplo, guardar token)
+      next:(response) => {
+        this.router.navigate(['/Contrasenia']); // Lógica de manejo de respuesta exitosa (por ejemplo, guardar token)
         
       },
-      (error) => {
+      error:(error) => {
         console.error('Error en el inicio de sesión', error);
-        this.router.navigate(['/contra']);
+        // this.router.navigate(['/contra']);
         // Lógica de manejo de error
       }
-    );
+    })
   }
-}
+};
 

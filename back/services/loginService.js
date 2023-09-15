@@ -6,6 +6,31 @@ const passwordService = require('./passwordService');
 // const adminService = require('./adminSerivice');
 const db = require('../models');
 
+// Función para enviar mail
+function enviarEmail(pass, email) {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  const textMail = `Tu contraseña es: ${pass}`;
+  const msg = {
+    to: email,
+    from: 'leo.vm.cba@gmail.com', // Use the email address or domain you verified above
+    subject: 'Contraseña Turisticapp',
+    text: textMail,
+    // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+  };
+
+  // ES6
+  sgMail.send(msg).then(
+    () => {},
+    (error) => {
+      console.error(error);
+
+      if (error.response) {
+        console.error(error.response.body);
+      }
+    },
+  );
+}
+
 async function emailLogin(email) {
   let existeAdmin = false;
 
@@ -35,36 +60,9 @@ async function emailLogin(email) {
   // Confirmar variable de control
   // eslint-disable-next-line prefer-const
   existeAdmin = true;
-  enviarEmail(passCreate.password, admin.email)
+  enviarEmail(passCreate.password, admin.email);
 
   return { existeAdmin };
-}
-
-// Función para enviar mail
-
-function enviarEmail(pass, email) {
-  sgMail.setApiKey(process.env.SENDGRID_KEY);
-
-  const textMail = `Tu contraseña es: ${pass}`;
-  const msg = {
-    to: email,
-    from: "leo.vm.cba@gmail.com", // Use the email address or domain you verified above
-    subject: "Prueba de envío del código",
-    text: textMail,
-    //html: "<strong>and easy to do anywhere, even with Node.js</strong>",
-  };
-
-  //ES6
-  sgMail.send(msg).then(
-    () => {},
-    (error) => {
-      console.error(error);
-
-      if (error.response) {
-        console.error(error.response.body);
-      }
-    }
-  );
 }
 
 // Función para verificar password
@@ -72,7 +70,7 @@ function enviarEmail(pass, email) {
 async function verificarPassword(pwd) {
   const pass = await db.password.findOne({
     where: {
-      pwd,
+      password: pwd,
     },
   });
 
@@ -84,8 +82,8 @@ async function verificarPassword(pwd) {
     id: db.admin.id,
     email: db.admin.email,
     name: db.admin.name,
-    is_admin: false,
-  });
+    is_admin: true,
+  }, 'ClaveUltraSecreta');
   return {
     accessToken: token,
   };

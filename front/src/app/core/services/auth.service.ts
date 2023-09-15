@@ -6,13 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class authService {
-  private apiUrl = 'http://localhost:3000 '; // Agrega la URL de tu backend aquí
+  private apiUrl = 'http://localhost:3000'; // Agrega la URL de tu backend aquí
 
   constructor(private http: HttpClient) { }
 
   login(email:any ): Observable<any> {
     const loginData = { email};
-    return this.http.post(`${this.apiUrl}/login`, loginData);
+    return this.http.post(`${this.apiUrl}/login/send-otp`, loginData);
   }
 
   
