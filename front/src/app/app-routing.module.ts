@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { Error404Component } from './components/error404/error404.component';
+import { ProfileGuard } from './guards/profile.guard';
+
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: HomeComponent
   },
   {
@@ -13,12 +16,9 @@ const routes: Routes = [
     loadChildren: () => import('../app/components/all-courses-routing.module').then(m => m.AllCoursesRoutingModule)
 
   },
-
   {
-
     path: 'courses/:id',
     loadChildren: () => import('../app/components/components.module').then(m => m.ComponentsModule)
-
   },
   {
     path: 'form-inscr-courses/:id',
@@ -36,10 +36,14 @@ const routes: Routes = [
     path: 'unsuccessfully',
     loadChildren: () => import('./components/courses-mockUnseccesfully-routing.module').then(m => m.CoursesMockUnseccesfullyModule)
   },
-
+  {
+    path: 'profil/:id',
+    canActivate: [ProfileGuard], // Aplica el guardia
+    component: Error404Component,
+  },
   {
     path: '**',
-    redirectTo: 'home'
+    component: Error404Component
   }
 ];
 
