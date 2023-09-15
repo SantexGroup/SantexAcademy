@@ -37,6 +37,10 @@ export class AdminComponent implements OnInit {
       },
     });
 
+    this.obtenerCursos()
+  }
+
+  obtenerCursos(){
     this.cursoService.getCursos().subscribe({
       next: (response) => {
         console.log(response);
@@ -49,7 +53,6 @@ export class AdminComponent implements OnInit {
       },
     });
   }
-
   deleteCurso(curso: number) {
     //console.log(curso)
     this.cursoService.deleteCurso(curso).subscribe((resp) => {
@@ -73,7 +76,7 @@ export class AdminComponent implements OnInit {
 
     this.cursoService.activardesactivar(curso).subscribe((resp) => {
       //this.router.navigate(['/cursos/index']);
-      this.cdr.detectChanges();
+     this.obtenerCursos();
     });
   }
 }
