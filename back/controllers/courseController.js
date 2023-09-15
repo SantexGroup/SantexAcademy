@@ -54,4 +54,13 @@ const createUser = async (req, res) => {
     }
 };
 
-module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, createUser };
+const getUsers = async (req, res) => {
+    try {
+        const users = await courseService.getUsers(req.params.id);
+        users ? res.json(users) : res.status(404).end();
+    } catch (err) {
+        res.status(500).json({ action: 'Obtener usuarios del curso', message: err.message });
+    }
+};
+
+module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, createUser, getUsers };
