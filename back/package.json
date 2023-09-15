@@ -17,6 +17,7 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "debug": "^4.3.4",
     "dotenv": "^8.6.0",
     "envalid": "^7.3.1",

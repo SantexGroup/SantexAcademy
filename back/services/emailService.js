@@ -16,15 +16,16 @@ const createTrans = () => {
 };
 
 // Funcion para enviar correo de confirmacion
-const sendMail = (user, userEmail, verificationLink) => {
+const sendMail = (user, userCode, userEmail, verificationLink) => {
   // Datos del transporte creado
   const transporter = createTrans();
   // Conecta a traves de emailHtml este archivo y la plantilla html para pasar username
   const emailHtml = fs.readFileSync('./themes/email/email-register.html', 'utf8');
-  // Reemplazar {{loQueDice}} con el nombre de usuario real
+  // Reemplazar en html {{loQueDice}} con el nombre de usuario real
   const personalizedHtml = emailHtml.replace(/{{username}}/g, user.username)
                                     .replace(/{{nombre}}/g, user.nombre)
                                     .replace(/{{verificationLink}}/g, verificationLink)
+                                    .replace(/{{codeRegister}}/g, user.codeRegister)
                                     .replace(/{{password}}/g, user.password);                           
   // Datos del correo electronico
   const mailOptions = {

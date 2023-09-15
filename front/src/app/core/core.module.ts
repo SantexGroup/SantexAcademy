@@ -1,9 +1,11 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { throwIfAlreadyLoaded } from './core-import.guard';
 
-import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -11,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   exports: [],
   providers: []
