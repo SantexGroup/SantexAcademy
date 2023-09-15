@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CoursesService } from 'src/app/services/courses.service';
 
@@ -28,11 +28,12 @@ export class FormInscrCoursesComponent implements OnInit{
   recordForm: any 
 
   constructor(public courseService: CoursesService, 
-              private activateRoute: ActivatedRoute, 
+              private activateRoute: ActivatedRoute,
+              private router: Router,
               private fb: FormBuilder){
       
     this.recordForm = this.fb.group({
-        firstName: ['', [Validators.required, Validators.minLength(3)]],
+        firstName: ['', [Validators.required, Validators.minLength(3)], Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/) ],
         lastName: ['',[Validators.required, Validators.minLength(3)]],
         idCard: ['',[Validators.required, Validators.pattern(/^[0-9]{8}$/), Validators.minLength(8), Validators.maxLength(8)]],
         email: ['',[Validators.required, Validators.email, this.validateEmailDomain]],
@@ -40,31 +41,6 @@ export class FormInscrCoursesComponent implements OnInit{
         date: ['',[Validators.required]],
         schedule: ['', Validators.required]
     })
-  }
-  //para agregar el curso elejido
-  subscription: Subscription | null = null;
-  ngOnInit(): void {
-       const id = this.activateRoute.snapshot.params["id"]
-    this.subscription = this.courseService.getCoursesDetail(id).subscribe(
-      (response) => {
-        this.courseService.courses = response
-        console.log("Esta es la respuesta ", response)
-        
-      }, 
-      (error) => {
-        console.error(error)
-      }
-    )
-  }
-
-  ngOnDestroy() {
-
-    if(this.subscription) {
-
-      this.subscription.unsubscribe();
-
-    }
-
   }
   //valido que despues del @ cumpla con el dominio de mail conocido o personalizado y no cualquier dato
   validateEmailDomain(control: FormControl): { [key: string]: any } | null {
@@ -85,15 +61,17 @@ export class FormInscrCoursesComponent implements OnInit{
 
   // valido que el telefono cumpla con caracteristicas pais, provincia, ciudad
   validateNumberPhone(control: FormControl) {
-    const phonePattern = /^\d{2}\s9\s\d{3}\s\d{3}-\d{4}$/; // Aquí puedes definir tu patrón de número telefónico
-    const isValid = phonePattern.test(control.value);
-    if(control.value === '' || !isValid){
+
+    const phonePattern1 = /^\d{2}\s9\s\d{3}\s\d{3}-\d{4}$/; // Aquí puedes definir tu patrón de número telefónico
+    const phonePattern2 = /^[0-9 -]+$/;
+    const isValid1 = phonePattern1.test(control.value);
+    const isValid2 = phonePattern2.test(control.value);
+    if(control.value === '' || !isValid1 || !isValid2) {
       return { invalidPhone: true }
     }
     // return isValid ? null : { invalidPhone: true };
     return null
   }
-
 
   get firstName(){
     return this.recordForm.get('firstName')
@@ -118,24 +96,48 @@ export class FormInscrCoursesComponent implements OnInit{
   get schedule(){
     return this.recordForm.get('schedule')
   }
-
-  guardar(){
-    console.log('Formulario', this.recordForm.value)
+  get button(){
+    return this.recordForm.get('button')
   }
 
   onSubmit(){
     console.log('onSubmit() ejecutada')
     console.log('Formulario válido:', this.recordForm.valid);
-    console.log('Formulario:', this.recordForm.value);
+    console.log('Formulario value:', this.recordForm.value);
     if(this.recordForm.valid){
-      console.log(this.recordForm.value)
+      console.log('Formulario con datos',this.recordForm.value)
+      this.router.navigate(['/pay-transf-course'])
+      //return this.recordForm.value
     }else{
-      alert('llenar los campo')
+      //this.addSingle()
+      alert('Debe completar los campos')
     }
   }
 
-  limpiar(){
-    this.recordForm.reset()
-  }
+    //para agregar el curso elejido
+    subscription: Subscription | null = null;
+    ngOnInit(): void {
+         const id = this.activateRoute.snapshot.params["id"]
+      this.subscription = this.courseService.getCoursesDetail(id).subscribe(
+        (response) => {
+          this.courseService.courses = response
+          console.log("Esta es la respuesta ", response)
+          
+        }, 
+        (error) => {
+          console.error(error)
+        }
+      )
+    }
+  
+    ngOnDestroy() {
+  
+      if(this.subscription) {
+  
+        this.subscription.unsubscribe();
+  
+      }
+  
+    }
 
 }

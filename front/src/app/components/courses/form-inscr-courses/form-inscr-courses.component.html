@@ -3,24 +3,28 @@
 
     <h1 class="text-center pb-5">Formulario de Inscripcion Al Curso</h1>
     
-    <form class="pt-5" [formGroup]="recordForm" (ngSubmit)="onSubmit()" novalidate>
+    <form class="pt-5" [formGroup]="recordForm" (ngSubmit)="onSubmit()"  >
 
         <div class="pb-4 flex flex-column lg:flex-row lg:gap-5" >
             <div class="field pb-4">
 
                 <label for="firstName" class="block font-bold">Nombre<span class="text-red-600 ml-2">*</span></label>
-                <input class="" type="text" pInputText placeholder="Nombre" 
-                formControlName="firstName" name="firstName"
+                <input type="text" pInputText placeholder="Nombre" 
+                formControlName="firstName" 
                 [class.valid]="firstName.valid && firstName.dirty || firstName.touched" 
                 [class.invalid]="firstName.invalid && firstName.dirty || firstName.touched">
                 <span class="text-red-600" *ngIf="firstName?.invalid && firstName?.touched && firstName?.hasError('required')">campo obligatorio</span>
                 <span class="text-red-600" *ngIf="firstName?.touched && firstName?.errors?.['minlength']">
                     Debe ingresar un minimo {{firstName?.errors?.['minlength'].requiredLength}} caracteres</span>
+                <span class="text-red-600" *ngIf="firstName?.invalid && firstName?.touched && firstName?.hasError('pattern')">
+                    Solo puede ingresar letras</span>   
             </div>
             <div class="field pb-4">
     
                 <label for="lastName" class="block font-bold">Apellido<span class="text-red-600 ml-2">*</span></label>
-                <input type="text" pInputText placeholder="Apellido" formControlName="lastName">
+                <input type="text" pInputText placeholder="Apellido" formControlName="lastName"
+                [class.valid]="lastName.valid && lastName.dirty || lastName.touched" 
+                [class.invalid]="lastName.invalid && lastName.dirty || lastName.touched">
                 <span class="text-red-600" *ngIf="lastName?.invalid && lastName?.touched && lastName?.hasError('required')">campo obligatorio</span>
                 <span class="text-red-600" *ngIf="lastName?.touched && lastName?.errors?.['minlength']">
                     Debe ingresar un minimo {{lastName?.errors?.['minlength'].requiredLength}} caracteres</span>
@@ -54,7 +58,8 @@
                 [class.valid]="phone.valid && phone.dirty || phone.touched" 
                 [class.invalid]="phone.invalid && phone.dirty || phone.touched">
                 <span class="text-red-600" *ngIf="phone?.touched && phone?.hasError('required')">campo obligatorio</span>
-                <span class="text-red-600" *ngIf="phone?.dirty && phone?.hasError('invalidPhone')">Debe ingresar un número de teléfono válido</span>
+                <span class="text-red-600" *ngIf="phone?.dirty && phone?.hasError('invalidPhone')">Debe ingresar solo numeros 
+                    <br> formato valido (54) 9 371 351-4576</span>
 
             </div>
             <div class="field ">
@@ -91,8 +96,9 @@
         
         <div class="card flex flex-column gap-4 lg:flex-row lg:justify-content-around pt-7">
             <a routerLink="/" pButton label="Cancelar" type="submit" class="font-bold text-xl w-12 lg:w-3"></a>
-            <button routerLink="/pay-transf-course" (click)="limpiar()" 
-            type="submit" class="font-bold text-xl w-12 lg:w-3 bg-primary border-round py-3">Siguiente</button>
+            <button 
+            type="submit" class="font-bold text-xl w-12 lg:w-3 bg-primary border-round py-3" (click)="addSingle()">Siguiente</button>
+           
         </div>
 
     </form>
