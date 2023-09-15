@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { volunterData } from '../../models/dataForms.model';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-volunteerregister',
@@ -10,51 +11,44 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./form-volunteerregister.component.css'],
 })
 export class FormVolunteerregisterComponent {
-  full_name: string = '';
-  email: string = '';
-  phone: string = '';
-  password: string = '';
+  registroForm: FormGroup;
+
   showPassword: boolean = false;
   subscription: Subscription | null = null;
 
-  // Errors Validations
-  errorName: string = '';
-  errorEmail: string = '';
-  errorEmailTwo: string = '';
-  errorPhone: string = '';
-  errorPassword: string = '';
+  onModal: boolean = false;
+  statusSession: string = '';
+  messageModal: string = '';
+  routeBtnContinue: string = '';
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private fb: FormBuilder
+  ) {
+    this.registroForm = this.fb.group({
+      fullName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
 
   sendValues() {
-    const userData: volunterData = {
-      fullName: this.full_name,
-      telefono: this.phone,
-      email: this.email,
-      password: this.password,
-    };
-
-    if (userData.fullName.length == 0) {
-      this.errorName = 'Por favor, ingresa un nombre válido.';
-    } else if (userData.email.length == 0) {
-      this.errorEmail =
-        'Por favor, ingresa una dirección de correo electrónico válida.';
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(userData.email)
-    ) {
-      this.errorEmailTwo =
-        'Eso no parece una dirección de correo electrónico válida.';
-    } else if (userData.telefono.length == 0) {
-      this.errorPhone = 'Por favor, ingresa un teléfono válido.';
-    } else if (userData.password.length == 0) {
-      this.errorPassword = 'Por favor, ingresa una contraseña.';
-    } else {
+    if (this.registroForm.valid) {
+      const userData: volunterData = this.registroForm.value as volunterData;
       this.authService.registerVolunteer(userData).subscribe({
         next: (response) => {
           console.log('Registro exitoso:', response);
+          this.onModal = true;
+          this.statusSession = 'success';
+          this.routeBtnContinue = 'auth/login';
         },
         error: (error) => {
           console.error('Error en el registro:', error);
+          this.onModal = true;
+          this.statusSession = 'failed';
+          this.routeBtnContinue = 'auth/volunteer-register';
         },
         complete: () => {},
       });
@@ -75,5 +69,9 @@ export class FormVolunteerregisterComponent {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  changeValueModal() {
+    this.onModal = false;
   }
 }
