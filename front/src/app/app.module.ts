@@ -26,13 +26,13 @@ import { NavBarComponent } from './modules/nav-bar/nav-bar.component';
 import { HomeRoutingModule } from './modules/home/home-routing.module';
 import { PersonalComponent } from './modules/crud-data/personal/personal.component';
 import { SkillComponent } from './modules/crud-data/skill/skill.component';
-import { LoadingComponent } from './modules/loading/loading.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './core/services/toolServices/interceptor/loading.interceptor';
 import { UsuarioModule } from './modules/usuario/usuario.module';
 import { CVComponent } from './modules/cv/cv.component';
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
 import { ProfilesComponent } from './modules/profiles/profiles.component';
+import { LoadingModule } from './modules/loading/loading.module';
 
 
 @NgModule({
@@ -46,7 +46,6 @@ import { ProfilesComponent } from './modules/profiles/profiles.component';
     NavBarComponent,
     PersonalComponent,
     SkillComponent,
-    LoadingComponent,
     CVComponent,
     ReferencesComponent,
     ProfilesComponent
@@ -70,6 +69,7 @@ import { ProfilesComponent } from './modules/profiles/profiles.component';
     MatDividerModule,
     MatMenuModule,
     HomeRoutingModule,
+    LoadingModule
   ],
   providers: [
     {

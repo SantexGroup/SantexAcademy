@@ -24,7 +24,7 @@ export class AppComponent implements OnInit{
       this.views.title = ("Bienvenido! " + this.userData.userName + " " + this.userData.lastName);
       this.router.navigate([`/home/${this.userData.userId}/cv`])
     }else{
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
     }
     this.views.restart();
   }
