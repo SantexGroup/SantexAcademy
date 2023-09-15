@@ -26,7 +26,7 @@ module.exports = {
       midnightBlue: "#1E165F",
       dimGray: "#717375",
       redError: "#D90429",
-      darkGray: "#9ca3af",
+      DarkGray: "#9ca3af",
     },
     backgroundColor: {
       white: "#FFF",
@@ -43,6 +43,7 @@ module.exports = {
       bgOptionsRegister: "rgba(63, 40, 131, 0.36)",
       forestGreen: "#1B830A",
       red: "#FF0404",
+      DarkGray: "#9ca3af",
     },
     border: {
       white: "#FFF",

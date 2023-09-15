@@ -14,6 +14,7 @@ import { FormCoordinatorsRegisterComponent } from './components/form-coordinator
 import { CoordinatorRegisterComponent } from './pages/coordinator-register/coordinator-register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalStatusFormComponent } from './components/modal-status-form/modal-status-form.component';
+import { ModalOptionsLoginComponent } from './components/modal-options-login/modal-options-login.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,7 @@ const routes: Routes = [
     FormCoordinatorsRegisterComponent,
     CoordinatorRegisterComponent,
     ModalStatusFormComponent,
+    ModalOptionsLoginComponent,
   ],
   imports: [
     CommonModule,
