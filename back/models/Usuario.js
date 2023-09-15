@@ -1,8 +1,8 @@
-const { DataTypes } = require("sequelize");
-const { sequelize } = require("../config/db-config");
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../config/db-config');
 
 const Usuario = sequelize.define(
-  "usuario",
+  'usuario',
   {
     id: {
       autoIncrement: true,
@@ -12,7 +12,7 @@ const Usuario = sequelize.define(
     },
     fullName: {
       type: DataTypes.STRING(50),
-      allowNull: true,
+      allowNull: false,
     },
     phone: {
       type: DataTypes.STRING(20),
@@ -20,7 +20,7 @@ const Usuario = sequelize.define(
     email: {
       type: DataTypes.STRING(50),
       allowNull: false,
-      unique: "email_UNIQUE",
+      unique: 'email_UNIQUE',
     },
     password: {
       type: DataTypes.STRING(32),
@@ -41,8 +41,8 @@ const Usuario = sequelize.define(
       allowNull: false,
       primaryKey: true,
       references: {
-        model: "roles",
-        key: "id",
+        model: 'roles',
+        key: 'id',
       },
     },
     deletedAt: {
@@ -50,45 +50,41 @@ const Usuario = sequelize.define(
       allowNull: true,
     },
     basketRewardsId: {
-      /*Cesta recompensa */
+      /* Cesta recompensa */
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 0,
       references: {
-        model: "cestaRecompensas", // Nombre de la tabla referenciada
-        key: "id", // Columna referenciada
+        model: 'cestaRecompensas', // Nombre de la tabla referenciada
+        key: 'id', // Columna referenciada
       },
     },
   },
   {
     sequelize,
     paranoid: true,
-    tableName: "usuario",
+    tableName: 'usuario',
     timestamps: false,
     indexes: [
       {
-        name: "PRIMARY",
+        name: 'PRIMARY',
         unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "id" },
-          { name: "rolesId" },
-        ],
+        using: 'BTREE',
+        fields: [{ name: 'id' }, { name: 'rolesId' }],
       },
       {
-        name: "email_UNIQUE",
+        name: 'email_UNIQUE',
         unique: true,
-        using: "BTREE",
-        fields: [{ name: "email" }],
+        using: 'BTREE',
+        fields: [{ name: 'email' }],
       },
       {
-        name: "fk_usuario_roles1_idx",
-        using: "BTREE",
-        fields: [{ name: "rolesId" }],
+        name: 'fk_usuario_roles1_idx',
+        using: 'BTREE',
+        fields: [{ name: 'rolesId' }],
       },
-
     ],
-  }
+  },
 );
 
 module.exports = Usuario;
