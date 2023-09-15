@@ -19,9 +19,13 @@ export class LoginComponent {
     private router: Router, 
     private userService: UserService,
     public dataUser: UserDataService,
-    private views: NavBarService,
+    public views: NavBarService,
     private toastr: ToastrService
     ) { }
+
+  toRegister(){
+    this.router.navigate(['/registro']);
+  }  
 
   get nick() {
     return this.loginForm.controls.nick;

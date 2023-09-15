@@ -18,8 +18,6 @@ export class NavBarService{
 
   accountButton: boolean = true;
 
-  
-
   plusOne = true;
 
   saveButton = false;

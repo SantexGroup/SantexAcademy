@@ -72,7 +72,7 @@ import { ToastrModule } from 'ngx-toastr';
     LoadingModule,
     ToastrModule.forRoot({
       timeOut: 9000,
-      positionClass: 'toast-center-center',
+      positionClass: 'toast-top-center',
       preventDuplicates: true
     })
   ],

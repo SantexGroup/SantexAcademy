@@ -22,23 +22,10 @@
                         <a class="nav-link" href="#contacto">Contacto</a>
                     </li>
                 </ul>
-                <button mat-button [matMenuTriggerFor]="menu">Cuenta</button>
-                <mat-menu #menu="matMenu">
-                    <button routerLink="login" 
-                    (click)="views.navBarShow = true"
-                    (click)="views.hideLanding()" 
-                    class="botonesInicio" 
-                    mat-menu-item
-                    (click)="views.title = 'Iniciar Sesion'"
-                    >Iniciar Sesion</button>
-                    <button routerLink="registro" 
-                    (click)="views.navBarShow = true"
-                    (click)="views.hideLanding()" 
-                    class="botonesInicio" 
-                    mat-menu-item
-                    (click)="views.title = 'Registrarse'"
-                    >Registrarse</button>
-                </mat-menu>
+                <button mat-flat-button routerLink="login" (click)="views.navBarShow = true"
+                    (click)="views.hideLanding()" class="botonesInicio" (click)="views.title = 'Iniciar Sesion'">Iniciar
+                    Sesion
+                </button>
             </div>
         </div>
     </nav>
@@ -59,11 +46,8 @@
                 herramienta perfecta para presentar una imagen profesional y atractiva. Impulsa tu carrera con
                 confianza,
                 sabiendo que tu CV refleja lo mejor de ti.</p>
-            <button class="boton-creatucv"
-            routerLink="login"
-            (click)="views.hideLanding()"
-            (click)="views.navBarShow = true"
-            (click)="views.title = 'Iniciar Sesion'">
+            <button class="boton-creatucv" routerLink="login" (click)="views.hideLanding()"
+                (click)="views.navBarShow = true" (click)="views.title = 'Iniciar Sesion'">
                 Crea tu CV
             </button>
 
@@ -221,11 +205,8 @@
                 <h1>Enlaces directos</h1>
                 <a href="#nosotrosContacto">Preguntas Frecuentes</a>
                 <a href="#nosotrosContacto">Quienes somos</a>
-                <a routerLink="login" 
-                (click)="views.navBarShow = true"
-                (click)="views.title = 'Iniciar Sesion'"
-                (click)="views.hideLanding()"
-                >Iniciar sesion</a>
+                <a routerLink="login" (click)="views.navBarShow = true" (click)="views.title = 'Iniciar Sesion'"
+                    (click)="views.hideLanding()">Iniciar sesion</a>
             </div>
             <div class="fomulario-contacto">
                 <form class="formulario">

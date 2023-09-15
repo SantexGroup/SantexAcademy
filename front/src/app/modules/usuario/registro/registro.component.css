@@ -1,18 +1,20 @@
-.ng-valid:not(form).ng-touched {
-  border-left: 5px solid green;
-}
-
-.ng-invalid:not(form).ng-touched {
-  border-left: 5px solid red;
+.ng-invalid:not(form).ng-touched input{
+  -webkit-box-shadow: -14px 12px 19px -6px rgba(165, 62, 22, 0.8);
+  -moz-box-shadow: -14px 12px 19px -6px rgba(165, 62, 22, 0.8);
+  box-shadow: -14px 12px 19px -6px rgba(165, 62, 22, 0.8);
 }
 
 .form-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: auto;
+  margin: 2rem auto auto auto;
   padding: 35px;
   width: 400px;
+  border-radius: 14px;
+  -webkit-box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.57);
+  -moz-box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.57);
+  box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.57);
 }
 
 .form {

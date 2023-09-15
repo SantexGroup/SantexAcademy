@@ -18,5 +18,8 @@
     <button class="submit" type="button" (click)="submit(loginForm)" [disabled]="loginForm.status==='INVALID'">Iniciar
       Sesion
     </button>
+    <button class="submit" type="button" (click)="views.title = 'Registrarse'" (click)="toRegister()">
+      Registrate
+    </button>
   </form>
 </div>
