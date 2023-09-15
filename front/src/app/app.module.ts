@@ -9,6 +9,8 @@ import { ComponentsModule } from './components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MockUnsuccessfullyComponent } from './components/courses/courses-mock/mock-unsuccessfully.component';
 import { MockSuccessComponent } from './components/courses/courses-mock/mock-success.component';
+import { Error404Component } from './components/error404/error404.component';
+
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import { MockSuccessComponent } from './components/courses/courses-mock/mock-suc
     AppComponent,
     MockUnsuccessfullyComponent,
     MockSuccessComponent,    
+    Error404Component
+
   
   ],
   imports: [
@@ -23,9 +27,9 @@ import { MockSuccessComponent } from './components/courses/courses-mock/mock-suc
     AppRoutingModule,
     BrowserAnimationsModule,
     ComponentsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
