@@ -6,6 +6,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RegisteranswerComponent } from './registeranswer/registeranswer.component';
 import { RegisterbuttonComponent } from './registerbutton/registerbutton.component';
 import { RegisterformComponent } from './registerform/registerform.component';
+import { RegisterverificationComponent } from './registerverification/registerverification.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { RegisterformComponent } from './registerform/registerform.component';
     RegisteranswerComponent,
     RegisterbuttonComponent,
     RegisterformComponent,
+    RegisterverificationComponent,
   ],
   imports: [
     CommonModule,

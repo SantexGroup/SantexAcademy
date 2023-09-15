@@ -3,6 +3,7 @@ const emailService = require('./emailService');
 const cursoService = require('./curso');
 const nivelService = require('./nivel');
 const tipoDeUsuarioService = require('./tipodeusuario');
+const matriculaService = require('./matricula');
 
 module.exports = {
   userService,
@@ -10,4 +11,5 @@ module.exports = {
   cursoService,
   nivelService,
   tipoDeUsuarioService,
+  matriculaService,
 };

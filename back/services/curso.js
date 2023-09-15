@@ -1,17 +1,17 @@
 const { Curso, Nivel } = require('../models');
 
 const allCurso = async () => {
-  const cursos = await Curso.findAll({
-    where: {
-      estado: 'A',
-    },
-    include: [
-      {
-        model: Nivel,
-        as: 'nivel',
-      },
-    ],
-  });
+  const cursos = await Curso.findAll(
+    // where: {
+    //   estado: 'A',
+    // },
+    // include: [
+    //   {
+    //     model: Nivel,
+    //     as: 'nivel',
+    //   },
+    // ],
+  );
   return cursos;
 };
 

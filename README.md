@@ -1,10 +1,11 @@
-#Novedades
-Ultima fusión en rama develop: Martes 5 de agosto de 2023 21:01 hs
+# Novedades
+Ultima fusión en rama develop: Miércoles 13 de septiembre de 2023 13:18 hs
 Se trabajó:
-Se agrega footer by marianomiranda
+- se cambia verificación de mail para que se gestine desde el front y no desde el backend
 
 
 Previusly:
+Se agrega footer by marianomiranda
 Se agrega gestion de cursos para crud en front de Administrador
 unificación de formularios de registro y validaciones de campos
 se agrego validación de password y su confirmación

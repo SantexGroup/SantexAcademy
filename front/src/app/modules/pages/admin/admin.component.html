@@ -64,7 +64,14 @@
                         </td>
                         <td>{{ user?.tipodeusuario?.nombre }}</td>
                         <td>
+<<<<<<< HEAD
                             <span [appEstadoUsuario]="user.activoactualmente"></span>
+=======
+                            {{ user.idtipodeusuario }}
+                        </td>
+                        <td>
+                            {{ user.estado }}
+>>>>>>> juanjoDiaz
                         </td>
                         <td class="text-end">
                             <a class="btn btn-sm btn-primary" [routerLink]="['/users/show/', user.id]">Ver</a>

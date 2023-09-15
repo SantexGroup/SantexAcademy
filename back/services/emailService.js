@@ -1,29 +1,48 @@
-const { Resend } = require('resend');
-const resend = new Resend('re_EshLx1Eb_Eo1dtF2zTLxa6WZWmggP9XwF');
+const nodemailer = require('nodemailer');
+const fs = require('fs');
 
-//resend.domains.create({ name: 'example.com' });
-
-const sendConfirmationEmail = async (toEmail, username) => {
-  try {
-    const data = await resend.emails.send({
-      from: 'Academy In NOC <onboarding@resend.dev>',
-      to: [toEmail, 'delivered@resend.dev'],
-      subject: 'Confirmación de registro',
-      html: `
-        <p>Hola ${username},</p>
-        <p>Gracias por registrarte en nuestro sitio.</p>
-        <p>Haga clic <a href="https://localhost4200/confirmacion? codigo="$"{codigo}">aquí</a> para confirmar su registro.</p>
-      `,
-    });
-
-    console.log(data);
-  } catch (error) {
-    console.error(error);
-  }
+// Configuracion SMTP creando objeto transporter
+const createTrans = () => {
+  const transport = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    secure: process.env.SMTP_SECURE === 'true',
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
+  return transport;
 };
 
-module.exports = {
-  sendConfirmationEmail,
+// Funcion para enviar correo de confirmacion
+const sendMail = (user, userCode, userEmail, verificationLink) => {
+  // Datos del transporte creado
+  const transporter = createTrans();
+  // Conecta a traves de emailHtml este archivo y la plantilla html para pasar username
+  const emailHtml = fs.readFileSync('./themes/email/email-register.html', 'utf8');
+  // Reemplazar en html {{loQueDice}} con el nombre de usuario real
+  const personalizedHtml = emailHtml.replace(/{{username}}/g, user.username)
+                                    .replace(/{{nombre}}/g, user.nombre)
+                                    .replace(/{{verificationLink}}/g, verificationLink)
+                                    .replace(/{{codeRegister}}/g, user.codeRegister)
+                                    .replace(/{{password}}/g, user.password);                           
+  // Datos del correo electronico
+  const mailOptions = {
+    from: '"Academy del NOC" <academyinnoc@gmail.com>',
+    to: user.email,
+    subject: `Confirmación de Registro para ${user.username}`,
+    html: `<style> ${fs.readFileSync('./themes/email/email-register.css', 'utf8')} </style>
+    <div>${personalizedHtml}</div>`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(`Correo enviado: ${info.response}`);
+    }
+  });
 };
 
-
+module.exports = { sendMail };

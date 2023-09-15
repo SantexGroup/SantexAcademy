@@ -34,6 +34,8 @@ export class CreateComponent implements OnInit {
     createdAt: new Date,
     updatedAt: new Date,
     tipodeusuario: this.tipoUsuarioNvo,
+    verificationCode: false,
+    codeRegister: ''
   }
 
   tipoDeUsuarioSeleccionado: number | undefined = undefined;

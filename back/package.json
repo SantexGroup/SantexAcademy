@@ -17,6 +17,7 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "debug": "^4.3.4",
     "dotenv": "^8.6.0",
     "envalid": "^7.3.1",
@@ -24,6 +25,7 @@
     "express-session": "^1.17.3",
     "express-validator": "6.6.1",
     "helmet": "^4.6.0",
+    "jsonwebtoken": "^9.0.2",
     "lint-staged": "^10.5.4",
     "moment": "^2.29.4",
     "morgan": "~1.10.0",
@@ -37,24 +39,8 @@
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
-    "eslint": "^7.27.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.27.5",
     "husky": "^4.3.8",
     "nodemon": "^3.0.1",
     "sequelize-cli": "^6.6.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": [
-        "lint-staged"
-      ]
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "./node_modules/.bin/eslint --fix"
-
-    ]
   }
 }
