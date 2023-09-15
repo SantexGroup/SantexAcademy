@@ -16,6 +16,7 @@ const { Products } = require('../models') //--> nombre con el que se creo el mod
  */
 productscontroller.create =  async (req, res) => {
     try {
+      console.log("body",req.body)
       await Products.create(req.body);
       res.status(201).json("Product correctly created");
       } catch (error) {
