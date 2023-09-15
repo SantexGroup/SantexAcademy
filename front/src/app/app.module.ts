@@ -20,7 +20,6 @@ import { HomeModule } from './modules/home/home.module';
 import { authModule } from './modules/auth/auth.module';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
-import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
 import { VolunteersComponent } from './pages/volunteers/volunteers.component';
 import { VolunteerFiltersComponent } from './components/volunteer-filters/volunteer-filters.component';
 import { VolunteerCardComponent } from './components/volunteer-card/volunteer-card.component';
