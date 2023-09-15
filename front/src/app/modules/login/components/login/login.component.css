@@ -1,14 +1,15 @@
 .wrapper {
-  margin-top: 0; 
+  margin-top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 68vh;  
+  height: 90%;
+  background: var(--background-gradient);
 }
 
 .body {
   text-align: center;
-  margin-top: 0; 
+  margin-top: 0;
 }
 
 .form-container {
@@ -19,7 +20,7 @@
 }
 
 input {
-    width: 100%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -27,6 +28,6 @@ input {
 }
 
 .btn-custom {
-  background-color: VAR(--color-primary); 
-  color: var(--color-0); 
+  background-color: VAR(--color-primary);
+  color: var(--color-0);
 }
