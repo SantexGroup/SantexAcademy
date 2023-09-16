@@ -33,9 +33,9 @@ export class FormInscrCoursesComponent implements OnInit{
               private fb: FormBuilder){
       
     this.recordForm = this.fb.group({
-        firstName: ['', [Validators.required, Validators.minLength(3)], Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/) ],
-        lastName: ['',[Validators.required, Validators.minLength(3)]],
-        idCard: ['',[Validators.required, Validators.pattern(/^[0-9]{8}$/), Validators.minLength(8), Validators.maxLength(8)]],
+        firstName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]{3,}$/)]],
+        lastName: ['',[Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\s]{3,}$/)]],
+        idCard: ['',[Validators.required, Validators.pattern(/^[0-9]{8}$/)]],
         email: ['',[Validators.required, Validators.email, this.validateEmailDomain]],
         phone: ['',[Validators.required, this.validateNumberPhone]],
         date: ['',[Validators.required]],
@@ -45,8 +45,8 @@ export class FormInscrCoursesComponent implements OnInit{
   //valido que despues del @ cumpla con el dominio de mail conocido o personalizado y no cualquier dato
   validateEmailDomain(control: FormControl): { [key: string]: any } | null {
     const email = control.value;
-    const emailPattern = /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const allowedDomains = ['gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com'];
+    const emailPattern = /^[a-zA-Z0-9_-]+@/;
+    const allowedDomains = ['gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com', '.com.ar', 'ar'];
     if (email) {
       const parts = email.split('@');
       if (parts.length === 2) {
@@ -62,14 +62,13 @@ export class FormInscrCoursesComponent implements OnInit{
   // valido que el telefono cumpla con caracteristicas pais, provincia, ciudad
   validateNumberPhone(control: FormControl) {
 
-    const phonePattern1 = /^\d{2}\s9\s\d{3}\s\d{3}-\d{4}$/; // Aquí puedes definir tu patrón de número telefónico
+    const phonePattern1 = /^\d{2}\s9\s\d{3}\s\d{3}-\d{4}$/;
     const phonePattern2 = /^[0-9 -]+$/;
     const isValid1 = phonePattern1.test(control.value);
     const isValid2 = phonePattern2.test(control.value);
     if(control.value === '' || !isValid1 || !isValid2) {
       return { invalidPhone: true }
     }
-    // return isValid ? null : { invalidPhone: true };
     return null
   }
 
@@ -96,22 +95,19 @@ export class FormInscrCoursesComponent implements OnInit{
   get schedule(){
     return this.recordForm.get('schedule')
   }
-  get button(){
-    return this.recordForm.get('button')
-  }
 
   onSubmit(){
-    console.log('onSubmit() ejecutada')
-    console.log('Formulario válido:', this.recordForm.valid);
-    console.log('Formulario value:', this.recordForm.value);
     if(this.recordForm.valid){
       console.log('Formulario con datos',this.recordForm.value)
       this.router.navigate(['/pay-transf-course'])
+      // Después de procesar, resetea el formulario
+      this.recordForm.reset();
       //return this.recordForm.value
     }else{
-      //this.addSingle()
       alert('Debe completar los campos')
     }
+
+
   }
 
     //para agregar el curso elejido

@@ -9,66 +9,86 @@
             <div class="field pb-4">
 
                 <label for="firstName" class="block font-bold">Nombre<span class="text-red-600 ml-2">*</span></label>
-                <input type="text" pInputText placeholder="Nombre" 
-                formControlName="firstName" 
+                <input type="text" pInputText placeholder="Nombre" formControlName="firstName"
+
                 [class.valid]="firstName.valid && firstName.dirty || firstName.touched" 
                 [class.invalid]="firstName.invalid && firstName.dirty || firstName.touched">
-                <span class="text-red-600" *ngIf="firstName?.invalid && firstName?.touched && firstName?.hasError('required')">campo obligatorio</span>
-                <span class="text-red-600" *ngIf="firstName?.touched && firstName?.errors?.['minlength']">
-                    Debe ingresar un minimo {{firstName?.errors?.['minlength'].requiredLength}} caracteres</span>
-                <span class="text-red-600" *ngIf="firstName?.invalid && firstName?.touched && firstName?.hasError('pattern')">
-                    Solo puede ingresar letras</span>   
+
+                <span class="text-red-600" *ngIf="firstName?.invalid && firstName?.touched && 
+                firstName?.hasError('required')">campo obligatorio</span>
+
+                <span class="text-red-600" *ngIf="firstName?.invalid && firstName?.hasError('pattern')">
+                    * Solo puede ingresar letras<br>* Minimo 3 caracteres </span>
+                
             </div>
+            
             <div class="field pb-4">
-    
                 <label for="lastName" class="block font-bold">Apellido<span class="text-red-600 ml-2">*</span></label>
                 <input type="text" pInputText placeholder="Apellido" formControlName="lastName"
+                
                 [class.valid]="lastName.valid && lastName.dirty || lastName.touched" 
                 [class.invalid]="lastName.invalid && lastName.dirty || lastName.touched">
-                <span class="text-red-600" *ngIf="lastName?.invalid && lastName?.touched && lastName?.hasError('required')">campo obligatorio</span>
-                <span class="text-red-600" *ngIf="lastName?.touched && lastName?.errors?.['minlength']">
-                    Debe ingresar un minimo {{lastName?.errors?.['minlength'].requiredLength}} caracteres</span>
+                
+                <span class="text-red-600" *ngIf="lastName?.invalid && lastName?.touched && 
+                lastName?.hasError('required')">campo obligatorio</span>
+                
+                <span class="text-red-600" *ngIf="lastName?.invalid && lastName?.hasError('pattern')" >
+                    * Solo admite letras <br>* Minimo 3 caracteres</span>
             </div>
+           
             <div class="field pb-4">
-    
                 <label for="idCard" class="block font-bold">DNI<span class="text-red-600 ml-2">*</span></label>
-                <input type="number" pInputText placeholder="99999999" formControlName="idCard" 
+                <input type="" pInputText placeholder="99999999" formControlName="idCard" 
+
                 [class.valid]="lastName.valid && lastName.dirty || lastName.touched" 
                 [class.invalid]="lastName.invalid && lastName.dirty || lastName.touched">
-                <span class="text-red-600" *ngIf="idCard?.hasError('pattern')">El campo debe contener 8 caracteres</span>
-                <span class="text-red-600" *ngIf="idCard?.invalid && idCard?.touched && idCard?.hasError('required')">campo obligatorio</span>                
+
+                <span class="text-red-600" *ngIf="idCard?.hasError('pattern')">
+                    * Solo admite numero <br>* Minimo a maximo 8 caracteres</span>
+
+                <span class="text-red-600" *ngIf="idCard?.invalid && idCard?.touched 
+                && idCard?.hasError('required')">campo obligatorio</span>                
             </div>
         </div>
 
         <div class="flex flex-column lg:flex-row lg:gap-5 pb-4">
             <div class="field ">
-    
                 <label for="email" class="block font-bold">Email<span class="text-red-600 ml-2">*</span></label>
                 <input type="email" pInputText placeholder="ejemplo@gmail.com" formControlName="email"
+
                 [class.valid]="email.valid && email.dirty || email.touched" 
                 [class.invalid]="email.invalid && email.dirty || email.touched">
-                <span class="text-red-600" *ngIf="email?.invalid && email?.touched && email?.hasError('required')">campo obligatorio</span>
-                <span class="text-red-600" *ngIf="email.hasError('invalidDomain')">Dominio de correo inválido</span>
+
+                <span class="text-red-600" *ngIf="email?.invalid && email?.touched && 
+                email?.hasError('required')">campo obligatorio</span>
+
+                <span class="text-red-600" *ngIf="email?.invalid && email.hasError('invalidDomain')">
+                    Formato o dominio inválido</span>
                 
             </div>
             <div class="field ">
-
                 <label for="phone" class="block font-bold">Telefono<span class="text-red-600 ml-2">*</span></label>
                 <input type="text" pInputText placeholder="(+xx) x xxx xxx-xxxx" formControlName="phone"
+                
                 [class.valid]="phone.valid && phone.dirty || phone.touched" 
                 [class.invalid]="phone.invalid && phone.dirty || phone.touched">
-                <span class="text-red-600" *ngIf="phone?.touched && phone?.hasError('required')">campo obligatorio</span>
-                <span class="text-red-600" *ngIf="phone?.dirty && phone?.hasError('invalidPhone')">Debe ingresar solo numeros 
-                    <br> formato valido (54) 9 371 351-4576</span>
+                
+                <span class="text-red-600" *ngIf="phone?.touched && phone?.hasError('required')">
+                    campo obligatorio</span>
+
+                <span class="text-red-600" *ngIf="phone?.dirty && phone?.hasError('invalidPhone')">
+                 *solo admite numeros <br> * formato valido (54) 9 371 351-4576</span>
 
             </div>
             <div class="field ">
-
                 <label for="birthdate" class="block font-bold">Fecha de Nacimiento<span class="text-red-600 ml-2">*</span></label>
-                <input class="" type="date" pInputText formControlName="date"
+                <input class="" pInputText type="date" formControlName="date"
+                
                 [class.valid]="date.valid && date.dirty || date.touched" 
                 [class.invalid]="date.invalid && date.dirty || date.touched">
-                <span class="text-red-600" *ngIf="date?.touched && date?.hasError('required')">campo obligatorio</span>
+                
+                <span class="text-red-600" *ngIf="date?.touched && date?.hasError('required')">
+                    Campo obligatorio</span>
             </div>
         </div>
 
@@ -81,15 +101,15 @@
                 <label for="birthdate" class="block font-bold">Horario<span class="text-red-600 ml-2">*</span></label>
     
                 <select class="select p-3" formControlName="schedule"
+                
                 [class.valid]="schedule.valid && schedule.dirty || schedule.touched" 
                 [class.invalid]="schedule.invalid && schedule.dirty || schedule.touched">
                     <option class="" value="" selected>Seleccione el Horario</option>
                     <option value="manana">Mañana</option>
                     <option value="tarde">Tarde</option>
                 </select>
-                <!-- <p-treeSelect class="md:w-20rem w-full" containerStyleClass="w-full" 
-                [options]="nodes" placeholder="Seleccione el Horario" formControlName="schedule"></p-treeSelect> -->
-                <span class="text-red-600"  *ngIf="schedule?.touched && schedule?.hasError('required')">
+
+                <span class="text-red-600" *ngIf="schedule?.touched && schedule?.hasError('required')">
                     campo obligatorio</span>
             </div>
         </div>
@@ -97,18 +117,11 @@
         <div class="card flex flex-column gap-4 lg:flex-row lg:justify-content-around pt-7">
             <a routerLink="/" pButton label="Cancelar" type="submit" class="font-bold text-xl w-12 lg:w-3"></a>
             <button 
-            type="submit" class="font-bold text-xl w-12 lg:w-3 bg-primary border-round py-3" (click)="addSingle()">Siguiente</button>
+            type="submit" class="font-bold text-xl w-12 lg:w-3 bg-primary border-round py-3" >Siguiente</button>
            
         </div>
 
     </form>
     
 </div>
-
-
-
-
-
-
-
 
