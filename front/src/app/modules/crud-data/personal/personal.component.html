@@ -37,7 +37,7 @@
 
       <div class="botonera">
         <div class="botones">
-            <button class="plus" type="submit" *ngIf="views.plusOne">
+            <button class="plus" type="submit" *ngIf="views.plusOne" (click)="updateUser(personalForm)">
                 <img src="/assets/Imagenes/plus.png" alt="+">
             </button>
             <button 
