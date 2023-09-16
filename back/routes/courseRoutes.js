@@ -12,4 +12,8 @@ router.route('/:id')
     .put(courseController.updateCourse)
     .delete(courseController.deleteCourse);
 
+router.route('/:id/user')
+    .get(courseController.getUsers)
+    .post(courseController.createUser);
+
 module.exports = router;
