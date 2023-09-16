@@ -1,4 +1,5 @@
 <form class="flex flex-column align-items-center pt-5 pb-5" [formGroup]="formPay" (ngSubmit)="sendTransfer()">
+    
     <h1 class="text-2xl lg:text-5xl text-center pb-2">Estas a un paso de obtener tu Curso</h1>
 
     <div class="container-pay flex flex-column lg:flex-row justify-content-around w-8">
@@ -21,62 +22,87 @@
         <div class="container-sender pt-7 lg:pt-0">
             <h2 class="text-2xl pb-3">Comprobante</h2>
             <div class="mb-4">
-                <p>CUIT/CUIL del titular de la cuenta</p>
-                <input class="surface-200 " type="text" pInputText formControlName="cuit" />
+                <p>CUIT/CUIL del titular de la cuenta 
+                    <span class="text-red-600">*</span></p>
+                <input class="surface-200 " type="text" pInputText formControlName="cuit" 
+                
+                [class.valid]="cuit.valid && cuit.dirty || cuit.touched"
+                [class.invalid]="cuit.invalid && cuit.dirty || cuit.touched">
+                
                 <span class="text-red-600" *ngIf="cuit?.invalid && cuit?.touched 
                 && cuit?.hasError('required')">campo obligatorio</span>
+                <span class="text-red-600" *ngIf="cuit?.invalid && cuit?.hasError('pattern')">* Solo admite numeros y guiones <br>
+                *Formato correcto ej: 30-78594205-9 </span>
             </div>
             <div class="mb-4">
-                <p>Nombre completo del titular de la cuenta</p>
-                <input class="surface-200" type="text" pInputText formControlName="name" />
+                <p>Nombre completo del titular de la cuenta 
+                    <span class="text-red-600">*</span></p>
+                <input class="surface-200" type="text" pInputText formControlName="name" 
+                
+                [class.valid]="name.valid && name.dirty || name.touched"
+                [class.invalid]="name.invalid && name.dirty || name.touched"/>
+                
                 <span class="text-red-600" *ngIf="name?.invalid && name?.touched 
                 && name?.hasError('required')">campo obligatorio</span>
+                <span class="text-red-600" *ngIf="name?.invalid && name?.hasError('pattern')">
+                    * Solo admite letras <br>* Minimo 3 caracteres"></span>
             </div>
             <div class="mb-4">
-                Fecha de la transferencia
-                <input class="surface-200" type="date" pInputText formControlName="date" />
+                <p>Fecha de la transferencia <span class="text-red-600">*</span></p>
+                <input class="surface-200" type="date" pInputText formControlName="date" 
+                
+                [class.valid]="date?.valid && date?.dirty || date.touched"
+                [class.invalid]="date?.invalid && date?.dirty || date.touched"/>
+                
                 <span class="text-red-600" *ngIf="date?.invalid && date?.touched 
                 && date?.hasError('required')">campo obligatorio</span>
             </div>
             <div class="mb-4">
-                <p>Importe</p>
-                <input class="surface-200" type="text" pInputText formControlName="amount"/>
+                <p>Importe <span class="text-red-600">*</span></p>
+                <input class="surface-200" type="text" pInputText formControlName="amount"
+                
+                [class.valid]="amount?.valid && amount?.dirty && amount?.touched"
+                [class.invalid]="amount?.invalid && amount?.dirty || amount?.touched"/>
+                
+                
                 <span class="text-red-600" *ngIf="amount?.invalid && amount?.touched 
                 && amount?.hasError('required')">campo obligatorio</span>
+                <span class="text-red-600" *ngIf="amount?.invalid && amount?.hasError('pattern')">
+                    * Solo admite maximo 7 digitos<br>*Formato Ej: 127999.99 o 999.99</span>
             </div>
             <div class="card flex flex-column justify-content-center" >
-                <p class="pb-2">¿Envio Comprobante?</p>
-                <div class="flex flex-wrap gap-3">
-                    <div class="flex align-items-center" >
+                <p class="pb-2">¿Envio Comprobante? <span class="text-red-600">*</span></p>
+                <div class="flex flex-wrap gap-3 border-solid border-blue-700"
+                
+                [class.valid]="check?.valid && check?.dirty || check.touched"
+                [class.invalid]="check?.invalid && check?.dirty || check.touched">
+
+                    <div class="flex align-items-center " >
                         <p-radioButton name="option1" value="si" formControlName="check"
-                        [(ngModel)]="transferOption" inputId="option1"></p-radioButton>
+                        [(ngModel)]="transferOption" inputId="option1" ></p-radioButton>
                         <label for="option1" class="ml-2">SI</label>
                     </div>
                     
                     <div class="flex align-items-center" >
                         <p-radioButton name="option2" value="no" formControlName="check"
-                        [(ngModel)]="transferOption" inputId="option2"></p-radioButton>
+                        [(ngModel)]="transferOption" inputId="option2" ></p-radioButton>
                         <label for="option2" class="ml-2" >NO</label>
                     </div>
+
                 </div>
                 
             </div>
-            <span class="text-red-600" *ngIf="check?.invalid && check?.touched 
-            && check?.hasError('required')">campo obligatorio</span>
-            
-            <!-- <div class="card flex justify-content-center gap-3" disabled>
-                <p-checkbox name="groupname" value="val1" label="SI"  formControlName="check"></p-checkbox>
-                <p-checkbox name="groupname" value="val2" label="NO"  formControlName="check"></p-checkbox>
-            </div>
-            <span class="text-red-600" *ngIf="check?.invalid && check?.touched 
-            && check?.hasError('required')">campo obligatorio</span> -->
+            <span class="text-red-600" *ngIf="check?.invalid && check?.hasError('required')">
+                campo obligatorio</span>
+        
             
         </div>
     </div>
     <div class="btns w-full lg:w-8 flex justify-content-around pt-5">
-        <a routerLink="/form-inscr-courses" pButton label="Volver" class="surface-0 border-400 text-bluegray-600 pr-6 pl-6 text-xl"></a>
-        <!-- <a pButton label="Enviar" type="submit" class="pr-6 pl-6 text-xl"></a> -->
-        <button class="bg-primary border-round pr-6 pl-6 text-xl font-semibold">Enviar</button>
+        <a routerLink="/form-inscr-courses/:id" pButton label="Volver" 
+        class="surface-0 border-400 text-bluegray-600 pr-6 pl-6 text-xl"></a>
+        <button type="submit" class="bg-primary border-round 
+        pr-6 pl-6 text-xl font-semibold">Enviar</button>
     </div>
 
 </form>

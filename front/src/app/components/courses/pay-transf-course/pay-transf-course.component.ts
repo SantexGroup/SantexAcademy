@@ -8,19 +8,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./pay-transf-course.component.scss']
 })
 export class PayTransfCourseComponent {
-  transferOption: string = 'si';
+  // comienza sin ser seleccionado osea nula
+  transferOption: string | null = null;
+
   formPay: any
-  constructor(private fb: FormBuilder, 
-              private router: Router) {
+  constructor(private router: Router,
+              private fb: FormBuilder) {
     this.formPay = this.fb.group({
-      cuit: ['', [Validators.required]],
-      name: ['', [Validators.required, Validators.minLength(3)]],
+      cuit: ['', [Validators.required, Validators.pattern(/^[0-9\-]{13}$/)]],
+      name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]{3,}$/)]],
       date: ['', [Validators.required]],
-      amount: ['', [Validators.required]],
+      amount: ['', [Validators.required, Validators.pattern(/^(?:\d{5,6}(?:\.\d{2})?)?$/)]],
       check: ['', [Validators.required]]
     })
   }
-
+  //los get que me traen la info de los inputs para validar los campos del formulario
   get cuit() {
     return this.formPay.get('cuit')
   }
@@ -36,7 +38,7 @@ export class PayTransfCourseComponent {
   get check() {
     return this.formPay.get('check')
   }
-
+ // validacion para ir al mock
   validationMock() {
     if(this.transferOption === 'si'){
       this.router.navigate(['/success']);
@@ -44,16 +46,22 @@ export class PayTransfCourseComponent {
       this.router.navigate(['/unsuccessfully']);
     }
   }
+  //limpia el formulario
+  clearInput(){
+    this.formPay.reset()
+  }
+  // envio los datos delformulario
   sendTransfer() {
-    console.log(this.formPay.value)
-    this.validationMock()
+    //valido que los campos esten llenos 
     if(this.formPay.valid){
-      console.log(this.formPay.value)
+      //envio los datos
+      console.log('Datos de la transferencia: ',this.formPay.value)
+      // Después de procesar, resetea el formulario
+      this.clearInput()
+      //depende la opcion elejida va a success o unsuccessfully
+      this.validationMock()
     }else{
       alert('llenar los campo')
     }
   }
-
-
-
 }
