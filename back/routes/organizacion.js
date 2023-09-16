@@ -7,11 +7,12 @@ const  { verifyToken , isAdmin, isOrg  }  = require('../middleware/authMiddlewar
 
 
 //orgRouter.get("/", orgController.getOrganizations);
-orgRouter.get("/",verifyToken, isOrg, orgController.getOrganizationByCriteria);
+orgRouter.get("/",verifyToken, isAdmin, orgController.getOrganizationByCriteria);
 orgRouter.get("/search", orgController.getOrganizationByLocation);
-orgRouter.put("/update/:id",verifyToken, orgController.updateOrganizationById);
+orgRouter.put("/:id",verifyToken, isOrg, orgController.updateOrganizationById);
 
-orgRouter.delete("/delete/:id", verifyToken, isAdmin, orgController.deleteOrganizationById);
+orgRouter.delete("/me/:id", verifyToken, isOrg, orgController.deleteOrganizationById);
+orgRouter.delete("/:id", verifyToken, isAdmin, orgController.deleteOrganizationById);
 
 module.exports = orgRouter;
 
