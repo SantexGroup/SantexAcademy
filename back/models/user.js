@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       models.User.belongsTo(models.TipoDeUsuario, {
         foreignKey: 'idtipodeusuario',
-        target: 'id',
+        targetKey: 'id', // Esto debe ser la clave primaria del modelo tipodeusuario
       });
     }
   }

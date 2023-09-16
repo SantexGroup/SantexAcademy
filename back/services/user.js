@@ -2,12 +2,12 @@ const { User, TipoDeUsuario } = require('../models');
 
 const allUser = async () => {
   const users = await User.findAll({
-    //include: [
-     //{
-      //model: TipoDeUsuario,
-      //as: 'tipodeusuario',
-      //,
-    //],
+    include: [
+     {
+      model: TipoDeUsuario,
+      as: 'TipoDeUsuario'
+     }
+    ],
     where: {
       estado: 'A',
     },
@@ -18,12 +18,12 @@ const allUser = async () => {
 const getUser = async (id) => {
   try {
     const user = await User.findByPk(id, {
-      //include: [
-        //{
-          //model: TipoDeUsuario,
-          //as: 'tipodeusuario',
-        //},
-      //],
+      include: [
+        {
+         model: TipoDeUsuario,
+         as: 'TipoDeUsuario'
+        }
+       ],
     });
     return user;
   } catch (error) {

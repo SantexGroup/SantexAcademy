@@ -17,7 +17,7 @@ export interface User {
     activoactualmente: boolean;
     estado: string;
     idtipodeusuario: number;
-    //tipodeusuario?: TipoDeUsuario;
+    TipoDeUsuario?: TipoDeUsuario;
     createdAt?: Date;
     updatedAt?: Date;
     verificationCode: boolean;
