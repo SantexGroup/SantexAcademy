@@ -41,7 +41,7 @@ export class PersonalComponent implements OnInit {
   // * Forumulario de datos personales
   getUser() { 
     this.userService.getUser(this.userData.userId).subscribe({
-      next: (data) => { console.log (data)
+      next: (data) => { console.log ("get user: ", data)
         this.personalForm.patchValue({
           firstName: data.name,
           lastName: data.lastName,
@@ -64,11 +64,13 @@ export class PersonalComponent implements OnInit {
   
   updateUser(personalForm: FormGroup){ 
     //** ???
+    this.user.nick = ""
     this.user.name = personalForm.get('firstName')?.value;
     this.user.lastName = personalForm.get('lastName')?.value;
-    this.user.email = personalForm.get('email')?.value;
+    this.user.email = "";
     this.user.phone = personalForm.get('phone')?.value;
     this.user.bornDate = personalForm.get('bornDate')?.value;
+    console.log("bornDate", this.user.bornDate)
     this.user.pictureLink = personalForm.get('pictureLink')?.value;
 
     this.userService.updateUser(this.userData.userId, this.user).subscribe({

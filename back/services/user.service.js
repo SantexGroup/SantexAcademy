@@ -86,7 +86,7 @@ async function getUser(id) {
 
 // Servicio que actualiza datos de un usuario
 async function updateUser(id, {
-  name, lastName, phone, email, dateBorn, pictureLink,
+  name, lastName, phone, /* email,*/ bornDate, pictureLink,
 }) {
   // Buscar al usuario en la base de datos por su ID
   const user = await User.findByPk(id);
@@ -100,9 +100,9 @@ async function updateUser(id, {
   const userEdited = await user.update({
     name,
     lastName,
-    email,
+    /* email, */
     phone,
-    dateBorn,
+    bornDate,
     pictureLink,
   });
 
