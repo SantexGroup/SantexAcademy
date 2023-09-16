@@ -1,0 +1,197 @@
+@use '../../../scss/utilities/barrel' as *;
+
+.section__contact {
+
+    display: grid;
+    place-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-top: 1px solid $wireframe;
+    border-bottom: 1px solid $wireframe;
+
+    .section__ubication {
+
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        .title__where {
+
+            font-size: 1.5rem;
+
+        }
+        .title__ubication {
+
+            color: #3B474E;
+            text-decoration: underline;
+            max-width: 45ch;
+            margin-top: 2rem;
+
+        }
+
+        .section__icons {
+
+            display: flex;
+            flex-direction: column;
+            margin-top: 2rem;
+            gap: 2rem;
+
+            .icons__contact {
+
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                i {
+
+                    display: flex;
+                    align-items: center;
+
+                }
+
+            }
+
+        }
+
+    }
+
+    .section__form {
+
+        border: 1px solid $wireframe;
+        padding: 2rem;
+        width: 100%;
+        height: auto;
+        margin-top: 2rem;
+
+        .title__contact {
+
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 600;
+
+        }
+
+        .form__send {
+
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            .errors {
+
+                color: red;
+
+            }
+
+            label {
+
+                font-weight: 500;
+
+                .required__field {
+
+                    color: red;
+
+                }
+
+            }
+
+            input,select {
+
+                margin-top: .7rem;
+
+
+            }
+
+            .input__button--name {
+
+                border: 1px solid $wireframe;
+                padding: .5rem;
+                width: 100%;
+                border-radius: .4rem;
+
+
+            }
+
+            .input__button--email {
+
+                border: 1px solid $wireframe;
+                padding: .5rem;
+                width: 100%;
+                border-radius: .4rem;
+
+            }
+
+            .options__consultation {
+
+                border: 1px solid $wireframe;
+                padding: .5rem;
+                width: 35%;
+                border-radius: .4rem;
+
+
+            }
+
+            .text__area--message {
+
+                padding: 1rem;
+                resize: none;
+                border: 1px solid $wireframe;
+                width: 100%;
+                border-radius: .4rem;
+                transition: border 5s ease;
+
+
+                &::placeholder {
+
+                    color: $wireframe;
+
+                }
+
+            }
+
+            .button__form--send {
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: $wireframe;
+                padding: 1rem;
+                color: white;
+                width: 100%;
+                cursor: pointer;
+                font-weight: 700;
+    
+            }
+
+        }
+
+    }
+
+}
+
+
+@media screen and (min-width: $tablet) {
+
+    .section__contact {
+
+        .section__form {
+
+            max-width: $tablet;
+    
+        }
+
+    }
+
+}
+
+
+@media screen and (min-width: $laptop) {
+
+    .section__contact {
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+
+    }
+
+}

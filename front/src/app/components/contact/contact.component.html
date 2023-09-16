@@ -1,1 +1,76 @@
-<p>contact works!</p>
+<section class="section__contact">
+
+    <article class="section__ubication">
+
+        <h1 class="title__where">¿Donde nos encontramos?</h1>
+        <p class="title__ubication">Estamos ubicados en la ciudad de Cruz del Eje, provincia de Córdoba, República Argentina</p>
+
+        <div class="section__icons">
+
+            <address class="icons__contact"><i class="pi pi-map-marker" style="font-size: 1rem"></i>Mitre 757, Cruz del Eje, Argentina</address>
+            <span class="icons__contact"><i class="pi pi-phone" style="font-size: 1rem"></i>3549636800</span>
+            <span class="icons__contact"><i class="pi pi-envelope" style="font-size: 1rem"></i>incubadoradelnoc@gmail.com</span>
+
+        </div>
+
+    </article>
+
+    <article class="section__form">
+
+        <h2 class="title__contact">Contacto</h2>
+
+        <form class="form__send" (ngSubmit)="sendEmail($event)" [formGroup]="myForm">
+
+            <label for="name">
+                Nombre completo <span class="required__field">*</span>
+                <input type="text" name="fullName" id="fullNname" class="input__button--name" placeholder="Ingrese su nombre..." formControlName="fullName">
+            </label>
+
+            <p *ngIf="fullName?.touched && fullName?.hasError('required')" class="errors">* El nombre es obligatorio</p>
+
+            <label for="email">
+                Email <span class="required__field">*</span>
+                <input type="email" name="email" id="email" class="input__button--email" placeholder="Ingrese su email..." formControlName="email">
+            </label>
+
+            <p *ngIf="email?.touched && email?.hasError('required')" class="errors">* El email es obligatorio</p>
+            <p *ngIf="email?.touched && email?.hasError('invalidDomain')" class="errors">
+                El formato de correcto electrónico no es válido. Solo se aceptan los siguientes dominios: gmail.com, hotmail.com, yahoo.com y outlook.com
+            </p>
+            <p *ngIf="email?.dirty && email?.hasError('email')" class="errors">
+                El formato del correo electrónico no es válido
+            </p>
+
+
+            <label for="options__consultation">
+
+                Metodos de consulta (Opcional)
+                <select name="options__consultation" class="options__consultation" formControlName="options">
+
+                    <option hidden selected>Métodos de consulta</option>
+                    <option value="Error en el sistema">Error en el sistema</option>
+                    <option value="Precio de los cursos">Precio de los cursos</option>
+    
+    
+                </select>
+
+            </label>
+
+
+            <label>
+                Mensaje:
+                <textarea name="message" cols="30" rows="10" class="text__area--message" placeholder="Escriba su mensaje..." formControlName="message"></textarea>
+                <p *ngIf="message?.touched && message?.hasError('required')" class="errors">*El mensaje es obligatorio</p>
+
+            </label>
+
+
+            <button type="submit" class="button__form--send">
+                {{myForm.valid && isSending ? 'Enviando formulario...' : 'Enviar formulario'}}
+            </button>
+
+        </form>
+
+    </article>
+
+</section>
