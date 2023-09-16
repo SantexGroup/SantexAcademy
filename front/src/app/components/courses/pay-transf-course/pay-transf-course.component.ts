@@ -8,10 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./pay-transf-course.component.scss']
 })
 export class PayTransfCourseComponent {
-  transferOption: string | null = null;// comienza sin ser seleccionado
+  // comienza sin ser seleccionado osea nula
+  transferOption: string | null = null;
+
   formPay: any
-  constructor(private fb: FormBuilder, 
-              private router: Router) {
+  constructor(private router: Router,
+              private fb: FormBuilder) {
     this.formPay = this.fb.group({
       cuit: ['', [Validators.required, Validators.pattern(/^[0-9\-]{13}$/)]],
       name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]{3,}$/)]],
@@ -20,7 +22,7 @@ export class PayTransfCourseComponent {
       check: ['', [Validators.required]]
     })
   }
-
+  //los get que me traen la info de los inputs para validar los campos del formulario
   get cuit() {
     return this.formPay.get('cuit')
   }
@@ -40,21 +42,24 @@ export class PayTransfCourseComponent {
   validationMock() {
     if(this.transferOption === 'si'){
       this.router.navigate(['/success']);
-      // Después de procesar, resetea el formulario
-      this.formPay.reset();
     }else{
       this.router.navigate(['/unsuccessfully']);
-      // Después de procesar, resetea el formulario
-      this.formPay.reset();
     }
+  }
+  //limpia el formulario
+  clearInput(){
+    this.formPay.reset()
   }
   // envio los datos delformulario
   sendTransfer() {
-    console.log(this.formPay.value)
-    
+    //valido que los campos esten llenos 
     if(this.formPay.valid){
-      this.validationMock()
+      //envio los datos
       console.log('Datos de la transferencia: ',this.formPay.value)
+      // Después de procesar, resetea el formulario
+      this.clearInput()
+      //depende la opcion elejida va a success o unsuccessfully
+      this.validationMock()
     }else{
       alert('llenar los campo')
     }

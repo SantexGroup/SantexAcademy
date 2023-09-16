@@ -11,16 +11,11 @@ import { CoursesService } from 'src/app/services/courses.service';
   styleUrls: ['./form-inscr-courses.component.scss']
 })
 export class FormInscrCoursesComponent implements OnInit{
-
+  //para que eliga en el option
   nodes: any[] = [
     {
       label: 'Mañana',
       value: 'manana',
-      leaf: true
-    },
-    {
-      label: 'Tarde',
-      value: 'tarde',
       leaf: true
     }
   ];
@@ -71,7 +66,7 @@ export class FormInscrCoursesComponent implements OnInit{
     }
     return null
   }
-
+//los get que me traen la info de los inputs para validar los campos del formulario
   get firstName(){
     return this.recordForm.get('firstName')
   }
@@ -95,13 +90,17 @@ export class FormInscrCoursesComponent implements OnInit{
   get schedule(){
     return this.recordForm.get('schedule')
   }
+  //limpia el formulario
+  clearInput(){
+    this.recordForm.reset();
+  }
   //envio los datos delformulario
   onSubmit(){
     if(this.recordForm.valid){
       console.log('Formulario con datos',this.recordForm.value)
       this.router.navigate(['/pay-transf-course'])
       // Después de procesar, resetea el formulario
-      this.recordForm.reset();
+      this.clearInput()
       //return this.recordForm.value
     }else{
       alert('Debe completar los campos')

@@ -94,7 +94,7 @@
 
         <div class="lg:flex justify-content-center lg:gap-5 pb-3 ">
             <div class="flex flex-column justify-content-around w-6">
-                <p class="font-bold ">Curso elegido: </p>
+                <p class="font-bold text-2xl">Curso elegido: </p>
                 <p class="font-bold text-bluegray-600 text-center text-4xl">{{courseService.courses.title}}</p>
             </div>
             <div class="card flex flex-column justify-content-center gap-2">
@@ -104,6 +104,7 @@
                 
                 [class.valid]="schedule.valid && schedule.dirty || schedule.touched" 
                 [class.invalid]="schedule.invalid && schedule.dirty || schedule.touched">
+                    
                     <option class="" value="" selected>Seleccione el Horario</option>
                     <option value="manana">Mañana</option>
                     <option value="tarde">Tarde</option>
@@ -115,9 +116,9 @@
         </div>
         
         <div class="card flex flex-column gap-4 lg:flex-row lg:justify-content-around pt-7">
-            <a routerLink="/" pButton label="Cancelar" type="submit" class="font-bold text-xl w-12 lg:w-3"></a>
-            <button 
-            type="submit" class="font-bold text-xl w-12 lg:w-3 bg-primary border-round py-3" >Siguiente </button>
+            <a (click)="clearInput()" pButton label="Cancelar" type="button" class="font-bold text-xl w-12 lg:w-3"></a>
+            <button type="submit" class="font-bold text-xl w-12 lg:w-3
+             bg-primary border-round py-3" >Siguiente </button>
            
         </div>
 
