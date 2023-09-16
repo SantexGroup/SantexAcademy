@@ -29,9 +29,8 @@ const createCurso = async (req, res, next) => {
     const curso = await cursoService.createCurso(body);
     res.status(200).json(curso);
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
-    next(error);
+    console.error("Error controller crear curso:", error);
+    res.status(500).json({ error: "error controller create curso" }); 
   }
 };
 

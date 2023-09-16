@@ -9,9 +9,17 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    // static associate(models) {
-    // define association here
-    // }
+    static associate(models) {
+      // define association here
+      models.User.hasMany(models.Matricula, {
+        foreignKey: 'userId',
+        sourceKey: 'id',
+      });
+      models.User.belongsTo(models.TipoDeUsuario, {
+        foreignKey: 'idtipodeusuario',
+        targetKey: 'id', // Esto debe ser la clave primaria del modelo tipodeusuario
+      });
+    }
   }
   User.init({
     nombre: DataTypes.STRING,
@@ -19,7 +27,15 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     username: DataTypes.STRING,
     password: DataTypes.STRING,
-    estado: DataTypes.BOOLEAN,
+    activoactualmente: DataTypes.BOOLEAN,
+    idtipodeusuario: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'idtipodeusuario',
+    },
+    verificationCode: DataTypes.BOOLEAN,
+    estado: DataTypes.CHAR(1),
+    codeRegister: DataTypes.CHAR(16),
   }, {
     sequelize,
     modelName: 'User',

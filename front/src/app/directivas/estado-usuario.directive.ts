@@ -4,12 +4,12 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
   selector: '[appEstadoUsuario]'
 })
 export class EstadoUsuarioDirective implements OnInit {
-  @Input('appEstadoUsuario') estado: boolean | undefined;
+  @Input('appEstadoUsuario') activoactualmente: boolean | undefined;
 
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
-    const estadoTexto = this.estado ? 'Activado' : 'Desactivado';
+    const estadoTexto = this.activoactualmente ? 'Activado' : 'Desactivado';
     this.elementRef.nativeElement.innerText = estadoTexto;
   }
 }

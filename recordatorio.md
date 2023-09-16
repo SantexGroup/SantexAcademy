@@ -1,1 +1,0 @@
-proximamente datos útiles

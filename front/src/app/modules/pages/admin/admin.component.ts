@@ -24,6 +24,7 @@ export class AdminComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log('Llamando a obtener todos los usuarios....');
     this.usersService.getUsers().subscribe({
       next: (response) => {
         console.log(response);
@@ -36,6 +37,10 @@ export class AdminComponent implements OnInit {
       },
     });
 
+    this.obtenerCursos()
+  }
+
+  obtenerCursos(){
     this.cursoService.getCursos().subscribe({
       next: (response) => {
         console.log(response);
@@ -48,26 +53,30 @@ export class AdminComponent implements OnInit {
       },
     });
   }
-
-  deleteCurso(curso: number ){
-    console.log(curso)
-    this.cursoService.deleteCurso( curso )
-      .subscribe(resp => {
-        //this.router.navigate(['/cursos/index']);
-        this.cdr.detectChanges();
-      })
+  deleteCurso(curso: number) {
+    //console.log(curso)
+    this.cursoService.deleteCurso(curso).subscribe((resp) => {
+      //this.router.navigate(['/cursos/index']);
+      this.cdr.detectChanges();
+    });
   }
 
-  activardesactivar(curso: Curso, estahabilitado: boolean){
+  deleteUsuario(user: number) {
+    console.log("Usuario a eliminar:", user)
+    this.usersService.deleteUser(user).subscribe((resp) => {
+      //this.router.navigate(['/cursos/index']);
+      this.cdr.detectChanges();
+    });
+  }
+
+  activardesactivar(curso: Curso, estahabilitado: boolean) {
     console.log(curso);
-    console.log(estahabilitado); 
+    console.log(estahabilitado);
     curso.habilitado = estahabilitado; // Asignar el valor a la propiedad 'habilitado' del objeto 'curso' pasado como parámetro
-  
-    this.cursoService.activardesactivar(curso)
-      .subscribe(resp => {
-        //this.router.navigate(['/cursos/index']);
-        this.cdr.detectChanges();
-      });
+
+    this.cursoService.activardesactivar(curso).subscribe((resp) => {
+      //this.router.navigate(['/cursos/index']);
+     this.obtenerCursos();
+    });
   }
-  
 }
