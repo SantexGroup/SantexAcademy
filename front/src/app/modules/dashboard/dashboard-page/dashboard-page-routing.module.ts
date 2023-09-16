@@ -6,6 +6,7 @@ import { FormAddProductComponent } from '../form-add-product/form-add-product.co
 import { FormDeleteComponent } from '../form-delete/form-delete.component';
 import { HomeComponent } from '../home/home.component';
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
+import { VistaProveedoresComponent } from '../vista-proveedores/vista-proveedores.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'shopping-cart',
         component: ShoppingCartComponent
+      },
+      {
+        path: 'proveedores',
+        component: VistaProveedoresComponent
       }
     ]
     

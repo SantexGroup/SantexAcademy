@@ -1,0 +1,32 @@
+<!-- <p>vista-proveedores works!</p> -->
+<div class="carousel-container">
+  <div class="carousel">
+    <div class="card" *ngFor="let proveedor of proveedores">
+      <div class="card_img">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+        height="48" 
+        viewBox="0 0 24 24" 
+        width="48">
+        <path 
+        d="M20 22H4V20C4 17.2386 6.23858 15 9 15H15C17.7614 15 20 17.2386 20 20V22ZM12 13C8.68629 13 6 10.3137 6 7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7C18 10.3137 15.3137 13 12 13Z">
+      </path></svg>
+        
+      </div>
+      <div class="card-content">
+        <h3>{{ proveedor.nombre }}</h3>
+        <p>{{ proveedor.direccion }}</p>
+        <button class="botton-ver-prduct " (click)="verProductos(proveedor)">Ver Productos</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="productos-container" *ngIf="mostrarProductos">
+  <h1>Productos de {{ nombreProveedor }}</h1>
+
+  Lista de productos 
+  <ul>
+    <li *ngFor="let producto of productosProveedor">{{ producto.nombre }}</li>
+  </ul>
+  <button (click)="ocultarProductos()">Ocultar productos</button>
+</div>
