@@ -2,17 +2,17 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const { Usuario } = require("../models");
-
+const { Organizacion } = require("../models");
 const config = process.env.SESSION_SECRET;
 
 //Middleware para autenticar el usuario con rol admin
 
 const isAdmin = async (req, res, next) => {
   try {
-    // Asegúrate de que req.userId contenga el ID del usuario (puedes usar el middleware verifyToken para esto).
+    // Asegúrate de que req.userId contenga el ID del usuario (puedes usar el middleware verifyTokenUser para esto).
 
     // Obtén el usuario desde la base de datos usando el ID
-    console.log("req.userId:", req.userId); 
+    console.log("req.userId:", req.userId);
     const user = await Usuario.findByPk(req.userId);
 
     if (!user) {
@@ -25,7 +25,9 @@ const isAdmin = async (req, res, next) => {
       next();
     } else {
       // El usuario no tiene el rol de administrador, devuelve un error
-      return res.status(403).json({ message: "No tienes permiso de administrador" });
+      return res
+        .status(403)
+        .json({ message: "No tienes permiso de administrador" });
     }
   } catch (error) {
     console.error("Error en isAdmin:", error);
@@ -42,10 +44,33 @@ const verifyToken = async (req, res, next) => {
 
     const decoded = jwt.verify(token, config);
 
-    const userId = decoded.userId; // Obtener el ID del usuario desde el token
+    console.log("decoded.userId", decoded.userId);
 
-    // Asignar el ID del usuario a req.userId para que esté disponible en los controladores
-    req.userId = userId;
+    let user = null;
+    let org = null;
+
+    if (decoded.userEmail) {
+      // Si el token contiene "userEmail", es un token de usuario
+      user = await Usuario.findOne({ where: { email: decoded.userEmail } });
+    } else if (decoded.orgEmail) {
+      // Si el token contiene "orgEmail", es un token de organización
+      org = await Organizacion.findOne({ where: { email: decoded.orgEmail } });
+    }
+
+    if (user) {
+      // Si se encontró en Usuario, establecer req.user
+      req.user = user;
+      // Asignamos el userId al req.userId para poder usarlo en los siguientes middlewares
+      req.userId = decoded.userId;
+      req.modelType = "Usuario"; // Indicar el modelo al que pertenece
+    } else if (org) {
+      // Si se encontró en Organizacion, establecer req.org
+      req.org = org;
+      req.modelType = "Organizacion"; // Indicar el modelo al que pertenece
+    } else {
+      // Si no se encontró en ninguno, devolver Unauthorized
+      return res.status(401).json({ message: "Unauthorized " });
+    }
 
     // Continuar con la siguiente función en la cadena de middleware
     next();
@@ -56,25 +81,35 @@ const verifyToken = async (req, res, next) => {
 };
 
 
-const isAdminOrSelf = async (req, res, next) => {
-  try {
-    const user = await Usuario.findByPk(req.userId);
 
-    if (!user) {
-      return res.status(404).json({ message: "Usuario no encontrado" });
-    }
-
-    // Verifica si el usuario tiene el rol de administrador o si está intentando eliminar su propio perfil
-    if (user.rolesId === 2 || req.userId === Number(req.params.id)) {
+const isUser = (req, res, next) => {
+  if (req.modelType === 'Usuario') {
+    // Verificar si el usuario está intentando acceder a su propio perfil
+    if (req.userId === parseInt(req.params.id, 10)) { // Asegurarse de que ambos valores sean del mismo tipo y luego comparar
+      // El usuario es de tipo "Usuario" y está intentando acceder a su propio perfil, permitir acceso
       next();
     } else {
-      return res.status(403).json({ message: "No tienes permiso para realizar esta acción" });
+      // El usuario no está intentando acceder a su propio perfil, denegar el acceso
+      return res.status(403).json({ message: 'No tienes permiso para realizar esta acción' });
     }
-  } catch (error) {
-    console.error("Error en isAdminOrSelf:", error);
-    return res.status(500).json({ message: "Error interno del servidor" });
+  } else {
+    // El usuario no es de tipo "Usuario", denegar el acceso
+    return res.status(403).json({ message: 'No tienes permiso para realizar esta acción' });
   }
 };
 
 
-module.exports = { isAdmin, verifyToken, isAdminOrSelf };
+
+const isOrg = (req, res, next) => {
+  if (req.modelType === 'Organizacion') {
+    // El usuario es de tipo "Organizacion", permitir acceso a las rutas de organización
+    next();
+  } else {
+    // El usuario no es de tipo "Organizacion", denegar el acceso
+    return res.status(403).json({ message: 'No tienes permiso para realizar esta acción' });
+  }
+};
+
+
+
+module.exports = { isAdmin, verifyToken, isUser, isOrg  };
