@@ -33,7 +33,7 @@ export class CreateComponent implements OnInit {
     activoactualmente: true,
     createdAt: new Date,
     updatedAt: new Date,
-    tipodeusuario: this.tipoUsuarioNvo,
+    //tipodeusuario: this.tipoUsuarioNvo,
     verificationCode: false,
     codeRegister: ''
   }
