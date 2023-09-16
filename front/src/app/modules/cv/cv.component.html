@@ -13,7 +13,11 @@
                 </div>
                 <div class="skills">
                     <h1>HABILIDADES</h1>
-                    <p>habilidades</p>
+                    <ul>
+                        <li *ngFor="let skill of skills" >
+                            <p>Habilidad: {{skill.skill}} Nivel: {{skill.level}}</p>
+                        </li>
+                    </ul>
                 </div>
                 <div class="languages">
                     <h1>IDIOMAS</h1>

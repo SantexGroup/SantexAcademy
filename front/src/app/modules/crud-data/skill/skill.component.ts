@@ -37,6 +37,7 @@ export class SkillComponent implements OnInit{
   getSkill(){
     this._skillService.getSkillsByUser(this.userData.userId).subscribe((skillList)=>{
       this.skillsList = skillList;
+      console.log(skillList)
     })
   }
 

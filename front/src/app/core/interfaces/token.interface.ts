@@ -3,4 +3,5 @@ export interface Token {
     nick: string,
     exp: number,
     iat: number
+    profileId: number,
 }

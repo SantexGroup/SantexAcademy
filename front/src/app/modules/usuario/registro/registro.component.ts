@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserService } from 'src/app/core/services/usuario.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registro',
@@ -19,7 +20,8 @@ export class RegistroComponent{
     private router: Router, 
     private userService: UserService,
     public dataUser: UserDataService, 
-    public views: NavBarService
+    public views: NavBarService,
+    private toastrSrv: ToastrService
     ) { }
 
   //* Getters para validar los campos del formulario
@@ -69,12 +71,12 @@ export class RegistroComponent{
         this.views.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
         this.router.navigate(['/home', data.profile.userId, 'cv']) 
         }, 
-        error: (err) => { 
-          console.log(err); 
-          this.mensajeError = err;
+        error: () => { 
+         this.toastrSrv.warning('Verifica nuemante los datos', 'El registro no se puede completar') 
+          
         },
         complete: () => { 
-          console.log("Done") 
+         this.toastrSrv.success("Tu usuario se registro correctamente", "Registro Correcto");  
         }
       });
     }
