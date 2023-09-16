@@ -49,7 +49,7 @@ textarea {
 
 .btn-custom:hover {
     background-color: var(--color-grad-5);
-  }
+}
 
 .custom-checkbox input[type="checkbox"] {    
     width: 1vh;

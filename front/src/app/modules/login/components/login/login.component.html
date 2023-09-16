@@ -1,8 +1,14 @@
-<app-navbar></app-navbar>
 <div class="wrapper">
   <div class="body">  
-    <div class="form-container">  
-      <h1>Login</h1>
+    <div class="form-container"> 
+      <div class="d-flex align-items-center justify-content-center">
+        <div class="form-group text-center">
+            <div class="logo-container">
+                <img class="image-logo mx-auto d-block" src="../../../../../assets/imagen/IncubadoraNOC_logo-noBackground.png" alt="foto-logo">
+            </div>
+        </div>
+    </div>
+      <h1 class="title-login">Iniciar Sesión</h1>
       <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
         <div class="form-group">
           <label for="email"></label>
@@ -36,18 +42,16 @@
             <div *ngIf="loginForm.controls.password?.errors?.minlength">Contraseña inválida</div>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-custom btn-lg" (click)="login(loginForm)">Iniciar Sesión</button>
+        <button type="submit" class="btn-custom" (click)="login(loginForm)">Iniciar Sesión</button>
 
       </form>
-      <div>
+      <div class="link-registro">
         <a routerLink="/register">¿No tienes cuenta? Regístrate aquí</a>
       </div>
     </div>
   </div>
 </div>
 
-
-<app-footer></app-footer>
 
 
 
