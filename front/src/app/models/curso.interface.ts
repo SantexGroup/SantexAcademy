@@ -23,7 +23,7 @@ export interface Curso {
   idusuariomodificacion: null;
   createdAt:             Date;
   updatedAt:             Date;
-  nivel: Nivel;
+  nivel?: Nivel; // nivel como opcional
   
   //Descomentar las lineas anteriores y comentar o eliminar las 4 siguientes cuando se implemente DB tabla cursos
   //  id: string;

@@ -68,11 +68,11 @@
                             <!--{{ user.idtipodeusuario }}-->
                         </td>
                         <td class="text-end">
-                            <a class="btn btn-sm btn-primary" [routerLink]="['/users/show/', user.id]">Ver</a>
+                            <!--<a class="btn btn-sm btn-primary" [routerLink]="['/users/show/', user.id]">Ver</a>
                             <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
-                            </button>
-                            <a class="btn btn-sm btn-primary" [routerLink]="['/users/edit/', user.id]">Editar</a>
+                            </button>-->
+                            <a class="btn btn-sm btn-primary" [routerLink]="['/users/edit/', user.id]">Ver/Editar</a>
                             <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
                             </button>
@@ -162,7 +162,7 @@
                             {{ curso.capacidad }}
                         </td>
                         <td>
-                            {{ curso?.nivel?.nombre }}
+                            {{ curso?.Nivel?.nombre }}
                         </td>
                         <td>
                             {{ curso.requisitos }}

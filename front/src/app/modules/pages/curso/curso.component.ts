@@ -45,7 +45,7 @@ export class CursoComponent implements OnInit {
     idusuariomodificacion: 1,
     createdAt: new Date,
     updatedAt: new Date,
-    nivel: this.nivelNvo,
+    Nivel: this.nivelNvo,
     estado: '',
   }
 

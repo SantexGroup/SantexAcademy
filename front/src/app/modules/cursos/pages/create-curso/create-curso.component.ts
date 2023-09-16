@@ -34,7 +34,7 @@ export class CreateCursoComponent implements OnInit {
     estado: 'A',
     createdAt: new Date(),
     updatedAt: new Date(),
-    nivel: this.nivelNvo,
+    Nivel: this.nivelNvo,
   };
 
   nivel: Nivel = {
@@ -90,6 +90,7 @@ export class CreateCursoComponent implements OnInit {
         });
       } else {
         // add
+        this.curso.idnivel = this.nivelSeleccionado;
         this.cursosService.addCurso(this.curso).subscribe((curso) => {
           console.log('add :', curso);
           this.router.navigate(['/cursos/index']);

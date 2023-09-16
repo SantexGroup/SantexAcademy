@@ -1,17 +1,17 @@
 const { Curso, Nivel } = require('../models');
 
 const allCurso = async () => {
-  const cursos = await Curso.findAll(
-    // where: {
-    //   estado: 'A',
-    // },
-    // include: [
-    //   {
-    //     model: Nivel,
-    //     as: 'nivel',
-    //   },
-    // ],
-  );
+  const cursos = await Curso.findAll({
+    where: {
+      estado: 'A',
+    },
+    include: [
+      {
+        model: Nivel,
+        as: 'Nivel', 
+      },
+    ],
+  });
   return cursos;
 };
 
@@ -21,7 +21,7 @@ const getCurso = async (id) => {
       include: [
         {
           model: Nivel,
-          as: 'nivel', // Asegúrate de usar el mismo nombre que definiste en la asociación
+          as: 'Nivel', // Asegúrate de usar el mismo nombre que definiste en la asociación
         },
       ],
     });

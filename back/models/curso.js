@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       models.Curso.belongsTo(models.Nivel, {
         foreignKey: 'idnivel',
-        target: 'id',
+        targetKey: 'id', // Esto debe ser la clave primaria del modelo Nivel
       });
     }
   }
