@@ -1,4 +1,3 @@
-<button type="button" class="btn btn-primary" [routerLink]="['/users/index' ]">Index</button>
 <h2 class="text-center">{{ ( user.id )? 'Editar' : 'Nuevo' }} usuario </h2>
 <div class="container">
   <div class="row justify-content-center">
@@ -61,20 +60,13 @@
           </div>
         </div>
         <div class="form-outline mb-2">
-          <!--<label class="form-label" for="userType">Tipo de Usuario</label>
-          <select id="userType" class="form-select" formControlName="userType">
-            <option value="Seleccione">Seleccione</option>
-            <option value="admin">Administrador</option>
-            <option value="docente">Docente</option>
-            <option value="alumno">Alumno</option>
-          </select>-->
           <div class="form-outline mb-2">
             <label for="userType">Tipo de usuario</label>
             <select
               id="tipodeusuario"
               name="tipodeusuario"
               class="form-select"
-              [(ngModel)]="tipoDeUsuarioSeleccionado"
+              [ngModel]="tipoDeUsuarioSeleccionado"
               (change)="onTipoDeUsuarioChange($event)" formControlName="userType">        
               <option [value]="undefined" disabled selected>
                 Selecciona un tipo de usuario
@@ -93,7 +85,8 @@
         </div>
         </div>  
         <div class="d-flex justify-content-center mb-4">
-          <button class="btn btn-primary">Guardar</button>
+          <button class="btn btn-primary" style="margin-top: 10px;">Guardar</button>
+          <button type="button" class="btn btn-primary" [routerLink]="['/users/index']" style="margin-top: 10px; margin-left: 10px;">Volver</button>
         </div>
       </form>
     </div>

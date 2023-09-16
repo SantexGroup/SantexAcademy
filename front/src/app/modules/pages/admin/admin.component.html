@@ -66,22 +66,21 @@
                               {{ user.TipoDeUsuario?.nombre }}
                         </td>
                         <td>
-                            <span [appEstadoUsuario]="user.activoactualmente"></span>
-                            <!--{{ user.idtipodeusuario }}-->
-                        </td>
+                            <a class="btn btn-sm btn-primary" (click)="activardesactivaruser(user, !user.activoactualmente)">
+                                  <span [appEstadoUsuario]="user.activoactualmente"></span>
+                              </a>
+                              <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
+                                  <i class="bi bi-trash"></i>
+                              </button>
+                          </td>
                         <td class="text-end">
-                            <!--<a class="btn btn-sm btn-primary" [routerLink]="['/users/show/', user.id]">Ver</a>
-                            <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                <i class="bi bi-trash"></i>
-                            </button>-->
                             <a class="btn btn-sm btn-primary" [routerLink]="['/users/edit/', user.id]">Ver/Editar</a>
                             <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
                             </button>
 
-                            <a class="btn btn-sm btn-danger">Eliminar</a>
-                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover"
-                                (click)="deleteUsuario(user.id!)">
+                            <a class="btn btn-sm btn-danger" (click)="deleteUsuario(user.id!)">Eliminar</a>
+                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
                             </button>
 
@@ -95,7 +94,6 @@
         </div>
     </div>
 </div>
-
 <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
     <div class="h-screen flex-grow-1 overflow-y-lg-auto">
         <header class="bg-surface-primary border-bottom pt-6">
@@ -170,10 +168,10 @@
                             {{ curso.requisitos }}
                         </td>
                         <td>
-                            <a class="btn btn-sm btn-primary" style="width: 100px;">
-                                <span [appActivardesactivarcurso]="curso.habilitado"></span></a>
-                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover"
-                                (click)="activardesactivar(curso, !curso.habilitado)">
+                          <a class="btn btn-sm btn-primary" (click)="activardesactivar(curso, !curso.habilitado)">
+                                <span [appActivardesactivarcurso]="curso.habilitado"></span>
+                            </a>
+                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
                             </button>
                         </td>
@@ -184,21 +182,16 @@
                             {{ curso.fechafin | date : "dd/MM/yyyy HH:mm" }}
                         </td>
                         <td class="text-end">
-                            <!--<a class="btn btn-sm btn-primary" [routerLink]="['/cursos/show/', curso.id]">Ver</a>
-                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
-                                <i class="bi bi-trash"></i>
-                            </button>-->
                             <a class="btn btn-sm btn-primary" [routerLink]="['/cursos/edit/', curso.id]">Ver/Editar</a>
                             <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
                             </button>
 
-                            <a class="btn btn-sm btn-danger">Eliminar</a>
-                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover"
-                                (click)="deleteCurso(curso.id)">
+                            <a class="btn btn-sm btn-danger" (click)="deleteCurso(curso.id)">Eliminar</a>
+                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
                             </button>
-                        </td>
+                        </td>            
                     </tr>
                 </tbody>
             </table>

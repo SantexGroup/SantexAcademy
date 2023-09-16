@@ -25,26 +25,15 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('Llamando a obtener todos los usuarios....');
-    this.usersService.getUsers().subscribe({
-      next: (response) => {
-        console.log(response);
-        this.users = response; // Extraer el array de usuarios de la respuesta
-      },
-      error: (error) => {
-        console.error(error);
-        this.errorMensaje =
-          'Ocurrió un error al obtener los usuarios. Por favor, inténtalo de nuevo más tarde.';
-      },
-    });
-
-    this.obtenerCursos()
+    this.obtenerUsuarios();
+    this.obtenerCursos();
   }
 
   obtenerCursos(){
     this.cursoService.getCursos().subscribe({
       next: (response) => {
         console.log(response);
-        this.cursos = response; // Extraer el array de cursos de la respuesta
+        this.cursos = response; 
       },
       error: (error) => {
         console.error(error);
@@ -53,19 +42,42 @@ export class AdminComponent implements OnInit {
       },
     });
   }
+
+  obtenerUsuarios(){
+    this.usersService.getUsers().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.users = response; 
+      },
+      error: (error) => {
+        console.error(error);
+        this.errorMensaje =
+          'Ocurrió un error al obtener los usuarios. Por favor, inténtalo de nuevo más tarde.';
+      },
+    });
+  }
+
   deleteCurso(curso: number) {
-    //console.log(curso)
+    console.log("Llamando al eliminar");
     this.cursoService.deleteCurso(curso).subscribe((resp) => {
-      //this.router.navigate(['/cursos/index']);
-      this.cdr.detectChanges();
+      this.obtenerCursos();
     });
   }
 
   deleteUsuario(user: number) {
     console.log("Usuario a eliminar:", user)
     this.usersService.deleteUser(user).subscribe((resp) => {
-      //this.router.navigate(['/cursos/index']);
-      this.cdr.detectChanges();
+      this.obtenerUsuarios();
+    });
+  }
+
+  activardesactivaruser(user: User, estahabilitado: boolean) {
+    console.log(user);
+    console.log(estahabilitado);
+    user.activoactualmente = estahabilitado; // Asignar el valor a la propiedad 'habilitado' del objeto 'user' pasado como parámetro
+
+    this.usersService.activardesactivar(user).subscribe((resp) => {
+     this.obtenerUsuarios();
     });
   }
 
@@ -75,7 +87,6 @@ export class AdminComponent implements OnInit {
     curso.habilitado = estahabilitado; // Asignar el valor a la propiedad 'habilitado' del objeto 'curso' pasado como parámetro
 
     this.cursoService.activardesactivar(curso).subscribe((resp) => {
-      //this.router.navigate(['/cursos/index']);
      this.obtenerCursos();
     });
   }

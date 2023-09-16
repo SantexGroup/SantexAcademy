@@ -6,6 +6,7 @@ import { AllCursosComponent } from './pages/all-cursos/all-cursos.component';
 import { CursosRoutingModule } from './cursos-routing.module';
 import { CreateCursoComponent } from './pages/create-curso/create-curso.component';
 import { GetCursoComponent } from './pages/get-curso/get-curso.component';
+import { DateFormatPipe } from 'src/app/pipes/dateformat';
 
 
 
@@ -13,7 +14,8 @@ import { GetCursoComponent } from './pages/get-curso/get-curso.component';
   declarations: [
     AllCursosComponent,
     CreateCursoComponent,
-    GetCursoComponent
+    GetCursoComponent,
+    DateFormatPipe
   ],
   imports: [
     CommonModule,

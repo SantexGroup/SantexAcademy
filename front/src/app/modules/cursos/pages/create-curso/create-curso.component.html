@@ -1,7 +1,3 @@
-<p>create-curso works!</p>
-<button type="button" class="btn btn-primary" [routerLink]="['/cursos/index']">
-  Index
-</button>
 <h1>{{ curso.id ? "Editar" : "Nuevo" }} Curso</h1>
 <div class="container">
   <form>
@@ -63,7 +59,7 @@
         id="nivel"
         name="nivel"
         class="form-select"
-        [(ngModel)]="nivelSeleccionado"
+        [ngModel]="nivelSeleccionado"
         (change)="onNivelChange($event)">
         <option [value]="undefined" disabled selected>
           Selecciona un nivel
@@ -85,16 +81,16 @@
     </div>
 
     <div class="form-group">
-      <label for="formGroupRequisitosInput">Fecha de inicio</label>
+      <label for="formGroupFechaInicioInput">Fecha de inicio</label>
       <input
-        type="date"
+        type="date" 
         class="form-control"
         id="formGroupFechaInicioInput"
-        [(ngModel)]="curso.fechainicio"
+        [(ngModel)]="formattedStartDate"
         name="fechainicio"
       />
     </div>
-
+  
     <div class="form-group">
       <label for="formGroupFechaFinInput">Fecha de fin</label>
       <input
@@ -105,15 +101,13 @@
         name="fechafin"
       />
     </div>
-
-    <div class="form-group">
-      <button type="button" class="btn btn-primary" (click)="guardar()">
+    <div class="form-group d-flex justify-content-center mb-2">
+      <button type="button" class="btn btn-primary" (click)="guardar()" style="margin-top: 10px;">
         {{ curso.id ? "Actualizar" : "Crear" }}
       </button>
-
-      <!--<div class="d-flex justify-content-center mb-4">
-        <button class="btn btn-primary">Guardar</button>
-      </div>-->
+      <button type="button" class="btn btn-primary ml-2" [routerLink]="['/cursos/index']" style="margin-top: 10px; margin-left: 10px;">
+        Volver
+      </button>
     </div>
   </form>
 </div>

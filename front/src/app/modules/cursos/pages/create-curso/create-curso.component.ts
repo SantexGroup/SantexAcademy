@@ -52,6 +52,7 @@ export class CreateCursoComponent implements OnInit {
 
   niveles: Nivel[] = [];
   nivelSeleccionado: number | undefined = undefined;
+  formattedStartDate: string | undefined;
 
   ngOnInit(): void {
     //Obtengo los niveles
@@ -66,8 +67,27 @@ export class CreateCursoComponent implements OnInit {
     }
 
     this.activatedRoute.params
-      .pipe(switchMap(({ id }) => this.cursosService.getCursoPorId(id)))
-      .subscribe((curso) => (this.curso = curso));
+    .pipe(switchMap(({ id }) => this.cursosService.getCursoPorId(id)))
+    .subscribe((curso) => {
+      this.curso = curso;
+      this.nivelSeleccionado = curso.idnivel;
+      // Cuando obtengas la fecha del curso, verifica si es un objeto Date válido
+      if (this.curso.fechainicio instanceof Date && !isNaN(this.curso.fechainicio.getTime())) {
+        this.formattedStartDate = this.formatDate(this.curso.fechainicio);
+      } else {
+        // Si no es un objeto Date válido, puedes establecer una fecha predeterminada o manejarlo de otra manera según tus necesidades
+        this.formattedStartDate = ''; // O puedes establecer otro valor predeterminado
+      }
+    });
+   
+  }
+
+ // Función para formatear la fecha como "yyyy-MM-dd"
+  formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 
   // Método para manejar la selección de nivel
