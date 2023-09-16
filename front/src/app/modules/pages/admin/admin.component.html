@@ -60,9 +60,11 @@
                             {{ user.username }}
                         </td>
                         <td>
+                            {{ user.email }}
+                        </td>
+                        <td>
                               {{ user.TipoDeUsuario?.nombre }}
                         </td>
-                        <td> tipo de usuario</td>
                         <td>
                             <span [appEstadoUsuario]="user.activoactualmente"></span>
                             <!--{{ user.idtipodeusuario }}-->
@@ -182,11 +184,11 @@
                             {{ curso.fechafin | date : "dd/MM/yyyy HH:mm" }}
                         </td>
                         <td class="text-end">
-                            <a class="btn btn-sm btn-primary" [routerLink]="['/cursos/show/', curso.id]">Ver</a>
+                            <!--<a class="btn btn-sm btn-primary" [routerLink]="['/cursos/show/', curso.id]">Ver</a>
                             <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
-                            </button>
-                            <a class="btn btn-sm btn-primary" [routerLink]="['/cursos/edit/', curso.id]">Editar</a>
+                            </button>-->
+                            <a class="btn btn-sm btn-primary" [routerLink]="['/cursos/edit/', curso.id]">Ver/Editar</a>
                             <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
                             </button>
