@@ -1,8 +1,8 @@
-const { alquiler, Products } = require('../models');
+const { Alquiler, Products } = require('../models');
 
 // obtener ventas segun vendedor
 async function getAlquileresByVendedor(id) {
-  const ventasVendedor = await alquiler.findAll(
+  const ventasVendedor = await Alquiler.findAll(
     {
       include: [{
         model: Products,
