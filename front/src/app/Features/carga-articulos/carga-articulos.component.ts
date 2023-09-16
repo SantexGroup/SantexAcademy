@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CargaArticulosService } from 'src/app/core/services/carga-articulos.service';
 
 @Component({
   selector: 'app-carga-articulos',
@@ -9,9 +10,20 @@ export class CargaArticulosComponent implements OnInit {
 
   uploadedImages: string[] = [];
 
-  constructor() { }
+  constructor(private service: CargaArticulosService) { }
 
   ngOnInit(): void {
+
+    const $form = document.querySelector('#form-art');
+
+    $form?.addEventListener('submit', (event: any) => {
+      console.log('se ejecuto submit');
+      event.preventDefault();
+      const formData = new FormData(event.currentTarget);
+      this.service.cargaFiles(formData).subscribe(respuesta => {
+        console.log(respuesta);
+      })
+    })
   }
 
   onFileSelected(event: any): void {
