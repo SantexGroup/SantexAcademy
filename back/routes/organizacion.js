@@ -3,11 +3,16 @@ const express = require("express");
 const orgRouter = express.Router();
 const { orgController } = require("../controllers");
 
-orgRouter.get("/", orgController.getOrganizations);
-orgRouter.get("/", orgController.getOrganizationByCriteria);
+const  { verifyToken , isAdmin, isOrg  }  = require('../middleware/authMiddleware');
+
+
+//orgRouter.get("/", orgController.getOrganizations);
+orgRouter.get("/",verifyToken, isAdmin, orgController.getOrganizationByCriteria);
 orgRouter.get("/search", orgController.getOrganizationByLocation);
-orgRouter.put("/update/:id", orgController.updateOrganizationById);
-orgRouter.delete("/delete/:id", orgController.deleteOrganizationById);
+orgRouter.put("/:id",verifyToken, isOrg, orgController.updateOrganizationById);
+
+orgRouter.delete("/me/:id", verifyToken, isOrg, orgController.deleteOrganizationById);
+orgRouter.delete("/:id", verifyToken, isAdmin, orgController.deleteOrganizationById);
 
 module.exports = orgRouter;
 
