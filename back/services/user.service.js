@@ -97,17 +97,29 @@ async function updateUser(id, {
   // Guardar el usuario actualizado
   //* Se edita funcion
   //* const userEdited = await user.update(data);
-  const userEdited = await user.update({
-    name,
-    lastName,
-    /* email, */
-    phone,
-    bornDate,
-    pictureLink,
-  });
 
-  // Devolver el objeto del usuario actualizado
-  return userEdited;
+  if (email != ' '){
+    const userEdited = await user.update({
+      name,
+      lastName,
+      email,
+      phone,
+      dateBorn,
+      pictureLink,
+    });
+
+    return userEdited;
+  } else {
+    const userEdited = await user.update({
+      name,
+      lastName,
+      phone,
+      dateBorn,
+      pictureLink,
+    });
+
+    return userEdited;
+  }
 }
 
 // Servicio de borrado de usuario provisorio. Hasta finalar el delete de los demas servicios
