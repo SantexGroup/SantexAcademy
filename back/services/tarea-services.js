@@ -166,7 +166,48 @@ async function getInscriptos(id) {
   }
 }
 
+async function editAsistencia(id, asistencia) {
+  const tareaVoluntario = await models.tareasVoluntario.findByPk(id);
+  if (!tareaVoluntario) {
+    throw new Error('Tarea no encontrada');
+  }
+  if (asistencia === true || asistencia === false) {
+    if (tareaVoluntario.asistio === asistencia) throw new Error('La tarea ya posee este estado');
+    tareaVoluntario.asistio = asistencia;
+    await tareaVoluntario.save();
+    if (asistencia === true) {
+      const tarea = await models.tarea.findByPk(tareaVoluntario.tareaId);
+      if (!tarea) {
+        throw new Error('Tarea no encontrada');
+      }
+      const usuariosInscritos = await models.tareasVoluntario.findAll({
+        where: { tareaId: tarea.id },
+      });
+
+      if (!usuariosInscritos || usuariosInscritos.length === 0) {
+        throw new Error('No se encontraron usuarios inscritos en esta tarea');
+      }
+
+      // eslint-disable-next-line no-restricted-syntax
+      for (const usuarioInscrito of usuariosInscritos) {
+        // eslint-disable-next-line no-await-in-loop
+        const voluntario = await models.volunteer.findByPk(usuarioInscrito.volunteerId);
+
+        if (!voluntario) {
+          throw new Error(`Voluntario no encontrado: ${usuarioInscrito.volunteerId}`);
+        }
+
+        voluntario.points += tarea.points;
+        // eslint-disable-next-line no-await-in-loop
+        await voluntario.save();
+      }
+
+      return 'Asistencia actualizada y puntos asignados a todos los usuarios inscritos';
+    }
+  }
+  throw new Error('No se ha proporcionado el estado de la tarea');
+}
 module.exports = {
   // eslint-disable-next-line max-len
-  getAll, getById, createTarea, editTarea, deleteTarea, getByIdOrganizacion, cambiarEstado, getInscriptos,
+  getAll, getById, createTarea, editTarea, deleteTarea, getByIdOrganizacion, cambiarEstado, getInscriptos, editAsistencia,
 };
