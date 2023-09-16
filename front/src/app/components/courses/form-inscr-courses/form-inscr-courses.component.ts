@@ -95,7 +95,7 @@ export class FormInscrCoursesComponent implements OnInit{
   get schedule(){
     return this.recordForm.get('schedule')
   }
-
+  //envio los datos delformulario
   onSubmit(){
     if(this.recordForm.valid){
       console.log('Formulario con datos',this.recordForm.value)
@@ -106,8 +106,6 @@ export class FormInscrCoursesComponent implements OnInit{
     }else{
       alert('Debe completar los campos')
     }
-
-
   }
 
     //para agregar el curso elejido
