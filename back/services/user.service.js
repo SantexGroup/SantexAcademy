@@ -60,6 +60,7 @@ async function login(nick, password) {
   const token = jwt.sign({
     id: user.id,
     nick: user.nick,
+    profileId: profile.id,
   }, jwtSecret, { expiresIn });
   // Devolver un objeto con el token de acceso
   return {
