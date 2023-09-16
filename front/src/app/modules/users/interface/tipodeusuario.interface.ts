@@ -5,9 +5,11 @@
 //   const user = Convert.toUser(json);
 
 export interface TipoDeUsuario {
-    id?:        number;
-    nombre:    string;
-    descripcion:  string;
+    id?:          number;
+    nombre:      string;
+    descripcion: string;
+    createdAt?:   Date;
+    updatedAt?:   Date;
 }
 // Converts JSON strings to/from your types
 export class Convert {

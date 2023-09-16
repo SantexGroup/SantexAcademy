@@ -2,12 +2,12 @@ const { User, TipoDeUsuario } = require('../models');
 
 const allUser = async () => {
   const users = await User.findAll({
-    // include: [
-    //   {
-    //     model: TipoDeUsuario,
-    //     as: 'tipodeusuario',
-    //   },
-    // ],
+    include: [
+      {
+        model: TipoDeUsuario,
+        // as: 'tipodeusuario',
+      },
+    ],
     where: {
       activoactualmente: true,
     },
@@ -21,7 +21,7 @@ const getUser = async (id) => {
       include: [
         {
           model: TipoDeUsuario,
-          as: 'tipodeusuario',
+          // as: 'tipodeusuario',
         },
       ],
     });
