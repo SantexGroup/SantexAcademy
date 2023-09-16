@@ -6,8 +6,6 @@ import { ApiService } from 'src/app/core/http/api.service';
 })
 export class CargaArticulosService {
 
-  formData: any;
-
   constructor(private apiService: ApiService) { }
 
   cargaFiles(formData: any) {

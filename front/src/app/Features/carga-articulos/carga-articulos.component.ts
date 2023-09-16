@@ -17,11 +17,12 @@ export class CargaArticulosComponent implements OnInit {
     const $form = document.querySelector('#form-art');
 
     $form?.addEventListener('submit', (event: any) => {
-      console.log('se ejecuto submit');
-      event.preventDefault();
+      //event.preventDefault();
       const formData = new FormData(event.currentTarget);
-      this.service.cargaFiles(formData).subscribe(respuesta => {
-        console.log(respuesta);
+      //const images = formData.get('images'); //obtengo solo la img
+      this.service.cargaFiles(formData).subscribe(res => {
+        console.log(res);
+        console.log('carga exitosa');
       })
     })
   }

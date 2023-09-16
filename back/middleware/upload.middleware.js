@@ -12,12 +12,11 @@ const storage = multer.diskStorage({
 const MIMETYPES = ['image/jpeg', 'image/png'];
 
 const upload = multer({
-    storage: storage, 
+    storage: storage,
     fileFilter: (req, file, cb) => {
         if (MIMETYPES.includes(file.mimetype)) cb(null, true);
         else cb(new Error(`Solo se permiten archivos ${MIMETYPES.join(' ')}`));
-    },
-    
+    },    
     limits: {
         fieldSize: 10000000,
     }
