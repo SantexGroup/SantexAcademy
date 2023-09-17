@@ -15,7 +15,7 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       }, 
-      imagen: {
+      image: {
         type: Sequelize.STRING
       },
       createdAt: {
