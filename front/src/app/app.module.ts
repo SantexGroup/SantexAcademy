@@ -11,6 +11,7 @@ import { BasesComponent } from './Features/bases/bases.component';
 import { RegistroComponent } from './Features/registro/registro.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CargaArticulosComponent } from './Features/carga-articulos/carga-articulos.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     BannerComponent,
     BasesComponent,
     RegistroComponent,
+    CargaArticulosComponent,
   ],
   imports: [
     BrowserModule,
