@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Premio } from 'src/app/core/interfaces/premio';
+import { PremioService } from 'src/app/core/services/premio.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-crear-modificar-premio',
@@ -7,9 +12,101 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearModificarPremioComponent implements OnInit {
 
-  constructor() { }
+  form:FormGroup;
+  modificar:boolean;
+
+
+
+  constructor(fb:FormBuilder, private premioService:PremioService,@Inject(MAT_DIALOG_DATA)private dataPremio:Premio,
+  private modalActual:MatDialogRef<CrearModificarPremioComponent> ) { 
+
+    this.modificar = false;
+    if(this.dataPremio !== null){
+      this.modificar = true;
+    }
+    
+    this.form = fb.group({
+      nombre:['', Validators.required],
+      cantidad:['', Validators.required],
+      costo:['', Validators.required],
+      descripcion:['', Validators.required]
+
+    });
+
+  }
 
   ngOnInit(): void {
+
+    if(this.modificar){
+      this.form.patchValue({
+        nombre:this.dataPremio.name,
+        cantidad:this.dataPremio.cantidad,
+        costo:this.dataPremio.costo,
+        descripcion:this.dataPremio.description
+      });
+    }
+
+  }
+
+  crearPremio():void{
+    
+    const formValue = this.form.value;
+    
+    const nuevoPremio:Premio ={
+      name: formValue.nombre,
+      costo: formValue.costo,
+      cantidad: formValue.cantidad,
+      description: formValue.descripcion
+    }
+
+    this.premioService.crear(nuevoPremio).subscribe({
+      next:()=>{
+        Swal.fire(
+          'EXITO!',
+          `El premio se creo correctamente.`,
+          'success'
+        );
+        this.modalActual.close(true);
+      },
+      error:()=>{
+        Swal.fire(
+          'Error',
+          'No se pudo crear el premio.',
+          'error'
+        );
+      }
+    });
+
+    
+
+  }
+
+  modificarPremio():void{
+    const formValue = this.form.value;
+    const premioModificado:Premio ={
+      name: formValue.nombre,
+      costo: formValue.costo,
+      cantidad: formValue.cantidad,
+      description: formValue.descripcion
+    }
+
+    this.premioService.modificar(this.dataPremio.id!, premioModificado).subscribe({
+      next:()=>{
+        Swal.fire(
+          'EXITO!',
+          `El premio se modificó correctamente.`,
+          'success'
+        );
+        this.modalActual.close(true);
+      },
+      error:()=>{
+        Swal.fire(
+          'ERROR',
+          `El premio no se pudo modificar.`,
+          'error'
+        );
+      }
+    });
   }
 
 }
