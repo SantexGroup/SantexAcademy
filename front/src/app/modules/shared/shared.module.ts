@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ListadoTareasComponent } from './components/listado-tareas/listado-tareas.component';
 import { DetalleTareaComponent } from './components/detalle-tarea/detalle-tarea.component';
 import { CoreModule } from 'src/app/core/core.module';
+import { ListadoPremiosComponent } from './components/listado-premios/listado-premios.component';
 
 
 
 @NgModule({
   declarations: [
     ListadoTareasComponent,
-    DetalleTareaComponent
+    DetalleTareaComponent,
+    ListadoPremiosComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { CoreModule } from 'src/app/core/core.module';
   ],
   exports:[
     ListadoTareasComponent,
-    DetalleTareaComponent 
+    DetalleTareaComponent,
+    ListadoPremiosComponent
   ]
 })
 export class SharedModule { }

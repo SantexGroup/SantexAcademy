@@ -1,0 +1,42 @@
+<div class="contenedor">
+    <div class="card-container" *ngFor="let premio of listPremios">
+        
+        <div class="card-title">
+            <div>
+                <p class="titulo">{{premio.name | titlecase}}</p>
+
+            </div>
+            <div>
+                <p class="puntos">{{premio.costo}}</p>
+            </div>
+        </div>
+
+        <div class="card-content">
+            <p>{{premio.description}}</p>
+            
+            <p class="inscriptos">Disponibles: <span>{{premio.cantidad}}</span></p>
+        </div>
+
+        <div class="card-actions" >
+            <div *ngIf="esVoluntario">
+                <!-- <button mat-raised-button *ngIf="!verificarInscripcion(tarea);else yaEstaInscripto" [disabled]=" tarea.cantInscriptos! >= tarea.cantParticipantes!" 
+                    color="accent" (click)="inscribirVoluntario(tarea)">INSCRIBIRME</button>
+
+                <ng-template #yaEstaInscripto>
+                    <button mat-raised-button color="accent" class="boton-inscripto">INSCRIPTO</button>
+        
+                </ng-template> -->
+                <button mat-raised-button color="primary">CANJEAR</button>
+
+
+            </div>
+            <div *ngIf="esAdmin">
+                <button mat-raised-button color="primary" (click)="modificar(premio)">MODIFICAR</button>
+                <button mat-raised-button color="warn" (click)="eliminar(premio)">ELIMINAR</button>
+            </div>
+            <!-- <button mat-raised-button  color="primary" (click)="mostrarDetalles(premio)">DETALLES</button> -->
+        </div>
+    </div>
+
+</div>
+

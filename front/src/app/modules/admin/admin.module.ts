@@ -6,12 +6,16 @@ import { AdminComponent } from './admin.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { TareasComponent } from './tareas/tareas.component';
 import { SharedModule } from '../shared/shared.module';
+import { PremiosComponent } from './premios/premios.component';
+import { CrearModificarPremioComponent } from './modales/crear-modificar-premio/crear-modificar-premio.component';
 
 
 @NgModule({
   declarations: [
     AdminComponent,
-    TareasComponent
+    TareasComponent,
+    PremiosComponent,
+    CrearModificarPremioComponent
   ],
   imports: [
     CommonModule,
