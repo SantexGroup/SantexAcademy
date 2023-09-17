@@ -37,13 +37,26 @@ export class LoginComponent implements OnInit {
     .subscribe( ok => {
       console.log(ok)
       if (ok === true){
-        this.router.navigateByUrl('/catalogo-cursos');
-        // Recargar la página después de la redirección
+        switch (this.authService.user.id) {
+          case 4:
+          this.router.navigateByUrl('/users/index');
+          // Recargar la página después de la redirección
         setTimeout(() => {
           window.location.reload();
         }, 100);
+          break;
+          case 3:
+            this.router.navigateByUrl('/catalogo-cursos');
+            // Recargar la página después de la redirección
+        setTimeout(() => {
+          window.location.reload();
+        }, 100);
+         break;
+          default:
+            this.router.navigateByUrl('/dashboard');
+        
         this.loginForm.reset();
-    }
+    }}
       else{
        this.loginForm.markAllAsTouched();
       /*this.toastrSvc.error("Error");*/

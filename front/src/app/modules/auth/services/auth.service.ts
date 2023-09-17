@@ -40,7 +40,7 @@ export class AuthService {
             localStorage.setItem('token', resp.token!);
             this._user = {
               username: resp.username!,
-              id: resp.id!
+              id: resp.id!,
             }
           }
         }),
