@@ -7,14 +7,14 @@
 
             </div>
             <div>
-                <p class="puntos">{{premio.costo}}</p>
+                <p class="puntos">{{premio.costo | number:'1.0-0'}}</p>
             </div>
         </div>
 
         <div class="card-content">
             <p>{{premio.description}}</p>
             
-            <p class="inscriptos">Disponibles: <span>{{premio.cantidad}}</span></p>
+            <p class="inscriptos">Disponibles: <span>{{premio.cantidad | number:'1.0-0'}}</span></p>
         </div>
 
         <div class="card-actions" >

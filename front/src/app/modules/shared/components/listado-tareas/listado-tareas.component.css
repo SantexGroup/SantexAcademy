@@ -43,7 +43,7 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3; /* Número máximo de líneas */
-    overflow: hidden; /* Oculta el contenido que desborda */
+    overflow: hidden;
     text-overflow: ellipsis; 
 }
 
