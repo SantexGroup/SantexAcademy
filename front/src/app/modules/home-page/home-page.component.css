@@ -1,0 +1,162 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* imagen para poner de fondo de la pagina 
+body{
+    background-image: url();
+    background-size: cover;
+    background-position: center;
+    
+    font-family: sans-serif;
+}*/
+
+
+.logo{
+    height: 70px;
+    width: 130px;
+    font-family: sans-serif;
+}
+
+@media (max-width: 400px) {
+    .patrocionos{
+        width: 250px;
+        height: 40px;
+    }
+  }
+/* ------------------------------------------- */
+.color-box{
+    background-color: rgb(230, 230, 230);
+    width: 250px;
+    height:350px
+
+}
+
+
+/* -------------------------------------------------------- */
+
+.testimonio{
+    background-color: orange;
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+}
+/* 
+.naranja{
+    color: white;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+}
+
+.foto-coment .come1{
+    height: 400px;
+    width: 300px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    margin-top: 50px;
+    background: #fdfefe;
+    box-shadow: 5px 5px 15px gray;
+    display:inline-block;
+    position: relative;
+    left: 12%;
+    transform: translateX(-45%);
+}
+
+
+.come1 .photo{
+    height: 150px;
+    width: 150px;
+    background-position: 50%;
+    border-radius: 50%;
+    margin-left: 80px;
+    margin-top: 30px;
+    display: block;
+    align-content: center;
+}
+.come1 h3{
+    font-size: 20px;
+    text-align: center;
+}
+.come1 h4{
+    text-align: center;
+    color: rgb(197, 196, 196);
+}
+.come1 p{
+    font-size: 15px;
+    color: gray;
+    text-align: center;
+    margin: 30px 10px 30px 10px;
+}
+
+.foto-coment .star{
+    margin-top: 10px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    color: orange;
+} */
+/* ---------------------------------------------- */
+
+.fin{
+    background-color: white;
+    margin-top: 10px;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    justify-content: left;
+}
+
+.fin .fin-logo{
+    height: 100px;
+    width: 100px;
+}
+
+.fin-caja .fin-logo{
+    max-width: 320px;
+    font-size: 50px;
+    color: gray;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.fin-caja .descrive{
+    margin-top: 30px;
+    color: gray;
+}
+.decoration{
+    text-decoration: none;
+}
+/* -------------------------------------------- */
+
+.base{
+    background-color: rgb(214, 212, 212);
+    margin-top: 10px;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.base .base1 p{
+    margin-left: 20px;
+    color: gray;
+}
+.base .base2 {
+    margin-left: 550px;
+}
+
+.base2 a{
+    margin-left: 10px;
+    color: gray;
+}
+
+.base2 a:hover{
+    color: black;
+}
