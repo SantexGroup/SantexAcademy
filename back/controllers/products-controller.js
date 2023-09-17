@@ -11,6 +11,20 @@ async function products(req, res, next) {
     next(error);
   }
 }
+
+// obtener por id
+async function getProductFromId(req, res) {
+  const { id } = req.params;
+
+  try {
+    const articulo = await productsService.getProductoById(id);
+
+    res.status(200).send(articulo);
+  } catch (error) {
+    res.status(404).send('Producto no encontrado');
+  }
+}
+
 // categorias
 async function getCategories(req, res) {
   const categories = await productsService.getAllCategories();
@@ -18,4 +32,33 @@ async function getCategories(req, res) {
   res.status(200).send(categories);
 }
 
-module.exports = { products, getCategories };
+// cargar producto
+
+async function chargeProduct(req, res) {
+  const {
+    idUsuario, idTipoProducto, nombre, detalles, precio, envio,
+  } = req.body;
+
+  const product = await productsService.chargeProducts(idUsuario, idTipoProducto, nombre,
+    detalles, precio, envio);
+
+  res.status(201).send(product);
+}
+
+// modificar articulo
+
+async function editProduct(req, res) {
+  const { id } = req.params;
+  const {
+    idUsuario, idTipoProducto, nombre, detalles, precio, envio,
+  } = req.body;
+
+  const article = await productsService.editArticle(id, idUsuario, idTipoProducto, nombre,
+    detalles, precio, envio);
+
+  res.status(201).send(article);
+}
+
+module.exports = {
+  products, getCategories, chargeProduct, getProductFromId, editProduct,
+};

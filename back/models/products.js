@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate() {
-      
+
     }
   }
   Products.init({
@@ -20,10 +20,11 @@ module.exports = (sequelize, DataTypes) => {
     detalles: DataTypes.STRING,
     precio: DataTypes.INTEGER,
     envio: DataTypes.BOOLEAN,
+    estado: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'Products',
   });
-  
+
   return Products;
 };

@@ -9,15 +9,15 @@
             <input *ngIf="!logeadoComprador && !logeadoVendedor" [(ngModel)]="corLog" id="inputCorreo"  type="text" class="form-control"  placeholder="Correo">
             <input *ngIf="!logeadoComprador && !logeadoVendedor" [(ngModel)]="pasLog" id="inputContraseña" type="password" class="form-control" placeholder="Contraseña">
             <button *ngIf="!logeadoComprador && !logeadoVendedor" (click)="botonLogin()" type="button" >Ingresar</button>
-            <!-- <button *ngIf="logeadoComprador" (click)="botonVendedor()" type="button" >Conviertase en vendedor</button> -->
-            <p *ngIf="logeadoComprador" routerLink="/misCompras">Mis compras</p>
-            <p *ngIf="logeadoVendedor" routerLink="/misVentas">Mis ventas</p>            
+            <button *ngIf="logeadoComprador" (click)="botonVendedor()" type="button" class="btn btn-primary" >Conviertase en vendedor</button>
+            <a *ngIf="logeadoComprador" routerLink="/misCompras">Mis compras</a>
+            <a *ngIf="logeadoVendedor" routerLink="/misVentas">Mis ventas</a>            
         </div>
         <a class="registrarse" >
             <p *ngIf="!logeadoComprador && !logeadoVendedor" routerLink="/registro">¿No tienes una cuenta? Registrate</p>
             <p *ngIf="logeadoComprador">Ya está logueado como comprador</p>
             <p *ngIf="logeadoVendedor">Ya está logueado como vendedor</p>
-            <a *ngIf="logeadoComprador || logeadoVendedor" click()="deslogear()">Cerrar sesión</a>
+            <button *ngIf="logeadoVendedor || logeadoComprador" (click)="deslogear()">Cerrar sesión</button>  
         </a>
       </div>
     </div>

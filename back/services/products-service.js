@@ -31,6 +31,17 @@ async function products() {
   return productos;
 }
 
+// obterner por id
+async function getProductoById(id) {
+  const articulos = await Products.findByPk(id);
+
+  if (articulos == null) {
+    throw new Error();
+  }
+
+  return articulos;
+}
+
 // categorias
 
 async function getAllCategories() {
@@ -39,4 +50,55 @@ async function getAllCategories() {
   return CategoriesList;
 }
 
-module.exports = { products, getAllCategories };
+// carga producto
+
+async function chargeProducts(idUsuario, idTipoProducto, nombre, detalles, precio, envio) {
+  const producto = new Products();
+
+  producto.idUsuario = idUsuario;
+  producto.idTipoProducto = idTipoProducto;
+  producto.nombre = nombre;
+  producto.detalles = detalles;
+  producto.precio = precio;
+  producto.envio = envio;
+
+  const productCreated = await producto.save();
+  return productCreated;
+}
+
+// modificar articulo
+
+async function editArticle(id, idUsuario, idTipoProducto, nombre, detalles, precio, envio) {
+  const articulo = await getProductoById(id);
+
+  if (idUsuario) {
+    articulo.idUsuario = idUsuario;
+  }
+  if (idTipoProducto) {
+    articulo.idTipoProducto = idTipoProducto;
+  }
+
+  if (nombre) {
+    articulo.nombre = nombre;
+  }
+
+  if (detalles) {
+    articulo.detalles = detalles;
+  }
+
+  if (precio) {
+    articulo.precio = precio;
+  }
+
+  if (envio) {
+    articulo.envio = envio;
+  }
+
+  const productEdited = await articulo.save();
+
+  return productEdited;
+}
+
+module.exports = {
+  products, getAllCategories, chargeProducts, getProductoById, editArticle,
+};
