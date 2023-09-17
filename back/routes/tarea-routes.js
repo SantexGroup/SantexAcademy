@@ -12,5 +12,5 @@ router.put('/edit-tarea/:id', isAuthenticatedOrganizacion, tareaController.editT
 router.delete('/delete-tarea/:id', isAuthenticatedOrganizacion, tareaController.deleteTarea);
 router.put('/cambiar-estado/:id', isAuthenticatedOrganizacion, tareaController.editEstado);
 router.get('/inscriptos/:id', isAuthenticatedOrganizacion, tareaController.getVolunteersForTask);
-router.put('/cambiar-asistencia/:id',  tareaController.editAsistio);
+router.put('/cambiar-asistencia/:id', isAuthenticatedOrganizacion, tareaController.editAsistio);
 module.exports = router;
