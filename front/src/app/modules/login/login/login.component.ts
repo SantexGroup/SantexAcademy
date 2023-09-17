@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../auth/services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -37,13 +38,15 @@ export class LoginComponent implements OnInit {
       console.log(ok)
       if (ok === true){
         this.router.navigateByUrl('/catalogo-cursos');
-      /*this.loginService.login(this.loginForm.value);
-      this.router.navigateByUrl('/users/index');*/
-      this.loginForm.reset();
+        // Recargar la página después de la redirección
+        setTimeout(() => {
+          window.location.reload();
+        }, 100);
+        this.loginForm.reset();
     }
-    else{
-      this.loginForm.markAllAsTouched();
-      this.toastrSvc.error("Usuario o contraseña incorrectos");
+      else{
+       this.loginForm.markAllAsTouched();
+      /*this.toastrSvc.error("Error");*/
     }
   })
 } }}
