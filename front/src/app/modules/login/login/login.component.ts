@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../auth/services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-login',
@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
   login(){
     console.log(this.loginForm.value);
     const { email, password } = this.loginForm.value;
-    /*if(this.loginForm.valid){*/
     if (email !== null && password !== null && email !== undefined && password !== undefined) {
     this.authService.login(email, password)
     .subscribe( ok => {
@@ -46,7 +45,7 @@ export class LoginComponent implements OnInit {
         }, 100);
           break;
           case 3:
-            this.router.navigateByUrl('/catalogo-cursos');
+            this.router.navigateByUrl('/perfil-alumno');
             // Recargar la página después de la redirección
         setTimeout(() => {
           window.location.reload();
@@ -59,7 +58,6 @@ export class LoginComponent implements OnInit {
     }}
       else{
        this.loginForm.markAllAsTouched();
-      /*this.toastrSvc.error("Error");*/
     }
   })
 } }}
