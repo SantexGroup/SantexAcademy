@@ -59,6 +59,16 @@
     font-size: 0.8rem;
     color: #76777c;
   }
+  .card-content {
+    text-align: center;
+    display: flex; /* Convertimos el contenedor en un contenedor de flexbox */
+    flex-direction: column; /* Apilamos elementos verticalmente */
+    justify-content: space-between; /* Distribuimos el espacio verticalmente entre los elementos */
+    height: 100%; /* Asegura que la tarjeta tenga una altura del 100% */
+  }
+  .card-content-buttons {
+    margin: 0 auto;
+  }
   .botton-ver-prduct{
     width: 8rem;
     height: 40px;
@@ -68,6 +78,8 @@
     color: #ffffff;
     background: #115DFC;
     cursor: pointer;
+    margin-top: auto; /* Empuja el botón hacia la parte inferior de la tarjeta */
+
   }
   .botton-ocultar-product {
     width: 8rem;
@@ -218,14 +230,14 @@ li {
 .results .entry .desc label {
   display: block;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 15px;
   color: #171718;
 }
 
 .results .entry .desc span {
   font-weight: 600;
-  font-size: 10px;
+  font-size: 13px;
   line-height: 12px;
   color: #72767c;
 }
