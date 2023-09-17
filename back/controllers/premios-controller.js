@@ -17,18 +17,22 @@ async function getPremiosById(req, res, next) {
 }
 
 async function createPremios(req, res) {
-  const { name, description, costo,cantidad} = req.body;
+  const {
+    name, description, costo, cantidad,
+  } = req.body;
 
-  const prem = await premiosServices.createPremios(name, description, costo,cantidad);
+  const prem = await premiosServices.createPremios(name, description, costo, cantidad);
 
   res.status(201).send(prem);
 }
 
 async function editPremios(req, res) {
   const { id } = req.params;
-  const { name, description, costo,cantidad } = req.body;
+  const {
+    name, description, costo, cantidad,
+  } = req.body;
 
-  const prem = await premiosServices.editPremios(id, name, description, costo,cantidad);
+  const prem = await premiosServices.editPremios(id, name, description, costo, cantidad);
   res.status(201).send(prem);
 }
 
@@ -36,7 +40,7 @@ async function deletePremios(req, res) {
   const { id } = req.params;
   await premiosServices.deletePremios(id);
 
-  res.status(200).send(`Premio con id ${id} ha sido eliminado exitosamente`);
+  res.status(200).send();
 }
 
 module.exports = {
