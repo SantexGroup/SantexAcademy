@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { Error404Component } from './components/error404/error404.component';
-import { ProfileGuard } from './guards/profile.guard';
 
 
 const routes: Routes = [
@@ -38,7 +37,6 @@ const routes: Routes = [
   },
   {
     path: 'profil/:id',
-    canActivate: [ProfileGuard], // Aplica el guardia
     component: Error404Component,
   },
   {
