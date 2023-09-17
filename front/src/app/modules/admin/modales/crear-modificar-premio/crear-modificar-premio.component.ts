@@ -26,10 +26,10 @@ export class CrearModificarPremioComponent implements OnInit {
     }
     
     this.form = fb.group({
-      nombre:['', Validators.required],
-      cantidad:['', Validators.required],
-      costo:['', Validators.required],
-      descripcion:['', Validators.required]
+      nombre:['', [Validators.required,Validators.maxLength(40)]],
+      cantidad:['', [Validators.required, Validators.max(200000)]],
+      costo:['', [Validators.required, Validators.max(200000)]],
+      descripcion:['', [Validators.required, Validators.maxLength(50)]]
 
     });
 
