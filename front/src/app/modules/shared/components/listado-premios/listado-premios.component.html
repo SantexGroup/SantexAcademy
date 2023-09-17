@@ -32,7 +32,7 @@
             </div>
             <div *ngIf="esAdmin">
                 <button mat-raised-button color="primary" (click)="modificar(premio)">MODIFICAR</button>
-                <button mat-raised-button color="warn">ELIMINAR</button>
+                <button mat-raised-button color="warn" (click)="eliminar(premio)">ELIMINAR</button>
             </div>
             <!-- <button mat-raised-button  color="primary" (click)="mostrarDetalles(premio)">DETALLES</button> -->
         </div>

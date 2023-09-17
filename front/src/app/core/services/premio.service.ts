@@ -26,6 +26,11 @@ export class PremioService {
     return this.apiService.put('/premios/edit-premios/'+idPremio,premioModificado);
   }
 
+  eliminar(idPremio:number):Observable<void>{
+
+    return this.apiService.delete('/premios/delete-premios/'+idPremio);
+  }
+
 
 
 }
