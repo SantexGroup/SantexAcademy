@@ -167,6 +167,10 @@ async function asignarTareaVoluntario(idVolunteer, idTarea) {
     return { error: 'Error interno en el servidor' };
   }
 }
+
+async function canjearPuntos(){
+  
+}
 module.exports = {
   getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, asignarTareaVoluntario,
 };
