@@ -1,16 +1,15 @@
 const passport = require('passport');
 
 const isAuthenticated = (req, res, next) => {
-    passport.authenticate('jwt', {session: false}, (err, user, info) => {
-        console.log('Validando autenticacion');
+  passport.authenticate('jwt', { session: false }, (err, user) => {
+    console.log('Validando autenticacion');
 
-        if (err || !user) {
-            const error = new Error("Debe iniciar sesión para efectuar esta operación");
-            return next(error);
-        }
+    if (err || !user) {
+      return res.status(401).send('Debe iniciar sesión para efectuar esta operación');
+    }
 
-        next();
-})(req, res, next);
-}
+    return next();
+  })(req, res, next);
+};
 
 module.exports = { isAuthenticated };
