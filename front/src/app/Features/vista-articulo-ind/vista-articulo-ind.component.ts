@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { VistaArticuloService } from 'src/app/core/services/vista-articulo.service';
+import { vistaArtIndServ } from 'src/app/core/services/vista-art-ind-serv.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-vista-articulo',
-  templateUrl: './vista-articulo.component.html',
-  styleUrls: ['./vista-articulo.component.css']
+  selector: 'app-vista-articulo-ind',
+  templateUrl: './vista-articulo-ind.component.html',
+  styleUrls: ['./vista-articulo-ind.component.css']
 })
-export class VistaArticuloComponent implements OnInit {
+export class VistaArtIndComponent implements OnInit {
 
   // uploadedImages: string[] = [];
   nomProd: string = 'Gazebo De Poliéster';
@@ -52,7 +52,7 @@ export class VistaArticuloComponent implements OnInit {
     pago: 0,
   }
 
-  constructor(private service: VistaArticuloService, private router: Router) { }
+  constructor(private service: vistaArtIndServ, private router: Router) { }
 
   ngOnInit(): void {
     let infoLocal = localStorage.getItem('idProd') //leer localStorage para saber UniqueID. Además hay que reemplazarlo por modelo.UniqueID y/o por IDProdPrue

@@ -6,6 +6,7 @@ import { BasesComponent } from './Features/bases/bases.component';
 import { RegistroComponent } from './Features/registro/registro.component';
 import { CargaArticulosComponent } from './Features/carga-articulos/carga-articulos.component';
 import { TarjetaArticuloComponent } from './Features/tarjeta-articulo/tarjeta-articulo.component';
+import { VistaArtIndComponent } from './Features/vista-articulo-ind/vista-articulo-ind.component';
 
 
 const routes: Routes = [
@@ -32,7 +33,11 @@ const routes: Routes = [
   {
     path: 'tarjeta',
     component: TarjetaArticuloComponent
-  }
+  },
+  {
+    path: 'vista-articulo',
+    component: VistaArtIndComponent,
+  },
 
 ]
 @NgModule({
