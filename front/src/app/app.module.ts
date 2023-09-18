@@ -12,6 +12,7 @@ import { RegistroComponent } from './Features/registro/registro.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CargaArticulosComponent } from './Features/carga-articulos/carga-articulos.component';
+import { TarjetaArticuloComponent } from './Features/tarjeta-articulo/tarjeta-articulo.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { CargaArticulosComponent } from './Features/carga-articulos/carga-articu
     BasesComponent,
     RegistroComponent,
     CargaArticulosComponent,
+    TarjetaArticuloComponent,
   ],
   imports: [
     BrowserModule,
