@@ -1,6 +1,7 @@
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const { UserService } = require('../services');
+const saltRounds = 10;
 
 const getUserById = async (req, res) => {
   const { userId } = req.params;
@@ -39,7 +40,7 @@ const createUser = async (req, res) => {
   const {
     firstName, lastName, email, phone, password,
   } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
+  const hashedPassword = await bcrypt.hash(password, saltRounds);
   try {
     const user = await UserService.createUser({
       firstName,
@@ -64,7 +65,7 @@ const updateUser = async (req, res) => {
   const {
     firstName, lastName, phone, password,
   } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
+  const hashedPassword = await bcrypt.hash(password, saltRounds);
   try {
     // le agrego el dates porque me da error el eslint
     const updateUserDates = await UserService.updateUser(userId, {
@@ -87,7 +88,7 @@ const updatePassword = async (req, res) => {
   }
   const { userId } = req.params;
   const { password } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
+  const hashedPassword = await bcrypt.hash(password, saltRounds);
 
   try {
     // le agrego el dates porque me da error el eslint
