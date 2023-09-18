@@ -32,13 +32,13 @@
             <p class="contenido-propiedad">{{ dataTarea.duracion }} {{dataTarea.duracion===1?'hora.':'horas.'}}</p> 
 
             <p class="titulo-propiedad">Puntos:</p>
-            <p class="contenido-propiedad">{{ dataTarea.points }}</p>
+            <p class="contenido-propiedad">{{ dataTarea.points | number:'1.0-0'}}</p>
 
             <p class="titulo-propiedad">Cantidad de participantes:</p>
-            <p class="contenido-propiedad">{{ dataTarea.cantParticipantes }}</p>
+            <p class="contenido-propiedad">{{ dataTarea.cantParticipantes| number:'1.0-0' }}</p>
 
             <p class="titulo-propiedad">Cantidad de Inscriptos:</p>
-            <p class="contenido-propiedad">{{ dataTarea.cantInscriptos }}</p>
+            <p class="contenido-propiedad">{{ dataTarea.cantInscriptos | number:'1.0-0'}}</p>
 
         </mat-card-content>
         <mat-card-actions>

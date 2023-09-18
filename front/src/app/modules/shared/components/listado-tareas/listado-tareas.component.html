@@ -16,7 +16,7 @@
             <p>{{tarea.description}}</p>
             <p>Estado: {{tarea.estado|titlecase}}</p>
             
-            <p class="inscriptos">Inscriptos: <span>{{tarea.cantInscriptos}}/{{tarea.cantParticipantes}}</span></p>
+            <p class="inscriptos">Inscriptos: <span>{{tarea.cantInscriptos| number:'1.0-0'}}/{{tarea.cantParticipantes| number:'1.0-0'}}</span></p>
         </div>
 
         <div class="card-actions" >

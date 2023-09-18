@@ -15,7 +15,7 @@ mat-card-content{
     justify-content: space-around;
     align-items: flex-start;
     margin: 20px 10px;
-    padding-top: 200px;
+    padding-top: 350px;
 }
 
 .titulo-propiedad{
@@ -25,11 +25,16 @@ mat-card-content{
    
 }
 .titulo{
-    text-align: center;
     margin-bottom: 30px;
+    width: 100%;
+    white-space: normal;
+    overflow-wrap: break-word;
 }
 .contenido-propiedad{
     margin-top: 5px;
+    width: 100%;
+    white-space: normal;
+    overflow-wrap: break-word;
     
 }
 
