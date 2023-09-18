@@ -3,6 +3,8 @@ const Express = require('express');
 // Middlewares:
 const rootPath = require('../middleware/root_path.middleware');
 const errors = require('../middleware/error_handler.middleware');
+const { authMW } = require('../middleware/authentication.middleware');
+const { adminCheck } = require('../middleware/authentication.middleware');
 
 const app = Express();
 
@@ -11,7 +13,7 @@ const userRouter = require('./userRouter');
 const authRouter = require('./authenticationRouter');
 
 // use=
-app.use('/ping', (req, res) => {
+app.use('/ping', authMW, adminCheck, (req, res) => {
   res.json({
     response: 'pong!',
   });

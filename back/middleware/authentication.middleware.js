@@ -4,7 +4,6 @@ const passportJwt = require('passport-jwt');
 const JWTStrategy = passportJwt.Strategy;
 const ExtractJWT = passportJwt.ExtractJwt;
 const SECRET = process.env.SESSION_SECRET;
-// const userProvider = require('../providers/userProvider');
 
 passport.use(
   new JWTStrategy(
@@ -21,11 +20,20 @@ passport.use(
 
 const authMW = passport.authenticate('jwt', { session: false });
 
-const adminCheck = async (req, res) => {
-  if (req.user.admin === 1) {
-    res.next();
+const authenticatedCheck = (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    res.status(401).json({ error: 'Autentication failed' });
   }
-  res.status(401).json({ error: 'Admin credentials required' });
+  next();
 };
 
-module.exports = { SECRET, authMW, adminCheck };
+const adminCheck = async (req, res, next) => {
+  if (!req.user.isAdmin) {
+    res.status(401).json({ error: 'Admin credentials required' });
+  }
+  next();
+};
+
+module.exports = {
+  SECRET, authMW, authenticatedCheck, adminCheck,
+};
