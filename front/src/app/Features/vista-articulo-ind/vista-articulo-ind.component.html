@@ -28,12 +28,12 @@
 
       <!-- Seleccionables -->
     <div id="divFinal" class="d-flex text-center justify-content-between" >
-        <form id="elecciones"  action="#" method="post">
+        <form id="elecciones" action="#" method="post">
             <div> 
-                <select id="selectEnvio" name="envio" (change)="mensajeDias()" required>
+                <select id="selectEnvio" name="envio" (change)="mensajeDias()" required formControlName="diasElec">
                     <option value="" disabled selected hidden>Opción de envío</option>
                     <option value="retiro">Retiro por local</option>    
-                    <option value="retiro" *ngIf="(respuesta.articulos.envio == true)">Envío a domicilio</option>    
+                    <option value="envio" *ngIf="(respuesta.articulos.envio == true)">Envío a domicilio</option>    
                 </select>
             </div>
 
