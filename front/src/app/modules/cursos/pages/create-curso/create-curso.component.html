@@ -86,18 +86,19 @@
         type="date" 
         class="form-control"
         id="formGroupFechaInicioInput"
-        [(ngModel)]="formattedStartDate"
+        [ngModel]="curso.fechainicio | date:'yyyy-MM-dd'"
+        (ngModelChange)="curso.fechainicio=$event"
         name="fechainicio"
       />
     </div>
-  
     <div class="form-group">
-      <label for="formGroupFechaFinInput">Fecha de fin</label>
+      <label for="formGroupFechaFinInput">Fecha de fin </label>
       <input
         type="date"
         class="form-control"
         id="formGroupFechaFinInput"
-        [(ngModel)]="curso.fechafin"
+        [ngModel]="curso.fechafin | date:'yyyy-MM-dd'"
+        (ngModelChange)="curso.fechafin=$event"
         name="fechafin"
       />
     </div>

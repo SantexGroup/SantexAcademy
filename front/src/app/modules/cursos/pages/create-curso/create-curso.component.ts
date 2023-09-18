@@ -70,24 +70,8 @@ export class CreateCursoComponent implements OnInit {
     .pipe(switchMap(({ id }) => this.cursosService.getCursoPorId(id)))
     .subscribe((curso) => {
       this.curso = curso;
-      this.nivelSeleccionado = curso.idnivel;
-      // Cuando obtengas la fecha del curso, verifica si es un objeto Date válido
-      if (this.curso.fechainicio instanceof Date && !isNaN(this.curso.fechainicio.getTime())) {
-        this.formattedStartDate = this.formatDate(this.curso.fechainicio);
-      } else {
-        // Si no es un objeto Date válido, puedes establecer una fecha predeterminada o manejarlo de otra manera según tus necesidades
-        this.formattedStartDate = ''; // O puedes establecer otro valor predeterminado
-      }
-    });
-   
-  }
-
- // Función para formatear la fecha como "yyyy-MM-dd"
-  formatDate(date: Date): string {
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
-    return `${year}-${month}-${day}`;
+      this.nivelSeleccionado = curso.idnivel;  
+    });  
   }
 
   // Método para manejar la selección de nivel
@@ -121,3 +105,35 @@ export class CreateCursoComponent implements OnInit {
     }
   }
 }
+
+
+/* 
+Melisa:
+Dejo comentado esto, porque se resuelve el tema de fechas dandole formato 
+[ngModel]="curso.fechainicio | date:'yyyy-MM-dd'"
+(ngModelChange)="curso.fechainicio=$event"
+desde el HTML:
+
+ if (this.curso.fechainicio instanceof Date && !isNaN(this.curso.fechainicio.getTime())) {
+        this.formattedStartDate = this.formatDate(this.curso.fechainicio);
+      } else {
+        // No mostrar nada
+        this.formattedStartDate = ''; 
+      }
+
+       if (this.curso.fechafin instanceof Date && !isNaN(this.curso.fechafin.getTime())) {
+        this.formattedStartDate = this.formatDate(this.curso.fechafin);
+      } else {
+        // No mostrar nada
+        this.formattedStartDate = ''; 
+      }
+
+   // Función para formatear la fecha como "yyyy-MM-dd"
+  formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+
+    return date.toISOString().split('T')[0]
+  }
+*/
