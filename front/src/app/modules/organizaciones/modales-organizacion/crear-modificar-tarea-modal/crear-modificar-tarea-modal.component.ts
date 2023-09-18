@@ -27,6 +27,18 @@ export class CrearModificarTareaModalComponent implements OnInit, AfterViewInit 
               @Inject(MAT_DIALOG_DATA)private dataTarea:Tarea) { 
     
     this.datosOrganizacion$ = organizacionService.getDatosOrganizacion;
+    this.form = fb.group({
+      nombre:['', [Validators.required, Validators.maxLength(30)]],
+      descripcion:['',[Validators.required, Validators.maxLength(250)]],
+      puntos:['',[Validators.required,Validators.max(200000)]],
+      fecha:['',Validators.required],
+      direccion:['',[Validators.required, Validators.maxLength(100)]],
+      categoriaId:['',Validators.required],
+      cantidadParticipantes:['',[Validators.required, Validators.max(10000)]],
+      duracion:['',Validators.required],
+      horaInicio:['', Validators.required]
+
+    });
                 
     if(dataTarea){
       
@@ -37,39 +49,13 @@ export class CrearModificarTareaModalComponent implements OnInit, AfterViewInit 
       this.longitud = this.dataTarea.longitud;
       this.latitud = this.dataTarea.latitud;
       this.direccionFormateada = this.dataTarea.place;
-
-      const fechaMoment = moment(this.dataTarea.date);
-      
-      this.form = fb.group({
-        nombre:[this.dataTarea.name, Validators.required],
-        descripcion:[this.dataTarea.description,Validators.required],
-        puntos:[this.dataTarea.points,Validators.required],
-        fecha:[fechaMoment.toDate(),Validators.required],
-        direccion:[this.dataTarea.place,Validators.required],
-        categoriaId:['',Validators.required],
-        cantidadParticipantes:[this.dataTarea.cantParticipantes,Validators.required],
-        duracion:[this.dataTarea.duracion, Validators.required],
-        horaInicio:[this.dataTarea.hora, Validators.required]
-  
-      }); 
-       
+    
     }
     else{
 
       this.titulo = 'Crear Tarea';
       this.modificar = false;
-      this.form = fb.group({
-        nombre:['', Validators.required],
-        descripcion:['',Validators.required],
-        puntos:['',Validators.required],
-        fecha:['',Validators.required],
-        direccion:['',Validators.required],
-        categoriaId:['',Validators.required],
-        cantidadParticipantes:['',Validators.required],
-        duracion:['',Validators.required],
-        horaInicio:['', Validators.required]
-  
-      });
+      
     }
 
   }
@@ -91,13 +77,26 @@ export class CrearModificarTareaModalComponent implements OnInit, AfterViewInit 
   direccionFormateada:string = '';
 
   autocompleteOptions = {
-    types: ['geocode'], // Puedes ajustar los tipos según tus necesidades.
-    componentRestrictions: { country: 'AR' }, // 'AR' es el código de país para Argentina.
+    types: ['geocode'], 
+    componentRestrictions: { country: 'AR' }, 
   };
   
   ngOnInit(): void {
     
     this.cargarCategorias();
+    const fechaMoment = moment(this.dataTarea.date);
+    this.form.patchValue({
+      nombre:this.dataTarea.name,
+      descripcion:this.dataTarea.description,
+      puntos:this.dataTarea.points,
+      fecha: fechaMoment.toDate(),
+      direccion:this.dataTarea.place,
+      categoriaId: this.dataTarea.categoryId,
+      cantidadParticipantes:this.dataTarea.cantParticipantes,
+      duracion:this.dataTarea.duracion,
+      horaInicio:this.dataTarea.hora
+
+    }); 
     
   }
   
@@ -111,9 +110,7 @@ export class CrearModificarTareaModalComponent implements OnInit, AfterViewInit 
       this.longitud = direccion?.geometry?.location?.lng()!;
       this.direccionFormateada = direccion?.formatted_address!;
 
-      // console.log('direccion:'+ lugar?.formatted_address);
-      // console.log('latitud:'+ lugar?.geometry?.location?.lat());
-      // console.log('longitud:'+ lugar?.geometry?.location?.lng());
+      
     });
   }
   
@@ -122,15 +119,6 @@ export class CrearModificarTareaModalComponent implements OnInit, AfterViewInit 
       next:(res)=>{
         
         this.listCategorias = res;
-
-        //Una vez que ya se tienen las categorias, se modifica el valor de la categoria en el form para que se seleccione en el matSelect
-
-        if(this.modificar){
-          this.form.patchValue({
-            categoriaId:this.dataTarea.category?.id,
-       })
-       };
-      
       },
       error:(err)=> {
         
