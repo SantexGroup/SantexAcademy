@@ -47,6 +47,7 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 5px;
     height: 30%;
+    width: 500px; /* reemmplazar por valor no absoluto?? */
 }
 
 #desNom {
@@ -62,7 +63,6 @@
     border-radius: 10px;
     border: 1px solid lightgrey;
     height: 70%;
-    width: 100%;
     color: grey;  
     font-size: small;  
     

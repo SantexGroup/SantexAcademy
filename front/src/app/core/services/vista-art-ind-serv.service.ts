@@ -10,6 +10,6 @@ export class vistaArtIndServ {
 
   datosProdServ(id: number) {
     // console.log('/productos/obtener-producto-por-id/:' + idProd)
-    return this.apiService.get('/productos/obtener-producto-por-id/:' + id)
+    return this.apiService.get<any>('/productos/obtener-producto-por-id/' + id)
   }
 }

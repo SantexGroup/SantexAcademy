@@ -12,66 +12,65 @@
     <div id="datos">
 
         <!-- Nombres -->
-        <div id="divInicial" >
-            <p id="nomProd" class="d-flex justify-content-center">{{nomProd}}</p>
-            <a id="tipoProd" class="d-flex justify-content-right" routerLink="/">Categoría: {{nomCat}}</a>
-            <a class="d-flex justify-content-right" routerLink="/">Vendedor: {{nomVen}}</a>
-        </div>
+    <div id="divInicial" >
+        <p id="nomProd" class="d-flex justify-content-center">{{respuesta.articulos.nombre}}</p>
+        <a id="tipoProd" class="d-flex justify-content-right" routerLink="/">Categoría: {{respuesta.tipo.name}}</a>
+        <a class="d-flex justify-content-right" routerLink="/">Vendedor: {{respuesta.usuario.firstName}} {{respuesta.usuario.lastName}}</a>
+    </div>
 
         <!-- Descripción -->
-        <div id="descripcion">
-            <p id="desNom">Descripción:</p>
-            <div id="divDesProd">
-                <p id="desProd">{{desc}}</p>
-            </div>
+    <div id="descripcion">
+        <p id="desNom">Descripción:</p>
+        <div id="divDesProd">
+            <p id="desProd">{{respuesta.articulos.detalles}}</p>
         </div>
+    </div>
 
       <!-- Seleccionables -->
-        <div id="divFinal" class="d-flex text-center justify-content-between" >
-            <form id="elecciones"  action="#" method="post">
-                <div> 
-                    <select id="selectEnvio" name="envio" (change)="mensajeDias()" required>
-                        <option value="" disabled selected hidden>Opción de envío</option>
-                        <option value="retiro">Retiro por local</option>
-                        <option value="envio" >Envío a domicilio</option>
-                        <!-- <option *ngIf="retiro" value="envio" >Envío a domicilio</option> -->
-                    </select>
-                </div>
+    <div id="divFinal" class="d-flex text-center justify-content-between" >
+        <form id="elecciones"  action="#" method="post">
+            <div> 
+                <select id="selectEnvio" name="envio" (change)="mensajeDias()" required>
+                    <option value="" disabled selected hidden>Opción de envío</option>
+                    <option value="retiro">Retiro por local</option>    
+                    <option value="retiro" *ngIf="(respuesta.articulos.envio == true)">Envío a domicilio</option>    
+                </select>
+            </div>
 
-                <div> 
-                    <select id="selectDias" name="dias" required>
-                        <option value="" disabled selected hidden>Cantidad de días a contratar</option>
-                        <!-- <option *ngFor="let dias of listDias">{{listDias[i]}}</option> -->
-                        <option value= 0>1</option>
-                        <option value= 1>2</option>
-                        <option value= 2>3</option>
-                        <option value= 3>4</option>
-                        <option value= 4>5</option>
-                        <option value= 5>6</option>
-                        <option value= 6>7</option>
-                    </select>
-                </div>           
+            <div> 
+                <select id="selectDias" name="dias" required>
+                    <option value="" disabled selected hidden>Cantidad de días a contratar</option>
+                    <!-- <option *ngFor="let dias of listDias">{{listDias[i]}}</option> -->
+                    <option value= 0>1</option>
+                    <option value= 1>2</option>
+                    <option value= 2>3</option>
+                    <option value= 3>4</option>
+                    <option value= 4>5</option>
+                    <option value= 5>6</option>
+                    <option value= 6>7</option>
+                </select>
+            </div>           
                 
-                <div> 
-                    <select id="selectPago" name="pago" required>
-                        <option value="" disabled selected hidden>Forma de pago</option>
-                        <option value="efectivo">Pago con efectivo</option>
-                        <option value="tarjeta" >Pago con tarjeta</option>
-                        <!-- <option *ngIf="pago" value="tarjeta" >Pago con tarjeta</option> -->
-                    </select>
+            <div> 
+                <select id="selectPago" name="pago" required>
+                    <option value="" disabled selected hidden>Forma de pago</option>
+                    <option value="efectivo">Pago con efectivo</option>
+                    <option value="tarjeta" *ngIf="(respuesta.usuario)">Pago con tarjeta</option>
+                    <!-- <option *ngIf="pago" value="tarjeta" >Pago con tarjeta</option> -->
+                </select>
+            </div>
+        </form>
+        <!-- Botón y precio -->
+        <div id="divBotonYPrecio" >
+            <div id="divAlquilar" >
+                <div id="divPrecio">
+                    <p id="precio">Precio: ${{respuesta.articulos.precio}}</p>
                 </div>
-            </form>
-            <!-- Botón y precio -->
-            <div id="divBotonYPrecio" >
-                <div id="divAlquilar" >
-                    <div id="divPrecio">
-                        <p id="precio">Precio: {{precio}}</p>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <button id="boton" type="submit" (click)="botAlq()" routerLink="/">Alquilar Producto</button>
-                    </div>
+                <div class="d-flex justify-content-end">
+                    <button id="boton" type="submit" (click)="botAlq()" routerLink="/">Alquilar Producto</button>
                 </div>
-                <div id="relleno"></div>
+            </div>
+            <div id="relleno"></div>
             </div>
         </div>
     </div>
