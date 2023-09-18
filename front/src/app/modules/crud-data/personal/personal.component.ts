@@ -16,6 +16,7 @@ export class PersonalComponent implements OnInit {
   mensajeError: string = "";
   user = {} as userInterface;
   personalForm: FormGroup;
+  url= '../../../../assets/Imagenes/placeHolderImage.jpg';
 
   constructor(
     private fb: FormBuilder,
@@ -41,7 +42,7 @@ export class PersonalComponent implements OnInit {
   // * Forumulario de datos personales
   getUser() { 
     this.userService.getUser(this.userData.userId).subscribe({
-      next: (data) => { console.log ("get user: ", data)
+      next: (data) => { console.log ("get user: ", data) //TODO - Quitar
         this.personalForm.patchValue({
           firstName: data.name,
           lastName: data.lastName,
@@ -76,7 +77,7 @@ export class PersonalComponent implements OnInit {
     //this.user.email = personalForm.get('email')?.value;
     this.user.phone = personalForm.get('phone')?.value;
     this.user.bornDate = personalForm.get('bornDate')?.value;
-    console.log("bornDate", this.user.bornDate)
+    console.log("bornDate", this.user.bornDate) //TODO - Quitar
     this.user.pictureLink = personalForm.get('pictureLink')?.value;
 
     this.userService.updateUser(this.userData.userId, this.user).subscribe({
@@ -90,4 +91,14 @@ export class PersonalComponent implements OnInit {
       }
     })
   }  
+
+  selectImage(e:any) {
+    if (e.target.files[0]) {
+      const reader = new FileReader()
+      reader.readAsDataURL(e.target.files[0])
+      reader.onload = (e:any) => {
+        this.url = e.target.result
+      }
+    }
+  }
 }
