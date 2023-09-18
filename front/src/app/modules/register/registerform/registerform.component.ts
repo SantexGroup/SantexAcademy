@@ -115,7 +115,7 @@ export class RegisterformComponent implements OnInit {
            .subscribe(user => {
              if (user) {
                console.log('Registro exitoso:', user);
-               alert("El registro ha sido creado satisfactoriamente. Por favor inicie Sesión.");
+               alert("Sea registrado exitosamente. Por favor revise su correo.");
                this.redirregistersuccess()
             } else {
                console.error('Error al registrar');
