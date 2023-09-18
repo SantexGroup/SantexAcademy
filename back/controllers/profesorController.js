@@ -9,7 +9,7 @@ async function createProfesor(req, res){
         return res.status(201).json(profesorCreado);
     } catch (error) {
         console.error('Error al crear profesor: ', error);
-        return res.status(500).json({mensaje: 'Error al crear profesor'})
+        return res.status(400).json({mensaje: 'Error al crear profesor'})
         
     }
 }

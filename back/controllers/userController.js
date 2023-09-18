@@ -15,7 +15,7 @@ async function createUser(req, res) {
         return res.status(201).json(usuarioCreado);
     } catch (error) {
         console.error('Error al crear usuario: ', error);
-        return res.status(500).json({mensaje: 'Error al crear usuario'})
+        return res.status(400).json({mensaje: 'Error al crear usuario'})
         
     }
 
