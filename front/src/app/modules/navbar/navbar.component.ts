@@ -10,6 +10,7 @@ import { CourseService } from 'src/app/core/services/course.service';
 export class NavbarComponent implements OnInit {
   courses: Course[]= [];
   constructor(private courseService: CourseService) {
+    
     this.getCourses();
    }
 
@@ -19,6 +20,7 @@ export class NavbarComponent implements OnInit {
     this.courseService.getCourse().subscribe(
       (res) => {
         this.courses = <any>res;
+        console.log(this.courses)
       },
       (err) => console.log(err)
     );

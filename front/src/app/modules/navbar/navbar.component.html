@@ -66,7 +66,7 @@
       <img
         class="logo"
         src="../../../assets/img/logo-webpage.png"
-        alt="Bootstrap"
+        alt="logo"
       />
     </a>
     <button
@@ -103,19 +103,18 @@
           </svg>
             Cursos
           </a>
-          <ul *ngFor="let course of courses" class="dropdown-menu text-center" style="background: rgb(41, 64, 145);width: 100%;">
-              <li ><a class="dropdown-item text-white" href="#">{{course.name}}</a></li>
-
-              <!-- <li><a class="dropdown-item text-white" href="#">Sublimación Artesanal</a></li>
-              <li><a class="dropdown-item text-white" href="#">Velas</a></li>
-              <li><a class="dropdown-item text-white" href="#">Sahumerios</a></li>     -->
-        
+          <ul class="dropdown-menu text-center" style="background: rgb(41, 64, 145);width: 100%;">
+            <div *ngFor="let course of courses" >
+              <li><a class="dropdown-item text-white" href="/{{course.name}}">{{ course.name }}</a></li>
+            </div>
+            
           </ul>
+          
         </li>
         <li class="nav-item col text-center">
           <a class="nav-link active text-white fs-5" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-          </svg>Nosotros</a>
+          </svg>Nosotros</a> 
         </li>
         <li class="nav-item col text-center">
           <a class="nav-link active text-white fs-5" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
