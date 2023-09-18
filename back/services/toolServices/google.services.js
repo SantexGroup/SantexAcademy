@@ -28,6 +28,8 @@ const uploadDrive = ('/upload', upload, async (req, res) => {
 
     console.log(data.id);
 
+    /* https://drive.google.com/uc?export=view&id= */
+
     const result = await (data.id);
 
     res.json(result);
