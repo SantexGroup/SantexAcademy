@@ -83,17 +83,9 @@ const verifyToken = async (req, res, next) => {
 
 
 const isUser = (req, res, next) => {
-  if (req.modelType === 'Usuario') {
-    // Verificar si el usuario está intentando acceder a su propio perfil
-    if (req.userId === parseInt(req.params.id, 10)) { // Asegurarse de que ambos valores sean del mismo tipo y luego comparar
-      // El usuario es de tipo "Usuario" y está intentando acceder a su propio perfil, permitir acceso
-      next();
-    } else {
-      // El usuario no está intentando acceder a su propio perfil, denegar el acceso
-      return res.status(403).json({ message: 'No tienes permiso para realizar esta acción' });
-    }
+  if (req.modelType === 'Usuario' && req.userId === parseInt(req.params.id, 10)) {
+    next();
   } else {
-    // El usuario no es de tipo "Usuario", denegar el acceso
     return res.status(403).json({ message: 'No tienes permiso para realizar esta acción' });
   }
 };
