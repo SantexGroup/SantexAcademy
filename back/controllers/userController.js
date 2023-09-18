@@ -1,6 +1,7 @@
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const { UserService } = require('../services');
+const saltRounds = 10;
 
 const saltRounds = 10;
 
