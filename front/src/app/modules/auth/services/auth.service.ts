@@ -3,20 +3,23 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AuthResponse, Usuario } from '../interfaces/interfaces';
 import { Observable, catchError, map, of, tap } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  
   private baseUrl: string = environment.API_URL;
   private _user!: Usuario;
+ 
 
   get user(){
     return { ...this._user };
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private toastr: ToastrService) { }
 
   register(
     nombre: string,
@@ -37,7 +40,7 @@ export class AuthService {
             localStorage.setItem('token', resp.token!);
             this._user = {
               username: resp.username!,
-              id: resp.id!
+              id: resp.id!,
             }
           }
         }),
@@ -62,8 +65,12 @@ export class AuthService {
             }
           }
         }),
-        map( resp => resp.ok ),
-        catchError( err => of(err.error.msg))
+        map(resp => resp.ok),
+        catchError(err => {
+          this.toastr.error(err.error.msg, 'Error'); // Muestra el mensaje de error con Toastr
+          return of(err.error.msg);
+        
+         } )
       )
 
   }
@@ -93,6 +100,7 @@ export class AuthService {
   logout(){
     // localStorage.removeItem('token');
     localStorage.clear();
+   
   }
 
 }
