@@ -1,0 +1,51 @@
+// "use strict";
+
+// /** @type {import('sequelize-cli').Migration} */
+
+// module.exports = {
+//   up: async (queryInterface, Sequelize) => {
+//     const datosDonantes = [
+//       {
+//         razon_social: "Donante",
+//         email: "",
+//         calle: "",
+//         numero: "",
+//         piso: "",
+//         departamento: "",
+//         codigo_postal: "",
+//         id_descripcion_telefono: 1,
+//         descripcion_telefono: "",
+//         numero_telefono: 0,
+//         activo: 1,
+//         creado_por: "Sistema",
+//         fecha_creacion: new Date(),
+//         modificado_por: "Sistema",
+//         fecha_modificacion: new Date(),
+//       },
+
+//       {
+//         razon_social: "Donante",
+//         email: "",
+//         calle: "",
+//         numero: "",
+//         piso: "",
+//         departamento: "",
+//         codigo_postal: "",
+//         id_descripcion_telefono: 1,
+//         descripcion_telefono: "",
+//         numero_telefono: 0,
+//         activo: 1,
+//         creado_por: "Sistema",
+//         fecha_creacion: new Date(),
+//         modificado_por: "Sistema",
+//         fecha_modificacion: new Date(),
+//       }
+//     ];
+
+//     return queryInterface.bulkInsert("donantes", datosDonantes, {});
+//   },
+
+//   down: async (queryInterface, Sequelize) => {
+//     return queryInterface.bulkDelete("donantes", null, {});
+//   },
+// };
