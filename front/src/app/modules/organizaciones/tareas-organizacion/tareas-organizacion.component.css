@@ -59,8 +59,19 @@ table{
     justify-content: center;
 }
 
+.nombre-tarea{
+    width: 15ex;
+    white-space: nowrap ;
+    overflow: hidden ;
+    text-overflow: ellipsis ;
+}
+
 @media (min-width:650px) {
        .contenedor{
         width: 500px;
+       }
+
+       .nombre-tarea{
+        width: 30ex;
        }
 }

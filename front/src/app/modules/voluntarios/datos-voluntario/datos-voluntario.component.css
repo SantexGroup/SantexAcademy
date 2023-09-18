@@ -37,6 +37,9 @@
 
 .contenido-propiedad{
     margin:0;
+    width: 100%;
+    white-space: normal ;
+    overflow-wrap: break-word;
 }
 
 .propiedad{

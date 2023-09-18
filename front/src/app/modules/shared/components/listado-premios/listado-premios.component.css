@@ -11,12 +11,14 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .card-container{
-    width: 300px;
+    width: 320px;
+    height: 280px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
     background-color: white;
     border-radius: 10px;
@@ -31,25 +33,15 @@
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
-    height: 150px;
-    white-space: normal;
-    
+    height: 100px;
+    margin-top: 20px;
 }
 
 .card-content p{
     width: 100%;
     white-space: normal ;
     overflow-wrap: break-word;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3; /* Número máximo de líneas */
-    overflow: hidden;
-    text-overflow: ellipsis; 
 }
-
-
-
-    
 
 .card-actions{
     width: 100%;
@@ -64,20 +56,13 @@
     margin: 0;
     width: 20ex;
     white-space: normal;
+    overflow-wrap: break-word;
 }
 
-.subtitulo{
-    color: #555;
-    width: 15ex;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
 
 .inscriptos span{
     font-size: 16px;
     font-weight: 500;
-
 
 }
 
@@ -90,4 +75,10 @@ button{
 .boton-inscripto{
     background-color: #13c92b;
     cursor: auto;
+}
+
+.puntos{
+    font-size: 30px;
+    font-weight: 500;
+    color: #ff1717;
 }
