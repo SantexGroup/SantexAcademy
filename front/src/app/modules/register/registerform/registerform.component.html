@@ -72,11 +72,18 @@
           </div>
           <div class="form-outline mb-2">
             <label class="form-label" for="userType">Tipo de Usuario</label>
-            <select id="userType" class="form-select" formControlName="userType">
-              <option value="Seleccione">Seleccione</option>
+            <select id="userType" class="form-select" [(ngModel)]="tipoDeUsuarioSeleccionado"
+            (change)="onTipoDeUsuarioChange($event)" formControlName="userType">
+              <!-- <option value="Seleccione">Seleccione</option>
               <option value="admin">Administrador</option>
               <option value="docente">Docente</option>
-              <option value="alumno">Alumno</option>
+              <option value="alumno">Alumno</option> -->
+              <option [value]="null" disabled selected>
+                Selecciona un tipo de usuario
+              </option>
+              <option *ngFor="let tipodeusuario of tiposDeUsuario" [value]="tipodeusuario.id">
+                {{ tipodeusuario.nombre }}
+              </option>
             </select>
             <div
             *ngIf="form.get('userType')?.invalid && (form.get('userType')?.dirty || form.get('userType')?.touched)"
