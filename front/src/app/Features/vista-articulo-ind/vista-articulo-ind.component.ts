@@ -39,7 +39,7 @@ export class VistaArtIndComponent implements OnInit {
 
 
 
-  IDProdPrue: number = 0; //no sé como inicializar vacío xd
+  idProd: number = 1; //no sé como inicializar vacío xd
   modelo: object = {
     UniqueID: 0,
     idUsuario: 0,
@@ -55,26 +55,20 @@ export class VistaArtIndComponent implements OnInit {
   constructor(private service: vistaArtIndServ, private router: Router) { }
 
   ngOnInit(): void {
-    let infoLocal = localStorage.getItem('idProd') //leer localStorage para saber UniqueID. Además hay que reemplazarlo por modelo.UniqueID y/o por IDProdPrue
-    this.datosProd(this.IDProdPrue); //acá se debería reemplazar por lo de localStorage 
-    // const imagenes = ("front/src/assets")
+    console.log(this.idProd);
+    this.datosProd(this.idProd);
+    
   }
 
   mensajeDias() {
     alert("Tanto para envío como para retiro tendrá su producto en un plazo de 2 días");
   }
 
-  //traer datos prod con UniqueID
+  //traer datos de producto con UniqueID
   datosProd(id: number) {
-    // this.service.datosProdServ(this.IDProdPrue).subscribe(res => {
-    // //reemplazar modelo por datos de producto
-    // this.modelo.idUsuario = res[0].products.idUsuario,
-    // this.modelo.idTipoProducto = res[1].products.idTipoProducto,
-    // this.modelo.nombre = res[2].products.nombre,
-    // this.modelo.detalles = res[3].products.detalles,
-    // this.modelo.precio = res[4].products.precio,
-    // this.modelo.envio = res[5].products.envio,
-    // })
+    this.service.datosProdServ(this.idProd).subscribe(res => {
+
+    })
   }
 
   botAlq() {

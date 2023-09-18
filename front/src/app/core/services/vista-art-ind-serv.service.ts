@@ -8,10 +8,10 @@ export class vistaArtIndServ {
 
   constructor(private apiService: ApiService) { }
 
-  // datosProdServ(IDProd: number) {
-  //   const body = {
-  //     IDProducto: IDProd,
-  //   }
-  //   return this.apiService.get('/products/obtener-producto-por-id/:id', body)
-  // }
+  datosProdServ(idProd: number) {
+    const body = {
+      id: idProd,
+    }
+    return this.apiService.get('/productos/obtener-producto-por-id/:id', body)
+  }
 }
