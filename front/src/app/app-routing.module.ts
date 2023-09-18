@@ -82,7 +82,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'catalogo-cursos',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   },
   {

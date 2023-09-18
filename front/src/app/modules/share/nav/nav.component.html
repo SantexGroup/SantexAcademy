@@ -1,49 +1,58 @@
-<nav class="navbar navbar-expand-lg navbar-custom">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <p class="navbar-brand mb-2">Incubadora del NOC</p>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/dashboard">Home</a>
-        </li>
-        <li class="nav-item-2">
-          <a  class="nav-link" routerLink="/catalogo-cursos">Nuestros cursos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/quienes-somos">¿Quiénes somos?</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/register">Registrarse</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/auth/login">Iniciar sesión</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/users">Administrador</a>
-        </li>
-      </ul>
-      <!-- <p>{{ user.username }}</p> -->
-      <button (click)="logout()">
-        Logout
-      </button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incubadora NOC</title>
+    <link rel="stylesheet" href="nav.component.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+        <img src="./assets/images/nuevologo.png" alt="Nuevologo" routerLink="/dashboard">
     </div>
     <button *ngIf="isSmallScreen" class="menu-button" (click)="toggleMenu()" [class.open]="isMenuOpen">
       ☰
     </button>
 
+
+
     <nav>
         <ul [class.active]="isMenuOpen" class="nav-links">
-            <li><a routerLink="/catalogo-cursos" class="nav-link">Nuestros cursos</a></li>
-            <li><a routerLink="/quienes-somos" class="nav-link">¿Quiénes somos?</a></li>
-            <li><a routerLink="/register" class="nav-link">Registrarse</a></li>
-            <li><a routerLink="/login" class="nav-link">Iniciar sesión</a></li>
-            <li><a routerLink="/admin" class="nav-link">Administrador</a></li>
+          <li [class.selected]="activeRoute.includes('/catalogo-cursos')">
+            <a routerLink="/catalogo-cursos" class="nav-link">Nuestros cursos</a>
+          </li>
+          <li [class.selected]="activeRoute.includes('/quienes-somos')">
+            <a routerLink="/quienes-somos" class="nav-link">¿Quiénes somos?</a>
+          </li>
+          <li [class.selected]="activeRoute.includes('/register')">
+            <a routerLink="/register" class="nav-link">Registrarse</a>
+          </li>
+          <li [class.selected]="activeRoute.includes('/login')">
+            <a routerLink="/login" class="nav-link">Iniciar sesión</a>
+          </li>
+          <li [class.selected]="activeRoute.includes('/admin')">
+            <a routerLink="/admin" class="nav-link">Administrador</a>
+          </li>
         </ul>
+
+
     </nav>
-  <!-- </header>
+
+    <div class="user-profile">
+      <button class="profile-button" (click)="toggleProfileMenu()">
+        <img src="./assets/images/no-perfil.jpg" alt="Foto de perfil" class="profile-image">
+        <img src="./assets/images/icons/arrow.svg" alt="Flecha" class="arrow-icon">
+      </button>
+      <div class="profile-dropdown" *ngIf="isProfileMenuOpen">
+        <ul>
+          <li><a href="#">Mi perfil</a></li>
+          <li><a href="#">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </header>
 </body>
-</html> error de copiado, excedente, eliminar-->
+</html>
