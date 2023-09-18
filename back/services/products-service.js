@@ -25,7 +25,7 @@ const { Products, tipoProducto } = require('../models');
 } */
 
 async function products() {
-  const productos = await Products.findAll();
+  const productos = await products.findAll();
   console.log('Productos', productos);
 
   return productos;

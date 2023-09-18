@@ -5,6 +5,7 @@ import { HomePageComponent } from './Features/home-page/home-page.component';
 import { BasesComponent } from './Features/bases/bases.component';
 import { RegistroComponent } from './Features/registro/registro.component';
 import { CargaArticulosComponent } from './Features/carga-articulos/carga-articulos.component';
+import { TarjetaArticuloComponent } from './Features/tarjeta-articulo/tarjeta-articulo.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,12 @@ const routes: Routes = [
   {
     path: 'carga-articulos',
     component: CargaArticulosComponent
+  },
+  {
+    path: 'tarjeta',
+    component: TarjetaArticuloComponent
   }
+
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
