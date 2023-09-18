@@ -1,6 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../../auth/services/auth.service';
+import { Router, NavigationEnd } from '@angular/router'; // Importa Router y NavigationEnd
 
 @Component({
   selector: 'app-nav',
@@ -11,16 +10,19 @@ export class NavComponent {
 
   isMenuOpen = false;
   isSmallScreen = false;
+  isProfileMenuOpen = false;
+  activeRoute: string = ''; // Variable para rastrear la ruta activa
 
+  constructor(private router: Router) {
+    // Detectar el tamaño de pantalla inicial
+    this.checkScreenSize();
 
-
-  constructor(private router: Router,
-              private authService: AuthService) { }
-
-              
-  logout(){
-    this.router.navigateByUrl('/catalogo-cursos');
-    this.authService.logout();
+    // Suscríbete al evento de cambio de ruta
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.activeRoute = event.url; // Actualiza la ruta activa cuando cambie la navegación
+      }
+    });
   }
 
   @HostListener('window:resize', ['$event'])
@@ -36,5 +38,9 @@ export class NavComponent {
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  toggleProfileMenu() {
+    this.isProfileMenuOpen = !this.isProfileMenuOpen;
   }
 }
