@@ -10,5 +10,14 @@ insert into TiposDeDocumento(nombre, abreviatura) values ('LIBRETA DE ENROLAMIEN
 insert into TiposDeDocumento(nombre, abreviatura) values ('LIBRETA CIVICA', 'LC');
 insert into TiposDeDocumento(nombre, abreviatura) values ('CEDULA', 'CI');
 
+INSERT INTO `incubadora_noc_cursos`.`TipoDeUsuarios` (`id`, `nombre`, `descripcion`, `createdAt`, `updatedAt`)
+VALUES ('1', 'Administrador', 'Administrador', NOW(), NOW());
+
+INSERT INTO `incubadora_noc_cursos`.`TipoDeUsuarios` (`id`, `nombre`, `descripcion`, `createdAt`, `updatedAt`)
+VALUES ('2', 'Alumno', 'Alumno', NOW(), NOW());
+
+INSERT INTO `incubadora_noc_cursos`.`TipoDeUsuarios` (`id`, `nombre`, `descripcion`, `createdAt`, `updatedAt`)
+VALUES ('3', 'Docente', 'Docente', NOW(), NOW());
+
 select * from tiposdeusuarios;
 select * from TiposDeDocumento;
