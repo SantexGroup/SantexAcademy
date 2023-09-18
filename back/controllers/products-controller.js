@@ -1,5 +1,4 @@
 // obtener todos
-
 const productsService = require('../services/products-service');
 
 async function products(req, res, next) {

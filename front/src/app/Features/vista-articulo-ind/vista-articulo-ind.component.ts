@@ -39,7 +39,7 @@ export class VistaArtIndComponent implements OnInit {
 
 
 
-  idProd: number = 1; //no sé como inicializar vacío xd
+  id: number = 1; //no sé como inicializar vacío xd
   modelo: object = {
     UniqueID: 0,
     idUsuario: 0,
@@ -55,8 +55,8 @@ export class VistaArtIndComponent implements OnInit {
   constructor(private service: vistaArtIndServ, private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.idProd);
-    this.datosProd(this.idProd);
+    console.log(this.id);
+    this.datosProd(this.id);
     
   }
 
@@ -66,8 +66,8 @@ export class VistaArtIndComponent implements OnInit {
 
   //traer datos de producto con UniqueID
   datosProd(id: number) {
-    this.service.datosProdServ(this.idProd).subscribe(res => {
-
+    this.service.datosProdServ(this.id).subscribe(res => {
+      console.log(res)
     })
   }
 
