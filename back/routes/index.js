@@ -8,7 +8,9 @@ const { adminCheck } = require('../middleware/authentication.middleware');
 
 const app = Express();
 
-// Rutas
+const categoryRouter  = require("./category")
+const courseRouter = require('./course')
+const scheduleRouter = require('./schedule')
 const userRouter = require('./userRouter');
 const authRouter = require('./authenticationRouter');
 
@@ -18,9 +20,18 @@ app.use('/ping', authMW, adminCheck, (req, res) => {
     response: 'pong!',
   });
 });
-app.use(rootPath.setHeaders);
-app.use(errors.handler);
+app.use('/course',courseRouter )
+app.use('/category',categoryRouter)
+app.use('/schedule', scheduleRouter)
 app.use('/api/users', userRouter);
 app.use('/api/auth', authRouter);
+
+
+// endpoints arriba de esta linea
+app.use('/', rootPath.handler);
+
+app.use(rootPath.setHeaders);
+app.use(errors.handler);
+
 
 module.exports = app;

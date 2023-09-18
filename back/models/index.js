@@ -2,7 +2,12 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-
+/* eslint-disable no-unused-vars */
+const Course = require('./course');
+const CourseCategory = require('./coursecategory');
+const Schedule = require('./schedule');
+const User = require('./user');
+/* eslint-enable no-unused-vars */
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 // eslint-disable-next-line import/no-dynamic-require
@@ -33,5 +38,4 @@ Object.keys(db).forEach((modelName) => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
 module.exports = db;
