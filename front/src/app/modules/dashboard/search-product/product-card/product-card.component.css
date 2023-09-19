@@ -1,0 +1,82 @@
+.porduct-Card {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f7f7f7;
+    border-radius: 11px;
+    box-shadow: 0px 0px 42px rgba(0, 0, 0, 0.01), 0px 0px 26px rgba(0, 0, 0, 0.05),
+        0px 0px 26px rgba(0, 0, 0, 0.09), 0px 0px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .productCard-img {
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .productCard-img svg {
+    width: 100%;
+    height: auto;
+    padding: .5rem;
+    object-fit: cover;
+  }
+  
+  .productCard-dates {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: .5rem;
+  }
+  
+  .productCard-dates-items {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .title {
+    margin-bottom: .5rem;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  span:first-child {
+    font-weight: bold;
+  }
+  
+  .description {
+    height: 6rem;
+    margin-bottom: .5rem;
+  }
+  
+  .description>p {
+    height: 90%;
+    margin: 0 .5rem;
+    overflow-y: auto;
+  }
+  
+  .buttons {
+    margin-top: .75rem;
+    display: flex;
+    justify-content: space-between;
+    gap: .5rem;
+  }
+  
+  .button-submit {
+    width: 50%;
+    height: 2rem;
+    padding: .5em .75em;
+    border: none;
+    border-radius: 6px;
+    background-color: #0b75df;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color .3s ease-in-out;
+  }
+  
+  .button-submit:hover {
+    background-color: #0b95df;
+  }
+  

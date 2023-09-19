@@ -17,12 +17,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+
 import { VistaProveedoresComponent } from './vista-proveedores/vista-proveedores.component';
+
+import { SearchProductComponent } from './search-product/search-product.component';
+import { ProductCardComponent } from './search-product/product-card/product-card.component';
+
 
 
 @NgModule({
 
-  declarations: [DashboardPageComponent, FormAddProductComponent, FormUpdateComponent, NavBarComponent, FormDeleteComponent, HomeComponent, PopUpHomeComponent, ShoppingCartComponent, VistaProveedoresComponent],
+
+  declarations: [DashboardPageComponent, FormAddProductComponent, FormUpdateComponent, NavBarComponent, FormDeleteComponent, HomeComponent, PopUpHomeComponent, ShoppingCartComponent, SearchProductComponent, ProductCardComponent, VistaProveedoresComponent],
+
 
   imports: [
     CommonModule,

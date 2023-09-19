@@ -1,0 +1,47 @@
+<main class="container">
+    <section class="section-search">
+      <article class="article-search">
+        <h2>Buscar por:</h2>
+        <div class="radio-input">
+          <label>
+            <input
+              type="radio"
+              id="value-1"
+              name="value-radio"
+              value="value-1"
+              checked
+            />
+            <span>Nombre</span>
+          </label>
+          <label>
+            <input type="radio" id="value-2" name="value-radio" value="value-2" />
+            <span>Categoria</span>
+          </label>
+          <label>
+            <input type="radio" id="value-3" name="value-radio" value="value-3" />
+            <span>Material</span>
+          </label>
+          <span class="selection"></span>
+        </div>
+      </article>
+      <div class="input-group">
+        <input
+          type="text"
+          class="input"
+          id="Email"
+          name="Email"
+          placeholder="Search..."
+          autocomplete="off"
+        />
+        <input class="button--submit" value="Buscar" type="submit" />
+      </div>
+    </section>
+  
+    <section class="section-productCart">
+      <app-product-card
+        *ngFor="let product of productList"
+        [product]="product">
+      </app-product-card>
+    </section>
+  </main>
+  
