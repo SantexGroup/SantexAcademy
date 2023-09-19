@@ -47,7 +47,7 @@ const userValidate = async (data) => {
 
 const find = async () => {
   try {
-    const userFound = await db.User.findAll();
+    const userFound = await db.User.findAll({paranoid: false});//se muestran incluso los eliminados
     return userFound;
   } catch (error) {
     console.error('I can not find the user. Error: ', error);
