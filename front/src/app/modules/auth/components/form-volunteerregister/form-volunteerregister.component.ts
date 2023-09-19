@@ -4,6 +4,7 @@ import { volunterData } from '../../models/dataForms.model';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-form-volunteerregister',
@@ -18,8 +19,8 @@ export class FormVolunteerregisterComponent {
 
   onModal: boolean = false;
   statusSession: string = '';
-  messageModal: string = '';
   routeBtnContinue: string = '';
+  textBtnModal: string = '';
 
   constructor(
     private router: Router,
@@ -43,12 +44,14 @@ export class FormVolunteerregisterComponent {
           this.onModal = true;
           this.statusSession = 'success';
           this.routeBtnContinue = 'auth/login';
+          this.textBtnModal = 'Iniciar Sesión';
         },
         error: (error) => {
           console.error('Error en el registro:', error);
           this.onModal = true;
           this.statusSession = 'failed';
           this.routeBtnContinue = 'auth/volunteer-register';
+          this.textBtnModal = 'Volver a intentar';
         },
         complete: () => {},
       });

@@ -7,9 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./modal-status-form.component.css'],
 })
 export class ModalStatusFormComponent {
-  @Input() textModal: string = '';
   @Input() status: string = '';
   @Input() routeContinue: string = '';
+  @Input() textBtn: string = '';
 
   @Output() changueValueModal = new EventEmitter();
 

@@ -1,6 +1,18 @@
 <div
   class="w-full flex flex-col items-center justify-center gap-4 mb-16 lg:flex-row"
 >
+  <app-modal-options-login
+    *ngIf="hiddenModal"
+    (optionSelected)="selectedOption($event)"
+  >
+  </app-modal-options-login>
+  <app-modal-status-form
+    *ngIf="onModalStatus"
+    (changueValueModal)="changueModalStatus()"
+    [status]="statusSession"
+    [routeContinue]="routeBtnContinue"
+    [textBtn]="textBtnModal"
+  ></app-modal-status-form>
   <figure class="w-full h-[500px] bg-darkSlateBlue relative lg:h-[700px]">
     <img
       src="/assets/forms/fondo-login.svg"
@@ -33,7 +45,10 @@
       <h2 class="font-semibold text-2xl">¡Hola!</h2>
       <p>Iniciá sesión en tu cuenta VolunTime</p>
     </header>
-    <form class="w-full flex flex-col px-4 gap-4 max-w-[600px]">
+    <form
+      [formGroup]="loginForm"
+      class="w-full flex flex-col px-4 gap-4 max-w-[600px]"
+    >
       <div class="w-full flex flex-col text-start gap-1">
         <label for="email"><b>Correo electrónico</b></label>
         <input
@@ -42,7 +57,7 @@
           name="email"
           placeholder="Introduce tu correo electrónico"
           class="border border-dimGray rounded-md py-2 pl-2"
-          [(ngModel)]="email"
+          formControlName="email"
         />
       </div>
       <div class="w-full flex flex-col gap-1 relative">
@@ -53,7 +68,7 @@
           name="password"
           placeholder="Introduce tu contraseña"
           class="border border-dimGray rounded-md py-2 pl-2"
-          [(ngModel)]="password"
+          formControlName="password"
         />
         <i
           class="bx bx-low-vision absolute top-9 right-4 text-xl cursor-pointer"
@@ -62,6 +77,18 @@
         <p class="text-end text-blueViolet text-sm cursor-pointer">
           ¿Olvidaste tu contraseña?
         </p>
+      </div>
+      <div class="w-full flex flex-col gap-1 relative" *ngIf="showCuit">
+        <label for="cuit" class="text-start"><b>CUIT</b></label>
+        <input
+          id="cuit"
+          type="number"
+          name="cuit"
+          placeholder="Ingrese el CUIT de su Organización"
+          class="border border-dimGray rounded-md py-2 pl-2"
+          formControlName="cuit"
+          required="true"
+        />
       </div>
       <div class="w-full flex flex-col items-center justify-center gap-4 mt-2">
         <button

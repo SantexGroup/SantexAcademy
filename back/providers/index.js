@@ -3,11 +3,13 @@ const orgProvider = require('./organizacion');
 const recompensaProvider = require('./recompensa');
 const userProvider = require('./usuario');
 const vacanteProvider = require('./vacante');
+const voluntariadoProvider = require('./voluntariado');
 
 module.exports = {
   catalogoProvider,
   orgProvider,
   userProvider,
   recompensaProvider,
-  vacanteProvider
+  vacanteProvider,
+  voluntariadoProvider,
 };

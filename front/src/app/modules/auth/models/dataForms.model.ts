@@ -17,3 +17,14 @@ export interface coordinatorData {
   opportunityType: string;
   category: string;
 }
+
+export interface volunterDataLogin {
+  email: string;
+  password: string;
+}
+
+export interface CoordinatorDataLogin {
+  email: string;
+  password: string;
+  cuit: number;
+}
