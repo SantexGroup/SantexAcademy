@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Voluntario } from 'src/app/core/interfaces/voluntario';
@@ -9,10 +9,10 @@ import { VoluntarioService } from 'src/app/core/services/voluntario.service';
   templateUrl: './datos-voluntario.component.html',
   styleUrls: ['./datos-voluntario.component.css']
 })
-export class DatosVoluntarioComponent implements OnInit, OnDestroy {
+export class DatosVoluntarioComponent implements OnInit {
 
   constructor(private voluntarioService:VoluntarioService, fb:FormBuilder, private matSnackBar:MatSnackBar) {
-    this.suscripcionObservable = voluntarioService.getDatosVoluntario.subscribe({
+    voluntarioService.obtenerDatosVoluntario().subscribe({
       next:(res)=>this.datosVoluntario = res!
     });
     this.formVoluntario = fb.group({
@@ -36,7 +36,6 @@ export class DatosVoluntarioComponent implements OnInit, OnDestroy {
     this.mostrarPasswordNueva = false;
 
    }
-   suscripcionObservable;
    formVoluntario:FormGroup;
    datosVoluntario!:Voluntario;
    editarDatos:boolean;
@@ -50,13 +49,6 @@ export class DatosVoluntarioComponent implements OnInit, OnDestroy {
      
   }
 
-  ngOnDestroy(): void {
-    if(this.suscripcionObservable){
-
-      this.suscripcionObservable.unsubscribe();
-    }
-  }
-  
   irModificar():void{
     this.editarDatos = true;
     this.cargarForm();
