@@ -166,7 +166,68 @@ async function getInscriptos(id) {
   }
 }
 
+/*
+async function editasistio(idTarea, listaVoluntariosModificados) {
+  const tarea = await models.tarea.findByPk(idTarea);
+
+  const puntos = tarea.points;
+
+  listaVoluntariosModificados.forEach(voluntario => {
+    const tareasVoluntarios = await models.tareasVoluntarios.findByPk(voluntario.tareasVoluntarios.id)
+
+    tareasVoluntarios.asistio = voluntario.tareasVoluntarios.asistio;
+
+    const voluntario = await models.volunteer.findByPk(voluntario.tareasVoluntarios.id);
+
+    if (tareasVoluntarios.asistio === true) {
+      voluntario.points += puntos;
+    } else{
+      throw new Error('El usuario no asistio a la tarea');
+    }
+  });
+
+  await tareasVoluntarios.save();
+  await voluntario.save();
+}
+*/
+
+const editasistio = async (idTarea, listaVoluntariosModificados) => {
+  const tarea = await models.tarea.findByPk(idTarea);
+  const puntos = tarea.points;
+
+  if (!tarea) {
+    throw new Error('Tarea no encontrada');
+  }
+
+  // eslint-disable-next-line no-restricted-syntax
+  for (const voluntarioData of listaVoluntariosModificados) {
+    // eslint-disable-next-line max-len, no-await-in-loop
+    const tareasVoluntario = await models.tareasVoluntario.findByPk(voluntarioData.tareasVoluntario.id);
+
+    if (!tareasVoluntario) {
+      throw new Error('Registro de tareasVoluntario no encontrado');
+    }
+
+    // eslint-disable-next-line no-await-in-loop
+    const voluntario = await models.volunteer.findByPk(tareasVoluntario.volunteerId);
+
+    if (voluntarioData.asistio === true) {
+      // tareasVoluntario.asistio = true; // Cambiar el estado de asistencia a true
+      console.log('El voluntario asistió a la tarea');
+      voluntario.points += puntos; // Asignar puntos al voluntario que asistió
+    } else {
+      voluntario.points -= puntos;
+      console.log('El voluntario no asistió a la tarea');
+    }
+
+    // eslint-disable-next-line no-await-in-loop
+    await tareasVoluntario.save();
+    // eslint-disable-next-line no-await-in-loop
+    await voluntario.save();
+  }
+};
+
 module.exports = {
   // eslint-disable-next-line max-len
-  getAll, getById, createTarea, editTarea, deleteTarea, getByIdOrganizacion, cambiarEstado, getInscriptos,
+  getAll, getById, createTarea, editTarea, deleteTarea, getByIdOrganizacion, cambiarEstado, getInscriptos, editasistio,
 };
