@@ -8,6 +8,12 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+
+  acceptedTerms: boolean = false;
+
+  acceptedTermsErrorMessage = 'Aceptar los términos y condiciones.';
+  
+
   email: string = '';
   password: string = '';
   firstName: string = '';
@@ -24,9 +30,10 @@ export class RegisterComponent {
       (error) => {
         console.error('Error al registrar usuario:', error);
       }
-    );
-    
-  }  
+    );    
+  }
+
+  
   navigateToLogin() {
     this.router.navigate(['/login']);
   }

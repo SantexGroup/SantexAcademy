@@ -47,4 +47,24 @@ const deleteCourse = async (id) => {
     }
 };
 
-module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse };
+const createUser = async (user, courseId) => {
+    try {
+        const course = await Course.findByPk(courseId);
+        return await course?.createUser(user);
+    } catch (err) {
+        console.error("Error when creating course user.", err.message);
+        throw err;
+    }
+}
+
+const getUsers = async (id) => {
+    try {
+        const course = await Course.findByPk(id);
+        return await course?.getUsers();
+    } catch (err) {
+        console.error("Error when fetching course users.", err.message);
+        throw err;
+    }
+};
+
+module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, createUser, getUsers };
