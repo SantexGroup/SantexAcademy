@@ -12,7 +12,7 @@ const loginValidation = [userValidations.login, checkValidationResult];
 router.post('/record', createValidation, userController.recordUser);
 router.post('/login', loginValidation, userController.login);
 router.get('/getUser/:id', userController.getUser); //* agregado
-router.put('/update/:id', updateValidation, userController.updateUser);
+  router.put('/update/:id', updateValidation, userController.updateUser);
 router.delete('/remove/:id', userController.userDeleted);
 
 module.exports = router;
