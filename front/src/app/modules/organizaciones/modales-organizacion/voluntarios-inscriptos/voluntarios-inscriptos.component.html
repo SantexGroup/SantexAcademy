@@ -6,9 +6,9 @@
             <p class="subtitulo">Asistencia</p>
             
         </div>
-        <div class="contenedor-tabla" *ngFor="let voluntario of listVoluntarios" >
+        <div class="contenedor-tabla item" *ngFor="let voluntario of listVoluntarios" >
             <p >{{voluntario.name|titlecase}} {{voluntario.lastname|titlecase}}</p>
-            <mat-checkbox [checked]="voluntario.tareasVoluntario?.asistio"></mat-checkbox>
+            <mat-checkbox [checked]="voluntario.tareasVoluntario?.asistio"  (change)="modificarAsistencia(voluntario)"></mat-checkbox>
     
         </div>
 
@@ -18,5 +18,6 @@
     </ng-template>
 </mat-dialog-content>
 <mat-dialog-actions>
-
+    <button *ngIf="listVoluntarios.length>0" [disabled]="listVoluntariosModificados.length<1" mat-raised-button color="primary" (click)="modificarAsistencias()">CONFIRMAR</button>
+    <button mat-raised-button color="warn" mat-dialog-close>CERRAR</button>
 </mat-dialog-actions>

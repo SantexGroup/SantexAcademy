@@ -166,38 +166,11 @@ async function getInscriptos(id) {
   }
 }
 
-/*
-async function editasistio(idTarea, listaVoluntariosModificados) {
-  const tarea = await models.tarea.findByPk(idTarea);
-
-  const puntos = tarea.points;
-
-  listaVoluntariosModificados.forEach(voluntario => {
-    const tareasVoluntarios = await models.tareasVoluntarios.findByPk(voluntario.tareasVoluntarios.id)
-
-    tareasVoluntarios.asistio = voluntario.tareasVoluntarios.asistio;
-
-    const voluntario = await models.volunteer.findByPk(voluntario.tareasVoluntarios.id);
-
-    if (tareasVoluntarios.asistio === true) {
-      voluntario.points += puntos;
-    } else{
-      throw new Error('El usuario no asistio a la tarea');
-    }
-  });
-
-  await tareasVoluntarios.save();
-  await voluntario.save();
-}
-*/
-
 const editasistio = async (idTarea, listaVoluntariosModificados) => {
   const tarea = await models.tarea.findByPk(idTarea);
-  const puntos = tarea.points;
 
-  if (!tarea) {
-    throw new Error('Tarea no encontrada');
-  }
+  if (!tarea) throw new Error('Tarea no encontrada');
+  const puntos = tarea.points;
 
   // eslint-disable-next-line no-restricted-syntax
   for (const voluntarioData of listaVoluntariosModificados) {
@@ -211,13 +184,12 @@ const editasistio = async (idTarea, listaVoluntariosModificados) => {
     // eslint-disable-next-line no-await-in-loop
     const voluntario = await models.volunteer.findByPk(tareasVoluntario.volunteerId);
 
-    if (voluntarioData.asistio === true) {
-      // tareasVoluntario.asistio = true; // Cambiar el estado de asistencia a true
-      console.log('El voluntario asistió a la tarea');
+    if (voluntarioData.tareasVoluntario.asistio === true) {
+      tareasVoluntario.asistio = true; // Cambiar el estado de asistencia a true
       voluntario.points += puntos; // Asignar puntos al voluntario que asistió
     } else {
+      tareasVoluntario.asistio = false;
       voluntario.points -= puntos;
-      console.log('El voluntario no asistió a la tarea');
     }
 
     // eslint-disable-next-line no-await-in-loop
