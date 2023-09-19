@@ -46,6 +46,8 @@ export class FormationsComponent implements OnInit {
     this.formationsStatusGet();
 
     this.formationsTypesGet();
+
+    this.views.title = "Formaciones";
   }
 
   formationsTypesGet(){

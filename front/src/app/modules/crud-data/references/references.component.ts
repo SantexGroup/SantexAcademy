@@ -37,6 +37,8 @@ export class ReferencesComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.views.title = "Referencias";
+
     this.getCompany();
 
     this.getReference();

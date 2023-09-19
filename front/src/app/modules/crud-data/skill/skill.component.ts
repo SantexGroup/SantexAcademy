@@ -30,6 +30,7 @@ export class SkillComponent implements OnInit{
   }
   ngOnInit(): void {
     this.getSkill();
+    this.views.title = "Habilidades";
     this.views.plusOne = true;
     this.views.saveButton = false;
   }

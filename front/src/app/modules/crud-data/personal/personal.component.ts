@@ -34,6 +34,7 @@ export class PersonalComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.views.title = "Datos Personales";
     this.getUser()
   }
 

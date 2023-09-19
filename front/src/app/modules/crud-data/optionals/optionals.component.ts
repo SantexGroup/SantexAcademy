@@ -28,6 +28,8 @@ export class OptionalsComponent implements OnInit {
 
     this.getMyOptionals();
 
+    this.views.title = "Opcionales";
+
     this.views.plusOne = true;
     this.views.saveButton = false;
 
