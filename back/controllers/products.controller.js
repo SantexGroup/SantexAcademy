@@ -11,6 +11,7 @@ const { Products } = require('../models') //--> nombre con el que se creo el mod
  * "price":number
  * "image":string
  * "status":string
+ * "category": number
  * }
  * @description metodo para crear un producto y almacenarlo en la base de datos
  */

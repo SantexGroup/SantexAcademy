@@ -1,5 +1,6 @@
 const categoriescontroller = {};
-const {Categories} = require('../models')
+const {Categories} = require('../models');
+const { router } = require('../routes');
 
 /**
  * @method POST
@@ -18,7 +19,7 @@ const {Categories} = require('../models')
 
 /**
  * @method PUT
- * @name editar
+ * @name editByID
  * @body {name}
  * @param {id} id de la categoria que queremos editar
  * @description metodo para editar una categoria
@@ -66,3 +67,20 @@ const {Categories} = require('../models')
     res.status(400).json({ error: error.message });
   }
 }
+/**
+ * @method GET
+ * @name getAll
+ * @description metodo para obtener todas las categorias con sus nombres (sin sus productos)
+ */
+ categoriescontroller.getAll = async (req, res) => {
+    try {
+    const categorias = await Categories.findAll();
+    res.status(200).json(categorias);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
+
+
+
+module.exports = categoriescontroller;
