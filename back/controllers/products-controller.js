@@ -1,10 +1,8 @@
-// obtener todos
-
 const productsService = require('../services/products-service');
 
+// obtener todos
 async function products(req, res, next) {
   console.log('funcionProductos');
-  // const { name, password } = req.body;
 
   try {
     const result = await productsService.products();
@@ -35,10 +33,9 @@ async function getCategories(req, res) {
 }
 
 // cargar producto
-
 async function chargeProduct(req, res) {
   const {
-    idUsuario, idTipoProducto, nombre, detalles, precio, envio,
+    idUsuario, idTipoProducto, nombre, detalles, precio, envio
   } = req.body;
 
   const product = await productsService.chargeProducts(idUsuario, idTipoProducto, nombre,
@@ -48,7 +45,6 @@ async function chargeProduct(req, res) {
 }
 
 // modificar articulo
-
 async function editProduct(req, res) {
   const { id } = req.params;
   const {

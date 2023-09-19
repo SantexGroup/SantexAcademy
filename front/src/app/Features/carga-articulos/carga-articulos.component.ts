@@ -9,6 +9,7 @@ import { CargaArticulosService } from 'src/app/core/services/carga-articulos.ser
 export class CargaArticulosComponent implements OnInit {
 
   uploadedImages: string[] = [];
+  idProducto: string = '2';
 
   constructor(private service: CargaArticulosService) { }
 
