@@ -216,6 +216,7 @@ const editasistio = async (idTarea, listaVoluntariosModificados) => {
       console.log('El voluntario asistió a la tarea');
       voluntario.points += puntos; // Asignar puntos al voluntario que asistió
     } else {
+      voluntario.points -= puntos;
       console.log('El voluntario no asistió a la tarea');
     }
 
