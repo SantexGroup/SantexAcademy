@@ -17,7 +17,7 @@ const createAndUpdateOrganizationValidation = [
   .matches(/^(?:\d{7,14}|\d{2}[ -]?\d{4}[ -]?\d{4})$/)
   .withMessage("El número de teléfono no es válido para Argentina"),
 
-  body("cuit")
+body("cuit")
   .matches(/^(?:[0-9]{11}|[0-9]{2}-[0-9]{8}-[0-9])$/)
   .withMessage(
     "El CUIT no es válido. Debe tener el formato XX-XXXXXXXX-X o XXXXXXXXXXX."
