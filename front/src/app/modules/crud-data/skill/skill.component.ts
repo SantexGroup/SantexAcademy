@@ -14,13 +14,12 @@ export class SkillComponent implements OnInit{
   skillForm: FormGroup;
   @Input() profileId?: number;
 
-  skillsList: Skill[] =  [];
   skillId: number = 0;
 
   constructor(
     private _skillService: SkillService, 
     private fb: FormBuilder,
-    private userData: UserDataService,
+    public userData: UserDataService,
     public views: NavBarService
     ) {
     this.skillForm = this.fb.group({
@@ -29,16 +28,9 @@ export class SkillComponent implements OnInit{
     });
   }
   ngOnInit(): void {
-    this.getSkill();
+    this.userData.getSkill();
     this.views.plusOne = true;
     this.views.saveButton = false;
-  }
-
-  getSkill(){
-    this._skillService.getSkillsByUser(this.userData.userId).subscribe((skillList)=>{
-      this.skillsList = skillList;
-      console.log(skillList)
-    })
   }
 
   addSkillToProfile(): void {
@@ -49,16 +41,16 @@ export class SkillComponent implements OnInit{
     }
 
     this._skillService.addSkill(newSkill).subscribe((skill) => {
-      this.skillsList.push(skill);
+      this.userData.skills.push(skill);
     });
 
     this.skillForm.reset();
   }
 
   getSelectedSkill(id?:number){
-    const index = this.skillsList.findIndex(skill => skill.id === id);
-    const elementId = Number(this.skillsList[index].id);
-    const element = (this.skillsList[index]);
+    const index = this.userData.skills.findIndex(skill => skill.id === id);
+    const elementId = Number(this.userData.skills[index].id);
+    const element = (this.userData.skills[index]);
 
     this.skillForm.patchValue({
       skill: element.skill,
@@ -75,7 +67,7 @@ export class SkillComponent implements OnInit{
     }
 
     this._skillService.updateSkill(this.skillId, newSkill).subscribe(() => {
-      this.getSkill();
+      this.userData.getSkill();
     });
 
     this.skillForm.reset();
@@ -86,10 +78,10 @@ export class SkillComponent implements OnInit{
   }
 
   skillDelete(id?:number){
-    const index = this.skillsList.findIndex(skill => skill.id === id);
-    const elementId = Number((this.skillsList[index]).id);
+    const index = this.userData.skills.findIndex(skill => skill.id === id);
+    const elementId = Number((this.userData.skills[index]).id);
     this._skillService.deleteSkill(elementId).subscribe(() => {
-      this.skillsList.splice(index, 1);
+      this.userData.skills.splice(index, 1);
     });
   }
 

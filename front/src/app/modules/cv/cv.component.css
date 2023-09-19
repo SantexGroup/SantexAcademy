@@ -30,4 +30,8 @@ section img:hover{
     width: 300px;
     opacity: 1;
     filter: contrast(120%);
+    -webkit-box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.7);
+    -moz-box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.7);
+    box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.7);
+
 }

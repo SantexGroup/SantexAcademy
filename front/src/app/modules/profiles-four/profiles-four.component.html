@@ -4,7 +4,7 @@
             <div class="picture">
                 <img src="assets/Imagenes/foto_test.jpg" alt="foto">
             </div>
-            <p class="aboutMe_text">Sobre mi</p>
+            <p class="aboutMe_text"> Sobre mi </p>
             <div class="aboutMe">
                 <div class="personales">
                     <h1>DATOS PERSONALES</h1>
@@ -14,7 +14,7 @@
                 <div class="skills">
                     <h1>HABILIDADES</h1>
                     <ul>
-                        <li *ngFor="let skill of skills" >
+                        <li *ngFor="let skill of userData.skills" >
                             <p>Habilidad: {{skill.skill}} Nivel: {{skill.level}}</p>
                         </li>
                     </ul>
@@ -22,7 +22,7 @@
                 <div class="languages">
                     <h1>IDIOMAS</h1>
                     <ul>
-                        <li *ngFor="let language of languages">
+                        <li *ngFor="let language of userData.languages">
                             <p>Idioma: {{language.language}} Nivel: {{language.level}}</p>
                         </li>
                     </ul>
@@ -30,14 +30,14 @@
             </div>
         </div>
         <div class="identificador">
-            <h1 class="nombre"> {{ dataUser.userName }}</h1>
-            <h1 class="apellido"> {{ dataUser.lastName }}</h1>
+            <h1 class="nombre"> {{ userData.userName }}</h1>
+            <h1 class="apellido"> {{ userData.lastName }}</h1>
         </div>
         <div class="informacion">
             <div class="experiencias">
                 <h1>EXPERIENCIAS</h1>
                 <ul>
-                    <li *ngFor="let experience of experiences">
+                    <li *ngFor="let experience of userData.experiences">
                         <div class="fechas">
                             <p>{{experience.startDate}}</p>
                             <p>{{experience.endDate}}</p>
@@ -55,7 +55,7 @@
                 <div class="formacion">
                     <h1>FORMACION</h1>
                     <ul>
-                        <li *ngFor="let formation of formations">
+                        <li *ngFor="let formation of userData.formations">
                             <div class="fechas">
                                 <p>{{formation.startDate}}</p>
                                 <p>{{formation.endDate}}</p>
@@ -71,7 +71,7 @@
                 <div class="referencias">
                     <h1>REFERENCIAS</h1>
                     <ul>
-                        <li *ngFor="let reference of references">
+                        <li *ngFor="let reference of userData.references">
                             <h2>Nombre: {{reference.name}}</h2>
                             <p>Apellido: {{reference.lastName}}</p>
                             <p>Compania: {{reference.company}} </p>
