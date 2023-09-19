@@ -166,54 +166,67 @@ async function getInscriptos(id) {
   }
 }
 
-async function editAsistencia(id, asistencia, voluntariosInscritos) {
-  const tareaVoluntario = await models.tareasVoluntario.findByPk(id);
-  if (!tareaVoluntario) {
+/*
+async function editasistio(idTarea, listaVoluntariosModificados) {
+  const tarea = await models.tarea.findByPk(idTarea);
+
+  const puntos = tarea.points;
+
+  listaVoluntariosModificados.forEach(voluntario => {
+    const tareasVoluntarios = await models.tareasVoluntarios.findByPk(voluntario.tareasVoluntarios.id)
+
+    tareasVoluntarios.asistio = voluntario.tareasVoluntarios.asistio;
+
+    const voluntario = await models.volunteer.findByPk(voluntario.tareasVoluntarios.id);
+
+    if (tareasVoluntarios.asistio === true) {
+      voluntario.points += puntos;
+    } else{
+      throw new Error('El usuario no asistio a la tarea');
+    }
+  });
+
+  await tareasVoluntarios.save();
+  await voluntario.save();
+}
+*/
+
+const editasistio = async (idTarea, listaVoluntariosModificados) => {
+  const tarea = await models.tarea.findByPk(idTarea);
+  const puntos = tarea.points;
+
+  if (!tarea) {
     throw new Error('Tarea no encontrada');
   }
 
-  if (asistencia === true || asistencia === false) {
-    if (tareaVoluntario.asistio === asistencia) {
-      throw new Error('La tarea ya posee este estado');
+  // eslint-disable-next-line no-restricted-syntax
+  for (const voluntarioData of listaVoluntariosModificados) {
+    // eslint-disable-next-line max-len, no-await-in-loop
+    const tareasVoluntario = await models.tareasVoluntario.findByPk(voluntarioData.tareasVoluntario.id);
+
+    if (!tareasVoluntario) {
+      throw new Error('Registro de tareasVoluntario no encontrado');
     }
 
-    tareaVoluntario.asistio = asistencia;
-    await tareaVoluntario.save();
+    // eslint-disable-next-line no-await-in-loop
+    const voluntario = await models.volunteer.findByPk(tareasVoluntario.volunteerId);
 
-    if (!voluntariosInscritos || voluntariosInscritos.length === 0) {
-      throw new Error('No se encontraron usuarios inscritos en esta tarea');
+    if (voluntarioData.asistio === true) {
+      // tareasVoluntario.asistio = true; // Cambiar el estado de asistencia a true
+      console.log('El voluntario asistió a la tarea');
+      voluntario.points += puntos; // Asignar puntos al voluntario que asistió
+    } else {
+      console.log('El voluntario no asistió a la tarea');
     }
 
-    // eslint-disable-next-line no-restricted-syntax
-    for (const voluntarioInscrito of voluntariosInscritos) {
-      if (voluntarioInscrito.asistio !== asistencia) {
-        if (asistencia === true) {
-          // eslint-disable-next-line no-await-in-loop
-          const tarea = await models.tarea.findByPk(tareaVoluntario.tareaId);
-          if (!tarea) {
-            throw new Error('Tarea no encontrada');
-          }
-
-          // eslint-disable-next-line no-await-in-loop
-          const voluntario = await models.volunteer.findByPk(voluntarioInscrito.volunteerId);
-          if (!voluntario) {
-            throw new Error(`Voluntario no encontrado: ${voluntarioInscrito.volunteerId}`);
-          }
-          voluntario.points += tarea.points;
-          // eslint-disable-next-line no-await-in-loop
-          await voluntario.save();
-        }
-      }
-    }
-
-    return 'Asistencia actualizada y operaciones adicionales realizadas si es necesario';
+    // eslint-disable-next-line no-await-in-loop
+    await tareasVoluntario.save();
+    // eslint-disable-next-line no-await-in-loop
+    await voluntario.save();
   }
-
-  throw new Error('No se ha proporcionado el estado de la tarea');
-}
-
+};
 
 module.exports = {
   // eslint-disable-next-line max-len
-  getAll, getById, createTarea, editTarea, deleteTarea, getByIdOrganizacion, cambiarEstado, getInscriptos, editAsistencia,
+  getAll, getById, createTarea, editTarea, deleteTarea, getByIdOrganizacion, cambiarEstado, getInscriptos, editasistio,
 };
