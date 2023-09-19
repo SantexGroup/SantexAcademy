@@ -54,4 +54,13 @@ export class TareaService {
     return this.apiService.get('/tarea/inscriptos/'+idTarea);
   }
 
+  modificarAsistencias(idTarea:number, listaVoluntariosModificados:Voluntario[]):Observable<void>{
+
+    const datosBody = {
+      idTarea,
+      listaVoluntariosModificados
+    }
+    return this.apiService.put('/tarea/cambiar-asistencia/', datosBody);
+  }
+
 }

@@ -84,6 +84,8 @@ export class CrearModificarTareaModalComponent implements OnInit, AfterViewInit 
   ngOnInit(): void {
     
     this.cargarCategorias();
+  if(this.modificar){
+
     const fechaMoment = moment(this.dataTarea.date);
     this.form.patchValue({
       nombre:this.dataTarea.name,
@@ -95,9 +97,11 @@ export class CrearModificarTareaModalComponent implements OnInit, AfterViewInit 
       cantidadParticipantes:this.dataTarea.cantParticipantes,
       duracion:this.dataTarea.duracion,
       horaInicio:this.dataTarea.hora
-
+  
     }); 
     
+  }
+
   }
   
   ngAfterViewInit(): void {
