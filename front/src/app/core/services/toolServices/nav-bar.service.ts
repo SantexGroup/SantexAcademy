@@ -64,6 +64,7 @@ export class NavBarService{
       this.externalComponent=false;
       this.plusOne = true;
       this.saveButton = false;
+      this.selectorHide = true;
     });
   }
 }
