@@ -1,43 +1,17 @@
 <app-barra></app-barra>
-<div *ngFor="let articulo of listArticulos" class="card" style="width: 18rem;">
-  <div class="card-body">
-    <img id="FotoArticulo" [src]="articulo.imagenUrl">
-    <h5 class="card-title">{{ articulo.nombre }}</h5>
-    <p>{{ articulo.detalles }}</p>
-    <h6 id="Precio" class="card-subtitle">Precio: {{ articulo.precio }}</h6>
-    <button id="Ver-mas" class="btn btn-primary">Ver más</button>
-  </div>
-</div>
 
-<!--
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <img id="FotoArticulo" [src]="articulo.imagenUrl">
-    <h5 class="card-title">{{ articulo.nombre }}</h5>
-    <h6 id="Precio" class="card-subtitle">Precio: {{ articulo.precio }}</h6>
-    <button id="Ver-mas" class="btn btn-primary">Ver más</button>
-  </div>
-</div>
-
-
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-      
-       <img id="FotoSilla" src="../../../assets/sillas-091--480-0.jpg">
-       <h5 class="card-title">Juego de sillas</h5>
-       <h6 id="Precio" class="card-subtitle"> Precio: 30.000$</h6>
-    
-      <button id="Ver-mas" class="btn btn-primary"> Ver mas</button>
-        
+<div class="container">
+  <div class="row">
+    <div *ngFor="let articulo of listArticulos" class="col-md-3 mb-4 tarjeta-container">
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+          <img id="FotoArticulo" [src]="articulo.imagenUrl">
+          <h5 class="card-title">{{ articulo.nombre }}</h5>
+          <p>{{ articulo.detalles }}</p>
+          <h6 id="Precio" class="card-subtitle">Precio: {{ articulo.precio }}</h6>
+          <button id="Ver-mas" class="btn btn-primary">Ver más</button>
+        </div>
+      </div>
     </div>
   </div>
-  
-  
-<div *ngFor="let articulo of listArticulos" class="card" style="width: 18rem;">
-  <div class="card-body">
-    <img id="FotoSilla" [src]="articulo.imagenUrl">
-    <h5 class="card-title">{{ articulo.nombre }}</h5>
-    <h6 id="Precio" class="card-subtitle">Precio: {{ articulo.precio }}</h6>
-    <button id="Ver-mas" class="btn btn-primary">Ver más</button>
-  </div>
-</div>-->
+</div>
