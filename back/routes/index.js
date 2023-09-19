@@ -5,6 +5,7 @@ const rootPath = require('../middleware/root_path.middleware');
 const errors = require('../middleware/error_handler.middleware');
 const rutasproducto = require("./routes.products");
 const rutasAlquiler = require("./routes.alquileres");
+const rutasCategoria = require("./routes.categories");
 const app = Express();
 
 // Rutas
@@ -17,6 +18,7 @@ app.use('/ping', (req, res) => {
 });
 app.use("/products", rutasproducto);
 app.use("/alquiler", rutasAlquiler );
+app.use("/categories", rutasCategoria);
 
 
 
