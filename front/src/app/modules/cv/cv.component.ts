@@ -50,6 +50,7 @@ export class CVComponent implements OnInit {
     this.getSkill();
     console.log(this.dataUser.userId)
     console.log(this.dataUser.profileId)
+    this.views.title = "Home";
 
   }  
 

@@ -56,6 +56,8 @@ export class ExperiencesComponent implements OnInit {
 
     this.getExperience();
 
+    this.views.title = "Experiencias";
+
   }
 
   endDateShow():boolean{
