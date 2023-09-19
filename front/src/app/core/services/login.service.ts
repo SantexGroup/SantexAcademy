@@ -20,6 +20,16 @@ export class LoginService {
     return this.apiService.post<any>('/users/login', body)
   }
 
+  corroborarLogeo() {    
+    let infoLocal = localStorage.getItem('resLog')
+    if (infoLocal) {
+      let newObject = JSON.parse(infoLocal);
+      if(newObject){
+      return newObject;
+      }
+    }
+  }
+
   cambioVendedorServ(userId: string) {
     return this.apiService.put('/users/estado-vendedor/' + userId);
   }
