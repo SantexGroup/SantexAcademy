@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes, Deferrable) => {
 
   Donacion.init(
     {
-      // id: DataTypes.INTEGER,
+      id: DataTypes.INTEGER,
 
       id_doncacion: DataTypes.INTEGER,
 
