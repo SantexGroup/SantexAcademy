@@ -2,8 +2,11 @@ const express = require('express');
 
 const voluntariadoRouter = express.Router();
 const { voluntariadoController } = require('../controllers');
+const { usuarioEnVoluntariadoRouter } = require('./usuarioEnVoluntariado');
 
-voluntariadoRouter.post('/:idOrg', voluntariadoController.createVoluntariado);
+voluntariadoRouter.use('/join', usuarioEnVoluntariadoRouter);
+
+voluntariadoRouter.post('/:idOrg/', voluntariadoController.createVoluntariado);
 voluntariadoRouter.get('/:idOrg', voluntariadoController.getVoluntariadosByCriteria);
 voluntariadoRouter.put(
   '/:idOrg/:idVoluntariado',

@@ -14,7 +14,7 @@ const getVoluntariadosByCriteria = async (queryOptions, bodyOptions) => {
   try {
     const options = { ...queryOptions, ...bodyOptions }; // Combinar las opciones de bésqueda
     const where = {}; // Excluir registros eliminados lágicamente
-    const validOptions = ['idVoluntariado', 'organizationId', 'descripcion', 'Reward', 'deletedAt'];
+    const validOptions = ['idVoluntariado', 'organizationId', 'descripcion', 'spots', 'Reward', 'deletedAt'];
     
     validOptions.forEach((option) => {
       if (options[option]) where[option] = options[option];
