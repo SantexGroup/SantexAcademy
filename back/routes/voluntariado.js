@@ -3,14 +3,24 @@ const express = require('express');
 const voluntariadoRouter = express.Router();
 const { voluntariadoController } = require('../controllers');
 
-voluntariadoRouter.post('/:idOrg', voluntariadoController.createVoluntariado);
+const  { verifyToken , isAdmin, isOrg  }  = require('../middleware/authMiddleware');
+
+
+voluntariadoRouter.post('/:idOrg', verifyToken, isOrg, voluntariadoController.createVoluntariado);
 voluntariadoRouter.get('/:idOrg', voluntariadoController.getVoluntariadosByCriteria);
+
 voluntariadoRouter.put(
-  '/:idOrg/:idVoluntariado',
+  '/:idOrg/:idVoluntariado', verifyToken, isOrg,
   voluntariadoController.updateVoluntariadoById,
 );
+
 voluntariadoRouter.delete(
-  '/:idVoluntariado',
+  '/:idVoluntariado', verifyToken, isOrg,
+  voluntariadoController.deleteVoluntariadoById,
+);
+
+voluntariadoRouter.delete(
+  '/admin/:idOrg/:idVoluntariado', verifyToken, isOrg,
   voluntariadoController.deleteVoluntariadoById,
 );
 

@@ -93,7 +93,7 @@ const isUser = (req, res, next) => {
 
 
 const isOrg = (req, res, next) => {
-  if (req.modelType === 'Organizacion') {
+  if (req.modelType === 'Organizacion' && req.userId === parseInt(req.params.id, 10)) {
     // El usuario es de tipo "Organizacion", permitir acceso a las rutas de organización
     next();
   } else {
