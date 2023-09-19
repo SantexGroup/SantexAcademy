@@ -92,19 +92,18 @@ async function getVolunteersForTask(req, res) {
   }
 }
 
-async function editAsistio(req, res, next) {
-  const { id } = req.params;
-  const { asistencia } = req.body;
+const editAsistio = async (req, res) => {
+  // const { idTarea } = req.params;
+  const { listaVoluntariosModificados, idTarea } = req.body;
+
   try {
-    const tarea = await tareaServices.editAsistencia(id, asistencia);
-    if (!tarea) {
-      return res.status(404).json({ error: 'Tarea no encontrada' });
-    }
-    return res.status(200).json(tarea);
+    await tareaServices.editasistio(idTarea, listaVoluntariosModificados);
+    res.status(200).json({ message: 'Asistencia editada exitosamente.' });
   } catch (error) {
-    next(error);
+    res.status(500).json({ error: error.message });
   }
-}
+};
+
 module.exports = {
   // eslint-disable-next-line max-len
   getAllTarea, getTareaById, createTarea, editTarea, deleteTarea, editEstado, getTareaByIdOrganizacion, getVolunteersForTask, editAsistio,
