@@ -13,6 +13,7 @@ import { Product } from 'src/app/core/interfaces/product';
 })
 export class FormUpdateComponent implements OnInit {
 
+
   constructor(
     private backService: BackServiceService,
     private router: Router,
@@ -67,7 +68,7 @@ export class FormUpdateComponent implements OnInit {
     ).subscribe(product => {
       // Asigna el producto obtenido a selectedProduct
       this.selectedProduct = product;
-      console.log(this.selectedProduct)
+      //console.log(this.selectedProduct)
       // Si se encontró un producto,  se muestra el formulario con los valores del producto
       if (product) {
         this.myForm.patchValue({
@@ -79,10 +80,10 @@ export class FormUpdateComponent implements OnInit {
           price: product.price,
           description: product.description,
         });
-        console.log(this.myForm.value)
+        //console.log(this.myForm.value)
       
         this.foundProduct = true;
-        console.log(this.foundProduct)
+        //console.log(this.foundProduct)
       }else {
         // El producto no se encontró o no es válido, puedes manejar este caso aquí
         alert('El producto no se encontrón o no es válido');
@@ -97,7 +98,7 @@ export class FormUpdateComponent implements OnInit {
   updateProduct() {
 
     
-    console.log(this.myForm.value);
+    //console.log(this.myForm.value);
     // Actualiza el producto
     // id conseguido de la url del producto
     let id = this.activateRoute.snapshot.paramMap.get('id') 

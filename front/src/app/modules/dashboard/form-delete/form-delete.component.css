@@ -237,4 +237,22 @@
 .hit-the-floor {
   text-align: center;
 }
+.scrollable-list {
+  overflow-y: auto;
+  max-height: 560px;
+}
 
+.productCard-img {
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.1rem;
+}
+
+.productCard-img svg {
+  width: 100%;
+  height: 90%;
+  padding: .5rem;
+  object-fit: cover;
+}
