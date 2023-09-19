@@ -20,7 +20,7 @@ const routes: Routes = [
   },
 
   { path: 'Contrasenia', component: InputContraseniaComponent },
-  { path: 'pollter', component: PollsterDashboardComponent },
+  { path: 'dashboard-pollster', component: PollsterDashboardComponent },
 
   //Este path debe ir siempre al final para que redirija a dashboard-admin cuando el user ingrese una ruta inexistente
   {
