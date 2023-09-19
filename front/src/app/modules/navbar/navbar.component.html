@@ -1,62 +1,3 @@
-<!-- <div class="menu-bar">
-  <ul>
-    <div>
-      <img class="logo" src="../../../assets/img/logo-webpage.png" alt="" />
-    </div>
-    <li class="active">
-      <a href="#"><i class="fa-solid fa-house"></i>Home</a>
-    </li>
-  <li><a href=""><i class="fa-solid fa-user"></i>About us</a>
-          <div class="sub-menu-1">
-              <ul>
-                  <li><a href="#">Mission</a></li>
-                  <li><a href="#">Vision</a></li>
-                  <li><a href="#">Team</a></li>
-              </ul>
-          </div>
-          </li> 
-    <li>
-      <a href=""><i class="fa-solid fa-book"></i>Cursos</a>
-      <div class="sub-menu-1">
-        <ul>
-          <li><a href="#">- Semipermamnente</a></li>
-          <li><a href="#">- Sublimacion con Maquina</a></li>
-          <li class="hover-me">
-            <a href="#">Talleres</a><i class="fa fa-angle-right"></i>
-            <div class="sub-menu-2">
-              <ul>
-                <li><a href="#">- Invierno (nin1os de 6 a 12 años)</a></li>
-                <li><a href="#">- Diseño y reciclaje: Luminaria</a></li>
-                <li><a href="#">- Diseño y reciclaje: Packaging</a></li>
-                <li><a href="#">- Macrame y tejido crochet</a></li>
-                <li><a href="#">- Diseño de imagen y video con Canva</a></li>
-                <li><a href="#">- Slime para niños</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="hover-me">
-            <a href="#">Seminarios</a><i class="fa fa-angle-right"></i>
-            <div class="sub-menu-2">
-              <ul>
-                <li><a href="#">- Lencería</a></li>
-                <li><a href="#">- Sublimación Artesanal</a></li>
-                <li><a href="#">- Velas</a></li>
-                <li><a href="#">- Sahumerios</a></li>
-                <li><a href="#">- Jabones Artesanales</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </li>
-    <li>
-      <a href="#"><i class="fa-solid fa-users"></i>Nosotros</a>
-    </li>
-    <li>
-      <a href="#"><i class="fa-solid fa-phone"></i>Contacto</a>
-    </li>
-  </ul>
-</div> -->
 <nav
   class="navbar navbar-expand-lg bg-body-tertiary pt-0 pb-0"
   style="background: rgb(41, 64, 145)"
@@ -105,19 +46,19 @@
           </a>
           <ul class="dropdown-menu text-center" style="background: rgb(41, 64, 145);width: 100%;">
             <div *ngFor="let course of courses" >
-              <li><a class="dropdown-item text-white" href="/{{course.name}}">{{ course.name }}</a></li>
+              <li><a class="dropdown-item text-white" href="/cursos/{{course.id}}">{{ course.name }}</a></li>
             </div>
             
           </ul>
           
         </li>
         <li class="nav-item col text-center">
-          <a class="nav-link active text-white fs-5" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+          <a class="nav-link active text-white fs-5" routerLink="/sobreNosotros"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-          </svg>Nosotros</a> 
+          </svg>Sobre nosotros</a> 
         </li>
         <li class="nav-item col text-center">
-          <a class="nav-link active text-white fs-5" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+          <a class="nav-link active text-white fs-5" routerLink="/contacto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
           </svg>Contacto</a>
         </li>
