@@ -168,9 +168,6 @@ async function asignarTareaVoluntario(idVolunteer, idTarea) {
   }
 }
 
-async function canjearPuntos(){
-  
-}
 module.exports = {
   getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, asignarTareaVoluntario,
 };
