@@ -1,14 +1,15 @@
-const findUserByEmail = require('../services/find_user_by_email.service');
+const validateUserPassword = require('../validations/validate_user_password.service');
+const findEntityByProperty = require('../services/find_entity_by_property.service');
 const handleJWT = require('../services/handle_jwt.service');
 const logger = require('../utils/winston.logger');
-const validateUserPassword = require('../validations/validate_user_password.service');
+const { User } = require('../models');
 
 const authLoginController = async (req, res, next) => {
   (async () => {
     const { email, password } = req.body;
 
     try {
-      const existingUser = await findUserByEmail(email);
+      const existingUser = await findEntityByProperty({ email }, User);
       if (existingUser === null) {
         next({
           extendBase: true,
