@@ -51,7 +51,7 @@ export class FormVolunteerregisterComponent {
           this.onModal = true;
           this.statusSession = 'failed';
           this.routeBtnContinue = 'auth/volunteer-register';
-          this.textBtnModal = 'Volver a intentar';
+          this.textBtnModal = 'Reintentar';
         },
         complete: () => {},
       });

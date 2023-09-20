@@ -1,5 +1,12 @@
 const { Op, or } = require("sequelize");
 const { Organizacion } = require("../models");
+const cloudinary = require("cloudinary").v2;
+
+cloudinary.config({
+  cloud_name: "dkvhkmu6m",
+  api_key: "558152683374156",
+  api_secret: "bkiHx6pQShvs8vOZWybO7Lf65Rg",
+});
 
 const loginOrg = async (email, cuit, password) => {
   try {
@@ -31,8 +38,8 @@ const loginOrg = async (email, cuit, password) => {
   }
 };
 
-
-const createOrganization = async (organization) => {
+const createOrganization = async (data) => {
+  const { image, ...restOfData } = data;
   try {
     const existingDeletedOrg = await Organizacion.findOne({
       where: {
@@ -40,23 +47,20 @@ const createOrganization = async (organization) => {
           { deletedAt: { [Op.not]: null } }, // Buscar registros eliminados
           {
             [Op.or]: [
-              { name: organization.name },
-              { email: organization.email },
-              { cuit: organization.cuit },
+              { name: restOfData.name },
+              { email: restOfData.email },
+              { cuit: restOfData.cuit },
             ],
           },
         ],
       },
     });
-
     if (existingDeletedOrg) {
       // Borrar el registro eliminado lógicamente
       await existingDeletedOrg.destroy();
     }
-
     // Crear el nuevo registro
-    const newOrganization = await Organizacion.create(organization);
-
+    const newOrganization = await Organizacion.create({ image, ...restOfData });
     // Devolver el nuevo registro
     return newOrganization;
   } catch (err) {

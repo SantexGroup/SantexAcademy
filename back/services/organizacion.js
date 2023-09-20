@@ -1,4 +1,4 @@
-const { orgProvider } = require('../providers');
+const { orgProvider } = require("../providers");
 
 const loginOrg = async (email, cuit, password) => {
   const org = await orgProvider.loginOrg(email, cuit, password);
@@ -9,11 +9,13 @@ const loginOrg = async (email, cuit, password) => {
   return org;
 };
 
+const createOrganization = async (data) => {
+  const { image, ...restOfData } = data;
 
-const createOrganization = async (organization) => {
-  const createdOrganization = await orgProvider.createOrganization(
-    organization,
-  );
+  const createdOrganization = await orgProvider.createOrganization({
+    image,
+    ...restOfData,
+  });
   return createdOrganization;
 };
 
@@ -25,7 +27,7 @@ const getOrganizations = async () => {
 const updateOrganizationById = async (id, organization) => {
   const updatedOrganization = await orgProvider.updateOrganizationById(
     id,
-    organization,
+    organization
   );
   return updatedOrganization;
 };
@@ -40,7 +42,7 @@ const deleteOrganizationById = async (id) => {
 const getOrganizationByCriteria = async (queryOptions, bodyOptions) => {
   const organization = await orgProvider.getOrganizationByCriteria(
     queryOptions,
-    bodyOptions,
+    bodyOptions
   );
   return organization;
 };
@@ -48,7 +50,7 @@ const getOrganizationByCriteria = async (queryOptions, bodyOptions) => {
 const getOrganizationByLocation = async (location, opportunityType) => {
   const organizationFound = await orgProvider.getOrganizationByLocation(
     location,
-    opportunityType,
+    opportunityType
   );
   return organizationFound;
 };
