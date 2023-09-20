@@ -30,7 +30,8 @@ const getUser = async (id) => {
     throw new Error('Hubo un error al obtener el usuario.');
   }
 };
-//NO BORRAR--sirve para buscar cualquier usuario usando cualquier dato--util para filtros//
+
+//NO BORRAR--sirve para buscar cualquier usuario usando cualquier dato -- util para filtros//
 const getUserByData = async (searchCriteria) => {
   const user = await User.findOne({
     where: searchCriteria,
@@ -38,6 +39,7 @@ const getUserByData = async (searchCriteria) => {
   return user;
 };
 //-------------------------------------------------------------------------------------//
+
 const createUser = async (body) => {
   try {
     const user = await User.create(body);

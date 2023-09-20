@@ -1,4 +1,5 @@
-const { userService } = require('../services/index')
+const { userService } = require('../services/index');
+const { User } = require('../models');
 
 const verifyLink = async (req, res) => {
     const codeRegister = req.query.codeRegister; // Consulta codigo que se recibe en URL del mail
@@ -13,12 +14,13 @@ const verifyLink = async (req, res) => {
        }
       // Si ambos datos coinciden en la base de datos, actualiza el campo a verificacion realizada
       userId.verificationCode = true;
+      console.log(userId instanceof User);//BORRAR es para depurar
       await userId.save();
       
       return res.status(200).json({ success: 'success' }); // Se maneja desde el front
     } catch (error) {
       console.error('En función verifyLink: ', error);
-      return res.status(500).json({ message: 'Ocurrió un error interno.' }); // En caso de error interno
+      return res.status(500).json({ message: 'Ocurrió un error interno en verificación de link.' }); // En caso de error interno
     }
   };
 
