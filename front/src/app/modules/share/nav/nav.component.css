@@ -3,70 +3,63 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Nunito', sans-serif;
   font-size: 20px;
 }
 
-body {
-  background-color: #fff59d;
-  margin: 0;
-}
 
-.header {
+nav {
   background-color: #1b3039;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 85px;
-  padding: 5px 20px;
+  padding: 20px 20px;
 }
 
-.header .logo {
+nav .logo {
   cursor: pointer;
 }
 
-.header .logo img {
-  height: 70px;
+nav .logo img {
+  height: 50px;
   width: auto;
   transition: all 0.3s;
 }
 
-.header .logo img:hover {
+nav .logo img:hover {
   transform: scale(1.2);
 }
 
-
-
-.header .nav-links {
+nav .nav-links {
   list-style: none;
   display: flex;
   align-items: center;
 }
 
-.header .nav-links li {
+nav .nav-links li {
   padding: 0 20px;
 }
 
-.header .nav-links li:first-child {
+nav .nav-links li:first-child {
   padding-right: 0;
 }
 
-.header .nav-links li:hover {
+nav .nav-links li:hover {
   transform: scale(1.1);
 }
 
-.header .nav-links a {
+nav .nav-links a {
   font-weight: 700;
   color: #eceff1;
   text-decoration: none;
   transition: color 0.3s;
 }
 
-.header .nav-links li.active {
+nav .nav-links li.active {
   background-color: white; /* Fondo blanco */
 }
 
-.header .nav-links li.active a {
+nav .nav-links li.active a {
   color: #ffbc0e; /* Texto en naranja */
 }
 
@@ -95,23 +88,23 @@ body {
 
 /* Estilos para pantallas más pequeñas, por ejemplo, teléfonos móviles */
 @media screen and (max-width: 768px) {
-  .header {
+  nav {
     padding: 5px 10px;
     height: auto;
   }
 
-  .header .nav-links {
+  nav .nav-links {
     flex-direction: column;
     align-items: flex-start;
     margin-top: 10px;
     display: none;
   }
 
-  .header .nav-links.active {
+  nav .nav-links.active {
     display: flex;
   }
 
-  .header .nav-links li {
+  nav .nav-links li {
     padding: 10px 0;
   }
 
@@ -124,7 +117,7 @@ body {
 /* Agrega tus estilos adicionales aquí */
 
 /* Estilos para la foto de perfil y el menú desplegable */
-.user-profile {
+nav .user-profile {
   display: flex;
   align-items: center;
   justify-content: space-between; /* Espacio entre la foto de perfil y la flecha */
@@ -132,31 +125,31 @@ body {
   position: relative;
 }
 
-.profile-button {
+nav .profile-button {
   background: none;
   border: none;
   cursor: pointer;
 }
 
-.arrow-button {
+nav .arrow-button {
   background: none;
   border: none;
   cursor: pointer;
 }
 
-.profile-image {
+nav .profile-image {
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
 
-.arrow-icon {
+nav .arrow-icon {
   width: 20px;
   height: 20px;
   cursor: pointer;
 }
 
-.profile-dropdown {
+nav .profile-dropdown {
   position: absolute;
   top: 60px; /* Ajusta la posición vertical según sea necesario */
   right: 0;
@@ -166,12 +159,12 @@ body {
 }
 
 /* Mostrar el menú desplegable cuando se abre */
-.user-profile.active .profile-dropdown {
+nav .user-profile.active .profile-dropdown {
   display: block;
 }
 
 /* Estilos para las opciones de menú seleccionadas */
-.header .nav-links li.selected {
+nav .nav-links li.selected {
   background-color: white; /* Fondo blanco */
   height: 100%; /* Ocupar todo el alto del nav */
   display: flex;
@@ -179,16 +172,16 @@ body {
   border-radius: 10px; /* Borde redondeado */
 }
 
-.header .nav-links li.selected a {
+nav .nav-links li.selected a {
   color: #ffbc0e; /* Texto en naranja */
 }
 
 /* Estilos para el estado hover */
-.header .nav-links li:hover {
+nav .nav-links li:hover {
   background-color: white; /* Fondo blanco al pasar el mouse */
   border-radius: 10px; /* Borde redondeado al pasar el mouse */
 }
 
-.header .nav-links li:hover a {
+nav .nav-links li:hover a {
   color: #ffbc0e; /* Texto en naranja al pasar el mouse */
 }
