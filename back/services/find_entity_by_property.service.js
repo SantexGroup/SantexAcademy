@@ -1,7 +1,16 @@
-const findEntityByProperty = async (property, model) => {
-  const { dataValues } = await model.findOne({ where: { property } });
+const CustomException = require('../exceptions/custom.exeption');
 
-  return dataValues;
+const findEntityByProperty = async (property, model) => {
+  try {
+    const { dataValues } = await model.findOne({ where: { property } });
+
+    return dataValues;
+  } catch (error) {
+    throw new CustomException(
+      `Error al buscar ${property} - ${error.message}`,
+      404,
+    );
+  }
 };
 
 module.exports = findEntityByProperty;
