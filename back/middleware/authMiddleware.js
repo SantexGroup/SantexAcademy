@@ -44,7 +44,7 @@ const verifyToken = async (req, res, next) => {
 
     const decoded = jwt.verify(token, config);
 
-    console.log("decoded.userId", decoded.userId);
+    //console.log("decoded: " + JSON.stringify(decoded, null, 2));
 
     let user = null;
     let org = null;
@@ -55,6 +55,9 @@ const verifyToken = async (req, res, next) => {
     } else if (decoded.orgEmail) {
       // Si el token contiene "orgEmail", es un token de organización
       org = await Organizacion.findOne({ where: { email: decoded.orgEmail } });
+      
+      // Extraer el ID de la organización del token (si se encuentra)
+      req.orgId = decoded.orgId;
     }
 
     if (user) {
@@ -82,6 +85,7 @@ const verifyToken = async (req, res, next) => {
 
 
 
+
 const isUser = (req, res, next) => {
   if (req.modelType === 'Usuario' && req.userId === parseInt(req.params.id, 10)) {
     next();
@@ -91,16 +95,16 @@ const isUser = (req, res, next) => {
 };
 
 
-
 const isOrg = (req, res, next) => {
-  if (req.modelType === 'Organizacion' && req.userId === parseInt(req.params.id, 10)) {
-    // El usuario es de tipo "Organizacion", permitir acceso a las rutas de organización
-    next();
-  } else {
-    // El usuario no es de tipo "Organizacion", denegar el acceso
-    return res.status(403).json({ message: 'No tienes permiso para realizar esta acción' });
+  const idOrgParam = parseInt(req.params.idOrg, 10);
+
+  if (req.modelType === 'Organizacion' && idOrgParam === req.org.id) {
+    return next(); // El usuario es de tipo "Organizacion" y el ID coincide
   }
+
+  return res.status(403).json({ message: 'No tienes permiso para realizar esta acción' });
 };
+
 
 
 

@@ -47,14 +47,14 @@ Roles.belongsToMany(CestaRecompensas, {
 Usuario.belongsToMany(Voluntariado, {
   as: 'voluntariadoId_voluntariados',
   through: UsuarioEnVoluntariado,
-  foreignKey: 'usuarioId',
-  otherKey: 'voluntariadoId',
+  foreignKey: 'userId',
+  otherKey: 'volunteerId',
 });
 Voluntariado.belongsToMany(Usuario, {
   as: 'usuarioId_usuarios',
   through: UsuarioEnVoluntariado,
-  foreignKey: 'voluntariadoId',
-  otherKey: 'usuarioId',
+  foreignKey: 'volunteerId',
+  otherKey: 'userId',
 });
 Producto.belongsTo(Catalogo, { as: 'catalogo', foreignKey: 'catalogoId' });
 Catalogo.hasMany(Producto, { as: 'productos', foreignKey: 'catalogoId' });
@@ -88,19 +88,19 @@ Roles.hasMany(Usuario, { as: 'usuarios', foreignKey: 'rolesId' });
 
 UsuarioEnVoluntariado.belongsTo(Usuario, {
   as: 'usuario_test',
-  foreignKey: 'usuarioId',
+  foreignKey: 'userId',
 });
 Usuario.hasMany(UsuarioEnVoluntariado, {
   as: 'usuarioEnVoluntariados',
-  foreignKey: 'usuarioId',
+  foreignKey: 'userId',
 });
 UsuarioEnVoluntariado.belongsTo(Voluntariado, {
   as: 'voluntariado',
-  foreignKey: 'voluntariadoId',
+  foreignKey: 'volunteerId',
 });
 Voluntariado.hasMany(UsuarioEnVoluntariado, {
   as: 'usuarioEnVoluntariados',
-  foreignKey: 'voluntariadoId',
+  foreignKey: 'volunteerId',
 });
 
 // exports

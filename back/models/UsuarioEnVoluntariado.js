@@ -32,17 +32,17 @@ const UsuarioEnVoluntariado = sequelize.define(
         name: "PRIMARY",
         unique: true,
         using: "BTREE",
-        fields: [{ name: "usuarioId" }, { name: "voluntariadoId" }],
+        fields: [{ name: "userId" }, { name: "volunteerId" }],
       },
       {
         name: "fk_usuario_has_voluntariado_voluntariado1_idx",
         using: "BTREE",
-        fields: [{ name: "voluntariadoId" }],
+        fields: [{ name: "volunteerId" }],
       },
       {
         name: "fk_usuario_has_voluntariado_usuario1_idx",
         using: "BTREE",
-        fields: [{ name: "usuarioId" }],
+        fields: [{ name: "userId" }],
       },
     ],
   }

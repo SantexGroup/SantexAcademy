@@ -6,7 +6,7 @@ const {
 
 const join = async (userId, idVoluntariado) => {
   try {
-    const volunteering = voluntariadoProvider.getVoluntariadosByCriteria({ idVoluntariado });
+    const volunteering = await voluntariadoProvider.getVoluntariadosByCriteria({ idVoluntariado });
     if (!volunteering) {
       return 'Volunteering not found.';
     }
@@ -29,5 +29,6 @@ const join = async (userId, idVoluntariado) => {
     throw err;
   }
 };
+
 
 module.exports = { join };

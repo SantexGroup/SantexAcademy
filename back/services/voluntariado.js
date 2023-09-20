@@ -16,6 +16,18 @@ const getVoluntariadosByCriteria = async (queryOptions, bodyOptions) => {
   return voluntariados;
 };
 
+  const getVoluntariadosByOrganization = async (idOrg) => {
+    try {
+      const voluntariados = await voluntariadoProvider.getVoluntariadosByOrganizationId(idOrg);
+      return voluntariados;
+    } catch (error) {
+      console.error('Error en el servicio al obtener los voluntariados de la organización.', error);
+      throw error;
+    }
+  };
+  
+
+
 const updateVoluntariadoById = async (idOrg, idVoluntariado, voluntariado) => {
   const updatedVolunteering = await voluntariadoProvider.updateVoluntariadoById(
     idOrg,
@@ -32,6 +44,7 @@ const deleteVoluntariadoById = async (id) => {
 
 module.exports = {
   getVoluntariadosByCriteria,
+  getVoluntariadosByOrganization,
   createVoluntariado,
   updateVoluntariadoById,
   deleteVoluntariadoById,
