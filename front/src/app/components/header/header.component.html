@@ -4,6 +4,9 @@
       class="border-circle border-yellow-500 w-6rem h-6rem m-2 surface-300 font-bold flex align-items-center justify-content-center">
       logo
     </div>
+    <div>
+      <p *ngIf="nombreUsuario">{{nombreUsuario ? 'Bienvenido ' + nombreUsuario : ""}}</p>
+    </div>
     <ul class="nav list">
       <li><a routerLink="/">Home</a></li>
       <li><a href="#cursos">Cursos</a></li>
@@ -17,12 +20,32 @@
         </li>
       </ul>
       <li><a href="#">Contacto</a></li>
-      <li><a href="#">Loguin</a></li>
+      <li *ngIf="userlogued"  (click)="showDialog()">Login</li>
+      <li *ngIf="usuarioAutenticado"  (click)="Logout()">Logout</li>
     </ul>
   </nav> 
-
-
-
+  <p-dialog header="Login" class="flex align-items-center justify-content-center" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+          <form [formGroup]="form">
+              <div class="mb-3">
+                  <label for="userName" class="form-label">UserName</label>
+                  <input type="text" class="form-control" id="userName" formControlName="userName">
+                  <div *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)">
+                      <div *ngIf="userName?.errors?.['required']" class="text-danger">
+                          El Username es Obligatorio.
+                      </div>
+                  </div>
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" formControlName="password">
+                  <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+                      <div *ngIf="password?.errors?.['required']" class="text-danger">
+                          La contraseña es Obligatorio.
+                      </div>
+                  </div>
+              </div>
+ 
+          </form>
+          <p-button  (click)="login()" (click)="visible = false" >Login</p-button>
+  </p-dialog>
   <div class="menu-hamburguesa">
     <input id="check" type="checkbox">
     <label for="check">
@@ -30,8 +53,10 @@
         <span class="hamburguer"></span>
       </div>
     </label>
-  
     <ul class="ul-mbl">
+      <div>
+        <p *ngIf="nombreUsuario">{{nombreUsuario ? 'Bienvenido ' + nombreUsuario : ""}}</p>
+      </div>
       <li><a routerLink="/">Home</a></li>
       <li><a href="#cursos">Cursos</a></li>
       <li><a href="#">Alianzas</a></li>
@@ -44,7 +69,10 @@
         </li>
       </ul>
       <li><a href="#">Contacto</a></li>
-      <li><a href="#">Loguin</a></li>
+      <li *ngIf="userlogued"  (click)="showDialog()">Login</li>
+      <li *ngIf="usuarioAutenticado"  (click)="Logout()">Logout</li>
+      
     </ul>
+    
   </div>
 
