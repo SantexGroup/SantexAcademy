@@ -3,15 +3,15 @@
     <div class="containerDetail lg:w-8 lg:m-auto lg:flex-colum ">
     
         <div class="containerDetailCourse my-o mx-2 relative ">
-            <img class="imgBanner w-screen h-20rem" 
+            <img class="imgBanner w-screen h-20rem opacity-70" 
             src="{{courseService.courses.banner}}" alt="{{courseService.courses.title}}">
     
             
             <div class="containerCourse lg:pr-5 lg:pl-5 absolute flex justify-content-between bottom-0 gap-6 w-12">
-                <div class="title lg:text-5xl mt-5 ml-2 w-rem font-medium">{{courseService.courses.title}}</div>
+                <div class="title lg:text-5xl mt-5 ml-2 bg-white opacity-70 h-4rem px-2 border-round font-medium">{{courseService.courses.title}}</div>
                 
                 <div class="containerCost flex-colum border-circle 
-                h-7rem w-7rem m-2 text-gray-900 font-bold text-center">
+                h-7rem w-7rem m-2 text-gray-900 bg-white opacity-80 font-bold text-center">
                     <p class="text mt-5">Desde solo</p>
                     <p>{{courseService.courses.price | currency}}</p>
                 </div>
@@ -80,7 +80,7 @@
                     <div class="lg:flex">
         
                         <p>{{detail.paragraph1 ? detail.paragraph1 : detail.paragraph2}}</p> 
-                        <img *ngIf="detail.image1url" class="max-w-18rem bg-cover" src={{detail.image2url}} alt="">
+                        <img *ngIf="detail.image1url" class="max-w-18rem bg-cover" src={{detail.image1url}} alt="">
         
                     </div>
 
