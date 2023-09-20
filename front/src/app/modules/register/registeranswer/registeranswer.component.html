@@ -1,7 +1,16 @@
 <div>
     <div class="registeranswer" [class.hidden]="showRegisterAnswer">
-    <h2>¡Registro exitoso!</h2>
-    <h3>Gracias por su registro! Controle su casilla de correo.</h3>
-    <h5>Hemos enviado un mail a la casilla que nos proporcionó, deberá ingresar desde el link que le enviamos para confirmar su registro y poder iniciar sesión por primera vez.</h5>
+         <h2>¡Registro exitoso!</h2>
+         <h3>Gracias por su registro! Controle su casilla de correo.</h3>
+         <h5>Hemos enviado un mail a la casilla que nos proporcionó, deberá ingresar desde el link que le enviamos para confirmar su registro y poder iniciar sesión por primera vez.</h5>
+    </div>
+    <!-- //Agregado para no tener que ver el mail de verificacion// -->
+    <div class="floating-popup" *ngIf="showFloatingPopup">
+         <div class="popup-content">
+            <p>Supondremos que cerraste la página y revisaste tu correo electrónico siguiendo las instrucciones.</p>
+            <p>El enlace enviado por mail te redirigía a login y verificaba tu correo.</p>
+            <p>Cierra esta ventana y te llevaré a la página de inicio de sesión como si hubieras hecho bien las cosas.</p>
+            <button (click)="closePopup()">Cerrar</button>
+         </div>
     </div>
 </div>

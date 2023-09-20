@@ -1,14 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';// BORRAR si no se usa
 
 import { Curso } from '../../cursos/interface/cursos.interface';
 import { Nivel } from "src/app/models/nivel.interface";
-import { FormGroup } from '@angular/forms';
 import { AuthService } from '../../auth/services/auth.service';
 import { Matricula } from '../../matriculas/interfaces/interfaces';
-// import { Curso } from '../../../models/curso.interface';
 import { MatriculasService } from '../../matriculas/services/matriculas.service';
-import { Router } from '@angular/router';
-
+// import { Curso } from '../../../models/curso.interface';//BORRAR si no se usa
 
 @Component({
   selector: 'app-curso',
@@ -17,6 +16,7 @@ import { Router } from '@angular/router';
 })
 
 export class CursoComponent implements OnInit {
+  @Input() cursos: Curso[] = [];
   //form:FormGroup;
   
   nivelNvo: Nivel = {
@@ -45,7 +45,7 @@ export class CursoComponent implements OnInit {
     idusuariomodificacion: 1,
     createdAt: new Date,
     updatedAt: new Date,
-    nivel: this.nivelNvo,
+    Nivel: this.nivelNvo,
     estado: '',
   }
 
@@ -59,6 +59,7 @@ export class CursoComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    console.log(this.cursos)
   }
 
   inscribir(){

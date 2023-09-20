@@ -49,13 +49,13 @@ export interface User {
     password:          string;
     confirmPassword?:  string;
     activoactualmente: boolean;
-    idtipodeusuario:   number;
-    verificationCode:  boolean;
-    estado:            string;
-    codeRegister:      string;
-    createdAt?:         Date;
-    updatedAt?:         Date;
-    TipoDeUsuario:     TipoDeUsuario;
+    estado: string;
+    idtipodeusuario: number;
+    TipoDeUsuario?: TipoDeUsuario;
+    createdAt?: Date;
+    updatedAt?: Date;
+    verificationCode: boolean;
+    codeRegister: string;
 }
 
 export interface TipoDeUsuario {

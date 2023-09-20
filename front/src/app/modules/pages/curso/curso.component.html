@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos en Línea</title>
   <link rel="stylesheet" href="curso.component.css">
 
 </head>
-  <div class="title-cards">
-  </div>
-  <div class="container-card">
-    <div class="card">
+<body>
+  <div class="container">
+
+    <div class="curso-card" *ngFor="let curso of cursos">
       <figure>
-        <img src="{{curso.imagen}}">
+        <img src="{{curso.imagen}}" alt="Imagen del curso">
       </figure>
       <div class="contenido-card">
         <h3>{{curso.nombre}}</h3>
         <p>{{curso.descripcion}}</p>
-        <a href="#">Leer Más</a>
+        <p class="duracion">Duración: {{curso.duracion}} meses</p>
+        <p class="fechafin">Fin: {{curso.fechafin}}</p>
+        <p class="requisitos">Requisitos: {{curso.requisitos}}</p>
+        <a href="#">Inscribirme</a>
       </div>
     </div>
+    
   </div>
-  <!-- Fin de la tarjeta -->
 
+
+</body>
 </html>

@@ -3,18 +3,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 <div class="wrapper">
     <div class="body">
-      <img class="logo" src="/assets/images/logo-circular.png" alt="login">
+      <img class="logo" src="/assets/images/logo circular.png" alt="login">
       <h1>Acceso</h1>
       <form [formGroup]="loginForm">
         <div class="form-floating mb-3" >
-          <input type="text" class="form-control" formControlName="username" required placeholder="Ingrese Usuario">
+          <input type="text" class="form-control" formControlName="email" required placeholder="Ingrese Usuario">
           <label>Usuario</label>
 
-        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text-danger">
-         <div *ngIf="username.errors?.['required']">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+         <div *ngIf="email.errors?.['required']">
             El usuario es requerido.
           </div>
-          <div *ngIf="username.errors?.['email']">
+          <div *ngIf="email.errors?.['email']">
             El usuario debe tener un formato válido.
           </div>
         </div>
@@ -36,8 +36,8 @@
         <div class="d-grid gap-2">
           <button class="btn btn-primary" type="button" (click)="login()">Ingresar</button>
         </div>
-      <p class="mb-3">¿No tienes cuenta? <a class="nav-link" routerLink="/register">Registrate aquí</a></p>
-      <p class="mb-3"><a class="nav-link" routerLink="/register">¿Olvidaste tu contraseña? </a></p>
+      <p class="mb-3">¿No tienes cuenta? <a routerLink="/register">Registrate aquí</a></p>
+      <p class="mb-3"><a routerLink="/register">¿Olvidaste tu contraseña? </a></p>
     </form>
     </div>
 </div>

@@ -1,4 +1,4 @@
-const { Curso, Nivel } = require('../models');
+const { Curso, Nivel, User } = require('../models');
 
 const allCurso = async () => {
   const cursos = await Curso.findAll({
@@ -8,7 +8,7 @@ const allCurso = async () => {
     include: [
       {
         model: Nivel,
-        // as: 'nivel',
+        as: 'Nivel',
       },
     ],
   });
@@ -21,13 +21,23 @@ const getCurso = async (id) => {
       include: [
         {
           model: Nivel,
-          as: 'nivel', // Asegúrate de usar el mismo nombre que definiste en la asociación
+          as: 'Nivel', // Asegúrate de usar el mismo nombre que definiste en la asociación
         },
       ],
     });
     return curso;
   } catch (error) {
     throw new Error('Hubo un error al obtener el curso.');
+  }
+};
+
+const getUsers = async (id) => {
+  try {
+    const curso = await Curso.findByPk(id);
+    const users = await curso.getUsers();
+    return users;
+  } catch (error) {
+    throw new Error('Hubo un error al obtener usuarios.');
   }
 };
 
@@ -84,6 +94,7 @@ const activardesactivarCurso = async (id, estahabilitado) => {
 module.exports = {
   allCurso,
   getCurso,
+  getUsers,
   createCurso,
   updateCurso,
   deleteCurso,

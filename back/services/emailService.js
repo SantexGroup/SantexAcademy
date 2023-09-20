@@ -29,7 +29,7 @@ const sendMail = (user, userCode, userEmail, verificationLink) => {
                                     .replace(/{{password}}/g, user.password);                           
   // Datos del correo electronico
   const mailOptions = {
-    from: '"Academy del NOC" <academyinnoc@gmail.com>',
+    from: '"Academy del NOC" <academyinnoc@yahoo.com>',
     to: user.email,
     subject: `Confirmación de Registro para ${user.username}`,
     html: `<style> ${fs.readFileSync('./themes/email/email-register.css', 'utf8')} </style>

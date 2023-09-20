@@ -1,63 +1,83 @@
-
-  /* Coloca aquí el estilo CSS que proporcionaste */
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+/* Estilos generales */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
 }
-/* Cards */
-.container-card {
+
+/* Contenedor principal */
+.container {
   width: 100%;
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap; /* Permite que las tarjetas se ajusten automáticamente a la pantalla */
-  justify-content: center; /* Centra las tarjetas horizontalmente */
-}
-.title-cards {
-  width: 100%;
-  max-width: 1080px;
-  margin: auto;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
-  margin-top: 20px;
-  text-align: center;
-  color: #7a7a7a;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-.card {
-  width: calc(33.33% - 20px); /* Establece el ancho deseado para las tarjetas y deja espacio entre ellas */
-  margin: 10px; /* Añade un margen para separar las tarjetas */
-  border-radius: 6px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
-  transition: all 400ms ease-out;
-  cursor: default;
+
+/* Tarjeta */
+.curso-card {
+  width: calc(33.33% - 20px);
+  margin: 0 0 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: transform 0.4s, box-shadow 0.4s;
+  background-color: #fff; /* Fondo blanco en la tarjeta */
 }
-.card:hover {
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
-  transform: translateY(-3%);
-}
-.card img {
+
+/* Imagen de la tarjeta */
+.curso-card figure {
   width: 100%;
-  height: 210px;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
 }
-.card .contenido-card {
-  padding: 15px;
-  text-align: center;
+
+.curso-card figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.card .contenido-card h3 {
-  margin-bottom: 15px;
-  color: #7a7a7a;
+
+/* Contenido de la tarjeta */
+.curso-card .contenido-card {
+  padding: 20px;
+  flex-grow: 1;
 }
-.card .contenido-card p {
-  line-height: 1.8;
-  color: #6a6a6a;
+
+/* Título de la tarjeta */
+.curso-card .contenido-card h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Descripción de la tarjeta */
+.curso-card .contenido-card p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+/* Información adicional de la tarjeta */
+.curso-card .contenido-card .duracion,
+.curso-card .contenido-card .fechafin,
+.curso-card .contenido-card .requisitos {
   font-size: 14px;
-  margin-bottom: 5px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #444;
 }
-.card .contenido-card a {
+
+/* Enlace dentro de la tarjeta */
+.curso-card .contenido-card a {
   display: inline-block;
   padding: 10px;
   margin-top: 10px;
@@ -65,12 +85,31 @@
   color: #2fb4cc;
   border: 1px solid #2fb4cc;
   border-radius: 4px;
-  transition: all 400ms ease;
-  margin-bottom: 5px;
-}
-.card .contenido-card a:hover {
-  background: #2fb4cc;
-  color: #fff;
+  transition: background 0.4s, color 0.4s;
 }
 
-    /* Fin-Cards */
+/* Efecto hover de la tarjeta */
+.curso-card:hover {
+  box-shadow: 7px 7px 30px rgba(255, 101, 1, 0.5);
+  background-color: #faf1f1; /* Cambio de fondo a negro en el hover de la tarjeta */
+  transform: translateY(-3%);
+}
+
+/* Color de texto blanco en el hover del enlace */
+.curso-card:hover .contenido-card a {
+  background: #2fb4cc;
+  color: #fff; /* Cambio de color de texto a blanco en el hover del enlace */
+}
+
+/* Estilos responsivos */
+@media (max-width: 992px) {
+  .curso-card {
+    width: calc(45% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .curso-card {
+    width: calc(100% - 20px);
+  }
+}

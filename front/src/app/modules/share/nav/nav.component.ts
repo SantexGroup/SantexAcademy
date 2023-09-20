@@ -1,40 +1,45 @@
-import { Component, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../../auth/services/auth.service';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent {
-
+export class NavComponent implements OnInit {
   isMenuOpen = false;
   isSmallScreen = false;
+  isProfileMenuOpen = false;
+  activeRoute: string = '';
 
+  constructor(private router: Router) {
+    this.checkScreenSize();
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.activeRoute = event.url;
+      }
+    });
+  }
 
-
-  constructor(private router: Router,
-              private authService: AuthService) { }
-
-              
-  logout(){
-    this.router.navigateByUrl('/catalogo-cursos');
-    this.authService.logout();
+  ngOnInit() {
+    // Detectar la ruta activa al cargar la página
+    this.activeRoute = this.router.url;
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
-    // Actualizar el valor de isSmallScreen cuando cambie el tamaño de la pantalla
     this.checkScreenSize();
   }
 
   private checkScreenSize(): void {
-    // Cambia el valor de isSmallScreen según el tamaño de pantalla actual
-    this.isSmallScreen = window.innerWidth < 768; // Puedes ajustar el valor 768 según tus necesidades
+    this.isSmallScreen = window.innerWidth < 768;
   }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  toggleProfileMenu() {
+    this.isProfileMenuOpen = !this.isProfileMenuOpen;
   }
 }

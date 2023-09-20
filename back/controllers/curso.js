@@ -23,6 +23,18 @@ const getCurso = async (req, res, next) => {
   }
 };
 
+const getUsers = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const users = await cursoService.getUsers(id);
+    res.status(200).json(users);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    next(error);
+  }
+};
+
 const createCurso = async (req, res, next) => {
   const { body } = req;
   try {
@@ -73,6 +85,7 @@ const activardesactivarCurso = async (req, res, next) => {
 
 module.exports = {
   allCurso,
+  getUsers,
   getCurso,
   createCurso,
   updateCurso,

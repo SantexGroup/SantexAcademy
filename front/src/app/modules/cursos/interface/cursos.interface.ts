@@ -23,7 +23,7 @@ export interface Curso {
   estado: string;
   createdAt: Date;
   updatedAt?: Date;
-  nivel: Nivel;
+  Nivel?: Nivel; // nivel como opcional
 }
 
 // Converts JSON strings to/from your types

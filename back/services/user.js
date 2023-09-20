@@ -1,15 +1,22 @@
-const { User, TipoDeUsuario } = require('../models');
+const { User, TipoDeUsuario, Curso } = require('../models');
 
 const allUser = async () => {
   const users = await User.findAll({
     include: [
+<<<<<<< HEAD
       {
         model: TipoDeUsuario,
         // as: 'tipodeusuario',
       },
+=======
+     {
+      model: TipoDeUsuario,
+      as: 'TipoDeUsuario'
+     }
+>>>>>>> bd7ef0c27ccb7f1ff2813212cd73627f8f2b6746
     ],
     where: {
-      activoactualmente: true,
+      estado: 'A',
     },
   });
   return users;
@@ -20,10 +27,10 @@ const getUser = async (id) => {
     const user = await User.findByPk(id, {
       include: [
         {
-          model: TipoDeUsuario,
-          // as: 'tipodeusuario',
-        },
-      ],
+         model: TipoDeUsuario,
+         as: 'TipoDeUsuario'
+        }
+       ],
     });
     return user;
   } catch (error) {
@@ -31,13 +38,24 @@ const getUser = async (id) => {
   }
 };
 
+const getCursos = async (id) => {
+  try {
+    const user = await User.findByPk(id);
+    const cursos = await user.getCursos();
+    return cursos;
+  } catch (error) {
+    throw new Error('Hubo un error al obtener los cursos.');
+  }
+};
+
+//NO BORRAR--sirve para buscar cualquier usuario usando cualquier dato--util para filtros//
 const getUserByData = async (searchCriteria) => {
   const user = await User.findOne({
     where: searchCriteria,
   });
   return user;
 };
-
+//-------------------------------------------------------------------------------------//
 const createUser = async (body) => {
   try {
     const user = await User.create(body);
@@ -78,6 +96,7 @@ const deleteUser = async (id) => {
 module.exports = {
   allUser,
   getUser,
+  getCursos,
   getUserByData,
   createUser,
   updateUser,
