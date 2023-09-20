@@ -21,7 +21,7 @@ section img{
     border-bottom: 3px solid #0D6EFD;
     border-left: 3px solid #0D6EFD;
     object-fit: cover;
-    opacity: .8;
+    opacity: .5;
     transition: .5s ease;
 }
 

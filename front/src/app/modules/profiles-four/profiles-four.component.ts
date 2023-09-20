@@ -20,7 +20,7 @@ export class ProfilesFourComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.userData.getMyOptionals();
     this.userData.languageGet();
     this.userData.getExperience();
     this.userData.getListFormations();
