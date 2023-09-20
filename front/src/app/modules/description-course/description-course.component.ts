@@ -12,7 +12,11 @@ import { ScheduleCourses } from 'src/app/core/interfaces/scheduleCourses';
 export class DescriptionCourseComponent {
   id:number=0
   existSchedule:boolean=false;
-  schedule:Schedule={   
+  start:any= new Date;
+  end:Date=new Date;
+  startFormat:any;
+  endFormat:any;
+schedule:Schedule={   
     id: 0,
    active: true,
    where: "",
@@ -22,7 +26,7 @@ export class DescriptionCourseComponent {
  }
  scheduleCourse: ScheduleCourses= {   
   id: 0,
-  schedule: this.schedule,
+  Schedule: this.schedule,
   idCourse: 0,
   idSchedule: 0,
 }
@@ -47,7 +51,7 @@ constructor(private courseService: CourseService,private aRouter: ActivatedRoute
   this.id = Number(aRouter.snapshot.paramMap.get('id'));
   this.getCourse()
   this.getCourses()
- 
+
 }
 
 
@@ -71,11 +75,12 @@ getCourse(){
       }
       if(this.course.ScheduleCourses){
         this.existSchedule= true
-        console.log(this.course.ScheduleCourses[0].schedule.id)
+        console.log(this.course.ScheduleCourses[0].Schedule)
       }
-     
-    
-      
+      this.start = this.course.start
+      this.end = this.course.end
+      this.startFormat =this.formatDateToYYYYMMDD(this.start)
+      this.endFormat = this.formatDateToYYYYMMDD(this.end)
     },
     (error)=>{
       console.log(error)
@@ -96,7 +101,12 @@ getCourses(){
   }
   )
 }
-checkSchedule(){
- 
+formatDateToYYYYMMDD(dateinput: Date) { 
+  const date = new Date(dateinput);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  
+  return `${year}/${month}/${day}`;
 }
 }

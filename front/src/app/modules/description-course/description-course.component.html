@@ -1,22 +1,37 @@
 <div class="container-fluid">
-  <div class="row ">
+  <div class="row">
     <div class="col-md-6 col-sm-12 p-2">
-        <div class="p-4 rounded" style="background-color: #f0f0f0; box-shadow: 1px 1px 7px #000;">
-      <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">{{course.name}}</h1>
-      <p>
-        Podras aprender a sublimar distintos productos como gorras, tazas,
-        llaveros, entre otros.
-      </p>
+      <div
+        class="p-4 rounded"
+        style="background-color: #f0f0f0; box-shadow: 1px 1px 7px #000"
+      >
+        <h1
+          style="
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+              sans-serif;
+          "
+        >
+          {{ course.name }}
+        </h1>
+        <p>
+          Podras aprender a sublimar distintos productos como gorras, tazas,
+          llaveros, entre otros.
+        </p>
 
-      <h3><b>Profesor/a</b></h3>
-      <h4>{{course.teacher}}</h4>
+        <h3><b>Profesor/a</b></h3>
+        <h4>{{ course.teacher }}</h4>
+      </div>
     </div>
-    </div>
-    <div class="col-md-6 col-sm-12 ">
-        <img class="img-thumbnail m-2" src="{{course.image}}" alt="" height="350px"/>
+    <div class="col-md-6 col-sm-12">
+      <img
+        class="img-thumbnail m-2"
+        src="{{ course.image }}"
+        alt=""
+        height="350px"
+      />
     </div>
   </div>
-<!--   <div class="row">
+  <!--   <div class="row">
     <div class="profe">
       <div class="nombre-profe">
         
@@ -63,48 +78,39 @@
       </div>
     </div>
   </div> -->
-  <div class="info-clase">
-    <div class="horario-clase" *ngIf="existSchedule">
-      <h2>HORARIO</h2>
-
-      <br />
-<!--       <div  *ngFor="let scheduleItem of ScheduleCourses">
-        <p>Día: {{ scheduleItem?.Schedule.day }}</p>
-        <p>Horario: {{ scheduleItem?.Schedule.schedule }}</p>
-        <p>Lugar: {{ scheduleItem?.Schedule.where }}</p>
-        <p>Activo: {{ scheduleItem?.Schedule.active }}</p>  -->
-        <!-- Puedes acceder a otras propiedades según tus necesidades
+  <div class="row">
+    <div class="col">
+      <h2>Horario</h2>
+      <div *ngIf="existSchedule">
+        <div *ngFor="let scheduleItem of course.ScheduleCourses">
+          <p>Horario: {{ scheduleItem?.Schedule?.schedule }}</p>
+        </div>
       </div>
-      De esta manera, se generará un bloque de HTML para cada objeto en el array ScheduleCourses, lo que te permitirá mostrar los detalles de ambos objetos en tu página.
-      
-      
-      
-      
-      
-      
-      <br />
-      <h2>DURACION</h2>
-      <br />
-      <ul>
-        <li>2 semanas</li>
-      </ul>
-      <br />
-      <h2>DESCRIPCION DEL PROGRAMA</h2>
-      <br />
-      <p>
-{{course.description}}
-      </p>
+      <div *ngIf="!existSchedule">
+        <h1>Aún no se a asignado un horario</h1>
+      </div>
     </div>
+    <div class="col">
+      <h2>Duración</h2>
+      <h5>Inicio: {{startFormat}}</h5>
+      <h5>Finalización: {{endFormat}}</h5>
+    </div>
+    <h2>DESCRIPCION DEL PROGRAMA</h2>
+    <br />
+    <p>
+      {{ course.description }}
+    </p>
+
     <div class="requisito-clase">
       <h2>REQUISITOS</h2>
       <br />
       <ul>
-        <li>{{course.requirement}}</li>
+        <li>{{ course.requirement }}</li>
       </ul>
       <br />
-     <!--  <h2>QUE APRENDERAS EN EL CURSO DE SUBLIMACION CON MAQUINA?</h2>
+      <h2>QUE APRENDERAS EN EL CURSO DE SUBLIMACION CON MAQUINA?</h2>
       <br />
-      <ul>
+      <!--  <ul>
         <li>Aprenderas todo sobre sublimación.</li>
         <li>
           Aprenderas sobre los tipo de materiales en que se puede sublimar.
@@ -118,7 +124,7 @@
       </ul> -->
     </div>
   </div>
-<!--   <div class="fotos-clase">
+  <!--   <div class="fotos-clase">
     <div class="img-curso">
       <h2>FOTOS DEL CURSO</h2>
     </div>
@@ -134,7 +140,7 @@
   <div class="opinion">
     <h2>OPINIONES</h2>
   </div>
-<!--   <div class="opinion-texto">
+  <!--   <div class="opinion-texto">
     <div>
       <i class="fa-solid fa-circle-user"></i>
       <h3>Claudia Cuadros</h3>
@@ -166,7 +172,7 @@
   <div class="otras-opciones">
     <h2>OTROS CURSOS QUE TE PODRIAN INTERESAR</h2>
   </div>
-<!--   <div class="img-opciones">
+  <!--   <div class="img-opciones">
     <div>
       <img src="img/curso1.png" alt="" />
       <h2>SEMINARIO DE SUBLIMACION ARTESANAL</h2>
