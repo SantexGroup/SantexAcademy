@@ -110,19 +110,6 @@ export class VistaArtIndComponent implements OnInit {
     }
   }
 
-  // myFunction(e) {
-  //   document.getElementById("myText").value = e.options[e.selectedIndex].getAttribute("data-adr");
-  // }
-
-  // selectChange( $event) {
-  //   //In my case $event come with a id value
-  //   this.model.myListOptions = this.listOptions[$event];
-  // }
-  // selectChange2( $event) {
-  //   //In my case $event come with a id value
-  //   ;
-  // }
-
   //confirmación
   botAlq() {
     if(confirm("¿Desea pasar a la vista de transacción?")) { 
@@ -135,8 +122,6 @@ export class VistaArtIndComponent implements OnInit {
       }
       localStorage.setItem('datosAlq', JSON.stringify(datosAlq));
     }
+    //redirigir a la pantalla de confirmar la transacción
   }  
-  redirigir() {
-    //redireccionar a registro
-  }
 }

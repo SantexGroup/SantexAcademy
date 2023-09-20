@@ -73,7 +73,7 @@
                         <div id="divPrecio" >
                             <p id="precio">Precio: ${{respuesta.articulos.precio}}</p>
                         </div>
-                        <button id="boton" *ngIf="logeadoComprador || logeadoVendedor" type="submit" (click)="botAlq()">Alquilar Producto</button>
+                        <button id="boton" *ngIf="(logeadoComprador || logeadoVendedor) && !logeadoVendedorProd" type="submit" (click)="botAlq()">Alquilar Producto</button>
                         <button id="boton" *ngIf="!logeadoComprador && !logeadoVendedor" type="submit" routerLink="/registro">Cree una cuenta</button>
                         <button id="boton" *ngIf="logeadoVendedorProd" type="submit" routerLink="/">Ud es el vendedor</button>
                     </div>
