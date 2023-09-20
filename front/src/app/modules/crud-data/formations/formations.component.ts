@@ -16,7 +16,6 @@ import { UserDataService } from 'src/app/core/services/toolServices/userData.ser
   styleUrls: ['./formations.component.css']
 })
 export class FormationsComponent implements OnInit {
-  listFormation: Formations[] = []  
   formationForm: FormGroup;
   editedFormation: Formations | null = null;
 
@@ -26,7 +25,7 @@ export class FormationsComponent implements OnInit {
     private _formationsServices: FormationsService,    
     public views: NavBarService,
     private fb: FormBuilder,
-    private userData: UserDataService
+    public userData: UserDataService
     ) {
       this.formationForm = this.fb.group({
         statusId: '',
@@ -41,7 +40,7 @@ export class FormationsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getListFormations();
+    this.userData.getListFormations();
     
     this.formationsStatusGet();
 
@@ -79,7 +78,7 @@ export class FormationsComponent implements OnInit {
     }
 
     this._formationsServices.addFormation(newFormation).subscribe((formation)=>{
-      this.listFormation.push(formation);
+      this.userData.formations.push(formation);
     });    
     this.formationForm.reset();
   
@@ -89,15 +88,9 @@ export class FormationsComponent implements OnInit {
     return this.formationForm.get('statusId')?.value !== 1;
   }
 
-  getListFormations(){
-    this._formationsServices.getFormationByUser(this.userData.userId).subscribe((data) => {      
-      this.listFormation = data;
-    } )
-  }
-
   deleteFormation(id: number) {
     this._formationsServices.deleteFormation(id).subscribe(() =>{
-      this.getListFormations()
+      this.userData.getListFormations()
     })
   }
   editFormation(formation: Formations) {
@@ -124,7 +117,7 @@ export class FormationsComponent implements OnInit {
       updatedFormation.id = this.editedFormation.id;
 
       this._formationsServices.updateFormation(updatedFormation).subscribe(() => {     
-        this.getListFormations();
+        this.userData.getListFormations();
     });
 
       // this.editedFormation = null; // Restablecer la formación editada

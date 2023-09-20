@@ -20,6 +20,8 @@ export class NavBarService{
 
   plusOne = true;
 
+  selectorHide: boolean = true;
+
   saveButton = false;
   /* Titulo de la navBar */
   title: string = "";
@@ -33,6 +35,10 @@ export class NavBarService{
   notShow(){
     this.landing = true;
     this.externalComponent = false;
+  }
+
+  profileSelct(){
+    this.selectorHide = false;
   }
 
   buttonQuick(){
@@ -58,6 +64,7 @@ export class NavBarService{
       this.externalComponent=false;
       this.plusOne = true;
       this.saveButton = false;
+      this.selectorHide = true;
     });
   }
 }

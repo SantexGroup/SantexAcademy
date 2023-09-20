@@ -38,6 +38,8 @@ export class PersonalComponent implements OnInit {
     this.getUser()
   }
 
+  
+
 
   // * Forumulario de datos personales
   getUser() { 

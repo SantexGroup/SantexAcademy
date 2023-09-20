@@ -33,6 +33,7 @@ import { ReferencesComponent } from './modules/crud-data/references/references.c
 import { ProfilesComponent } from './modules/profiles/profiles.component';
 import { LoadingModule } from './modules/loading/loading.module';
 import { ToastrModule } from 'ngx-toastr';
+import { ProfilesFourComponent } from './modules/profiles-four/profiles-four.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ToastrModule } from 'ngx-toastr';
     SkillComponent,
     CVComponent,
     ReferencesComponent,
-    ProfilesComponent
+    ProfilesComponent,
+    ProfilesFourComponent
   ],
   imports: [
     BrowserModule,

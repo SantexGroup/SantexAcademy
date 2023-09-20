@@ -12,6 +12,7 @@ import { ReferencesComponent } from '../crud-data/references/references.componen
 import { CVComponent } from '../cv/cv.component';
 import { ProfilesComponent } from '../profiles/profiles.component';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
+import { ProfilesFourComponent } from '../profiles-four/profiles-four.component';
 
 
 
@@ -27,7 +28,13 @@ const routes: Routes = [
   },
   {
     path: 'cv',
-    component: CVComponent
+    component: CVComponent,
+    children:[
+      {
+        path: 'four',
+        component: ProfilesFourComponent
+      }
+    ]
   },
   {
     path: 'experiencias',
