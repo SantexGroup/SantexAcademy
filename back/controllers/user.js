@@ -81,7 +81,7 @@ const createUser = async (req, res) => {
 
     await emailService.sendMail(user, userCode, userEmail, verificationLink);// Envia a emailService
 
-    return res.json({
+    res.json({
       ok: true,
       user,
       token,
