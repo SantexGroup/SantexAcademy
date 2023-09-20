@@ -1,4 +1,4 @@
-const { User, TipoDeUsuario } = require('../models');
+const { User, TipoDeUsuario, Curso } = require('../models');
 
 const allUser = async () => {
   const users = await User.findAll({
@@ -31,13 +31,25 @@ const getUser = async (id) => {
   }
 };
 
-//NO BORRAR--sirve para buscar cualquier usuario usando cualquier dato -- util para filtros//
+const getCursos = async (id) => {
+  try {
+    const user = await User.findByPk(id);
+    const cursos = await user.getCursos();
+    return cursos;
+  } catch (error) {
+    throw new Error('Hubo un error al obtener los cursos.');
+  }
+};
+
+//NO BORRAR--sirve para buscar cualquier usuario usando cualquier dato--util para filtros//
+
 const getUserByData = async (searchCriteria) => {
   const user = await User.findOne({
     where: searchCriteria,
   });
   return user;
 };
+
 //-------------------------------------------------------------------------------------//
 
 const createUser = async (body) => {
@@ -80,6 +92,7 @@ const deleteUser = async (id) => {
 module.exports = {
   allUser,
   getUser,
+  getCursos,
   getUserByData,
   createUser,
   updateUser,

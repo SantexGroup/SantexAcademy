@@ -15,6 +15,7 @@ const { validarJWT } = require('../middleware/validar-jwt');
 
 router.get('/', userController.allUser);
 router.get('/renew', validarJWT, userController.revalidarToken);
+router.get('/:id/cursos', userController.getCursos);
 router.get('/:id', userController.getUser);
 router.post('/', [
   check('username', 'El username es obligatorio').not().isEmpty(),

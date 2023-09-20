@@ -29,6 +29,18 @@ const getUser = async (req, res, next) => {
   }
 };
 
+const getCursos = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const cursos = await userService.getCursos(id);
+    res.status(200).json(cursos);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    next(error);
+  }
+};
+
 const createUser = async (req, res) => {
   const { body } = req;
   const { email, username, password } = body;
@@ -159,6 +171,7 @@ const updateUser = async (req, res, next) => {
   }
 };
 
+
 const deleteUser = async (req, res, next) => {
   const { id } = req.params;
   try {
@@ -174,6 +187,7 @@ const deleteUser = async (req, res, next) => {
 module.exports = {
   allUser,
   getUser,
+  getCursos,
   createUser,
   login,
   revalidarToken,
