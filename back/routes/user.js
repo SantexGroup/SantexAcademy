@@ -35,7 +35,8 @@ router.post('/verifyLink', (req, res) => {
   const urlString = req.url; // Traigo la URL de la solicitud
   const parsedUrl = url.parse(urlString, true);
   const codeRegister = parsedUrl.query.codeRegister; // Extrae el codigo de la URL
-  verifyLink(req, res);// Envio a funcion de control
+  console.log(`Valor de codeRegister en routes: ${codeRegister}`);//BORRAR
+  verifyLink(req, res);// Envio a funcion de control en helpers
 });
 ///////////---------------------------------------------------------------------------------------------//////
 
