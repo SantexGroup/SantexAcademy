@@ -1,5 +1,5 @@
 const productscontroller = {};
-const { Products } = require('../models') //--> nombre con el que se creo el modelo en primer lugar
+const { Products, Categories } = require('../models') //--> nombre con el que se creo el modelo en primer lugar
 
 /**
  * @method POST
@@ -11,13 +11,23 @@ const { Products } = require('../models') //--> nombre con el que se creo el mod
  * "price":number
  * "image":string
  * "status":string
+ * "category": number
  * }
  * @description metodo para crear un producto y almacenarlo en la base de datos
  */
 productscontroller.create =  async (req, res) => {
     try {
+      let cat = null;
+      if (req.body.category) {
+         cat = await Categories.findByPk(req.body.category);
+        if (!cat) {
+          return res.status(404).json({ message: 'Category not found' });
+        }
+      }
+      
       console.log("body",req.body)
-      await Products.create(req.body);
+      const product = await Products.create(req.body);
+      await product.addCategories(cat);
       res.status(201).json("Product correctly created");
       } catch (error) {
         res.status(400).json({ error: error.message });
