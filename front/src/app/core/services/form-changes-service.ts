@@ -1,35 +1,53 @@
-import { Injectable, HostListener } from '@angular/core';
+import { Injectable, HostListener, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+
+const CONFIRMATION_MESSAGE = '¡Atención! Los datos no guardados se perderán. ¿Confirma?';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormChangesService {
-  public modified = false;
+  private modified = false;
+  public originalValues: { [key: string]: any } = {};
 
   constructor() { }
 
-  checkFormChanges(form: FormGroup, originalValues: { [key: string]: any }) {
+  checkFormChanges(form: FormGroup): void {
+
     form.valueChanges.subscribe(() => {
       this.modified = false;
 
       Object.keys(form.controls).forEach(controlName => {
         const control = form.get(controlName);
-        const originalValue = originalValues[controlName];
+        const originalValue = this.originalValues[controlName];
 
         // Si el control cambió y el valor es distinto al valor por defecto
-        // Marcar el formulario como 
+        // Marcar el como modificado 
+        console.log('dirty', controlName, control?.dirty);
+
         if (control && control.dirty && control.value !== originalValue) {
           this.modified = true;
+          return;
         }
       });
     });
   }
 
+  /** 
+   * Indica si el formulario tiene cambios sin guardar  
+   * 
+  */
   hasUnsavedChanges(): Boolean {
     return this.modified;
   }
 
+  /** 
+   * Indicar que el formulario no posee cambios  
+   * 
+  */
+  setUnchanged(): void {
+    this.modified = false;
+  }
   /** 
    * Verfica si el formulario tiene cambios sin guardar 
    * y solicita confirmacion al usuario. 
@@ -38,7 +56,7 @@ export class FormChangesService {
   beforeUnloadHandler(event: BeforeUnloadEvent): void {
     if (this.hasUnsavedChanges()) {
       event.preventDefault();
-      event.returnValue = '¡Atención! Los datos no guardados se perderán.';
+      event.returnValue = CONFIRMATION_MESSAGE;
     }
   }
 
@@ -49,7 +67,7 @@ export class FormChangesService {
   */
   canExit(): boolean {
     if (this.hasUnsavedChanges()) {
-      return confirm('¡Atención! Los datos no guardados se perderán. ¿Confirma?');
+      return confirm(CONFIRMATION_MESSAGE);
     }
     return true;
   }
