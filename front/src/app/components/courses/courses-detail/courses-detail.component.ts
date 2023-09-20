@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CoursesService } from 'src/app/services/courses.service';
 
@@ -10,7 +10,9 @@ import { CoursesService } from 'src/app/services/courses.service';
 })
 export class CoursesDetailComponent implements OnInit{
 
-  constructor(public courseService: CoursesService, private activateRoute: ActivatedRoute){}
+  constructor(public courseService: CoursesService, 
+    private activateRoute: ActivatedRoute,
+    private router: Router){}
 
   subscription: Subscription | null = null;
 
@@ -24,7 +26,7 @@ export class CoursesDetailComponent implements OnInit{
         
       }, 
       (error) => {
-        console.error(error)
+        this.router.navigate(['/error404']);
       }
     )
   }

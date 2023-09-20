@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CoursesService } from 'src/app/services/courses.service';
 
 @Component({
@@ -7,7 +8,8 @@ import { CoursesService } from 'src/app/services/courses.service';
   styleUrls: ['./all-courses.component.scss']
 })
 export class AllCoursesComponent {
-  constructor(public coursesService: CoursesService) {}
+  constructor(public coursesService: CoursesService,
+    private router: Router) {}
   filterPost ='';
   result = 0;
 
@@ -18,7 +20,7 @@ export class AllCoursesComponent {
         console.log('Esta es la respuesta' ,response)
       },
       (error) => {
-        console.error(error);
+        this.router.navigate(['/error404']);
       }
     );
   }
