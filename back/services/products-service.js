@@ -50,6 +50,23 @@ async function getAllCategories() {
   return CategoriesList;
 }
 
+// categoria por id
+async function getCategoriaById(id) {
+  const categoria = await tipoProducto.findOne({
+    include: [{
+      model: Products,
+      where: { idTipoProducto: id },
+    }],
+
+  });
+
+  if (categoria == null) {
+    throw new Error();
+  }
+
+  return categoria;
+}
+
 // carga producto
 
 async function chargeProducts(idUsuario, idTipoProducto, nombre, detalles, precio, envio) {
@@ -100,5 +117,5 @@ async function editArticle(id, idUsuario, idTipoProducto, nombre, detalles, prec
 }
 
 module.exports = {
-  products, getAllCategories, chargeProducts, getProductoById, editArticle,
+  products, getAllCategories, chargeProducts, getProductoById, editArticle, getCategoriaById,
 };

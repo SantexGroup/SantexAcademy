@@ -1,16 +1,19 @@
 const express = require('express');
 const productsController = require('../controllers/products-controller');
-const { isAuthenticated } = require('../middleware/authentication');
+// const { isAuthenticated } = require('../middleware/authentication');
 
 const router = express.Router();
 
-router.get('/products', isAuthenticated, productsController.products);
+router.get('/products', productsController.products);
 
-// obtener por id
+// obtener producto por id
 router.get('/obtener-producto-por-id/:id', productsController.getProductFromId);
 
 // categorias
 router.get('/categories', productsController.getCategories);
+
+// obtener categoria por id
+router.get('/categories/:id', productsController.getCategoriesFromId);
 
 // cargar producto
 router.post('/cargar-producto', productsController.chargeProduct);
