@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BackServiceService } from './back-service.service';
+import { BackServiceService } from './product.service';
 
 describe('BackServiceService', () => {
   let service: BackServiceService;

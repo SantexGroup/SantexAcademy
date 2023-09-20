@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { of, switchMap } from 'rxjs';
-import { BackServiceService } from 'src/app/core/services/back-service.service';
+import { BackServiceService } from 'src/app/core/services/product.service';
 import { Product } from 'src/app/core/interfaces/product';
 
 @Component({
