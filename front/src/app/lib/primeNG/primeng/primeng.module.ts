@@ -10,6 +10,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { TreeSelectModule } from 'primeng/treeselect';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { DialogModule } from 'primeng/dialog';
 @NgModule({
   declarations: [],
   imports: [
@@ -25,7 +26,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     InputMaskModule,
     TreeSelectModule,
     CheckboxModule,
-    RadioButtonModule
+    RadioButtonModule,DialogModule
   ]
 })
 export class PrimengModule { }

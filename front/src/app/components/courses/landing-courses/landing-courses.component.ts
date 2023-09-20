@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoursesService } from 'src/app/services/courses.service';
 import { Course } from 'src/app/core/interface/courses.interface';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Course } from 'src/app/core/interface/courses.interface';
 })
 export class LandingCoursesComponent implements OnInit {
 
-  constructor(public coursesService: CoursesService) {}
+  constructor(public coursesService: CoursesService, private router: Router,) {}
 
   ngOnInit() { //cuando se cargue el componente va a recibir la información
     this.coursesService.getPosts().subscribe(
@@ -19,10 +20,8 @@ export class LandingCoursesComponent implements OnInit {
         console.log('Esta es la respuesta' ,response)
       },
       (error) => {
-        console.error(error);
+        this.router.navigate(['/error404']);
       }
     );
   }
-
-
 }

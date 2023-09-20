@@ -108,20 +108,20 @@ export class FormInscrCoursesComponent implements OnInit{
   }
 
     //para agregar el curso elejido
-    subscription: Subscription | null = null;
-    ngOnInit(): void {
-         const id = this.activateRoute.snapshot.params["id"]
-      this.subscription = this.courseService.getCoursesDetail(id).subscribe(
-        (response) => {
-          this.courseService.courses = response
-          console.log("Esta es la respuesta ", response)
-          
-        }, 
-        (error) => {
-          console.error(error)
-        }
-      )
-    }
+  subscription: Subscription | null = null;
+  ngOnInit(): void {
+    const id = this.activateRoute.snapshot.params["id"]
+    this.subscription = this.courseService.getCoursesDetail(id).subscribe(
+      (response) => {
+        this.courseService.courses = response
+        console.log("Esta es la respuesta ", response)
+
+      },
+      (error) => {
+        this.router.navigate(['/error404']);
+      }
+    )
+  }
   
     ngOnDestroy() {
   
