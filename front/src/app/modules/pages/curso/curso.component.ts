@@ -59,6 +59,7 @@ export class CursoComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    console.log(this.cursos)
   }
 
   inscribir(){
