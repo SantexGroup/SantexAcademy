@@ -1,8 +1,8 @@
-const { DataTypes } = require("sequelize");
-const { sequelize } = require("../config/db-config");
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../config/db-config');
 
 const Voluntariado = sequelize.define(
-  "voluntariado",
+  'voluntariado',
   {
     idVoluntariado: {
       autoIncrement: true,
@@ -18,40 +18,44 @@ const Voluntariado = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    deletedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
     organizationId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       references: {
-        model: "organizacion",
-        key: "id",
+        model: 'organizacion',
+        key: 'id',
       },
     },
   },
   {
     sequelize,
-    tableName: "voluntariado",
+    tableName: 'voluntariado',
     timestamps: false,
-    indexes: [
-      {
-        name: "PRIMARY",
-        unique: true,
-        using: "BTREE",
-        fields: [{ name: "idVoluntariado" }, { name: "organizacionId" }],
-      },
-      {
-        name: "id_voluntariado_UNIQUE",
-        unique: true,
-        using: "BTREE",
-        fields: [{ name: "idVoluntariado" }],
-      },
-      {
-        name: "fk_voluntariado_organizacion1_idx",
-        using: "BTREE",
-        fields: [{ name: "organizacionId" }],
-      },
-    ],
-  }
+    // indexes: [
+    //   {
+    //     name: "PRIMARY",
+    //     unique: true,
+    //     using: "BTREE",
+    //     fields: [{ name: "idVoluntariado" }, { name: "organizationId" }],
+    //   },
+    //   {
+    //     name: "id_voluntariado_UNIQUE",
+    //     unique: true,
+    //     using: "BTREE",
+    //     fields: [{ name: "idVoluntariado" }],
+    //   },
+    //   {
+    //     name: "fk_voluntariado_organization1_idx",
+    //     using: "BTREE",
+    //     fields: [{ name: "organizationId" }],
+    //   },
+    // ],
+  },
 );
 
 module.exports = Voluntariado;

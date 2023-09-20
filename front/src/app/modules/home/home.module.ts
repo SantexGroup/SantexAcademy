@@ -7,9 +7,11 @@ import { CardsAgendahoursComponent } from './components/cards-agendahours/cards-
 import { VolunteeringSearchComponent } from './components/volunteering-search/volunteering-search.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { WhatsappButtonComponent } from './components/whatsapp-button/whatsapp-button.component';
+import { HeroComponent } from './components/hero/hero.component';
 
 @NgModule({
   declarations: [
+    HeroComponent,
     IntroductionComponent,
     HomePageComponent,
     SliderOrganizationsComponent,

@@ -3,6 +3,7 @@ const orgController = require("./organizacion");
 const userController = require("./usuario");
 const recompensaController = require("./recompensa");
 const vacanteController = require("./vacante");
+const voluntariadoController  = require("./voluntariado");
 
 module.exports = {
   catalogoController,
@@ -10,4 +11,5 @@ module.exports = {
   userController,
   recompensaController,
   vacanteController,
+  voluntariadoController,
 };
