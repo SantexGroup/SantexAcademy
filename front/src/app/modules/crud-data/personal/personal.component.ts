@@ -34,6 +34,7 @@ export class PersonalComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.views.title = "Datos Personales";
     this.getUser()
   }
 
@@ -66,9 +67,16 @@ export class PersonalComponent implements OnInit {
   
   updateUser(personalForm: FormGroup){ 
     //** ???
+    this.user.nick = ' ';
     this.user.name = personalForm.get('firstName')?.value;
     this.user.lastName = personalForm.get('lastName')?.value;
-    this.user.email = personalForm.get('email')?.value;
+    
+    //* Se verifica si el correo fue cambiado o no
+    if (personalForm.get('email')?.value === this.user.email) {
+      this.user.email = ' ';
+    } else { this.user.email = personalForm.get('email')?.value; }
+    
+    //this.user.email = personalForm.get('email')?.value;
     this.user.phone = personalForm.get('phone')?.value;
     this.user.bornDate = personalForm.get('bornDate')?.value;
     this.user.pictureLink = personalForm.get('pictureLink')?.value;
