@@ -1,5 +1,5 @@
 const bcript = require('bcrypt');
-const { validationResult } = require('express-validator');//BORRAR si no se usa
+//const { validationResult } = require('express-validator');//BORRAR si no se usa
 
 const { User } = require('../models');
 const { userService, emailService } = require('../services');
