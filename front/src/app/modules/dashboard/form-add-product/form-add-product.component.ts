@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
-import { BackServiceService } from 'src/app/services/back-service.service';
+import { BackServiceService } from 'src/app/core/services/back-service.service';
 
 @Component({
   selector: 'app-form-add-product',

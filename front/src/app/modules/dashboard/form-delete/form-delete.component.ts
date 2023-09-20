@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { BackServiceService } from 'src/app/services/back-service.service';
+import { BackServiceService } from 'src/app/core/services/back-service.service';
 import { Product } from 'src/app/core/interfaces/product';
 
 
