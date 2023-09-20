@@ -17,7 +17,4 @@ app.use('/users', userRoutes);
 app.use('/profesors', profesorRoutes);
 app.use('/', rootPath.handler);
 
-app.use(rootPath.setHeaders);
-app.use(errors.handler);
-
 module.exports = app;
