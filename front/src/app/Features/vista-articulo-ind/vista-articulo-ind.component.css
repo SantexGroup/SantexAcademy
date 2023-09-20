@@ -13,20 +13,21 @@
   border-radius: 5px;
 }
 
-#prod {
-    border-top: 30px;
-}
-
 #divInicial {
     margin: 20px;
+}
+
+#divInicial a {
+    width: max-content;
 }
 
 #nomProd {
     display: flex;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 35px;
-    width: 100%;
-    justify-content: center;
+    width: max-content;
+    
+    
     margin-top: 50px;
 }
 
@@ -55,14 +56,13 @@
 }
 
 #divDesProd {
-    padding-top: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-top: 1%;
+    padding-left: 3%;
+    padding-right: 3%;
     background-color: white;
     border-radius: 10px;
     border: 1px solid lightgrey;
     height: 70%;
-    width: 100%;
     color: grey;  
     font-size: small;  
     
@@ -105,7 +105,7 @@ h2 {
 
 #divImagen {
     display: flex;
-    width: 1100px;
+    width: 1100px; /* revisar medidas y maquetado */
     background-color: white;
     height: 500px;
     align-items: center;
@@ -128,6 +128,7 @@ h2 {
 
 #elecciones {
     float: left;
+    width: 40%;
 }
 
 select {
@@ -162,6 +163,7 @@ option:hover {
   border: none;
   border-radius: 4px;
   margin-top: 20px;
+  
 }
   
 #boton:hover {
@@ -177,7 +179,6 @@ option:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
 }
 
 #relleno {

@@ -1,10 +1,10 @@
 <app-barra></app-barra>
-<div id="inicial">
+<div id="inicial" class="">
     <div id="general" class="d-flex">
 
         <!-- Imagen -->
-        <div id="divImagen">
-            <div id="divImagen2">
+        <div id="divImagen" class="col">
+            <div id="divImagen2" class="col">
                 <img id="imagen" class="img-fluid" src="assets/t796003.png" />
             </div>
         </div>
@@ -14,11 +14,16 @@
 
             <!-- Nombres -->
             <div id="divInicial">
-                <p id="nomProd" class="d-flex justify-content-center">{{respuesta.articulos.nombre}}</p>
-                <a id="tipoProd" class="d-flex justify-content-right" routerLink="/">Categoría:
-                    {{respuesta.tipo.name}}</a>
-                <a class="d-flex justify-content-right" routerLink="/">Vendedor: {{respuesta.usuario.firstName}}
-                    {{respuesta.usuario.lastName}}</a>
+                <div class="d-flex justify-content-center">
+                    <p id="nomProd" >{{respuesta.articulos.nombre}}</p>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <a routerLink="/">Categoría: {{respuesta.tipo.name}}</a>
+                    
+                </div>
+                <div class="d-flex justify-content-end">
+                    <a routerLink="/">Vendedor: {{respuesta.usuario.firstName}} {{respuesta.usuario.lastName}}</a>
+                </div>
             </div>
 
             <!-- Descripción -->
@@ -32,19 +37,17 @@
             <!-- Seleccionables -->
             <div id="divFinal" class="d-flex text-center justify-content-between">
                 <form id="elecciones" action="#" method="post">
-                    <div *ngIf="respuesta.articulos.envio">
-                        <select id="selectEnvio" name="envio" (change)="mensajeDias()" required
-                            formControlName="diasElec">
+                    <div>
+                        <select [(ngModel)]="envSel" id="selectEnvio" (change)="capturarEnvio()" name="envio" required>
                             <option value="" disabled selected hidden>Opción de envío</option>
                             <option value="retiro">Retiro por local</option>
-                            <option value="envio">Envío a domicilio</option>
+                            <option value="envio" *ngIf="respuesta.articulos.envio">Envío a domicilio</option>
                         </select>
                     </div>
 
                     <div>
-                        <select id="selectDias" name="dias" required>
+                        <select [(ngModel)]="diasSel" (change)="capturarDias()" id="selectDias" name="dias" required>
                             <option value="" disabled selected hidden>Cantidad de días a contratar</option>
-                            <!-- <option *ngFor="let dias of listDias">{{listDias[i]}}</option> -->
                             <option value=0>1</option>
                             <option value=1>2</option>
                             <option value=2>3</option>
@@ -56,25 +59,23 @@
                     </div>
 
                     <div>
-                        <select id="selectPago" name="pago" required>
-                            <option value="" disabled selected hidden>Forma de pago</option>
+                        <select [(ngModel)]="pagoSel" (change)="capturarPago()" id="selectPago" name="pago" required>
+                            <option value="" disable selected hidden>Forma de pago</option>
                             <option value="efectivo">Pago con efectivo</option>
                             <option value="tarjeta" *ngIf="(respuesta.usuario)">Pago con tarjeta</option>
-                            <!-- <option *ngIf="pago" value="tarjeta" >Pago con tarjeta</option> -->
                         </select>
                     </div>
                 </form>
 
                 <!-- Botón y precio -->
-                <div id="divBotonYPrecio">
+                <div id="divBotonYPrecio" >
                     <div id="divAlquilar">
-                        <div id="divPrecio">
+                        <div id="divPrecio" >
                             <p id="precio">Precio: ${{respuesta.articulos.precio}}</p>
                         </div>
-                        <div class="d-flex justify-content-end">
-                            <button id="boton" type="submit" (click)="botAlq()" routerLink="/">Alquilar
-                                Producto</button>
-                        </div>
+                        <button id="boton" *ngIf="logeadoComprador || logeadoVendedor" type="submit" (click)="botAlq()">Alquilar Producto</button>
+                        <button id="boton" *ngIf="!logeadoComprador && !logeadoVendedor" type="submit" routerLink="/registro">Cree una cuenta</button>
+                        <button id="boton" *ngIf="logeadoVendedorProd" type="submit" routerLink="/">Ud es el vendedor</button>
                     </div>
                     <div id="relleno"></div>
                 </div>
