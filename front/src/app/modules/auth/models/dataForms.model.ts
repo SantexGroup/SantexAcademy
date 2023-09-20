@@ -16,6 +16,7 @@ export interface coordinatorData {
   location: string;
   opportunityType: string;
   category: string;
+  file: any;
 }
 
 export interface volunterDataLogin {

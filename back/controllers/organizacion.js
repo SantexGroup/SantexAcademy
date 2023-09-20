@@ -1,11 +1,18 @@
 const { orgService } = require("../services");
 const jwt = require("jsonwebtoken");
-require('dotenv').config();
+const fs = require("fs-extra");
+require("dotenv").config();
+const cloudinary = require("cloudinary").v2;
 
+cloudinary.config({
+  cloud_name: "dkvhkmu6m",
+  api_key: "558152683374156",
+  api_secret: "bkiHx6pQShvs8vOZWybO7Lf65Rg",
+});
 
 const loginOrganization = async (req, res) => {
   try {
-    const {email, cuit, password } = req.body;
+    const { email, cuit, password } = req.body;
 
     // Verificar credenciales
     const organization = await orgService.loginOrg(email, cuit, password);
@@ -33,13 +40,28 @@ const loginOrganization = async (req, res) => {
   }
 };
 
-
-
-
 const createOrganization = async (req, res) => {
+  const { image, ...restOfData } = req.body;
   try {
-    const newOrganization = await orgService.createOrganization(req.body);
-    res.json(newOrganization);
+    let imageUrl = "";
+    let publicId = "";
+
+    if (req.file) {
+      const uploadResult = await cloudinary.uploader.upload(req.file.path);
+      imageUrl = uploadResult.secure_url;
+      publicId = uploadResult.public_id;
+      await fs.unlink(req.file.path);
+    }
+    if (imageUrl.length > 0) {
+      const newOrganization = await orgService.createOrganization({
+        image: { imageUrl, publicId },
+        ...restOfData,
+      });
+      res.status(201).json({
+        message: "The organization was successfully created",
+        newOrganization,
+      });
+    }
   } catch (err) {
     res.status(500).json({ action: "createOrganization", error: err.message });
   }

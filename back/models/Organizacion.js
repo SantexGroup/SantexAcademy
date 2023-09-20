@@ -1,8 +1,8 @@
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/db-config');
+const { DataTypes } = require("sequelize");
+const { sequelize } = require("../config/db-config");
 
 const Organizacion = sequelize.define(
-  'organizacion',
+  "organizacion",
   {
     id: {
       autoIncrement: true,
@@ -13,7 +13,7 @@ const Organizacion = sequelize.define(
     name: {
       type: DataTypes.STRING(100),
       allowNull: false,
-      unique: 'nombre_UNIQUE',
+      unique: "nombre_UNIQUE",
     },
     description: {
       type: DataTypes.STRING(500),
@@ -22,17 +22,17 @@ const Organizacion = sequelize.define(
     email: {
       type: DataTypes.STRING(100),
       allowNull: false,
-      unique: 'email_UNIQUE',
+      unique: "email_UNIQUE",
     },
     phone: {
       type: DataTypes.STRING(25),
       allowNull: true,
-      unique: 'telefono_UNIQUE',
+      unique: "telefono_UNIQUE",
     },
     cuit: {
       type: DataTypes.STRING(11),
       allowNull: false,
-      unique: 'cuit_UNIQUE',
+      unique: "cuit_UNIQUE",
     },
     location: {
       type: DataTypes.STRING,
@@ -46,19 +46,15 @@ const Organizacion = sequelize.define(
       allowNull: false,
     },
     image: {
-      type: DataTypes.STRING(),
-      allowNull: true,
-      validate: {
-        isUrl: true,
-      },
+      type: DataTypes.JSON,
     },
 
     category: {
       type: DataTypes.ENUM({
         values: [
-          'medio ambiente y fauna',
-          'asistencia social',
-          'salud y discapacidad',
+          "medio ambiente y fauna",
+          "asistencia social",
+          "salud y discapacidad",
         ],
       }),
       allowNull: false,
@@ -72,23 +68,23 @@ const Organizacion = sequelize.define(
   {
     sequelize,
     paranoid: true,
-    tableName: 'organizacion',
+    tableName: "organizacion",
     timestamps: false,
     indexes: [
       {
-        name: 'PRIMARY',
+        name: "PRIMARY",
         unique: true,
-        using: 'BTREE',
-        fields: [{ name: 'id' }],
+        using: "BTREE",
+        fields: [{ name: "id" }],
       },
       {
-        name: 'cuit_UNIQUE',
+        name: "cuit_UNIQUE",
         unique: true,
-        using: 'BTREE',
-        fields: [{ name: 'cuit' }],
+        using: "BTREE",
+        fields: [{ name: "cuit" }],
       },
     ],
-  },
+  }
 );
 
 module.exports = Organizacion;
