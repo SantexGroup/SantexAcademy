@@ -45,19 +45,18 @@
             </div>
             <div class="botonera">
                 <div class="botones">
-                    <button (click)="getListFormations" class="plus" type="submit" *ngIf="views.plusOne">
+                    <button (click)="formationAdd()" class="plus" type="submit" *ngIf="views.plusOne">
                         <img src="/assets/Imagenes/plus.png" alt="+">
                     </button>
                     <button type="submit" mat-raised-button color="primary" *ngIf="views.saveButton"(click)="saveFormation()" >
                         Guardar
                     </button>
-                    
                 </div>
             </div>
         </form>
         <div class="lista">
             <ul>
-                <li *ngFor="let formation of listFormation" class="card">
+                <li *ngFor="let formation of userData.formations" class="card">
                   <div class="card-body">
                     <h4 class="card-title">Titulo: {{ formation.title }}</h4>
                     <h4 class="card-title">Institucion: {{formation.institute}}</h4>

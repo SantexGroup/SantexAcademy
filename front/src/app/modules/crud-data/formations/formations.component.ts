@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Formations } from 'src/app/core/interfaces/formation.interface';
 import { FormationsStatus } from 'src/app/core/interfaces/formationsStatus.interface';
@@ -17,7 +17,6 @@ import { UserDataService } from 'src/app/core/services/toolServices/userData.ser
   styleUrls: ['./formations.component.css']
 })
 export class FormationsComponent implements OnInit, OnDestroy, IDeactivateComponent {
-  listFormation: Formations[] = []
   formationForm: FormGroup;
   editedFormation: Formations | null = null;
   
@@ -28,7 +27,7 @@ export class FormationsComponent implements OnInit, OnDestroy, IDeactivateCompon
     private _formChangeService: FormChangesService,
     public views: NavBarService,
     private fb: FormBuilder,
-    private userData: UserDataService,
+    public userData: UserDataService,
   ) {
     this.formationForm = this.fb.group({
       statusId: [''],
@@ -45,11 +44,13 @@ export class FormationsComponent implements OnInit, OnDestroy, IDeactivateCompon
   }
 
   ngOnInit(): void {
-    this.getListFormations();
+    this.userData.getListFormations();
 
     this.formationsStatusGet();
 
     this.formationsTypesGet();
+
+    this.views.title = "Formaciones";
   }
 
   ngOnDestroy(): void {
@@ -74,8 +75,8 @@ export class FormationsComponent implements OnInit, OnDestroy, IDeactivateCompon
     this._formChangeService.beforeUnloadHandler(event);
   }
 
-  formationsTypesGet() {
-    this._formationsTypesServices.getFormationType().subscribe((typesList: FormationsTypes[]) => {
+  formationsTypesGet(){
+    this._formationsTypesServices.getFormationType().subscribe((typesList: FormationsTypes[])=>{
       this.types = typesList;
     });
   }
@@ -103,7 +104,7 @@ export class FormationsComponent implements OnInit, OnDestroy, IDeactivateCompon
     }
 
     this._formationsServices.addFormation(newFormation).subscribe((formation) => {
-      this.listFormation.push(formation);
+      this.userData.formations.push(formation);
     });
     this.formationForm.reset();
 
@@ -113,17 +114,12 @@ export class FormationsComponent implements OnInit, OnDestroy, IDeactivateCompon
     return this.formationForm.get('statusId')?.value !== 1;
   }
 
-  getListFormations() {
-    this._formationsServices.getFormationByUser(this.userData.userId).subscribe((data) => {
-      this.listFormation = data;
+  deleteFormation(id: number) {
+    this._formationsServices.deleteFormation(id).subscribe(() =>{
+      this.userData.getListFormations()
     })
   }
 
-  deleteFormation(id: number) {
-    this._formationsServices.deleteFormation(id).subscribe(() => {
-      this.getListFormations()
-    })
-  }
   editFormation(formation: Formations) {
     this.editedFormation = { ...formation };
     this._formChangeService.originalValues = { ...formation };
@@ -149,7 +145,7 @@ export class FormationsComponent implements OnInit, OnDestroy, IDeactivateCompon
       updatedFormation.id = this.editedFormation.id;
 
       this._formationsServices.updateFormation(updatedFormation).subscribe(() => {
-        this.getListFormations();
+        this.userData.getListFormations();
       });
 
       // this.editedFormation = null; // Restablecer la formación editada
