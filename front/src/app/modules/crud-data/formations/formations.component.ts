@@ -4,7 +4,7 @@ import { Formations } from 'src/app/core/interfaces/formation.interface';
 import { FormationsStatus } from 'src/app/core/interfaces/formationsStatus.interface';
 import { FormationsTypes } from 'src/app/core/interfaces/formationsTypes.interface';
 import { IDeactivateComponent } from 'src/app/core/interfaces/ideactivate-component.interface';
-import { FormChangesService } from 'src/app/core/services/form-changes-service';
+import { FormChangesService } from 'src/app/core/services/toolServices/form-changes.service';
 import { FormationsStatusService } from 'src/app/core/services/formations-status.service';
 import { FormationsTypeService } from 'src/app/core/services/formations-type.service';
 import { FormationsService } from 'src/app/core/services/formations.service';
