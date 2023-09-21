@@ -31,4 +31,23 @@ async function getProfesorById(req, res, next) {
   
   }
 }
-module.exports = { createProfesor, getAllProfesors, getProfesorById};
+
+async function editProfesor(req, res) {
+  try {
+    const profId = req.params.id; 
+    const updatedProfData = req.body; 
+
+    const profesor= await profesorSevice.editProfesor(profId, updatedProfData);
+
+    return res.status(200).json({ mensaje: 'Profesor actualizado correctamente', profesor: profesor });
+  } catch (error) {
+    console.error('Error al editar profesor: ', error);
+    return res.status(400).json({ mensaje: 'Error al editar profesor' });
+  }
+}
+async function deleteProfesor(req, res){
+  const {id} = req.params;
+  await profesorSevice.deleteProfesor(id);
+  return res.status(200).send(`Profesor con el ${id} ha sido eliminado exitosamente`);
+}
+module.exports = { createProfesor, getAllProfesors, getProfesorById, editProfesor, deleteProfesor};

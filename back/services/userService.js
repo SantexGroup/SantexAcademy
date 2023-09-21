@@ -33,7 +33,7 @@ async function editUser(userId, updatedData){
     user.fechaNacimiento = updatedData.fechaNacimiento;
     user.genero = updatedData.genero;
     user.correoElectronico = updatedData.correoElectronico;
-    user.password = updatedData.password;
+    user.contraseña = updatedData.contraseña;
 
     await user.save(); 
 

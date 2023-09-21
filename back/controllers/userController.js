@@ -49,4 +49,10 @@ async function editUser(req, res) {
     return res.status(400).json({ mensaje: 'Error al editar usuario' });
   }
 }
-module.exports = { createUser, getAllUsers, getUserById ,editUser};
+
+async function deleteUser(req, res){
+  const {id} = req.params;
+  await userService.deleteUser(id);
+  return res.status(200).send(`Usuario con el ${id} ha sido eliminado exitosamente`);
+}
+module.exports = { createUser, getAllUsers, getUserById ,editUser,deleteUser};
