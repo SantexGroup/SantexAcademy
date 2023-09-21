@@ -1,15 +1,16 @@
 const express = require("express");
 const upload = require("../config/multerConfig");
 const authRouter = express.Router();
-
-const { userController, orgController } = require('../controllers');
-
-const { validationResult } = require('express-validator');
-const { createAndUpdateUserValidation, loginUserValidation } = require('../middleware/validations.UserEntity');
-const { createAndUpdateOrganizationValidation, loginOrganizationValidation } = require('../middleware/validation.OrgEntity');
-
+const { validationResult } = require("express-validator");
+const {
+  createAndUpdateUserValidation,
+  loginUserValidation,
+} = require("../middleware/validations.UserEntity");
+const {
+  createAndUpdateOrganizationValidation,
+  loginOrganizationValidation,
+} = require("../middleware/validation.OrgEntity");
 const { userController, orgController } = require("../controllers");
-
 
 authRouter.post("/users/login", loginUserValidation, async (req, res) => {
   // Comprueba las validaciones antes de ejecutar el controlador de login de usuarios
@@ -20,7 +21,6 @@ authRouter.post("/users/login", loginUserValidation, async (req, res) => {
   }
   userController.loginUser(req, res);
 });
-    
 
 authRouter.post(
   "/users/register",
@@ -36,10 +36,10 @@ authRouter.post(
   }
 );
 
-
 authRouter.post(
   "/org/register",
   createAndUpdateOrganizationValidation,
+  upload.single("file"),
   async (req, res) => {
     // Comprueba las validaciones antes de ejecutar el controlador de registro de organizaciones
     const errors = validationResult(req);
@@ -51,7 +51,6 @@ authRouter.post(
   }
 );
 
-
 authRouter.post("/org/login", loginOrganizationValidation, async (req, res) => {
   // Comprueba las validaciones antes de ejecutar el controlador de login de organizaciones
   const errors = validationResult(req);
@@ -61,6 +60,5 @@ authRouter.post("/org/login", loginOrganizationValidation, async (req, res) => {
   }
   orgController.loginOrganization(req, res);
 });
-
 
 module.exports = authRouter;
