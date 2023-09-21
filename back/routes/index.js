@@ -6,10 +6,11 @@ const errors = require('../middleware/error_handler.middleware');
 
 const app = Express();
 
-const categoryRouter  = require("./category")
-const courseRouter = require('./course')
-const scheduleRouter = require('./schedule')
+const categoryRouter = require('./category');
+const courseRouter = require('./course');
+const scheduleRouter = require('./schedule');
 const userRouter = require('./userRouter');
+const aboutUSRouter = require('./aboutUSRouter');
 
 // use=
 app.use('/ping', (req, res) => {
@@ -17,17 +18,16 @@ app.use('/ping', (req, res) => {
     response: 'pong!',
   });
 });
-app.use('/course',courseRouter )
-app.use('/category',categoryRouter)
-app.use('/schedule', scheduleRouter)
+app.use('/course', courseRouter);
+app.use('/category', categoryRouter);
+app.use('/schedule', scheduleRouter);
 app.use('/api/users', userRouter);
-
+app.use('/api/aboutus', aboutUSRouter);
 
 // endpoints arriba de esta linea
 app.use('/', rootPath.handler);
 
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
-
 
 module.exports = app;
