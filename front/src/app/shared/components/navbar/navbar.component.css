@@ -32,5 +32,8 @@
     top: 0;
     right: 0;
     min-height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 }
