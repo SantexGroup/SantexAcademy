@@ -23,8 +23,6 @@ export class FormChangesService {
 
         // Si el control cambió y el valor es distinto al valor por defecto
         // Marcar el como modificado 
-        console.log('dirty', controlName, control?.dirty);
-
         if (control && control.dirty && control.value !== originalValue) {
           this.modified = true;
           return;
@@ -48,6 +46,7 @@ export class FormChangesService {
   setUnchanged(): void {
     this.modified = false;
   }
+
   /** 
    * Verfica si el formulario tiene cambios sin guardar 
    * y solicita confirmacion al usuario. 
@@ -71,5 +70,4 @@ export class FormChangesService {
     }
     return true;
   }
-
 }
