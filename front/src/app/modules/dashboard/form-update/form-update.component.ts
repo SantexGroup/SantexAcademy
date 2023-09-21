@@ -5,6 +5,8 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { of, switchMap } from 'rxjs';
 import { BackServiceService } from 'src/app/core/services/product.service';
 import { Product } from 'src/app/core/interfaces/product';
+import { Categoria } from 'src/app/core/interfaces/categoria';
+import { CategoriaService } from 'src/app/core/services/categoria.service';
 
 @Component({
   selector: 'app-form-update',
@@ -12,12 +14,15 @@ import { Product } from 'src/app/core/interfaces/product';
   styleUrls: ['./form-update.component.css'],
 })
 export class FormUpdateComponent implements OnInit {
+  categorias : Categoria[] = new Array();
+ 
 
 
   constructor(
     private backService: BackServiceService,
     private router: Router,
     private activateRoute: ActivatedRoute,
+    private categoriaService:CategoriaService
     //private dataRouter: DataRouter,
   ) {
        
@@ -34,7 +39,7 @@ export class FormUpdateComponent implements OnInit {
   myForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     quantity: new FormControl(0, [Validators.required]),
-    categoria: new FormControl('', [Validators.required]),
+    categories: new FormControl('', [Validators.required]),
     tipoMaterial: new FormControl('', [Validators.required]),
     image: new FormControl('', [Validators.required]),
     price: new FormControl(0, [Validators.required]),
@@ -74,7 +79,7 @@ export class FormUpdateComponent implements OnInit {
         this.myForm.patchValue({
           name: product.name,
           quantity: product.quantity,
-          categoria: product.categoria,
+          categories: product.categoria,
           tipoMaterial: product.tipoMaterial,
           image: product.image,
           price: product.price,
@@ -84,10 +89,16 @@ export class FormUpdateComponent implements OnInit {
       
         this.foundProduct = true;
         //console.log(this.foundProduct)
+
+
+        
       }else {
         // El producto no se encontró o no es válido, puedes manejar este caso aquí
         alert('El producto no se encontrón o no es válido');
       }
+          this.categoriaService.getCategories().subscribe((result) => {
+      this.categorias = result;
+    });
     });
 
  
@@ -96,16 +107,12 @@ export class FormUpdateComponent implements OnInit {
 
 
   updateProduct() {
-
-    
     //console.log(this.myForm.value);
     // Actualiza el producto
     // id conseguido de la url del producto
     let id = this.activateRoute.snapshot.paramMap.get('id') 
     if (id != null){
     this.backService.updateProduct( id, this.myForm.value).subscribe((result) => {
-      console.log("hola")
-
       if(result.status == 1){
         alert("Producto actualizado correctamente")
       }else{

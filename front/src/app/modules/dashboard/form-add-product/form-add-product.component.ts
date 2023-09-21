@@ -33,7 +33,6 @@ export class FormAddProductComponent implements OnInit {
   ngOnInit(): void {
     this.categoriaService.getCategories().subscribe((result) => {
       this.categorias = result;
-      console.log(this.categorias)
     });
   }
 

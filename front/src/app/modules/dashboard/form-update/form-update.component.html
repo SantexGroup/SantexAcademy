@@ -18,7 +18,6 @@
   </form>-->
   <form *ngIf="this.foundProduct == true" class="form_container" [formGroup]="myForm"  (ngSubmit)="updateProduct()">
     <h2>Editar Objeto</h2>
-    {{this.selectedProduct}}
     <div class="input_container">
       <label class="input_label" for="name_field">Nombre del Producto</label>
 
@@ -32,8 +31,12 @@
 
       </div>
       <div class="input_container">
-        <label class="input_label" for="categoria_field">Categoria</label>
-        <input placeholder="CategoriaX" title="Categoria" name="input-categoria" type="text" class="input_field" id="categoria_field" formControlName="categoria">
+        <mat-form-field>
+          <mat-label>Categorias</mat-label>
+          <mat-select formControlName="categories" multiple>
+            <mat-option *ngFor="let c of categorias" [value]="c.id">{{c.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
         <p class="errorInput" *ngIf="myForm.get('categoria')?.touched && myForm.get('categoria')?.hasError('required')">Campo Obligatorio</p>
       </div>
       <div class="input_container">
