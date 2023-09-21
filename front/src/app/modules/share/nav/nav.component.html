@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="nav.component.css">
 </head>
 <body>
-  <header class="header">
+  <nav>
     <div class="logo">
         <img src="./assets/images/nuevologo.png" alt="Nuevologo" routerLink="/dashboard">
     </div>
@@ -16,43 +16,48 @@
       ☰
     </button>
 
-
-
-    <nav>
-        <ul [class.active]="isMenuOpen" class="nav-links">
-          <li [class.selected]="activeRoute.includes('/catalogo-cursos')">
-            <a routerLink="/catalogo-cursos" class="nav-link">Nuestros cursos</a>
-          </li>
-          <li [class.selected]="activeRoute.includes('/quienes-somos')">
-            <a routerLink="/quienes-somos" class="nav-link">¿Quiénes somos?</a>
-          </li>
-          <li [class.selected]="activeRoute.includes('/register')">
-            <a routerLink="/register" class="nav-link">Registrarse</a>
-          </li>
-          <li [class.selected]="activeRoute.includes('/login')">
-            <a routerLink="/login" class="nav-link">Iniciar sesión</a>
-          </li>
-          <li [class.selected]="activeRoute.includes('/admin')">
-            <a routerLink="/admin" class="nav-link">Administrador</a>
-          </li>
-        </ul>
-
-
-    </nav>
+    <ul [class.active]="isMenuOpen" class="nav-links">
+      <li [class.selected]="activeRoute.includes('/catalogo-cursos')">
+        <a routerLink="/catalogo-cursos" class="nav-link">Nuestros cursos</a>
+      </li>
+      <li [class.selected]="activeRoute.includes('/quienes-somos')">
+        <a routerLink="/quienes-somos" class="nav-link">¿Quiénes somos?</a>
+      </li>
+      <li [class.selected]="activeRoute.includes('/register')">
+        <a routerLink="/register" class="nav-link">Registrarse</a>
+      </li>
+      <li [class.selected]="activeRoute.includes('/login')">
+        <a routerLink="/login" class="nav-link">Iniciar sesión</a>
+      </li>
+      <li [class.selected]="activeRoute.includes('/admin')">
+        <a routerLink="/admin" class="nav-link">Administrador</a>
+      </li>
+    </ul>
 
     <div class="user-profile">
-      <button class="profile-button" (click)="toggleProfileMenu()">
+      <button class="profile-button" id="profile-button">
         <img src="./assets/images/no-perfil.jpg" alt="Foto de perfil" class="profile-image">
         <img src="./assets/images/icons/arrow.svg" alt="Flecha" class="arrow-icon">
       </button>
-      <div class="profile-dropdown" *ngIf="isProfileMenuOpen">
+      <div class="profile-dropdown" id="profile-dropdown">
         <ul>
           <li><a href="#">Mi perfil</a></li>
           <li><a href="#">Cerrar sesión</a></li>
         </ul>
       </div>
     </div>
+  </nav>
 
-  </header>
+  <!-- Resto de tu contenido, como el menú de navegación -->
+
+  <script>
+    // JavaScript para manejar el menú desplegable al hacer clic en la foto de perfil
+    const profileButton = document.getElementById('profile-button');
+    const profileDropdown = document.getElementById('profile-dropdown');
+
+    profileButton.addEventListener('click', () => {
+      profileDropdown.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
