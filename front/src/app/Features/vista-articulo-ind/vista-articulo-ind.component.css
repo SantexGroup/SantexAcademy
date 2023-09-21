@@ -1,4 +1,4 @@
-/* General */
+/* general */
 #inicial {
     margin-top: 1%;
 }
@@ -13,61 +13,28 @@
   border-radius: 5px;
 }
 
-#divInicial {
-    margin: 20px;
-}
 
-#divInicial a {
-    width: max-content;
-}
-
-#nomProd {
+/* imagen */
+#divImagen {
     display: flex;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 35px;
-    width: max-content;
-    
-    
-    margin-top: 50px;
-}
-
-#divInicial a {
-    font-size: 11px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-top: 40px;
-    padding-top: 40px;
-    text-decoration: none;
-    color:cornflowerblue;
-}
-
-#divInicial a:hover {
-    color:blueviolet
-}
-
-#descripcion {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    padding: 5px;
-    height: 30%;
-}
-
-#desNom {
-    margin-left: 10px;
-    
-}
-
-#divDesProd {
-    padding-top: 1%;
-    padding-left: 3%;
-    padding-right: 3%;
+    width: 1100px; /* revisar medidas y maquetado */
     background-color: white;
-    border-radius: 10px;
-    border: 1px solid lightgrey;
-    height: 70%;
-    color: grey;  
-    font-size: small;  
-    
+    height: 500px;
+    align-items: center;
 }
 
+#fondoImagen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#imagen {
+    max-width: 70%;
+    border: 1px solid grey;
+}
+
+/* datos */
 #datos {
     margin-left: 15px;
 }
@@ -97,36 +64,60 @@
     padding: 0;
 }
 
-h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  margin-left: 10px;
+
+/* título */
+#divTitulo {
+    margin: 20px;
 }
 
-#divImagen {
+#divTitulo a {
+    font-size: 11px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-decoration: none;
+    color:cornflowerblue;
+}
+
+#divTitulo a:hover {
+    color:blueviolet
+}
+
+#nombreProd {
     display: flex;
-    width: 1100px; /* revisar medidas y maquetado */
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 35px;
+    width: max-content;
+    margin-top: 50px;
+}
+
+/* descripción */
+#divDesc {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 5px;
+    height: 30%;
+}
+
+#descTitulo {
+    margin-left: 10px;
+}
+
+#divDescProd {
+    padding-top: 1%;
+    padding-left: 3%;
+    padding-right: 3%;
     background-color: white;
-    height: 500px;
-    align-items: center;
+    border-radius: 10px;
+    border: 1px solid lightgrey;
+    height: 70%;
+    color: grey;  
+    font-size: small;  
 }
 
-#divImagen2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#imagen {
-    max-width: 70%;
-    border: 1px solid grey;
-}
-
-#divFinal {
+/* seleccionables */
+#divSeleccionables {
     padding: 10px;
 }
 
-#elecciones {
+#seleccionables {
     float: left;
     width: 40%;
 }
@@ -148,37 +139,32 @@ select:focus {
     border: 2px solid;
 }
 
-/* no funciona */
-option:hover { 
-    border: 2px solid;
-    background-color: blanchedalmond;
-    font: white;
-    cursor: pointer;
+
+
+/* botón */
+#divBotonYPrecio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#boton {
-  background-color: #e6b68b;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  margin-top: 20px;
-  
-}
-  
-#boton:hover {
+.boton {
+    background-color: #e6b68b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    
+  }
+
+.boton:hover {
   background-color: #c47c3d;
   cursor: pointer;
 }
 
 #precio {
     color:darkslateblue
-}
-
-#divBotonYPrecio {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 #relleno {

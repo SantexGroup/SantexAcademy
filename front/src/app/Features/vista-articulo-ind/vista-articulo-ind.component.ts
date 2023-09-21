@@ -9,9 +9,13 @@ import { Router } from '@angular/router';
 })
 export class VistaArtIndComponent implements OnInit {
 
+  //id del producto
   id: number = 1;
+
+  //id del usuario
   idUsuario: number = 0;
   
+  //seleccionables
   envSel: string = '';
   env: string = '';
   envBol: boolean = false;
@@ -23,8 +27,10 @@ export class VistaArtIndComponent implements OnInit {
   pago: string = '';
   pagoBol: boolean = false;
 
+  //traer datos
   respuesta: any = [];
-  diasElec: string = '';
+
+  //estados logueo
   logeadoComprador: boolean = false;
   logeadoVendedor: boolean = false;
   logeadoVendedorProd: boolean = false;
@@ -37,8 +43,8 @@ export class VistaArtIndComponent implements OnInit {
     this.datosProd(this.id);
     this.corroborarLogeo();
     this.corroborarVendedor();
-    
   }
+
 
   //traer datos
   datosProd(id: number) {
@@ -47,7 +53,8 @@ export class VistaArtIndComponent implements OnInit {
     })
   }
 
-  //corroborar Logueo
+
+  //corroborar logueos
   corroborarLogeo() {    
     let infoLocal = localStorage.getItem('resLog')
     if (infoLocal) {
@@ -84,13 +91,14 @@ export class VistaArtIndComponent implements OnInit {
     }
   }
 
+
   //mensaje de alerta
   mensajeDias() {
-    alert("Tanto para envío como para retiro tendrá su producto en un plazo de 2 días");
-    
-    
+    alert("Tanto para envío como para retiro tendrá su producto en un plazo de 2 días");    
   }
 
+
+  //seleccionables
   capturarEnvio() {
     this.env = this.envSel;
     console.log(this.env)
@@ -110,6 +118,7 @@ export class VistaArtIndComponent implements OnInit {
     }
   }
 
+  
   //confirmación
   botAlq() {
     if(confirm("¿Desea pasar a la vista de transacción?")) { 
