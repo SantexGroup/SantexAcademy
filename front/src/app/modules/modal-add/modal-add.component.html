@@ -1,0 +1,42 @@
+<button class="start" mat-flat-button color="accent" type="button" data-bs-toggle="modal" data-bs-target="#ModalSelect">
+    Comencemos!
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalSelect" tabindex="-1" aria-labelledby="ModalSelect" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="ModalSelect">Arma tu Curriculum</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label for="position">Nombre del Perfil:</mat-label>
+                    <input matInput type="text">
+                </mat-form-field>
+            </div>
+            <ul>
+                <h3>EXPERIENCIAS</h3>
+                <li *ngFor="let experience of userData.experiences">
+                    <div class="card" style="width: 8rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">{{experience.company}}</h5>
+                        </div>
+                      </div>
+                    <!--                     <div class="modal-body">
+                        {{experience.company}}
+                    </div>
+                    <button type="button" class="btn btn-primary">Seleccionar</button> -->
+                </li>
+                <h3>REFERENCIAS</h3>
+                <li *ngFor="let reference of userData.references">
+                    <div class="modal-body">
+                        {{reference.name}}
+                    </div>
+                    <button type="button" class="btn btn-primary">Seleccionar</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

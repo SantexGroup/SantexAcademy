@@ -14,7 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ExperiencesComponent } from './modules/crud-data/experiences/experiences.component';
 import { MatDatepickerModule } from '@angular/material/datepicker'; 
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatPseudoCheckboxModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormationsComponent } from './modules/crud-data/formations/formations.component';
@@ -34,6 +34,8 @@ import { ProfilesComponent } from './modules/profiles/profiles.component';
 import { LoadingModule } from './modules/loading/loading.module';
 import { ToastrModule } from 'ngx-toastr';
 import { ProfilesFourComponent } from './modules/profiles-four/profiles-four.component';
+import { ModalAddComponent } from './modules/modal-add/modal-add.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -50,7 +52,8 @@ import { ProfilesFourComponent } from './modules/profiles-four/profiles-four.com
     CVComponent,
     ReferencesComponent,
     ProfilesComponent,
-    ProfilesFourComponent
+    ProfilesFourComponent,
+    ModalAddComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +75,7 @@ import { ProfilesFourComponent } from './modules/profiles-four/profiles-four.com
     MatMenuModule,
     HomeRoutingModule,
     LoadingModule,
+    MatCardModule,
     ToastrModule.forRoot({
       timeOut: 9000,
       positionClass: 'toast-top-center',
