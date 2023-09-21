@@ -1,12 +1,15 @@
 <app-barra></app-barra>
-<div class="formulario">
+
+<p *ngIf="!confVendedor">Para subir un articulo nuevo debe loguearse como vendedor</p>
+
+<div class="formulario" *ngIf="confVendedor">
 
     <h2>Carga de Producto</h2>
 
-    <form action="#" method="post" id="form-art">
+    <form action="#" method="post" [formGroup]="formUp">
 
         <div class="categorias">
-            <select [(ngModel)]="catReg" name="categoria">
+            <select formControlName="catReg" name="categoria">
                 <option value="0">Seleccione Categoria</option>
                 <option *ngFor="let categoria of listcategorias" [value]="categoria.id">{{ categoria.name }}
                 </option>
@@ -16,12 +19,12 @@
 
         <div class="campo">
             <label for="nombre">Nombre del Producto:</label>
-            <input [(ngModel)]="nomReg" type="text" id="nombre" name="nombre" required>
+            <input formControlName="nomReg" type="text" id="nombre" name="nombre" required>
         </div>
     
         <div class="campo">
             <label for="descripcion">Descripción del Producto:</label>
-            <textarea [(ngModel)]="desReg" id="descripcion" name="descripcion" rows="4" required></textarea>
+            <textarea formControlName="desReg" id="descripcion" name="descripcion" rows="4" required></textarea>
         </div>
 
   
@@ -29,26 +32,26 @@
             <label for="precio">Precio del Producto:</label>
             <div class="precio-input">
                 <span class="peso-sign">$</span> 
-                 <input [(ngModel)]="preReg"type="number" id="precio" name="precio" step="1.00" required>
+                 <input formControlName="preReg"type="number" id="precio" name="precio" step="1.00" required>
             </div>
         </div>
 
         <div class="campo">
             <label for="imagenes">Cargar Imágenes del Producto:</label>
-            <input type="file" id="imagenes" name="images" (change)="onFileSelected($event)" accept="image/*" multiple />
+            <input type="file" id="imagenes" name="images" formControlName="images" (change)="onFileSelected($event)" accept="image/*" multiple />
             <label class="subir-boton" for="imagenes">Seleccionar Imágenes</label>
         </div>
 
         <div class="campo">
             <label for="envio">Opción de Envío:</label>
-            <select [(ngModel)]="envReg" id="envio" name="envio" required>
+            <select formControlName="envReg" id="envio" name="envio" required>
                 <option value="0">Envío Domicilio</option>
                 <option value="1">Buscar en local</option>
             </select>
         </div>
       
-        <input (click)="subirProducto()" class="subir-boton" type="submit" value="Subir-Producto" />
-        <div *ngIf="mensajeRegistro"> 
+        <input (click)="subirProducto()" class="subir-boton" type="button" value="Subir-Producto" [disabled]="formUp.invalid" />
+        <div *ngIf="mensajeRegistro">
              {{ mensajeRegistro }}
         </div>
 
