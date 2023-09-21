@@ -64,23 +64,36 @@ export class PersonalComponent implements OnInit {
     })
   }
   
+  //* Se carga la imagen en el frontend
+  selectImage(e:any) {
+    if (e.target.files[0]) {
+      const reader = new FileReader()
+      reader.readAsDataURL(e.target.files[0])
+      reader.onload = (e:any) => {
+        this.url = e.target.result
+      }
+    }
+  }  
+  
   updateUser(personalForm: FormGroup){ 
-    //** ???
+    //* Se envia la imagen a GoogleDrive
+    
+
+    //* Se toma los datos del formulario para la actualizacion
     this.user.nick = ' ';
     this.user.name = personalForm.get('firstName')?.value;
     this.user.lastName = personalForm.get('lastName')?.value;
+    this.user.phone = personalForm.get('phone')?.value;
+    this.user.bornDate = personalForm.get('bornDate')?.value;
     
     //* Se verifica si el correo fue cambiado o no
     if (personalForm.get('email')?.value === this.user.email) {
       this.user.email = ' ';
     } else { this.user.email = personalForm.get('email')?.value; }
     
-    //this.user.email = personalForm.get('email')?.value;
-    this.user.phone = personalForm.get('phone')?.value;
-    this.user.bornDate = personalForm.get('bornDate')?.value;
-    console.log("bornDate", this.user.bornDate) //TODO - Quitar
     this.user.pictureLink = personalForm.get('pictureLink')?.value;
 
+    //* Se actualiza el usuario
     this.userService.updateUser(this.userData.userId, this.user).subscribe({
       next: (data) => { console.log (data) },
       error: (err) => { 
@@ -93,13 +106,5 @@ export class PersonalComponent implements OnInit {
     })
   }  
 
-  selectImage(e:any) {
-    if (e.target.files[0]) {
-      const reader = new FileReader()
-      reader.readAsDataURL(e.target.files[0])
-      reader.onload = (e:any) => {
-        this.url = e.target.result
-      }
-    }
-  }
+
 }

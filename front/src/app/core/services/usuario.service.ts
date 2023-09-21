@@ -45,6 +45,11 @@ private userData1: BehaviorSubject<{ name: string, lastName: string }> = new Beh
     return this.api.put<userInterface>(`user/update/${id}`, user);
   }
 
+  //* Se envia la foto a Google Drive
+/*   uploadImage(url: string) : Observable <any> {
+    return this.api.post<any>('user/upload', url);
+  } */
+
   setUserData(name: string, lastName: string) {
     this.userData1.next({ name, lastName });
   }
