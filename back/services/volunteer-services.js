@@ -203,8 +203,10 @@ async function canjearPremioService(volunteerId, premioId) {
     // Realizar el canje
     await voluntario.addPremio(premio, { through:{date: new Date() } });
 
+    const formattedDate = new Date().toLocaleDateString().replace(/\//g, '-');
+
     //Crear pdf
-    const pdfPath = path.join(__dirname, '../archivo_premios', 'canje_premio.pdf');
+    const pdfPath = path.join(__dirname, '../archivo_premios', `${formattedDate}-${voluntario.name}-${voluntario.id}_canje_premio.pdf`);
     const pdfDoc = new PDFDocument();
     pdfDoc.pipe(fs.createWriteStream(pdfPath));
     pdfDoc.fontSize(14).text('Canje de Premio', { align: 'center' });
