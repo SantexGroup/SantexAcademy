@@ -81,7 +81,7 @@
                     <div class="botones">
                         <button class="plus" type="submit" *ngIf="views.plusOne"
                             (click)="postOptionals()">
-                            <img src="/assets/Imagenes/plus.png" alt="+">
+                            <img src="./assets/Imagenes/plus.png" alt="+">
                         </button>
                         <button type="submit" mat-raised-button color="primary" *ngIf="views.saveButton"
                             (click)="updateOptionals()">
@@ -93,14 +93,14 @@
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="prev">
                 <span class="carousel-control">
-                    <img src="/assets/Imagenes/arrow.png" alt="<<<">
+                    <img src="./assets/Imagenes/arrow.png" alt="<<<">
                 </span>
                 <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="next">
                 <span class="carousel-control">
-                    <img src="/assets/Imagenes/arrowR.png" alt=">>>">
+                    <img src="./assets/Imagenes/arrowR.png" alt=">>>">
                 </span>
                 <span class="visually-hidden">Next</span>
             </button>
@@ -116,10 +116,10 @@
                             <div class="botonera-card">
                                 <button (click)="views.changeViews()"
                                     (click)="getOptional(option.id)">
-                                    <img src="/assets/Imagenes/editar.png" alt="Editar">
+                                    <img src="./assets/Imagenes/editar.png" alt="Editar">
                                 </button>
                                 <button (click)="removeOptional(option.id)">
-                                    <img src="/assets/Imagenes/delete.png" alt="Eliminar">
+                                    <img src="./assets/Imagenes/delete.png" alt="Eliminar">
                                 </button>
                             </div>
                         </div>
