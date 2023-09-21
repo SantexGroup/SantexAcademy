@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/core/interfaces/product';
+import { BackServiceService } from 'src/app/core/services/product.service';
 
 @Component({
   selector: 'app-search-product',
@@ -19,9 +20,12 @@ export class SearchProductComponent implements OnInit {
   //   {id: '7', name: 'Silla', quantity: 10, categoria: 'Silla', tipoMaterial: 'plastico', image: './img/silla.png', price: 1500, description: 'Silla de plastico color blanco'},      
   // ];
 
-  constructor() { }
+  constructor(private service:BackServiceService) { }
 
   ngOnInit(): void {
+    this.service.getProducts().subscribe((result) => {
+      this.productList = result;
+    });
   }
 
 }
