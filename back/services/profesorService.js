@@ -10,5 +10,14 @@ async function crearProfesor(datosProfesor) {
     throw error;
   }
 }
+async function getAll() {
+  const listProfesors = await Profesor.findAll()
+  return listProfesors;
+}
+async function getById(id) {
+  const profesor = await Profesor.findByPk(id)
+  return profesor;
 
-module.exports = { crearProfesor };
+
+}
+module.exports = { crearProfesor, getAll, getById};
