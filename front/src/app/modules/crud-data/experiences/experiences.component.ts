@@ -21,8 +21,6 @@ export class ExperiencesComponent implements OnInit {
 
   experienceForm: FormGroup;
 
-  experiences: Experience[] = [];
-
   experienceId: number = 0;
 
   constructor(
@@ -31,7 +29,7 @@ export class ExperiencesComponent implements OnInit {
     private _countriesService: CountriesService,
     private _experiencesService: ExperiencesService,
     private fb: FormBuilder,
-    private userData: UserDataService,
+    public userData: UserDataService,
     public views: NavBarService
   ) {
     this.experienceForm = this.fb.group({
@@ -48,14 +46,15 @@ export class ExperiencesComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.userData.getExperience();
+
     this.getTypes();
 
     this.getStatus();
 
     this.getCountries();
 
-    this.getExperience();
-
+    this.views.title = "Experiencias";
   }
 
   endDateShow():boolean{
@@ -103,21 +102,15 @@ export class ExperiencesComponent implements OnInit {
     }
 
     this._experiencesService.addExperience(newExperience).subscribe((experience) => {
-      this.experiences.push(experience);
+      this.userData.experiences.push(experience);
     });
 
     this.experienceForm.reset();
   }
 
-  getExperience() {
-    this._experiencesService.getExperience(this.userData.userId).subscribe((experieceList: Experience[])=>{
-      this.experiences = experieceList;
-    });
-  }
-
   selectedExperience(id?:number){
-    const index = this.experiences.findIndex(experience => experience.id === id)
-    const element = this.experiences[index]  
+    const index = this.userData.experiences.findIndex(experience => experience.id === id)
+    const element = this.userData.experiences[index]  
       
     this.experienceForm.patchValue({
       description: element.description,
@@ -149,7 +142,7 @@ export class ExperiencesComponent implements OnInit {
     } 
 
     this._experiencesService.updateExperience(this.experienceId, newDataExperience).subscribe(() => {
-      this.getExperience();
+      this.userData.getExperience();
     });
     
     console.log(this.userData.companies);
@@ -161,10 +154,10 @@ export class ExperiencesComponent implements OnInit {
   }
 
   deleteExperience(id?:number){
-    const index = this.experiences.findIndex(experience => experience.id === id)
-    const elementId = Number((this.experiences[index]).id)
+    const index = this.userData.experiences.findIndex(experience => experience.id === id)
+    const elementId = Number((this.userData.experiences[index]).id)
     this._experiencesService.deleteExperience(elementId).subscribe(() => {
-      this.experiences.splice(index, 1);
+      this.userData.experiences.splice(index, 1);
     });
 
     this.experienceForm.reset();

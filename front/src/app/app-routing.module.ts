@@ -14,6 +14,7 @@ import { CVComponent } from './modules/cv/cv.component';
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
 import { ProfilesComponent } from './modules/profiles/profiles.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { ProfilesFourComponent } from './modules/profiles-four/profiles-four.component';
 
 const routes: Routes = [
   {
@@ -35,7 +36,13 @@ const routes: Routes = [
       },
       {
         path: 'cv',
-        component: CVComponent
+        component: CVComponent,
+        children: [
+          {
+            path: 'four',
+            component: ProfilesFourComponent
+          }
+        ]
       },
       {
         path: 'experiencias',
@@ -65,6 +72,10 @@ const routes: Routes = [
       {
         path: 'profiles',
         component: ProfilesComponent
+      },
+      {
+        path: 'four',
+        component: ProfilesFourComponent
       }
     ]
   }, 

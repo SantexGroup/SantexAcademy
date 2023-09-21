@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router} from '@angular/router';
 import { UserDataService } from '../services/toolServices/userData.service';
-import { RegistroComponent } from 'src/app/modules/usuario/registro/registro.component';
 
 
 @Injectable({

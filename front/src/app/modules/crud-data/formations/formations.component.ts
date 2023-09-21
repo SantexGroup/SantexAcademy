@@ -45,7 +45,7 @@ export class FormationsComponent implements OnInit, OnDestroy, IDeactivateCompon
 
   ngOnInit(): void {
     this.userData.getListFormations();
-
+    
     this.formationsStatusGet();
 
     this.formationsTypesGet();
@@ -102,12 +102,11 @@ export class FormationsComponent implements OnInit, OnDestroy, IDeactivateCompon
       description: this.formationForm.get('description')?.value,
       profileId: this.userData.profileId
     }
-
+    
     this._formationsServices.addFormation(newFormation).subscribe((formation) => {
       this.userData.formations.push(formation);
     });
     this.formationForm.reset();
-
   }
 
   endDateShow(): boolean {
@@ -150,7 +149,6 @@ export class FormationsComponent implements OnInit, OnDestroy, IDeactivateCompon
 
       // this.editedFormation = null; // Restablecer la formación editada
       this.formationForm.reset(); // Restablecer el formulario
-
     }
   }
 }
