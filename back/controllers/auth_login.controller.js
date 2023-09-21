@@ -30,7 +30,7 @@ const authLoginController = async (req, res, next) => {
         });
       }
 
-      const jwt = await handleJWT(existingUser.id);
+      const jwt = handleJWT(existingUser.id);
 
       res.send({
         email: existingUser.email,

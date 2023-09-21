@@ -1,8 +1,8 @@
 /**
  * Decodifica un base64.
  *
- * @param {string} data - Base64 a decodificar.
- * @return {Buffer} Decodificado.
+ * @param {string} data - Base64 a decodificar
+ * @return {string} El buffer decodificado
  */
 const decodeBase64 = (data) => Buffer.from(data, 'base64');
 
