@@ -2,7 +2,7 @@
 <div class="formulario">
     <h2>Carga de Producto</h2>
 
-    <form action="#" method="post" id="form-art">
+    <form action="#" class="form" method="post" id="form-art"  enctype="multipart/form-data">
         <div class="row">
 
             <!-- Columna izquierda -->
@@ -27,9 +27,10 @@
             </div>
 
             <!-- Columna derecha -->
-            <div class="media_columna">
+            <div class="media_columna_der">
 
-                <div class="categorias">
+                <div class="campo">
+                    <label for="categorias">Categorias:</label>
                     <select [(ngModel)]="catReg" name="categoria">
                         <option value="0">Seleccione Categoria</option>
                         <option *ngFor="let categoria of listcategorias" [value]="categoria.id">{{ categoria.name }}

@@ -1,43 +1,31 @@
-.formulario {
-  max-width: 1000px; 
+.formulario{
+  margin-top: 5px;
+}
+
+.form {
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #cccccc8a;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-weight: bold;
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 30px;
   margin-bottom: 20px;
   text-align: center;
 }
 
-.campo {
-  margin-bottom: 5px;
-}
-
 .campo label {
-  display: block; 
-  margin-bottom: 5px; 
-}
-
-label {
-  font-weight: bold;
   display: block;
   margin-bottom: 5px;
 }
 
-
 input[type="text"],
 input[type="number"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
+textarea,
 select {
   width: 100%;
   padding: 10px;
@@ -45,105 +33,88 @@ select {
   border-radius: 4px;
 }
 
-
-/* columnas */
+/* Columnas */
 .row {
   display: flex;
   justify-content: space-between;
 }
 
 .media_columna {
-  flex-direction: column;
-  align-items: flex-start; 
+  flex-basis: 48%;
+  margin-bottom: 10px;
+}
+
+.media_columna_der {
   flex-basis: 48%;
 }
 
-.media_columna .categorias,
-.media_columna .campo {
-  width: 100%;
-  max-width: 100%; 
-  margin-bottom: 10px; 
+.media_columna_der .campo {
+  padding-bottom: 46px;
 }
 
+.media_columna_der .campo input {
+  background-color: #d68a96;
+  color: white;
+}
 
-/* botones  */
+/* Botones */
 .formulario .subir-boton {
-  background-color: #e6b68b;
+  background-color: #d68a96;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px; 
+  transition: background-color 0.3s, color 0.3s;
+  margin: -10px;
 }
 
 .formulario .subir-boton:hover {
-  background-color: #e6b68b;
+  background-color: #838383;
+  color: white;
 }
-
-
 
 .botones-container {
-  text-align: center; 
+  text-align: center;
 }
 
-
-.subir-boton {
-  background-color: #e6b68b;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  display: inline-block; 
-  margin-top: 10px; 
-}
-
-
-/* mensaje */
+/* Mensaje */
 .mensaje {
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 
-
-
-
-/*  imágenes */
-
+/* Imágenes */
 .imagenes-container {
   margin-top: 20px;
-  max-width: 100%; 
-  overflow: auto; 
+  max-width: 100%;
+  overflow: auto;
 }
 
 .imagenes {
   display: flex;
-  flex-wrap: wrap; 
-  gap: 10px; 
-  justify-content: center; 
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
   align-items: center;
 }
 
 .imagen {
-  flex-basis: calc(33.33% - 10px); 
-  max-width: 100%; 
-  border: 2px solid #ccc; 
-  box-sizing: border-box; 
+  flex-basis: calc(33.33% - 10px);
+  max-width: 100%;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
 }
 
-
 .imagen img {
-  width: 100%; 
+  width: 100%;
   height: auto;
 }
 
-/*  $ */
+/* Precio */
 .precio-input {
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
 }
 
 .peso-sign {
-  margin-right: 5px; 
+  margin-right: 5px;
 }
-
