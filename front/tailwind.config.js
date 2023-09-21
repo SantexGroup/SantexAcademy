@@ -27,6 +27,7 @@ module.exports = {
       dimGray: "#717375",
       redError: "#D90429",
       DarkGray: "#9ca3af",
+      Danguer: "#FF0000",
     },
     backgroundColor: {
       white: "#FFF",
@@ -44,6 +45,7 @@ module.exports = {
       forestGreen: "#1B830A",
       red: "#FF0404",
       DarkGray: "#9ca3af",
+      Danguer: "#FF0000",
     },
     border: {
       white: "#FFF",

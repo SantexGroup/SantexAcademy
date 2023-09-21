@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { coordinatorData } from '../../models/dataForms.model';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,9 +16,12 @@ export class FormCoordinatorsRegisterComponent {
   statusSession: string = '';
   messageModal: string = '';
   routeBtnContinue: string = '';
+  textBtn: string = '';
 
   showPassword: boolean = false;
   subscription: Subscription | null = null;
+
+  imageUrl: string | ArrayBuffer | null = null;
 
   constructor(
     private router: Router,
@@ -36,25 +38,46 @@ export class FormCoordinatorsRegisterComponent {
       cuit: ['', Validators.required],
       location: ['', Validators.required],
       category: ['', Validators.required],
+      file: [null],
     });
   }
 
   sendValues() {
     if (this.registerCoordinator.valid) {
-      const userData: coordinatorData = this.registerCoordinator
-        .value as coordinatorData;
-      this.authService.registerCoordinator(userData).subscribe({
+      const formData = new FormData();
+      Object.keys(this.registerCoordinator.controls).forEach((key) => {
+        const control = this.registerCoordinator.get(key);
+        if (key === 'file' && control instanceof FileList) {
+          for (let i = 0; i < control.length; i++) {
+            const file = control.item(i);
+            if (file) {
+              formData.append('file', file);
+            }
+          }
+        } else {
+          if (control !== null && control !== undefined) {
+            const value = control.value;
+            if (value !== null && value !== undefined) {
+              formData.append(key, value);
+            }
+          }
+        }
+      });
+
+      this.authService.registerCoordinator(formData).subscribe({
         next: (response) => {
           console.log('Registro exitoso:', response);
           this.onModal = true;
           this.statusSession = 'success';
           this.routeBtnContinue = 'auth/login';
+          this.textBtn = 'Iniciar Sesión';
         },
         error: (error) => {
           console.error('Error en el registro:', error);
           this.onModal = true;
           this.statusSession = 'failed';
           this.routeBtnContinue = 'auth/coordinator-register';
+          this.textBtn = 'Reintentar';
         },
         complete: () => {},
       });
@@ -79,5 +102,29 @@ export class FormCoordinatorsRegisterComponent {
 
   changeValueModal() {
     this.onModal = false;
+  }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (e.target && e.target.result) {
+          this.imageUrl = e.target.result as string;
+        }
+      };
+      reader.readAsDataURL(file);
+
+      this.registerCoordinator.patchValue({
+        file: file,
+      });
+    }
+  }
+
+  deleteImage() {
+    this.registerCoordinator.patchValue({
+      file: null,
+    });
+    this.imageUrl = null;
   }
 }

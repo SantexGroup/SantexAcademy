@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 // import { environment } from 'src/app/environments/environment';
 import { environment } from 'src/app/environments/environment.prod';
 
@@ -25,8 +25,12 @@ export class AuthService {
     return this.http.post(url, userData);
   }
 
-  registerCoordinator(userData: coordinatorData): Observable<any> {
+  registerCoordinator(userData: coordinatorData | FormData): Observable<any> {
     const url = `${this.apiUrl}/auth/org/register`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'multipart/form-data',
+    });
+    const options = { headers: headers };
     return this.http.post(url, userData);
   }
 
