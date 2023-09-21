@@ -7,9 +7,13 @@ async function getDataVoluntario(req, res) {
   res.status(200).send(voluntario);
 }
 
-async function getAllVolunteer(req, res) {
-  const users = await volunteerServices.getAll();
-  res.status(200).send(users);
+async function getAllVolunteer(req, res, next) {
+  try {
+    const users = await volunteerServices.getAll();
+    res.status(200).send(users);
+  } catch (error) {
+    next(error);
+  }
 }
 
 async function getVolunteerById(req, res, next) {
@@ -23,38 +27,48 @@ async function getVolunteerById(req, res, next) {
   }
 }
 
-async function createVolunteer(req, res) {
+async function createVolunteer(req, res, next) {
   const {
     name, lastname, dni, email, password, address, phone,
   } = req.body;
 
-  // eslint-disable-next-line max-len
-  const user = await volunteerServices.createUser(name, lastname, dni, email, password, address, phone);
-
-  res.status(201).send(user);
+  try {
+    // eslint-disable-next-line max-len
+    const user = await volunteerServices.createUser(name, lastname, dni, email, password, address, phone);
+    res.status(201).send(user);
+  } catch (error) {
+    next(error);
+  }
 }
 
-async function editVolunteer(req, res) {
+async function editVolunteer(req, res, next) {
   const { id } = req.params;
   const {
     name, lastname, dni, email, address, phone,
   } = req.body;
+  try {
+    // eslint-disable-next-line max-len
+    const user = await volunteerServices.editUser(id, name, lastname, dni, email, address, phone);
 
-  // eslint-disable-next-line max-len
-  const user = await volunteerServices.editUser(id, name, lastname, dni, email, address, phone);
-
-  res.status(201).send(user);
+    res.status(201).send(user);
+  } catch (error) {
+    next(error);
+  }
 }
 
-async function deleteVolunteer(req, res) {
+async function deleteVolunteer(req, res, next) {
   const { id } = req.params;
 
-  await volunteerServices.deleteUser(id);
+  try {
+    await volunteerServices.deleteUser(id);
 
-  res.status(200).send(`Usuario con el id ${id} ha sido eliminado exitosamente`);
+    res.status(200).send(`Usuario con el id ${id} ha sido eliminado exitosamente`);
+  } catch (error) {
+    next(error);
+  }
 }
 
-async function loginVolunteer(req, res) {
+async function loginVolunteer(req, res, next) {
   const { email, password } = req.body;
 
   try {
@@ -62,10 +76,11 @@ async function loginVolunteer(req, res) {
     res.json({ token });
   } catch (error) {
     res.status(401).json({ message: 'Credenciales incorrectas' });
+    next(error);
   }
 }
 
-async function modifyPasswordController(req, res) {
+async function modifyPasswordController(req, res, next) {
   try {
     const { id } = req.params;
     const { currentPassword, newPassword } = req.body;
@@ -74,22 +89,37 @@ async function modifyPasswordController(req, res) {
     res.status(200).json({ user, message: 'contraseña actualizada correctamente' });
   } catch (error) {
     res.status(500).json({ error: 'Error al modificar la contraseña' });
+    next(error);
   }
 }
 
 // eslint-disable-next-line consistent-return
-async function asingVolunteerWork(req, res) {
+async function asingVolunteerWork(req, res, next) {
   const { idVolunteer, idTarea } = req.body;
+  try {
+    const result = await volunteerServices.asignarTareaVoluntario(idVolunteer, idTarea);
 
-  const result = await volunteerServices.asignarTareaVoluntario(idVolunteer, idTarea);
+    if (result.error) {
+      return res.status(400).json({ error: result.error });
+    }
 
-  if (result.error) {
-    return res.status(400).json({ error: result.error });
+    res.status(200).send(result.voluntario);
+  } catch (error) {
+    next(error);
   }
+}
 
-  res.status(200).send(result.voluntario);
+async function canjearPremioController(req, res) {
+  const { volunteerId, premioId } = req.body;
+
+  try {
+    const result = await volunteerServices.canjearPremioService(volunteerId, premioId);
+    res.status(200).json({ message: result });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 }
 module.exports = {
   // eslint-disable-next-line max-len
-  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, loginVolunteer, getDataVoluntario, modifyPasswordController, asingVolunteerWork,
+  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, loginVolunteer, getDataVoluntario, modifyPasswordController, asingVolunteerWork, canjearPremioController,
 };

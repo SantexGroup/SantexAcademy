@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   premios.associate = (models) => {
-    premios.belongsToMany(models.volunteer, { through: models.premios_mid });
+    premios.belongsToMany(models.volunteer, { through: models.premiosMid });
   };
   
   return premios;

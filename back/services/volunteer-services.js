@@ -168,6 +168,63 @@ async function asignarTareaVoluntario(idVolunteer, idTarea) {
   }
 }
 
+async function canjearPremioService(volunteerId, premioId) {
+  try {
+    const voluntario = await models.volunteer.findByPk(volunteerId);
+    const premio = await models.premios.findByPk(premioId);
+
+    if (!voluntario) {
+      return { error: 'No se encuentra voluntario con el ID proporcionado' };
+    }
+
+    if (!premio) {
+      return { error: 'No se encuentra premio con el ID proporcionado' };
+    }
+
+    const puntos = voluntario.points;
+    const puntosPremio = premio.costo;
+
+    if (puntos < puntosPremio) {
+      return { error: 'No cuenta con la cantidad de puntos para canjear el premio' };
+    }
+
+    // Verificar si el premio ya ha sido canjeado por el voluntario
+    const canjeAnterior = await models.premiosMid.findOne({
+      where: { volunteerId, premioId },
+    });
+
+    if (canjeAnterior) {
+      return { error: 'Este premio ya ha sido canjeado por el voluntario' };
+    }
+
+    // Realizar el canje
+    await voluntario.addPremios(premio); // Utiliza el nombre correcto de la asociación
+    await models.premiosMid.create({
+      volunteerId,
+      premioId,
+      date: new Date(),
+    });
+
+    // Actualizar los puntos del voluntario
+    voluntario.points -= puntosPremio;
+    await voluntario.save();
+
+    // Obtener el voluntario actualizado con sus premios
+    const voluntarioConPremios = await models.volunteer.findOne({
+      where: { id: volunteerId },
+      include: [{ model: models.premios }],
+    });
+
+    delete voluntarioConPremios.dataValues.password;
+
+    return { success: true, voluntario: voluntarioConPremios };
+  } catch (error) {
+    return { error: 'Error interno en el servidor' };
+  }
+}
+
+
 module.exports = {
-  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, asignarTareaVoluntario,
+  // eslint-disable-next-line max-len
+  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, asignarTareaVoluntario, canjearPremioService,
 };
