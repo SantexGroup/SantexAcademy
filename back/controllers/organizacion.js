@@ -43,8 +43,8 @@ const loginOrganization = async (req, res) => {
 };
 
 const createOrganization = async (req, res) => {
-  const { image, ...restOfData } = req.body;
   try {
+    const { image, ...restOfData } = req.body;
     let imageUrl = "";
     let publicId = "";
 

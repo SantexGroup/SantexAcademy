@@ -26,7 +26,7 @@ authRouter.post(
   "/users/register",
   createAndUpdateUserValidation,
   async (req, res) => {
-    // Comprueba las validaciones antes de ejecutar el controlador de actualización de usuarios
+    console.log(req.body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       const errorMessages = errors.array().map((error) => error.msg);
@@ -38,27 +38,31 @@ authRouter.post(
 
 authRouter.post(
   "/org/register",
-  createAndUpdateOrganizationValidation,
   upload.single("file"),
-  async (req, res) => {
-    // Comprueba las validaciones antes de ejecutar el controlador de registro de organizaciones
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      const errorMessages = errors.array().map((error) => error.msg);
-      return res.status(400).json({ errors: errorMessages });
-    }
-    orgController.createOrganization(req, res);
-  }
+  orgController.createOrganization
+  // createAndUpdateOrganizationValidation,
+  // async (req, res) => {
+  //   const errors = validationResult(req);
+  //   if (!errors.isEmpty()) {
+  //     const errorMessages = errors.array().map((error) => error.msg);
+  //     return res.status(400).json({ errors: errorMessages });
+  //   }
+  //   orgController.createOrganization(req, res);
+  // }
 );
 
-authRouter.post("/org/login", loginOrganizationValidation, async (req, res) => {
-  // Comprueba las validaciones antes de ejecutar el controlador de login de organizaciones
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    const errorMessages = errors.array().map((error) => error.msg);
-    return res.status(400).json({ errors: errorMessages });
-  }
-  orgController.loginOrganization(req, res);
-});
+authRouter.post(
+  "/org/login",
+  orgController.loginOrganization
+
+  // loginOrganizationValidation, async (req, res) => {
+  //   const errors = validationResult(req);
+  //   if (!errors.isEmpty()) {
+  //     const errorMessages = errors.array().map((error) => error.msg);
+  //     return res.status(400).json({ errors: errorMessages });
+  //   }
+  //   orgController.loginOrganization(req, res);
+  // }
+);
 
 module.exports = authRouter;

@@ -13,8 +13,6 @@ const loginOrg = async (email, cuit, password) => {
     const org = await Organizacion.findOne({
       where: {
         email: email,
-        cuit: cuit,
-        deletedAt: null,
       },
     });
 
@@ -23,12 +21,12 @@ const loginOrg = async (email, cuit, password) => {
     }
 
     // Verificar si la contraseña coincide
-    if (org.password !== password) {
+    if (org.dataValues.password !== password.toString()) {
       throw new Error("Invalid Credentials");
     }
 
     // Verificar si el cuit coincide
-    if (org.cuit !== cuit) {
+    if (org.dataValues.cuit !== cuit.toString()) {
       throw new Error("Invalid Credentials");
     }
 

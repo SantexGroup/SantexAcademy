@@ -17,12 +17,12 @@
   ></a>
 
   <i
-    [ngClass]="!isOpen ? 'hidden' : 'visible'"
+    [ngClass]="!isOpen ? 'hidden' : 'visible absolute top-8 right-4'"
     class="bx bx-menu text-3xl cursor-pointer m:text-4xl lg:hidden"
     (click)="handleMenu()"
   ></i>
   <i
-    [ngClass]="isOpen ? 'hidden' : 'visible'"
+    [ngClass]="isOpen ? 'hidden' : 'visible absolute top-8 right-4'"
     class="bx bx-x text-3xl cursor-pointer m:text-4xl lg:hidden"
     (click)="handleMenu()"
   ></i>
@@ -97,16 +97,34 @@
       <li
         class="flex flex-col items-center justify-center gap-4 lg:flex-row font-semibold lg:items-start"
       >
-        <a
-          routerLink="/auth/login"
-          class="lg:text-xl whitespace-nowrap max-w-[200px] lg:hover:text-blueViolet"
-          >Iniciar sesión</a
+        <div
+          *ngIf="!isToken"
+          class="flex flex-col items-center justify-center gap-4 lg:flex-row font-semibold lg:items-start"
         >
-        <a
-          routerLink="/auth/options-register"
-          class="py-1 px-4 bg-darkSlateBlue text-white rounded-md"
-          >Registrarse</a
+          <a
+            routerLink="/auth/login"
+            class="lg:text-xl whitespace-nowrap max-w-[200px] lg:hover:text-blueViolet"
+            >Iniciar sesión</a
+          >
+          <a
+            routerLink="/auth/options-register"
+            class="py-1 px-4 bg-darkSlateBlue text-white rounded-md"
+            >Registrarse</a
+          >
+        </div>
+        <div
+          *ngIf="isToken"
+          class="flex flex-col items-center justify-center gap-4 lg:flex-row font-semibold lg:items-start"
         >
+          <article>
+            <figure
+              class="w-[50px] aspect-square rounded-full border border-lightGray p-2"
+            >
+              <img src="/assets/imgs/avatar.png" alt="avatar" class="" />
+            </figure>
+          </article>
+        </div>
+
         <i class="bx bx-search hidden lg:flex lg:text-xl cursor-pointer"></i>
       </li>
     </ul>
