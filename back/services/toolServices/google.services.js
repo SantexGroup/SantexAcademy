@@ -1,9 +1,9 @@
 const fs = require('fs');
 const { google } = require('googleapis');
 const oauth2Client = require('../../config/files/google.config');
-const subir = require('./multer.services');
+const upload = require('./multer.services');
 
-const subirAdrive = ('/subir', subir, async (req, res) => {
+const uploadDrive = ('/upload', upload, async (req, res) => {
   try {
     const gDrive = google.drive({
       version: 'v3',
@@ -28,6 +28,8 @@ const subirAdrive = ('/subir', subir, async (req, res) => {
 
     console.log(data.id);
 
+    /* https://drive.google.com/uc?export=view&id= */
+
     const result = await (data.id);
 
     res.json(result);
@@ -38,4 +40,4 @@ const subirAdrive = ('/subir', subir, async (req, res) => {
   }
 });
 
-module.exports = subirAdrive;
+module.exports = uploadDrive;

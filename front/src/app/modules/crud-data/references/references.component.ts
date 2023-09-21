@@ -15,8 +15,6 @@ export class ReferencesComponent implements OnInit {
 
   referenceForm: FormGroup;
 
-  referenceList: Reference[] = [];
-
   referenceId: number = 0;
 
   constructor(
@@ -41,7 +39,7 @@ export class ReferencesComponent implements OnInit {
 
     this.getCompany();
 
-    this.getReference();
+    this.userData.getReference();
 
   }
 
@@ -67,22 +65,15 @@ export class ReferencesComponent implements OnInit {
       profileId: this.userData.profileId
     }
     this._referenceService.addReference(newReference).subscribe((reference) => {
-      this.referenceList.push(reference);
+      this.userData.references.push(reference);
     })
 
     this.referenceForm.reset();
   }
 
-  getReference() {
-    this._referenceService.getReference(this.userData.userId).subscribe((referenceList) => {
-      this.referenceList = referenceList;
-
-    });
-  }
-
   selectedReference(id?: number) {
-    const index = this.referenceList.findIndex(reference => reference.id === id)
-    const element = this.referenceList[index]
+    const index = this.userData.references.findIndex(reference => reference.id === id)
+    const element = this.userData.references[index]
 
 
     this.referenceForm.patchValue({
@@ -108,7 +99,7 @@ export class ReferencesComponent implements OnInit {
     }
 
     this._referenceService.updateReference(this.referenceId, updateReference).subscribe((referece) => {
-      this.getReference()
+      this.userData.getReference()
     });
 
     this.referenceForm.reset();
@@ -119,10 +110,10 @@ export class ReferencesComponent implements OnInit {
   }
 
   deleteReference(id?:number){
-    const index = this.referenceList.findIndex(reference => reference.id === id);
-    const elementId = Number(this.referenceList[index].id);
+    const index = this.userData.references.findIndex(reference => reference.id === id);
+    const elementId = Number(this.userData.references[index].id);
     this._referenceService.deleteReference(elementId).subscribe(()=>{
-      this.referenceList.splice(index, 1);
+      this.userData.references.splice(index, 1);
     });
 
     this.referenceForm.reset();
