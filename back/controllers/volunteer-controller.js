@@ -1,4 +1,7 @@
 const volunteerServices = require('../services/volunteer-services');
+const fs = require('fs');
+const path = require('path');
+const PDFDocument = require('pdfkit');
 
 async function getDataVoluntario(req, res) {
   const { usuario } = req;
@@ -114,7 +117,27 @@ async function canjearPremioController(req, res) {
 
   try {
     const result = await volunteerServices.canjearPremioService(volunteerId, premioId);
-    res.status(200).json({ message: result });
+
+    if (result.error) {
+      return res.status(500).json({ error: result.error });
+    }
+
+    // Configura los encabezados de la respuesta para el PDF
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename=canje_premio.pdf');
+
+    // Obtén el path del PDF y envíalo como respuesta al cliente
+    const pdfPath = result.pdfPath;
+    const pdfStream = fs.createReadStream(pdfPath);
+    pdfStream.pipe(res);
+
+    // Elimina el archivo después de enviarlo al cliente
+    pdfStream.on('end', () => {
+      fs.unlinkSync(pdfPath);
+
+      // Envía una respuesta JSON adicional si es necesario
+      res.json({ success: true, voluntario: result.voluntario });
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

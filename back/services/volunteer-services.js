@@ -8,7 +8,10 @@ const models = require('../models/index');
 const jwt = require('jsonwebtoken');
 const { sequelize } = require('../models');
 const bcrypt = require('bcrypt');
-// const models = require('../models/index');
+
+const PDFDocument = require('pdfkit');
+const fs = require('fs');
+const path = require('path');
 
 const Volunteer = volunteerModel(sequelize, DataTypes);
 
@@ -199,6 +202,16 @@ async function canjearPremioService(volunteerId, premioId) {
 
     // Realizar el canje
     await voluntario.addPremio(premio, { through:{date: new Date() } });
+
+    //Crear pdf
+    const pdfPath = path.join(__dirname, '../archivo_premios', 'canje_premio.pdf');
+    const pdfDoc = new PDFDocument();
+    pdfDoc.pipe(fs.createWriteStream(pdfPath));
+    pdfDoc.fontSize(14).text('Canje de Premio', { align: 'center' });
+    pdfDoc.fontSize(12).text(`Voluntario: ${voluntario.lastname}, ${voluntario.name}`);
+    pdfDoc.fontSize(12).text(`Premio: ${premio.name}`);
+    pdfDoc.fontSize(12).text(`Fecha: ${new Date().toLocaleDateString()}`);
+    pdfDoc.end();
 
     // Actualizar los puntos del voluntario
     voluntario.points -= puntosPremio;
