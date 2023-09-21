@@ -10,12 +10,12 @@ export class CargaArticulosService {
   constructor(private apiService: ApiService) { }
 
   carga(
-  catReg: any,
-  nomReg: any,
-  desReg: any,
-  preReg: any,
-  envReg: any,
-  idUser: any,
+  catReg: string,
+  nomReg: string,
+  desReg: string,
+  preReg: string,
+  envReg: string,
+  idUser: string,
   ){
     const body={
       idUsuario : idUser,
@@ -25,14 +25,10 @@ export class CargaArticulosService {
       precio: preReg,
       envio: envReg
     }
-    return this.apiService.post<any>('/productos/cargar-producto', body)
+    return this.apiService.post('/productos/cargar-producto', body)
   }
 
   cargaFiles(formData: any) {
     return this.apiService.post<any>('/upload', formData);
-  }
-
-  cargaImagesNames(idProducto: string, imageName: string) {
-    return this.apiService.post<any>('/images/'+ imageName + '/' + idProducto);
   }
 }

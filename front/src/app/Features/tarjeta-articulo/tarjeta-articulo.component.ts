@@ -18,9 +18,10 @@ export class TarjetaArticuloComponent implements OnInit {
       if (productos){
       this.listArticulos = productos;
       console.log(this.listArticulos);
-
+/*
       const imageName 
       this.service.getImageProduct()
+        */
       }
       })
     
