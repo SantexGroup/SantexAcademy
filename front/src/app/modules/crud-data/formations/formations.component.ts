@@ -1,45 +1,49 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Formations } from 'src/app/core/interfaces/formation.interface';
 import { FormationsStatus } from 'src/app/core/interfaces/formationsStatus.interface';
 import { FormationsTypes } from 'src/app/core/interfaces/formationsTypes.interface';
+import { IDeactivateComponent } from 'src/app/core/interfaces/ideactivate-component.interface';
+import { FormChangesService } from 'src/app/core/services/form-changes-service';
 import { FormationsStatusService } from 'src/app/core/services/formations-status.service';
 import { FormationsTypeService } from 'src/app/core/services/formations-type.service';
 import { FormationsService } from 'src/app/core/services/formations.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 
-
 @Component({
   selector: 'app-formations',
   templateUrl: './formations.component.html',
   styleUrls: ['./formations.component.css']
 })
-export class FormationsComponent implements OnInit {
+export class FormationsComponent implements OnInit, OnDestroy, IDeactivateComponent {
   formationForm: FormGroup;
   editedFormation: Formations | null = null;
-
+  
   constructor(
     private _formationsTypesServices: FormationsTypeService,
     private _formationsStatusServices: FormationsStatusService,
-    private _formationsServices: FormationsService,    
+    private _formationsServices: FormationsService,
+    private _formChangeService: FormChangesService,
     public views: NavBarService,
     private fb: FormBuilder,
-    public userData: UserDataService
-    ) {
-      this.formationForm = this.fb.group({
-        statusId: '',
-        typesId: '',
-        title: '',
-        institute: '',
-        startDate: '',
-        endDate: null,
-        description: '',
-      })      
-     }
+    public userData: UserDataService,
+  ) {
+    this.formationForm = this.fb.group({
+      statusId: [''],
+      typesId: [''],
+      title: [''],
+      institute: [''],
+      startDate: [null],
+      endDate: [null],
+      description: [''],
+    })
+
+    this._formChangeService.originalValues = this.formationForm.value;
+    this._formChangeService.checkFormChanges(this.formationForm);
+  }
 
   ngOnInit(): void {
-
     this.userData.getListFormations();
     
     this.formationsStatusGet();
@@ -47,6 +51,28 @@ export class FormationsComponent implements OnInit {
     this.formationsTypesGet();
 
     this.views.title = "Formaciones";
+  }
+
+  ngOnDestroy(): void {
+    this._formChangeService.setUnchanged();
+  }
+
+  /** 
+   * Verfica si el formulario tiene cambios sin guardar 
+   * y solicita confirmacion al usuario. 
+   * 
+  */  
+ canExit(): boolean {
+    return this._formChangeService.canExit()
+  }
+
+  /** 
+   * Utilizar el evento window:beforeunload para controlar cambios sin guardar, 
+   * cuando el usuario intenta cerrar la página o refrescarla. 
+  */
+  @HostListener('window:beforeunload', ['$event'])
+  beforeUnloadHandler(event: BeforeUnloadEvent): void {
+    this._formChangeService.beforeUnloadHandler(event);
   }
 
   formationsTypesGet(){
@@ -57,15 +83,15 @@ export class FormationsComponent implements OnInit {
 
   types: FormationsTypes[] = [];
 
-  formationsStatusGet(){
-    this._formationsStatusServices.getFormationStatus().subscribe((statusList: FormationsStatus[])=>{
+  formationsStatusGet() {
+    this._formationsStatusServices.getFormationStatus().subscribe((statusList: FormationsStatus[]) => {
       this.status = statusList;
     });
   }
 
   status: FormationsStatus[] = [];
 
-  formationAdd(){
+  formationAdd() {
     const newFormation: Formations = {
       statusId: this.formationForm.get('statusId')?.value,
       typesId: this.formationForm.get('typesId')?.value,
@@ -76,15 +102,14 @@ export class FormationsComponent implements OnInit {
       description: this.formationForm.get('description')?.value,
       profileId: this.userData.profileId
     }
-
-    this._formationsServices.addFormation(newFormation).subscribe((formation)=>{
+    
+    this._formationsServices.addFormation(newFormation).subscribe((formation) => {
       this.userData.formations.push(formation);
-    });    
+    });
     this.formationForm.reset();
-  
   }
 
-  endDateShow():boolean{
+  endDateShow(): boolean {
     return this.formationForm.get('statusId')?.value !== 1;
   }
 
@@ -93,10 +118,12 @@ export class FormationsComponent implements OnInit {
       this.userData.getListFormations()
     })
   }
+
   editFormation(formation: Formations) {
     this.editedFormation = { ...formation };
-    
-    
+    this._formChangeService.originalValues = { ...formation };
+
+
     this.formationForm.patchValue({
       statusId: formation.statusId,
       typesId: formation.typesId,
@@ -107,22 +134,21 @@ export class FormationsComponent implements OnInit {
       description: formation.description,
     });
   }
- 
-  
-  
-   // Función para guardar los cambios realizados en el formulario de edición
-   saveFormation() {
+
+
+
+  // Función para guardar los cambios realizados en el formulario de edición
+  saveFormation() {
     if (this.editedFormation) {
       const updatedFormation: Formations = this.formationForm.value;
       updatedFormation.id = this.editedFormation.id;
 
-      this._formationsServices.updateFormation(updatedFormation).subscribe(() => {     
+      this._formationsServices.updateFormation(updatedFormation).subscribe(() => {
         this.userData.getListFormations();
-    });
+      });
 
       // this.editedFormation = null; // Restablecer la formación editada
       this.formationForm.reset(); // Restablecer el formulario
-    
-    }   
+    }
   }
 }

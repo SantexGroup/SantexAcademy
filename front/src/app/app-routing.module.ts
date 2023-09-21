@@ -54,7 +54,8 @@ const routes: Routes = [
       },
       {
         path: 'formaciones',
-        component: FormationsComponent
+        component: FormationsComponent,
+        canDeactivate: [(component: FormationsComponent) => component.canExit()],
       },
       {
         path: 'opcionales',
