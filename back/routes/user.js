@@ -6,6 +6,7 @@ const router = express.Router();
 const userController = require('../controllers/user');
 const { verifyLink } = require('../helpers/verifyLink');//NO borrar, no comentar, se usa solo para verificacion de link
 
+const { corsHeaders } = require('../middleware/corsAuthorization');
 const { validarCampos } = require('../middleware/validar-campos');
 const { validarJWT } = require('../middleware/validar-jwt');
 
@@ -33,14 +34,19 @@ router.delete('/:id', userController.deleteUser);
 
 ///////////-------NO borrar, no comentar, por favor no tocar, se usa solo para verificacion de link-----//////
 router.post('/verifyLink', (req, res) => {
-  const urlString = req.url; // Traigo la URL de la solicitud
-  const parsedUrl = url.parse(urlString, true);
-  const codeRegister = parsedUrl.query.codeRegister; // Extrae el codigo de la URL
-  console.log(`Valor de codeRegister en routes: ${codeRegister}`);//BORRAR
-  verifyLink(req, res);// Envio a funcion de control en helpers
+  const codeRegister = req.body.codeRegister; // Extrae el código del cuerpo de la solicitud POST
+  console.log(`Valor de codeRegister en routes: ${codeRegister}`);
+  verifyLink(req, res);
 });
-///////////---------------------------------------------------------------------------------------------//////
-
+///////////---Grave error tonto de logica, si front ya me da el dato, para que pedir la url?-----------//////
+// router.post('/verifyLink', corsHeaders, (req, res) => {
+//   const urlString = req.url; // Traigo la URL de la solicitud
+//   const parsedUrl = url.parse(urlString, true);
+//   const codeRegister = parsedUrl.query.codeRegister; // Extrae el codigo de la URL
+//   console.log(`Valor de codeRegister en routes: ${codeRegister}`);//BORRAR
+//   verifyLink(req, res);// Envio a funcion de control en helpers
+// });
+//-----------------------------------------------------------------------------------------------------/////
 
 
 module.exports = router;
