@@ -2,7 +2,7 @@
   class="fixed top-0 left-0 w-full flex flex-col p-6 bg-white z-20 lg:gap-4 lg:relative"
   id="arriba"
 >
-  <div class="w-full flex items-start justify-between">
+  <div class="w-full flex items-start justify-between lg:relative">
     <a routerLink="/"
       ><figure class="flex items-center gap-2">
         <img
@@ -34,10 +34,12 @@
       >
         <li class="">
           <div
-            class="w-full flex items-center justify-center cursor-pointer"
+            class="w-full flex items-center justify-center cursor-pointer optionDesk"
             (click)="openOpOne()"
           >
-            <span class="text-xl"> Hazte voluntario/a </span>
+            <span class="text-xl whitespace-nowrap max-w-[200px]"
+              >Hazte voluntario/a</span
+            >
             <i
               class="bx bx-chevron-down text-2xl iconRow"
               [ngClass]="{ rotate: openOptionOne }"
@@ -47,16 +49,18 @@
           <ul
             [ngClass]="
               openOptionOne
-                ? 'flex flex-col items-center openList'
-                : 'hidden viewList'
+                ? 'flex flex-col items-center gap-2 bg-white p-2 lg:shadow-md lg:shadow-blueViolet'
+                : 'hidden'
             "
             [ngStyle]="{ 'max-height.px': openOptionOne ? maxHeight : 0 }"
           >
-            <li class="cursor-pointer">
+            <li class="cursor-pointer lg:hover:text-blueViolet">
               <a routerLink="/voluntariados">Buscar voluntariados</a>
             </li>
 
-            <li class="cursor-pointer">6 pasos para ser voluntario</li>
+            <li class="cursor-pointer lg:hover:text-blueViolet">
+              6 pasos para ser voluntario
+            </li>
           </ul>
         </li>
         <li>
@@ -64,7 +68,9 @@
             class="w-full flex items-center justify-center cursor-pointer"
             (click)="openOpTwo()"
           >
-            <span class="text-xl"> ¿Tienes dudas? </span>
+            <span class="text-xl whitespace-nowrap max-w-[200px]">
+              ¿Tienes dudas?
+            </span>
 
             <i
               class="bx bx-chevron-down text-2xl iconRow"
@@ -72,14 +78,18 @@
             ></i>
           </div>
           <ul
-            [ngClass]="openOptionTwo ? 'flex flex-col items-center' : 'hidden'"
+            [ngClass]="
+              openOptionTwo
+                ? 'flex flex-col items-center gap-2 p-2 bg-white lg:shadow-md lg:shadow-blueViolet lg:items-start'
+                : 'hidden'
+            "
           >
-            <li class="cursor-pointer">¿Quienes Somos?</li>
-            <li class="cursor-pointer">Testimonios de voluntarios</li>
-
-            <li class="cursor-pointer">Tipos de voluntariados</li>
-            <li class="cursor-pointer">Derechos y deberes</li>
-            <li class="cursor-pointer">Preguntas frecuentes (FAQ)</li>
+            <li class="cursor-pointer lg:hover:text-blueViolet">
+              ¿Quienes Somos?
+            </li>
+            <li class="cursor-pointer lg:hover:text-blueViolet">
+              Testimonios de voluntarios
+            </li>
           </ul>
         </li>
         <li class="lg:hidden text-xl cursor-pointer">Acerca de nosotros</li>
@@ -88,7 +98,11 @@
         <li
           class="flex flex-col items-center justify-center gap-4 lg:flex-row font-semibold lg:items-start"
         >
-          <a routerLink="/auth/login" class="lg:text-xl">Iniciar sesión</a>
+          <a
+            routerLink="/auth/login"
+            class="lg:text-xl whitespace-nowrap max-w-[200px] lg:hover:text-blueViolet"
+            >Iniciar sesión</a
+          >
           <a
             routerLink="/auth/options-register"
             class="py-1 px-4 bg-darkSlateBlue text-white rounded-md"
@@ -98,33 +112,5 @@
         </li>
       </ul>
     </nav>
-    <!-- <ul
-      class="hidden lg:flex items-center justify-center gap-6 text-base lg:items-start lg:text-lg"
-    >
-      <li class="cursor-pointer">Quienes somos</li>
-      <li>
-        <div
-          class="w-full flex items-center justify-center cursor-pointer"
-          (click)="openOpTwo()"
-        >
-          ¿Tienes dudas? <i class="bx bx-chevron-down text-2xl"></i>
-        </div>
-        <ul [ngClass]="openOptionTwo ? 'flex flex-col items-center' : 'hidden'">
-          <li class="cursor-pointer">Tipos de voluntariados</li>
-          <li class="cursor-pointer">Derechos y deberes</li>
-          <li class="cursor-pointer">Preguntas frecuentes (FAQ)</li>
-        </ul>
-      </li>
-      <li class="cursor-pointer">Contacto</li>
-      <li class="font-bold"><a routerLink="/auth/login">Iniciar sesión</a></li>
-      <li>
-        <a
-          routerLink="/auth/options-register"
-          class="py-1 px-4 bg-darkSlateBlue text-white rounded-md font-bold"
-          >Registrarse</a
-        >
-      </li>
-      <i class="bx bx-search lg:text-xl"></i>
-    </ul> -->
   </div>
 </header>

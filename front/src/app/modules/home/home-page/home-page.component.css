@@ -21,10 +21,8 @@
   width: 100%;
   } */
 
-
 @media (max-width: 768px) {
   .foto-fija {
     display: none;
   }
 }
-
