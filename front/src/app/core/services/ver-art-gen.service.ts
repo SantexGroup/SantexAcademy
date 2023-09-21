@@ -12,8 +12,4 @@ export class VerArtGenService {
     return this.apiService.get('/productos/products');
   }
 
-  getImageProduct(imageName: string){
-    return this.apiService.get('/images/' + imageName);
-  }
-
 }
