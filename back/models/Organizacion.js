@@ -30,7 +30,7 @@ const Organizacion = sequelize.define(
       unique: "telefono_UNIQUE",
     },
     cuit: {
-      type: DataTypes.STRING(11),
+      type: DataTypes.STRING(15),
       allowNull: false,
       unique: "cuit_UNIQUE",
     },

@@ -14,7 +14,7 @@ const getVoluntariadosByCriteria = async (queryOptions, bodyOptions) => {
   try {
     const options = { ...queryOptions, ...bodyOptions }; // Combinar las opciones de bésqueda
     const where = {}; // Excluir registros eliminados lágicamente
-    const validOptions = ['idVoluntariado', 'organizationId', 'descripcion', 'Reward', 'deletedAt'];
+    const validOptions = ['idVoluntariado', 'organizationId', 'descripcion', 'spots', 'Reward', 'deletedAt'];
     
     validOptions.forEach((option) => {
       if (options[option]) where[option] = options[option];
@@ -32,6 +32,24 @@ const getVoluntariadosByCriteria = async (queryOptions, bodyOptions) => {
     throw error;
   }
 };
+
+
+//Esta funcion se crea para que las organizaciones SOLO PUEDAN TRAER LOS VOLUNTARIADOS ASOCIADOS A SU ID
+
+const getVoluntariadosByOrganizationId = async (idOrg) => {
+  try {
+    const voluntariados = await Voluntariado.findAll({
+      where: { organizationId: idOrg, deletedAt: null },
+      attributes: { exclude: ['deletedAt'] },
+    });
+
+    return voluntariados;
+  } catch (error) {
+    console.error('The volunteering/s could not be retrieved due to an error.', error);
+    throw error;
+  }
+
+}
 
 const updateVoluntariadoById = async (idOrg, idVoluntariado, voluntariado) => {
   try {
@@ -79,6 +97,7 @@ const deleteVoluntariadoById = async (idVoluntariado) => {
 
 module.exports = {
   getVoluntariadosByCriteria,
+  getVoluntariadosByOrganizationId,
   createVoluntariado,
   updateVoluntariadoById,
   deleteVoluntariadoById,

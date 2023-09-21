@@ -24,6 +24,7 @@ const loginOrganization = async (req, res) => {
     // Generar token
     const token = jwt.sign(
       {
+        orgId: organization.id,
         orgEmail: organization.email,
         orgCuit: organization.cuit,
         orgPassword: organization.password,

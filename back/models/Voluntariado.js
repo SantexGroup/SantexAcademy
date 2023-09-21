@@ -14,6 +14,13 @@ const Voluntariado = sequelize.define(
       type: DataTypes.STRING(255),
       allowNull: false,
     },
+    spots: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        min: 1,
+      },
+    },
     Reward: {
       type: DataTypes.INTEGER,
       allowNull: false,

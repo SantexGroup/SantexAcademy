@@ -4,6 +4,7 @@ const userService = require('./usuario');
 const recompensaService = require('./recompensa');
 const vacanteService = require('./vacante');
 const voluntariadoService = require('./voluntariado');
+const usuarioEnVoluntariadoService = require('./usuarioEnVoluntariado');
 
 module.exports = {
   catalogoService,
@@ -12,4 +13,5 @@ module.exports = {
   recompensaService,
   vacanteService,
   voluntariadoService,
+  usuarioEnVoluntariadoService,
 };

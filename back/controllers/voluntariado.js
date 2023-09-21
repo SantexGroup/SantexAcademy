@@ -31,10 +31,25 @@ const getVoluntariadosByCriteria = async (req, res) => {
   }
 };
 
+const getVoluntariadosByOrganization = async (req, res) => {
+  try {
+    const { idOrg } = req.params;
+    const volunteerings = await voluntariadoService.getVoluntariadosByOrganization(idOrg);
+    if (!volunteerings) {
+      res.status(404).json({ action: 'getVoluntariadosByOrganization', error: 'Voluntariados not found.' });
+    } else {
+      res.json(volunteerings);
+    }
+  } catch (err) {
+    res.status(500).json({ action: 'getVoluntariadosByOrganization', error: err.message });
+  }
+
+}
+
 const updateVoluntariadoById = async (req, res) => {
   try {
     const { idOrg, idVoluntariado } = req.params;
-    const voluntariado = await voluntariadoService.updateVoluntariadoById(
+    const volunteering = await voluntariadoService.updateVoluntariadoById(
       idOrg,
       idVoluntariado,
       req.body
@@ -64,6 +79,7 @@ const deleteVoluntariadoById = async (req, res) => {
 
 module.exports = {
   getVoluntariadosByCriteria,
+  getVoluntariadosByOrganization,
   createVoluntariado,
   updateVoluntariadoById,
   deleteVoluntariadoById,

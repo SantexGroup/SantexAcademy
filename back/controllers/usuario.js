@@ -1,13 +1,11 @@
 // const jwt = require('jsonwebtoken');
 const { userService } = require("../services");
 const jwt = require("jsonwebtoken");
-require('dotenv').config();
-
-
+require("dotenv").config();
 
 const loginUser = async (req, res) => {
   try {
-    const {  email, password } = req.body;
+    const { email, password } = req.body;
 
     // Verificar credenciales
     const user = await userService.loginUser(email, password);
@@ -25,9 +23,9 @@ const loginUser = async (req, res) => {
       },
       process.env.SESSION_SECRET,
       { expiresIn: "1h" }
-    )
+    );
 
-    console.log(token)
+    console.log(token);
     // Envía la respuesta una vez que tengas el token
     return res.status(200).json({ token });
   } catch (error) {
@@ -36,8 +34,6 @@ const loginUser = async (req, res) => {
   }
 };
 
-
-
 const getUserProfile = async (req, res) => {
   try {
     const { id } = req.params;
@@ -45,11 +41,9 @@ const getUserProfile = async (req, res) => {
     res.status(200).json(userProfile);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ action: 'getUserProfile', error: err.message });
+    res.status(500).json({ action: "getUserProfile", error: err.message });
   }
-
-}
-
+};
 
 const createUser = async (req, res) => {
   try {
@@ -57,16 +51,13 @@ const createUser = async (req, res) => {
     const newUser = await userService.createUser(userData);
     res.status(201).json(newUser);
   } catch (err) {
-    if (err.message == 'Validation error') {
-      res.status(409).json({ action: 'createUser', error: err.message });
+    if (err.message == "Validation error") {
+      res.status(409).json({ action: "createUser", error: err.message });
     } else {
-      res.status(500).json({ action: 'createUser', error: err.message });
+      res.status(500).json({ action: "createUser", error: err.message });
     }
   }
 };
-
-
-
 
 // Se pasan req.query y req.body por que son los parametros que se pasan por la url y por el body
 const getUsersByCriteria = async (req, res) => {
@@ -88,8 +79,7 @@ const updateUserById = async (req, res) => {
     const id = Number(req.params.id);
     const userId = Number(req.userId);
 
-
-    console.log("id: "+id);
+    console.log("id: " + id);
 
     // Verificar si el usuario con el ID proporcionado existe
     const existingUser = await userService.getUsersByCriteria(id);
@@ -99,7 +89,9 @@ const updateUserById = async (req, res) => {
 
     // Comprueba si el ID del usuario en el token coincide con el ID del usuario que se está intentando modificar
     if (id !== userId) {
-      return res.status(403).json({ message: "No tienes permiso para modificar este usuario" });
+      return res
+        .status(403)
+        .json({ message: "No tienes permiso para modificar este usuario" });
     }
 
     // Actualiza el usuario con los datos enviados en el cuerpo de la solicitud
@@ -109,7 +101,6 @@ const updateUserById = async (req, res) => {
     res.status(500).json({ action: "updateUserById", error: err.message });
   }
 };
-
 
 const deleteUserById = async (req, res) => {
   try {
@@ -124,10 +115,6 @@ const deleteUserById = async (req, res) => {
 module.exports = {
   loginUser,
   getUserProfile,
-  createUser,
-  getUsersByCriteria,
-  updateUserById,
-  deleteUserById,
   createUser,
   getUsersByCriteria,
   updateUserById,
