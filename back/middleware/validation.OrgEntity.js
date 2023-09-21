@@ -13,15 +13,15 @@ const createAndUpdateOrganizationValidation = [
   body("email").isEmail().withMessage("El correo electrónico no es válido"),
 
   body("phone")
-  .optional()
-  .matches(/^(?:\d{7,14}|\d{2}[ -]?\d{4}[ -]?\d{4})$/)
-  .withMessage("El número de teléfono no es válido para Argentina"),
+    .optional()
+    .matches(/^(?:\d{7,14}|\d{2}[ -]?\d{4}[ -]?\d{4})$/)
+    .withMessage("El número de teléfono no es válido para Argentina"),
 
   body("cuit")
-  .matches(/^(?:[0-9]{11}|[0-9]{2}-[0-9]{8}-[0-9])$/)
-  .withMessage(
-    "El CUIT no es válido. Debe tener el formato XX-XXXXXXXX-X o XXXXXXXXXXX."
-  ),
+    .matches(/^(?:[0-9]{11}|[0-9]{2}-[0-9]{8}-[0-9])$/)
+    .withMessage(
+      "El CUIT no es válido. Debe tener el formato XX-XXXXXXXX-X o XXXXXXXXXXX."
+    ),
 
   body("location")
     .isLength({ min: 2 })
@@ -33,10 +33,10 @@ const createAndUpdateOrganizationValidation = [
       "La contraseña debe contener al menos una letra minúscula, una letra mayúscula, un número y un símbolo, y tener al menos 8 caracteres de longitud"
     ),
 
-  body("image")
-    .optional()
-    .isURL()
-    .withMessage("La URL de la imagen no es válida"),
+  // body("image")
+  //   .optional()
+  //   .isURL()
+  //   .withMessage("La URL de la imagen no es válida"),
 
   body("category")
     .isIn([
