@@ -198,12 +198,7 @@ async function canjearPremioService(volunteerId, premioId) {
     }
 
     // Realizar el canje
-    await voluntario.addPremios(premio); // Utiliza el nombre correcto de la asociación
-    await models.premiosMid.create({
-      volunteerId,
-      premioId,
-      date: new Date(),
-    });
+    await voluntario.addPremio(premio, { through:{date: new Date() } });
 
     // Actualizar los puntos del voluntario
     voluntario.points -= puntosPremio;
@@ -222,7 +217,6 @@ async function canjearPremioService(volunteerId, premioId) {
     return { error: 'Error interno en el servidor' };
   }
 }
-
 
 module.exports = {
   // eslint-disable-next-line max-len
