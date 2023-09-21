@@ -1,64 +1,73 @@
 <app-barra></app-barra>
-
-<p *ngIf="!confVendedor">Para subir un articulo nuevo debe loguearse como vendedor</p>
-
-<div class="formulario" *ngIf="confVendedor">
-
+<div class="formulario">
     <h2>Carga de Producto</h2>
 
-    <form action="#" method="post" [formGroup]="formUp">
+    <form action="#" class="form" method="post" id="form-art"  enctype="multipart/form-data">
+        <div class="row">
 
-        <div class="categorias">
-            <select formControlName="catReg" name="categoria">
-                <option value="0">Seleccione Categoria</option>
-                <option *ngFor="let categoria of listcategorias" [value]="categoria.id">{{ categoria.name }}
-                </option>
-            </select>
-            <div class="select_arrow"></div>
-        </div>
+            <!-- Columna izquierda -->
+            <div class="media_columna">
+                <div class="campo">
+                    <label for="nombre">Nombre del Producto:</label>
+                    <input [(ngModel)]="nomReg" type="text" id="nombre" name="nombre" required>
+                </div>
 
-        <div class="campo">
-            <label for="nombre">Nombre del Producto:</label>
-            <input formControlName="nomReg" type="text" id="nombre" name="nombre" required>
-        </div>
-    
-        <div class="campo">
-            <label for="descripcion">Descripción del Producto:</label>
-            <textarea formControlName="desReg" id="descripcion" name="descripcion" rows="4" required></textarea>
-        </div>
+                <div class="campo">
+                    <label for="descripcion">Descripción del Producto:</label>
+                    <textarea [(ngModel)]="desReg" id="descripcion" name="descripcion" rows="4" required></textarea>
+                </div>
 
-  
-        <div class="campo">
-            <label for="precio">Precio del Producto:</label>
-            <div class="precio-input">
-                <span class="peso-sign">$</span> 
-                 <input formControlName="preReg"type="number" id="precio" name="precio" step="1.00" required>
+                <div class="campo">
+                    <label for="precio">Precio del Producto:</label>
+                    <div class="precio-input">
+                        <span class="peso-sign">$</span>
+                        <input [(ngModel)]="preReg" type="number" id="precio" name="precio" step="1.00" required>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="campo">
-            <label for="imagenes">Cargar Imágenes del Producto:</label>
-            <input type="file" id="imagenes" name="images" formControlName="images" (change)="onFileSelected($event)" accept="image/*" multiple />
-            <label class="subir-boton" for="imagenes">Seleccionar Imágenes</label>
-        </div>
+            <!-- Columna derecha -->
+            <div class="media_columna_der">
 
-        <div class="campo">
-            <label for="envio">Opción de Envío:</label>
-            <select formControlName="envReg" id="envio" name="envio" required>
-                <option value="0">Envío Domicilio</option>
-                <option value="1">Buscar en local</option>
-            </select>
-        </div>
-      
-        <input (click)="subirProducto()" class="subir-boton" type="button" value="Subir-Producto" [disabled]="formUp.invalid" />
-        <div *ngIf="mensajeRegistro">
-             {{ mensajeRegistro }}
-        </div>
+                <div class="campo">
+                    <label for="categorias">Categorias:</label>
+                    <select [(ngModel)]="catReg" name="categoria">
+                        <option value="0">Seleccione Categoria</option>
+                        <option *ngFor="let categoria of listcategorias" [value]="categoria.id">{{ categoria.name }}
+                        </option>
+                    </select>
+                    <div class="select_arrow"></div>
+                </div>
 
+                <div class="campo">
+                    <label for="imagenes">Cargar Imágenes del Producto:</label>
+                    <input type="file" id="imagenes" name="images" (change)="onFileSelected($event)" accept="image/*"
+                        multiple />
+                </div>
+
+                <div class="campo">
+                    <label for="envio">Opción de Envío:</label>
+                    <select [(ngModel)]="envReg" id="envio" name="envio" required>
+                        <option value="0">Envío Domicilio</option>
+                        <option value="1">Buscar en local</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="botones-container">
+                <input (click)="subirProducto()" class="subir-boton" type="button" value="Subir Producto" />
+            </div>
+            <div *ngIf="mensajeRegistro" class="mensaje">
+                {{ mensajeRegistro }}
+            </div>            
+        </div>
     </form>
+</div>
 
+<div class="imagenes-container">
+    <div class="imagenes">
         <div class="imagen" *ngFor="let image of uploadedImages">
             <img [src]="image" alt="Imagen cargada" />
         </div>
-
+    </div>
 </div>
