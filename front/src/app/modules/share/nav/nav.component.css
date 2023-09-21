@@ -1,97 +1,187 @@
-.navbar-brand {
-  color: #ff6501;
-}
-.nav-link {
-color: #f7efe5;
-}
-.nav-item:hover, .nav-item-2:hover {
-	background:linear-gradient(to bottom, #fcebd5 5%, #f7efe5 100%);
-	background-color:#0f226d;
-  border-color:cadetblue ;
-  border-radius:6px;
-}
-
-.navbar-custom {
-  background-color:#0f226d;
-
-}
-
-.nav-link.active {
-  color: #ff6501;
-}
-
-.nav-link:hover {
-  color:#ff6501 ;
-  font-weight: bold;
-}
-
-.nav-item-2 {
-  float: "right";
-}
-
-.container-fluid{
-  background-color:#0f226d; 
-}
-
-
-
-/*ul {
-  list-style-type: none;
+/* Estilos generales */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  background-color: #333;
+  font-size: 20px;
 }
 
-body {
-    background-color: #fff59d;
-    margin: 0;
+
+nav {
+  background-color: #1b3039;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 85px;
+  padding: 20px 20px;
 }
 
-.header {
-    background-color: #1b3039;
+nav .logo {
+  cursor: pointer;
+}
+
+nav .logo img {
+  height: 50px;
+  width: auto;
+  transition: all 0.3s;
+}
+
+nav .logo img:hover {
+  transform: scale(1.2);
+}
+
+nav .nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+nav .nav-links li {
+  padding: 0 20px;
+}
+
+nav .nav-links li:first-child {
+  padding-right: 0;
+}
+
+nav .nav-links li:hover {
+  transform: scale(1.1);
+}
+
+nav .nav-links a {
+  font-weight: 700;
+  color: #eceff1;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav .nav-links li.active {
+  background-color: white; /* Fondo blanco */
+}
+
+nav .nav-links li.active a {
+  color: #ffbc0e; /* Texto en naranja */
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.menu-button.open {
+  animation: rotateToClose 0.3s forwards;
+  content: "☰";
+}
+
+@keyframes rotateToClose {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
+
+/* Estilos para pantallas más pequeñas, por ejemplo, teléfonos móviles */
+@media screen and (max-width: 768px) {
+  nav {
+    padding: 5px 10px;
+    height: auto;
+  }
+
+  nav .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+    display: none;
+  }
+
+  nav .nav-links.active {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 85px;
-    padding: 5px 20px;
+  }
+
+  nav .nav-links li {
+    padding: 10px 0;
+  }
+
+  .menu-button {
+    font-size: 30px;
+  }
 }
 
-.header .logo {
-    cursor: pointer;
-    margin-right: auto;
+/* Estilos adicionales */
+/* Agrega tus estilos adicionales aquí */
+
+/* Estilos para la foto de perfil y el menú desplegable */
+nav .user-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Espacio entre la foto de perfil y la flecha */
+  margin-right: 20px; /* Espacio entre la navegación y la foto de perfil */
+  position: relative;
 }
 
-.header .logo img {
-    height: 70px;
-    width: auto;
-    transition: all 0.3s;
+nav .profile-button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-/*.navbar-brand {
-  color:blue;
-}*/
+nav .arrow-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
-/*p{
-  text-align: left;
-  /*padding-left: 2.5em;*/
+nav .profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
 
-/*.nav-item, .nav-item-2 {
-	box-shadow:inset 0px 1px 0px 0px #fce2c1;
-	/*background:linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);*/
-	/*background-color:#ffc477;
-	border-radius:6px;
-	border:1px solid #eeb44f;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;*/
-	/*padding:3px 5px;*/
-/*text-decoration:none;*/
-	/*text-shadow:0px 1px 0px #cc9f52;*/
- /* margin: 3px;*/
+nav .arrow-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
 
- /*.nav-item:active {
-	position:relative;
-	top:1px;*/
+nav .profile-dropdown {
+  position: absolute;
+  top: 60px; /* Ajusta la posición vertical según sea necesario */
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+/* Mostrar el menú desplegable cuando se abre */
+nav .user-profile.active .profile-dropdown {
+  display: block;
+}
+
+/* Estilos para las opciones de menú seleccionadas */
+nav .nav-links li.selected {
+  background-color: white; /* Fondo blanco */
+  height: 100%; /* Ocupar todo el alto del nav */
+  display: flex;
+  align-items: center; /* Para centrar verticalmente el texto */
+  border-radius: 10px; /* Borde redondeado */
+}
+
+nav .nav-links li.selected a {
+  color: #ffbc0e; /* Texto en naranja */
+}
+
+/* Estilos para el estado hover */
+nav .nav-links li:hover {
+  background-color: white; /* Fondo blanco al pasar el mouse */
+  border-radius: 10px; /* Borde redondeado al pasar el mouse */
+}
+
+nav .nav-links li:hover a {
+  color: #ffbc0e; /* Texto en naranja al pasar el mouse */
+}

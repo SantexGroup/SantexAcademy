@@ -10,3 +10,41 @@
     text-align: center;
     color: rgb(2, 2, 126);
   }
+  /*Ya sabemos porque se agrega esta parte*/
+  .floating-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(0, 0%, 0%, 0.502);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 9999;
+  }
+  .popup-content {
+    background-color: hsla(235, 77%, 51%, 0.901);
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.308);
+  }
+  .popup-content:hover {
+    background-color: #2121e2;
+  }
+  button {
+    background-color: #d87920;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  button:hover {
+    background-color: #ffaa00;
+  }

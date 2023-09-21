@@ -19,6 +19,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'idnivel',
         targetKey: 'id', // Esto debe ser la clave primaria del modelo Nivel
       });
+      models.Curso.belongsToMany(models.User, {
+        through: models.Matricula,
+        foreignKey: 'cursoId',
+        otherKey: 'userId',
+      });
     }
   }
   Curso.init({

@@ -1,10 +1,10 @@
 const bcript = require('bcrypt');
-const { generarJWT } = require('../helpers/jwt');
-const { userService, emailService } = require('../services');
-const { User } = require('../models');
-const { validationResult } = require('express-validator');
+//const { validationResult } = require('express-validator');//BORRAR si no se usa
 
+const { User } = require('../models');
+const { userService, emailService } = require('../services');
 const { codeGenerator } = require('../helpers/codeGenerator');
+const { generarJWT } = require('../helpers/jwt');
 
 const allUser = async (req, res, next) => {
   try {
@@ -29,11 +29,22 @@ const getUser = async (req, res, next) => {
   }
 };
 
+const getCursos = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const cursos = await userService.getCursos(id);
+    res.status(200).json(cursos);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    next(error);
+  }
+};
+
 const createUser = async (req, res) => {
   const { body } = req;
   const { email, username, password } = body;
 
-  // console.log(body);
   body.verificationCode = false;// Establece false en la verificacion de email hasta que se realice
   body.codeRegister = codeGenerator();// Agrega un codigo unico para verificacion de email
   const userCode = req.body.codeRegister;
@@ -46,7 +57,6 @@ const createUser = async (req, res) => {
         email,
       },
     });
-
     if (user) {
       return res.status(400).json({
         ok: false,
@@ -60,7 +70,6 @@ const createUser = async (req, res) => {
         username,
       },
     });
-
     if (user) {
       return res.status(400).json({
         ok: false,
@@ -75,8 +84,7 @@ const createUser = async (req, res) => {
     // crear usuario en db
     user = await userService.createUser(body);
     // eslint-disable-next-line max-len
-    await emailService.sendConfirmationEmail(user.email, user.username);// Envia email a emailService
-
+    //await emailService.sendConfirmationEmail(user.email, user.username);// Envia email a emailService
     const token = await generarJWT(user.id, user.username);
 
     await emailService.sendMail(user, userCode, userEmail, verificationLink);// Envia a emailService
@@ -105,7 +113,6 @@ const login = async (req, res) => {
         email,
       },
     });
-
     if (!user) {
       return res.status(400).json({
         ok: false,
@@ -114,7 +121,6 @@ const login = async (req, res) => {
     }
 
     const validPassword = bcript.compareSync(password, user.password);
-
     if (!validPassword) {
       return res.status(400).json({
         ok: false,
@@ -123,7 +129,6 @@ const login = async (req, res) => {
     }
 
     const token = await generarJWT(user.id, user.username);
-
     return res.json({
       ok: true,
       id: user.id,
@@ -133,7 +138,6 @@ const login = async (req, res) => {
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
-
     return res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',
@@ -167,6 +171,7 @@ const updateUser = async (req, res, next) => {
   }
 };
 
+
 const deleteUser = async (req, res, next) => {
   const { id } = req.params;
   try {
@@ -182,6 +187,7 @@ const deleteUser = async (req, res, next) => {
 module.exports = {
   allUser,
   getUser,
+  getCursos,
   createUser,
   login,
   revalidarToken,

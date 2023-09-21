@@ -19,6 +19,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'idtipodeusuario',
         targetKey: 'id', // Esto debe ser la clave primaria del modelo tipodeusuario
       });
+      models.User.belongsToMany(models.Curso, {
+        through: models.Matricula,
+        foreignKey: 'userId',
+        otherKey: 'cursoId',
+      });
     }
   }
   User.init({

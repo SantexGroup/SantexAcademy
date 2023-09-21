@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormsModule } from '@angular/forms';//BORRAR si no se usa
 
 import { RegistroService } from '../../../core/services/registro.service';
 import { User } from '../../users/interface/user.interface';
@@ -40,7 +39,7 @@ export class RegisterformComponent implements OnInit {
     activoactualmente: true,
     createdAt: new Date(),
     updatedAt: new Date(),
-    //tipodeusuario: this.tipoUsuarioNvo,
+    TipoDeUsuario: this.tipoUsuarioNvo,
     verificationCode: false,
     codeRegister: 'SinConfirmar',
   }
@@ -97,7 +96,6 @@ export class RegisterformComponent implements OnInit {
   passwordCompare(control: AbstractControl): { [key: string]: any } | null {
     const password = this.form.get('password')?.value;
     const confirmPassword = control.value;
-
     if (password === confirmPassword) {
       return null; // Las contraseñas coinciden, no hay error
     } else {
@@ -105,36 +103,50 @@ export class RegisterformComponent implements OnInit {
     }
   }
 
-  //Falta manejo de errores
+  ////////////////////////////////Funcion de envio de datos del formulario/////////////////////////////////////////////
   onEnviar(event: Event, usuario: User): void {
     event.preventDefault;
     const userType = this.form.get('userType')?.value;
     if (this.form.valid) {
-      this.usersService.addUser(this.userData)
-        .subscribe(user => {
-          if (user) {
-            console.log('Registro exitoso:', user);
-            alert("El registro ha sido creado satisfactoriamente. Por favor inicie Sesión.");
-            this.redirregistersuccess()
-            //this.router.navigate(['/users/index'])//Cambio para dar mensaje a futuro necesario
-          } else {
-            console.error('Error al registrar');
-          }
+       if (this.tipoDeUsuarioSeleccionado !== undefined) {
+         this.userData.idtipodeusuario = this.tipoDeUsuarioSeleccionado;// Asigna el valor de tipoDeUsuarioSeleccionado a userData
+         //Envia datos recogidos por el formulario al backend y redirige front despues de una respuesta
+         this.usersService.addUser(this.userData)
+           .subscribe(user => {
+             if (user) {
+               console.log('Registro exitoso:', user);
+               alert("Sea registrado exitosamente. Por favor revise su correo.");
+               this.redirregistersuccess()
+            } else {
+               console.error('Error al registrar');
+            }
         })
+      } else {
+        console.error('El tipo de usuario no fue seleccionado o es undefined.');
+      }
     }
     else {
       this.form.markAllAsTouched();
     }
   };
+  ////////////////////////////////////////////////////////////////////////
 
-  // Funcion que redirige a la página de respuesta
+  // Funcion que redirige a la página de respuesta se usa en onEnviar
   redirregistersuccess() {
     this.router.navigate(['registeranswer']);
   }
 
-  // Método para manejar la selección de nivel
-  onNivelChange(event: any): void {
-    this.tipoDeUsuarioSeleccionado = event.target.value; // Almacena el tipo de usuario seleccionado
+  // Maneja la selección de tipo y almacena selección
+  onTipoDeUsuarioChange(event: any): void {
+    this.tipoDeUsuarioSeleccionado = event.target.value; 
+    // Busca el tipo de usuario seleccionado en this.tiposDeUsuario para cambiarlo
+    const tipoDeUsuarioSeleccionado = this.tiposDeUsuario.find(tipo => tipo.id === this.tipoDeUsuarioSeleccionado);
+
+      if (!this.tipoUsuarioNvo) {
+         console.error('Tipo de usuario no encontrado');
+      }
+
+      this.userData.TipoDeUsuario = this.tipoUsuarioNvo;// Actualiza this.userData.TipoDeUsuario con la eleccion del usuario
   }
 
   get Password() {
@@ -174,30 +186,4 @@ export class RegisterformComponent implements OnInit {
   }
 
 }
-
-//Viejo BORRAR
-  /*Método de Edu
-  submitForm() {
-      this.http.post<any>('http://localhost:4001/user/', this.userData).subscribe(
-        response => {
-          if (response.redirectTo) {
-            this.router.navigate([response.redirectTo]);
-          } else {
-            console.log('False? showRegisterAnswer:', this.showRegisterAnswer);//BORRAR establece a false
-            console.log('Registro exitoso:', response);
-            this.showRegisterForm = false; // Oculta el formulario
-            console.log('False? showRegisterForm:', this.showRegisterForm);//BORRAR establese a False
-            this.showRegisterAnswer = true; // Establecer a true después de enviar el formulario
-            console.log('True? showRegisterAnswer:', this.showRegisterAnswer);//BORRAR establece a true
-            this.redirregistersuccess();// Redirige a la respuesta exitosa
-            console.log('Despues de redirigir');//BORRAR
-          }
-  
-          (error: any) => {
-            console.error('Error al registrar:', error);
-          }
-        
-        }
-      );
-    }*/
 
