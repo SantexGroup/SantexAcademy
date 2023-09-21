@@ -1,27 +1,28 @@
 <app-barra></app-barra>
-<div class="formulario">
+<p *ngIf="!confVendedor">Para subir un articulo nuevo debe loguearse como vendedor</p>
+<div class="formulario" *ngIf="confVendedor">
     <h2>Carga de Producto</h2>
 
-    <form action="#" class="form" method="post" id="form-art"  enctype="multipart/form-data">
+    <form action="#" class="form" method="post" id="form-art"  enctype="multipart/form-data" [formGroup]="formUp">
         <div class="row">
 
             <!-- Columna izquierda -->
             <div class="media_columna">
                 <div class="campo">
                     <label for="nombre">Nombre del Producto:</label>
-                    <input [(ngModel)]="nomReg" type="text" id="nombre" name="nombre" required>
+                    <input formControlName="nomReg" type="text" id="nombre" name="nombre" required>
                 </div>
 
                 <div class="campo">
                     <label for="descripcion">Descripción del Producto:</label>
-                    <textarea [(ngModel)]="desReg" id="descripcion" name="descripcion" rows="4" required></textarea>
+                    <textarea formControlName="desReg" id="descripcion" name="descripcion" rows="4" required></textarea>
                 </div>
 
                 <div class="campo">
                     <label for="precio">Precio del Producto:</label>
                     <div class="precio-input">
                         <span class="peso-sign">$</span>
-                        <input [(ngModel)]="preReg" type="number" id="precio" name="precio" step="1.00" required>
+                        <input formControlName="preReg" type="number" id="precio" name="precio" step="1.00" required>
                     </div>
                 </div>
             </div>
@@ -31,7 +32,7 @@
 
                 <div class="campo">
                     <label for="categorias">Categorias:</label>
-                    <select [(ngModel)]="catReg" name="categoria">
+                    <select formControlName="catReg" name="categoria">
                         <option value="0">Seleccione Categoria</option>
                         <option *ngFor="let categoria of listcategorias" [value]="categoria.id">{{ categoria.name }}
                         </option>
@@ -41,13 +42,13 @@
 
                 <div class="campo">
                     <label for="imagenes">Cargar Imágenes del Producto:</label>
-                    <input type="file" id="imagenes" name="images" (change)="onFileSelected($event)" accept="image/*"
+                    <input formControlName="images" type="file" id="imagenes" name="images" (change)="onFileSelected($event)" accept="image/*"
                         multiple />
                 </div>
 
                 <div class="campo">
                     <label for="envio">Opción de Envío:</label>
-                    <select [(ngModel)]="envReg" id="envio" name="envio" required>
+                    <select formControlName="envReg" id="envio" name="envio" required>
                         <option value="0">Envío Domicilio</option>
                         <option value="1">Buscar en local</option>
                     </select>
@@ -55,7 +56,7 @@
             </div>
 
             <div class="botones-container">
-                <input (click)="subirProducto()" class="subir-boton" type="button" value="Subir Producto" />
+                <input (click)="subirProducto()" class="subir-boton" type="button" value="Subir Producto" [disabled]="formUp.invalid"/>
             </div>
             <div *ngIf="mensajeRegistro" class="mensaje">
                 {{ mensajeRegistro }}
