@@ -49,14 +49,20 @@ const getUserByData = async (searchCriteria) => {
       where: searchCriteria,
     });
     if (!user) {
-      throw new Error('No se encuentra usuario en userService'); // Detiene todo por el error
+      throw new Error('No se encuentra usuario en userService'+ JSON.stringify(searchCriteria)); // Detiene todo por el error
     }
     return user;
   } catch (error) {
-    console.error('Hubo un error al buscar criteria en userService:', error);
+    console.error('Hubo un error al buscar criteria en userService:', error + JSON.stringify(searchCriteria));
     throw error; // Lanzar la excepción original nuevamente
   }
 };
+// const getUserByData = async (searchCriteria) => {
+//   const user = await User.findOne({
+//     where: searchCriteria,
+//   });
+//   return user;
+// };
 
 //-------------------------------------------------------------------------------------//
 
