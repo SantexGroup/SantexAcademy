@@ -4,6 +4,8 @@ import { userInterface } from 'src/app/core/interfaces/user.interface';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { UserService } from 'src/app/core/services/usuario.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 
 @Component({
@@ -18,13 +20,14 @@ export class PersonalComponent implements OnInit {
   personalForm: FormGroup;
   default = 'assets/Imagenes/placeHolderImage.jpg';
   url: string = this.default;
-  imagen= " ";
+  imagen= "";
 
   constructor(
     private fb: FormBuilder,
     private userData: UserDataService,
     private userService: UserService,
-    public views: NavBarService
+    public views: NavBarService,
+    public toastr :ToastrService 
   ) { 
     this.personalForm = this.fb.group({ 
       firstName: [''],
@@ -84,15 +87,12 @@ export class PersonalComponent implements OnInit {
       this.userService.uploadImage(this.imagen).subscribe({
         next: (data) => { 
           this.userData.urlPicture = ("https://drive.google.com/uc?export=view&id=" + data) 
-          console.log("Data desde updateUser", data);
-          console.log("Data en user service", this.userData.urlPicture);
         },
         error: (err) => { 
-          console.log(err); 
           this.mensajeError = err;
         },
         complete: () => {
-          console.log("Imagen Guardada") 
+          this.toastr.success('Datos de usuario actualizados', 'DATOS PERSONALES');
         }
       })
     }
@@ -123,6 +123,4 @@ export class PersonalComponent implements OnInit {
       }
     })
   }  
-
-
 }

@@ -30,7 +30,8 @@ export class ExperiencesComponent implements OnInit {
     private _experiencesService: ExperiencesService,
     private fb: FormBuilder,
     public userData: UserDataService,
-    public views: NavBarService
+    public views: NavBarService,
+    public toastr :ToastrService 
   ) {
     this.experienceForm = this.fb.group({
       description: '',
@@ -103,7 +104,10 @@ export class ExperiencesComponent implements OnInit {
 
     this._experiencesService.addExperience(newExperience).subscribe((experience) => {
       this.userData.experiences.push(experience);
+      this.toastr.success('Se agrego un nueva experiencia', 'EXPERIENCIA');
     });
+
+
 
     this.experienceForm.reset();
   }
@@ -143,10 +147,9 @@ export class ExperiencesComponent implements OnInit {
 
     this._experiencesService.updateExperience(this.experienceId, newDataExperience).subscribe(() => {
       this.userData.getExperience();
+      this.toastr.success('Experiencia actualizada', 'EXPERIENCIAS');
     });
     
-    console.log(this.userData.companies);
-
     this.experienceForm.reset();
 
     this.views.saveButton = false;
@@ -158,6 +161,7 @@ export class ExperiencesComponent implements OnInit {
     const elementId = Number((this.userData.experiences[index]).id)
     this._experiencesService.deleteExperience(elementId).subscribe(() => {
       this.userData.experiences.splice(index, 1);
+      this.toastr.error('Se elimino la experiencia');
     });
 
     this.experienceForm.reset();

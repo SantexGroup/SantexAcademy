@@ -4,6 +4,7 @@ import { Language } from 'src/app/core/interfaces/language.interface';
 import { LanguagesService } from 'src/app/core/services/languages.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-language',
@@ -21,6 +22,7 @@ export class LanguageComponent implements OnInit {
     private _languageService: LanguagesService,
     private fb: FormBuilder,
     public views: NavBarService,
+    public toastr :ToastrService 
   ) {
     this.languageForm = this.fb.group({
       language: '',
@@ -45,6 +47,7 @@ export class LanguageComponent implements OnInit {
     }
     this._languageService.addLanguage(newLanguage).subscribe((language) => {
       this.userData.languages.push(language);
+      this.toastr.success('Se agrego un nuevo idioma', 'IDIOMAS');
     })
 
     this.userData.languageGet();
@@ -70,11 +73,11 @@ export class LanguageComponent implements OnInit {
     const newLanguage: Language = {
       language: this.languageForm.get('language')?.value,
       level: this.languageForm.get('level')?.value,
-
     }
 
     this._languageService.updateLanguage(this.languageId, newLanguage).subscribe(() => {
       this.userData.languageGet();
+      this.toastr.success('Idioma actualizado', 'IDIOMAS');
     });
 
     this.languageForm.reset();
@@ -89,6 +92,7 @@ export class LanguageComponent implements OnInit {
     const elementId = Number((this.userData.languages[index]).id);
     this._languageService.deleteLanguage(elementId).subscribe(() => {
       this.userData.languages.splice(index, 1);
+      this.toastr.error('Se elimino el idioma');
     });
   }
 

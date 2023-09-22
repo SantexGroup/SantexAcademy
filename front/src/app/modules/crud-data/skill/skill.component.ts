@@ -4,6 +4,7 @@ import { Skill } from 'src/app/core/interfaces/skill.interface';
 import { SkillService } from 'src/app/core/services/skill.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-skill',
@@ -20,7 +21,8 @@ export class SkillComponent implements OnInit{
     private _skillService: SkillService, 
     private fb: FormBuilder,
     public userData: UserDataService,
-    public views: NavBarService
+    public views: NavBarService,
+    public toastr :ToastrService 
     ) {
     this.skillForm = this.fb.group({
       skill: '',
@@ -43,6 +45,7 @@ export class SkillComponent implements OnInit{
 
     this._skillService.addSkill(newSkill).subscribe((skill) => {
       this.userData.skills.push(skill);
+      this.toastr.success('Se agrego un nueva habilidad', 'HABILIDADES');
     });
 
     this.skillForm.reset();
@@ -69,6 +72,7 @@ export class SkillComponent implements OnInit{
 
     this._skillService.updateSkill(this.skillId, newSkill).subscribe(() => {
       this.userData.getSkill();
+      this.toastr.success('Se actualizo la habilidad', 'HABILIDADES');
     });
 
     this.skillForm.reset();
@@ -83,6 +87,7 @@ export class SkillComponent implements OnInit{
     const elementId = Number((this.userData.skills[index]).id);
     this._skillService.deleteSkill(elementId).subscribe(() => {
       this.userData.skills.splice(index, 1);
+      this.toastr.error('Se elimino la habilidad');
     });
   }
 

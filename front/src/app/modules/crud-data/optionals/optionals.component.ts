@@ -10,6 +10,7 @@ import { MaritalsService } from 'src/app/core/services/maritals.service';
 import { OptionalsService } from 'src/app/core/services/optionals.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-optionals',
@@ -29,7 +30,8 @@ export class OptionalsComponent implements OnInit {
     private _optionalsService: OptionalsService,
     public userData: UserDataService,
     private fb: FormBuilder,
-    public views: NavBarService
+    public views: NavBarService,
+    public toastr :ToastrService 
   ) {
     this.optionalsForm = this.fb.group({
       maritalId: ['', Validators.required],
@@ -111,6 +113,7 @@ export class OptionalsComponent implements OnInit {
 
     this._optionalsService.addOptionals(newOptionals).subscribe((optional) => {
       this.userData.optionals.push(optional);
+      this.toastr.success('Se agregaron nuevos opcionales', 'OPCIONALES');
     });
     
     this.optionalsForm.reset();
@@ -160,6 +163,7 @@ export class OptionalsComponent implements OnInit {
 
     this._optionalsService.updateOptionals(this.optionalId, newDataOptional).subscribe(() => {
       this.userData.getMyOptionals();
+      this.toastr.success('Se actualizaron los opcionales', 'OPCIONALES');
     });
 
     this.optionalsForm.reset();
@@ -174,6 +178,7 @@ export class OptionalsComponent implements OnInit {
     const elementId = Number((this.userData.optionals[index]).id)
     this._optionalsService.deleteOptional(elementId).subscribe(() => {
       this.userData.optionals.splice(index, 1);
+      this.toastr.error('Se eliminaron los opcionales');
     });
   }
 }

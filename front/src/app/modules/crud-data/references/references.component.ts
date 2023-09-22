@@ -5,6 +5,7 @@ import { ExperiencesService } from 'src/app/core/services/experiences.service';
 import { ReferencesService } from 'src/app/core/services/references.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-references',
@@ -22,7 +23,8 @@ export class ReferencesComponent implements OnInit {
     public views: NavBarService,
     private _company: ExperiencesService,
     private fb: FormBuilder,
-    private _referenceService: ReferencesService
+    private _referenceService: ReferencesService,
+    public toastr :ToastrService 
   ) {
     this.referenceForm = this.fb.group({
       name: '',
@@ -66,6 +68,7 @@ export class ReferencesComponent implements OnInit {
     }
     this._referenceService.addReference(newReference).subscribe((reference) => {
       this.userData.references.push(reference);
+      this.toastr.success('Se agrego un nueva referencia', 'REFERENCIA');
     })
 
     this.referenceForm.reset();
@@ -100,6 +103,7 @@ export class ReferencesComponent implements OnInit {
 
     this._referenceService.updateReference(this.referenceId, updateReference).subscribe((referece) => {
       this.userData.getReference()
+      this.toastr.success('Se actualizo la referencia', 'REFERENCIA');
     });
 
     this.referenceForm.reset();
@@ -114,6 +118,7 @@ export class ReferencesComponent implements OnInit {
     const elementId = Number(this.userData.references[index].id);
     this._referenceService.deleteReference(elementId).subscribe(()=>{
       this.userData.references.splice(index, 1);
+      this.toastr.error('Se elimino la referencia');
     });
 
     this.referenceForm.reset();
