@@ -9,9 +9,10 @@ import { FooterComponent } from './Shared/footer/footer.component';
 import { BannerComponent } from './Features/banner/banner.component';
 import { BasesComponent } from './Features/bases/bases.component';
 import { RegistroComponent } from './Features/registro/registro.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CargaArticulosComponent } from './Features/carga-articulos/carga-articulos.component';
+import { TarjetaArticuloComponent } from './Features/tarjeta-articulo/tarjeta-articulo.component';
 
 
 @NgModule({
@@ -25,12 +26,14 @@ import { CargaArticulosComponent } from './Features/carga-articulos/carga-articu
     BasesComponent,
     RegistroComponent,
     CargaArticulosComponent,
+    TarjetaArticuloComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

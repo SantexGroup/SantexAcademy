@@ -8,14 +8,7 @@
 img {
     width: 80px;
     padding-left: 30px;
-} 
-
-/* si hago esto no funciona no sé porqué
-.logoBarra {
-    width: 70px;
-}*/ 
-
-/* menu */
+}
 
 .dropdown-menu {
     border: 1px solid #e6b68b;
@@ -51,9 +44,6 @@ img {
     display: flex;
     align-items: center;
     margin: 20px;
-    /*lo de abajo no funciona */
-    width: 80px;
-    max-width: 200px;
 }
 
 #buscador {
@@ -75,7 +65,6 @@ img {
 
 app-login {
     display:flex;
-    align-items: center;
     justify-content: right;
     width: 100%;
     padding-right: 60px;

@@ -1,4 +1,4 @@
-const { Products, tipoProducto } = require('../models');
+const { Products, tipoProducto, Images } = require('../models');
 // const jwt = require('jsonwebtoken')
 
 /* async function login(name, password) {
@@ -33,7 +33,11 @@ async function products() {
 
 // obterner por id
 async function getProductoById(id) {
-  const articulos = await Products.findByPk(id);
+  const articulos = await Products.findByPk(id, {
+    include: {
+      model: Images
+    }
+  });
 
   if (articulos == null) {
     throw new Error();

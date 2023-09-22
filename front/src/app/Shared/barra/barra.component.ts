@@ -13,7 +13,8 @@ export class BarraComponent implements OnInit {
   constructor (private service: BarraService) { }
 
   ngOnInit(): void {
-    this.service.getCategories().subscribe(categorias => {console.log(categorias)
+    this.service.getCategories().subscribe(categorias => {
+    console.log(categorias)
     this.listCategorias = categorias
     })
   }
