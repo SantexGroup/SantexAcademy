@@ -28,7 +28,7 @@ userRouter.delete('/:id', verifyToken, isAdmin, userController.deleteUserById);
 
 
 // Ruta para que un usuario pueda postularse a un voluntario
-userRouter.post('/postulate/:id', verifyToken, isUser, usuarioEnVoluntariadoController.join);
+userRouter.post('/postulate/:id',verifyToken, isUser, usuarioEnVoluntariadoController.join);
 
 
 module.exports = userRouter;
