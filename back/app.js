@@ -12,6 +12,8 @@ const cors = require('cors');
 require('envalid');
 const logger = require('./utils/winston.logger');
 
+const path = require('path');
+const fs = require('fs');
 // Models:
 const models = require('./models');
 
@@ -79,6 +81,7 @@ models.sequelize.authenticate()
   });
 
 createAdminDefault('admin@gmail.com', 'Admin123');
+
 // app.use('/', routes);
 app.use('/volunteer', routes.volunteer);
 app.use('/coordinator', routes.coordinator);
@@ -87,5 +90,24 @@ app.use('/tarea', routes.tarea);
 app.use('/administrator', routes.administrator);
 app.use('/premios', routes.premios);
 
+//PDFS de voucher generados
+app.use('/archivos', express.static(path.join(__dirname, 'archivo_premios')));
+app.get('/mostrar-pdf/:nombreArchivo', (req, res) => {
+  const { nombreArchivo } = req.params;
+  const archivoPath = path.join(__dirname, 'archivo_premios', nombreArchivo);
+  res.sendFile(archivoPath);
+});
+app.get('/lista-pdfs', (req, res) => {
+  const pdfDir = path.join(__dirname, 'archivo_premios');
+
+  fs.readdir(pdfDir, (err, files) => {
+    if (err) {
+      return res.status(500).json({ error: 'Error al obtener la lista de PDFs' });
+    }
+
+    const pdfFiles = files.filter(file => file.endsWith('.pdf'));
+    res.json({ pdfs: pdfFiles });
+  });
+});
 
 module.exports = app;
