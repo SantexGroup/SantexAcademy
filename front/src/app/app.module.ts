@@ -14,7 +14,7 @@ import { ShareModule } from './modules/share/shares.module';
 import { RegisterModule } from './modules/register/register.module';
 import { PerfilAlumnoComponent } from './modules/pages/perfil-alumno/perfil-alumno.component';
 import { EstadoUsuarioDirective } from './directivas/estado-usuario.directive';// Borrar si no se usa
-import { ActivardesactivarcursoDirective } from './directivas/activardesactivarcurso.directive';
+import { ActivardesactivarcursoDirective } from './directivas/activardesactivarcurso.directive';// Borrar si no se usa
 import { LoginComponent } from './modules/login/login/login.component';// Borrar si no se usa
 
 @NgModule({
