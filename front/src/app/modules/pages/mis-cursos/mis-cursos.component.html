@@ -1,0 +1,14 @@
+<app-mis-cursos></app-mis-cursos>
+
+<h2>Mis Cursos Inscritos</h2>
+<ul>
+  <li *ngFor="let curso of cursosInscritos">{{ curso }}</li>
+</ul>
+
+<div>
+  <button (click)="toggleListaDesplegable()">Mis Cursos</button>
+  <!-- Lista desplegable de cursos inscritos -->
+  <ul *ngIf="listaDesplegableVisible">
+    <li *ngFor="let curso of cursosInscritos">{{ curso }}</li>
+  </ul>
+</div>
