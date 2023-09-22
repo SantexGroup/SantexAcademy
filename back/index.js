@@ -28,24 +28,15 @@ app.use(express.json());
 //   })
 // );
 
-app.use(
-  cors({
-    origin: "*",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "*",
+//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//     credentials: true,
+//   })
+// );
 
-<<<<<<< HEAD
-    },
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-}));
-
-app.use('/api/v1', routes);
-=======
 app.use("/api/v1", routes);
->>>>>>> upstream/dev
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(

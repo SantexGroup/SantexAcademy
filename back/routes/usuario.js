@@ -36,12 +36,8 @@ userRouter.get(
   verifyToken,
   isUser,
   userController.getUserProfile
-<<<<<<< HEAD
 )
-=======
-);<<<<<<< f/changes-navbar
->>>>>>> upstream/dev
-54
+
  
 
 

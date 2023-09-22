@@ -1,7 +1,6 @@
 const express = require("express");
 const upload = require("../config/multerConfig");
 const authRouter = express.Router();
-<<<<<<< HEAD
 
 const { userController, orgController } = require('../controllers');
 
@@ -9,18 +8,6 @@ const { validationResult } = require('express-validator');
 const { createAndUpdateUserValidation, loginUserValidation } = require('../middleware/validations.UserEntity');
 const { createAndUpdateOrganizationValidation, loginOrganizationValidation } = require('../middleware/validation.OrgEntity');
 
-=======
-const { validationResult } = require("express-validator");
-const {
-  createAndUpdateUserValidation,
-  loginUserValidation,
-} = require("../middleware/validations.UserEntity");
-const {
-  createAndUpdateOrganizationValidation,
-  loginOrganizationValidation,
-} = require("../middleware/validation.OrgEntity");
-const { userController, orgController } = require("../controllers");
->>>>>>> upstream/dev
 
 authRouter.post("/users/login", loginUserValidation, async (req, res) => {
   // Comprueba las validaciones antes de ejecutar el controlador de login de usuarios
