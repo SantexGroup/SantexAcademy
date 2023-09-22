@@ -3,11 +3,6 @@ import { RouterLink } from '@angular/router';
 import { LoginService } from 'src/app/core/services/login.service';
 import { Router } from '@angular/router';
 
-/*
-import { HttpClient } from '@angular/common/http';
-import { ModeloUsuario } from './interfaces/modelo-usuario';
-*/
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,6 +12,8 @@ export class LoginComponent implements OnInit {
 
   corLog: string = '';
   pasLog: string = '';
+  
+  // variables para corroborar logueo
   logeadoComprador: boolean = false;
   logeadoVendedor: boolean = false;
   infoLoc: any[] = [];

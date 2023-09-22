@@ -15,8 +15,8 @@ export class TarjetaArticuloComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getProduct().subscribe(productos => {
-      console.log(productos);
-      // this.listArticulos = productos;
+      this.listArticulos = productos;
+      console.log(this.listArticulos);
       })
     
   }

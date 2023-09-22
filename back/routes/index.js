@@ -10,6 +10,7 @@ const productsRoutes = require('./products-route');
 const uploadRoutes = require('./upload-route');
 const alquileresVendedorRoutes = require('./alquileres-vendedor-route');
 const alquilerRoutes = require('./alquiler');
+const imagesRoutes = require('./images-route');
 
 const app = Express();
 
@@ -20,6 +21,7 @@ app.use('/direccion', direccionRoutes);
 app.use('/upload', uploadRoutes);
 app.use('/alquileres-vendedor', alquileresVendedorRoutes);
 app.use('/alquiler', alquilerRoutes);
+app.use('/images', imagesRoutes);
 
 // use=
 app.use('/ping', (req, res) => {

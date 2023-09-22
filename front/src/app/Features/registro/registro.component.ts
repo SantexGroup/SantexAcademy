@@ -19,8 +19,11 @@ export class RegistroComponent implements OnInit {
   proReg: string = '0';
   locReg: string = '0';
   dirReg: string = '';
+
   listprovincias: any[] = [];
   listlocalidades: any[] = [];
+
+  mensajeRegistro: string = '';
 
   constructor(private service: RegistroService, private mensajeService: MensajeService, private router: Router) { }
 
@@ -35,7 +38,6 @@ export class RegistroComponent implements OnInit {
     this.service.getLocalidades(this.proReg).subscribe(localidades => {this.listlocalidades = localidades});
   }
 
-  mensajeRegistro: string = '';
 
   botReg() {
     if (this.corReg && this.pasReg && this.aliReg && this.nomReg && this.apeReg && this.dniReg && this.proReg && this.locReg && this.dirReg) {
@@ -59,5 +61,3 @@ export class RegistroComponent implements OnInit {
     }
   }
 }
-
-
