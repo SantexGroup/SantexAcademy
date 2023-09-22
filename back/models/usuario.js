@@ -1,67 +1,67 @@
-// Creacion del modelo de usuario
+// // Creacion del modelo de usuario
 
-const { Model } = require("sequelize");
-//const ModeloBase = require('./modeloBase');
-const Rol = require("./rol");
+// const { Model } = require("sequelize");
+// //const ModeloBase = require('./modeloBase');
+// const Rol = require("./rol");
 
-module.exports = (sequelize, DataTypes, Deferrable) => {
-  //  class Usuario extends ModeloBase {
-  class Usuario extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+// module.exports = (sequelize, DataTypes, Deferrable) => {
+//   //  class Usuario extends ModeloBase {
+//   class Usuario extends Model {
+//     /**
+//      * Helper method for defining associations.
+//      * This method is not a part of Sequelize lifecycle.
+//      * The `models/index` file will call this method automatically.
+//      */
 
-    static associate(models) {
-      // define association here
-      Usuario.belongsTo(models.Rol, { foreignKey: "id_rol" });
-    }
-  }
+//     static associate(models) {
+//       // define association here
+//       Usuario.belongsTo(models.Rol, { foreignKey: "id_rol" });
+//     }
+//   }
 
-  // Inicializar la clase base
-  //super.initModeloBase(sequelize);
+//   // Inicializar la clase base
+//   //super.initModeloBase(sequelize);
 
-  Usuario.init(
-    {
-      // id:  DataTypes.INTEGER,
-      id: {
-        primaryKey: true,
-        type: DataTypes.INTEGER,
-      },
+//   Usuario.init(
+//     {
+//       // id:  DataTypes.INTEGER,
+//       id: {
+//         primaryKey: true,
+//         type: DataTypes.INTEGER,
+//       },
 
-      nombre: DataTypes.STRING,
+//       nombre: DataTypes.STRING,
 
-      contrasenia: DataTypes.STRING,
+//       contrasenia: DataTypes.STRING,
 
-      email: DataTypes.STRING,
+//       email: DataTypes.STRING,
 
-      id_rol: {
-        type: DataTypes.INTEGER,
+//       id_rol: {
+//         type: DataTypes.INTEGER,
 
-        references: {
-          // Se toma de la ayuda de Sequelize
-          // This is a reference to another model
-          model: Rol,
+//         references: {
+//           // Se toma de la ayuda de Sequelize
+//           // This is a reference to another model
+//           model: Rol,
 
-          // This is the column name of the referenced model
-          key: "id",
-        },
-      },
+//           // This is the column name of the referenced model
+//           key: "id",
+//         },
+//       },
 
-      descripcion_rol: DataTypes.STRING,
+//       descripcion_rol: DataTypes.STRING,
 
-      activo: DataTypes.INTEGER,
+//       activo: DataTypes.INTEGER,
 
-      fecha_creacion: DataTypes.DATE,
+//       fecha_creacion: DataTypes.DATE,
 
-      fecha_modificacion: DataTypes.DATE,
-    },
-    {
-      sequelize,
-      modelName: "Usuario",
-    }
-  );
+//       fecha_modificacion: DataTypes.DATE,
+//     },
+//     {
+//       sequelize,
+//       modelName: "Usuario",
+//     }
+//   );
 
-  return Usuario;
-};
+//   return Usuario;
+// };

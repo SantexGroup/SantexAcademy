@@ -1,56 +1,56 @@
-// Creacion del modelo de descripcion de correo electronico
+// // Creacion del modelo de descripcion de correo electronico
 
-const { Model } = require("sequelize");
-//const ModeloBase = require('./modeloBase');
+// const { Model } = require("sequelize");
+// //const ModeloBase = require('./modeloBase');
 
-module.exports = (sequelize, DataTypes) => {
-  //class Roles extends ModeloBase {
-  class DescripcionCorreoElectronico extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+// module.exports = (sequelize, DataTypes) => {
+//   //class Roles extends ModeloBase {
+//   class DescripcionCorreoElectronico extends Model {
+//     /**
+//      * Helper method for defining associations.
+//      * This method is not a part of Sequelize lifecycle.
+//      * The `models/index` file will call this method automatically.
+//      */
 
-    static associate(models) {
-      // define association here
-    }
-  }
+//     static associate(models) {
+//       // define association here
+//     }
+//   }
 
-  // Inicializar la clase base (ModeloBase)
-  //super.initModeloBase(sequelize);
+//   // Inicializar la clase base (ModeloBase)
+//   //super.initModeloBase(sequelize);
 
-  DescripcionCorreoElectronico.init(
-    {
-      // id:  DataTypes.INTEGER,
-      id: {
-        primaryKey: true,
-        type: DataTypes.INTEGER,
-      },
+//   DescripcionCorreoElectronico.init(
+//     {
+//       // id:  DataTypes.INTEGER,
+//       id: {
+//         primaryKey: true,
+//         type: DataTypes.INTEGER,
+//       },
 
-      descripcion: DataTypes.STRING,
+//       descripcion: DataTypes.STRING,
 
-      // abreviatura: 'xxx' o 'xxxxx',
+//       // abreviatura: 'xxx' o 'xxxxx',
 
-      activo: DataTypes.INTEGER,
+//       activo: DataTypes.INTEGER,
 
-      por_defecto: DataTypes.INTEGER,
+//       por_defecto: DataTypes.INTEGER,
 
-      // orden: DataTypes.INTEGER,
+//       // orden: DataTypes.INTEGER,
 
-      creado_por: DataTypes.STRING,
+//       creado_por: DataTypes.STRING,
 
-      fecha_creacion: DataTypes.DATE,
+//       fecha_creacion: DataTypes.DATE,
 
-      modificado_por: DataTypes.STRING,
+//       modificado_por: DataTypes.STRING,
 
-      fecha_modificacion: DataTypes.DATE,
-    },
-    {
-      sequelize,
-      modelName: "DescripcionCorreoElectronico",
-    }
-  );
+//       fecha_modificacion: DataTypes.DATE,
+//     },
+//     {
+//       sequelize,
+//       modelName: "DescripcionCorreoElectronico",
+//     }
+//   );
 
-  return DescripcionCorreoElectronico;
-};
+//   return DescripcionCorreoElectronico;
+// };
