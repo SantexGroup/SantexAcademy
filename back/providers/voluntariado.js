@@ -12,8 +12,8 @@ const createVoluntariado = async (idOrg, voluntariado) => {
 
 const getVoluntariadosByCriteria = async (queryOptions, bodyOptions) => {
   try {
-    const options = { ...queryOptions, ...bodyOptions }; // Combinar las opciones de bésqueda
-    const where = {}; // Excluir registros eliminados lágicamente
+    const options = { ...queryOptions, ...bodyOptions };
+    const where = {};
     const validOptions = ['idVoluntariado', 'organizationId', 'descripcion', 'spots', 'Reward', 'deletedAt'];
     
     validOptions.forEach((option) => {
@@ -32,6 +32,7 @@ const getVoluntariadosByCriteria = async (queryOptions, bodyOptions) => {
     throw error;
   }
 };
+
 
 
 //Esta funcion se crea para que las organizaciones SOLO PUEDAN TRAER LOS VOLUNTARIADOS ASOCIADOS A SU ID
