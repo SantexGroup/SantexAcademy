@@ -43,8 +43,6 @@ module.exports = (sequelize, DataTypes, Deferrable) => {
 
       fecha_donacion: DataTypes.DATE,
 
-      id: DataTypes.INTEGER,
-
       id_estado_operacion: {
         type: DataTypes.INTEGER,
 
