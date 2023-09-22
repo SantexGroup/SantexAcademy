@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -11,12 +12,17 @@ export class NavComponent implements OnInit {
   isSmallScreen = false;
   isProfileMenuOpen = false;
   activeRoute: string = '';
+  isLoggedIn = false;
+  //isProfileDropdownOpen = false;
 
-  constructor(private router: Router) {
+
+
+  constructor(private router: Router,  private authService: AuthService) {
     this.checkScreenSize();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.activeRoute = event.url;
+      
       }
     });
   }
@@ -24,6 +30,7 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     // Detectar la ruta activa al cargar la página
     this.activeRoute = this.router.url;
+    this.isLoggedIn = this.authService.user ? true : false;
   }
 
   @HostListener('window:resize', ['$event'])
@@ -42,4 +49,14 @@ export class NavComponent implements OnInit {
   toggleProfileMenu() {
     this.isProfileMenuOpen = !this.isProfileMenuOpen;
   }
+
+  logout(){
+    console.log('logout() called');
+    this.router.navigateByUrl('/login');
+    this.authService.logout();
+     this.isLoggedIn = false;
+  }
+
+  
+  
 }

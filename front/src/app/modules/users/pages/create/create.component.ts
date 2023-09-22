@@ -84,7 +84,9 @@ export class CreateComponent implements OnInit {
       .pipe(
         switchMap( ({ id }) => this.usersService.getUserPorId( id ))
       )
-      .subscribe( user => this.user = user )
+      .subscribe((user) => {
+        this.user = user;
+        this.tipoDeUsuarioSeleccionado = user.idtipodeusuario;})
   }
 
   onTipoDeUsuarioChange(event: any): void {
