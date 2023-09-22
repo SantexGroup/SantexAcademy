@@ -16,7 +16,7 @@ export class PersonalComponent implements OnInit {
   mensajeError: string = "";
   user = {} as userInterface;
   personalForm: FormGroup;
-  default = '../../../../assets/Imagenes/placeHolderImage.jpg';
+  default = 'assets/Imagenes/placeHolderImage.jpg';
   url: string = this.default;
   imagen= " ";
 
@@ -40,9 +40,6 @@ export class PersonalComponent implements OnInit {
     this.views.title = "Datos Personales";
     this.getUser()
   }
-
-  
-
 
   // * Forumulario de datos personales
   getUser() { 
@@ -85,7 +82,11 @@ export class PersonalComponent implements OnInit {
     //* Se envia la imagen a GoogleDrive
     if (this.url!=this.default) {
       this.userService.uploadImage(this.imagen).subscribe({
-        next: (data) => { console.log (data) },
+        next: (data) => { 
+          this.userData.urlPicture = ("https://drive.google.com/uc?export=view&id=" + data) 
+          console.log("Data desde updateUser", data);
+          console.log("Data en user service", this.userData.urlPicture);
+        },
         error: (err) => { 
           console.log(err); 
           this.mensajeError = err;
@@ -105,10 +106,10 @@ export class PersonalComponent implements OnInit {
     
     //* Se verifica si el correo fue cambiado o no
     if (personalForm.get('email')?.value === this.user.email) {
-      this.user.email = ' ';
+      this.user.email = '';
     } else { this.user.email = personalForm.get('email')?.value; }
     
-    this.user.pictureLink = personalForm.get('pictureLink')?.value;
+    this.user.pictureLink = this.userData.urlPicture;
 
     //* Se actualiza el usuario
     this.userService.updateUser(this.userData.userId, this.user).subscribe({

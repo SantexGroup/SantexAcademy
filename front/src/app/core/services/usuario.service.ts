@@ -48,7 +48,6 @@ private userData1: BehaviorSubject<{ name: string, lastName: string }> = new Beh
   uploadImage(imagen: any) : Observable <any> {
     const pictureLink = new FormData();
     pictureLink.append('pictureLink', imagen);
-
     return this.api.post<any>('user/upload', pictureLink );
   }
 
