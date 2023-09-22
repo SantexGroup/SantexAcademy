@@ -190,6 +190,7 @@
     height: 20px;
     border-color: #000000;
   }
+
   /*
   .radio_option label {
     margin-right: 1em;
@@ -260,16 +261,9 @@
   .select_option select:hover + .select_arrow, .select_option select:focus + .select_arrow {
     border-top-color: #000000;
   }
-  
-  .creditos {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 15px;
-    color: #838383;
-  }
-  .creditos a {
-    color: #aa7780;
+
+  p{
+    color: #dd9f9f8a;
   }
   
   /* ---------------------------------------------- Responsive --------------------------------------------------*/
