@@ -20,6 +20,7 @@ export class FormLoginComponent implements OnInit {
   statusSession: string = '';
   routeBtnContinue: string = '';
   textBtnModal: string = '';
+  isCoordinator: string = '';
 
   constructor(
     private router: Router,

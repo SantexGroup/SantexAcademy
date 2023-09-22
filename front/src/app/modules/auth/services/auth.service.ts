@@ -1,20 +1,18 @@
-import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { environment } from 'src/app/environments/environment';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/app/environments/environment.prod';
-
 import { Observable } from 'rxjs';
+import { coordinatorData } from '../models/dataForms.model';
+
 import {
   CoordinatorDataLogin,
   volunterData,
   volunterDataLogin,
 } from '../models/dataForms.model';
-import { coordinatorData } from '../models/dataForms.model';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  // http = inject(HttpClient);
   private apiUrl = environment.apiUrl;
   private authToken: string | null = null;
 
@@ -27,10 +25,6 @@ export class AuthService {
 
   registerCoordinator(userData: coordinatorData | FormData): Observable<any> {
     const url = `${this.apiUrl}/auth/org/register`;
-    const headers = new HttpHeaders({
-      'Content-Type': 'multipart/form-data',
-    });
-    const options = { headers: headers };
     return this.http.post(url, userData);
   }
 

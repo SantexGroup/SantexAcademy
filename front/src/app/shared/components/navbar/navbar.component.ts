@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/modules/auth/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +10,12 @@ export class NavbarComponent {
   isOpen: boolean = false;
   openOptionOne: boolean = false;
   openOptionTwo: boolean = false;
-  maxHeight: number = 500; // Ajusta esto al valor deseado
-  constructor() {
-    // Obtener el valor de isOpen desde el LocalStorage (si existe)
+  maxHeight: number = 500;
+  isToken: boolean = false;
+
+  isOpenprofileMenu: boolean = false;
+
+  constructor(private authService: AuthService) {
     const isOpenValue = localStorage.getItem('isOpen');
     if (isOpenValue !== null) {
       this.isOpen = JSON.parse(isOpenValue);
@@ -20,7 +24,6 @@ export class NavbarComponent {
 
   handleMenu() {
     this.isOpen = !this.isOpen;
-    // Guardar el valor actual de isOpen en el LocalStorage
     localStorage.setItem('isOpen', JSON.stringify(this.isOpen));
   }
 
@@ -36,6 +39,27 @@ export class NavbarComponent {
       this.openOptionTwo = true;
     } else {
       this.openOptionTwo = false;
+    }
+  }
+
+  ngOnInit() {
+    const token = this.authService.getAuthToken();
+    console.log(token);
+    if (token) {
+      this.isToken = true;
+    }
+  }
+
+  logout() {
+    this.authService.clearAuthToken();
+    window.location.reload();
+  }
+
+  openProfileMenu() {
+    if (this.isOpenprofileMenu == false) {
+      this.isOpenprofileMenu = true;
+    } else {
+      this.isOpenprofileMenu = false;
     }
   }
 }

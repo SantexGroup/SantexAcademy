@@ -1,6 +1,7 @@
 const express = require("express");
 const upload = require("../config/multerConfig");
 const authRouter = express.Router();
+<<<<<<< HEAD
 
 const { userController, orgController } = require('../controllers');
 
@@ -8,7 +9,18 @@ const { validationResult } = require('express-validator');
 const { createAndUpdateUserValidation, loginUserValidation } = require('../middleware/validations.UserEntity');
 const { createAndUpdateOrganizationValidation, loginOrganizationValidation } = require('../middleware/validation.OrgEntity');
 
-
+=======
+const { validationResult } = require("express-validator");
+const {
+  createAndUpdateUserValidation,
+  loginUserValidation,
+} = require("../middleware/validations.UserEntity");
+const {
+  createAndUpdateOrganizationValidation,
+  loginOrganizationValidation,
+} = require("../middleware/validation.OrgEntity");
+const { userController, orgController } = require("../controllers");
+>>>>>>> upstream/dev
 
 authRouter.post("/users/login", loginUserValidation, async (req, res) => {
   // Comprueba las validaciones antes de ejecutar el controlador de login de usuarios
@@ -19,13 +31,12 @@ authRouter.post("/users/login", loginUserValidation, async (req, res) => {
   }
   userController.loginUser(req, res);
 });
-    
 
 authRouter.post(
   "/users/register",
   createAndUpdateUserValidation,
   async (req, res) => {
-    // Comprueba las validaciones antes de ejecutar el controlador de actualización de usuarios
+    console.log(req.body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       const errorMessages = errors.array().map((error) => error.msg);
@@ -35,31 +46,33 @@ authRouter.post(
   }
 );
 
-
 authRouter.post(
   "/org/register",
-  createAndUpdateOrganizationValidation,
-  async (req, res) => {
-    // Comprueba las validaciones antes de ejecutar el controlador de registro de organizaciones
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      const errorMessages = errors.array().map((error) => error.msg);
-      return res.status(400).json({ errors: errorMessages });
-    }
-    orgController.createOrganization(req, res);
-  }
+  upload.single("file"),
+  orgController.createOrganization
+  // createAndUpdateOrganizationValidation,
+  // async (req, res) => {
+  //   const errors = validationResult(req);
+  //   if (!errors.isEmpty()) {
+  //     const errorMessages = errors.array().map((error) => error.msg);
+  //     return res.status(400).json({ errors: errorMessages });
+  //   }
+  //   orgController.createOrganization(req, res);
+  // }
 );
 
+authRouter.post(
+  "/org/login",
+  orgController.loginOrganization
 
-authRouter.post("/org/login", loginOrganizationValidation, async (req, res) => {
-  // Comprueba las validaciones antes de ejecutar el controlador de login de organizaciones
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    const errorMessages = errors.array().map((error) => error.msg);
-    return res.status(400).json({ errors: errorMessages });
-  }
-  orgController.loginOrganization(req, res);
-});
-
+  // loginOrganizationValidation, async (req, res) => {
+  //   const errors = validationResult(req);
+  //   if (!errors.isEmpty()) {
+  //     const errorMessages = errors.array().map((error) => error.msg);
+  //     return res.status(400).json({ errors: errorMessages });
+  //   }
+  //   orgController.loginOrganization(req, res);
+  // }
+);
 
 module.exports = authRouter;

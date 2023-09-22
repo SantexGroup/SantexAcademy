@@ -1,130 +1,151 @@
 <header
-  class="fixed top-0 left-0 w-full flex flex-col p-6 bg-white z-20 lg:gap-4 lg:relative"
+  class="fixed top-0 left-0 w-full flex flex-col p-6 bg-white z-20 lg:gap-4 lg:relative lg:flex-row lg:justify-between"
   id="arriba"
 >
-  <div class="w-full flex items-start justify-between">
-    <a routerLink="/"
-      ><figure class="flex items-center gap-2">
-        <img
-          src="/assets/logo/logohand.svg"
-          alt="logo"
-          class="w-[50px] m:w-[70px]"
-        />
-        <img
-          src="/assets/logo/logovoluntime.svg"
-          alt="logo"
-          class="w-[80px] m:w-[100px]"
-        /></figure
-    ></a>
+  <a routerLink="/" class="w-auto"
+    ><figure class="lg:w-[200px] flex items-center gap-2">
+      <img
+        src="/assets/logo/logohand.svg"
+        alt="logo"
+        class="w-[50px] m:w-[70px]"
+      />
+      <img
+        src="/assets/logo/logovoluntime.svg"
+        alt="logo"
+        class="w-[80px] m:w-[100px]"
+      /></figure
+  ></a>
 
-    <i
-      [ngClass]="!isOpen ? 'hidden' : 'visible'"
-      class="bx bx-menu text-3xl cursor-pointer m:text-4xl lg:hidden"
-      (click)="handleMenu()"
-    ></i>
-    <i
-      [ngClass]="isOpen ? 'hidden' : 'visible'"
-      class="bx bx-x text-3xl cursor-pointer m:text-4xl lg:hidden"
-      (click)="handleMenu()"
-    ></i>
+  <i
+    [ngClass]="!isOpen ? 'hidden' : 'visible absolute top-8 right-4'"
+    class="bx bx-menu text-3xl cursor-pointer m:text-4xl lg:hidden"
+    (click)="handleMenu()"
+  ></i>
+  <i
+    [ngClass]="isOpen ? 'hidden' : 'visible absolute top-8 right-4'"
+    class="bx bx-x text-3xl cursor-pointer m:text-4xl lg:hidden"
+    (click)="handleMenu()"
+  ></i>
 
-    <nav [ngClass]="isOpen ? 'navbar' : 'navbar navbar-closed'">
-      <ul
-        class="w-full flex flex-col items-center justify-center gap-4 m:text-lg lg:flex-row lg:justify-end lg:gap-8 lg:items-start lg:pt-4"
-      >
-        <li class="">
-          <div
-            class="w-full flex items-center justify-center cursor-pointer"
-            (click)="openOpOne()"
-          >
-            <span class="text-xl"> Hazte voluntario/a </span>
-            <i
-              class="bx bx-chevron-down text-2xl iconRow"
-              [ngClass]="{ rotate: openOptionOne }"
-            ></i>
-          </div>
-
-          <ul
-            [ngClass]="
-              openOptionOne
-                ? 'flex flex-col items-center openList'
-                : 'hidden viewList'
-            "
-            [ngStyle]="{ 'max-height.px': openOptionOne ? maxHeight : 0 }"
-          >
-            <li class="cursor-pointer">
-              <a routerLink="/voluntariados">Buscar voluntariados</a>
-            </li>
-
-            <li class="cursor-pointer">6 pasos para ser voluntario</li>
-          </ul>
-        </li>
-        <li>
-          <div
-            class="w-full flex items-center justify-center cursor-pointer"
-            (click)="openOpTwo()"
-          >
-            <span class="text-xl"> ¿Tienes dudas? </span>
-
-            <i
-              class="bx bx-chevron-down text-2xl iconRow"
-              [ngClass]="{ rotate: openOptionTwo }"
-            ></i>
-          </div>
-          <ul
-            [ngClass]="openOptionTwo ? 'flex flex-col items-center' : 'hidden'"
-          >
-            <li class="cursor-pointer">¿Quienes Somos?</li>
-            <li class="cursor-pointer">Testimonios de voluntarios</li>
-
-            <li class="cursor-pointer">Tipos de voluntariados</li>
-            <li class="cursor-pointer">Derechos y deberes</li>
-            <li class="cursor-pointer">Preguntas frecuentes (FAQ)</li>
-          </ul>
-        </li>
-        <li class="lg:hidden text-xl cursor-pointer">Acerca de nosotros</li>
-        <li class="lg:hidden text-xl cursor-pointer">Contacto</li>
-        <div class="w-[90%] h-[.5px] my-4 bg-lightGray lg:hidden"></div>
-        <li
-          class="flex flex-col items-center justify-center gap-4 lg:flex-row font-semibold lg:items-start"
-        >
-          <a routerLink="/auth/login" class="lg:text-xl">Iniciar sesión</a>
-          <a
-            routerLink="/auth/options-register"
-            class="py-1 px-4 bg-darkSlateBlue text-white rounded-md"
-            >Registrarse</a
-          >
-          <i class="bx bx-search hidden lg:flex lg:text-xl cursor-pointer"></i>
-        </li>
-      </ul>
-    </nav>
-    <!-- <ul
-      class="hidden lg:flex items-center justify-center gap-6 text-base lg:items-start lg:text-lg"
+  <nav [ngClass]="isOpen ? 'navbar' : 'navbar navbar-closed'">
+    <ul
+      class="w-full flex flex-col items-center justify-center gap-4 m:text-lg lg:flex-row lg:justify-end lg:gap-8 lg:items-start lg:pt-4 lg:absolute"
     >
-      <li class="cursor-pointer">Quienes somos</li>
+      <li class="">
+        <div
+          class="w-full flex items-center justify-center cursor-pointer optionDesk"
+          (click)="openOpOne()"
+        >
+          <span class="text-xl whitespace-nowrap max-w-[200px]"
+            >Hazte voluntario/a</span
+          >
+          <i
+            class="bx bx-chevron-down text-2xl iconRow"
+            [ngClass]="{ rotate: openOptionOne }"
+          ></i>
+        </div>
+
+        <ul
+          [ngClass]="
+            openOptionOne
+              ? 'flex flex-col items-center gap-2 bg-white p-2 lg:shadow-md lg:shadow-blueViolet'
+              : 'hidden'
+          "
+          [ngStyle]="{ 'max-height.px': openOptionOne ? maxHeight : 0 }"
+        >
+          <li class="cursor-pointer lg:hover:text-blueViolet">
+            <a routerLink="/voluntariados">Buscar voluntariados</a>
+          </li>
+
+          <li class="cursor-pointer lg:hover:text-blueViolet">
+            6 pasos para ser voluntario
+          </li>
+        </ul>
+      </li>
       <li>
         <div
           class="w-full flex items-center justify-center cursor-pointer"
           (click)="openOpTwo()"
         >
-          ¿Tienes dudas? <i class="bx bx-chevron-down text-2xl"></i>
+          <span class="text-xl whitespace-nowrap max-w-[200px]">
+            ¿Tienes dudas?
+          </span>
+
+          <i
+            class="bx bx-chevron-down text-2xl iconRow"
+            [ngClass]="{ rotate: openOptionTwo }"
+          ></i>
         </div>
-        <ul [ngClass]="openOptionTwo ? 'flex flex-col items-center' : 'hidden'">
-          <li class="cursor-pointer">Tipos de voluntariados</li>
-          <li class="cursor-pointer">Derechos y deberes</li>
-          <li class="cursor-pointer">Preguntas frecuentes (FAQ)</li>
+        <ul
+          [ngClass]="
+            openOptionTwo
+              ? 'flex flex-col items-center gap-2 p-2 bg-white lg:shadow-md lg:shadow-blueViolet lg:items-start'
+              : 'hidden'
+          "
+        >
+          <li class="cursor-pointer lg:hover:text-blueViolet">
+            ¿Quienes Somos?
+          </li>
+          <li class="cursor-pointer lg:hover:text-blueViolet">
+            Testimonios de voluntarios
+          </li>
         </ul>
       </li>
-      <li class="cursor-pointer">Contacto</li>
-      <li class="font-bold"><a routerLink="/auth/login">Iniciar sesión</a></li>
-      <li>
-        <a
-          routerLink="/auth/options-register"
-          class="py-1 px-4 bg-darkSlateBlue text-white rounded-md font-bold"
-          >Registrarse</a
+      <li class="lg:hidden text-xl cursor-pointer">Acerca de nosotros</li>
+      <li class="lg:hidden text-xl cursor-pointer">Contacto</li>
+      <div class="w-[90%] h-[.5px] my-4 bg-lightGray lg:hidden"></div>
+      <li
+        class="flex flex-col items-center justify-center gap-4 lg:flex-row font-semibold lg:items-start"
+      >
+        <div
+          *ngIf="!isToken"
+          class="flex flex-col items-center justify-center gap-4 lg:flex-row font-semibold lg:items-start"
         >
+          <a
+            routerLink="/auth/login"
+            class="lg:text-xl whitespace-nowrap max-w-[200px] lg:hover:text-blueViolet"
+            >Iniciar sesión</a
+          >
+          <a
+            routerLink="/auth/options-register"
+            class="py-1 px-4 bg-darkSlateBlue text-white rounded-md"
+            >Registrarse</a
+          >
+        </div>
+        <div *ngIf="isToken" class="flex items-center justify-center">
+          <article class="mt-[-.5em] relative group">
+            <figure
+              (click)="openProfileMenu()"
+              class="w-[50px] aspect-square rounded-full border border-lightGray p-2 cursor-pointer"
+            >
+              <img src="/assets/imgs/avatar.png" alt="avatar" class="" />
+            </figure>
+            <div
+              [class]="
+                isOpenprofileMenu
+                  ? 'block absolute top-12 right-8 bottom-0 left-[-1.5em] m-auto mt-2 w-40'
+                  : 'hidden lg:group-hover:block lg:absolute lg:right-0 lg:mt-2 lg:w-40 lg:bg-white lg:shadow-lg lg:shadow-lightGray'
+              "
+            >
+              <ul class="flex flex-col gap-2 p-2 text-lg font-medium">
+                <li>
+                  <a href="#" class="lg:hover:text-blueViolet">Editar Perfil</a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="lg:hover:text-blueViolet"
+                    (click)="logout()"
+                    >Cerrar Sesión</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <i class="bx bx-search hidden lg:flex lg:text-xl cursor-pointer"></i>
       </li>
-      <i class="bx bx-search lg:text-xl"></i>
-    </ul> -->
-  </div>
+    </ul>
+  </nav>
 </header>

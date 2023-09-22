@@ -1,6 +1,5 @@
 .mySwiper {
-  width: 100vw !important;
-  max-width: 1500px;
+  width: 98vw !important;
   padding-inline: 1em;
   display: flex;
   align-items: center;
