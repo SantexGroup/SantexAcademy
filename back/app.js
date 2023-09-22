@@ -91,12 +91,15 @@ app.use('/administrator', routes.administrator);
 app.use('/premios', routes.premios);
 
 //PDFS de voucher generados
+//ejemplo http://localhost:3000/mostrar-pdf/21-9-2023-Benja-1_canje_premio.pdf
 app.use('/archivos', express.static(path.join(__dirname, 'archivo_premios')));
 app.get('/mostrar-pdf/:nombreArchivo', (req, res) => {
   const { nombreArchivo } = req.params;
   const archivoPath = path.join(__dirname, 'archivo_premios', nombreArchivo);
   res.sendFile(archivoPath);
 });
+
+//ejemplo: http://localhost:3000/lista-pdfs
 app.get('/lista-pdfs', (req, res) => {
   const pdfDir = path.join(__dirname, 'archivo_premios');
 
