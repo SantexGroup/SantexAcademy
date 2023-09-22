@@ -5,6 +5,8 @@ import { LanguagesService } from 'src/app/core/services/languages.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { ToastrService } from 'ngx-toastr';
+import { FormChangesService } from 'src/app/core/services/toolServices/form-changes.service';
+
 
 @Component({
   selector: 'app-language',
@@ -18,16 +20,20 @@ export class LanguageComponent implements OnInit {
   languageId: number = 0;
 
   constructor(
-    public userData: UserDataService,
     private _languageService: LanguagesService,
     private fb: FormBuilder,
+    private _formChangeService: FormChangesService,
+    public userData: UserDataService,
     public views: NavBarService,
-    public toastr :ToastrService 
+    public toastr: ToastrService
   ) {
     this.languageForm = this.fb.group({
       language: '',
       level: '',
     })
+
+    this._formChangeService.originalValues = this.languageForm.value;
+    this._formChangeService.checkFormChanges(this.languageForm);
   }
 
   ngOnInit(): void {
@@ -36,7 +42,7 @@ export class LanguageComponent implements OnInit {
     this.views.title = "Idiomas";
     this.views.plusOne = true;
     this.views.saveButton = false;
-    
+
   }
 
   languageAdd() {
@@ -52,10 +58,10 @@ export class LanguageComponent implements OnInit {
 
     this.userData.languageGet();
 
-     this.languageForm.reset();
+    this.languageForm.reset();
   }
 
-  getSelectedLanguage(id?:number){
+  getSelectedLanguage(id?: number) {
     const index = this.userData.languages.findIndex(language => language.id === id);
     const elementId = Number(this.userData.languages[index].id);
     const element = (this.userData.languages[index]);
@@ -69,7 +75,7 @@ export class LanguageComponent implements OnInit {
     console.log(this.languageId)
   }
 
-  languageUpdate(){
+  languageUpdate() {
     const newLanguage: Language = {
       language: this.languageForm.get('language')?.value,
       level: this.languageForm.get('level')?.value,
@@ -87,7 +93,7 @@ export class LanguageComponent implements OnInit {
 
   }
 
-  languageDelete(id?:number){
+  languageDelete(id?: number) {
     const index = this.userData.languages.findIndex(language => language.id === id);
     const elementId = Number((this.userData.languages[index]).id);
     this._languageService.deleteLanguage(elementId).subscribe(() => {

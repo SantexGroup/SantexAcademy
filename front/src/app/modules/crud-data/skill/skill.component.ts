@@ -5,30 +5,37 @@ import { SkillService } from 'src/app/core/services/skill.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { ToastrService } from 'ngx-toastr';
+import { FormChangesService } from 'src/app/core/services/toolServices/form-changes.service';
 
 @Component({
   selector: 'app-skill',
   templateUrl: './skill.component.html',
   styleUrls: ['./skill.component.css']
 })
-export class SkillComponent implements OnInit{
+export class SkillComponent implements OnInit {
   skillForm: FormGroup;
   @Input() profileId?: number;
 
   skillId: number = 0;
 
   constructor(
-    private _skillService: SkillService, 
+    private _skillService: SkillService,
     private fb: FormBuilder,
+    private _formChangeService: FormChangesService,
     public userData: UserDataService,
     public views: NavBarService,
-    public toastr :ToastrService 
-    ) {
+    public toastr: ToastrService
+  ) {
     this.skillForm = this.fb.group({
       skill: '',
       level: ''
     });
+
+    this._formChangeService.originalValues = this.skillForm.value;
+    this._formChangeService.checkFormChanges(this.skillForm);
   }
+
+
   ngOnInit(): void {
     this.userData.getSkill();
     this.views.title = "Habilidades";
@@ -37,7 +44,7 @@ export class SkillComponent implements OnInit{
   }
 
   addSkillToProfile(): void {
-    const newSkill:  Skill = {
+    const newSkill: Skill = {
       skill: this.skillForm.get('skill')?.value,
       level: this.skillForm.get('level')?.value,
       profileId: this.userData.profileId
@@ -51,7 +58,7 @@ export class SkillComponent implements OnInit{
     this.skillForm.reset();
   }
 
-  getSelectedSkill(id?:number){
+  getSelectedSkill(id?: number) {
     const index = this.userData.skills.findIndex(skill => skill.id === id);
     const elementId = Number(this.userData.skills[index].id);
     const element = (this.userData.skills[index]);
@@ -64,7 +71,7 @@ export class SkillComponent implements OnInit{
     this.skillId = elementId
   }
 
-  skillUpdate(){
+  skillUpdate() {
     const newSkill: Skill = {
       skill: this.skillForm.get('skill')?.value,
       level: this.skillForm.get('level')?.value,
@@ -82,7 +89,7 @@ export class SkillComponent implements OnInit{
 
   }
 
-  skillDelete(id?:number){
+  skillDelete(id?: number) {
     const index = this.userData.skills.findIndex(skill => skill.id === id);
     const elementId = Number((this.userData.skills[index]).id);
     this._skillService.deleteSkill(elementId).subscribe(() => {
@@ -90,7 +97,5 @@ export class SkillComponent implements OnInit{
       this.toastr.error('Se elimino la habilidad');
     });
   }
-
-
 
 }

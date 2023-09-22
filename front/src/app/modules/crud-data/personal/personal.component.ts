@@ -5,6 +5,7 @@ import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.servic
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { UserService } from 'src/app/core/services/usuario.service';
 import { ToastrService } from 'ngx-toastr';
+import { FormChangesService } from 'src/app/core/services/toolServices/form-changes.service';
 
 
 
@@ -20,23 +21,27 @@ export class PersonalComponent implements OnInit {
   personalForm: FormGroup;
   default = 'assets/Imagenes/placeHolderImage.jpg';
   url: string = this.default;
-  imagen= "";
+  imagen = "";
 
   constructor(
     private fb: FormBuilder,
     private userData: UserDataService,
     private userService: UserService,
+    private _formChangeService: FormChangesService,
     public views: NavBarService,
-    public toastr :ToastrService 
-  ) { 
-    this.personalForm = this.fb.group({ 
+    public toastr: ToastrService
+  ) {
+    this.personalForm = this.fb.group({
       firstName: [''],
       lastName: [''],
       email: [''],
       phone: [''],
       bornDate: null,
       pictureLink: [''],
-    })
+    });
+
+    this._formChangeService.originalValues = this.personalForm.value;
+    this._formChangeService.checkFormChanges(this.personalForm);
   }
 
   ngOnInit() {
@@ -45,9 +50,9 @@ export class PersonalComponent implements OnInit {
   }
 
   // * Forumulario de datos personales
-  getUser() { 
+  getUser() {
     this.userService.getUser(this.userData.userId).subscribe({
-      next: (data) => { 
+      next: (data) => {
         this.personalForm.patchValue({
           firstName: data.name,
           lastName: data.lastName,
@@ -56,39 +61,39 @@ export class PersonalComponent implements OnInit {
           bornDate: data.bornDate,
           pictureLink: data.pictureLink
         })
-        this.user = data; 
+        this.user = data;
       },
-      error: (err) => { 
-        console.log(err); 
+      error: (err) => {
+        console.log(err);
         this.mensajeError = err;
       },
-      complete: () => { 
-        console.log("Done") 
+      complete: () => {
+        console.log("Done")
       }
     })
   }
-  
+
   //* Se carga la imagen en el frontend
-  selectImage(e:any) {
+  selectImage(e: any) {
     if (e.target.files[0]) {
       this.imagen = e.target.files[0];
       console.log("imagen", this.imagen) // TODO: BORRAR
       const reader = new FileReader()
       reader.readAsDataURL(e.target.files[0])
-      reader.onload = (e:any) => {
+      reader.onload = (e: any) => {
         this.url = e.target.result
       }
     }
-  }  
-  
-  updateUser(personalForm: FormGroup){ 
+  }
+
+  updateUser(personalForm: FormGroup) {
     //* Se envia la imagen a GoogleDrive
-    if (this.url!=this.default) {
+    if (this.url != this.default) {
       this.userService.uploadImage(this.imagen).subscribe({
-        next: (data) => { 
-          this.userData.urlPicture = ("https://drive.google.com/uc?export=view&id=" + data) 
+        next: (data) => {
+          this.userData.urlPicture = ("https://drive.google.com/uc?export=view&id=" + data)
         },
-        error: (err) => { 
+        error: (err) => {
           this.mensajeError = err;
         },
         complete: () => {
@@ -103,24 +108,24 @@ export class PersonalComponent implements OnInit {
     this.user.lastName = personalForm.get('lastName')?.value;
     this.user.phone = personalForm.get('phone')?.value;
     this.user.bornDate = personalForm.get('bornDate')?.value;
-    
+
     //* Se verifica si el correo fue cambiado o no
     if (personalForm.get('email')?.value === this.user.email) {
       this.user.email = '';
     } else { this.user.email = personalForm.get('email')?.value; }
-    
+
     this.user.pictureLink = this.userData.urlPicture;
 
     //* Se actualiza el usuario
     this.userService.updateUser(this.userData.userId, this.user).subscribe({
-      next: (data) => { console.log (data) },
-      error: (err) => { 
-        console.log(err); 
+      next: (data) => { console.log(data) },
+      error: (err) => {
+        console.log(err);
         this.mensajeError = err;
       },
       complete: () => {
-        console.log("Done") 
+        console.log("Done")
       }
     })
-  }  
+  }
 }

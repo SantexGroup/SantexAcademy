@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Countries } from 'src/app/core/interfaces/country.interface';
 import { Experience } from 'src/app/core/interfaces/experience.interface';
 import { ExperienceStatus } from 'src/app/core/interfaces/experienceStatus.interface';
@@ -11,6 +11,7 @@ import { ExperiencesService } from 'src/app/core/services/experiences.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { ToastrService } from 'ngx-toastr';
+import { FormChangesService } from 'src/app/core/services/toolServices/form-changes.service';
 
 @Component({
   selector: 'app-experiences',
@@ -28,10 +29,11 @@ export class ExperiencesComponent implements OnInit {
     private _experienceStatusServices: ExperiencesStatusService,
     private _countriesService: CountriesService,
     private _experiencesService: ExperiencesService,
+    private _formChangeService: FormChangesService,
     private fb: FormBuilder,
     public userData: UserDataService,
     public views: NavBarService,
-    public toastr :ToastrService 
+    public toastr: ToastrService
   ) {
     this.experienceForm = this.fb.group({
       description: '',
@@ -43,6 +45,9 @@ export class ExperiencesComponent implements OnInit {
       startDate: '',
       endDate: null,
     })
+
+    this._formChangeService.originalValues = this.experienceForm.value;
+    this._formChangeService.checkFormChanges(this.experienceForm);
   }
 
   ngOnInit(): void {
@@ -58,11 +63,11 @@ export class ExperiencesComponent implements OnInit {
     this.views.title = "Experiencias";
   }
 
-  endDateShow():boolean{
+  endDateShow(): boolean {
     return this.experienceForm.get('statusId')?.value !== 1;
   }
 
- 
+
   //Experiences Types
   getTypes() {
     this._experienceTypeServices.getExperienceType().subscribe((typesList: ExperienceType[]) => {
@@ -89,7 +94,7 @@ export class ExperiencesComponent implements OnInit {
 
   countries: Countries[] = [];
 
-  addExperience(){
+  addExperience() {
     const newExperience: Experience = {
       description: this.experienceForm.get('description')?.value,
       company: this.experienceForm.get('company')?.value,
@@ -112,10 +117,10 @@ export class ExperiencesComponent implements OnInit {
     this.experienceForm.reset();
   }
 
-  selectedExperience(id?:number){
+  selectedExperience(id?: number) {
     const index = this.userData.experiences.findIndex(experience => experience.id === id)
-    const element = this.userData.experiences[index]  
-      
+    const element = this.userData.experiences[index]
+
     this.experienceForm.patchValue({
       description: element.description,
       company: element.company,
@@ -132,7 +137,7 @@ export class ExperiencesComponent implements OnInit {
 
   }
 
-  updateExperience(){
+  updateExperience() {
 
     const newDataExperience: Experience = {
       description: this.experienceForm.get('description')?.value,
@@ -143,20 +148,20 @@ export class ExperiencesComponent implements OnInit {
       countriesId: this.experienceForm.get('countriesId')?.value,
       startDate: this.experienceForm.get('startDate')?.value,
       endDate: this.experienceForm.get('endDate')?.value,
-    } 
+    }
 
     this._experiencesService.updateExperience(this.experienceId, newDataExperience).subscribe(() => {
       this.userData.getExperience();
       this.toastr.success('Experiencia actualizada', 'EXPERIENCIAS');
     });
-    
+
     this.experienceForm.reset();
 
     this.views.saveButton = false;
     this.views.plusOne = true;
   }
 
-  deleteExperience(id?:number){
+  deleteExperience(id?: number) {
     const index = this.userData.experiences.findIndex(experience => experience.id === id)
     const elementId = Number((this.userData.experiences[index]).id)
     this._experiencesService.deleteExperience(elementId).subscribe(() => {

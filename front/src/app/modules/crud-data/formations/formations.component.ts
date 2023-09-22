@@ -26,8 +26,8 @@ export class FormationsComponent implements OnInit, OnDestroy, IDeactivateCompon
     private _formationsStatusServices: FormationsStatusService,
     private _formationsServices: FormationsService,
     private _formChangeService: FormChangesService,
-    public views: NavBarService,
     private fb: FormBuilder,
+    public views: NavBarService,
     public userData: UserDataService,
     public toastr :ToastrService
   ) {

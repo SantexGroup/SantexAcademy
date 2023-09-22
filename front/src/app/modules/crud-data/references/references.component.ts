@@ -6,6 +6,7 @@ import { ReferencesService } from 'src/app/core/services/references.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { ToastrService } from 'ngx-toastr';
+import { FormChangesService } from 'src/app/core/services/toolServices/form-changes.service';
 
 @Component({
   selector: 'app-references',
@@ -19,11 +20,12 @@ export class ReferencesComponent implements OnInit {
   referenceId: number = 0;
 
   constructor(
-    public userData: UserDataService,
-    public views: NavBarService,
     private _company: ExperiencesService,
     private fb: FormBuilder,
     private _referenceService: ReferencesService,
+    private _formChangeService: FormChangesService,
+    public userData: UserDataService,
+    public views: NavBarService,
     public toastr :ToastrService 
   ) {
     this.referenceForm = this.fb.group({
@@ -32,7 +34,10 @@ export class ReferencesComponent implements OnInit {
       email: '',
       phone: '',
       company: '',
-    })
+    });
+
+    this._formChangeService.originalValues = this.referenceForm.value;
+this._formChangeService.checkFormChanges(this.referenceForm);
   }
 
   ngOnInit(): void {
