@@ -12,7 +12,8 @@
     "db:create": "./node_modules/.bin/sequelize db:create",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
     "db:migrate:undo": "./node_modules/.bin/sequelize db:migrate:undo",
-    "db:seed:all": "./node_modules/.bin/sequelize db:seed:all"
+    "db:seed:all": "./node_modules/.bin/sequelize db:seed:all",
+    "db:restart": "npx sequelize db:drop && npx sequelize db:create"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
