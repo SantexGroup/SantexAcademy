@@ -1,5 +1,5 @@
 <app-barra></app-barra>
-<p *ngIf="!confVendedor">Para subir un articulo nuevo debe loguearse como vendedor</p>
+<p *ngIf="!confVendedor">¡Para subir un articulo nuevo debe ser vendedor!</p>
 <div class="formulario" *ngIf="confVendedor">
     <h2>Carga de Producto</h2>
 
@@ -54,6 +54,7 @@
                     </select>
                 </div>
             </div>
+
 
             <div class="botones-container">
                 <input (click)="subirProducto()" class="subir-boton" type="button" value="Subir Producto" [disabled]="formUp.invalid"/>
