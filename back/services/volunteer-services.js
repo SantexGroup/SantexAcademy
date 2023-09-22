@@ -227,7 +227,7 @@ async function canjearPremioService(volunteerId, premioId) {
 
     delete voluntarioConPremios.dataValues.password;
 
-    return { success: true, voluntario: voluntarioConPremios };
+    return { success: true, voluntario: voluntarioConPremios, pdfPath: pdfPath };
   } catch (error) {
     return { error: 'Error interno en el servidor' };
   }
