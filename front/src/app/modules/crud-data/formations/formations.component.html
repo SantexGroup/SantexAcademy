@@ -46,7 +46,7 @@
             <div class="botonera">
                 <div class="botones">
                     <button (click)="formationAdd()" class="plus" type="submit" *ngIf="views.plusOne">
-                        <img src="/assets/Imagenes/plus.png" alt="+">
+                        <img src="./assets/Imagenes/plus.png" alt="+">
                     </button>
                     <button type="submit" mat-raised-button color="primary" *ngIf="views.saveButton"(click)="saveFormation()" >
                         Guardar
@@ -65,10 +65,10 @@
                     <h5 class="card-text">Estado {{formation.statusId}}</h5>
                     <div class="botonera-card">
                       <button (click)="editFormation(formation)" (click)="views.changeViews()" >
-                        <img src="/assets/Imagenes/editar.png" alt="Editar">
+                        <img src="./assets/Imagenes/editar.png" alt="Editar">
                       </button>
                       <button (click)="deleteFormation(formation.id!)" >
-                        <img src="/assets/Imagenes/delete.png" alt="Eliminar">
+                        <img src="./assets/Imagenes/delete.png" alt="Eliminar">
                       </button>
                     </div>
                   </div>
