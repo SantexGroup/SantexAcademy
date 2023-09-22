@@ -8,7 +8,6 @@ const { validationResult } = require('express-validator');
 const { createAndUpdateUserValidation, loginUserValidation } = require('../middleware/validations.UserEntity');
 const { createAndUpdateOrganizationValidation, loginOrganizationValidation } = require('../middleware/validation.OrgEntity');
 
-const { userController, orgController } = require("../controllers");
 
 
 authRouter.post("/users/login", loginUserValidation, async (req, res) => {
