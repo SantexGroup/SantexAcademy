@@ -36,7 +36,10 @@ userRouter.get(
   verifyToken,
   isUser,
   userController.getUserProfile
-);
+);<<<<<<< f/changes-navbar
+54
+ 
+
 
 // Ruta para que un usuario elimine su propio perfil
 userRouter.delete(

@@ -1,17 +1,16 @@
 const { UsuarioEnVoluntariado } = require('../models');
 
-const join = async (volunteerId, userId) => {
+// Proveedor de Datos para crear la relación usuario-voluntariado
+const join = async (userId, idVolunteering) => {
   try {
-    const join = await UsuarioEnVoluntariado.create({
-      volunteerId,
-      userId,
-    });
-    return join;
+    await UsuarioEnVoluntariado.create({ userId, idVolunteering });
   } catch (err) {
-    console.error('The joint could not be created due to an error.', err);
+    console.error(err);
     throw err;
   }
 };
+
+
 
 const count = async (volunteerId) => {
   try {

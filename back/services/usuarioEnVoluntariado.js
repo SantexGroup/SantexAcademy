@@ -1,34 +1,19 @@
-const {
-  usuarioEnVoluntariadoProvider,
-  userProvider,
-  voluntariadoProvider,
-} = require('../providers');
+const {usuarioEnVoluntariadoProvider} = require('../providers');
 
-const join = async (userId, idVoluntariado) => {
+// Servicio para unirse a un voluntariado
+const join = async (userId, idVolunteering) => {
   try {
-    const volunteering = await voluntariadoProvider.getVoluntariadosByCriteria({ idVoluntariado });
-    if (!volunteering) {
-      return 'Volunteering not found.';
-    }
 
-    const volunteerCount = await usuarioEnVoluntariadoProvider.count(idVoluntariado);
+    // Llamar al proveedor para crear la relación usuario-voluntariado
+    await usuarioEnVoluntariadoProvider.join(userId, idVolunteering);
 
-    if (volunteerCount >= volunteering.spots) {
-      return 'Volunteering is full.';
-    }
-
-    const user = await userProvider.getUserProfile(userId);
-    if (!user) {
-      return 'User not found.';
-    }
-
-    const joint = await usuarioEnVoluntariadoProvider.join(userId, idVoluntariado);
-    return joint;
+    return 'Usuario unido al voluntariado exitosamente.';
   } catch (err) {
     console.error(err);
     throw err;
   }
 };
 
-
-module.exports = { join };
+module.exports = {
+  join,
+};
