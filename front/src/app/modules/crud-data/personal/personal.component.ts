@@ -16,7 +16,9 @@ export class PersonalComponent implements OnInit {
   mensajeError: string = "";
   user = {} as userInterface;
   personalForm: FormGroup;
-  url= '../../../../assets/Imagenes/placeHolderImage.jpg';
+  default = '../../../../assets/Imagenes/placeHolderImage.jpg';
+  url: string = this.default;
+  imagen= " ";
 
   constructor(
     private fb: FormBuilder,
@@ -45,7 +47,7 @@ export class PersonalComponent implements OnInit {
   // * Forumulario de datos personales
   getUser() { 
     this.userService.getUser(this.userData.userId).subscribe({
-      next: (data) => { console.log ("get user: ", data) //TODO - Quitar
+      next: (data) => { 
         this.personalForm.patchValue({
           firstName: data.name,
           lastName: data.lastName,
@@ -69,6 +71,8 @@ export class PersonalComponent implements OnInit {
   //* Se carga la imagen en el frontend
   selectImage(e:any) {
     if (e.target.files[0]) {
+      this.imagen = e.target.files[0];
+      console.log("imagen", this.imagen) // TODO: BORRAR
       const reader = new FileReader()
       reader.readAsDataURL(e.target.files[0])
       reader.onload = (e:any) => {
@@ -79,7 +83,18 @@ export class PersonalComponent implements OnInit {
   
   updateUser(personalForm: FormGroup){ 
     //* Se envia la imagen a GoogleDrive
-    
+    if (this.url!=this.default) {
+      this.userService.uploadImage(this.imagen).subscribe({
+        next: (data) => { console.log (data) },
+        error: (err) => { 
+          console.log(err); 
+          this.mensajeError = err;
+        },
+        complete: () => {
+          console.log("Imagen Guardada") 
+        }
+      })
+    }
 
     //* Se toma los datos del formulario para la actualizacion
     this.user.nick = ' ';

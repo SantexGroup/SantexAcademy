@@ -79,7 +79,7 @@ export class UserDataService {
     const token = localStorage.getItem('accessToken');
     if (token) {
       const tokenData = jwtDecode<Token>(token);
-      console.log(tokenData);
+      // console.log(tokenData); //TODO ELIMINAR
       const currentTime = Math.floor(Date.now() / 1000);
       const expiration = tokenData.exp;
       this.userId = tokenData.id;

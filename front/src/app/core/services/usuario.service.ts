@@ -31,7 +31,6 @@ private userData1: BehaviorSubject<{ name: string, lastName: string }> = new Beh
 
   //* Loguear un usuario  
   login(user: loginInterface) : Observable<loginInterface> {
-    console.log("desde servicio login");
     return this.api.post<loginInterface>('user/login', user);
   }
 
@@ -46,9 +45,12 @@ private userData1: BehaviorSubject<{ name: string, lastName: string }> = new Beh
   }
 
   //* Se envia la foto a Google Drive
-/*   uploadImage(url: string) : Observable <any> {
-    return this.api.post<any>('user/upload', url);
-  } */
+  uploadImage(imagen: any) : Observable <any> {
+    const pictureLink = new FormData();
+    pictureLink.append('pictureLink', imagen);
+
+    return this.api.post<any>('user/upload', pictureLink );
+  }
 
   setUserData(name: string, lastName: string) {
     this.userData1.next({ name, lastName });

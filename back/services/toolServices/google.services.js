@@ -9,7 +9,8 @@ const uploadDrive = ('/upload', upload, async (req, res) => {
       version: 'v3',
       auth: oauth2Client,
     });
-
+    
+    console.log("desde google service", req.file) //TODO ELIMIAR
     const fileMetadata = {
       name: req.file.originalname,
       parents: ['1WcqY4VfU6Qm8M5ELWwkGT4DAMpt9RPlR'],
@@ -23,10 +24,10 @@ const uploadDrive = ('/upload', upload, async (req, res) => {
     const { data } = await gDrive.files.create({
       resource: fileMetadata,
       media,
-      fields: 'id',
+      fields: 'id', 
     });
 
-    console.log(data.id);
+    console.log('ID', data.id);
 
     /* https://drive.google.com/uc?export=view&id= */
 
