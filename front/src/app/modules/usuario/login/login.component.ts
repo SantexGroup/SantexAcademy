@@ -36,8 +36,9 @@ export class LoginComponent {
   }
 
   loginForm = this.fb.group({
-    nick: ['', [ Validators.required ]],
-    password: ['', [ Validators.required, Validators.minLength(6) ]],
+    //TODO ELIMINAR
+    nick: ['javkhall7', [ Validators.required ]],
+    password: ['qwerty', [ Validators.required, Validators.minLength(6) ]],
   })
   
   submit(myForm: FormGroup) {

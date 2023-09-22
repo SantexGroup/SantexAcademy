@@ -30,10 +30,15 @@
         <input matInput type="email" formControlName="email">
       </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Foto</mat-label>
-        <input matInput formControlName="pictureLink">
-      </mat-form-field>
+      <!-- * Seccion del imagen -->
+      <div class="imagenSection">
+        <img class="imagenBox" [src]="url">
+        <input type="file" id="imagen" style="display: none;" name="pictureLink" (change)="selectImage($event)">
+
+        <label class="imagenLabel" for="imagen" style="cursor: pointer;">Cargar Foto</label>
+      <!--   <input matInput formControlName="pictureLink"> -->
+
+      </div>
 
       <div class="botonera">
         <div class="botones">

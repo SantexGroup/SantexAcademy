@@ -16,6 +16,9 @@ export class PersonalComponent implements OnInit {
   mensajeError: string = "";
   user = {} as userInterface;
   personalForm: FormGroup;
+  default = '../../../../assets/Imagenes/placeHolderImage.jpg';
+  url: string = this.default;
+  imagen= " ";
 
   constructor(
     private fb: FormBuilder,
@@ -44,7 +47,7 @@ export class PersonalComponent implements OnInit {
   // * Forumulario de datos personales
   getUser() { 
     this.userService.getUser(this.userData.userId).subscribe({
-      next: (data) => { console.log (data)
+      next: (data) => { 
         this.personalForm.patchValue({
           firstName: data.name,
           lastName: data.lastName,
@@ -65,22 +68,49 @@ export class PersonalComponent implements OnInit {
     })
   }
   
+  //* Se carga la imagen en el frontend
+  selectImage(e:any) {
+    if (e.target.files[0]) {
+      this.imagen = e.target.files[0];
+      console.log("imagen", this.imagen) // TODO: BORRAR
+      const reader = new FileReader()
+      reader.readAsDataURL(e.target.files[0])
+      reader.onload = (e:any) => {
+        this.url = e.target.result
+      }
+    }
+  }  
+  
   updateUser(personalForm: FormGroup){ 
-    //** ???
+    //* Se envia la imagen a GoogleDrive
+    if (this.url!=this.default) {
+      this.userService.uploadImage(this.imagen).subscribe({
+        next: (data) => { console.log (data) },
+        error: (err) => { 
+          console.log(err); 
+          this.mensajeError = err;
+        },
+        complete: () => {
+          console.log("Imagen Guardada") 
+        }
+      })
+    }
+
+    //* Se toma los datos del formulario para la actualizacion
     this.user.nick = ' ';
     this.user.name = personalForm.get('firstName')?.value;
     this.user.lastName = personalForm.get('lastName')?.value;
+    this.user.phone = personalForm.get('phone')?.value;
+    this.user.bornDate = personalForm.get('bornDate')?.value;
     
     //* Se verifica si el correo fue cambiado o no
     if (personalForm.get('email')?.value === this.user.email) {
       this.user.email = ' ';
     } else { this.user.email = personalForm.get('email')?.value; }
     
-    //this.user.email = personalForm.get('email')?.value;
-    this.user.phone = personalForm.get('phone')?.value;
-    this.user.bornDate = personalForm.get('bornDate')?.value;
     this.user.pictureLink = personalForm.get('pictureLink')?.value;
 
+    //* Se actualiza el usuario
     this.userService.updateUser(this.userData.userId, this.user).subscribe({
       next: (data) => { console.log (data) },
       error: (err) => { 
@@ -92,4 +122,6 @@ export class PersonalComponent implements OnInit {
       }
     })
   }  
+
+
 }

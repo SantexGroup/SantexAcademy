@@ -62,9 +62,6 @@ async function updateUser(req, res, next) {
     // Extraer el ID del usuario de los parámetros de la solicitud
     const { id } = req.params;
     const userData = req.body;
-
-    console.log('Desde user.controller', userData);
-
     // Llamar al servicio para actualizar los datos del usuario
     const user = await userService.updateUser(id, userData);
 

@@ -117,3 +117,29 @@ form mat-form-field {
   height: 2.5rem;
   filter: opacity(1);
 }
+
+.imagenSection{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.imagenLabel{
+  height: fit-content;
+  /* margin-top: 25px; */
+  padding: 3px 12px;
+  margin: 8px 10px;
+  min-width: 88px;
+  border-radius: 3px;
+  font-size: 14px;
+  text-align: center;
+  border: solid 1px black;
+  
+}
+
+.imagenBox {
+  width: 150px;
+  height: 150px;
+  margin: 5px 15px; 
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
