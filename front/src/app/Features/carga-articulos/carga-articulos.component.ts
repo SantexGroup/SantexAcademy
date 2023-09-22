@@ -85,7 +85,7 @@ export class CargaArticulosComponent implements OnInit {
       console.log(res);
       if(res){
         for (let i = 0; i < res.length; i++) {
-          const imageName = res[i].originalname;
+          const imageName = res[i].filename;
           this.service.cargaImagesNames(this.idProducto, imageName).subscribe( res =>
             console.log(res));
         }
