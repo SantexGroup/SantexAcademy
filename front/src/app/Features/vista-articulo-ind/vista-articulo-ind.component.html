@@ -5,19 +5,19 @@
         <!-- Imagen -->
         <div id="divImagen" class="col">
             <div id="fondoImagen" class="col">
-                <img id="imagen" class="img-fluid" src="assets/t796003.png" />
+                <img id="imagen" class="img-fluid" [src]="images[0]" />
             </div>
         </div>
 
         <!-- Info -->
-        <div id="datos">
+        <div id="datos" *ngIf="respuesta.articulos">
 
             <!-- Nombres -->
             <div id="divTitulo">
                 <div class="d-flex justify-content-center">
                     <p id="nombreProd" >{{respuesta.articulos.nombre}}</p>
                 </div>
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-end" *ngIf="respuesta.tipo">
                     <a routerLink="/">Categoría: {{respuesta.tipo.name}}</a>
                     
                 </div>

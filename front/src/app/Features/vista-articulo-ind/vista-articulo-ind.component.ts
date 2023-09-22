@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { vistaArtIndServ } from 'src/app/core/services/vista-art-ind-serv.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-vista-articulo-ind',
@@ -9,11 +10,15 @@ import { Router } from '@angular/router';
 })
 export class VistaArtIndComponent implements OnInit {
 
+  // obtener imgs
+  servidor: string = environment.API_URL + '/images/'
+  images: string[] = [];
+
   //id del producto
-  id: number = 1;
+  id: number = 37;
 
   //id del usuario
-  idUsuario: number = 0;
+  idUsuario: number = 1;
   
   //seleccionables
   envSel: string = '';
@@ -48,9 +53,18 @@ export class VistaArtIndComponent implements OnInit {
 
   //traer datos
   datosProd(id: number) {
-    this.service.datosProdServ(this.id).subscribe(res => {
+    this.service.datosProdServ(id).subscribe(res => {
       this.respuesta = res;
+      console.log(this.respuesta);
+
+      if (res.articulos.Images){
+        const imagesProd = res.articulos.Images
+        for (let i = 0; i < imagesProd.length; i++){
+          this.images.push(this.servidor + imagesProd[i].url);
+        }
+      }
     })
+    console.log(this.images);
   }
 
 
