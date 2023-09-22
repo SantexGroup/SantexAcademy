@@ -59,6 +59,5 @@ export class HomePageComponent {
 
   ngOnInit() {
     const token = this.authService.getAuthToken();
-    console.log(token);
   }
 }

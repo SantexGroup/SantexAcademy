@@ -112,16 +112,35 @@
             >Registrarse</a
           >
         </div>
-        <div
-          *ngIf="isToken"
-          class="flex flex-col items-center justify-center gap-4 lg:flex-row font-semibold lg:items-start"
-        >
-          <article>
+        <div *ngIf="isToken" class="flex items-center justify-center">
+          <article class="mt-[-.5em] relative group">
             <figure
-              class="w-[50px] aspect-square rounded-full border border-lightGray p-2"
+              (click)="openProfileMenu()"
+              class="w-[50px] aspect-square rounded-full border border-lightGray p-2 cursor-pointer"
             >
               <img src="/assets/imgs/avatar.png" alt="avatar" class="" />
             </figure>
+            <div
+              [class]="
+                isOpenprofileMenu
+                  ? 'block absolute top-12 right-8 bottom-0 left-[-1.5em] m-auto mt-2 w-40'
+                  : 'hidden lg:group-hover:block lg:absolute lg:right-0 lg:mt-2 lg:w-40 lg:bg-white lg:shadow-lg lg:shadow-lightGray'
+              "
+            >
+              <ul class="flex flex-col gap-2 p-2 text-lg font-medium">
+                <li>
+                  <a href="#" class="lg:hover:text-blueViolet">Editar Perfil</a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="lg:hover:text-blueViolet"
+                    (click)="logout()"
+                    >Cerrar Sesión</a
+                  >
+                </li>
+              </ul>
+            </div>
           </article>
         </div>
 

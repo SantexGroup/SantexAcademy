@@ -13,6 +13,8 @@ export class NavbarComponent {
   maxHeight: number = 500;
   isToken: boolean = false;
 
+  isOpenprofileMenu: boolean = false;
+
   constructor(private authService: AuthService) {
     const isOpenValue = localStorage.getItem('isOpen');
     if (isOpenValue !== null) {
@@ -45,6 +47,19 @@ export class NavbarComponent {
     console.log(token);
     if (token) {
       this.isToken = true;
+    }
+  }
+
+  logout() {
+    this.authService.clearAuthToken();
+    window.location.reload();
+  }
+
+  openProfileMenu() {
+    if (this.isOpenprofileMenu == false) {
+      this.isOpenprofileMenu = true;
+    } else {
+      this.isOpenprofileMenu = false;
     }
   }
 }
