@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './modules/navbar/navbar.component';
 import { HomePageComponent } from './modules/home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './modules/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomePageComponent
+    HomePageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
