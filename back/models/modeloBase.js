@@ -16,7 +16,12 @@
 
 //   ModeloBase.init(
 //     {
-//       id: DataTypes.INTEGER,
+    // id:  DataTypes.INTEGER,
+    // id: {
+    //     primaryKey: true,
+    //     type: DataTypes.INTEGER
+    //   },
+  
 
 //       activo: DataTypes.INTEGER,
 

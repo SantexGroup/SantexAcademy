@@ -1,18 +1,18 @@
 // Creacion del modelo de provincia
 
-const { Model } = require('sequelize');
+const { Model } = require("sequelize");
 //const ModeloBase = require('./modeloBase');
 
 module.exports = (sequelize, DataTypes) => {
   //class Roles extends ModeloBase {
   class Provincia extends Model {
-      /**
+    /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
 
-      static associate(models) {
+    static associate(models) {
       // define association here
     }
   }
@@ -20,34 +20,41 @@ module.exports = (sequelize, DataTypes) => {
   // Inicializar la clase base (ModeloBase)
   //super.initModeloBase(sequelize);
 
-  Provincia.init({
-    id:  DataTypes.INTEGER,
+  Provincia.init(
+    {
+      // id:  DataTypes.INTEGER,
+      id: {
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
 
-    // codigo_afip: DataTypes.INTEGER,
+      // codigo_afip: DataTypes.INTEGER,
 
-    // abreviatura: DataTypes.STRING,
+      // abreviatura: DataTypes.STRING,
 
-    nombre: DataTypes.STRING,
+      nombre: DataTypes.STRING,
 
-    // prefijo_telefonico: DataTypes.INTEGER,
+      // prefijo_telefonico: DataTypes.INTEGER,
 
-    activo: DataTypes.INTEGER,
+      activo: DataTypes.INTEGER,
 
-    por_defecto: DataTypes.INTEGER,
+      por_defecto: DataTypes.INTEGER,
 
-    // orden: DataTypes.INTEGER,
+      // orden: DataTypes.INTEGER,
 
-    creado_por:  DataTypes.STRING,
+      creado_por: DataTypes.STRING,
 
-    fecha_creacion: DataTypes.DATE,
+      fecha_creacion: DataTypes.DATE,
 
-    modificado_por:  DataTypes.STRING,
+      modificado_por: DataTypes.STRING,
 
-    fecha_modificacion: DataTypes.DATE,
-  }, {
-    sequelize,
-    modelName: 'Provincia',
-  });
+      fecha_modificacion: DataTypes.DATE,
+    },
+    {
+      sequelize,
+      modelName: "Provincia",
+    }
+  );
 
   return Provincia;
 };

@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes, Deferrable) => {
 
     static associate(models) {
       // define association here
-      Donante.belongsTo(models.descripcionTelefono, { foreignKey: "id_descripcion_telefono", });
+      Donante.belongsTo(models.descripcionTelefono, {
+        foreignKey: "id_descripcion_telefono",
+      });
     }
   }
 
@@ -24,22 +26,26 @@ module.exports = (sequelize, DataTypes, Deferrable) => {
 
   Donante.init(
     {
-      id: DataTypes.INTEGER,
+      // id:  DataTypes.INTEGER,
+      id: {
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
 
       razon_social: DataTypes.STRING,
 
       email: DataTypes.STRING,
 
       calle: DataTypes.STRING,
-      
+
       numero: DataTypes.STRING,
-      
+
       piso: DataTypes.STRING,
-      
+
       departamento: DataTypes.STRING,
-      
+
       codigo_postal: DataTypes.STRING,
-      
+
       id_descripcion_telefono: {
         type: DataTypes.INTEGER,
 
