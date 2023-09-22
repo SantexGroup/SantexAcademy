@@ -8,6 +8,7 @@ import { VolunteeringSearchComponent } from './components/volunteering-search/vo
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { WhatsappButtonComponent } from './components/whatsapp-button/whatsapp-button.component';
 import { HeroComponent } from './components/hero/hero.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { HeroComponent } from './components/hero/hero.component';
     TestimonialsComponent,
     WhatsappButtonComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomeModule {}

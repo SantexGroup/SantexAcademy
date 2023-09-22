@@ -40,14 +40,13 @@ export class FormVolunteerregisterComponent {
       const userData: volunterData = this.registroForm.value as volunterData;
       this.authService.registerVolunteer(userData).subscribe({
         next: (response) => {
-          console.log('Registro exitoso:', response);
           this.onModal = true;
           this.statusSession = 'success';
           this.routeBtnContinue = 'auth/login';
           this.textBtnModal = 'Iniciar Sesión';
         },
         error: (error) => {
-          console.error('Error en el registro:', error);
+          console.error('Error in volunteer registration:', error);
           this.onModal = true;
           this.statusSession = 'failed';
           this.routeBtnContinue = 'auth/volunteer-register';
