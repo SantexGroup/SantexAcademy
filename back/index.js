@@ -36,7 +36,7 @@ app.use(express.json());
 //   })
 // );
 
-app.use("/api/v1", routes);
+//app.use("/api/v1", routes);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
