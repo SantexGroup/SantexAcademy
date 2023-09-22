@@ -1,19 +1,20 @@
 const { google } = require('googleapis');
+const apiData = require('../../providers/googleJSON.json');
 
 /* Configuracion de Google */
-const CLIENT_ID = '14975470431-136qdlcg13b84d3n4o8jsc67u64dm55u.apps.googleusercontent.com';
-const CLIENT_SECRET = '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';
-const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
-const REFRESH_TOKEN = '1//04HjaUOb2qFQGCgYIARAAGAQSNwF-L9Irl4QjQsb4jLdo5NxhZbcHbZPDvgQTiT5gtVOZkIBRxg0t_WFKcoKQ1r3HL2v0NaoixEA';
+const SCOPE = ['https://www.googleapis.com/auth/drive'];
 
-const oauth2Client = new google.auth.OAuth2(
-  CLIENT_ID,
-  CLIENT_SECRET,
-  REDIRECT_URI,
-);
+async function googleValidation() {
+  const googleJWT = new google.auth.JWT(
+    apiData.client_email,
+    null,
+    apiData.private_key,
+    SCOPE,
+  );
 
-oauth2Client.setCredentials({
-  refresh_token: REFRESH_TOKEN,
-});
+  await googleJWT.authorize();
 
-module.exports = oauth2Client;
+  return googleJWT;
+}
+
+module.exports = googleValidation;

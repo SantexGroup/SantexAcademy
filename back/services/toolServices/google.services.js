@@ -1,18 +1,18 @@
 const fs = require('fs');
 const { google } = require('googleapis');
-const oauth2Client = require('../../config/files/google.config');
+const googleValidation = require('../../config/files/google.config');
 const upload = require('./multer.services');
 
 const uploadDrive = ('/upload', upload, async (req, res) => {
   try {
     const gDrive = google.drive({
       version: 'v3',
-      auth: oauth2Client,
+      auth: await googleValidation(),
     });
 
     const fileMetadata = {
       name: req.file.originalname,
-      parents: ['1WcqY4VfU6Qm8M5ELWwkGT4DAMpt9RPlR'],
+      parents: ['1U2zXpUVpRshEz35pnFjIbZoy7QTmSA3N'],
     };
 
     const media = {

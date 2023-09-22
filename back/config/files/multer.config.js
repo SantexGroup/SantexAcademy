@@ -6,7 +6,7 @@ const path = require('path');
 // Almacenamiento momentaneo
 const localDisk = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '..', 'public/subir'));
+    cb(null, path.join(__dirname, '..', '..', 'public/subir'));
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
