@@ -4,6 +4,7 @@ import { HomePageComponent } from './modules/home/home-page/home-page.component'
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
 import { VolunteersComponent } from './pages/volunteers/volunteers.component';
+import { OrganizationDetailsComponent } from './pages/organization-details/organization-details.component';
 
 const routes: Routes = [
   { path: '', title: 'VolunTime - Inicio', component: HomePageComponent },
@@ -21,6 +22,12 @@ const routes: Routes = [
     path: 'voluntariados',
     title: 'VolunTime - Voluntariados',
     component: VolunteersComponent,
+  },
+
+  {
+    path: 'organizacion',
+    title: 'VolunTime',
+    component: OrganizationDetailsComponent,
   },
 
   {

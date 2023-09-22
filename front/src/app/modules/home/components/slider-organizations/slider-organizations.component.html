@@ -27,10 +27,14 @@
         </swiper-slide>
       </ng-container>
     </ng-container>
+
     <ng-container *ngIf="organizations.length > 0">
       <ng-container *ngFor="let item of organizations">
-        <swiper-slide class="flex items-center justify-center mx-4 lg:mx-0">
-          <figure class="w-[150px] h-[105px] md:w-[250px]">
+        <swiper-slide
+          class="flex items-center justify-center mx-4 lg:mx-0"
+          (click)="navigateToOrganization(item.id)"
+        >
+          <figure class="w-[150px] h-[105px] md:w-[250px] z-10">
             <img
               [src]="item.image?.imageUrl"
               class="w-full h-full object-contain"

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrgServicesService } from '../../services/org-services.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-slider-organizations',
@@ -7,7 +8,10 @@ import { OrgServicesService } from '../../services/org-services.service';
   styleUrls: ['./slider-organizations.component.css'],
 })
 export class SliderOrganizationsComponent implements OnInit {
-  constructor(private orgServices: OrgServicesService) {}
+  constructor(
+    private router: Router,
+    private orgServices: OrgServicesService
+  ) {}
   organizations: any[] = [];
 
   images: string[] = [
@@ -24,13 +28,18 @@ export class SliderOrganizationsComponent implements OnInit {
   ngOnInit() {
     this.orgServices.getOrganizations().subscribe({
       next: (response) => {
-        console.log('Organizaciones', response);
         this.organizations = response;
       },
       error: (error) => {
-        console.error('Error GET Organizaciones', error);
+        console.error('GET error, carousel start', error);
       },
       complete: () => {},
     });
+  }
+
+  navigateToOrganization(id: number) {
+    console.log(typeof id);
+
+    this.router.navigate(['/organizacion'], { queryParams: { id: id } });
   }
 }
