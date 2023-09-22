@@ -1,3 +1,4 @@
+// obtener todos
 const productsService = require('../services/products-service');
 
 // obtener todos
