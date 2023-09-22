@@ -1,12 +1,14 @@
-const express = require('express');
-
+const express = require("express");
+const upload = require("../config/multerConfig");
 const authRouter = express.Router();
+
 const { userController, orgController } = require('../controllers');
 
 const { validationResult } = require('express-validator');
 const { createAndUpdateUserValidation, loginUserValidation } = require('../middleware/validations.UserEntity');
 const { createAndUpdateOrganizationValidation, loginOrganizationValidation } = require('../middleware/validation.OrgEntity');
 
+const { userController, orgController } = require("../controllers");
 
 
 authRouter.post("/users/login", loginUserValidation, async (req, res) => {
@@ -59,5 +61,6 @@ authRouter.post("/org/login", loginOrganizationValidation, async (req, res) => {
   }
   orgController.loginOrganization(req, res);
 });
+
 
 module.exports = authRouter;

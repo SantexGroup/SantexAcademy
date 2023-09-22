@@ -6,18 +6,16 @@ const sequelize = new Sequelize(
   // process.env.DB_DATABASE,
   // process.env.DB_USERNAME,
   // process.env.DB_PASSWORD,
-  process.env.DB_URL,
+  process.env.DB_URL
 
   //luego se pasa un objeto de configuración con el host y el dialecto
   // {
   //   host: process.env.DB_HOST,
   //   dialect: "mysql",
   // }
-  
 );
 
 sequelize.options.logging = console.log;
-
 
 const initializeDB = async () => {
   try {
