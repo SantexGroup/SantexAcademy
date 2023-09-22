@@ -4,18 +4,22 @@
 <div class="wrapper">
     <div class="body">
       <img class="logo" src="/assets/images/logo circular.png" alt="login">
-      <h1>Acceso</h1>
+      <!-- <h1>Acceso</h1> -->
+      <h2>Por favor, ingrese sus datos.</h2>
       <form [formGroup]="loginForm">
         <div class="form-floating mb-3" >
-          <input type="text" class="form-control" formControlName="email" required placeholder="Ingrese Usuario">
-          <label>Usuario</label>
-
+          <!-- //Requerimos email, la etiqueta debe llamarse email -->
+          <input type="text" class="form-control" formControlName="email" required placeholder="Ingrese su email">
+          <!-- <label>Usuario</label> -->
+          <label>Email</label>
         <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
          <div *ngIf="email.errors?.['required']">
-            El usuario es requerido.
+            <!-- El usuario es requerido. -->
+            El email es requerido.
           </div>
           <div *ngIf="email.errors?.['email']">
-            El usuario debe tener un formato válido.
+            <!-- El usuario debe tener un formato válido. -->
+            El email debe tener un formato válido.
           </div>
         </div>
       </div> 
