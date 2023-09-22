@@ -35,7 +35,6 @@ const isAdmin = async (req, res, next) => {
   }
 };
 
-
 const verifyToken = async (req, res, next) => {
   try {
     const token = req.headers["x-access-token"];
@@ -45,6 +44,7 @@ const verifyToken = async (req, res, next) => {
     const decoded = jwt.verify(token, config);
 
     //console.log("decoded: " + JSON.stringify(decoded, null, 2));
+    console.log("DECODED", decoded);
 
     let user = null;
     let org = null;
@@ -52,10 +52,11 @@ const verifyToken = async (req, res, next) => {
     if (decoded.userEmail) {
       // Si el token contiene "userEmail", es un token de usuario
       user = await Usuario.findOne({ where: { email: decoded.userEmail } });
+      req.userId = decoded.userId;
     } else if (decoded.orgEmail) {
       // Si el token contiene "orgEmail", es un token de organización
       org = await Organizacion.findOne({ where: { email: decoded.orgEmail } });
-      
+
       // Extraer el ID de la organización del token (si se encuentra)
       req.orgId = decoded.orgId;
     }
@@ -83,29 +84,26 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
-
-
-
 const isUser = (req, res, next) => {
-  if (req.modelType === 'Usuario' && req.userId === parseInt(req.params.id, 10)) {
+  if (req.modelType === "Usuario") {
     next();
   } else {
-    return res.status(403).json({ message: 'No tienes permiso para realizar esta acción' });
+    return res
+      .status(403)
+      .json({ message: "No tienes permiso para realizar esta acción" });
   }
 };
-
 
 const isOrg = (req, res, next) => {
   const idOrgParam = parseInt(req.params.idOrg, 10);
 
-  if (req.modelType === 'Organizacion' && idOrgParam === req.org.id) {
+  if (req.modelType === "Organizacion" && idOrgParam === req.org.id) {
     return next(); // El usuario es de tipo "Organizacion" y el ID coincide
   }
 
-  return res.status(403).json({ message: 'No tienes permiso para realizar esta acción' });
+  return res
+    .status(403)
+    .json({ message: "No tienes permiso para realizar esta acción" });
 };
 
-
-
-
-module.exports = { isAdmin, verifyToken, isUser, isOrg  };
+module.exports = { isAdmin, verifyToken, isUser, isOrg };
