@@ -25,7 +25,9 @@ const { Products, tipoProducto, User, Images } = require('../models');
 } */
 
 async function products() {
-  const productos = await Products.findAll();
+  const productos = await Products.findAll({
+    include: [{ model: Images }]
+  });
   console.log('Productos', productos);
 
   return productos;

@@ -9,7 +9,7 @@ export class VerArtGenService {
   constructor(private apiService: ApiService) { }
 
   getProduct() {
-    return this.apiService.get('/productos/products');
+    return this.apiService.get<any>('/productos/products');
   }
 
 }

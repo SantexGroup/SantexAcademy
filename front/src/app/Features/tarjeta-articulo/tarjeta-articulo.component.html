@@ -5,7 +5,7 @@
     <div *ngFor="let articulo of listArticulos" class="col-md-3 mb-4 tarjeta-container">
       <div class="card" style="width: 100%;">
         <div class="card-body">
-          <img id="FotoArticulo" [src]="articulo.imagenUrl">
+          <img id="FotoArticulo" [src]="images[listArticulos.indexOf(articulo)]">
           <h5 class="card-title">{{ articulo.nombre }}</h5>
           <p>{{ articulo.detalles }}</p>
           <h6 id="Precio" class="card-subtitle">Precio: {{ articulo.precio }}</h6>
