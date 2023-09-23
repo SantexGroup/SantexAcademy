@@ -12,7 +12,6 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { PagesModule } from './modules/pages/pages.module';
 import { ShareModule } from './modules/share/shares.module';
 import { RegisterModule } from './modules/register/register.module';
-import { PerfilAlumnoComponent } from './modules/pages/perfil-alumno/perfil-alumno.component';
 import { LoginComponent } from './modules/login/login/login.component';
 import { MisCursosComponent } from './modules/pages/mis-cursos/mis-cursos.component';
 
@@ -20,7 +19,6 @@ import { MisCursosComponent } from './modules/pages/mis-cursos/mis-cursos.compon
   declarations: [
     AppComponent,
     ErrorPageComponent,
-    PerfilAlumnoComponent,
     //LoginComponent,//BORRAR si no se usa
   ],
   imports: [
