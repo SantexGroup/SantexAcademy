@@ -1,4 +1,34 @@
-<app-mis-cursos></app-mis-cursos>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Cursos</title>
+  <link rel="stylesheet" href="mis-cursos.component.css">
+
+</head>
+<body>
+  <h1>Mis cursos</h1>
+  <div class="container">
+
+    <div class="curso-card" *ngFor="let curso of curso">
+      <figure>
+        <img src="{{curso.imagen}}" alt="Imagen del curso">
+      </figure>
+      <div class="contenido-card">
+        <h3>{{curso.nombre}}</h3>
+        <p>{{curso.descripcion}}</p>
+        <p class="duracion">Duración: {{curso.duracion}} meses</p>
+        <p class="fechafin">Fin: {{curso.fechafin}}</p>
+        <p class="requisitos">Requisitos: {{curso.requisitos}}</p>
+      </div>
+        <button (click)="ingresar()">INGRESAR</button>
+    </div>
+    
+  </div>
+
+
+<!-- <app-mis-cursos></app-mis-cursos>
 
 <h2>Mis Cursos Inscritos</h2>
 <ul>
@@ -7,8 +37,8 @@
 
 <div>
   <button (click)="toggleListaDesplegable()">Mis Cursos</button>
-  <!-- Lista desplegable de cursos inscritos -->
-  <ul *ngIf="listaDesplegableVisible">
+   Lista desplegable de cursos inscritos
+    <ul *ngIf="listaDesplegableVisible">
     <li *ngFor="let curso of cursosInscritos">{{ curso }}</li>
   </ul>
-</div>
+</div> -->

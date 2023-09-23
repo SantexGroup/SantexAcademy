@@ -73,7 +73,7 @@ export class CursoComponent implements OnInit {
             this.router.navigateByUrl('/cursos/index')
           })
     }else{
-      this.router.navigateByUrl('/auth/login');
+      this.router.navigateByUrl('/auth/login');//ATENCION!!! /auth/login lleva a login viejo y roto
     }
     
   }

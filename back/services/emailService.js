@@ -26,7 +26,7 @@ const sendMail = (user, userCode, userEmail, verificationLink) => {
                                     .replace(/{{nombre}}/g, user.nombre)
                                     .replace(/{{verificationLink}}/g, verificationLink)
                                     .replace(/{{codeRegister}}/g, user.codeRegister)
-                                    .replace(/{{password}}/g, user.password);                           
+                                    .replace(/{{email}}/g, user.email);                           
   // Datos del correo electronico
   const mailOptions = {
     from: '"Academy del NOC" <academyinnoc@yahoo.com>',
