@@ -17,6 +17,17 @@ const allUser = async (req, res, next) => {
   }
 };
 
+const allUserByFilters = async (req, res, next) => {
+  try {
+    const users = await userService.allUserByFilters();
+    res.status(201).json(users);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    next();
+  }
+};
+
 const getUser = async (req, res, next) => {
   const { id } = req.params;
   try {
@@ -200,4 +211,5 @@ module.exports = {
   revalidarToken,
   updateUser,
   deleteUser,
+  allUserByFilters,
 };

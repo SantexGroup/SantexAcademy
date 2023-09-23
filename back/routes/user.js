@@ -14,6 +14,7 @@ const { validarJWT } = require('../middleware/validar-jwt');
 //router.get('/:id', userController.getUser);
 
 router.get('/', userController.allUser);
+//router.get('/', userController.allUserByFilters);
 router.get('/renew', validarJWT, userController.revalidarToken);
 router.get('/:id/cursos', userController.getCursos);
 router.get('/:id', userController.getUser);

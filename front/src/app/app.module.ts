@@ -22,7 +22,6 @@ import { MisCursosComponent } from './modules/pages/mis-cursos/mis-cursos.compon
   declarations: [
     AppComponent,
     ErrorPageComponent,
-    PerfilAlumnoComponent,
     //LoginComponent,//BORRAR si no se usa
   ],
   imports: [

@@ -201,3 +201,77 @@
         </div>
     </div>
 </div>
+
+<div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
+    <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+        <header class="bg-surface-primary border-bottom pt-6">
+            <div class="container-fluid">
+                <div class="mb-npx">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                            <h1 id="titulo" class="h2 mb-0 ls-tight" style="padding-top: 10px; padding-bottom: 10px">
+                                Gestión de mastriculas
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="card shadow border-0 mb-7">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <h5 class="mb-0 me-3" style="width: 250px">Filtrar mastriculas</h5>
+                    <input id="buscarcurso" type="search" class="form-control" placeholder="Buscar"
+                        aria-controls="example" />
+                    <!--Llamar método buscar-->
+                    <button id="botonaltacurso" type="button" class="btn btn-sm btn-primary" style="margin-left: 10px">
+                        Buscar
+                    </button>
+                </div>
+                <!--Comento el botón agregar matriculas porque debemos definir si se podrá matricular desde el admin
+                    <button id="botonaltacurso" type="button" class="btn btn-sm btn-primary"
+                    [routerLink]="['/matricula/create']">
+                    Agregar matricula
+                </button>-->
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover table-nowrap">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Identificador</th>
+                        <th scope="col">Curso</th>
+                        <th scope="col">Alumno</th>
+                        <th scope="col">Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let matricula of matriculas">
+                        <td>
+                            {{ matricula.id }}
+                        </td>
+                        <td>
+                            {{ matricula?.Curso?.nombre }}
+                        </td>
+                        <td>
+                            {{ matricula?.User?.apellido + ', ' + matricula?.User?.nombre }}
+                        </td>
+                        <td>
+                          <a class="btn btn-sm btn-primary" (click)="habilitarMatricula(matricula, !matricula.habilitado)">
+                                <span [appHabilitarmatricula]="matricula.habilitado"></span>
+                            </a>
+                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <span class="text-muted text-sm">Mostrando 10 registros de 100 resultados encontrados</span>
+        </div>
+    </div>
+</div>

@@ -15,6 +15,33 @@ const allUser = async () => {
   return users;
 };
 
+const allUserByFilters = async (nombre) => {
+  try {
+    let whereClause = {
+      estado: 'A',
+    };
+  
+    if (nombre) {
+      whereClause.nombre = { [sequelize.Op.like]: `like %${'nombre'}%` };
+    }
+  
+    const users = await User.findAll({
+      where: whereClause,
+      include: [
+        {
+         model: TipoDeUsuario,
+         as: 'TipoDeUsuario'
+        }
+       ],
+    });
+  
+    return users;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
 const getUser = async (id) => {
   try {
     const user = await User.findByPk(id, {
@@ -111,4 +138,5 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
+  allUserByFilters,
 };

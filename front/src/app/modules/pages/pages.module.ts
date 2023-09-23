@@ -12,6 +12,9 @@ import { EstadoCursoDirective } from 'src/app/directivas/estado-curso.directive'
 import { ActivardesactivarcursoDirective } from 'src/app/directivas/activardesactivarcurso.directive';
 import { MisCursosComponent } from './mis-cursos/mis-cursos.component';
 import { AulaVirtualComponent } from './aula-virtual/aula-virtual.component';
+import { HabilitarmatriculaDirective } from 'src/app/directivas/habilitarmatricula.directive';
+import { PerfilAlumnoComponent} from './perfil-alumno/perfil-alumno.component';
+import { PerfilAlumnoEditarComponent } from './perfil-alumno-editar/perfil-alumno-editar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { AulaVirtualComponent } from './aula-virtual/aula-virtual.component';
     EstadoCursoDirective,
     ActivardesactivarcursoDirective,
     MisCursosComponent,
-    AulaVirtualComponent
+    AulaVirtualComponent,
+    HabilitarmatriculaDirective,
+    PerfilAlumnoComponent,
+    PerfilAlumnoEditarComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +41,9 @@ import { AulaVirtualComponent } from './aula-virtual/aula-virtual.component';
     CatalogoComponent,
     CursoComponent,
     IntegranteComponent,
-    AdminComponent
+    AdminComponent,
+    PerfilAlumnoComponent,
+    PerfilAlumnoEditarComponent
   ]
 })
 export class PagesModule { }

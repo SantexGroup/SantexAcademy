@@ -17,6 +17,7 @@ import { LoginComponent } from './modules/auth/pages/login/login.component';
 // import { LoginComponent } from './modules/login/login/login.component';
 import { MisCursosComponent } from './modules/pages/mis-cursos/mis-cursos.component'; // Ajusta la ruta según tu estructura de carpetas
 import { AulaVirtualComponent } from './modules/pages/aula-virtual/aula-virtual.component';
+import { PerfilAlumnoEditarComponent } from './modules/pages/perfil-alumno-editar/perfil-alumno-editar.component';
 
 const routes: Routes = [
   {
@@ -92,6 +93,10 @@ const routes: Routes = [
   {
     path: 'perfil-alumno',
     component: PerfilAlumnoComponent, 
+  },
+  {
+    path: 'perfil-alumno/editar',
+    component: PerfilAlumnoEditarComponent, 
   },
   { 
     path: 'perfil-alumno/mis-cursos', 
