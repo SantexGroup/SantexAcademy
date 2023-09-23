@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackServiceService } from 'src/app/services/back-service.service';
+import { BackServiceService } from 'src/app/core/services/product.service';
 import { Product } from 'src/app/core/interfaces/product';
 import { PopUpHomeComponent } from '../pop-up-home/pop-up-home.component';
 import { MatDialog } from '@angular/material/dialog';
