@@ -1,0 +1,97 @@
+/* styles.css */
+
+/* Estilos para el carrusel */
+.carousel-inner img {
+  width: 800px;
+  height: 400px;
+}
+
+
+/* Estilos para los enlaces en el carrusel */
+.carousel-inner a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Agrega más reglas CSS según tus necesidades */
+
+/* Define los colores personalizados */
+:root {
+  --color_white: #fff;
+  --color_prime: #5ad67d;
+  --color_grey: #e2e2e2;
+  --color_grey_dark: #a2a2a2;
+}
+
+/*  ESTILO CARDS  */
+
+/* Estilo general de las tarjetas */
+.blog-card {
+  display: flex;
+  margin: 20px;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+ /* Alto igual al de la imagen */
+}
+
+.blog-card:hover {
+  transform: scale(1.03);
+}
+
+/* Estilo de las imágenes en las tarjetas */
+/* Estilo de las imágenes en las tarjetas */
+/* Estilo de las imágenes en las tarjetas */
+.blog-card .photo img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover; /* Para que las imágenes se ajusten a las tarjetas */
+}
+
+/* Alinear la imagen de la segunda tarjeta a la derecha */
+#seccion2 .photo {
+  order: 2; /* Cambiamos el orden para que aparezca a la derecha */
+}
+
+/* Estilo del contenido de las tarjetas */
+.blog-card .description {
+  flex: 2;
+  padding: 20px;
+}
+
+.blog-card h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.blog-card h2 {
+  font-size: 18px;
+  color: #5ad67d;
+  margin: 10px 0;
+}
+
+.blog-card p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+/* Estilo del botón "Nuestros cursos" adaptado a Bootstrap */
+.blog-card .btn-read-more {
+  margin-top: 20px;
+}
+
+.blog-card .btn-read-more a {
+  text-decoration: none;
+  color: #ff6501; /* Cambiamos el color del texto */
+
+  border: 2px solid #ff6501; /* Agregamos un borde en lugar de fondo */
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.blog-card .btn-read-more a:hover {
+  background-color: #ff6501; /* Cambiamos el color de fondo al hacer hover */
+  color: #fff; /* Cambiamos el color del texto al hacer hover */
+}

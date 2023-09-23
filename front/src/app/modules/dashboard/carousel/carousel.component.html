@@ -1,51 +1,89 @@
-<div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="carousel-item">
-      <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400"
-        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Marcador de posición: Primera diapositiva"
-        preserveAspectRatio="xMidYMid slice" focusable="false">
-        <title>Placeholder</title>
-        <rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#555" dy=".3em">First
-          slide</text>
-      </svg>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Enlaza el archivo CSS externo -->
+  <link rel="stylesheet" type="text/css" href="carousel.component.css">
+</head>
+<body>
+  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <a href="#seccion1"> <!-- Agrega un enlace a la sección a la que deseas redirigir -->
+          <img src="../assets/images/holaHD.png" class="d-block w-100" width="800" height="400" alt="Primera diapositiva">
+        </a>
+      </div>
+      <div class="carousel-item">
+        <a href="#seccion2"> <!-- Agrega un enlace a otra sección -->
+          <img src="../assets/images/que_hacemosHD.png" class="d-block w-100" width="800" height="400" alt="Segunda diapositiva">
+        </a>
+      </div>
+      <div class="carousel-item">
+        <a href="#seccion3"> <!-- Agrega un enlace a otra sección -->
+          <img src="../assets/images/que_ofrecemosHD.png" class="d-block w-100" width="800" height="400" alt="Tercera diapositiva">
+        </a>
+      </div>
     </div>
-    <div class="carousel-item active">
-      <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400"
-        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Marcador de posición: segunda diapositiva"
-        preserveAspectRatio="xMidYMid slice" focusable="false">
-        <title>Placeholder</title>
-        <rect width="100%" height="100%" fill="#666"></rect><text x="50%" y="50%" fill="#444" dy=".3em">Second
-          slide</text>
-      </svg>
-    </div>
-    <div class="carousel-item">
-      <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400"
-        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Marcador de posición: tercera diapositiva"
-        preserveAspectRatio="xMidYMid slice" focusable="false">
-        <title>Placeholder</title>
-        <rect width="100%" height="100%" fill="#555"></rect><text x="50%" y="50%" fill="#333" dy=".3em">Third
-          slide</text>
-      </svg>
-    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Próximo</span>
+    </button>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">
-      <font style="vertical-align: inherit;">
-        <font style="vertical-align: inherit;">Anterior</font>
-      </font>
-    </span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">
-      <font style="vertical-align: inherit;">
-        <font style="vertical-align: inherit;">Próximo</font>
-      </font>
-    </span>
-  </button>
+
+  <!-- Otras secciones de la página -->
+
+  <div class="blog-card">
+    <div id="seccion1" class="meta">
+        <div class="photo">
+            <img src="../assets/images/hola.png" alt="Imagen de bienvenida">
+        </div>
+    </div>
+    <div class="description">
+        <h1>HOLA, bienvenidos a incubadora del NOC</h1>
+        <h2>una institución dedicada a impulsar el emprendimiento</h2>
+        <p>Fundada en septiembre de 2017, nuestra misión es brindar a los emprendedores las herramientas necesarias para hacer realidad sus sueños y llevar sus proyectos al siguiente nivel.</p>
+
+    </div>
 </div>
 
+<div class="blog-card">
+    <div id="seccion2" class="meta">
+        <div class="photo">
+            <img src="../assets/images/que_hacemos.jpg" alt="Imagen de lo que hacemos">
+        </div>
+    </div>
+    <div class="description">
+        <h1>¿Qué hacemos en la Incubadora del NOC?</h1>
+        <h2>Trabajamos en la capacitación de emprendedores a través de charlas, eventos de motivación, cafés de negocios y construcción de redes de contactos.</h2>
+        <p>Nos encontramos en un proceso constante de sensibilización de emprendedores en una región que carece de organizaciones dedicadas al acompañamiento. Nuestra labor más ardua es precisamente la sensibilización, ya que el concepto de incubadora de empresas es poco conocido en esta zona.</p>
+        <p>Además, realizamos entrevistas y seleccionamos cuidadosamente a los emprendedores interesados en formar parte de nuestro proceso de incubación. A través de estos esfuerzos, hemos firmado cinco convenios de incubación hasta la fecha.</p>
+
+    </div>
+</div>
+
+<div class="blog-card">
+    <div id="seccion3" class="meta">
+        <div class="photo">
+            <img src="../assets/images/que_ofrecemos.png" alt="Imagen de lo que ofrecemos">
+        </div>
+    </div>
+    <div class="description">
+        <h1>¿Qué ofrecemos en la Incubadora del NOC?</h1>
+        <h2>Brindamos un acompañamiento más sólido a nuestros emprendedores</h2>
+        <p>Disminuyendo los márgenes de error y promoviendo la generación de nuevas fuentes de empleo en la región, también contamos con una amplia red de contactos.</p>
+        <p>Además, ofrecemos actividades como jornadas outdoor, que no solo buscan el crecimiento de nuestros emprendedores, sino que también promocionan el turismo en Cruz del Eje.</p>
+        <p>Si eres emprendedor o emprendedora, te damos la bienvenida a nuestro espacio y te invitamos a explorar las oportunidades que ofrecemos
+          <div class="btn-read-more">
+            <a href="http://localhost:4200/catalogo-cursos" class="btn btn-outline-primary">Nuestros cursos</a>
+        </div>
+
+    </div>
+</div>
 
 
 

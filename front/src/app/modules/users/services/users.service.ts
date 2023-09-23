@@ -40,4 +40,8 @@ export class UsersService {
   deleteUser( id: number ): Observable<any>{
     return this.http.delete<any>(`${ this.baseUrl }user/${id}`)
   }
+
+  activardesactivar( user: User): Observable<User> {
+    return this.http.put<User>(`${ this.baseUrl }user/${user.id}`, user)
+  }
 }

@@ -10,6 +10,7 @@ import { AdminComponent } from './admin/admin.component';//Error encontrado y so
 import { EstadoUsuarioDirective } from 'src/app/directivas/estado-usuario.directive';
 import { EstadoCursoDirective } from 'src/app/directivas/estado-curso.directive';
 import { ActivardesactivarcursoDirective } from 'src/app/directivas/activardesactivarcurso.directive';
+import { MisCursosComponent } from './mis-cursos/mis-cursos.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ActivardesactivarcursoDirective } from 'src/app/directivas/activardesac
     AdminComponent,
     EstadoUsuarioDirective,
     EstadoCursoDirective,
-    ActivardesactivarcursoDirective
+    ActivardesactivarcursoDirective,
+    MisCursosComponent
   ],
   imports: [
     CommonModule,

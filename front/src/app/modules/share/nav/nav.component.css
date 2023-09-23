@@ -1,4 +1,4 @@
-/* Estilos generales */
+* Estilos generales */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -61,6 +61,7 @@ body {
   text-decoration: none;
   transition: color 0.3s;
 }
+
 
 .header .nav-links li.active {
   background-color: white; /* Fondo blanco */

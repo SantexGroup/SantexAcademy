@@ -12,6 +12,8 @@ export class NavComponent implements OnInit {
   isSmallScreen = false;
   isProfileMenuOpen = false;
   activeRoute: string = '';
+  isLoggedIn = false;
+  //isProfileDropdownOpen = false;
 
   constructor(private router: Router,
     private authService: AuthService) {
@@ -19,6 +21,7 @@ export class NavComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.activeRoute = event.url;
+      
       }
     });
   }
@@ -26,6 +29,7 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     // Detectar la ruta activa al cargar la página
     this.activeRoute = this.router.url;
+    this.isLoggedIn = this.authService.user ? true : false;
   }
 
   @HostListener('window:resize', ['$event'])
@@ -46,7 +50,12 @@ export class NavComponent implements OnInit {
   }
 
   logout(){
+    console.log('logout() called');
     this.router.navigateByUrl('/login');
     this.authService.logout();
+     this.isLoggedIn = false;
   }
+
+  
+  
 }

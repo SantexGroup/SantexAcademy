@@ -14,6 +14,8 @@ import { PerfilAlumnoComponent } from './modules/pages/perfil-alumno/perfil-alum
 import { ValidarTokenGuard } from './core/guards/validar-token.guard';
 import { TieneTipoDeUsuarioGuard } from './core/guards/tiene-tipo-de-usuario.guard'
 import { LoginComponent } from './modules/auth/pages/login/login.component';
+// import { LoginComponent } from './modules/login/login/login.component';
+import { MisCursosComponent } from './modules/pages/mis-cursos/mis-cursos.component'; // Ajusta la ruta según tu estructura de carpetas
 
 const routes: Routes = [
   {
@@ -86,7 +88,11 @@ const routes: Routes = [
     path: 'perfil-alumno',
     component: PerfilAlumnoComponent, 
   },
-  {
+
+  { path: 'perfil-alumno/mis-cursos', 
+  component: MisCursosComponent },
+
+    {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',

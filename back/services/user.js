@@ -42,13 +42,30 @@ const getCursos = async (id) => {
 };
 
 //NO BORRAR--sirve para buscar cualquier usuario usando cualquier dato--util para filtros//
+
 const getUserByData = async (searchCriteria) => {
-  const user = await User.findOne({
-    where: searchCriteria,
-  });
-  return user;
+  try {
+    const user = await User.findOne({
+      where: searchCriteria,
+    });
+    if (!user) {
+      throw new Error('No se encuentra usuario en userService'+ JSON.stringify(searchCriteria)); // Detiene todo por el error
+    }
+    return user;
+  } catch (error) {
+    console.error('Hubo un error al buscar criteria en userService:', error + JSON.stringify(searchCriteria));
+    throw error; // Lanzar la excepción original nuevamente
+  }
 };
+// const getUserByData = async (searchCriteria) => {
+//   const user = await User.findOne({
+//     where: searchCriteria,
+//   });
+//   return user;
+// };
+
 //-------------------------------------------------------------------------------------//
+
 const createUser = async (body) => {
   try {
     const user = await User.create(body);
