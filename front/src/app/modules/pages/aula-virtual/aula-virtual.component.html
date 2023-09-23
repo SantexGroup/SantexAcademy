@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Cursos</title>
+  <link rel="stylesheet" href="mis-cursos.component.css">
+
+</head>
+<body>
+<div>
+    <div>
+        <h1>Estas ahora en tu aula virtual de:</h1>
+        <div>
+            <h2>{{ nombreCurso }}</h2>
+        </div>
+        <div>
+            <img [src]="imagenCurso" alt="{{ nombreCurso }}">
+        </div>
+    </div>
+    <div>
+        <h1>Fuera del alcance del proyecto actual.</h1>
+    </div>
+</div>

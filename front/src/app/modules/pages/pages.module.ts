@@ -11,6 +11,7 @@ import { EstadoUsuarioDirective } from 'src/app/directivas/estado-usuario.direct
 import { EstadoCursoDirective } from 'src/app/directivas/estado-curso.directive';
 import { ActivardesactivarcursoDirective } from 'src/app/directivas/activardesactivarcurso.directive';
 import { MisCursosComponent } from './mis-cursos/mis-cursos.component';
+import { AulaVirtualComponent } from './aula-virtual/aula-virtual.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MisCursosComponent } from './mis-cursos/mis-cursos.component';
     EstadoUsuarioDirective,
     EstadoCursoDirective,
     ActivardesactivarcursoDirective,
-    MisCursosComponent
+    MisCursosComponent,
+    AulaVirtualComponent
   ],
   imports: [
     CommonModule,
