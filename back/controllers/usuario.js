@@ -1,20 +1,19 @@
-// const jwt = require('jsonwebtoken');
 const { userService } = require("../services");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const fs = require("fs-extra");
+const cloudinary = require("../config/cloudinary");
 
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Verificar credenciales
     const user = await userService.loginUser(email, password);
 
     if (!user) {
-      return res.status(401).json({ message: "Invalid credentials" }); // Retorna aquí para evitar el envío doble de respuestas
+      return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    // Generar token
     const token = jwt.sign(
       {
         userId: user.id,
@@ -24,9 +23,6 @@ const loginUser = async (req, res) => {
       process.env.SESSION_SECRET,
       { expiresIn: "1h" }
     );
-
-    console.log(token);
-    // Envía la respuesta una vez que tengas el token
     return res.status(200).json({ token });
   } catch (error) {
     console.error(error);
@@ -46,8 +42,21 @@ const getUserProfile = async (req, res) => {
 
 const createUser = async (req, res) => {
   try {
-    const userData = req.body;
-    const newUser = await userService.createUser(userData);
+    const { image, ...restOfData } = req.body;
+    let imageUrl = "";
+    let publicId = "";
+
+    if (req.file) {
+      const uploadResult = await cloudinary.uploader.upload(req.file.path);
+      imageUrl = uploadResult.secure_url;
+      publicId = uploadResult.public_id;
+      await fs.unlink(req.file.path);
+    }
+
+    const newUser = await userService.createUser({
+      image: { imageUrl, publicId },
+      ...restOfData,
+    });
     res.status(201).json(newUser);
   } catch (err) {
     if (err.message == "Validation error") {

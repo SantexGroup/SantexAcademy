@@ -70,12 +70,14 @@
       </div>
 
       <div class="w-full flex flex-col text-start gap-1">
-        <label for="name" class="lg:text-lg"><b>Nombre</b></label>
+        <label for="name" class="lg:text-lg"
+          ><b>Organización a la que representa</b></label
+        >
         <input
           id="name"
           type="text"
           name="name"
-          placeholder="Introduce tu apellido y nombre"
+          placeholder="Introduce el nombre de tu organización"
           class="border border-dimGray rounded-md py-2 pl-2"
           formControlName="name"
         />
@@ -195,32 +197,7 @@
           </p>
         </div>
       </div>
-      <div class="w-full flex flex-col text-start gap-1">
-        <label for="phone" class="lg:text-lg">
-          <b>ONG a la que representa</b></label
-        >
-        <input
-          id="ngo"
-          type="text"
-          name="ngo"
-          placeholder="Introduce el nombre de la ONG"
-          class="border border-dimGray rounded-md py-2 pl-2"
-          formControlName="ong"
-        />
 
-        <div class="w-full items-center justify-end">
-          <p
-            *ngIf="
-              registerCoordinator.get('ong')?.invalid &&
-              (registerCoordinator.get('ong')?.dirty ||
-                registerCoordinator.get('ong')?.touched)
-            "
-            class="flex-initial text-end text-redError"
-          >
-            Por favor, ingresa una ONG.
-          </p>
-        </div>
-      </div>
       <div class="w-full flex flex-col text-start gap-1">
         <label for="phone" class="lg:text-lg"><b>CUIT de ONG</b></label>
         <input
