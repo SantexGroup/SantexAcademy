@@ -31,6 +31,9 @@ module.exports = {
         },
         allowNull: false,
       },
+      habilitado: {
+        type: Sequelize.BOOLEAN,
+      },
       estado: {
         type: Sequelize.STRING,
       },

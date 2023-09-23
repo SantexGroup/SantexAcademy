@@ -1,5 +1,16 @@
 const { matriculaService } = require('../services');
 
+const allMatriculas = async (req, res, next) => {
+  try {
+    const matriculas = await matriculaService.allMatriculas();
+    res.status(201).json(matriculas);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    next();
+  }
+};
+
 const createMatricula = async (req, res, next) => {
   const { body } = req;
   try {
@@ -28,4 +39,5 @@ const updateMatricula = async (req, res, next) => {
 module.exports = {
   createMatricula,
   updateMatricula,
+  allMatriculas
 };

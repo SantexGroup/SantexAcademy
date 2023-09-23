@@ -10,18 +10,25 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
       models.Matricula.belongsTo(models.User, {
         foreignKey: 'userId',
-        target: 'id',
+        targetKey: 'id',
+        as: 'User'
       });
+
       models.Matricula.belongsTo(models.Curso, {
         foreignKey: 'cursoId',
-        target: 'id',
+        targetKey: 'id',
+        as: 'Curso'
       });
     }
   }
   Matricula.init({
+    id: { 
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -32,9 +39,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       field: 'cursoId',
     },
+    habilitado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: 'A',
+    },
     estado: {
       type: DataTypes.STRING,
-      defaultValue: 'pendiente',
+      defaultValue: 'A',
     },
   }, {
     sequelize,

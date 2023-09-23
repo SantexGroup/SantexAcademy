@@ -7,6 +7,8 @@ import { Nivel } from "src/app/models/nivel.interface";
 import { AuthService } from '../../auth/services/auth.service';
 import { Matricula } from '../../matriculas/interfaces/interfaces';
 import { MatriculasService } from '../../matriculas/services/matriculas.service';
+import { TipoDeUsuario } from '../../users/interface/tipodeusuario.interface';
+import { User } from '../../users/interface/user.interface';
 // import { Curso } from '../../../models/curso.interface';//BORRAR si no se usa
 
 @Component({
@@ -24,6 +26,42 @@ export class CursoComponent implements OnInit {
     descripcion: 'Vacio',
   };
   
+  cursoNvo: Curso = {
+    id:0,
+    nombre: 'Vacio',
+    descripcion: 'Vacio',
+    duracion: 0,
+    capacidad: 0,
+    idnivel: 0,
+    requisitos: '',
+    habilitado: true,
+    fechainicio: new Date,
+    idusuarioalta: 1,
+    estado: 'A',
+    createdAt: new Date,
+  };
+
+  tipoUsuarioNvo: TipoDeUsuario = {
+    nombre: 'Vacio',
+    descripcion: 'Vacio'
+  };
+
+  userNvo: User = {
+    username: '',
+    password: '',
+    apellido: '',
+    nombre: '',
+    email: '',
+    estado: 'A',
+    confirmPassword: '',
+    idtipodeusuario: 0,
+    activoactualmente: true,
+    createdAt: new Date,
+    updatedAt: new Date,
+    TipoDeUsuario: this.tipoUsuarioNvo,
+    verificationCode: false,
+    codeRegister: ''
+  };
 
   get user() {
     return this.authService.user;
@@ -50,8 +88,13 @@ export class CursoComponent implements OnInit {
   }
 
   matricula: Matricula = {
-  cursoId: 0,
-  userId: 0,
+    id: 0,
+    cursoId: 0,
+    userId: 0,
+    Curso: this.cursoNvo,
+    User: this.userNvo,
+    habilitado: false,
+    estado: 'A'
   }
 
   constructor(private authService: AuthService,
@@ -62,11 +105,15 @@ export class CursoComponent implements OnInit {
     console.log(this.cursos)
   }
 
+
+  //Revisar porqué se usa la interfaz USUARIO
   inscribir(){
     if (this.user){
       this.matriculasService.addMatricula({
         cursoId: this.curso.id!,
-        userId: this.user.id
+        userId: this.user.id,
+        habilitado: false,
+        estado: 'A'
       })
           .subscribe( matricula => {
             console.log('add :', matricula)

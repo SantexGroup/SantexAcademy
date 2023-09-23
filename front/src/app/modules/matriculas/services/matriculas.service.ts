@@ -36,13 +36,20 @@ export class MatriculasService {
 
   constructor(private http: HttpClient) { }
 
+  getMatriculas(): Observable<Matricula[]>{
+    return this.http.get<Matricula[]>(`${this.baseUrl}matricula`)
+  }
+
   addMatricula(matricula: Matricula): Observable<Matricula> {
     return this.http.post<Matricula>(`${this.baseUrl}matricula`, matricula);
   }
 
   obtenerCursosInscritos(userId: number): Observable<string[]> {
-    return this.http.get<string[]>(`${this.baseUrl}cursos-inscritos/${userId}`);
-
-    
+    return this.http.get<string[]>(`${this.baseUrl}cursos-inscritos/${userId}`);  
   }
+
+  habilitarmatricula( matricula: Matricula): Observable<Matricula> {
+    return this.http.put<Matricula>(`${ this.baseUrl }matricula/${matricula.id}`, matricula)
+  }
+  
 }

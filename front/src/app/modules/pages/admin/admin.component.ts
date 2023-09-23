@@ -4,6 +4,8 @@ import { User } from '../../users/interface/user.interface';
 import { Curso } from '../../cursos/interface/cursos.interface';
 import { CursosService } from '../../cursos/services/cursos.service';
 import { Router } from '@angular/router';
+import { Matricula } from '../../matriculas/interfaces/interfaces';
+import { MatriculasService } from '../../matriculas/services/matriculas.service';
 
 @Component({
   selector: 'app-admin',
@@ -15,18 +17,21 @@ export class AdminComponent implements OnInit {
   cursos: Curso[] = [];
   errorMensaje: string | undefined;
   curso!: Curso;
+  matriculas: Matricula[] = [];
 
   constructor(
     private usersService: UsersService,
     private cursoService: CursosService,
     private router: Router,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private matriculasService: MatriculasService
   ) {}
 
   ngOnInit(): void {
     console.log('Llamando a obtener todos los usuarios....');
     this.obtenerUsuarios();
     this.obtenerCursos();
+    this.obtenerMatriculas(); //método para obtener matriculas en estado = 'A' para gestionar!
   }
 
   obtenerCursos(){
@@ -57,6 +62,20 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  obtenerMatriculas(){
+    this.matriculasService.getMatriculas().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.matriculas = response; 
+      },
+      error: (error) => {
+        console.error(error);
+        this.errorMensaje =
+          'Ocurrió un error al obtener las matriculas. Por favor, inténtalo de nuevo más tarde.';
+      },
+    });
+  }
+
   deleteCurso(curso: number) {
     console.log("Llamando al eliminar");
     this.cursoService.deleteCurso(curso).subscribe((resp) => {
@@ -81,6 +100,16 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  habilitarMatricula(matricula: Matricula, estahabilitado: boolean) {
+    console.log(matricula);
+    console.log(estahabilitado);
+    matricula.habilitado = estahabilitado; // Asignar el valor a la propiedad 'habilitado' del objeto 'user' pasado como parámetro
+
+    this.matriculasService.habilitarmatricula(matricula).subscribe((resp) => {
+     this.obtenerMatriculas();
+    });
+  }
+  
   activardesactivar(curso: Curso, estahabilitado: boolean) {
     console.log(curso);
     console.log(estahabilitado);
