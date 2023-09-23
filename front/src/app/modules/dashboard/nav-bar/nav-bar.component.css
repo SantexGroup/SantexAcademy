@@ -15,22 +15,24 @@
     font-size: 1.5rem;
 }
 
-.header-nav {
+.header-nav ul {
+    padding: 0;
     font-size: 1rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: .25rem;
 }
 
 .nav-item {
     list-style: none;
     cursor: pointer;
     text-align: center;
+    padding: .5rem 0;
 }
 
 .nav-item:hover {
     padding: .5rem 0;
-    background-color: #979797;
+    background-color: #3359ac;
     border-radius: .4rem;
 }
 
@@ -44,25 +46,83 @@
 
 .active {
     padding: .5rem 0;
-    background-color: #979797;
+    background-color: #3359ac;
     border-radius: .4rem;
 }
 
-.cart {
-    padding: 0.5rem 1rem;
-    margin: 0 1rem;
+.header-der {
     display: flex;
     align-items: center;
+    gap: 1.5rem;
 }
 
-.shopping-cart {
-    font-size: 1.5rem;
+.cart>svg, .header-user>svg, .header-menu-button {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
     fill: #eeebe7;
 }
 
-.header-user {
-    font-size: 1.2rem;
-    padding: 0.5rem 1rem;
-    background-color: #979797;
-    border-radius: .8rem;
+.header-menu-button {
+    display: none;
+}
+
+
+@media screen and (max-width: 920px) {
+
+    .header {
+        min-height: 4rem;
+    }
+    
+    .header-logo {
+        font-size: 1.25rem;
+    }
+
+    .cart>svg, .header-user>svg, .header-menu-button {
+        font-size: 1.5rem;;
+    }
+
+    .header-menu-button {
+        display: block;
+    }
+
+    .header-nav {
+        min-width: 50%;
+        position: absolute;
+        right: 0;
+        top: 4rem;
+        background-color: #115DFC;
+        transition: all .8s;
+        display: none;
+        z-index: 100;
+    }
+    
+    .header-nav ul {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0;
+        font-size: .8rem;
+    }
+
+    .nav-item {
+        width: 100%;
+        border-top: 2px solid #2c6efc;
+    }
+
+    .nav-item a {
+        justify-content: center;
+    }
+
+    .header-menu-button {
+        cursor: pointer;
+    }
+
+    .open-menu {
+        display: block;
+    }
+
+    .close-menu {
+        display: none;
+    }
 }
