@@ -3,15 +3,14 @@ const { orgProvider } = require("../providers");
 const loginOrg = async (email, cuit, password) => {
   const org = await orgProvider.loginOrg(email, cuit, password);
 
-  if (!org || org.password !== password) {
-    return null;
+  if (!org) {
+    return;
   }
   return org;
 };
 
 const createOrganization = async (data) => {
   const { image, ...restOfData } = data;
-
   const createdOrganization = await orgProvider.createOrganization({
     image,
     ...restOfData,

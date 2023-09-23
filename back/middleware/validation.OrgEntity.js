@@ -52,10 +52,8 @@ const loginOrganizationValidation = [
   body("email").isEmail().withMessage("El correo electrónico no es válido"),
 
   body("cuit")
-    .matches(/^([23]\d)-?(\d{8})-?(\d)$/)
-    .withMessage(
-      "El CUIT no es válido. Debe tener el formato XX-XXXXXXXX-X o XXXXXXXXXXX."
-    ),
+    .matches(/^(?:[0-9]{11}|[0-9]{2}-[0-9]{8}-[0-9])$/)
+    .withMessage("El CUIT no es válido."),
 
   body("password")
     .isLength({ min: 8 })
