@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/app/environments/environment';
+import { environment } from 'src/app/environments/environment.prod';
 import { Observable } from 'rxjs';
 import { coordinatorData } from '../models/dataForms.model';
 
