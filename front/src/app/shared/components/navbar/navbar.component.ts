@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,10 +13,13 @@ export class NavbarComponent {
   openOptionTwo: boolean = false;
   maxHeight: number = 500;
   isToken: boolean = false;
-
   isOpenprofileMenu: boolean = false;
+  dataUser: any = {};
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private usersServices: UsersService
+  ) {
     const isOpenValue = localStorage.getItem('isOpen');
     if (isOpenValue !== null) {
       this.isOpen = JSON.parse(isOpenValue);
@@ -30,6 +34,7 @@ export class NavbarComponent {
   openOpOne() {
     if (!this.openOptionOne) {
       this.openOptionOne = true;
+      this.openOptionTwo = false;
     } else {
       this.openOptionOne = false;
     }
@@ -37,6 +42,7 @@ export class NavbarComponent {
   openOpTwo() {
     if (!this.openOptionTwo) {
       this.openOptionTwo = true;
+      this.openOptionOne = false;
     } else {
       this.openOptionTwo = false;
     }
@@ -44,9 +50,17 @@ export class NavbarComponent {
 
   ngOnInit() {
     const token = this.authService.getAuthToken();
-    console.log(token);
     if (token) {
-      this.isToken = true;
+      this.usersServices.getProfileVolunteer(token).subscribe({
+        next: (res) => {
+          this.dataUser = res;
+          this.isToken = true;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+        complete: () => {},
+      });
     }
   }
 

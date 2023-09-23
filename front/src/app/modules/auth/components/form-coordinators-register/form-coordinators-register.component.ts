@@ -34,7 +34,6 @@ export class FormCoordinatorsRegisterComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       phone: ['', Validators.required],
-      ong: ['', Validators.required],
       cuit: ['', Validators.required],
       location: ['', Validators.required],
       category: ['', Validators.required],

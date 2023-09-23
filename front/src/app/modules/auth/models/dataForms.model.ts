@@ -3,6 +3,7 @@ export interface volunterData {
   phone: string;
   email: string;
   password: string;
+  file: any;
 }
 
 export interface coordinatorData {
@@ -11,7 +12,6 @@ export interface coordinatorData {
   email: string;
   password: string;
   phone: string;
-  ong: string;
   cuit: string;
   location: string;
   opportunityType: string;

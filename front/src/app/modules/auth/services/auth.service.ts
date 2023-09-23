@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/app/environments/environment.prod';
+import { environment } from 'src/app/environments/environment';
 import { Observable } from 'rxjs';
 import { coordinatorData } from '../models/dataForms.model';
 
@@ -18,7 +18,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  registerVolunteer(userData: volunterData): Observable<any> {
+  registerVolunteer(userData: volunterData | FormData): Observable<any> {
     const url = `${this.apiUrl}/auth/users/register`;
     return this.http.post(url, userData);
   }
