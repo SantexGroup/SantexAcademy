@@ -10,6 +10,10 @@ export class PerfilAlumnoComponent {
     nombre: 'Nombre del Alumno',
     edad: 20,
     // Otros datos del perfil
+
+
+    }
+  
   };
-}
+
 
