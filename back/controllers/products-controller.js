@@ -33,6 +33,19 @@ async function getCategories(req, res) {
   res.status(200).send(categories);
 }
 
+// categorias por id
+async function getCategoriesFromId(req, res) {
+  const { id } = req.params;
+
+  try {
+    const categoria = await productsService.getCategoriaById(id);
+
+    res.status(200).send(categoria);
+  } catch (error) {
+    res.status(404).send('Categoria no encontrada');
+  }
+}
+
 // cargar producto
 async function chargeProduct(req, res) {
   const {
@@ -59,5 +72,5 @@ async function editProduct(req, res) {
 }
 
 module.exports = {
-  products, getCategories, chargeProduct, getProductFromId, editProduct,
+  products, getCategories, chargeProduct, getProductFromId, editProduct, getCategoriesFromId,
 };
