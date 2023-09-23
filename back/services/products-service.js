@@ -39,12 +39,10 @@ async function getProductoById(id) {
   const idUser = articulos.idUsuario;
   const idTipo = articulos.idTipoProducto;
   const usuario = await User.findByPk(idUser);
-  if(idTipo){
   const tipo = await tipoProducto.findByPk(idTipo);
-  }
+
   if (articulos == null) {
     throw new Error();
-    
   }
   
   return {articulos, usuario, tipo};

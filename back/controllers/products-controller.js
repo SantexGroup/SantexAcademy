@@ -22,7 +22,7 @@ async function getProductFromId(req, res) {
 
     res.status(200).send(articulo);
   } catch (error) {
-    res.status(404).send('Producto no encontrado');
+    res.status(404).send('Producto no encontrado: ' + error);
   }
 }
 

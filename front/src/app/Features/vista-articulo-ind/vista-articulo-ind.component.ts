@@ -15,7 +15,7 @@ export class VistaArtIndComponent implements OnInit {
   images: string[] = [];
 
   //id del producto
-  id: number = 37;
+  id: number = 35;
 
   //id del usuario
   idUsuario: number = 1;
