@@ -18,7 +18,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  registerVolunteer(userData: volunterData): Observable<any> {
+  registerVolunteer(userData: volunterData | FormData): Observable<any> {
     const url = `${this.apiUrl}/auth/users/register`;
     return this.http.post(url, userData);
   }

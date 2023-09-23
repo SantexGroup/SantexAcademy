@@ -23,6 +23,7 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { VolunteersComponent } from './pages/volunteers/volunteers.component';
 import { VolunteerFiltersComponent } from './components/volunteer-filters/volunteer-filters.component';
 import { VolunteerCardComponent } from './components/volunteer-card/volunteer-card.component';
+import { OrganizationDetailsComponent } from './pages/organization-details/organization-details.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { VolunteerCardComponent } from './components/volunteer-card/volunteer-ca
     VolunteersComponent,
     VolunteerFiltersComponent,
     VolunteerCardComponent,
+    OrganizationDetailsComponent,
   ],
   imports: [
     BrowserModule,

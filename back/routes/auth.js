@@ -21,9 +21,9 @@ authRouter.post("/users/login", loginUserValidation, async (req, res) => {
 
 authRouter.post(
   "/users/register",
+  upload.single("file"),
   createAndUpdateUserValidation,
   async (req, res) => {
-    console.log(req.body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       const errorMessages = errors.array().map((error) => error.msg);
@@ -36,30 +36,14 @@ authRouter.post(
 authRouter.post(
   "/org/register",
   upload.single("file"),
+  createAndUpdateOrganizationValidation,
   orgController.createOrganization
-  // createAndUpdateOrganizationValidation,
-  // async (req, res) => {
-  //   const errors = validationResult(req);
-  //   if (!errors.isEmpty()) {
-  //     const errorMessages = errors.array().map((error) => error.msg);
-  //     return res.status(400).json({ errors: errorMessages });
-  //   }
-  //   orgController.createOrganization(req, res);
-  // }
 );
 
 authRouter.post(
   "/org/login",
+  loginOrganizationValidation,
   orgController.loginOrganization
-
-  // loginOrganizationValidation, async (req, res) => {
-  //   const errors = validationResult(req);
-  //   if (!errors.isEmpty()) {
-  //     const errorMessages = errors.array().map((error) => error.msg);
-  //     return res.status(400).json({ errors: errorMessages });
-  //   }
-  //   orgController.loginOrganization(req, res);
-  // }
 );
 
 module.exports = authRouter;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-data-volunteer',
@@ -11,6 +11,8 @@ export class DataVolunteerComponent {
   email: string = 'exedevcoding22@gmail.com';
   password: string = 'root';
   editData: boolean = false;
+
+  @Input() dataVolunteer: any = {};
 
   newValues: { [key: string]: string } = {
     fullName: '',
