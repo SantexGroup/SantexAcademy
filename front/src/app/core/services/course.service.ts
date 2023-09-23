@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { Course } from '../interfaces/course';
+import { Course } from '../interfaces/course.interface';
 
 
 @Injectable({
@@ -13,8 +13,8 @@ export class CourseService {
 
   constructor(private httpCourse: HttpClient) { }
 
-  getCourse() {
-    return this.httpCourse.get<Course>(this.apiUrl)
+  getCourses() {
+    return this.httpCourse.get<Course[]>(this.apiUrl)
   };
   
   getCourseById(id:number){
