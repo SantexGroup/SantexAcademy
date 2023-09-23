@@ -1,52 +1,56 @@
-<form class="login100-form" 
-    autocomplete="off"
-    [formGroup]="miFormulario"
-    (ngSubmit)="login()"
->
-              
-  <span class="login100-form-title p-b-49">
-      Login
-  </span>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+<div class="wrapper">
+    <div class="body">
+      <img class="logo" src="/assets/images/logo circular.png" alt="login">
+      <h1>Acceso</h1>
+      <form 
+      [formGroup]="miFormulario"
+      (ngSubmit)="login()"
+      >
+        <div class="form-floating mb-3" >
+          <input type="email"
+           class="form-control" 
+           formControlName="email" 
+           required 
+           placeholder="Ingrese Email">
+          <label>Email</label>
 
-  <div class="wrap-input100 m-b-23">
-      <span class="label-input100">Email</span>
-      <input class="input100"
-             type="email" 
-             formControlName="email"
-             placeholder="Ingrese su email">
-      <span class="focus-input100"></span>
-  </div>
+        <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+         <div *ngIf="email.errors?.['required']">
+            El usuario es requerido.
+          </div>
+          <div *ngIf="email.errors?.['email']">
+            El usuario debe tener un formato válido.
+          </div>
+        </div> -->
+      </div> 
+        <div class="form-floating mb-3">
+          <input type="password" 
+          class="form-control" 
+          formControlName="password" 
+          required   
+          placeholder="Ingrese Password">
+          <label>Password</label>
 
-  <div class="wrap-input100">
-      <span class="label-input100">Password</span>
-      <input class="input100"
-             type="password"
-             formControlName="password"
-             placeholder="Ingrese su contraseña">
-      <span class="focus-input100"></span>
-  </div>
-  
-  <div class="text-right p-t-8 p-b-31"></div>
-  
-  <div class="container-login100-form-btn">
-      <div class="wrap-login100-form-btn">
-          <div class="login100-form-bgbtn"></div>
-          <button class="login100-form-btn"
-                type="submit"
-                [disabled]="miFormulario.invalid"
-          >
-              Login
-          </button>
-      </div>
-  </div>
+          <!-- <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
 
-  <div class="flex-col-c p-t-60">
-      <span class="txt1 p-b-17">
-          ¿No tienes cuenta?
-      </span>
-
-      <a routerLink="/auth/register" class="txt2">
-          Crear una aquí
-      </a>
-  </div>
-</form>
+            <div *ngIf="password.errors?.['required']">
+              La contraseña es requerida.
+            </div>
+            <div *ngIf="password.errors?.['minlength']">
+              La contraseña tiene por lo menos ocho caracteres.
+            </div>
+          </div> -->
+          </div>
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary"
+           type="submit" 
+           [disabled]="miFormulario.invalid">Ingresar</button>
+        </div>
+      <p class="mb-3">¿No tienes cuenta? <a routerLink="/register">Registrate aquí</a></p>
+      <p class="mb-3"><a routerLink="/register">¿Olvidaste tu contraseña? </a></p>
+    </form>
+    </div>
+</div>

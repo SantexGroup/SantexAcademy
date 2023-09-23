@@ -1,19 +1,12 @@
-const { User, TipoDeUsuario, Curso } = require('../models');
+const { User, TipoDeUsuario } = require('../models');
 
 const allUser = async () => {
   const users = await User.findAll({
     include: [
-<<<<<<< HEAD
       {
         model: TipoDeUsuario,
-        // as: 'tipodeusuario',
+        as: 'TipoDeUsuario',
       },
-=======
-     {
-      model: TipoDeUsuario,
-      as: 'TipoDeUsuario'
-     }
->>>>>>> bd7ef0c27ccb7f1ff2813212cd73627f8f2b6746
     ],
     where: {
       estado: 'A',
@@ -27,10 +20,10 @@ const getUser = async (id) => {
     const user = await User.findByPk(id, {
       include: [
         {
-         model: TipoDeUsuario,
-         as: 'TipoDeUsuario'
-        }
-       ],
+          model: TipoDeUsuario,
+          as: 'TipoDeUsuario',
+        },
+      ],
     });
     return user;
   } catch (error) {

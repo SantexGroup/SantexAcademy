@@ -1,0 +1,1 @@
+export type TipoDeUsuario = 'Administrador' | 'Alumno' | 'Docente';

@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -12,7 +13,8 @@ export class NavComponent implements OnInit {
   isProfileMenuOpen = false;
   activeRoute: string = '';
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+    private authService: AuthService) {
     this.checkScreenSize();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -41,5 +43,10 @@ export class NavComponent implements OnInit {
 
   toggleProfileMenu() {
     this.isProfileMenuOpen = !this.isProfileMenuOpen;
+  }
+
+  logout(){
+    this.router.navigateByUrl('/login');
+    this.authService.logout();
   }
 }

@@ -109,6 +109,7 @@ const login = async (req, res) => {
 
   try {
     const user = await User.findOne({
+      include: 'TipoDeUsuario',
       where: {
         email,
       },
@@ -133,6 +134,7 @@ const login = async (req, res) => {
       ok: true,
       id: user.id,
       username: user.username,
+      tipoDeUsuario: user.TipoDeUsuario.nombre,
       token,
     });
   } catch (error) {
@@ -146,13 +148,18 @@ const login = async (req, res) => {
 };
 
 const revalidarToken = async (req, res) => {
-  const { id, username } = req;
+  const { id } = req;
 
-  const token = await generarJWT(id, username);
+  const user = await User.findByPk(id, {
+    include: 'TipoDeUsuario',
+  });
+
+  const token = await generarJWT(id, user.username);
   return res.json({
     ok: true,
     id,
-    username,
+    username: user.username,
+    tipoDeUsuario: user.TipoDeUsuario.nombre,
     token,
   });
 };

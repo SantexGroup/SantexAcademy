@@ -41,6 +41,7 @@ export class AuthService {
             this._user = {
               username: resp.username!,
               id: resp.id!,
+              tipoDeUsuario: resp.tipoDeUsuario!
             }
           }
         }),
@@ -61,7 +62,8 @@ export class AuthService {
             localStorage.setItem('token', resp.token!);
             this._user = {
               username: resp.username!,
-              id: resp.id!
+              id: resp.id!,
+              tipoDeUsuario: resp.tipoDeUsuario!
             }
           }
         }),
@@ -88,7 +90,8 @@ export class AuthService {
                   localStorage.setItem('token', resp.token!);
                   this._user = {
                     username: resp.username!,
-                    id: resp.id!
+                    id: resp.id!,
+                    tipoDeUsuario: resp.tipoDeUsuario!
                   }
                   return resp.ok;
                 }),

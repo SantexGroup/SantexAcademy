@@ -12,7 +12,8 @@ import { ErrorPageComponent } from './modules/share/error-page/error-page.compon
 import { AdminComponent } from './modules/pages/admin/admin.component';
 import { PerfilAlumnoComponent } from './modules/pages/perfil-alumno/perfil-alumno.component';
 import { ValidarTokenGuard } from './core/guards/validar-token.guard';
-import { LoginComponent } from './modules/login/login/login.component';
+import { TieneTipoDeUsuarioGuard } from './core/guards/tiene-tipo-de-usuario.guard'
+import { LoginComponent } from './modules/auth/pages/login/login.component';
 
 const routes: Routes = [
   {
@@ -30,7 +31,7 @@ const routes: Routes = [
   {
     path: 'protected',
     loadChildren: () => import('./modules/protected/protected.module').then(m => m.ProtectedModule),
-    canActivate: [ ValidarTokenGuard ],
+    // canActivate: [ ValidarTokenGuard ],
     canLoad: [ ValidarTokenGuard ]
   },
   {
@@ -74,6 +75,11 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canLoad: [ ValidarTokenGuard ],
+    canActivate: [ ValidarTokenGuard ,TieneTipoDeUsuarioGuard],
+    data: {
+      tipoPermitido: ['Administrador']
+    },
     component: AdminComponent,
   },
   {

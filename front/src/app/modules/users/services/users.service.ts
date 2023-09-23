@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { User } from '../interface/user.interface';
 import { environment } from 'src/environments/environment';
+import { Curso } from '../../cursos/interface/cursos.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class UsersService {
 
   getUserPorId(id: number): Observable<User>{
     return this.http.get<User>(`${this.baseUrl}user/${ id }`)
+  }
+
+  getCursosPorUserId(id: number): Observable<Curso[]>{
+    return this.http.get<Curso[]>(`${this.baseUrl}user/${ id }/cursos`)
   }
 
   addUser( user: User): Observable<User> {

@@ -48,7 +48,7 @@
       <div class="profile-dropdown" *ngIf="isProfileMenuOpen">
         <ul>
           <li><a href="#">Mi perfil</a></li>
-          <li><a href="#">Cerrar sesión</a></li>
+          <li><a (click)="logout()">Cerrar sesión</a></li>
         </ul>
       </div>
     </div>

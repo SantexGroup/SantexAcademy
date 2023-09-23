@@ -1,4 +1,4 @@
-const { Curso, Nivel, User } = require('../models');
+const { Curso, Nivel } = require('../models');
 
 const allCurso = async () => {
   const cursos = await Curso.findAll({
