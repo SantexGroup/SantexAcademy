@@ -13,6 +13,8 @@ import { AdminComponent } from './modules/pages/admin/admin.component';
 import { PerfilAlumnoComponent } from './modules/pages/perfil-alumno/perfil-alumno.component';
 import { ValidarTokenGuard } from './core/guards/validar-token.guard';
 import { LoginComponent } from './modules/login/login/login.component';
+import { MisCursosComponent } from './modules/pages/mis-cursos/mis-cursos.component'; // Ajusta la ruta según tu estructura de carpetas
+import { AulaVirtualComponent } from './modules/pages/aula-virtual/aula-virtual.component';
 
 const routes: Routes = [
   {
@@ -47,8 +49,8 @@ const routes: Routes = [
     },
   },
   {
-     path: 'login',
-   component: LoginComponent,
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: 'quienes-somos',
@@ -79,6 +81,14 @@ const routes: Routes = [
   {
     path: 'perfil-alumno',
     component: PerfilAlumnoComponent, 
+  },
+  { 
+    path: 'perfil-alumno/mis-cursos', 
+    component: MisCursosComponent, 
+  },
+  { 
+    path: 'aula-virtual', 
+    component: AulaVirtualComponent, 
   },
   {
     path: '',

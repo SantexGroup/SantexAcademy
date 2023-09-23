@@ -131,12 +131,12 @@ export class RegisterformComponent implements OnInit {
   };
   ////////////////////////////////////////////////////////////////////////
 
-  // Funcion que redirige a la página de respuesta se usa en onEnviar
+  // Funcion que redirige a la pagina de respuesta se usa en onEnviar
   redirregistersuccess() {
     this.router.navigate(['registeranswer']);
   }
 
-  // Maneja la selección de tipo y almacena selección
+  // Maneja la seleccion de tipo y guarda seleccion
   onTipoDeUsuarioChange(event: any): void {
     this.tipoDeUsuarioSeleccionado = event.target.value; 
     // Busca el tipo de usuario seleccionado en this.tiposDeUsuario para cambiarlo

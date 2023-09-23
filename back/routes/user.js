@@ -34,13 +34,11 @@ router.delete('/:id', userController.deleteUser);
 
 ///////////-------NO borrar, no comentar, por favor no tocar, se usa solo para verificacion de link-----//////
 router.post('/verifyLink', (req, res) => {
-  const urlString = req.url; // Traigo la URL de la solicitud
-  const parsedUrl = url.parse(urlString, true);
-  const codeRegister = parsedUrl.query.codeRegister; // Extrae el codigo de la URL
-  verifyLink(req, res);// Envio a funcion de control
+  const codeRegister = req.body.codeRegister; // Extrae el código del cuerpo de la solicitud POST
+  console.log(`Valor de codeRegister en routes: ${codeRegister}`);
+  verifyLink(req, res);
 });
-///////////---------------------------------------------------------------------------------------------//////
-
+//-----------------------------------------------------------------------------------------------------/////
 
 
 module.exports = router;

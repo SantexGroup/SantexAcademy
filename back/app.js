@@ -60,6 +60,18 @@ app.use(express.urlencoded(
 // Cors configuration
 const whitelist = process.env.CORS.split(',');
 
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     if (whitelist.indexOf(origin) !== -1 || !origin) {
+//       callback(null, true);
+//     } else {
+//       logger.api.error('Not allowed by CORS', { origin });
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+// //  optionsSuccessStatus: 200,
+// };
+
 const corsOptions = {
   origin: (origin, callback) => {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
@@ -69,8 +81,10 @@ const corsOptions = {
       callback(new Error('Not allowed by CORS'));
     }
   },
-//  optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Agrega los métodos que necesites permitir
+  credentials: true, // Habilita el uso de credenciales como cookies
 };
+
 app.use(cors(corsOptions));
 
 if (config.environment === 'production') {

@@ -1,65 +1,73 @@
-/* Estilos generales */
+* Estilos generales */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Nunito', sans-serif;
   font-size: 20px;
 }
 
+body {
+  background-color: #fff59d;
+  margin: 0;
+}
 
-nav {
+.header {
   background-color: #1b3039;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 85px;
-  padding: 20px 20px;
+  padding: 5px 20px;
 }
 
-nav .logo {
+.header .logo {
   cursor: pointer;
 }
 
-nav .logo img {
-  height: 50px;
+.header .logo img {
+  height: 70px;
   width: auto;
   transition: all 0.3s;
 }
 
-nav .logo img:hover {
+.header .logo img:hover {
   transform: scale(1.2);
 }
 
-nav .nav-links {
+
+
+.header .nav-links {
   list-style: none;
   display: flex;
   align-items: center;
 }
 
-nav .nav-links li {
+.header .nav-links li {
   padding: 0 20px;
 }
 
-nav .nav-links li:first-child {
+.header .nav-links li:first-child {
   padding-right: 0;
 }
 
-nav .nav-links li:hover {
+.header .nav-links li:hover {
   transform: scale(1.1);
 }
 
-nav .nav-links a {
+.header .nav-links a {
   font-weight: 700;
   color: #eceff1;
   text-decoration: none;
   transition: color 0.3s;
 }
 
-nav .nav-links li.active {
+
+.header .nav-links li.active {
   background-color: white; /* Fondo blanco */
 }
 
-nav .nav-links li.active a {
+.header .nav-links li.active a {
   color: #ffbc0e; /* Texto en naranja */
 }
 
@@ -88,23 +96,23 @@ nav .nav-links li.active a {
 
 /* Estilos para pantallas más pequeñas, por ejemplo, teléfonos móviles */
 @media screen and (max-width: 768px) {
-  nav {
+  .header {
     padding: 5px 10px;
     height: auto;
   }
 
-  nav .nav-links {
+  .header .nav-links {
     flex-direction: column;
     align-items: flex-start;
     margin-top: 10px;
     display: none;
   }
 
-  nav .nav-links.active {
+  .header .nav-links.active {
     display: flex;
   }
 
-  nav .nav-links li {
+  .header .nav-links li {
     padding: 10px 0;
   }
 
@@ -117,7 +125,7 @@ nav .nav-links li.active a {
 /* Agrega tus estilos adicionales aquí */
 
 /* Estilos para la foto de perfil y el menú desplegable */
-nav .user-profile {
+.user-profile {
   display: flex;
   align-items: center;
   justify-content: space-between; /* Espacio entre la foto de perfil y la flecha */
@@ -125,31 +133,31 @@ nav .user-profile {
   position: relative;
 }
 
-nav .profile-button {
+.profile-button {
   background: none;
   border: none;
   cursor: pointer;
 }
 
-nav .arrow-button {
+.arrow-button {
   background: none;
   border: none;
   cursor: pointer;
 }
 
-nav .profile-image {
+.profile-image {
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
 
-nav .arrow-icon {
+.arrow-icon {
   width: 20px;
   height: 20px;
   cursor: pointer;
 }
 
-nav .profile-dropdown {
+.profile-dropdown {
   position: absolute;
   top: 60px; /* Ajusta la posición vertical según sea necesario */
   right: 0;
@@ -159,12 +167,12 @@ nav .profile-dropdown {
 }
 
 /* Mostrar el menú desplegable cuando se abre */
-nav .user-profile.active .profile-dropdown {
+.user-profile.active .profile-dropdown {
   display: block;
 }
 
 /* Estilos para las opciones de menú seleccionadas */
-nav .nav-links li.selected {
+.header .nav-links li.selected {
   background-color: white; /* Fondo blanco */
   height: 100%; /* Ocupar todo el alto del nav */
   display: flex;
@@ -172,16 +180,16 @@ nav .nav-links li.selected {
   border-radius: 10px; /* Borde redondeado */
 }
 
-nav .nav-links li.selected a {
+.header .nav-links li.selected a {
   color: #ffbc0e; /* Texto en naranja */
 }
 
 /* Estilos para el estado hover */
-nav .nav-links li:hover {
+.header .nav-links li:hover {
   background-color: white; /* Fondo blanco al pasar el mouse */
   border-radius: 10px; /* Borde redondeado al pasar el mouse */
 }
 
-nav .nav-links li:hover a {
+.header .nav-links li:hover a {
   color: #ffbc0e; /* Texto en naranja al pasar el mouse */
 }
