@@ -35,6 +35,8 @@ main {
     text-decoration: none;
     border-radius: 5px;
     margin-top: 20px;
+    text-align: center;
+    line-height: 1.4;
 }
 
 .button:hover {
@@ -45,4 +47,22 @@ footer {
     text-align: center;
     margin-top: 20px;
     color: #7b02bc;
+    font-weight: bold;
+}
+
+.highlight {
+    background-color: rgb(240, 159, 10);
+    padding: 1px;
+    border-radius: 5px;
+    color: #0b13b1;
+    font-weight: bold;
+}
+
+.minimo{
+    text-align: center;
+    font-size: 12px;
+    padding: 0; 
+    margin: 0;
+    color: rgb(147, 7, 179);
+    text-decoration: underline;
 }
