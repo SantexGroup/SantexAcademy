@@ -35,7 +35,11 @@ const routes: Routes = [
     path: 'protected',
     loadChildren: () => import('./modules/protected/protected.module').then(m => m.ProtectedModule),
     // canActivate: [ ValidarTokenGuard ],
-    canLoad: [ ValidarTokenGuard ]
+    canLoad: [ ValidarTokenGuard ],
+    // canActivate: [ ValidarTokenGuard ,TieneTipoDeUsuarioGuard],
+    // data: {
+    //   tipoPermitido: ['Alumno']
+    // },
   },
   {
     path: 'dashboard',
@@ -91,6 +95,11 @@ const routes: Routes = [
   },
   { 
     path: 'perfil-alumno/mis-cursos', 
+    // canLoad: [ ValidarTokenGuard ],
+    // canActivate: [ ValidarTokenGuard ,TieneTipoDeUsuarioGuard],
+    // data: {
+    //   tipoPermitido: ['Alumno']
+    // },
     component: MisCursosComponent, 
   },
   { 
