@@ -19,7 +19,11 @@
         src="/assets/icons/bad.png"
         alt="icono bad"
         class="w-full h-full object-contain"
-        *ngIf="status === 'failed' || status === 'failed-login'"
+        *ngIf="
+          status === 'failed' ||
+          status === 'failed-login' ||
+          status === 'failed-emailFound'
+        "
       />
     </figure>
     <p class="text-center sm:w-[80%]" *ngIf="status === 'success'">
@@ -54,6 +58,13 @@
       credenciales e inténtalo de nuevo. Si sigues teniendo problemas, no dudes
       en contactarnos para obtener ayuda.
     </p>
+
+    <p class="text-center sm:w-[80%]" *ngIf="status === 'failed-emailFound'">
+      Lo sentimos, el correo electrónico ingresado ya está asociado a una cuenta
+      existente. Por favor, inicia sesión con tus credenciales para acceder a tu
+      cuenta.
+    </p>
+
     <button
       type="button"
       (click)="handlleContinue()"
