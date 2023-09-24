@@ -51,4 +51,9 @@ export class AuthService {
     this.authToken = null;
     localStorage.removeItem('authToken');
   }
+
+  isAuthenticated(): boolean {
+    const token = this.getAuthToken();
+    return !!token;
+  }
 }

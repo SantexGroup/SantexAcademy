@@ -2,8 +2,8 @@
   class="fixed top-0 left-0 w-full flex flex-col p-6 bg-white z-20 lg:gap-4 lg:relative lg:flex-row lg:justify-between"
   id="arriba"
 >
-  <a routerLink="/" class="w-auto"
-    ><figure class="lg:w-[200px] flex items-center gap-2">
+  <a routerLink="/" class="max-w-[200px]"
+    ><figure class="w-full h-full flex items-center gap-2">
       <img
         src="/assets/logo/logohand.svg"
         alt="logo"
@@ -32,14 +32,26 @@
       class="w-full flex flex-col items-center justify-center gap-4 m:text-lg lg:flex-row lg:justify-end lg:gap-8 lg:items-start lg:pt-4 lg:absolute"
     >
       <li
+        *ngIf="isToken"
         (click)="handleMenu()"
         class="w-full flex items-center justify-center gap-4 cursor-pointer lg:hidden"
       >
         <figure
+          *ngIf="dataUser.image?.imageUrl"
           class="w-[50px] aspect-square rounded-full border border-lightGray lg:disabled"
         >
           <img
             [src]="dataUser.image?.imageUrl"
+            alt="avatar"
+            class="w-full h-full object-cover rounded-full"
+          />
+        </figure>
+        <figure
+          *ngIf="!dataUser.image?.imageUrl"
+          class="w-[50px] aspect-square rounded-full border border-lightGray lg:disabled"
+        >
+          <img
+            src="/assets/imgs/not-found.webp"
             alt="avatar"
             class="w-full h-full object-cover rounded-full"
           />
@@ -134,6 +146,7 @@
       </li>
 
       <li
+        *ngIf="isToken"
         class="flex items-center justify-center gap-2 lg:hidden text-xl cursor-pointer"
       >
         <i class="bx bx-log-out-circle"></i>
@@ -142,7 +155,7 @@
         >
       </li>
       <li
-        class="hidden lg:flex flex-col items-center justify-center gap-4 lg:flex-row font-semibold lg:items-start"
+        class="lg:flex flex-col items-center justify-center gap-4 lg:flex-row font-semibold lg:items-start"
       >
         <div
           *ngIf="!isToken"
@@ -161,13 +174,24 @@
             >Registrarse</a
           >
         </div>
-        <div *ngIf="isToken" class="flex items-center justify-center">
+        <div *ngIf="isToken" class="hidden lg:flex items-center justify-center">
           <article class="mt-[-.5em] relative group">
             <figure
+              *ngIf="dataUser.image?.imageUrl"
               class="w-[50px] aspect-square rounded-full border border-lightGray cursor-pointer lg:disabled"
             >
               <img
                 [src]="dataUser.image?.imageUrl"
+                alt="avatar"
+                class="w-full h-full object-cover rounded-full"
+              />
+            </figure>
+            <figure
+              *ngIf="!dataUser.image?.imageUrl"
+              class="w-[50px] aspect-square rounded-full border border-lightGray lg:disabled"
+            >
+              <img
+                src="/assets/imgs/not-found.webp"
                 alt="avatar"
                 class="w-full h-full object-cover rounded-full"
               />
@@ -181,10 +205,21 @@
                 >
                   <span class="text-lightGray">{{ dataUser.email }}</span>
                   <figure
-                    class="w-[80px] aspect-square rounded-full border border-lightGray shadow-lg shadow-lightGray"
+                    *ngIf="dataUser.image?.imageUrl"
+                    class="w-[80px] h-[80px] aspect-square rounded-full border border-lightGray shadow-lg shadow-lightGray"
                   >
                     <img
                       [src]="dataUser.image?.imageUrl"
+                      alt="avatar"
+                      class="w-full h-full object-cover rounded-full"
+                    />
+                  </figure>
+                  <figure
+                    *ngIf="!dataUser.image?.imageUrl"
+                    class="w-[80px] aspect-square rounded-full border border-lightGray shadow-lg shadow-lightGray"
+                  >
+                    <img
+                      src="/assets/imgs/not-found.webp"
                       alt="avatar"
                       class="w-full h-full object-cover rounded-full"
                     />
