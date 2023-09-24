@@ -193,3 +193,9 @@ body {
 .header .nav-links li:hover a {
   color: #ffbc0e; /* Texto en naranja al pasar el mouse */
 }
+
+.nav-item {
+  position: relative;
+  z-index: 100;
+
+}
