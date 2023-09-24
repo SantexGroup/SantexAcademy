@@ -91,11 +91,12 @@ export class DescriptionCourseComponent {
       (data) => {
         this.courses = <any>data;
         this.courses.forEach(element => {
-          if(element.id !== this.id){
+          if(element.id !== this.id && element.active == true ){
             this.coursesSelect.push(element)
           }
           
         });
+        console.log(this.coursesSelect)
       },
       (error) => {
         console.log(error);

@@ -33,7 +33,7 @@
   >
     <div class="row mt-1 p-3">
       <h2>
-        <b><u>Descripción del curso</u></b>
+        <b><u>Descripción del curso:</u></b>
       </h2>
       <h4>
         {{ course.description }}
@@ -41,24 +41,24 @@
     </div>
     <div class="row mt-1 p-3">
       <h2>
-        <b><u>Horario</u></b>
+        <b><u>Horario:</u></b>
       </h2>
       <div >
         <div *ngFor="let scheduleItem of course.ScheduleCourses">
-          <h4>Horario: {{ scheduleItem?.Schedule?.schedule }}</h4>
+          <h4>{{ scheduleItem?.Schedule?.schedule }}</h4>
         </div>
       </div>
     </div>
 
     <div class="row mt-1 p-3">
       <h2>
-        <b><u>Requisitos</u></b>
+        <b><u>Requisitos:</u></b>
       </h2>
       <h5>-{{ course.requirement }}</h5>
     </div>
     <div class="row mt-1 p-3">
       <h2>
-        <b><u>Duración</u></b>
+        <b><u>Duración:</u></b>
       </h2>
       <h5>Inicio: {{ startFormat }}</h5>
       <h5>Finalización: {{ endFormat }}</h5>
