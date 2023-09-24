@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService } from '../../auth/services/auth.service';
+import { Curso } from '../../cursos/interface/cursos.interface';
+import { UsersService } from '../../users/services/users.service';
 
 // import { Curso } from '../../cursos/interface/cursos.interface';
 // import { Nivel } from "src/app/models/nivel.interface";
@@ -16,6 +19,33 @@ import Swal from 'sweetalert2';
   })
 
   export class MisCursosComponent implements OnInit {
+
+    get user() {
+      return this.authService.user;
+    }
+
+    cursos: Curso[] = [];
+  
+    constructor(private router: Router,
+                private authService: AuthService,
+                private usersService: UsersService) { }
+
+    ngOnInit(): void {
+      this.authService.validarToken()
+        .subscribe(ok => {
+          if (ok === true){
+            console.log('user.id', this.user.id);
+            this.usersService.getCursosPorUserId( this.user.id)
+              .subscribe((cursos => this.cursos = cursos))
+          }else{
+            // Swal.fire('Error', ok, 'error');
+            alert('No estas logueado');
+          }
+        });
+
+    }
+
+  }
    // @Input() cursos: Curso[] = [];
     
     // nivelNvo: Nivel = {
@@ -27,205 +57,205 @@ import Swal from 'sweetalert2';
     // get user() {
     //   return this.authService.user;
     // }
-    user: any = {//Borrar tres lineas
-      id: 1, // Puedes asignar un valor de usuario ficticio aquí
-      // Otras propiedades del usuario si es necesario
-    };
+    // user: any = {//Borrar tres lineas
+    //   id: 1, // Puedes asignar un valor de usuario ficticio aquí
+    //   // Otras propiedades del usuario si es necesario
+    // };
   
-    @Input() curso: any = {//sacar any poner Curso
-      id: 0,
-      nombre: 'MAGIA Y ALQUIMIA',
-      descripcion: 'Conoce los arcanos secretos del desarrollo web y programación avanzada',
-      imagen: './assets/imagesPlus/Magia y alquimia.jpg',
-      duracion: 72,
-      capacidad: 50,
-      idnivel: 1,
-      requisitos:  'Curiosidad, aceptación y obsesión',
-      habilitado: true,
-      fechainicio: 2023/12/11,
-      fechafin: 31/12/9999,
-      idusuarioalta: 32,
-      idusuariomodificacion: 1,
-      createdAt: new Date,
-      updatedAt: new Date,
-      //Nivel: this.nivelNvo,
-      estado: 'A',
-    }
-  
-    // matricula: Matricula = {
-    // cursoId: 0,
-    // userId: 0,
+    // @Input() curso: any = {//sacar any poner Curso
+    //   id: 0,
+    //   nombre: 'MAGIA Y ALQUIMIA',
+    //   descripcion: 'Conoce los arcanos secretos del desarrollo web y programación avanzada',
+    //   imagen: './assets/imagesPlus/Magia y alquimia.jpg',
+    //   duracion: 72,
+    //   capacidad: 50,
+    //   idnivel: 1,
+    //   requisitos:  'Curiosidad, aceptación y obsesión',
+    //   habilitado: true,
+    //   fechainicio: 2023/12/11,
+    //   fechafin: 31/12/9999,
+    //   idusuarioalta: 32,
+    //   idusuariomodificacion: 1,
+    //   createdAt: new Date,
+    //   updatedAt: new Date,
+    //   //Nivel: this.nivelNvo,
+    //   estado: 'A',
     // }
   
-    constructor(//private authService: AuthService,
-                //private matriculasService: MatriculasService,
-                private router: Router) { }
+    // // matricula: Matricula = {
+    // // cursoId: 0,
+    // // userId: 0,
+    // // }
   
-    ngOnInit(): void {
-     // console.log(this.cursos)
-     this.curso = [
-      {
-        id: 1,
-        nombre: 'EDUARDO',
-        descripcion: 'Multitâche, aprenda rompiendo',
-        imagen: './assets/imagesPlus/los-accidentes-no-existen.jpg',
-        duracion: 24,
-        capacidad: 10,
-        idnivel: 1,
-        requisitos:  'Open main, Carpe diem',
-        habilitado: true,
-        fechainicio: 3/3/2023,
-        fechafin: 31/12/9999,
-        idusuarioalta: 32,
-        idusuariomodificacion: 1,
-        createdAt: new Date,
-        updatedAt: new Date,
-        estado: 'A',
-      },
-      {
-        id: 2,
-        nombre: 'MAGIA Y ALQUIMIA',
-        descripcion: 'Conoce los arcanos secretos del desarrollo web y programación avanzada',
-        imagen: './assets/imagesPlus/Magia y alquimia.jpg',
-        duracion: 72,
-        capacidad: 50,
-        idnivel: 1,
-        requisitos:  'Curiosidad, aceptación y obsesión',
-        habilitado: true,
-        fechainicio: 3/3/2023,
-        fechafin: 31/12/9999,
-        idusuarioalta: 32,
-        idusuariomodificacion: 1,
-        createdAt: new Date,
-        updatedAt: new Date,
-        estado: 'A',
-      },
-      {
-        id: 3,
-        nombre: 'Origami',
-        descripcion: 'Juegue con papelitos',
-        imagen: './assets/imagesPlus/dragon-papel-origami.jpg',
-        duracion: 6,
-        capacidad: 20,
-        idnivel: 1,
-        requisitos:  'tiempo para relajarse',
-        habilitado: true,
-        fechainicio: 3/3/2023,
-        fechafin: 31/12/9999,
-        idusuarioalta: 32,
-        idusuariomodificacion: 1,
-        createdAt: new Date,
-        updatedAt: new Date,
-        estado: 'A',
-      },
-      {
-        id: 4,
-        nombre: 'JARDINERIA Avanzada',
-        descripcion: 'Junte ramas y relájese ... si puede',
-        imagen: './assets/imagesPlus/poda-grande.jpg',
-        duracion: 3,
-        capacidad: 10,
-        idnivel: 1,
-        requisitos:  'Paciencia, tolerancia a la frustración ... más paciencia y mucha más tolerancia ... o pruebe con Yoga',
-        habilitado: true,
-        fechainicio: 3/3/2023,
-        fechafin: 31/12/9999,
-        idusuarioalta: 32,
-        idusuariomodificacion: 1,
-        createdAt: new Date,
-        updatedAt: new Date,
-        estado: 'A',
-      },
-      {
-        id: 1,
-        nombre: 'EDUARDO',
-        descripcion: 'Multitâche, aprenda rompiendo',
-        imagen: './assets/imagesPlus/los-accidentes-no-existen.jpg',
-        duracion: 24,
-        capacidad: 10,
-        idnivel: 1,
-        requisitos:  'Open main, Carpe diem',
-        habilitado: false,
-        fechainicio: 3/3/2023,
-        fechafin: 31/12/9999,
-        idusuarioalta: 32,
-        idusuariomodificacion: 1,
-        createdAt: new Date,
-        updatedAt: new Date,
-        estado: 'A',
-      },
-      {
-        id: 2,
-        nombre: 'MAGIA Y ALQUIMIA',
-        descripcion: 'Conoce los arcanos secretos del desarrollo web y programación avanzada',
-        imagen: './assets/imagesPlus/Magia y alquimia.jpg',
-        duracion: 72,
-        capacidad: 50,
-        idnivel: 1,
-        requisitos:  'Curiosidad, aceptación y obsesión',
-        habilitado: true,
-        fechainicio: 3/3/2023,
-        fechafin: 31/12/9999,
-        idusuarioalta: 32,
-        idusuariomodificacion: 1,
-        createdAt: new Date,
-        updatedAt: new Date,
-        estado: 'A',
-      },
-      {
-        id: 3,
-        nombre: 'Origami',
-        descripcion: 'Juegue con papelitos',
-        imagen: './assets/imagesPlus/dragon-papel-origami.jpg',
-        duracion: 6,
-        capacidad: 20,
-        idnivel: 1,
-        requisitos:  'tiempo para relajarse',
-        habilitado: true,
-        fechainicio: 3/3/2023,
-        fechafin: 31/12/9999,
-        idusuarioalta: 32,
-        idusuariomodificacion: 1,
-        createdAt: new Date,
-        updatedAt: new Date,
-        estado: 'A',
-      },
-      {
-        id: 4,
-        nombre: 'JARDINERIA Avanzada',
-        descripcion: 'Junte ramas y relájese ... si puede',
-        imagen: './assets/imagesPlus/poda-grande.jpg',
-        duracion: 3,
-        capacidad: 10,
-        idnivel: 1,
-        requisitos:  'Paciencia, tolerancia a la frustración ... más paciencia y mucha más tolerancia ... o pruebe con Yoga',
-        habilitado: false,
-        fechainicio: 3/3/2023,
-        fechafin: 31/12/9999,
-        idusuarioalta: 32,
-        idusuariomodificacion: 1,
-        createdAt: new Date,
-        updatedAt: new Date,
-        estado: 'A',
-      },
-    ];
-    }
+    // constructor(//private authService: AuthService,
+    //             //private matriculasService: MatriculasService,
+    //             private router: Router) { }
   
-    ingresar(){
-      if (this.user){
-        // this.matriculasService.addMatricula({
-        //   cursoId: this.curso.id!,
-        //   userId: this.user.id
-        // })
-        //     .subscribe( matricula => {
-        //       console.log('add :', matricula)
-               this.router.navigate(['/cursos/index'])
-        //     })
-      }else{
-        this.router.navigate(['/aula']);
-      }
+    // ngOnInit(): void {
+    //  // console.log(this.cursos)
+    //  this.curso = [
+    //   {
+    //     id: 1,
+    //     nombre: 'EDUARDO',
+    //     descripcion: 'Multitâche, aprenda rompiendo',
+    //     imagen: './assets/imagesPlus/los-accidentes-no-existen.jpg',
+    //     duracion: 24,
+    //     capacidad: 10,
+    //     idnivel: 1,
+    //     requisitos:  'Open main, Carpe diem',
+    //     habilitado: true,
+    //     fechainicio: 3/3/2023,
+    //     fechafin: 31/12/9999,
+    //     idusuarioalta: 32,
+    //     idusuariomodificacion: 1,
+    //     createdAt: new Date,
+    //     updatedAt: new Date,
+    //     estado: 'A',
+    //   },
+    //   {
+    //     id: 2,
+    //     nombre: 'MAGIA Y ALQUIMIA',
+    //     descripcion: 'Conoce los arcanos secretos del desarrollo web y programación avanzada',
+    //     imagen: './assets/imagesPlus/Magia y alquimia.jpg',
+    //     duracion: 72,
+    //     capacidad: 50,
+    //     idnivel: 1,
+    //     requisitos:  'Curiosidad, aceptación y obsesión',
+    //     habilitado: true,
+    //     fechainicio: 3/3/2023,
+    //     fechafin: 31/12/9999,
+    //     idusuarioalta: 32,
+    //     idusuariomodificacion: 1,
+    //     createdAt: new Date,
+    //     updatedAt: new Date,
+    //     estado: 'A',
+    //   },
+    //   {
+    //     id: 3,
+    //     nombre: 'Origami',
+    //     descripcion: 'Juegue con papelitos',
+    //     imagen: './assets/imagesPlus/dragon-papel-origami.jpg',
+    //     duracion: 6,
+    //     capacidad: 20,
+    //     idnivel: 1,
+    //     requisitos:  'tiempo para relajarse',
+    //     habilitado: true,
+    //     fechainicio: 3/3/2023,
+    //     fechafin: 31/12/9999,
+    //     idusuarioalta: 32,
+    //     idusuariomodificacion: 1,
+    //     createdAt: new Date,
+    //     updatedAt: new Date,
+    //     estado: 'A',
+    //   },
+    //   {
+    //     id: 4,
+    //     nombre: 'JARDINERIA Avanzada',
+    //     descripcion: 'Junte ramas y relájese ... si puede',
+    //     imagen: './assets/imagesPlus/poda-grande.jpg',
+    //     duracion: 3,
+    //     capacidad: 10,
+    //     idnivel: 1,
+    //     requisitos:  'Paciencia, tolerancia a la frustración ... más paciencia y mucha más tolerancia ... o pruebe con Yoga',
+    //     habilitado: true,
+    //     fechainicio: 3/3/2023,
+    //     fechafin: 31/12/9999,
+    //     idusuarioalta: 32,
+    //     idusuariomodificacion: 1,
+    //     createdAt: new Date,
+    //     updatedAt: new Date,
+    //     estado: 'A',
+    //   },
+    //   {
+    //     id: 1,
+    //     nombre: 'EDUARDO',
+    //     descripcion: 'Multitâche, aprenda rompiendo',
+    //     imagen: './assets/imagesPlus/los-accidentes-no-existen.jpg',
+    //     duracion: 24,
+    //     capacidad: 10,
+    //     idnivel: 1,
+    //     requisitos:  'Open main, Carpe diem',
+    //     habilitado: false,
+    //     fechainicio: 3/3/2023,
+    //     fechafin: 31/12/9999,
+    //     idusuarioalta: 32,
+    //     idusuariomodificacion: 1,
+    //     createdAt: new Date,
+    //     updatedAt: new Date,
+    //     estado: 'A',
+    //   },
+    //   {
+    //     id: 2,
+    //     nombre: 'MAGIA Y ALQUIMIA',
+    //     descripcion: 'Conoce los arcanos secretos del desarrollo web y programación avanzada',
+    //     imagen: './assets/imagesPlus/Magia y alquimia.jpg',
+    //     duracion: 72,
+    //     capacidad: 50,
+    //     idnivel: 1,
+    //     requisitos:  'Curiosidad, aceptación y obsesión',
+    //     habilitado: true,
+    //     fechainicio: 3/3/2023,
+    //     fechafin: 31/12/9999,
+    //     idusuarioalta: 32,
+    //     idusuariomodificacion: 1,
+    //     createdAt: new Date,
+    //     updatedAt: new Date,
+    //     estado: 'A',
+    //   },
+    //   {
+    //     id: 3,
+    //     nombre: 'Origami',
+    //     descripcion: 'Juegue con papelitos',
+    //     imagen: './assets/imagesPlus/dragon-papel-origami.jpg',
+    //     duracion: 6,
+    //     capacidad: 20,
+    //     idnivel: 1,
+    //     requisitos:  'tiempo para relajarse',
+    //     habilitado: true,
+    //     fechainicio: 3/3/2023,
+    //     fechafin: 31/12/9999,
+    //     idusuarioalta: 32,
+    //     idusuariomodificacion: 1,
+    //     createdAt: new Date,
+    //     updatedAt: new Date,
+    //     estado: 'A',
+    //   },
+    //   {
+    //     id: 4,
+    //     nombre: 'JARDINERIA Avanzada',
+    //     descripcion: 'Junte ramas y relájese ... si puede',
+    //     imagen: './assets/imagesPlus/poda-grande.jpg',
+    //     duracion: 3,
+    //     capacidad: 10,
+    //     idnivel: 1,
+    //     requisitos:  'Paciencia, tolerancia a la frustración ... más paciencia y mucha más tolerancia ... o pruebe con Yoga',
+    //     habilitado: false,
+    //     fechainicio: 3/3/2023,
+    //     fechafin: 31/12/9999,
+    //     idusuarioalta: 32,
+    //     idusuariomodificacion: 1,
+    //     createdAt: new Date,
+    //     updatedAt: new Date,
+    //     estado: 'A',
+    //   },
+    // ];
+    // }
+  
+    // ingresar(){
+    //   if (this.user){
+    //     // this.matriculasService.addMatricula({
+    //     //   cursoId: this.curso.id!,
+    //     //   userId: this.user.id
+    //     // })
+    //     //     .subscribe( matricula => {
+    //     //       console.log('add :', matricula)
+    //            this.router.navigate(['/cursos/index'])
+    //     //     })
+    //   }else{
+    //     this.router.navigate(['/aula']);
+    //   }
       
-    }
+    // }
   ////////////-------------No borrar se empleara luego de habilitado Matricula---------//////
     // inscribir() {
     //   if (this.user.matriculado === true) {
@@ -246,7 +276,7 @@ import Swal from 'sweetalert2';
     //   }
     // }
   //////----------------------------------------------------------------------------------//////////  
-  }
+  // }
 
 
 
@@ -266,6 +296,7 @@ export class MisCursosComponent implements OnInit {
 
 /*import { Component, OnInit } from '@angular/core';
 import { MatriculasService } from 'src/app/modules/matriculas/services/matriculas.service'; // Ajusta la ruta según tu estructura de carpetas
+import { UsersService } from '../../users/services/users.service';
 
 @Component({
   selector: 'app-mis-cursos',
