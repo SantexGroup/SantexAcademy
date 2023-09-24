@@ -13,12 +13,9 @@
         >
           {{ course.name }}
         </h1>
-        <p>
-          {{ course.description }}
-        </p>
-
-        <h3><b>Profesor/a</b></h3>
-        <h4>{{ course.teacher }}</h4>
+        <div class="mt-5">
+          <h4>Profesor/a: {{ course.teacher }} </h4>
+        </div>
       </div>
     </div>
     <div class="col-md-6 col-sm-12">
@@ -30,37 +27,44 @@
       />
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      <h2>Horario</h2>
-      <div *ngIf="existSchedule">
+  <div
+    class="m-2 p-2 rounded"
+    style="background-color: #e6e6e6; box-shadow: 1px 2px 5px #000"
+  >
+    <div class="row mt-1 p-3">
+      <h2>
+        <b><u>Descripción del curso</u></b>
+      </h2>
+      <h4>
+        {{ course.description }}
+      </h4>
+    </div>
+    <div class="row mt-1 p-3">
+      <h2>
+        <b><u>Horario</u></b>
+      </h2>
+      <div >
         <div *ngFor="let scheduleItem of course.ScheduleCourses">
-          <p>Horario: {{ scheduleItem?.Schedule?.schedule }}</p>
+          <h4>Horario: {{ scheduleItem?.Schedule?.schedule }}</h4>
         </div>
       </div>
-      <div *ngIf="!existSchedule">
-        <h1>Aún no se a asignado un horario</h1>
-      </div>
     </div>
-    <div class="col">
-      <h2>Duración</h2>
+
+    <div class="row mt-1 p-3">
+      <h2>
+        <b><u>Requisitos</u></b>
+      </h2>
+      <h5>-{{ course.requirement }}</h5>
+    </div>
+    <div class="row mt-1 p-3">
+      <h2>
+        <b><u>Duración</u></b>
+      </h2>
       <h5>Inicio: {{ startFormat }}</h5>
       <h5>Finalización: {{ endFormat }}</h5>
     </div>
-    <h2>DESCRIPCION DEL PROGRAMA</h2>
-    <br />
-    <p>
-      {{ course.description }}
-    </p>
-
-    <div class="requisito-clase">
-      <h2>REQUISITOS</h2>
-      <ul>
-        <li>{{ course.requirement }}</li>
-      </ul>
-    </div>
   </div>
-  <div class="row">
+  <div class="row p-2 m-2 rounded" style="background-color: orange">
     <h2>OTROS CURSOS QUE TE PODRIAN INTERESAR</h2>
   </div>
 
@@ -68,78 +72,19 @@
     <div
       *ngFor="let courseOption of coursesSelect.slice(0, 4)"
       class="col p-2 m-2 rounded options"
-      
     >
-    <div>
-      <img width="200" src="{{ courseOption.image }}" alt="" />
-      <h5>
-        <b>{{ courseOption.name }}</b>
-      </h5>
-      <p>
-        {{ courseOption.description }}
-      </p>
-      <button class="verMas" (click)="redirect(courseOption.id)">
-        Ver mas
-      </button>
-    </div>
+      <div>
+        <img width="200" src="{{ courseOption.image }}" alt="" />
+        <h5>
+          <b>{{ courseOption.name }}</b>
+        </h5>
+        <p>
+          {{ courseOption.description }}
+        </p>
+        <button class="verMas" (click)="redirect(courseOption.id)">
+          Ver mas
+        </button>
+      </div>
     </div>
   </div>
-  <!-- <div>
-      <img src="img/curso2.png" alt="" />
-      <h2>TALLER DE DISEÑO Y RECICLAJE: LUMINARIA</h2>
-      <p>
-        Diseño y materialización de productos ecológicos.Te llevas tu lampara
-        terminada.
-      </p>
-      <button>Ver mas</button>
-    </div>
-    <div>
-      <img src="img/curso3.png" alt="" />
-      <h2>TALLER DE DISEÑO Y RECICLAJE: Packaging</h2>
-      <p>
-        Diseño y materializacion de envoltorios ecologicos.Te llevas tu
-        packaging terminado
-      </p>
-      <button>Ver mas</button>
-    </div>
-    <div>
-      <img src="img/curso5.png" alt="" />
-      <h2>CURSO SEMIPERMANENTE</h2>
-      <p>
-        Preparación de uñas, Pasos de manicure,Manicure basica, Formas de limado
-        y mas.
-      </p>
-      <button>Ver mas</button>
-    </div> -->
-  <!-- 
-  <div>
-    <div class="fin">
-      <div class="fin-caja">
-        <img class="fin-logo" src="../../../assets/img/logo.png" alt="" />
-        <div class="descrive">
-          <p>
-            Somos una empresa que apoya a emprendedores, brindándoles
-            herramientas para alcanzar el éxito
-          </p>
-        </div>
-      </div>
-      <div class="fin-media">
-        <a href=""><i class="fa-brands fa-facebook"></i></a>
-        <a href=""><i class="fa-brands fa-instagram"></i></a>
-        <a href=""><i class="fa-brands fa-square-x-twitter"></i></a>
-        <a href=""><i class="fa-brands fa-youtube"></i></a>
-        <a href=""><i class="fa-brands fa-tiktok"></i></a>
-      </div>
-    </div>
-    <div class="base">
-      <div class="base1">
-        <p>Copyright © 2023 Incubadora del N.O.C. All right reserved</p>
-      </div>
-      <div class="base2">
-        <a href="">Condiciones de uso</a>
-        <a href="">Politica de cookies</a>
-        <a href="">Politica de privacidad</a>
-      </div>
-    </div>
-  </div> -->
 </div>

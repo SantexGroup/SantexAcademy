@@ -12,7 +12,6 @@ import { take } from 'rxjs';
 })
 export class DescriptionCourseComponent {
   id: number = 0;
-  existSchedule: boolean = false;
   start: any = new Date();
   end: Date = new Date();
   startFormat: any;
@@ -76,9 +75,6 @@ export class DescriptionCourseComponent {
           CourseCategoryName: data.CourseCategoryName,
           ScheduleCourses: data.ScheduleCourses,
         };
-        if (this.course.ScheduleCourses) {
-          this.existSchedule = true;
-        }
         this.start = this.course.start;
         this.end = this.course.end;
         this.startFormat = this.formatDateToYYYYMMDD(this.start);
