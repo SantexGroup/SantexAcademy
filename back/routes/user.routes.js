@@ -13,7 +13,7 @@ const loginValidation = [userValidations.login, checkValidationResult];
 
 router.post('/record', createValidation, userController.recordUser);
 router.post('/login', loginValidation, userController.login);
-router.post('/upload', upload, uploadDrive ); /* Ruta para subir las imagenes a GoogleDrive */
+router.post('/upload', upload, uploadDrive); /* Ruta para subir las imagenes a GoogleDrive */
 router.get('/getUser/:id', userController.getUser); //* agregado
 router.put('/update/:id', updateValidation, userController.updateUser);
 router.delete('/remove/:id', userController.userDeleted);
