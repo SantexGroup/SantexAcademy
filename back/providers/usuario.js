@@ -27,27 +27,6 @@ const loginUser = async (email, password) => {
   }
 };
 
-const getUserProfile = async (id) => {
-  try {
-    const userProfile = await Usuario.findOne({
-      where: {
-        id: id,
-        deletedAt: null,
-      },
-      include: [{ model: CestaRecompensas, as: "cestaRecompensa" }],
-      exclude: ["password"],
-      attributes: { exclude: ["deletedAt"] },
-    });
-
-    if (!userProfile) {
-      throw new Error("El usuario no existe");
-    }
-    return userProfile;
-  } catch (error) {
-    throw new Error(error);
-  }
-};
-
 const createUser = async (usuario) => {
   const { image, password, ...restOfData } = usuario;
 
@@ -134,13 +113,30 @@ const getUsersByCriteria = async (queryOptions, bodyOptions) => {
   }
 };
 
-const updateUserById = async (id, usuario) => {
+const getMyProfile = async (id) => {
   try {
-    const user = await Usuario.findByPk(id);
-    if (!user) {
-      throw new Error("The user does not exist.");
+    const userProfile = await Usuario.findOne({
+      where: {
+        id: id,
+        deletedAt: null,
+      },
+      include: [{ model: CestaRecompensas, as: "cestaRecompensa" }],
+      exclude: ["password"],
+      attributes: { exclude: ["deletedAt"] },
+    });
+
+    if (!userProfile) {
+      throw new Error("The user does not exist");
     }
-    const updatedUser = await user.update(usuario);
+    return userProfile;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+const updateMyUser = async (usuario, id) => {
+  try {
+    const updatedUser = await Usuario.update(usuario, { where: { id: id } });
     return updatedUser;
   } catch (error) {
     console.error("The user could not be updated due to an error.", error);
@@ -148,7 +144,7 @@ const updateUserById = async (id, usuario) => {
   }
 };
 
-const deleteUserById = async (id) => {
+const deleteUser = async (id) => {
   try {
     const user = await Usuario.findOne({
       where: {
@@ -162,7 +158,10 @@ const deleteUserById = async (id) => {
     }
 
     // Aplicar borrado lógico estableciendo la columna deletedAt
-    await Usuario.update({ deletedAt: new Date() }, { where: { id } });
+    await Usuario.update(
+      { deletedAt: new Date(), email: "" },
+      { where: { id } }
+    );
 
     await CestaRecompensas.destroy({ where: { id: id } });
 
@@ -175,13 +174,9 @@ const deleteUserById = async (id) => {
 
 module.exports = {
   loginUser,
-  getUserProfile,
   createUser,
   getUsersByCriteria,
-  updateUserById,
-  deleteUserById,
-  createUser,
-  getUsersByCriteria,
-  updateUserById,
-  deleteUserById,
+  getMyProfile,
+  updateMyUser,
+  deleteUser,
 };
