@@ -9,7 +9,7 @@
           <h5 class="card-title">{{ articulo.nombre }}</h5>
           <p>{{ articulo.detalles }}</p>
           <h6 id="Precio" class="card-subtitle">Precio: {{ articulo.precio }}</h6>
-          <button id="Ver-mas" class="btn btn-primary">Ver más</button>
+          <button (click)="verMas(articulo.id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
         </div>
       </div>
     </div>

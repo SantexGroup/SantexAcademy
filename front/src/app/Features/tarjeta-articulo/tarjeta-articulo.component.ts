@@ -16,7 +16,7 @@ export class TarjetaArticuloComponent implements OnInit {
   servidor: string = environment.API_URL + '/images/'
   images: string[] = [];
   
-  constructor(private service: VerArtGenService) { }
+  constructor(private service: VerArtGenService, private router: Router) { }
 
   ngOnInit(): void {
     this.service.getProduct().subscribe(productos => {
@@ -32,5 +32,10 @@ export class TarjetaArticuloComponent implements OnInit {
         }
       }
     })    
+  }
+
+  verMas(id: string) {
+    localStorage.setItem( 'idProd', JSON.stringify(id));
+    this.router.navigateByUrl('/vista-articulo');
   }
 }
