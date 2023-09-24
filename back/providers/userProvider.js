@@ -10,6 +10,8 @@ const userCreate = async (user) => {
       lastName: user.lastName,
       email: user.email,
       password: hashedPassword,
+      role: user.role,
+      specialty: user.specialty
     });
     return newUser;
   } catch (error) {

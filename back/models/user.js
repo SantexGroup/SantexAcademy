@@ -38,7 +38,9 @@ module.exports = (sequelize, DataTypes) => {
       /*decidir como operar con este campo */
       type: DataTypes.STRING,
       allowNull: false
-    }
+    },
+    role: DataTypes.ENUM('admin', 'teacher', 'student'),
+    specialty: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'User',
