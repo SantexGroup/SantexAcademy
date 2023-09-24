@@ -15,7 +15,7 @@ export class VistaArtIndComponent implements OnInit {
   images: string[] = [];
 
   //id del producto
-  id: number = 35;
+  id: number = 0;
 
   //id del usuario
   idUsuario: number = 1;
@@ -45,11 +45,19 @@ export class VistaArtIndComponent implements OnInit {
   constructor(private service: vistaArtIndServ, private router: Router) { }
 
   ngOnInit(): void {
+    this.getIdProd();
     this.datosProd(this.id);
     this.corroborarLogeo();
     this.corroborarVendedor();
   }
 
+  getIdProd() {
+    let idProd = localStorage.getItem('idProd');
+    if (idProd) {
+      let newObject = JSON.parse(idProd);
+      this.id = newObject;
+    }
+  }
 
   //traer datos
   datosProd(id: number) {
