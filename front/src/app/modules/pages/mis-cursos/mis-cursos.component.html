@@ -9,9 +9,10 @@
 </head>
 <body>
   <h1>Mis cursos</h1>
+  <h5>user.id: {{user.id}}</h5>
   <div class="container">
 
-    <div class="curso-card" *ngFor="let curso of curso">
+    <div class="curso-card" *ngFor="let curso of cursos">
       <figure>
         <img src="{{curso.imagen}}" alt="Imagen del curso">
       </figure>
