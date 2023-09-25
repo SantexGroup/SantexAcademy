@@ -20,6 +20,16 @@ const UsuarioEnVoluntariado = sequelize.define(
         key: "id",
       },
     },
+
+    organizationId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'organizacion',
+        key: 'id',
+      },
+    },
+
     idVolunteering: {
       type: DataTypes.INTEGER,
       allowNull: false,

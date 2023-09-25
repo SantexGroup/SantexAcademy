@@ -25,7 +25,6 @@ const getVoluntariadosByCriteria = async (queryOptions, bodyOptions) => {
       throw error;
     }
   };
-  
 
 
 const updateVoluntariadoById = async (idOrg, idVoluntariado, voluntariado) => {

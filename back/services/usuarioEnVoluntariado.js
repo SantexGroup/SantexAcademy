@@ -1,11 +1,11 @@
 const {usuarioEnVoluntariadoProvider} = require('../providers');
 
 // Servicio para unirse a un voluntariado
-const join = async (userId, idVolunteering) => {
+const join = async (userId, organizationId, idVolunteering) => {
   try {
 
     // Llamar al proveedor para crear la relación usuario-voluntariado
-    await usuarioEnVoluntariadoProvider.join(userId, idVolunteering);
+    await usuarioEnVoluntariadoProvider.join(userId,organizationId, idVolunteering);
 
     return 'Usuario unido al voluntariado exitosamente.';
   } catch (err) {
@@ -27,6 +27,18 @@ const getJoins = async (userId) => {
   }
 
 }
+
+const getCompletedPostulation = async (idOrg) => {
+
+  try {
+    const postulations = await usuarioEnVoluntariadoProvider.getCompletedPostulation(idOrg);
+    return postulations;
+  
+  } catch (error) {
+    console.error('Internal server error', error);  
+  }
+
+ }
 
 const updateStatusById = async (postulateId, status) => {
   try {
@@ -56,6 +68,7 @@ const deleteJoinById = async(postulateId) => {
 module.exports = {
   join,
   getJoins,
+  getCompletedPostulation,
   updateStatusById,
   deleteJoinById
 };

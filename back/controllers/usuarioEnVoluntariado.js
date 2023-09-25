@@ -5,6 +5,7 @@ const join = async (req, res) => {
   try {
 
     const userId = req.userId;
+    const {organizationId} = req.body
     const { userId: userIdFromBody, idVolunteering } = req.body;
 
     console.log ("userIdFromBody",userIdFromBody);
@@ -12,7 +13,7 @@ const join = async (req, res) => {
       return res.status(403).json({ action: 'join', error: 'No tienes permiso para realizar esta acción' });
     }
 
-    const result = await usuarioEnVoluntariadoService.join(userId, idVolunteering);
+    const result = await usuarioEnVoluntariadoService.join(userId, organizationId, idVolunteering);
     res.status(201).json({ action: 'join', message: result });
   } catch (err) {
     console.error(err);
@@ -29,6 +30,24 @@ const getJoins= async (req, res) => {
     console.error(err);
     res.status(500).json({ action: 'getJoins', error: 'Internal server error.' });
   }
+
+}
+
+const getCompletedPostulation = async (req, res) => {
+
+  try {
+    const { idOrg } = req.body;
+    const volunteerings = await usuarioEnVoluntariadoService.getCompletedPostulation(idOrg);
+    if (!volunteerings) {
+      res.status(404).json({ action: 'getCompletedPostulation', error: 'Voluntariados not found.' });
+    } else {
+      res.json(volunteerings);
+    }
+  } catch (err) {
+    res.status(500).json({ action: 'getCompletedPostulation', error: err.message });
+  }
+
+
 
 }
 
@@ -61,6 +80,7 @@ const deleteJoinById = async (req, res) => {
 module.exports = {
   join,
   getJoins,
+  getCompletedPostulation,
   updateStatusById,
   deleteJoinById
 };
