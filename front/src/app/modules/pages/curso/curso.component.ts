@@ -1,15 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup } from '@angular/forms';// BORRAR si no se usa
-
+import { Component, Input } from '@angular/core';
 import { Curso } from '../../cursos/interface/cursos.interface';
 import { Nivel } from "src/app/models/nivel.interface";
 import { AuthService } from '../../auth/services/auth.service';
-import { Matricula } from '../../matriculas/interfaces/interfaces';
 import { MatriculasService } from '../../matriculas/services/matriculas.service';
-import { TipoDeUsuario } from '../../users/interface/tipodeusuario.interface';
-import { User } from '../../users/interface/user.interface';
-// import { Curso } from '../../../models/curso.interface';//BORRAR si no se usa
+import { UsersService } from '../../users/services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-curso',
@@ -17,55 +12,12 @@ import { User } from '../../users/interface/user.interface';
   styleUrls: ['./curso.component.css']
 })
 
-export class CursoComponent implements OnInit {
-  @Input() cursos: Curso[] = [];
-  //form:FormGroup;
-  
-  nivelNvo: Nivel = {
-    nombre: 'Vacio',
-    descripcion: 'Vacio',
-  };
-  
-  cursoNvo: Curso = {
-    id:0,
-    nombre: 'Vacio',
-    descripcion: 'Vacio',
-    duracion: 0,
-    capacidad: 0,
-    idnivel: 0,
-    requisitos: '',
-    habilitado: true,
-    fechainicio: new Date,
-    idusuarioalta: 1,
-    estado: 'A',
-    createdAt: new Date,
-  };
+export class CursoComponent {
 
-  tipoUsuarioNvo: TipoDeUsuario = {
-    nombre: 'Vacio',
-    descripcion: 'Vacio'
-  };
-
-  userNvo: User = {
-    username: '',
-    password: '',
-    apellido: '',
+  nivel: Nivel = {
     nombre: '',
-    email: '',
-    estado: 'A',
-    confirmPassword: '',
-    idtipodeusuario: 0,
-    activoactualmente: true,
-    createdAt: new Date,
-    updatedAt: new Date,
-    TipoDeUsuario: this.tipoUsuarioNvo,
-    verificationCode: false,
-    codeRegister: ''
+    descripcion: '',
   };
-
-  get user() {
-    return this.authService.user;
-  }
 
   @Input() curso: Curso = {
     id: 0,
@@ -83,45 +35,51 @@ export class CursoComponent implements OnInit {
     idusuariomodificacion: 1,
     createdAt: new Date,
     updatedAt: new Date,
-    Nivel: this.nivelNvo,
+    Nivel: this.nivel,
     estado: '',
   }
 
-  matricula: Matricula = {
-    id: 0,
-    cursoId: 0,
-    userId: 0,
-    Curso: this.cursoNvo,
-    User: this.userNvo,
-    habilitado: false,
-    estado: 'A'
+  get user() {
+    return this.authService.user;
   }
+
+  cursosInscripto: Curso[] = [];
 
   constructor(private authService: AuthService,
-              private matriculasService: MatriculasService,
-              private router: Router) { }
-
-  ngOnInit(): void {
-    console.log(this.cursos)
-  }
+              private usersService: UsersService,
+              private matriculasService: MatriculasService) { }
 
 
-  //Revisar porqué se usa la interfaz USUARIO
   inscribir(){
-    if (this.user){
-      this.matriculasService.addMatricula({
-        cursoId: this.curso.id!,
-        userId: this.user.id,
-        habilitado: false,
-        estado: 'A'
-      })
-          .subscribe( matricula => {
-            console.log('add :', matricula)
-            this.router.navigateByUrl('/cursos/index')
-          })
-    }else{
-      this.router.navigateByUrl('/auth/login');//ATENCION!!! /auth/login lleva a login viejo y roto
-    }
+
+    this.authService.validarToken()
+      .subscribe(ok => {
+        if (ok === true){
+          console.log('user.id', this.user.id);
+          this.usersService.getCursosPorUserId( this.user.id)
+            .subscribe((cursos => {
+              this.cursosInscripto = cursos;
+              console.log('inscrip:', this.cursosInscripto);
+              console.log('curso', this.curso);
+              if (!this.cursosInscripto.some( curso => curso.id === this.curso.id)){
+                this.matriculasService.addMatricula({
+                  cursoId: this.curso.id!,
+                  userId: this.user.id,
+                  habilitado: false,
+                  estado: 'A'
+                })
+                    .subscribe( matricula => {
+                      console.log('add :', matricula)
+                      Swal.fire('Inscripción exitosa');
+                    })
+              }else{
+                Swal.fire('Ya estás inscripto');
+              }
+            }))
+        }else{
+          Swal.fire('No estás logueado');
+        }
+      });
     
   }
 

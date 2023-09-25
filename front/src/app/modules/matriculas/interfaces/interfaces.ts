@@ -7,6 +7,6 @@ export interface Matricula{
   Curso?: Curso; 
   User?: User; 
   userId?: number;
-  habilitado: boolean;
+  habilitado?: boolean;
   estado?: string;
 }

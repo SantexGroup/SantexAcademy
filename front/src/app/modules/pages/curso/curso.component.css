@@ -1,24 +1,15 @@
 /* Estilos generales */
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+} */
 
 /* Contenedor principal */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
 
 /* Tarjeta */
 .curso-card {
-  width: calc(33.33% - 20px);
+  /* width: calc(33.33% - 20px); */
   margin: 0 0 20px 0;
   padding: 20px;
   border-radius: 10px;
@@ -104,7 +95,7 @@
 /* Estilos responsivos */
 @media (max-width: 992px) {
   .curso-card {
-    width: calc(45% - 20px);
+    /* width: calc(45% - 20px); */
   }
 }
 
