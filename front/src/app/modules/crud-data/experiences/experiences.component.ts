@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup} from '@angular/forms';
 import { Countries } from 'src/app/core/interfaces/country.interface';
 import { Experience } from 'src/app/core/interfaces/experience.interface';
@@ -11,7 +11,7 @@ import { ExperiencesService } from 'src/app/core/services/experiences.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { ToastrService } from 'ngx-toastr';
-import { FormRevisionService } from 'src/app/core/services/toolServices/form-revision.service';
+import { FormCheckService } from 'src/app/core/services/toolServices/form-check.service';
 
 
 @Component({
@@ -19,19 +19,21 @@ import { FormRevisionService } from 'src/app/core/services/toolServices/form-rev
   templateUrl: './experiences.component.html',
   styleUrls: ['./experiences.component.css'],
 })
-export class ExperiencesComponent implements OnInit {
+export class ExperiencesComponent implements OnInit, OnDestroy {
 
   experienceForm: FormGroup;
 
   experienceId: number = 0;
+
+  formCheck: boolean = false;
 
   constructor(
     private _experienceTypeServices: ExperiencesTypeService,
     private _experienceStatusServices: ExperiencesStatusService,
     private _countriesService: CountriesService,
     private _experiencesService: ExperiencesService,
+    public checkExit: FormCheckService,
     private fb: FormBuilder,
-    private formStatus: FormRevisionService,
     public userData: UserDataService,
     public views: NavBarService
   ) {
@@ -46,6 +48,15 @@ export class ExperiencesComponent implements OnInit {
       endDate: null,
     });
 
+    this.checkExit.formCheck.subscribe((changed)=>{
+      this.formCheck= changed 
+    });
+  }
+
+  ngOnDestroy(): void {
+    if(this.formCheck){
+      window.confirm("Que es eso!!!");
+    }
   }
 
   ngOnInit(): void {
@@ -61,12 +72,6 @@ export class ExperiencesComponent implements OnInit {
     this.views.title = "Experiencias";
 
   }
-  
-
-  formTouched(){
-    this.formStatus.markForm(this.experienceForm);
-  }
-
 
   endDateShow():boolean{
     return this.experienceForm.get('statusId')?.value !== 1;
@@ -174,8 +179,5 @@ export class ExperiencesComponent implements OnInit {
     this.experienceForm.reset();
   }
 
-}
-function formTouched() {
-  throw new Error('Function not implemented.');
 }
 
