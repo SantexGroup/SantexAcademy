@@ -2,8 +2,12 @@
 
 /* Estilos para el carrusel */
 .carousel-inner img {
-  width: 800px;
-  height: 400px;
+  height: 100%;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 
