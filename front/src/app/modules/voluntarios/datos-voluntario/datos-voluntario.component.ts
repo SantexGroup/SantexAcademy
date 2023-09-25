@@ -12,9 +12,7 @@ import { VoluntarioService } from 'src/app/core/services/voluntario.service';
 export class DatosVoluntarioComponent implements OnInit {
 
   constructor(private voluntarioService:VoluntarioService, fb:FormBuilder, private matSnackBar:MatSnackBar) {
-    voluntarioService.obtenerDatosVoluntario().subscribe({
-      next:(res)=>this.datosVoluntario = res!
-    });
+   
     this.formVoluntario = fb.group({
       nombre:['',[Validators.required,Validators.minLength(2)]],
       apellido:['',[Validators.required,Validators.minLength(2)]],
@@ -46,7 +44,8 @@ export class DatosVoluntarioComponent implements OnInit {
    mostrarPasswordNueva:boolean;
 
    ngOnInit(): void {
-     
+
+    this.obtenerDatosVoluntario();
   }
 
   irModificar():void{
@@ -62,6 +61,12 @@ export class DatosVoluntarioComponent implements OnInit {
       email: this.datosVoluntario.email,
       direccion: this.datosVoluntario.address,
       telefono: this.datosVoluntario.phone
+    });
+  }
+
+  obtenerDatosVoluntario():void{
+    this.voluntarioService.obtenerDatosVoluntario().subscribe({
+      next:(res)=>this.datosVoluntario = res!
     });
   }
 
@@ -85,6 +90,7 @@ export class DatosVoluntarioComponent implements OnInit {
         });
         this.editarDatos = false;
         this.formVoluntario.reset();
+        this.obtenerDatosVoluntario();
       },
       error:(err)=>{
         this.matSnackBar.open("No se pudieron actualizar los datos","ERROR",{
@@ -92,7 +98,6 @@ export class DatosVoluntarioComponent implements OnInit {
           horizontalPosition:'center',
           duration:3000
         });
-        console.log(err);
       }
     });
   }
