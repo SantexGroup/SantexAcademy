@@ -9,35 +9,36 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      dni: {
+        type: Sequelize.INTEGER
+      },
       firstName: {
         type: Sequelize.STRING
       },
       lastName: {
         type: Sequelize.STRING
       },
-      dni: {
-        type: Sequelize.INTEGER
+      birth_date: {
+        type: Sequelize.DATE,
       },
-      address: {
-        type: Sequelize.STRING
-      },
-      country: {
-        type: Sequelize.STRING
-      },
-      state: {
-        type: Sequelize.STRING
-      },
-      celNumber: {
-        type: Sequelize.STRING
-      },
-      email: {
-        type: Sequelize.STRING
-      },
-      specialty: {
-        type: Sequelize.STRING
-      },
-      birthDate: {
-        type: Sequelize.DATE
+      contactInformationId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'ContactInformations',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      }, 
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

@@ -17,20 +17,24 @@ module.exports = {
       document_number: {
         type: Sequelize.INTEGER,
       },
-      id_contact_information: {
+      contactInformationId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'ContactInformations',
           key: 'id'
         },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
-      id_user: {
+      userId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Users',
           key: 'id'
         },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       birth_date: {
         type: Sequelize.DATE,
