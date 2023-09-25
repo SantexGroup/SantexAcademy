@@ -9,21 +9,34 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate() {
-      // define association here
+    static associate(models) {
+      this.belongsTo(models.ContactInformation, {
+        foreignKey: 'contactInformationId',
+        target_key: 'id',
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      });
+      this.belongsTo(models.User, {
+        foreignKey: 'userId',
+        target_key: 'id',
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      });
     }
   }
   Teacher.init({
+    dni: DataTypes.INTEGER,
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    dni: DataTypes.INTEGER,
-    address: DataTypes.STRING,
-    country: DataTypes.STRING,
-    state: DataTypes.STRING,
-    celNumber: DataTypes.STRING,
-    email: DataTypes.STRING,
-    specialty: DataTypes.STRING,
-    birthDate: DataTypes.DATE,
+    birth_date: DataTypes.DATE,
+    contactInformationId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'Teacher',
