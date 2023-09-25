@@ -2,14 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 75%;
+    height: 90%;
     background: var(--background-gradient);
 }
 
-.icons i{
+.icons i {
     padding: 2vh;
     margin: 1vh;
-    cursor: pointer;        
+    cursor: pointer;
     transition: 0.3s ease;
 }
 
@@ -32,8 +32,8 @@ input {
     border-color: var(--color-3);
 }
 
-.custom-checkbox {    
-    transform: scale(1);      
+.custom-checkbox {
+    transform: scale(1);
 }
 
 textarea {
@@ -51,16 +51,16 @@ textarea {
     background-color: var(--color-grad-5);
 }
 
-.custom-checkbox input[type="checkbox"] {    
+.custom-checkbox input[type="checkbox"] {
     width: 1vh;
-    height: 1vh;    
+    height: 1vh;
 }
 
 .custom-checkbox {
     display: flex;
     align-items: center;
 }
-  
+
 .custom-checkbox input[type="checkbox"] {
     margin-right: 5px;
 }
