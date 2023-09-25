@@ -11,7 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.hasOne(models.Student, {
-        foreignKey: 'id_contact_information',
+        foreignKey: 'contactInformationId',
+        sourceKey: 'id',
+      });
+      this.hasOne(models.Teacher, {
+        foreignKey: 'contactInformationId',
         sourceKey: 'id',
       });
     }
