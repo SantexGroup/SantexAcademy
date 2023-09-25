@@ -12,20 +12,24 @@ async function validateRole(value) {
   return validateValueInModel(Rol, value);
 }
 
-async function isNickUnique(value) {
+async function isNickUnique(value, { req }) {
+  const { id } = req.params;
+
   if (!value) {
     return false;
   }
 
-  return isUnique(User, 'nick', value);
+  return isUnique(User, 'nick', value, id);
 }
 
-async function isEmailUnique(value) {
+async function isEmailUnique(value, { req }) {
+  const { id } = req.params;
+
   if (!value) {
     return false;
   }
 
-  return isUnique(User, 'email', value);
+  return isUnique(User, 'email', value, id);
 }
 
 /**
