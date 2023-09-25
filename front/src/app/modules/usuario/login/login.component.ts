@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit{
 
   loginForm = this.fb.group({
     //TODO ELIMINAR
-    nick: ['javkhall7', [ Validators.required ]],
-    password: ['qwerty', [ Validators.required, Validators.minLength(6) ]],
+    nick: ['', [ Validators.required ]],
+    password: ['', [ Validators.required, Validators.minLength(6) ]],
   })
   
   submit(myForm: FormGroup) {

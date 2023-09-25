@@ -112,8 +112,6 @@ export class ExperiencesComponent implements OnInit {
       this.toastr.success('Se agrego un nueva experiencia', 'EXPERIENCIA');
     });
 
-
-
     this.experienceForm.reset();
   }
 
