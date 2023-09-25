@@ -4,22 +4,30 @@ const {
   getCourseById,
   getCourses,
   updateCourse,
-} = require("./courseProvider");
+} = require('./courseProvider');
 const {
   createCategory,
   deleteCategory,
   getCategoryById,
   getCategories,
   updateCategory,
-} = require("./categoryProvider");
+} = require('./categoryProvider');
 const {
   createSchedule,
   deleteSchedule,
   getScheduleById,
   getSchedules,
   updateSchedule,
-} = require("./scheduleProvider");
-
+} = require('./scheduleProvider');
+const {
+  createUser,
+  deleteUser,
+  getUserById,
+  getUserByEmail,
+  getUsers,
+  updateUser,
+  patchUser,
+} = require('./userProvider');
 
 const CourseProvider = {
   createCourse,
@@ -42,4 +50,15 @@ const ScheduleProvider = {
   getSchedules,
   updateSchedule,
 };
-module.exports = { CourseProvider, CategoryProvider, ScheduleProvider };
+const UserProvider = {
+  createUser,
+  deleteUser,
+  getUserById,
+  getUserByEmail,
+  getUsers,
+  updateUser,
+  patchUser,
+};
+module.exports = {
+  CourseProvider, CategoryProvider, ScheduleProvider, UserProvider,
+};
