@@ -123,7 +123,6 @@ productscontroller.delete = async (req, res) => {
  */
   productscontroller.GetByName = async (req, res) => {
     try {
-      console.log("***************************************************************************** hola")
       const producto = await Products.findAll({
         where: {
           name: {
