@@ -11,25 +11,16 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         allowNull: false,
       },
-      /*id_volunteer: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      id_premios: {
-        type: DataTypes.INTEGER ,
-        allowNull: false,
-      },*/
       date: {
-        type: DataTypes.DATEONLY ,
+        type: DataTypes.DATEONLY,
         allowNull: false,
       },
     },
     {
       sequelize,
-      modelName: 'premios_mid',
+      modelName: 'premiosMid',
       timestamps: false,
     },
   );
-  
   return premiosMid;
 };

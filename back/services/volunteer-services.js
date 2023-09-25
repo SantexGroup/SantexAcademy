@@ -8,7 +8,10 @@ const models = require('../models/index');
 const jwt = require('jsonwebtoken');
 const { sequelize } = require('../models');
 const bcrypt = require('bcrypt');
-// const models = require('../models/index');
+
+const PDFDocument = require('pdfkit');
+const fs = require('fs');
+const path = require('path');
 
 const Volunteer = volunteerModel(sequelize, DataTypes);
 
@@ -167,6 +170,70 @@ async function asignarTareaVoluntario(idVolunteer, idTarea) {
     return { error: 'Error interno en el servidor' };
   }
 }
+
+async function canjearPremioService(volunteerId, premioId) {
+  try {
+    const voluntario = await models.volunteer.findByPk(volunteerId);
+    const premio = await models.premios.findByPk(premioId);
+
+    if (!voluntario) {
+      return { error: 'No se encuentra voluntario con el ID proporcionado' };
+    }
+
+    if (!premio) {
+      return { error: 'No se encuentra premio con el ID proporcionado' };
+    }
+
+    const puntos = voluntario.points;
+    const puntosPremio = premio.costo;
+
+    if (puntos < puntosPremio) {
+      return { error: 'No cuenta con la cantidad de puntos para canjear el premio' };
+    }
+
+    // Verificar si el premio ya ha sido canjeado por el voluntario
+    const canjeAnterior = await models.premiosMid.findOne({
+      where: { volunteerId, premioId },
+    });
+
+    if (canjeAnterior) {
+      return { error: 'Este premio ya ha sido canjeado por el voluntario' };
+    }
+
+    // Realizar el canje
+    await voluntario.addPremio(premio, { through:{date: new Date() } });
+
+    const formattedDate = new Date().toLocaleDateString().replace(/\//g, '-');
+
+    //Crear pdf
+    const pdfPath = path.join(__dirname, '../archivo_premios', `${formattedDate}-${voluntario.name}-${voluntario.id}_canje_premio.pdf`);
+    const pdfDoc = new PDFDocument();
+    pdfDoc.pipe(fs.createWriteStream(pdfPath));
+    pdfDoc.fontSize(14).text('Canje de Premio', { align: 'center' });
+    pdfDoc.fontSize(12).text(`Voluntario: ${voluntario.lastname}, ${voluntario.name}`);
+    pdfDoc.fontSize(12).text(`Premio: ${premio.name}`);
+    pdfDoc.fontSize(12).text(`Fecha: ${new Date().toLocaleDateString()}`);
+    pdfDoc.end();
+
+    // Actualizar los puntos del voluntario
+    voluntario.points -= puntosPremio;
+    await voluntario.save();
+
+    // Obtener el voluntario actualizado con sus premios
+    const voluntarioConPremios = await models.volunteer.findOne({
+      where: { id: volunteerId },
+      include: [{ model: models.premios }],
+    });
+
+    delete voluntarioConPremios.dataValues.password;
+
+    return { success: true, voluntario: voluntarioConPremios, pdfPath: pdfPath };
+  } catch (error) {
+    return { error: 'Error interno en el servidor' };
+  }
+}
+
 module.exports = {
-  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, asignarTareaVoluntario,
+  // eslint-disable-next-line max-len
+  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, asignarTareaVoluntario, canjearPremioService,
 };

@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Volunteer.associate = (models) => {
-    Volunteer.belongsToMany(models.premios, { through: models.premios_mid });
+    Volunteer.belongsToMany(models.premios, { through: models.premiosMid });
     Volunteer.belongsToMany(models.tarea, { through: models.tareasVoluntario });
   };
 
