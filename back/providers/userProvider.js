@@ -21,6 +21,7 @@ const getUserByEmail = async (option) => {
   try {
     const user = await User.findOne({
       where: { email: option },
+      attributes: { exclude: ['password'] },
 
     }); return user;
   } catch (error) {
