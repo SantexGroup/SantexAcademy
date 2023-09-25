@@ -10,8 +10,11 @@ import { environment } from 'src/environments/environment';
 })
 export class VistaArtIndComponent implements OnInit {
 
+
+  nombreArt: string = '';
+  descArt: string = '';
   // obtener imgs
-  servidor: string = environment.API_URL + '/images/'
+  servidor: string = environment.API_URL + '/images/';
   images: string[] = [];
 
   //id del producto
@@ -64,6 +67,10 @@ export class VistaArtIndComponent implements OnInit {
     this.service.datosProdServ(id).subscribe(res => {
       this.respuesta = res;
       console.log(this.respuesta);
+      this.nombreArt = res.articulos.nombre
+      this.nombreArt = this.nombreArt.charAt(0).toUpperCase() + this.nombreArt.slice(1)
+      this.descArt = res.articulos.detalles
+      this.descArt = this.descArt.charAt(0).toUpperCase() + this.nombreArt.slice(1)
 
       if (res.articulos.Images){
         const imagesProd = res.articulos.Images

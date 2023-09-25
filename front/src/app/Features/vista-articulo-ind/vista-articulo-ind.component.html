@@ -15,7 +15,7 @@
             <!-- Nombres -->
             <div id="divTitulo">
                 <div class="d-flex justify-content-center">
-                    <p id="nombreProd" >{{respuesta.articulos.nombre}}</p>
+                    <p id="nombreProd" >{{nombreArt}}</p>
                 </div>
                 <div class="d-flex justify-content-end" *ngIf="respuesta.tipo">
                     <a routerLink="/">Categoría: {{respuesta.tipo.name}}</a>
@@ -30,7 +30,7 @@
             <div id="divDesc">
                 <p id="descTitulo">Descripción:</p>
                 <div id="divDescProd">
-                    <p>{{respuesta.articulos.detalles}}</p>
+                    <p>{{descArt}}</p>
                 </div>
             </div>
 
