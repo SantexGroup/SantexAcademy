@@ -14,7 +14,6 @@ const {
 
 userRouter.get("/", verifyToken, isAdmin, userController.getUsersByCriteria);
 
-<<<<<<< HEAD
 userRouter.put(
   "/:id",
   createAndUpdateUserValidation,
@@ -39,11 +38,6 @@ userRouter.get(
 );
 
 // Ruta para que un usuario elimine su propio perfil
-=======
-userRouter.get("/me/profile", verifyToken, isUser, userController.getMyUser);
-userRouter.put("/me/update", verifyToken, isUser, userController.updateMyUser);
-
->>>>>>> 0feae19d283890a32cf63f98b9a678c6b3777b49
 userRouter.delete(
   "/me/profile",
   verifyToken,
