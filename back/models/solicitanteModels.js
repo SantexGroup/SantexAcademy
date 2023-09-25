@@ -1,12 +1,12 @@
-// Creacion del modelo de donante
+// Creacion del modelo de solicitante
 
 const { Model } = require('sequelize');
 // const ModeloBase = require('./modelBase');
 const DescripcionTelefono = require('./descripcionTelefonoModels');
 
 module.exports = (sequelize, DataTypes) => {
-  // class Donante extends Model {
-  class Donante extends Model {
+  // class Solicitante extends ModeloBase {
+  class Solicitante extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       // define association here
-      Donante.belongsTo(models.DescripcionTelefono, {
+      Solicitante.belongsTo(models.DescripcionTelefono, {
         foreignKey: 'id_descripcion_telefono',
       });
     }
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
   // Inicializar la clase base
   // super.initModeloBase(sequelize);
 
-  Donante.init(
+  Solicitante.init(
     {
       // id:  DataTypes.INTEGER,
       id: {
@@ -74,9 +74,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Donante',
+      modelName: 'Solicitante',
     },
   );
 
-  return Donante;
+  return Solicitante;
 };

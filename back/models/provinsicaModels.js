@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       id: {
         primaryKey: true,
         type: DataTypes.INTEGER,
+        // autoIncrement: true,
       },
 
       // codigo_afip: DataTypes.INTEGER,
