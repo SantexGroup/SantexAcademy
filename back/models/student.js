@@ -11,12 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.ContactInformation, {
-        foreignKey: 'id_contact_information',
-        targetKey: 'id',
+        foreignKey: 'contactInformationId',
+        target_key: 'id',
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       });
       this.belongsTo(models.User, {
-        foreignKey: 'id_user',
-        targetKey: 'id',
+        foreignKey: 'userId',
+        target_key: 'id',
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       });
       this.belongsToMany(models.Cohort, {
         through: 'CohortStudents',
@@ -30,8 +34,14 @@ module.exports = (sequelize, DataTypes) => {
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
     document_number: DataTypes.INTEGER,
-    id_contact_information: DataTypes.INTEGER,
-    id_user: DataTypes.INTEGER,
+    contactInformationId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     birth_date: DataTypes.DATE,
     situation: DataTypes.STRING,
   }, {
