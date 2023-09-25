@@ -31,6 +31,7 @@ userRouter.put(
     userController.updateUserById(req, res);
   }
 );
+
 userRouter.get(
   "/me/profile",
   verifyToken,
@@ -50,11 +51,22 @@ userRouter.delete(
 userRouter.delete("/:id", verifyToken, isAdmin, userController.deleteUserById);
 
 // Ruta para que un usuario pueda postularse a un voluntario
+
 userRouter.post(
-  "/postulate/:id",
+  "/postulate",
   verifyToken,
   isUser,
   usuarioEnVoluntariadoController.join
 );
+
+userRouter.get("/postulate", verifyToken, isUser, usuarioEnVoluntariadoController.getJoins)
+
+
+userRouter.put("/postulate/update", verifyToken, isUser, usuarioEnVoluntariadoController.updateStatusById)
+
+userRouter.delete("/postulate/delete", verifyToken, isUser, usuarioEnVoluntariadoController.deleteJoinById)
+
+
+
 
 module.exports = userRouter;

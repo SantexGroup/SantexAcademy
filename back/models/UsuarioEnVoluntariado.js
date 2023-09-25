@@ -4,10 +4,17 @@ const { sequelize } = require("../config/db-config");
 const UsuarioEnVoluntariado = sequelize.define(
   "usuarioEnVoluntariado",
   {
+
+    postulateId:{
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true,
+    },
+
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
       references: {
         model: "usuario",
         key: "id",
@@ -16,36 +23,34 @@ const UsuarioEnVoluntariado = sequelize.define(
     idVolunteering: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
       references: {
         model: "voluntariado",
         key: "idVoluntariado",
       },
     },
+    status: {
+      type: DataTypes.ENUM({
+        values: [
+          "active",
+          "finished",
+          "abandoned",
+        ],
+      }),
+      allowNull: false,
+      defaultValue: "active",
+    },
+    deletedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    }
   },
   {
     sequelize,
     tableName: "usuarioEnVoluntariado",
     timestamps: false,
-    indexes: [
-      {
-        name: "PRIMARY",
-        unique: true,
-        using: "BTREE",
-        fields: [{ name: "userId" }, { name: "idVolunteering" }],
-      },
-      {
-        name: "fk_usuario_en_voluntariado_usuario_idx",
-        using: "BTREE",
-        fields: [{ name: "userId" }],
-      },
-      {
-        name: "fk_usuario_en_voluntariado_voluntariado_idx",
-        using: "BTREE",
-        fields: [{ name: "idVolunteering" }],
-      },
-    ],
+    paranoid: true,
   }
 );
+
 
 module.exports = UsuarioEnVoluntariado;

@@ -37,7 +37,7 @@ app.use(
 );
 
 app.use("/api/v1", routes);
-app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.use(
 //   cors({
