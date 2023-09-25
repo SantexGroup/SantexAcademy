@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomePageComponent } from './modules/home-page/home-page.component';
 import { AdminPanelComponent } from './modules/admin-panel/admin-panel.component';
 import { AddCourseComponent } from './modules/admin-panel/courses/add-course/add-course.component';
 import { EditCourseComponent } from './modules/admin-panel/courses/edit-course/edit-course.component';
@@ -15,6 +16,9 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+  },
+  {
+    path: '', component:HomePageComponent
   },
   {
     path:'admin/panel', component:AdminPanelComponent
