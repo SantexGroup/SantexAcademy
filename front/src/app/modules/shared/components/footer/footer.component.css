@@ -4,7 +4,8 @@
     text-align: center;
     padding: var(--size-1);
 
-    position: fixed;
+    /* position: fixed; */
+    position: static;
     bottom: 0;
     left: 0;
     width: 100%;
