@@ -5,6 +5,7 @@
        <div>
         <p class="texto">No tienes cuenta?<a> ¡Crea una! </a> Te tomara menos de un minuto.</p>
        </div>
+       <p class="text-danger">{{loginError}}</p>
         <label for="username"> Email </label>
         <input formControlName= "email" type="email" class="form-control" placeholder="ejemplo@tuemail.com" id="email">
 
@@ -37,7 +38,7 @@
             <a class="contra" href="#">Olvidaste la contraseña?</a><br>
         </div>
 
-        <button id="button" class="btn">Iniciar Sesión</button>     
+        <button id="button" class="btn" (click)="login()">Iniciar Sesión</button>     
     </form>
 
     </div>
