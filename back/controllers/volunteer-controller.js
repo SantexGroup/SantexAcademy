@@ -136,7 +136,7 @@ async function canjearPremioController(req, res) {
       fs.unlinkSync(pdfPath);
 
       // Envía una respuesta JSON adicional si es necesario
-      res.json({ success: true, voluntario: result.voluntario });
+      // res.json({ success: true, voluntario: result.voluntario });
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
