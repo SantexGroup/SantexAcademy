@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VolunteerHistoryComponent implements OnInit {
   datosTabla?: any[];
-
   ngOnInit(): void {
     this.datosTabla = [
       {

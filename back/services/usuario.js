@@ -9,15 +9,6 @@ const loginUser = async (email, password) => {
   return user;
 };
 
-const getUserProfile = async (id) => {
-  try {
-    const userProfile = await userProvider.getUserProfile(id);
-    return userProfile;
-  } catch (error) {
-    throw new Error(error);
-  }
-};
-
 const createUser = async (user) => {
   const { image, ...restOfData } = user;
   const createdUser = await userProvider.createUser({ image, ...restOfData });
@@ -32,24 +23,30 @@ const getUsersByCriteria = async (queryOptions, bodyOptions) => {
   return organization;
 };
 
-const updateUserById = async (id, organization) => {
-  const updatedOrganization = await userProvider.updateUserById(
-    id,
-    organization
-  );
-  return updatedOrganization;
+const getMyUser = async (id) => {
+  try {
+    const userProfile = await userProvider.getMyProfile(id);
+    return userProfile;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+const updateMyUser = async (newDataUser, id) => {
+  const userUpdate = await userProvider.updateMyUser(newDataUser, id);
+  return userUpdate;
 };
 
 const deleteUserById = async (id) => {
-  const deletedUser = await userProvider.deleteUserById(id);
+  const deletedUser = await userProvider.deleteUser(id);
   return deletedUser;
 };
 
 module.exports = {
   loginUser,
-  getUserProfile,
+  getMyUser,
   createUser,
   getUsersByCriteria,
-  updateUserById,
+  updateMyUser,
   deleteUserById,
 };

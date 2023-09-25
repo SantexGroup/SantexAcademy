@@ -2,48 +2,32 @@ const express = require("express");
 const upload = require("../config/multerConfig");
 const authRouter = express.Router();
 
-const { userController, orgController } = require('../controllers');
+const { userController, orgController } = require("../controllers");
+const {
+  signUpVolunteer,
+  mailFoudVolunteer,
+  mailFoudOrg,
+  signUpCoordinator,
+} = require("../middleware/validatorSignUp");
 
-const { validationResult } = require('express-validator');
-const { createAndUpdateUserValidation, loginUserValidation } = require('../middleware/validations.UserEntity');
-const { createAndUpdateOrganizationValidation, loginOrganizationValidation } = require('../middleware/validation.OrgEntity');
-
-
-authRouter.post("/users/login", loginUserValidation, async (req, res) => {
-  // Comprueba las validaciones antes de ejecutar el controlador de login de usuarios
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    const errorMessages = errors.array().map((error) => error.msg);
-    return res.status(400).json({ errors: errorMessages });
-  }
-  userController.loginUser(req, res);
-});
+authRouter.post("/users/login", userController.loginUser);
 
 authRouter.post(
   "/users/register",
   upload.single("file"),
-  createAndUpdateUserValidation,
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      const errorMessages = errors.array().map((error) => error.msg);
-      return res.status(400).json({ errors: errorMessages });
-    }
-    userController.createUser(req, res);
-  }
+  signUpVolunteer,
+  mailFoudVolunteer,
+  userController.createUser
 );
 
 authRouter.post(
   "/org/register",
   upload.single("file"),
-  createAndUpdateOrganizationValidation,
+  signUpCoordinator,
+  mailFoudOrg,
   orgController.createOrganization
 );
 
-authRouter.post(
-  "/org/login",
-  loginOrganizationValidation,
-  orgController.loginOrganization
-);
+authRouter.post("/org/login", orgController.loginOrganization);
 
 module.exports = authRouter;

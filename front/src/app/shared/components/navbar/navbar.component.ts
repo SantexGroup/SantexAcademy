@@ -50,7 +50,8 @@ export class NavbarComponent {
 
   ngOnInit() {
     const token = this.authService.getAuthToken();
-    if (token) {
+
+    if (token != '') {
       this.usersServices.getProfileVolunteer(token).subscribe({
         next: (res) => {
           this.dataUser = res;
