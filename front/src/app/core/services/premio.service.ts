@@ -31,6 +31,16 @@ export class PremioService {
     return this.apiService.delete('/premios/delete-premios/'+idPremio);
   }
 
+  canjear(idVoluntario:number, idPremio:number):Observable<Blob>{
+
+    const datosPeticion = {
+      volunteerId : idVoluntario,
+      premioId : idPremio
+    }
+
+    return this.apiService.postDownload('/volunteer/canjear-premio', datosPeticion);
+  }
+
 
 
 }
