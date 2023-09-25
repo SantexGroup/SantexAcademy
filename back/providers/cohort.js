@@ -1,6 +1,7 @@
 const { Cohort } = require('../models');
 const { Course } = require('../models');
 const { Student } = require('../models');
+const { Teacher } = require('../models');
 
 const enrollStudentInCourse = async (courseId, studentId) => {
   try {
@@ -15,6 +16,9 @@ const getAllCohorts = async () => {
   try {
     const cohorts = await Cohort.findAll({
       include: [
+        {
+          model: Teacher,
+        },
         {
           model: Course,
         },
@@ -34,6 +38,9 @@ const getCohortById = async (cohortId) => {
     const cohort = await Cohort.findByPk(cohortId, {
       include: [
         {
+          model: Teacher,
+        },
+        {
           model: Course,
         },
         {
@@ -41,6 +48,7 @@ const getCohortById = async (cohortId) => {
         },
       ],
     });
+
     if (cohort === null) {
       throw new Error('Cohort no encontrada');
     }
