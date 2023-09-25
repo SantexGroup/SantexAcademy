@@ -24,6 +24,7 @@ export class NavComponent implements OnInit {
       
       }
     });
+    this.isLoggedIn = false;
   }
 
   ngOnInit() {

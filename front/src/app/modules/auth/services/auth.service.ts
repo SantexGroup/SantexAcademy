@@ -13,6 +13,7 @@ export class AuthService {
   
   private baseUrl: string = environment.API_URL;
   private _user!: Usuario;
+
  
 
   get user(){
