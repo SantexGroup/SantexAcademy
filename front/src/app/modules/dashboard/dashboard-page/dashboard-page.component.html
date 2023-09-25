@@ -1,17 +1,21 @@
-<body>
+<body class="container-fluid">
     <link href="https://fonts.googleapis.com/css2?family=Aoboshi+One&display=swap" rel="stylesheet">
-    <div class="subheader">
+    <div class="subheader row">
         <h2>¡Empieza a aprender con nuestros cursos!</h2>
     </div>
     <h3>Hacé click en el curso que te interese para conocer más.</h3>
-    <div class="coursebox">
-        <div class = "courseinfo" *ngFor = "let course of courses">
+    <div class="coursebox row">
+        
+        <div class = "courseinfo col" *ngFor = "let course of courses">
+            <a routerLink="/curso/{{course.id}}" style="text-decoration: none;">
             <button>
-                <img src={{course.image}}>
+                <img src={{course.image}} class="image-fluid">
             <h2>{{course.name}}</h2>
             <p>{{course.description}}</p>
-        </button>
-        </div>    
+            </button>
+        </a> 
+        </div>   
+    
     </div>
     <div class="button1" *ngIf = "!allCourses"><button (click) = "showAllCourses()">Ver más cursos</button></div>
     <div class="coursebox" *ngIf = allCourses>

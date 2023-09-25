@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DescriptionCourseComponent } from './modules/description-course/description-course.component';
@@ -20,6 +19,7 @@ import { EditScheduleComponent } from './modules/admin-panel/schedules/edit-sche
 import { CategoryComponent } from './modules/admin-panel/categories/category.component';
 import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.component';
 import { CourseComponent } from './modules/admin-panel/courses/course.component';
+import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
 
 
 @NgModule({
@@ -38,7 +38,8 @@ import { CourseComponent } from './modules/admin-panel/courses/course.component'
     EditScheduleComponent,
     CategoryComponent,
     ScheduleComponent,
-    CourseComponent
+    CourseComponent,
+    DashboardPageComponent,
   ],
   imports: [
     BrowserModule,
