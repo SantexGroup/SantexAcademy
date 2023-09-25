@@ -11,6 +11,8 @@ import { ExperiencesService } from 'src/app/core/services/experiences.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { ToastrService } from 'ngx-toastr';
+import { FormRevisionService } from 'src/app/core/services/toolServices/form-revision.service';
+
 
 @Component({
   selector: 'app-experiences',
@@ -29,6 +31,7 @@ export class ExperiencesComponent implements OnInit {
     private _countriesService: CountriesService,
     private _experiencesService: ExperiencesService,
     private fb: FormBuilder,
+    private formStatus: FormRevisionService,
     public userData: UserDataService,
     public views: NavBarService
   ) {
@@ -41,7 +44,8 @@ export class ExperiencesComponent implements OnInit {
       countriesId: '',
       startDate: '',
       endDate: null,
-    })
+    });
+
   }
 
   ngOnInit(): void {
@@ -55,7 +59,14 @@ export class ExperiencesComponent implements OnInit {
     this.getCountries();
 
     this.views.title = "Experiencias";
+
   }
+  
+
+  formTouched(){
+    this.formStatus.markForm(this.experienceForm);
+  }
+
 
   endDateShow():boolean{
     return this.experienceForm.get('statusId')?.value !== 1;
@@ -164,3 +175,7 @@ export class ExperiencesComponent implements OnInit {
   }
 
 }
+function formTouched() {
+  throw new Error('Function not implemented.');
+}
+
