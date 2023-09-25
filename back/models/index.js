@@ -84,10 +84,15 @@ Producto.hasMany(ProductoEnCestaRecompensas, {
 });
 Usuario.belongsTo(Roles, { as: 'role', foreignKey: 'rolesId' });
 Roles.hasMany(Usuario, { as: 'usuarios', foreignKey: 'rolesId' });
+
+
 UsuarioEnVoluntariado.belongsTo(Usuario, {
   as: 'usuario',
-  foreignKey: 'userId',
+  foreignKey: 'userId', 
 });
+
+
+
 Usuario.hasMany(UsuarioEnVoluntariado, {
   as: 'usuarioEnVoluntariados',
   foreignKey: 'userId',

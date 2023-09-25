@@ -42,7 +42,6 @@ const Usuario = sequelize.define(
     rolesId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
       references: {
         model: "roles",
         key: "id",

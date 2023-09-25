@@ -37,6 +37,25 @@ app.use(
 );
 
 app.use("/api/v1", routes);
+//app.use(bodyParser.urlencoded({ extended: true }));
+
+// app.use(
+//   cors({
+//     origin(origin, callback) {
+//       if (
+//         origin === "http://localhost:4200" ||
+//         origin === "https://xacademy-webwarriors.vercel.app"
+//       ) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("No permitido por CORS"));
+//       }
+//     },
+//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//     credentials: true,
+//   })
+// );
+// app.use("/api/v1", routes);
 
 app.listen(PORT, async () => {
   try {

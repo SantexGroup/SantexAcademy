@@ -1,11 +1,11 @@
 const {usuarioEnVoluntariadoProvider} = require('../providers');
 
 // Servicio para unirse a un voluntariado
-const join = async (userId, idVolunteering) => {
+const join = async (userId, organizationId, idVolunteering) => {
   try {
 
     // Llamar al proveedor para crear la relación usuario-voluntariado
-    await usuarioEnVoluntariadoProvider.join(userId, idVolunteering);
+    await usuarioEnVoluntariadoProvider.join(userId,organizationId, idVolunteering);
 
     return 'Usuario unido al voluntariado exitosamente.';
   } catch (err) {
@@ -14,6 +14,61 @@ const join = async (userId, idVolunteering) => {
   }
 };
 
+
+
+const getJoins = async (userId) => {
+  try {
+    const joins = await usuarioEnVoluntariadoProvider.getJoins(userId);
+
+    return joins;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+
+}
+
+const getCompletedPostulation = async (idOrg) => {
+
+  try {
+    const postulations = await usuarioEnVoluntariadoProvider.getCompletedPostulation(idOrg);
+    return postulations;
+  
+  } catch (error) {
+    console.error('Internal server error', error);  
+  }
+
+ }
+
+const updateStatusById = async (postulateId, status) => {
+  try {
+    const postulate = await usuarioEnVoluntariadoProvider.updateStatusById(postulateId, status);
+
+    return postulate;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+
+}
+
+const deleteJoinById = async(postulateId) => {
+  try {
+    const postulate = await usuarioEnVoluntariadoProvider.deleteJoinById(postulateId);
+
+    return postulate;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+
+
+}
+
 module.exports = {
   join,
+  getJoins,
+  getCompletedPostulation,
+  updateStatusById,
+  deleteJoinById
 };

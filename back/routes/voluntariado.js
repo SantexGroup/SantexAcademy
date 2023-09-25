@@ -18,6 +18,7 @@ voluntariadoRouter.get('/me/:idOrg',verifyToken, isOrg, voluntariadoController.g
 voluntariadoRouter.get('/all', voluntariadoController.getVoluntariadosByCriteria)
 
 
+
 voluntariadoRouter.put(
   '/:idOrg/:idVoluntariado', verifyToken, isOrg,
   voluntariadoController.updateVoluntariadoById,

@@ -76,6 +76,7 @@ const getOrganizations = async (req, res) => {
   }
 };
 
+
 const updateOrganizationById = async (req, res) => {
   try {
     const organization = await orgService.updateOrganizationById(
