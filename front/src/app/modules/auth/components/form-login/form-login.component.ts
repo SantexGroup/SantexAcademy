@@ -96,7 +96,7 @@ export class FormLoginComponent implements OnInit {
   }
 
   navigateToOptionsRegister() {
-    this.router.navigate(['/options-register']);
+    this.router.navigate(['/auth/options-register']);
   }
 
   selectedOption(option: string) {

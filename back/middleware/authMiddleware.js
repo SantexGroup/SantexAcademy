@@ -12,7 +12,6 @@ const isAdmin = async (req, res, next) => {
     // Asegúrate de que req.userId contenga el ID del usuario (puedes usar el middleware verifyTokenUser para esto).
 
     // Obtén el usuario desde la base de datos usando el ID
-    console.log("req.userId:", req.userId);
     const user = await Usuario.findByPk(req.userId);
 
     if (!user) {
@@ -44,7 +43,6 @@ const verifyToken = async (req, res, next) => {
     const decoded = jwt.verify(token, config);
 
     //console.log("decoded: " + JSON.stringify(decoded, null, 2));
-    console.log("DECODED", decoded);
 
     let user = null;
     let org = null;

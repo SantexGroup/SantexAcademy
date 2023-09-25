@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { volunterData } from '../../models/dataForms.model';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-form-volunteerregister',
@@ -22,6 +20,7 @@ export class FormVolunteerregisterComponent {
   routeBtnContinue: string = '';
   textBtnModal: string = '';
   imageUrl: string | ArrayBuffer | null = null;
+  emailFound: boolean = false;
 
   constructor(
     private router: Router,
@@ -66,11 +65,19 @@ export class FormVolunteerregisterComponent {
           this.textBtnModal = 'Iniciar Sesión';
         },
         error: (error) => {
-          console.error('Error in volunteer registration:', error);
-          this.onModal = true;
-          this.statusSession = 'failed';
-          this.routeBtnContinue = 'auth/volunteer-register';
-          this.textBtnModal = 'Reintentar';
+          if (error.error.emailFound) {
+            console.error('Error in volunteer registration:', error);
+            this.onModal = true;
+            this.statusSession = 'failed-emailFound';
+            this.routeBtnContinue = 'auth/login';
+            this.textBtnModal = 'Iniciar Sesión';
+          } else {
+            console.error('Error in volunteer registration:', error);
+            this.onModal = true;
+            this.statusSession = 'failed';
+            this.routeBtnContinue = 'auth/volunteer-register';
+            this.textBtnModal = 'Reintentar';
+          }
         },
         complete: () => {},
       });

@@ -30,7 +30,7 @@ const loginOrganization = async (req, res) => {
         orgPassword: organization.password,
       },
       process.env.SESSION_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: 86400 }
     );
 
     console.log(token);
@@ -43,12 +43,6 @@ const loginOrganization = async (req, res) => {
 };
 
 const createOrganization = async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    const errorMessages = errors.array().map((error) => error.msg);
-    return res.status(400).json({ errors: errorMessages });
-  }
-
   try {
     const { image, ...restOfData } = req.body;
     let imageUrl = "";
@@ -61,16 +55,14 @@ const createOrganization = async (req, res) => {
       await fs.unlink(req.file.path);
     }
 
-    if (imageUrl.length > 0) {
-      const newOrganization = await orgService.createOrganization({
-        image: { imageUrl, publicId },
-        ...restOfData,
-      });
-      res.status(201).json({
-        message: "The organization was successfully created",
-        newOrganization,
-      });
-    }
+    const newOrganization = await orgService.createOrganization({
+      image: { imageUrl, publicId },
+      ...restOfData,
+    });
+    res.status(201).json({
+      message: "The organization was successfully created",
+      newOrganization,
+    });
   } catch (err) {
     res.status(500).json({ action: "createOrganization", error: err.message });
   }

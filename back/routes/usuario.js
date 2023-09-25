@@ -1,18 +1,16 @@
 const express = require("express");
-
 const userRouter = express.Router();
+
 const {
   userController,
   usuarioEnVoluntariadoController,
 } = require("../controllers");
+
 const {
   verifyToken,
   isAdmin,
   isUser,
 } = require("../middleware/authMiddleware");
-const {
-  createAndUpdateUserValidation,
-} = require("../middleware/validations.UserEntity");
 
 userRouter.get("/", verifyToken, isAdmin, userController.getUsersByCriteria);
 
@@ -44,11 +42,11 @@ userRouter.delete(
   "/me/profile",
   verifyToken,
   isUser,
-  userController.deleteUserById
+  userController.deleteMyUser
 );
 
 // Ruta para que un administrador elimine el perfil de cualquier usuario
-userRouter.delete("/:id", verifyToken, isAdmin, userController.deleteUserById);
+userRouter.delete("/:id", verifyToken, isAdmin, userController.deleteUser);
 
 // Ruta para que un usuario pueda postularse a un voluntario
 

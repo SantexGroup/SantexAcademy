@@ -33,11 +33,6 @@ const createAndUpdateOrganizationValidation = [
       "La contraseña debe contener al menos una letra minúscula, una letra mayúscula, un número y un símbolo, y tener al menos 8 caracteres de longitud"
     ),
 
-  // body("image")
-  //   .optional()
-  //   .isURL()
-  //   .withMessage("La URL de la imagen no es válida"),
-
   body("category")
     .isIn([
       "medio ambiente y fauna",

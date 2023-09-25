@@ -24,6 +24,10 @@ orgRouter.delete(
   orgController.deleteOrganizationById
 );
 
+//todo!! ver de que manera la organizacion pueda ver que voluntariados estan finalizados para para que la org pueda acreditar las recompensas a los voluntarios
+
+
+
 module.exports = orgRouter;
 
 // rutas habilitadas para /search

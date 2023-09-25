@@ -5,6 +5,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
 import { VolunteersComponent } from './pages/volunteers/volunteers.component';
 import { OrganizationDetailsComponent } from './pages/organization-details/organization-details.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', title: 'VolunTime - Inicio', component: HomePageComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
     path: 'dashboard',
     title: 'VolunTime - Panel',
     component: DashboardPageComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'voluntariados',
