@@ -192,13 +192,13 @@ async function canjearPremioService(volunteerId, premioId) {
     }
 
     // Verificar si el premio ya ha sido canjeado por el voluntario
-    const canjeAnterior = await models.premiosMid.findOne({
-      where: { volunteerId, premioId },
-    });
+    // const canjeAnterior = await models.premiosMid.findOne({
+    //   where: { volunteerId, premioId },
+    // });
 
-    if (canjeAnterior) {
-      return { error: 'Este premio ya ha sido canjeado por el voluntario' };
-    }
+    // if (canjeAnterior) {
+    //   return { error: 'Este premio ya ha sido canjeado por el voluntario' };
+    // }
 
     // Realizar el canje
     await voluntario.addPremio(premio, { through:{date: new Date() } });
