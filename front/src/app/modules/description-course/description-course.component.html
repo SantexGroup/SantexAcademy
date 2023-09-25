@@ -1,0 +1,90 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-sm-12 p-2">
+      <div
+        class="p-4 rounded"
+        style="background-color: #f0f0f0; box-shadow: 1px 1px 7px #000"
+      >
+        <h1
+          style="
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+              sans-serif;
+          "
+        >
+          {{ course.name }}
+        </h1>
+        <div class="mt-5">
+          <h4>Profesor/a: {{ course.teacher }} </h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <img
+        class="img-thumbnail m-2"
+        src="{{ course.image }}"
+        alt=""
+        height="350px"
+      />
+    </div>
+  </div>
+  <div
+    class="m-2 p-2 rounded"
+    style="background-color: #e6e6e6; box-shadow: 1px 2px 5px #000"
+  >
+    <div class="row mt-1 p-3">
+      <h2>
+        <b><u>Descripción del curso:</u></b>
+      </h2>
+      <h4>
+        {{ course.description }}
+      </h4>
+    </div>
+    <div class="row mt-1 p-3">
+      <h2>
+        <b><u>Horario:</u></b>
+      </h2>
+      <div >
+        <div *ngFor="let scheduleItem of course.ScheduleCourses">
+          <h4>{{ scheduleItem?.Schedule?.schedule }}</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-1 p-3">
+      <h2>
+        <b><u>Requisitos:</u></b>
+      </h2>
+      <h5>-{{ course.requirement }}</h5>
+    </div>
+    <div class="row mt-1 p-3">
+      <h2>
+        <b><u>Duración:</u></b>
+      </h2>
+      <h5>Inicio: {{ startFormat }}</h5>
+      <h5>Finalización: {{ endFormat }}</h5>
+    </div>
+  </div>
+  <div class="row p-2 m-2 rounded" style="background-color: orange">
+    <h2>OTROS CURSOS QUE TE PODRIAN INTERESAR</h2>
+  </div>
+
+  <div class="row">
+    <div
+      *ngFor="let courseOption of coursesSelect.slice(0, 4)"
+      class="col p-2 m-2 rounded options"
+    >
+      <div>
+        <img width="200" src="{{ courseOption.image }}" alt="" />
+        <h5>
+          <b>{{ courseOption.name }}</b>
+        </h5>
+        <p>
+          {{ courseOption.description }}
+        </p>
+        <button class="verMas" (click)="redirect(courseOption.id)">
+          Ver mas
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

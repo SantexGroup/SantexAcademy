@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DescriptionCourseComponent } from './modules/description-course/description-course.component';
 import { HomePageComponent } from './modules/home-page/home-page.component';
 import { AdminPanelComponent } from './modules/admin-panel/admin-panel.component';
 import { AddCourseComponent } from './modules/admin-panel/courses/add-course/add-course.component';
@@ -13,10 +14,6 @@ import { EditScheduleComponent } from './modules/admin-panel/schedules/edit-sche
 import { CourseComponent } from './modules/admin-panel/courses/course.component';
 
 const routes: Routes = [
-  {
-    path: 'dashboard',
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
-  },
   {
     path: '', component:HomePageComponent
   },
@@ -49,6 +46,9 @@ const routes: Routes = [
   },
   {
     path:'admin/panel/schedules/editSchedule/:id', component:EditScheduleComponent
+  },
+  {
+    path: 'curso/:id',component:DescriptionCourseComponent
   },
   {
     path: '**',
