@@ -1,0 +1,43 @@
+<div class="row mb-3 mt-3 offset-lg-2 userSelect">
+  <div
+    class="card text-white mb-3"
+    style="max-width: 50rem; background-color: var(--colorBlue)"
+  >
+    <div class="card-header text-center fs-3"style="text-shadow: 2px 2px 5px #000000;"><b>Editar categoría</b></div>
+    <div class="card-body">
+      <form [formGroup]="form" (ngSubmit)="update()">
+        <div class="row mb-3 mb-3">
+          <label class="form-label mb-0 p-0"> <b>Nombre</b> </label>
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            placeholder="Ingrese Nombre"
+          />
+          <span
+            *ngIf="
+              form.get('name')?.hasError('required') &&
+              form.get('name')?.touched
+            "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px"
+          >
+            El campo nombre es <strong>requerido</strong>
+          </span>
+        </div>
+        <div class="row mb-3 text-center">
+          <div class="col-lg-6">
+            <button class="boton" routerLink="/admin/panel/categories">
+              Volver
+            </button>
+          </div>
+          <div class="col-lg-6">
+            <button [disabled]="form.invalid" type="submit" class="boton">
+              Aceptar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
