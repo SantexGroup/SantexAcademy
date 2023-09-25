@@ -38,7 +38,7 @@ export class SkillComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData.getSkill();
-    this.views.title = "Habilidades";
+    this.views.changeTitle("Habilidades");
     this.views.plusOne = true;
     this.views.saveButton = false;
   }

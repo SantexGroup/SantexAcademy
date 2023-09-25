@@ -23,7 +23,7 @@ export class AppComponent implements OnInit{
       this.views.hideLanding();
       this.views.accountButton = false;
       this.views.quickButton = true;
-      this.views.title = ("Bienvenido! " + this.userData.userName + " " + this.userData.lastName);
+      this.views.changeTitle("Bienvenido! " + this.userData.userName + " " + this.userData.lastName);
       this.router.navigate([`/home/${this.userData.userId}/cv`])
     }else{
       this.router.navigate(['/']);

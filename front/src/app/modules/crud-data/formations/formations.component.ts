@@ -52,7 +52,7 @@ export class FormationsComponent implements OnInit, OnDestroy, IDeactivateCompon
 
     this.formationsTypesGet();
 
-    this.views.title = "Formaciones";
+    this.views.changeTitle("Formaciones");
   }
 
   ngOnDestroy(): void {

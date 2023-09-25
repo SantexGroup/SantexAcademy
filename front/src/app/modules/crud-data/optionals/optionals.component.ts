@@ -65,6 +65,8 @@ export class OptionalsComponent implements OnInit {
 
     this.userData.getMyOptionals();
 
+    this.views.changeTitle("Opcionales");
+    
     this.views.plusOne = true;
     this.views.saveButton = false;
 

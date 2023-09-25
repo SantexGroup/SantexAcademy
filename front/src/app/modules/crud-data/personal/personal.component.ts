@@ -45,7 +45,7 @@ export class PersonalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.views.title = "Datos Personales";
+    this.views.changeTitle("Datos Personales");
     this.getUser()
   }
 

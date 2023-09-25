@@ -18,8 +18,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.views.title = "Home";
-  
+    /* this.views.changeTitle("Home"); */
   }  
 
   optionales(){

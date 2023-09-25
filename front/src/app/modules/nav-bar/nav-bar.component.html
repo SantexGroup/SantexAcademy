@@ -8,13 +8,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="nosotros">
-            <h1 class="titulo">{{views.title}}</h1>
+            <h1 class="titulo">{{title}}</h1>
             <button mat-button [matMenuTriggerFor]="menu" *ngIf="views.accountButton">Cuenta</button>
             <mat-menu #menu="matMenu">
-                <button routerLink="login" class="botonesInicio" mat-menu-item (click)="views.title = 'Iniciar Sesion'"
+                <button routerLink="login" class="botonesInicio" mat-menu-item
                     (click)="views.buttonAccount()">Iniciar Sesion
                 </button>
-                <button routerLink="registro" class="botonesInicio" mat-menu-item (click)="views.title = 'Registrarse'"
+                <button routerLink="registro" class="botonesInicio" mat-menu-item
                     (click)="views.buttonAccount()">Registrarse
                 </button>
             </mat-menu>

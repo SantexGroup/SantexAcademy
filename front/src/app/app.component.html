@@ -23,7 +23,7 @@
                     </li>
                 </ul>
                 <button mat-flat-button routerLink="login" (click)="views.navBarShow = true"
-                    (click)="views.hideLanding()" class="botonesInicio" (click)="views.title = 'Iniciar Sesion'">Iniciar
+                    (click)="views.hideLanding()" class="botonesInicio" (click)="views.changeTitle('Iniciar Sesion')">Iniciar
                     Sesion
                 </button>
             </div>
@@ -47,7 +47,7 @@
                 confianza,
                 sabiendo que tu CV refleja lo mejor de ti.</p>
             <button class="boton-creatucv" routerLink="login" (click)="views.hideLanding()"
-                (click)="views.navBarShow = true" (click)="views.title = 'Iniciar Sesion'">
+                (click)="views.navBarShow = true" (click)="views.changeTitle('Iniciar Sesion')">
                 Crea tu CV
             </button>
 
@@ -205,7 +205,7 @@
                 <h1>Enlaces directos</h1>
                 <a href="#nosotrosContacto">Preguntas Frecuentes</a>
                 <a href="#nosotrosContacto">Quienes somos</a>
-                <a routerLink="login" (click)="views.navBarShow = true" (click)="views.title = 'Iniciar Sesion'"
+                <a routerLink="login" (click)="views.navBarShow = true" (click)="views.changeTitle('Iniciar Sesion')"
                     (click)="views.hideLanding()">Iniciar sesion</a>
             </div>
             <div class="fomulario-contacto">

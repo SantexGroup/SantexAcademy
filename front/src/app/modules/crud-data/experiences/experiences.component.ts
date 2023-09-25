@@ -60,7 +60,7 @@ export class ExperiencesComponent implements OnInit {
 
     this.getCountries();
 
-    this.views.title = "Experiencias";
+    this.views.changeTitle("Experiencias");
   }
 
   endDateShow(): boolean {
