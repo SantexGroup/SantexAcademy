@@ -5,36 +5,36 @@
   >
     <div class="card-header text-center fs-3"style="text-shadow: 2px 2px 5px #000000;"><b> Agregar curso</b></div>
     <div class="card-body">
-      <form [formGroup]="form" (ngSubmit)="createCode()">
+      <form [formGroup]="emailForm" (ngSubmit)="createCode()"*ngIf="!finish">
         <div class="row mb-3 mb-3">
-          <label class="form-label mb-0 p-0"><b>Nombre</b></label>
+          <label class="form-label mb-0 p-0"><b>Crear un nuevo codigo</b></label>
           <input
             formControlName="email"
             type="email"
             class="form-control"
-            placeholder="Ingrese Nombre"
+            placeholder="Ingrese el email"
           />
           <span
             *ngIf="
-              form.get('email')?.hasError('required') &&
-              form.get('email')?.touched
+            emailForm.get('email')?.hasError('required') &&
+            emailForm.get('email')?.touched
             "
             class="mt-1"
             style="background-color: rgb(255, 73, 73); border-radius: 5px"
           >
-            El campo nombre es <strong>requerido</strong>
+            El campo email es <strong>requerido</strong>
           </span>
+        </div>
         <div class="row mb-3 mt-2 text-center">
           <div class="col-lg-6">
-            <button class="boton" routerLink="/admin/panel/courses">
+            <button class="boton" routerLink="/">
               Volver
             </button>
           </div>
           <div class="col-lg-6">
             <button
-              [disabled]="form.invalid"
-              type="submi
-              </div>t"
+              [disabled]="emailForm.invalid"
+              type="submit"
               class="boton"
             >
               Aceptar
@@ -42,6 +42,10 @@
           </div>
         </div>
       </form>
+      <div *ngIf="finish">
+        <h3>Ya se a realizado la operacion por favor revise su email</h3>
+        <button class="boton" routerLink="/login">Volver al login</button>
+      </div>
     </div>
   </div>
 </div>
