@@ -26,7 +26,7 @@
                     <button mat-raised-button color="accent" class="boton-inscripto">INSCRIPTO</button>
         
                 </ng-template> -->
-                <button mat-raised-button color="primary" [disabled]="datosVoluntario.points! < premio.costo" (click)="canjear(premio)">CANJEAR</button>
+                <button mat-raised-button color="primary" [disabled]="datosVoluntario.points! < premio.costo || premio.cantidad<1" (click)="canjear(premio)">CANJEAR</button>
 
 
             </div>

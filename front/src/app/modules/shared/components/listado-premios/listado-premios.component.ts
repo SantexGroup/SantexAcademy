@@ -116,6 +116,7 @@ export class ListadoPremiosComponent implements OnInit {
         })
 
         this.obtenerDatosVoluntarios();
+        this.mostrarPremios();
 
       },
       error:()=>{
