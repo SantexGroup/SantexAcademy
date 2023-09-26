@@ -56,7 +56,7 @@ const routes: Routes = [
     path: 'verificar-email/:email/:code',component:ValidationEmailComponent 
   },
   {
-    path: 'createnewcode',component:CreateNewCodeComponent 
+    path: 'crear-codigo',component:CreateNewCodeComponent 
   },
   {
     path: '**',
