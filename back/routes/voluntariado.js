@@ -8,7 +8,7 @@ const  { verifyToken , isAdmin, isOrg  }  = require('../middleware/authMiddlewar
 
 
 
-voluntariadoRouter.post('/:idOrg',verifyToken, isOrg, voluntariadoController.createVoluntariado);
+voluntariadoRouter.post('/',verifyToken, isOrg, voluntariadoController.createVoluntariado);
 
 //En esta ruta traemos SOLO los voluntariados que la organizacion ha creado
 voluntariadoRouter.get('/me/:idOrg',verifyToken, isOrg, voluntariadoController.getVoluntariadosByOrganization);
