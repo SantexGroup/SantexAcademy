@@ -30,3 +30,6 @@ npm-debug.log*
 /uploads/**
 !.gitkeep
 !no-image.jpeg
+!mesa01.jpeg
+!escritorio01.jpg
+!silla01.jpg
