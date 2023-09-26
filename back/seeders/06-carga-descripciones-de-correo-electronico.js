@@ -39,10 +39,10 @@ module.exports = {
       }
     ];
 
-    return queryInterface.bulkInsert('descripciones_contactos', datosDescripcionesCorreoElectronico, {});
+    return queryInterface.bulkInsert('descripciones_correo_electronico', datosDescripcionesCorreoElectronico, {});
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('descripciones_contactos', null, {});
+    return queryInterface.bulkDelete('descripciones_correo_electronico', null, {});
   }
 };
