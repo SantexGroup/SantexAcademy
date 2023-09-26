@@ -32,7 +32,6 @@ const getAboutUSs = async () => {
 
 const updateAboutUS = async (aboutUSId, aboutUSOptions) => {
   try {
-    // await getAboutUSById(aboutUSId); // TODO why this line?
     await AboutUS.update(aboutUSOptions, { where: { id: aboutUSId } });
     return getAboutUSById(aboutUSId);
   } catch (error) {
