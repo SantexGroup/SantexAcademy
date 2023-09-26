@@ -58,7 +58,10 @@ export class OptionalsComponent implements OnInit {
 
     this.userData.getMyOptionals();
 
+    this.userData.checkForm = false;
+
     this.views.plusOne = true;
+
     this.views.saveButton = false;
 
   }

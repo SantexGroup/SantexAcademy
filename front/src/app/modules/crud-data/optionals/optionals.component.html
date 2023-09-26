@@ -1,7 +1,8 @@
 <body>
     <div class="optionalsInput">
         <div id="carouselExampleIndicators" class="carousel">
-            <form [formGroup]="optionalsForm">
+            <form [formGroup]="optionalsForm"
+            (change)="userData.markForm(optionalsForm)">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <mat-form-field>

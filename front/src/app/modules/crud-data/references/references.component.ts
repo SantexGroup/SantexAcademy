@@ -35,6 +35,8 @@ export class ReferencesComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.userData.checkForm = false;
+
     this.views.title = "Referencias";
 
     this.getCompany();

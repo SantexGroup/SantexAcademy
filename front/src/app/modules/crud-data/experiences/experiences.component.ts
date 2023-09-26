@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup} from '@angular/forms';
 import { Countries } from 'src/app/core/interfaces/country.interface';
 import { Experience } from 'src/app/core/interfaces/experience.interface';
@@ -11,7 +11,6 @@ import { ExperiencesService } from 'src/app/core/services/experiences.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { ToastrService } from 'ngx-toastr';
-import { FormCheckService } from 'src/app/core/services/toolServices/form-check.service';
 
 
 @Component({
@@ -19,20 +18,17 @@ import { FormCheckService } from 'src/app/core/services/toolServices/form-check.
   templateUrl: './experiences.component.html',
   styleUrls: ['./experiences.component.css'],
 })
-export class ExperiencesComponent implements OnInit, OnDestroy {
+export class ExperiencesComponent implements OnInit {
 
   experienceForm: FormGroup;
 
   experienceId: number = 0;
-
-  formCheck: boolean = false;
 
   constructor(
     private _experienceTypeServices: ExperiencesTypeService,
     private _experienceStatusServices: ExperiencesStatusService,
     private _countriesService: CountriesService,
     private _experiencesService: ExperiencesService,
-    public checkExit: FormCheckService,
     private fb: FormBuilder,
     public userData: UserDataService,
     public views: NavBarService
@@ -47,27 +43,19 @@ export class ExperiencesComponent implements OnInit, OnDestroy {
       startDate: '',
       endDate: null,
     });
-
-    this.checkExit.formCheck.subscribe((changed)=>{
-      this.formCheck= changed 
-    });
-  }
-
-  ngOnDestroy(): void {
-    if(this.formCheck){
-      window.confirm("Que es eso!!!");
-    }
   }
 
   ngOnInit(): void {
 
-    this.userData.getExperience();
+    this.userData.checkForm = false;
 
     this.getTypes();
 
     this.getStatus();
 
     this.getCountries();
+
+    this.userData.getExperience();
 
     this.views.title = "Experiencias";
 

@@ -13,11 +13,14 @@ import { Language } from '../../interfaces/language.interface';
 import { Optionals } from '../../interfaces/optionlas.interface';
 import { Reference } from '../../interfaces/reference.interface';
 import { Skill } from '../../interfaces/skill.interface';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserDataService {
+
+  checkForm: boolean = false;
 
   constructor(
     private _experience: ExperiencesService,
@@ -27,6 +30,13 @@ export class UserDataService {
     private _references: ReferencesService,
     private _skills: SkillService
    ){
+
+  }
+  /* Chequeo de formularios */
+  markForm(form: FormGroup){
+    if(form.dirty){
+      this.checkForm = true;
+    }
   }
 
   experiences: Experience[] = [];
@@ -35,8 +45,7 @@ export class UserDataService {
   optionals: Optionals[] = [];
   references: Reference[] = [];
   skills: Skill[] = [];
-
-
+  
   getExperience(){
     this._experience.getExperience(this.userId).subscribe((experieceList: Experience[])=>{
       this.experiences = experieceList;

@@ -1,6 +1,7 @@
 <body>
   <div class="personalInput">
-    <form [formGroup]="personalForm">
+    <form [formGroup]="personalForm"
+    (change)="userData.markForm(personalForm)">
       <mat-form-field>
         <mat-label>Nombres</mat-label>
         <input matInput formControlName="firstName">

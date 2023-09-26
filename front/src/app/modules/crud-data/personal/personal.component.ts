@@ -19,8 +19,8 @@ export class PersonalComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private userData: UserDataService,
     private userService: UserService,
+    public userData: UserDataService,
     public views: NavBarService
   ) { 
     this.personalForm = this.fb.group({ 
@@ -34,14 +34,16 @@ export class PersonalComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.userData.checkForm = false;
+
     this.views.title = "Datos Personales";
+
     this.getUser()
+
   }
 
-  
-
-
-  // * Forumulario de datos personales
+    // * Forumulario de datos personales
   getUser() { 
     this.userService.getUser(this.userData.userId).subscribe({
       next: (data) => { console.log (data)

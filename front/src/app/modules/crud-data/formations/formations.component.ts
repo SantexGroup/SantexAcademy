@@ -44,11 +44,14 @@ export class FormationsComponent implements OnInit, OnDestroy, IDeactivateCompon
   }
 
   ngOnInit(): void {
-    this.userData.getListFormations();
+
+    this.userData.checkForm = false;
     
     this.formationsStatusGet();
 
     this.formationsTypesGet();
+
+    this.userData.getListFormations();
 
     this.views.title = "Formaciones";
   }

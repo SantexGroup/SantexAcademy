@@ -1,6 +1,7 @@
 <body>
     <div class="experienceInput">
-        <form [formGroup]="referenceForm">
+        <form [formGroup]="referenceForm"
+        (change)="userData.markForm(referenceForm)">
             <mat-form-field>
                 <mat-label for="name">Nombre:</mat-label>
                 <input matInput formControlName="name" type="text">

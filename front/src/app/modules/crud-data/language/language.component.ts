@@ -30,9 +30,14 @@ export class LanguageComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.userData.checkForm = false;
+
     this.userData.languageGet();
+    
     this.views.title = "Idiomas";
+
     this.views.plusOne = true;
+    
     this.views.saveButton = false;
     
   }
