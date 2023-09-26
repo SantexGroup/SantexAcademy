@@ -219,6 +219,10 @@ async function canjearPremioService(volunteerId, premioId) {
     voluntario.points -= puntosPremio;
     await voluntario.save();
 
+    //Actualiza la cantidad de premios disponibles:
+    premio.cantidad -= 1;
+    await premio.save();
+
     // Obtener el voluntario actualizado con sus premios
     const voluntarioConPremios = await models.volunteer.findOne({
       where: { id: volunteerId },
