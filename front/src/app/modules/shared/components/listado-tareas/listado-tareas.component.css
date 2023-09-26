@@ -91,3 +91,9 @@ button{
     background-color: #13c92b;
     cursor: auto;
 }
+
+.puntos{
+    font-size: 24px;
+    color:#ff4081 ;
+    font-weight: 500;
+}
