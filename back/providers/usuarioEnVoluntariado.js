@@ -39,7 +39,7 @@ const getJoins = async (userId) => {
   }
 
 }
-const getCompletedPostulation = async (idOrg) =>{
+const getCompletedPostulation = async (idOrg) => {
   try {
     const postulation = await UsuarioEnVoluntariado.findAll({
       where: { organizationId: idOrg, status: 'finished', deletedAt: null },
@@ -57,7 +57,6 @@ const getCompletedPostulation = async (idOrg) =>{
     throw error;
   }
 }
-
 
 
 

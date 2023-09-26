@@ -28,6 +28,7 @@ const loginOrganization = async (req, res) => {
         orgEmail: organization.email,
         orgCuit: organization.cuit,
         orgPassword: organization.password,
+      
       },
       process.env.SESSION_SECRET,
       { expiresIn: 86400 }
@@ -76,13 +77,11 @@ const getOrganizations = async (req, res) => {
   }
 };
 
-
 const updateOrganizationById = async (req, res) => {
   try {
-    const organization = await orgService.updateOrganizationById(
-      req.params.id,
-      req.body
-    );
+    const orgId = req.orgId;
+
+    const organization = await orgService.updateOrganizationById(orgId);
     if (!organization) {
       res.status(404).json({
         action: "updateOrganizationById",
@@ -109,7 +108,8 @@ const updateOrganizationById = async (req, res) => {
 
 const deleteOrganizationById = async (req, res) => {
   try {
-    const organization = await orgService.deleteOrganizationById(req.params.id);
+    const orgId = req.orgId;
+    const organization = await orgService.deleteOrganizationById(orgId);
     if (!organization) {
       res.status(404).json({
         action: "deleteOrganizationById",
