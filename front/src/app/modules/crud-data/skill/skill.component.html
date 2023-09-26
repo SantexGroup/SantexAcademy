@@ -1,6 +1,7 @@
 <body>
     <div class="skillsInput">
-        <form [formGroup]="skillForm">
+        <form [formGroup]="skillForm"
+        (change)="userData.markForm(skillForm)">
             <mat-form-field>
                 <mat-label for="skill">Habilidad:</mat-label>
                 <input matInput formControlName="skill" type="text">

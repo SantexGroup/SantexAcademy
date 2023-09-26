@@ -13,6 +13,7 @@ import { CVComponent } from '../cv/cv.component';
 import { ProfilesComponent } from '../profiles/profiles.component';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
 import { ProfilesFourComponent } from '../profiles-four/profiles-four.component';
+import { AbandonGuard } from 'src/app/core/guards/abandon.guard';
 
 
 
@@ -24,7 +25,9 @@ const routes: Routes = [
   },
   {
     path: 'personal',
-    component: PersonalComponent
+    component: PersonalComponent,
+    canDeactivate: [AbandonGuard]
+    
   },
   {
     path: 'cv',
@@ -38,27 +41,33 @@ const routes: Routes = [
   },
   {
     path: 'experiencias',
-    component: ExperiencesComponent
+    component: ExperiencesComponent,
+    canDeactivate: [AbandonGuard]
   },
   {
     path: 'referencias',
-    component: ReferencesComponent
+    component: ReferencesComponent,
+    canDeactivate: [AbandonGuard]
   },
   {
     path: 'formaciones',
-    component: FormationsComponent
+    component: FormationsComponent,
+    canDeactivate: [AbandonGuard]
   },
   {
     path: 'opcionales',
-    component: OptionalsComponent
+    component: OptionalsComponent,
+    canDeactivate: [AbandonGuard]
   },
   {
     path: 'lenguajes',
-    component: LanguageComponent
+    component: LanguageComponent,
+    canDeactivate: [AbandonGuard]
   },
   {
     path: 'habilidades',
-    component: SkillComponent
+    component: SkillComponent,
+    canDeactivate: [AbandonGuard]
   },
   {
     path: 'profiles',
