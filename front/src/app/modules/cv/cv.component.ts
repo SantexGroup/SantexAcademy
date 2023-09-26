@@ -15,7 +15,6 @@ export class CVComponent implements OnInit {
    ) { }
 
   ngOnInit(): void {
-    /* this.views.changeTitle("Home"); */
   }  
 
 }

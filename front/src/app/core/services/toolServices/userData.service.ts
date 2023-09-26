@@ -88,13 +88,13 @@ export class UserDataService {
   }
 
   getReference() {
-    this._references.getReference(this.userId).subscribe((referenceList) => {
+    this._references.getReference(this.userId).subscribe((referenceList: Reference[]) => {
       this.references = referenceList;
     });
   }
 
   getSkill(){
-    this._skills.getSkillsByUser(this.userId).subscribe((skillList)=>{
+    this._skills.getSkillsByUser(this.userId).subscribe((skillList: Skill[])=>{
       this.skills = skillList;
     })
   }
