@@ -23,7 +23,7 @@ export class AbandonGuard implements CanDeactivate<unknown> {
     // } else {
     //   return true;
     // }
-    return this.userData.checkForm ? confirm("¿Estás seguro que quieres salir?*") : true;
+    return this.userData.checkForm ? confirm('¡Atención! Los datos no guardados se perderán. ¿Confirma?') : true;
   }
 
 }
