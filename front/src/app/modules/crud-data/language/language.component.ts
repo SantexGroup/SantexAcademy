@@ -5,7 +5,6 @@ import { LanguagesService } from 'src/app/core/services/languages.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { ToastrService } from 'ngx-toastr';
-import { FormChangesService } from 'src/app/core/services/toolServices/form-changes.service';
 
 
 @Component({
@@ -22,7 +21,6 @@ export class LanguageComponent implements OnInit {
   constructor(
     private _languageService: LanguagesService,
     private fb: FormBuilder,
-    private _formChangeService: FormChangesService,
     public userData: UserDataService,
     public views: NavBarService,
     public toastr: ToastrService
@@ -32,8 +30,6 @@ export class LanguageComponent implements OnInit {
       level: '',
     })
 
-    this._formChangeService.originalValues = this.languageForm.value;
-    this._formChangeService.checkFormChanges(this.languageForm);
   }
 
   ngOnInit(): void {
@@ -77,7 +73,6 @@ export class LanguageComponent implements OnInit {
     });
 
     this.languageId = elementId
-    console.log(this.languageId)
   }
 
   languageUpdate() {

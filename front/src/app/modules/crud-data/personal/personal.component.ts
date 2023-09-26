@@ -5,7 +5,6 @@ import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.servic
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { UserService } from 'src/app/core/services/usuario.service';
 import { ToastrService } from 'ngx-toastr';
-import { FormChangesService } from 'src/app/core/services/toolServices/form-changes.service';
 
 
 
@@ -27,7 +26,6 @@ export class PersonalComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,
     public userData: UserDataService,
-    public views: NavBarService
     public views: NavBarService,
     public toastr: ToastrService
   ) {
@@ -40,8 +38,6 @@ export class PersonalComponent implements OnInit {
       pictureLink: [''],
     });
 
-    this._formChangeService.originalValues = this.personalForm.value;
-    this._formChangeService.checkFormChanges(this.personalForm);
   }
 
   ngOnInit() {
@@ -98,7 +94,6 @@ export class PersonalComponent implements OnInit {
       this.userService.uploadImage(this.imagen).subscribe({
         next: (data) => {
           this.userData.urlPicture = ("https://drive.google.com/uc?export=view&id=" + data)
-          console.log(this.userData.urlPicture);
 
           //* Se toma los datos del formulario para la actualizacion
           this.user.nick = ' ';

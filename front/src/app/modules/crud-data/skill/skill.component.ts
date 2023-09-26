@@ -5,7 +5,6 @@ import { SkillService } from 'src/app/core/services/skill.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { ToastrService } from 'ngx-toastr';
-import { FormChangesService } from 'src/app/core/services/toolServices/form-changes.service';
 
 @Component({
   selector: 'app-skill',
@@ -21,7 +20,6 @@ export class SkillComponent implements OnInit {
   constructor(
     private _skillService: SkillService,
     private fb: FormBuilder,
-    private _formChangeService: FormChangesService,
     public userData: UserDataService,
     public views: NavBarService,
     public toastr: ToastrService
@@ -31,8 +29,6 @@ export class SkillComponent implements OnInit {
       level: ''
     });
 
-    this._formChangeService.originalValues = this.skillForm.value;
-    this._formChangeService.checkFormChanges(this.skillForm);
   }
 
 

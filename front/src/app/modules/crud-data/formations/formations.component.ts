@@ -25,7 +25,6 @@ export class FormationsComponent implements OnInit {
     private _formationsServices: FormationsService,
     private fb: FormBuilder,
     public views: NavBarService,
-    public views: NavBarService,
     public userData: UserDataService,
     public toastr :ToastrService
   ) {

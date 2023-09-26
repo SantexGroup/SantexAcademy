@@ -11,7 +11,6 @@ import { OptionalsService } from 'src/app/core/services/optionals.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { ToastrService } from 'ngx-toastr';
-import { FormChangesService } from 'src/app/core/services/toolServices/form-changes.service';
 
 @Component({
   selector: 'app-optionals',
@@ -30,7 +29,6 @@ export class OptionalsComponent implements OnInit {
     private _genderServices: GenderService,
     private _optionalsService: OptionalsService,
     private fb: FormBuilder,
-    private _formChangeService: FormChangesService,
     public userData: UserDataService,
     public views: NavBarService,
     public toastr: ToastrService
@@ -51,8 +49,6 @@ export class OptionalsComponent implements OnInit {
       zipCode: [''],
     });
 
-    this._formChangeService.originalValues = this.optionalsForm.value;
-    this._formChangeService.checkFormChanges(this.optionalsForm);
   }
 
   ngOnInit(): void {

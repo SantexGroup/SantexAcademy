@@ -11,7 +11,6 @@ import { ExperiencesService } from 'src/app/core/services/experiences.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { ToastrService } from 'ngx-toastr';
-import { FormChangesService } from 'src/app/core/services/toolServices/form-changes.service';
 
 
 @Component({
@@ -30,7 +29,6 @@ export class ExperiencesComponent implements OnInit {
     private _experienceStatusServices: ExperiencesStatusService,
     private _countriesService: CountriesService,
     private _experiencesService: ExperiencesService,
-    private _formChangeService: FormChangesService,
     private fb: FormBuilder,
     public userData: UserDataService,
     public views: NavBarService,
@@ -59,8 +57,6 @@ export class ExperiencesComponent implements OnInit {
     this.getCountries();
 
     this.userData.getExperience();
-
-    this.views.title = "Experiencias";
 
     this.views.changeTitle("Experiencias");
 
