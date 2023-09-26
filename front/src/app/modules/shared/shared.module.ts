@@ -5,6 +5,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchCoursesComponent } from './components/search-courses/search-courses.component';
 import { RouterModule } from '@angular/router';
 import { CardComponent } from './components/card/card.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 
@@ -18,6 +20,7 @@ import { CardComponent } from './components/card/card.component';
   imports: [
     CommonModule,
     RouterModule,
+    NgbModule
   ],
   exports:[
     FooterComponent,
