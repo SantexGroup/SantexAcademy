@@ -1,13 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegistroComponent } from './registro/registro.component';
+import { RegistroComponent } from '../usuario/registro/registro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from '../usuario/login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { RouterModule, Routes } from '@angular/router';
+import { AbandonGuard } from 'src/app/core/guards/abandon.guard';
 
-
+const userRoutes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'registro',
+    component: RegistroComponent,
+    canDeactivate: [AbandonGuard]
+  }
+]
 
 @NgModule({
   declarations: [
@@ -21,6 +33,7 @@ import { MatInputModule } from '@angular/material/input';
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
+    RouterModule.forChild(userRoutes)
   ]
 })
 export class UsuarioModule { }
