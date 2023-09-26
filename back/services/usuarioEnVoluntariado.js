@@ -37,15 +37,16 @@ const getCompletedPostulation = async (idOrg) => {
   }
 }
 
-const updateUserReward = async (idOrg) => {
+const accreditationReward = async (idOrg) => {
   try {
-    const postulations = await usuarioEnVoluntariadoProvider.updateUserReward(idOrg);
-    return postulations;
+    await usuarioEnVoluntariadoProvider.accreditationReward(idOrg);
   } catch (error) {
-    console.error('Internal server error', error);  
+    console.error("Hubo un problema al acreditar las recompensas.", error);
+    throw error;
   }
+};
 
-}
+
 
 const updateStatusById = async (postulateId, status) => {
   try {
@@ -77,6 +78,6 @@ module.exports = {
   getJoins,
   getCompletedPostulation,
   updateStatusById,
-  updateUserReward,
+  accreditationReward,
   deleteJoinById
 };

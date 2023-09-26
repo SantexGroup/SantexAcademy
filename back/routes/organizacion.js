@@ -24,11 +24,11 @@ orgRouter.delete(
   orgController.deleteOrganizationById
 );
 
-//todo!! ver de que manera la organizacion pueda ver que voluntariados estan finalizados para para que la org pueda acreditar las recompensas a los voluntarios
 
 orgRouter.get("/postulation/completed", verifyToken, isOrg, usuarioEnVoluntariadoController.getCompletedPostulation);
 
-// orgRouter.post("/postulation/accreditation/:")
+//todo!! ver de que manera la organizacion pueda ver que voluntariados estan finalizados para para que la org pueda acreditar las recompensas a los voluntarios
+orgRouter.post("/postulation/accreditation/", verifyToken, isOrg, usuarioEnVoluntariadoController.accreditationReward)
 
 module.exports = orgRouter;
 
