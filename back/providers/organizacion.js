@@ -1,13 +1,6 @@
 const { Op, or } = require("sequelize");
 const { Organizacion } = require("../models");
-const cloudinary = require("cloudinary").v2;
 const { hashPassword, comparePassword } = require("../config/crypt");
-
-cloudinary.config({
-  cloud_name: "dkvhkmu6m",
-  api_key: "558152683374156",
-  api_secret: "bkiHx6pQShvs8vOZWybO7Lf65Rg",
-});
 
 const loginOrg = async (email, cuit, password) => {
   try {
