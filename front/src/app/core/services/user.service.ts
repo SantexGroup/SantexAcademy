@@ -15,5 +15,11 @@ export class UserService {
   postUser(user: User){
     return this.httpUser.post(this.apiUrl, user)
   }
+  validateCode(email:string, code:string){
+    return this.httpUser.get(this.apiUrl+"/verificar-email/"+email+"/"+code)
+  }
+  createCode(email:string){
+    return this.httpUser.post(this.apiUrl+ "createnewcode", email)
+  }
 
 }

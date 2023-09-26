@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col" *ngIf="validateOK">
+            <h1>Ya esta registrado</h1>
+        </div>
+        <div class="col" *ngIf="!validateOK">
+            <h1>No se pudo registrar</h1>
+            <h4>si sigue teniendo problemas pruebe crear un nuevo codigo <a routerLink="/createnewcode">aquí</a></h4>
+            
+        </div>
+    </div>
+</div>

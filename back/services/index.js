@@ -27,6 +27,8 @@ const {
   getUsers,
   updateUser,
   patchUser,
+  validateCode,
+  createCode,
 } = require('./userService');
 
 const CourseService = {
@@ -58,6 +60,8 @@ const UserService = {
   getUsers,
   updateUser,
   patchUser,
+  validateCode,
+  createCode,
 };
 module.exports = {
   CourseService, CategoryService, ScheduleService, UserService,
