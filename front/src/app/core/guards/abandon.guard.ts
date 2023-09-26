@@ -17,12 +17,13 @@ export class AbandonGuard implements CanDeactivate<unknown> {
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.userData.checkForm) {
-      const response = confirm("Estas seguro que quieres salir?");
-      return response;
-    } else {
-      return true;
-    }
+    // if (this.userData.checkForm) {
+    //   const response = confirm("Estas seguro que quieres salir?");
+    //   return response;
+    // } else {
+    //   return true;
+    // }
+    return this.userData.checkForm ? confirm("¿Estás seguro que quieres salir?*") : true;
   }
 
 }
