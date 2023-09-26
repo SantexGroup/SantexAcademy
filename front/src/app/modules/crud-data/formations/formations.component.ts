@@ -42,6 +42,8 @@ export class FormationsComponent implements OnInit {
   ngOnInit(): void {
 
     this.userData.checkForm = false;
+
+    this.views.changeTitle("Formaciones");
     
     this.formationsStatusGet();
 
