@@ -1,4 +1,5 @@
 const { User } = require('../models');
+const hashPassword = require('../utils/hash_password.util');
 
 const postUser = async (req, res) => {
   try {
@@ -18,6 +19,8 @@ const postUser = async (req, res) => {
     }
     const existUser = await User.findOne({ where: { email } });
     if (existUser) return res.status(401).send('Email ya registrado');
+
+    newUser.password = await hashPassword(password);
 
     await User.create(newUser);
     return res.status(200).json({ message: 'Usuario creado exitosamente' });

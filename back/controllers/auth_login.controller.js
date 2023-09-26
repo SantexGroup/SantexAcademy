@@ -1,7 +1,6 @@
-const validateUserPassword = require('../validations/validate_user_password.service');
 const findEntityByProperty = require('../services/find_entity_by_property.service');
+const validateUserPassword = require('../utils/validate_user_password.util');
 const handleJWT = require('../services/handle_jwt.service');
-const logger = require('../utils/winston.logger');
 const { User } = require('../models');
 
 const authLoginController = async (req, res, next) => {
@@ -10,40 +9,21 @@ const authLoginController = async (req, res, next) => {
 
     try {
       const existingUser = await findEntityByProperty({ email }, User);
-      if (existingUser === null) {
-        next({
-          extendBase: true,
-          status: 401,
-          message: 'Credenciales Invalidas',
-        });
-      }
 
-      const checkPassword = await validateUserPassword(
-        password,
-        existingUser.password,
-      );
-      if (!checkPassword) {
-        next({
-          extendBase: true,
-          status: 401,
-          message: 'Credenciales Invalidas',
-        });
-      }
+      await validateUserPassword(password, existingUser.password);
 
-      const jwt = handleJWT(existingUser.id);
+      const jwt = await handleJWT(existingUser.id);
 
       res.send({
         email: existingUser.email,
-        name: existingUser.name,
+        firstName: existingUser.firstName,
         jwt,
       });
     } catch (error) {
-      logger.api.error(error);
-
       next({
         extendBase: true,
-        status: 401,
-        message: 'Error al intentar iniciar sesión',
+        status: error.statusCode || 500,
+        message: error.message || 'Error interno del servidor',
       });
     }
   })();

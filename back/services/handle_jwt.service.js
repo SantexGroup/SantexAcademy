@@ -6,12 +6,13 @@ const jwtConstructor = require('../providers/jwt_constructor');
  * @param {any} payload - El payload del JWT
  * @returns {string} El JWT
  */
-const handleJWT = (payload) => {
+const handleJWT = async (payload) => {
   const encoder = new TextEncoder();
 
   const key = encoder.encode(process.env.JWT_PRIVATE_KEY);
 
-  return jwtConstructor(payload, key);
+  // eslint-disable-next-line no-return-await
+  return await jwtConstructor(payload, key);
 };
 
 module.exports = handleJWT;

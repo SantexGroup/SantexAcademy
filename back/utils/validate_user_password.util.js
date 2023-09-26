@@ -1,16 +1,19 @@
 const { compare } = require('bcrypt');
+const CustomException = require('../exceptions/custom.exeption');
 
 /**
- * Valida la contraseña de un usuario
+ * Compara la contraseña de un usuario con la contraseña encriptada
  *
  * @param {string} password - La contraseña a validar
  * @param {string} hashedPassword - La contraseña encriptada
- * @returns {Promise<boolean>} Una promesa que resuelve con la contraseña valida
+ * @returns {Promise<void>}
  */
 const validateUserPassword = async (password, hashedPassword) => {
   const result = await compare(password, hashedPassword);
 
-  return result;
+  if (!result) {
+    throw new CustomException('Credenciales Invalidas', 401);
+  }
 };
 
 module.exports = validateUserPassword;
