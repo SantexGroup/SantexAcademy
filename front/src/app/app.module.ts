@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { register } from 'swiper/element/bundle';
 register();
@@ -50,6 +51,7 @@ import { OrganizationDetailsComponent } from './pages/organization-details/organ
     MatNativeDateModule,
     MatCheckboxModule,
     MatDividerModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

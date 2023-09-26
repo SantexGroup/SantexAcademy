@@ -1,0 +1,54 @@
+<article class="w-full mt-12 px-4 pb-16 overflow-auto">
+  <div class="w-full flex items-center flex-col gap-4 shadow-md shadow-dimGray  bg-white rounded-lg ">
+    <div class="w-full">
+
+    </div>
+
+    <div class="w-[360px] max-h-[400px] overflow-auto customScroll m:w-[450px] sm:w-full lg:w-[500px] xl:w-full">
+      <table class="w-full divide-y divide-lightGray">
+        <thead class="w-full bg-darkSlateBlue">
+          <tr class="text-white font-semibold text-xs sm:text-sm uppercase">
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Nombre del proyecto
+                        </th>
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Ubicación
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Tareas
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Horas
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Descripción
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Acción
+            </th>
+          </tr>
+        </thead>
+        <tbody class="w-full bg-white divide-y divide-lightGray">
+          <tr *ngFor="let dato of datosTabla">
+            <td class="px-6 py-4 whitespace-no-wrap">{{ dato.name }}</td>
+            <td class="px-6 py-4 whitespace-no-wrap">{{ dato.location }}</td>
+            <td class="px-6 py-4 whitespace-no-wrap">{{ dato.tasks}}</td>
+            <td class="px-6 py-4 whitespace-no-wrap">{{ dato.hours}}</td>
+            <td class="px-6 py-4 whitespace-no-wrap">{{ dato.description}}</td>
+            <td class="py-4 whitespace-no-wrap text-center flex items-center justify-center">
+
+<td class="py-4 whitespace-no-wrap text-center flex items-center justify-center">
+  <button mat-icon-button class="custom-icon-button" (click)="editarDato(dato)">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button mat-icon-button class="custom-icon-button" (click)="eliminarDato(dato)">
+    <mat-icon>delete</mat-icon>
+  </button>
+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</article>
+

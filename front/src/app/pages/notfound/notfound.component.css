@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,600,700,800,900|Barlow:300,400,500,600,700,800,900&display=swap");
 
+/* .section{
 
+} */
 .content {
   animation: content 0.8s cubic-bezier(1, 0.06, 0.25, 1) backwards;
 }
