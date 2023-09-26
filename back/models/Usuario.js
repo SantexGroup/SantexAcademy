@@ -34,7 +34,7 @@ const Usuario = sequelize.define(
       allowNull: false,
       defaultValue: 0,
     },
-    pointsAccumulated: {
+    hoursAcc: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 0,

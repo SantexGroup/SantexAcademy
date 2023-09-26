@@ -1,4 +1,4 @@
-const { UsuarioEnVoluntariado, Voluntariado } = require('../models');
+const { UsuarioEnVoluntariado, Voluntariado, Usuario } = require('../models');
 
 // Proveedor de Datos para crear la relación usuario-voluntariado
 const join = async (userId,organizationId, idVolunteering) => {
@@ -58,6 +58,30 @@ const getCompletedPostulation = async (idOrg) => {
   }
 }
 
+const accreditationReward = async (idOrg) => {
+  try {
+    // Obtener las postulaciones completadas
+    const completedPostulations = await getCompletedPostulation(idOrg);
+
+    // Iterar sobre cada postulación completada
+    for (let postulation of completedPostulations) {
+      // Obtener el usuario de la postulación
+      const user = await Usuario.findOne({ where: { id: postulation.userId } });
+
+      // Sumar la recompensa de la postulación a la recompensa del usuario
+      user.hoursAcc += postulation.voluntariado.Reward;
+
+      // Guardar el usuario actualizado
+      await user.save();
+    }
+  } catch (error) {
+    console.error('No se pudo acreditar la recompensa debido a un error.', error);
+    throw error;
+  }
+}
+
+
+
 
 
 const updateStatusById = async (postulateId, status) => {
@@ -101,4 +125,4 @@ const deleteJoinById = async (postulateId) => {
 
 
 
-module.exports = { join, getJoins, getCompletedPostulation, updateStatusById, deleteJoinById };
+module.exports = { join, getJoins, getCompletedPostulation,accreditationReward, updateStatusById, deleteJoinById };
