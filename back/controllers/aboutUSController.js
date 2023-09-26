@@ -34,7 +34,7 @@ const createAboutUS = async (req, res) => {
 };
 
 const getAboutUSById = async (req, res) => {
-  const aboutUSId = req.params.AboutUSId;
+  const { aboutUSId } = req.params;
   try {
     const aboutUS = await AboutUSService.getAboutUSById(aboutUSId);
     res.status(200).json(aboutUS);
