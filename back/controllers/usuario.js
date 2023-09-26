@@ -41,22 +41,20 @@ const createUser = async (req, res) => {
       const uploadResult = await cloudinary.uploader.upload(req.file.path);
       imageUrl = uploadResult.secure_url;
       publicId = uploadResult.public_id;
+      await fs.unlink(req.file.path);
     }
 
     const newUser = await userService.createUser({
       image: { imageUrl, publicId },
       ...restOfData,
     });
-
-    if (req.file) {
-      await fs.unlink(req.file.path);
-    }
-
-    res
-      .status(201)
-      .json({ message: "The Volunteer was successfully created", newUser });
+    res.status(201).json(newUser);
   } catch (err) {
-    res.status(500).json({ action: "createUser", error: err.message });
+    if (err.message == "Validation error") {
+      res.status(409).json({ action: "createUser", error: err.message });
+    } else {
+      res.status(500).json({ action: "createUser", error: err.message });
+    }
   }
 };
 
