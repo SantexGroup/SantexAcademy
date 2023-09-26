@@ -14,7 +14,7 @@ export class BarraComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getCategories().subscribe(categorias => {
-    console.log(categorias)
+    console.log("categorias: " + categorias)
     this.listCategorias = categorias
     })
   }

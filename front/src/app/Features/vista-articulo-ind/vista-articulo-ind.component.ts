@@ -161,6 +161,6 @@ export class VistaArtIndComponent implements OnInit {
       }
       localStorage.setItem('datosAlq', JSON.stringify(datosAlq));
     }
-    //redirigir a la pantalla de confirmar la transacción
+    this.router.navigate(['confirmacion-articulo']);
   }  
 }
