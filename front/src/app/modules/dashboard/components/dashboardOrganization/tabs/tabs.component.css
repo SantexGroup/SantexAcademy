@@ -1,0 +1,28 @@
+/* ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+  color: red;
+  background-color: green;
+  border-radius: 10px 10px 0 0;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels {
+  color: blue;
+  background-color: yellow;
+  border-radius: 10px 10px 0 0;
+} */
+
+/* your-component.css */
+.custom-tab-group {
+  /* Define styles for the mat-tab-group container */
+  background-color: #EBE9F2;
+  border-radius: 20px;
+  margin-left: 18%;
+  margin-top: -50px;
+  padding-bottom: 30px;
+}
+
+.custom-tab-group .mat-tab-label-active {
+  /* Define styles for the active tab label */
+  color: red;
+  background-color: green;
+  border-radius: 10px 10px 0 0;
+}

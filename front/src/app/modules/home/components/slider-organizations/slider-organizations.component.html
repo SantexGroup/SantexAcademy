@@ -1,0 +1,47 @@
+<section
+  class="w-full flex flex-col items-center justify-center mb-16 gap-8 lg:gap-16"
+>
+  <header class="w-full flex flex-col items-center gap-4 px-4">
+    <h2
+      class="font-bold text-2xl sm:text-3xl lg:text-4xl uppercase text-[#130b1a]"
+    >
+      ¡Un mundo de voluntariado!
+    </h2>
+    <p class="font-bold sm:text-lg lg:text-2xl text-center text-[#1c132d]">
+      Descubre las Organizaciones y Fundaciones que hacen la diferencia
+    </p>
+  </header>
+  <swiper-container
+    slides-per-view="3"
+    autoplay
+    loop="true"
+    navigation="true"
+    class="mySwiper"
+  >
+    <ng-container *ngIf="organizations.length === 0">
+      <ng-container *ngFor="let image of images">
+        <swiper-slide class="flex items-center justify-center mx-4 lg:mx-0">
+          <figure class="w-[150px] h-[105px] md:w-[250px]">
+            <img [src]="image" class="w-full h-full object-contain" />
+          </figure>
+        </swiper-slide>
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="organizations.length > 0">
+      <ng-container *ngFor="let item of organizations">
+        <swiper-slide
+          class="flex items-center justify-center mx-4 lg:mx-0"
+          (click)="navigateToOrganization(item.id)"
+        >
+          <figure class="w-[150px] h-[105px] md:w-[250px] z-10">
+            <img
+              [src]="item.image?.imageUrl"
+              class="w-full h-full object-contain"
+            />
+          </figure>
+        </swiper-slide>
+      </ng-container>
+    </ng-container>
+  </swiper-container>
+</section>

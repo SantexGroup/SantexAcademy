@@ -1,0 +1,26 @@
+ 
+<div class="organization-details">
+  <h1>Detalles de la organización</h1>
+
+  <!-- Verifica si existe una organización -->
+  <ng-container *ngIf="organization">
+    <div class="organization-info">
+      <h2>{{ organization.name }}</h2>
+      <img [src]="organization.image" alt="Imagen de la organización" />
+      <p><strong>Categoría:</strong> {{ organization.category }}</p>
+      <p><strong>CUIT:</strong> {{ organization.cuit }}</p>
+      <p><strong>Email:</strong> {{ organization.email }}</p>
+      <p><strong>Ubicación:</strong> {{ organization.location }}</p>
+      <p><strong>Teléfono:</strong> {{ organization.phone }}</p>
+      <p><strong>Descripción:</strong> {{ organization.description }}</p>
+    </div>
+  </ng-container>
+
+  <!-- Mensaje si no se encuentra la organización -->
+  <ng-container *ngIf="!organization">
+    <p>La organización no se encontró o no existe.</p>
+  </ng-container>
+</div>
+
+<p></p>
+

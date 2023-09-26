@@ -1,0 +1,237 @@
+<section class="section h-screen flex flex-col font-poppins">
+  <header class="headerOrg w-screen h-[100px] flex justify-between items-center">
+    <div class="px-[50px] flex justify-between items-center">
+      <img src="../../../../../../../../assets/logotypes_organizations/orgOne.svg" alt="Logo organización"
+        class="w-[160px] " />
+
+    </div>
+  </header>
+  <app-tabs></app-tabs>
+  <!-- <mat-tab-group class="font-poppins h-auto w-[80%] bg-[#EBE9F2] rounded-[20px] ml-[18%] -mt-[50px] pb-[30px]"
+    [(selectedIndex)]="tabActiva">
+    <mat-tab label="Información de la organización" class="mat-tab">
+      <div class="datos px-14 h-auto pt-[30px] w-[100%]">
+        <p class="text-[32px] font-semibold">Datos de la Organización</p>
+        <ul *ngIf="!editData">
+          <div class="flex items-center">
+            <div class="w-2/3 p-3">
+              <li>
+                <strong>Imagen:</strong>
+              </li>
+            </div>
+            <div class="w-1/3 p-4">
+              <li>
+                <img [src]="image" alt="Logo organización" class="w-[150px]" />
+              </li>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="w-2/3 p-4">
+              <li>
+              <p><strong>Nombre: </strong>{{name}}</p>
+              </li>
+            </div>
+            <div class="w-1/3 p-4">
+              <li>
+              <p><strong>CUIT: </strong>{{cuit}}</p>
+              </li>
+            </div>
+          </div>
+         <div class="flex">
+            <div class="w-2/3 p-4">
+              <li>
+              <p><strong>Ubicación: </strong>{{location}}</p>
+              </li>
+            </div>
+            <div class="w-1/3 p-4">
+              <li>
+              <p><strong>Teléfono: </strong>{{phone}}</p>
+              </li>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="w-3/3 p-4">
+              <li>
+              <p><strong>Correo electrónico: </strong>{{email}}</p>
+              </li>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="w-3/3 p-4">
+              <li>
+              <p><strong>Categoría: </strong>{{category}}</p>
+              </li>
+            </div>
+          </div>
+
+          <div class="flex">
+            <div class="w-3/3 p-4">
+              <li>
+              <p><strong>Descripción: </strong>{{description}}</p>
+                </li>
+            </div>
+          </div>
+        </ul>
+      </div>
+
+<form class="datos px-14 h-auto pt-[30px] w-[100%]" *ngIf="editData">
+  <div class="flex items-center">
+    <div class="w-1/6 p-4">
+      <label><strong>Nombre:</strong></label>
+    </div>
+    <div class="p-4 w-full ">
+      <input id="name" name="name" type="text" [value]="name" (input)="captureData('fullName', $event)" class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg">
+
+    </div>
+  </div>
+  <div class="flex items-center">
+    <div class="w-1/6 p-4">
+      <label><strong>CUIT:</strong></label>
+    </div>
+    <div class="p-4 w-full ">
+      <input id="cuit" name="cuit" type="text" [value]="cuit" (input)="captureData('cuit', $event)" class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg">
+
+    </div>
+  </div>
+  <div class="flex items-center">
+    <div class="w-1/6 p-4">
+      <label><strong>Ubicación:</strong></label>
+    </div>
+    <div class="p-4 w-full ">
+      <input id="location" name="location" type="text" [value]="location" (input)="captureData('location', $event)" class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg">
+
+    </div>
+  </div>
+  <div class="flex items-center">
+    <div class="w-1/6 p-4">
+      <label><strong>Teléfono:</strong></label>
+    </div>
+    <div class="p-4 w-full ">
+      <input id="phone" name="phone" type="text" [value]="phone" (input)="captureData('phone', $event)" class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg">
+
+    </div>
+  </div>
+  <div class="flex items-center">
+    <div class="w-1/6 p-4">
+      <label><strong>Correo electrónico:</strong></label>
+    </div>
+    <div class="p-4 w-full ">
+      <input id="email" name="email" type="text" [value]="email" (input)="captureData('email', $event)" class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg">
+
+    </div>
+  </div>
+
+  <div class="flex items-center">
+    <div class="w-1/6 p-4">
+      <strong>Categoría:</strong>
+    </div>
+    <div class="p-4 w-full">
+        <select class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg" (change)="onCategoryChange($event)">
+        <option value="" disabled selected hidden style="color: gray;">Selecciona una categoría</option>
+        <option value="asistencia">Medio ambiente y fauna</option>
+        <option value="educacion">Asistencia Social</option>
+        <option value="salud">Salud y discapacidad</option>
+      </select>
+    </div>
+
+</div>
+<div class="flex items-center">
+  <div class="w-1/6 p-4">
+    <label id="password"><strong>Contraseña:</strong></label>
+  </div>
+  <div class="p-4 w-full ">
+    <input id="password" name="password" type="password" [value]="password" (input)="captureData('password', $event)"
+      class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg">
+  </div>
+  </div>
+<div class="flex justify-end p-4"><button (click)="saveDataProfileOrg()"
+  class="text-white rounded-md bg-[#3F2883] mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-shadow">
+  Guardar
+</button></div>
+</form>
+     <div class="flex justify-end p-4">
+        <button *ngIf="!editData" (click)="activeEditProfileOrg()"
+          class="text-white rounded-md bg-[#3F2883] mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-shadow"
+          >Editar datos</button>
+      </div>
+    </mat-tab>
+    <mat-tab label="Voluntariados ofrecidos">
+      <div class="datos px-14 h-auto pt-[30px] w-[100%]">
+        <p class="text-[32px] font-semibold">Listado de voluntariados</p>
+        <app-volunteers-table></app-volunteers-table>
+
+
+
+
+      </div>
+    </mat-tab>
+    <mat-tab label="Nuevo voluntariado" class="mat-tab">
+      <div class="datos px-14 h-auto pt-[30px] w-[100%]">
+        <p class="text-[32px] font-semibold">Crear nuevo voluntariado</p>
+
+
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <strong>Nombre:</strong>
+          </div>
+          <div class="p-4 w-full ">
+            <input type="text" placeholder="Ingrese el nombre del voluntariado" class="w-[100%] h-[40px] pl-2">
+
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <strong>Ubicación:</strong>
+          </div>
+          <div class="p-4 w-full">
+            <input type="text" placeholder="Ingrese la ubicación donde se desarrollará el voluntariado"
+              class="w-[100%] h-[40px] pl-2">
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <strong>Categoría:</strong>
+          </div>
+          <div class="p-4 w-full">
+            <select class="w-full h-[40px] pl-1">
+              <option value="" disabled selected hidden style="color: gray;">Selecciona una categoría</option>
+              <option value="asistencia">Medio ambiente y fauna</option>
+              <option value="educacion">Asistencia Social</option>
+              <option value="salud">Salud y discapacidad</option>
+            </select>
+          </div>
+
+
+        </div>
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <strong>Modalidad:</strong>
+          </div>
+          <div class="p-4 w-full placeholder:text-slate-300">
+            <select class="w-full h-[40px] pl-1 ">
+              <option value="" disabled selected hidden>Seleccionar una modalidad</option>
+              <option value="asistencia">Presencial</option>
+              <option value="educacion">Híbrido</option>
+              <option value="salud">Remoto</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="w-1/6 p-4">
+            <strong>Descripción:</strong>
+          </div>
+          <div class="p-4 w-full ">
+            <textarea type="text" placeholder="Ingrese una breve descripción de las tareas a realizar"
+              class="w-[100%] h-[80px] pl-2"></textarea>
+          </div>
+        </div>
+
+      </div>
+      <div class="flex justify-end p-4">
+        <button
+          class="text-white rounded-md bg-[#3F2883] mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-shadow"
+          (click)="editarDatos()">Guardar</button>
+      </div>
+    </mat-tab>
+  </mat-tab-group> -->
+</section>

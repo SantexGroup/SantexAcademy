@@ -1,0 +1,76 @@
+<section
+  class="fixed top-0 right-0 bottom-0 left-0 m-auto w-full min-h-screen flex items-center justify-center bg-black z-10 bg-opacity-[.6]"
+>
+  <article
+    class="w-11/12 p-4 flex flex-col items-center justify-center gap-4 rounded-md bg-white sm:w-[600px] sm:mt-[3em]"
+  >
+    <figure class="w-full h-[150px]">
+      <img
+        src="/assets/icons/good.png"
+        alt="icono good"
+        class="w-full h-full object-contain"
+        *ngIf="
+          status === 'success' ||
+          status === 'success-loginV' ||
+          status === 'success-loginO'
+        "
+      />
+      <img
+        src="/assets/icons/bad.png"
+        alt="icono bad"
+        class="w-full h-full object-contain"
+        *ngIf="
+          status === 'failed' ||
+          status === 'failed-login' ||
+          status === 'failed-emailFound'
+        "
+      />
+    </figure>
+    <p class="text-center sm:w-[80%]" *ngIf="status === 'success'">
+      <b>¡Felicidades</b>! Tu cuenta ha sido creada exitosamente.<br />
+      Ahora puedes comenzar a explorar oportunidades de voluntariado y hacer una
+      diferencia en tu comunidad. ¡Gracias por unirte a nuestra plataforma de
+      voluntariado!
+    </p>
+    <p class="text-center sm:w-[80%]" *ngIf="status === 'success-loginV'">
+      <b>¡Bienvenido de nuevo!</b> Tu inicio de sesión ha sido exitoso.
+      <br />
+      Disfruta explorando nuestras oportunidades de voluntariado y haciendo una
+      diferencia en tu comunidad. ¡Gracias por ser parte de nuestra plataforma
+      de voluntariado!
+    </p>
+    <p class="text-center sm:w-[80%]" *ngIf="status === 'success-loginO'">
+      <b>¡Bienvenido de nuevo!</b> Tu inicio de sesión ha sido exitoso.
+      <br />
+      Prepárate para publicar emocionantes oportunidades de voluntariado y
+      colaborar con voluntarios dedicados para crear un impacto positivo en la
+      comunidad. Gracias por ser parte de nuestra plataforma de voluntariado y
+      por tu compromiso con el cambio social.
+    </p>
+    <p class="text-center sm:w-[80%]" *ngIf="status === 'failed'">
+      Lo sentimos, ha ocurrido un error durante el registro. Por favor,
+      inténtalo de nuevo más tarde o ponte en contacto con nuestro equipo de
+      soporte para obtener ayuda. Lamentamos los inconvenientes.
+    </p>
+
+    <p class="text-center sm:w-[80%]" *ngIf="status === 'failed-login'">
+      Lo sentimos, no hemos podido iniciar sesión. Por favor, verifica tus
+      credenciales e inténtalo de nuevo. Si sigues teniendo problemas, no dudes
+      en contactarnos para obtener ayuda.
+    </p>
+
+    <p class="text-center sm:w-[80%]" *ngIf="status === 'failed-emailFound'">
+      Lo sentimos, el correo electrónico ingresado ya está asociado a una cuenta
+      existente. Por favor, inicia sesión con tus credenciales para acceder a tu
+      cuenta.
+    </p>
+
+    <button
+      type="button"
+      (click)="handlleContinue()"
+      class="py-2 px-4 bg-mediumViolet text-white rounded-md font-semibold shadow-md shadow-dimGray"
+    >
+      {{ textBtn }}
+    </button>
+  </article>
+</section>

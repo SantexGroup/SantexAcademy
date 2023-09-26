@@ -1,0 +1,53 @@
+.hero {
+  height: clamp(20rem, 17.143rem + 14.29vw, 30rem);
+  perspective: clamp(400px, 100vw, 1000px);
+  margin-bottom: clamp(1.5rem, 1.071rem + 2.14vw, 3rem);
+  background: linear-gradient(
+    to left top,
+    rgb(255, 55, 147),
+    rgb(63, 40, 131),
+    rgb(255, 64, 33)
+  );
+}
+
+.text-hero {
+  font-size: clamp(0.75rem, 0.536rem + 1.07vw, 1.5rem);
+  padding-left: clamp(0.625rem, -0.054rem + 3.39vw, 3rem);
+}
+
+.gallery {
+  transform: translate(5%, -25%) rotate(-6deg) rotateX(10deg) rotateY(20deg);
+}
+
+ng-container {
+  white-space: nowrap;
+}
+
+.gallery_line {
+  animation: slide 30s linear infinite;
+}
+
+.gallery_line:nth-child(2) {
+  animation-direction: reverse;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .text-hero {
+    margin-top: 7rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .text-hero {
+    margin-top: 6rem;
+  }
+}

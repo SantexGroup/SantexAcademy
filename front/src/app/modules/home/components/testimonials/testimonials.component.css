@@ -1,0 +1,16 @@
+.photo {
+  width: clamp(3.75rem, 3.214rem + 2.68vw, 5.625rem);
+  height: clamp(3.75rem, 3.214rem + 2.68vw, 5.625rem);
+}
+
+.name-volunteer {
+  font-size: clamp(0.875rem, 0.839rem + 0.18vw, 1rem);
+}
+
+.volunteer-place {
+  font-size: clamp(0.875rem, 0.839rem + 0.18vw, 1rem);
+}
+
+.testimonial {
+  font-size: clamp(0.75rem, 0.714rem + 0.18vw, 0.875rem);
+}

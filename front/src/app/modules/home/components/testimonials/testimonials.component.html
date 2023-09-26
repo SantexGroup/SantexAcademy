@@ -1,0 +1,17 @@
+<article
+  class="relative flex flex-col justify-start w-[364px] h-[400px] border-1 border-[lightGray] rounded-md shadow-2xl">
+  <figure class="w-full absolute top-0 bg-midnightBlue/[.6] rounded-t-lg h-[100px]">
+    <img [src]="image"
+      class="absolute bottom-[-2em] left-0 right-0 m-auto rounded-full w-[80px] border-4 border-white" />
+  </figure>
+  <div class="absolute mt-36 left-0 right-0">
+    <h3 class="name-volunteer text-center font-poppins font-semibold">
+      {{ name }}
+    </h3>
+    <p class="volunteer-place text-center text-[dimGray]">
+      {{ volunteerPlace }}
+    </p>
+    <hr class="m-4 text-[lightGray]" />
+    <p class="testimonial text-justify px-[25px]">{{ testimonial }}</p>
+  </div>
+</article>
