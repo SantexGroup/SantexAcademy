@@ -13,13 +13,24 @@ export class OrganizationDetailsComponent implements OnInit {
     private orgS: OrgServicesService
   ) {}
   organizationId: number = 0;
-  organization: Array<[]> = [];
+  // organization: Array<[]> = [];
+  organization: any = {
+    image: '',
+    name: '',
+    category: '',
+    cuit: '',
+    email: '',
+    location: '',
+    phone: '',
+    description: ''
+  };
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((queryParams) => {
       this.organizationId = +queryParams['id'];
       this.orgS.getOrganizationById(this.organizationId.toString()).subscribe({
         next: (response) => {
+          this.organization = response;
           console.log('Organization', response);
         },
         error: (error) => {
