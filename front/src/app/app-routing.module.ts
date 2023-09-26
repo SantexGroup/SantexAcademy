@@ -84,7 +84,8 @@ const routes: Routes = [
   }, 
   {
     path: 'registro',
-    component: RegistroComponent
+    component: RegistroComponent,
+    canDeactivate: [AbandonGuard]
   },
   {
     path: 'login',

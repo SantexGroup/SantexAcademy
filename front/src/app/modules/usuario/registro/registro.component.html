@@ -1,5 +1,5 @@
 <div class="form-container">
-  <form class="form" [formGroup]="registroForm">
+  <form class="form" [formGroup]="registroForm" (change)="dataUser.markForm(registroForm)">
 
     <!-- * Input de NOMBRE -->
     <mat-form-field>

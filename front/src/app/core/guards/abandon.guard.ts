@@ -17,7 +17,6 @@ export class AbandonGuard implements CanDeactivate<unknown> {
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log("you pass for here")
     if (this.userData.checkForm) {
       const response = confirm("Estas seguro que quieres salir?");
       return response;

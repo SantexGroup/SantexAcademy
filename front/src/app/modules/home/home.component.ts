@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
-import { Observable } from 'rxjs';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 
@@ -18,10 +17,6 @@ export class HomeComponent implements OnInit {
     public views: NavBarService, 
     public userData: UserDataService,
   ) { }
-
-  test(){
-    console.log("test comprovation", this.userData.checkForm);
-  }
 
   ngOnInit(): void {
     this.views.title = "Home";
