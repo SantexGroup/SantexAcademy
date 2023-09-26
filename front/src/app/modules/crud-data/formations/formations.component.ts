@@ -8,6 +8,7 @@ import { FormationsTypeService } from 'src/app/core/services/formations-type.ser
 import { FormationsService } from 'src/app/core/services/formations.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-formations',
@@ -22,9 +23,11 @@ export class FormationsComponent implements OnInit {
     private _formationsTypesServices: FormationsTypeService,
     private _formationsStatusServices: FormationsStatusService,
     private _formationsServices: FormationsService,
-    public views: NavBarService,
     private fb: FormBuilder,
+    public views: NavBarService,
+    public views: NavBarService,
     public userData: UserDataService,
+    public toastr :ToastrService
   ) {
     this.formationForm = this.fb.group({
       statusId: [''],
@@ -46,8 +49,6 @@ export class FormationsComponent implements OnInit {
     this.formationsTypesGet();
 
     this.userData.getListFormations();
-
-    this.views.title = "Formaciones";
   }
 
   formationsTypesGet(){
@@ -80,6 +81,7 @@ export class FormationsComponent implements OnInit {
     
     this._formationsServices.addFormation(newFormation).subscribe((formation) => {
       this.userData.formations.push(formation);
+      this.toastr.success('Se agrego un nueva formacion', 'FORMACION');
     });
     this.formationForm.reset();
   }
@@ -91,6 +93,7 @@ export class FormationsComponent implements OnInit {
   deleteFormation(id: number) {
     this._formationsServices.deleteFormation(id).subscribe(() =>{
       this.userData.getListFormations()
+      this.toastr.error('Se elimino la formacion');
     })
   }
 
@@ -116,6 +119,7 @@ export class FormationsComponent implements OnInit {
 
       this._formationsServices.updateFormation(updatedFormation).subscribe(() => {
         this.userData.getListFormations();
+        this.toastr.success('Formacion actualizada', 'FORMACION');
       });
 
       // this.editedFormation = null; // Restablecer la formación editada

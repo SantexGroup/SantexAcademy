@@ -5,6 +5,8 @@ import { ExperiencesService } from 'src/app/core/services/experiences.service';
 import { ReferencesService } from 'src/app/core/services/references.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
+import { ToastrService } from 'ngx-toastr';
+import { FormChangesService } from 'src/app/core/services/toolServices/form-changes.service';
 
 @Component({
   selector: 'app-references',
@@ -18,11 +20,13 @@ export class ReferencesComponent implements OnInit {
   referenceId: number = 0;
 
   constructor(
-    public userData: UserDataService,
-    public views: NavBarService,
     private _company: ExperiencesService,
     private fb: FormBuilder,
-    private _referenceService: ReferencesService
+    private _referenceService: ReferencesService,
+    private _formChangeService: FormChangesService,
+    public userData: UserDataService,
+    public views: NavBarService,
+    public toastr: ToastrService
   ) {
     this.referenceForm = this.fb.group({
       name: '',
@@ -30,14 +34,18 @@ export class ReferencesComponent implements OnInit {
       email: '',
       phone: '',
       company: '',
-    })
+    });
+
+    this._formChangeService.originalValues = this.referenceForm.value;
+    this._formChangeService.checkFormChanges(this.referenceForm);
   }
 
   ngOnInit(): void {
 
     this.userData.checkForm = false;
+    
+    this.views.changeTitle("Referencias");
 
-    this.views.title = "Referencias";
 
     this.getCompany();
 
@@ -68,6 +76,7 @@ export class ReferencesComponent implements OnInit {
     }
     this._referenceService.addReference(newReference).subscribe((reference) => {
       this.userData.references.push(reference);
+      this.toastr.success('Se agrego un nueva referencia', 'REFERENCIA');
     })
 
     this.referenceForm.reset();
@@ -102,6 +111,7 @@ export class ReferencesComponent implements OnInit {
 
     this._referenceService.updateReference(this.referenceId, updateReference).subscribe((referece) => {
       this.userData.getReference()
+      this.toastr.success('Se actualizo la referencia', 'REFERENCIA');
     });
 
     this.referenceForm.reset();
@@ -111,11 +121,12 @@ export class ReferencesComponent implements OnInit {
 
   }
 
-  deleteReference(id?:number){
+  deleteReference(id?: number) {
     const index = this.userData.references.findIndex(reference => reference.id === id);
     const elementId = Number(this.userData.references[index].id);
-    this._referenceService.deleteReference(elementId).subscribe(()=>{
+    this._referenceService.deleteReference(elementId).subscribe(() => {
       this.userData.references.splice(index, 1);
+      this.toastr.error('Se elimino la referencia');
     });
 
     this.referenceForm.reset();
