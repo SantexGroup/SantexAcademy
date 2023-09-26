@@ -7,7 +7,7 @@ router.post('/',controller.crear);
 // obtener categorias
 router.get('/',controller.getAll);
 // obtener categoria con sus productos
-router.get('/:id',controller.get);
+router.get('/getByids',controller.get);
 // editar categoria
 router.put('/:id',controller.editar);
 // eliminar categoria
