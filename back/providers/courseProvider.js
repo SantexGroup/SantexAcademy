@@ -12,7 +12,7 @@ const createCourse = async (course) => {
 
 const getCourses = async () => {
     try {
-        return await Course.findAll();
+        return await Course.findAll({paranoid: false});//se muestran incluso los eliminados
     } catch (err) {
         console.error('Error when fetching courses.', err.message);
         throw err;
