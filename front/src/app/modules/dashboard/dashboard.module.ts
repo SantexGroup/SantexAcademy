@@ -23,13 +23,14 @@ import { VistaProveedoresComponent } from './vista-proveedores/vista-proveedores
 import { SearchProductComponent } from './search-product/search-product.component';
 import { ProductCardComponent } from './search-product/product-card/product-card.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
 
 
 
 @NgModule({
 
 
-  declarations: [DashboardPageComponent, FormAddProductComponent, FormUpdateComponent, NavBarComponent, FormDeleteComponent, HomeComponent, PopUpHomeComponent, ShoppingCartComponent, SearchProductComponent, ProductCardComponent, VistaProveedoresComponent, FooterComponent],
+  declarations: [DashboardPageComponent, FormAddProductComponent, FormUpdateComponent, NavBarComponent, FormDeleteComponent, HomeComponent, PopUpHomeComponent, ShoppingCartComponent, SearchProductComponent, ProductCardComponent, VistaProveedoresComponent, FooterComponent, LoginComponent],
 
 
   imports: [

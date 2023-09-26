@@ -11,6 +11,7 @@ import { VistaProveedoresComponent } from '../vista-proveedores/vista-proveedore
 
 import { SearchProductComponent } from '../search-product/search-product.component';
 import { FooterComponent } from '../footer/footer.component';
+import { LoginComponent } from '../login/login.component';
 
 
 const routes: Routes = [
@@ -53,6 +54,10 @@ const routes: Routes = [
       {
         path: 'footer',
         component: FooterComponent
+      },
+      {
+        path: 'login',
+        component: LoginComponent
       }
     ]
     
