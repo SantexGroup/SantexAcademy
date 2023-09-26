@@ -4,6 +4,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('Products', [
       {
+        id: 1,
         idUsuario: 1,
         idTipoProducto: 1,
         nombre: 'Mesa',
@@ -14,6 +15,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
+        id: 2,
         idUsuario: 1,
         idTipoProducto: 2,
         nombre: 'Silla',
@@ -24,9 +26,10 @@ module.exports = {
         updatedAt: new Date()
       },
       {
+        id: 3,
         idUsuario: 1,
         idTipoProducto: 1,
-        nombre: 'Esctritorio PC',
+        nombre: 'Escritorio PC',
         detalles: 'Escritorio negro',
         precio: 3000,
         envio: false,
