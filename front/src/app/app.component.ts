@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NavBarService } from './core/services/toolServices/nav-bar.service';
 import { UserDataService } from './core/services/toolServices/userData.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { UserService } from './core/services/usuario.service';
+
 
 @Component({
   selector: 'app-root',

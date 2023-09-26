@@ -56,6 +56,8 @@ export class OptionalsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
+    this.userData.checkForm = false;
 
     this.getListCountries();
 
@@ -68,6 +70,7 @@ export class OptionalsComponent implements OnInit {
     this.views.changeTitle("Opcionales");
     
     this.views.plusOne = true;
+
     this.views.saveButton = false;
 
   }

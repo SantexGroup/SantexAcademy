@@ -13,6 +13,7 @@ import { UserDataService } from 'src/app/core/services/toolServices/userData.ser
 import { ToastrService } from 'ngx-toastr';
 import { FormChangesService } from 'src/app/core/services/toolServices/form-changes.service';
 
+
 @Component({
   selector: 'app-experiences',
   templateUrl: './experiences.component.html',
@@ -44,15 +45,12 @@ export class ExperiencesComponent implements OnInit {
       countriesId: '',
       startDate: '',
       endDate: null,
-    })
-
-    this._formChangeService.originalValues = this.experienceForm.value;
-    this._formChangeService.checkFormChanges(this.experienceForm);
+    });
   }
 
   ngOnInit(): void {
 
-    this.userData.getExperience();
+    this.userData.checkForm = false;
 
     this.getTypes();
 
@@ -60,7 +58,12 @@ export class ExperiencesComponent implements OnInit {
 
     this.getCountries();
 
+    this.userData.getExperience();
+
+    this.views.title = "Experiencias";
+
     this.views.changeTitle("Experiencias");
+
   }
 
   endDateShow(): boolean {
@@ -171,3 +174,4 @@ export class ExperiencesComponent implements OnInit {
   }
 
 }
+

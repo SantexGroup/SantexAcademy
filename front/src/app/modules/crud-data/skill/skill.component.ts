@@ -37,10 +37,17 @@ export class SkillComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    this.userData.checkForm = false;
+
     this.userData.getSkill();
+
     this.views.changeTitle("Habilidades");
+
     this.views.plusOne = true;
+
     this.views.saveButton = false;
+    
   }
 
   addSkillToProfile(): void {

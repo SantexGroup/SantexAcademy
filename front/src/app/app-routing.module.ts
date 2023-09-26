@@ -15,6 +15,7 @@ import { ReferencesComponent } from './modules/crud-data/references/references.c
 import { ProfilesComponent } from './modules/profiles/profiles.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { ProfilesFourComponent } from './modules/profiles-four/profiles-four.component';
+import { AbandonGuard } from './core/guards/abandon.guard';
 
 const routes: Routes = [
   {
@@ -31,10 +32,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'personal',
-        component: PersonalComponent
-      },
-      {
         path: 'cv',
         component: CVComponent,
         children: [
@@ -45,43 +42,50 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'personal',
+        component: PersonalComponent,
+        canDeactivate: [AbandonGuard]
+      },
+      {
         path: 'experiencias',
-        component: ExperiencesComponent
+        component: ExperiencesComponent,
+        canDeactivate: [AbandonGuard]
       },
       {
         path: 'referencias',
-        component: ReferencesComponent
+        component: ReferencesComponent,
+        canDeactivate: [AbandonGuard]
       },
       {
         path: 'formaciones',
         component: FormationsComponent,
-        canDeactivate: [(component: FormationsComponent) => component.canExit()],
+        canDeactivate: [AbandonGuard]
       },
       {
         path: 'opcionales',
-        component: OptionalsComponent
+        component: OptionalsComponent,
+        canDeactivate: [AbandonGuard]
       },
       {
         path: 'lenguajes',
-        component: LanguageComponent
+        component: LanguageComponent,
+        canDeactivate: [AbandonGuard]
       },
       {
         path: 'habilidades',
-        component: SkillComponent
+        component: SkillComponent,
+        canDeactivate: [AbandonGuard]
       },
       {
         path: 'profiles',
         component: ProfilesComponent
-      },
-      {
-        path: 'four',
-        component: ProfilesFourComponent
       }
     ]
   }, 
   {
     path: 'registro',
-    component: RegistroComponent
+    component: RegistroComponent,
+    canDeactivate: [AbandonGuard]
   },
   {
     path: 'login',

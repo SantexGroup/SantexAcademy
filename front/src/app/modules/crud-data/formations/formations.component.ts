@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Formations } from 'src/app/core/interfaces/formation.interface';
 import { FormationsStatus } from 'src/app/core/interfaces/formationsStatus.interface';
 import { FormationsTypes } from 'src/app/core/interfaces/formationsTypes.interface';
-import { IDeactivateComponent } from 'src/app/core/interfaces/ideactivate-component.interface';
-import { FormChangesService } from 'src/app/core/services/toolServices/form-changes.service';
 import { FormationsStatusService } from 'src/app/core/services/formations-status.service';
 import { FormationsTypeService } from 'src/app/core/services/formations-type.service';
 import { FormationsService } from 'src/app/core/services/formations.service';
@@ -17,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './formations.component.html',
   styleUrls: ['./formations.component.css']
 })
-export class FormationsComponent implements OnInit, OnDestroy, IDeactivateComponent {
+export class FormationsComponent implements OnInit {
   formationForm: FormGroup;
   editedFormation: Formations | null = null;
   
@@ -25,8 +23,8 @@ export class FormationsComponent implements OnInit, OnDestroy, IDeactivateCompon
     private _formationsTypesServices: FormationsTypeService,
     private _formationsStatusServices: FormationsStatusService,
     private _formationsServices: FormationsService,
-    private _formChangeService: FormChangesService,
     private fb: FormBuilder,
+    public views: NavBarService,
     public views: NavBarService,
     public userData: UserDataService,
     public toastr :ToastrService
@@ -40,41 +38,17 @@ export class FormationsComponent implements OnInit, OnDestroy, IDeactivateCompon
       endDate: [null],
       description: [''],
     })
-
-    this._formChangeService.originalValues = this.formationForm.value;
-    this._formChangeService.checkFormChanges(this.formationForm);
   }
 
   ngOnInit(): void {
-    this.userData.getListFormations();
+
+    this.userData.checkForm = false;
     
     this.formationsStatusGet();
 
     this.formationsTypesGet();
 
-    this.views.changeTitle("Formaciones");
-  }
-
-  ngOnDestroy(): void {
-    this._formChangeService.setUnchanged();
-  }
-
-  /** 
-   * Verfica si el formulario tiene cambios sin guardar 
-   * y solicita confirmacion al usuario. 
-   * 
-  */  
- canExit(): boolean {
-    return this._formChangeService.canExit()
-  }
-
-  /** 
-   * Utilizar el evento window:beforeunload para controlar cambios sin guardar, 
-   * cuando el usuario intenta cerrar la página o refrescarla. 
-  */
-  @HostListener('window:beforeunload', ['$event'])
-  beforeUnloadHandler(event: BeforeUnloadEvent): void {
-    this._formChangeService.beforeUnloadHandler(event);
+    this.userData.getListFormations();
   }
 
   formationsTypesGet(){
@@ -125,8 +99,6 @@ export class FormationsComponent implements OnInit, OnDestroy, IDeactivateCompon
 
   editFormation(formation: Formations) {
     this.editedFormation = { ...formation };
-    this._formChangeService.originalValues = { ...formation };
-
 
     this.formationForm.patchValue({
       statusId: formation.statusId,
@@ -138,8 +110,6 @@ export class FormationsComponent implements OnInit, OnDestroy, IDeactivateCompon
       description: formation.description,
     });
   }
-
-
 
   // Función para guardar los cambios realizados en el formulario de edición
   saveFormation() {

@@ -1,6 +1,8 @@
 <body>
     <div class="languageInput">
-        <form [formGroup]="languageForm" (ngSubmit)="languageAdd()">
+        <form [formGroup]="languageForm" 
+        (ngSubmit)="languageAdd()"
+        (change)="userData.markForm(languageForm)">
             <mat-form-field>
                 <mat-label for="company">Idioma:</mat-label>
                 <input matInput formControlName="language" type="text">
