@@ -1,20 +1,19 @@
-// const jwt = require('jsonwebtoken');
 const { userService } = require("../services");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const fs = require("fs-extra");
+const cloudinary = require("../config/cloudinary");
 
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Verificar credenciales
     const user = await userService.loginUser(email, password);
 
     if (!user) {
-      return res.status(401).json({ message: "Invalid credentials" }); // Retorna aquí para evitar el envío doble de respuestas
+      return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    // Generar token
     const token = jwt.sign(
       {
         userId: user.id,
@@ -22,11 +21,8 @@ const loginUser = async (req, res) => {
         userPassword: user.password,
       },
       process.env.SESSION_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: 86400 }
     );
-
-    console.log(token);
-    // Envía la respuesta una vez que tengas el token
     return res.status(200).json({ token });
   } catch (error) {
     console.error(error);
@@ -34,20 +30,24 @@ const loginUser = async (req, res) => {
   }
 };
 
-const getUserProfile = async (req, res) => {
-  try {
-    const userProfile = await userService.getUserProfile(req.userId);
-    res.status(200).json(userProfile);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ action: "getUserProfile", error: err.message });
-  }
-};
-
 const createUser = async (req, res) => {
   try {
-    const userData = req.body;
-    const newUser = await userService.createUser(userData);
+    const { image, ...restOfData } = req.body;
+
+    let imageUrl = "";
+    let publicId = "";
+
+    if (req.file) {
+      const uploadResult = await cloudinary.uploader.upload(req.file.path);
+      imageUrl = uploadResult.secure_url;
+      publicId = uploadResult.public_id;
+      await fs.unlink(req.file.path);
+    }
+
+    const newUser = await userService.createUser({
+      image: { imageUrl, publicId },
+      ...restOfData,
+    });
     res.status(201).json(newUser);
   } catch (err) {
     if (err.message == "Validation error") {
@@ -73,38 +73,38 @@ const getUsersByCriteria = async (req, res) => {
   }
 };
 
-const updateUserById = async (req, res) => {
+const deleteUser = async (req, res) => {
   try {
-    const id = Number(req.params.id);
-    const userId = Number(req.userId);
+    await userService.deleteUserById(req.params.id);
+    res.status(204);
+  } catch (err) {
+    res.status(500).json({ action: "deleteUserById", error: err.message });
+  }
+};
 
-    console.log("id: " + id);
+// me/profile
 
-    // Verificar si el usuario con el ID proporcionado existe
-    const existingUser = await userService.getUsersByCriteria(id);
-    if (!existingUser) {
-      return res.status(404).json({ message: "El usuario no existe." });
-    }
+const getMyUser = async (req, res) => {
+  try {
+    const userProfile = await userService.getMyUser(req.userId);
+    res.status(200).json(userProfile);
+  } catch (err) {
+    res.status(500).json({ action: "getUserProfile", error: err.message });
+  }
+};
 
-    // Comprueba si el ID del usuario en el token coincide con el ID del usuario que se está intentando modificar
-    if (id !== userId) {
-      return res
-        .status(403)
-        .json({ message: "No tienes permiso para modificar este usuario" });
-    }
-
-    // Actualiza el usuario con los datos enviados en el cuerpo de la solicitud
-    const updatedUser = await userService.updateUserById(id, req.body);
-    res.json(updatedUser);
+const updateMyUser = async (req, res) => {
+  try {
+    const userUpdate = await userService.updateMyUser(req.body, req.userId);
+    res.status(200).json(userUpdate);
   } catch (err) {
     res.status(500).json({ action: "updateUserById", error: err.message });
   }
 };
 
-const deleteUserById = async (req, res) => {
+const deleteMyUser = async (req, res) => {
   try {
-    const { id } = req.params;
-    const user = await userService.deleteUserById(id);
+    const user = await userService.deleteUserById(req.userId);
     res.json(user);
   } catch (err) {
     res.status(500).json({ action: "deleteUserById", error: err.message });
@@ -113,9 +113,10 @@ const deleteUserById = async (req, res) => {
 
 module.exports = {
   loginUser,
-  getUserProfile,
   createUser,
   getUsersByCriteria,
-  updateUserById,
-  deleteUserById,
+  deleteUser,
+  getMyUser,
+  updateMyUser,
+  deleteMyUser,
 };

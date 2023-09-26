@@ -20,12 +20,12 @@ const Organizacion = sequelize.define(
       allowNull: false,
     },
     email: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.STRING,
       allowNull: false,
       unique: "email_UNIQUE",
     },
     phone: {
-      type: DataTypes.STRING(25),
+      type: DataTypes.STRING,
       allowNull: true,
       unique: "telefono_UNIQUE",
     },
@@ -38,11 +38,8 @@ const Organizacion = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    opportunityType: {
-      type: DataTypes.STRING,
-    },
     password: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     image: {

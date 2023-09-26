@@ -1,8 +1,8 @@
-const { Usuario } = require('../models');
-const { CestaRecompensas } = require('../models');
-
-const { sequelize } = require('../config/db-config');
-const { Op } = require('sequelize');
+const { Usuario } = require("../models");
+const { CestaRecompensas } = require("../models");
+const { sequelize } = require("../config/db-config");
+const { Op } = require("sequelize");
+const { comparePassword, hashPassword } = require("../config/crypt");
 
 const loginUser = async (email, password) => {
   try {
@@ -14,12 +14,12 @@ const loginUser = async (email, password) => {
     });
 
     if (!user) {
-      throw new Error("El usuario no existe");
+      throw new Error("Invalid credentials");
     }
+    const matchPassword = comparePassword(password, user.password);
 
-    if (user.email !== email|| user.password !== password) {
-      throw new Error("Invalid Credentials");
-    }
+    if (!matchPassword)
+      return res.status(401).json({ message: "Invalid credentials" });
 
     return user;
   } catch (error) {
@@ -27,30 +27,9 @@ const loginUser = async (email, password) => {
   }
 };
 
-
-const getUserProfile = async (id) => {
-  try {
-    const userProfile = await Usuario.findOne({
-      where: {
-        id: id,
-        deletedAt: null,
-      },
-      include: [{ model: CestaRecompensas, as: 'cestaRecompensa' }],
-      exclude: ["password"],
-      attributes: { exclude: ["deletedAt"] },
-    });
-
-    if (!userProfile) {
-      throw new Error("El usuario no existe");
-    }
-    return userProfile;
-  } catch (error) {
-    throw new Error(error);
-  }
-};
-
-
 const createUser = async (usuario) => {
+  const { image, password, ...restOfData } = usuario;
+
   let transaction;
   try {
     transaction = await sequelize.transaction();
@@ -61,8 +40,8 @@ const createUser = async (usuario) => {
           { deletedAt: { [Op.not]: null } }, // Buscar registros eliminados
           {
             [Op.or]: [
-              { fullName: usuario.fullName },
-              { email: usuario.email },
+              { fullName: restOfData.fullName },
+              { email: restOfData.email },
             ],
           },
         ],
@@ -71,47 +50,42 @@ const createUser = async (usuario) => {
 
     if (existingDeletedUser) {
       // Borrar el registro eliminado lógicamente
-      await existingDeletedUser.destroy()
+      await existingDeletedUser.destroy();
     }
 
     //Crear un registro en la tabla cestaRecompensas
     const newCestaRecompensas = await CestaRecompensas.create(
-      { name: `Cesta de ${usuario.fullName}` },
+      { name: `Cesta de ${restOfData.fullName}` },
       { transaction }
     );
 
     // Crear el nuevo registro de usuario con el id de la cestaRecompensas creada
     const newUser = await Usuario.create(
       {
-        ...usuario,
-
+        image,
+        password: hashPassword(password),
         basketRewardsId: newCestaRecompensas.id,
-
-    
-      //Si en el body no se pasa un valor para la columna rol, se le asigna el rol 1
-      rolesId: usuario.rolesId ? usuario.rolesId : 1,        
+        rolesId: restOfData.rolesId ? restOfData.rolesId : 1,
+        ...restOfData,
       },
       { transaction }
     );
 
     await transaction.commit();
 
-    // Devolver el nuevo registro de usuario
-    return{
-      id:newUser.id,
-      fullName:newUser.fullName,
-      email:newUser.email,
-    }
+    return {
+      id: newUser.id,
+      fullName: newUser.fullName,
+      email: newUser.email,
+    };
   } catch (err) {
     if (transaction) {
       await transaction.rollback();
     }
-    console.error('The user could not be created due to an error.', err);
+    console.error("The user could not be created due to an error.", err);
     throw err;
   }
 };
-
-
 
 const getUsersByCriteria = async (queryOptions, bodyOptions) => {
   try {
@@ -139,13 +113,30 @@ const getUsersByCriteria = async (queryOptions, bodyOptions) => {
   }
 };
 
-const updateUserById = async (id, usuario) => {
+const getMyProfile = async (id) => {
   try {
-    const user = await Usuario.findByPk(id);
-    if (!user) {
-      throw new Error("The user does not exist.");
+    const userProfile = await Usuario.findOne({
+      where: {
+        id: id,
+        deletedAt: null,
+      },
+      include: [{ model: CestaRecompensas, as: "cestaRecompensa" }],
+      exclude: ["password"],
+      attributes: { exclude: ["deletedAt"] },
+    });
+
+    if (!userProfile) {
+      throw new Error("The user does not exist");
     }
-    const updatedUser = await user.update(usuario);
+    return userProfile;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+const updateMyUser = async (usuario, id) => {
+  try {
+    const updatedUser = await Usuario.update(usuario, { where: { id: id } });
     return updatedUser;
   } catch (error) {
     console.error("The user could not be updated due to an error.", error);
@@ -153,7 +144,7 @@ const updateUserById = async (id, usuario) => {
   }
 };
 
-const deleteUserById = async (id) => {
+const deleteUser = async (id) => {
   try {
     const user = await Usuario.findOne({
       where: {
@@ -163,34 +154,29 @@ const deleteUserById = async (id) => {
     });
 
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     // Aplicar borrado lógico estableciendo la columna deletedAt
-    await Usuario.update({ deletedAt: new Date() }, { where: { id } });
-
+    await Usuario.update(
+      { deletedAt: new Date(), email: "" },
+      { where: { id } }
+    );
 
     await CestaRecompensas.destroy({ where: { id: id } });
 
-
-    
-
     return user;
   } catch (error) {
-    console.error('Ocurrió un error al eliminar el usuario.', error);
+    console.error("Ocurrió un error al eliminar el usuario.", error);
     throw error;
   }
 };
 
 module.exports = {
   loginUser,
-  getUserProfile,
   createUser,
   getUsersByCriteria,
-  updateUserById,
-  deleteUserById,
-  createUser,
-  getUsersByCriteria,
-  updateUserById,
-  deleteUserById,
+  getMyProfile,
+  updateMyUser,
+  deleteUser,
 };

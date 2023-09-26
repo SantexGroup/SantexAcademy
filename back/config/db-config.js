@@ -23,13 +23,16 @@ const initializeDB = async () => {
     console.log("Conection to DB established.");
 
     // Sync all defined models to DB
-    // await sequelize.close();
-    //await sequelize.sync({ alter: true });  // para que actualice las tablas cuando sean modificadas
-    await sequelize.sync({ force: true }); // force: if true, each start deletes DB
-
+    await sequelize.sync({ force: false }); // force: if true, each start deletes DB
+    await sequelize.sync({ alter: true });
+  
+    //await sequelize.sync({ alter: true })
     // Create default roles
     const { Roles } = require("../models");
     await Roles.bulkCreateDefaultRoles();
+
+
+
   } catch (err) {
     console.error("Error initializing DB.", err.message);
     throw err;

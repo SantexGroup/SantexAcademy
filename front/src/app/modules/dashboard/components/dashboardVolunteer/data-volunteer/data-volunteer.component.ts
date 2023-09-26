@@ -1,37 +1,128 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/modules/auth/services/auth.service';
+import { DashboardServicesService } from '../../../services/dashboard-services.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-data-volunteer',
   templateUrl: './data-volunteer.component.html',
   styleUrls: ['./data-volunteer.component.css'],
 })
-export class DataVolunteerComponent {
-  fullName: string = 'Exe Dev';
-  phone: string = '+54 345 4076854';
-  email: string = 'exedevcoding22@gmail.com';
-  password: string = 'root';
-  editData: boolean = false;
+export class DataVolunteerComponent implements OnInit {
+  @Input() dataVolunteer: any = {};
 
-  newValues: { [key: string]: string } = {
-    fullName: '',
-    phone: '',
-    email: '',
-    password: '',
-  };
+  tokenUser: string = '';
+  editData: boolean = false;
+  fullNameUser: string = '';
+  userForm: FormGroup;
+  onModalQuestion: boolean = false;
+
+  onModalStatus: boolean = false;
+  statusModal: string = '';
+  textBtnModalStatus: string = '';
+
+  constructor(
+    private authService: AuthService,
+    private dashServices: DashboardServicesService,
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {
+    this.userForm = this.formBuilder.group({
+      fullName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/^(?:\d{7,14}|\d{2}[ -]?\d{4}[ -]?\d{4})$/),
+        ],
+      ],
+      // password: [
+      //   '',
+      //   [
+      //     Validators.required,
+      //     Validators.pattern(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/),
+      //   ],
+      // ],
+    });
+  }
+
+  ngOnInit(): void {
+    this.tokenUser = this.authService.getAuthToken();
+  }
 
   activeEditProfile() {
+    this.userForm.setValue({
+      fullName: this.dataVolunteer.fullName,
+      email: this.dataVolunteer.email,
+      phone: this.dataVolunteer.phone,
+      // password: '',
+    });
     this.editData = true;
   }
 
-  saveDataProfile() {
-    this.fullName = this.newValues['fullName'] || this.fullName;
-    this.phone = this.newValues['phone'] || this.phone;
-    this.email = this.newValues['email'] || this.email;
-    this.password = this.newValues['password'] || this.password;
+  inactiveEditProfile() {
+    this.userForm.setValue({
+      fullName: '',
+      email: '',
+      phone: '',
+      // password: '',
+    });
     this.editData = false;
   }
 
-  captureData(fieldName: string, event: any) {
-    this.newValues[fieldName] = event.target.value;
+  saveDataProfile() {
+    if (this.userForm.valid) {
+      const userData = this.userForm.value;
+      this.dashServices
+        .updateProfileVolunteer(userData, this.tokenUser)
+        .subscribe({
+          next: (res) => {
+            if (res) {
+              this.onModalStatus = true;
+              this.statusModal = 'success';
+
+              setTimeout(() => {
+                this.onModalStatus = false;
+                window.location.reload();
+              }, 3000);
+            }
+          },
+          error: (err) => {
+            console.log('error when editing the user', err);
+            this.onModalStatus = true;
+            this.statusModal = 'failed';
+            this.textBtnModalStatus = 'Aceptar';
+          },
+        });
+    }
+    this.editData = false;
+  }
+
+  handdleProfileDelete() {
+    if (this.onModalQuestion) {
+      this.onModalQuestion = false;
+    } else {
+      this.onModalQuestion = true;
+    }
+  }
+
+  deleteProfile() {
+    this.dashServices.deleteProfileVolunteer(this.tokenUser).subscribe({
+      next: (res) => {
+        if (res) {
+          this.authService.clearAuthToken();
+          this.router.navigate(['']);
+        }
+      },
+      error: (err) => {
+        console.log('error deleting user', err);
+      },
+    });
+  }
+
+  closeModalStatus() {
+    this.onModalStatus = false;
   }
 }

@@ -50,7 +50,7 @@ export class FormLoginComponent implements OnInit {
           this.authService.setAuthToken(response.token);
           this.onModalStatus = true;
           this.statusSession = 'success-loginV';
-          this.routeBtnContinue = '';
+          this.routeBtnContinue = 'voluntariados';
           this.textBtnModal = 'Explorar Oportunidades';
         },
         error: (error) => {
@@ -71,7 +71,6 @@ export class FormLoginComponent implements OnInit {
 
       this.authService.loginCordinator(userData).subscribe({
         next: (response) => {
-          console.log('Inicio de sesión exitoso', response);
           this.authService.setAuthToken(response.token);
           this.onModalStatus = true;
           this.statusSession = 'success-loginO';
@@ -79,7 +78,7 @@ export class FormLoginComponent implements OnInit {
           this.textBtnModal = 'Ir al Dashboard';
         },
         error: (error) => {
-          console.error('Error en el inicio de sesión', error);
+          console.error('Login error', error);
           this.onModalStatus = true;
           this.statusSession = 'failed-login';
           this.routeBtnContinue = 'auth/login';
@@ -97,7 +96,7 @@ export class FormLoginComponent implements OnInit {
   }
 
   navigateToOptionsRegister() {
-    this.router.navigate(['/options-register']);
+    this.router.navigate(['/auth/options-register']);
   }
 
   selectedOption(option: string) {

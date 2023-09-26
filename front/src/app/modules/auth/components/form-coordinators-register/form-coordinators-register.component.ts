@@ -34,7 +34,6 @@ export class FormCoordinatorsRegisterComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       phone: ['', Validators.required],
-      ong: ['', Validators.required],
       cuit: ['', Validators.required],
       location: ['', Validators.required],
       category: ['', Validators.required],
@@ -72,12 +71,21 @@ export class FormCoordinatorsRegisterComponent {
           this.textBtn = 'Iniciar Sesión';
         },
         error: (error) => {
-          console.error('Error in coordinator registration:', error);
-          this.onModal = true;
-          this.statusSession = 'failed';
-          this.routeBtnContinue = 'auth/coordinator-register';
-          this.textBtn = 'Reintentar';
+          if (error.error.emailFound) {
+            console.error('Error in coordinator registration:', error);
+            this.onModal = true;
+            this.statusSession = 'failed-emailFound';
+            this.routeBtnContinue = 'auth/login';
+            this.textBtn = 'Iniciar Sesión';
+          } else {
+            console.error('Error in coordinator registration:', error);
+            this.onModal = true;
+            this.statusSession = 'failed';
+            this.routeBtnContinue = 'auth/coordinator-register';
+            this.textBtn = 'Reintentar';
+          }
         },
+
         complete: () => {},
       });
     }

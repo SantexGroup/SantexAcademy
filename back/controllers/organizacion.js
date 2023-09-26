@@ -2,15 +2,15 @@ const { orgService } = require("../services");
 const jwt = require("jsonwebtoken");
 const fs = require("fs-extra");
 require("dotenv").config();
-const cloudinary = require("cloudinary").v2;
-
-cloudinary.config({
-  cloud_name: "dkvhkmu6m",
-  api_key: "558152683374156",
-  api_secret: "bkiHx6pQShvs8vOZWybO7Lf65Rg",
-});
+const { validationResult } = require("express-validator");
+const cloudinary = require("../config/cloudinary");
 
 const loginOrganization = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const errorMessages = errors.array().map((error) => error.msg);
+    return res.status(400).json({ errors: errorMessages });
+  }
   try {
     const { email, cuit, password } = req.body;
 
@@ -28,9 +28,10 @@ const loginOrganization = async (req, res) => {
         orgEmail: organization.email,
         orgCuit: organization.cuit,
         orgPassword: organization.password,
+      
       },
       process.env.SESSION_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: 86400 }
     );
 
     console.log(token);
@@ -54,21 +55,19 @@ const createOrganization = async (req, res) => {
       publicId = uploadResult.public_id;
       await fs.unlink(req.file.path);
     }
-    if (imageUrl.length > 0) {
-      const newOrganization = await orgService.createOrganization({
-        image: { imageUrl, publicId },
-        ...restOfData,
-      });
-      res.status(201).json({
-        message: "The organization was successfully created",
-        newOrganization,
-      });
-    }
+
+    const newOrganization = await orgService.createOrganization({
+      image: { imageUrl, publicId },
+      ...restOfData,
+    });
+    res.status(201).json({
+      message: "The organization was successfully created",
+      newOrganization,
+    });
   } catch (err) {
     res.status(500).json({ action: "createOrganization", error: err.message });
   }
 };
-
 const getOrganizations = async (req, res) => {
   try {
     const organizations = await orgService.getOrganizations();
@@ -80,10 +79,9 @@ const getOrganizations = async (req, res) => {
 
 const updateOrganizationById = async (req, res) => {
   try {
-    const organization = await orgService.updateOrganizationById(
-      req.params.id,
-      req.body
-    );
+    const orgId = req.orgId;
+
+    const organization = await orgService.updateOrganizationById(orgId);
     if (!organization) {
       res.status(404).json({
         action: "updateOrganizationById",
@@ -110,7 +108,8 @@ const updateOrganizationById = async (req, res) => {
 
 const deleteOrganizationById = async (req, res) => {
   try {
-    const organization = await orgService.deleteOrganizationById(req.params.id);
+    const orgId = req.orgId;
+    const organization = await orgService.deleteOrganizationById(orgId);
     if (!organization) {
       res.status(404).json({
         action: "deleteOrganizationById",

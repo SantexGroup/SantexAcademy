@@ -10,7 +10,6 @@ export class ModalStatusFormComponent {
   @Input() status: string = '';
   @Input() routeContinue: string = '';
   @Input() textBtn: string = '';
-
   @Output() changueValueModal = new EventEmitter();
 
   constructor(private router: Router) {}

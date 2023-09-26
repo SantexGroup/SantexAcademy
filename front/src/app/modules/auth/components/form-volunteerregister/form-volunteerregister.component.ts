@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { volunterData } from '../../models/dataForms.model';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-form-volunteerregister',
@@ -12,7 +10,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   styleUrls: ['./form-volunteerregister.component.css'],
 })
 export class FormVolunteerregisterComponent {
-  registroForm: FormGroup;
+  registerVolunteer: FormGroup;
 
   showPassword: boolean = false;
   subscription: Subscription | null = null;
@@ -21,24 +19,45 @@ export class FormVolunteerregisterComponent {
   statusSession: string = '';
   routeBtnContinue: string = '';
   textBtnModal: string = '';
+  imageUrl: string | ArrayBuffer | null = null;
+  emailFound: boolean = false;
 
   constructor(
     private router: Router,
     private authService: AuthService,
     private fb: FormBuilder
   ) {
-    this.registroForm = this.fb.group({
+    this.registerVolunteer = this.fb.group({
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
       password: ['', Validators.required],
+      file: [null],
     });
   }
 
   sendValues() {
-    if (this.registroForm.valid) {
-      const userData: volunterData = this.registroForm.value as volunterData;
-      this.authService.registerVolunteer(userData).subscribe({
+    if (this.registerVolunteer.valid) {
+      const formData = new FormData();
+      Object.keys(this.registerVolunteer.controls).forEach((key) => {
+        const control = this.registerVolunteer.get(key);
+        if (key === 'file' && control instanceof FileList) {
+          for (let i = 0; i < control.length; i++) {
+            const file = control.item(i);
+            if (file) {
+              formData.append('file', file);
+            }
+          }
+        } else {
+          if (control !== null && control !== undefined) {
+            const value = control.value;
+            if (value !== null && value !== undefined) {
+              formData.append(key, value);
+            }
+          }
+        }
+      });
+      this.authService.registerVolunteer(formData).subscribe({
         next: (response) => {
           this.onModal = true;
           this.statusSession = 'success';
@@ -46,11 +65,19 @@ export class FormVolunteerregisterComponent {
           this.textBtnModal = 'Iniciar Sesión';
         },
         error: (error) => {
-          console.error('Error in volunteer registration:', error);
-          this.onModal = true;
-          this.statusSession = 'failed';
-          this.routeBtnContinue = 'auth/volunteer-register';
-          this.textBtnModal = 'Reintentar';
+          if (error.error.emailFound) {
+            console.error('Error in volunteer registration:', error);
+            this.onModal = true;
+            this.statusSession = 'failed-emailFound';
+            this.routeBtnContinue = 'auth/login';
+            this.textBtnModal = 'Iniciar Sesión';
+          } else {
+            console.error('Error in volunteer registration:', error);
+            this.onModal = true;
+            this.statusSession = 'failed';
+            this.routeBtnContinue = 'auth/volunteer-register';
+            this.textBtnModal = 'Reintentar';
+          }
         },
         complete: () => {},
       });
@@ -75,5 +102,29 @@ export class FormVolunteerregisterComponent {
 
   changeValueModal() {
     this.onModal = false;
+  }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (e.target && e.target.result) {
+          this.imageUrl = e.target.result as string;
+        }
+      };
+      reader.readAsDataURL(file);
+
+      this.registerVolunteer.patchValue({
+        file: file,
+      });
+    }
+  }
+
+  deleteImage() {
+    this.registerVolunteer.patchValue({
+      file: null,
+    });
+    this.imageUrl = null;
   }
 }

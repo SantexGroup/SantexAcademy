@@ -7,6 +7,7 @@
     [status]="statusSession"
     [routeContinue]="routeBtnContinue"
     [textBtn]="textBtnModal"
+    [textEmailFound]="emailFound"
   ></app-modal-status-form>
 
   <figure class="w-full h-[500px] bg-mediumViolet relative lg:h-[700px]">
@@ -42,9 +43,55 @@
       <p>Registrate en tu cuenta VolunTime</p>
     </header>
     <form
-      [formGroup]="registroForm"
+      [formGroup]="registerVolunteer"
       class="w-full flex flex-col px-4 gap-4 max-w-[600px]"
+      enctype="multipart/form-data"
     >
+      <div
+        class="flex items-center justify-evenly"
+        *ngIf="!registerVolunteer.get('file')?.value"
+      >
+        <p class="text-center lg:text-lg">
+          <b> Selecciona una foto de perfil. </b>
+        </p>
+        <label for="file" class="cursor-pointer">
+          <div
+            class="w-[100px] grid place-items-center aspect-square rounded-full border border-lightGray shadow-lg lg:w-[120px] lg:hover:bg-bgOptionsRegister group"
+          >
+            <i
+              class="bx bxs-user-plus text-5xl text-lightGray lg:text-6xl lg:group-hover:text-white"
+            ></i>
+          </div>
+
+          <input
+            type="file"
+            id="file"
+            name="file"
+            class="hidden"
+            (change)="onFileSelected($event)"
+          />
+        </label>
+      </div>
+
+      <div
+        class="flex items-center justify-evenly"
+        *ngIf="registerVolunteer.get('file')?.value"
+      >
+        <button (click)="deleteImage()" class="btn__delete font-semibold">
+          <span class="tooltip"><i class="bx bx-trash text-2xl"></i></span>
+          Eliminar
+        </button>
+        <div class="flex flex-col justify-center items-center gap-4 mb-8">
+          <p class="text-center lg:text-lg"><b> Imagen seleccionada. </b></p>
+          <figure class="">
+            <img
+              [src]="imageUrl"
+              alt="Vista previa"
+              class="w-[100px] grid place-items-center object-cover aspect-square rounded-full border border-lightGray shadow-lg lg:w-[120px]"
+            />
+          </figure>
+        </div>
+      </div>
       <div class="w-full flex flex-col text-start gap-1">
         <label for="full_name"><b>Apellido y nombre</b></label>
         <input
@@ -58,9 +105,9 @@
         <div class="w-full items-center justify-end">
           <p
             *ngIf="
-              registroForm.get('fullName')?.invalid &&
-              (registroForm.get('fullName')?.dirty ||
-                registroForm.get('fullName')?.touched)
+              registerVolunteer.get('fullName')?.invalid &&
+              (registerVolunteer.get('fullName')?.dirty ||
+                registerVolunteer.get('fullName')?.touched)
             "
             class="flex-initial text-end text-deepPink"
           >
@@ -81,9 +128,9 @@
         <div class="w-full items-center justify-end">
           <p
             *ngIf="
-              registroForm.get('email')?.invalid &&
-              (registroForm.get('email')?.dirty ||
-                registroForm.get('email')?.touched)
+              registerVolunteer.get('email')?.invalid &&
+              (registerVolunteer.get('email')?.dirty ||
+                registerVolunteer.get('email')?.touched)
             "
             class="flex-initial text-end text-deepPink"
           >
@@ -104,9 +151,9 @@
         <div class="w-full items-center justify-end">
           <p
             *ngIf="
-              registroForm.get('phone')?.invalid &&
-              (registroForm.get('phone')?.dirty ||
-                registroForm.get('phone')?.touched)
+              registerVolunteer.get('phone')?.invalid &&
+              (registerVolunteer.get('phone')?.dirty ||
+                registerVolunteer.get('phone')?.touched)
             "
             class="flex-initial text-end text-deepPink"
           >
@@ -127,9 +174,9 @@
         <div class="w-full items-center justify-end">
           <p
             *ngIf="
-              registroForm.get('password')?.invalid &&
-              (registroForm.get('password')?.dirty ||
-                registroForm.get('password')?.touched)
+              registerVolunteer.get('password')?.invalid &&
+              (registerVolunteer.get('password')?.dirty ||
+                registerVolunteer.get('password')?.touched)
             "
             class="flex-initial text-end text-deepPink"
           >

@@ -1,17 +1,17 @@
 const express = require("express");
 
 const orgRouter = express.Router();
-const { orgController } = require("../controllers");
+const { orgController , usuarioEnVoluntariadoController } = require("../controllers");
 
 const { verifyToken, isAdmin, isOrg } = require("../middleware/authMiddleware");
 
 //orgRouter.get("/", orgController.getOrganizations);
 orgRouter.get("/", orgController.getOrganizationByCriteria);
 orgRouter.get("/search", orgController.getOrganizationByLocation);
-orgRouter.put("/:id", verifyToken, isOrg, orgController.updateOrganizationById);
+orgRouter.put("/", verifyToken, isOrg, orgController.updateOrganizationById);
 
 orgRouter.delete(
-  "/me/:id",
+  "/me",
   verifyToken,
   isOrg,
   orgController.deleteOrganizationById
@@ -23,6 +23,12 @@ orgRouter.delete(
   isAdmin,
   orgController.deleteOrganizationById
 );
+
+//todo!! ver de que manera la organizacion pueda ver que voluntariados estan finalizados para para que la org pueda acreditar las recompensas a los voluntarios
+
+orgRouter.get("/postulation/completed", verifyToken, isOrg, usuarioEnVoluntariadoController.getCompletedPostulation);
+
+// orgRouter.post("/postulation/accreditation/:")
 
 module.exports = orgRouter;
 

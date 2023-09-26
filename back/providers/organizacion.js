@@ -1,6 +1,7 @@
 const { Op, or } = require("sequelize");
 const { Organizacion } = require("../models");
 const cloudinary = require("cloudinary").v2;
+const { hashPassword, comparePassword } = require("../config/crypt");
 
 cloudinary.config({
   cloud_name: "dkvhkmu6m",
@@ -17,27 +18,26 @@ const loginOrg = async (email, cuit, password) => {
     });
 
     if (!org) {
-      throw new Error("The organization does not exist");
+      throw new Error("Invalid Credentials");
     }
+    const matchPassword = comparePassword(password, org.password);
 
-    // Verificar si la contraseña coincide
-    if (org.dataValues.password !== password.toString()) {
+    if (!matchPassword) {
       throw new Error("Invalid Credentials");
     }
 
-    // Verificar si el cuit coincide
     if (org.dataValues.cuit !== cuit.toString()) {
       throw new Error("Invalid Credentials");
     }
 
     return org;
   } catch (error) {
-    throw error; // Lanzar el error original, sin envolverlo en otro error
+    throw error;
   }
 };
 
 const createOrganization = async (data) => {
-  const { image, ...restOfData } = data;
+  const { image, password, ...restOfData } = data;
   try {
     const existingDeletedOrg = await Organizacion.findOne({
       where: {
@@ -57,9 +57,13 @@ const createOrganization = async (data) => {
       // Borrar el registro eliminado lógicamente
       await existingDeletedOrg.destroy();
     }
-    // Crear el nuevo registro
-    const newOrganization = await Organizacion.create({ image, ...restOfData });
-    // Devolver el nuevo registro
+
+    const newOrganization = await Organizacion.create({
+      image,
+      password: hashPassword(password),
+      ...restOfData,
+    });
+
     return newOrganization;
   } catch (err) {
     console.error(
@@ -116,8 +120,8 @@ const deleteOrganizationById = async (id) => {
       throw new Error("Organization not found");
     }
 
-    // Aplicar borrado lógico estableciendo la columna deletedAt
-    await organization.update({ deletedAt: new Date() });
+    // Aplicar borrado lógico estableciendo la columna deletedAt y la columna email en null (solucion provisoria)
+    await organization.update({ deletedAt: new Date(), email: " " });
 
     return organization;
   } catch (error) {

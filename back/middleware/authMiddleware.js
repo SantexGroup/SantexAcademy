@@ -12,7 +12,6 @@ const isAdmin = async (req, res, next) => {
     // Asegúrate de que req.userId contenga el ID del usuario (puedes usar el middleware verifyTokenUser para esto).
 
     // Obtén el usuario desde la base de datos usando el ID
-    console.log("req.userId:", req.userId);
     const user = await Usuario.findByPk(req.userId);
 
     if (!user) {
@@ -44,7 +43,6 @@ const verifyToken = async (req, res, next) => {
     const decoded = jwt.verify(token, config);
 
     //console.log("decoded: " + JSON.stringify(decoded, null, 2));
-    console.log("DECODED", decoded);
 
     let user = null;
     let org = null;
@@ -95,10 +93,10 @@ const isUser = (req, res, next) => {
 };
 
 const isOrg = (req, res, next) => {
-  const idOrgParam = parseInt(req.params.idOrg, 10);
+  const idOrgParam = req.orgId;
 
-  if (req.modelType === "Organizacion" && idOrgParam === req.org.id) {
-    return next(); // El usuario es de tipo "Organizacion" y el ID coincide
+  if (req.modelType === "Organizacion" ) {
+    return next(); // El modelo es de tipo "Organizacion"
   }
 
   return res

@@ -3,16 +3,28 @@
 >
   <article class="flex items-center justify-start gap-2 sm:pl-8">
     <figure
+      *ngIf="dataHeader.image?.imageUrl"
       class="w-[50px] aspect-square rounded-full border-2 border-white sm:w-[80px] shadow-md shadow-dimGray"
     >
       <img
-        src="/assets/imgs/avatar.png"
+        [src]="dataHeader.image?.imageUrl"
         alt="avatar"
-        class="w-full h-full object-contain"
+        class="w-full h-full object-cover rounded-full"
+      />
+    </figure>
+
+    <figure
+      *ngIf="!dataHeader.image?.imageUrl"
+      class="w-[50px] aspect-square rounded-full border-2 border-white sm:w-[80px] shadow-md shadow-dimGray"
+    >
+      <img
+        src="/assets/imgs/not-found.webp"
+        alt="avatar"
+        class="w-full h-full object-cover rounded-full"
       />
     </figure>
     <div class="flex flex-col items-start justify-start text-start">
-      <h1 class="text-white font-bold sm:text-xl">Exe Dev</h1>
+      <h1 class="text-white font-bold sm:text-xl">{{ dataHeader.fullName }}</h1>
       <ul class="flex items-center justify-center gap-2 text-xs sm:text-sm">
         <li>⭐</li>
         <li>⭐</li>
@@ -34,7 +46,9 @@
         />
       </figure>
       <div class="flex flex-col text-center">
-        <h2 class="font-bold text-darkSlateBlue text-5xl">44</h2>
+        <h2 class="font-bold text-darkSlateBlue text-5xl">
+          {{ dataHeader.pointsAccumulated }}
+        </h2>
         <p class="text-xs font-bold sm:text-base">Tus horas acumuladas</p>
       </div>
     </article>
