@@ -38,9 +38,6 @@ const Organizacion = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    opportunityType: {
-      type: DataTypes.STRING,
-    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,

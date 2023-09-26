@@ -29,16 +29,23 @@ const getJoins = async (userId) => {
 }
 
 const getCompletedPostulation = async (idOrg) => {
-
   try {
     const postulations = await usuarioEnVoluntariadoProvider.getCompletedPostulation(idOrg);
     return postulations;
-  
+  } catch (error) {
+    console.error('Internal server error', error);  
+  }
+}
+
+const updateUserReward = async (idOrg) => {
+  try {
+    const postulations = await usuarioEnVoluntariadoProvider.updateUserReward(idOrg);
+    return postulations;
   } catch (error) {
     console.error('Internal server error', error);  
   }
 
- }
+}
 
 const updateStatusById = async (postulateId, status) => {
   try {
@@ -70,5 +77,6 @@ module.exports = {
   getJoins,
   getCompletedPostulation,
   updateStatusById,
+  updateUserReward,
   deleteJoinById
 };

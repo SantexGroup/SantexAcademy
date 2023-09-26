@@ -33,24 +33,19 @@ const getJoins= async (req, res) => {
 
 }
 
-const getCompletedPostulation = async (req, res) => {
-
-  try {
-    const { idOrg } = req.body;
-    const volunteerings = await usuarioEnVoluntariadoService.getCompletedPostulation(idOrg);
-    if (!volunteerings) {
-      res.status(404).json({ action: 'getCompletedPostulation', error: 'Voluntariados not found.' });
-    } else {
-      res.json(volunteerings);
+  const getCompletedPostulation = async (req, res) => {
+    try {
+      const orgId = req.orgId;
+      const volunteerings = await usuarioEnVoluntariadoService.getCompletedPostulation(orgId);
+      if (!volunteerings) {
+        res.status(404).json({ action: 'getCompletedPostulation', error: 'Voluntariados not found.' });
+      } else {
+        res.json(volunteerings);
+      }
+    } catch (err) {
+      res.status(500).json({ action: 'getCompletedPostulation', error: err.message });
     }
-  } catch (err) {
-    res.status(500).json({ action: 'getCompletedPostulation', error: err.message });
   }
-
-
-
-}
-
 
 const updateStatusById = async (req, res) => {
   try {

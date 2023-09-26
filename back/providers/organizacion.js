@@ -120,8 +120,8 @@ const deleteOrganizationById = async (id) => {
       throw new Error("Organization not found");
     }
 
-    // Aplicar borrado lógico estableciendo la columna deletedAt
-    await organization.update({ deletedAt: new Date() });
+    // Aplicar borrado lógico estableciendo la columna deletedAt y la columna email en null (solucion provisoria)
+    await organization.update({ deletedAt: new Date(), email: " " });
 
     return organization;
   } catch (error) {

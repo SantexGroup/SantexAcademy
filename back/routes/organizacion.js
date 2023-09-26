@@ -8,10 +8,10 @@ const { verifyToken, isAdmin, isOrg } = require("../middleware/authMiddleware");
 //orgRouter.get("/", orgController.getOrganizations);
 orgRouter.get("/", orgController.getOrganizationByCriteria);
 orgRouter.get("/search", orgController.getOrganizationByLocation);
-orgRouter.put("/:id", verifyToken, isOrg, orgController.updateOrganizationById);
+orgRouter.put("/", verifyToken, isOrg, orgController.updateOrganizationById);
 
 orgRouter.delete(
-  "/me/:id",
+  "/me",
   verifyToken,
   isOrg,
   orgController.deleteOrganizationById
@@ -26,7 +26,7 @@ orgRouter.delete(
 
 //todo!! ver de que manera la organizacion pueda ver que voluntariados estan finalizados para para que la org pueda acreditar las recompensas a los voluntarios
 
-orgRouter.get("/postulation/completed/:idOrg", verifyToken, isOrg, usuarioEnVoluntariadoController.getCompletedPostulation);
+orgRouter.get("/postulation/completed", verifyToken, isOrg, usuarioEnVoluntariadoController.getCompletedPostulation);
 
 // orgRouter.post("/postulation/accreditation/:")
 
