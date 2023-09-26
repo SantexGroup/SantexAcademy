@@ -1,0 +1,88 @@
+<div class="row mt-3 offset-lg-2 userSelect">
+  <div
+    class="card text-white mb-3"
+    style="max-width: 50rem; background-color: var(--colorBlue)"
+  >
+    <div class="card-header text-center fs-3"style="text-shadow: 2px 2px 5px #000000;"><b>Editar horario</b></div>
+    <div class="card-body">
+      <form [formGroup]="form" (ngSubmit)="update()">
+        <div class="row mb-3">
+          <label class="form-label mb-0 p-0"><b>¿Dónde se realizara?</b></label>
+          <input
+            formControlName="where"
+            type="text"
+            class="form-control"
+            placeholder="Ingrese lugar"
+          />
+          <span
+            *ngIf="
+              form.get('where')?.hasError('required') &&
+              form.get('where')?.touched
+            "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px"
+          >
+            El campo donde es <strong>requerido</strong>
+          </span>
+        </div>
+        <div class="row mb-3">
+          <label class="form-label mb-0 p-0"><b>dia/s</b></label>
+          <input
+            formControlName="day"
+            type="text"
+            class="form-control mt-2"
+            placeholder="Ingrese dia/s"
+          />
+          <span
+            *ngIf="
+              form.get('day')?.hasError('required') && form.get('day')?.touched
+            "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px"
+          >
+            El campo dia/s es <strong>requerido</strong>
+          </span>
+        </div>
+        <div class="row mb-3">
+          <label class="form-label mb-0 p-0"><b>Horario</b></label>
+          <input
+            formControlName="schedule"
+            type="text"
+            class="form-control mt-2"
+            placeholder="Ingrese un horario"
+          />
+          <span
+            *ngIf="
+              form.get('schedule')?.hasError('required') &&
+              form.get('schedule')?.touched
+            "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px"
+          >
+            El campo horario es <strong>requerido</strong>
+          </span>
+        </div>
+        <input
+          formControlName="active"
+          type="checkbox"
+          class="form-check-input mt-2"
+          placeholder="Ingrese si se encuentra activo"
+        />
+        <label class="form-label p-1"> Esta activo el curso?</label>
+
+        <div class="row mt-2 text-center">
+          <div class="col-lg-6">
+            <button class="boton" routerLink="/admin/panel/schedules">
+              Volver
+            </button>
+          </div>
+          <div class="col-lg-6">
+            <button [disabled]="form.invalid" type="submit" class="boton">
+              Aceptar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

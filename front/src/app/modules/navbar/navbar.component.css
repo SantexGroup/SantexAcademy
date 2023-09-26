@@ -1,0 +1,14 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.logo{
+    height: 70px;
+    width: 130px;
+    font-family: sans-serif;
+}
+.dropdown-item:hover {
+    background-color: rgb(57, 87, 196) !important; 
+}

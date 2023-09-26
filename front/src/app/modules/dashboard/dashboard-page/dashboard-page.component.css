@@ -1,0 +1,85 @@
+body {
+    font-family: 'Aoboshi One', serif;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.subheader { 
+    background-color: #FA8F21;
+    color: white;
+    height: 45px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #B4B0AD;
+}
+.coursebox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.courseinfo button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: #FFFFFF;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.25);
+    border: #FFFFFF; 
+    border-radius: 20px;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+    height: 450px;
+    font-family: 'Aoboshi One', serif;
+
+}
+
+.courseinfo button:hover {
+    background-color: #e4e0e0
+}
+
+.courseinfo img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.courseinfo h2 { 
+    text-transform: uppercase;
+}
+
+.courseinfo p {
+    color: #B4B0AD;
+    font-size: 15px;
+}
+
+.button1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button1 button:hover {
+    background-color: #d87b1e;
+}
+.button1 button {
+    width: 286px;
+    height: 51px;
+    color: #FFFFFF;
+    border: #FA8F21;
+    background: #FA8F21;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25.5px;
+    font-family: 'Aoboshi One', serif;
+    font-size: 26px
+}
+
+
+
