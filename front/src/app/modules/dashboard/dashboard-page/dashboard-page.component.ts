@@ -11,21 +11,36 @@ export class DashboardPageComponent implements OnInit {
   constructor(
     private authServices: AuthService,
     private dashService: DashboardServicesService
-  ) {}
+  ) { }
 
   dataUser: any = {};
+  dataOrg: any = {};
 
   ngOnInit(): void {
     const token = this.authServices.getAuthToken();
+    const userType: string | undefined = this.authServices.getUserType();
 
-    this.dashService.getProfileVolunteer(token).subscribe({
-      next: (response) => {
-        this.dataUser = response;
-      },
-      error: (error) => {
-        console.log(error);
-      },
-      complete: () => {},
-    });
+    if (userType === "vol") {
+      this.dashService.getProfileVolunteer(token).subscribe({
+        next: (response) => {
+          this.dataUser = response;
+        },
+        error: (error) => {
+          console.log(error);
+        },
+        complete: () => { },
+      });
+    } else if (userType === "org"){
+      this.dashService.getProfileOrganization(token).subscribe({
+        next: (response) => {
+          this.dataOrg = response;
+          console.log("dataDeOrg", response);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+        complete: () => { },
+      });
+    }
   }
 }
