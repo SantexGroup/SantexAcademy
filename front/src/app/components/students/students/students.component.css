@@ -1,0 +1,24 @@
+.header {
+    background-color: #0056b3;
+}
+
+.side-bar{
+    height: 100vh;
+    border-radius: 32px;
+}
+
+mat-sidenav{
+    background-color: orange;
+    border-radius: 32px;
+    display: inline-flex;
+    padding: 64px 48px 435px 56px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 112px;
+}
+
+mat-sidenav-content{
+    background-color: rgba(212, 176, 152, 0.3);
+    border-radius: 32px;
+    width: 100%;
+}

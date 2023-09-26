@@ -16,12 +16,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { LoginComponent } from '../login/login.component';
+import { StudentsComponent } from '../students/students/students.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
+
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormularioRegistroComponent,
     LoginComponent,
+    StudentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +47,9 @@ import { LoginComponent } from '../login/login.component';
     MatIconModule,
     MatNativeDateModule,
     MatCardModule,
+    NgbModule,
+    MatSidenavModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

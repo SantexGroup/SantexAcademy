@@ -14,6 +14,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
+
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatButtonModule,
     MatIconModule,
     MatNativeDateModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
