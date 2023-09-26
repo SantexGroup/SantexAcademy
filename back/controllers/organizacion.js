@@ -68,6 +68,20 @@ const createOrganization = async (req, res) => {
     res.status(500).json({ action: "createOrganization", error: err.message });
   }
 };
+
+
+const getOrganizationsById = async (req, res) => {
+  try {
+    const orgId = req.orgId;
+    const organization = await orgService.getOrganizationsById(orgId)
+    res.json(organization);
+  } catch (error) {
+    res.status(500).json({ action: "getMyOrg", error: error.message });
+}
+}
+
+
+
 const getOrganizations = async (req, res) => {
   try {
     const organizations = await orgService.getOrganizations();
@@ -168,6 +182,7 @@ const getOrganizationByLocation = async (req, res, next) => {
 module.exports = {
   loginOrganization,
   getOrganizations,
+  getOrganizationsById,
   getOrganizationByCriteria,
   createOrganization,
   updateOrganizationById,

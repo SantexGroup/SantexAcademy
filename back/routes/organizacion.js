@@ -10,6 +10,14 @@ orgRouter.get("/", orgController.getOrganizationByCriteria);
 orgRouter.get("/search", orgController.getOrganizationByLocation);
 orgRouter.put("/", verifyToken, isOrg, orgController.updateOrganizationById);
 
+orgRouter.get(
+  "/me/profile",
+  verifyToken,
+  isOrg,
+  orgController.getOrganizationsById
+);
+
+
 orgRouter.delete(
   "/me",
   verifyToken,
