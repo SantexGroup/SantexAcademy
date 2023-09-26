@@ -6,10 +6,10 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("usuarios", {
       id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
+        primaryKey: true
       },
 
       nombre: {
@@ -28,12 +28,12 @@ module.exports = {
       },
 
       id_rol: {
-        allowNull: false,
         type: Sequelize.INTEGER,
-        references: {
-          model: "roles",
-          key: "id",
-        },
+        allowNull: false
+        // references: {
+        //   model: "roles", // Nombre de la tabla a la que se hace referencia
+        //   key: "id",   // Nombre de la columna a la que se hace referencia
+        // },
         // onUpdate: 'CASCADE',
         // onDelete: 'CASCADE',
         // field: "id_rol",
@@ -44,8 +44,8 @@ module.exports = {
       },
 
       activo: {
-        allowNull: false,
         type: Sequelize.INTEGER,
+        allowNull: false,
         defaultValue: 1
       },
 

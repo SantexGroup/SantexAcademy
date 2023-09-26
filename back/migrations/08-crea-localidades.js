@@ -6,10 +6,10 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('localidades', {
       id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
+        primaryKey: true
       },
  
       // abreviatura: {
@@ -40,14 +40,14 @@ module.exports = {
       // },
 
       activo: {
-        allowNull: false,
         type: Sequelize.INTEGER,
+        allowNull: false,
         defaultValue: 1 
       },
 
       por_defecto: {
-        allowNull: false,
         type: Sequelize.INTEGER,
+        allowNull: false,
         defaultValue: 0 
       },
 

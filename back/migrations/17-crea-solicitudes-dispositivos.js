@@ -6,15 +6,15 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("solicitudes_dispositivos", {
       id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
+        primaryKey: true
       },
 
       cantidad: {
-        allowNull: false,
         type: Sequelize.INTEGER,
+        allowNull: false,
         defaultValue: 0
       },
 
@@ -25,26 +25,26 @@ module.exports = {
         onInsert: Sequelize.DATEONLY
       },
 
-      id_descripcion_dispositivo: {
-        allowNull: false,
+      id_solicitud: {
         type: Sequelize.INTEGER,
-        references: {
-          model: "descripciones_dispositivos",
-          key: "id",
-        },
+        allowNull: false,
+        // references: {
+        //   model: "solicitudes",
+        //   key: "id",
+        // },
       },
 
-      descripcion_dispositivo: {
-        type: Sequelize.STRING(50)
+      descripcion_solicitud: {
+        type: Sequelize.STRING(200)
       },
 
-      id_estado_dispositivo: {
-        allowNull: false,
+      id_dispositivo_electronico: {
         type: Sequelize.INTEGER,
-        references: {
-          model: "estados_dispositivos",
-          key: "id",
-        },
+        allowNull: false,
+        // references: {
+        //   model: "dispositivos_electronicos", // Nombre de la tabla a la que se hace referencia
+        //   key: "id", // Nombre de la columna a la que se hace referencia
+        // },
       },
 
       estado_dispositivo: {
@@ -52,8 +52,8 @@ module.exports = {
       },
 
       activo: {
-        allowNull: false,
         type: Sequelize.INTEGER,
+        allowNull: false,
         defaultValue: 1
       },
 
@@ -82,35 +82,35 @@ module.exports = {
     });
 
     await queryInterface.addConstraint('solicitudes_dispositivos', {
-      fields: ['id_estado_operacion'],
+      fields: ['id_solicitud'],
       type: 'foreign key',
-      name: 'fk_id_descripcion_dispositivo', // Nombre personalizado de la clave foránea
+      name: 'fk_id_solicitud', // Nombre personalizado de la clave foránea
       references: {
-        table: 'descripciones_dispositivos', // Nombre de la tabla a la que se hace referencia
+        table: 'solicitudes', // Nombre de la tabla a la que se hace referencia
         field: 'id',   // Nombre de la columna a la que se hace referencia
       },
-      // onDelete: 'cascade', // Comportamiento en cascada al eliminar no estoy seguro si usarla
       // onUpdate: 'cascade', // Comportamiento en cascada al actualizar no estoy seguro si conviene usarla
+      // onDelete: 'cascade', // Comportamiento en cascada al eliminar no estoy seguro si usarla
     });
 
     await queryInterface.addConstraint('solicitudes_dispositivos', {
-      fields: ['id_estado_operacion'],
+      fields: ['id_dispositivo_electronico'],
       type: 'foreign key',
-      name: 'fk_id_estado_dispositivo', // Nombre personalizado de la clave foránea
+      name: 'fk_id_dispositivo_electronico', // Nombre personalizado de la clave foránea
       references: {
-        table: 'estados_dispositivos', // Nombre de la tabla a la que se hace referencia
+        table: 'dispositivos_electronicos', // Nombre de la tabla a la que se hace referencia
         field: 'id',   // Nombre de la columna a la que se hace referencia
       },
-      // onDelete: 'cascade', // Comportamiento en cascada al eliminar no estoy seguro si usarla
       // onUpdate: 'cascade', // Comportamiento en cascada al actualizar no estoy seguro si conviene usarla
+      // onDelete: 'cascade', // Comportamiento en cascada al eliminar no estoy seguro si usarla
     });
   },
 
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('solicitudes_dispositivos');
 
-    await queryInterface.removeConstraint('solicitudes_dispositivos', 'fk_id_descripcion_dispositivo');
+    await queryInterface.removeConstraint('solicitudes_dispositivos', 'fk_id_solicitud');
 
-    await queryInterface.removeConstraint('solicitudes_dispositivos', 'fk_id_estado_dispositivo');
+    await queryInterface.removeConstraint('solicitudes_dispositivos', 'fk_id_dispositivo_electronico_solicitud');
   }
 };

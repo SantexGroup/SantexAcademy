@@ -4,12 +4,12 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("donantes", {
+    await queryInterface.createTable("solicitantes", {
       id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
+        primaryKey: true
       },
 
       razon_social: {
@@ -41,30 +41,27 @@ module.exports = {
       },
 
       id_descripcion_telefono: {
-        allowNull: false,
         type: Sequelize.INTEGER,
-        references: {
-          model: "descripciones_telefonos",
-          key: "id",
-        },
-        // onUpdate: 'CASCADE',
-        // onDelete: 'CASCADE',
-        // field: "id_descripcion_telefono",
+        allowNull: false,
+        // references: {
+        //   model: "descripciones_telefonos", // Nombre de la tabla a la que se hace referencia
+        //   key: "id", // Nombre de la columna a la que se hace referencia
+        // },
       },
 
       descripcion_telefono: {
         type: Sequelize.STRING(50)
       },
 
-      numero_telefono: {
-        allowNull: false,
+      numer_telefono: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         defaultValue: 0
       },
 
       activo: {
-        allowNull: false,
         type: Sequelize.INTEGER,
+        allowNull: false,
         defaultValue: 1
       },
 
@@ -92,22 +89,23 @@ module.exports = {
       }
     });
 
-    await queryInterface.addConstraint('donantes', {
+    
+    await queryInterface.addConstraint('solicitantes', {
       fields: ['id_descripcion_telefono'],
       type: 'foreign key',
-      name: 'fk_id_descripcion_telefono', // Nombre personalizado de la clave foránea
+      name: 'fk_id_descripcion_telefono_solicitantes', // Nombre personalizado de la clave foránea
       references: {
         table: 'descripciones_telefonos', // Nombre de la tabla a la que se hace referencia
-        field: 'id',   // Nombre de la columna a la que se hace referencia
+        field: 'id', // Nombre de la columna a la que se hace referencia
       },
-      // onDelete: 'cascade', // Comportamiento en cascada al eliminar no estoy seguro si usarla
       // onUpdate: 'cascade', // Comportamiento en cascada al actualizar no estoy seguro si conviene usarla
+      // onDelete: 'cascade', // Comportamiento en cascada al eliminar no estoy seguro si usarla
     });
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('donantes');
+    await queryInterface.dropTable('solicitantes');
 
-    await queryInterface.removeConstraint('donantes', 'fk_id_descripcion_telefono');
+    await queryInterface.removeConstraint('solicitantes', 'fk_id_descripcion_telefono');
   }
 };

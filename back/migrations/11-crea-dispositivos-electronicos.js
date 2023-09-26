@@ -6,10 +6,10 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("dispositivos_electronicos", {
       id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
+        primaryKey: true
       },
 
       descripcion: {
@@ -17,8 +17,8 @@ module.exports = {
       },
 
       cantidad: {
-        allowNull: false,
         type: Sequelize.INTEGER,
+        allowNull: false,
         defaultValue: 0
       },
 
@@ -32,13 +32,12 @@ module.exports = {
       id_descripcion_dispositivo: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: {
-          model: "descripciones_dispositivos",
-          key: "id",
-        },
+        // references: {
+        //   model: "descripciones_dispositivos",
+        //   key: "id",
+        // },
         // onUpdate: 'CASCADE',
         // onDelete: 'CASCADE',
-        // field: "id_descripcion_distosivo",
       },
 
       descripcion_dispositivo: {
@@ -46,15 +45,14 @@ module.exports = {
       },
 
       id_estado_dispositivo: {
-        allowNull: false,
         type: Sequelize.INTEGER,
-        references: {
-          model: "estados_dispositivos",
-          key: "id",
-        },
+        allowNull: false,
+        // references: {
+        //   model: "estados_dispositivos", // Nombre de la tabla a la que se hace referencia
+        //   key: "id", // Nombre de la columna a la que se hace referencia
+        // },
         // onUpdate: 'CASCADE',
         // onDelete: 'CASCADE',
-        // field: "id_estado_dispositivo",
       },
 
       estado_dispositivo: {
@@ -62,8 +60,8 @@ module.exports = {
       },
 
       activo: {
-        allowNull: false,
         type: Sequelize.INTEGER,
+        allowNull: false,
         defaultValue: 1
       },
 
@@ -97,7 +95,7 @@ module.exports = {
       name: 'fk_id_descripcion_dispositivo', // Nombre personalizado de la clave foránea
       references: {
         table: 'descripciones_dispositivos', // Nombre de la tabla a la que se hace referencia
-        field: 'id',   // Nombre de la columna a la que se hace referencia
+        field: 'id', // Nombre de la columna a la que se hace referencia
       },
       // onDelete: 'cascade', // Comportamiento en cascada al eliminar no estoy seguro si usarla
       // onUpdate: 'cascade', // Comportamiento en cascada al actualizar no estoy seguro si conviene usarla
