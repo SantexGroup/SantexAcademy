@@ -27,7 +27,7 @@ import { PersonalComponent } from './modules/crud-data/personal/personal.compone
 import { SkillComponent } from './modules/crud-data/skill/skill.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './core/services/toolServices/interceptor/loading.interceptor';
-import { UsuarioModule } from './modules/usuario/usuario.module';
+import { UsuarioModule } from './modules/lazyLoading/usuario.module';
 import { CVComponent } from './modules/cv/cv.component';
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
 import { ProfilesComponent } from './modules/profiles/profiles.component';
@@ -36,6 +36,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ProfilesFourComponent } from './modules/profiles-four/profiles-four.component';
 import { ProfileOneComponent } from './modules/profile-one/profile-one.component';
 import { ProfileTwoComponent } from './modules/profile-two/profile-two.component';
+
 
 
 @NgModule({

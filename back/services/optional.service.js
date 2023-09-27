@@ -1,6 +1,6 @@
 const NotFoundException = require('../exceptions/not_found.exceptions');
 const {
-  Optional, Marital, Sex, Country, Profile,
+  ProfileOptional, Optional, Marital, Sex, Country, Profile,
 } = require('../models');
 
 const MARITAL_SEX_COUNTRY = [Marital, Sex, Country];
@@ -53,8 +53,48 @@ async function fetchOptionalById(id) {
 /**
  * Guardar los datos de un nuevo OPTCIONAL.
  */
-async function saveNewOptionalData(data) {
-  return Optional.create(data);
+async function saveNewOptionalData(
+  maritalId,
+  sexsId,
+  countriesId,
+  profile,
+  webPage,
+  linkedIn,
+  hobbies,
+  aptitudes,
+  driverLicense,
+  aboutMe,
+  achievements,
+  address,
+  zipCode,
+  deletedAt,
+  profileId,
+) {
+  const newOptional = await Optional.create({
+    maritalId,
+    sexsId,
+    countriesId,
+    profile,
+    webPage,
+    linkedIn,
+    hobbies,
+    aptitudes,
+    driverLicense,
+    aboutMe,
+    achievements,
+    address,
+    zipCode,
+    deletedAt,
+  });
+
+  if (newOptional) {
+    await ProfileOptional.create({
+      profilesId: profileId,
+      optionalsId: newOptional.id,
+    });
+  }
+
+  return newOptional;
 }
 
 /**
@@ -89,16 +129,16 @@ async function fetchOptionalsByUserId(userId) {
     },
   ];
 
-  const optinal = await Optional.findAll({
+  const optional = await Optional.findAll({
     include: [...PROFILE, ...MARITAL_SEX_COUNTRY],
     distinct: true,
   });
 
-  if (!optinal) {
+  if (!optional) {
     throw new NotFoundException(`Optional with user_id ${userId} not found`);
   }
 
-  return optinal;
+  return optional;
 }
 
 module.exports = {

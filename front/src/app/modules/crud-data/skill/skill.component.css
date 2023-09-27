@@ -4,6 +4,7 @@
 }
 
 .skillsInput {
+    margin-top: 2rem;
     width: 100%;
     height: 500px;
     display: flex;

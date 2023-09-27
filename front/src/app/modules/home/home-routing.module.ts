@@ -22,67 +22,10 @@ import { ProfileTwoComponent } from '../profile-two/profile-two.component';
 const routes: Routes = [
   {
     path: '',
-    canActivate: [AuthGuard],
-    component: HomeComponent
+    loadChildren: () => 
+    import('../lazyLoading/crud-data.module')
+    .then(m => m.CrudDataModule)
   },
-  {
-    path: 'personal',
-    component: PersonalComponent,
-    canDeactivate: [AbandonGuard]
-    
-  },
-  {
-    path: 'cv',
-    component: CVComponent,
-    children:[
-      {
-        path: 'four',
-        component: ProfilesFourComponent
-      },
-      {
-        path: 'one',
-        component: ProfileOneComponent
-      },
-      {
-        path: 'two',
-        component: ProfileTwoComponent
-      }
-    ]
-  },
-  {
-    path: 'experiencias',
-    component: ExperiencesComponent,
-    canDeactivate: [AbandonGuard]
-  },
-  {
-    path: 'referencias',
-    component: ReferencesComponent,
-    canDeactivate: [AbandonGuard]
-  },
-  {
-    path: 'formaciones',
-    component: FormationsComponent,
-    canDeactivate: [AbandonGuard]
-  },
-  {
-    path: 'opcionales',
-    component: OptionalsComponent,
-    canDeactivate: [AbandonGuard]
-  },
-  {
-    path: 'lenguajes',
-    component: LanguageComponent,
-    canDeactivate: [AbandonGuard]
-  },
-  {
-    path: 'habilidades',
-    component: SkillComponent,
-    canDeactivate: [AbandonGuard]
-  },
-  {
-    path: 'profiles',
-    component: ProfilesComponent
-  }
 ];
 
 @NgModule({

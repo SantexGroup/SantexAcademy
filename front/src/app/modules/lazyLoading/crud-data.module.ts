@@ -1,27 +1,22 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { ExperiencesComponent } from './modules/crud-data/experiences/experiences.component';
-import { SkillComponent } from './modules/crud-data/skill/skill.component';
-import { PersonalComponent } from './modules/crud-data/personal/personal.component';
-import { CVComponent } from './modules/cv/cv.component';
-import { ReferencesComponent } from './modules/crud-data/references/references.component';
-import { ProfilesComponent } from './modules/profiles/profiles.component';
-import { AuthGuard } from './core/guards/auth.guard';
-import { ProfilesFourComponent } from './modules/profiles-four/profiles-four.component';
-import { AbandonGuard } from './core/guards/abandon.guard';
-import { ProfileOneComponent } from './modules/profile-one/profile-one.component';
-import { ProfileTwoComponent } from './modules/profile-two/profile-two.component';
+import { HomeComponent } from '../home/home.component';
+import { AuthGuard } from 'src/app/core/guards/auth.guard';
+import { CVComponent } from '../cv/cv.component';
+import { ProfilesFourComponent } from '../profiles-four/profiles-four.component';
+import { PersonalComponent } from '../crud-data/personal/personal.component';
+import { ExperiencesComponent } from '../crud-data/experiences/experiences.component';
+import { ReferencesComponent } from '../crud-data/references/references.component';
+import { AbandonGuard } from 'src/app/core/guards/abandon.guard';
+import { FormationsComponent } from '../crud-data/formations/formations.component';
+import { LanguageComponent } from '../crud-data/language/language.component';
+import { OptionalsComponent } from '../crud-data/optionals/optionals.component';
+import { SkillComponent } from '../crud-data/skill/skill.component';
+import { ProfilesComponent } from '../profiles/profiles.component';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: AppComponent
-  },
-  {
-    path: '#nosotrosContacto',
-    component: AppComponent
-  },
+
+const crudRoutes: Routes = [
   {
     path: 'home/:id',
     component: HomeComponent,
@@ -77,17 +72,15 @@ const routes: Routes = [
         component: ProfilesComponent
       }
     ]
-  }, 
-  {
-    path: '',
-    loadChildren: () => 
-    import('./modules/lazyLoading/usuario.module')
-    .then(m => m.UsuarioModule)
   }
-];
+]
+
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  declarations: [],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(crudRoutes)
+  ]
 })
-export class AppRoutingModule { }
+export class CrudDataModule { }

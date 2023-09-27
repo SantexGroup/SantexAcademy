@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.views.changeTitle("Home");
+    /* this.views.changeTitle("Home"); */
     
   } 
 
