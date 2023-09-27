@@ -80,7 +80,7 @@ export class CursoComponent {
           Swal.fire('No estás logueado');
         }
       });
-    
+
   }
 
 }
