@@ -1,0 +1,17 @@
+<div class="container text-center">
+    <div class="row" *ngFor="let abouts of groupedAbouts">
+      <h1>{{ abouts.abouts[0].title }}</h1>
+      <div class="col-md-4" *ngFor="let about of abouts.abouts">
+        <div class="about mb-4">
+          <div class="about-body">
+            <div class="card" style="width: 18rem;">
+            <h3>{{ about.subtitle }}</h3>
+              <img src="{{ about.image }}" class="card-img-top" alt="{{ about.subtitle }}">
+              <div class="card-body">
+                <p class="card-text">{{ about.description }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

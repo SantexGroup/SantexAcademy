@@ -23,6 +23,7 @@ import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashb
 import { AboutUsComponent } from './modules/admin-panel/about-us/about-us.component';
 import { AddAboutUsComponent } from './modules/admin-panel/about-us/add-about-us/add-about-us.component';
 import { EditAboutUsComponent } from './modules/admin-panel/about-us/edit-about-us/edit-about-us.component';
+import { ShowAboutUsComponent } from './modules/show-about-us/show-about-us.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { EditAboutUsComponent } from './modules/admin-panel/about-us/edit-about-
     AboutUsComponent,
     AddAboutUsComponent,
     EditAboutUsComponent,
+    ShowAboutUsComponent,
   ],
   imports: [
     BrowserModule,
