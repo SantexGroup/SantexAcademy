@@ -4,7 +4,7 @@
     (change)="userData.markForm(personalForm)">
       <mat-form-field>
         <mat-label>Nombres</mat-label>
-        <input matInput formControlName="firstName">
+        <input matInput formControlName="name">
       </mat-form-field>
 
       <mat-form-field>
@@ -43,7 +43,7 @@
 
       <div class="botonera">
         <div class="botones">
-            <button class="plus" type="submit" *ngIf="views.plusOne" (click)="updateUser(personalForm)">
+            <button class="plus" type="submit" *ngIf="views.plusOne" (click)="updateUser()">
                 <img src="./assets/Imagenes/plus.png" alt="+">
             </button>
             <button 

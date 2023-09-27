@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { userInterface } from 'src/app/core/interfaces/user.interface';
+import { User } from 'src/app/core/interfaces/user.interface';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { UserService } from 'src/app/core/services/usuario.service';
@@ -16,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 
 export class PersonalComponent implements OnInit {
   mensajeError: string = "";
-  user = {} as userInterface;
+  user = {} as User;
   personalForm: FormGroup;
   default = 'assets/Imagenes/placeHolderImage.jpg';
   url: string = this.default;
@@ -30,7 +30,7 @@ export class PersonalComponent implements OnInit {
     public toastr: ToastrService
   ) {
     this.personalForm = this.fb.group({
-      firstName: [''],
+      name: [''],
       lastName: [''],
       email: [''],
       phone: [''],
@@ -55,15 +55,15 @@ export class PersonalComponent implements OnInit {
     this.userService.getUser(this.userData.userId).subscribe({
       next: (data) => {
         this.personalForm.patchValue({
-          firstName: data.name,
+          name: data.name,
           lastName: data.lastName,
           email: data.email,
           phone: data.phone,
           bornDate: data.bornDate,
           pictureLink: data.pictureLink
         })
+        this.url = data.pictureLink;
         this.user = data;
-        console.log("User", this.user) // TODO: borrar
       },
       error: (err) => {
         console.log(err);
@@ -88,71 +88,23 @@ export class PersonalComponent implements OnInit {
     }
   }
 
+  updateUser(){
 
-  updateUser(personalForm: FormGroup) {
-    //* Se envia la imagen a GoogleDrive
-    if (this.url != this.default && this.url != this.user.pictureLink) {
-      //* La imagen cambio
-      this.userService.uploadImage(this.imagen).subscribe({
-        next: (data) => {
-          this.user.pictureLink = ("https://drive.google.com/uc?export=view&id=" + data)
+    const userUpdate: User = {
 
-          //* Se toma los datos del formulario para la actualizacion
-          this.user.nick = ' ';
-          this.user.name = personalForm.get('firstName')?.value;
-          this.user.lastName = personalForm.get('lastName')?.value;
-          this.user.phone = personalForm.get('phone')?.value;
-          this.user.bornDate = personalForm.get('bornDate')?.value;
+      name: this.personalForm.get('name')?.value,
+      lastName: this.personalForm.get('lastName')?.value,
+      email: this.personalForm.get('email')?.value,
+      phone: this.personalForm.get('phone')?.value,
+      bornDate: this.personalForm.get('bornDate')?.value,
+      pictureLink: this.personalForm.get('pictureLink')?.value,
 
-          //* Se verifica si el correo fue cambiado o no
-          if (personalForm.get('email')?.value === this.user.email) {
-            this.user.email = ' ';
-          } else { this.user.email = personalForm.get('email')?.value; }
-
-          //* Se actualiza el usuario
-          this.userService.updateUser(this.userData.userId, this.user).subscribe({
-            next: (data) => { console.log(data) },
-            error: (err) => {
-              console.log(err);
-              this.mensajeError = err;
-            },
-            complete: () => {
-              console.log("Done")
-            }
-          })
-        },
-        error: (err) => {
-          this.mensajeError = err;
-        },
-        complete: () => {
-          this.toastr.success('Datos de usuario actualizados', 'DATOS PERSONALES');
-        }
-      })
-    } else {
-      //* La imagen no cambio
-      //* Se toma los datos del formulario para la actualizacion
-      this.user.nick = ' ';
-      this.user.name = personalForm.get('firstName')?.value;
-      this.user.lastName = personalForm.get('lastName')?.value;
-      this.user.phone = personalForm.get('phone')?.value;
-      this.user.bornDate = personalForm.get('bornDate')?.value;
-
-      //* Se verifica si el correo fue cambiado o no
-      if (personalForm.get('email')?.value === this.user.email) {
-        this.user.email = ' ';
-      } else { this.user.email = personalForm.get('email')?.value; }
-
-      //* Se actualiza el usuario
-      this.userService.updateUser(this.userData.userId, this.user).subscribe({
-        next: (data) => { console.log(data) },
-        error: (err) => {
-          console.log(err);
-          this.mensajeError = err;
-        },
-        complete: () => {
-          this.toastr.success('Datos de usuario actualizados', 'DATOS PERSONALES');
-        }
-      })
     }
+
+    this.userService.updateUser(this.userData.userId, userUpdate).subscribe((data)=>{
+      console.log(data);
+    })
   }
+
+  
 }

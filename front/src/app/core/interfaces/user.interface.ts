@@ -1,4 +1,4 @@
-export interface userInterface {
+export interface User {
   id?:number;
   rolesId? : number; 
   name: string;
@@ -6,7 +6,7 @@ export interface userInterface {
   phone?: string;
   email?: string;
   nick?: string;
-  password: string;
+  password?: string;
   bornDate?: Date;
-  pictureLink?: string;
+  pictureLink: string;
 }
