@@ -6,6 +6,8 @@ import { SearchCoursesComponent } from './components/search-courses/search-cours
 import { RouterModule } from '@angular/router';
 import { CardComponent } from './components/card/card.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SearchNavComponent } from './components/search-nav/search-nav.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,17 +17,20 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FooterComponent,
     NavbarComponent,
     SearchCoursesComponent,
-    CardComponent
+    CardComponent,
+    SearchNavComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
   ],
-  exports:[
+  exports: [
     FooterComponent,
     NavbarComponent,
     SearchCoursesComponent,
+    SearchNavComponent,
   ]
 })
 export class SharedModule { }
