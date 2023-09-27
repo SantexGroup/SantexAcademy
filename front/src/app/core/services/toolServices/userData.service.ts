@@ -24,6 +24,8 @@ export class UserDataService {
 
   newUser:boolean = false;
 
+  levels: number[] = Array.from({ length: 10 }, (_, index) => index + 1);
+
   /* profileId que se escribe desde el servicio de login */
   profileId:number = 0; 
   /* userId que se escribe desde el servicio de login */

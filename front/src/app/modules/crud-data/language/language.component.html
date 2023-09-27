@@ -9,7 +9,11 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-label for="position">Nivel:</mat-label>
-                <input matInput formControlName="level" type="number">
+                <mat-select formControlName="level" name="countries">
+                    <mat-option *ngFor="let level of userData.levels" [value]="level">
+                        {{level}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
             <div class="botonera">
                 <div class="botones">
