@@ -59,15 +59,15 @@ const createCode = async (email) => {
     
             .container {
                 padding: 20px;
-                background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente para mejorar la legibilidad */
+                background-color: rgba(255, 255, 255, 0.8);
                 border-radius: 10px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-                margin: 50px auto; /* Centrar verticalmente en la pantalla */
-                max-width: 600px; /* Limitar el ancho del contenido */
+                margin: 50px auto;
+                max-width: 600px;
             }
     
             h1 {
-                color: #333; /* Cambia el color del título según tu preferencia */
+                color: #333;
             }
     
             h4 {
@@ -75,7 +75,7 @@ const createCode = async (email) => {
             }
     
             .boton {
-                background-color: #007BFF; /* Cambia el color del botón según tu preferencia */
+                background-color: #007BFF;
                 color: #fff;
                 padding: 10px 20px;
                 text-decoration: none;
@@ -83,7 +83,7 @@ const createCode = async (email) => {
             }
     
             .boton:hover {
-                background-color: #0056b3; /* Cambia el color al pasar el mouse por encima */
+                background-color: #0056b3;
             }
             b {
               color: white;
