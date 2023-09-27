@@ -1,16 +1,15 @@
 /* Estilos generales */
-/* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-} */
-
-/* Contenedor principal */
+}
 
 /* Tarjeta */
 .curso-card {
-  /* width: calc(33.33% - 20px); */
-  margin: 0 0 20px 0;
+  width: 350px; /* Ancho fijo deseado para todas las tarjetas */
+  height: 450px; /* Alto fijo deseado para todas las tarjetas */
+  margin: 0 20px 20px 0;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -24,7 +23,7 @@
 /* Imagen de la tarjeta */
 .curso-card figure {
   width: 100%;
-  height: 200px;
+  height: 200%; /* Alto deseado para la imagen */
   border-radius: 10px;
   overflow: hidden;
 }
@@ -61,9 +60,9 @@
 .curso-card .contenido-card .duracion,
 .curso-card .contenido-card .fechafin,
 .curso-card .contenido-card .requisitos {
-  font-size: 14px;
+  font-size: 10px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   color: #444;
 }
 
@@ -71,7 +70,7 @@
 .curso-card .contenido-card a {
   display: inline-block;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 5px;
   text-decoration: none;
   color: #2fb4cc;
   border: 1px solid #2fb4cc;
@@ -95,12 +94,46 @@
 /* Estilos responsivos */
 @media (max-width: 992px) {
   .curso-card {
-    /* width: calc(45% - 20px); */
+    width: calc(50% - 20px); /* Cambiar el ancho para dispositivos más pequeños */
+  }
+}
+/* Estilos del botón */
+/* Estilos del botón */
+button {
+  padding: 10px 20px; /* Ajusta el padding según tus preferencias */
+  background-color: #fff; /* Color de fondo al pasar el mouse */
+  color: #2fb4cc; /* Color de texto al pasar el mouse */
+  border: 2px solid #2fb4cc; /* Borde de color celeste */
+  border-radius: 4px; /* Borde redondeado */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  transition: background-color 0.4s, color 0.4s, border-color 0.4s; /* Transición de colores */
+}
+
+/* Estilos hover del botón */
+button:hover {
+  background-color: #2fb4cc; /* Color de fondo del botón */
+  color: #fff; /* Color del texto del botón */
+  border-color: #2fb4cc; /* Color del borde al pasar el mouse */
+}
+/* Estilos responsivos */
+@media (max-width: 992px) {
+  .curso-card {
+    width: calc(50% - 20px); /* Ancho de cada tarjeta para pantallas medianas */
+  }
+
+  /* Ajustar el tamaño del botón para pantallas medianas */
+  .curso-card .contenido-card button {
+    padding: 8px 16px;
   }
 }
 
 @media (max-width: 768px) {
   .curso-card {
-    width: calc(100% - 20px);
+    width: calc(100% - 20px); /* Ancho de cada tarjeta para pantallas pequeñas */
+  }
+
+  /* Ajustar el tamaño del botón para pantallas pequeñas */
+  .curso-card .contenido-card button {
+    padding: 6px 12px;
   }
 }

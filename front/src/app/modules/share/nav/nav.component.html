@@ -8,44 +8,41 @@
     <link rel="stylesheet" href="nav.component.css">
 </head>
 <body>
-  <header class="header">
-    <div class="logo">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <div class="logo">
         <img src="./assets/images/nuevologo.png" alt="Nuevologo" routerLink="/dashboard">
-    </div>
-    <button *ngIf="isSmallScreen" class="menu-button" (click)="toggleMenu()" [class.open]="isMenuOpen">
-      ☰
-    </button>
-
-
-
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">>
-        <ul [class.active]="isMenuOpen" class="nav-links">
-          <li [class.selected]="activeRoute.includes('/catalogo-cursos')">
-            <a routerLink="/catalogo-cursos" class="nav-link">Nuestros cursos</a>
-          </li>
-          <li [class.selected]="activeRoute.includes('/quienes-somos')">
-            <a routerLink="/quienes-somos" class="nav-link">¿Quiénes somos?</a>
-          </li>
-          <li [class.selected]="activeRoute.includes('/admin')">
-            <a routerLink="/admin" class="nav-link">Administrador</a>
-          </li>
-          <li [class.selected]="activeRoute.includes('/login')">
-            <a *ngIf="!isLoggedIn" class="nav-link" routerLink="/login" class="nav-link">Ingresar</a>
-          </li>
-        
-          <li *ngIf="isLoggedIn" class="nav-item dropdown-center">
-              <a *ngIf="isLoggedIn" class="nav-link-profile dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="./assets/images/no-perfil.jpg" alt="Foto de perfil" class="profile-image">
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                <li><a *ngIf="isLoggedIn" routerLink="/perfil-alumno" class="nav-link">Mi perfil</a></li>
-                <li><a *ngIf="isLoggedIn" class="nav-link"  routerLink="/login" (click)="logout()">Cerrar sesión</a></li>
-              </ul>
-            </li>
-        </ul>
       </div>
-    </nav>
-  </header>
+      <button *ngIf="isSmallScreen" class="menu-button" (click)="toggleMenu()" [class.open]="isMenuOpen">
+        ☰
+      </button>
+
+      <ul [class.active]="isMenuOpen" class="nav-links">
+        <li [class.selected]="activeRoute.includes('/catalogo-cursos')">
+
+          <a routerLink="/catalogo-cursos" class="nav-link">Nuestros cursos</a>
+        </li>
+        <li [class.selected]="activeRoute.includes('/quienes-somos')">
+          <a routerLink="/quienes-somos" class="nav-link">¿Quiénes somos?</a>
+        </li>
+        <li [class.selected]="activeRoute.includes('/admin')">
+          <a routerLink="/admin" class="nav-link">Administrador</a>
+        </li>
+        <li [class.selected]="activeRoute.includes('/login')">
+          <a *ngIf="!isLoggedIn" class="nav-link" routerLink="/login" class="nav-link">Ingresar</a>
+        </li>
+        <li *ngIf="isLoggedIn" class="nav-item dropdown-center">
+          <a *ngIf="isLoggedIn" class="nav-link-profile dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="./assets/images/no-perfil.jpg" alt="Foto de perfil" class="profile-image">
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+            <li><a *ngIf="isLoggedIn" routerLink="/perfil-alumno" class="nav-link">Mi perfil</a></li>
+            <li><a *ngIf="isLoggedIn" class="nav-link"  routerLink="/login" (click)="logout()">Cerrar sesión</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </body>
 </html>
+
