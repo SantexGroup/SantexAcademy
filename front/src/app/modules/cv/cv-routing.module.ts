@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { CVComponent } from './cv.component';
 import { ProfilesFourComponent } from '../profiles-four/profiles-four.component';
+import { ProfileOneComponent } from '../profile-one/profile-one.component';
+import { ProfileTwoComponent } from '../profile-two/profile-two.component';
 
 const routes: Routes = [
     {
@@ -12,6 +14,14 @@ const routes: Routes = [
     {
         path: 'fout',
         component: ProfilesFourComponent
+    },
+    {
+      path: 'one',
+      component: ProfileOneComponent
+    },
+    {
+      path: 'two',
+      component: ProfileTwoComponent
     }
 ]
 

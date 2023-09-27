@@ -34,6 +34,8 @@ import { ProfilesComponent } from './modules/profiles/profiles.component';
 import { LoadingModule } from './modules/loading/loading.module';
 import { ToastrModule } from 'ngx-toastr';
 import { ProfilesFourComponent } from './modules/profiles-four/profiles-four.component';
+import { ProfileOneComponent } from './modules/profile-one/profile-one.component';
+import { ProfileTwoComponent } from './modules/profile-two/profile-two.component';
 
 
 @NgModule({
@@ -50,7 +52,9 @@ import { ProfilesFourComponent } from './modules/profiles-four/profiles-four.com
     CVComponent,
     ReferencesComponent,
     ProfilesComponent,
-    ProfilesFourComponent
+    ProfilesFourComponent,
+    ProfileOneComponent,
+    ProfileTwoComponent
   ],
   imports: [
     BrowserModule,

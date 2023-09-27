@@ -14,6 +14,8 @@ import { ProfilesComponent } from '../profiles/profiles.component';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
 import { ProfilesFourComponent } from '../profiles-four/profiles-four.component';
 import { AbandonGuard } from 'src/app/core/guards/abandon.guard';
+import { ProfileOneComponent } from '../profile-one/profile-one.component';
+import { ProfileTwoComponent } from '../profile-two/profile-two.component';
 
 
 
@@ -36,6 +38,14 @@ const routes: Routes = [
       {
         path: 'four',
         component: ProfilesFourComponent
+      },
+      {
+        path: 'one',
+        component: ProfileOneComponent
+      },
+      {
+        path: 'two',
+        component: ProfileTwoComponent
       }
     ]
   },

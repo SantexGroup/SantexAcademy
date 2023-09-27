@@ -1,0 +1,50 @@
+<body>
+    <div class="conteiner">
+        <div class="izquierdo">
+            <div class="conteiner-img">
+                <div class="foto">
+                    <img src="../../../assets/Imagenes/foto_cv_lc_es_11.jpg" alt="">
+                </div>
+                
+            </div>
+            <div class="card-item">
+                <div class="titulo-card">
+                    <h3>· EDUCACIÓN</h3>
+                </div>
+                <div class="contenido-card">
+                    <ul>
+                        <li *ngFor="let formation of userData.formations">
+                             <h4>{{formation.institute}}</h4>
+                             <h5>{{formation.title}} - ({{formation.endDate}})</h5>   
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-item">
+                <div class="titulo-card">
+                    <h3>· CURSOS / EXTRAS</h3>
+                </div>
+                <div class="contenido-card">
+                    <ul>
+                        <li *ngFor="let language of userData.languages">
+                            <h4>IDIOMA: {{language.language}}</h4>
+                            <h5>Nivel: {{language.level}}</h5>
+                        </li>
+                        <li *ngFor="let skill of userData.skills">
+                            <h4>{{skill.skill}} - - Nivel: {{skill.level}}</h4>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="derecho">
+            <div class="nombre">
+                <h1>{{userData.userName}}<br>{{userData.lastName}}</h1>
+                <input type="color" name="" id="">                
+            </div>
+            <div>
+                 <!-- <h5>{{this.userData.optionals[0].aboutMe}}</h5> -->
+            </div>
+        </div>        
+    </div>
+</body>
