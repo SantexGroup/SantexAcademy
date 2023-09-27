@@ -1,5 +1,7 @@
-<body>
-    <div class="conteiner">
+<div class="todo">
+    <button mat-raised-button color="primary" (click)="downloadPDF()" >Download PDF</button>
+    <button mat-raised-button color="primary"(click)="downloadPDF">Compartir QR</button>
+    <div class="conteiner" id="profile-two">
         <div class="izquierdo">
             <div class="conteiner-img">
                 <div class="foto">
@@ -36,15 +38,39 @@
                     </ul>
                 </div>
             </div>
+            <div class="card-item">
+                <div class="titulo-card">
+                    <h3>Datos personales</h3>
+                </div>
+                <div class="datos">
+                    <h5 class="footer"><mat-icon>phone</mat-icon> - 351-3554850</h5><br>
+                    <h5 class="footer"><mat-icon>email</mat-icon> - marianoS@gmail.com</h5><br>
+                    <h5 class="footer"><mat-icon>home</mat-icon> - Av colon 1221</h5>
+                </div>
+            </div>
         </div>
         <div class="derecho">
             <div class="nombre">
                 <h1>{{userData.userName}}<br>{{userData.lastName}}</h1>
-                <input type="color" name="" id="">                
+                                
             </div>
-            <div>
-                 <!-- <h5>{{this.userData.optionals[0].aboutMe}}</h5> -->
+            <div class="contenido-card">
+                <h5 style="height: 15em;">Soy un profesional apasionado y altamente motivado con una sólida formación en [tu campo de estudio o profesión]. A lo largo de mi carrera, he adquirido una valiosa experiencia en [mencionar áreas relevantes], lo que me ha permitido desarrollar habilidades excepcionales en [lista de habilidades clave relacionadas con tu campo].</h5>
             </div>
-        </div>        
+            <div class="card-item">
+                <div class="titulo-card">
+                    <h3>· EXPERIENCIAS LABORALES</h3>
+                </div>
+                    <div class="contenido-card">
+                        <ul>
+                            <li *ngFor="let experience of userData.experiences">                                
+                                <h4>{{experience.position}}</h4>
+                                <h5>{{experience.company}} | ({{experience.startDate}} - {{experience.endDate}})</h5>
+                                <h5>{{experience.description}}</h5>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+        </div>                
     </div>
-</body>
+</div>

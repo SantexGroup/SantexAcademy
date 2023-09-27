@@ -4,6 +4,8 @@ import { Profile } from 'src/app/core/interfaces/profile.interface';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import *as QRCode  from 'qrcode-generator';
+
 
 
 @Component({
@@ -14,11 +16,13 @@ import html2canvas from 'html2canvas';
 export class ProfileTwoComponent implements OnInit {
   listProfile: Profile[] = [];
   profileData: any; // Variable para almacenar los datos proporcionados
+  imageDataUrl: string = '';
 
   constructor(
     public userData: UserDataService,
     public views: NavBarService,    
   ) { }
+  
 
   ngOnInit(): void {
     this.userData.getMyOptionals();
@@ -31,10 +35,9 @@ export class ProfileTwoComponent implements OnInit {
 
   async downloadPDF() {
     // Selecciona el elemento con el ID 'profile-1' y captura su contenido
-    const profileContainer: HTMLElement | null = document.getElementById('profile-1');
+    const profileContainer: HTMLElement | null = document.getElementById('profile-two');
     
-    if (!profileContainer) {
-      console.error('No se encontró el elemento con el ID "profile-1".');
+    if (!profileContainer) {      
       return;
     }
 
@@ -60,5 +63,7 @@ export class ProfileTwoComponent implements OnInit {
       console.error('Error al generar el PDF:', error);
     }
   }
+
+ 
 
 }

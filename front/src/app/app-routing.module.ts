@@ -12,6 +12,11 @@ import { ProfilesFourComponent } from './modules/profiles-four/profiles-four.com
 import { AbandonGuard } from './core/guards/abandon.guard';
 import { ProfileOneComponent } from './modules/profile-one/profile-one.component';
 import { ProfileTwoComponent } from './modules/profile-two/profile-two.component';
+import { HomeComponent } from './modules/home/home.component';
+import { FormationsComponent } from './modules/crud-data/formations/formations.component';
+import { LanguageComponent } from './modules/crud-data/language/language.component';
+import { OptionalsComponent } from './modules/crud-data/optionals/optionals.component';
+
 
 const routes: Routes = [
   {
@@ -34,6 +39,14 @@ const routes: Routes = [
           {
             path: 'four',
             component: ProfilesFourComponent
+          },
+          {
+            path: 'one',
+            component: ProfileOneComponent
+          },
+          {
+            path: 'two',
+            component: ProfileTwoComponent
           }
         ]
       },
