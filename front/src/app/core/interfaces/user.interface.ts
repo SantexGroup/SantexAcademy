@@ -3,10 +3,10 @@ export interface User {
   rolesId? : number; 
   name: string;
   lastName: string;
-  phone?: string;
-  email?: string;
+  phone: string;
+  email: string;
   nick?: string;
   password?: string;
   bornDate?: Date;
-  pictureLink: string;
+  pictureLink?: string | null;
 }

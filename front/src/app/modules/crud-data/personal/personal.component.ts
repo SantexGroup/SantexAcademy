@@ -45,9 +45,9 @@ export class PersonalComponent implements OnInit {
     this.userData.checkForm = false;
 
     this.views.changeTitle("Datos Personales");
-    
+
     this.getUser()
-    
+
   }
 
   // * Forumulario de datos personales
@@ -62,8 +62,9 @@ export class PersonalComponent implements OnInit {
           bornDate: data.bornDate,
           pictureLink: data.pictureLink
         })
-        this.url = data.pictureLink;
+        this.url = data.pictureLink || this.default
         this.user = data;
+        console.log("User", this.user) // TODO: borrar
       },
       error: (err) => {
         console.log(err);
@@ -88,23 +89,30 @@ export class PersonalComponent implements OnInit {
     }
   }
 
-  updateUser(){
 
+  dataUserUpdate() {
+    if (this.imagen) {
+      this.userService.uploadImage(this.imagen).subscribe((data) => {
+        this.url = data;
+        this.userData.urlPicture = this.url;
+        this.userUpdate();
+      })
+    } else {
+      this.userUpdate()
+    }
+  }
+
+  userUpdate() {
     const userUpdate: User = {
-
       name: this.personalForm.get('name')?.value,
       lastName: this.personalForm.get('lastName')?.value,
       email: this.personalForm.get('email')?.value,
       phone: this.personalForm.get('phone')?.value,
       bornDate: this.personalForm.get('bornDate')?.value,
-      pictureLink: this.personalForm.get('pictureLink')?.value,
-
+      pictureLink: this.url || null
     }
-
-    this.userService.updateUser(this.userData.userId, userUpdate).subscribe((data)=>{
-      console.log(data);
+    this.userService.updateUser(this.userData.userId, userUpdate).subscribe(() => {
+      this.getUser()
     })
   }
-
-  
 }
