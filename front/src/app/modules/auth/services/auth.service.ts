@@ -56,4 +56,16 @@ export class AuthService {
     const token = this.getAuthToken();
     return !!token;
   }
+
+  setUserType(value: string) {
+    localStorage.setItem('userType', value);
+  }
+
+  getUserType(): string {
+    return localStorage.getItem('userType') || ''; // Devuelve el valor recuperado o una cadena vacía si es falsy
+  }
+
+  clearUserType() {
+    localStorage.removeItem('userType');
+  }
 }

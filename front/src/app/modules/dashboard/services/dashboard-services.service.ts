@@ -37,4 +37,15 @@ export class DashboardServicesService {
     const options = { headers: headers };
     return this.http.delete(url, options);
   }
+
+  getProfileOrganization(token: string): Observable<any> {
+    const url = `${this.apiUrl}/org/me/profile`;
+    const headers = new HttpHeaders({
+      'x-access-token': token,
+    });
+    const options = { headers: headers };
+    return this.http.get(url, options);
+  }
+
+
 }

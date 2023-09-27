@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { UsersService } from 'src/app/services/users.service';
+import { OrgServicesService } from '../../../services/org-services.service';
 
 @Component({
   selector: 'app-navbar',
@@ -18,7 +19,8 @@ export class NavbarComponent {
 
   constructor(
     private authService: AuthService,
-    private usersServices: UsersService
+    private usersServices: UsersService,
+    private orgServices : OrgServicesService,
   ) {
     const isOpenValue = localStorage.getItem('isOpen');
     if (isOpenValue !== null) {
@@ -50,8 +52,9 @@ export class NavbarComponent {
 
   ngOnInit() {
     const token = this.authService.getAuthToken();
+    const userType: string | undefined = this.authService.getUserType();
 
-    if (token != '') {
+    if (userType === "vol") {
       this.usersServices.getProfileVolunteer(token).subscribe({
         next: (res) => {
           this.dataUser = res;
@@ -61,6 +64,18 @@ export class NavbarComponent {
           console.log(err);
         },
         complete: () => {},
+      });
+    } else if (userType === "org"){
+      this.orgServices.getProfileOrganization(token).subscribe({
+        next: (res) => {
+          this.dataUser = res;
+          this.isToken = true;
+          
+        },
+        error: (err) => {
+          console.log(err);
+        },
+        complete: () => { },
       });
     }
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tabs',
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./tabs.component.css']
 })
 export class TabsComponent {
+  @Input() dataTabs: any = {};
   tabActiva = 0;
   image: string = 'https://res.cloudinary.com/carina-bosio/image/upload/v1695591464/xAcademy/Asociaci%C3%B3n_Civil_Manos_Abiertas-removebg-preview_2_ltnrr4.png';
   name: string = "Fundación Manos Abiertas";
