@@ -1,5 +1,6 @@
 const productscontroller = {};
 const { Products, Categories } = require("../models"); //--> nombre con el que se creo el modelo en primer lugar
+const { Op } = require("sequelize");
 
 /**
  * @method POST
@@ -112,5 +113,28 @@ productscontroller.delete = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+/**
+ * @method GET
+ * @name GetByName
+ * @body {}
+ * @param {name}
+ * @description metodo para obtener un producto donde el nombre contiene una palabra pasada por parametro
+ */
+  productscontroller.GetByName = async (req, res) => {
+    try {
+      const producto = await Products.findAll({
+        where: {
+          name: {
+            [Op.like]: `%${req.params.name}%`,
+          },
+        },
+      });
+      res.status(201).json(producto);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+
 
 module.exports = productscontroller;

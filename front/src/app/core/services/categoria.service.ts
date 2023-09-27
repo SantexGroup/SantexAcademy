@@ -17,8 +17,8 @@ export class CategoriaService {
    }
 
    //traer los productos de una categoria
-   public getProductsByCategory(id:string): Observable<any> {
-    return this._http.get(this.Url+id);
+   public getProductsByCategory(id:any): Observable<any> {
+    return this._http.post(this.Url+"getByids",id);
    }
 
    //guardar una categoria nueva

@@ -10,4 +10,5 @@ router.get("/",controller.getAll);
 router.get("/:id",controller.getByID);
 router.put("/:id",controller.editByID);
 router.delete("/:id",controller.delete);
+router.get('/byname/:name', controller.GetByName);
 module.exports = router;
