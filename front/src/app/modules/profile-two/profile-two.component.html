@@ -1,9 +1,12 @@
 <div class="todo">
+    <div class="botonera">
     <button mat-raised-button color="primary" (click)="downloadPDF()" >Download PDF</button>
-    <button mat-raised-button color="primary"(click)="downloadPDF">Compartir QR</button>
+    <input type="color" [(ngModel)]="selectedColor">
+    <button mat-raised-button color="primary" (click)="applyColors()">Aplicar Color</button>    
+    </div>    
     <div class="conteiner" id="profile-two">
-        <div class="izquierdo">
-            <div class="conteiner-img">
+        <div class="izquierdo" >
+            <div class="conteiner-img" [ngStyle]="{ 'background-color': selectedColor }">
                 <div class="foto">
                     <img src="../../../assets/Imagenes/foto_cv_lc_es_11.jpg" alt="">
                 </div>
@@ -11,7 +14,7 @@
             </div>
             <div class="card-item">
                 <div class="titulo-card">
-                    <h3>· EDUCACIÓN</h3>
+                    <h3 [ngStyle]="{ 'color': selectedColor }">· EDUCACIÓN</h3>
                 </div>
                 <div class="contenido-card">
                     <ul>
@@ -24,7 +27,7 @@
             </div>
             <div class="card-item">
                 <div class="titulo-card">
-                    <h3>· CURSOS / EXTRAS</h3>
+                    <h3 [ngStyle]="{ 'color': selectedColor }">· CURSOS / EXTRAS</h3>
                 </div>
                 <div class="contenido-card">
                     <ul>
@@ -40,7 +43,7 @@
             </div>
             <div class="card-item">
                 <div class="titulo-card">
-                    <h3>Datos personales</h3>
+                    <h3 [ngStyle]="{ 'color': selectedColor }">Datos personales</h3>
                 </div>
                 <div class="datos">
                     <h5 class="footer"><mat-icon>phone</mat-icon> - 351-3554850</h5><br>
@@ -51,7 +54,7 @@
         </div>
         <div class="derecho">
             <div class="nombre">
-                <h1>{{userData.userName}}<br>{{userData.lastName}}</h1>
+                <h1 [ngStyle]="{ 'border-bottom-color': selectedColor }">{{userData.userName}}<br>{{userData.lastName}}</h1>
                                 
             </div>
             <div class="contenido-card">
@@ -59,7 +62,7 @@
             </div>
             <div class="card-item">
                 <div class="titulo-card">
-                    <h3>· EXPERIENCIAS LABORALES</h3>
+                    <h3 [ngStyle]="{ 'color': selectedColor }">· EXPERIENCIAS LABORALES</h3>
                 </div>
                     <div class="contenido-card">
                         <ul>
