@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const { validationResult } = require('express-validator');
 const { AboutUSService } = require('../services');
 
@@ -19,11 +20,11 @@ const createAboutUS = async (req, res) => {
     });
   }
   const {
-    title, subtitle, image, description, priority,
+    title, subtitle, image, description, priority, active,
   } = req.body;
   try {
     const newAboutUS = await AboutUSService.createAboutUS({
-      title, subtitle, image, description, priority,
+      title, subtitle, image, description, priority, active,
     });
     res.status(201).json(newAboutUS);
   } catch (error) {
@@ -52,11 +53,11 @@ const updateAboutUS = async (req, res) => {
   }
   const { aboutUSId } = req.params;
   const {
-    title, subtitle, image, description, priority,
+    title, subtitle, image, description, priority, active,
   } = req.body;
   try {
     const newAboutUS = await AboutUSService.updateAboutUS(aboutUSId, {
-      title, subtitle, image, description, priority,
+      title, subtitle, image, description, priority, active,
     });
     res.status(200).json(newAboutUS);
   } catch (error) {

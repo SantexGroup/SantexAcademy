@@ -12,6 +12,7 @@ router.post(
   body('image').isString(),
   body('description').isString(),
   body('priority').isInt(),
+  body('active').isBoolean(),
   AboutUSController.createAboutUS,
 );
 router.put(
@@ -21,6 +22,7 @@ router.put(
   body('image').isString(),
   body('description').isString(),
   body('priority').isInt(),
+  body('active').isBoolean(),
   AboutUSController.updateAboutUS,
 );
 router.delete('/:aboutUSId', AboutUSController.deleteAboutUS);
