@@ -21,8 +21,11 @@ import { VistaProveedoresComponent } from './vista-proveedores/vista-proveedores
 import { MatChipsModule } from '@angular/material/chips';
 import { SearchProductComponent } from './search-product/search-product.component';
 import { ProductCardComponent } from './search-product/product-card/product-card.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
+
+
   declarations: [
     DashboardPageComponent,
     FormAddProductComponent,
@@ -35,7 +38,9 @@ import { ProductCardComponent } from './search-product/product-card/product-card
     SearchProductComponent,
     ProductCardComponent,
     VistaProveedoresComponent,
+    FooterComponent,
   ],
+
 
   imports: [
     CommonModule,
