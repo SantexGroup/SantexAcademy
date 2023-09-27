@@ -63,6 +63,8 @@ export class OptionalsComponent implements OnInit {
 
     this.userData.getMyOptionals();
 
+    console.log(this.userData.optionals)
+
     this.views.changeTitle("Opcionales");
     
     this.views.plusOne = true;
@@ -119,6 +121,8 @@ export class OptionalsComponent implements OnInit {
 
     this._optionalsService.addOptionals(newOptionals).subscribe((optional) => {
       this.userData.optionals.push(optional);
+      console.log(optional);
+      console.log(this.userData.optionals);
       this.toastr.success('Se agregaron nuevos opcionales', 'OPCIONALES');
     });
 
