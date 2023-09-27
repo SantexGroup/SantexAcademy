@@ -13,6 +13,9 @@ const updateUser = async (id, user) => UserProvider.updateUser(id, user);
 const patchUser = async (id, newPassword) => UserProvider.patchUser(id, newPassword);
 
 const deleteUser = async (id) => UserProvider.deleteUser(id);
+
+const inscription = async (idCourse, idUser) => UserProvider.inscription(idCourse, idUser);
+
 module.exports = {
-  getUserById, getUsers, createUser, updateUser, deleteUser, patchUser, getUserByEmail,
+  getUserById, getUsers, createUser, updateUser, deleteUser, patchUser, getUserByEmail, inscription,
 };

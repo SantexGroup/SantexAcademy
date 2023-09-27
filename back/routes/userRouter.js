@@ -16,6 +16,12 @@ router.post(
   body('password').isString(),
   UserController.createUser,
 );
+router.post(
+  '/inscription',
+  body('idCourse').isInt(),
+  body('idUser').isInt(),
+  UserController.inscription,
+);
 router.put(
   '/:userId',
   body('firstName').isString(),

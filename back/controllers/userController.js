@@ -110,8 +110,24 @@ const deleteUser = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+const inscription = async (req, res) => {
+  const { idCourse, idUser } = req.body;
+  try {
+    const inscriptionSelect = await UserService.inscription(idCourse, idUser);
+    return res.status(200).json(inscriptionSelect);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 
 // exports
 module.exports = {
-  createUser, getUserById, getUsers, updateUser, deleteUser, updatePassword, getUserByEmail,
+  createUser,
+  getUserById,
+  getUsers,
+  updateUser,
+  deleteUser,
+  updatePassword,
+  getUserByEmail,
+  inscription,
 };
