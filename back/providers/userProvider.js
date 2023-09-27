@@ -47,10 +47,14 @@ const userValidate = async (data) => {
   }
 };
 
-const find = async () => {
+const find = async (filterParams) => {
   try {
-    const userFound = await db.User.findAll({paranoid: false});//se muestran incluso los eliminados
-    return userFound;
+    let options = {
+      where: {},
+      paranoid: false // se muestran incluso los eliminados
+    };
+    if (filterParams.role) options.where.role = filterParams.role;
+    return await db.User.findAll(options);
   } catch (error) {
     console.error('I can not find the user. Error: ', error);
     throw error;

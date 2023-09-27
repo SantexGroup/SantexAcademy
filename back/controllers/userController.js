@@ -37,7 +37,8 @@ const logIn = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
   try {
-    const searchUser = await userService.findUsers();
+    const { role } = req.query;
+    const searchUser = await userService.findUsers({ role });
     if (searchUser) {
       res.json(searchUser);
     } else {
