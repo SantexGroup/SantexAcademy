@@ -224,7 +224,7 @@
                       class="w-full h-full object-cover rounded-full"
                     />
                   </figure>
-                  <h4>¡Hola, {{ dataUser.fullName }}!</h4>
+                  <h4>¡Hola, {{ dataUser.cuit ? dataUser.name : dataUser.fullName }}!</h4>
                 </li>
                 <li
                   (click)="handleMenu()"

@@ -18,7 +18,7 @@ import { HeaderComponent } from './components/dashboardVolunteer/header/header.c
 import { DataVolunteerComponent } from './components/dashboardVolunteer/data-volunteer/data-volunteer.component';
 import { VolunteerHistoryComponent } from './components/dashboardVolunteer/volunteer-history/volunteer-history.component';
 
-import { HeaderDashboardOrgComponent } from './components/dashboardOrganization/headerOrg/header/header-dashboard-org/header-dashboard-org.component';
+import { HeaderDashboardOrgComponent } from './components/dashboardOrganization/header-dashboard-org/header-dashboard-org.component';
 import { VolunteersTableComponent } from './components/dashboardOrganization/volunteers-table/volunteers-table.component';
 import { TabsComponent } from './components/dashboardOrganization/tabs/tabs.component';
 
@@ -39,7 +39,7 @@ import { ModalStatusComponent } from './components/modal-status/modal-status.com
     HeaderDashboardOrgComponent,
     VolunteersTableComponent,
     TabsComponent,
-    
+
 
     ModalQuestionComponent,
     ModalStatusComponent,
