@@ -1,9 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { AuthResponse, Usuario } from '../interfaces/interfaces';
+import { Router } from '@angular/router';
 import { Observable, catchError, map, of, tap } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
+
+import { AuthResponse, Usuario } from '../interfaces/interfaces';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +23,10 @@ export class AuthService {
     return { ...this._user };
   }
 
-  constructor(private http: HttpClient, private toastr: ToastrService) { }
+  constructor(private http: HttpClient, 
+              private toastr: ToastrService, 
+              private router: Router,
+            ) { }
 
   register(
     nombre: string,
@@ -103,8 +109,25 @@ export class AuthService {
 
   logout(){
     // localStorage.removeItem('token');
-    localStorage.clear();
-   
-  }
+      Swal.fire({
+        title: '¿Desea cerrar la sesión?',
+        text: 'Seleccione una opción:',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Reiniciar Sesión',
+        cancelButtonText: 'Salir'
 
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Si elige reiniciar sesion, borra datos almacenados y redirige a login
+          localStorage.clear(); // Elimina todos los datos del localStorage
+          this.router.navigateByUrl('/login'); // Redirige al usuario a la página de inicio de sesión
+        } else {
+          // Si elige salir, borra datos almacenados y redirige a pagina de principal
+          localStorage.clear();
+          this.router.navigateByUrl('/dashboard'); // Redirige al usuario al dashboard
+        }
+      });
+  }
+   
 }
