@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     active: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
     title: { type: DataTypes.STRING, allowNull: false },
     subtitle: { type: DataTypes.STRING, allowNull: true },
-    image: { type: DataTypes.STRING, allowNull: true },
+    image: { type: DataTypes.TEXT, allowNull: true },
     description: { type: DataTypes.STRING, allowNull: false },
     priority: { type: DataTypes.TINYINT, allowNull: true },
   }, {
