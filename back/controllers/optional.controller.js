@@ -59,10 +59,42 @@ async function getOptionalById(req, res, next) {
  * lo que permite que el control pase al siguiente middleware que maneja los errores.
  */
 async function createOptional(req, res, next) {
-  const optionalData = req.body;
+  const {
+    maritalId,
+    sexsId,
+    countriesId,
+    profile,
+    webPage,
+    linkedIn,
+    hobbies,
+    aptitudes,
+    driverLicense,
+    aboutMe,
+    achievements,
+    address,
+    zipCode,
+    deletedAt,
+    profileId,
+  } = req.body;
 
   try {
-    const optional = await optionalService.saveNewOptionalData(optionalData);
+    const optional = await optionalService.saveNewOptionalData(
+      maritalId,
+      sexsId,
+      countriesId,
+      profile,
+      webPage,
+      linkedIn,
+      hobbies,
+      aptitudes,
+      driverLicense,
+      aboutMe,
+      achievements,
+      address,
+      zipCode,
+      deletedAt,
+      profileId,
+    );
 
     res.status(201).send(optional);
   } catch (error) {
