@@ -1,7 +1,7 @@
 <app-barra></app-barra>
 <p *ngIf="!confVendedor">¡Para subir un articulo nuevo debe ser vendedor!</p>
 <div class="formulario" *ngIf="confVendedor">
-    <h2>Modificar Producto</h2>
+    <h2>Modificar Artículo</h2>
 
     <form action="#" class="form" method="post" id="form-art"  enctype="multipart/form-data" [formGroup]="formUp">
         <div class="row">
@@ -10,19 +10,19 @@
             <div class="media_columna">
                 <div class="campo">
                     <label for="nombre">Nombre del Producto:</label>
-                    <input formControlName="nomReg" type="text" id="nombre" name="nombre" placeholder={{infoLocal}} required>
+                    <input formControlName="nomReg" type="text" id="nombre" name="nombre" placeholder={{nomArt}} required>
                 </div>
 
                 <div class="campo">
                     <label for="descripcion">Descripción del Producto:</label>
-                    <textarea formControlName="desReg" id="descripcion" name="descripcion" rows="4" required></textarea>
+                    <textarea formControlName="desReg" id="descripcion" name="descripcion" rows="4" placeholder={{descArt}} required></textarea>
                 </div>
 
                 <div class="campo">
                     <label for="precio">Precio del Producto:</label>
                     <div class="precio-input">
                         <span class="peso-sign">$</span>
-                        <input formControlName="preReg" type="number" id="precio" name="precio" step="1.00" required>
+                        <input formControlName="preReg" type="number" id="precio" name="precio" step="1.00" placeholder={{precioArt}} required>
                     </div>
                 </div>
             </div>
@@ -33,9 +33,9 @@
                 <div class="campo">
                     <label for="categorias">Categorias:</label>
                     <select formControlName="catReg" name="categoria">
-                        <option value="0">Seleccione Categoria</option>
-                        <option *ngFor="let categoria of listcategorias" [value]="categoria.id">{{ categoria.name }}
-                        </option>
+                        <option value="0">{{catArt}}</option>
+                        <option *ngFor="let categoria of listcategorias" [value]="categoria.id">{{ categoria.name.charAt(0).toUpperCase() + categoria.name.slice(1) }}</option>
+                        <!-- <option [value]="categoria.id" selected>{{catArt}}</option> -->
                     </select>
                     <div class="select_arrow"></div>
                 </div>

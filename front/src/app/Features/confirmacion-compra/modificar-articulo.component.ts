@@ -5,6 +5,8 @@ import { CargaArticulosService } from 'src/app/core/services/carga-articulos.ser
 import { ConfirmacionArticuloServService } from 'src/app/core/services/confirmacion-articulo-serv.service';
 import { BarraService } from 'src/app/core/services/barra.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { vistaArtIndServ } from 'src/app/core/services/vista-art-ind-serv.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-modificar-articulo',
@@ -15,7 +17,15 @@ export class ModificarArticuloComponent implements OnInit {
 
   
 
-  infoLocal: any[] = [];
+  infoLocal: any = {};
+  idProd: any = {};
+  respuesta: any = [];
+  nomArt: string = '';
+  descArt: string = '';
+  precioArt: number = 0;
+  catArt: string = '';
+  servidor: string = environment.API_URL + '/images/';
+  
 
   /*
   catReg: string = '0';
@@ -33,7 +43,7 @@ export class ModificarArticuloComponent implements OnInit {
   idProducto: string = '';
   images: any = [];
 
-  constructor(private service: CargaArticulosService, private confService: ConfirmacionArticuloServService, private router: Router, private mensajeService: MensajeService, private barraService:BarraService, private formBuilder: FormBuilder) { }
+  constructor(private service: CargaArticulosService, private vistaArtService: vistaArtIndServ, private confService: ConfirmacionArticuloServService, private router: Router, private mensajeService: MensajeService, private barraService:BarraService, private formBuilder: FormBuilder) { }
 
   formUp = this.formBuilder.group({
     'catReg': ['0', Validators.required],
@@ -45,21 +55,39 @@ export class ModificarArticuloComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.leerLocal();
-    // this.traerDatos();
+    this.traerDatos();
     this.getIdUser();
 
     this.barraService.getCategories().subscribe(categorias => {this.listcategorias = categorias});
   }
 
-  leerLocal() {
-    let local = localStorage.getItem('datosAlq');
-    if (local) {
-      console.log("local: " + local)
-      this.infoLocal = JSON.parse(local);
-      console.log("infoLocal: " + JSON.stringify(this.infoLocal))
+  traerDatos() {
+    let idProdSt = localStorage.getItem('idProd');
+    let idProd = Number(idProdSt)
+    if (idProd) {
+        this.vistaArtService.datosProdServ(idProd).subscribe(res => {
+          this.respuesta = res;
+          console.log("Respuesta: " + JSON.stringify(this.respuesta));
+          
+          this.nomArt = res.articulos.nombre.charAt(0).toUpperCase() + res.articulos.nombre.slice(1) 
+          this.descArt = res.articulos.detalles.charAt(0).toUpperCase() + res.articulos.detalles.slice(1)
+          this.precioArt = res.articulos.precio
+          this.catArt = JSON.stringify(res.tipo.name.charAt(0).toUpperCase() + res.tipo.name.slice(1))
+          console.log("Descripción: " + this.descArt)
+          console.log("precio: " + this.precioArt)
+    
+          if (res.articulos.Images){
+            const imagesProd = res.articulos.Images
+            for (let i = 0; i < imagesProd.length; i++){
+              this.images.push(this.servidor + imagesProd[i].url);
+            }
+          }
+        })
+        console.log("imágenes: " + this.images);
+        console.log("precio: " + this.precioArt); //porque esto lo tira como 0 pero en el html tira el número real??
+      }
     }
-  }
+  
 
   // traerDatos() {
   //   console.log("infoLocal 2: " + JSON.stringify(this.infoLocal.idProd))
