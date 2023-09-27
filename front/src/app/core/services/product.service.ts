@@ -28,5 +28,9 @@ export class BackServiceService {
    public deleteProduct(id:string): Observable<any> {
     return this._http.delete(this.ProductUrl+id);
    }
+   //metodo para buscar por nombre 
+   public getbyName(name:string): Observable<any> {
+    return this._http.get(this.ProductUrl+"byname/"+name)
+   }
   
 }
