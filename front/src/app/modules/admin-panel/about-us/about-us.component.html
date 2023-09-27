@@ -16,6 +16,7 @@
               Activo
               <i class="fa fa-check-circle"></i>
             </th>
+            <th scope="col" style="font-size: 20px;">Prioridad</th>
             <th scope="col" style="font-size: 20px;"> <b></b> Editar</th>
             <th scope="col" style="font-size: 20px;"> <b></b> Eliminar</th>
           </tr>
@@ -24,6 +25,7 @@
           <tr>
             <th scope="row">
               <h5>{{ about.title }}</h5>
+              <h6>{{ about.subtitle }}</h6>
             </th>
   
             <th scope="row">
@@ -55,6 +57,9 @@
                   />
                 </svg>
               </div>
+            </th>
+            <th scope="row">
+              <h5>{{ about.priority }}</h5>
             </th>
             <th scope="row">
               <button
