@@ -26,27 +26,47 @@ h1 {
 }
 
 
-
+/*
 #bienvenidos{       
-    background-color: blue;
+   /* background-color: rgb(31, 31, 229);
     width:"100px";
     height: "500px";
     color:white;
     font-size: 50px;
-    background-image: linear-gradient(to bottom, blue,orangered);
-}
-.presentacion{
-    font-size: 30px;
+    /*background-image: linear-gradient(to bottom, blue,orangered);
+    background: url("../src/resources/banner.png") ;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+   
+}*/
+#bienvenidos {
+    background: url("../src/resources/banner.png");
+    background-repeat: no-repeat;
+    background-size: cover; /* Esto ajustará la imagen al 100% del ancho del contenedor */
+    width: 100%;
+    height:2000px;
 
+    background-position: center;
+    padding-right: 100px;
 }
+
+
+
+.banner{
+    background-repeat: no-repeat;
+   
+   
+}
+
 
 
 .txt_programa{
-    background-image: linear-gradient(to bottom, orangered,white);
+    background-image: linear-gradient(to right,#1616e1, #e65f10, #1616e1);
     text-align: left;
     background-color: orangered;  
     font-size: 25px;
-    color: blue;
+    color: white;
 
 }
 
@@ -97,7 +117,7 @@ text-align: center;
 
 
 .footer{
-    background-image: linear-gradient(to bottom,white,orangered);
+    background-image: linear-gradient(to bottom,white,#e65f10);
     background-color: orangered;
     height: 250px;      
     color: blue;
