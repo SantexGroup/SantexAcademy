@@ -8,7 +8,7 @@ const productValidator = [
   check('nombre')
     .exists()
     .notEmpty()
-    .withMessage('El correo electrónico no es válido'),
+    .withMessage('El nombre del producto no puede estar vacío'),
   check('categoria')
     .isIn(PRODUCT_CATEGORIES)
     .withMessage(
@@ -29,14 +29,13 @@ const productValidator = [
     .exists()
     .isString()
     .withMessage('El detalle debe ser un texto'),
-  check('foto')
-    .exists()
-    .isBase64()
-    .withMessage('La foto debe estar en formato base64'),
-  check('usuarioId')
-    .exists()
-    .isUUID()
-    .withMessage('El id del usuario es inválido'),
+  check('foto').custom((value) => {
+    if (/^data:image\/png;base64,/.test(value)) {
+      return true;
+    }
+    throw new Error('La foto debe estar en formato base64');
+  }),
+  check('userId').exists().withMessage('El id del usuario es inválido'),
   (req, res, next) => validateResults(req, res, next),
 ];
 

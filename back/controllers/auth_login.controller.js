@@ -3,7 +3,7 @@ const validateUserPassword = require('../utils/validate_user_password.util');
 const handleJWT = require('../services/handle_jwt.service');
 const { User } = require('../models');
 
-const authLoginController = async (req, res, next) => {
+const authLoginController = (req, res, next) => {
   (async () => {
     const { email, password } = req.body;
 
@@ -15,8 +15,8 @@ const authLoginController = async (req, res, next) => {
       const jwt = await handleJWT(existingUser.id);
 
       res.send({
+        id: existingUser.id,
         email: existingUser.email,
-        firstName: existingUser.firstName,
         jwt,
       });
     } catch (error) {

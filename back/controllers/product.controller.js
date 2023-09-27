@@ -6,24 +6,29 @@ const saveFile = require('../utils/save_file.util');
 const {
   PRODUCT_IMAGE_PATH,
 } = require('../utils/consts/product_image_path.const');
+const resolveNameAndExtension = require('../utils/resolve_name_and_extension.util');
 
 const productController = (req, res, next) => {
   (async () => {
     const product = req.body;
 
     try {
-      findEntityByProperty({ id: product.userId }, User);
+      await findEntityByProperty({ id: product.userId }, User);
 
-      const photo = decodeBase64(product.image);
+      const photo = decodeBase64(product.foto);
 
-      saveFile(photo, PRODUCT_IMAGE_PATH);
+      const photoPath = `${PRODUCT_IMAGE_PATH}/${resolveNameAndExtension(
+        product.foto,
+      )}`;
+
+      await saveFile(photo, photoPath);
 
       await SaveEntityService(product, Product);
 
       res.status(201).json(product);
     } catch (error) {
       next({
-        extendBsae: true,
+        extendBase: true,
         status: error.status || 500,
         message: error.message || 'Error interno del servidor',
       });
@@ -31,4 +36,4 @@ const productController = (req, res, next) => {
   })();
 };
 
-module.export = productController;
+module.exports = productController;
