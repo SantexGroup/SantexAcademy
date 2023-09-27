@@ -7,7 +7,7 @@ import { RegistroComponent } from './Features/registro/registro.component';
 import { CargaArticulosComponent } from './Features/carga-articulos/carga-articulos.component';
 import { TarjetaArticuloComponent } from './Features/tarjeta-articulo/tarjeta-articulo.component';
 import { VistaArtIndComponent } from './Features/vista-articulo-ind/vista-articulo-ind.component';
-import { ConfirmacionCompraComponent } from './Features/confirmacion-compra/confirmacion-compra.component';
+import { ModificarArticuloComponent } from './Features/confirmacion-compra/modificar-articulo.component';
 
 
 const routes: Routes = [
@@ -40,8 +40,8 @@ const routes: Routes = [
     component: VistaArtIndComponent,
   },
   {
-    path: 'confirmacion-articulo',
-    component: ConfirmacionCompraComponent,
+    path: 'modificar-articulo',
+    component: ModificarArticuloComponent,
   },
 
 ]

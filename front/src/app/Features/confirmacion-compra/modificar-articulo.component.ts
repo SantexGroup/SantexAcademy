@@ -7,11 +7,11 @@ import { BarraService } from 'src/app/core/services/barra.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-confirmacion-compra',
-  templateUrl: './confirmacion-compra.component.html',
-  styleUrls: ['./confirmacion-compra.component.css']
+  selector: 'app-modificar-articulo',
+  templateUrl: './modificar-articulo.component.html',
+  styleUrls: ['./modificar-articulo.component.css']
 })
-export class ConfirmacionCompraComponent implements OnInit {
+export class ModificarArticuloComponent implements OnInit {
 
   
 

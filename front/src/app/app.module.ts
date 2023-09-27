@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CargaArticulosComponent } from './Features/carga-articulos/carga-articulos.component';
 import { TarjetaArticuloComponent } from './Features/tarjeta-articulo/tarjeta-articulo.component';
 import { VistaArtIndComponent } from './Features/vista-articulo-ind/vista-articulo-ind.component';
-import { ConfirmacionCompraComponent } from './Features/confirmacion-compra/confirmacion-compra.component';
+import { ModificarArticuloComponent } from './Features/confirmacion-compra/modificar-articulo.component';
 
 
 @NgModule({
@@ -30,7 +30,7 @@ import { ConfirmacionCompraComponent } from './Features/confirmacion-compra/conf
     CargaArticulosComponent,
     TarjetaArticuloComponent,
     VistaArtIndComponent,
-    ConfirmacionCompraComponent
+    ModificarArticuloComponent
   ],
   imports: [
     BrowserModule,
