@@ -30,7 +30,7 @@ export class LoginComponent {
       .subscribe( ok => {
         console.log(ok)
         if (ok === true){
-          this.router.navigateByUrl('/catalogo-cursos');
+          this.router.navigateByUrl('/admin');
         }else{
           Swal.fire('Error', ok, 'error');
         }
