@@ -51,9 +51,10 @@ categoriescontroller.borrar = async (req, res) => {
 };
 
 /**
- * @method GET
+ * @method POST //(por configuracion para poder mandar el body)
  * @name get
  * @param {ids} ids de la categorias que queremos obtener sus productos
+ * @query {ids} ids de la categorias que queremos obtener sus productos
  * @description metodo para obtener los datos de una o muchas categoria con sus productos asociados
  */
 categoriescontroller.get = async (req, res) => {
@@ -71,23 +72,23 @@ categoriescontroller.get = async (req, res) => {
         },
       ],
     });
-    //por cada categoria obtenida nos fijamos si alguno de los elementos e repite en otra categoria, si es asi lo eliminamos del array final
-    
 
+    //borramos productos repetidos y agregamos los no repetidos a un array productos, sin categorias
+    let productsFinal=[];
     categorias.forEach((categoria) => {
       let i = 0;
       while (i < categoria.Products.length) {
         const productId = categoria.Products[i].id;
         if (seenProductIds.has(productId)) {
-          console.log("elemento borrado", productId);
           categoria.Products.splice(i, 1);
         } else {
+           productsFinal.push(categoria.Products[i]);
           seenProductIds.add(productId);
           i++;
         }
       }
     });
-    res.status(200).json(categorias);
+    res.status(200).json(productsFinal);
   } catch (error) {
     console.log(error);
     res.status(400).json({ error: error.message });

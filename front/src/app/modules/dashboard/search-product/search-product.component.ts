@@ -23,7 +23,6 @@ export class SearchProductComponent implements OnInit {
     private categorias: CategoriaService
   ) {}
 
-
   ngOnInit(): void {
     this.service.getProducts().subscribe((result) => {
       this.productList = result;
@@ -48,28 +47,33 @@ export class SearchProductComponent implements OnInit {
       this.onChange(value);
     }
   }
-  toggleSelection(chip: MatChip, id:any ) {
+  toggleSelection(chip: MatChip, id: any) {
     chip.toggleSelected();
-    this.writeValue(id)
+    this.writeValue(id);
   }
 
   writeValue(value: number): void {
-  
     if (this.filterCat.includes(value)) {
       //si esta en la lista lo sacamos
       this.filterCat.splice(this.filterCat.indexOf(value, 1));
-    }else {
-       //si no esta lo agregamos
+    } else {
+      //si no esta lo agregamos
       this.filterCat.push(value);
     }
-    console.log(this.filterCat)
-    
+    if (this.filterCat.length >= 1) {
+      let body = { ids: this.filterCat };
+
+      this.categorias.getProductsByCategory(body).subscribe((result) => {
+        this.productList = result;
+      });
+    } else {
+      this.service.getProducts().subscribe((result) => {
+        this.productList = result;
+      });
+    }
   }
 
   selectChips(value: string[]) {
-   //buscamos si el valor esta en la lista de los filtros 
-   
+    //buscamos si el valor esta en la lista de los filtros
   }
-
-  
 }
