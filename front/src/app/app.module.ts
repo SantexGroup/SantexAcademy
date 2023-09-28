@@ -38,6 +38,7 @@ import { ModalAddComponent } from './modules/modal-add/modal-add.component';
 import {MatCardModule} from '@angular/material/card';
 import { ProfileOneComponent } from './modules/profile-one/profile-one.component';
 import { ProfileTwoComponent } from './modules/profile-two/profile-two.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -82,6 +83,7 @@ import { ProfileTwoComponent } from './modules/profile-two/profile-two.component
     HomeRoutingModule,
     LoadingModule,
     MatCardModule,
+    MatCheckboxModule,
     ToastrModule.forRoot({
       timeOut: 9000,
       positionClass: 'toast-top-center',
