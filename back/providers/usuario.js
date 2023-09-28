@@ -172,6 +172,21 @@ const deleteUser = async (id) => {
   }
 };
 
+const updatePhotoMyProfile = async (image, id) => {
+  try {
+    const updatedUser = await Usuario.update(
+      { image: image },
+      { where: { id: id }, returning: true }
+    );
+
+    if (!updatedUser) return;
+
+    return updatedUser;
+  } catch (error) {
+    return console.log("Error updating your profile picture", error);
+  }
+};
+
 module.exports = {
   loginUser,
   createUser,
@@ -179,4 +194,5 @@ module.exports = {
   getMyProfile,
   updateMyUser,
   deleteUser,
+  updatePhotoMyProfile,
 };
