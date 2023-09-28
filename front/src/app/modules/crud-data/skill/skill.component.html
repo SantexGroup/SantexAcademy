@@ -1,18 +1,23 @@
 <body>
     <div class="skillsInput">
-        <form [formGroup]="skillForm">
+        <form [formGroup]="skillForm"
+        (change)="userData.markForm(skillForm)">
             <mat-form-field>
                 <mat-label for="skill">Habilidad:</mat-label>
                 <input matInput formControlName="skill" type="text">
             </mat-form-field>
             <mat-form-field>
                 <mat-label for="level">Nivel:</mat-label>
-                <input matInput formControlName="level" type="text">
+                <mat-select formControlName="level" name="countries">
+                    <mat-option *ngFor="let level of userData.levels" [value]="level">
+                        {{level}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
             <div class="botonera">
                 <div class="botones">
                     <button class="plus" type="submit" *ngIf="views.plusOne" (click)="addSkillToProfile()">
-                        <img src="/assets/Imagenes/plus.png" alt="+">
+                        <img src="./assets/Imagenes/plus.png" alt="+">
                     </button>
                     <button 
                     type="submit" mat-raised-button 
@@ -33,10 +38,10 @@
                             <p class="card-text"> Nivel: {{skill.level}} </p>
                             <div class="botonera-card">
                                 <button (click)="getSelectedSkill(skill.id)" (click)="views.changeViews()">
-                                    <img src="/assets/Imagenes/editar.png" alt="Editar">
+                                    <img src="./assets/Imagenes/editar.png" alt="Editar">
                                 </button>
                                 <button (click)="skillDelete(skill.id)">
-                                    <img src="/assets/Imagenes/delete.png" alt="Eliminar">
+                                    <img src="./assets/Imagenes/delete.png" alt="Eliminar">
                                 </button>
                             </div>
                         </div>

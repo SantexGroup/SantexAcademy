@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   
   constructor(
     private fb: FormBuilder, 
@@ -22,6 +22,11 @@ export class LoginComponent {
     public views: NavBarService,
     private toastr: ToastrService
     ) { }
+
+
+  ngOnInit(): void {
+    this.views.changeTitle("Iniciar Sesion");
+  }
 
   toRegister(){
     this.router.navigate(['/registro']);
@@ -36,6 +41,7 @@ export class LoginComponent {
   }
 
   loginForm = this.fb.group({
+    //TODO ELIMINAR
     nick: ['', [ Validators.required ]],
     password: ['', [ Validators.required, Validators.minLength(6) ]],
   })
@@ -54,7 +60,7 @@ export class LoginComponent {
         localStorage.setItem('accessToken', data.accessToken);
         localStorage.setItem('userName', data.user.name);
         localStorage.setItem('lastName', data.user.lastName);
-        this.views.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
+        this.views.changeTitle("Bienvenido! " + data.user.name + " " + data.user.lastName);
         this.router.navigate([`/home/${data.profile.userId}/cv`]);
         }, 
         error: () => { 

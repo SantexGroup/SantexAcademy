@@ -58,20 +58,28 @@ async function getUser(req, res, next) {
 
 // Controlador que redirige al servicio para actulizar un usuario
 async function updateUser(req, res, next) {
+  const { id } = req.params;
+  const {
+    name,
+    lastName,
+    bornDate,
+    phone,
+    email,
+    pictureLink,
+  } = req.body;
+
   try {
-    // Extraer el ID del usuario de los parámetros de la solicitud
-    const { id } = req.params;
-    const userData = req.body;
-
-    console.log('Desde user.controller', userData);
-
-    // Llamar al servicio para actualizar los datos del usuario
-    const user = await userService.updateUser(id, userData);
-
-    // Enviar la respuesta con el usuario actualizado
-    res.status(200).send(user);
+    const userUpdate = await userService.updateUser(
+      id,
+      name,
+      lastName,
+      bornDate,
+      phone,
+      email,
+      pictureLink,
+    );
+    res.status(200).send(userUpdate);
   } catch (error) {
-    // Manejo de errores en caso de que ocurra algún problema
     next(error);
   }
 }

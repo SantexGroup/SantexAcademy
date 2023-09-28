@@ -1,9 +1,10 @@
 <body>
   <div class="personalInput">
-    <form [formGroup]="personalForm">
+    <form [formGroup]="personalForm"
+    (change)="userData.markForm(personalForm)">
       <mat-form-field>
         <mat-label>Nombres</mat-label>
-        <input matInput formControlName="firstName">
+        <input matInput formControlName="name">
       </mat-form-field>
 
       <mat-form-field>
@@ -30,15 +31,20 @@
         <input matInput type="email" formControlName="email">
       </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Foto</mat-label>
-        <input matInput formControlName="pictureLink">
-      </mat-form-field>
+      <!-- * Seccion del imagen -->
+      <div class="imagenSection">
+        <img class="imagenBox" [src]="url">
+        <input type="file" id="imagen" style="display: none;" name="pictureLink" (change)="selectImage($event)">
+
+        <label class="imagenLabel" for="imagen" style="cursor: pointer;">Cargar Foto</label>
+      <!--   <input matInput formControlName="pictureLink"> -->
+
+      </div>
 
       <div class="botonera">
         <div class="botones">
-            <button class="plus" type="submit" *ngIf="views.plusOne" (click)="updateUser(personalForm)">
-                <img src="/assets/Imagenes/plus.png" alt="+">
+            <button class="plus" type="submit" *ngIf="views.plusOne" (click)="dataUserUpdate()">
+                <img src="./assets/Imagenes/plus.png" alt="+">
             </button>
             <button 
             type="submit" mat-raised-button 
@@ -58,10 +64,10 @@
                       <p class="card-text"> Detalle </p>
                       <div class="botonera-card">
                           <button>
-                              <img src="/assets/Imagenes/editar.png" alt="Editar">
+                              <img src="./assets/Imagenes/editar.png" alt="Editar">
                           </button>
                           <button>
-                              <img src="/assets/Imagenes/delete.png" alt="Eliminar">
+                              <img src="./assets/Imagenes/delete.png" alt="Eliminar">
                           </button>
                       </div>
                   </div>

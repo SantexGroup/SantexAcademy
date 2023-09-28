@@ -13,11 +13,34 @@ import { Language } from '../../interfaces/language.interface';
 import { Optionals } from '../../interfaces/optionlas.interface';
 import { Reference } from '../../interfaces/reference.interface';
 import { Skill } from '../../interfaces/skill.interface';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserDataService {
+
+  checkForm: boolean = false;
+
+  newUser:boolean = false;
+
+  levels: number[] = Array.from({ length: 10 }, (_, index) => index + 1);
+
+  /* profileId que se escribe desde el servicio de login */
+  profileId:number = 0; 
+  /* userId que se escribe desde el servicio de login */
+  userId: number = 0;
+
+  companies: string[] = [];
+
+  userName = "" || localStorage.getItem('userName');
+
+  lastName = "" || localStorage.getItem('lastName');
+
+  phone = "" || localStorage.getItem('phone');
+
+  urlPicture = "";
+
 
   constructor(
     private _experience: ExperiencesService,
@@ -27,6 +50,14 @@ export class UserDataService {
     private _references: ReferencesService,
     private _skills: SkillService
    ){
+
+  }
+
+  /* Chequeo de formularios */
+  markForm(form: FormGroup){
+    if(form.dirty){
+      this.checkForm = true;
+    }
   }
 
   experiences: Experience[] = [];
@@ -35,8 +66,7 @@ export class UserDataService {
   optionals: Optionals[] = [];
   references: Reference[] = [];
   skills: Skill[] = [];
-
-
+  
   getExperience(){
     this._experience.getExperience(this.userId).subscribe((experieceList: Experience[])=>{
       this.experiences = experieceList;
@@ -55,20 +85,21 @@ export class UserDataService {
     });
   }
 
-  getMyOptionals() {
+  getMyOptionals(){
     this._optionals.getMyOptionals(this.userId).subscribe((myOptionals: Optionals[]) => {
       this.optionals = myOptionals;
+      console.log(myOptionals); 
     });
   }
 
   getReference() {
-    this._references.getReference(this.userId).subscribe((referenceList) => {
+    this._references.getReference(this.userId).subscribe((referenceList: Reference[]) => {
       this.references = referenceList;
     });
   }
 
   getSkill(){
-    this._skills.getSkillsByUser(this.userId).subscribe((skillList)=>{
+    this._skills.getSkillsByUser(this.userId).subscribe((skillList: Skill[])=>{
       this.skills = skillList;
     })
   }
@@ -79,7 +110,7 @@ export class UserDataService {
     const token = localStorage.getItem('accessToken');
     if (token) {
       const tokenData = jwtDecode<Token>(token);
-      console.log(tokenData);
+      // console.log(tokenData); //TODO ELIMINAR
       const currentTime = Math.floor(Date.now() / 1000);
       const expiration = tokenData.exp;
       this.userId = tokenData.id;
@@ -89,17 +120,6 @@ export class UserDataService {
     return false
   }
 
-  newUser:boolean = false;
 
-  /* profileId que se escribe desde el servicio de login */
-  profileId:number = 0; 
-  /* userId que se escribe desde el servicio de login */
-  userId: number = 0;
-
-  companies: string[] = [];
-
-  userName = "" || localStorage.getItem('userName');
-
-  lastName = "" || localStorage.getItem('lastName');
 
 }

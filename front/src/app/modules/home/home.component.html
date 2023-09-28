@@ -2,8 +2,8 @@
     <div style="display: flex;">
         <div class="button-conteiner">
             <div class="button-nav" id="first">
-                <button routerLink="cv" mat-raised-button color="primary"
-                (click)="views.title = 'Home'" 
+                <button routerLink="cv" mat-raised-button color="primary" 
+                (click)="views.changeTitle('Home')"
                 (click)="views.selectorHide = true"
                 >Home</button>
             </div>
@@ -36,7 +36,9 @@
                  >Opcionales</button>
             </div>
             <div class="button-nav">
-                <button routerLink="profiles" mat-raised-button color="primary">Mas datos</button>
+                <button routerLink="profiles" 
+                mat-raised-button color="primary"
+                >Mas datos</button>
             </div>
         </div>
         <div class="textArea">             

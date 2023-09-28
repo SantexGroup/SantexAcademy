@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Formations } from 'src/app/core/interfaces/formation.interface';
 import { FormationsStatus } from 'src/app/core/interfaces/formationsStatus.interface';
 import { FormationsTypes } from 'src/app/core/interfaces/formationsTypes.interface';
@@ -8,7 +8,7 @@ import { FormationsTypeService } from 'src/app/core/services/formations-type.ser
 import { FormationsService } from 'src/app/core/services/formations.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-formations',
@@ -18,35 +18,38 @@ import { UserDataService } from 'src/app/core/services/toolServices/userData.ser
 export class FormationsComponent implements OnInit {
   formationForm: FormGroup;
   editedFormation: Formations | null = null;
-
+  
   constructor(
     private _formationsTypesServices: FormationsTypeService,
     private _formationsStatusServices: FormationsStatusService,
-    private _formationsServices: FormationsService,    
-    public views: NavBarService,
+    private _formationsServices: FormationsService,
     private fb: FormBuilder,
-    public userData: UserDataService
-    ) {
-      this.formationForm = this.fb.group({
-        statusId: '',
-        typesId: '',
-        title: '',
-        institute: '',
-        startDate: '',
-        endDate: null,
-        description: '',
-      })      
-     }
+    public views: NavBarService,
+    public userData: UserDataService,
+    public toastr :ToastrService
+  ) {
+    this.formationForm = this.fb.group({
+      statusId: [''],
+      typesId: [''],
+      title: [''],
+      institute: [''],
+      startDate: [null],
+      endDate: [null],
+      description: [''],
+    })
+  }
 
   ngOnInit(): void {
 
-    this.userData.getListFormations();
+    this.userData.checkForm = false;
+
+    this.views.changeTitle("Formaciones");
     
     this.formationsStatusGet();
 
     this.formationsTypesGet();
 
-    this.views.title = "Formaciones";
+    this.userData.getListFormations();
   }
 
   formationsTypesGet(){
@@ -57,15 +60,15 @@ export class FormationsComponent implements OnInit {
 
   types: FormationsTypes[] = [];
 
-  formationsStatusGet(){
-    this._formationsStatusServices.getFormationStatus().subscribe((statusList: FormationsStatus[])=>{
+  formationsStatusGet() {
+    this._formationsStatusServices.getFormationStatus().subscribe((statusList: FormationsStatus[]) => {
       this.status = statusList;
     });
   }
 
   status: FormationsStatus[] = [];
 
-  formationAdd(){
+  formationAdd() {
     const newFormation: Formations = {
       statusId: this.formationForm.get('statusId')?.value,
       typesId: this.formationForm.get('typesId')?.value,
@@ -76,27 +79,28 @@ export class FormationsComponent implements OnInit {
       description: this.formationForm.get('description')?.value,
       profileId: this.userData.profileId
     }
-
-    this._formationsServices.addFormation(newFormation).subscribe((formation)=>{
+    
+    this._formationsServices.addFormation(newFormation).subscribe((formation) => {
       this.userData.formations.push(formation);
-    });    
+      this.toastr.success('Se agrego un nueva formacion', 'FORMACION');
+    });
     this.formationForm.reset();
-  
   }
 
-  endDateShow():boolean{
+  endDateShow(): boolean {
     return this.formationForm.get('statusId')?.value !== 1;
   }
 
   deleteFormation(id: number) {
     this._formationsServices.deleteFormation(id).subscribe(() =>{
       this.userData.getListFormations()
+      this.toastr.error('Se elimino la formacion');
     })
   }
+
   editFormation(formation: Formations) {
     this.editedFormation = { ...formation };
-    
-    
+
     this.formationForm.patchValue({
       statusId: formation.statusId,
       typesId: formation.typesId,
@@ -107,22 +111,20 @@ export class FormationsComponent implements OnInit {
       description: formation.description,
     });
   }
- 
-  
-  
-   // Función para guardar los cambios realizados en el formulario de edición
-   saveFormation() {
+
+  // Función para guardar los cambios realizados en el formulario de edición
+  saveFormation() {
     if (this.editedFormation) {
       const updatedFormation: Formations = this.formationForm.value;
       updatedFormation.id = this.editedFormation.id;
 
-      this._formationsServices.updateFormation(updatedFormation).subscribe(() => {     
+      this._formationsServices.updateFormation(updatedFormation).subscribe(() => {
         this.userData.getListFormations();
-    });
+        this.toastr.success('Formacion actualizada', 'FORMACION');
+      });
 
       // this.editedFormation = null; // Restablecer la formación editada
       this.formationForm.reset(); // Restablecer el formulario
-    
-    }   
+    }
   }
 }

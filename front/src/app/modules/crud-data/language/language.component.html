@@ -1,18 +1,24 @@
 <body>
     <div class="languageInput">
-        <form [formGroup]="languageForm" (ngSubmit)="languageAdd()">
+        <form [formGroup]="languageForm" 
+        (ngSubmit)="languageAdd()"
+        (change)="userData.markForm(languageForm)">
             <mat-form-field>
                 <mat-label for="company">Idioma:</mat-label>
                 <input matInput formControlName="language" type="text">
             </mat-form-field>
             <mat-form-field>
                 <mat-label for="position">Nivel:</mat-label>
-                <input matInput formControlName="level" type="number">
+                <mat-select formControlName="level" name="countries">
+                    <mat-option *ngFor="let level of userData.levels" [value]="level">
+                        {{level}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
             <div class="botonera">
                 <div class="botones">
                     <button class="plus" type="submit" *ngIf="views.plusOne">
-                        <img src="/assets/Imagenes/plus.png" alt="+">
+                        <img src="./assets/Imagenes/plus.png" alt="+">
                     </button>
                     <button 
                     type="submit" 
@@ -36,10 +42,10 @@
                                 <button
                                 (click)="getSelectedLanguage(language.id)" 
                                 (click)="views.changeViews()">
-                                    <img src="/assets/Imagenes/editar.png" alt="Editar">
+                                    <img src="./assets/Imagenes/editar.png" alt="Editar">
                                 </button>
                                 <button (click)="languageDelete(language.id)">
-                                    <img src="/assets/Imagenes/delete.png" alt="Eliminar">
+                                    <img src="./assets/Imagenes/delete.png" alt="Eliminar">
                                 </button>
                             </div>
                         </div>

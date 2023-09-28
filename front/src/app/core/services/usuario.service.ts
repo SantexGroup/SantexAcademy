@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError, BehaviorSubject, tap } from 'rxjs';
 import { registroInterface } from '../interfaces/registro.interface';
-import { userInterface } from '../../core/interfaces/user.interface';
+import { User } from '../../core/interfaces/user.interface';
 import { ApiService } from '../http/api.service';
 import { loginInterface } from '../interfaces/login.interface';
 
@@ -31,18 +31,24 @@ private userData1: BehaviorSubject<{ name: string, lastName: string }> = new Beh
 
   //* Loguear un usuario  
   login(user: loginInterface) : Observable<loginInterface> {
-    console.log("desde servicio login");
     return this.api.post<loginInterface>('user/login', user);
   }
 
   //* Recuperar datos de un usuario
-  getUser(id: number) : Observable <userInterface> { 
-    return this.api.get<userInterface>(`user/getUser/${id}`);
+  getUser(id: number) : Observable <User> { 
+    return this.api.get<User>(`user/getUser/${id}`);
   }
   
   //* Actualizar el usuario
-  updateUser(id: number, user: userInterface) : Observable <userInterface> {
-    return this.api.put<userInterface>(`user/update/${id}`, user);
+  updateUser(id: number, user: User) : Observable <User> {
+    return this.api.put<User>(`user/update/${id}`, user);
+  }
+
+  //* Se envia la foto a Google Drive
+  uploadImage(imagen: any) : Observable <any> {
+    const pictureLink = new FormData();
+    pictureLink.append('pictureLink', imagen);
+    return this.api.post<any>('user/upload', pictureLink );
   }
 
   setUserData(name: string, lastName: string) {
@@ -51,6 +57,10 @@ private userData1: BehaviorSubject<{ name: string, lastName: string }> = new Beh
   
   getUserData(): Observable<{ name: string, lastName: string }> {
     return this.userData1.asObservable();
+  }
+
+  uploadPicture(imagen: FormData): Observable<any>{
+    return this.api.post<any>('user/upload', imagen);
   }
 }
 
