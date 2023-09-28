@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ModalStatusComponent {
   @Input() status: string = '';
   @Input() textBtn: string = '';
+  @Input() message: string = '';
   @Output() changueValueModal = new EventEmitter();
 
   constructor() {}

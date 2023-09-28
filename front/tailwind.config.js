@@ -15,7 +15,7 @@ module.exports = {
     },
     colors: {
       white: "#FFF",
-      black: "#000",
+      black: "#18181b",
       lightGray: "#CCCCCC",
       orangeRed: "#FF4021",
       deepPink: "#FF3793",
@@ -46,6 +46,8 @@ module.exports = {
       red: "#FF0404",
       DarkGray: "#9ca3af",
       Danguer: "#FF0000",
+      // bgHeaderOrganization: "rgba(192, 192, 192, 0.8)",
+      bgHeaderOrganization: "rgba(63, 40, 131, 0.3)",
     },
     border: {
       white: "#FFF",
@@ -65,6 +67,7 @@ module.exports = {
       sans: ["Open Sans"],
       poppins: ["Poppins"],
       dosis: ["Dosis", "sans"],
+      martian: ["Martian Mono", "monospace"],
     },
     fontSize: {
       xs: ["0.75rem", { lineHeight: "1rem" }],
