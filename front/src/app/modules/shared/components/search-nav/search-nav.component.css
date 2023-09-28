@@ -1,14 +1,21 @@
+.huge-container {
+    background: var(--color-6);
+    border: solid 1px var(--color-1);
+}
+
 .container {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding: 10px;
+    padding: 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
+
+
 }
 
 .form-group {
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
 .button-wrapper {
@@ -28,7 +35,7 @@
 
     .form-group {
         flex: 1;
-        margin-right: 10px;
+        margin-right: 1rem;
         margin-bottom: 0;
     }
 
