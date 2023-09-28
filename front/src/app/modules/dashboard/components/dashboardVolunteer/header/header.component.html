@@ -45,12 +45,12 @@
     </div>
   </article>
   <div
-    class="absolute top-4 right-2 flex flex-col gap-2 min-w-[100px] max-w-[200px] m:right-8 m:top-6 sm:max-w-[250px]"
+    class="absolute top-4 right-2 flex flex-col gap-2 w-[165px] m:w-[200px] m:right-8 m:top-6 sm:w-[250px]"
   >
     <article
-      class="p-4 flex items-center justify-center gap-2 bg-white rounded-md shadow-md shadow-dimGray"
+      class="p-4 flex items-center justify-center gap-2 bg-white rounded-md shadow-md shadow-dimGray overflow-x-auto"
     >
-      <figure class="w-[80px]">
+      <figure class="min-w-[30px] max-w-[80px]">
         <img
           src="/assets/imgs/clock.svg"
           alt="imagen reloj"
@@ -58,8 +58,8 @@
         />
       </figure>
       <div class="flex flex-col text-center">
-        <h2 class="font-bold text-darkSlateBlue text-5xl">
-          {{ dataHeader.pointsAccumulated }}
+        <h2 class="font-bold text-darkSlateBlue text-4xl m:text-3xl">
+          {{ dataHeader.hoursAcc }}
         </h2>
         <p class="text-xs font-bold sm:text-base">Tus horas acumuladas</p>
       </div>
