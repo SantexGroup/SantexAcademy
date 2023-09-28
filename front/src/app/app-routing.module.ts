@@ -15,11 +15,8 @@ import { CourseComponent } from './modules/admin-panel/courses/course.component'
 import { InscriptionsComponent } from './modules/inscriptions/inscriptions.component';
 
 const routes: Routes = [
- /*  {
-    path: '', component:HomePageComponent
-  }, */
   {
-    path: '', component:InscriptionsComponent
+    path: '', component:HomePageComponent
   },
   {
     path:'admin/panel', component:AdminPanelComponent
