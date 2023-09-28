@@ -29,7 +29,7 @@
           <a routerLink="/admin" class="nav-link">Administrador</a>
         </li>
         <li [class.selected]="activeRoute.includes('/login')">
-          <a *ngIf="!isLoggedIn" class="nav-link" routerLink="/login" class="nav-link">Ingresar</a>
+          <a *ngIf="!isLoggedIn" class="nav-link" href="http://localhost:4200/login" class="nav-link">Ingresar</a><!--routerLink="/login"-->
         </li>
         <li *ngIf="isLoggedIn" class="nav-item dropdown-center">
           <a *ngIf="isLoggedIn" class="nav-link-profile dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

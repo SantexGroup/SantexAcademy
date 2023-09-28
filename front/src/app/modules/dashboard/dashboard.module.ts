@@ -7,14 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';/
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { CarouselComponent } from 'src/app/modules/dashboard/carousel/carousel.component';
-import { LoginComponent } from '../login/login/login.component';
+//import { LoginComponent } from '../login/login/login.component';
 import { ToastrModule } from 'ngx-toastr/toastr/toastr.module';//BORRAR si no se usa
 
 @NgModule({
   declarations: [
     DashboardPageComponent,
     CarouselComponent,
-    LoginComponent,
+   //LoginComponent,
   ],
   imports: [
     CommonModule,
