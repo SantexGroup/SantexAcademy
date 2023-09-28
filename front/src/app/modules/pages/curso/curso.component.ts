@@ -1,10 +1,13 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 import { Curso } from '../../cursos/interface/cursos.interface';
 import { Nivel } from "src/app/models/nivel.interface";
 import { AuthService } from '../../auth/services/auth.service';
 import { MatriculasService } from '../../matriculas/services/matriculas.service';
 import { UsersService } from '../../users/services/users.service';
-import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-curso',
@@ -47,7 +50,9 @@ export class CursoComponent {
 
   constructor(private authService: AuthService,
               private usersService: UsersService,
-              private matriculasService: MatriculasService) { }
+              private matriculasService: MatriculasService,
+              private router: Router,
+            ) { }
 
 
   inscribir(){
@@ -55,6 +60,9 @@ export class CursoComponent {
     this.authService.validarToken()
       .subscribe(ok => {
         if (ok === true){
+          const tipoDeUsuario = this.authService.user.tipoDeUsuario;
+          if (tipoDeUsuario === 'Alumno') {
+
           console.log('user.id', this.user.id);
           this.usersService.getCursosPorUserId( this.user.id)
             .subscribe((cursos => {
@@ -68,14 +76,28 @@ export class CursoComponent {
                   habilitado: false,
                   estado: 'A'
                 })
-                    .subscribe( matricula => {
-                      console.log('add :', matricula)
-                      Swal.fire('Inscripción exitosa');
-                    })
+                    .subscribe(matricula => {
+                      console.log('add :', matricula);
+                      Swal.fire({
+                        title: 'Inscripción exitosa',
+                        text: 'Su inscripción se ha realizado con éxito. Se ha enviado un mensaje al administrador a fin de que active su curso. Por favor, ingrese en su perfil y acceda a su curso.',
+                        icon: 'success',
+                        showCancelButton: false,
+                        confirmButtonText: 'Ir a perfil de alumno',
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          this.router.navigateByUrl('/perfil-alumno');
+                        }
+                      });
+                    });
               }else{
                 Swal.fire('Ya estás inscripto');
               }
             }))
+          } else {
+            // El usuario no es de tipo "Alumno", muestra un mensaje de error.
+            Swal.fire('Debes registrarte como Alumno para poder acceder a nuestros cursos.');
+          }
         }else{
           Swal.fire('No estás logueado');
         }

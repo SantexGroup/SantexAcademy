@@ -37,4 +37,10 @@ import { UsersService } from '../../users/services/users.service';
 
     }
 
+    //ingresar()
+       //comprobar si esta ya habilitado por administracion
+       //manejar solo con swal
+       //si esta confirmado: mensaje "Ingrsea a Aula virtual. - Aula virtual fuera del alcance del proyecto en esta etapa"
+       //si no esta aun habilitado: mensaje "Hubo una demora, ponte en contacto con la administración"
+       //si sobra tiempo implementar deslogueo alumno y logueo admin para habilitar
   }
