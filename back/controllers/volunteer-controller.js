@@ -142,7 +142,22 @@ async function canjearPremioController(req, res) {
     res.status(500).json({ error: error.message });
   }
 }
+
+async function unsuscribeVolunteerWork (req, res) {
+  const { idTarea, idVolunteer } = req.body;
+
+  try {
+    const result = await volunteerServices.unsuscribe(idTarea, idVolunteer);
+
+    if (result.error) {
+      return res.status(400).json({ error: result.error });
+    }
+    res.status(200).send(result.voluntario);
+  } catch (error) {
+    res.status(500).json({ error: 'Ocurrió un error en el servidor' });
+  }
+}
 module.exports = {
   // eslint-disable-next-line max-len
-  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, loginVolunteer, getDataVoluntario, modifyPasswordController, asingVolunteerWork, canjearPremioController,
+  getAllVolunteer, getVolunteerById, createVolunteer, editVolunteer, deleteVolunteer, loginVolunteer, getDataVoluntario, modifyPasswordController, asingVolunteerWork, canjearPremioController, unsuscribeVolunteerWork,
 };
