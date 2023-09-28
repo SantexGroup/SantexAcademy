@@ -1,41 +1,34 @@
-<div class="signup-a" *ngIf="registro">
+<div class="signup-a" >
     <h1>SIGN UP</h1>
-<form action="" id="form" [formGroup]="form" (ngSubmit)="createUser()">
-   
+<form [formGroup]="form" (ngSubmit)="createUser()">
+   <div>
     <label> <i class="fa-solid fa-user" ></i> Nombres </label>
-    <input formControlName="firstName" type="text" placeholder="Escribe tus Nombres y Apellidos">
-    <span
+    <input class="form-control" formControlName="firstName" name="firstName" type="text" placeholder="Escribe tus Nombres">
+    <span 
             *ngIf="
               form.get('firstName')?.hasError('required') &&
               form.get('firstName')?.touched
             "
           >
-            El campo donde es <strong>requerido</strong>
+            El campo es <strong>requerido</strong>
           </span>
+        </div>
     <label> <i class="fa-solid fa-user" ></i> Apellidos </label>
-      <input formControlName="lastName" type="text" placeholder="Escribe tus Nombres y Apellidos">
+      <input class="form-control" formControlName="lastName" name="lastName" type="text" placeholder="Escribe tus Apellidos">
           <span
                   *ngIf="
                     form.get('lastName')?.hasError('required') &&
                     form.get('lastName')?.touched
                   "
                 >
-                  El campo donde es <strong>requerido</strong>
+                  El campo es <strong>requerido</strong>
                 </span>
-      
     <label ><i class="fa-solid fa-square-phone"></i> Numero telefonico <b style="color: rgb(181, 179, 179);">(Opcional)</b></label>
-    <input formControlName="phone"  type="text" placeholder="Escribe tu numero telefonico">
-    <span
-            *ngIf="
-              form.get('phone')?.hasError('maxLength') &&
-              form.get('phone')?.touched
-            "
-          >
-            El campo donde es <strong>requerido</strong>
-          </span>
+    <input class="form-control" formControlName="phone" name="phone" type="text" placeholder="Escribe tu numero telefonico">
+
 
     <label><i class="fa-solid fa-envelope"></i> Email</label>
-    <input formControlName="email" type="email" placeholder="Escribe tu email">
+    <input class="form-control" formControlName="email" name="email" type="email" placeholder="Escribe tu email">
     <span
             *ngIf="
             form.get('email')?.hasError('required') &&
@@ -45,26 +38,42 @@
             El campo donde es <strong>requerido</strong>
           </span>
     <label> <i class="fa-solid fa-lock"></i> Contraseña</label>
-    <input  formControlName="password" type="password" placeholder="************">
+    <input  class="form-control" formControlName="password" name="password" type="password" placeholder="************">
     <span
             *ngIf="
               form.get('password')?.hasError('required') &&
               form.get('password')?.touched
             "
           >
-            El campo donde es <strong>requerido</strong>
+            El campo es <strong>requerido</strong>
           </span>
     <br>
-    <br>
-    <button [disabled]="form.invalid" class="submit" type="submit">Suscribirse</button>
-    <p class="warnings" id="warnings"></p>
+    <button [disabled]="form.invalid" class="submit" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">Suscribirse</button>
+    <!-- <p class="warnings" id="warnings"></p> -->
     <div>
-    <a href="#">Ya tienes una cuenta?</a><br>
+    <a href="#" routerLink="/login">Ya tienes una cuenta?</a><br>
     </div>
     <img class="avatar" src="../../../assets/signup.img/fondo-signup.png" alt="">
 
 </form>
 </div>
-<div>
-  
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="registro">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title " id="exampleModalLabel">Listo! Revisa tu correo.</h1>
+        
+       
+      </div>
+      <div class="modal-body">
+        Te hemos enviado un CODIGO de verifiacion. Porfavor revisa tu correo electronico. El correo se envio a: <br> <b>{{user.email}}</b> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" routerLink="/Login">Ir al Login</button>
+       
+      </div>
+      <img  class="img-logo" src="../../../assets/signup.img/LOGO1.png" alt="">
+    </div>
+  </div>
 </div>

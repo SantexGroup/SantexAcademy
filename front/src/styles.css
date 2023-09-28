@@ -7,3 +7,15 @@ body {
     font-family: sans-serif;
     height: 100vh;
 }
+
+/* @media (min-width: 320px){
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: url(../src/assets/img/fondo.png);
+        background-size:cover;
+        font-family: sans-serif;
+        height: 138vh;
+    }
+} */

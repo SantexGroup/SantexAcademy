@@ -11,7 +11,7 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class SigupViewComponent {
   form: FormGroup;
-  registro:boolean=true;
+  registro:boolean=false;
   user: User = {
     id: 0,
     firstName:"",
@@ -29,7 +29,7 @@ export class SigupViewComponent {
         firstName:  ['', Validators.required],
         lastName:  ['', Validators.required],
         email:  ['', Validators.required],
-        phone:  ['', Validators.maxLength(20)],
+        phone:  [''],
         password:  ['', Validators.required],
 
       })
@@ -41,19 +41,17 @@ export class SigupViewComponent {
     this.user = {
       id:0,
       firstName: this.form.value.firstName,
-      lastName: this.form.value.firstName,
-      email: this.form.value.firstName,
-      phone: this.form.value.firstName,
-      password: this.form.value.firstName,
+      lastName: this.form.value.lastName,
+      email: this.form.value.email,
+      phone: this.form.value.phone,
+      password: this.form.value.password,
       active: true,
       admin:false,
     }
-    
-    
 
     this.userService.postUser(this.user)
     .subscribe(
-      (data) => {this.registro= false;},
+      (data) => {this.registro= true;},
       (error) => {
         console.log(error);
       }
