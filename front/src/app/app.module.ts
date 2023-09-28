@@ -51,7 +51,7 @@ import { ProfilesComponent } from './modules/profiles/profiles.component';
     LoadingComponent,
     CVComponent,
     ReferencesComponent,
-    ProfilesComponent
+    ProfilesComponent,
   ],
   imports: [
     BrowserModule,
