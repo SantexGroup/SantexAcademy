@@ -114,8 +114,6 @@ const deleteMyUser = async (req, res) => {
 };
 
 const updatePhotoMyProfile = async (req, res, next) => {
-  console.log(req.body);
-  console.log(req.file);
   try {
     let imageUrl = "";
     let publicId = "";

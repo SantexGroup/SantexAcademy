@@ -28,7 +28,6 @@ const loginOrganization = async (req, res) => {
         orgEmail: organization.email,
         orgCuit: organization.cuit,
         orgPassword: organization.password,
-      
       },
       process.env.SESSION_SECRET,
       { expiresIn: 86400 }
@@ -69,18 +68,15 @@ const createOrganization = async (req, res) => {
   }
 };
 
-
 const getOrganizationsById = async (req, res) => {
   try {
     const orgId = req.orgId;
-    const organization = await orgService.getOrganizationsById(orgId)
+    const organization = await orgService.getOrganizationsById(orgId);
     res.json(organization);
   } catch (error) {
     res.status(500).json({ action: "getMyOrg", error: error.message });
-}
-}
-
-
+  }
+};
 
 const getOrganizations = async (req, res) => {
   try {
@@ -95,24 +91,23 @@ const updateOrganizationById = async (req, res) => {
   try {
     const orgId = req.orgId;
 
-    const organization = await orgService.updateOrganizationById(orgId);
+    const organization = await orgService.updateOrganizationById(
+      req.body,
+      orgId
+    );
     if (!organization) {
       res.status(404).json({
         action: "updateOrganizationById",
         error: "Organization not found",
       });
     }
-    const organizationModified = await orgService.getOrganizationByCriteria({
-      id: organization.id,
-      nombre: organization.nombre,
-      direccion: organization.direccion,
-      telefono: organization.telefono,
-      email: organization.email,
-      cuit: organization.cuit,
-      password: organization.password,
-    });
 
-    res.json(organizationModified);
+    res
+      .status(200)
+      .json({
+        message: "la organizacion se modifico exitosamente",
+        organization,
+      });
   } catch (err) {
     res
       .status(500)
@@ -179,6 +174,36 @@ const getOrganizationByLocation = async (req, res, next) => {
   }
 };
 
+const updatePhotoMyProfile = async (req, res, next) => {
+  try {
+    let imageUrl = "";
+    let publicId = "";
+
+    if (req.file) {
+      const uploadResult = await cloudinary.uploader.upload(req.file.path);
+      imageUrl = uploadResult.secure_url;
+      publicId = uploadResult.public_id;
+    }
+
+    const photoUpdate = await orgService.updatePhotoMyProfile(
+      { imageUrl, publicId },
+      req.userId
+    );
+    res.status(200).json({
+      message: "Profile picture was successfully edited",
+      photoUpdate,
+    });
+    if (req.file) {
+      await fs.unlink(req.file.path);
+    }
+  } catch (error) {
+    res.status(500).json({
+      message: "An error occurred while editing your profile picture.",
+    });
+    next();
+  }
+};
+
 module.exports = {
   loginOrganization,
   getOrganizations,
@@ -188,4 +213,5 @@ module.exports = {
   updateOrganizationById,
   deleteOrganizationById,
   getOrganizationByLocation,
+  updatePhotoMyProfile,
 };
