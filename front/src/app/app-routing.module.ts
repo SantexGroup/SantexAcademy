@@ -13,8 +13,8 @@ import { AdminComponent } from './modules/pages/admin/admin.component';
 import { PerfilAlumnoComponent } from './modules/pages/perfil-alumno/perfil-alumno.component';
 import { ValidarTokenGuard } from './core/guards/validar-token.guard';
 import { TieneTipoDeUsuarioGuard } from './core/guards/tiene-tipo-de-usuario.guard'
-import { LoginComponent } from './modules/auth/pages/login/login.component';
-// import { LoginComponent } from './modules/login/login/login.component';
+//import { LoginComponent } from './modules/auth/pages/login/login.component';
+import { LoginComponent } from './modules/login/login/login.component';
 import { MisCursosComponent } from './modules/pages/mis-cursos/mis-cursos.component'; // Ajusta la ruta según tu estructura de carpetas
 import { AulaVirtualComponent } from './modules/pages/aula-virtual/aula-virtual.component';
 import { PerfilAlumnoEditarComponent } from './modules/pages/perfil-alumno-editar/perfil-alumno-editar.component';

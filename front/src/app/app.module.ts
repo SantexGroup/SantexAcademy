@@ -12,10 +12,11 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { PagesModule } from './modules/pages/pages.module';
 import { ShareModule } from './modules/share/shares.module';
 import { RegisterModule } from './modules/register/register.module';
-import { PerfilAlumnoComponent } from './modules/pages/perfil-alumno/perfil-alumno.component';
+
+import { PerfilAlumnoComponent } from './modules/pages/perfil-alumno/perfil-alumno.component';//BORRAR si no se usa
 import { EstadoUsuarioDirective } from './directivas/estado-usuario.directive';// Borrar si no se usa
 import { ActivardesactivarcursoDirective } from './directivas/activardesactivarcurso.directive';// Borrar si no se usa
-import { LoginComponent } from './modules/auth/pages/login/login.component';
+//import { LoginComponent } from './modules/auth/pages/login/login.component';//BORRAR si no se usa
 import { MisCursosComponent } from './modules/pages/mis-cursos/mis-cursos.component';// Borrar si no se usa/*
 
 @NgModule({
