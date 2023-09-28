@@ -192,6 +192,21 @@ const getOrganizationByLocation = async (location, opportunityType) => {
 
 // const addCoverPage = async (id, img) => {};
 
+const updatePhotoMyProfile = async (image, id) => {
+  try {
+    const updatedUser = await Organizacion.update(
+      { image: image },
+      { where: { id: id }, returning: true }
+    );
+
+    if (!updatedUser) return;
+
+    return updatedUser;
+  } catch (error) {
+    return console.log("Error updating your profile picture", error);
+  }
+};
+
 module.exports = {
   loginOrg,
   getOrganizations,
@@ -201,4 +216,5 @@ module.exports = {
   updateOrganizationById,
   deleteOrganizationById,
   getOrganizationByLocation,
+  updatePhotoMyProfile,
 };
