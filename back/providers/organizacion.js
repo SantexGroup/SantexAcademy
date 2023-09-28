@@ -80,25 +80,24 @@ const getOrganizations = async () => {
   }
 };
 
-
 const getOrganizationsById = async (orgId) => {
   try {
     const organization = await Organizacion.findOne({
       where: {
         id: orgId,
-      }
-    })
+      },
+    });
 
     if (!organization) {
       throw new Error("Organization not found");
     }
 
     return organization;
-  }catch (error) {
+  } catch (error) {
     console.error("Ocurrió un error al obtener la organización.", error);
     throw error;
   }
-}
+};
 const updateOrganizationById = async (id, organization) => {
   try {
     const [affectedRows] = await Organizacion.update(organization, {
@@ -190,6 +189,8 @@ const getOrganizationByLocation = async (location, opportunityType) => {
     throw error;
   }
 };
+
+// const addCoverPage = async (id, img) => {};
 
 module.exports = {
   loginOrg,
