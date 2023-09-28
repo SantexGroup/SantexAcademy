@@ -12,7 +12,7 @@ module.exports = {
         primaryKey: true
       },
 
-      cantidad: {
+      cantidad_donada: {
         type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 0

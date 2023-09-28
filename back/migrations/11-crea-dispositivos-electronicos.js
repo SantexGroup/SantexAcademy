@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.STRING(50)
       },
 
-      cantidad: {
+      cantidad_actual: {
         type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 0

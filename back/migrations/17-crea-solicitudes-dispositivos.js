@@ -12,7 +12,7 @@ module.exports = {
         primaryKey: true
       },
 
-      cantidad: {
+      cantidad_solicitada: {
         type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 0
@@ -47,8 +47,8 @@ module.exports = {
         // },
       },
 
-      estado_dispositivo: {
-        type: Sequelize.STRING(50)
+      descripcion_dispositivo_electronico: {
+        type: Sequelize.STRING(100)
       },
 
       activo: {
