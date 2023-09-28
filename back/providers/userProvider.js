@@ -115,6 +115,16 @@ const inscription = async (idCourse, idUser) => {
     throw ('Error:', error);
   }
 };
+const removeCourseRegistration = async (idCourseSelect, idUserSelect) => {
+  try {
+    const relation = await Registered.findOne(
+      { where: { idCourse: idCourseSelect, idUser: idUserSelect } },
+    );
+    return relation.destroy({ where: { id: relation.id } });
+  } catch (error) {
+    throw ('Error:', error);
+  }
+};
 
 module.exports = {
   createUser,
@@ -126,4 +136,5 @@ module.exports = {
   patchUser,
   validateUser,
   inscription,
+  removeCourseRegistration,
 };

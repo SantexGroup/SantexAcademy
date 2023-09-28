@@ -15,7 +15,18 @@ const patchUser = async (id, newPassword) => UserProvider.patchUser(id, newPassw
 const deleteUser = async (id) => UserProvider.deleteUser(id);
 
 const inscription = async (idCourse, idUser) => UserProvider.inscription(idCourse, idUser);
-
+/* eslint-disable */
+const removeCourseRegistration = async (idCourse, idUser) => 
+UserProvider.removeCourseRegistration(idCourse, idUser);
+/* eslint-enable */
 module.exports = {
-  getUserById, getUsers, createUser, updateUser, deleteUser, patchUser, getUserByEmail, inscription,
+  getUserById,
+  getUsers,
+  createUser,
+  updateUser,
+  deleteUser,
+  patchUser,
+  getUserByEmail,
+  inscription,
+  removeCourseRegistration,
 };

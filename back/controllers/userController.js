@@ -119,6 +119,15 @@ const inscription = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+const removeCourseRegistration = async (req, res) => {
+  const { idCourse, idUser } = req.params;
+  try {
+    const remove = await UserService.removeCourseRegistration(idCourse, idUser);
+    return res.status(200).json(remove);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 
 // exports
 module.exports = {
@@ -130,4 +139,5 @@ module.exports = {
   updatePassword,
   getUserByEmail,
   inscription,
+  removeCourseRegistration,
 };

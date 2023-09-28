@@ -16,7 +16,10 @@ export class UserService {
     return this.httpUser.post(this.apiUrl, user)
   }
   getUserByEmail(email:string){
-    return this.httpUser.get(this.apiUrl+"/"+ email)
+    return this.httpUser.get(this.apiUrl+"/email/"+ email)
+  }
+  removeCourseRegistration(idCourse:number,idUser:number ){
+    return this.httpUser.delete(this.apiUrl+"/removeinscription/"+idCourse+"/"+idUser)
   }
 
 }

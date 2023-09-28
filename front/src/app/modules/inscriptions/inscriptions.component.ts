@@ -11,7 +11,7 @@ export class InscriptionsComponent {
   token: string | null = localStorage.getItem('token');
   userData: any = {};
   inscriptions: [] =[];
-  token2: string="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhbmdlbGdhYnJpZWxuaWV2YXNAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY5NTg0NDM1OX0.orTpDrocz4pBMNIwbM9TrztNOiix2FWr18OZ9EqKdO4"
+  token2: string="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhbmdlbGdhYnJpZWxuaWV2YXNAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY5NTkxNjc5M30.I0iglYqkjQ7fGgVLrahaDqo3CQI7DyQlESgqDwpeYTM"
 constructor(private userService:UserService){
   localStorage.setItem('token', this.token2);
   this.getToken()
@@ -19,28 +19,32 @@ constructor(private userService:UserService){
 getToken(){
   if (this.token) {
     try {
-      // Decodifica el token JWT
       const tokenPayload = JSON.parse(atob(this.token.split('.')[1]));
 
-      // Los datos del payload estarán disponibles en 'tokenPayload'
-      console.log(tokenPayload);
-
-      // Puedes acceder a campos específicos del payload, por ejemplo:
       this.userData.email = tokenPayload.email;
       this.userService.getUserByEmail(this.userData.email).subscribe(
         (data)=>{
-          this.userData = data
-          this.inscriptions = this.userData.Registereds
-          console.log(this.inscriptions)
+          this.userData = data;
+          this.inscriptions = this.userData.Registereds;
         },
         (error)=>{
-          console.log(error)
+          console.log(error);
         }
       )
     } catch (error) {
-      // Maneja cualquier error que pueda ocurrir al decodificar el token
       console.error('Error al decodificar el token:', error);
     }
   }
+}
+deleteInscription(idCourse:number) {
+  this.userService.removeCourseRegistration(idCourse, this.id).subscribe(
+    (res) => {
+      window.location.reload();
+    },
+    (err) => console.log(err)
+  );
+}
+selectId(id: number){
+  this.id = id;
 }
 }

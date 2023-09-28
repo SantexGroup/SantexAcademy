@@ -28,6 +28,7 @@ const {
   updateUser,
   patchUser,
   inscription,
+  removeCourseRegistration,
 } = require('./userProvider');
 
 const CourseProvider = {
@@ -60,6 +61,7 @@ const UserProvider = {
   updateUser,
   patchUser,
   inscription,
+  removeCourseRegistration,
 };
 module.exports = {
   CourseProvider, CategoryProvider, ScheduleProvider, UserProvider,
