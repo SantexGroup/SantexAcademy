@@ -23,6 +23,7 @@ export class ShowAboutUsComponent implements OnInit {
     this.abouts.forEach(about => {
       this.groupedAbouts[about.priority].abouts.push(about);
     });
+    this.groupedAbouts = this.groupedAbouts.filter(abouts => abouts.abouts.length > 0);
     console.log('abouts', this.abouts)
     console.log('grouped abouts', this.groupedAbouts)
     console.log('maxpriority', maxPriority)
