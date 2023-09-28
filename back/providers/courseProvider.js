@@ -12,7 +12,7 @@ const createCourse = async (course) => {
 
 const getCourses = async () => {
     try {
-        return await Course.findAll();
+        return await Course.findAll({paranoid: false});//se muestran incluso los eliminados
     } catch (err) {
         console.error('Error when fetching courses.', err.message);
         throw err;
@@ -57,10 +57,15 @@ const createUser = async (user, courseId) => {
     }
 }
 
-const getUsers = async (id) => {
+const getUsers = async (id, filterParams) => {
     try {
+        let options = {
+            where: {},
+            paranoid: false // se muestran incluso los eliminados
+        };
+        if (filterParams.role) options.where.role = filterParams.role;
         const course = await Course.findByPk(id);
-        return await course?.getUsers();
+        return await course?.getUsers(options);
     } catch (err) {
         console.error("Error when fetching course users.", err.message);
         throw err;

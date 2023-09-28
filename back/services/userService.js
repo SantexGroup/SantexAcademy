@@ -15,8 +15,8 @@ const loginUser = async (data) => {
   return found;
 };
 
-const findUsers = async () => {
-  const found = await userProvider.find();
+const findUsers = async (filterParams) => {
+  const found = await userProvider.find(filterParams);
   return found;
 };
 

@@ -36,12 +36,23 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      role: {
+        type: Sequelize.ENUM,
+        values: ['admin', 'teacher', 'student']
+      },
+      specialty: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deletedAt: { 
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
