@@ -20,6 +20,7 @@ import { CategoryComponent } from './modules/admin-panel/categories/category.com
 import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.component';
 import { CourseComponent } from './modules/admin-panel/courses/course.component';
 import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
+import { InscriptionsComponent } from './modules/inscriptions/inscriptions.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashb
     ScheduleComponent,
     CourseComponent,
     DashboardPageComponent,
+    InscriptionsComponent,
   ],
   imports: [
     BrowserModule,

@@ -29,6 +29,12 @@ const getUserByEmail = async (option) => {
   try {
     const user = await User.findOne({
       where: { email: option },
+      include: [
+        {
+          model: Registered,
+          include: [Course],
+        },
+      ],
     });
     return user;
   } catch (error) {

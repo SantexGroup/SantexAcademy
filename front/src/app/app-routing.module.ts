@@ -12,10 +12,14 @@ import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.comp
 import { AddScheduleComponent } from './modules/admin-panel/schedules/add-schedule/add-schedule.component';
 import { EditScheduleComponent } from './modules/admin-panel/schedules/edit-schedule/edit-schedule.component';
 import { CourseComponent } from './modules/admin-panel/courses/course.component';
+import { InscriptionsComponent } from './modules/inscriptions/inscriptions.component';
 
 const routes: Routes = [
-  {
+ /*  {
     path: '', component:HomePageComponent
+  }, */
+  {
+    path: '', component:InscriptionsComponent
   },
   {
     path:'admin/panel', component:AdminPanelComponent

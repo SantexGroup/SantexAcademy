@@ -15,5 +15,8 @@ export class UserService {
   postUser(user: User){
     return this.httpUser.post(this.apiUrl, user)
   }
+  getUserByEmail(email:string){
+    return this.httpUser.get(this.apiUrl+"/"+ email)
+  }
 
 }

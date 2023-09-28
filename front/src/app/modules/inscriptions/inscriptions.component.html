@@ -1,0 +1,8 @@
+<div class="container-fluid" *ngFor="let register of userData.Registereds">
+    <div class="row rounded m-3 p-3" style="background-color: #fff; box-shadow: 1px 1px 7px #fff;">
+    <div class="col"><div><h2>{{register.Course.name}}</h2></div><div><h5>{{register.Course.description}}</h5></div></div>
+    <div class="col"><h4 style="color: orange;">En curso</h4></div>
+    <div class="col"><img src="{{register.Course.image}}" alt="{{register.Course.name}}" height="100px"> </div>
+    </div>
+
+</div>

@@ -14,7 +14,7 @@ const getUserById = async (req, res) => {
   }
 };
 const getUserByEmail = async (req, res) => {
-  const { email } = req.body;
+  const { email } = req.params;
   try {
     const user = await UserService.getUserByEmail(email);
     res.status(200).json(user);
