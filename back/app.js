@@ -80,7 +80,7 @@ models.sequelize.authenticate()
     logger.api.error(err);
   });
 
-createAdminDefault('admin@gmail.com', 'Admin123');
+// createAdminDefault('admin@gmail.com', 'Admin123');
 
 // app.use('/', routes);
 app.use('/volunteer', routes.volunteer);
