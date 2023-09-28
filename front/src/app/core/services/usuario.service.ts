@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError, BehaviorSubject, tap } from 'rxjs';
 import { registroInterface } from '../interfaces/registro.interface';
-import { userInterface } from '../../core/interfaces/user.interface';
+import { User } from '../../core/interfaces/user.interface';
 import { ApiService } from '../http/api.service';
 import { loginInterface } from '../interfaces/login.interface';
 
@@ -35,13 +35,13 @@ private userData1: BehaviorSubject<{ name: string, lastName: string }> = new Beh
   }
 
   //* Recuperar datos de un usuario
-  getUser(id: number) : Observable <userInterface> { 
-    return this.api.get<userInterface>(`user/getUser/${id}`);
+  getUser(id: number) : Observable <User> { 
+    return this.api.get<User>(`user/getUser/${id}`);
   }
   
   //* Actualizar el usuario
-  updateUser(id: number, user: userInterface) : Observable <userInterface> {
-    return this.api.put<userInterface>(`user/update/${id}`, user);
+  updateUser(id: number, user: User) : Observable <User> {
+    return this.api.put<User>(`user/update/${id}`, user);
   }
 
   //* Se envia la foto a Google Drive

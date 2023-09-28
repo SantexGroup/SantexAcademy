@@ -9,8 +9,8 @@ const uploadDrive = ('/upload', upload, async (req, res) => {
       version: 'v3',
       auth: await googleValidation(),
     });
-    
-    console.log("desde google service", req.file) //TODO ELIMIAR
+
+    console.log('desde google service', req.file); // TODO ELIMIAR
     const fileMetadata = {
       name: req.file.originalname,
       parents: ['1U2zXpUVpRshEz35pnFjIbZoy7QTmSA3N'],
@@ -24,14 +24,14 @@ const uploadDrive = ('/upload', upload, async (req, res) => {
     const { data } = await gDrive.files.create({
       resource: fileMetadata,
       media,
-      fields: 'id', 
+      fields: 'id',
     });
 
     console.log('ID', data.id);
 
     /* https://drive.google.com/uc?export=view&id= */
 
-    const result = await (data.id);
+    const result = await (`https://drive.google.com/uc?export=view&id=${data.id}`);
 
     res.json(result);
 

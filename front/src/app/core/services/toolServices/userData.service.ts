@@ -85,9 +85,10 @@ export class UserDataService {
     });
   }
 
-  getMyOptionals() {
+  getMyOptionals(){
     this._optionals.getMyOptionals(this.userId).subscribe((myOptionals: Optionals[]) => {
       this.optionals = myOptionals;
+      console.log(myOptionals); 
     });
   }
 

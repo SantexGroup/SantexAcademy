@@ -85,41 +85,33 @@ async function getUser(id) {
 }
 
 // Servicio que actualiza datos de un usuario
-async function updateUser(id, data) {
+async function updateUser(
+  id,
+  name,
+  lastName,
+  bornDate,
+  phone,
+  email,
+  pictureLink,
+) {
   // Buscar al usuario en la base de datos por su ID
-  const user = await User.findByPk(id);
+  const user = await getUser(id);
 
-  if (!user) {
-    throw new Error('El ID del usuario no existe en la base de datos');
+  const updateData = {
+    name,
+    lastName,
+    bornDate,
+    phone,
+    pictureLink,
+  };
+
+  if (user) {
+    if (email !== '') {
+      updateData.email = email;
+    }
+    await user.update(updateData);
   }
-  // Guardar el usuario actualizado
-  //* Se edita funcion
-  return user.update(data);
-
-  // if (email !== ' '){
-  //   //* El correo fue cambiado, se debe actualizar
-  //   const userEdited = await user.update({
-  //     name,
-  //     lastName,
-  //     email,
-  //     phone,
-  //     bornDate,
-  //     pictureLink,
-  //   });
-
-  //   return userEdited;
-  // } else {
-  //   //* No se actualiza el correo, solo los demas campos
-  //   const userEdited = await user.update({
-  //     name,
-  //     lastName,
-  //     phone,
-  //     bornDate,
-  //     pictureLink,
-  //   });
-
-  //   return userEdited;
-  // }
+  return user;
 }
 
 // Servicio de borrado de usuario provisorio. Hasta finalar el delete de los demas servicios
