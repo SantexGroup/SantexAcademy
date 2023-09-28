@@ -6,25 +6,19 @@
   >
     <figure class="w-full h-[150px]">
       <img
-        src="/assets/icons/good.png"
+        [src]="
+          status === 'success'
+            ? '/assets/icons/good.png'
+            : 'assets/icons/bad.png'
+        "
         alt="icono good"
         class="w-full h-full object-contain"
-        *ngIf="status === 'success'"
-      />
-      <img
-        src="/assets/icons/bad.png"
-        alt="icono bad"
-        class="w-full h-full object-contain"
-        *ngIf="status === 'failed'"
       />
     </figure>
-    <p class="text-center sm:w-[80%]" *ngIf="status === 'success'">
-      ¡Tus datos se han modificado correctamente!
+    <p class="text-center sm:w-[80%]">
+      {{ message }}
     </p>
-    <p class="text-center sm:w-[80%]" *ngIf="status === 'failed'">
-      ¡Se produjo un error al modificar tus datos! Por favor, inténtalo de nuevo
-      más tarde.
-    </p>
+    <p class="text-center sm:w-[80%]"></p>
     <button
       *ngIf="status === 'failed'"
       type="button"
