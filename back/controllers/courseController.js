@@ -56,7 +56,8 @@ const createUser = async (req, res) => {
 
 const getUsers = async (req, res) => {
     try {
-        const users = await courseService.getUsers(req.params.id);
+        const { role } = req.query;
+        const users = await courseService.getUsers(req.params.id, { role });
         users ? res.json(users) : res.status(404).end();
     } catch (err) {
         res.status(500).json({ action: 'Obtener usuarios del curso', message: err.message });
