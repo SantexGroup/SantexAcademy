@@ -1,6 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { ExperiencesComponent } from './modules/crud-data/experiences/experiences.component';
+import { SkillComponent } from './modules/crud-data/skill/skill.component';
+import { PersonalComponent } from './modules/crud-data/personal/personal.component';
+import { CVComponent } from './modules/cv/cv.component';
+import { ReferencesComponent } from './modules/crud-data/references/references.component';
+import { ProfilesComponent } from './modules/profiles/profiles.component';
+import { AuthGuard } from './core/guards/auth.guard';
+import { ProfilesFourComponent } from './modules/profiles-four/profiles-four.component';
+import { AbandonGuard } from './core/guards/abandon.guard';
+import { ProfileOneComponent } from './modules/profile-one/profile-one.component';
+import { ProfileTwoComponent } from './modules/profile-two/profile-two.component';
+import { HomeComponent } from './modules/home/home.component';
+import { FormationsComponent } from './modules/crud-data/formations/formations.component';
+import { LanguageComponent } from './modules/crud-data/language/language.component';
+import { OptionalsComponent } from './modules/crud-data/optionals/optionals.component';
+
 
 const routes: Routes = [
   {
@@ -13,9 +29,67 @@ const routes: Routes = [
   },
   {
     path: 'home/:id',
-    loadChildren: () => 
-    import('./modules/lazyLoading/crud-data.module')
-    .then(m => m.CrudDataModule)
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'cv',
+        component: CVComponent,
+        children: [
+          {
+            path: 'four',
+            component: ProfilesFourComponent
+          },
+          {
+            path: 'one',
+            component: ProfileOneComponent
+          },
+          {
+            path: 'two',
+            component: ProfileTwoComponent
+          }
+        ]
+      },
+      {
+        path: 'personal',
+        component: PersonalComponent,
+        canDeactivate: [AbandonGuard]
+      },
+      {
+        path: 'experiencias',
+        component: ExperiencesComponent,
+        canDeactivate: [AbandonGuard]
+      },
+      {
+        path: 'referencias',
+        component: ReferencesComponent,
+        canDeactivate: [AbandonGuard]
+      },
+      {
+        path: 'formaciones',
+        component: FormationsComponent,
+        canDeactivate: [AbandonGuard]
+      },
+      {
+        path: 'opcionales',
+        component: OptionalsComponent,
+        canDeactivate: [AbandonGuard]
+      },
+      {
+        path: 'lenguajes',
+        component: LanguageComponent,
+        canDeactivate: [AbandonGuard]
+      },
+      {
+        path: 'habilidades',
+        component: SkillComponent,
+        canDeactivate: [AbandonGuard]
+      },
+      {
+        path: 'profiles',
+        component: ProfilesComponent
+      }
+    ]
   }, 
   {
     path: '',

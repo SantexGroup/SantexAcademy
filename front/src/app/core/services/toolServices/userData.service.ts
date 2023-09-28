@@ -37,6 +37,8 @@ export class UserDataService {
 
   lastName = "" || localStorage.getItem('lastName');
 
+  phone = "" || localStorage.getItem('phone');
+
   urlPicture = "";
 
 
