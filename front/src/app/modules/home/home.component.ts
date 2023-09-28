@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
+
 
 
 @Component({
@@ -14,12 +15,15 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router, 
     public views: NavBarService, 
-    public userData: UserDataService   
+    public userData: UserDataService,
   ) { }
 
   ngOnInit(): void {
-  
-  }  
+    
+    /* this.views.changeTitle("Home"); */
+    
+  } 
+
 
   optionales(){
     this.router.navigate(['/optionales'])

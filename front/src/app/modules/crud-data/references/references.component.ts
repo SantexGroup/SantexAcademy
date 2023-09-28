@@ -5,6 +5,7 @@ import { ExperiencesService } from 'src/app/core/services/experiences.service';
 import { ReferencesService } from 'src/app/core/services/references.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-references',
@@ -15,16 +16,15 @@ export class ReferencesComponent implements OnInit {
 
   referenceForm: FormGroup;
 
-  referenceList: Reference[] = [];
-
   referenceId: number = 0;
 
   constructor(
-    public userData: UserDataService,
-    public views: NavBarService,
     private _company: ExperiencesService,
     private fb: FormBuilder,
-    private _referenceService: ReferencesService
+    private _referenceService: ReferencesService,
+    public userData: UserDataService,
+    public views: NavBarService,
+    public toastr: ToastrService
   ) {
     this.referenceForm = this.fb.group({
       name: '',
@@ -32,14 +32,19 @@ export class ReferencesComponent implements OnInit {
       email: '',
       phone: '',
       company: '',
-    })
+    });
+
   }
 
   ngOnInit(): void {
 
+    this.userData.checkForm = false;
+    
+    this.views.changeTitle("Referencias");
+
     this.getCompany();
 
-    this.getReference();
+    this.userData.getReference();
 
   }
 
@@ -65,25 +70,17 @@ export class ReferencesComponent implements OnInit {
       profileId: this.userData.profileId
     }
     this._referenceService.addReference(newReference).subscribe((reference) => {
-      this.referenceList.push(reference);
+      this.userData.references.push(reference);
+      this.toastr.success('Se agrego un nueva referencia', 'REFERENCIA');
     })
 
     this.referenceForm.reset();
   }
 
-  getReference() {
-    this._referenceService.getReference(this.userData.userId).subscribe((referenceList) => {
-      this.referenceList = referenceList;
-      console.log(this.referenceList)
-    });
-  }
-
   selectedReference(id?: number) {
-    const index = this.referenceList.findIndex(reference => reference.id === id)
-    const element = this.referenceList[index]
+    const index = this.userData.references.findIndex(reference => reference.id === id)
+    const element = this.userData.references[index]
 
-    console.log(element);
-    console.log(index);
 
     this.referenceForm.patchValue({
       name: element.name,
@@ -95,7 +92,6 @@ export class ReferencesComponent implements OnInit {
     });
 
     this.referenceId = Number(element.id);
-    console.log(this.referenceId)
   }
 
   updateReferece() {
@@ -109,7 +105,8 @@ export class ReferencesComponent implements OnInit {
     }
 
     this._referenceService.updateReference(this.referenceId, updateReference).subscribe((referece) => {
-      this.getReference()
+      this.userData.getReference()
+      this.toastr.success('Se actualizo la referencia', 'REFERENCIA');
     });
 
     this.referenceForm.reset();
@@ -119,11 +116,12 @@ export class ReferencesComponent implements OnInit {
 
   }
 
-  deleteReference(id?:number){
-    const index = this.referenceList.findIndex(reference => reference.id === id);
-    const elementId = Number(this.referenceList[index].id);
-    this._referenceService.deleteReference(elementId).subscribe(()=>{
-      this.referenceList.splice(index, 1);
+  deleteReference(id?: number) {
+    const index = this.userData.references.findIndex(reference => reference.id === id);
+    const elementId = Number(this.userData.references[index].id);
+    this._referenceService.deleteReference(elementId).subscribe(() => {
+      this.userData.references.splice(index, 1);
+      this.toastr.error('Se elimino la referencia');
     });
 
     this.referenceForm.reset();

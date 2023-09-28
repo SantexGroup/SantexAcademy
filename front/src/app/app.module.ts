@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OptionalsComponent } from './modules/crud-data/optionals/optionals.component';
@@ -26,14 +24,19 @@ import { NavBarComponent } from './modules/nav-bar/nav-bar.component';
 import { HomeRoutingModule } from './modules/home/home-routing.module';
 import { PersonalComponent } from './modules/crud-data/personal/personal.component';
 import { SkillComponent } from './modules/crud-data/skill/skill.component';
-import { LoadingComponent } from './modules/loading/loading.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './core/services/toolServices/interceptor/loading.interceptor';
-import { UsuarioModule } from './modules/usuario/usuario.module';
+import { UsuarioModule } from './modules/lazyLoading/usuario.module';
 import { CVComponent } from './modules/cv/cv.component';
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfilesComponent } from './modules/profiles/profiles.component';
+import { LoadingModule } from './modules/loading/loading.module';
+import { ToastrModule } from 'ngx-toastr';
+import { ProfilesFourComponent } from './modules/profiles-four/profiles-four.component';
+import { ProfileOneComponent } from './modules/profile-one/profile-one.component';
+import { ProfileTwoComponent } from './modules/profile-two/profile-two.component';
+
 
 
 
@@ -48,10 +51,13 @@ import { ProfilesComponent } from './modules/profiles/profiles.component';
     NavBarComponent,
     PersonalComponent,
     SkillComponent,
-    LoadingComponent,
     CVComponent,
     ReferencesComponent,
     ProfilesComponent,
+    ProfilesFourComponent,
+    ProfileOneComponent,
+    ProfileTwoComponent
+
   ],
   imports: [
     BrowserModule,
@@ -73,13 +79,20 @@ import { ProfilesComponent } from './modules/profiles/profiles.component';
     MatMenuModule,
     HomeRoutingModule,
     NgbModule,
+    LoadingModule,
+    ToastrModule.forRoot({
+      timeOut: 9000,
+      positionClass: 'toast-top-center',
+      preventDuplicates: true
+    })
+
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
       multi: true
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

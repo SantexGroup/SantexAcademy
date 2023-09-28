@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserService } from 'src/app/core/services/usuario.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent{
+export class RegistroComponent implements OnInit{
   mensajeError: string = "";
 
   constructor
@@ -19,8 +20,13 @@ export class RegistroComponent{
     private router: Router, 
     private userService: UserService,
     public dataUser: UserDataService, 
-    public views: NavBarService
+    public views: NavBarService,
+    private toastrSrv: ToastrService
     ) { }
+
+  ngOnInit(): void {
+    this.views.changeTitle("Registrarse");
+  }
 
   //* Getters para validar los campos del formulario
   get name() {
@@ -65,15 +71,16 @@ export class RegistroComponent{
         this.views.accountButton = false;
         this.dataUser.userName = data.user.name;
         this.dataUser.lastName = data.user.lastName;
-        this.views.title = ("Bienvenido! " + data.user.name + " " + data.user.lastName);
+        this.dataUser.newUser = true;
+        this.views.changeTitle("Bienvenido! " + data.user.name + " " + data.user.lastName);
         this.router.navigate(['/home', data.profile.userId, 'cv']) 
         }, 
-        error: (err) => { 
-          console.log(err); 
-          this.mensajeError = err;
+        error: () => { 
+         this.toastrSrv.warning('Verifica nuemante los datos', 'El registro no se puede completar') 
+          
         },
         complete: () => { 
-          console.log("Done") 
+         this.toastrSrv.success("Tu usuario se registro correctamente", "Registro Correcto");  
         }
       });
     }

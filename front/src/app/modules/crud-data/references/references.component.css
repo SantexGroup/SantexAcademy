@@ -88,6 +88,11 @@ form mat-form-field {
     box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.57);
 }
 
+.card:hover {
+    border: 2px solid #3f6ad8;
+}
+
+
 .card-body .botonera-card {
     display: flex;
     align-items: center;

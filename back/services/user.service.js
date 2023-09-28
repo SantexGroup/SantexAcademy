@@ -55,11 +55,13 @@ async function login(nick, password) {
   });
 
   const jwtSecret = process.env.JWT_SECRET;
+  const expiresIn = 7200;
 
   const token = jwt.sign({
     id: user.id,
     nick: user.nick,
-  }, jwtSecret);
+    profileId: profile.id,
+  }, jwtSecret, { expiresIn });
   // Devolver un objeto con el token de acceso
   return {
     user: {
@@ -83,29 +85,33 @@ async function getUser(id) {
 }
 
 // Servicio que actualiza datos de un usuario
-async function updateUser(id, {
-  name, lastName, phone, email, dateBorn, pictureLink,
-}) {
+async function updateUser(
+  id,
+  name,
+  lastName,
+  bornDate,
+  phone,
+  email,
+  pictureLink,
+) {
   // Buscar al usuario en la base de datos por su ID
-  const user = await User.findByPk(id);
+  const user = await getUser(id);
 
-  if (!user) {
-    throw new Error('El ID del usuario no existe en la base de datos');
-  }
-  // Guardar el usuario actualizado
-  //* Se edita funcion
-  //* const userEdited = await user.update(data);
-  const userEdited = await user.update({
+  const updateData = {
     name,
     lastName,
-    email,
+    bornDate,
     phone,
-    dateBorn,
     pictureLink,
-  });
+  };
 
-  // Devolver el objeto del usuario actualizado
-  return userEdited;
+  if (user) {
+    if (email !== '') {
+      updateData.email = email;
+    }
+    await user.update(updateData);
+  }
+  return user;
 }
 
 // Servicio de borrado de usuario provisorio. Hasta finalar el delete de los demas servicios

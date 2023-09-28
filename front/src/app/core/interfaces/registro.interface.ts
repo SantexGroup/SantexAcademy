@@ -10,7 +10,6 @@ export interface registroInterface {
     userId: number,
   },
   rolesId:number,
-  
   profileName: string,
   updatedAt?: Date,
 }

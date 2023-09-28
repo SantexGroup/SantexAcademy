@@ -10,6 +10,7 @@ import { MaritalsService } from 'src/app/core/services/maritals.service';
 import { OptionalsService } from 'src/app/core/services/optionals.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-optionals',
@@ -17,21 +18,6 @@ import { UserDataService } from 'src/app/core/services/toolServices/userData.ser
   styleUrls: ['./optionals.component.css'],
 })
 export class OptionalsComponent implements OnInit {
-
-  ngOnInit(): void {
-
-    this.getListCountries();
-
-    this.getListGender();
-
-    this.getListMaritals();
-
-    this.getMyOptionals();
-
-    this.views.plusOne = true;
-    this.views.saveButton = false;
-
-  }
 
   optionalsForm: FormGroup;
 
@@ -42,9 +28,10 @@ export class OptionalsComponent implements OnInit {
     private _maritalsService: MaritalsService,
     private _genderServices: GenderService,
     private _optionalsService: OptionalsService,
-    private dataUser: UserDataService,
     private fb: FormBuilder,
-    public views: NavBarService
+    public userData: UserDataService,
+    public views: NavBarService,
+    public toastr: ToastrService
   ) {
     this.optionalsForm = this.fb.group({
       maritalId: ['', Validators.required],
@@ -61,6 +48,29 @@ export class OptionalsComponent implements OnInit {
       address: [''],
       zipCode: [''],
     });
+
+  }
+
+  ngOnInit(): void {
+    
+    this.userData.checkForm = false;
+
+    this.getListCountries();
+
+    this.getListGender();
+
+    this.getListMaritals();
+
+    this.userData.getMyOptionals();
+
+    console.log(this.userData.optionals)
+
+    this.views.changeTitle("Opcionales");
+    
+    this.views.plusOne = true;
+
+    this.views.saveButton = false;
+
   }
 
   //Countries
@@ -90,15 +100,6 @@ export class OptionalsComponent implements OnInit {
 
   gender: Sexs[] = [];
 
-  getMyOptionals() {
-    this._optionalsService.getMyOptionals(this.dataUser.userId).subscribe((myOptionals: Optionals[]) => {
-      this.optional = myOptionals;
-      console.log(this.optional);
-    });
-  }
-
-  optional: Optionals[] = [];
-
   postOptionals() {
 
     const newOptionals: Optionals = {
@@ -115,19 +116,22 @@ export class OptionalsComponent implements OnInit {
       achievements: this.optionalsForm.get('achievements')?.value,
       address: this.optionalsForm.get('address')?.value,
       zipCode: this.optionalsForm.get('zipCode')?.value,
-      profileId: this.dataUser.profileId,
+      profileId: this.userData.profileId,
     }
 
     this._optionalsService.addOptionals(newOptionals).subscribe((optional) => {
-      this.optional.push(optional);
+      this.userData.optionals.push(optional);
+      console.log(optional);
+      console.log(this.userData.optionals);
+      this.toastr.success('Se agregaron nuevos opcionales', 'OPCIONALES');
     });
-    
+
     this.optionalsForm.reset();
   }
 
   getOptional(id?: number) {
-    const index = this.optional.findIndex(option => option.id === id);
-    const element = this.optional[index];
+    const index = this.userData.optionals.findIndex(option => option.id === id);
+    const element = this.userData.optionals[index];
 
     this.optionalsForm.patchValue({
       maritalId: element.maritalId,
@@ -164,11 +168,12 @@ export class OptionalsComponent implements OnInit {
       achievements: this.optionalsForm.get('achievements')?.value,
       address: this.optionalsForm.get('address')?.value,
       zipCode: this.optionalsForm.get('zipCode')?.value,
-      profileId: this.dataUser.profileId
-    } 
+      profileId: this.userData.profileId
+    }
 
     this._optionalsService.updateOptionals(this.optionalId, newDataOptional).subscribe(() => {
-      this.getMyOptionals();
+      this.userData.getMyOptionals();
+      this.toastr.success('Se actualizaron los opcionales', 'OPCIONALES');
     });
 
     this.optionalsForm.reset();
@@ -179,10 +184,11 @@ export class OptionalsComponent implements OnInit {
   }
 
   removeOptional(id?: number) {
-    const index = this.optional.findIndex(option => option.id === id)
-    const elementId = Number((this.optional[index]).id)
+    const index = this.userData.optionals.findIndex(option => option.id === id)
+    const elementId = Number((this.userData.optionals[index]).id)
     this._optionalsService.deleteOptional(elementId).subscribe(() => {
-      this.optional.splice(index, 1);
+      this.userData.optionals.splice(index, 1);
+      this.toastr.error('Se eliminaron los opcionales');
     });
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Countries } from 'src/app/core/interfaces/country.interface';
 import { Experience } from 'src/app/core/interfaces/experience.interface';
 import { ExperienceStatus } from 'src/app/core/interfaces/experienceStatus.interface';
@@ -10,6 +10,8 @@ import { ExperiencesTypeService } from 'src/app/core/services/experiences-type.s
 import { ExperiencesService } from 'src/app/core/services/experiences.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-experiences',
@@ -20,8 +22,6 @@ export class ExperiencesComponent implements OnInit {
 
   experienceForm: FormGroup;
 
-  experiences: Experience[] = [];
-
   experienceId: number = 0;
 
   constructor(
@@ -30,8 +30,9 @@ export class ExperiencesComponent implements OnInit {
     private _countriesService: CountriesService,
     private _experiencesService: ExperiencesService,
     private fb: FormBuilder,
-    private userData: UserDataService,
-    public views: NavBarService
+    public userData: UserDataService,
+    public views: NavBarService,
+    public toastr: ToastrService
   ) {
     this.experienceForm = this.fb.group({
       description: '',
@@ -42,10 +43,12 @@ export class ExperiencesComponent implements OnInit {
       countriesId: '',
       startDate: '',
       endDate: null,
-    })
+    });
   }
 
   ngOnInit(): void {
+
+    this.userData.checkForm = false;
 
     this.getTypes();
 
@@ -53,15 +56,17 @@ export class ExperiencesComponent implements OnInit {
 
     this.getCountries();
 
-    this.getExperience();
+    this.userData.getExperience();
+
+    this.views.changeTitle("Experiencias");
 
   }
 
-  endDateShow():boolean{
+  endDateShow(): boolean {
     return this.experienceForm.get('statusId')?.value !== 1;
   }
 
- 
+
   //Experiences Types
   getTypes() {
     this._experienceTypeServices.getExperienceType().subscribe((typesList: ExperienceType[]) => {
@@ -88,7 +93,7 @@ export class ExperiencesComponent implements OnInit {
 
   countries: Countries[] = [];
 
-  addExperience(){
+  addExperience() {
     const newExperience: Experience = {
       description: this.experienceForm.get('description')?.value,
       company: this.experienceForm.get('company')?.value,
@@ -102,22 +107,17 @@ export class ExperiencesComponent implements OnInit {
     }
 
     this._experiencesService.addExperience(newExperience).subscribe((experience) => {
-      this.experiences.push(experience);
+      this.userData.experiences.push(experience);
+      this.toastr.success('Se agrego un nueva experiencia', 'EXPERIENCIA');
     });
 
     this.experienceForm.reset();
   }
 
-  getExperience() {
-    this._experiencesService.getExperience(this.userData.userId).subscribe((experieceList: Experience[])=>{
-      this.experiences = experieceList;
-    });
-  }
+  selectedExperience(id?: number) {
+    const index = this.userData.experiences.findIndex(experience => experience.id === id)
+    const element = this.userData.experiences[index]
 
-  selectedExperience(id?:number){
-    const index = this.experiences.findIndex(experience => experience.id === id)
-    const element = this.experiences[index]  
-      
     this.experienceForm.patchValue({
       description: element.description,
       company: element.company,
@@ -134,7 +134,7 @@ export class ExperiencesComponent implements OnInit {
 
   }
 
-  updateExperience(){
+  updateExperience() {
 
     const newDataExperience: Experience = {
       description: this.experienceForm.get('description')?.value,
@@ -145,13 +145,12 @@ export class ExperiencesComponent implements OnInit {
       countriesId: this.experienceForm.get('countriesId')?.value,
       startDate: this.experienceForm.get('startDate')?.value,
       endDate: this.experienceForm.get('endDate')?.value,
-    } 
+    }
 
     this._experiencesService.updateExperience(this.experienceId, newDataExperience).subscribe(() => {
-      this.getExperience();
+      this.userData.getExperience();
+      this.toastr.success('Experiencia actualizada', 'EXPERIENCIAS');
     });
-    
-    console.log(this.userData.companies);
 
     this.experienceForm.reset();
 
@@ -159,14 +158,16 @@ export class ExperiencesComponent implements OnInit {
     this.views.plusOne = true;
   }
 
-  deleteExperience(id?:number){
-    const index = this.experiences.findIndex(experience => experience.id === id)
-    const elementId = Number((this.experiences[index]).id)
+  deleteExperience(id?: number) {
+    const index = this.userData.experiences.findIndex(experience => experience.id === id)
+    const elementId = Number((this.userData.experiences[index]).id)
     this._experiencesService.deleteExperience(elementId).subscribe(() => {
-      this.experiences.splice(index, 1);
+      this.userData.experiences.splice(index, 1);
+      this.toastr.error('Se elimino la experiencia');
     });
 
     this.experienceForm.reset();
   }
 
 }
+
