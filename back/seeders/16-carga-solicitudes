@@ -8,8 +8,8 @@
 //       {
 //         id_donante: 0,
 //         razon_social_donante: "",
-//         fecha_donacion: new Date(),
-//         descripcion_donacion: "",
+//         fecha_solicitud: new Date(),
+//         descripcion_solicitud: "",
 //         id_estado_operacion: 0,
 //         estado_operacin: "",
 //         activo: 1,
@@ -22,8 +22,8 @@
 //       {
 //         id_donante: 0,
 //         razon_social_donante: "",
-//         fecha_donacion: new Date(),
-//         descripcion_donacion: "",
+//         fecha_solicitud: new Date(),
+//         descripcion_solicitud: "",
 //         id_estado_operacion: 0,
 //         estado_operacin: "",
 //         activo: 1,

@@ -35,7 +35,7 @@ module.exports = {
       },
 
       descripcion_solicitud: {
-        type: Sequelize.STRING(200)
+        type: Sequelize.STRING(150)
       },
 
       id_dispositivo_electronico: {

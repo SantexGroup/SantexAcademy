@@ -40,6 +40,12 @@ module.exports = {
         type: Sequelize.STRING(2)
       },
 
+      numero_telefono: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0
+      },
+
       id_descripcion_telefono: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -51,12 +57,6 @@ module.exports = {
 
       descripcion_telefono: {
         type: Sequelize.STRING(50)
-      },
-
-      numer_telefono: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
       },
 
       activo: {

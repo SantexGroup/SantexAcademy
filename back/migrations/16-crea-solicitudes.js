@@ -26,7 +26,7 @@ module.exports = {
       },
 
       descripcion_solicitud: {
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING(150)
       },
 
       fecha_solicitud: {

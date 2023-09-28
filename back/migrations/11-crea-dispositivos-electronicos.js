@@ -12,8 +12,14 @@ module.exports = {
         primaryKey: true
       },
 
-      descripcion: {
-        type: Sequelize.STRING(50)
+      descripcion_dispositivo_electronico: {
+        type: Sequelize.STRING(150)
+      },
+
+      modelo_dispositivo_electronico: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0
       },
 
       cantidad_actual: {

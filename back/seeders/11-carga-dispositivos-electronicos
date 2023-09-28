@@ -6,8 +6,9 @@
 //   up: async (queryInterface, Sequelize) => {
 //     const datosDispositivosElectronicos = [
 //       {
-//         descripcion: "Dispositivo electronico",
-//         cantidad: 0,
+//         descripcion_dispositivo_electronico: "Dispositivo electronico",
+//         modelo_dispositivo_electronico: 0,
+//         cantidad_actual: 0,
 //         fecha_adquisicion: new Date(),
 //         id_descripcion_distpositivo: 0,
 //         descripcion_dispositivo: "",
