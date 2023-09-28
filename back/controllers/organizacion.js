@@ -91,24 +91,23 @@ const updateOrganizationById = async (req, res) => {
   try {
     const orgId = req.orgId;
 
-    const organization = await orgService.updateOrganizationById(orgId);
+    const organization = await orgService.updateOrganizationById(
+      req.body,
+      orgId
+    );
     if (!organization) {
       res.status(404).json({
         action: "updateOrganizationById",
         error: "Organization not found",
       });
     }
-    const organizationModified = await orgService.getOrganizationByCriteria({
-      id: organization.id,
-      nombre: organization.nombre,
-      direccion: organization.direccion,
-      telefono: organization.telefono,
-      email: organization.email,
-      cuit: organization.cuit,
-      password: organization.password,
-    });
 
-    res.json(organizationModified);
+    res
+      .status(200)
+      .json({
+        message: "la organizacion se modifico exitosamente",
+        organization,
+      });
   } catch (err) {
     res
       .status(500)
@@ -214,4 +213,5 @@ module.exports = {
   updateOrganizationById,
   deleteOrganizationById,
   getOrganizationByLocation,
+  updatePhotoMyProfile,
 };

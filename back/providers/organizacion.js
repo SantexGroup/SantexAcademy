@@ -100,16 +100,14 @@ const getOrganizationsById = async (orgId) => {
 };
 const updateOrganizationById = async (id, organization) => {
   try {
-    const [affectedRows] = await Organizacion.update(organization, {
+    const affectedRows = await Organizacion.update(organization, {
       where: { id, deletedAt: null },
+      returning: true,
     });
-    if (affectedRows === 0) {
+    if (!affectedRows) {
       throw new Error("No se encontrò el registro.");
     }
-    const organizationModified = await Organizacion.findOne({
-      where: { id },
-    });
-    return organizationModified;
+    return affectedRows;
   } catch (err) {
     console.error(
       "The organization could not be updated due to an error.",

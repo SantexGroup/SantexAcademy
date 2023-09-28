@@ -25,8 +25,8 @@ const getOrganizations = async () => {
 
 const updateOrganizationById = async (id, organization) => {
   const updatedOrganization = await orgProvider.updateOrganizationById(
-    id,
-    organization
+    organization,
+    id
   );
   return updatedOrganization;
 };
