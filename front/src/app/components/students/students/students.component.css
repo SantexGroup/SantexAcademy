@@ -5,6 +5,7 @@
 .side-bar{
     height: 100vh;
     border-radius: 32px;
+    
 }
 
 mat-sidenav{
@@ -14,11 +15,122 @@ mat-sidenav{
     padding: 64px 48px 435px 56px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 112px;
+    color: #0056b3;
+}
+
+/* SIDENAV CONTENT */
+
+.title-container {
+    display: grid;
+    place-items: center;
+    width: 100%; 
+}
+
+.logo-sidenav {
+    display: flex;
+    justify-content: center;
+    
+    width: 60px;
+    height: 60px;
+    
+}
+
+.title-sidenav {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.256px;
 }
 
 mat-sidenav-content{
-    background-color: rgba(212, 176, 152, 0.3);
+    background-color: rgba(255, 185, 139, 0.5);
     border-radius: 32px;
     width: 100%;
 }
+
+.sidenav-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 48px;
+    margin-top: 112px;
+}
+
+.text-sidenav {
+    display: flex;
+    width: 165px;
+    align-items: center;
+    gap: 16px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.192px;
+    text-decoration: none;
+}
+
+.icon {
+    width: 32px;
+    height: 28.447px;
+    flex-shrink: 0;
+}
+
+/* Main content */
+
+.item1 {
+    max-width: 550px;
+    border-radius: 32px;
+    margin: 50px;
+    padding: 24px;
+}
+
+.card-title {
+    color: #1E1B2C;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.034px;
+}
+
+.card-text {
+    color: #1E1B2C;
+    font-family: Jost;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.019px;
+}
+
+.item1-button {
+    background-color: transparent; 
+    border: 2px solid orange;
+    color: orange;
+    font-weight: 500; 
+}
+
+.item1-button:active {
+    background-color: orange !important;
+    color: white;
+}
+
+.img-thumbnail {
+    border-radius: 32px;
+    margin-right: 5px;
+    max-width: 164px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 164px;
+
+}
+
+

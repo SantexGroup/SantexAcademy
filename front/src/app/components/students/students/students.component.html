@@ -1,4 +1,39 @@
 <mat-sidenav-container class="side-bar">
-    <mat-sidenav mode="side" opened>Sidenav content</mat-sidenav>
-    <mat-sidenav-content>Main content</mat-sidenav-content>
+    <mat-sidenav mode="side" opened>
+      <div class="title-container">
+        <img src="assets/img/incubadora-image.png" alt="Logo" class="logo-sidenav">
+        <p class="title-sidenav">IncubadoraNOC</p>
+      </div>
+
+      <div class="sidenav-container">
+        
+        <a class="text-sidenav" href="#"><img class="icon" src="assets/img/home.png" alt="home-icon">Inicio</a>
+        <a class="text-sidenav" href="#"><img class="icon" src="assets/img/cursos.png" alt="cursos-icon">Cursos</a>
+        <a class="text-sidenav" href="#"><img class="icon" src="assets/img/personal-data.png" alt="personal-data-icon">Mis Datos</a>
+      </div>
+      
+    </mat-sidenav>
+    <mat-sidenav-content>
+
+      <div class="card mb-3 item1">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <a href="#" class="img-thumbnail" *ngIf="!showImage" (click)="openFileInput(); $event.preventDefault()" >Subir foto</a>
+            <input type="file" (change)="handleImageUpload($event)" accept="image/*" *ngIf="!showImage" style="display:none;" #fileInput /> <!-- Campo de entrada de archivo oculto -->
+            <img [src]="user.profileImage" class="img-thumbnail" alt="perfil-img" *ngIf="showImage"> <!-- Mostrar la imagen si showImage es true -->
+          </div>
+          <div class="item1-body" class="col-md-8">
+            <div class="card-body">
+              <h1 class="card-title">{{ user.name }} {{ user.lastName }}</h1>
+              <p class="card-text">Correo: {{ user.email }}</p>
+              <!-- Agrega otros datos del usuario aquí, por ejemplo, género y usuario -->
+              <!-- Ejemplo: <p class="card-text">Género: {{ user.gender }}</p> -->
+              <!-- Ejemplo: <p class="card-text">Usuario: {{ user.username }}</p> -->
+              <button type="button" class="btn item1-button">Mis Datos</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </mat-sidenav-content>
   </mat-sidenav-container>
