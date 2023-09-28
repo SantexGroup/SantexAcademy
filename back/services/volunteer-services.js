@@ -111,9 +111,32 @@ async function modifyPassword(id, currentPassword, newPassword) {
 }
 
 async function deleteUser(id) {
-  const user = await getById(id);
+  try {
+    const user = await getById(id);
 
-  await user.destroy();
+    if (!user) {
+      return { error: 'No se encuentra el usuario solicitado' };
+    }
+
+    const tareasInscriptas = await user.getTareas();
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const tarea of tareasInscriptas) {
+      // eslint-disable-next-line no-await-in-loop
+      const inscrpito = await user.hasTarea(tarea);
+      if (inscrpito) {
+        tarea.cantInscriptos -= 1;
+        // eslint-disable-next-line no-await-in-loop
+        await tarea.save();
+
+        // eslint-disable-next-line no-await-in-loop
+        await user.removeTarea(tarea);
+      }
+    }
+    await user.destroy();
+  } catch (error) {
+    return { error: 'Error interno en el servidor' };
+  }
 }
 
 async function login(email, password) {
@@ -201,7 +224,7 @@ async function canjearPremioService(volunteerId, premioId) {
     // }
 
     // Realizar el canje
-    await voluntario.addPremio(premio, { through:{date: new Date() } });
+    await voluntario.addPremio(premio, { through:{ date: new Date() } });
 
     const formattedDate = new Date().toLocaleDateString().replace(/\//g, '-');
 
