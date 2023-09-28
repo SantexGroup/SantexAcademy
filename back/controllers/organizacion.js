@@ -28,6 +28,7 @@ const loginOrganization = async (req, res) => {
         orgEmail: organization.email,
         orgCuit: organization.cuit,
         orgPassword: organization.password,
+      
       },
       process.env.SESSION_SECRET,
       { expiresIn: 86400 }
@@ -52,17 +53,13 @@ const createOrganization = async (req, res) => {
       const uploadResult = await cloudinary.uploader.upload(req.file.path);
       imageUrl = uploadResult.secure_url;
       publicId = uploadResult.public_id;
+      await fs.unlink(req.file.path);
     }
 
     const newOrganization = await orgService.createOrganization({
       image: { imageUrl, publicId },
       ...restOfData,
     });
-
-    if (req.file) {
-      await fs.unlink(req.file.path);
-    }
-
     res.status(201).json({
       message: "The organization was successfully created",
       newOrganization,
@@ -71,6 +68,20 @@ const createOrganization = async (req, res) => {
     res.status(500).json({ action: "createOrganization", error: err.message });
   }
 };
+
+
+const getOrganizationsById = async (req, res) => {
+  try {
+    const orgId = req.orgId;
+    const organization = await orgService.getOrganizationsById(orgId)
+    res.json(organization);
+  } catch (error) {
+    res.status(500).json({ action: "getMyOrg", error: error.message });
+}
+}
+
+
+
 const getOrganizations = async (req, res) => {
   try {
     const organizations = await orgService.getOrganizations();
@@ -171,6 +182,7 @@ const getOrganizationByLocation = async (req, res, next) => {
 module.exports = {
   loginOrganization,
   getOrganizations,
+  getOrganizationsById,
   getOrganizationByCriteria,
   createOrganization,
   updateOrganizationById,

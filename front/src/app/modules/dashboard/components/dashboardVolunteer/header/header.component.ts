@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { DashboardServicesService } from '../../../services/dashboard-services.service';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +9,42 @@ import { Component, Input } from '@angular/core';
 })
 export class HeaderComponent {
   @Input() dataHeader: any = {};
+  constructor(private dashServices: DashboardServicesService) {}
+  subscription: Subscription | null = null;
+  statusModal: string = '';
+  messageModal: string = '';
+  onModalStatus: boolean = false;
+  textBtnModalStatus: string = '';
+  changePhotoUser(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      this.dashServices.updateProfilePhoto(formData).subscribe({
+        next: (response) => {
+          console.log(response);
+          if (response) {
+            this.onModalStatus = true;
+            this.statusModal = 'success';
+            this.messageModal = ' ¡Tu foto de perfil se editó exitosamente!';
+
+            setTimeout(() => {
+              this.onModalStatus = false;
+              window.location.reload();
+            }, 3000);
+          }
+        },
+        error: (error) => {
+          console.log('error when editing the user', error);
+          this.onModalStatus = true;
+          this.statusModal = 'failed';
+          this.textBtnModalStatus = 'Aceptar';
+          this.messageModal =
+            '¡Se produjo un error al modificar tu foto de perfil! Por favor, inténtalo de nuevo más tarde.';
+        },
+        complete: () => {},
+      });
+    }
+  }
 }

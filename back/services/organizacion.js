@@ -23,6 +23,7 @@ const getOrganizations = async () => {
   return organizations;
 };
 
+
 const updateOrganizationById = async (id, organization) => {
   const updatedOrganization = await orgProvider.updateOrganizationById(
     id,
@@ -36,6 +37,11 @@ const deleteOrganizationById = async (id) => {
   return deletedOrganization;
 };
 
+const getOrganizationsById = async (orgId) => {
+  const organization = await orgProvider.getOrganizationsById(orgId);
+  return organization;
+
+}
 // query parameters
 
 const getOrganizationByCriteria = async (queryOptions, bodyOptions) => {
@@ -59,6 +65,7 @@ module.exports = {
   getOrganizations,
   getOrganizationByCriteria,
   createOrganization,
+  getOrganizationsById,
   updateOrganizationById,
   deleteOrganizationById,
   getOrganizationByLocation,

@@ -2,8 +2,9 @@ const { voluntariadoService } = require('../services');
 
 const createVoluntariado = async (req, res) => {
   try {
+    const idOrg = req.orgId;
     const volunteering = await voluntariadoService.createVoluntariado(
-      req.params.idOrg,
+      idOrg,
       req.body
     );
     res.status(201).json(volunteering);

@@ -47,16 +47,16 @@ const createUser = async (req, res) => {
       image: { imageUrl, publicId },
       ...restOfData,
     });
-
+    res.status(201).json(newUser);
     if (req.file) {
       await fs.unlink(req.file.path);
     }
-
-    res
-      .status(201)
-      .json({ message: "The Volunteer was successfully created", newUser });
   } catch (err) {
-    res.status(500).json({ action: "createUser", error: err.message });
+    if (err.message == "Validation error") {
+      res.status(409).json({ action: "createUser", error: err.message });
+    } else {
+      res.status(500).json({ action: "createUser", error: err.message });
+    }
   }
 };
 
@@ -113,6 +113,38 @@ const deleteMyUser = async (req, res) => {
   }
 };
 
+const updatePhotoMyProfile = async (req, res, next) => {
+  console.log(req.body);
+  console.log(req.file);
+  try {
+    let imageUrl = "";
+    let publicId = "";
+
+    if (req.file) {
+      const uploadResult = await cloudinary.uploader.upload(req.file.path);
+      imageUrl = uploadResult.secure_url;
+      publicId = uploadResult.public_id;
+    }
+
+    const photoUpdate = await userService.updatePhotoMyProfile(
+      { imageUrl, publicId },
+      req.userId
+    );
+    res.status(200).json({
+      message: "Profile picture was successfully edited",
+      photoUpdate,
+    });
+    if (req.file) {
+      await fs.unlink(req.file.path);
+    }
+  } catch (error) {
+    res.status(500).json({
+      message: "An error occurred while editing your profile picture.",
+    });
+    next();
+  }
+};
+
 module.exports = {
   loginUser,
   createUser,
@@ -121,4 +153,5 @@ module.exports = {
   getMyUser,
   updateMyUser,
   deleteMyUser,
+  updatePhotoMyProfile,
 };

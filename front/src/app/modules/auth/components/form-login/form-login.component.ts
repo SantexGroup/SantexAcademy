@@ -52,6 +52,7 @@ export class FormLoginComponent implements OnInit {
           this.statusSession = 'success-loginV';
           this.routeBtnContinue = 'voluntariados';
           this.textBtnModal = 'Explorar Oportunidades';
+          this.authService.setUserType('vol');
         },
         error: (error) => {
           console.error('login error', error);
@@ -76,6 +77,7 @@ export class FormLoginComponent implements OnInit {
           this.statusSession = 'success-loginO';
           this.routeBtnContinue = 'dashboard';
           this.textBtnModal = 'Ir al Dashboard';
+          this.authService.setUserType('org');
         },
         error: (error) => {
           console.error('Login error', error);

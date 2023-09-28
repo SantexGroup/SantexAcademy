@@ -45,6 +45,12 @@ const Organizacion = sequelize.define(
     image: {
       type: DataTypes.JSON,
     },
+    coverPage: {
+      type: DataTypes.JSON,
+    },
+    urlWebSite: {
+      type: DataTypes.STRING,
+    },
 
     category: {
       type: DataTypes.ENUM({

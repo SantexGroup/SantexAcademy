@@ -199,7 +199,7 @@
       </div>
 
       <div class="w-full flex flex-col text-start gap-1">
-        <label for="phone" class="lg:text-lg"><b>CUIT de ONG</b></label>
+        <label for="cuit" class="lg:text-lg"><b>CUIT de ONG</b></label>
         <input
           id="cuit"
           type="number"
@@ -221,6 +221,20 @@
             Por favor, ingresa un CUIT.
           </p>
         </div>
+      </div>
+
+      <div class="w-full flex flex-col text-start gap-1">
+        <label for="website" class="lg:text-lg"
+          ><b>Página Web de la Organizacion</b></label
+        >
+        <input
+          id="website"
+          type="text"
+          name="website"
+          placeholder="Introduce la URL de tu página"
+          class="border border-dimGray rounded-md py-2 pl-2"
+          formControlName="urlWebSite"
+        />
       </div>
 
       <div class="w-full flex flex-col text-start gap-1">
