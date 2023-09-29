@@ -41,6 +41,10 @@ ul li a:hover {
 }
 
 @media screen and (max-width: 990px){
+    .container-fluid{
+        width: 100%;
+        justify-content: space-between;
+    }
 
     button:hover{
         border-radius: 40px;
@@ -67,6 +71,20 @@ ul li a:hover {
     }
     .nav-activo{
         display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .navbar-nav{
+        text-align: center;
+    }
+    #nosotros button{
+        margin: 0;
+    }
+
+    #nosotros{
+        margin: 0;
     }
 }
 
@@ -275,6 +293,8 @@ mat-panel-title {
 @media screen and (max-width: 990px){
 
     .eslogan-frase{
+        width: 100%;
+        height: 100%;
         font-size: 3em;
         margin: 3em 0em 4em 0em;
         padding: 0;
@@ -297,11 +317,13 @@ mat-panel-title {
         width: 100%;
         height: 100%;
         padding: 0;
+        margin: 0;
 
     }
     .card-objetivos{
         margin: 0;
         width: 100%;
+        padding: 0;
     }
     #nosotrosContacto.informacion{
         display: flex;
@@ -311,6 +333,9 @@ mat-panel-title {
         height: 100%;
         padding: 0;
     }
+    .quienes-somos{
+        width: 90%;
+    }
 
     .quienes-somos p{
         margin: 0px;
@@ -319,6 +344,13 @@ mat-panel-title {
     .preguntas-frecuentes{
         width: 100%;
 
+    }
+    .pregunta{
+        text-align: left;
+    }
+    .mat-expansion-panel-header-title, .mat-expansion-panel-header-description{
+        margin: 0;
+        display: block;
     }
 
 }
@@ -399,5 +431,7 @@ footer {
     .enlaces {
         margin: 2em 0;
     }
-
+    h1{
+        text-align: center;
+    }
 }
