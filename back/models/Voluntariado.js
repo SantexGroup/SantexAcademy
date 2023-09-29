@@ -26,7 +26,7 @@ const Voluntariado = sequelize.define(
       }),
       allowNull: false,
     },
-    points: {
+    vacancies: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
