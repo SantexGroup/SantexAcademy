@@ -32,11 +32,11 @@ Organizacion.hasMany(Voluntariado, {
 });
 OrdenRetiroProductos.belongsTo(Producto, {
   as: 'producto',
-  foreignKey: 'productoId',
+  foreignKey: 'productId',
 });
 Producto.hasMany(OrdenRetiroProductos, {
   as: 'OrdenRetiroProductos',
-  foreignKey: 'productoId',
+  foreignKey: 'productId',
 });
 Usuario.belongsTo(Roles, { as: 'role', foreignKey: 'rolesId' });
 Roles.hasMany(Usuario, { as: 'usuarios', foreignKey: 'rolesId' });
@@ -47,7 +47,25 @@ UsuarioEnVoluntariado.belongsTo(Usuario, {
   foreignKey: 'userId', 
 });
 
+Producto.belongsToMany(Usuario, {
+  through: OrdenRetiroProductos,
+  as: 'usuarios',
+  foreignKey: 'productId',
+});
+Usuario.belongsToMany(Producto, {
+  through: OrdenRetiroProductos,
+  as: 'productos',
+  foreignKey: 'userId',
+});
 
+Usuario.hasMany(OrdenRetiroProductos, {
+  as: 'ordenes',
+  foreignKey: 'userId',
+});
+OrdenRetiroProductos.belongsTo(Usuario, {
+  as: 'usuario',
+  foreignKey: 'userId',
+});
 
 Usuario.hasMany(UsuarioEnVoluntariado, {
   as: 'usuarioEnVoluntariados',
