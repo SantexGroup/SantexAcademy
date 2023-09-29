@@ -67,6 +67,22 @@
     display: none;
 }
 
+/* Estilos para el contenedor principal del contenido */
+.container {
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Estilos para el contenido principal */
+  .content {
+    flex: 1; 
+  }
+  
+  /* Estilos para el footer */
+  .footer {
+    flex-shrink: 0; 
+  }
 
 @media screen and (max-width: 920px) {
 
