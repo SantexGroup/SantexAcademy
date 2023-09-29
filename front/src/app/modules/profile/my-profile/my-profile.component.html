@@ -1,27 +1,29 @@
+<app-sidebar-user></app-sidebar-user> <!--Menu de navegación para info de usuario-->
+<br>
 <div class="container">
-    <h1>Información del Usuario</h1>
+    <h1><strong>Información del Usuario</strong></h1>
   
     <div class="user-details">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <label for="firstname"><strong>Nombre:</strong> </label>
           <input type="text" class="form-control" id="nombre" [(ngModel)]="userPrueba.firstname" disabled>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <label for="lastname"><strong>Apellido:</strong> </label>
           <input type="text" class="form-control" id="lastname" [(ngModel)]="userPrueba.lastname" disabled>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <label for="phone"><strong>Teléfono:</strong> </label>
           <input type="text" class="form-control" id="phone" [(ngModel)]="userPrueba.phone" disabled>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <label for="email"><strong>Correo Electrónico:</strong> </label>
           <input type="email" class="form-control" id="email" [(ngModel)]="userPrueba.email" disabled>
         </div>
@@ -37,17 +39,17 @@
       <form>
         <div class="form-group">
           <label for="nombre">Nombre:</label>
-          <input type="text" class="form-control" id="nombre" [(ngModel)]="userPrueba.firstname">
+          <input type="text" class="form-control" id="nombre" [(ngModel)]="userPrueba.firstname" required>
         </div>
   
         <div class="form-group">
           <label for="apellido">Apellido:</label>
-          <input type="text" class="form-control" id="apellido" [(ngModel)]="userPrueba.lastname">
+          <input type="text" class="form-control" id="apellido" [(ngModel)]="userPrueba.lastname" required>
         </div>
   
         <div class="form-group">
           <label for="telefono">Teléfono:</label>
-          <input type="text" class="form-control" id="telefono" [(ngModel)]="userPrueba.phone">
+          <input type="text" class="form-control" id="telefono" [(ngModel)]="userPrueba.phone" required>
         </div>
         <br>  
         <div class="modal-footer">
