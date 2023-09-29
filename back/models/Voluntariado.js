@@ -10,6 +10,10 @@ const Voluntariado = sequelize.define(
       allowNull: false,
       primaryKey: true,
     },
+    nombre: {
+      type: DataTypes.STRING(45),
+      allowNull: false,
+    },
     descripcion: {
       type: DataTypes.STRING(255),
       allowNull: false,
@@ -44,15 +48,15 @@ const Voluntariado = sequelize.define(
     timestamps: false,
     indexes: [
       {
-        name: "PRIMARY",
+        name: 'PRIMARY',
         unique: true,
-        using: "BTREE",
-        fields: [{ name: "idVoluntariado" }],
+        using: 'BTREE',
+        fields: [{ name: 'idVoluntariado' }],
       },
       {
-        name: "fk_voluntariado_organization1_idx",
-        using: "BTREE",
-        fields: [{ name: "organizationId" }],
+        name: 'fk_voluntariado_organization1_idx',
+        using: 'BTREE',
+        fields: [{ name: 'organizationId' }],
       },
     ],
   },
