@@ -21,14 +21,17 @@ import { VistaProveedoresComponent } from './vista-proveedores/vista-proveedores
 import { MatChipsModule } from '@angular/material/chips';
 import { SearchProductComponent } from './search-product/search-product.component';
 import { ProductCardComponent } from './search-product/product-card/product-card.component';
+
+import { CardComponent } from './shopping-cart/card/card.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { VistaUsuarioPerfilComponent } from './vista-usuario-perfil/vista-usuario-perfil.component';
 
+
 @NgModule({
   declarations: [DashboardPageComponent, FormAddProductComponent, FormUpdateComponent, NavBarComponent,
-  FormDeleteComponent, HomeComponent, PopUpHomeComponent, ShoppingCartComponent, SearchProductComponent, 
-  ProductCardComponent, VistaProveedoresComponent, FooterComponent, LoginComponent, VistaUsuarioPerfilComponent],
+  FormDeleteComponent, HomeComponent, PopUpHomeComponent, ShoppingCartComponent,
+  SearchProductComponent, ProductCardComponent, VistaProveedoresComponent,FooterComponent, LoginComponent, CardComponent,VistaUsuarioPerfilComponent],
 
 
 

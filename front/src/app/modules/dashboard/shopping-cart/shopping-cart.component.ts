@@ -1,14 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/core/interfaces/product';
+import { ShoppingCartService } from 'src/app/core/services/shopping-cart.service';
 
-export interface Product {
-  nombreProd: string;
-  cantidad: number;
-  categoria: string;
-  tipoMaterial: string;
-  urlImagen: string;
-  precio: number;
-  descripcion: string;
-};
 
 @Component({
   selector: 'app-shopping-cart',
@@ -16,39 +9,52 @@ export interface Product {
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
+  
+  // productList: Product[] | undefined;
 
-  constructor() { }
+
+  constructor(private shoppingCartService: ShoppingCartService) { }
+
 
   // Lista de ejemplo de productos
-  productList: Product[] = [
-    {nombreProd: 'Mesa', cantidad: 30, categoria: 'Mesa', tipoMaterial: 'Madera', urlImagen: './img/mesa.png', precio: 4500, descripcion: 'Mesa cuadrada'},
-    {nombreProd: 'Silla', cantidad: 30, categoria: 'Silla', tipoMaterial: 'plastico', urlImagen: './img/silla.png', precio: 1500, descripcion: 'Silla de plastico color blanco'},
-    {nombreProd: 'Mesa Real', cantidad: 10, categoria: 'Mesa', tipoMaterial: 'algorrobo', urlImagen: './img/silla.png', precio: 6000, descripcion: 'Mesa redonda de pata central '},
-    {nombreProd: 'Silla', cantidad: 10, categoria: 'Silla', tipoMaterial: 'plastico', urlImagen: './img/silla.png', precio: 1500, descripcion: 'Silla de plastico color blanco'},      
-    {nombreProd: 'Silla', cantidad: 10, categoria: 'Silla', tipoMaterial: 'plastico', urlImagen: './img/silla.png', precio: 1500, descripcion: 'Silla de plastico color blanco'},      
-    {nombreProd: 'Silla', cantidad: 10, categoria: 'Silla', tipoMaterial: 'plastico', urlImagen: './img/silla.png', precio: 1500, descripcion: 'Silla de plastico color blanco'},      
-    {nombreProd: 'Silla', cantidad: 10, categoria: 'Silla', tipoMaterial: 'plastico', urlImagen: './img/silla.png', precio: 1500, descripcion: 'Silla de plastico color blanco'},      
-  ];
+  // productList: Product[] = []
+  //   {id: '1'; name: 'Mesa'; quantity: 30; categoria: 'Mesa'; tipoMaterial: 'Madera'; image: './img/mesa.png'; price: 4500; description: 'Mesa cuadrada'};
+  //   {id: '2'; name: 'Silla'; quantity: 30; categoria: 'Silla'; tipoMaterial: 'plastico'; image: './img/silla.png'; price: 1500; description: 'Silla de plastico color blanco'};
+  //   {id: '3'; name: 'Mesa Real'; quantity: 10; categoria: 'Mesa'; tipoMaterial: 'algorrobo'; image: './img/silla.png'; price: 6000; description: 'Mesa redonda de pata central '};
+  //   {id: '4'; name: 'Silla'; quantity: 10; categoria: 'Silla'; tipoMaterial: 'plastico'; image: './img/silla.png'; price: 1500; description: 'Silla de plastico color blanco'};      
+  //   {id: '5'; name: 'Silla'; quantity: 10; categoria: 'Silla'; tipoMaterial: 'plastico'; image: './img/silla.png'; price: 1500; description: 'Silla de plastico color blanco'};      
+  //   {id: '6'; name: 'Silla'; quantity: 10; categoria: 'Silla'; tipoMaterial: 'plastico'; image: './img/silla.png'; price: 1500; description: 'Silla de plastico color blanco'};      
+  //   {id: '7'; name: 'Silla'; quantity: 10; categoria: 'Silla'; tipoMaterial: 'plastico'; image: './img/silla.png'; price: 1500; description: 'Silla de plastico color blanco'}
+  // ];
 
-  total(): number {
-    let total: number = 0;
-    for(let product of this.productList) {
-      total += product.precio;
-    }
-    return total;
+  get productList() {
+    return this.shoppingCartService.productList;
+  }
+
+  // Método para calcular el total de los precios
+  get totalPrice(): number {
+    return this.shoppingCartService.totalPrice();
+  }
+  
+  // Función para vaciar el carrito
+  emptyCart(): void {
+    this.shoppingCartService.clearCart();
   }
 
   // Función para eliminar un producto del carrito
-  removeProducto(index: number): void {
-    this.productList.splice(index, 1);
-  }
+  // removeProducto(index: number): void {
+  //   this.cartList.splice(index, 1);
+  // }
 
   // Función para eliminar todos los productos del carrito.
-  emptyCart(): void {
-    this.productList = [];
-  }
+  // emptyCart(): void {
+  //   this.cartList = [];
+  // }
 
   ngOnInit(): void {
+    // this.service.getProducts().subscribe((result: Product[]) => {
+    //   this.cartList = result;
+    // });
   }
 
 }

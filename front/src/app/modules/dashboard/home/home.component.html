@@ -1,6 +1,6 @@
-<h1 class="h1">Productos Disponibles</h1>
+<div class="h1">Nuevos Productos</div>
 <section class="products">
-  <div class="card" *ngFor="let product of productList">
+  <div class="card" *ngFor="let product of newProducts">
     <p class="card_title">{{product.name}}</p>
     <div class="card_img">
       <img src="{{product.image}}"height="48" width="48" alt="{{product.name}}" >
@@ -10,4 +10,10 @@
     <span class="card-price"> ${{product.price}}</span>
     <button class="botton-add" (click)="openDialog(product)">ver más</button>
   </div>
+</section>
+<section class="search">
+  <app-search-product></app-search-product>
+</section>
+<section class="proveedores">
+  <app-vista-proveedores></app-vista-proveedores>
 </section>

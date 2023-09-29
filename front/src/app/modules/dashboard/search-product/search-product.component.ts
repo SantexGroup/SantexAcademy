@@ -4,6 +4,7 @@ import { Product } from 'src/app/core/interfaces/product';
 import { CategoriaService } from 'src/app/core/services/categoria.service';
 import { BackServiceService } from 'src/app/core/services/product.service';
 import { MatChip, MatChipList, MatChipsModule } from '@angular/material/chips';
+
 @Component({
   selector: 'app-search-product',
   templateUrl: './search-product.component.html',
