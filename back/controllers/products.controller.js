@@ -18,9 +18,9 @@ const { Op } = require("sequelize");
  */
 productscontroller.create = async (req, res) => {
   try {
+    console.log("jola")
     let cat = [];
     const product = await Products.create(req.body);
-    console.log("categorias"+ req.body.categories  )
     const categorias = req.body.categories
     //recorremos la categorias y las agregamos al producto
     if (categorias) {
