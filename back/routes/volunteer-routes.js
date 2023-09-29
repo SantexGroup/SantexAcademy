@@ -13,5 +13,6 @@ router.post('/login', volunteerController.loginVolunteer);
 router.put('/modify-password/:id', isAuthenticatedVoluntario, volunteerController.modifyPasswordController);
 router.put('/asign-work/:id', isAuthenticatedVoluntario, volunteerController.asingVolunteerWork);
 router.post('/canjear-premio/', volunteerController.canjearPremioController);
+router.put('/unsuscribe/', isAuthenticatedVoluntario, volunteerController.unsuscribeVolunteerWork);
 
 module.exports = router;
