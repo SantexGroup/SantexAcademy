@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     quantity: DataTypes.INTEGER,//cantidad total de productos
     //stock: DataTypes.INTEGER, //cantidad de productos disponibles para alquiler todavia no se us
     price: DataTypes.FLOAT,
-    image: DataTypes.INTEGER,
+    image: DataTypes.STRING,
     status: DataTypes.STRING,
   }, {
     sequelize,
