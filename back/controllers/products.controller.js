@@ -2,7 +2,7 @@ const productscontroller = {};
 const { Products, Categories } = require("../models"); //--> nombre con el que se creo el modelo en primer lugar
 const { Op } = require("sequelize");
 const fs = require('fs');
-
+require('dotenv').config();
 /**
  * @method POST
  * @name create
@@ -19,14 +19,9 @@ const fs = require('fs');
  */
 productscontroller.create = async (req, res) => {
   try {
-    let b
     
-    //guardamos el buffer de la imagen en req.body.image
-    fs.readFile(req.file.path, async (err, data) => {
-      if (err) {
-        return res.status(500).json({ message: "Error al leer el archivo." });
-      }
-      req.body.image  = data
+    //guardamos el link de la imagen en req.body.image para consultarlo despues 
+      req.body.image  = process.env.DIRECCION +"/public/"+ req.file.filename
       const product = await Products.create(req.body);
     
       let categorias = req.body.categories;
@@ -51,7 +46,6 @@ productscontroller.create = async (req, res) => {
       }
       res.status(201).json("Product correctly created");  
       
-    });
     
     
    

@@ -19,7 +19,7 @@ app.use('/ping', (req, res) => {
 app.use("/products", rutasproducto);
 app.use("/alquiler", rutasAlquiler );
 app.use("/categories", rutasCategoria);
-
+app.use("/public", Express.static("uploads"));
 
 
 
