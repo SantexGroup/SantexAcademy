@@ -4,60 +4,67 @@ import { Skill } from 'src/app/core/interfaces/skill.interface';
 import { SkillService } from 'src/app/core/services/skill.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-skill',
   templateUrl: './skill.component.html',
   styleUrls: ['./skill.component.css']
 })
-export class SkillComponent implements OnInit{
+export class SkillComponent implements OnInit {
   skillForm: FormGroup;
   @Input() profileId?: number;
 
-  skillsList: Skill[] =  [];
   skillId: number = 0;
 
   constructor(
-    private _skillService: SkillService, 
+    private _skillService: SkillService,
     private fb: FormBuilder,
-    private userData: UserDataService,
-    public views: NavBarService
-    ) {
+    public userData: UserDataService,
+    public views: NavBarService,
+    public toastr: ToastrService
+  ) {
     this.skillForm = this.fb.group({
       skill: '',
       level: ''
     });
-  }
-  ngOnInit(): void {
-    this.getSkill();
-    this.views.plusOne = true;
-    this.views.saveButton = false;
+
   }
 
-  getSkill(){
-    this._skillService.getSkillsByUser(this.userData.userId).subscribe((skillList)=>{
-      this.skillsList = skillList;
-    })
+
+  ngOnInit(): void {
+
+    this.userData.checkForm = false;
+
+    this.userData.getSkill();
+
+    this.views.changeTitle("Habilidades");
+
+    this.views.plusOne = true;
+
+    this.views.saveButton = false;
+    
   }
 
   addSkillToProfile(): void {
-    const newSkill:  Skill = {
+    const newSkill: Skill = {
       skill: this.skillForm.get('skill')?.value,
       level: this.skillForm.get('level')?.value,
       profileId: this.userData.profileId
     }
 
     this._skillService.addSkill(newSkill).subscribe((skill) => {
-      this.skillsList.push(skill);
+      this.userData.skills.push(skill);
+      this.toastr.success('Se agrego un nueva habilidad', 'HABILIDADES');
     });
 
     this.skillForm.reset();
   }
 
-  getSelectedSkill(id?:number){
-    const index = this.skillsList.findIndex(skill => skill.id === id);
-    const elementId = Number(this.skillsList[index].id);
-    const element = (this.skillsList[index]);
+  getSelectedSkill(id?: number) {
+    const index = this.userData.skills.findIndex(skill => skill.id === id);
+    const elementId = Number(this.userData.skills[index].id);
+    const element = (this.userData.skills[index]);
 
     this.skillForm.patchValue({
       skill: element.skill,
@@ -67,14 +74,15 @@ export class SkillComponent implements OnInit{
     this.skillId = elementId
   }
 
-  skillUpdate(){
+  skillUpdate() {
     const newSkill: Skill = {
       skill: this.skillForm.get('skill')?.value,
       level: this.skillForm.get('level')?.value,
     }
 
     this._skillService.updateSkill(this.skillId, newSkill).subscribe(() => {
-      this.getSkill();
+      this.userData.getSkill();
+      this.toastr.success('Se actualizo la habilidad', 'HABILIDADES');
     });
 
     this.skillForm.reset();
@@ -84,14 +92,13 @@ export class SkillComponent implements OnInit{
 
   }
 
-  skillDelete(id?:number){
-    const index = this.skillsList.findIndex(skill => skill.id === id);
-    const elementId = Number((this.skillsList[index]).id);
+  skillDelete(id?: number) {
+    const index = this.userData.skills.findIndex(skill => skill.id === id);
+    const elementId = Number((this.userData.skills[index]).id);
     this._skillService.deleteSkill(elementId).subscribe(() => {
-      this.skillsList.splice(index, 1);
+      this.userData.skills.splice(index, 1);
+      this.toastr.error('Se elimino la habilidad');
     });
   }
-
-
 
 }

@@ -1,6 +1,8 @@
 <body>
     <div class="formationsInput">
-        <form [formGroup]="formationForm" (ngSubmit)="formationAdd()">
+        <form [formGroup]="formationForm" 
+        (ngSubmit)="formationAdd()"
+        (change)="userData.markForm(formationForm)">
             <mat-form-field>
                 <mat-label for="description">Descripcion:</mat-label>
                 <textarea matInput formControlName="description" cols="30" rows="5"></textarea>
@@ -45,19 +47,18 @@
             </div>
             <div class="botonera">
                 <div class="botones">
-                    <button (click)="getListFormations" class="plus" type="submit" *ngIf="views.plusOne">
-                        <img src="/assets/Imagenes/plus.png" alt="+">
+                    <button (click)="formationAdd()" class="plus" type="submit" *ngIf="views.plusOne">
+                        <img src="./assets/Imagenes/plus.png" alt="+">
                     </button>
                     <button type="submit" mat-raised-button color="primary" *ngIf="views.saveButton"(click)="saveFormation()" >
                         Guardar
                     </button>
-                    
                 </div>
             </div>
         </form>
         <div class="lista">
             <ul>
-                <li *ngFor="let formation of listFormation" class="card">
+                <li *ngFor="let formation of userData.formations" class="card">
                   <div class="card-body">
                     <h4 class="card-title">Titulo: {{ formation.title }}</h4>
                     <h4 class="card-title">Institucion: {{formation.institute}}</h4>
@@ -66,10 +67,10 @@
                     <h5 class="card-text">Estado {{formation.statusId}}</h5>
                     <div class="botonera-card">
                       <button (click)="editFormation(formation)" (click)="views.changeViews()" >
-                        <img src="/assets/Imagenes/editar.png" alt="Editar">
+                        <img src="./assets/Imagenes/editar.png" alt="Editar">
                       </button>
                       <button (click)="deleteFormation(formation.id!)" >
-                        <img src="/assets/Imagenes/delete.png" alt="Eliminar">
+                        <img src="./assets/Imagenes/delete.png" alt="Eliminar">
                       </button>
                     </div>
                   </div>

@@ -1,6 +1,7 @@
 <body>
     <div class="experiencesInput">
-        <form [formGroup]="experienceForm">
+        <form [formGroup]="experienceForm" 
+        (change)="userData.markForm(experienceForm)">
             <mat-form-field>
                 <mat-label for="description">Descripcion:</mat-label>
                 <textarea matInput formControlName="description" cols="30" rows="5"></textarea>
@@ -58,7 +59,7 @@
                     type="submit" 
                     *ngIf="views.plusOne"
                     (click)="addExperience()">
-                        <img src="/assets/Imagenes/plus.png" alt="+">
+                        <img src="./assets/Imagenes/plus.png" alt="+">
                     </button>
                     <button type="submit" 
                     mat-raised-button color="primary" 
@@ -71,7 +72,7 @@
         </form>
         <div class="lista">
             <ul>
-                <li *ngFor="let experience of experiences">
+                <li *ngFor="let experience of userData.experiences">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">{{experience.company}}</h5>
@@ -81,11 +82,11 @@
                                 (click)="views.changeViews()"
                                 (click)="selectedExperience(experience.id)"                                
                                 >
-                                    <img src="/assets/Imagenes/editar.png" alt="Editar">
+                                    <img src="./assets/Imagenes/editar.png" alt="Editar">
                                 </button>
                                 <button
                                 (click)="deleteExperience(experience.id)">
-                                    <img src="/assets/Imagenes/delete.png" alt="Eliminar">
+                                    <img src="./assets/Imagenes/delete.png" alt="Eliminar">
                                 </button>
                             </div>
                         </div>
