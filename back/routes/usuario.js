@@ -1,32 +1,38 @@
 const express = require("express");
 const userRouter = express.Router();
+const upload = require("../config/multerConfig");
 
 const {
   userController,
   usuarioEnVoluntariadoController,
+  productController,
 } = require("../controllers");
 
 const {
   verifyToken,
-  isAdmin,
   isUser,
 } = require("../middleware/authMiddleware");
 
-userRouter.get("/", verifyToken, isAdmin, userController.getUsersByCriteria);
+
+userRouter.get('/', productController.getAllProducts);
+userRouter.get('/:id', verifyToken, isAdmin, productController.getProduct);
+
 
 userRouter.get("/me/profile", verifyToken, isUser, userController.getMyUser);
 userRouter.put("/me/update", verifyToken, isUser, userController.updateMyUser);
+userRouter.put(
+  "/me/updatePhoto",
+  upload.single("file"),
+  verifyToken,
+  isUser,
+  userController.updatePhotoMyProfile
+);
 userRouter.delete(
   "/me/profile",
   verifyToken,
   isUser,
   userController.deleteMyUser
 );
-
-// Ruta para que un administrador elimine el perfil de cualquier usuario
-userRouter.delete("/:id", verifyToken, isAdmin, userController.deleteUser);
-
-// Ruta para que un usuario pueda postularse a un voluntario
 userRouter.post(
   "/postulate/:idOrg/:idVol",
   verifyToken,
@@ -34,14 +40,26 @@ userRouter.post(
   usuarioEnVoluntariadoController.join
 );
 
-userRouter.get("/postulate", verifyToken, isUser, usuarioEnVoluntariadoController.getJoins)
+userRouter.get(
+  "/postulate",
+  verifyToken,
+  isUser,
+  usuarioEnVoluntariadoController.getJoins
+);
 
+userRouter.put(
+  "/postulate/update",
+  verifyToken,
+  isUser,
+  usuarioEnVoluntariadoController.updateStatusById
+);
 
-userRouter.put("/postulate/update", verifyToken, isUser, usuarioEnVoluntariadoController.updateStatusById)
-
-userRouter.delete("/postulate/delete", verifyToken, isUser, usuarioEnVoluntariadoController.deleteJoinById)
-
-
+userRouter.delete(
+  "/postulate/delete",
+  verifyToken,
+  isUser,
+  usuarioEnVoluntariadoController.deleteJoinById
+);
 
 
 module.exports = userRouter;

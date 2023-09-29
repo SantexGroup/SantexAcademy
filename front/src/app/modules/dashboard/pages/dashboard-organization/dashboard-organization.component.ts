@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-organization',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard-organization.component.css']
 })
 export class DashboardOrganizationComponent {
-
+@Input() dataOrganization: any = {};
 }

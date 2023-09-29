@@ -44,11 +44,26 @@
           <mat-panel-title> Modalidad </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="flex flex-col">
-          <mat-checkbox class="example-margin">Todas.</mat-checkbox>
-
-          <mat-checkbox class="example-margin">Presencial.</mat-checkbox>
-          <mat-checkbox class="example-margin">Hibrido.</mat-checkbox>
-          <mat-checkbox class="example-margin">Remoto.</mat-checkbox>
+          <mat-checkbox
+            class="example-margin"
+            (change)="onChangeModeWord('Todas')"
+            >Todas.</mat-checkbox
+          >
+          <mat-checkbox
+            class="example-margin"
+            (change)="onChangeModeWord('Presencial')"
+            >Presencial.</mat-checkbox
+          >
+          <mat-checkbox
+            class="example-margin"
+            (change)="onChangeModeWord('Hibrido')"
+            >Hibrido.</mat-checkbox
+          >
+          <mat-checkbox
+            class="example-margin"
+            (change)="onChangeModeWord('Remoto')"
+            >Remoto.</mat-checkbox
+          >
         </div>
       </mat-expansion-panel>
 

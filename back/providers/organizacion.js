@@ -80,37 +80,34 @@ const getOrganizations = async () => {
   }
 };
 
-
 const getOrganizationsById = async (orgId) => {
   try {
     const organization = await Organizacion.findOne({
       where: {
         id: orgId,
-      }
-    })
+      },
+    });
 
     if (!organization) {
       throw new Error("Organization not found");
     }
 
     return organization;
-  }catch (error) {
+  } catch (error) {
     console.error("Ocurrió un error al obtener la organización.", error);
     throw error;
   }
-}
+};
 const updateOrganizationById = async (id, organization) => {
   try {
-    const [affectedRows] = await Organizacion.update(organization, {
+    const affectedRows = await Organizacion.update(organization, {
       where: { id, deletedAt: null },
+      returning: true,
     });
-    if (affectedRows === 0) {
+    if (!affectedRows) {
       throw new Error("No se encontrò el registro.");
     }
-    const organizationModified = await Organizacion.findOne({
-      where: { id },
-    });
-    return organizationModified;
+    return affectedRows;
   } catch (err) {
     console.error(
       "The organization could not be updated due to an error.",
@@ -191,6 +188,23 @@ const getOrganizationByLocation = async (location, opportunityType) => {
   }
 };
 
+// const addCoverPage = async (id, img) => {};
+
+const updatePhotoMyProfile = async (image, id) => {
+  try {
+    const updatedUser = await Organizacion.update(
+      { image: image },
+      { where: { id: id }, returning: true }
+    );
+
+    if (!updatedUser) return;
+
+    return updatedUser;
+  } catch (error) {
+    return console.log("Error updating your profile picture", error);
+  }
+};
+
 module.exports = {
   loginOrg,
   getOrganizations,
@@ -200,4 +214,5 @@ module.exports = {
   updateOrganizationById,
   deleteOrganizationById,
   getOrganizationByLocation,
+  updatePhotoMyProfile,
 };

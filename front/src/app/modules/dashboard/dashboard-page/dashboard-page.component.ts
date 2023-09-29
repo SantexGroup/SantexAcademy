@@ -24,6 +24,7 @@ export class DashboardPageComponent implements OnInit {
       this.dashService.getProfileVolunteer(token).subscribe({
         next: (response) => {
           this.dataUser = response;
+          
         },
         error: (error) => {
           console.log(error);
@@ -34,6 +35,7 @@ export class DashboardPageComponent implements OnInit {
       this.dashService.getProfileOrganization(token).subscribe({
         next: (response) => {
           this.dataOrg = response;
+
           console.log("dataDeOrg", response);
         },
         error: (error) => {

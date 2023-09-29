@@ -1,40 +1,40 @@
-const { recompensaProvider } = require('../providers');
+const { produtcProvider } = require('../providers');
 
-const createRecompensa = async (recompensa) => {
-  const newRecompensa = await recompensaProvider.createRecompensa(recompensa);
-  return newRecompensa;
+const createProduct = async (producto) => {
+  const newProduct = await produtcProvider.createProduct(producto);
+  return newProduct;
 };
 
-const getRecompensa = async (id) => {
-  const recompensa = await recompensaProvider.getRecompensa(id);
-  if (recompensa) {
-    return recompensa;
+const getpPoduct = async (id) => {
+  const product = await produtcProvider.getpPoduct(id);
+  if (product) {
+    return product;
   }
   return null;
 };
 
-const getAllRecompensas = async () => {
-  const recompensas = await recompensaProvider.getAllRecompensas();
-  if (recompensas) {
-    return recompensas;
+const getAllProducts = async () => {
+  const products = await produtcProvider.getAllProducts();
+  if (products) {
+    return products;
   }
   return null;
 };
 
-const updateRecompensa = async (id, recompensa) => {
-  const updatedRecompensa = await recompensaProvider.updateRecompensa(id, recompensa);
-  return updatedRecompensa;
+const updateProduct = async (id, producto) => {
+  const updatedproduct = await produtcProvider.updateProduct(id, producto);
+  return updatedproduct;
 };
 
-const deleteRecompensa = async (id) => {
-  const deletedRecompensa = await recompensaProvider.deleteRecompensa(id);
-  return deletedRecompensa;
+const deleteproduct = async (id) => {
+  const deletedproduct = await produtcProvider.deleteproduct(id);
+  return deletedproduct;
 };
 
 module.exports = {
-  createRecompensa,
-  getRecompensa,
-  getAllRecompensas,
-  updateRecompensa,
-  deleteRecompensa,
+  createProduct,
+  getpPoduct,
+  getAllProducts,
+  updateProduct,
+  deleteproduct,
 };

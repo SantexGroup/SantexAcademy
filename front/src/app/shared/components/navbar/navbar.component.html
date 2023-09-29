@@ -37,21 +37,14 @@
         class="w-full flex items-center justify-center gap-4 cursor-pointer lg:hidden"
       >
         <figure
-          *ngIf="dataUser.image?.imageUrl"
           class="w-[50px] aspect-square rounded-full border border-lightGray lg:disabled"
         >
           <img
-            [src]="dataUser.image?.imageUrl"
-            alt="avatar"
-            class="w-full h-full object-cover rounded-full"
-          />
-        </figure>
-        <figure
-          *ngIf="!dataUser.image?.imageUrl"
-          class="w-[50px] aspect-square rounded-full border border-lightGray lg:disabled"
-        >
-          <img
-            src="/assets/imgs/not-found.webp"
+            [src]="
+              dataUser.image?.imageUrl
+                ? dataUser.image?.imageUrl
+                : '/assets/imgs/not-found.webp'
+            "
             alt="avatar"
             class="w-full h-full object-cover rounded-full"
           />
@@ -224,7 +217,10 @@
                       class="w-full h-full object-cover rounded-full"
                     />
                   </figure>
-                  <h4>¡Hola, {{ dataUser.fullName }}!</h4>
+                  <h4>
+                    ¡Hola,
+                    {{ dataUser.cuit ? dataUser.name : dataUser.fullName }}!
+                  </h4>
                 </li>
                 <li
                   (click)="handleMenu()"

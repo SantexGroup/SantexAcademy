@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { VolunteeringService } from 'src/app/services/volunteering.service';
 
 type Item = {
   imgUrl: string;
@@ -14,8 +15,11 @@ type Item = {
   templateUrl: './volunteers.component.html',
   styleUrls: ['./volunteers.component.css'],
 })
-export class VolunteersComponent {
+export class VolunteersComponent implements OnInit {
   dataInput: string = '';
+  volunteering: Array<[]> = [];
+  volunteeringFilter: Array<[]> = [];
+  constructor(private volunteeringServices: VolunteeringService) {}
   items: Item[] = [
     {
       imgUrl: '/assets/logotypes_organizations/orgOne.svg',
@@ -26,6 +30,19 @@ export class VolunteersComponent {
       timePublished: 'Publicado hace 1 minuto',
     },
   ];
+
+  ngOnInit(): void {
+    this.volunteeringServices.getVolunteers().subscribe({
+      next: (res) => {
+        this.volunteering = res;
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
   viewDataInput(e: any) {
     console.log(e.target.value);
   }

@@ -21,6 +21,7 @@ export class DataVolunteerComponent implements OnInit {
   onModalStatus: boolean = false;
   statusModal: string = '';
   textBtnModalStatus: string = '';
+  textMessage: string = '';
 
   constructor(
     private authService: AuthService,
@@ -38,13 +39,6 @@ export class DataVolunteerComponent implements OnInit {
           Validators.pattern(/^(?:\d{7,14}|\d{2}[ -]?\d{4}[ -]?\d{4})$/),
         ],
       ],
-      // password: [
-      //   '',
-      //   [
-      //     Validators.required,
-      //     Validators.pattern(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/),
-      //   ],
-      // ],
     });
   }
 
@@ -82,6 +76,7 @@ export class DataVolunteerComponent implements OnInit {
             if (res) {
               this.onModalStatus = true;
               this.statusModal = 'success';
+              this.textMessage = ' ¡Tus datos se han modificado correctamente!';
 
               setTimeout(() => {
                 this.onModalStatus = false;
@@ -94,18 +89,16 @@ export class DataVolunteerComponent implements OnInit {
             this.onModalStatus = true;
             this.statusModal = 'failed';
             this.textBtnModalStatus = 'Aceptar';
+            this.textMessage =
+              '¡Se produjo un error al modificar tus datos! Por favor, inténtalo de nuevo más tarde.';
           },
         });
     }
     this.editData = false;
   }
 
-  handdleProfileDelete() {
-    if (this.onModalQuestion) {
-      this.onModalQuestion = false;
-    } else {
-      this.onModalQuestion = true;
-    }
+  handleProfileDelete() {
+    this.onModalQuestion = !this.onModalQuestion;
   }
 
   deleteProfile() {

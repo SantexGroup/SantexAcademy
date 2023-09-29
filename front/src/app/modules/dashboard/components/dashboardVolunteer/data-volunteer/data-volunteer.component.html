@@ -2,7 +2,7 @@
   <app-modal-question
     *ngIf="onModalQuestion"
     (onDeleteProfile)="deleteProfile()"
-    (cancelDeletion)="handdleProfileDelete()"
+    (cancelDeletion)="handleProfileDelete()"
   >
   </app-modal-question>
   <app-modal-status
@@ -10,6 +10,7 @@
     (changueValueModal)="closeModalStatus()"
     [textBtn]="textBtnModalStatus"
     [status]="statusModal"
+    [message]="textMessage"
   >
   </app-modal-status>
   <div
@@ -136,7 +137,7 @@
     </button>
     <button
       *ngIf="!editData"
-      (click)="handdleProfileDelete()"
+      (click)="handleProfileDelete()"
       class="bg-deepPink text-white py-1 rounded-md mt-4 text-xl font-semibold"
     >
       Eliminar perfil
