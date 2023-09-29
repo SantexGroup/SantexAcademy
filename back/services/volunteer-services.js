@@ -118,6 +118,7 @@ async function deleteUser(id) {
       return { error: 'No se encuentra el usuario solicitado' };
     }
 
+    // Obtiene todas las tareas a la que el voluntario está inscripto.
     const tareasInscriptas = await user.getTareas();
 
     // eslint-disable-next-line no-restricted-syntax
@@ -125,14 +126,17 @@ async function deleteUser(id) {
       // eslint-disable-next-line no-await-in-loop
       const inscrpito = await user.hasTarea(tarea);
       if (inscrpito) {
+        // Modifica la cantidad de inscriptos ya que el voluntario se eliminará
         tarea.cantInscriptos -= 1;
         // eslint-disable-next-line no-await-in-loop
         await tarea.save();
 
+        // Se elimina la relacion del voluntario con la tarea.
         // eslint-disable-next-line no-await-in-loop
         await user.removeTarea(tarea);
       }
     }
+    // Elimina al voluntario
     await user.destroy();
   } catch (error) {
     return { error: 'Error interno en el servidor' };
@@ -213,15 +217,6 @@ async function canjearPremioService(volunteerId, premioId) {
     if (puntos < puntosPremio) {
       return { error: 'No cuenta con la cantidad de puntos para canjear el premio' };
     }
-
-    // Verificar si el premio ya ha sido canjeado por el voluntario
-    // const canjeAnterior = await models.premiosMid.findOne({
-    //   where: { volunteerId, premioId },
-    // });
-
-    // if (canjeAnterior) {
-    //   return { error: 'Este premio ya ha sido canjeado por el voluntario' };
-    // }
 
     // Realizar el canje
     await voluntario.addPremio(premio, { through:{ date: new Date() } });
