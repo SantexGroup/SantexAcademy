@@ -36,8 +36,7 @@
         </p>
       </article>
       <div class="buttons">
-        <button class="button-submit" type="submit">Modificar</button>
-        <button class="button-submit" type="submit">Eliminar</button>
+        <button *ngIf="product" (click)="openDialog(product)" class="button-submit" type="submit">Ver Más</button>
       </div>
     </section>
   </main>
