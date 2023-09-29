@@ -1,5 +1,5 @@
 
-<form class="form_container" [formGroup]="myForm"  (ngSubmit)="addProduct()">
+<form class="form_container" [formGroup]="myForm"  (ngSubmit)="addProduct()" enctype="multipart/form-data">
     <div class="title_container">
         <p class="title">Agregar Producto</p>
         <span class="subtitle">Ingrese los datos del nuevo producto.</span>
@@ -34,7 +34,7 @@
     </div>
     <div class="input_container">
         <label class="input_label" for="url_field">imagen</label>
-        <input (change)="selectImage($event)" name="input-url" type="file" class="input_field" id="url_field" formControlName="image">
+        <input (change)="selectImage($event)" name="file" type="file" class="input_field" id="url_field" formControlName="image">
         <p class="errorInput" *ngIf="myForm.get('urlImagen')?.touched && myForm.get('urlImagen')?.hasError('required')">Campo Obligatorio</p>
     </div>
     <div class="input_container">

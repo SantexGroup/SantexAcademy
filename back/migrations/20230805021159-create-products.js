@@ -22,7 +22,7 @@ module.exports = {
         type: Sequelize.FLOAT,
       },
       image: {
-        type: Sequelize.STRING,
+        type: Sequelize.BLOB,
       },
       status: {
         type: Sequelize.STRING,

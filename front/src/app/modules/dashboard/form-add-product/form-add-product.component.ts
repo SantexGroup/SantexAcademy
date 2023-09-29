@@ -32,6 +32,7 @@ export class FormAddProductComponent implements OnInit {
     this.categoriaService.getCategories().subscribe((result) => {
       this.categorias = result;
     });
+    
   }
   selectImage($event:any){
     console.log($event.target.files[0]);
