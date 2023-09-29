@@ -10,6 +10,7 @@ const {
 
 const {
   verifyToken,
+  isAdmin,
   isUser,
 } = require("../middleware/authMiddleware");
 

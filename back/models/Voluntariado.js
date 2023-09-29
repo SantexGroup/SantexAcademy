@@ -4,17 +4,17 @@ const { sequelize } = require("../config/db-config");
 const Voluntariado = sequelize.define(
   "voluntariado",
   {
-    idVoluntariado: {
+    idVolunteering: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
     },
-    nombre: {
+    name: {
       type: DataTypes.STRING(45),
       allowNull: false,
     },
-    descripcion: {
+    description: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
@@ -66,7 +66,7 @@ const Voluntariado = sequelize.define(
         name: 'PRIMARY',
         unique: true,
         using: 'BTREE',
-        fields: [{ name: 'idVoluntariado' }],
+        fields: [{ name: 'idVolunteering' }],
       },
       {
         name: 'fk_voluntariado_organization1_idx',
