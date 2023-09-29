@@ -86,16 +86,23 @@ productscontroller.getByID = async (req, res) => {
 /**
  * @method PUT
  * @name editByID
- * @param {id}
- * @body {}
+ * @param {id} id del producto que queremos editar
+ * @body { 
+ * "name":String
+ * "description":String
+ * "quantity": number
+ * "price":number
+ * "image":string
+ * "status":string
+ * "categories": [number] ids de las categorias a las que pertenece
+ * }
  * @description metodo para editar un producto de la base de datos
  */
 productscontroller.editByID = async (req, res) => {
   try {
-    console.log("id", req.params.id);
-    console.log("producto que llega:", req.body);
+    req.body.image  = process.env.DIRECCION +"/public/"+ req.file.filename
     const producto = await Products.findByPk(req.params.id);
-    console.log("producto encontrado", producto);
+    
     if (!producto) {
       //si no lo encontramos informamos que no existe
       console.log("no encontro");

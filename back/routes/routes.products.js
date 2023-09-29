@@ -9,7 +9,7 @@ const controller = require('../controllers/products.controller');
 router.post('/', multerMId.single('image') , controller.create);
 router.get("/",controller.getAll);
 router.get("/:id",controller.getByID);
-router.put("/:id",controller.editByID);
+router.put("/:id",multerMId.single('image'),controller.editByID);
 router.delete("/:id",controller.delete);
 router.get('/byname/:name', controller.GetByName);
 
