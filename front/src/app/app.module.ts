@@ -26,8 +26,6 @@ import { PersonalComponent } from './modules/crud-data/personal/personal.compone
 import { SkillComponent } from './modules/crud-data/skill/skill.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './core/services/toolServices/interceptor/loading.interceptor';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { UsuarioModule } from './modules/usuario/usuario.module';
 import { UsuarioModule } from './modules/lazyLoading/usuario.module';
 import { CVComponent } from './modules/cv/cv.component';
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
