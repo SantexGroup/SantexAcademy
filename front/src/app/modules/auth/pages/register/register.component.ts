@@ -36,14 +36,11 @@ export class RegisterComponent {
       .subscribe( ok => {
         console.log(ok)
         if (ok === true){
-          this.router.navigateByUrl('/protected');
+          this.router.navigateByUrl('/admin');// this.router.navigateByUrl('/protected') para que es /protected?, cual es la logica?
         }else{
           Swal.fire('Error', ok, 'error');
         }
       })
-
-    // this.router.navigateByUrl('/protected')
-
   }
 
 }

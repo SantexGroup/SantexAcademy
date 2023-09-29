@@ -12,7 +12,7 @@
   <h5>Hola, {{user.username}} !</h5>
   <div class="container">
 
-    <div class="curso-card" *ngFor="let curso of cursos">
+    <div class="curso-card" *ngFor="let curso of cursos" [ngClass]="{'curso-habilitado': esCursoHabilitado(curso), 'curso-no-habilitado': !esCursoHabilitado(curso)}">
       <figure>
         <img src="{{curso.imagen}}" alt="Imagen del curso">
       </figure>
@@ -23,7 +23,7 @@
         <p class="fechafin">Fin: {{curso.fechafin}}</p>
         <p class="requisitos">Requisitos: {{curso.requisitos}}</p>
       </div>
-        <!-- <button (click)="ingresar()">INGRESAR</button> -->
+        <button (click)="ingresar(curso)">INGRESAR</button>
     </div>
     
   </div>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import Swal from 'sweetalert2';
+//import Swal from 'sweetalert2';
 
 import { AuthService } from '../../auth/services/auth.service';
 
@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
            this.loginForm.markAllAsTouched();
         }
         
-        Swal.fire('Error', ok, 'error');
+        //Swal.fire('Error', ok, 'error');
       });
     }
   }
