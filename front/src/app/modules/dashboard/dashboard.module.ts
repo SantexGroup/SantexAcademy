@@ -23,6 +23,9 @@ import { TabsComponent } from './components/dashboardOrganization/tabs/tabs.comp
 
 import { ModalQuestionComponent } from './components/modal-question/modal-question.component';
 import { ModalStatusComponent } from './components/modal-status/modal-status.component';
+import { TabsDashboardOrganizationComponent } from './components/dashboardOrganization/tabs-dashboard-organization/tabs-dashboard-organization.component';
+import { NewVolunteeringFormComponent } from './components/dashboardOrganization/new-volunteering-form/new-volunteering-form.component';
+import { CompletedVolunteeringComponent } from './components/dashboardOrganization/completed-volunteering/completed-volunteering.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,11 @@ import { ModalStatusComponent } from './components/modal-status/modal-status.com
     TabsComponent,
     ModalQuestionComponent,
     ModalStatusComponent,
+    TabsDashboardOrganizationComponent,
+    NewVolunteeringFormComponent,
+    CompletedVolunteeringComponent,
+
+
   ],
   imports: [
     CommonModule,

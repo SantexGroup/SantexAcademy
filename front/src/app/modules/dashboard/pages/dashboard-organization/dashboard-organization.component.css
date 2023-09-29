@@ -1,0 +1,13 @@
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in-out-animation {
+  animation: fade-in-out 3s cubic-bezier(.25, 1, .30, 1) both;
+}
