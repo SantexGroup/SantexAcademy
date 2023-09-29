@@ -261,6 +261,9 @@ li {
 .card-list .action p {
   padding-left: 5px;
 }
+.my-1{
+  margin:1rem
+}
 
 @media (max-width: 767px){
   .productos-container {
