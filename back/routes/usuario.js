@@ -6,6 +6,7 @@ const {
   userController,
   usuarioEnVoluntariadoController,
   productController,
+  canjeController
 } = require("../controllers");
 
 const {
@@ -15,7 +16,7 @@ const {
 
 
 userRouter.get('/', productController.getAllProducts);
-userRouter.get('/:id', verifyToken, isAdmin, productController.getProduct);
+userRouter.get('/:id', verifyToken, isUser, productController.getProduct);
 
 
 userRouter.get("/me/profile", verifyToken, isUser, userController.getMyUser);
@@ -60,6 +61,8 @@ userRouter.delete(
   isUser,
   usuarioEnVoluntariadoController.deleteJoinById
 );
+
+userRouter.post("/exchange", verifyToken, isUser , canjeController.createOrder)
 
 
 module.exports = userRouter;

@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/db-config");
 
-const OrdenRetiroProductos = sequelize.define(
-  "ordenRetiroProductos",
+const OrdenDeCanje = sequelize.define(
+  "ordenDeCanje",
   {
 
     orderId: {
@@ -12,6 +12,14 @@ const OrdenRetiroProductos = sequelize.define(
       autoIncrement: true,
     },
 
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "usuario",
+        key: "id",
+      },
+    },
     productId: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -29,12 +37,17 @@ const OrdenRetiroProductos = sequelize.define(
       type: DataTypes.DATE,
       allowNull: false,
     },
+    deletedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    
+    }
   },
   {
     sequelize,
-    tableName: "ordenRetiroProductos",
+    tableName: "ordenDeCanje",
     timestamps: false,
   }
 );
 
-module.exports = OrdenRetiroProductos;
+module.exports = OrdenDeCanje;

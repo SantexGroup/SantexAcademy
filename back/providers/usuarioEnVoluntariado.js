@@ -30,7 +30,8 @@ const getJoins = async (userId) => {
     const joins = await UsuarioEnVoluntariado.findAll({
       where: { userId },
       include: [{ model: Voluntariado, as: 'voluntariado', }],
-    });
+      attributes: { exclude: ['deletedAt'] },
+      });
 
     return joins;
   } catch (err) {

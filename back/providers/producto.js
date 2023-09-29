@@ -44,8 +44,7 @@ const updateProduct = async (id, producto) => {
 
 const deleteProduct = async (id) => {
   try {
-    const deletedProduct = await Producto.destroy({     where: { id },
-    });
+    const deletedProduct = await Producto.destroy({ where: { id } });
     return deletedProduct;
   } catch (err) {
     console.error('Error deleting product', err);

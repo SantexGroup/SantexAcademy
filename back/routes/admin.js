@@ -7,10 +7,10 @@ const {
   userController,
   voluntariadoController,
   productController,
+  canjeController,
 } = require("../controllers");
 
 const { verifyToken, isAdmin } = require("../middleware/authMiddleware");
-
 
 //****** GESTION DE ORGANIZACIONES ******* */
 adminRouter.delete(
@@ -69,6 +69,20 @@ adminRouter.delete(
   productController.deleteProduct
 );
 
-//*******GESTION DE PEDIDOS **************/
+//*******GESTION DE ORDENES DE CANJE ******* */
+
+adminRouter.get("orders/", verifyToken, isAdmin, canjeController.getAllOrders);
+adminRouter.get(
+  "orders/:id",
+  verifyToken,
+  isAdmin,
+  canjeController.getOrderById
+);
+adminRouter.delete(
+  "orders/:id",
+  verifyToken,
+  isAdmin,
+  canjeController.deleteOrderById
+);
 
 module.exports = adminRouter;
