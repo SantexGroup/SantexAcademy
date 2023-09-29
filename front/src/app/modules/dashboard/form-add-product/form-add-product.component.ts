@@ -18,15 +18,13 @@ export class FormAddProductComponent implements OnInit {
     quantity: new FormControl('', [Validators.required, ]),
     categories: new FormControl('', [Validators.required]),
     tipoMaterial: new FormControl('', [Validators.required]),
-    image: new FormControl('', [Validators.required]),
+    image: new FormControl(null, [Validators.required]),
     price: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required])
   })
 
   addProduct() {
-    console.log('Agregar', this.myForm.value)
     this.backService.addProduct(this.myForm.value).subscribe((result) => {console.log(result)});
-    
     this.myForm.reset();
   } 
 
@@ -35,5 +33,9 @@ export class FormAddProductComponent implements OnInit {
       this.categorias = result;
     });
   }
-
+  selectImage($event:any){
+    console.log($event.target.files[0]);
+    this.myForm.patchValue({image:$event.target.files[0]});
+  }
+ 
 }
