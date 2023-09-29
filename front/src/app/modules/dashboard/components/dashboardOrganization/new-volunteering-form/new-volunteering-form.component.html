@@ -1,0 +1,68 @@
+<form label="Nuevo voluntariado" class="mat-tab">
+  <div class="datos px-14 h-auto pt-[30px] w-[100%]">
+    <p class="text-[32px] font-semibold">Crear nuevo voluntariado</p>
+
+
+    <div class="flex items-center">
+      <div class="w-1/6 p-4">
+        <strong>Nombre:</strong>
+      </div>
+      <div class="p-4 w-full ">
+        <input type="text" placeholder="Ingrese el nombre del voluntariado" class="w-[100%] h-[40px] pl-2 rounded-[5px]">
+
+      </div>
+    </div>
+    <div class="flex items-center">
+      <div class="w-1/6 p-4">
+        <strong>Ubicación:</strong>
+      </div>
+      <div class="p-4 w-full">
+        <input type="text" placeholder="Ingrese la ubicación donde se desarrollará el voluntariado"
+          class="w-[100%] h-[40px] pl-2 rounded-[5px]">
+      </div>
+    </div>
+    <div class="flex items-center">
+      <div class="w-1/6 p-4">
+        <strong>Categoría:</strong>
+      </div>
+      <div class="p-4 w-full">
+        <select class="w-full h-[40px] pl-1 rounded-[5px]">
+          <option value="" disabled selected hidden style="color: gray;">Selecciona una categoría</option>
+          <option value="asistencia">Medio ambiente y fauna</option>
+          <option value="educacion">Asistencia Social</option>
+          <option value="salud">Salud y discapacidad</option>
+        </select>
+      </div>
+
+
+    </div>
+    <div class="flex items-center">
+      <div class="w-1/6 p-4">
+        <strong>Modalidad:</strong>
+      </div>
+      <div class="p-4 w-full placeholder:text-slate-300">
+        <select class="w-full h-[40px] pl-1 rounded-[5px]">
+          <option value="" disabled selected hidden>Seleccionar una modalidad</option>
+          <option value="asistencia">Presencial</option>
+          <option value="educacion">Híbrido</option>
+          <option value="salud">Remoto</option>
+        </select>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="w-1/6 p-4">
+        <strong>Descripción:</strong>
+      </div>
+      <div class="p-4 w-full ">
+        <textarea type="text" placeholder="Ingrese una breve descripción de las tareas a realizar"
+          class="w-[100%] h-[80px] pl-2 rounded-[5px]"></textarea>
+      </div>
+    </div>
+
+  </div>
+  <div class="flex justify-end p-4">
+    <button
+      class="text-white rounded-md bg-[#3F2883] mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-shadow"
+      (click)="newVolunteering()">Guardar</button>
+  </div>
+</form>
