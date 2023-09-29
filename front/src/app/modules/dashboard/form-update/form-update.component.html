@@ -45,11 +45,10 @@
         <p class="errorInput" *ngIf="myForm.get('tipoMaterial')?.touched && myForm.get('tipoMaterial')?.hasError('required')">Campo Obligatorio</p>
       </div>
       <div class="input_container">
-        <label class="input_label" for="url_field">URL de la imagen</label>
-        <input placeholder="url" title="url" name="input-url" type="url" class="input_field" id="url_field" formControlName="image">
-
-        <p class="errorInput" *ngIf="myForm.get('image')?.touched && myForm.get('image')?.hasError('required')">Campo Obligatorio</p>
-      </div>
+        <label class="input_label" for="url_field">imagen</label>
+        <input (change)="selectImage($event)" name="file" type="file" class="input_field" id="image_field" formControlName="image" accept="image/*">
+        <p class="errorInput" *ngIf="myForm.get('urlImagen')?.touched && myForm.get('urlImagen')?.hasError('required')">Campo Obligatorio</p>
+    </div>
       <div class="input_container">
         <label class="input_label" for="price_field">price</label>
         <input placeholder="$ 1500" title="price" name="input-price" type="number" class="input_field" id="price_field" formControlName="price">

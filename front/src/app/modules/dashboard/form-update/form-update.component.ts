@@ -73,6 +73,7 @@ export class FormUpdateComponent implements OnInit {
     ).subscribe(product => {
       // Asigna el producto obtenido a selectedProduct
       this.selectedProduct = product;
+      console.log(product.quantity)
       //console.log(this.selectedProduct)
       // Si se encontró un producto,  se muestra el formulario con los valores del producto
       if (product) {
@@ -104,7 +105,9 @@ export class FormUpdateComponent implements OnInit {
  
   }
   // Función para actualizar un producto
-
+  selectImage($event:any){
+    this.myForm.patchValue({image:$event.target.files[0]});
+  }
 
   updateProduct() {
     //console.log(this.myForm.value);
@@ -113,10 +116,8 @@ export class FormUpdateComponent implements OnInit {
     let id = this.activateRoute.snapshot.paramMap.get('id') 
     if (id != null){
     this.backService.updateProduct( id, this.myForm.value).subscribe((result) => {
-      if(result.status == 1){
-        alert("Producto actualizado correctamente")
-      }else{
-        alert("Error al actualizar el producto")
+      if(result.status == 400){
+        alert("error al actualizar producto")
       }
     }
     );}

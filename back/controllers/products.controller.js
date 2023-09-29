@@ -1,7 +1,8 @@
 const productscontroller = {};
 const { Products, Categories } = require("../models"); //--> nombre con el que se creo el modelo en primer lugar
 const { Op } = require("sequelize");
-
+const fs = require('fs');
+require('dotenv').config();
 /**
  * @method POST
  * @name create
@@ -18,23 +19,39 @@ const { Op } = require("sequelize");
  */
 productscontroller.create = async (req, res) => {
   try {
-    let cat = [];
-    const product = await Products.create(req.body);
-    console.log("categorias"+ req.body.categories  )
-    const categorias = req.body.categories
-    //recorremos la categorias y las agregamos al producto
-    if (categorias) {
-      console.log("holi")
-      for (let i = 0; i < categorias.length; i++) {
-        c = await Categories.findByPk(categorias[i]);
-        if (!c) {
-          return res.status(404).json({ message: "Producto creado, pero la categoria con id "+ categorias[i] +" no fue encontrada" });
+    
+    //guardamos el link de la imagen en req.body.image para consultarlo despues 
+      req.body.image  = process.env.DIRECCION +"/public/"+ req.file.filename
+      const product = await Products.create(req.body);
+    
+      let categorias = req.body.categories;
+      //las categorias llegan con comas las transformaremos en array
+      //recorremos la categorias y las agregamos al producto
+      if (categorias) {
+        categorias = categorias.split(",");
+        for (let i = 0; i < categorias.length; i++) {
+          c = await Categories.findByPk(categorias[i]);
+          if (!c) {
+            return res
+              .status(404)
+              .json({
+                message:
+                  "Producto creado, pero la categoria con id " +
+                  categorias[i] +
+                  " no fue encontrada",
+              });
+          }
+          product.addCategories(c);
         }
-         product.addCategories(c);
       }
-    }
-    res.status(201).json("Product correctly created");
+      res.status(201).json("Product correctly created");  
+      
+    
+    
+   
+   
   } catch (error) {
+    console.log(error);
     res.status(400).json({ error: error.message });
   }
 };
@@ -69,16 +86,23 @@ productscontroller.getByID = async (req, res) => {
 /**
  * @method PUT
  * @name editByID
- * @param {id}
- * @body {}
+ * @param {id} id del producto que queremos editar
+ * @body { 
+ * "name":String
+ * "description":String
+ * "quantity": number
+ * "price":number
+ * "image":string
+ * "status":string
+ * "categories": [number] ids de las categorias a las que pertenece
+ * }
  * @description metodo para editar un producto de la base de datos
  */
 productscontroller.editByID = async (req, res) => {
   try {
-    console.log("id", req.params.id);
-    console.log("producto que llega:", req.body);
+    req.body.image  = process.env.DIRECCION +"/public/"+ req.file.filename
     const producto = await Products.findByPk(req.params.id);
-    console.log("producto encontrado", producto);
+    
     if (!producto) {
       //si no lo encontramos informamos que no existe
       console.log("no encontro");
@@ -121,20 +145,19 @@ productscontroller.delete = async (req, res) => {
  * @param {name}
  * @description metodo para obtener un producto donde el nombre contiene una palabra pasada por parametro
  */
-  productscontroller.GetByName = async (req, res) => {
-    try {
-      const producto = await Products.findAll({
-        where: {
-          name: {
-            [Op.like]: `%${req.params.name}%`,
-          },
+productscontroller.GetByName = async (req, res) => {
+  try {
+    const producto = await Products.findAll({
+      where: {
+        name: {
+          [Op.like]: `%${req.params.name}%`,
         },
-      });
-      res.status(201).json(producto);
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
+      },
+    });
+    res.status(201).json(producto);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
-
+};
 
 module.exports = productscontroller;

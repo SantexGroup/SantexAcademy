@@ -18,8 +18,6 @@ module.exports = (sequelize, DataTypes) => {
     //dependiendo los alquileres con sus fechas podemos ver caunto stock hay para esos dias, si hay 0 no es posible alquilar nigun producto para ese dia 
   }
 
-    
-  
 
   Products.init({
     name: DataTypes.STRING,

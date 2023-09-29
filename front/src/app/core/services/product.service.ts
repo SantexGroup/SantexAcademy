@@ -17,12 +17,31 @@ export class BackServiceService {
     return this._http.get(this.ProductUrl+id);}
 
   //metodo para agregar un producto en el backend
-   public addProduct(product:any): Observable<any> { 
-    return this._http.post(this.ProductUrl,product);
+   public addProduct(product:any): Observable<any> {
+    let formD = new FormData();
+    formD.append('name', product.name);
+    formD.append('quantity', product.quantity);
+    formD.append('categories', product.categories);
+    formD.append('tipoMaterial', product.tipoMaterial);
+    formD.append('image', product.image);
+    formD.append('price', product.price);
+    formD.append('description', product.description); 
+    this._http.setHeader("enctype","multipart/form-data");
+    return  this._http.post(this.ProductUrl,formD);
    }
    //metodo para actualizar un producto en el backend
    public updateProduct(id:string,product:any): Observable<any> {
-    return this._http.put(this.ProductUrl+id, product);
+    console.log("producto que llega",product)
+    let formD = new FormData();
+    formD.append('name', product.name);
+    formD.append('quantity', product.quantity);
+    formD.append('categories', product.categories);
+    formD.append('tipoMaterial', product.tipoMaterial);
+    formD.append('image', product.image);
+    formD.append('price', product.price);
+    formD.append('description', product.description); 
+    this._http.setHeader("enctype","multipart/form-data");
+    return  this._http.put(this.ProductUrl +"/" +id ,formD);
   }
   //metodo para eliminar un producto en el backend
    public deleteProduct(id:string): Observable<any> {
