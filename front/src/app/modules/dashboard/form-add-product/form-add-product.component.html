@@ -13,7 +13,7 @@
     <div class="input_container">
         <label class="input_label" for="name_field">Cantidad</label>
         <input placeholder="3" title="Cantidad" name="input-cantidad" type="number" class="input_field" id="cantidad_field" formControlName="quantity">
-        <p class="errorInput" *ngIf="myForm.get('cantidad')?.touched && myForm.get('cantidad')?.hasError('required')">Campo Obligatorio</p>
+        <p class="errorInput" *ngIf="myForm.get('quantity')?.touched && myForm.get('quantity')?.hasError('required')">Campo Obligatorio</p>
     </div>
     <div class="input_container">
         <!-- <label class="input_label" for="categoria_field">Categoria</label>
@@ -34,7 +34,7 @@
     </div>
     <div class="input_container">
         <label class="input_label" for="url_field">imagen</label>
-        <input (change)="selectImage($event)" name="file" type="file" class="input_field" id="url_field" formControlName="image">
+        <input (change)="selectImage($event)" name="file" type="file" class="input_field" id="image_field" formControlName="image" accept="image/*">
         <p class="errorInput" *ngIf="myForm.get('urlImagen')?.touched && myForm.get('urlImagen')?.hasError('required')">Campo Obligatorio</p>
     </div>
     <div class="input_container">

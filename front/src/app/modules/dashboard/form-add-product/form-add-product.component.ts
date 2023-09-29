@@ -35,7 +35,6 @@ export class FormAddProductComponent implements OnInit {
     
   }
   selectImage($event:any){
-    console.log($event.target.files[0]);
     this.myForm.patchValue({image:$event.target.files[0]});
   }
  
