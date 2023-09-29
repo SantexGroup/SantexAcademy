@@ -2,6 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/app/environments/environment.prod';
 import { Observable } from 'rxjs';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs';
 export class DashboardServicesService {
   private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authServices: AuthService) {}
 
   getProfileVolunteer(token: string): Observable<any> {
     const url = `${this.apiUrl}/usuarios/me/profile`;
@@ -29,6 +30,16 @@ export class DashboardServicesService {
     return this.http.put(url, data, options);
   }
 
+  updateProfilePhoto(data: any | FormData): Observable<any> {
+    const token = this.authServices.getAuthToken();
+    const url = `${this.apiUrl}/usuarios/me/updatePhoto`;
+    const headers = new HttpHeaders({
+      'x-access-token': token,
+    });
+    const options = { headers: headers };
+    return this.http.put(url, data, options);
+  }
+
   deleteProfileVolunteer(token: string): Observable<any> {
     const url = `${this.apiUrl}/usuarios/me/profile`;
     const headers = new HttpHeaders({
@@ -39,7 +50,7 @@ export class DashboardServicesService {
   }
 
   getProfileOrganization(token: string): Observable<any> {
-    const url = `${this.apiUrl}/org/me/profile`;
+    const url = `${this.apiUrl}/organizacion/me/profile`;
     const headers = new HttpHeaders({
       'x-access-token': token,
     });

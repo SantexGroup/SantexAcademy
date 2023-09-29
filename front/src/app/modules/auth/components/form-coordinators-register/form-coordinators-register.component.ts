@@ -35,6 +35,7 @@ export class FormCoordinatorsRegisterComponent {
       password: ['', Validators.required],
       phone: ['', Validators.required],
       cuit: ['', Validators.required],
+      urlWebSite: [''],
       location: ['', Validators.required],
       category: ['', Validators.required],
       file: [null],

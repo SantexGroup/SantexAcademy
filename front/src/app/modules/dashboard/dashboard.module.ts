@@ -9,7 +9,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 import { CommonModule } from '@angular/common';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { DashboardVolunteerComponent } from './pages/dashboard-volunteer/dashboard-volunteer.component';
@@ -21,7 +20,6 @@ import { VolunteerHistoryComponent } from './components/dashboardVolunteer/volun
 import { HeaderDashboardOrgComponent } from './components/dashboardOrganization/header-dashboard-org/header-dashboard-org.component';
 import { VolunteersTableComponent } from './components/dashboardOrganization/volunteers-table/volunteers-table.component';
 import { TabsComponent } from './components/dashboardOrganization/tabs/tabs.component';
-
 
 import { ModalQuestionComponent } from './components/modal-question/modal-question.component';
 import { ModalStatusComponent } from './components/modal-status/modal-status.component';
@@ -37,18 +35,15 @@ import { CompletedVolunteeringComponent } from './components/dashboardOrganizati
     HeaderComponent,
     DataVolunteerComponent,
     VolunteerHistoryComponent,
-
     HeaderDashboardOrgComponent,
     VolunteersTableComponent,
     TabsComponent,
-
-
     ModalQuestionComponent,
     ModalStatusComponent,
     TabsDashboardOrganizationComponent,
     NewVolunteeringFormComponent,
     CompletedVolunteeringComponent,
-    
+
 
   ],
   imports: [
@@ -60,7 +55,6 @@ import { CompletedVolunteeringComponent } from './components/dashboardOrganizati
     MatButtonModule,
     MatTabsModule,
     ReactiveFormsModule,
-
   ],
 })
 export class DashboardModule {}

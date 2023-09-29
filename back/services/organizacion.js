@@ -23,11 +23,10 @@ const getOrganizations = async () => {
   return organizations;
 };
 
-
 const updateOrganizationById = async (id, organization) => {
   const updatedOrganization = await orgProvider.updateOrganizationById(
-    id,
-    organization
+    organization,
+    id
   );
   return updatedOrganization;
 };
@@ -40,8 +39,7 @@ const deleteOrganizationById = async (id) => {
 const getOrganizationsById = async (orgId) => {
   const organization = await orgProvider.getOrganizationsById(orgId);
   return organization;
-
-}
+};
 // query parameters
 
 const getOrganizationByCriteria = async (queryOptions, bodyOptions) => {
@@ -60,6 +58,11 @@ const getOrganizationByLocation = async (location, opportunityType) => {
   return organizationFound;
 };
 
+const updatePhotoMyProfile = async (image, id) => {
+  const photoUpdate = await orgProvider.updatePhotoMyProfile(image, id);
+  return photoUpdate;
+};
+
 module.exports = {
   loginOrg,
   getOrganizations,
@@ -69,4 +72,5 @@ module.exports = {
   updateOrganizationById,
   deleteOrganizationById,
   getOrganizationByLocation,
+  updatePhotoMyProfile,
 };

@@ -42,6 +42,11 @@ const deleteUserById = async (id) => {
   return deletedUser;
 };
 
+const updatePhotoMyProfile = async (image, id) => {
+  const photoUpdate = await userProvider.updatePhotoMyProfile(image, id);
+  return photoUpdate;
+};
+
 module.exports = {
   loginUser,
   getMyUser,
@@ -49,4 +54,5 @@ module.exports = {
   getUsersByCriteria,
   updateMyUser,
   deleteUserById,
+  updatePhotoMyProfile,
 };

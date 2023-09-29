@@ -1,17 +1,13 @@
-const catalogoProvider = require('./catalogo');
 const orgProvider = require('./organizacion');
-const recompensaProvider = require('./recompensa');
+const productProvider = require('./producto');
 const userProvider = require('./usuario');
-const vacanteProvider = require('./vacante');
 const voluntariadoProvider = require('./voluntariado');
 const usuarioEnVoluntariadoProvider = require('./usuarioEnVoluntariado');
 
 module.exports = {
-  catalogoProvider,
   orgProvider,
   userProvider,
-  recompensaProvider,
-  vacanteProvider,
+  productProvider,
   voluntariadoProvider,
   usuarioEnVoluntariadoProvider,
 };
