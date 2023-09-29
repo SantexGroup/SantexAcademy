@@ -2,8 +2,8 @@ const express = require("express");
 
 const voluntariadoRouter = express.Router();
 const { voluntariadoController } = require("../controllers");
-
 const { verifyToken, isAdmin, isOrg } = require("../middleware/authMiddleware");
+const { verifyToken, isOrg } = require("../middleware/authMiddleware");
 
 voluntariadoRouter.post(
   "/",

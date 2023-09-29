@@ -8,6 +8,7 @@ const userRouter = require("./usuario");
 const vacanteRouter = require("./vacante");
 const authRouter = require("./auth");
 const voluntariadoRouter = require("./voluntariado");
+const adminRouter = require("./admin");
 
 // // Middlewares:
 // const rootPath = require('../middleware/root_path.middleware');
@@ -26,6 +27,8 @@ routes.use("/usuarios", userRouter);
 routes.use("/vacante", vacanteRouter);
 routes.use("/voluntariado", voluntariadoRouter);
 routes.use("/auth", authRouter);
+
+routes.use("/admin", adminRouter);
 
 // routes.use('/', rootPath.handler);
 // routes.use(rootPath.setHeaders);
