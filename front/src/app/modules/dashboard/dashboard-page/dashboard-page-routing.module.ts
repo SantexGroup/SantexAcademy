@@ -10,6 +10,9 @@ import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component'
 import { VistaProveedoresComponent } from '../vista-proveedores/vista-proveedores.component';
 
 import { SearchProductComponent } from '../search-product/search-product.component';
+import { FooterComponent } from '../footer/footer.component';
+import { LoginComponent } from '../login/login.component';
+import { VistaUsuarioPerfilComponent } from '../vista-usuario-perfil/vista-usuario-perfil.component';
 
 
 const routes: Routes = [
@@ -48,6 +51,18 @@ const routes: Routes = [
       {
         path: 'proveedores',
         component: VistaProveedoresComponent
+      },
+      {
+        path: 'footer',
+        component: FooterComponent
+      },
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'perfil-Users',
+        component: VistaUsuarioPerfilComponent
       }
     ]
     

@@ -15,11 +15,13 @@ export class HomeComponent implements OnInit {
 
   constructor(private backService: BackServiceService, private matDialog:MatDialog) { }
   productList: Product[] = new Array<Product>();
-
+  newProducts: Product[] = new Array<Product>();
   ngOnInit(): void {
     this.backService.getProducts().subscribe((result) => {
       this.productList = result;
+      this.newProducts = result.slice(result.length - 14);
     });
+   
   }
 
   openDialog(product: Product): void {

@@ -13,6 +13,7 @@
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
     gap: 1rem;
   }
+ 
   
   .card {
     min-width: 10rem;
@@ -62,4 +63,12 @@
     color: #ffffff;
     background: #115DFC;
     cursor: pointer;
+  }
+
+  @media (max-width: 900px){
+    .products {
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+    }
   }

@@ -1,4 +1,7 @@
 <!-- <p>vista-proveedores works!</p> -->
+<div class="h1">
+  Proveedores Destacados
+</div>
 <div class="carousel-container">
   <!--
   <button class="arrow-button left-arrow">
@@ -74,13 +77,13 @@
     <div>
       <p class="label">Productos de {{ nombreProveedor }}</p>
       <ul>
-        <li *ngFor="let producto of productosProveedor">
+        <li class="my-1" *ngFor="let producto of productosProveedor">
           <!--Aquí comienza -->
-          <div class="card-list">
+          <div class="card-list ">
             <div class="results">
               
               <div class="results-list">
-                <div class="entry">
+                <div class="entry my-2">
                   <div class="icon"> 
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
