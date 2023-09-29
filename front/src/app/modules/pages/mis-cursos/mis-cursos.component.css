@@ -117,6 +117,18 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra */
   }
 
+  /* Estilo para cursos habilitados */
+  .curso-habilitado {
+    box-shadow: 7px 7px 30px rgba(84, 253, 107, 0.5);
+    border-left: 5px solid #42A948; /* Borde izquierdo verde */
+  }
+
+  /* Estilo para cursos no habilitados */
+  .curso-no-habilitado {
+    box-shadow: 7px 7px 30px rgba(243, 157, 157, 0.5);
+    border-left: 5px solid #a94442; /* Borde izquierdo rojo */
+  }
+
    /* Estilos responsivos */
    @media (max-width: 992px) {
     .curso-card {

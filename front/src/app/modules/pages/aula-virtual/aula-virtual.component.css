@@ -1,0 +1,8 @@
+.contenedor {
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    text-align: center;
+    background-color: rgb(243, 226, 214);
+  }

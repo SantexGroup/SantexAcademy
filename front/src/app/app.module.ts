@@ -42,4 +42,14 @@ import { MisCursosComponent } from './modules/pages/mis-cursos/mis-cursos.compon
   
   ]
 })
-export class AppModule { }
+
+export class AppModule {
+  constructor() {
+    
+    const localStorageCleared = localStorage.getItem('localStorageCleared');// Verifica si ya se ha limpiado el localStorage
+    if (!localStorageCleared) {
+      localStorage.clear(); // Limpia datos al cargar por primera vez
+      localStorage.setItem('localStorageCleared', 'true');// Marca que se ha limpiado el localStorage
+    }
+  }
+}
