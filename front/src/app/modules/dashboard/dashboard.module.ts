@@ -31,7 +31,7 @@ import { VistaUsuarioPerfilComponent } from './vista-usuario-perfil/vista-usuari
 @NgModule({
   declarations: [DashboardPageComponent, FormAddProductComponent, FormUpdateComponent, NavBarComponent,
   FormDeleteComponent, HomeComponent, PopUpHomeComponent, ShoppingCartComponent,
-  SearchProductComponent, ProductCardComponent, VistaProveedoresComponent,FooterComponent, LoginComponent, CardComponent],
+  SearchProductComponent, ProductCardComponent, VistaProveedoresComponent,FooterComponent, LoginComponent, CardComponent,VistaUsuarioPerfilComponent],
 
 
 
