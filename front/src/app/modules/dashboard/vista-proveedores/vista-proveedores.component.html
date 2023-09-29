@@ -1,0 +1,121 @@
+<!-- <p>vista-proveedores works!</p> -->
+<div class="carousel-container">
+  <!--
+  <button class="arrow-button left-arrow">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      height="40"
+      viewBox="0 0 24 24"
+      width="40"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-6 h-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5"
+      />
+    </svg>
+  </button> -->
+  <div class="carousel">
+    <div class="card" *ngFor="let proveedor of proveedores">
+      <div class="card_img">
+        <!--<svg xmlns="http://www.w3.org/2000/svg" fill="none" height="48" viewBox="0 0 24 24" width="48" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>-->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="48"
+          viewBox="0 0 24 24"
+          width="48"
+        >
+          <path
+            d="M4 22C4 17.5817 7.58172 14 12 14C16.4183 14 20 17.5817 20 22H18C18 18.6863 15.3137 16 12 16C8.68629 16 6 18.6863 6 22H4ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.21 11 16 9.21 16 7C16 4.79 14.21 3 12 3C9.79 3 8 4.79 8 7C8 9.21 9.79 11 12 11Z"
+          ></path>
+        </svg>
+      </div>
+      <div class="card-content">
+        <h3>{{ proveedor.nombre }}</h3>
+        <p>{{ proveedor.direccion }}</p>
+        <div class="card-content-buttons">
+          <button class="botton-ver-prduct" (click)="verProductos(proveedor)">
+            Ver Productos
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!--<button class="arrow-button right-arrow">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      height="40"
+      viewBox="0 0 24 24"
+      width="40"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-6 h-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
+      />
+    </svg>
+  </button> -->
+</div>
+
+<div class="productos-container" *ngIf="mostrarProductos">
+  
+  <div class="menu-background">
+    <div>
+      <p class="label">Productos de {{ nombreProveedor }}</p>
+      <ul>
+        <li *ngFor="let producto of productosProveedor">
+          <!--Aquí comienza -->
+          <div class="card-list">
+            <div class="results">
+              
+              <div class="results-list">
+                <div class="entry">
+                  <div class="icon"> 
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      id="Layer_1"
+                      data-name="Layer 1"
+                      viewBox="0 0 24 24"
+                      width="40"
+                      height="40"
+                    >
+                      <path
+                        d="M22.765,7.119l-9-6.545a3,3,0,0,0-3.53,0l-9,6.545h0A3.015,3.015,0,0,0,0,9.546V13H11V24h2V13H24V9.546A3.015,3.015,0,0,0,22.765,7.119ZM2,9.546a1.007,1.007,0,0,1,.411-.81L8.7,4.165,6.5,7.472A2.986,2.986,0,0,0,6,9.131V11H2ZM8,11V9.131a1,1,0,0,1,.167-.553L11,4.313V11Zm5-6.687,2.833,4.264A1,1,0,0,1,16,9.131V11H13ZM22,11H18V9.131a2.992,2.992,0,0,0-.5-1.66L15.3,4.166l6.283,4.569A1.007,1.007,0,0,1,22,9.546Z"
+                      />
+                      <path d="M5,19H2V15H0v9H2V21H5v3H7V21A2,2,0,0,0,5,19Z" />
+                      <path d="M22,19H19a2,2,0,0,0-2,2v3h2V21h3v3h2V15H22Z" />
+                    </svg>
+                  </div>
+                  <div class="desc">
+                    <label>{{ producto.nombre }}</label>
+                    <span>{{ producto.precio }}</span>
+                    <span>{{ producto.descripcion }}</span>
+                    <div class="categories">
+                      <button type="button">Ver más</button>
+                      <!--<button type="button">Eliminar</button>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+ 
+  
+  <button class="botton-ocultar-product" (click)="ocultarProductos()">Ocultar productos</button>
+</div>
+

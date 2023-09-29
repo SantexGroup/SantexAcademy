@@ -1,0 +1,60 @@
+<main class="container">
+    <section class="section-search">
+      <article class="article-search">
+        <h2>Buscar por:</h2>
+        <div class="radio-input">
+          <label>
+            <input
+            [(ngModel)]="typeB"            
+              type="radio"
+              id="value-1"
+              name="value-radio"
+              value="name"
+              checked
+            />
+            <span>Nombre</span>
+          </label>
+          <label >
+            <input [(ngModel)]="typeB"  type="radio" id="value-2" name="value-radio" value="categoria" />
+            <span>Categoria</span>
+          </label>
+          <label>
+            <input [(ngModel)]="typeB" type="radio" id="value-3" name="value-radio" value="mat" />
+            <span>Material</span>
+          </label>
+          <span class="selection"></span>
+        </div>
+      </article>
+
+      <div *ngIf=" typeB == 'name'  " class="input-group">
+        <input [(ngModel)]="valor"
+          type="text"
+          class="input"
+          id="valor"
+          name="Valor"
+          placeholder="..."
+          autocomplete="off"
+        />
+        <input  (click)="buscarNombre(valor)"  class="button--submit" value="Buscar" type="submit" />
+       
+      </div>
+      <div *ngIf=" typeB == 'categoria'  ">
+        <mat-chip-list selectable multiple  [(ngModel)]="filterCat">
+          <mat-chip #b="matChip" (click)="toggleSelection(b,c.id)" *ngFor="let c of CategoriesList" [value]="c.id">
+            <mat-icon *ngIf="b.selected">check</mat-icon>
+            {{c.name}}
+          </mat-chip>
+        </mat-chip-list>  
+      </div>
+      
+
+
+    </section>
+    <section class="section-productCart">
+      <app-product-card
+        *ngFor="let product of productList"
+        [product]="product">
+      </app-product-card>
+    </section>
+  </main>
+  

@@ -1,0 +1,259 @@
+.containerGral {
+    display: flex;
+    margin: 1em;
+    
+  }
+  .column4col {
+      flex-basis: 30%;
+      padding: 10px;
+  }
+    
+  .column8col {
+      flex-basis: 70%;
+      padding: 10px;
+  }
+  
+  /*.positionInic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }*/
+  
+    
+  .form_container {
+      margin: 2rem auto;
+      max-width: 400px;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 50px 40px 20px 40px;
+      background-color: #f7f7f7;
+      box-shadow: 0px 106px 42px rgba(0, 0, 0, 0.01),
+        0px 59px 36px rgba(0, 0, 0, 0.05), 0px 26px 26px rgba(0, 0, 0, 0.09),
+        0px 7px 15px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+      border-radius: 11px;
+      font-family: "Inter", sans-serif;
+    }
+    
+    .title_container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #212121;
+    }
+    
+    .subtitle {
+      font-size: 0.725rem;
+      max-width: 80%;
+      text-align: center;
+      line-height: 1.1rem;
+      color: #8B8E98
+    }
+    
+    .input_container {
+      width: 100%;
+      height: fit-content;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    .icon {
+      width: 20px;
+      position: absolute;
+      z-index: 99;
+      left: 12px;
+      bottom: 9px;
+    }
+    
+    .input_label {
+      font-size: 0.75rem;
+      color: #8B8E98;
+      font-weight: 600;
+    }
+    
+    .input_field {
+      width: auto;
+      height: 40px;
+      padding: 0 0 0 20px;
+      border-radius: 7px;
+      outline: none;
+      border: 1px solid #e5e5e5;
+      filter: drop-shadow(0px 1px 0px #efefef)
+        drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+      transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+    }
+    
+    .input_field:focus {
+      border: 1px solid transparent;
+      box-shadow: 0px 0px 0px 2px #242424;
+      background-color: transparent;
+    }
+    
+    .input-description {
+      height: 6rem;
+      padding-top: 10px;
+      border: 1px solid #e5e5e5;
+      resize: none;
+    }
+    
+    .sign-in_btn {
+      width: 100%;
+      height: 40px;
+      border: 0;
+      background: red;
+      border-radius: 7px;
+      outline: none;
+      color: #ffffff;
+      cursor: pointer;
+    }
+    
+    .sign-in_ggl {
+      width: 100%;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #ffffff;
+      border-radius: 7px;
+      outline: none;
+      color: #242424;
+      border: 1px solid #e5e5e5;
+      filter: drop-shadow(0px 1px 0px #efefef)
+        drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+      cursor: pointer;
+    }
+    
+    
+    /*  TABLET */
+    @media screen and (max-width: 768px) {
+        .form_container {
+            width: 90%;
+        }
+    }
+    
+    
+    /* MOBILE */
+    @media screen and (max-width: 424px) {
+        .form_container {
+            width: 98%;
+        }
+    }
+  
+  
+  ul {
+      list-style: none;
+      padding-left: 0; /* Para quitar el padding izquierdo predeterminado */
+  }
+  .list-group li {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    margin-bottom: 1em; /* Agrega margen inferior entre elementos de la lista */
+  }
+  .card {
+   width: 190px;
+   height: 254px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background: #f2f2f3;
+   border-radius: 12px;
+   box-shadow: inset 5px 5px 10px #a9a9aa77,
+                inset -5px -5px 10px #ffffff7e;
+   margin-bottom: 1em; /* Agrega margen inferior de 1em */
+  }
+  
+  .card .img {
+   height: 100px;
+   margin-top: 1.6em;
+   aspect-ratio: 1;
+   border-radius: 30%;
+   background: #f2f2f3;
+   margin-bottom: 0.4em;
+   box-shadow: -5px -5px 8px #ffffff7a, 
+                5px 5px 8px #a9a9aa7a;
+  }
+  
+  .card .info {
+   text-align: center;
+   margin-top: 0.4em;
+   /*background: linear-gradient(120deg, rgba(0,194,255,1) 0%, rgba(0,86,255,1) 100%);*/
+   background: linear-gradient(to top, #00b4db, #0083b0); 
+   background-clip: border-box;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+  }
+  
+  .card .info > span {
+   font-weight: bold;
+   font-size: 1.2em;
+  }
+  
+  .card button {
+   margin-top: 1em;
+   color: #fff;
+   text-decoration: none;
+   /*background: linear-gradient(90deg, rgba(0,194,255,1) 0%, #115DFC 100%);*/
+   background: linear-gradient(to top, #00b4db, #0083b0); 
+   padding: .5em 2em;
+   border-radius: 0.7em;
+  }
+  
+  .card button:active {
+   box-shadow: inset 5px 5px 5px #115DFC,
+               inset -5px -5px 5px #00c2ff;
+  }
+/* Estilos para los botones de confirmación y cancelación */
+.custom-confirm-button-class {
+  background-color: #3085d6 !important;
+  color: white !important;
+  /* Agrega otros estilos personalizados según tus necesidades */
+}
+
+/*css no hay productos*/
+.hit-the-floor {
+  text-align: center;
+  color: #ffffff;
+  font-size: 3em;
+  font-weight: bold;
+  font-family: Helvetica;
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+}
+  
+.hit-the-floor {
+  text-align: center;
+}
+.scrollable-list {
+  overflow-y: auto;
+  max-height: 560px;
+}
+
+.productCard-img {
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.1rem;
+}
+
+.productCard-img svg {
+  width: 100%;
+  height: 90%;
+  padding: .5rem;
+  object-fit: cover;
+}

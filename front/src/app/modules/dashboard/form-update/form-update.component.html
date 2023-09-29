@@ -1,0 +1,71 @@
+<div>
+ <!-- <form class="form_container" [formGroup]="searchForm" >
+    <div class="title_container">
+      <p class="title">Buscar Producto</p>
+      <span class="subtitle">Ingrese los datos del nuevo producto.</span>
+    </div>
+    <br>
+
+    <div class="search">
+      <div class="search-conatiner input_conatiner">
+        <input type="text" class="search-input input_field" placeholder="Buscar..." formControlName="buscarProducto">
+        <button type="submit" class="search-button sign-in_btn" (click)="searchProduct()">Buscar</button>
+      </div>
+      <br>
+      <span class="errorInput" *ngIf="noFoundProduct">Producto no encontrado...</span>
+  
+    </div>
+  </form>-->
+  <form *ngIf="this.foundProduct == true" class="form_container" [formGroup]="myForm"  (ngSubmit)="updateProduct()">
+    <h2>Editar Objeto</h2>
+    <div class="input_container">
+      <label class="input_label" for="name_field">Nombre del Producto</label>
+
+      <input placeholder="ProductoX" title="Nombre del Producto" name="input-name" type="text" class="input_field" id="name_field" formControlName="name" >
+      <p class="errorInput" *ngIf="myForm.get('name')?.touched && myForm.get('name')?.hasError('required')">Campo Obligatorio</p>
+    </div>
+    <div class="input_container">
+      <label class="input_label" for="name_field">Cantidad</label>
+      <input placeholder="3" title="Cantidad" name="input-cantidad" type="number" class="input_field" id="cantidad_field" formControlName="quantity">
+      <p class="errorInput" *ngIf="myForm.get('quantity')?.touched && myForm.get('quantity')?.hasError('required')">Campo Obligatorio</p>
+
+      </div>
+      <div class="input_container">
+        <mat-form-field>
+          <mat-label>Categorias</mat-label>
+          <mat-select formControlName="categories" multiple>
+            <mat-option *ngFor="let c of categorias" [value]="c.id">{{c.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <p class="errorInput" *ngIf="myForm.get('categoria')?.touched && myForm.get('categoria')?.hasError('required')">Campo Obligatorio</p>
+      </div>
+      <div class="input_container">
+        <label class="input_label" for="material_field">Tipo de Material</label>
+        <input placeholder="materialX" title="Tipo de Material" name="input-material" type="text" class="input_field" id="material_field" formControlName="tipoMaterial">
+        <p class="errorInput" *ngIf="myForm.get('tipoMaterial')?.touched && myForm.get('tipoMaterial')?.hasError('required')">Campo Obligatorio</p>
+      </div>
+      <div class="input_container">
+        <label class="input_label" for="url_field">URL de la imagen</label>
+        <input placeholder="url" title="url" name="input-url" type="url" class="input_field" id="url_field" formControlName="image">
+
+        <p class="errorInput" *ngIf="myForm.get('image')?.touched && myForm.get('image')?.hasError('required')">Campo Obligatorio</p>
+      </div>
+      <div class="input_container">
+        <label class="input_label" for="price_field">price</label>
+        <input placeholder="$ 1500" title="price" name="input-price" type="number" class="input_field" id="price_field" formControlName="price">
+        <p class="errorInput" *ngIf="myForm.get('price')?.touched && myForm.get('price')?.hasError('required')">Campo Obligatorio</p>
+
+      </div>
+      <div class="input_container">
+        <label class="input_label" for="password_field">Descripción</label>
+        <textarea placeholder="Descripción de producto" title="Descripción del Producto" name="input-name" class="input_field input-description" id="password_field" formControlName="description"></textarea>
+
+        <p class="errorInput" *ngIf="myForm.get('description')?.touched && myForm.get('description')?.hasError('required')">Campo Obligatorio</p>
+
+      </div>
+      <button type="submit"  title="Sign In" class="sign-in_btn"  >
+        Guardar Cambios
+      </button>
+    </form>
+
+</div>

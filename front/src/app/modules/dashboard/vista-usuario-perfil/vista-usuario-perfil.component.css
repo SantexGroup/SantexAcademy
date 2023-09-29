@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3em;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+    text-align: center;
+}
+
+.user-image {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+card-client {
+    background: #115DFC;
+    width: 13rem;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 4px solid #115DFC;
+    box-shadow: 0 6px 10px rgba(207, 212, 222, 1);
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.3s ease;
+  }
+  
+  .user-picture {
+    overflow: hidden;
+    object-fit: cover;
+    width: 7rem;
+    height: 7rem;
+    border: 4px solid #628FEC;
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+  
+  .user-picture svg {
+    width: 3.5rem;
+    fill: #628FEC;
+    transition: fill 0.3s;
+
+  }
+  
+  .name-client {
+    margin: 0;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 30px;
+  }
+  
+  .name-client span {
+    display: block;
+    font-weight: 200;
+    font-size: 27px;
+    margin: 1em;
+  }
+  
+
+.user-data hr {
+  color: #628FEC;
+  margin: 1em 0em;
+}
+.user-data h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    font-weight: 200;
+}
+
+.user-data p {
+    font-size: 20px;
+    margin-bottom: 8px;
+    font-weight: 200;
+}
+
+.user-data-product {
+  font-size: 30px;
+  margin: 1em;
+  font-weight: 200;
+}
+
+.carousel-container {
+  width: 80%; 
+  margin: 0 auto; 
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.empty {
+  margin: 1rem;
+  font-size: 2rem;
+  line-height: 5rem;
+  color: #76777c;
+  text-align: center;
+  background-color: #f7f7f7;
+  border-radius: 11px;
+  box-shadow: 0px 0px 42px rgba(0, 0, 0, 0.01), 0px 0px 26px rgba(0, 0, 0, 0.05),
+    0px 0px 26px rgba(0, 0, 0, 0.09), 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+.card {
+  position: relative;
+  min-width: 14rem;
+  max-width: 15rem;
+  min-height: 15rem;
+  padding: 0.5rem;
+  margin: 0.8rem 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0.25rem;
+  background-color: #f7f7f7;
+  border-radius: 11px;
+  box-shadow: 0px 0px 42px rgba(0, 0, 0, 0.01), 0px 0px 26px rgba(0, 0, 0, 0.05),
+    0px 0px 26px rgba(0, 0, 0, 0.09), 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.buton-delete {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 2rem;
+  height: 2rem;
+  background-color: inherit;
+  align-self: flex-end;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.buton-delete:hover {
+  border-radius: 50%;
+  background-color: #115dfc;
+  color: #f7f7f7;
+  font-weight: bold;
+}
+.card_title {
+  color: #212121;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.card_img {
+  width: 70%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.card_img svg {
+  width: 100%;
+  height: 80%;
+  padding: .5rem;
+}
+
+.card-price,
+.card-stock {
+  text-align: left;
+  align-self: flex-start;
+  font-size: 0.8rem;
+  color: #76777c;
+}
+.card-content {
+  text-align: center;
+  display: flex; 
+  flex-direction: column; /* Apilamos elementos verticalmente */
+  justify-content: space-between; 
+  height: 100%; /* Asegura que la tarjeta tenga una altura del 100% */
+}
+.card-content-buttons {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botton-agregar-product {
+  width: 80%;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  margin: 1rem;
+  color: #ffffff;
+  background: #115DFC;
+  cursor: pointer;
+}
+
+.carousel-alquileres {
+  margin: 3em;
+}
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .user-image {
+        flex: 1;
+        text-align: center;
+    }
+
+    .user-data {
+        flex: 2;
+        margin-top: 0;
+        text-align: left;
+    }
+    .productos-container {
+      padding: 0rem;
+    }  
+    p.label {
+      font-size: 15px;
+      margin: 10px;
+    }
+
+}

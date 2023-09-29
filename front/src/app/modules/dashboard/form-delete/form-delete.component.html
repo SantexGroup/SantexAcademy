@@ -1,0 +1,88 @@
+<!--<p>form-delete works!</p>-->
+<div class="containerGral">
+  <div class="column4col positionInic scrollable-list" *ngIf="hasProducts">
+    <ul class="list-group">
+      <li *ngFor="let product of productList">
+        <div class="card">
+          <div class="productCard-img">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="48"
+              viewBox="0 -960 960 960"
+              width="48"
+            >
+              <path
+                d="M450-80v-520H80l400-280 400 280H510v520h-60Zm30-580h210-420 210ZM120-80v-211L88-466l58-10 32 166h162v230h-60v-170H180v170h-60Zm500 0v-230h162l32-166 58 10-32 175v211h-60v-170H680v170h-60ZM270-660h420L480-807 270-660Z"
+              />
+            </svg>
+          </div>
+          <div class="info">
+            <span>{{ product.name }}</span>
+            <p>{{ product.price | currency }}</p>
+          </div>
+          <!--<a  (click)="selectedProduct = product">Seleccionar</a>-->
+          <button (click)="selectProduct(product)">Seleccionar</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="column8col positionInic" *ngIf="hasProducts">
+    <form class="form_container" [formGroup]="myForm">
+      <div class="title_container">
+        <p class="title">Eliminar Producto</p>
+        <span class="subtitle">Datos del producto.</span>
+      </div>
+      <br />
+      <div *ngIf="selectedProduct" class="input_container">
+        <label class="input_label" for="name_field">Nombre del Producto</label>
+        <input
+          [value]="selectedProduct.name"
+          type="text"
+          class="input_field"
+          id="name_field"
+          disabled
+        />
+      </div>
+      <!-- <div *ngIf="selectedProduct" class="input_container">
+          <label class="input_label" for="categoria_field">Categoria</label>
+          <input [value]="selectedProduct.categoria" title="Input category" type="text" class="input_field" id="categoria_field" disabled>
+        </div> -->
+
+      <div *ngIf="selectedProduct" class="input_container">
+        <label class="input_label" for="precio_field">Precio</label>
+        <input
+          [value]="selectedProduct.price"
+          title="Input precious"
+          type="number"
+          class="input_field"
+          id="precio_field"
+          disabled
+        />
+      </div>
+      <div *ngIf="selectedProduct" class="input_container">
+        <label class="input_label" for="description_field">Descripción</label>
+        <textarea
+          [value]="selectedProduct.description"
+          title="Input description"
+          class="input_field input-description"
+          id="password_field"
+          disabled
+        ></textarea>
+      </div>
+
+      <button
+        title="Delete"
+        type="submit"
+        class="sign-in_btn"
+        (click)="showDelete()"
+        [disabled]="!selectedProduct"
+      >
+        Eliminar
+      </button>
+      <!--<button (click)="mostrar()">Aloha</button>-->
+    </form>
+  </div>
+  <div class="hit-the-floor" *ngIf="!hasProducts">
+    No hay productos cargados aún.
+  </div>
+</div>
