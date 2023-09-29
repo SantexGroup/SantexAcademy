@@ -44,23 +44,23 @@ export class LoginComponent implements OnInit {
       .subscribe( ok => {
         console.log(ok)
         if (ok === true){
-          switch (this.authService.user.id) {
-           case 1:
+          switch (this.authService.user.tipoDeUsuario) {
+           case 'Administrador':
             this.router.navigateByUrl('/admin');
              // Recargar la página después de la redirección
              // setTimeout(() => {
              //   window.location.reload();
              // }, 100);
            break;
-           case 2:
-            this.router.navigateByUrl('/perfil-alumno');
+           case 'Docente':
+            this.router.navigateByUrl('/perfil-docente');
              // Recargar la página después de la redirección
              // setTimeout(() => {
              //   window.location.reload();
              // }, 100);
            break;
-           case 3:
-            this.router.navigateByUrl('/perfil-docente');
+           case 'Alumno':
+            this.router.navigateByUrl('/perfil-alumno');
            break;
            default:
             this.router.navigateByUrl('/dashboard');
