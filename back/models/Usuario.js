@@ -1,6 +1,10 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/db-config");
 
+
+//TODO!! ESTABLECER RELACION MANY TO ONE CON LA NUEVA TABLA ORDEN DE RETIRO
+
+
 const Usuario = sequelize.define(
   "usuario",
   {
@@ -32,7 +36,7 @@ const Usuario = sequelize.define(
     reputation: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 0,
+      defaultValue: 0, 
     },
     hoursAcc: {
       type: DataTypes.INTEGER,
@@ -50,16 +54,6 @@ const Usuario = sequelize.define(
     deletedAt: {
       type: DataTypes.DATE,
       allowNull: true,
-    },
-    basketRewardsId: {
-      /* Cesta recompensa */
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      defaultValue: 0,
-      references: {
-        model: "cestaRecompensas", // Nombre de la tabla referenciada
-        key: "id", // Columna referenciada
-      },
     },
   },
   {

@@ -1,9 +1,8 @@
 const express = require('express');
 
 const routes = express();
-const catalogoRouter = require('./catalogo');
 const orgRouter = require('./organizacion');
-const recompensaRouter = require('./recompensa');
+const productRouter = require('./producto');
 const userRouter = require('./usuario');
 const vacanteRouter = require('./vacante');
 const authRouter = require('./auth');
@@ -19,9 +18,8 @@ routes.use('/ping', (req, res) => {
   });
 });
 
-routes.use('/catalogo', catalogoRouter);
 routes.use('/org', orgRouter);
-routes.use('/recompensas', recompensaRouter);
+routes.use('/products', productRouter);
 routes.use('/usuarios', userRouter);
 routes.use('/vacante', vacanteRouter);
 routes.use('/voluntariado', voluntariadoRouter);
