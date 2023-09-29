@@ -67,11 +67,13 @@ export class AuthService {
         tap(resp => {
           if(resp.ok){
             localStorage.setItem('token', resp.token!);
+            console.log('Tipo de Usuario:', resp.tipoDeUsuario);//BORRAR agregado para comprobar 
             this._user = {
               username: resp.username!,
               id: resp.id!,
               tipoDeUsuario: resp.tipoDeUsuario!
             }
+            console.log('Tipo de _user:', this._user.tipoDeUsuario);//BORRAR agregado para comprobar 
           }
         }),
         map(resp => resp.ok),
