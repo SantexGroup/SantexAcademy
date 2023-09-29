@@ -95,7 +95,7 @@ db.Alquiler.belongsTo(db.estado, {
 });
 
 // Relacion Direccion-User (one-to-one)
-db.direccion.hasOne(db.User, {
+db.Direccion.hasOne(db.User, {
   foreignKey: 'idDireccion',
 });
 db.User.belongsTo(db.direccion, {
