@@ -39,13 +39,6 @@ export class DataVolunteerComponent implements OnInit {
           Validators.pattern(/^(?:\d{7,14}|\d{2}[ -]?\d{4}[ -]?\d{4})$/),
         ],
       ],
-      // password: [
-      //   '',
-      //   [
-      //     Validators.required,
-      //     Validators.pattern(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/),
-      //   ],
-      // ],
     });
   }
 

@@ -50,7 +50,7 @@ export class DashboardServicesService {
   }
 
   getProfileOrganization(token: string): Observable<any> {
-    const url = `${this.apiUrl}/org/me/profile`;
+    const url = `${this.apiUrl}/organizacion/me/profile`;
     const headers = new HttpHeaders({
       'x-access-token': token,
     });

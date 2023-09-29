@@ -10,6 +10,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTabsModule } from '@angular/material/tabs';
+import { DatePipe } from '@angular/common';
 
 import { register } from 'swiper/element/bundle';
 register();
@@ -53,7 +54,7 @@ import { OrganizationDetailsComponent } from './pages/organization-details/organ
     MatDividerModule,
     MatTabsModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

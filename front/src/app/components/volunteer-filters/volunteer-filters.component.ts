@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-volunteer-filters',
@@ -7,16 +6,10 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
   styleUrls: ['./volunteer-filters.component.css'],
 })
 export class VolunteerFiltersComponent {
-  panelOpenState = false;
-  selectedDate: Date | null = null;
-  dataInput: string = '';
+  optionSelected: string = '';
 
-  onDateSelected(event: MatDatepickerInputEvent<Date>) {
-    this.selectedDate = event.value;
-    console.log('Fecha seleccionada:', this.selectedDate);
-  }
-
-  viewDataInput(e: any) {
-    console.log(e.target.value);
+  onChangeModeWord(option: string) {
+    this.optionSelected = option;
+    console.log(this.optionSelected);
   }
 }

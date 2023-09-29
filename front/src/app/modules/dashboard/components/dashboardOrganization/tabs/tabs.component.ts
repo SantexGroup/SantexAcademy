@@ -1,34 +1,38 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
-  styleUrls: ['./tabs.component.css']
+  styleUrls: ['./tabs.component.css'],
 })
-export class TabsComponent {
+export class TabsComponent implements OnInit {
   @Input() dataTabs: any = {};
   tabActiva = 0;
-  image: string = 'https://res.cloudinary.com/carina-bosio/image/upload/v1695591464/xAcademy/Asociaci%C3%B3n_Civil_Manos_Abiertas-removebg-preview_2_ltnrr4.png';
-  name: string = "Fundación Manos Abiertas";
-  cuit: string = "30700926245";
-  location: string = "Ciudad Autónoma de Buenos Aires";
-  phone: string = "+5491166407627";
-  email: string = "nacional@manosabiertas.org.ar";
-  category: string = "Asistencia Social";
-  description: string = "La Fundación Manos Abiertas es una organización sin fines de lucro que se dedica a brindar apoyo y asistencia a comunidades en situación de vulnerabilidad en diferentes áreas.";
+  image: string =
+    'https://res.cloudinary.com/carina-bosio/image/upload/v1695591464/xAcademy/Asociaci%C3%B3n_Civil_Manos_Abiertas-removebg-preview_2_ltnrr4.png';
+  name: string = 'Fundación Manos Abiertas';
+  cuit: string = '30700926245';
+  location: string = 'Ciudad Autónoma de Buenos Aires';
+  phone: string = '+5491166407627';
+  email: string = 'nacional@manosabiertas.org.ar';
+  category: string = 'Asistencia Social';
+  description: string =
+    'La Fundación Manos Abiertas es una organización sin fines de lucro que se dedica a brindar apoyo y asistencia a comunidades en situación de vulnerabilidad en diferentes áreas.';
   password: string = 'root';
   editData: boolean = false;
 
   newValues: { [key: string]: string } = {
-    image: "",
-    name: "",
-    cuit: "",
-    location: "",
-    phone: "",
-    email: "",
-    category: "",
-    description: "",
+    image: '',
+    name: '',
+    cuit: '',
+    location: '',
+    phone: '',
+    email: '',
+    category: '',
+    description: '',
   };
+
+  ngOnInit(): void {}
 
   activeEditProfileOrg() {
     this.editData = true;
@@ -55,7 +59,6 @@ export class TabsComponent {
     const file = event.target.files[0];
     if (file) {
       this.image = URL.createObjectURL(file);
-
     }
   }
 
@@ -66,8 +69,5 @@ export class TabsComponent {
     this.captureData('category', this.selectedCategory);
   }
 
-  editarDatos() {
-
-  }
+  editarDatos() {}
 }
-
