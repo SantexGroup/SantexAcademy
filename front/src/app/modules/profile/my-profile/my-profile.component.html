@@ -29,14 +29,10 @@
           <input type="text" class="form-control" id="telefono" [(ngModel)]="userPrueba.phone">
         </div>
   
-        <div class="form-group">
-          <label for="correo">Correo Electrónico:</label>
-          <input type="email" class="form-control" id="correo" [(ngModel)]="userPrueba.email">
-        </div>  
-
-        <button class="btn btn-primary" (click)="cancelEdit()">Cancelar</button>
-        <button class="btn btn-primary" (click)="saveUser()">Guardar</button>
-        
+        <div class="modal-footer">
+          <button class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>
+          <button class="btn btn-primary" (click)="saveUser()">Guardar</button>
+        </div>      
       </form>
     </div>
   </div>
