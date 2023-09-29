@@ -2,13 +2,34 @@
     <h1>Información del Usuario</h1>
   
     <div class="user-details">
-      <p><strong>Nombre:</strong> {{ userPrueba.firstname }}</p>
-      <p><strong>Apellido:</strong> {{ userPrueba.lastname }}</p>
-      <p><strong>Teléfono:</strong> {{ userPrueba.phone }}</p>
-      <p><strong>Correo Electrónico:</strong> {{ userPrueba.email }}</p>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="firstname"><strong>Nombre:</strong> </label>
+          <input type="text" class="form-control" id="nombre" [(ngModel)]="userPrueba.firstname" disabled>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="lastname"><strong>Apellido:</strong> </label>
+          <input type="text" class="form-control" id="lastname" [(ngModel)]="userPrueba.lastname" disabled>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="phone"><strong>Teléfono:</strong> </label>
+          <input type="text" class="form-control" id="phone" [(ngModel)]="userPrueba.phone" disabled>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="email"><strong>Correo Electrónico:</strong> </label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="userPrueba.email" disabled>
+        </div>
+      </div>
     </div>
-  
+
     <button class="btn btn-primary" (click)="editUser()">Editar</button>
+    <hr>
   
     <div class="edit-user" *ngIf="isEditing">
       <h2>Editar Usuario</h2>
@@ -28,12 +49,13 @@
           <label for="telefono">Teléfono:</label>
           <input type="text" class="form-control" id="telefono" [(ngModel)]="userPrueba.phone">
         </div>
-  
+        <br>  
         <div class="modal-footer">
-          <button class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>
+          <button class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>          
           <button class="btn btn-primary" (click)="saveUser()">Guardar</button>
         </div>      
       </form>
+      <hr>
     </div>
   </div>
   
