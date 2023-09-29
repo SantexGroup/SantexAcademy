@@ -31,9 +31,9 @@
       </div>
       <article class="description">
         <span class="productCard-dates-items ">Descripcíon:</span>
-        <p>
+        <span>
           {{ product?.description }}
-        </p>
+        </span>
       </article>
       <div class="buttons">
         <button *ngIf="product" (click)="openDialog(product)" class="button-submit" type="submit">Ver Más</button>

@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.backService.getProducts().subscribe((result) => {
       this.productList = result;
-      this.newProducts = result.slice(result.length - 5);
+      this.newProducts = result.slice(result.length - 14);
     });
    
   }

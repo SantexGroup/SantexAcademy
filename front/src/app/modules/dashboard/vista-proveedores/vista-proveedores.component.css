@@ -1,8 +1,13 @@
 .carousel-container {
-    width: 80%; 
+    width: 95%; 
     margin: 0 auto; 
   }
-  
+  .h1 {
+    padding: 1.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #76777c;;
+  }
 .carousel {
     display: flex;
     overflow-x: auto;
