@@ -21,7 +21,6 @@ import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.comp
 import { CourseComponent } from './modules/admin-panel/courses/course.component';
 import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
 
-
 @NgModule({
   declarations: [
     DescriptionCourseComponent,

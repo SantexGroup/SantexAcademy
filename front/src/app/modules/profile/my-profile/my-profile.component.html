@@ -1,0 +1,43 @@
+<div class="container">
+    <h1>Información del Usuario</h1>
+  
+    <div class="user-details">
+      <p><strong>Nombre:</strong> {{ userPrueba.firstname }}</p>
+      <p><strong>Apellido:</strong> {{ userPrueba.lastname }}</p>
+      <p><strong>Teléfono:</strong> {{ userPrueba.phone }}</p>
+      <p><strong>Correo Electrónico:</strong> {{ userPrueba.email }}</p>
+    </div>
+  
+    <button class="btn btn-primary" (click)="editUser()">Editar</button>
+  
+    <div class="edit-user" *ngIf="isEditing">
+      <h2>Editar Usuario</h2>
+  
+      <form>
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input type="text" class="form-control" id="nombre" [(ngModel)]="userPrueba.firstname">
+        </div>
+  
+        <div class="form-group">
+          <label for="apellido">Apellido:</label>
+          <input type="text" class="form-control" id="apellido" [(ngModel)]="userPrueba.lastname">
+        </div>
+  
+        <div class="form-group">
+          <label for="telefono">Teléfono:</label>
+          <input type="text" class="form-control" id="telefono" [(ngModel)]="userPrueba.phone">
+        </div>
+  
+        <div class="form-group">
+          <label for="correo">Correo Electrónico:</label>
+          <input type="email" class="form-control" id="correo" [(ngModel)]="userPrueba.email">
+        </div>  
+
+        <button class="btn btn-primary" (click)="cancelEdit()">Cancelar</button>
+        <button class="btn btn-primary" (click)="saveUser()">Guardar</button>
+        
+      </form>
+    </div>
+  </div>
+  

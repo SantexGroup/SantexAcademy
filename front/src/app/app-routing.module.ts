@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'curso/:id',component:DescriptionCourseComponent
   },
   {
+    path:'profile',
+    loadChildren : () => import('./modules/profile/profile.module').then(m => m.ProfileModule),
+  },
+  {
     path: '**',
     redirectTo: 'dashboard'
   },
