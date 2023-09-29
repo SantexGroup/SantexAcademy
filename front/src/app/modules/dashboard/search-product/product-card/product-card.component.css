@@ -59,12 +59,11 @@
   .buttons {
     margin-top: .75rem;
     display: flex;
-    justify-content: space-between;
-    gap: .5rem;
+    justify-content: center;
   }
   
   .button-submit {
-    width: 50%;
+    width: 80%;
     height: 2rem;
     padding: .5em .75em;
     border: none;

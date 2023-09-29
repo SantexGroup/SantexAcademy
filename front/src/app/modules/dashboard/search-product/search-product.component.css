@@ -142,6 +142,9 @@
   
   
   @media screen and (max-width: 767px) {
+    .section-productCart {
+      grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+    }
     .section-search {
       width: 100%;
       grid-template-columns: auto;
@@ -157,6 +160,13 @@
     h2 {
       margin: 0;
     }
+    .button--submit{
+      height: fit-content;
+    }
   }
-  
+  @media screen and (max-width: 330px) {
+    .section-productCart {
+      grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+    }
+  }
   
