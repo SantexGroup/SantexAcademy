@@ -33,8 +33,6 @@ const loginOrganization = async (req, res) => {
       { expiresIn: 86400 }
     );
 
-    console.log(token);
-    // Envía la respuesta una vez que tengas el token
     return res.status(200).json({ token });
   } catch (error) {
     console.error(error);
@@ -102,12 +100,10 @@ const updateOrganizationById = async (req, res) => {
       });
     }
 
-    res
-      .status(200)
-      .json({
-        message: "la organizacion se modifico exitosamente",
-        organization,
-      });
+    res.status(200).json({
+      message: "la organizacion se modifico exitosamente",
+      organization,
+    });
   } catch (err) {
     res
       .status(500)
