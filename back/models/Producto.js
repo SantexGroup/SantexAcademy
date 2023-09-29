@@ -18,33 +18,11 @@ const Producto = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    catalogueId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      references: {
-        model: "catalogo",
-        key: "id",
-      },
-    },
   },
   {
     sequelize,
     tableName: "producto",
     timestamps: false,
-    indexes: [
-      {
-        name: "PRIMARY",
-        unique: true,
-        using: "BTREE",
-        fields: [{ name: "id" }, { name: "catalogoId" }],
-      },
-      {
-        name: "fk_producto_catalogo1_idx",
-        using: "BTREE",
-        fields: [{ name: "catalogoId" }],
-      },
-    ],
   }
 );
 

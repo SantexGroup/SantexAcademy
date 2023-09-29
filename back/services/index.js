@@ -1,17 +1,13 @@
-const catalogoService = require('./catalogo');
 const orgService = require('./organizacion');
 const userService = require('./usuario');
-const recompensaService = require('./recompensa');
-const vacanteService = require('./vacante');
+const productService = require('./producto');
 const voluntariadoService = require('./voluntariado');
 const usuarioEnVoluntariadoService = require('./usuarioEnVoluntariado');
 
 module.exports = {
-  catalogoService,
   orgService,
   userService,
-  recompensaService,
-  vacanteService,
+  productService,
   voluntariadoService,
   usuarioEnVoluntariadoService,
 };
