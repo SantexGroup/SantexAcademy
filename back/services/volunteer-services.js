@@ -219,7 +219,7 @@ async function canjearPremioService(volunteerId, premioId) {
     }
 
     // Realizar el canje
-    await voluntario.addPremio(premio, { through:{ date: new Date() } });
+    await voluntario.addPremio(premio, { through:{date: new Date() } });
 
     const formattedDate = new Date().toLocaleDateString().replace(/\//g, '-');
 
@@ -255,7 +255,46 @@ async function canjearPremioService(volunteerId, premioId) {
   }
 }
 
+async function unsuscribe(idTarea, idVolunteer) {
+  try {
+    const tarea = await models.tarea.findByPk(idTarea);
+
+    const voluntario = await models.volunteer.findByPk(idVolunteer);
+
+    if (!tarea) {
+      throw new Error('No se ha encontrado la tarea que se solicito');
+    }
+
+    if (!voluntario) {
+      throw new Error('No se ha encontrado el voluntario solicitado');
+    }
+
+    const inscripto = await voluntario.hasTarea(tarea);
+
+    if (inscripto === true) {
+      await voluntario.removeTarea(tarea);
+      tarea.cantInscriptos -= 1;
+      await tarea.save();
+      console.log('desuscripto');
+
+      const voluntarioActualizado = await models.volunteer.findOne({
+        where: { id: idVolunteer },
+        include: [{ model: models.tarea }],
+      });
+
+      delete voluntarioActualizado.dataValues.password;
+
+      return { success: true, voluntario: voluntarioActualizado };
+      // eslint-disable-next-line no-else-return
+    } else {
+      throw new Error('El voluntario no está inscripto a esta tarea');
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
 module.exports = {
   // eslint-disable-next-line max-len
-  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, asignarTareaVoluntario, canjearPremioService,
+  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, asignarTareaVoluntario, canjearPremioService, unsuscribe,
 };
