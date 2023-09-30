@@ -22,7 +22,6 @@ export class VolunterIdComponent implements OnInit {
       this.volunteeringServices.getVolunteerById(params['id']).subscribe({
         next: (response) => {
           this.volunteering = response.volunteeringFound;
-          console.log('voluntering', response.volunteeringFound);
         },
         error: (error) => {
           console.error('Error in bringing the organization', error);

@@ -21,7 +21,6 @@ export class OrganizationDetailsComponent implements OnInit {
       this.orgS.getOrganizationById(this.organizationId.toString()).subscribe({
         next: (response) => {
           this.organization = response;
-          console.log('Organization', response);
         },
         error: (error) => {
           console.error('Error in bringing the organization', error);
