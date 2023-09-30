@@ -17,19 +17,16 @@
         <div class="card shadow border-0 mb-7">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
-                    <h5 class="mb-0 me-3" style="width: 250px">Filtrar usuarios:</h5>
-                    <input id="buscarusuario" type="search" class="form-control" placeholder="Buscar"
-                        aria-controls="example" />
-                    <!--Llamar método buscar-->
-                    <button id="botonalta" type="button" class="btn btn-sm btn-primary" style="margin-left: 10px">
-                        Buscar
-                    </button>
+                    <h5 class="mb-0 me-3" style="white-space: nowrap; width: 250px;">Filtrar usuarios por apellido:</h5>
+                    <input [(ngModel)]="searchUser" name="searchUser" type="search" class="form-control" placeholder="Buscar" aria-controls="example" />
+                    <!-- Llamar método buscar -->
+                    <a class="btn btn-sm btn-primary" (click)="buscarUsuariosPorNombre()" style="margin-left: 10px;">Buscar</a>
                 </div>
                 <button id="botonalta" type="button" class="btn btn-sm btn-primary" [routerLink]="['/users/create']">
                     Agregar usuario
                 </button>
             </div>
-        </div>
+        </div>        
 
         <div class="table-responsive">
             <table class="table table-hover table-nowrap">
@@ -46,7 +43,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of users">
+                    <tr *ngFor="let user of usuariosFiltrados">
                         <td>
                             {{ user.id }}
                         </td>
@@ -90,7 +87,7 @@
             </table>
         </div>
         <div class="card-footer border-0 py-5">
-            <span class="text-muted text-sm">Mostrando 10 registros de 100 resultados encontrados</span>
+            <span class="text-muted text-sm">Mostrando {{usuariosMostrados}} registros de {{totalUsuarios}} resultados encontrados</span>
         </div>
     </div>
 </div>
@@ -113,20 +110,17 @@
         <div class="card shadow border-0 mb-7">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
-                    <h5 class="mb-0 me-3" style="width: 250px">Filtrar cursos:</h5>
-                    <input id="buscarcurso" type="search" class="form-control" placeholder="Buscar"
-                        aria-controls="example" />
-                    <!--Llamar método buscar-->
-                    <button id="botonaltacurso" type="button" class="btn btn-sm btn-primary" style="margin-left: 10px">
-                        Buscar
-                    </button>
+                    <h5 class="mb-0 me-3" style="white-space: nowrap; width: 250px;">Filtrar cursos por nombre:</h5>
+                    <input [(ngModel)]="searchCurso" name="searchUser" type="searchCurso" class="form-control" placeholder="Buscar" aria-controls="example" />
+                    <!-- Llamar método buscar -->
+                    <a class="btn btn-sm btn-primary" (click)="buscarCursosPorNombre()" style="margin-left: 10px;">Buscar</a>
                 </div>
-                <button id="botonaltacurso" type="button" class="btn btn-sm btn-primary"
-                    [routerLink]="['/cursos/create']">
+                <button id="botonaltacurso" type="button" class="btn btn-sm btn-primary" [routerLink]="['/cursos/create']">
                     Agregar curso
                 </button>
             </div>
         </div>
+        
 
         <div class="table-responsive">
             <table class="table table-hover table-nowrap">
@@ -145,7 +139,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let curso of cursos">
+                    <tr *ngFor="let curso of cursosFiltrados">
                         <td>
                             {{ curso.id }}
                         </td>
@@ -197,7 +191,7 @@
             </table>
         </div>
         <div class="card-footer">
-            <span class="text-muted text-sm">Mostrando 10 registros de 100 resultados encontrados</span>
+            <span class="text-muted text-sm">Mostrando {{cursosMostrados}} registros de {{totalCursos}} resultados encontrados</span>
         </div>
     </div>
 </div>
@@ -221,21 +215,18 @@
         <div class="card shadow border-0 mb-7">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
-                    <h5 class="mb-0 me-3" style="width: 250px">Filtrar matrículas</h5>
-                    <input id="buscarcurso" type="search" class="form-control" placeholder="Buscar"
-                        aria-controls="example" />
-                    <!--Llamar método buscar-->
-                    <button id="botonaltacurso" type="button" class="btn btn-sm btn-primary" style="margin-left: 10px">
-                        Buscar
-                    </button>
+                    <h5 class="mb-0 me-3" style="white-space: nowrap;">Filtrar matrículas por curso:</h5>
+                    <input [(ngModel)]="searchMatricula" name="searchMatricula" type="search" class="form-control" placeholder="Buscar" aria-controls="example" />
+                    <!-- Llamar método buscar -->
+                    <a class="btn btn-sm btn-primary" (click)="buscarMatriculasPorCurso()" style="margin-left: 10px;">Buscar</a>
                 </div>
-                <!--Comento el botón agregar matriculas porque debemos definir si se podrá matricular desde el admin
-                    <button id="botonaltacurso" type="button" class="btn btn-sm btn-primary"
-                    [routerLink]="['/matricula/create']">
-                    Agregar matricula
-                </button>-->
+                <!-- Comento el botón agregar matrículas porque debemos definir si se podrá matricular desde el admin
+                <button id="botonaltacurso" type="button" class="btn btn-sm btn-primary" [routerLink]="['/matricula/create']">
+                    Agregar matrícula
+                </button> -->
             </div>
         </div>
+        
 
         <div class="table-responsive">
             <table class="table table-hover table-nowrap">
@@ -248,7 +239,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let matricula of matriculas">
+                    <tr *ngFor="let matricula of matriculasFiltradas">
                         <td>
                             {{ matricula.id }}
                         </td>
@@ -271,7 +262,7 @@
             </table>
         </div>
         <div class="card-footer">
-            <span class="text-muted text-sm">Mostrando 10 registros de 100 resultados encontrados</span>
+            <span class="text-muted text-sm">Mostrando {{matriculasMostradas}} registros de {{totalMatriculas}} resultados encontrados</span>
         </div>
     </div>
 </div>

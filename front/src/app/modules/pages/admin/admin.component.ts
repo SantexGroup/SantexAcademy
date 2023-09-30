@@ -18,6 +18,20 @@ export class AdminComponent implements OnInit {
   errorMensaje: string | undefined;
   curso!: Curso;
   matriculas: Matricula[] = [];
+  searchUser: string = '';
+  usuariosFiltrados: any[] = [];
+  totalUsuarios: number = 0;
+  usuariosMostrados: number = 0;
+
+  searchCurso: string = '';
+  cursosFiltrados: any[] = [];
+  totalCursos: number = 0;
+  cursosMostrados: number = 0;
+
+  searchMatricula: string = '';
+  matriculasFiltradas: any[] = [];
+  totalMatriculas: number = 0;
+  matriculasMostradas: number = 0;
 
   constructor(
     private usersService: UsersService,
@@ -38,7 +52,10 @@ export class AdminComponent implements OnInit {
     this.cursoService.getCursos().subscribe({
       next: (response) => {
         console.log(response);
-        this.cursos = response; 
+        this.totalCursos= response.length;
+        this.cursosMostrados = this.totalCursos; // Al principio, todos los cursos se muestran
+        this.cursos = response;
+        this.cursosFiltrados = this.cursos;
       },
       error: (error) => {
         console.error(error);
@@ -52,7 +69,10 @@ export class AdminComponent implements OnInit {
     this.usersService.getUsers().subscribe({
       next: (response) => {
         console.log(response);
-        this.users = response; 
+        this.totalUsuarios = response.length;
+        this.usuariosMostrados = this.totalUsuarios; // Al principio, todos los usuarios se muestran
+        this.users = response;
+        this.usuariosFiltrados = this.users;
       },
       error: (error) => {
         console.error(error);
@@ -66,7 +86,10 @@ export class AdminComponent implements OnInit {
     this.matriculasService.getMatriculas().subscribe({
       next: (response) => {
         console.log(response);
-        this.matriculas = response; 
+        this.totalMatriculas = response.length;
+        this.matriculasMostradas = this.totalMatriculas; 
+        this.matriculas = response;
+        this.matriculasFiltradas = this.matriculas;
       },
       error: (error) => {
         console.error(error);
@@ -118,5 +141,51 @@ export class AdminComponent implements OnInit {
     this.cursoService.activardesactivar(curso).subscribe((resp) => {
      this.obtenerCursos();
     });
+  }
+
+
+  buscarUsuariosPorNombre() {
+    console.log("Click en buscar!!!!");
+  
+    if (this.searchUser.trim() === "") {
+      // Si el filtro está "", muestro todos los usuarios
+      this.usuariosFiltrados = this.users;
+    } else {
+      // Filtro los usuarios por apellido
+      this.usuariosFiltrados = this.users.filter(user =>
+        user.apellido.toLowerCase().includes(this.searchUser.toLowerCase())
+      );
+    }
+  
+    // Actualizo la cantidad de usuarios filtrados
+    this.usuariosMostrados = this.usuariosFiltrados.length;
+  }
+
+  buscarCursosPorNombre() { 
+    if (this.searchCurso.trim() === "") {
+      // Si el filtro está "", muestro todos los cursos
+      this.cursosFiltrados = this.cursos;
+    } else {
+      // Filtro los cursos por nombre
+      this.cursosFiltrados = this.cursos.filter(curso =>
+        curso.nombre.toLowerCase().includes(this.searchCurso.toLowerCase())
+      );
+    }
+  
+    // Actualizo la cantidad de cursos filtrados
+    this.cursosMostrados = this.cursosFiltrados.length;
+  }
+  
+  buscarMatriculasPorCurso() { 
+    console.log("Click en buscar!!!!");
+    if (this.searchMatricula.trim() === "") {
+      this.matriculasFiltradas = this.matriculas;
+    } else {
+      this.matriculasFiltradas = this.matriculas.filter(matricula =>
+        matricula.Curso?.nombre.toLowerCase().includes(this.searchMatricula.toLowerCase())
+      );
+    }
+  
+    this.matriculasMostradas = this.matriculasFiltradas.length;
   }
 }
