@@ -15,11 +15,26 @@ async function login(req, res, next) {
 // crear usuario
 async function createUser(req, res) {
   const {
-    firstName, lastName, dni, mail, password, alias, idLocalidad, calleYAltura
+    firstName, lastName, dni, mail, password, alias, idLocalidad, calleYAltura,
   } = req.body;
 
-  const user = await userService.userRegister(firstName, lastName, dni, mail, password, alias, idLocalidad, calleYAltura);
+  const user = await userService.userRegister(firstName, lastName, dni, mail,
+    password, alias, idLocalidad, calleYAltura);
   res.status(201).send(user);
+}
+
+// usuario por id
+
+async function getUserById(req, res) {
+  const { id } = req.params;
+
+  try {
+    const usuario = await userService.getUserFromId(id);
+
+    res.status(200).send(usuario);
+  } catch (error) {
+    res.status(404).send('Usuario no encontrado');
+  }
 }
 
 // cambiar estado de vendedor
@@ -35,4 +50,34 @@ async function cambiarEstadoVendedorUser(req, res, next) {
   }
 }
 
-module.exports = { login, createUser, cambiarEstadoVendedorUser };
+// editar usuario
+async function editUser(req, res) {
+  const { id } = req.params;
+  const {
+    firstName, lastName, dni, mail, password, alias,
+    idLocalidad, calleYAltura,
+  } = req.body;
+
+  const usuario = await userService.editUsuario(id, firstName, lastName, dni, mail, password,
+    alias, idLocalidad, calleYAltura);
+
+  res.status(201).send(usuario);
+}
+
+// eliminar usuario
+
+async function deleteUser(req, res) {
+  const { id } = req.params;
+
+  const result = await userService.deleteUsuario(id);
+
+  if (result.success) {
+    res.status(201).send({ message: `Usuario con id ${id} ha sido eliminado con éxito` });
+  } else {
+    res.status(404).send({ message: `No se encontró el usuario con ID ${id}` });
+  }
+}
+
+module.exports = {
+  login, createUser, cambiarEstadoVendedorUser, editUser, getUserById, deleteUser,
+};
