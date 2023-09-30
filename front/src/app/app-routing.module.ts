@@ -18,6 +18,7 @@ import { LoginComponent } from './modules/login/login/login.component';
 import { MisCursosComponent } from './modules/pages/mis-cursos/mis-cursos.component';
 import { AulaVirtualComponent } from './modules/pages/aula-virtual/aula-virtual.component';
 import { PerfilAlumnoEditarComponent } from './modules/pages/perfil-alumno-editar/perfil-alumno-editar.component';
+import { PerfilDocenteComponent } from './modules/pages/perfil-docente/perfil-docente.component';
 
 const routes: Routes = [
   {
@@ -108,8 +109,21 @@ const routes: Routes = [
     component: MisCursosComponent, 
   },
   { 
+    path: 'perfil-docente/mis-cursos', 
+    // canLoad: [ ValidarTokenGuard ],
+    // canActivate: [ ValidarTokenGuard ,TieneTipoDeUsuarioGuard],
+    // data: {
+    //   tipoPermitido: ['Docente']
+    // },
+    component: MisCursosComponent, 
+  },
+  { 
     path: 'aula-virtual/:id', 
     component: AulaVirtualComponent, 
+  },
+  {
+    path: 'perfil-docente',
+    component: PerfilDocenteComponent, 
   },
   {
     path: '',

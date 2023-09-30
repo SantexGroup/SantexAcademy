@@ -8,20 +8,64 @@
 
 </head>
 <body>
-<div class="contenedor">
-    <div>
-        <h2>Estas ahora en tu aula virtual de:</h2>
-        <div>
-            <h1>{{ nombreCurso }}</h1>
-        </div>
-        <div>
-            <img [src]="imagenCurso" alt="{{ nombreCurso }}">
-        </div>
+    <!-- Contenido especifico para alumnos -->
+    <div *ngIf="tipoDeUsuario === 'Alumno'">
+        <div class="contenedor">
+            <div>
+                <h2>Estas ahora en tu aula virtual de:</h2>
+            </div>
+            <div>
+                <h1>{{ nombreCurso }}</h1>
+            </div>
+            <div>
+                <img [src]="imagenCurso" alt="{{ nombreCurso }}">
+            </div>
+            <div>
+                <h1>Esta página se encuentra</h1>
+                <h1>fuera del alcance del Proyecto Actual.</h1>
+                <h1>Muchas GRACIAS por permitirnos ser parte de él.</h1>
+                <h1>¡Cuenta con nosotros para las próximas etapas!!!</h1>
+            </div>
+        </div> 
     </div>
-    <div>
-        <h1>Esta página se encuentra</h1>
-        <h1>fuera del alcance del Proyecto Actual.</h1>
-        <h1>Muchas GRACIAS por permitirnos ser parte de él.</h1>
-        <h1>¡Cuenta con nosotros para las próximas etapas!!!</h1>
+
+    <!-- Contenido especifico para docente -->
+    <div *ngIf="tipoDeUsuario === 'Docente'">
+        <div class="curso-titulo">
+            <div class="curso-com">
+                <h2>Estas en el aula virtual de:</h2>
+            </div>
+            <div class="curso-nombre">
+                <h1>{{ nombreCurso }}</h1>
+            </div>
+            <div class="curso-imagen">
+                <img [src]="imagenCurso" alt="{{ nombreCurso }}">
+            </div>
+        </div>
+
+            <div class="alum-datos">
+                <div class="alum-bus">
+                    <input type="text" placeholder="Ingresar nombre o email" /><!--[(ngModel)]="searchQuery"-->
+                    <button (click)="search()">Buscar Alumno</button>
+                </div>
+                <div  class='resultado-busqueda '>
+                    <p>alumno buscado</p>
+                </div>
+                <div   class='alumno-datos'>
+                    <p>alumno datos</p>
+                </div>
+                <div class='notas-prom-asist'>
+                    <div  class='notas'>
+                        <p>alumno notas</p>
+                    </div>
+                    <div  class='promedio'>
+                        <p>alumno promedio</p>
+                    </div>
+                    <div  class='asistencia'>
+                        <p>alumno asistencia</p>
+                    </div>
+                </div>
+            </div>
     </div>
-</div>
+    
+</body>

@@ -70,15 +70,15 @@
               <div *ngIf="form.get('confirmPassword')?.errors?.['coincidePassword']">Las contraseñas no coinciden.</div>
             </div>
           </div>
-          <div class="form-outline mb-2">
+          <!--<div class="form-outline mb-2">
             <label class="form-label" for="userType">Tipo de Usuario</label>
             <select id="userType" class="form-select" [(ngModel)]="tipoDeUsuarioSeleccionado"
-            (change)="onTipoDeUsuarioChange($event)" formControlName="userType">
+            (change)="onTipoDeUsuarioChange($event)" formControlName="userType">-->
               <!-- <option value="Seleccione">Seleccione</option>
               <option value="admin">Administrador</option>
               <option value="docente">Docente</option>
               <option value="alumno">Alumno</option> -->
-              <option [value]="null" disabled selected>
+              <!--<option [value]="null" disabled selected>
                 Selecciona un tipo de usuario
               </option>
               <option *ngFor="let tipodeusuario of tiposDeUsuario" [value]="tipodeusuario.id">
@@ -92,11 +92,11 @@
               Debe seleccionar un tipo de usuario.
             </div>
           </div>
-          </div>   
+          </div>-->   
           <div class="form-check mb-2">
             <input class="form-check-input checkboxAgreeTerms" type="checkbox" id="form2Example3cg" formControlName="agreeTerms" />
             <label class="form-check-label" for="form2Example3cg">
-              Acepto todos los términos en <a href="#!" class="text-body"><u>Términos de servicio</u></a>
+              Acepto todos los términos en <a class="text-body" (click)="mostrarTerminosYCondiciones()"><u>Términos de servicio</u></a>
             </label>
           </div>
           <div *ngIf="!form.get('agreeTerms')?.value && (form.get('agreeTerms')?.dirty || form.get('agreeTerms')?.touched)" class="text-danger">

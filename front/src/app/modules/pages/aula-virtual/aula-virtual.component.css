@@ -1,8 +1,85 @@
 .contenedor {
-    display: flexbox;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-    text-align: center;
-    background-color: rgb(243, 226, 214);
-  }
+  display: flexbox;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  text-align: center;
+  background-color: rgb(243, 226, 214);
+}
+
+  /*-------------------------------------------Estilos para Docentes--------------------------------------*/
+
+/* Contenedor principal */
+.curso-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #007bff; /* Color de fondo del encabezado */
+  padding: 20px;
+  color: white; /* Color del texto */
+}
+
+/* Estilos para la imagen del curso */
+.curso-imagen img {
+  max-width: 150px; /* Ancho máximo de la imagen */
+  height: auto;
+  margin-left: 25px; /* Espacio a la izquierda de la imagen */
+  border: 2px solid rgb(205, 107, 28);
+  border-radius: 5px;
+}
+
+/* Estilos para el cuadro de búsqueda de alumnos */
+.alum-datos {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Estilos para el campo de búsqueda */
+.alum-bus input[type="text"] {
+  width: calc(50% - 10px); /* Ancho del campo de búsqueda */
+  padding: 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: 30%;
+}
+
+/* Estilos para el botón de búsqueda */
+.alum-bus button {
+  background-color: #007bff; /* Color de fondo del botón de búsqueda */
+  color: white; /* Color del texto del botón */
+  border: 2px solid #2200ff;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-left: 7px;
+}
+
+/* Estilos para el botón de búsqueda al pasar el mouse */
+.alum-bus button:hover {
+  background-color: #0056b3; /* Cambio de color al pasar el mouse */
+}
+
+/* Estilos para el resultado de la búsqueda */
+.resultado-busqueda {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilos para la sección de datos del alumno */
+.alumno-datos {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilos para la sección de notas, promedio y asistencia */
+.notas-prom-asist {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

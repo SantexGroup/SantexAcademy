@@ -1,0 +1,153 @@
+/* Aplicar box-sizing: border-box a todos los elementos dentro del componente */
+.perfil-docente-container * {
+    box-sizing: border-box;
+    padding-top: 10rem;
+    padding-bottom: 11rem;
+    padding-right: 10rem;
+
+  }
+  
+  /* Estilo adicional para otros elementos en el perfil del alumno */
+  .perfil-docente-titulo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .perfil-docente-texto {
+    font-size: 16px;
+    font-family: sans-serif;
+  }
+  
+  h2 {
+    font-size: 30px; /* Tamaño de fuente */
+    color: #8a5a44;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+  
+  h3 {
+    font-size: 30px; /* Tamaño de fuente */
+    color: #0f226d;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+  
+  .p{
+    font-size: 10px; /* Tamaño de fuente */
+    color:black;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+  
+  
+  /* Estilos para ambos botones */
+  .boton-personalizado {
+    background-color: #0f226d;
+    color: #fff;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 50px; /* Establece un borde redondo para el círculo */
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative; /* Posición relativa para alinear el ícono */
+    overflow: hidden; /* Oculta el ícono fuera del círculo */
+    transition: background-color 0.3s; /* Transición de color de fondo al pasar el mouse */
+    margin-right: 10px; /* Espacio entre los botones */
+    margin-bottom: 10px;
+    width: 200px;
+  
+  }
+  .boton-personalizado:hover svg {
+    color:white; /* Cambia el color al que desees cuando el cursor está sobre el botón */
+    fill: white;
+  }
+  
+  
+  /* Estilos para el icono de dashboard */
+  .dashboard-link svg {
+    /* Aplica estilos específicos aquí */
+    fill: #ff9900; /* Cambia el color del ícono */
+    width: 35px; /* Cambia el tamaño del ícono */
+    height: 35px;
+    /* Agrega más estilos según tus preferencias */
+    margin-left: 5%;
+    margin-bottom: 5%;
+  }
+  
+  .dashboard-link:hover svg {
+    fill:#0f226d;
+  }
+  
+  .dashboard-link:hover {
+    color:#0f226d;
+  
+  }
+  .dashboard-link {
+    text-decoration: none; /* Quita el subrayado */
+    color: #ff6501;
+  }
+  
+  
+  .boton-derecho {
+    background-color: #0f226d;
+    color: #fff;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 50px; /* Establece un borde redondo para el círculo */
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative; /* Posición relativa para alinear el ícono */
+    overflow: hidden; /* Oculta el ícono fuera del círculo */
+    transition: background-color 0.3s; /* Transición de color de fondo al pasar el mouse */
+    margin-right: 10px; /* Espacio entre los botones */
+    margin-bottom: 10px;
+    width: 160px;
+    margin-left: 500px;
+  }
+  .contenedor-titulo-y-boton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+  }
+  /* Estilos para los íconos de flecha */
+  .boton-personalizado .icono-flecha i {
+    color: white;
+    font-size: 18px;
+    margin-left: 20px;
+  }
+  
+  /* Estilos adicionales para el botón al pasar el mouse */
+  .boton-personalizado:hover {
+    background-color: #ff6501; /* Cambia el color de fondo al pasar el mouse */
+  }
+  
+  .boton-derecho:hover {
+    background-color: #08d96d;
+  }
+  .pagina-perfil {
+    width: 100%; /* Ancho deseado (puedes usar porcentajes o unidades como px) */
+    height: 600px; /* Alto deseado (ajusta según sea necesario) */
+    margin: 0 auto; /* Centra el contenido horizontalmente en la página */
+    padding: 20px; /* Agrega un espacio interior alrededor del contenido */
+    background-color: #e4e4ee; /* Color de fondo opcional */
+  }
+  
+  .logo{
+    width: 38%; /* Ajusta el ancho de la imagen según tus necesidades */
+    height:300px;
+    display:flex; /* Hace que la imagen sea un bloque para poder centrarla */
+    /*margin: 0 auto; /* Centra horizontalmente la imagen */
+  }
+  
+  /* Estilos para el icono de dashboard */
+  .bi {
+    /* Aplica estilos específicos aquí */
+    fill: #ff9900; /* Cambia el color del ícono */
+    width: 20px; /* Cambia el tamaño del ícono */
+    height: 20px;
+    /* Agrega más estilos según tus preferencias */
+    margin-left:auto;
+  }
