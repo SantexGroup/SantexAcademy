@@ -15,6 +15,7 @@ import { AulaVirtualComponent } from './aula-virtual/aula-virtual.component';
 import { HabilitarmatriculaDirective } from 'src/app/directivas/habilitarmatricula.directive';
 import { PerfilAlumnoComponent} from './perfil-alumno/perfil-alumno.component';
 import { PerfilAlumnoEditarComponent } from './perfil-alumno-editar/perfil-alumno-editar.component';
+import { PerfilDocenteComponent } from './perfil-docente/perfil-docente.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PerfilAlumnoEditarComponent } from './perfil-alumno-editar/perfil-alumn
     AulaVirtualComponent,
     HabilitarmatriculaDirective,
     PerfilAlumnoComponent,
-    PerfilAlumnoEditarComponent
+    PerfilAlumnoEditarComponent,
+    PerfilDocenteComponent
   ],
   imports: [
     CommonModule,
