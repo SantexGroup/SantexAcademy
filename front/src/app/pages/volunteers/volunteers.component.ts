@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { VolunteeringService } from 'src/app/services/volunteering.service';
-
-type Item = {
-  imgUrl: string;
-  title: string;
-  tag: string;
-  location: string;
-  time: string;
-  timePublished: string;
-};
 
 @Component({
   selector: 'app-volunteers',
@@ -19,23 +11,16 @@ export class VolunteersComponent implements OnInit {
   dataInput: string = '';
   volunteering: Array<[]> = [];
   volunteeringFilter: Array<[]> = [];
-  constructor(private volunteeringServices: VolunteeringService) {}
-  items: Item[] = [
-    {
-      imgUrl: '/assets/logotypes_organizations/orgOne.svg',
-      title: 'Se necesitan tutores para apoyo escolar',
-      tag: 'A DISTANCIA',
-      location: 'Córdoba Capital',
-      time: 'A Tiempo Parcial',
-      timePublished: 'Publicado hace 1 minuto',
-    },
-  ];
+  constructor(
+    private volunteeringServices: VolunteeringService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.volunteeringServices.getVolunteers().subscribe({
       next: (res) => {
-        this.volunteering = res;
-        console.log(res);
+        this.volunteering = res.volunteerings;
+        console.log(this.volunteering);
       },
       error: (err) => {
         console.log(err);

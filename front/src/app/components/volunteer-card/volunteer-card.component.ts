@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-volunteer-card',
@@ -8,7 +9,7 @@ import { DatePipe } from '@angular/common';
 })
 export class VolunteerCardComponent {
   @Input() data: any = {};
-  constructor(private datePipe: DatePipe) {}
+  constructor(private datePipe: DatePipe, private router: Router) {}
 
   formatCreatedAtDate(dateString: string): string {
     const createdAtDate = new Date(dateString);
@@ -34,5 +35,9 @@ export class VolunteerCardComponent {
         'dd/MM/yyyy'
       )}`;
     }
+  }
+
+  viewVolunteering(id: number) {
+    this.router.navigateByUrl(`/voluntariado/${id}`);
   }
 }

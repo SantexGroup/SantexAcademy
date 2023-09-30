@@ -6,7 +6,7 @@ import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashb
 import { VolunteersComponent } from './pages/volunteers/volunteers.component';
 import { OrganizationDetailsComponent } from './pages/organization-details/organization-details.component';
 import { authGuard } from './guards/auth.guard';
-
+import { VolunterIdComponent } from './pages/volunter-id/volunter-id.component';
 
 const routes: Routes = [
   { path: '', title: 'VolunTime - Inicio', component: HomePageComponent },
@@ -25,6 +25,11 @@ const routes: Routes = [
     path: 'voluntariados',
     title: 'VolunTime - Voluntariados',
     component: VolunteersComponent,
+  },
+  {
+    path: 'voluntariado/:id',
+    title: 'VolunTime - Voluntariado',
+    component: VolunterIdComponent,
   },
 
   {

@@ -14,26 +14,34 @@ const createVoluntariado = async (req, res) => {
   }
 };
 
-const getVoluntariadosByCriteria = async (req, res) => {
+const getAllVolunteers = async (req, res, next) => {
   try {
-    const queryOptions = req.query;
-    const bodyOptions = req.body;
-    const volunteerings = await voluntariadoService.getVoluntariadosByCriteria(
-      queryOptions,
-      bodyOptions
-    );
-    if (!volunteerings) {
-      res.status(404).json({
-        action: "getVoluntariadosByCriteria",
-        error: "Voluntariados not found.",
-      });
-    } else {
-      res.json(volunteerings);
-    }
+    const volunteerings = await voluntariadoService.getAllVolunteers();
+    res.status(200).json({ items: volunteerings.length, volunteerings });
   } catch (err) {
     res
       .status(500)
       .json({ action: "getVoluntariadosByCriteria", error: err.message });
+    next();
+  }
+};
+
+const getVolunteerById = async (req, res, next) => {
+  try {
+    const volunteeringFound = await voluntariadoService.getVolunteerById(
+      req.params.id
+    );
+    if (!volunteeringFound)
+      res.status(404).json({
+        message: `There is no volunteering with the ${req.params.id}`,
+      });
+
+    res.status(200).json({ volunteeringFound });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ action: "getVoluntariadosByCriteria", error: err.message });
+    next();
   }
 };
 
@@ -102,9 +110,10 @@ const deleteVoluntariadoById = async (req, res) => {
 };
 
 module.exports = {
-  getVoluntariadosByCriteria,
-  getVoluntariadosByOrganization,
   createVoluntariado,
+  getAllVolunteers,
+  getVolunteerById,
+  getVoluntariadosByOrganization,
   updateVoluntariadoById,
   deleteVoluntariadoById,
 };
