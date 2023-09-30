@@ -14,4 +14,9 @@ export class VolunteeringService {
     const url = `${this.apiUrl}/voluntariado/all`;
     return this.http.get(url);
   }
+
+  getVolunteerById(id: string): Observable<any> {
+    const url = `${this.apiUrl}/voluntariado/${id}`;
+    return this.http.get(url);
+  }
 }
