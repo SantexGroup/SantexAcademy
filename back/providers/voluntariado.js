@@ -17,49 +17,46 @@ const createVoluntariado = async (idOrg, voluntariado) => {
   }
 };
 
-const getVoluntariadosByCriteria = async (queryOptions, bodyOptions) => {
+const getAllVolunteers = async () => {
   try {
-    const options = { ...queryOptions, ...bodyOptions };
-    const where = {};
-    const validOptions = [
-      "idVoluntariado",
-      "organizationId",
-      "descripcion",
-      "spots",
-      "Reward",
-      "deletedAt",
-    ];
-
-    validOptions.forEach((option) => {
-      if (options[option]) where[option] = options[option];
-    });
-
-    where.deletedAt = null;
-
-    const voluntariados = await Voluntariado.findAll({
-      where,
+    const volunteers = await Voluntariado.findAll({
       attributes: { exclude: ["deletedAt"] },
       include: [
         {
           model: Organizacion,
           as: "organization",
-          attributes: ["image"],
+          attributes: ["name", "description", "image"],
         },
       ],
     });
 
-    return voluntariados;
+    return volunteers;
   } catch (error) {
-    console.error(
-      "The volunteering/s could not be retrieved due to an error.",
-      error
-    );
-    throw error;
+    throw new Error(error);
+  }
+};
+
+const getVolunteerById = async (id) => {
+  try {
+    const volunteer = await Voluntariado.findOne({
+      where: { idVolunteering: id },
+      attributes: { exclude: ["deletedAt"] },
+      include: [
+        {
+          model: Organizacion,
+          as: "organization",
+          attributes: ["name", "description", "image"],
+        },
+      ],
+    });
+
+    return volunteer;
+  } catch (error) {
+    throw new Error(error);
   }
 };
 
 //Esta funcion se crea para que las organizaciones SOLO PUEDAN TRAER LOS VOLUNTARIADOS ASOCIADOS A SU ID
-
 const getVoluntariadosByOrganizationId = async (idOrg) => {
   try {
     const voluntariados = await Voluntariado.findAll({
@@ -128,9 +125,10 @@ const deleteVoluntariadoById = async (idVoluntariado) => {
 };
 
 module.exports = {
-  getVoluntariadosByCriteria,
-  getVoluntariadosByOrganizationId,
   createVoluntariado,
+  getAllVolunteers,
+  getVolunteerById,
+  getVoluntariadosByOrganizationId,
   updateVoluntariadoById,
   deleteVoluntariadoById,
 };

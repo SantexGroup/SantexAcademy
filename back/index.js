@@ -10,24 +10,6 @@ const { PORT } = process.env;
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use(
-//   cors({
-//     origin(origin, callback) {
-//       if (
-//         origin === 'http://localhost:4200'
-//         || origin === 'https://xacademy-webwarriors.vercel.app'
-//         || origin === '*'
-//       ) {
-//         callback(null, true);
-//       } else {
-//         callback(new Error('No permitido por CORS'));
-//       }
-//     },
-//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//     credentials: true,
-//   }),
-// );
-
 app.use(
   cors({
     origin: "*",
