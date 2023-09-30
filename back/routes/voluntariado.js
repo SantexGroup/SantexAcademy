@@ -11,10 +11,8 @@ voluntariadoRouter.post(
   voluntariadoController.createVoluntariado
 );
 
-voluntariadoRouter.get(
-  "/all",
-  voluntariadoController.getVoluntariadosByCriteria
-);
+voluntariadoRouter.get("/all", voluntariadoController.getAllVolunteers);
+voluntariadoRouter.get("/:id", voluntariadoController.getVolunteerById);
 
 voluntariadoRouter.get(
   "/me/:idOrg",
