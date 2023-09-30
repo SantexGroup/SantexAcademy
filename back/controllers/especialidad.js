@@ -1,8 +1,8 @@
 const { nivelService } = require('../services');
 
-const allEspecialidads = async (req, res, next) => {
+const allEspecialidades = async (req, res, next) => {
   try {
-    const especialidades = await nivelService.allEspecialidads();
+    const especialidades = await nivelService.allEspecialidades();
     res.status(201).json(especialidades);
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -12,5 +12,5 @@ const allEspecialidads = async (req, res, next) => {
 };
 
 module.exports = {
-  allEspecialidads,
+  allEspecialidades,
 };

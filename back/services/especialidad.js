@@ -1,10 +1,10 @@
 const { Especialidad } = require('../models');
 
-const allEspecialidads = async () => {
+const allEspecialidades = async () => {
   const especialidades = await Especialidad.findAll();
   return especialidades;
 };
 
 module.exports = {
-  allEspecialidads,
+  allEspecialidades,
 };

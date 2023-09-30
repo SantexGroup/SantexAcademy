@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
         as: 'UserDocente'
       });
 
-      // Asociación entre Docente y Curso
-      Docente.belongsTo(models.Curso, {
+      // Asociación entre Docente y especialidad
+      Docente.belongsTo(models.Especialidad, {
         foreignKey: 'idespecialidad',
         targetKey: 'id',
         as: 'Especialidad'

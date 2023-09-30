@@ -16,4 +16,8 @@ export class DocenteService {
   getDocentes(): Observable<Docente[]>{
     return this.http.get<Docente[]>(`${this.baseUrl}docente`)
   }
+
+  addDocente(docente: Docente): Observable<Docente> {
+    return this.http.post<Docente>(`${this.baseUrl}docente`, docente);
+  }
 }

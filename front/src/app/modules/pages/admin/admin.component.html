@@ -318,7 +318,7 @@
                             {{ docente?.UserDocente?.apellido + ', ' + docente?.UserDocente?.nombre }}
                         </td>
                         <td>
-                            <!--{{ matricula?.Curso?.nombre }}-->
+                            {{ docente?.Especialidad?.nombre || 'Sin especificar' }}
                         </td>
                         <td>
                             <a class="btn btn-sm btn-primary">

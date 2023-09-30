@@ -1,4 +1,4 @@
-const { Matricula, User, Curso, Docente } = require('../models');
+const { Matricula, User, Curso, Docente, Especialidad } = require('../models');
 
 const allDocentes = async () => {
   // Intentamos llamar al método findAll() al objeto docentes
@@ -10,10 +10,10 @@ const allDocentes = async () => {
           model: User,
           as: 'UserDocente', 
         },
-        //{
-          //model: Especialidad,
-          //as: 'Especialidad',  
-        //},
+        {
+          model: Especialidad,
+          as: 'Especialidad',  
+        },
       ],
     });
 
@@ -26,8 +26,34 @@ const allDocentes = async () => {
   }
 };
 
+const createDocente = async (body) => {
+  try {
+    const docente = await Docente.create(body);
+    return docente;
+  } catch (error) {
+    throw new Error('Hubo un error al agregar un docente.');
+  }
+};
+
+const updateDocente = async (id, body) => {
+  try {
+    const docente = await Docente.findByPk(id);
+    
+    if (!docente) { 
+      throw new Error('Docente no encontrado.');
+    }
+
+    await docente.update(body);
+    return docente;
+  } catch (error) {
+    throw new Error('Hubo un error al actualizar un docente.');
+  }
+};
+
 module.exports = {
-  allDocentes
+  allDocentes,
+  createDocente,
+  updateDocente
 };
 
 /*
