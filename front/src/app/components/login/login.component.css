@@ -1,0 +1,30 @@
+.login-container{
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+    color: #f44336;
+    background-color: aliceblue;
+}
+
+.login-form{
+    display: grid;
+    place-content: center;
+}
+
+.mensaje-crear-cuenta {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+
+.register-button{
+    color:  #eca678; 
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+a.register-button:hover {
+    color: #f5670e;
+    cursor: pointer; 
+  }

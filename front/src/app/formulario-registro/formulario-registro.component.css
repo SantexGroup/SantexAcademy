@@ -1,0 +1,150 @@
+.formulario-container {
+    display: grid;
+    place-content: center;
+    padding: 20px;
+    border: 0.5px solid rgba(0, 0, 0, 0.071);
+    border-radius: 55px;
+    width: 450px;
+    margin: 135px auto;
+  }
+
+  .form-square {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .divider {
+    display: grid;
+    place-content: center;
+    border-top: 2px solid #F5670E;
+    margin: 10px 0;
+  }
+
+  .title {
+    display: grid;
+    place-content: center;
+    color: #F5670E;
+    font-family: Montserrat;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .form-item{
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 20px;
+    color: #060660;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-bottom: 2px;
+    width: 220px;
+  }
+
+  h4.form-item{
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+
+  .mat-form-field{
+    width: 220px;
+    margin: 5px;
+  }
+
+  .form-input-genero{
+    display: flex;
+    flex-direction: column;
+    margin-left: 45px;
+    background: silver;
+    border: 1px solid #393939;
+    border-radius: 5px;
+    color: #393939;
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .div-item{
+    border-top: 1px solid #060660;
+  }
+
+  .button-create {
+    width: 200px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 50px;
+    border: 1px solid #F5670E;
+    background: #F5670E;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    &:hover {
+      border: 1px solid #0056b3;
+      background-color: #0056b3; 
+      color: #f0f0f0; 
+      cursor: pointer; 
+    }
+
+  }
+
+  .button-create:disabled {
+    border: 1px solid #ccc;
+    background-color: #ccc;
+    color: #666; 
+    cursor: not-allowed;
+  }
+
+  .formulario-container form {
+    width: 100%;
+  }
+
+  /* Fuera del formulario */
+
+.error-message {
+  text-align: center;
+  color: #e74c3c; 
+  font-size: 14px;
+  margin-top: 5px; 
+  transition: opacity 0.2s, visibility 0.2s;
+  opacity: 1;
+  visibility: visible;
+}
+
+  .mensaje-iniciar-sesion {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+
+.login-button {
+  color:  #eca678; 
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+a.login-button:hover {
+  color: #f5670e;
+  cursor: pointer; 
+}
+
+ input{
+    border: none;
+    outline: none;
+  }
+
+
+
+
+
+  
+  

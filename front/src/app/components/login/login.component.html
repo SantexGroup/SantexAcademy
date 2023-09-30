@@ -1,0 +1,27 @@
+<mat-card class="login-container">
+    <mat-card-content>
+        <img src="assets/img/incubadora-image.png" alt="Logo" class="logo">
+        <form class="login-form">
+
+            <mat-form-field>
+                <mat-label>Usuario</mat-label>
+                <input matInput class="input-item-login">
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Contraseña</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <button mat-raised-button color="warn">Iniciar Sesion</button>
+
+            <p class="mensaje-crear-cuenta">
+                ¿No tienes cuenta? Haz clic en <a class="register-button" routerLink="/registro"> CREAR CUENTA</a>
+            </p>
+        </form>
+    </mat-card-content>
+</mat-card>
+  
