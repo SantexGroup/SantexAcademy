@@ -16,6 +16,7 @@ import { HabilitarmatriculaDirective } from 'src/app/directivas/habilitarmatricu
 import { PerfilAlumnoComponent} from './perfil-alumno/perfil-alumno.component';
 import { PerfilAlumnoEditarComponent } from './perfil-alumno-editar/perfil-alumno-editar.component';
 import { PerfilDocenteComponent } from './perfil-docente/perfil-docente.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { PerfilDocenteComponent } from './perfil-docente/perfil-docente.componen
   imports: [
     CommonModule,
     AppRoutingModule,
+    FormsModule
   ],
   exports: [
     QuienessomosComponent, //Exporto el componente de quienes somos para poder usarlo desde otro lado
