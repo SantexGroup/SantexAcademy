@@ -126,6 +126,26 @@ async function editUsuario(id, firstName, lastName, dni, mail, password, alias,
   return userEdited;
 }
 
+// eliminar usuario
+
+async function deleteUsuario(id) {
+  try {
+    const result = await User.destroy({
+      where: {
+        id,
+      },
+    });
+
+    if (result === 1) {
+      return { success: true, message: `Usuario con ID ${id} eliminado exitosamente.` };
+    }
+    return { success: false, message: `No se encontró el usuario con ID ${id}.` };
+  } catch (error) {
+    console.error(`Error al eliminar el usuario: ${error.message}`);
+    return { success: false, message: `Error al eliminar el usuario: ${error.message}` };
+  }
+}
+
 module.exports = {
-  login, userRegister, cambiarEstadoVendedor, getUserFromId, editUsuario,
+  login, userRegister, cambiarEstadoVendedor, getUserFromId, editUsuario, deleteUsuario,
 };

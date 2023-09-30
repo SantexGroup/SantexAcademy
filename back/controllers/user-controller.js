@@ -64,6 +64,20 @@ async function editUser(req, res) {
   res.status(201).send(usuario);
 }
 
+// eliminar usuario
+
+async function deleteUser(req, res) {
+  const { id } = req.params;
+
+  const result = await userService.deleteUsuario(id);
+
+  if (result.success) {
+    res.status(201).send({ message: `Usuario con id ${id} ha sido eliminado con éxito` });
+  } else {
+    res.status(404).send({ message: `No se encontró el usuario con ID ${id}` });
+  }
+}
+
 module.exports = {
-  login, createUser, cambiarEstadoVendedorUser, editUser, getUserById,
+  login, createUser, cambiarEstadoVendedorUser, editUser, getUserById, deleteUser,
 };
