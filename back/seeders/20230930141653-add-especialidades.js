@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     // Inserta registros de especialidades en la tabla Especialidad
-    return queryInterface.bulkInsert('Especialidads', [
+    return queryInterface.bulkInsert('Especialidades', [
       {
         nombre: 'Especialidad 1',
         estado: 'A',
@@ -28,6 +28,6 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
     // Elimina los registros de especialidades
-    return queryInterface.bulkDelete('Especialidad', null, {});
+    return queryInterface.bulkDelete('Especialidades', null, {});
   }
 };
