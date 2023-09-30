@@ -86,7 +86,7 @@ export class ModificarArticuloComponent implements OnInit {
           if (res.articulos.Images){
             const imagesProd = res.articulos.Images
             for (let i = 0; i < imagesProd.length; i++){
-              this.images.push(this.servidor + imagesProd[i].url);
+              this.uploadedImages.push(this.servidor + imagesProd[i].url);
             }
           }
         })        
@@ -152,8 +152,8 @@ export class ModificarArticuloComponent implements OnInit {
         if (file.type.startsWith('image/')) {
           const reader = new FileReader();
           reader.readAsDataURL(file);
-
           reader.onload = () => {
+            this.uploadedImages.length = 0;
             this.uploadedImages.push(reader.result as string);
           };
         }
