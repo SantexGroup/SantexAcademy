@@ -57,7 +57,7 @@
 
 
             <div class="botones-container">
-                <input (click)="subirProducto()" class="subir-boton" type="button" value="Subir Producto" [disabled]="formUp.invalid"/>
+                <input (click)="modificarProducto()" class="subir-boton" type="button" value="Modificar Producto" [disabled]="formUp.invalid"/>
             </div>
             <div *ngIf="mensajeRegistro" class="mensaje">
                 {{ mensajeRegistro }}

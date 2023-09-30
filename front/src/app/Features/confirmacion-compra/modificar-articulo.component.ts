@@ -7,6 +7,7 @@ import { BarraService } from 'src/app/core/services/barra.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { vistaArtIndServ } from 'src/app/core/services/vista-art-ind-serv.service';
 import { environment } from 'src/environments/environment';
+import { ModArtService } from 'src/app/core/services/mod-art.service';
 
 @Component({
   selector: 'app-modificar-articulo',
@@ -47,7 +48,7 @@ export class ModificarArticuloComponent implements OnInit {
   idProducto: string = '';
   images: any = [];
 
-  constructor(private service: CargaArticulosService, private vistaArtService: vistaArtIndServ, private confService: ConfirmacionArticuloServService, private router: Router, private mensajeService: MensajeService, private barraService:BarraService, private formBuilder: FormBuilder) { }
+  constructor(private cargaService: CargaArticulosService, private service: ModArtService, private vistaArtService: vistaArtIndServ, private confService: ConfirmacionArticuloServService, private router: Router, private mensajeService: MensajeService, private barraService:BarraService, private formBuilder: FormBuilder) { }
 
   formUp = this.formBuilder.group({
     'catReg': ['0', Validators.required],
@@ -61,13 +62,15 @@ export class ModificarArticuloComponent implements OnInit {
   ngOnInit(): void {
     this.traerDatos();
     this.getIdUser();    
+    console.log("id: " + JSON.stringify(this.idProd))
   }
 
   traerDatos() {
     this.barraService.getCategories().subscribe(categorias => {this.listcategorias = categorias});
-    let idProd = Number(localStorage.getItem('idProd'));
-    if (idProd) {
-        this.vistaArtService.datosProdServ(idProd).subscribe(res => {
+    let id = Number(localStorage.getItem('idProd'));
+    this.idProd = id;
+    if (id) {
+        this.vistaArtService.datosProdServ(id).subscribe(res => {
           this.respuesta = res;
           console.log("Respuesta: " + JSON.stringify(res));
           this.nomArt = res.articulos.nombre.charAt(0).toUpperCase() + res.articulos.nombre.slice(1) 
@@ -93,20 +96,21 @@ export class ModificarArticuloComponent implements OnInit {
       }      
     }
 
-  subirProducto(): void { 
+  modificarProducto(): void { 
     //if (this.formUp.get('catReg')?.value && this.formUp.get('nomReg')?.value && this.desReg && this.preReg && this.envReg) {
-      this.service.carga(
+      this.service.modificar(
+        this.idProd,
+        this.idUser,
         this.formUp.get('catReg')?.value,
         this.formUp.get('nomReg')?.value,
         this.formUp.get('desReg')?.value,
         this.formUp.get('preReg')?.value,
-        this.formUp.get('envReg')?.value,
-        this.idUser
+        this.formUp.get('envReg')?.value,             
       ).subscribe(respuesta => {
         console.log(respuesta);
         if(respuesta){
           this.idProducto = respuesta.id;
-          console.log(this.idProducto)
+          console.log("Respuesta service modArt: " + this.idProducto)
           this.subirImages();
         }
         this.mensajeService.mensajeRegistro('Articulo cargado con éxito.');
@@ -128,12 +132,12 @@ export class ModificarArticuloComponent implements OnInit {
       formData.append('images', img);
     }
 
-    this.service.cargaFiles(formData).subscribe(res => {
+    this.cargaService.cargaFiles(formData).subscribe(res => {
       console.log(res);
       if(res){
         for (let i = 0; i < res.length; i++) {
           const imageName = res[i].filename;
-          this.service.cargaImagesNames(this.idProducto, imageName).subscribe( res =>
+          this.cargaService.cargaImagesNames(this.idProducto, imageName).subscribe( res =>
             console.log(res));
         }
       }  
