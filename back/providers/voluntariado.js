@@ -25,7 +25,7 @@ const getAllVolunteers = async () => {
         {
           model: Organizacion,
           as: "organization",
-          attributes: ["name", "description", "image"],
+          attributes: ["name", "description", "category", "image"],
         },
       ],
     });
