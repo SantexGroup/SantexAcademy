@@ -45,15 +45,6 @@ const deleteCourse = async (req, res) => {
     }
 };
 
-const createUser = async (req, res) => {
-    try {
-        const newUser = await courseService.createUser(req.body, req.params.id);
-        newUser ? res.status(201).json(newUser) : res.status(404).end();
-    } catch (err) {
-        res.status(500).json({ action: 'Create course user', error: err.message });
-    }
-};
-
 const getUsers = async (req, res) => {
     try {
         const { role } = req.query;
@@ -64,4 +55,4 @@ const getUsers = async (req, res) => {
     }
 };
 
-module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, createUser, getUsers };
+module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers };

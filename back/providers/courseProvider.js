@@ -47,16 +47,6 @@ const deleteCourse = async (id) => {
     }
 };
 
-const createUser = async (user, courseId) => {
-    try {
-        const course = await Course.findByPk(courseId);
-        return await course?.createUser(user);
-    } catch (err) {
-        console.error("Error when creating course user.", err.message);
-        throw err;
-    }
-}
-
 const getUsers = async (id, filterParams) => {
     try {
         let options = {
@@ -72,4 +62,4 @@ const getUsers = async (id, filterParams) => {
     }
 };
 
-module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, createUser, getUsers };
+module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers };
