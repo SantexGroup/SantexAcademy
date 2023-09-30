@@ -27,7 +27,7 @@ export class StudentsComponent implements OnInit {
     const file = event.target.files[0];
     
     // Aquí puedes agregar código para subir la imagen al servidor si es necesario.
-    // Luego, establece showImage en true para mostrar la imagen.
+  
     this.showImage = true;
   }
 
