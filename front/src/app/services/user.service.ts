@@ -16,4 +16,9 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/user`);
   }
+
+  getUserDetails(userId: string): Observable<any> {    
+    const url = `${this.apiUrl}/users/${userId}`;
+    return this.http.get(url);
+  }
 }

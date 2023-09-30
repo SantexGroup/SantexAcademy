@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserListComponent } from '../user-list/user-list.component';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -8,9 +9,32 @@ import { UserListComponent } from '../user-list/user-list.component';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  user: any;
 
-  ngOnInit(): void {
+  constructor(private route: ActivatedRoute, private userService: UserService) { }
+
+  getRoleName(role: string): string {
+    switch (role) {
+      case 'admin':
+        return 'Administrador';
+      case 'teacher':
+        return 'Docente';
+      case 'student':
+        return 'Alumno';
+      default:
+        return 'No asignado';
+    }
   }
 
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      const userId = params.get('id');
+      if (userId) {        
+        this.userService.getUserDetails(userId).subscribe((user) => {
+          this.user = user;
+        });
+      }
+    });
+  }
 }
+

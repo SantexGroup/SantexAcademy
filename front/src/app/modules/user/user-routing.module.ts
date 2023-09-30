@@ -5,12 +5,15 @@ import { UserListComponent } from './components/user-list/user-list.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: UserComponent,
+    path: '',    
     children: [
       {
-        path: 'api/users',
+        path: 'user-list',
         component: UserListComponent
+      },
+      {
+        path: ':id',
+        component: UserComponent,
       },
     ]
   }
