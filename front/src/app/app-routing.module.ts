@@ -109,6 +109,15 @@ const routes: Routes = [
     component: MisCursosComponent, 
   },
   { 
+    path: 'perfil-docente/mis-cursos', 
+    // canLoad: [ ValidarTokenGuard ],
+    // canActivate: [ ValidarTokenGuard ,TieneTipoDeUsuarioGuard],
+    // data: {
+    //   tipoPermitido: ['Docente']
+    // },
+    component: MisCursosComponent, 
+  },
+  { 
     path: 'aula-virtual/:id', 
     component: AulaVirtualComponent, 
   },
