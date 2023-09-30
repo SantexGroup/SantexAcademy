@@ -14,10 +14,18 @@ const Producto = sequelize.define(
       type: DataTypes.STRING(50),
       allowNull: false,
     },
+    image: {
+      type: DataTypes.JSON,
+    },
     costInHours: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    deletedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: null,
+    }
   },
   {
     sequelize,

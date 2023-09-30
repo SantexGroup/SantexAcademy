@@ -4,6 +4,8 @@ require("dotenv").config();
 const fs = require("fs-extra");
 const cloudinary = require("../config/cloudinary");
 
+
+
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;

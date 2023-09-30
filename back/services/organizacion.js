@@ -40,7 +40,6 @@ const getOrganizationsById = async (orgId) => {
   const organization = await orgProvider.getOrganizationsById(orgId);
   return organization;
 };
-// query parameters
 
 const getOrganizationByCriteria = async (queryOptions, bodyOptions) => {
   const organization = await orgProvider.getOrganizationByCriteria(

@@ -21,7 +21,6 @@ routes.use("/organizacion", orgRouter);
 routes.use("/usuarios", userRouter);
 routes.use("/voluntariado", voluntariadoRouter);
 routes.use("/auth", authRouter);
-
 routes.use("/admin", adminRouter);
 
 // routes.use('/', rootPath.handler);

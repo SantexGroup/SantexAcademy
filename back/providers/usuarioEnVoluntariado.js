@@ -30,7 +30,8 @@ const getJoins = async (userId) => {
     const joins = await UsuarioEnVoluntariado.findAll({
       where: { userId },
       include: [{ model: Voluntariado, as: 'voluntariado', }],
-    });
+      attributes: { exclude: ['deletedAt'] },
+      });
 
     return joins;
   } catch (err) {
@@ -49,6 +50,11 @@ const getCompletedPostulation = async (idOrg) => {
         as: 'voluntariado',
         attributes: ['descripcion', 'Reward']
       }],
+      include: [{
+        model: Usuario,
+        as: 'usuario',
+        attributes: ['fullname', 'email']
+      }]
     });
 
     return postulation;
