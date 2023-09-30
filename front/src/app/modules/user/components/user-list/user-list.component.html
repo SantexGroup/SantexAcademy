@@ -1,4 +1,8 @@
+<app-navbar></app-navbar>
 <div class="container">
+  <div class="title">
+    <h1>LISTA DE USUARIOS</h1>
+  </div>
   <div class="wrapper">
     <table class="table table-striped table-bordered table-responsive">
       <thead>
@@ -7,6 +11,7 @@
           <th scope="col">Nombre</th>
           <th scope="col">Apellido</th>
           <th scope="col">Correo electrónico</th>
+          <th scope="col">Detelles</th>
         </tr>
       </thead>
       <tbody>
@@ -15,6 +20,7 @@
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
           <td>{{ user.email }}</td>
+          <td><button (click)="viewUserDetails(user.id)">Detalles</button></td>
         </tr>
       </tbody>
     </table>
