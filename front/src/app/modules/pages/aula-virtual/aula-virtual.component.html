@@ -8,20 +8,26 @@
 
 </head>
 <body>
-<div class="contenedor">
-    <div>
-        <h2>Estas ahora en tu aula virtual de:</h2>
-        <div>
-            <h1>{{ nombreCurso }}</h1>
+    <!-- Contenido especifico para alumnos -->
+    <div *ngIf="tipoDeUsuario === 'alumno'">
+        <div class="contenedor">
+            <div>
+                <h2>Estas ahora en tu aula virtual de:</h2>
+            </div>
+            <div>
+                <h1>{{ nombreCurso }}</h1>
+            </div>
+            <div>
+                <img [src]="imagenCurso" alt="{{ nombreCurso }}">
+            </div>
         </div>
-        <div>
-            <img [src]="imagenCurso" alt="{{ nombreCurso }}">
-        </div>
+            <div>
+                <h1>Esta página se encuentra</h1>
+                <h1>fuera del alcance del Proyecto Actual.</h1>
+                <h1>Muchas GRACIAS por permitirnos ser parte de él.</h1>
+                <h1>¡Cuenta con nosotros para las próximas etapas!!!</h1>
+            </div>
     </div>
-    <div>
-        <h1>Esta página se encuentra</h1>
-        <h1>fuera del alcance del Proyecto Actual.</h1>
-        <h1>Muchas GRACIAS por permitirnos ser parte de él.</h1>
-        <h1>¡Cuenta con nosotros para las próximas etapas!!!</h1>
-    </div>
-</div>
+
+    
+</body>

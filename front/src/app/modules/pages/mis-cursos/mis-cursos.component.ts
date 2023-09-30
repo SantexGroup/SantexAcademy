@@ -64,7 +64,7 @@ interface CursoConMatricula extends Curso {
           });
         } else {
           Swal.fire({
-            title: 'Ups! Hubo un problema con la matrícula.',
+            title: 'Ups! Hubo un problema administrativo.',
             text: 'Por favor, ponte en contacto con la administración.',
             icon: 'warning',
             showCancelButton: false,
