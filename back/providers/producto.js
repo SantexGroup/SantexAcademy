@@ -1,11 +1,33 @@
+const { Op } = require('sequelize');
 const { Producto } = require('../models');
 
-const createProduct = async (producto) => {
+const createProduct = async (data) => {
+  const { image, ...restOfData } = data;
   try {
-    const newProduct= await Producto.create(producto);
+    const existingDeletedProduct = await Producto.findOne({
+      where: {
+        [Op.and]: [
+          { deletedAt:  null } , // Buscar registros eliminados
+          { name: restOfData.name },
+        ],
+      },
+    });
+    if (existingDeletedProduct) {
+      // Borrar el registro eliminado lógicamente
+      await existingDeletedProduct.destroy();
+    }
+
+    const newProduct = await Producto.create({
+      image,
+      ...restOfData,
+    });
+
     return newProduct;
   } catch (err) {
-    console.error('Error creating product', err);
+    console.error(
+      "The organization could not be created due to an error.",
+      err
+    );
     throw err;
   }
 };
@@ -31,16 +53,24 @@ const getAllProducts = async () => {
 };
 
 const updateProduct = async (id, producto) => {
-  try {
-    const updatedProduct = await Producto.update(producto, {
-      where: { id },
-    });
-    return updatedProduct;
-  } catch (err) {
-    console.error('Error updating product', err);
-    throw err;
-  }
-};
+    try {
+      const affectedRows = await Producto.update(producto, {
+        where: { id, deletedAt: null },
+        returning: true,
+      });
+      if (!affectedRows) {
+        throw new Error("No se encontrò el registro.");
+      }
+      return affectedRows;
+    } catch (err) {
+      console.error(
+        "The product could not be updated due to an error.",
+        err
+      );
+      throw err;
+    }
+  };
+  
 
 const deleteProduct = async (id) => {
   try {
