@@ -150,6 +150,7 @@ export class ModificarArticuloComponent implements OnInit {
     //dejar de visualizar las imagenes cuando suba otra
     const files = event.target.files;
     this.images = files;
+    this.uploadedImages.length = 0;
     if (files) {
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
@@ -157,12 +158,14 @@ export class ModificarArticuloComponent implements OnInit {
           const reader = new FileReader();
           reader.readAsDataURL(file);
           reader.onload = () => {
-            this.uploadedImages.length = 0;
             this.uploadedImages.push(reader.result as string);
+            
           };
         }
       }
+    
     }
+    console.log("imágenes reemplazo: " + this.uploadedImages)
   }
 
   getIdUser() {    

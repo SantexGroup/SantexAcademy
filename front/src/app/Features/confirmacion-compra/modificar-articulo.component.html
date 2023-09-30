@@ -44,6 +44,13 @@
                 <div class="campo">
                     <label for="imagenes">Cargar Imágenes del Producto:</label>
                     <input type="file" id="imagenes" name="images" formControlName="images" (change)="onFileSelected($event)" accept="image/*"multiple />
+                    <div class="imagenes-container">
+                        <div class="imagenes">
+                            <div class="imagen" *ngFor="let image of uploadedImages">
+                                <img [src]="image" alt="Imagen cargada"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="campo">
@@ -56,7 +63,7 @@
             </div>
 
 
-            <div class="botones-container">
+            <div class="botones-container ">
                 <input (click)="modificarProducto()" class="subir-boton" type="button" value="Modificar Producto" [disabled]="formUp.invalid"/>
             </div>
             <div *ngIf="mensajeRegistro" class="mensaje">
@@ -66,13 +73,6 @@
     </form>
 </div>
 
-<div class="imagenes-container">
-    <div class="imagenes">
-        <div class="imagen" *ngFor="let image of uploadedImages">
-            <img [src]="image" alt="Imagen cargada" />
-        </div>
-    </div>
-</div>
 
+<app-footer class="fixed-bottom"></app-footer>
 </div>
-<app-footer></app-footer>
