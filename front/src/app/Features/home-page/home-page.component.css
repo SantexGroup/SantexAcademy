@@ -1,0 +1,21 @@
+#general {
+    display: flex;
+    justify-content: center;
+    height: 80%;
+}
+
+#carouselExampleIndicators {
+    margin: 5%;
+    height: 80%;
+    width: 90%;
+}
+
+img {
+    height: 170px;
+    width: 150px;
+}
+
+#id {
+    color: black;
+    background-color: black;
+}

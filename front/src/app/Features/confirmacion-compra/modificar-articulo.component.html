@@ -42,7 +42,8 @@
                 </div>
 
                 <div class="campo">
-                    <label for="imagenes">Cargar Imágenes del Producto:</label>
+                    <label>Cargar Imágenes del Producto:</label>
+                    <label id="botonCargar"for="imagenes">{{textoCarga}}</label>
                     <input type="file" id="imagenes" name="images" formControlName="images" (change)="onFileSelected($event)" accept="image/*"multiple />
                     <div class="imagenes-container">
                         <div class="imagenes">

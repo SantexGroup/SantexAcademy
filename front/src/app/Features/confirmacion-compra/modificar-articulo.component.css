@@ -78,6 +78,7 @@
     border-radius: 4px;
     transition: background-color 0.3s, color 0.3s;
     margin: 3%;
+    cursor: pointer;
   }
   
   .formulario .subir-boton:hover {
@@ -113,9 +114,7 @@
     display: flex;
     width: 100%;
     margin: 1%;
-    gap: 10px;
-    justify-content:first baseline;
-    
+    gap: 10px;    
   }
   
   .imagen {
@@ -156,3 +155,29 @@
     text-align: center; 
     font-weight: bold;
   }
+
+
+
+
+input[type="file"] {
+    display: none;
+}
+
+#botonCargar {
+  background-color: #d68a96;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  width: max-content;
+  font-weight: 400;
+  color: white;
+  border: none;
+  border-radius: 4px;
+ }
+
+ #botonCargar:hover {
+  background-color: grey;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+ }

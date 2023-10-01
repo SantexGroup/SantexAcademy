@@ -30,6 +30,7 @@ export class ModificarArticuloComponent implements OnInit {
   envio1: string = '';
   envio2: string = '';
   envios: string[] = ['Envío a domicilio', 'Buscar en local']
+  textoCarga: string = '';
   servidor: string = environment.API_URL + '/images/';
   
 
@@ -95,6 +96,9 @@ export class ModificarArticuloComponent implements OnInit {
             for (let i = 0; i < imagesProd.length; i++){
               this.uploadedImages.push(this.servidor + imagesProd[i].url);
             }
+          }
+          if (res) {
+            this.textoCarga = '(' + JSON.stringify(this.uploadedImages.length) + ') Imágenes seleccionadas'
           }
         })        
       }      
@@ -163,13 +167,13 @@ export class ModificarArticuloComponent implements OnInit {
           reader.readAsDataURL(file);
           reader.onload = () => {
             this.uploadedImages.push(reader.result as string);
-            
-          };
+          }; 
         }
-      }
-    
+        if (i == files.length-1) {
+          this.textoCarga = '(' + files.length + ') Imágenes seleccionadas'
+        }
+      }    
     }
-    console.log("imágenes reemplazo: " + this.uploadedImages)
   }
 
   getIdUser() {    
