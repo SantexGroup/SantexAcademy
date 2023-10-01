@@ -16,7 +16,7 @@ import { HabilitarmatriculaDirective } from 'src/app/directivas/habilitarmatricu
 import { PerfilAlumnoComponent} from './perfil-alumno/perfil-alumno.component';
 import { PerfilAlumnoEditarComponent } from './perfil-alumno-editar/perfil-alumno-editar.component';
 import { PerfilDocenteComponent } from './perfil-docente/perfil-docente.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HabilitardocenteDirective } from 'src/app/directivas/habilitardocente.directive';
 import { DocenteespecialidadComponent } from './docenteespecialidad/docenteespecialidad.component';
 import { DocentecursoComponent } from './docentecurso/docentecurso.component';
@@ -48,7 +48,8 @@ import { AlumnoasistenciaComponent } from './alumnoasistencia/alumnoasistencia.c
   imports: [
     CommonModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     QuienessomosComponent, //Exporto el componente de quienes somos para poder usarlo desde otro lado
@@ -57,7 +58,10 @@ import { AlumnoasistenciaComponent } from './alumnoasistencia/alumnoasistencia.c
     IntegranteComponent,
     AdminComponent,
     PerfilAlumnoComponent,
-    PerfilAlumnoEditarComponent
+    PerfilAlumnoEditarComponent,
+    DocenteespecialidadComponent,
+    DocentecursoComponent,
+    AlumnoasistenciaComponent
   ]
 })
 export class PagesModule { }

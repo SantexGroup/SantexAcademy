@@ -6,7 +6,7 @@ export interface Docente {
     id?: number;
     UserDocente?: User; 
     idusuario?: number;
-    //Especialidad?: Especialidad,
+    Especialidad?: Especialidad,
     idespecialidad?: number;
     habilitado?: boolean;
     estado?: string;

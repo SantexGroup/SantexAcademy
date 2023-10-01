@@ -50,10 +50,31 @@ const updateDocente = async (id, body) => {
   }
 };
 
+const getDocente = async (id) => {
+  try {
+    const user = await Docente.findByPk(id, {
+      include: [
+        {
+          model: User,
+          as: 'UserDocente', 
+        },
+        {
+          model: Especialidad,
+          as: 'Especialidad',  
+        },
+      ],
+    });
+    return user;
+  } catch (error) {
+    throw new Error('Hubo un error al obtener el docente.');
+  }
+};
+
 module.exports = {
   allDocentes,
   createDocente,
-  updateDocente
+  updateDocente,
+  getDocente
 };
 
 /*

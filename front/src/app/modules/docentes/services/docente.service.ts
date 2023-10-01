@@ -17,8 +17,16 @@ export class DocenteService {
     return this.http.get<Docente[]>(`${this.baseUrl}docente`)
   }
 
+  getDocentePorId(id: number): Observable<Docente>{
+    return this.http.get<Docente>(`${this.baseUrl}docente/${ id }`)
+  }
+
   addDocente(docente: Docente): Observable<Docente> {
     return this.http.post<Docente>(`${this.baseUrl}docente`, docente);
+  }
+
+  editDocente( docente: Docente): Observable<Docente> {
+    return this.http.put<Docente>(`${ this.baseUrl }docente/${docente.id}`, docente)
   }
 
   habilitardocente( docente: Docente): Observable<Docente> {

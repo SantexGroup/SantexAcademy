@@ -36,8 +36,21 @@ const updateDocente = async (req, res, next) => {
   }
 };
 
+const getDocente = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const docente = await docenteService.getDocente(id);
+    res.status(200).json(docente);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    next(error);
+  }
+};
+
 module.exports = {
     allDocentes,
     createDocente,
-    updateDocente
+    updateDocente,
+    getDocente
 };
