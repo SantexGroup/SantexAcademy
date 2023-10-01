@@ -60,4 +60,43 @@ export class TareasVoluntarioComponent implements OnInit {
     };
   }    
 
+  desinscribirVoluntario(tarea:Tarea):void{
+    
+    if(this.datosVoluntario){
+ 
+       Swal.fire({
+         title: 'Estas seguro/a?',
+         text: "Deseas desinscribirte a la tarea: "+tarea.name+"?",
+         icon: 'warning',
+         iconColor:'#d33',
+         showCancelButton: true,
+         confirmButtonColor: '#d33',
+         cancelButtonColor: '#3085d6',
+         cancelButtonText: 'No, Cancelar',
+         confirmButtonText: 'Si'
+       }).then((result) => {
+         if (result.isConfirmed) {
+           this.tareaService.desinscribirVoluntario(tarea.id!,this.datosVoluntario?.id!).subscribe({
+             next:(res)=>{
+               Swal.fire(
+                 'Ok!',
+                 `Te desinscribiste a la tarea: ${tarea.name}`,
+                 'success'
+               );
+               this.voluntarioService.setDatosVoluntario = res;
+             },
+             error:()=>{
+               Swal.fire(
+                 'Error',
+                 'No se pudo realizar la inscripción.',
+                 'error'
+               );
+             }
+             });
+           };
+           
+         })
+     };
+   }    
+
 }
