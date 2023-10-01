@@ -6,6 +6,8 @@ import { CursosService } from '../../cursos/services/cursos.service';
 import { Router } from '@angular/router';
 import { Matricula } from '../../matriculas/interfaces/interfaces';
 import { MatriculasService } from '../../matriculas/services/matriculas.service';
+import { DocenteService } from '../../docentes/services/docente.service';
+import { Docente } from '../../docentes/interfaces/docente';
 
 @Component({
   selector: 'app-admin',
@@ -17,6 +19,7 @@ export class AdminComponent implements OnInit {
   cursos: Curso[] = [];
   errorMensaje: string | undefined;
   curso!: Curso;
+  
   matriculas: Matricula[] = [];
   searchUser: string = '';
   usuariosFiltrados: any[] = [];
@@ -33,12 +36,20 @@ export class AdminComponent implements OnInit {
   totalMatriculas: number = 0;
   matriculasMostradas: number = 0;
 
+  searchDocente: string = '';
+  docentesFiltrados: any[] = [];
+  totalDocentes: number = 0;
+  docentesMostrados: number = 0;
+  
+  docentes: Docente[] = [];
+
   constructor(
     private usersService: UsersService,
     private cursoService: CursosService,
     private router: Router,
     private cdr: ChangeDetectorRef,
-    private matriculasService: MatriculasService
+    private matriculasService: MatriculasService,
+    private docentesService: DocenteService
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +57,7 @@ export class AdminComponent implements OnInit {
     this.obtenerUsuarios();
     this.obtenerCursos();
     this.obtenerMatriculas(); //método para obtener matriculas en estado = 'A' para gestionar!
+    this.obtenerDocentes();
   }
 
   obtenerCursos(){
@@ -99,6 +111,23 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  obtenerDocentes(){
+    this.docentesService.getDocentes().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.totalDocentes = response.length;
+        this.docentesMostrados = this.totalDocentes; 
+        this.docentes = response;
+        this.docentesFiltrados = this.docentes;
+      },
+      error: (error) => {
+        console.error(error);
+        this.errorMensaje =
+          'Ocurrió un error al obtener los docentes. Por favor, inténtalo de nuevo más tarde.';
+      },
+    });
+  }
+
   deleteCurso(curso: number) {
     console.log("Llamando al eliminar");
     this.cursoService.deleteCurso(curso).subscribe((resp) => {
@@ -132,7 +161,17 @@ export class AdminComponent implements OnInit {
      this.obtenerMatriculas();
     });
   }
-  
+
+  habilitarDocente(docente: Docente, estahabilitado: boolean) {
+    console.log(docente);
+    console.log(estahabilitado);
+    docente.habilitado = estahabilitado; // Asignar el valor a la propiedad 'habilitado' del objeto 'docente' pasado como parámetro
+
+    this.docentesService.habilitardocente(docente).subscribe((resp) => {
+     this.obtenerDocentes();
+    });
+  }
+
   activardesactivar(curso: Curso, estahabilitado: boolean) {
     console.log(curso);
     console.log(estahabilitado);
@@ -144,6 +183,10 @@ export class AdminComponent implements OnInit {
   }
 
 
+  buscarDocentes() {
+
+  }
+  
   buscarUsuariosPorNombre() {
     console.log("Click en buscar!!!!");
   
