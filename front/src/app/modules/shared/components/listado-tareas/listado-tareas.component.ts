@@ -16,6 +16,7 @@ export class ListadoTareasComponent implements OnInit, OnChanges {
   @Input() datosVoluntario: Voluntario | null = null;
   
   @Output() tareaInscripcion = new EventEmitter<Tarea>();
+  @Output() tareaDesinscripcion = new EventEmitter<Tarea>();
   
   listadoTareas:Tarea[] = [];
   
@@ -68,6 +69,10 @@ export class ListadoTareasComponent implements OnInit, OnChanges {
     }
     return resultado;
 
+  }
+
+  desinscribirVoluntario(tarea:Tarea):void{
+    this.tareaDesinscripcion.emit(tarea);
   }
   
 }

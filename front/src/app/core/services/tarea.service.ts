@@ -49,6 +49,16 @@ export class TareaService {
 
   }
 
+  desinscribirVoluntario(idTarea:number, idVoluntario:number):Observable<Voluntario>{
+
+    const parametros = {
+      idVolunteer:idVoluntario,
+      idTarea
+    }
+
+    return this.apiService.put('/volunteer/unsuscribe', parametros);
+  }
+
   getInscriptos(idTarea:number):Observable<Voluntario[]>{
     
     return this.apiService.get('/tarea/inscriptos/'+idTarea);
