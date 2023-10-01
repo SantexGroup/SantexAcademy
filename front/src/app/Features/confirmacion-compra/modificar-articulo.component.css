@@ -111,11 +111,10 @@
   
   .imagenes {
     display: flex;
-    flex-wrap: wrap;
     width: 100%;
     margin: 1%;
     gap: 10px;
-    justify-content: space-between;
+    justify-content:first baseline;
     
   }
   
