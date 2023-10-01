@@ -26,13 +26,16 @@ export class HomePageComponent implements OnInit {
           if(productos[i].Images[0].url){
             const imageName = productos[i].Images[0].url;
             this.images.push(this.servidor + imageName);
-            console.log("imágenes: " + this.images[0]);
+            console.log("imágenes: " + this.images);
             this.listArticulos.push(productos[i]);
           }
         }
       }
     })   
   }
-  
+  verMas(id: string) {
+    localStorage.setItem( 'idProd', JSON.stringify(id));
+    this.router.navigateByUrl('/vista-articulo');
+  }
 
 }

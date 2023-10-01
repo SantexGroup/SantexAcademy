@@ -4,6 +4,7 @@
 <div class="formulario" *ngIf="confVendedor">
     <div id="h2">
         <h2 class="animate__animated animate__backInDown">Modificar Artículo</h2>
+        <hr id="linea" class="animate__animated animate__slideInRight">
     </div>
 
     <form action="#" class="form" method="post" id="form-art"  enctype="multipart/form-data" [formGroup]="formUp">
@@ -12,17 +13,24 @@
             <!-- Columna izquierda -->
             <div class="media_columna">
                 <div class="campo">
-                    <label for="nombre">Nombre del producto (indique el nombre nuevo):</label>
+                    <label for="nombre">Nombre del producto 
+                        <span>(indique un nombre nuevo)</span>
+
+                        </label>
                     <input formControlName="nomReg" type="text" id="nombre" name="nombre" value="{{nomArt}}"required>
                 </div>
 
                 <div class="campo">
-                    <label for="descripcion">Descripción (ingrese su nueva descripción):</label>
+                    <label for="descripcion">Descripción 
+                        <span>(ingrese una nueva descripción)</span>
+                    </label>
                     <textarea formControlName="desReg" id="descripcion" name="descripcion" rows="4" value="{{descArt}}" required></textarea>
                 </div>
 
                 <div class="campo">
-                    <label for="precio">Precio (ingrese el precio actualizado):</label>
+                    <label for="precio">Precio 
+                        <span>(ingrese el precio actualizado)</span>
+                    </label>
                     <div class="precio-input">
                         <span class="peso-sign">$</span>
                         <input formControlName="preReg" type="number" id="precio" name="precio" step="1.00" value="{{precioArt}}" required>
@@ -34,7 +42,9 @@
             <div class="media_columna_der">
 
                 <div class="campo">
-                    <label for="categorias">Categorias (seleccione una categoría nueva):</label>
+                    <label for="categorias">Categorias 
+                        <span>(seleccione una categoría nueva)</span>
+                    </label>
                     <select formControlName="catReg" name="categoria">
                         <option value="0">{{catArt}}</option>
                         <option *ngFor="let categoria of cat" [value]="categoria.id">{{ categoria.name.charAt(0).toUpperCase() + categoria.name.slice(1) }}</option>
@@ -43,7 +53,8 @@
                 </div>
 
                 <div class="campo">
-                    <label>Cargar Imágenes (imágenes a reemplazar):</label>
+                    <label>Cargar Imágenes <span>(imágenes a reemplazar) </span>
+                    </label>
                     <label id="botonCargar"for="imagenes">{{textoCarga}}</label>
                     <input type="file" id="imagenes" name="images" formControlName="images" (change)="onFileSelected($event)" accept="image/*"multiple />
                     <div class="imagenes-container">
@@ -56,7 +67,9 @@
                 </div>
 
                 <div class="campo">
-                    <label for="envio">Opción de envío (nueva opción de envío):</label>
+                    <label for="envio">Opción de envío 
+                        <span>(nueva opción de envío)</span>
+                    </label>
                     <select formControlName="envReg" id="envio" name="envio" required>
                         <option *ngFor="let envio of envios" [value]="envios.indexOf(envio)">{{ envio }}</option>
                     </select>

@@ -5,40 +5,219 @@
 <div id="descripcion">
   <h2 class="animate__animated animate__backInDown">Alquiler de bienes muebles para eventos</h2>
 </div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="carousel slide multi-item-carousel" id="theCarousel">
-      <div class="carousel-inner">
-        <div class="item active">
-          <div class="col-xs-4"><a href="#1"><img [src]="images[0]"></a></div>
+
+<div id="carouselExampleDark" class="carousel carousel-dark slide">  
+  <div class="carousel-inner">
+    <div id="contenedor" class="carousel-item active" data-bs-interval="2000">
+        <div id="divArt" class="animate__animated animate__backInRight" >
+          <div id="divTar" style="width: 100%;">
+            <div id="tarjetas" class="card-body">
+              <div id="divIma">
+                <img id="FotoArticulo" [src]="images[0]">
+              </div>
+              <h5 class="card-title">{{ listArticulos[0].nombre }}</h5>
+              <p>{{ listArticulos[0].detalles }}</p>
+              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[0].precio }}</h6>
+              <button (click)="verMas(listArticulos[0].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
+            </div>
+          </div>
         </div>
-        <div class="item">
-          <div class="col-xs-4"><a href="#1"><img src="https://source.unsplash.com/300x300/?bikni"></a></div>
-        </div>
-        <div class="item">
-          <div class="col-xs-4"><a href="#1"><img src="https://source.unsplash.com/300x300/?beauty"></a></div>
-        </div>
-        <div class="item">
-          <div class="col-xs-4"><a href="#1"><img src="https://source.unsplash.com/300x300/?yoga"></a></div>
-        </div>
-        <div class="item">
-          <div class="col-xs-4"><a href="#1"><img src="https://source.unsplash.com/300x300/?natural"></a></div>
-        </div>
-        <div class="item">
-          <div class="col-xs-4"><a href="#1"><img src="https://source.unsplash.com/300x300/?fitness"></a></div>
-        </div>
-        <!-- add  more items here -->
-        <!-- Example item start:  -->
-        
-        <div class="item">
-          <div class="col-xs-4"><a href="#1"><img src="https://source.unsplash.com/300x300/?cycling"></a></div>
-        </div>
-        
-        <!--  Example item end -->
       </div>
-      <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-      <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-    </div>
+      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
+        <div id="divArt" class="animate__animated animate__backInRight" >
+          <div id="divTar" style="width: 100%;">
+            <div id="tarjetas" class="card-body">
+              <div id="divIma">
+                <img id="FotoArticulo" [src]="images[1]">
+              </div>
+              <h5 class="card-title">{{ listArticulos[1].nombre }}</h5>
+              <p>{{ listArticulos[1].detalles }}</p>
+              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[1].precio }}</h6>
+              <button (click)="verMas(listArticulos[1].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
+        <div id="divArt" class="animate__animated animate__backInRight" >
+          <div id="divTar" style="width: 100%;">
+            <div id="tarjetas" class="card-body">
+              <div id="divIma">
+                <img id="FotoArticulo" [src]="images[2]">
+              </div>
+              <h5 class="card-title">{{ listArticulos[2].nombre }}</h5>
+              <p>{{ listArticulos[2].detalles }}</p>
+              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[2].precio }}</h6>
+              <button (click)="verMas(listArticulos[2].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
+        <div id="divArt" class="animate__animated animate__backInRight" >
+          <div id="divTar" style="width: 100%;">
+            <div id="tarjetas" class="card-body">
+              <div id="divIma">
+                <img id="FotoArticulo" [src]="images[3]">
+              </div>
+              <h5 class="card-title">{{ listArticulos[3].nombre }}</h5>
+              <p>{{ listArticulos[3].detalles }}</p>
+              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[3].precio }}</h6>
+              <button (click)="verMas(listArticulos[3].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
+        <div id="divArt" class="animate__animated animate__backInRight" >
+          <div id="divTar" style="width: 100%;">
+            <div id="tarjetas" class="card-body">
+              <div id="divIma">
+                <img id="FotoArticulo" [src]="images[4]">
+              </div>
+              <h5 class="card-title">{{ listArticulos[4].nombre }}</h5>
+              <p>{{ listArticulos[4].detalles }}</p>
+              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[4].precio }}</h6>
+              <button (click)="verMas(listArticulos[4].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
+        <div id="divArt" class="animate__animated animate__backInRight" >
+          <div id="divTar" style="width: 100%;">
+            <div id="tarjetas" class="card-body">
+              <div id="divIma">
+                <img id="FotoArticulo" [src]="images[5]">
+              </div>
+              <h5 class="card-title">{{ listArticulos[5].nombre }}</h5>
+              <p>{{ listArticulos[5].detalles }}</p>
+              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[5].precio }}</h6>
+              <button (click)="verMas(listArticulos[5].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
+        <div id="divArt" class="animate__animated animate__backInRight" >
+          <div id="divTar" style="width: 100%;">
+            <div id="tarjetas" class="card-body">
+              <div id="divIma">
+                <img id="FotoArticulo" [src]="images[6]">
+              </div>
+              <h5 class="card-title">{{ listArticulos[6].nombre }}</h5>
+              <p>{{ listArticulos[6].detalles }}</p>
+              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[6].precio }}</h6>
+              <button (click)="verMas(listArticulos[6].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
+        <div id="divArt" class="animate__animated animate__backInRight" >
+          <div id="divTar" style="width: 100%;">
+            <div id="tarjetas" class="card-body">
+              <div id="divIma">
+                <img id="FotoArticulo" [src]="images[7]">
+              </div>
+              <h5 class="card-title">{{ listArticulos[7].nombre }}</h5>
+              <p>{{ listArticulos[7].detalles }}</p>
+              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[7].precio }}</h6>
+              <button (click)="verMas(listArticulos[7].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
+        <div id="divArt" class="animate__animated animate__backInRight" >
+          <div id="divTar" style="width: 100%;">
+            <div id="tarjetas" class="card-body">
+              <div id="divIma">
+                <img id="FotoArticulo" [src]="images[8]">
+              </div>
+              <h5 class="card-title">{{ listArticulos[8].nombre }}</h5>
+              <p>{{ listArticulos[8].detalles }}</p>
+              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[8].precio }}</h6>
+              <button (click)="verMas(listArticulos[8].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
+        <div id="divArt" class="animate__animated animate__backInRight" >
+          <div id="divTar" style="width: 100%;">
+            <div id="tarjetas" class="card-body">
+              <div id="divIma">
+                <img id="FotoArticulo" [src]="images[9]">
+              </div>
+              <h5 class="card-title">{{ listArticulos[9].nombre }}</h5>
+              <p>{{ listArticulos[9].detalles }}</p>
+              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[9].precio }}</h6>
+              <button (click)="verMas(listArticulos[9].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  <div id="botones" class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5" aria-label="Slide 6"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="6" aria-label="Slide 7"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="7" aria-label="Slide 8"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="8" aria-label="Slide 9"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="9" aria-label="Slide 10"></button>
   </div>
 </div>
-<app-footer></app-footer>
+
+<!-- <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="10000">
+      <img src="..." class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="..." class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the third slide.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div> -->
+
+<app-footer class="fixed-bottom"></app-footer>
