@@ -28,7 +28,15 @@ input {
     margin: 10px 0;
     box-sizing: border-box;
     border-color: var(--color-3);
+}
 
+select {
+    font-size: 14px;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border-color: var(--color-3);
 }
 
 textarea {
@@ -38,4 +46,10 @@ textarea {
 .btn-custom {
     background-color: VAR(--color-primary);
     color: var(--color-0);
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

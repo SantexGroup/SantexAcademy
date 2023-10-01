@@ -9,16 +9,16 @@ import { User } from '../models/user.model';
 })
 export class UserService {
 
-  private apiUrl = "http://localhost:4001/api";
+  private apiUrl = baseURL;
 
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiUrl}/user`);
+    return this.http.get<User[]>(`${this.apiUrl}/api/user`);
   }
 
   getUserDetails(userId: string): Observable<any> {    
-    const url = `${this.apiUrl}/users/${userId}`;
+    const url = `${this.apiUrl}/api/user/${userId}`;
     return this.http.get(url);
   }
 }

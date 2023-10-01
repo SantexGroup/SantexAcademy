@@ -4,3 +4,9 @@
     justify-content: center;
     padding: var(--font-size-1);
 }
+
+.btn-info {
+    color: var(--color-0) ;
+    background-color: var(--color-4);
+    padding: var(--font-size-1);
+}
