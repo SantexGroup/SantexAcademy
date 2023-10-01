@@ -59,7 +59,7 @@
                         <div class="imagenes-container">
                             <div class="imagenes">
                                 <div class="imagen" *ngFor="let image of uploadedImages">
-                                    <img [src]="image" alt="Imagen cargada"/>
+                                    <img (click)="quitarImagen(image)"[src]="image" alt="Imagen cargada"/>
                                 </div>
                             </div>
                         </div>
