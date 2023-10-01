@@ -1,10 +1,9 @@
 const { Usuario } = require("../models");
-const { CestaRecompensas } = require("../models");
 const { sequelize } = require("../config/db-config");
 const { Op } = require("sequelize");
 const { comparePassword, hashPassword } = require("../config/crypt");
 
-const loginUser = async (email,  password) => {
+const loginUser = async (email, password) => {
   try {
     const user = await Usuario.findOne({
       where: {
@@ -20,7 +19,6 @@ const loginUser = async (email,  password) => {
     if (!matchPassword) {
       throw new Error("Invalid Credentials");
     }
-
 
     return user;
   } catch (error) {
@@ -113,7 +111,6 @@ const getMyProfile = async (id) => {
         id: id,
         deletedAt: null,
       },
-      include: [{ model: CestaRecompensas, as: "cestaRecompensa" }],
       exclude: ["password"],
       attributes: { exclude: ["deletedAt"] },
     });
@@ -139,26 +136,11 @@ const updateMyUser = async (usuario, id) => {
 
 const deleteUser = async (id) => {
   try {
-    const user = await Usuario.findOne({
+    await Usuario.destroy({
       where: {
         id,
-        deletedAt: null,
       },
     });
-
-    if (!user) {
-      throw new Error("User not found");
-    }
-
-    // Aplicar borrado lógico estableciendo la columna deletedAt
-    await Usuario.update(
-      { deletedAt: new Date(), email: "" },
-      { where: { id } }
-    );
-
-    await CestaRecompensas.destroy({ where: { id: id } });
-
-    return user;
   } catch (error) {
     console.error("Ocurrió un error al eliminar el usuario.", error);
     throw error;
