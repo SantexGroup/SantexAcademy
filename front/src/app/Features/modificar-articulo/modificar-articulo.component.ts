@@ -83,8 +83,8 @@ export class ModificarArticuloComponent implements OnInit {
           for (let i = 0; i < imagesProd.length; i++){this.uploadedImages.push(this.servidor + imagesProd[i].url);
           }
         }
-        if (res) {this.textoCarga = '(' + JSON.stringify(this.uploadedImages.length) + ') Imágenes seleccionadas';
-        }
+        if (res) {this.textoCarga = '(' + JSON.stringify(this.uploadedImages.length) + ') Imágenes seleccionadas';}
+        if (!res.articulos.Images) {this.textoCarga = '(0) Imágenes seleccionadas'};
       })        
     }      
   }
@@ -126,7 +126,9 @@ export class ModificarArticuloComponent implements OnInit {
         if (image == this.uploadedImages[i]) {
           this.uploadedImages.splice(i, 1);
         }
+        this.textoCarga = '(' + (this.uploadedImages.length) + ') Imágenes seleccionadas'
       }
+      
     }    
   }
   modificarProducto(): void { 
