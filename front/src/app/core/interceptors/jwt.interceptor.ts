@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
   HttpErrorResponse
 } from '@angular/common/http';
-import { Observable, catchError, take, throwError } from 'rxjs';
+import { Observable, catchError, finalize, take, throwError } from 'rxjs';
 import { VoluntarioService } from '../services/voluntario.service';
 import { Credencial } from '../interfaces/credencial';
 import { ApiService } from '../http/api.service';
@@ -14,17 +14,20 @@ import { OrganizacionService } from '../services/organizacion.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from '../services/admin.service';
+import { SpinnerService } from '../services/spinner.service';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
   constructor(private voluntarioService:VoluntarioService, private organizacionService:OrganizacionService,private router:Router, private matSnackBar:MatSnackBar,
-    private adminService:AdminService) {}
+    private adminService:AdminService, private spinnerService:SpinnerService) {}
   credencialesVoluntario:Credencial|null = null;
   credencialesOrganizacion:Credencial|null = null;
   credencialesAdmin:Credencial|null = null;
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     
+    this.spinnerService.mostrar();
+
     this.voluntarioService.getCredencialesVoluntario.pipe(take(1)).subscribe({
       next:(res)=>this.credencialesVoluntario = res
     });
@@ -57,7 +60,9 @@ export class JwtInterceptor implements HttpInterceptor {
         
         return throwError(()=>error); 
       }
-      ));  
+      ), finalize(()=>{
+        this.spinnerService.ocultar();
+      }));  
     }
     else if(this.credencialesOrganizacion!= null){
       request = request.clone({
@@ -76,6 +81,8 @@ export class JwtInterceptor implements HttpInterceptor {
         }
 
         return throwError(()=>err);
+      }), finalize(()=>{
+          this.spinnerService.ocultar();
       }));    
     }
     else if(this.credencialesAdmin != null){
@@ -95,10 +102,14 @@ export class JwtInterceptor implements HttpInterceptor {
         }
 
         return throwError(()=>err);
+      }), finalize(()=>{
+        this.spinnerService.ocultar();
       }));    
     }
     else{
-      return next.handle(request);
+      return next.handle(request).pipe(finalize(()=>{
+        this.spinnerService.ocultar();
+      }));
     }
     
   }
