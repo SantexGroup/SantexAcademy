@@ -4,6 +4,34 @@
     height: 80%;
 }
 
+#titulo {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    color: #d68a96;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+#descripcion {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    color: #d68a96;
+    margin: 0;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: large;
+}
+
+h2 {
+    --animate-duration: 1.5s;
+}
+
 #carouselExampleIndicators {
     margin: 5%;
     height: 80%;

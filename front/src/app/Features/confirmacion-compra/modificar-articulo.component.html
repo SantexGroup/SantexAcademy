@@ -2,7 +2,9 @@
 <p *ngIf="!confVendedor">¡Para subir un articulo nuevo debe ser vendedor!</p>
 <div id="general">
 <div class="formulario" *ngIf="confVendedor">
-    <h2>Modificar Artículo</h2>
+    <div id="h2">
+        <h2 class="animate__animated animate__backInDown">Modificar Artículo</h2>
+    </div>
 
     <form action="#" class="form" method="post" id="form-art"  enctype="multipart/form-data" [formGroup]="formUp">
         <div class="row">
@@ -10,17 +12,17 @@
             <!-- Columna izquierda -->
             <div class="media_columna">
                 <div class="campo">
-                    <label for="nombre">Nombre del Producto:</label>
+                    <label for="nombre">Nombre del producto (indique el nombre nuevo):</label>
                     <input formControlName="nomReg" type="text" id="nombre" name="nombre" value="{{nomArt}}"required>
                 </div>
 
                 <div class="campo">
-                    <label for="descripcion">Descripción del Producto:</label>
+                    <label for="descripcion">Descripción (ingrese su nueva descripción):</label>
                     <textarea formControlName="desReg" id="descripcion" name="descripcion" rows="4" value="{{descArt}}" required></textarea>
                 </div>
 
                 <div class="campo">
-                    <label for="precio">Precio del Producto:</label>
+                    <label for="precio">Precio (ingrese el precio actualizado):</label>
                     <div class="precio-input">
                         <span class="peso-sign">$</span>
                         <input formControlName="preReg" type="number" id="precio" name="precio" step="1.00" value="{{precioArt}}" required>
@@ -32,17 +34,16 @@
             <div class="media_columna_der">
 
                 <div class="campo">
-                    <label for="categorias">Categorias:</label>
+                    <label for="categorias">Categorias (seleccione una categoría nueva):</label>
                     <select formControlName="catReg" name="categoria">
                         <option value="0">{{catArt}}</option>
                         <option *ngFor="let categoria of cat" [value]="categoria.id">{{ categoria.name.charAt(0).toUpperCase() + categoria.name.slice(1) }}</option>
-                        <!-- <option [value]="categoria.id" selected>{{catArt}}</option> -->
                     </select>
                     <div class="select_arrow"></div>
                 </div>
 
                 <div class="campo">
-                    <label>Cargar Imágenes del Producto:</label>
+                    <label>Cargar Imágenes (imágenes a reemplazar):</label>
                     <label id="botonCargar"for="imagenes">{{textoCarga}}</label>
                     <input type="file" id="imagenes" name="images" formControlName="images" (change)="onFileSelected($event)" accept="image/*"multiple />
                     <div class="imagenes-container">
@@ -55,7 +56,7 @@
                 </div>
 
                 <div class="campo">
-                    <label for="envio">Opción de Envío:</label>
+                    <label for="envio">Opción de envío (nueva opción de envío):</label>
                     <select formControlName="envReg" id="envio" name="envio" required>
                         <option *ngFor="let envio of envios" [value]="envios.indexOf(envio)">{{ envio }}</option>
                     </select>
@@ -64,7 +65,7 @@
 
 
             <div class="botones-container ">
-                <input (click)="modificarProducto()" class="subir-boton" type="button" value="Modificar Producto" [disabled]="formUp.invalid"/>
+                <input (click)="modificarProducto()" class="subir-boton" type="button" value="Confirmar cambios" [disabled]="formUp.invalid"/>
             </div>
             <div *ngIf="mensajeRegistro" class="mensaje">
                 {{ mensajeRegistro }}

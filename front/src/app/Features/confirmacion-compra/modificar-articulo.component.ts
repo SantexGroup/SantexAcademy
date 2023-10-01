@@ -9,6 +9,7 @@ import { vistaArtIndServ } from 'src/app/core/services/vista-art-ind-serv.servic
 import { environment } from 'src/environments/environment';
 import { ModArtService } from 'src/app/core/services/mod-art.service';
 
+
 @Component({
   selector: 'app-modificar-articulo',
   templateUrl: './modificar-articulo.component.html',

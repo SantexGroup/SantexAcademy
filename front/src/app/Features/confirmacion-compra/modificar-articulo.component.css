@@ -23,9 +23,22 @@
   
   h2 {
     font-size: 30px;
+    font-weight: 700;
     margin-bottom: 20px;
     margin-top: 1%;
     text-align: center;
+    border-radius: 5px;
+    width: max-content;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-color: ;
+    color: #d68a96;
+    --animate-duration: 1.2s;
+  }
+
+  #h2 {
+    display: flex;
+    justify-content: center;
   }
   
 
