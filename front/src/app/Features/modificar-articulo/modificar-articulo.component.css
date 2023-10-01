@@ -1,202 +1,165 @@
+
+/* Cartel no logueados */
+p {
+  background-color: #f2f2f2; 
+  border: 1px solid #ff0000; 
+  padding: 10px;
+  border-radius: 5px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  font-size: 18px; 
+  color: #333; 
+  margin-top: 10px ; 
+  text-align: center; 
+  font-weight: bold;
+}
+/* General */
 #general {
   height: 60%;
 }
-
+/* Título */
+#titulo {
+  display:grid;
+  justify-content: center;
+}
+h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 0px;
+  margin-top: 1%;
+  text-align: center;
+  border-radius: 5px;
+  width: max-content;
+  padding-left: 3px;
+  padding-right: 3px;
+  color: #d68a96;
+  --animate-duration: 1.2s;
+}
 #linea {
  color: #d68a96;
  margin-top: 10px;
  margin-bottom: 30px;
  --animate-duration: 1.5s;
 }
-
+/* Formulario */
+.form {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #cccccc8a;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-weight: bold;
+}
+#form-art {
+  height: 100%;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+/* Columna izquierda */
+.media_columna {
+  flex-basis: 48%;
+  margin-bottom: 10px;
+}  
+.media_columna_der {
+  flex-basis: 48%;
+}  
+.media_columna_der .campo {
+  padding-bottom: 1%;
+}  
+.media_columna_der .campo input {
+  background-color: #d68a96;
+  color: white;
+}
+.campo label {
+  display: block;
+  margin-bottom: 5px;
+}
 span {
   color: grey;
   font-weight: 400;
 }
-
-.formulario{
-    margin-top: 5px;
-    height: 100%;
-  }
-  
-  #form-art {
-    height: 100%;
-  }
-
-  
-
-  .form {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #cccccc8a;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-weight: bold;
-  }
-  
-  h2 {
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 0px;
-    margin-top: 1%;
-    text-align: center;
-    border-radius: 5px;
-    width: max-content;
-    padding-left: 3px;
-    padding-right: 3px;
-    
-    color: #d68a96;
-    --animate-duration: 1.2s;
-    
-  }
-
-  #h2 {
-    display:grid;
-    justify-content: center;
-  }
-  
-
-
-  .campo label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input[type="text"],
-  input[type="number"],
-  textarea,
-  select {
+input[type="text"],
+input[type="number"],
+textarea,
+select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  
-  /* Columnas */
-  .row {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .media_columna {
-    flex-basis: 48%;
-    margin-bottom: 10px;
-  }
-  
-  .media_columna_der {
-    flex-basis: 48%;
-  }
-  
-  .media_columna_der .campo {
-    padding-bottom: 1%;
-  }
-  
-  .media_columna_der .campo input {
-    background-color: #d68a96;
-    color: white;
-  }
-  
-  /* Botones */
-  .formulario .subir-boton {
-    background-color: #d68a96;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
-    margin: 3%;
-    cursor: pointer;
-  }
-  
-  .formulario .subir-boton:hover {
-    background-color: #838383;
-    color: white;
-  }
-  
-  .botones-container {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: end;
-  }
-  
-  /* Mensaje */
-  .mensaje {
-    margin-top: 10px;
-  }
-  
-  /* Imágenes */
-  .imagenes-container {
-    display: flex;
-    align-items: center;
-    margin-top: 2%;
-    width: 100%;
-    height: 80px;
-    overflow: auto;
-    background-color: white;
-    border-radius: 5px;
-  }
-  
-  .imagenes {
-    display: flex;
-    width: 100%;
-    margin: 1%;
-    gap: 10px;    
-  }
-  
-  .imagen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-basis: calc(20% - 10px);
-    border: 2px solid #ccc;
-    margin-left: 1%;
-    margin-right: 1%;
-  }
-  
-  .imagen img {
-    width: 90%;
-    height: 90%;
-  }
-
-  .imagen img:hover {
-    cursor: pointer;
-    filter: grayscale(100%);
-    transition: filter 0.4s;
-  }
-  
-  /* Precio */
-  .precio-input {
-    display: flex;
-    align-items: center;
-  }
-  
-  .peso-sign {
-    margin-right: 5px;
-  }
-  
-  
-  p {
-    background-color: #f2f2f2; 
-    border: 1px solid #ff0000; 
-    padding: 10px;
-    border-radius: 5px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    font-size: 18px; 
-    color: #333; 
-    margin-top: 10px ; 
-    text-align: center; 
-    font-weight: bold;
-  }
-
-
-
-
+}  
+/* Botones */
+.formulario .subir-boton {
+  background-color: #d68a96;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+  margin: 3%;
+  cursor: pointer;
+}
+.formulario .subir-boton:hover {
+  background-color: #838383;
+  color: white;
+}
+.botones-container {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: end;
+}  
+/* Mensaje */
+.mensaje {
+  margin-top: 10px;
+} 
+/* Imágenes */
+.imagenes-container {
+  display: flex;
+  align-items: center;
+  margin-top: 2%;
+  width: 100%;
+  height: 80px;
+  overflow: auto;
+  background-color: white;
+  border-radius: 5px;
+} 
+.imagenes {
+  display: flex;
+  width: 100%;
+  margin: 1%;
+  gap: 10px;    
+}  
+.imagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: calc(20% - 10px);
+  border: 2px solid #ccc;
+  margin-left: 1%;
+  margin-right: 1%;
+}  
+.imagen img {
+  width: 90%;
+  height: 90%;
+}
+.imagen img:hover {
+  cursor: pointer;
+  filter: grayscale(100%);
+  transition: filter 0.4s;
+}  
+/* Precio */
+.precio-input {
+  display: flex;
+  align-items: center;
+}  
+.peso-sign {
+  margin-right: 5px;
+}
 input[type="file"] {
     display: none;
 }
-
 #botonCargar {
   background-color: #d68a96;
   padding-left: 10px;
@@ -208,12 +171,9 @@ input[type="file"] {
   color: white;
   border: none;
   border-radius: 4px;
- }
-
- #botonCargar:hover {
+}
+#botonCargar:hover {
   background-color: grey;
   transition: background-color 0.3s, color 0.3s;
   cursor: pointer;
- }
-
- 
+} 
