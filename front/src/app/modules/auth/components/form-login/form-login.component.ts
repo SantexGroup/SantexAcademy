@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Store } from '@ngrx/store';
+import { setToken, setUserType } from '../../../../core/auth.actions';
 @Component({
   selector: 'app-form-login',
   templateUrl: './form-login.component.html',
@@ -25,7 +26,8 @@ export class FormLoginComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private store: Store
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -47,12 +49,12 @@ export class FormLoginComponent implements OnInit {
 
       this.authService.loginVolunteer(userData).subscribe({
         next: (response) => {
-          this.authService.setAuthToken(response.token);
+          this.store.dispatch(setToken({ token: response.token }));
           this.onModalStatus = true;
           this.statusSession = 'success-loginV';
           this.routeBtnContinue = 'voluntariados';
           this.textBtnModal = 'Explorar Oportunidades';
-          this.authService.setUserType('vol');
+          this.store.dispatch(setUserType({ userType: 'vol' }));
         },
         error: (error) => {
           console.error('login error', error);
@@ -72,12 +74,12 @@ export class FormLoginComponent implements OnInit {
 
       this.authService.loginCordinator(userData).subscribe({
         next: (response) => {
-          this.authService.setAuthToken(response.token);
+          this.store.dispatch(setToken({ token: response.token }));
           this.onModalStatus = true;
           this.statusSession = 'success-loginO';
           this.routeBtnContinue = 'dashboard';
           this.textBtnModal = 'Ir al Dashboard';
-          this.authService.setUserType('org');
+          this.store.dispatch(setUserType({ userType: 'org' }));
         },
         error: (error) => {
           console.error('Login error', error);

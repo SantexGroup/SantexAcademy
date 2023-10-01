@@ -28,6 +28,17 @@ import { VolunteerCardComponent } from './components/volunteer-card/volunteer-ca
 import { OrganizationDetailsComponent } from './pages/organization-details/organization-details.component';
 import { VolunterIdComponent } from './pages/volunter-id/volunter-id.component';
 
+import { StoreModule, ActionReducer } from '@ngrx/store';
+import { authReducer } from './core/auth.reducer';
+import { localStorageSync } from 'ngrx-store-localstorage';
+import { ModalAplicationComponent } from './components/modal-aplication/modal-aplication.component';
+
+export function localStorageSyncReducer(
+  reducer: ActionReducer<any>
+): ActionReducer<any> {
+  return localStorageSync({ keys: ['auth'], rehydrate: true })(reducer);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +50,7 @@ import { VolunterIdComponent } from './pages/volunter-id/volunter-id.component';
     VolunteerCardComponent,
     OrganizationDetailsComponent,
     VolunterIdComponent,
+    ModalAplicationComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +67,12 @@ import { VolunterIdComponent } from './pages/volunter-id/volunter-id.component';
     MatCheckboxModule,
     MatDividerModule,
     MatTabsModule,
+    StoreModule.forRoot(
+      { auth: authReducer },
+      {
+        metaReducers: [localStorageSyncReducer],
+      }
+    ),
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

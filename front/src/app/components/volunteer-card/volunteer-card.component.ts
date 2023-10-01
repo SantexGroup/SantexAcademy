@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -7,9 +7,18 @@ import { Router } from '@angular/router';
   templateUrl: './volunteer-card.component.html',
   styleUrls: ['./volunteer-card.component.css'],
 })
-export class VolunteerCardComponent {
+export class VolunteerCardComponent implements OnInit {
   @Input() data: any = {};
+  idOrganization: string = '';
+  idVolunteering: string = '';
+  nameVol: string = '';
+  nameOrg: string = '';
+  openModalQuestion: boolean = false;
   constructor(private datePipe: DatePipe, private router: Router) {}
+
+  ngOnInit(): void {
+    console.log(this.data);
+  }
 
   formatCreatedAtDate(dateString: string): string {
     const createdAtDate = new Date(dateString);
@@ -35,6 +44,24 @@ export class VolunteerCardComponent {
         'dd/MM/yyyy'
       )}`;
     }
+  }
+
+  handleApplication(
+    idOrg: string,
+    idVol: string,
+    nameVol: string,
+    nameOrg: string
+  ) {
+    this.idOrganization = idOrg;
+    this.idVolunteering = idVol;
+    this.nameVol = nameVol;
+    this.nameOrg = nameOrg;
+
+    this.openModalQuestion = !this.openModalQuestion;
+  }
+
+  closeModalApplication() {
+    this.openModalQuestion = !this.openModalQuestion;
   }
 
   viewVolunteering(id: number) {

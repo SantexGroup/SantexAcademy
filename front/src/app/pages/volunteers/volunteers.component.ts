@@ -22,7 +22,6 @@ export class VolunteersComponent implements OnInit {
     this.volunteeringServices.getVolunteers().subscribe({
       next: (res) => {
         this.volunteering = res.volunteerings;
-        console.log(this.volunteering);
       },
       error: (err) => {
         console.log(err);
@@ -91,30 +90,32 @@ export class VolunteersComponent implements OnInit {
       this.volunteeringFilter = this.volunteering;
       return;
     }
-    const key = event[0];
-    const normalizedValues = event
-      .slice(1)
-      ?.map((value) => value.toLowerCase());
-    const currentDate = new Date();
 
+    const key = event[0];
+    const normalizedValues = event.slice(1).map((value) => value.toLowerCase());
+    const currentDate = new Date();
     const last24Hours = new Date(currentDate);
     last24Hours.setDate(currentDate.getDate() - 1);
 
+    // Calcular la fecha límite para "semana pasada"
     const lastWeek = new Date(currentDate);
     lastWeek.setDate(currentDate.getDate() - 7);
+
+    // Calcular la fecha límite para "mes pasado"
     const lastMonth = new Date(currentDate);
     lastMonth.setMonth(currentDate.getMonth() - 1);
 
     this.volunteeringFilter = this.volunteering.filter((e) => {
       if (key === 'createdAt') {
         const createdAtDate = new Date(e[key]);
-        const lastWeekUTC = new Date(lastWeek.toISOString());
+        console.log('createdAt', createdAtDate);
+
         if (normalizedValues.includes('ultimas 24 horas')) {
           return createdAtDate >= last24Hours && createdAtDate <= currentDate;
         } else if (normalizedValues.includes('semana pasada')) {
-          return createdAtDate >= lastWeekUTC && createdAtDate <= last24Hours;
+          return createdAtDate >= lastWeek && createdAtDate <= last24Hours;
         } else if (normalizedValues.includes('mes pasado')) {
-          return createdAtDate >= lastMonth && createdAtDate <= lastWeekUTC;
+          return createdAtDate >= lastMonth && createdAtDate <= lastWeek;
         } else {
           return false;
         }
@@ -123,5 +124,6 @@ export class VolunteersComponent implements OnInit {
         return normalizedValues.includes(valueToCheck);
       }
     });
+    console.log(this.volunteeringFilter);
   }
 }

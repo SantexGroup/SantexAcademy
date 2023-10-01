@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { UsersService } from 'src/app/services/users.service';
 import { OrgServicesService } from '../../../services/org-services.service';
+import { Store } from '@ngrx/store';
+import { selectToken, selectUserType } from '../../../core/auth.selectors';
+import { resetToken, resetUserType } from '../../../core/auth.actions';
 
 @Component({
   selector: 'app-navbar',
@@ -16,11 +18,10 @@ export class NavbarComponent {
   isToken: boolean = false;
   isOpenprofileMenu: boolean = false;
   dataUser: any = {};
-
   constructor(
-    private authService: AuthService,
     private usersServices: UsersService,
-    private orgServices : OrgServicesService,
+    private orgServices: OrgServicesService,
+    private store: Store
   ) {
     const isOpenValue = localStorage.getItem('isOpen');
     if (isOpenValue !== null) {
@@ -51,45 +52,44 @@ export class NavbarComponent {
   }
 
   ngOnInit() {
-    const token = this.authService.getAuthToken();
-    const userType: string | undefined = this.authService.getUserType();
-
-    if (userType === "vol") {
-      this.usersServices.getProfileVolunteer(token).subscribe({
-        next: (res) => {
-          this.dataUser = res;
-          this.isToken = true;
-        },
-        error: (err) => {
-          console.log(err);
-        },
-        complete: () => {},
-      });
-    } else if (userType === "org"){
-      this.orgServices.getProfileOrganization(token).subscribe({
-        next: (res) => {
-          this.dataUser = res;
-          this.isToken = true;
-          
-        },
-        error: (err) => {
-          console.log(err);
-        },
-        complete: () => { },
-      });
-    }
+    this.store.select(selectToken).subscribe((token) => {
+      if (token) {
+        this.store.select(selectUserType).subscribe((userType) => {
+          if (userType === 'vol') {
+            this.usersServices.getProfileVolunteer(token).subscribe({
+              next: (res) => {
+                this.dataUser = res;
+                this.isToken = true;
+              },
+              error: (err) => {
+                console.log(err);
+              },
+              complete: () => {},
+            });
+          } else if (userType === 'org') {
+            this.orgServices.getProfileOrganization(token).subscribe({
+              next: (res) => {
+                this.dataUser = res;
+                this.isToken = true;
+              },
+              error: (err) => {
+                console.log(err);
+              },
+              complete: () => {},
+            });
+          }
+        });
+      }
+    });
   }
 
   logout() {
-    this.authService.clearAuthToken();
-    window.location.reload();
+    localStorage.removeItem('auth');
+    this.store.dispatch(resetToken());
+    this.store.dispatch(resetUserType());
   }
 
   openProfileMenu() {
-    if (this.isOpenprofileMenu == false) {
-      this.isOpenprofileMenu = true;
-    } else {
-      this.isOpenprofileMenu = false;
-    }
+    this.isOpenprofileMenu = !this.isOpenprofileMenu;
   }
 }
