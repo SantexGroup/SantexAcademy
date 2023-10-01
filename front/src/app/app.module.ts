@@ -20,6 +20,7 @@ import { ActivardesactivarcursoDirective } from './directivas/activardesactivarc
 import { MisCursosComponent } from './modules/pages/mis-cursos/mis-cursos.component';
 import { NotificationComponent } from './modules/pages/notification/notification.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { NotificationComponent } from './modules/pages/notification/notification
     RegisterModule,
     BrowserAnimationsModule, 
     ToastrModule.forRoot(),
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
