@@ -159,6 +159,12 @@ span {
     width: 90%;
     height: 90%;
   }
+
+  .imagen img:hover {
+    cursor: pointer;
+    filter: grayscale(100%);
+    transition: filter 0.4s;
+  }
   
   /* Precio */
   .precio-input {

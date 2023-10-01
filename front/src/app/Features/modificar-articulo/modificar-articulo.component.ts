@@ -192,4 +192,20 @@ export class ModificarArticuloComponent implements OnInit {
       }
     }
   }
+
+  quitarImagen(image: string) {
+    if (confirm("¿Desea eliminar imagen?") == true) {
+      for (let i=0; i < this.uploadedImages.length; i++) {
+        console.log("Imagenes: " + this.uploadedImages[i])
+        console.log("image: " + image)
+        if (image == this.uploadedImages[i]) {
+          delete this.uploadedImages[i]
+        }
+      }
+    }
+    else {
+      alert("Cancelaste");
+    }
+    
+  }
 }
