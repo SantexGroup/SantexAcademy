@@ -31,9 +31,13 @@ async function getUserById(req, res) {
   try {
     const usuario = await userService.getUserFromId(id);
 
-    res.status(200).send(usuario);
+    if (usuario) {
+      res.status(200).send(usuario);
+    } else {
+      res.status(404).send({ message: 'Usuario no encontrado' });
+    }
   } catch (error) {
-    res.status(404).send('Usuario no encontrado');
+    res.status(500).send({ message: 'Error al buscar el usuario' });
   }
 }
 
@@ -51,7 +55,7 @@ async function cambiarEstadoVendedorUser(req, res, next) {
 }
 
 // editar usuario
-async function editUser(req, res) {
+/* async function editUser(req, res) {
   const { id } = req.params;
   const {
     firstName, lastName, dni, mail, password, alias,
@@ -62,8 +66,8 @@ async function editUser(req, res) {
     alias, idLocalidad, calleYAltura);
 
   res.status(201).send(usuario);
-}
+} */
 
 module.exports = {
-  login, createUser, cambiarEstadoVendedorUser, editUser, getUserById,
+  login, createUser, cambiarEstadoVendedorUser, getUserById,
 };
