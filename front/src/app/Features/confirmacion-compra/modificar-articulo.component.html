@@ -56,8 +56,7 @@
                 <div class="campo">
                     <label for="envio">Opción de Envío:</label>
                     <select formControlName="envReg" id="envio" name="envio" required>
-                        <option value="0">Envío Domicilio</option>
-                        <option value="1">Buscar en local</option>
+                        <option *ngFor="let envio of envios" [value]="envios.indexOf(envio)">{{ envio }}</option>
                     </select>
                 </div>
             </div>

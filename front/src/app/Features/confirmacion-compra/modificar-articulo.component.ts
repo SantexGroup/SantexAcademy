@@ -29,6 +29,7 @@ export class ModificarArticuloComponent implements OnInit {
   catArt: string = '';
   envio1: string = '';
   envio2: string = '';
+  envios: string[] = ['Envío a domicilio', 'Buscar en local']
   servidor: string = environment.API_URL + '/images/';
   
 
@@ -79,6 +80,9 @@ export class ModificarArticuloComponent implements OnInit {
           this.catArt = JSON.stringify(res.tipo.name.charAt(0).toUpperCase() + res.tipo.name.slice(1))
           this.catArt = this.catArt.slice(1, this.catArt.length-1)
           this.artInd = res.tipo.name
+          if (!res.articulos.envio) {
+            this.envios = ['Buscar en local', 'Envío a domicilio']
+          }
           for (let i = 0; i < this.listcategorias.length; i++){
             if (this.listcategorias[i].name !== this.artInd) {
               let newList = this.cat
