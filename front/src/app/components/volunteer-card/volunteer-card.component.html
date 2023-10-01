@@ -1,3 +1,12 @@
+<app-modal-aplication
+  *ngIf="openModalQuestion"
+  [idOrg]="idOrganization"
+  [idVol]="idVolunteering"
+  [nameVol]="nameVol"
+  [nameOrg]="nameOrg"
+  (closeModalQuestion)="closeModalApplication()"
+>
+</app-modal-aplication>
 <article
   class="w-full flex flex-col items-center justify-center shadow shadow-lightGray p-4 gap-4 rounded-lg sm:flex-row lg:p-6"
 >
@@ -38,7 +47,18 @@
   <div
     class="flex items-center justify-center gap-12 sm:flex-col sm:w-[20%] sm:border-l sm:border-l-lightGray sm:gap-4 lg:text-lg"
   >
-    <button>Aplicar</button>
+    <button
+      (click)="
+        handleApplication(
+          data.organizationId,
+          data.idVolunteering,
+          data.name,
+          data.organization?.name
+        )
+      "
+    >
+      Aplicar
+    </button>
     <div
       class="h-[2em] w-[1px] bg-lightGray rounded-lg sm:w-[80%] sm:h-[1px]"
     ></div>

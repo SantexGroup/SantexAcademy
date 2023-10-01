@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../auth/services/auth.service';
 import { DashboardServicesService } from '../services/dashboard-services.service';
+import { selectToken, selectUserType } from 'src/app/core/auth.selectors';
+import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -9,40 +11,45 @@ import { DashboardServicesService } from '../services/dashboard-services.service
 })
 export class DashboardPageComponent implements OnInit {
   constructor(
-    private authServices: AuthService,
-    private dashService: DashboardServicesService
-  ) { }
+    private store: Store,
+    private dashService: DashboardServicesService,
+    private router: Router
+  ) {}
 
   dataUser: any = {};
   dataOrg: any = {};
 
   ngOnInit(): void {
-    const token = this.authServices.getAuthToken();
-    const userType: string | undefined = this.authServices.getUserType();
+    this.store.select(selectToken).subscribe((token) => {
+      if (token) {
+        this.store.select(selectUserType).subscribe((userType) => {
+          if (userType === 'vol') {
+            this.dashService.getProfileVolunteer(token).subscribe({
+              next: (response) => {
+                this.dataUser = response;
+              },
+              error: (error) => {
+                console.log(error);
+              },
+              complete: () => {},
+            });
+          } else if (userType === 'org') {
+            this.dashService.getProfileOrganization(token).subscribe({
+              next: (response) => {
+                this.dataOrg = response;
 
-    if (userType === "vol") {
-      this.dashService.getProfileVolunteer(token).subscribe({
-        next: (response) => {
-          this.dataUser = response;
-          
-        },
-        error: (error) => {
-          console.log(error);
-        },
-        complete: () => { },
-      });
-    } else if (userType === "org"){
-      this.dashService.getProfileOrganization(token).subscribe({
-        next: (response) => {
-          this.dataOrg = response;
-
-          console.log("dataDeOrg", response);
-        },
-        error: (error) => {
-          console.log(error);
-        },
-        complete: () => { },
-      });
-    }
+                console.log('dataDeOrg', response);
+              },
+              error: (error) => {
+                console.log(error);
+              },
+              complete: () => {},
+            });
+          }
+        });
+      } else {
+        this.router.navigate(['auth/login']);
+      }
+    });
   }
 }

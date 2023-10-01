@@ -1,15 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/modules/auth/services/auth.service';
+import { Component, Input } from '@angular/core';
 import { DashboardServicesService } from '../../../services/dashboard-services.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { selectToken } from 'src/app/core/auth.selectors';
 
 @Component({
   selector: 'app-data-volunteer',
   templateUrl: './data-volunteer.component.html',
   styleUrls: ['./data-volunteer.component.css'],
 })
-export class DataVolunteerComponent implements OnInit {
+export class DataVolunteerComponent {
   @Input() dataVolunteer: any = {};
 
   tokenUser: string = '';
@@ -24,10 +24,9 @@ export class DataVolunteerComponent implements OnInit {
   textMessage: string = '';
 
   constructor(
-    private authService: AuthService,
     private dashServices: DashboardServicesService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private store: Store
   ) {
     this.userForm = this.formBuilder.group({
       fullName: ['', Validators.required],
@@ -40,10 +39,6 @@ export class DataVolunteerComponent implements OnInit {
         ],
       ],
     });
-  }
-
-  ngOnInit(): void {
-    this.tokenUser = this.authService.getAuthToken();
   }
 
   activeEditProfile() {
@@ -69,32 +64,39 @@ export class DataVolunteerComponent implements OnInit {
   saveDataProfile() {
     if (this.userForm.valid) {
       const userData = this.userForm.value;
-      this.dashServices
-        .updateProfileVolunteer(userData, this.tokenUser)
-        .subscribe({
-          next: (res) => {
-            if (res) {
-              this.onModalStatus = true;
-              this.statusModal = 'success';
-              this.textMessage = ' ¡Tus datos se han modificado correctamente!';
+      if (userData) {
+        this.store.select(selectToken).subscribe((token) => {
+          if (token) {
+            this.dashServices
+              .updateProfileVolunteer(userData, token)
+              .subscribe({
+                next: (res) => {
+                  if (res) {
+                    this.onModalStatus = true;
+                    this.statusModal = 'success';
+                    this.textMessage =
+                      ' ¡Tus datos se han modificado correctamente!';
 
-              setTimeout(() => {
-                this.onModalStatus = false;
-                window.location.reload();
-              }, 3000);
-            }
-          },
-          error: (err) => {
-            console.log('error when editing the user', err);
-            this.onModalStatus = true;
-            this.statusModal = 'failed';
-            this.textBtnModalStatus = 'Aceptar';
-            this.textMessage =
-              '¡Se produjo un error al modificar tus datos! Por favor, inténtalo de nuevo más tarde.';
-          },
+                    setTimeout(() => {
+                      this.onModalStatus = false;
+                      window.location.reload();
+                    }, 3000);
+                  }
+                },
+                error: (err) => {
+                  console.log('error when editing the user', err);
+                  this.onModalStatus = true;
+                  this.statusModal = 'failed';
+                  this.textBtnModalStatus = 'Aceptar';
+                  this.textMessage =
+                    '¡Se produjo un error al modificar tus datos! Por favor, inténtalo de nuevo más tarde.';
+                },
+              });
+          }
+          this.editData = false;
         });
+      }
     }
-    this.editData = false;
   }
 
   handleProfileDelete() {
@@ -102,16 +104,16 @@ export class DataVolunteerComponent implements OnInit {
   }
 
   deleteProfile() {
-    this.dashServices.deleteProfileVolunteer(this.tokenUser).subscribe({
-      next: (res) => {
-        if (res) {
-          this.authService.clearAuthToken();
-          this.router.navigate(['']);
-        }
-      },
-      error: (err) => {
-        console.log('error deleting user', err);
-      },
+    this.store.select(selectToken).subscribe((token) => {
+      if (token) {
+        this.dashServices.deleteProfileVolunteer(token).subscribe({
+          next: (res) => {},
+          error: (err) => {
+            console.log('error deleting user', err);
+          },
+          complete: () => {},
+        });
+      }
     });
   }
 

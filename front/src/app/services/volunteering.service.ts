@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment.prod';
 import { Observable } from 'rxjs';
@@ -23,5 +23,18 @@ export class VolunteeringService {
   ): Observable<{ volunteeringFound: volunteering }> {
     const url = `${this.apiUrl}/voluntariado/${id}`;
     return this.http.get<{ volunteeringFound: volunteering }>(url);
+  }
+
+  applicationVoluntering(
+    token: string,
+    idOrg: string,
+    idVol: string
+  ): Observable<any> {
+    const url = `${this.apiUrl}/usuarios/postulate/${idOrg}/${idVol}`;
+    const headers = new HttpHeaders({
+      'x-access-token': token,
+    });
+    const options = { headers: headers };
+    return this.http.post(url, options);
   }
 }
