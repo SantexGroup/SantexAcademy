@@ -161,7 +161,17 @@ export class AdminComponent implements OnInit {
      this.obtenerMatriculas();
     });
   }
-  
+
+  habilitarDocente(docente: Docente, estahabilitado: boolean) {
+    console.log(docente);
+    console.log(estahabilitado);
+    docente.habilitado = estahabilitado; // Asignar el valor a la propiedad 'habilitado' del objeto 'docente' pasado como parámetro
+
+    this.docentesService.habilitardocente(docente).subscribe((resp) => {
+     this.obtenerDocentes();
+    });
+  }
+
   activardesactivar(curso: Curso, estahabilitado: boolean) {
     console.log(curso);
     console.log(estahabilitado);

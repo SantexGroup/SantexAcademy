@@ -185,7 +185,7 @@
                             <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
                             </button>
-                            <a class="btn btn-sm btn-primary">Asignar docente</a>
+                            <a class="btn btn-sm btn-primary" [routerLink]="['/curso/asignardocente/',curso.id]">Asignar docente</a>
                             <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
                             </button>
@@ -306,7 +306,8 @@
                         <th scope="col">Identificador</th>
                         <th scope="col">Docente</th>
                         <th scope="col">Especialidad</th>
-                        <th scope="col">Estado</th>
+                        <th scope="col">Asignar especialidad</th>
+                        <th scope="col">Habilitar como docente</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -321,13 +322,23 @@
                             {{ docente?.Especialidad?.nombre || 'Sin especificar' }}
                         </td>
                         <td>
-                            <a class="btn btn-sm btn-primary">
+                            <a class="btn btn-sm btn-primary" [routerLink]="['/docente/asignarespecialidad/',docente.id]">
                                   Asignar especialidad
                               </a>
                               <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
                                   <i class="bi bi-trash"></i>
                               </button>
                           </td>
+                          <td>
+                            <a class="btn btn-sm btn-primary" (click)="habilitarDocente(docente, !docente.habilitado)">
+                                <span [appHabilitardocente]="docente.habilitado"></span>
+                            </a>
+                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                          </td>
+
+                          
                     </tr>
                 </tbody>
             </table>

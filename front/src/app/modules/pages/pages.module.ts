@@ -17,6 +17,11 @@ import { PerfilAlumnoComponent} from './perfil-alumno/perfil-alumno.component';
 import { PerfilAlumnoEditarComponent } from './perfil-alumno-editar/perfil-alumno-editar.component';
 import { PerfilDocenteComponent } from './perfil-docente/perfil-docente.component';
 import { FormsModule } from '@angular/forms';
+import { HabilitardocenteDirective } from 'src/app/directivas/habilitardocente.directive';
+import { DocenteespecialidadComponent } from './docenteespecialidad/docenteespecialidad.component';
+import { DocentecursoComponent } from './docentecurso/docentecurso.component';
+import { AlumnonotaComponent } from './alumnonota/alumnonota.component';
+import { AlumnoasistenciaComponent } from './alumnoasistencia/alumnoasistencia.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,12 @@ import { FormsModule } from '@angular/forms';
     HabilitarmatriculaDirective,
     PerfilAlumnoComponent,
     PerfilAlumnoEditarComponent,
-    PerfilDocenteComponent
+    PerfilDocenteComponent,
+    HabilitardocenteDirective,
+    DocenteespecialidadComponent,
+    DocentecursoComponent,
+    AlumnonotaComponent,
+    AlumnoasistenciaComponent
   ],
   imports: [
     CommonModule,

@@ -20,4 +20,8 @@ export class DocenteService {
   addDocente(docente: Docente): Observable<Docente> {
     return this.http.post<Docente>(`${this.baseUrl}docente`, docente);
   }
+
+  habilitardocente( docente: Docente): Observable<Docente> {
+    return this.http.put<Docente>(`${ this.baseUrl }docente/${docente.id}`, docente)
+  }
 }

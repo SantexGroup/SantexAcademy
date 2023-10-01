@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 import { User } from '../interface/user.interface';
 import { environment } from 'src/environments/environment';
@@ -28,10 +28,18 @@ export class UsersService {
     return this.http.get<Curso[]>(`${this.baseUrl}user/${ id }/cursos`)
   }
 
-  addUser( user: User): Observable<User> {
-    console.log('addUser :', this.http.post<User>(`${ this.baseUrl }user`, user))
-    return this.http.post<User>(`${ this.baseUrl }user`, user)
+  //addUser( user: User): Observable<User> {
+    //console.log('addUser :', this.http.post<User>(`${ this.baseUrl }user`, user))
+    //return this.http.post<User>(`${ this.baseUrl }user`, user)
+  //}
+  
+  addUser(user: User): Observable<User> {
+    return this.http.post<{ ok: boolean, user: User, token: string }>(`${this.baseUrl}user`, user)
+      .pipe(
+        map((response: { user: any; }) => response.user) // Extrae el usuario del objeto de respuesta
+      );
   }
+
   
   editUser( user: User): Observable<User> {
     return this.http.put<User>(`${ this.baseUrl }user/${user.id}`, user)
