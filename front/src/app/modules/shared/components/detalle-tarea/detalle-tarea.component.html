@@ -39,6 +39,8 @@
 
             <p class="titulo-propiedad">Cantidad de Inscriptos:</p>
             <p class="contenido-propiedad">{{ dataTarea.cantInscriptos | number:'1.0-0'}}</p>
+            <p class="titulo-propiedad">Organización:</p>
+            <p class="contenido-propiedad">{{ dataTarea.coordinator?.name}}</p>
 
         </mat-card-content>
         <mat-card-actions>

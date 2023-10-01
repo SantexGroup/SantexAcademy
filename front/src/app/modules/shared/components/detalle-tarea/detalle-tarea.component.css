@@ -3,7 +3,7 @@ mat-dialog-content{
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     overflow-y: scroll;
 }
@@ -12,10 +12,9 @@ mat-card-content{
     width: 90%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: flex-start;
     margin: 20px 10px;
-    padding-top: 350px;
 }
 
 .titulo-propiedad{

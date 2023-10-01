@@ -1,10 +1,12 @@
 import { Categoria } from "./categoria"
+import { Organizacion } from "./organizacion"
 
 export interface Tarea{
     id?:number,
     name:string,
     description:string,
     coordinatorId?:number,
+    coordinator?:Organizacion,
     points:number,
     date:Date,
     place:string,
