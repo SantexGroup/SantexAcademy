@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Nivel } from 'src/app/models/nivel.interface';
 import { NivelsService } from '../../services/nivelsservice';
+import { DocenteporcursoService } from 'src/app/modules/pages/docentecurso/services/docenteporcurso.service';
 
 @Component({
   selector: 'app-create-curso',
@@ -47,13 +48,15 @@ export class CreateCursoComponent implements OnInit {
     private cursosService: CursosService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private nivelsService: NivelsService
+    private nivelsService: NivelsService,
+    private docenteporcursoService: DocenteporcursoService
   ) {}
 
   niveles: Nivel[] = [];
   nivelSeleccionado: number | undefined = undefined;
   formattedStartDate: string | undefined;
-
+  notificationMessage: string | undefined;
+  
   ngOnInit(): void {
     //Obtengo los niveles
     this.nivelsService.getNiveles().subscribe((data: Nivel[]) => {
@@ -90,14 +93,32 @@ export class CreateCursoComponent implements OnInit {
         this.curso.idnivel = this.nivelSeleccionado;
         this.cursosService.editCurso(this.curso).subscribe((curso) => {
           console.log('edit', curso);
+          this.notificationMessage = 'Operación exitosa: Datos guardados correctamente';
           this.router.navigate(['/cursos/index']);
         });
       } else {
         // add
         this.curso.idnivel = this.nivelSeleccionado;
         this.cursosService.addCurso(this.curso).subscribe((curso) => {
-          console.log('add :', curso);
-          this.router.navigate(['/cursos/index']);
+          console.log('Curso agregado :', curso);
+           //Funcionalidad para agregar una asignación de curso_docente
+           if (curso !== undefined) {
+            console.log('Ingreso para agregar docente');
+            this.docenteporcursoService.addDocentePorCurso({
+              idcurso: curso.id,
+              iddocente: 0,
+              habilitado: true, //Al crear un nvo. curso creo un nvo. CURSODOCENTE deshabilitado para que el admin lo habilite formalmente!!!!
+              estado: 'A'
+            }).subscribe(
+              docente => {
+                console.log('Docente por curso agregado:', docente);
+                this.notificationMessage = 'Operación exitosa: Datos guardados correctamente';
+                this.router.navigate(['/cursos/index']);
+              },
+              error => {
+                console.error('Error al agregar un curso por docente:', error);
+              }
+            )}
         });
       }
     } else {

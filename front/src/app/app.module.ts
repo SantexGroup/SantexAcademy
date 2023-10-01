@@ -18,6 +18,7 @@ import { EstadoUsuarioDirective } from './directivas/estado-usuario.directive';/
 import { ActivardesactivarcursoDirective } from './directivas/activardesactivarcurso.directive';// Borrar si no se usa
 //import { LoginComponent } from './modules/auth/pages/login/login.component';//BORRAR si no se usa
 import { MisCursosComponent } from './modules/pages/mis-cursos/mis-cursos.component';
+import { NotificationComponent } from './modules/pages/notification/notification.component';
 
 @NgModule({
   declarations: [

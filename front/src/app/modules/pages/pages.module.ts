@@ -22,6 +22,7 @@ import { DocenteespecialidadComponent } from './docenteespecialidad/docenteespec
 import { DocentecursoComponent } from './docentecurso/docentecurso.component';
 import { AlumnonotaComponent } from './alumnonota/alumnonota.component';
 import { AlumnoasistenciaComponent } from './alumnoasistencia/alumnoasistencia.component';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AlumnoasistenciaComponent } from './alumnoasistencia/alumnoasistencia.c
     DocenteespecialidadComponent,
     DocentecursoComponent,
     AlumnonotaComponent,
-    AlumnoasistenciaComponent
+    AlumnoasistenciaComponent,
+    NotificationComponent
   ],
   imports: [
     CommonModule,
@@ -61,7 +63,8 @@ import { AlumnoasistenciaComponent } from './alumnoasistencia/alumnoasistencia.c
     PerfilAlumnoEditarComponent,
     DocenteespecialidadComponent,
     DocentecursoComponent,
-    AlumnoasistenciaComponent
+    AlumnoasistenciaComponent,
+    NotificationComponent
   ]
 })
 export class PagesModule { }

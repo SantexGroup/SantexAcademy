@@ -8,6 +8,8 @@ import { Matricula } from '../../matriculas/interfaces/interfaces';
 import { MatriculasService } from '../../matriculas/services/matriculas.service';
 import { DocenteService } from '../../docentes/services/docente.service';
 import { Docente } from '../../docentes/interfaces/docente';
+import { DocenteporcursoService } from '../docentecurso/services/docenteporcurso.service';
+import { Docenteporcurso } from '../docentecurso/interfaces/docenteporcurso';
 
 @Component({
   selector: 'app-admin',
@@ -40,8 +42,14 @@ export class AdminComponent implements OnInit {
   docentesFiltrados: any[] = [];
   totalDocentes: number = 0;
   docentesMostrados: number = 0;
+
+  searchDocentePorCurso: string = '';
+  docentesFiltradosPorCurso: any[] = [];
+  totalDocentesPorCurso: number = 0;
+  docentesMostradosPorCurso: number = 0;
   
   docentes: Docente[] = [];
+  docentesPorCurso: Docenteporcurso[] = [];
 
   constructor(
     private usersService: UsersService,
@@ -49,7 +57,8 @@ export class AdminComponent implements OnInit {
     private router: Router,
     private cdr: ChangeDetectorRef,
     private matriculasService: MatriculasService,
-    private docentesService: DocenteService
+    private docentesService: DocenteService,
+    private docenteporcursoService: DocenteporcursoService
   ) {}
 
   ngOnInit(): void {
@@ -58,6 +67,24 @@ export class AdminComponent implements OnInit {
     this.obtenerCursos();
     this.obtenerMatriculas(); //método para obtener matriculas en estado = 'A' para gestionar!
     this.obtenerDocentes();
+    this.obtenerDocentesPorCurso();
+  }
+
+  obtenerDocentesPorCurso(){
+    this.docenteporcursoService.getDocentesPorCurso().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.totalDocentesPorCurso = response.length;
+        this.docentesMostradosPorCurso = this.totalDocentesPorCurso; 
+        this.docentesPorCurso = response;
+        this.docentesFiltradosPorCurso = this.docentesPorCurso;
+      },
+      error: (error) => {
+        console.error(error);
+        this.errorMensaje =
+          'Ocurrió un error al obtener los docentes por curso. Por favor, inténtalo de nuevo más tarde.';
+      },
+    });
   }
 
   obtenerCursos(){
@@ -184,6 +211,10 @@ export class AdminComponent implements OnInit {
 
 
   buscarDocentes() {
+
+  }
+
+  buscarDocentesPorCurso(){
 
   }
   

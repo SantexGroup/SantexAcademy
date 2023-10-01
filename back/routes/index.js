@@ -10,6 +10,7 @@ const tiposDeUsuarioRoutes = require('./tipodeusuario');
 const matriculaRoutes = require('./matricula');
 const docenteRoutes = require('./docente');
 const especialidadRoutes = require('./especialidad');
+const docentePorCursoRoutes = require('./docenteporcurso');
 const app = Express();
 
 // Rutas
@@ -27,6 +28,7 @@ app.use('/tipodeusuario', tiposDeUsuarioRoutes);
 app.use('/matricula', matriculaRoutes);
 app.use('/docente', docenteRoutes)
 app.use('/especialidad', especialidadRoutes)
+app.use('/docenteporcurso', docentePorCursoRoutes)
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);

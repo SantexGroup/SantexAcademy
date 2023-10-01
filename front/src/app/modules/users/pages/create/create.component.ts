@@ -41,6 +41,7 @@ export class CreateComponent implements OnInit {
 
   tipoDeUsuarioSeleccionado: number | undefined = undefined;
   tiposDeUsuario: TipoDeUsuario[] = [];
+  notificationMessage: string | undefined;
   
   constructor(private formBuilder: FormBuilder,
               private usersService: UsersService,
@@ -108,6 +109,7 @@ export class CreateComponent implements OnInit {
             .subscribe(
               user => {
                 console.log('Usuario editado:', user);
+                this.notificationMessage = 'Operación exitosa: Datos guardados correctamente';
                 this.router.navigate(['/users/index']);
               },
               error => {
@@ -132,6 +134,7 @@ export class CreateComponent implements OnInit {
                 }).subscribe(
                   docente => {
                     console.log('Docente agregado:', docente);
+                    this.notificationMessage = 'Operación exitosa: Datos guardados correctamente';
                     this.router.navigate(['/users/index']);
                   },
                   error => {

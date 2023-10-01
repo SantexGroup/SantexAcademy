@@ -6,6 +6,7 @@ const tipoDeUsuarioService = require('./tipodeusuario');
 const matriculaService = require('./matricula');
 const docenteService = require('./docente');
 const especialidadService = require('./especialidad');
+const docenteporcursoService = require('./docenteporcurso');
 
 module.exports = {
   userService,
@@ -15,5 +16,6 @@ module.exports = {
   tipoDeUsuarioService,
   matriculaService,
   docenteService,
-  especialidadService
+  especialidadService,
+  docenteporcursoService
 };

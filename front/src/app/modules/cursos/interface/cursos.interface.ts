@@ -7,7 +7,7 @@
 import { Nivel } from "src/app/models/nivel.interface";
 
 export interface Curso {
-  id: number;
+  id?: number;
   nombre: string;
   descripcion: string;
   imagen?: string;
