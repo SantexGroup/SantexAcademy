@@ -30,6 +30,8 @@ const deleteById = async (userId) => {
   return userToDelete;
 };
 
+const getCourses = async (userId, filterParams) => await userProvider.getCourses(userId, filterParams);
+
 module.exports = {
   createUser,
   findUserById,
@@ -37,4 +39,5 @@ module.exports = {
   findUsers,
   modifyAUser,
   deleteById,
+  getCourses
 };

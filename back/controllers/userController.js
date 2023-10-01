@@ -77,6 +77,16 @@ const deleteAUser = async (req, res) => {
   }
 };
 
+const getCourses = async (req, res) => {
+  try {
+      const { role } = req.query;
+      const courses = await userService.getCourses(req.params.userId, { role });
+      courses ? res.json(courses) : res.status(404).end();
+  } catch (err) {
+      res.status(500).json({ action: 'Obtener cursos del usuario', message: err.message });
+  }
+};
+
 module.exports = {
   createAUser,
   logIn,
@@ -84,5 +94,5 @@ module.exports = {
   getAllUsers,
   modifyUser,
   deleteAUser,
-
+  getCourses
 };

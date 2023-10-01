@@ -27,4 +27,6 @@ router.put('/:userId', userController.modifyUser);
 /* eliminar usuario (falta AUTH) */
 router.delete('/:userId', userController.deleteAUser);
 
+router.get('/:userId/course', userController.getCourses);
+
 module.exports = router;
