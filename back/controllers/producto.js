@@ -1,11 +1,33 @@
 const { productService } = require('../services');
+require("dotenv").config();
+const fs = require("fs-extra");
+const cloudinary = require("../config/cloudinary");
 
 const createProduct = async (req, res) => {
   try {
-    const product = await productService.createProduct(req.body);
-    res.status(201).json(product);
+    console.log(JSON.stringify(req.body, null, 2)); // Imprime req.body
+
+    const { image, ...restOfData } = req.body;
+    let imageUrl = "";
+    let publicId = "";
+
+    if (req.file) {
+      const uploadResult = await cloudinary.uploader.upload(req.file.path);
+      imageUrl = uploadResult.secure_url;
+      publicId = uploadResult.public_id;
+      await fs.unlink(req.file.path);
+    }
+
+    const newProduct = await productService.createProduct({
+      image: { imageUrl, publicId },
+      ...restOfData,
+    });
+    res.status(201).json({
+      message: "The organization was successfully created",
+      newProduct,
+    });
   } catch (err) {
-    res.status(500).json({ action: 'createProduct', error: err.message });
+    res.status(500).json({ action: "createOrganization", error: err.message });
   }
 };
 

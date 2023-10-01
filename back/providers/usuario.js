@@ -53,18 +53,11 @@ const createUser = async (usuario) => {
       await existingDeletedUser.destroy();
     }
 
-    //Crear un registro en la tabla cestaRecompensas
-    const newCestaRecompensas = await CestaRecompensas.create(
-      { name: `Cesta de ${restOfData.fullName}` },
-      { transaction }
-    );
-
     // Crear el nuevo registro de usuario con el id de la cestaRecompensas creada
     const newUser = await Usuario.create(
       {
         image,
         password: hashPassword(password),
-        basketRewardsId: newCestaRecompensas.id,
         rolesId: restOfData.rolesId ? restOfData.rolesId : 1,
         ...restOfData,
       },

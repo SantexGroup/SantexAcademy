@@ -14,17 +14,24 @@ const Producto = sequelize.define(
       type: DataTypes.STRING(50),
       allowNull: false,
     },
+    image: {
+      type: DataTypes.JSON,
+    },
     costInHours: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    stock:{
+    stock: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate:{
-        min:1,
-        max:50
+      validate: {
+        min: 1,
       }
+    },
+    deletedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: null,
     }
   },
   {

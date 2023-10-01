@@ -2,32 +2,31 @@ const { OrdenDeCanje, Producto, Usuario } = require("../models");
 
 const createOrder = async (userId, productId, quantity) => {
   try {
-    // Validar que la cantidad solicitada sea menor o igual que el stock disponible
-    const product = await Producto.findByPk(productId); // Obtener el producto por su ID
+    const product = await Producto.findByPk(productId);
+
     if (!product) {
-      throw new Error("Producto no encontrado");
+      throw new Error('Producto no encontrado');
     }
 
     if (quantity > product.stock) {
-      throw new Error("No hay suficiente stock disponible");
+      throw new Error('No hay suficiente stock disponible');
     }
-    
-    //Obtener el costInHours del producto
+
     const costInHours = product.costInHours;
-    
     const user = await Usuario.findByPk(userId);
-    
+
     if (!user) {
-      throw new Error("Usuario no encontrado");
+      throw new Error('Usuario no encontrado');
     }
-    
-    //Actualizar las horasAcc del usuario restando el costInHours
+
+    if (user.hoursAcc < costInHours) {
+      throw new Error('No tiene suficiente saldo en horas');
+    }
+
     user.hoursAcc -= costInHours;
-    
     await user.save();
-    
-    // Crear una nueva orden en la base de datos
-    const emisionDate = new Date(); // Obtén la fecha actual
+
+    const emisionDate = new Date();
     const order = await OrdenDeCanje.create({
       userId: userId,
       productId: productId,
@@ -35,15 +34,13 @@ const createOrder = async (userId, productId, quantity) => {
       emisionDate: emisionDate,
     });
 
-    // Actualizar el stock restando la cantidad solicitada
     product.stock -= quantity;
     await product.save();
 
-    // Devolver la orden recién creada
     return order;
-  } catch (err) {
-    console.error("Error creating order", err);
-    throw err;
+  } catch (error) {
+    console.error('Error creating order', error);
+    throw error;
   }
 };
 

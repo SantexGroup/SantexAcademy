@@ -1,8 +1,13 @@
 const { productProvider } = require('../providers');
 
-const createProduct = async (producto) => {
-  const newProduct = await productProvider.createProduct(producto);
-  return newProduct;
+
+const createProduct = async (data) => {
+  const { image, ...restOfData } = data;
+  const createdProduct = await productProvider.createProduct({
+    image,
+    ...restOfData,
+  });
+  return createdProduct;
 };
 
 const getProduct = async (id) => {

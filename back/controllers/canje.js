@@ -1,18 +1,24 @@
 const { canjeService } = require("../services");
 
 
+
 const createOrder = async (req, res) => {
   try {
     const userId = req.userId;
     const { productId, quantity } = req.body;
     const order = await canjeService.createOrder(userId, productId, quantity);
-    res.status(201).json(order);
+    
+    if (order) {
+      res.status(201).json(order);
+    } else {
+      res.status(500).send('Error al crear la orden');
+    }
   } catch (error) {
     console.error(error);
     res.status(500).send(error.message);
-  
   }
 };
+
 
 const getAllOrders = async (req, res) => {
   try {
