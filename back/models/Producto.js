@@ -28,6 +28,7 @@ const Producto = sequelize.define(
         min: 1,
       }
     },
+
     deletedAt: {
       type: DataTypes.DATE,
       allowNull: true,

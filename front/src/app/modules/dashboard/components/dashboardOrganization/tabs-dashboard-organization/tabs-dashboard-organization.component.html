@@ -1,0 +1,200 @@
+<!-- <section class="section flex flex-col font-poppins">
+  <header class="headerOrg relative w-screen h-[100px] flex justify-between items-center">
+    <div class="w-full justify-center flex items-center">
+      <img src="{{ image }}" alt="Logo organización" class="relative w-[160px] img" />
+
+    </div>
+  </header>
+ </section> -->
+
+<div class="wrap">
+  <ul class="tabs group">
+    <li>
+      <a class="switch" [ngClass]="{'activeTa': activeTab === 1}" (click)="activateTab(1)">Información de la
+        organización</a>
+    </li>
+    <li>
+      <a class="switch" [ngClass]="{'activeTa': activeTab === 2}" (click)="activateTab(2)">Gestión de voluntariados</a>
+    </li>
+    <li>
+      <a class="switch" [ngClass]="{'activeTa': activeTab === 3}" (click)="activateTab(3)">Voluntariados finalizados</a>
+    </li>
+  </ul>
+  <div class="content">
+
+
+    <!-- !TAB 1 -->
+
+
+    <div *ngIf="activeTab === 1" id="one">
+      <div *ngIf="!editData" [ngClass]="fadeAnimationClass" class="datos px-14 h-auto pt-[30px] w-[100%]">
+        <p class="text-[32px] font-semibold my-6">Datos de la Organización</p>
+        <ul>
+          <div class="flex">
+            <div class="w-2/3 p-4">
+              <li>
+                <p><strong>Nombre: </strong>{{dataTabs.name}}</p>
+              </li>
+            </div>
+            <div class="w-1/3 p-4">
+              <li>
+                <p><strong>CUIT: </strong>{{dataTabs.cuit}}</p>
+              </li>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="w-2/3 p-4">
+              <li>
+                <p><strong>Ubicación: </strong>{{dataTabs.location}}</p>
+              </li>
+            </div>
+            <div class="w-1/3 p-4">
+              <li>
+                <p><strong>Teléfono: </strong>{{dataTabs.phone}}</p>
+              </li>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="w-3/3 p-4">
+              <li>
+                <p><strong>Correo electrónico: </strong>{{dataTabs.email}}</p>
+              </li>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="w-3/3 p-4">
+              <li>
+                <p><strong>Categoría: </strong>{{dataTabs.category}}</p>
+              </li>
+            </div>
+          </div>
+
+          <div class="flex">
+            <div class="w-3/3 p-4">
+              <li>
+                <p><strong>Descripción: </strong>{{dataTabs.description}}</p>
+              </li>
+            </div>
+          </div>
+        </ul>
+
+      </div>
+      <div class="flex justify-end p-4">
+        <button *ngIf="!editData" (click)="activeEditProfileOrg()"
+          class="text-white rounded-md bg-[#3F2883] mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-edit">Editar
+          datos</button>
+      </div>
+
+
+      <form class="datos px-14 h-auto w-[100%]" [formGroup]="userForm" *ngIf="editData" [ngClass]="fadeAnimationClass">
+        <p class="text-[32px] font-semibold my-6">Editar datos de la Organización</p>
+        <div class="flex justify-center items-center ">
+          <div class="w-1/6 p-4">
+            <label><strong>Logo:</strong></label>
+          </div>
+
+          <div class="p-4 w-full flex">
+            <img src="{{ image }}" alt="Logo organización"
+              class="relative h-[70px] p-2 border bg-white border-lightGray outline-none rounded-md sm:text-lg" />
+            <input type="file" #fileInput hidden (change)="onFileSelected($event)">
+            <button mat-icon-button class="absolute top-[40px] right-7" (click)="fileInput.click() ">
+              <mat-icon style="font-size: 24px; color: rgba(0, 0, 0, .4);">add_a_photo</mat-icon>
+            </button>
+          </div>
+
+        </div>
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <label><strong>Nombre:</strong></label>
+          </div>
+          <div class="p-4 w-full ">
+            <input id="name" name="name" type="text" formControlName="name"
+              class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg">
+
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <label><strong>CUIT:</strong></label>
+          </div>
+          <div class="p-4 w-full ">
+            <input id="cuit" name="cuit" type="text" formControlName="cuit"
+              class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg">
+
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <label><strong>Ubicación:</strong></label>
+          </div>
+          <div class="p-4 w-full ">
+            <input id="location" name="location" type="text" formControlName="location"
+              class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg">
+
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <label><strong>Teléfono:</strong></label>
+          </div>
+          <div class="p-4 w-full ">
+            <input id="phone" name="phone" type="text" formControlName="phone"
+              class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg">
+
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <label><strong>Correo electrónico:</strong></label>
+          </div>
+          <div class="p-4 w-full ">
+            <input id="email" name="email" type="text" formControlName="email"
+              class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg">
+
+          </div>
+        </div>
+
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <strong>Categoría:</strong>
+          </div>
+          <div class="p-4 w-full">
+            <select class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg"
+              (change)="onCategoryChange($event)">
+              <option value="" disabled selected hidden style="color: gray;">Selecciona una categoría</option>
+              <option value="asistencia">Medio ambiente y fauna</option>
+              <option value="educacion">Asistencia Social</option>
+              <option value="salud">Salud y discapacidad</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="flex justify-end p-4"><button (click)="saveDataProfileOrg()"
+            class="text-white rounded-md bg-[#3F2883] mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-shadow">
+            Guardar
+          </button></div>
+      </form>
+    </div>
+
+    <!-- !TAB 2 -->
+
+    <div *ngIf="activeTab === 2" id="two">
+      <!-- <div class="datos flex justify-end items-center px-10 h-auto pt-30 w-100"> -->
+
+
+      <button *ngIf="!editData" (click)="activeEditProfileOrg()"
+        class="text-white absolute rounded-md bg-[#B1237D] mt-14 right-24 px-[15px] py-[5px] font-semibold font-poppins btn-shadow">Crear
+        nuevo voluntariado</button>
+      <!-- </div> -->
+
+      <app-volunteers-table *ngIf="!editData" [ngClass]="fadeAnimationClass"></app-volunteers-table>
+      <app-new-volunteering-form *ngIf="editData" [ngClass]="fadeAnimationClass"></app-new-volunteering-form>
+    </div>
+
+    <!-- !TAB 3 -->
+
+    <p *ngIf="activeTab === 3" id="three"></p>
+    <app-completed-volunteering></app-completed-volunteering>
+  </div>
+</div>

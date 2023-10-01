@@ -50,6 +50,11 @@ const getCompletedPostulation = async (idOrg) => {
         as: 'voluntariado',
         attributes: ['descripcion', 'Reward']
       }],
+      include: [{
+        model: Usuario,
+        as: 'usuario',
+        attributes: ['fullname', 'email']
+      }]
     });
 
     return postulation;

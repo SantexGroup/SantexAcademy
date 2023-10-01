@@ -10,6 +10,7 @@ const createProduct = async (data) => {
   return createdProduct;
 };
 
+
 const getProduct = async (id) => {
   const product = await productProvider.getProduct(id);
   if (product) {

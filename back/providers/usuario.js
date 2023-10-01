@@ -4,29 +4,29 @@ const { sequelize } = require("../config/db-config");
 const { Op } = require("sequelize");
 const { comparePassword, hashPassword } = require("../config/crypt");
 
-const loginUser = async (email, password) => {
+const loginUser = async (email,  password) => {
   try {
     const user = await Usuario.findOne({
       where: {
         email: email,
-        deletedAt: null,
       },
     });
 
     if (!user) {
-      throw new Error("Invalid credentials");
+      throw new Error("Invalid Credentials");
     }
     const matchPassword = comparePassword(password, user.password);
 
-    if (!matchPassword)
-      return res.status(401).json({ message: "Invalid credentials" });
+    if (!matchPassword) {
+      throw new Error("Invalid Credentials");
+    }
+
 
     return user;
   } catch (error) {
-    throw new Error(error);
+    throw error;
   }
 };
-
 const createUser = async (usuario) => {
   const { image, password, ...restOfData } = usuario;
 

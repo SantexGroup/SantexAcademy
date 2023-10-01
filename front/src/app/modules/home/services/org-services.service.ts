@@ -12,7 +12,7 @@ export class OrgServicesService {
   constructor(private http: HttpClient) {}
 
   getOrganizations(): Observable<any> {
-    const url = `${this.apiUrl}/org`;
+    const url = `${this.apiUrl}/organizacion`;
     return this.http.get(url);
   }
 }

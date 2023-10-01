@@ -31,7 +31,6 @@ orgRouter.delete(
   orgController.deleteOrganizationById
 );
 
-
 orgRouter.get(
   "/postulation/completed",
   verifyToken,

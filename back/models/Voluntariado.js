@@ -1,53 +1,72 @@
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/db-config');
+const { DataTypes } = require("sequelize");
+const { sequelize } = require("../config/db-config");
 
 const Voluntariado = sequelize.define(
-  'voluntariado',
+  "voluntariado",
   {
-    idVoluntariado: {
+    idVolunteering: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
     },
-    descripcion: {
-      type: DataTypes.STRING(255),
+    name: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    spots: {
+    description: {
+      type: DataTypes.STRING(1000),
+      allowNull: false,
+    },
+    modeOfwork: {
+      type: DataTypes.ENUM({
+        values: ["hibrido", "presencial", "remoto"],
+      }),
+      allowNull: false,
+    },
+    workTime: {
+      type: DataTypes.ENUM({
+        values: ["tiempo completo", "tiempo parcial", "temporada"],
+      }),
+      allowNull: false,
+    },
+    vacancies: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
         min: 1,
       },
     },
-    Reward: {
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    reward: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
     deletedAt: {
       type: DataTypes.DATE,
-      allowNull: true,
     },
     organizationId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'organizacion',
-        key: 'id',
+        model: "organizacion",
+        key: "id",
       },
     },
   },
   {
     sequelize,
-    tableName: 'voluntariado',
-    timestamps: false,
+    tableName: "voluntariado",
+    timestamps: true,
     indexes: [
       {
         name: "PRIMARY",
         unique: true,
         using: "BTREE",
-        fields: [{ name: "idVoluntariado" }],
+        fields: [{ name: "idVolunteering" }],
       },
       {
         name: "fk_voluntariado_organization1_idx",
@@ -55,7 +74,7 @@ const Voluntariado = sequelize.define(
         fields: [{ name: "organizationId" }],
       },
     ],
-  },
+  }
 );
 
 module.exports = Voluntariado;

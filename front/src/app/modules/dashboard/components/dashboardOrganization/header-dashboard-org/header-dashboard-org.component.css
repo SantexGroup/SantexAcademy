@@ -1,38 +1,30 @@
-
-/* .header{
-  background:linear-gradient(to right, rgba(255,255,255, 80%), rgba(63,40,131,80% ));
-
-} */
-
-
-/* ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled),
-::ng-deep.mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-  color: black;
-
-  opacity: 1;
-} */
-
-#mat-tab-label-0-0{
-  background-color: red;
-}
-
 .headerOrg {
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(63, 40, 131, 0.8));
+  /* position: relative; */
+  /* background: linear-gradient(to left top,
+        rgb(255, 55, 147),
+        rgb(63, 40, 131),
+        rgb(255, 64, 33)); */
+
+          background-image: url("../../../../../../assets/imgs/patron1.png");
+          /* background-repeat: repeat; */
+          background-size: auto;
+          height: 150px;
+          z-index: 0;
 }
 
-::global(.mdc-tab ){
-color: red !important;
+.headerOrg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background-color: rgba(63, 40, 131, 0.6);
+   pointer-events: none;
+  z-index: -1;
+
 }
 
-.mdc-tab{
-  background: red;
-}
-
-
-::ng-deep mdc-tab mat-mdc-tab mat-mdc-focus-indicator mdc-tab--active ng-star-inserted mdc-tab-indicator--active  {
-  background-color: red;
-  color: #ffffff;
-}
 
 
 .btn-shadow:hover {
@@ -45,17 +37,20 @@ select::placeholder {
   color: rgb(203 213 225);
 }
 
-
-
-
-
-
-
-/* estilo para cambiar el color del texto activo */
-
-.mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
-  color: red;
+.img{
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  /*  */
 }
+
+
+
+
+
+
+
 
 
 

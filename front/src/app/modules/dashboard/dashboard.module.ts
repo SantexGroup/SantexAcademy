@@ -9,7 +9,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 import { CommonModule } from '@angular/common';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { DashboardVolunteerComponent } from './pages/dashboard-volunteer/dashboard-volunteer.component';
@@ -22,10 +21,11 @@ import { HeaderDashboardOrgComponent } from './components/dashboardOrganization/
 import { VolunteersTableComponent } from './components/dashboardOrganization/volunteers-table/volunteers-table.component';
 import { TabsComponent } from './components/dashboardOrganization/tabs/tabs.component';
 
-
 import { ModalQuestionComponent } from './components/modal-question/modal-question.component';
 import { ModalStatusComponent } from './components/modal-status/modal-status.component';
-
+import { TabsDashboardOrganizationComponent } from './components/dashboardOrganization/tabs-dashboard-organization/tabs-dashboard-organization.component';
+import { NewVolunteeringFormComponent } from './components/dashboardOrganization/new-volunteering-form/new-volunteering-form.component';
+import { CompletedVolunteeringComponent } from './components/dashboardOrganization/completed-volunteering/completed-volunteering.component';
 
 @NgModule({
   declarations: [
@@ -35,15 +35,14 @@ import { ModalStatusComponent } from './components/modal-status/modal-status.com
     HeaderComponent,
     DataVolunteerComponent,
     VolunteerHistoryComponent,
-
     HeaderDashboardOrgComponent,
     VolunteersTableComponent,
     TabsComponent,
-
-
     ModalQuestionComponent,
     ModalStatusComponent,
-
+    TabsDashboardOrganizationComponent,
+    NewVolunteeringFormComponent,
+    CompletedVolunteeringComponent,
   ],
   imports: [
     CommonModule,
@@ -54,7 +53,6 @@ import { ModalStatusComponent } from './components/modal-status/modal-status.com
     MatButtonModule,
     MatTabsModule,
     ReactiveFormsModule,
-
   ],
 })
 export class DashboardModule {}
