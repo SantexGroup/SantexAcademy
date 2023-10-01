@@ -1,3 +1,18 @@
-<h1>Lista de usuarios</h1>
-<app-user-list></app-user-list>
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+  <div *ngIf="user" class="card">
+    <div class="card-header">
+      <h2>Detalles del usuario con ID: {{ user.id }}</h2>
+    </div>
+    <div class="card-body">
+      <p><strong>Rol:</strong> {{ getRoleName(user.role) }}</p>
+      <p><strong>Nombre:</strong> {{ user.firstName }}</p>
+      <p><strong>Apellido:</strong> {{ user.lastName }}</p>
+      <p><strong>Correo electrónico:</strong> {{ user.email }}</p>
+      
+    </div>
+  </div>
+</div>
+
 

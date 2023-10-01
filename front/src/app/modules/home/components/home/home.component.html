@@ -1,15 +1,8 @@
 <app-navbar></app-navbar>
 
-<h1>Estamos en la pagina de home...</h1>
-<a class="nav-link" routerLink="/dashboard">"boton dashboard"</a>
-<a class="nav-link" routerLink="/user">"boton user"</a>
-<a class="nav-link" routerLink="/register">"boton register"</a>
-<a class="nav-link" routerLink="/login">"boton login"</a>
-<p>Parece que register y login no funcionan, pero es porque estas logeado y el guard no te deja ir a lugares solo
-    permitidos para
-    "no-logueados"</p>
-
-
-<app-search-courses></app-search-courses>
+<div>
+    <app-search-nav></app-search-nav>
+    <app-search-courses></app-search-courses>
+</div>
 
 <app-footer></app-footer>

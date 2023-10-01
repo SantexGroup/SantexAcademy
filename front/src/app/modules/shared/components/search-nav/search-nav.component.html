@@ -1,0 +1,19 @@
+<div class="huge-container">
+    <div class="container">
+        <div class="form-group">
+            <input type="text" id="inputTexto" class="form-control" [(ngModel)]="texto"
+                placeholder="Busca tus cursos aqui...">
+        </div>
+
+        <div class="form-group">
+            <select id="dropdownOpciones" class="form-control" [(ngModel)]="opcionSeleccionada">
+                <option value="ByName">Ordenar por Nombre</option>
+                <option value="byProfesor">Ordenar por Profesor</option>
+                <!-- <option value="opcion3">Ordenar por </option> -->
+            </select>
+        </div>
+        <div class="button-wrapper">
+            <button class="btn btn-primary" (click)="buscar()">Buscar</button>
+        </div>
+    </div>
+</div>

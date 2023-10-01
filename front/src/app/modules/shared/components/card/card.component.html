@@ -17,7 +17,7 @@
 
 
 
-<div class="border">
+<!-- <div class="border">
     <div class="card container-big">
         <img src="../../../../../assets/imagen//no-image.png" class="card-img-top" alt="no-image">
         <div class="card-body">
@@ -28,12 +28,26 @@
             <h4 class="card-professor">Profesor: Bla</h4>
             <h4 class="card-duration">Duracion: 10hs</h4>
         </div>
-        <!-- <ul class="list-group list-group-flush">
-            <li class="list-group-item">Profesor: Bla</li>
-            <li class="list-group-item">Duracion: 10hs</li>
-        </ul> -->
+
         <div class="card-body">
-            <!-- <a href="#" class="card-link">Cursos relacionados</a> -->
+            <button class="btn btn-primary" type="submit">Ir al curso</button>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="border">
+    <div class="card container-big">
+        <img src="../../../../../assets/imagen/no-image.png" class="card-img-top" alt="no-image">
+        <div class="card-body">
+            <h2 class="card-title">{{ course.name }}</h2>
+            <p class="card-description">{{ course.description }}</p>
+        </div>
+        <div class="card-body-down">
+            <h4 class="card-professor">Profesor: {{ course.professor }}</h4>
+            <h4 class="card-duration">Duración: {{ course.duration }}</h4>
+        </div>
+        <div class="card-body">
             <button class="btn btn-primary" type="submit">Ir al curso</button>
         </div>
     </div>
