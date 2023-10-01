@@ -19,6 +19,7 @@ import { ActivardesactivarcursoDirective } from './directivas/activardesactivarc
 //import { LoginComponent } from './modules/auth/pages/login/login.component';//BORRAR si no se usa
 import { MisCursosComponent } from './modules/pages/mis-cursos/mis-cursos.component';// Borrar si no se usa/*
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { MisCursosComponent } from './modules/pages/mis-cursos/mis-cursos.compon
     RegisterModule,
     BrowserAnimationsModule, 
     ToastrModule.forRoot(),
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
