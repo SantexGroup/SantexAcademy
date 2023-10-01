@@ -45,6 +45,7 @@ export class ListadoTareasComponent implements OnInit, OnChanges {
   mostrarTareas():void{
     this.tareaService.getTareas().subscribe({
       next:(res)=>{
+        console.log(res);
         this.listadoTareas = res;
       },
       error:()=>{

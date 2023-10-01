@@ -14,10 +14,11 @@
         </div>
 
         <div class="card-content">
-            <p>{{tarea.description}}</p>
-            <p>Estado: {{tarea.estado|titlecase}}</p>
+            <p class="valor">Organización: <span> {{tarea.coordinator?.name}}</span></p>
+            <p >{{tarea.description}}</p>
+            <p class="valor">Estado: <span>{{tarea.estado|titlecase}}</span></p>
             
-            <p class="inscriptos">Inscriptos: <span>{{tarea.cantInscriptos| number:'1.0-0'}}/{{tarea.cantParticipantes| number:'1.0-0'}}</span></p>
+            <p class="valor">Inscriptos: <span>{{tarea.cantInscriptos| number:'1.0-0'}}/{{tarea.cantParticipantes| number:'1.0-0'}}</span></p>
         </div>
 
         <div class="card-actions" >
