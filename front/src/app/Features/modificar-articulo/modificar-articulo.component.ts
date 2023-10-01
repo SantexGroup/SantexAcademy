@@ -34,15 +34,6 @@ export class ModificarArticuloComponent implements OnInit {
   textoCarga: string = '';
   servidor: string = environment.API_URL + '/images/';
   
-
-  /*
-  catReg: string = '0';
-  nomReg: string = '';
-  desReg: string = '';
-  preReg: string = '';
-  envReg: string = '';
-  */
-
   idUser: string = '';
   confVendedor: boolean = false;
   mensajeRegistro: string = '';
@@ -65,7 +56,6 @@ export class ModificarArticuloComponent implements OnInit {
   ngOnInit(): void {
     this.traerDatos();
     this.getIdUser();    
-    console.log("id: " + JSON.stringify(this.idProd))
   }
 
   traerDatos() {
@@ -105,8 +95,20 @@ export class ModificarArticuloComponent implements OnInit {
       }      
     }
 
+    getIdUser() {    
+      let infoLocal = localStorage.getItem('resLog')
+      if (infoLocal) {
+        let newObject = JSON.parse(infoLocal);
+        const idUser = newObject[1].users.id;
+        this.idUser = idUser;
+        const vendedor = newObject[1].users.estadoDeVendedor;
+        if (vendedor){
+          this.confVendedor = true;
+        }
+      }
+    }
+
   modificarProducto(): void { 
-    //if (this.formUp.get('catReg')?.value && this.formUp.get('nomReg')?.value && this.desReg && this.preReg && this.envReg) {
       this.service.modificar(
         this.idProd,
         this.idUser,
@@ -125,24 +127,14 @@ export class ModificarArticuloComponent implements OnInit {
         this.mensajeService.mensajeRegistro('Articulo cargado con éxito.');
         this.router.navigate(['home-page']);
       });
-
-      /*
-    } else {
-      this.mensajeService.mensajeRegistro('Campos incompletos. Por favor, complete todos los campos.');
-    }
-    */
   }
 
   subirImages() {
-
     const formData = new FormData();
-
     for(let img of this.images){
       formData.append('images', img);
     }
-
     this.cargaService.cargaFiles(formData).subscribe(res => {
-      console.log(res);
       if(res){
         for (let i = 0; i < res.length; i++) {
           const imageName = res[i].filename;
@@ -151,11 +143,19 @@ export class ModificarArticuloComponent implements OnInit {
         }
       }  
     })
-    console.log('carga exitosa de imagenes');
+  }
+  
+  quitarImagen(image: string) {
+    if (confirm("¿Desea eliminar imagen?") == true) {
+      for (let i=0; i < this.uploadedImages.length; i++) {
+        if (image == this.uploadedImages[i]) {
+          delete this.uploadedImages[i]
+        }
+      }
+    }    
   }
 
   onFileSelected(event: any): void {
-    
     //dejar de visualizar las imagenes cuando suba otra
     const files = event.target.files;
     this.images = files;
@@ -175,33 +175,5 @@ export class ModificarArticuloComponent implements OnInit {
         }
       }    
     }
-  }
-
-  getIdUser() {    
-    let infoLocal = localStorage.getItem('resLog')
-    if (infoLocal) {
-      let newObject = JSON.parse(infoLocal);
-
-      const idUser = newObject[1].users.id;
-      this.idUser = idUser;
-      console.log(this.idUser)
-
-      const vendedor = newObject[1].users.estadoDeVendedor;
-      if (vendedor){
-        this.confVendedor = true;
-      }
-    }
-  }
-
-  quitarImagen(image: string) {
-    if (confirm("¿Desea eliminar imagen?") == true) {
-      for (let i=0; i < this.uploadedImages.length; i++) {
-        console.log("Imagenes: " + this.uploadedImages[i])
-        console.log("image: " + image)
-        if (image == this.uploadedImages[i]) {
-          delete this.uploadedImages[i]
-        }
-      }
-    }    
   }
 }
