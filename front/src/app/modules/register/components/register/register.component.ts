@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { baseURL } from 'src/config';
 
 @Component({
   selector: 'app-register',
@@ -11,8 +12,7 @@ export class RegisterComponent {
 
   acceptedTerms: boolean = false;
 
-  acceptedTermsErrorMessage = 'Aceptar los términos y condiciones.';
-  
+  acceptedTermsErrorMessage = 'Aceptar los términos y condiciones.';  
 
   email: string = '';
   password: string = '';
@@ -22,8 +22,14 @@ export class RegisterComponent {
   constructor(private http: HttpClient, private router: Router ) { }
 
   registerUser() {
-    const userData = { email: this.email, password: this.password, firstName: this.firstName, lastName: this.lastName };
-    this.http.post(' http://localhost:4001/api/user/create', userData).subscribe(
+    const userData = { 
+      email: this.email, 
+      password: this.password, 
+      firstName: this.firstName, 
+      lastName: this.lastName 
+    };
+
+    this.http.post(`${baseURL}/api/user/create`, userData).subscribe(
       (response) => {
         console.log('Usuario registrado exitosamente', response);
       },
@@ -33,7 +39,6 @@ export class RegisterComponent {
     );    
   }
 
-  
   navigateToLogin() {
     this.router.navigate(['/login']);
   }
