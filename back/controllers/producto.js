@@ -4,6 +4,7 @@ const fs = require("fs-extra");
 const cloudinary = require("../config/cloudinary");
 
 const createProduct = async (req, res) => {
+
     try {
       const { image, ...restOfData } = req.body;
       let imageUrl = "";

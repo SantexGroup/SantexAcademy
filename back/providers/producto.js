@@ -7,7 +7,8 @@ const createProduct = async (data) => {
     const existingDeletedProduct = await Producto.findOne({
       where: {
         [Op.and]: [
-          { deletedAt:  null } , // Buscar registros eliminados
+
+          { deletedAt: null }, // Buscar registros eliminados
           { name: restOfData.name },
         ],
       },
@@ -31,6 +32,8 @@ const createProduct = async (data) => {
     throw err;
   }
 };
+
+
 
 const getProduct = async (id) => {
   try {
