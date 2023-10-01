@@ -202,10 +202,6 @@ export class ModificarArticuloComponent implements OnInit {
           delete this.uploadedImages[i]
         }
       }
-    }
-    else {
-      alert("Cancelaste");
-    }
-    
+    }    
   }
 }
