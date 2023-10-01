@@ -14,25 +14,40 @@ export class HomePageComponent implements OnInit {
 
   images: string[] = [];
   listArticulos: any = [];
+  numer: number = 0;
   servidor: string = environment.API_URL + '/images/'
 
   constructor(private service: VerArtGenService, private router: Router) { }
 
   ngOnInit(): void {
+     this.traerDatos();
+  }
+
+  traerDatos() {
     this.service.getProduct().subscribe(productos => {
       console.log(productos);
       if (productos){
         for (let i = 0; i < productos.length; i++){
           if(productos[i].Images[0].url){
             const imageName = productos[i].Images[0].url;
-            this.images.push(this.servidor + imageName);
-            console.log("imágenes: " + this.images);
+            this.images.push(this.servidor + imageName);          
             this.listArticulos.push(productos[i]);
+            if (i < 9) {
+              this.numer = i+1;
+              console.log("Numero: " + this.numer);
+            }
           }
+          this.listArticulos = this.listArticulos.slice(0, 9);
+          this.images = this.images.slice(0, 9)
+          console.log("Articulos: " + JSON.stringify(this.listArticulos[i].Images[0].url));
         }
+        
+        console.log("imágenes: " + this.images);
+        console.log("Numero: " + this.numer);
       }
-    })   
+    })  
   }
+
   verMas(id: string) {
     localStorage.setItem( 'idProd', JSON.stringify(id));
     this.router.navigateByUrl('/vista-articulo');

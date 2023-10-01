@@ -23,137 +23,17 @@
           </div>
         </div>
       </div>
-      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
+      <div *ngFor="let articulo of listArticulos" id="contenedor" class="carousel-item" data-bs-interval="2000">
         <div id="divArt" class="animate__animated animate__fadeIn" >
           <div id="divTar" style="width: 100%;">
             <div id="tarjetas" class="card-body">
               <div id="divIma">
-                <img id="FotoArticulo" [src]="images[1]">
+                <img id="FotoArticulo" [src]="servidor + articulo.Images[0].url">
               </div>
-              <h5 class="card-title">{{ listArticulos[1].nombre }}</h5>
-              <p>{{ listArticulos[1].detalles }}</p>
-              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[1].precio }}</h6>
-              <button (click)="verMas(listArticulos[1].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
-        <div id="divArt" class="animate__animated animate__fadeIn" >
-          <div id="divTar" style="width: 100%;">
-            <div id="tarjetas" class="card-body">
-              <div id="divIma">
-                <img id="FotoArticulo" [src]="images[2]">
-              </div>
-              <h5 class="card-title">{{ listArticulos[2].nombre }}</h5>
-              <p>{{ listArticulos[2].detalles }}</p>
-              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[2].precio }}</h6>
-              <button (click)="verMas(listArticulos[2].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
-        <div id="divArt" class="animate__animated animate__fadeIn" >
-          <div id="divTar" style="width: 100%;">
-            <div id="tarjetas" class="card-body">
-              <div id="divIma">
-                <img id="FotoArticulo" [src]="images[3]">
-              </div>
-              <h5 class="card-title">{{ listArticulos[3].nombre }}</h5>
-              <p>{{ listArticulos[3].detalles }}</p>
-              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[3].precio }}</h6>
-              <button (click)="verMas(listArticulos[3].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
-        <div id="divArt" class="animate__animated animate__fadeIn" >
-          <div id="divTar" style="width: 100%;">
-            <div id="tarjetas" class="card-body">
-              <div id="divIma">
-                <img id="FotoArticulo" [src]="images[4]">
-              </div>
-              <h5 class="card-title">{{ listArticulos[4].nombre }}</h5>
-              <p>{{ listArticulos[4].detalles }}</p>
-              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[4].precio }}</h6>
-              <button (click)="verMas(listArticulos[4].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
-        <div id="divArt" class="animate__animated animate__fadeIn" >
-          <div id="divTar" style="width: 100%;">
-            <div id="tarjetas" class="card-body">
-              <div id="divIma">
-                <img id="FotoArticulo" [src]="images[5]">
-              </div>
-              <h5 class="card-title">{{ listArticulos[5].nombre }}</h5>
-              <p>{{ listArticulos[5].detalles }}</p>
-              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[5].precio }}</h6>
-              <button (click)="verMas(listArticulos[5].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
-        <div id="divArt" class="animate__animated animate__fadeIn" >
-          <div id="divTar" style="width: 100%;">
-            <div id="tarjetas" class="card-body">
-              <div id="divIma">
-                <img id="FotoArticulo" [src]="images[6]">
-              </div>
-              <h5 class="card-title">{{ listArticulos[6].nombre }}</h5>
-              <p>{{ listArticulos[6].detalles }}</p>
-              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[6].precio }}</h6>
-              <button (click)="verMas(listArticulos[6].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
-        <div id="divArt" class="animate__animated animate__fadeIn" >
-          <div id="divTar" style="width: 100%;">
-            <div id="tarjetas" class="card-body">
-              <div id="divIma">
-                <img id="FotoArticulo" [src]="images[7]">
-              </div>
-              <h5 class="card-title">{{ listArticulos[7].nombre }}</h5>
-              <p>{{ listArticulos[7].detalles }}</p>
-              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[7].precio }}</h6>
-              <button (click)="verMas(listArticulos[7].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
-        <div id="divArt" class="animate__animated animate__fadeIn" >
-          <div id="divTar" style="width: 100%;">
-            <div id="tarjetas" class="card-body">
-              <div id="divIma">
-                <img id="FotoArticulo" [src]="images[8]">
-              </div>
-              <h5 class="card-title">{{ listArticulos[8].nombre }}</h5>
-              <p>{{ listArticulos[8].detalles }}</p>
-              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[8].precio }}</h6>
-              <button (click)="verMas(listArticulos[8].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="contenedor" class="carousel-item" data-bs-interval="2000">
-        <div id="divArt" class="animate__animated animate__fadeIn" >
-          <div id="divTar" style="width: 100%;">
-            <div id="tarjetas" class="card-body">
-              <div id="divIma">
-                <img id="FotoArticulo" [src]="images[9]">
-              </div>
-              <h5 class="card-title">{{ listArticulos[9].nombre }}</h5>
-              <p>{{ listArticulos[9].detalles }}</p>
-              <h6 id="Precio" class="card-subtitle">$ {{ listArticulos[9].precio }}</h6>
-              <button (click)="verMas(listArticulos[9].id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
+              <h5 class="card-title">{{ articulo.nombre }}</h5>
+              <p>{{ articulo.detalles }}</p>
+              <h6 id="Precio" class="card-subtitle">$ {{ articulo.precio }}</h6>
+              <button (click)="verMas(articulo.id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
             </div>
           </div>
         </div>
