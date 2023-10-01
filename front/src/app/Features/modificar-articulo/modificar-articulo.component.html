@@ -55,11 +55,11 @@
                         <label>Cargar Imágenes <span>(imágenes a reemplazar) </span>
                         </label>
                         <label id="botonCargar"for="imagenes">{{textoCarga}}</label>
-                        <input type="file" id="imagenes" name="images" formControlName="images" (change)="onFileSelected($event)" accept="image/*"multiple />
+                        <input type="file" id="imagenes" name="images" formControlName="images" (change)="reemplazarImagen($event)" accept="image/*"multiple />
                         <div class="imagenes-container">
                             <div class="imagenes">
                                 <div class="imagen" *ngFor="let image of uploadedImages">
-                                    <img (click)="quitarImagen(image)"[src]="image" alt="Imagen cargada"/>
+                                    <img *ngIf="image" (click)="quitarImagen(image)"[src]="image" alt="Imagen cargada"/>
                                 </div>
                             </div>
                         </div>
