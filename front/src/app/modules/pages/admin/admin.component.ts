@@ -155,6 +155,13 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  confirmarEliminarCurso(cursoId: number): void {
+    const confirmacion = window.confirm("¿Estás seguro de que deseas eliminar este curso?");
+    if (confirmacion) {
+      this.deleteCurso(cursoId);
+    }
+  }
+
   deleteCurso(curso: number) {
     console.log("Llamando al eliminar");
     this.cursoService.deleteCurso(curso).subscribe((resp) => {
@@ -167,6 +174,28 @@ export class AdminComponent implements OnInit {
     this.usersService.deleteUser(user).subscribe((resp) => {
       this.obtenerUsuarios();
     });
+  }
+
+  confirmarEliminarUsuario(userId: number): void {
+    const confirmacion = window.confirm("¿Estás seguro de que deseas eliminar este usuario?");
+    if (confirmacion) {
+      this.deleteUsuario(userId);
+    }
+  }
+  
+
+  confirmarActivarDesactivarUser(user: User, estahabilitado: boolean): void {
+    const confirmacion = window.confirm("¿Estás seguro de que deseas activar/desactivar el usuario?");
+    if (confirmacion) {
+      this.activardesactivaruser(user, estahabilitado);
+    }
+  }
+
+  confirmarActivarDesactivarCurso(curso: Curso, estahabilitado: boolean): void {
+    const confirmacion = window.confirm("¿Estás seguro de que deseas activar/desactivar el curso?");
+    if (confirmacion) {
+      this.activardesactivar(curso, estahabilitado);
+    }
   }
 
   activardesactivaruser(user: User, estahabilitado: boolean) {

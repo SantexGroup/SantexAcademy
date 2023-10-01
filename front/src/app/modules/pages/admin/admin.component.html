@@ -63,7 +63,7 @@
                               {{ user.TipoDeUsuario?.nombre }}
                         </td>
                         <td>
-                            <a class="btn btn-sm btn-primary" (click)="activardesactivaruser(user, !user.activoactualmente)">
+                            <a class="btn btn-sm btn-primary" (click)="confirmarActivarDesactivarUser(user, !user.activoactualmente)">
                                   <span [appEstadoUsuario]="user.activoactualmente"></span>
                               </a>
                               <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
@@ -76,7 +76,7 @@
                                 <i class="bi bi-trash"></i>
                             </button>
 
-                            <a class="btn btn-sm btn-danger" (click)="deleteUsuario(user.id!)">Eliminar</a>
+                            <a class="btn btn-sm btn-danger" (click)="confirmarEliminarUsuario(user.id!)">Eliminar</a>
                             <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
                             </button>
@@ -162,7 +162,7 @@
                             {{ curso.requisitos }}
                         </td>
                         <td>
-                          <a class="btn btn-sm btn-primary" (click)="activardesactivar(curso, !curso.habilitado)">
+                          <a class="btn btn-sm btn-primary" (click)="confirmarActivarDesactivarCurso(curso, !curso.habilitado)">
                                 <span [appActivardesactivarcurso]="curso.habilitado"></span>
                             </a>
                             <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
@@ -180,8 +180,7 @@
                             <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
                             </button>
-
-                            <a class="btn btn-sm btn-danger" (click)="deleteCurso(curso.id)">Eliminar</a>
+                            <a class="btn btn-sm btn-danger" (click)="confirmarEliminarCurso(curso.id)">Eliminar</a>
                             <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
                             </button>
