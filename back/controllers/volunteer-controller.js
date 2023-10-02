@@ -2,6 +2,7 @@ const volunteerServices = require('../services/volunteer-services');
 const fs = require('fs');
 const path = require('path');
 const PDFDocument = require('pdfkit');
+const models = require('../models/index');
 
 async function getDataVoluntario(req, res) {
   const { usuario } = req;
@@ -21,7 +22,7 @@ async function getDataVoluntario(req, res) {
       return total;
     }, 0);
 
-    voluntario.horasTrabajadas = horasTrabajadas;
+    // voluntario.horasTrabajadas = horasTrabajadas;
 
     // Devuelve las tareas pendientes
     const tareasPendientes = tareasVoluntario.filter((tarea) => {
@@ -38,6 +39,24 @@ async function getDataVoluntario(req, res) {
       }
       return totalPuntos;
     }, 0);
+
+    // Devuelve los premios canjeados
+    /*
+    const premiosCanjeados = await models.premiosMid.findAll({
+      where: { volunteerId: voluntario.id },
+      include: [
+        {
+          model: models.premio,
+        },
+      ],
+    });
+
+    if (premiosCanjeados.length > 0) {
+      voluntario.premiosCanjeados = premiosCanjeados;
+    } else {
+      voluntario.premiosCanjeados = [];
+    }
+    */
 
     res.status(200).json({
       voluntario, horasTrabajadas, tareasPendientes, puntosAdquiridos,
