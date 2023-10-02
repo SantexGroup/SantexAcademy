@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/core/interfaces/user.interface';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
@@ -30,24 +30,32 @@ export class PersonalComponent implements OnInit {
     public toastr: ToastrService
   ) {
     this.personalForm = this.fb.group({
-      name: [''],
-      lastName: [''],
-      email: [''],
-      phone: [''],
+      name: ['', [ Validators.maxLength(20), Validators.pattern('^[a-zA-Z ]*$')]],
+      lastName: ['', [ Validators.maxLength(20), Validators.pattern('^[a-zA-Z ]*$')]],
+      email: ['', [ Validators.email ]],
+      phone: ['', [ Validators.maxLength(10), Validators.pattern('^[0-9]*$')]],
       bornDate: null,
       pictureLink: [''],
     });
+  }
 
+  getName() {
+    return this.personalForm.controls['name'];
+  }
+  getLastName() {
+    return this.personalForm.controls['lastName'];
+  }
+  getEmail() {
+    return this.personalForm.controls['email'];
+  }
+  getPhone() {
+    return this.personalForm.controls['phone'];
   }
 
   ngOnInit() {
-
     this.userData.checkForm = false;
-
     this.views.changeTitle("Datos Personales");
-
     this.getUser()
-
   }
 
   // * Forumulario de datos personales
@@ -87,7 +95,6 @@ export class PersonalComponent implements OnInit {
     }
   }
 
-
   dataUserUpdate() {
     if (this.imagen) {
       this.userService.uploadImage(this.imagen).subscribe((data) => {
@@ -110,8 +117,9 @@ export class PersonalComponent implements OnInit {
       pictureLink: this.url || null
     }
 
-    this.userService.updateUser(this.userData.userId, userUpdate).subscribe(() => {
-      this.getUser() 
-    })
+    console.log(this.personalForm)
+/*     this.userService.updateUser(this.userData.userId, userUpdate).subscribe(() => {
+      this.getUser()  
+    })*/
   }
 }
