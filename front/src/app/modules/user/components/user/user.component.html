@@ -1,18 +1,22 @@
 <app-navbar></app-navbar>
 
-<div class="container mt-4">
-  <div *ngIf="user" class="card">
-    <div class="card-header">
-      <h2>Detalles del usuario con ID: {{ user.id }}</h2>
-    </div>
-    <div class="card-body">
-      <p><strong>Rol:</strong> {{ getRoleName(user.role) }}</p>
-      <p><strong>Nombre:</strong> {{ user.firstName }}</p>
-      <p><strong>Apellido:</strong> {{ user.lastName }}</p>
-      <p><strong>Correo electrónico:</strong> {{ user.email }}</p>
-      
+<div class="wrapper">
+  <div class="row align-items-center">
+    <div class="container mt-4">
+      <div *ngIf="user" class="card">
+        <div class="card-header">
+          <h2>Detalles del usuario</h2>
+        </div>
+        <div class="card-body">          
+          <p><strong>Id:</strong> {{ user.id }}</p>
+          <p><strong>Rol:</strong> {{ getRoleName(user.role) }}</p>          
+          <p><strong>Nombre:</strong> {{ user.firstName }}</p>
+          <p><strong>Apellido:</strong> {{ user.lastName }}</p>
+          <p><strong>Correo electrónico:</strong> {{ user.email }}</p>
+          <button class="btn btn-primary" (click)="redirectToEditUser(user.id)">Editar</button>
+
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-
