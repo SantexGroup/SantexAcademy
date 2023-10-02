@@ -14,4 +14,6 @@ router.route('/:id')
 
 router.get('/:id/user', courseController.getUsers);
 
+router.put('/:courseId/user/:userId', courseController.addUser);
+
 module.exports = router;

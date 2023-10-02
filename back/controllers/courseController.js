@@ -55,4 +55,13 @@ const getUsers = async (req, res) => {
     }
 };
 
-module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers };
+const addUser = async (req, res) => {
+    try {
+        const addedUser = await courseService.addUser(req.params.courseId, req.params.userId);
+        addedUser ? res.json(addedUser) : res.status(404).end();
+    } catch (err) {
+        res.status(500).json({ action: 'Agregar usuario a curso', message: err.message });
+    }
+};
+
+module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers, addUser };

@@ -1,4 +1,4 @@
-const { Course } = require('../models');
+const { Course, User } = require('../models');
 
 const createCourse = async (course) => {
     try {
@@ -62,4 +62,18 @@ const getUsers = async (id, filterParams) => {
     }
 };
 
-module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers };
+const addUser = async (courseId, userId) => {
+    try {
+        const course = await Course.findByPk(courseId);
+        const user = await User.findByPk(userId);
+        if (!course || !user) return null;
+        const courseHasUser = await course.hasUser(user);
+        if (!courseHasUser) await course.addUser(userId);
+        return ( await course.getUsers({ where: { id: userId } }) )[0];
+    } catch (err) {
+        console.error('Error when adding user to course.', err);
+        throw err;
+    }
+};
+
+module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers, addUser };
