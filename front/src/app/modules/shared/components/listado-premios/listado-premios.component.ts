@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Premio } from 'src/app/core/interfaces/premio';
+import { ResumenVoluntario } from 'src/app/core/interfaces/resumenVoluntario';
 import { Voluntario } from 'src/app/core/interfaces/voluntario';
 import { PremioService } from 'src/app/core/services/premio.service';
 import { VoluntarioService } from 'src/app/core/services/voluntario.service';
@@ -19,7 +20,7 @@ export class ListadoPremiosComponent implements OnInit {
 
   listPremios:Premio[] = [];
 
-  datosVoluntario!:Voluntario;
+  datosVoluntario!:ResumenVoluntario;
 
   pdfUrl!:string;
 
@@ -97,7 +98,7 @@ export class ListadoPremiosComponent implements OnInit {
   }
 
   canjear(premio:Premio):void{
-    this.premioService.canjear(this.datosVoluntario.id!, premio.id!).subscribe({
+    this.premioService.canjear(this.datosVoluntario.voluntario.id!, premio.id!).subscribe({
       next:(data:Blob)=>{
         const blob = new Blob([data], { type: 'application/pdf' });
         const url = window.URL.createObjectURL(blob);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ResumenVoluntario } from 'src/app/core/interfaces/resumenVoluntario';
 import { Voluntario } from 'src/app/core/interfaces/voluntario';
 import { VoluntarioService } from 'src/app/core/services/voluntario.service';
 
@@ -35,7 +36,7 @@ export class DatosVoluntarioComponent implements OnInit {
 
    }
    formVoluntario:FormGroup;
-   datosVoluntario!:Voluntario;
+   datosVoluntario!:ResumenVoluntario;
    editarDatos:boolean;
    editarPassword:boolean;
    formPassword:FormGroup;
@@ -56,11 +57,11 @@ export class DatosVoluntarioComponent implements OnInit {
 
   cargarForm():void{
     this.formVoluntario.patchValue({
-      nombre: this.datosVoluntario.name,
-      apellido: this.datosVoluntario.lastname,
-      email: this.datosVoluntario.email,
-      direccion: this.datosVoluntario.address,
-      telefono: this.datosVoluntario.phone
+      nombre: this.datosVoluntario.voluntario.name,
+      apellido: this.datosVoluntario.voluntario.lastname,
+      email: this.datosVoluntario.voluntario.email,
+      direccion: this.datosVoluntario.voluntario.address,
+      telefono: this.datosVoluntario.voluntario.phone
     });
   }
 
@@ -78,10 +79,10 @@ export class DatosVoluntarioComponent implements OnInit {
       address: dataForm.direccion,
       email:dataForm.email,
       phone:dataForm.telefono,
-      password: this.datosVoluntario.password
+      password: this.datosVoluntario.voluntario.password
     }
 
-    this.voluntarioService.modificarVoluntario(this.datosVoluntario.id!, voluntario).subscribe({
+    this.voluntarioService.modificarVoluntario(this.datosVoluntario.voluntario.id!, voluntario).subscribe({
       next:()=>{
         this.matSnackBar.open("Los datos se actualizaron correctamente", "OK",{
           horizontalPosition:'center',
@@ -117,7 +118,7 @@ export class DatosVoluntarioComponent implements OnInit {
   actualizarPassword():void{
 
 
-    this.voluntarioService.modificarPassword(this.datosVoluntario.id!, this.formPassword.value.passwordActual, this.formPassword.value.passwordNueva).subscribe({
+    this.voluntarioService.modificarPassword(this.datosVoluntario.voluntario.id!, this.formPassword.value.passwordActual, this.formPassword.value.passwordNueva).subscribe({
       next:()=>{
         this.matSnackBar.open("La contraseña se actualizó correctamente", "OK",{
           horizontalPosition:'center',
