@@ -6,6 +6,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { UserComponent } from './components/user/user.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { FormsModule } from '@angular/forms';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { FormsModule } from '@angular/forms';
     UserListComponent,
     UserComponent,
     AddUserComponent,
+    EditUserComponent,
   ],
   imports: [
     CommonModule,
