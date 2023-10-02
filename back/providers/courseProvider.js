@@ -76,4 +76,14 @@ const addUser = async (courseId, userId) => {
     }
 };
 
-module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers, addUser };
+const removeUser = async (courseId, userId) => {
+    try {
+        const course = await Course.findByPk(courseId);
+        return await course?.removeUser(userId);
+    } catch (err) {
+        console.error('Error when removing user from course.', err);
+        throw err;
+    }
+};
+
+module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers, addUser, removeUser };

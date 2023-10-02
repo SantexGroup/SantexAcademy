@@ -14,6 +14,8 @@ router.route('/:id')
 
 router.get('/:id/user', courseController.getUsers);
 
-router.put('/:courseId/user/:userId', courseController.addUser);
+router.route('/:courseId/user/:userId')
+    .put(courseController.addUser)
+    .delete(courseController.removeUser);
 
 module.exports = router;

@@ -7,5 +7,6 @@ const updateCourse = async (id, newValues) => await courseProvider.updateCourse(
 const deleteCourse = async (id) => await courseProvider.deleteCourse(id);
 const getUsers = async (id, filterParams) => await courseProvider.getUsers(id, filterParams);
 const addUser = async (courseId, userId) => await courseProvider.addUser(courseId, userId);
+const removeUser = async (courseId, userId) => await courseProvider.removeUser(courseId, userId);
 
-module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers, addUser };
+module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers, addUser, removeUser };

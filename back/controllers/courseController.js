@@ -64,4 +64,13 @@ const addUser = async (req, res) => {
     }
 };
 
-module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers, addUser };
+const removeUser = async (req, res) => {
+    try {
+        const numberOfUsersRemoved = await courseService.removeUser(req.params.courseId, req.params.userId);
+        numberOfUsersRemoved ? res.status(204).end() : res.status(404).end();
+    } catch (err) {
+        res.status(500).json({ action: 'Quitar usuario de curso', message: err.message });
+    }
+};
+
+module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers, addUser, removeUser };
