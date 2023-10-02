@@ -1,0 +1,69 @@
+/* Css de search-navbar */
+
+.huge-container {
+    background: var(--color-6);
+    border: solid 1px var(--color-1);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.button-wrapper {
+    min-width: 10rem;
+}
+
+
+
+@media (min-width: 768px) {
+    .container {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .form-group {
+        flex: 1;
+        margin-right: 1rem;
+        margin-bottom: 0;
+    }
+
+    .button-wrapper {
+        min-width: auto;
+    }
+}
+
+
+/* Css de search-courses */
+.background-courses {
+    padding: 3rem 0 3rem 0;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+
+    background: var(--background-gradient);
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+}
