@@ -62,9 +62,9 @@ h1 {
 
 
 .txt_programa{
-    background-image: linear-gradient(to right,#1616e1, #e65f10, #1616e1);
+    background-image: linear-gradient(to right, #0056b3, #F5670E , #0056b3);
     text-align: left;
-    background-color: orangered;  
+    background-color: #F5670E ;  
     font-size: 25px;
     color: white;
 
@@ -73,7 +73,7 @@ h1 {
 
 .detalles{
     color: white;       
-    background-color: blue;  /*si sirve al finalizar pasar todo al archivo estilos*/
+    background-color:  #0056b3;  
     width:150px;
     height: 40px;
     font-size: 20px;
@@ -117,10 +117,10 @@ text-align: center;
 
 
 .footer{
-    background-image: linear-gradient(to bottom,white,#e65f10);
-    background-color: orangered;
+    background-image: linear-gradient(to bottom,white,#F5670E );
+    background-color: #F5670E ;
     height: 250px;      
-    color: blue;
+    color:  #0056b3;
 
 }
 .sobre{
