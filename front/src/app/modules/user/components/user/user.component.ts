@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -11,7 +12,7 @@ export class UserComponent implements OnInit {
 
   user: any;
 
-  constructor(private route: ActivatedRoute, private userService: UserService) { }
+  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) { }
 
   getRoleName(role: string): string {
     switch (role) {
@@ -30,11 +31,16 @@ export class UserComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       const userId = params.get('id');
       if (userId) {        
-        this.userService.getUserDetails(userId).subscribe((user) => {
+        this.userService.getUserById(userId).subscribe((user) => {
           this.user = user;
         });
       }
     });
   }
+
+  redirectToEditUser(userId: number) {
+    this.router.navigate([`/user/edit-user/${userId}`]);
+  }
+
 }
 
