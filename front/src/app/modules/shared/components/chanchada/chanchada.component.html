@@ -1,0 +1,31 @@
+<!-- parte search-nav -->
+<div class="huge-container">
+    <div class="container">
+        <div class="form-group">
+            <input type="text" id="inputTexto" class="form-control" [(ngModel)]="texto"
+                placeholder="Busca tus cursos aqui...">
+        </div>
+
+        <div class="form-group">
+            <select id="dropdownOpciones" class="form-control" [(ngModel)]="opcionSeleccionada">
+                <option value="ByName">Ordenar por Nombre</option>
+                <option value="byProfesor">Ordenar por Profesor</option>
+                <!-- <option value="opcion3">Ordenar por </option> -->
+            </select>
+        </div>
+        <div class="button-wrapper">
+            <button class="btn btn-primary" (click)="buscar()">Buscar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Parte search-courses -->
+<div class="background-courses">
+    <div class="container text-center">
+        <div class="row justify-content-center card-container">
+            <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let course of courses">
+                <app-card [course]="course"></app-card>
+            </div>
+        </div>
+    </div>
+</div>

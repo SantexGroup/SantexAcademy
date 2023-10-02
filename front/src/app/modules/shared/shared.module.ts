@@ -8,6 +8,7 @@ import { CardComponent } from './components/card/card.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchNavComponent } from './components/search-nav/search-nav.component';
 import { FormsModule } from '@angular/forms';
+import { ChanchadaComponent } from './components/chanchada/chanchada.component';
 
 
 
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     SearchCoursesComponent,
     CardComponent,
-    SearchNavComponent
+    SearchNavComponent,
+    ChanchadaComponent
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,7 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     SearchCoursesComponent,
     SearchNavComponent,
+    ChanchadaComponent
   ]
 })
 export class SharedModule { }
