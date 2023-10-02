@@ -74,6 +74,7 @@ export class VistaArtIndComponent implements OnInit {
       console.log("nombre art: " + this.nombreArt)
       this.descArt = res.detalles.charAt(0).toUpperCase() + res.detalles.slice(1)
       console.log("desc art: " + this.descArt)
+      console.log("cateogria: " + res.detalles)
 
       if (res.Images){
         const imagesProd = res.Images
