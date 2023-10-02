@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, ViewChild, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DashboardServicesService } from '../../../services/dashboard-services.service';
 import { AuthService } from '../../../../auth/services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,19 +10,24 @@ import { AuthService } from '../../../../auth/services/auth.service';
   templateUrl: './tabs-dashboard-organization.component.html',
   styleUrls: ['./tabs-dashboard-organization.component.css']
 })
-export class TabsDashboardOrganizationComponent implements OnInit{
+export class TabsDashboardOrganizationComponent implements OnInit {
   @Input() dataTabs: any = {};
   activeTab: number = 1;
   editData: boolean = false;
-
-  tokenOrg : string = "";
+  tokenOrg: string = "";
+  onModalStatus: boolean = false;
+  statusModal: string = '';
+  textBtnModalStatus: string = '';
+  textMessage: string = '';
+  onModalQuestion: boolean = false;
+  fadeAnimationClass = '';
 
   ngOnInit(): void {
     this.tokenOrg = this.authService.getAuthToken()
   }
 
   userForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private dashService: DashboardServicesService, private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private dashService: DashboardServicesService, private authService: AuthService, private router: Router) {
     this.userForm = this.formBuilder.group({
       name: [''],
       cuit: [''],
@@ -57,7 +63,6 @@ export class TabsDashboardOrganizationComponent implements OnInit{
 
   activeEditProfileOrg() {
 
-    // this.selectedCategory = this.category || ''; // Asignar la categoría actual al campo de edición o una cadena vacía si no hay categoría
     this.fadeAnimationClass = 'fade-in-out-animation';
 
     this.userForm.setValue({
@@ -83,24 +88,29 @@ export class TabsDashboardOrganizationComponent implements OnInit{
       this.dashService.updateProfileOrganization(userData, this.tokenOrg).subscribe({
         next: (res) => {
           console.log(res);
+          if (res) {
+            this.onModalStatus = true;
+            this.statusModal = 'success';
+            this.textMessage = ' ¡Tus datos se han modificado correctamente!';
+
+            setTimeout(() => {
+              this.onModalStatus = false;
+              window.location.reload();
+            }, 3000);
+
+          }
         },
         error: (err) => {
           console.log(err);
+          this.onModalStatus = true;
+          this.statusModal = 'failed';
+          this.textBtnModalStatus = 'Aceptar';
+          this.textMessage =
+            '¡Se produjo un error al modificar tus datos! Por favor, inténtalo de nuevo más tarde.';
         }
       })
     }
     this.editData = false;
-
-    // this.image = this.newValues['image'] || this.image;
-    // this.name = this.newValues['name'] || this.name;
-    // this.cuit = this.newValues['cuit'] || this.cuit;
-    // this.location = this.newValues['location'] || this.location;
-    // this.phone = this.newValues['phone'] || this.phone;
-    // this.email = this.newValues['email'] || this.email;
-    // this.category = this.newValues['category'] || this.category;
-    // this.description = this.newValues['description'] || this.description;
-    // this.password = this.newValues['password'] || this.password;
-    // this.editData = false;
   }
 
   captureData(fieldName: string, event: any) {
@@ -117,42 +127,41 @@ export class TabsDashboardOrganizationComponent implements OnInit{
 
   selectedCategory: string = '';
 
-
-
   onCategoryChange(event: any) {
     this.selectedCategory = event.target.value;
     this.captureData('category', this.selectedCategory);
 
     this.userForm.setValue({
-
       category: event.target.value,
-
-
     });
-
-
-
   }
-
-
-
-
-
-
-  fadeAnimationClass = ''; // Inicialmente, no se aplica ninguna animación.
 
   editarDatos() {
     this.editData = false;
-    this.fadeAnimationClass = 'fade-in-out-animation'; // Aplica la animación de salida.
+    this.fadeAnimationClass = 'fade-in-out-animation';
   }
 
+  handleProfileDelete() {
+    this.onModalQuestion = !this.onModalQuestion;
+  }
+
+  deleteProfile() {
+    this.dashService.deleteProfileOrganization(this.tokenOrg).subscribe({
+      next: (res) => {
+        if (res) {
+          this.authService.clearAuthToken();
+          this.router.navigate(['']);
+        }
+      },
+      error: (err) => {
+        console.log('error deleting user', err);
+      },
+    });
+  }
 
   activateTab(tabNumber: number) {
     this.activeTab = tabNumber;
   }
-
-
-
 
 
   @ViewChild('fileInput') fileInput: ElementRef | undefined;
@@ -162,9 +171,13 @@ export class TabsDashboardOrganizationComponent implements OnInit{
     if (file) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.image = e.target.result; // Establecer la propiedad 'image' con la URL de la imagen cargada
+        this.image = e.target.result;
       };
       reader.readAsDataURL(file);
     }
+  }
+
+  closeModalStatus() {
+    this.onModalStatus = false;
   }
 }
