@@ -128,7 +128,6 @@ export class ModificarArticuloComponent implements OnInit {
         }
         this.textoCarga = '(' + (this.uploadedImages.length) + ') Imágenes seleccionadas'
       }
-      
     }    
   }
   modificarProducto(): void { 

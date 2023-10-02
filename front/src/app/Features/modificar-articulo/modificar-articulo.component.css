@@ -25,7 +25,7 @@ h2 {
   font-size: 30px;
   font-weight: 700;
   margin-bottom: 0px;
-  margin-top: 1%;
+  margin-top: 4%;
   text-align: center;
   border-radius: 5px;
   width: max-content;
@@ -37,7 +37,7 @@ h2 {
 #linea {
  color: #d68a96;
  margin-top: 10px;
- margin-bottom: 30px;
+ margin-bottom: 20px;
  --animate-duration: 1.5s;
 }
 /* Formulario */

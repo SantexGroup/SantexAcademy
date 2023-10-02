@@ -14,7 +14,6 @@ export class HomePageComponent implements OnInit {
 
   images: string[] = [];
   listArticulos: any = [];
-  numer: number = 0;
   servidor: string = environment.API_URL + '/images/'
 
   constructor(private service: VerArtGenService, private router: Router) { }
@@ -32,18 +31,11 @@ export class HomePageComponent implements OnInit {
             const imageName = productos[i].Images[0].url;
             this.images.push(this.servidor + imageName);          
             this.listArticulos.push(productos[i]);
-            if (i < 9) {
-              this.numer = i+1;
-              console.log("Numero: " + this.numer);
-            }
           }
           this.listArticulos = this.listArticulos.slice(0, 9);
           this.images = this.images.slice(0, 9)
           console.log("Articulos: " + JSON.stringify(this.listArticulos[i].Images[0].url));
         }
-        
-        console.log("imágenes: " + this.images);
-        console.log("Numero: " + this.numer);
       }
     })  
   }

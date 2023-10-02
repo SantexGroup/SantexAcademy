@@ -6,9 +6,9 @@
   <h2 class="animate__animated animate__backInDown">Alquiler de bienes muebles para eventos</h2>
 </div>
 <div id="carouselExampleDark" class="carousel carousel-dark slide">  
-  <div class="carousel-inner">
+  <div id="carusel"class="carousel-inner">
     <div id="contenedor" class="carousel-item active" data-bs-interval="2000">
-        <div id="divArt" class="animate__animated animate__backInRight" >
+        <div id="divArt" class="animate__animated animate__fadeIn">
           <div id="divTar" style="width: 100%;">
             <div id="tarjetas" class="card-body">
               <div id="divIma">
@@ -22,7 +22,7 @@
           </div>
         </div>
       </div>
-      <div *ngFor="let articulo of listArticulos" id="contenedor" class="carousel-item" data-bs-interval="2000">
+      <div id="contenedor" *ngFor="let articulo of listArticulos" class="carousel-item" data-bs-interval="2000">
         <div id="divArt" class="animate__animated animate__fadeIn" >
           <div id="divTar" style="width: 100%;">
             <div id="tarjetas" class="card-body">
