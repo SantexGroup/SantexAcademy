@@ -10,8 +10,10 @@ import { environment } from 'src/environments/environment';
 })
 export class VistaArtIndComponent implements OnInit {
 
+
+  
   // obtener imgs
-  servidor: string = environment.API_URL + '/images/'
+  servidor: string = environment.API_URL + '/images/';
   images: string[] = [];
 
   //id del producto
@@ -19,6 +21,10 @@ export class VistaArtIndComponent implements OnInit {
 
   //id del usuario
   idUsuario: number = 1;
+
+  //Mayúsculas
+  nombreArt: string = '';
+  descArt: string = '';
   
   //seleccionables
   envSel: string = '';
@@ -63,16 +69,21 @@ export class VistaArtIndComponent implements OnInit {
   datosProd(id: number) {
     this.service.datosProdServ(id).subscribe(res => {
       this.respuesta = res;
-      console.log(this.respuesta);
+      console.log("Respuesta: " + JSON.stringify(this.respuesta));
+      this.nombreArt = res.nombre.charAt(0).toUpperCase() + res.nombre.slice(1)
+      console.log("nombre art: " + this.nombreArt)
+      this.descArt = res.detalles.charAt(0).toUpperCase() + res.detalles.slice(1)
+      console.log("desc art: " + this.descArt)
+      console.log("cateogria: " + res.detalles)
 
-      if (res.articulos.Images){
-        const imagesProd = res.articulos.Images
+      if (res.Images){
+        const imagesProd = res.Images
         for (let i = 0; i < imagesProd.length; i++){
           this.images.push(this.servidor + imagesProd[i].url);
         }
       }
     })
-    console.log(this.images);
+    console.log("imagenes: " + this.images);
   }
 
 
@@ -153,6 +164,6 @@ export class VistaArtIndComponent implements OnInit {
       }
       localStorage.setItem('datosAlq', JSON.stringify(datosAlq));
     }
-    //redirigir a la pantalla de confirmar la transacción
+    this.router.navigate(['confirmacion-articulo']);
   }  
 }
