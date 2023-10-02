@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';  
 
 import { AuthService } from '../../auth/services/auth.service';
 import { CursosService } from '../../cursos/services/cursos.service';
@@ -48,6 +49,7 @@ export class AulaVirtualComponent implements OnInit {
              private cursoService: CursosService,
              private usersService: UsersService,
              private fb: FormBuilder,
+             private http: HttpClient,
              ){ 
                 this.formulario = this.fb.group({
                   selectedField: ['nombre'],
@@ -172,6 +174,23 @@ export class AulaVirtualComponent implements OnInit {
     const porcentaje = (casillasVerificadas / cantidadClases) * 100;
     return Math.round(porcentaje * 100) / 100;
   }
+
+
+  guardarDatosDB() {
+    if (Object.keys(this.datosDeCursado).length === 0) {
+      console.log('No hay datos para enviar.');
+      return;
+    }
+    this.http.post('http://localhost:4001/cursadoporalumno/', this.datosDeCursado).subscribe(
+      (respuesta) => {
+        console.log('Datos enviados al servidor con éxito:', respuesta);
+      },
+      (error) => {
+        console.error('Error al enviar datos al servidor:', error);
+      }
+    );
+  }
+
 
 
 }

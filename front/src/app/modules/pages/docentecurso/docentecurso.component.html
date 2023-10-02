@@ -1,0 +1,44 @@
+<h2 class="text-center">Asignar docente a curso</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-5"> 
+      <form [formGroup]="form" (ngSubmit)="onEnviar($event, docenteporcurso)">
+        <div class="form-outline mb-2">
+          <label class="form-label" for="form3Example1cg">Curso: </label>
+          <label> {{ docenteporcurso.CursoEnDocentePorCurso?.nombre }}</label>
+        </div>        
+        <div class="form-outline mb-2">
+            <label for="especialidadType">Docente:</label>
+            <select
+              id="docente"
+              name="docente"
+              class="form-select"
+              [ngModel]="docenteSeleccionado"
+              (change)="onDocenteChange($event)" formControlName="docenteType">
+              <option [value]="undefined" disabled selected>
+                Seleccione
+              </option>
+              <option *ngFor="let docente of docentes" [value]="docente.id">
+                {{ docente.UserDocente?.apellido }} {{ docente.UserDocente?.nombre }}
+              </option>
+            </select>
+            <div *ngIf="form.get('docenteType')?.invalid && (form.get('docenteType')?.dirty || form.get('docenteType')?.touched)" class="text-danger">
+                <div *ngIf="form.get('docenteType')?.hasError('invaliddocenteType')" class="text-danger">
+                  Debe seleccionar un docente.
+                </div>
+              </div>
+              <div *ngIf="docenteSeleccionado === undefined" class="text-danger">
+                Debe seleccionar una docente.
+              </div>             
+          </div>
+        <div class="d-flex justify-content-center mb-4">
+          <button class="btn btn-primary" style="margin-top: 10px;">Guardar</button>
+          <button type="button" class="btn btn-primary" [routerLink]="['/users/index']" style="margin-top: 10px; margin-left: 10px;">Volver</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<app-notification class="notification-message" [message]="notificationMessage" *ngIf="notificationMessage"></app-notification>
+
+

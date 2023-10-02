@@ -8,8 +8,6 @@ import { CreateCursoComponent } from './pages/create-curso/create-curso.componen
 import { GetCursoComponent } from './pages/get-curso/get-curso.component';
 import { DateFormatPipe } from 'src/app/pipes/dateformat';
 
-
-
 @NgModule({
   declarations: [
     AllCursosComponent,
@@ -20,7 +18,8 @@ import { DateFormatPipe } from 'src/app/pipes/dateformat';
   imports: [
     CommonModule,
     CursosRoutingModule,
-    FormsModule
+    FormsModule,
+    
   ]
 })
 export class CursosModule { }

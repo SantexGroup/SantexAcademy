@@ -19,6 +19,8 @@ import { MisCursosComponent } from './modules/pages/mis-cursos/mis-cursos.compon
 import { AulaVirtualComponent } from './modules/pages/aula-virtual/aula-virtual.component';
 import { PerfilAlumnoEditarComponent } from './modules/pages/perfil-alumno-editar/perfil-alumno-editar.component';
 import { PerfilDocenteComponent } from './modules/pages/perfil-docente/perfil-docente.component';
+import { DocenteespecialidadComponent } from './modules/pages/docenteespecialidad/docenteespecialidad.component';
+import { DocentecursoComponent } from './modules/pages/docentecurso/docentecurso.component';
 
 const routes: Routes = [
   {
@@ -124,6 +126,14 @@ const routes: Routes = [
   {
     path: 'perfil-docente',
     component: PerfilDocenteComponent, 
+  },
+  {
+    path: 'docente/asignarespecialidad/:id',
+    component: DocenteespecialidadComponent, 
+  },
+  {
+    path: 'curso/asignardocente/:id',
+    component: DocentecursoComponent, 
   },
   {
     path: '',

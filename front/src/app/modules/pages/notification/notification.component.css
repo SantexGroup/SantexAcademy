@@ -1,0 +1,44 @@
+/* notification.component.css */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  display: flex; /* Cambiamos a un contenedor flexible */
+  align-items: center; /* Centramos verticalmente el contenido */
+}
+
+.close-button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 50%; /* Hace que el botón sea redondo */
+  width: 30px; /* Ajusta el ancho y alto según tus preferencias */
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px; /* Tamaño del ícono */
+  margin-left: 10px; /* Agrega espacio a la izquierda del botón */
+}
+
+.close-button:hover {
+  background-color: #ffffff; /* Cambia el fondo al pasar el mouse */
+  color: #4caf50; /* Cambia el color del ícono al pasar el mouse */
+}
+
+  @keyframes fade-in-out {
+    0%, 100% {
+      opacity: 0;
+    }
+    10%, 90% {
+      opacity: 1;
+    }
+  }
+  

@@ -7,6 +7,7 @@ import { User } from '../../interface/user.interface';
 import { UsersService } from '../../services/users.service';
 import { TipoDeUsuario } from '../../interface/tipodeusuario.interface';
 import { TiposDeUsuarioService } from '../../services/tiposdeusuarioservice';
+import { DocenteService } from 'src/app/modules/docentes/services/docente.service';
 
 @Component({
   selector: 'app-create',
@@ -40,12 +41,14 @@ export class CreateComponent implements OnInit {
 
   tipoDeUsuarioSeleccionado: number | undefined = undefined;
   tiposDeUsuario: TipoDeUsuario[] = [];
+  notificationMessage: string | undefined;
   
   constructor(private formBuilder: FormBuilder,
               private usersService: UsersService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
-              private tipoDeUsuarioService: TiposDeUsuarioService,) 
+              private tipoDeUsuarioService: TiposDeUsuarioService,
+              private docenteService: DocenteService) 
     { 
       this.form= this.formBuilder.group(
           {
@@ -106,6 +109,7 @@ export class CreateComponent implements OnInit {
             .subscribe(
               user => {
                 console.log('Usuario editado:', user);
+                this.notificationMessage = 'Operación exitosa: Datos guardados correctamente';
                 this.router.navigate(['/users/index']);
               },
               error => {
@@ -115,15 +119,36 @@ export class CreateComponent implements OnInit {
         } else {
           // Agregar nuevo usuario
           this.usersService.addUser(this.user)
-            .subscribe(
-              user => {
-                console.log('Usuario agregado:', user);
-                this.router.navigate(['/users/index']);
-              },
-              error => {
-                console.error('Error al agregar usuario:', error);
+          .subscribe(
+            newUser => {
+              console.log('Usuario agregado:', newUser);
+              console.log('Usuario id:', newUser.id);
+              console.log('Usuario tipo:', newUser.idtipodeusuario);
+              if (newUser.idtipodeusuario == 3) {
+                console.log('Ingreso para agregar docente');
+                this.docenteService.addDocente({
+                  idusuario: newUser.id,
+                  idespecialidad: 0,
+                  habilitado: false, //Al crear un nvo. usuario del tipo docente, creo un nvo. DOCENTE deshabilitado para que el admin lo habilite formalmente!!!!
+                  estado: 'A'
+                }).subscribe(
+                  docente => {
+                    console.log('Docente agregado:', docente);
+                    this.notificationMessage = 'Operación exitosa: Datos guardados correctamente';
+                    this.router.navigate(['/users/index']);
+                  },
+                  error => {
+                    console.error('Error al agregar docente:', error);
+                  }
+                );
               }
-            );
+              else {
+              this.router.navigate(['/users/index']);}
+            },
+            error => {
+              console.error('Error al agregar usuario:', error);
+            }
+          );        
         }
       } else {
         console.error('El tipo de usuario seleccionado es undefined.');

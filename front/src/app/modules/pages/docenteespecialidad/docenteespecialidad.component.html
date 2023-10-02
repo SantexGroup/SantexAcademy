@@ -1,0 +1,41 @@
+<h2 class="text-center">Asignar especialidad a docente</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-5"> 
+      <form [formGroup]="form" (ngSubmit)="onEnviar($event, docente)">
+        <div class="form-outline mb-2">
+          <label class="form-label" for="form3Example1cg">Docente: </label>
+          <label> {{ docente.UserDocente?.apellido}} {{docente.UserDocente?.nombre }}</label>
+        </div>        
+        <div class="form-outline mb-2">
+            <label for="especialidadType">Especialidad:</label>
+            <select
+              id="especialidad"
+              name="especialidad"
+              class="form-select"
+              [ngModel]="especialidadSeleccionada"
+              (change)="onEspecialidadChange($event)" formControlName="especialidadType">
+              <option [value]="undefined" disabled selected>
+                Seleccione
+              </option>
+              <option *ngFor="let especialidad of especialidades" [value]="especialidad.id">
+                {{ especialidad.nombre }}
+              </option>
+            </select>
+            <div *ngIf="form.get('especialidadType')?.invalid && (form.get('especialidadType')?.dirty || form.get('especialidadType')?.touched)" class="text-danger">
+                <div *ngIf="form.get('especialidadType')?.hasError('invalidespecialidadType')" class="text-danger">
+                  Debe seleccionar una especialidad.
+                </div>
+              </div>
+              <div *ngIf="especialidadSeleccionada === undefined" class="text-danger">
+                Debe seleccionar una especialidad.
+              </div>             
+          </div>
+        <div class="d-flex justify-content-center mb-4">
+          <button class="btn btn-primary" style="margin-top: 10px;">Guardar</button>
+          <button type="button" class="btn btn-primary" [routerLink]="['/users/index']" style="margin-top: 10px; margin-left: 10px;">Volver</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
