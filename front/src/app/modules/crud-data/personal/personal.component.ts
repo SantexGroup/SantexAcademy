@@ -64,7 +64,6 @@ export class PersonalComponent implements OnInit {
         })
         this.url = data.pictureLink || this.default
         this.user = data;
-        console.log("User", this.user) // TODO: borrar
       },
       error: (err) => {
         console.log(err);
@@ -80,7 +79,6 @@ export class PersonalComponent implements OnInit {
   selectImage(e: any) {
     if (e.target.files[0]) {
       this.imagen = e.target.files[0];
-      console.log("imagen", this.imagen) // TODO: BORRAR
       const reader = new FileReader()
       reader.readAsDataURL(e.target.files[0])
       reader.onload = (e: any) => {
@@ -111,8 +109,9 @@ export class PersonalComponent implements OnInit {
       bornDate: this.personalForm.get('bornDate')?.value,
       pictureLink: this.url || null
     }
+
     this.userService.updateUser(this.userData.userId, userUpdate).subscribe(() => {
-      this.getUser()
+      this.getUser() 
     })
   }
 }
