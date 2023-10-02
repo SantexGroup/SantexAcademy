@@ -39,9 +39,3 @@ textarea {
     background-color: VAR(--color-primary);
     color: var(--color-0);
 }
-
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}

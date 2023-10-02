@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+
+<div class="wrapper">
+  <div class="row align-items-center">
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text">Crear Usuario</p>
+      </div>
+
+      <form #registrationForm="ngForm" (submit)="createUser(); navigateToUserList()">
+        <div class="form-group col-12">          
+          <select id="role" name="role" [(ngModel)]="role" class="form-control" required>
+            <option value="" disabled selected>Selecciona un rol</option>
+            <option value="teacher">Docente</option>
+            <option value="student">Alumno</option>
+            <option value="admin">Administrador</option>
+          </select>
+        </div>
+        <div class="form-row mb-2">
+          <div class="form-group col-12">
+            <input type="text" [(ngModel)]="firstName" name="firstName" class="form-control" required
+              placeholder="Nombre" minlength="2">
+          </div>
+
+          <div class="form-group col-12">
+            <input type="text" [(ngModel)]="lastName" name="lastName" class="form-control" required
+              placeholder="Apellido" minlength="2">
+          </div>
+
+          <div class="form-group col-12">
+            <input type="email" [(ngModel)]="email" name="email" class="form-control" required
+              placeholder="Correo electrónico" minlength="6">
+          </div>
+
+          <div class="form-group col-12">
+            <input type="password" [(ngModel)]="password" name="password" class="form-control" required
+              placeholder="Contraseña" minlength="8">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Crear</button>
+      </form>
+    </div>
+  </div>
+</div>
