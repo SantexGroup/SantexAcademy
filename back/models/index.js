@@ -42,7 +42,7 @@ db.Images = require('./images')(sequelize, Sequelize);
 db.tipoProducto = require('./tipoproducto')(sequelize, Sequelize);
 db.Alquiler = require('./alquiler')(sequelize, Sequelize);
 db.estado = require('./estado')(sequelize, Sequelize);
-db.direccion = require('./direccion')(sequelize, Sequelize);
+db.Direccion = require('./direccion')(sequelize, Sequelize);
 db.localidad = require('./localidad')(sequelize, Sequelize);
 db.provincia = require('./provincia')(sequelize, Sequelize);
 
@@ -95,7 +95,7 @@ db.Alquiler.belongsTo(db.estado, {
 });
 
 // Relacion Direccion-User (one-to-one)
-db.direccion.hasOne(db.User, {
+db.Direccion.hasOne(db.User, {
   foreignKey: 'idDireccion',
 });
 db.User.belongsTo(db.direccion, {
