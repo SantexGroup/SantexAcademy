@@ -6,10 +6,11 @@ import { PruebaComponent } from './component/prueba/prueba.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { BuyerRegistrationComponent } from './component/buyer-registration/buyer-registration.component';
 import { from } from 'rxjs';
+import { PantallaComponent } from './component/pantalla/pantalla.component';
 
 const routes: Routes = [ //defino las rutas
 
-{ path: 'prueba', component: PruebaComponent },
+{ path: 'prueba', component: PantallaComponent },
 { path: '**', component: PageNotFoundComponent }, 
 { path: '',   redirectTo: '/comprador', pathMatch: 'full'},
 { path: 'comprador', component: BuyerRegistrationComponent},

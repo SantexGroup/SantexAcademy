@@ -1,0 +1,21 @@
+.boton-busqueda {
+    background-color: orange;
+    transition: 0.5s;
+    color: white;
+    border-radius: 10px;
+    size: 32px;
+    margin-left: 10px;
+    padding: 8px;
+    border: none;
+}
+
+.input-buscador {
+    border-radius: 10px;
+    size: 32px;
+    padding: 8px;
+    border: none;
+}
+
+.boton-busqueda:active {
+    background-color: rgb(255, 47, 0);
+}
