@@ -1,4 +1,4 @@
-const { Course } = require('../models');
+const { Course, User } = require('../models');
 
 const createCourse = async (course) => {
     try {
@@ -47,16 +47,6 @@ const deleteCourse = async (id) => {
     }
 };
 
-const createUser = async (user, courseId) => {
-    try {
-        const course = await Course.findByPk(courseId);
-        return await course?.createUser(user);
-    } catch (err) {
-        console.error("Error when creating course user.", err.message);
-        throw err;
-    }
-}
-
 const getUsers = async (id, filterParams) => {
     try {
         let options = {
@@ -72,4 +62,28 @@ const getUsers = async (id, filterParams) => {
     }
 };
 
-module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, createUser, getUsers };
+const addUser = async (courseId, userId) => {
+    try {
+        const course = await Course.findByPk(courseId);
+        const user = await User.findByPk(userId);
+        if (!course || !user) return null;
+        const courseHasUser = await course.hasUser(user);
+        if (!courseHasUser) await course.addUser(userId);
+        return ( await course.getUsers({ where: { id: userId } }) )[0];
+    } catch (err) {
+        console.error('Error when adding user to course.', err);
+        throw err;
+    }
+};
+
+const removeUser = async (courseId, userId) => {
+    try {
+        const course = await Course.findByPk(courseId);
+        return await course?.removeUser(userId);
+    } catch (err) {
+        console.error('Error when removing user from course.', err);
+        throw err;
+    }
+};
+
+module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers, addUser, removeUser };

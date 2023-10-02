@@ -81,6 +81,21 @@ const deleteUser = async (id) => {
   }
 };
 
+const getCourses = async (id, filterParams) => {
+  try {
+      let options = {
+          where: {},
+          paranoid: false // se muestran incluso los eliminados
+      };
+      if (filterParams.role) options.where.role = filterParams.role;
+      const user = await db.User.findByPk(id);
+      return await user?.getCourses(options);
+  } catch (err) {
+      console.error('Error when fetching user courses.', err.message);
+      throw err;
+  }
+};
+
 module.exports = {
   userCreate,
   findUser,
@@ -88,4 +103,5 @@ module.exports = {
   find,
   modifyUser,
   deleteUser,
+  getCourses,
 };
