@@ -14,6 +14,8 @@
           <p><strong>Apellido:</strong> {{ user.lastName }}</p>
           <p><strong>Correo electrónico:</strong> {{ user.email }}</p>
           <button class="btn btn-primary" (click)="redirectToEditUser(user.id)">Editar</button>
+          <button (click)="deleteUser()" class="btn btn-danger">Borrar Usuario</button>
+
 
         </div>
       </div>
