@@ -39,6 +39,9 @@ router.post('/verifyLink', (req, res) => {
   verifyLink(req, res);
 });
 //-----------------------------------------------------------------------------------------------------/////
+//------------ Nueva ruta para usar en perfil-docente--------------------------//
+router.post('/byData', userController.getByData);
+//---------------------------------------------------------------------------//
 
 
 module.exports = router;

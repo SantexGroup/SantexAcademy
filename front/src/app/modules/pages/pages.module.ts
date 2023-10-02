@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { QuienessomosComponent } from './quienessomos/quienessomos.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
@@ -38,7 +39,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     QuienessomosComponent, //Exporto el componente de quienes somos para poder usarlo desde otro lado

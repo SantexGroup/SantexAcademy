@@ -44,4 +44,10 @@ export class UsersService {
   activardesactivar( user: User): Observable<User> {
     return this.http.put<User>(`${ this.baseUrl }user/${user.id}`, user)
   }
+
+  // Agregada para obtener los usuarios alumnos matriculados a un curso especifico por id
+  obtenerUsuariosDelCurso(cursoId: number): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseUrl}curso/${cursoId}/users`);
+  }
+
 }

@@ -52,6 +52,20 @@ const getCursos = async (req, res, next) => {
   }
 };
 
+//---- Nueva funcion busqueda para usar en perfil-docente, no borrar ----------//
+const getByData = async (req, res, next) => {
+  const { searchCriteria } = req.body; // Recibo los criterios desde el POST
+
+  try {
+    const user = await userService.getUserByData(searchCriteria);
+    res.status(200).json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error en la búsqueda de usuarios' });
+  }
+};
+//---------------------------------------------------------------------------//
+
 const createUser = async (req, res) => {
   const { body } = req;
   const { email, username, password } = body;
@@ -206,6 +220,7 @@ module.exports = {
   allUser,
   getUser,
   getCursos,
+  getByData,
   createUser,
   login,
   revalidarToken,

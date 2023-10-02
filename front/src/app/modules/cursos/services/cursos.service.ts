@@ -43,4 +43,5 @@ export class CursosService {
   activardesactivar( curso: Curso): Observable<Curso> {
     return this.http.put<Curso>(`${ this.baseUrl }curso/${curso.id}`, curso)
   }
+  
   }
