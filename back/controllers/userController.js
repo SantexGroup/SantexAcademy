@@ -1,5 +1,18 @@
 const userService = require('../services/userService');
 
+async function loginUser(req, res) {
+  try {
+    const { nombreUsuario, contraseña } = req.body;
+
+    const { usuario, token } = await userService.login(nombreUsuario, contraseña);
+
+    res.status(200).json({ usuario, token });
+  } catch (error) {
+    console.error('Error al iniciar sesión: ', error);
+    return res.status(401).json({ mensaje: 'Nombre de usuario o contraseña incorrectos' });
+  }
+}
+
 async function createUser(req, res) {
   // Crear un usuario que no existia
   try {
@@ -55,4 +68,4 @@ async function deleteUser(req, res){
   await userService.deleteUser(id);
   return res.status(200).send(`Usuario con el ${id} ha sido eliminado exitosamente`);
 }
-module.exports = { createUser, getAllUsers, getUserById ,editUser,deleteUser};
+module.exports = { loginUser, createUser, getAllUsers, getUserById ,editUser,deleteUser};
