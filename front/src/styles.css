@@ -45,7 +45,7 @@ h1 {
     background-repeat: no-repeat;
     background-size: cover; /* Esto ajustará la imagen al 100% del ancho del contenedor */
     width: 100%;
-    height:2000px;
+    height:1500px;
 
     background-position: center;
     padding-right: 100px;
