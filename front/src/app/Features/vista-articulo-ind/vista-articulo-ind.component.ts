@@ -70,17 +70,19 @@ export class VistaArtIndComponent implements OnInit {
     this.service.datosProdServ(id).subscribe(res => {
       this.respuesta = res;
       console.log("Respuesta: " + JSON.stringify(this.respuesta));
-      this.nombreArt = res.articulos.nombre.charAt(0).toUpperCase() + res.articulos.nombre.slice(1)
-      this.descArt = res.articulos.detalles.charAt(0).toUpperCase() + res.articulos.detalles.slice(1)
+      this.nombreArt = res.nombre.charAt(0).toUpperCase() + res.nombre.slice(1)
+      console.log("nombre art: " + this.nombreArt)
+      this.descArt = res.detalles.charAt(0).toUpperCase() + res.detalles.slice(1)
+      console.log("desc art: " + this.descArt)
 
-      if (res.articulos.Images){
-        const imagesProd = res.articulos.Images
+      if (res.Images){
+        const imagesProd = res.Images
         for (let i = 0; i < imagesProd.length; i++){
           this.images.push(this.servidor + imagesProd[i].url);
         }
       }
     })
-    console.log(this.images);
+    console.log("imagenes: " + this.images);
   }
 
 

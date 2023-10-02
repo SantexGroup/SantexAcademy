@@ -64,27 +64,28 @@ export class ModificarArticuloComponent implements OnInit {
       this.vistaArtService.datosProdServ(id).subscribe(res => {
         this.respuesta = res;
         console.log("Respuesta: " + JSON.stringify(res));
-        this.nomArt = res.articulos.nombre.charAt(0).toUpperCase() + res.articulos.nombre.slice(1);
-        this.descArt = res.articulos.detalles.charAt(0).toUpperCase() + res.articulos.detalles.slice(1);
-        this.precioArt = res.articulos.precio;
-        this.catArt = JSON.stringify(res.tipo.name.charAt(0).toUpperCase() + res.tipo.name.slice(1));
-        this.catArt = this.catArt.slice(1, this.catArt.length-1);
-        this.artInd = res.tipo.name;
-        if (!res.articulos.envio) {this.envios = ['Buscar en local', 'Envío a domicilio']}
-        for (let i = 0; i < this.listcategorias.length; i++){
-          if (this.listcategorias[i].name !== this.artInd) {
-            let newList = this.cat;
-            newList.push(this.listcategorias[i]);
-            this.cat = newList;
-          }
-        }    
-        if (res.articulos.Images){
-          const imagesProd = res.articulos.Images;
+        console.log("nombnre: " + JSON.stringify(res.nombre));
+        this.nomArt = res.nombre.charAt(0).toUpperCase() + res.nombre.slice(1);
+        this.descArt = res.detalles.charAt(0).toUpperCase() + res.detalles.slice(1);
+        this.precioArt = res.precio;
+        // this.catArt = JSON.stringify(res.tipo.name.charAt(0).toUpperCase() + res.tipo.name.slice(1));
+        // this.catArt = this.catArt.slice(1, this.catArt.length-1);
+        // this.artInd = res.tipo.name;
+        if (!res.envio) {this.envios = ['Buscar en local', 'Envío a domicilio']}
+        // for (let i = 0; i < this.listcategorias.length; i++){
+        //   if (this.listcategorias[i].name !== this.artInd) {
+        //     let newList = this.cat;
+        //     newList.push(this.listcategorias[i]);
+        //     this.cat = newList;
+        //   }
+        // }    
+        if (res.Images){
+          const imagesProd = res.Images;
           for (let i = 0; i < imagesProd.length; i++){this.uploadedImages.push(this.servidor + imagesProd[i].url);
           }
         }
         if (res) {this.textoCarga = '(' + JSON.stringify(this.uploadedImages.length) + ') Imágenes seleccionadas';}
-        if (!res.articulos.Images) {this.textoCarga = '(0) Imágenes seleccionadas'};
+        if (!res.Images) {this.textoCarga = '(0) Imágenes seleccionadas'};
       })        
     }      
   }
