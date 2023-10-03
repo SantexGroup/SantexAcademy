@@ -3,36 +3,32 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
-  styleUrls: ['./students.component.css']
+  styleUrls: ['./students.component.css'],
 })
 export class StudentsComponent implements OnInit {
   user = {
     name: 'Nombre',
     lastName: 'Apellido',
     email: 'correo@example.com', // Reemplaza esto con el correo real del usuario
+    gender: '',
     profileImage: '',
   };
 
-  showImage = false; // Variable para controlar si se muestra la imagen
+  ngOnInit(): void {}
 
-  @ViewChild('fileInput') fileInput!: ElementRef; // Usamos '!' para indicar que será inicializada
+  imageSrc: string | ArrayBuffer | null = null;
 
-  constructor() { }
-
-  ngOnInit(): void {
-    // Aquí debes obtener los datos del usuario desde tu servicio o donde los tengas disponibles.
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imageSrc = e.target.result;
+    };
+    reader.readAsDataURL(file);
   }
 
-  handleImageUpload(event: any) {
-    const file = event.target.files[0];
-    
-    // Aquí puedes agregar código para subir la imagen al servidor si es necesario.
+  uploadImage() {}
+
   
-    this.showImage = true;
-  }
 
-  // Función para abrir el campo de entrada de archivo al hacer clic en "Subir foto"
-  openFileInput() {
-    this.fileInput.nativeElement.click();
-  }
 }

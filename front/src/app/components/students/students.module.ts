@@ -6,6 +6,7 @@ import { StudentsPersonalDataComponent } from './students-personal-data/students
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { StudentsRoutingModule } from './students-routing.module';
+import { LayoutComponent } from './layout/layout.component';
 
 
 
@@ -17,7 +18,8 @@ import { StudentsRoutingModule } from './students-routing.module';
   
     StudentsComponent,
             StudentsCoursesComponent,
-            StudentsPersonalDataComponent
+            StudentsPersonalDataComponent,
+            LayoutComponent
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,4 @@
-.header {
-    background-color: #0056b3;
-}
+
 
 .side-bar{
     height: 100vh;
@@ -80,7 +78,7 @@ mat-sidenav-content{
 
 /* Main content */
 
-.item1 {
+.card1 {
     max-width: 550px;
     border-radius: 32px;
     margin: 50px;
@@ -107,23 +105,59 @@ mat-sidenav-content{
     letter-spacing: 0.019px;
 }
 
-.item1-button {
+/* Boton de tarjeta */
+
+.card1-button {
     background-color: transparent; 
     border: 2px solid orange;
     color: orange;
-    font-weight: 500; 
+    font-weight: 500;
+    border-radius: 32px; 
 }
 
-.item1-button:active {
+.card1-button:active {
     background-color: orange !important;
     color: white;
 }
 
-.img-thumbnail {
-    border-radius: 32px;
-    margin-right: 5px;
-    max-width: 164px;
+/* Estilos de imagen de perfil */
+
+.img-container{
+    display: grid;
+    place-content: center;
 }
+
+.profile-img {
+    width: 164px;
+    height: 164px;
+    border: 2px solid orange;
+    border-radius: 32px;
+}
+
+.button-loadFile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid orange;
+    margin-right: 5px;
+    margin-top: 10px;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #fff;
+    color: orange;
+    font-weight: 500;
+    border-radius: 32px;
+}
+.button-loadFile:active {
+    background-color: orange !important;
+    color: white;
+}
+
+.button-loadFile input[type="file"] {
+    display: none;
+  }
+
+/* Cuerpo de la tarjeta */
 
 .card-body {
     display: flex;
@@ -133,4 +167,11 @@ mat-sidenav-content{
 
 }
 
+/* Calendar */
+
+.calendar-container{
+    margin: 2%;
+    border-radius: 32px;
+
+}
 

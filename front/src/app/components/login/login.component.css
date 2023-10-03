@@ -2,7 +2,7 @@
     max-width: 400px;
     margin: 2em auto;
     text-align: center;
-    color: #f44336;
+    color: #F5670E;
     background-color: aliceblue;
 }
 
@@ -10,6 +10,11 @@
     display: grid;
     place-content: center;
 }
+
+/* .mat-raised-button {
+    background-color: #f44336;
+    color: white;
+} */
 
 .mensaje-crear-cuenta {
     font-size: 14px;
@@ -25,6 +30,6 @@
 }
 
 a.register-button:hover {
-    color: #f5670e;
+    color: #F5670E;
     cursor: pointer; 
   }
