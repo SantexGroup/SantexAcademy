@@ -38,9 +38,27 @@ export class UserComponent implements OnInit {
     });
   }
 
+  deleteUser() {
+    if (this.user && this.user.id) {      
+      this.userService.deleteUserById(this.user.id).subscribe(
+        () => {
+          console.log('Usuario eliminado exitosamente');
+          alert("El usuario se elimino correctamente")
+          this.router.navigate(['/user-list']);
+        },
+        (error) => {
+          console.error('Error al eliminar usuario:', error);
+          alert("Error al eliminar el usuario")
+        }
+      );
+    }
+  }
+  
+
   redirectToEditUser(userId: number) {
     this.router.navigate([`/user/edit-user/${userId}`]);
   }
+
 
 }
 
