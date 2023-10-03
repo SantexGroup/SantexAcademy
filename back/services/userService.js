@@ -1,41 +1,53 @@
-
-const {User} = require('../models/user')
-
+const { User } = require('../models');
 
 async function crearUsuario(datosUsuario) {
-    try {
-      const usuarioCreado = await User.create(datosUsuario);
-      console.log('Usuario creado:', usuarioCreado.toJSON());
-      return usuarioCreado;
-    } catch (error) {
-      console.error('Error al crear usuario:', error);
-      throw error;
-    }
+  try {
+    const usuarioCreado = await User.create(datosUsuario);
+    console.log('Usuario creado:', usuarioCreado.toJSON());
+    return usuarioCreado.toJSON();
+  } catch (error) {
+    console.error('Error al crear usuario:', error);
+    throw error;
+  }
 }
 
-// async function createUser(nombreCompleto, nombreUsuario, fechaNacimiento, genero, correoElectronico, contraseña) {
+async function getAll() {
+  const listUsers = await User.findAll()
+  return listUsers;
+}
+async function getById(id) {
+  const user = await User.findByPk(id)
+  return user;
 
-//     User.create({
-//         nombreCompleto: nombreCompleto
-//     }).then(console.log)
-    // const user = new User();
-    // console.log("estoy en createUser en userService")
 
-    // user.nombreCompleto = nombreCompleto;
-    // user.nombreUsuario = nombreUsuario;
-    // user.fechaNacimiento = fechaNacimiento;
-    // user.genero = genero;
-    // user.correoElectronico = correoElectronico;
-    // user.contraseña = contraseña;
+}
+async function editUser(userId, updatedData){
+  try {
+    const user = await getById(userId);
 
-    // const userCreated = await user.save();
-    // return userCreated;
-// }
+    if (!user) {
+      throw new Error('Usuario no encontrado');
+    }
+    user.nombreCompleto = updatedData.nombreCompleto;
+    user.nombreUsuario = updatedData.nombreUsuario;
+    user.fechaNacimiento = updatedData.fechaNacimiento;
+    user.genero = updatedData.genero;
+    user.correoElectronico = updatedData.correoElectronico;
+    user.contraseña = updatedData.contraseña;
 
-// async function getUserById(id){
-//     let account = User.findByPK(id)
-//     console.log(account)
-//     return account;
-// }
+    await user.save(); 
 
-module.exports = {crearUsuario}
+    return user.toJSON(); 
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function deleteUser(id){
+  const user = await getById(id)
+  await user.destroy(id)
+}
+
+module.exports = { crearUsuario, getAll, getById, editUser,deleteUser };
+
+//nombreCompleto,nombreUsuario,fechaNacimiento,genero,correoElectronico,password,
