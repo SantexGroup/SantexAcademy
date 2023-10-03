@@ -98,15 +98,15 @@ db.Alquiler.belongsTo(db.estado, {
 db.Direccion.hasOne(db.User, {
   foreignKey: 'idDireccion',
 });
-db.User.belongsTo(db.direccion, {
+db.User.belongsTo(db.Direccion, {
   foreignKey: 'idDireccion',
 });
 
 // Relacion Localidad-Direccion (one-to-many)
-db.localidad.hasMany(db.direccion, {
+db.localidad.hasMany(db.Direccion, {
   foreignKey: 'idLocalidad',
 });
-db.direccion.belongsTo(db.localidad, {
+db.Direccion.belongsTo(db.localidad, {
   foreignKey: 'idLocalidad',
 });
 
