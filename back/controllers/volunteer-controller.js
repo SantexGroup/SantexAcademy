@@ -40,26 +40,15 @@ async function getDataVoluntario(req, res) {
       return totalPuntos;
     }, 0);
 
-    // Devuelve los premios canjeados
-    /*
-    const premiosCanjeados = await models.premiosMid.findAll({
-      where: { volunteerId: voluntario.id },
-      include: [
-        {
-          model: models.premio,
-        },
-      ],
-    });
 
-    if (premiosCanjeados.length > 0) {
-      voluntario.premiosCanjeados = premiosCanjeados;
-    } else {
-      voluntario.premiosCanjeados = [];
-    }
-    */
 
+
+    const premiosCanjeados = await voluntario.getPremios();
+
+   
+    
     res.status(200).json({
-      voluntario, horasTrabajadas, tareasPendientes, puntosAdquiridos,
+      voluntario, horasTrabajadas, tareasPendientes, puntosAdquiridos,premiosCanjeados
     });
   } catch (error) {
     console.error('Error al obtener datos del voluntario:', error);
