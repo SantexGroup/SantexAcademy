@@ -32,32 +32,35 @@ const loginOrg = async (email, cuit, password) => {
 const createOrganization = async (data) => {
   const { image, password, ...restOfData } = data;
   try {
-    const existingDeletedOrg = await Organizacion.findOne({
+    let existingOrg = await Organizacion.findOne({
       where: {
-        [Op.and]: [
-          { deletedAt: { [Op.not]: null } }, // Buscar registros eliminados
-          {
             [Op.or]: [
               { name: restOfData.name },
               { email: restOfData.email },
               { cuit: restOfData.cuit },
-            ],
-          },
         ],
       },
+      paranoid:false,
     });
-    if (existingDeletedOrg) {
-      // Borrar el registro eliminado lógicamente
-      await existingDeletedOrg.destroy();
+
+    if (existingOrg) {
+      if (existingOrg.deletedAt) {
+        // Restaurar el registro eliminado lógicamente y actualizarlo
+        await existingOrg.restore();
+      }
+      await existingOrg.update({
+        image,
+        password: hashPassword(password),
+        ...restOfData,
+      });
+    } else {
+      existingOrg = await Organizacion.create({
+        image,
+        password: hashPassword(password), 
+        ...restOfData,
+      });
     }
 
-    const newOrganization = await Organizacion.create({
-      image,
-      password: hashPassword(password),
-      ...restOfData,
-    });
-
-    return newOrganization;
   } catch (err) {
     console.error(
       "The organization could not be created due to an error.",
