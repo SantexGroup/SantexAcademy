@@ -14,6 +14,8 @@ import { LanguageComponent } from '../crud-data/language/language.component';
 import { OptionalsComponent } from '../crud-data/optionals/optionals.component';
 import { SkillComponent } from '../crud-data/skill/skill.component';
 import { ProfilesComponent } from '../profiles/profiles.component';
+import { ProfileOneComponent } from '../profile-one/profile-one.component';
+import { ProfileTwoComponent } from '../profile-two/profile-two.component';
 
 
 const crudRoutes: Routes = [
@@ -29,6 +31,14 @@ const crudRoutes: Routes = [
           {
             path: 'four',
             component: ProfilesFourComponent
+          },
+          {
+            path: 'one',
+            component: ProfileOneComponent
+          },
+          {
+            path: 'two',
+            component: ProfileTwoComponent
           }
         ]
       },

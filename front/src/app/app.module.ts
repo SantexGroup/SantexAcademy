@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,7 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ExperiencesComponent } from './modules/crud-data/experiences/experiences.component';
 import { MatDatepickerModule } from '@angular/material/datepicker'; 
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatPseudoCheckboxModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormationsComponent } from './modules/crud-data/formations/formations.component';
@@ -30,13 +29,19 @@ import { LoadingInterceptor } from './core/services/toolServices/interceptor/loa
 import { UsuarioModule } from './modules/lazyLoading/usuario.module';
 import { CVComponent } from './modules/cv/cv.component';
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfilesComponent } from './modules/profiles/profiles.component';
 import { LoadingModule } from './modules/loading/loading.module';
 import { ToastrModule } from 'ngx-toastr';
 import { ProfilesFourComponent } from './modules/profiles-four/profiles-four.component';
+import { ModalAddComponent } from './modules/modal-add/modal-add.component';
+import {MatCardModule} from '@angular/material/card';
 import { ProfileOneComponent } from './modules/profile-one/profile-one.component';
 import { ProfileTwoComponent } from './modules/profile-two/profile-two.component';
 import { ProfileThreeComponent } from './modules/profile-three/profile-three.component';
+import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions, MatCheckboxModule} from '@angular/material/checkbox';
+
+
 
 
 
@@ -55,6 +60,7 @@ import { ProfileThreeComponent } from './modules/profile-three/profile-three.com
     ReferencesComponent,
     ProfilesComponent,
     ProfilesFourComponent,
+    ModalAddComponent,
     ProfileOneComponent,
     ProfileTwoComponent,
     ProfileThreeComponent
@@ -78,12 +84,16 @@ import { ProfileThreeComponent } from './modules/profile-three/profile-three.com
     MatDividerModule,
     MatMenuModule,
     HomeRoutingModule,
+    NgbModule,
     LoadingModule,
+    MatCardModule,
+    MatCheckboxModule,
     ToastrModule.forRoot({
       timeOut: 9000,
       positionClass: 'toast-top-center',
       preventDuplicates: true
     })
+
   ],
   providers: [
     {
@@ -91,6 +101,8 @@ import { ProfileThreeComponent } from './modules/profile-three/profile-three.com
       useClass: LoadingInterceptor,
       multi: true
     },
+    {provide: MAT_CHECKBOX_DEFAULT_OPTIONS, 
+     useValue: { clickAction: 'check' } as MatCheckboxDefaultOptions}
   ],
   bootstrap: [AppComponent]
 })

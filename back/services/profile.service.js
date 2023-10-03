@@ -1,4 +1,5 @@
 // Importación de modelos desde el archivo '../models'
+const { Op } = require('sequelize');
 const {
   User,
   Rol,
@@ -16,6 +17,12 @@ const {
   Optional,
   Marital,
   Sex,
+  ProfileExperience,
+  ProfileReference,
+  ProfileFormation,
+  ProfileLanguage,
+  ProfileSkill,
+  ProfileOptional,
 } = require('../models');
 
 // Definición de una constante EXPERIENCE que contiene el modelo Experience y sus relaciones
@@ -60,7 +67,13 @@ async function getProfileByUserId(id) {
   try {
     // Consulta la base de datos para obtener los perfiles correspondientes al 'user_id'
     const profiles = await Profile.findAll({
-      where: { user_id: id },
+      where: {
+        user_id: id,
+        deletedAt: null,
+        profileName: {
+          [Op.not]: 'Profile Inicial',
+        },
+      },
       include: [USERS, EXPERIENCE, Reference, Language, Skill, FORMATION, OPTIONAL],
     });
     // si no se encontraron perfiles o el array esta vacio, se lanza un error
@@ -75,6 +88,142 @@ async function getProfileByUserId(id) {
   }
 }
 
+async function deleteProfile(id) {
+  const profile = await Profile.findByPk(id);
+
+  if (profile) {
+    await Profile.update({
+      deletedAt: new Date(),
+    }, {
+      where: {
+        id,
+      },
+    });
+  } else {
+    throw new Error();
+  }
+}
+
+async function createProfile(
+  userId,
+  profileName,
+) {
+  try {
+    const newProfile = await Profile.create({
+      userId,
+      profileName,
+    });
+    return newProfile;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+async function relationExperience(
+  profileId,
+  experienceId,
+) {
+  try {
+    const newRelation = await ProfileExperience.create({
+      profilesId: profileId,
+      experiencesId: experienceId,
+    });
+    return newRelation;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+async function relationFormation(
+  profileId,
+  formationId,
+) {
+  try {
+    const newRelation = await ProfileFormation.create({
+      profilesId: profileId,
+      formationsId: formationId,
+    });
+    return newRelation;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+async function relationReference(
+  profileId,
+  referenceId,
+) {
+  try {
+    const newRelation = await ProfileReference.create({
+      profilesId: profileId,
+      referencesId: referenceId,
+    });
+    return newRelation;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+async function relationOptional(
+  profileId,
+  optionalId,
+) {
+  try {
+    const newRelation = await ProfileOptional.create({
+      profilesId: profileId,
+      optionalsId: optionalId,
+    });
+    return newRelation;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+async function relationSkill(
+  profileId,
+  skillId,
+  level,
+) {
+  try {
+    const newRelation = await ProfileSkill.create({
+      profilesId: profileId,
+      skillsId: skillId,
+      level,
+    });
+    return newRelation;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+async function relationLanguage(
+  profileId,
+  languageId,
+  level,
+) {
+  try {
+    const newRelation = await ProfileLanguage.create({
+      profilesId: profileId,
+      languagesId: languageId,
+      level,
+    });
+    return newRelation;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
 // Exportamos archivos para su uso en profile.controller
 
-module.exports = { getProfileById, getProfileByUserId };
+module.exports = {
+  getProfileById,
+  getProfileByUserId,
+  createProfile,
+  deleteProfile,
+  relationExperience,
+  relationFormation,
+  relationReference,
+  relationOptional,
+  relationSkill,
+  relationLanguage,
+};

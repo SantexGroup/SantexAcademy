@@ -41,8 +41,6 @@ async function getAllSkill(id) {
           attributes: ['id', 'skill'],
         }],
       }],
-    distinct: true,
-    group: ['skill'],
   });
   if (skills) {
     const listSkills = skills.reduce(
