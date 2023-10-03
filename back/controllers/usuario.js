@@ -106,8 +106,8 @@ const updateMyUser = async (req, res) => {
 
 const deleteMyUser = async (req, res) => {
   try {
-    const user = await userService.deleteUserById(req.userId);
-    res.json(user);
+    await userService.deleteUserById(req.userId);
+    res.status(204);
   } catch (err) {
     res.status(500).json({ action: "deleteUserById", error: err.message });
   }

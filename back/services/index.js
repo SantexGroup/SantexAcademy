@@ -3,6 +3,7 @@ const userService = require('./usuario');
 const productService = require('./producto');
 const voluntariadoService = require('./voluntariado');
 const usuarioEnVoluntariadoService = require('./usuarioEnVoluntariado');
+const canjeService = require('./canje');
 
 module.exports = {
   orgService,
@@ -10,4 +11,5 @@ module.exports = {
   productService,
   voluntariadoService,
   usuarioEnVoluntariadoService,
+  canjeService
 };

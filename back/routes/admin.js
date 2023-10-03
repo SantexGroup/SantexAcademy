@@ -1,5 +1,5 @@
 const express = require("express");
-
+const upload = require("../config/multerConfig");
 const adminRouter = express.Router();
 
 const {
@@ -40,8 +40,9 @@ adminRouter.delete(
 
 adminRouter.post(
   "/product",
-  verifyToken,
-  isAdmin,
+   verifyToken,
+   isAdmin,
+  upload.single("file"),
   productController.createProduct
 );
 adminRouter.get(
@@ -63,12 +64,14 @@ adminRouter.put(
   productController.updateProduct
 );
 adminRouter.delete(
-  "product/:id",
+  "/product/:id",
   verifyToken,
   isAdmin,
   productController.deleteProduct
 );
 
 //*******GESTION DE PEDIDOS **************/
+
+
 
 module.exports = adminRouter;

@@ -1,19 +1,25 @@
-import { Component, ElementRef, Input, ViewChild, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DashboardServicesService } from '../../../services/dashboard-services.service';
-import { AuthService } from '../../../../auth/services/auth.service';
-import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { selectToken } from 'src/app/core/auth.selectors';
 
 
 @Component({
   selector: 'app-tabs-dashboard-organization',
   templateUrl: './tabs-dashboard-organization.component.html',
-  styleUrls: ['./tabs-dashboard-organization.component.css']
+  styleUrls: ['./tabs-dashboard-organization.component.css'],
 })
+
 export class TabsDashboardOrganizationComponent implements OnInit {
+
   @Input() dataTabs: any = {};
+  @ViewChild('fileInput') fileInput: ElementRef | undefined;
+  userForm: FormGroup;
+
   activeTab: number = 1;
   editData: boolean = false;
+
   tokenOrg: string = "";
   onModalStatus: boolean = false;
   statusModal: string = '';
@@ -28,37 +34,34 @@ export class TabsDashboardOrganizationComponent implements OnInit {
 
   userForm: FormGroup;
   constructor(private formBuilder: FormBuilder, private dashService: DashboardServicesService, private authService: AuthService, private router: Router) {
+
     this.userForm = this.formBuilder.group({
       name: [''],
       cuit: [''],
       location: [''],
       phone: [
         '',
-        [
-          Validators.pattern(/^(?:\d{7,14}|\d{2}[ -]?\d{4}[ -]?\d{4})$/),
-        ],
+        [Validators.pattern(/^(?:\d{7,14}|\d{2}[ -]?\d{4}[ -]?\d{4})$/)],
       ],
       email: ['', [Validators.email]],
       category: [''],
       description: [''],
       // urlWebSite: [''],
-
     });
   }
 
-  image: string = 'https://res.cloudinary.com/carina-bosio/image/upload/v1695591464/xAcademy/Asociaci%C3%B3n_Civil_Manos_Abiertas-removebg-preview_2_ltnrr4.png';
-
-
+  image: string =
+    'https://res.cloudinary.com/carina-bosio/image/upload/v1695591464/xAcademy/Asociaci%C3%B3n_Civil_Manos_Abiertas-removebg-preview_2_ltnrr4.png';
 
   newValues: { [key: string]: string } = {
-    image: "",
-    name: "",
-    cuit: "",
-    location: "",
-    phone: "",
-    email: "",
-    category: "",
-    description: "",
+    image: '',
+    name: '',
+    cuit: '',
+    location: '',
+    phone: '',
+    email: '',
+    category: '',
+    description: '',
   };
 
   activeEditProfileOrg() {
@@ -74,45 +77,33 @@ export class TabsDashboardOrganizationComponent implements OnInit {
       category: this.dataTabs.category,
       description: this.dataTabs.description,
       // urlWebSite: this.dataTabs.urlWebSite,
-
     });
     this.editData = true;
   }
 
   saveDataProfileOrg() {
-
     if (this.userForm.valid) {
       const userData = this.userForm.value;
-
-
-      this.dashService.updateProfileOrganization(userData, this.tokenOrg).subscribe({
-        next: (res) => {
-          console.log(res);
-          if (res) {
-            this.onModalStatus = true;
-            this.statusModal = 'success';
-            this.textMessage = ' ¡Tus datos se han modificado correctamente!';
-
-            setTimeout(() => {
-              this.onModalStatus = false;
-              window.location.reload();
-            }, 3000);
-
+      if (userData) {
+        this.store.select(selectToken).subscribe((token) => {
+          if (token) {
+            this.dashService
+              .updateProfileOrganization(userData, token)
+              .subscribe({
+                next: (res) => {
+                  console.log(res);
+                },
+                error: (err) => {
+                  console.log(err);
+                },
+              });
           }
-        },
-        error: (err) => {
-          console.log(err);
-          this.onModalStatus = true;
-          this.statusModal = 'failed';
-          this.textBtnModalStatus = 'Aceptar';
-          this.textMessage =
-            '¡Se produjo un error al modificar tus datos! Por favor, inténtalo de nuevo más tarde.';
-        }
-      })
+          this.editData = false;
+        });
+      }
     }
-    this.editData = false;
-  }
 
+  }
   captureData(fieldName: string, event: any) {
     this.newValues[fieldName] = event.target.value;
   }
@@ -121,9 +112,9 @@ export class TabsDashboardOrganizationComponent implements OnInit {
     const file = event.target.files[0];
     if (file) {
       this.image = URL.createObjectURL(file);
-
     }
   }
+
 
   selectedCategory: string = '';
 
@@ -140,6 +131,7 @@ export class TabsDashboardOrganizationComponent implements OnInit {
     this.editData = false;
     this.fadeAnimationClass = 'fade-in-out-animation';
   }
+
 
   handleProfileDelete() {
     this.onModalQuestion = !this.onModalQuestion;
@@ -164,7 +156,9 @@ export class TabsDashboardOrganizationComponent implements OnInit {
   }
 
 
+
   @ViewChild('fileInput') fileInput: ElementRef | undefined;
+
 
   onFileSelected(event: any) {
     const file = event.target.files[0];

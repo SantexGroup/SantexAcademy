@@ -4,8 +4,11 @@
   <div
     class="w-full flex flex-col items-center justify-center text-center gap-4 lg:hidden"
   >
-    <h2 class="uppercase">
+    <h2 class="uppercase" *ngIf="volunteeringFilter.length === 0">
       Oportunidades encontradas: <b>{{ volunteering.length }}</b>
+    </h2>
+    <h2 class="uppercase" *ngIf="volunteeringFilter.length > 0">
+      Oportunidades encontradas: <b>{{ volunteeringFilter.length }}</b>
     </h2>
     <form class="p-2 flex shadow shadow-lightGray gap-2 rounded-md">
       <label for="search" class="text-dimGray">Buscar</label>
@@ -33,12 +36,21 @@
         class="pl-1 border border-lightGray outline-none rounded-md w-full py-1"
       />
     </form>
-    <app-volunteer-filters></app-volunteer-filters>
+    <app-volunteer-filters
+      (selectFiltered)="filteredVolunteers($event)"
+      (selectOrgByName)="filteredVolunteersByOrganization($event)"
+      (selectedCategory)="filteredVolunteersByCategory($event)"
+      (selectDate)="filteredVolunteersByDate($event)"
+      (getAllVolunteers)="getAllVolunteers()"
+    ></app-volunteer-filters>
   </div>
 
   <article class="w-full flex flex-col gap-4">
-    <h2 class="hidden lg:flex uppercase lg:text-xl gap-2">
+    <h2 class="uppercase" *ngIf="volunteeringFilter.length === 0">
       Oportunidades encontradas: <b>{{ volunteering.length }}</b>
+    </h2>
+    <h2 class="uppercase" *ngIf="volunteeringFilter.length > 0">
+      Oportunidades encontradas: <b>{{ volunteeringFilter.length }}</b>
     </h2>
     <ng-container
       *ngIf="volunteering.length > 0 && volunteeringFilter.length === 0"
