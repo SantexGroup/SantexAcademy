@@ -62,7 +62,6 @@ import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions, MatCheckboxModu
     ModalAddComponent,
     ProfileOneComponent,
     ProfileTwoComponent
-
   ],
   imports: [
     BrowserModule,
