@@ -12,13 +12,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class CargaArticulosComponent implements OnInit {
 
-  /*
-  catReg: string = '0';
-  nomReg: string = '';
-  desReg: string = '';
-  preReg: string = '';
-  envReg: string = '';
-  */
   textoCarga: string = '(0) Imágenes seleccionadas';
   idUser: string = '';
   confVendedor: boolean = false;
@@ -43,10 +36,9 @@ export class CargaArticulosComponent implements OnInit {
     this.getIdUser();
     this.barraService.getCategories().subscribe(categorias => {
       this.listcategorias = categorias;
-      
+
     });
   }
-
   subirProducto(): void { 
       this.service.carga(
         this.formUp.get('catReg')?.value,
@@ -66,7 +58,6 @@ export class CargaArticulosComponent implements OnInit {
         this.router.navigate(['home-page']);
       });
   }
-
   subirImages() {
     const formData = new FormData();
     for(let img of this.images){
