@@ -16,7 +16,7 @@ module.exports = {
       },
       title: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       subtitle: {
         type: Sequelize.STRING,

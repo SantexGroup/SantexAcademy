@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   AboutUS.init({
     active: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
-    title: { type: DataTypes.STRING, allowNull: false },
+    title: { type: DataTypes.STRING, allowNull: true },
     subtitle: { type: DataTypes.STRING, allowNull: true },
     image: { type: DataTypes.TEXT, allowNull: true },
     description: { type: DataTypes.STRING, allowNull: false },

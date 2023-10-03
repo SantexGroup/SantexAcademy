@@ -29,7 +29,7 @@ export class EditAboutUsComponent implements OnInit {
     private aRouter: ActivatedRoute,
   ) {
     this.form = this.fb.group({
-      title: ['', Validators.required],
+      title: '',
       subtitle: '',
       description: ['', Validators.required],
       image: '',
