@@ -183,7 +183,7 @@ const updatePhotoMyProfile = async (req, res, next) => {
 
     const photoUpdate = await orgService.updatePhotoMyProfile(
       { imageUrl, publicId },
-      req.userId
+      req.orgId
     );
     res.status(200).json({
       message: "Profile picture was successfully edited",
