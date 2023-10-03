@@ -38,7 +38,7 @@ import { ModalAddComponent } from './modules/modal-add/modal-add.component';
 import {MatCardModule} from '@angular/material/card';
 import { ProfileOneComponent } from './modules/profile-one/profile-one.component';
 import { ProfileTwoComponent } from './modules/profile-two/profile-two.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions, MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -96,6 +96,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
       useClass: LoadingInterceptor,
       multi: true
     },
+    {provide: MAT_CHECKBOX_DEFAULT_OPTIONS, 
+     useValue: { clickAction: 'check' } as MatCheckboxDefaultOptions}
   ],
   bootstrap: [AppComponent]
 })

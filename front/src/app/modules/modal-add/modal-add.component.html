@@ -11,22 +11,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="profileName">
-                <mat-form-field>
+                <mat-form-field [formGroup]="profileForm">
                     <mat-label for="position">Nombre del Perfil:</mat-label>
-                    <input matInput type="text">
+                    <input matInput type="text" formControlName="profileName">
                 </mat-form-field>
-                <button mat-raised-button color="accent">
-                    Guardar
+                <button mat-raised-button color="accent"
+                (click)="profilePost()"
+                >Guardar
                 </button>
             </div>
             <div class="list-container">
                 <div>
                     <h3>OPCIONALES</h3>
                     <ul>
-                        <li *ngFor="let option of userData.optionals">
-                            <h5 class="card-title">{{option.profile}}</h5>
+                        <li *ngFor="let element of userData.optionals">
+                            <h5 class="card-title">{{element.profile}}</h5>
                             <section>
-                                <mat-checkbox color="primary"></mat-checkbox>
+                                <mat-checkbox color="primary"
+                                (change)="getOptional(element.id)"
+                                ></mat-checkbox>
                             </section>
                         </li>
                     </ul>
@@ -34,10 +37,12 @@
                 <div>
                     <h3>EXPERIENCIAS</h3>
                     <ul>
-                        <li *ngFor="let experience of userData.experiences">
-                            <h5 class="card-title">{{experience.company}}</h5>
+                        <li *ngFor="let element of userData.experiences">
+                            <h5 class="card-title">{{element.company}}</h5>
                             <section>
-                                <mat-checkbox color="primary"></mat-checkbox>
+                                <mat-checkbox color="primary"
+                                (change)="getExperience(element.id)"
+                                ></mat-checkbox>
                             </section>
                         </li>
                     </ul>
@@ -45,10 +50,12 @@
                 <div>
                     <h3>REFERENCIAS</h3>
                     <ul>
-                        <li *ngFor="let reference of userData.references">
-                            <h5 class="card-title">{{reference.company}}</h5>
+                        <li *ngFor="let element of userData.references">
+                            <h5 class="card-title">{{element.name}} {{element.lastName}}</h5>
                             <section>
-                                <mat-checkbox color="primary"></mat-checkbox>
+                                <mat-checkbox color="primary"
+                                (change)="getReference(element.id)"
+                                ></mat-checkbox>
                             </section>
                         </li>
                     </ul>
@@ -56,10 +63,12 @@
                 <div>
                     <h3>IDIOMAS</h3>
                     <ul>
-                        <li *ngFor="let language of userData.languages">
-                            <h5 class="card-title">{{language.language}} - {{language.level}} </h5>
+                        <li *ngFor="let element of userData.languages">
+                            <h5 class="card-title">{{element.language}} - {{element.level}} </h5>
                             <section>
-                                <mat-checkbox color="primary"></mat-checkbox>
+                                <mat-checkbox color="primary"
+                                (change)="getLanguage(element.id)"
+                                ></mat-checkbox>
                             </section>
                         </li>
                     </ul>
@@ -67,10 +76,12 @@
                 <div>
                     <h3>HABILIDADES</h3>
                     <ul>
-                        <li *ngFor="let experience of userData.experiences">
-                            <h5 class="card-title">{{experience.company}}</h5>
+                        <li *ngFor="let element of userData.skills">
+                            <h5 class="card-title">{{element.skill}} - {{element.level}}</h5>
                             <section>
-                                <mat-checkbox color="primary"></mat-checkbox>
+                                <mat-checkbox color="primary"
+                                (change)="getSkill(element.id)"
+                                ></mat-checkbox>
                             </section>
                         </li>
                     </ul>
@@ -78,10 +89,12 @@
                 <div>
                     <h3>FORMACIONES</h3>
                     <ul>
-                        <li *ngFor="let formation of userData.formations">
-                            <h5 class="card-title">{{formation.institute}}</h5>
+                        <li *ngFor="let element of userData.formations">
+                            <h5 class="card-title">{{element.institute}}</h5>
                             <section>
-                                <mat-checkbox color="primary"></mat-checkbox>
+                                <mat-checkbox color="primary"
+                                (change)="getFormation(element.id)"
+                                ></mat-checkbox>
                             </section>
                         </li>
                     </ul>

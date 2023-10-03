@@ -1,5 +1,5 @@
 .start {
-    margin: 1% 0 2% 50%;
+    margin: 1% 0 2% 40%;
 }
 
 ::-webkit-scrollbar {
@@ -59,11 +59,31 @@ li {
     list-style: none;
 }
 
-.list-container div h3{
-    background: rgba(212, 228, 243, 0.5);
+li h5{
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgb(255, 255, 255);
 }
 
-.list-container div li .card {
+li p{
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgb(255, 255, 255);
+}
+
+.list-container div h3{
+    color: #3f6ad8;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    background: rgba(212, 228, 243, 0.5);
+    text-shadow: 2px 2px 4px rgb(255, 255, 255);
+}
+
+.check{
+    background-color: none;
+}
+
+/* .list-container div li .card {
     display: flex;
     width: 100%;
     margin-top: 1rem;
@@ -72,4 +92,4 @@ li {
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border-radius: 10px;
-}
+} */
