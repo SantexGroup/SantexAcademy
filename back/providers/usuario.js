@@ -25,6 +25,7 @@ const loginUser = async (email, password) => {
     throw error;
   }
 };
+
 const createUser = async (usuario) => {
   const { image, password, ...restOfData } = usuario;
 
@@ -32,42 +33,43 @@ const createUser = async (usuario) => {
   try {
     transaction = await sequelize.transaction();
 
-    const existingDeletedUser = await Usuario.findOne({
+    let existingUser = await Usuario.findOne({
       where: {
-        [Op.and]: [
-          { deletedAt: { [Op.not]: null } }, // Buscar registros eliminados
-          {
-            [Op.or]: [
-              { fullName: restOfData.fullName },
-              { email: restOfData.email },
-            ],
-          },
+        [Op.or]: [
+          { fullName: restOfData.fullName },
+          { email: restOfData.email },
         ],
       },
+      paranoid: false,
     });
 
-    if (existingDeletedUser) {
-      // Borrar el registro eliminado lógicamente
-      await existingDeletedUser.destroy();
-    }
-
-    // Crear el nuevo registro de usuario con el id de la cestaRecompensas creada
-    const newUser = await Usuario.create(
-      {
+    if (existingUser) {
+      if (existingUser.deletedAt) {
+        // Restaurar el registro eliminado lógicamente y actualizarlo
+        await existingUser.restore();
+      }
+      await existingUser.update({
         image,
         password: hashPassword(password),
         rolesId: restOfData.rolesId ? restOfData.rolesId : 1,
         ...restOfData,
-      },
-      { transaction }
-    );
+      }, { transaction });
+    } else {
+      // Crear el nuevo registro de usuario
+      existingUser = await Usuario.create({
+        image,
+        password: hashPassword(password),
+        rolesId: restOfData.rolesId ? restOfData.rolesId : 1,
+        ...restOfData,
+      }, { transaction });
+    }
 
     await transaction.commit();
 
     return {
-      id: newUser.id,
-      fullName: newUser.fullName,
-      email: newUser.email,
+      id: existingUser.id,
+      fullName: existingUser.fullName,
+      email: existingUser.email,
     };
   } catch (err) {
     if (transaction) {
@@ -77,6 +79,8 @@ const createUser = async (usuario) => {
     throw err;
   }
 };
+
+
 
 const getUsersByCriteria = async (queryOptions, bodyOptions) => {
   try {
@@ -136,11 +140,12 @@ const updateMyUser = async (usuario, id) => {
 
 const deleteUser = async (id) => {
   try {
-    await Usuario.destroy({
+    const deletedUser=await Usuario.destroy({
       where: {
         id,
       },
     });
+    return deletedUser
   } catch (error) {
     console.error("Ocurrió un error al eliminar el usuario.", error);
     throw error;
