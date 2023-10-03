@@ -61,7 +61,7 @@
           <div class="flex">
             <div class="w-3/3 p-4">
               <li>
-                <p><strong>Categoría: </strong>{{dataTabs.category}}</p>
+                <p class="capitalize"><strong>Categoría: </strong>{{dataTabs.category}}</p>
               </li>
             </div>
           </div>
@@ -69,7 +69,7 @@
           <div class="flex">
             <div class="w-3/3 p-4">
               <li>
-                <p><strong>Descripción: </strong>{{dataTabs.description}}</p>
+                <p ><strong>Descripción: </strong>{{dataTabs.description}}</p>
               </li>
             </div>
           </div>
@@ -166,11 +166,22 @@
               (change)="onCategoryChange($event)">
               <option value="" disabled selected hidden style="color: grey;" >Selecciona una categoría</option>
               <option value="asistencia">Medio ambiente y fauna</option>
-              <option value="educacion">Asistencia Social</option>
+              <option value="educacion" class="uppercase">Asistencia Social</option>
               <option value="salud">Salud y discapacidad</option>
             </select>
           </div>
 
+        </div>
+
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <label><strong>Description:</strong></label>
+          </div>
+          <div class="p-4 w-full ">
+            <input id="description" name="description" type="text" formControlName="description"
+              class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg">
+
+          </div>
         </div>
 
         <div class="flex justify-end p-4">

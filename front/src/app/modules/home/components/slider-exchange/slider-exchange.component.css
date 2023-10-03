@@ -1,0 +1,18 @@
+.sidebar {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  background: linear-gradient(to left top,
+        rgb(255, 55, 147),
+        rgb(63, 40, 131),
+        rgb(255, 64, 33));
+}
+
+button:hover{
+  color:rgb(63, 40, 131);
+  background-color: #ffffff;
+  border: 2px solid rgb(63, 40, 131);
+}
+
+
+
+

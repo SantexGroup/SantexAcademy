@@ -72,7 +72,7 @@ export class TabsDashboardOrganizationComponent implements OnInit {
       phone: this.dataTabs.phone,
       email: this.dataTabs.email,
       category: this.dataTabs.category,
-      description: this.dataTabs.email,
+      description: this.dataTabs.description,
       // urlWebSite: this.dataTabs.urlWebSite,
 
     });
