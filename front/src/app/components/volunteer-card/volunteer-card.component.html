@@ -1,3 +1,12 @@
+<app-modal-aplication
+  *ngIf="openModalQuestion"
+  [idOrg]="idOrganization"
+  [idVol]="idVolunteering"
+  [nameVol]="nameVol"
+  [nameOrg]="nameOrg"
+  (closeModalQuestion)="closeModalApplication()"
+>
+</app-modal-aplication>
 <article
   class="w-full flex flex-col items-center justify-center shadow shadow-lightGray p-4 gap-4 rounded-lg sm:flex-row lg:p-6"
 >
@@ -16,7 +25,7 @@
     class="w-full flex flex-col items-center justify-center text-center gap-2 border-b border-b-lightGray sm:border-b-0 sm:text-start sm:items-start sm:pl-8"
   >
     <h3 class="font-semibold xl:text-xl">
-      {{ data.description }}
+      {{ data.name }}
     </h3>
     <div class="sm:flex items-center justify-center text-center gap-4">
       <span
@@ -38,10 +47,21 @@
   <div
     class="flex items-center justify-center gap-12 sm:flex-col sm:w-[20%] sm:border-l sm:border-l-lightGray sm:gap-4 lg:text-lg"
   >
-    <button>Aplicar</button>
+    <button
+      (click)="
+        handleApplication(
+          data.organizationId,
+          data.idVolunteering,
+          data.name,
+          data.organization?.name
+        )
+      "
+    >
+      Aplicar
+    </button>
     <div
       class="h-[2em] w-[1px] bg-lightGray rounded-lg sm:w-[80%] sm:h-[1px]"
     ></div>
-    <button>Ver más</button>
+    <button (click)="viewVolunteering(data.idVolunteering)">Ver más</button>
   </div>
 </article>

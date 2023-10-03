@@ -42,8 +42,6 @@ import { CompletedVolunteeringComponent } from './components/dashboardOrganizati
     TabsDashboardOrganizationComponent,
     NewVolunteeringFormComponent,
     CompletedVolunteeringComponent,
-
-
   ],
   imports: [
     CommonModule,
