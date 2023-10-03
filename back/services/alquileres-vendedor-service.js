@@ -12,6 +12,10 @@ async function getAlquileresByVendedor(id) {
     },
   );
 
+  if (ventasVendedor.length < 1) {
+    return { error: 'Usuario no encontrado' };
+  }
+
   return ventasVendedor;
 }
 
