@@ -22,8 +22,6 @@ async function getDataVoluntario(req, res) {
       return total;
     }, 0);
 
-    // voluntario.horasTrabajadas = horasTrabajadas;
-
     // Devuelve las tareas pendientes
     const tareasPendientes = tareasVoluntario.filter((tarea) => {
       const fechaTarea = new Date(tarea.date);
