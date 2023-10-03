@@ -9,7 +9,7 @@ import { Component, Input, ViewChild, ElementRef } from '@angular/core';
 })
 export class HeaderDashboardOrgComponent {
   @Input() dataHeader: any = {};
-  tabActiva = 0;
+  // tabActiva = 0;
   image: string = 'https://res.cloudinary.com/carina-bosio/image/upload/v1695591464/xAcademy/Asociaci%C3%B3n_Civil_Manos_Abiertas-removebg-preview_2_ltnrr4.png';
   editData: boolean = false;
 
@@ -43,7 +43,7 @@ export class HeaderDashboardOrgComponent {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.image = e.target.result; // Establecer la propiedad 'image' con la URL de la imagen cargada
+        this.image = e.target.result;
       };
       reader.readAsDataURL(file);
     }

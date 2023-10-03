@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 
-import { MatTabsModule } from '@angular/material/tabs';
+// import { MatTabsModule } from '@angular/material/tabs';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -19,7 +19,7 @@ import { VolunteerHistoryComponent } from './components/dashboardVolunteer/volun
 
 import { HeaderDashboardOrgComponent } from './components/dashboardOrganization/header-dashboard-org/header-dashboard-org.component';
 import { VolunteersTableComponent } from './components/dashboardOrganization/volunteers-table/volunteers-table.component';
-import { TabsComponent } from './components/dashboardOrganization/tabs/tabs.component';
+
 
 import { ModalQuestionComponent } from './components/modal-question/modal-question.component';
 import { ModalStatusComponent } from './components/modal-status/modal-status.component';
@@ -37,7 +37,6 @@ import { CompletedVolunteeringComponent } from './components/dashboardOrganizati
     VolunteerHistoryComponent,
     HeaderDashboardOrgComponent,
     VolunteersTableComponent,
-    TabsComponent,
     ModalQuestionComponent,
     ModalStatusComponent,
     TabsDashboardOrganizationComponent,
@@ -51,7 +50,6 @@ import { CompletedVolunteeringComponent } from './components/dashboardOrganizati
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
-    MatTabsModule,
     ReactiveFormsModule,
   ],
 })
