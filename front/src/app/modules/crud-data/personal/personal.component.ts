@@ -117,9 +117,8 @@ export class PersonalComponent implements OnInit {
       pictureLink: this.url || null
     }
 
-    console.log(this.personalForm)
-/*     this.userService.updateUser(this.userData.userId, userUpdate).subscribe(() => {
+    this.userService.updateUser(this.userData.userId, userUpdate).subscribe(() => {
       this.getUser()  
-    })*/
+    })
   }
 }

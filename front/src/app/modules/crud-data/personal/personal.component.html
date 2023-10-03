@@ -6,11 +6,13 @@
         <mat-label>Nombres</mat-label>
         <input matInput formControlName="name">
       </mat-form-field>
+      <p class="error" *ngIf="personalForm.controls['name'].status == 'INVALID'" >El nombre no puede tener numeros</p>
 
       <mat-form-field>
         <mat-label>Apellido</mat-label>
         <input matInput formControlName="lastName">
       </mat-form-field>
+      <p class="error" *ngIf="personalForm.controls['lastName'].status == 'INVALID'" >El apellido no puede tener numeros</p>
 
       <div class="dates">
         <mat-form-field>
@@ -25,11 +27,15 @@
         <mat-label>Numero de Contacto</mat-label>
         <input matInput formControlName="phone">
       </mat-form-field>
+      <p class="error" *ngIf="personalForm.controls['phone'].errors?.['maxlength']">El dato ingresado tiene mas  de 10 numeros </p>
+      <br><p class="error" *ngIf="personalForm.controls['phone'].errors?.['pattern']">El numero de contacto no puede contener letras</p>
 
       <mat-form-field>
         <mat-label>Correo</mat-label>
         <input matInput type="email" formControlName="email">
       </mat-form-field>
+      <p class="error" *ngIf="personalForm.controls['email'].errors?.['email']">Debe ingresar un correo valido</p>
+
 
       <!-- * Seccion del imagen -->
       <div class="imagenSection">
@@ -37,8 +43,6 @@
         <input type="file" id="imagen" style="display: none;" name="pictureLink" (change)="selectImage($event)">
 
         <label class="imagenLabel" for="imagen" style="cursor: pointer;">Cargar Foto</label>
-      <!--   <input matInput formControlName="pictureLink"> -->
-
       </div>
 
       <div class="botonera">
