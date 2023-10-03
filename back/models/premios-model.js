@@ -26,7 +26,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      
 
     }, {
       sequelize,
@@ -39,9 +38,8 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   premios.associate = (models) => {
-    premios.belongsToMany(models.volunteer, { through: models.premiosMid });
+    premios.belongsToMany(models.usuario, { through: models.premiosMid });
   };
-  
+
   return premios;
 };
-
