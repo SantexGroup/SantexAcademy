@@ -22,7 +22,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { StudentsPersonalDataComponent } from '../students/students-personal-data/students-personal-data.component';
 import { StudentsCoursesComponent } from '../students/students-courses/students-courses.component';
 import { LayoutComponent } from '../students/layout/layout.component';
-import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -59,7 +59,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     MatSidenavModule,
     MatToolbarModule,
-    CalendarModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-students',
@@ -9,12 +10,18 @@ export class StudentsComponent implements OnInit {
   user = {
     name: 'Nombre',
     lastName: 'Apellido',
-    email: 'correo@example.com', // Reemplaza esto con el correo real del usuario
+    email: 'correo@example.com', 
     gender: '',
     profileImage: '',
   };
 
-  ngOnInit(): void {}
+  constructor(private http: HttpClient){
+
+  }
+
+  ngOnInit(): void {
+    this.http.get('http://localhost:4001/users/getUserById/4').subscribe();
+  }
 
   imageSrc: string | ArrayBuffer | null = null;
 
@@ -28,7 +35,4 @@ export class StudentsComponent implements OnInit {
   }
 
   uploadImage() {}
-
-  
-
 }
