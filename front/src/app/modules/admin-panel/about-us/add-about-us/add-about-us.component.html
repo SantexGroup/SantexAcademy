@@ -7,23 +7,13 @@
       <div class="card-body">
         <form [formGroup]="form" (ngSubmit)="add()">
             <div class="row mb-3">
-                <label class="form-label mb-0 p-0"><b>Titulo</b></label>
+                <label class="form-label mb-0 p-0"><b>Titulo (Se mostrara solo 1 titulo por prioridad)</b></label>
                 <input
                   formControlName="title"
                   type="text"
-                  class="form-control"
+                  class="form-control mt-2"
                   placeholder="Ingrese Titulo"
                 />
-                <span
-                  *ngIf="
-                    form.get('title')?.hasError('required') &&
-                    form.get('title')?.touched
-                  "
-                  class="mt-1"
-                  style="background-color: rgb(255, 73, 73); border-radius: 5px"
-                >
-                  El campo nombre es <strong>requerido</strong>
-                </span>
               </div>
               <div class="row mb-3">
                 <label class="form-label mb-0 p-0"><b>Subtitulo</b></label>
