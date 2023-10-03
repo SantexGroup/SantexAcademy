@@ -8,7 +8,7 @@
   max-width: 80%;
   margin: auto;
   padding: 2%;
-  background-color: #f9f9f9;
+  background-color: rgb(226, 226, 226);
   border: 1px solid #ccc;
   border-radius: 15px;
 }
@@ -16,6 +16,7 @@
 /* imagen */
 #divImagen {
     display: flex;
+    justify-content: center;
     align-items: center;
     width: 1100px; /* revisar medidas y maquetado */
     height: 500px;
@@ -26,9 +27,11 @@
 #fondoImagen {
     display: flex;
     justify-content: center;
+    max-width: 70%;
 }
 
 #imagen {
+    
     max-width: 70%;
     border: 1px solid grey;
     border-radius: 5px;
@@ -70,7 +73,7 @@
 
 #divTitulo a {
     text-decoration: none;
-    color:cornflowerblue;
+    color:#d68a96;
     font-size: 11px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -146,17 +149,18 @@ select:focus {
     margin-top: 10%;
     border: none;
     border-radius: 4px;
-    background-color: #e6b68b;
+    background-color: #d68a96;
     color: white;
 }
 
 .boton:hover {
     cursor: pointer;
-    background-color: #c47c3d;
+    background-color: #c95c6d;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 #precio {
-    color:darkslateblue
+    color:darkslateblue;
 }
 
 #relleno {

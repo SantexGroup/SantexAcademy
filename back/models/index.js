@@ -118,4 +118,12 @@ db.localidad.belongsTo(db.provincia, {
   foreignKey: 'idProvincia',
 });
 
+/* // Relacion Provincia-Dirección
+db.provincia.hasMany(db.Direccion, {
+   foreignKey: 'idProvincia'
+});
+db.Direccion.belongsTo(db.provincia, {
+   foreignKey: 'idProvincia'
+}); */
+
 module.exports = db;

@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const jwt = require('jsonwebtoken');
-const { User, Direccion } = require('../models');
+const { User, Direccion, localidad } = require('../models');
 
 // login
 async function login(mail, password) {
@@ -65,6 +65,12 @@ async function getUserFromId(id) {
         {
           model: Direccion,
           attributes: ['idLocalidad', 'calleYaltura'],
+          include: [
+            {
+              model: localidad,
+              attributes: ['idProvincia', 'nombre'],
+            },
+          ],
         },
       ],
     });
@@ -168,4 +174,5 @@ async function deleteUsuario(id) {
 
 module.exports = {
   login, userRegister, cambiarEstadoVendedor, getUserFromId, editUsuario, deleteUsuario,
+
 };

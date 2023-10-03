@@ -40,7 +40,7 @@ export class RegistroService {
       calleYAltura: dirRegServ
     }
     console.log(body);
-    return this.apiService.post('/users/user-register', body)
+    return this.apiService.post('/users/register', body)
   }
 
   getProvincias() {

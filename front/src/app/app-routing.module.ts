@@ -7,6 +7,7 @@ import { RegistroComponent } from './Features/registro/registro.component';
 import { CargaArticulosComponent } from './Features/carga-articulos/carga-articulos.component';
 import { TarjetaArticuloComponent } from './Features/tarjeta-articulo/tarjeta-articulo.component';
 import { VistaArtIndComponent } from './Features/vista-articulo-ind/vista-articulo-ind.component';
+import { ModificarArticuloComponent } from './Features/modificar-articulo/modificar-articulo.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'vista-articulo',
     component: VistaArtIndComponent,
+  },
+  {
+    path: 'modificar-articulo',
+    component: ModificarArticuloComponent,
   },
 
 ]

@@ -33,24 +33,32 @@
                 <div class="campo">
                     <label for="categorias">Categorias:</label>
                     <select formControlName="catReg" name="categoria">
-                        <option value="0">Seleccione Categoria</option>
-                        <option *ngFor="let categoria of listcategorias" [value]="categoria.id">{{ categoria.name }}
-                        </option>
+                        <option value="0">Seleccione Categoría</option>
+                        <option *ngFor="let categoria of listcategorias" [value]="categoria.id">{{categoria.name.charAt(0).toUpperCase()}}{{categoria.name.slice(1)}}</option>
                     </select>
                     <div class="select_arrow"></div>
                 </div>
 
                 <div class="campo">
-                    <label for="imagenes">Cargar Imágenes del Producto:</label>
-                    <input formControlName="images" type="file" id="imagenes" name="images" (change)="onFileSelected($event)" accept="image/*"
-                        multiple />
+                    <label>Cargar Imágenes <span>(imágenes a reemplazar) </span>
+                    </label>
+                    <label id="botonCargar"for="imagenes">{{textoCarga}}</label>
+                    <input type="file" id="imagenes" name="images" formControlName="images" (change)="reemplazarImagen($event)" accept="image/*"multiple />
+                    <div class="imagenes-container">
+                        <div class="imagenes">
+                            <div class="imagen" *ngFor="let image of uploadedImages">
+                                <img *ngIf="image" (click)="quitarImagen(image)"[src]="image" alt="Imagen cargada"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="campo">
+                <div id="envio" class="campo">
                     <label for="envio">Opción de Envío:</label>
                     <select formControlName="envReg" id="envio" name="envio" required>
-                        <option value="0">Envío Domicilio</option>
-                        <option value="1">Buscar en local</option>
+                        <option value="0">Seleccione Envío</option>
+                        <option value="1">Envío Domicilio</option>
+                        <option value="2">Buscar en local</option>
                     </select>
                 </div>
             </div>
@@ -65,13 +73,4 @@
         </div>
     </form>
 </div>
-
-<div class="imagenes-container">
-    <div class="imagenes">
-        <div class="imagen" *ngFor="let image of uploadedImages">
-            <img [src]="image" alt="Imagen cargada" />
-        </div>
-    </div>
-</div>
-
-<app-footer></app-footer>
+<app-footer class="fixed-bottom"></app-footer>
