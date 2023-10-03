@@ -39,7 +39,174 @@ async function getProfilesByUserIdController(req, res) {
   }
 }
 
+async function profileDelete(
+  req,
+  res,
+  next,
+) {
+  const { id } = req.params;
+  try {
+    await profileService.deleteProfile(id);
+    res.status(200).send();
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function profileCreate(
+  req,
+  res,
+  next,
+) {
+  const {
+    userId,
+    profileName,
+  } = req.body;
+  try {
+    const newProfile = await profileService.createProfile(
+      userId,
+      profileName,
+    );
+    res.status(201).send(newProfile);
+  } catch (error) {
+    next(error);
+  }
+}
+
+/* Tablas Intermedias */
+async function experienceRelation(
+  req,
+  res,
+  next,
+) {
+  const {
+    profilesId,
+    experiencesId,
+  } = req.body;
+  try {
+    const newRelation = await profileService.relationExperience(
+      profilesId,
+      experiencesId,
+    );
+    res.status(201).send(newRelation);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function formationRelation(
+  req,
+  res,
+  next,
+) {
+  const {
+    profilesId,
+    formationsId,
+  } = req.body;
+  try {
+    const newRelation = await profileService.relationFormation(
+      profilesId,
+      formationsId,
+    );
+    res.status(201).send(newRelation);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function referenceRelation(
+  req,
+  res,
+  next,
+) {
+  const {
+    profilesId,
+    referencesId,
+  } = req.body;
+  try {
+    const newRelation = await profileService.relationReference(
+      profilesId,
+      referencesId,
+    );
+    res.status(201).send(newRelation);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function optionalRelation(
+  req,
+  res,
+  next,
+) {
+  const {
+    profilesId,
+    optionalsId,
+  } = req.body;
+  try {
+    const newRelation = await profileService.relationOptional(
+      profilesId,
+      optionalsId,
+    );
+    res.status(201).send(newRelation);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function skillRelation(
+  req,
+  res,
+  next,
+) {
+  const {
+    profilesId,
+    skillsId,
+    level,
+  } = req.body;
+  try {
+    const newRelation = await profileService.relationSkill(
+      profilesId,
+      skillsId,
+      level,
+    );
+    res.status(201).send(newRelation);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function languageRelation(
+  req,
+  res,
+  next,
+) {
+  const {
+    profilesId,
+    languagesId,
+    level,
+  } = req.body;
+  try {
+    const newRelation = await profileService.relationLanguage(
+      profilesId,
+      languagesId,
+      level,
+    );
+    res.status(201).send(newRelation);
+  } catch (error) {
+    next(error);
+  }
+}
+
 module.exports = {
   getProfileById,
   getProfilesByUserIdController,
+  profileCreate,
+  profileDelete,
+  experienceRelation,
+  formationRelation,
+  referenceRelation,
+  optionalRelation,
+  skillRelation,
+  languageRelation,
 };

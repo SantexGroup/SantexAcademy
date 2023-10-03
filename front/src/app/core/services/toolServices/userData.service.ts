@@ -41,7 +41,6 @@ export class UserDataService {
 
   urlPicture = "";
 
-
   constructor(
     private _experience: ExperiencesService,
     private _formations: FormationsService,
@@ -66,7 +65,7 @@ export class UserDataService {
   optionals: Optionals[] = [];
   references: Reference[] = [];
   skills: Skill[] = [];
-  
+
   getExperience(){
     this._experience.getExperience(this.userId).subscribe((experieceList: Experience[])=>{
       this.experiences = experieceList;

@@ -11,18 +11,28 @@
     margin:  5em;
     
 }
+
+.botonera{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 6em;
+    margin-right: 6em;
+}
+
 .izquierdo{
     height: 90%;
     width: 50%;
     display: block;
     margin-left: 2em;    
 }
+
 .derecho{
     height: 90%;
     width: 50%;
     display: block;
     margin-right: 2em;
 }
+
 .conteiner-img{
     display: flex;
     align-items: center;
@@ -33,11 +43,13 @@
     width: 17em;
     margin: 4em;
 }
+
 img{
     border-radius: 50%;
     height: 15.5em;
     width: 15.5em;
 }
+
 .titulo-card{
     display: flex;
     background-color: black;
@@ -49,6 +61,7 @@ img{
     align-items: center;
     text-align: justify;     
 }
+
 .titulo-card h3{
     max-width: 80%;
     max-height: min-content;

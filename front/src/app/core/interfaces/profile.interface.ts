@@ -6,13 +6,13 @@ import { Optionals } from "./optionlas.interface";
 
 
 export interface Profile {
-    id: number;
+    id?: number;
     userId: number;
     profileName: string;
-    deletedAt: Date | null;
-    experiences: Experience[];
-    languages: Language[];
-    skills: Skill[];
-    formations: Formations[];
-    optionals: Optionals[];
+    deletedAt?: Date | null;
+    experiences?: Experience[];
+    languages?: Language[];
+    skills?: Skill[];
+    formations?: Formations[];
+    optionals?: Optionals[];
   }

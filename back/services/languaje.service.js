@@ -44,8 +44,6 @@ async function getAllLanguage(id) {
         attributes: ['id', 'language'],
       }],
     }],
-    distinct: true,
-    group: ['language'],
   });
   if (UserLanguage) {
     const languageList = UserLanguage.reduce(

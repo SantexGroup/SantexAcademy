@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { Profile } from 'src/app/core/interfaces/profile.interface';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
+import { ProfilesToolService } from 'src/app/core/services/toolServices/profiles-tool.service';
 
 
 @Component({
@@ -16,16 +17,11 @@ export class ProfilesFourComponent implements OnInit {
 
   constructor(
     public userData: UserDataService,
-    public views: NavBarService,    
+    public views: NavBarService,   
+    public profileTools: ProfilesToolService 
   ) { }
 
   ngOnInit(): void {
-    this.userData.getMyOptionals();
-    this.userData.languageGet();
-    this.userData.getExperience();
-    this.userData.getListFormations();
-    this.userData.getReference();
-    this.userData.getSkill();
   }  
 
 }
