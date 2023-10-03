@@ -7,6 +7,7 @@ const {
 } = require("../controllers");
 
 const { verifyToken, isOrg } = require("../middleware/authMiddleware");
+const upload = require("../config/multerConfig");
 
 orgRouter.get("/", orgController.getOrganizationByCriteria);
 orgRouter.get("/search", orgController.getOrganizationByLocation);
@@ -22,6 +23,14 @@ orgRouter.put(
   verifyToken,
   isOrg,
   orgController.updateOrganizationById
+);
+
+orgRouter.put(
+  "/me/updatePhoto",
+  upload.single("file"),
+  verifyToken,
+  isOrg,
+  orgController.updatePhotoMyProfile
 );
 
 orgRouter.delete(

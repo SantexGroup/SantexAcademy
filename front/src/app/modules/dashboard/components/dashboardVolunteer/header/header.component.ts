@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { DashboardServicesService } from '../../../services/dashboard-services.service';
 import { Store } from '@ngrx/store';
 import { selectToken } from 'src/app/core/auth.selectors';
@@ -15,11 +14,11 @@ export class HeaderComponent {
     private dashServices: DashboardServicesService,
     private store: Store
   ) {}
-  subscription: Subscription | null = null;
   statusModal: string = '';
   messageModal: string = '';
   onModalStatus: boolean = false;
   textBtnModalStatus: string = '';
+
   changePhotoUser(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -29,7 +28,6 @@ export class HeaderComponent {
         if (token) {
           this.dashServices.updateProfilePhoto(formData, token).subscribe({
             next: (response) => {
-              console.log(response);
               if (response) {
                 this.onModalStatus = true;
                 this.statusModal = 'success';
