@@ -13,6 +13,10 @@ import { UserService } from './core/services/usuario.service';
 })
 export class AppComponent implements OnInit{
 
+  public active : boolean = false
+  
+
+
   constructor(
     public views: NavBarService,
     private userData: UserDataService,
@@ -32,6 +36,11 @@ export class AppComponent implements OnInit{
     }
     this.views.restart();
   }
+  
+  activarNav() : void {
+    this.active = !this.active
+  }
+
 
   uploadImage(event: any): any {
     const fileToUpload = event.target.files[0];
@@ -50,5 +59,6 @@ export class AppComponent implements OnInit{
 
     
   }
+
 
 }

@@ -6,11 +6,15 @@
             <a class="navbar-brand" routerLink="/">
                 <img src="assets/Imagenes/cvassistantlogo.png" alt="logo cvassistant">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="nosotros">
+                <button class="abrir-menu"
+                (click)="activarNav()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                  </svg>
+                </button>
+            
+            <div class="collapse navbar-collapse" id="nosotros"
+            [ngClass]="{ 'nav-activo' : active }">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="#nosotrosContacto">Quienes somos</a>
@@ -138,7 +142,7 @@
         <div class="preguntas-frecuentes">
             <h1>Preguntas frecuentes</h1>
             <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
+                <mat-expansion-panel-header class="pregunta">
                     <mat-panel-title>
                         ¿Cómo funciona el proceso de creación de CV en línea?
                     </mat-panel-title>
@@ -151,7 +155,7 @@
                     diseño y guardar tu CV en línea o descargarlo en varios formatos.</p>
             </mat-expansion-panel>
             <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
+                <mat-expansion-panel-header class="pregunta">
                     <mat-panel-title>
                         ¿Necesito tener experiencia en diseño para utilizar CvAsisstant?
                     </mat-panel-title>
@@ -164,7 +168,7 @@
                     habilidades de diseño.</p>
             </mat-expansion-panel>
             <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
+                <mat-expansion-panel-header class="pregunta">
                     <mat-panel-title>
                         ¿Qué plantillas de CV están disponibles? ¿Puedo personalizarlas?
                     </mat-panel-title>
@@ -175,7 +179,7 @@
                     que mejor se adapte a ti y personalizarla al cambiar colores, fuentes y disposición.</p>
             </mat-expansion-panel>
             <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
+                <mat-expansion-panel-header class="pregunta">
                     <mat-panel-title>
                         ¿Cómo puedo empezar a crear mi CV?
                     </mat-panel-title>
@@ -185,7 +189,7 @@
                     para agregar tu información. Puedes guardar y editar tu CV en cualquier momento.</p>
             </mat-expansion-panel>
             <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
+                <mat-expansion-panel-header class="pregunta">
                     <mat-panel-title>
                         ¿Qué tipo de información debo proporcionar al crear mi CV?
                     </mat-panel-title>

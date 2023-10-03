@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,6 +29,7 @@ import { LoadingInterceptor } from './core/services/toolServices/interceptor/loa
 import { UsuarioModule } from './modules/lazyLoading/usuario.module';
 import { CVComponent } from './modules/cv/cv.component';
 import { ReferencesComponent } from './modules/crud-data/references/references.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfilesComponent } from './modules/profiles/profiles.component';
 import { LoadingModule } from './modules/loading/loading.module';
 import { ToastrModule } from 'ngx-toastr';
@@ -39,6 +39,7 @@ import {MatCardModule} from '@angular/material/card';
 import { ProfileOneComponent } from './modules/profile-one/profile-one.component';
 import { ProfileTwoComponent } from './modules/profile-two/profile-two.component';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions, MatCheckboxModule} from '@angular/material/checkbox';
+
 
 
 
@@ -61,6 +62,7 @@ import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions, MatCheckboxModu
     ModalAddComponent,
     ProfileOneComponent,
     ProfileTwoComponent
+
   ],
   imports: [
     BrowserModule,
@@ -81,6 +83,7 @@ import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions, MatCheckboxModu
     MatDividerModule,
     MatMenuModule,
     HomeRoutingModule,
+    NgbModule,
     LoadingModule,
     MatCardModule,
     MatCheckboxModule,
@@ -89,6 +92,7 @@ import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions, MatCheckboxModu
       positionClass: 'toast-top-center',
       preventDuplicates: true
     })
+
   ],
   providers: [
     {
