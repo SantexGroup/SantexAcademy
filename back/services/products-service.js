@@ -73,7 +73,11 @@ async function chargeProducts(idUsuario, idTipoProducto, nombre, detalles, preci
 // modificar articulo
 
 async function editArticle(id, idUsuario, idTipoProducto, nombre, detalles, precio, envio) {
-  const articulo = await getProductoById(id);
+  const articulo = await Products.findByPk(id);
+
+  if (!articulo) {
+    return { error: 'Artículo no encontrado' };
+  }
 
   if (idUsuario) {
     articulo.idUsuario = idUsuario;
