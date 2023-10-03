@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 /* eslint-disable object-shorthand */
 /* eslint-disable import/order */
 // eslint-disable-next-line no-unused-vars
@@ -294,7 +295,49 @@ async function unsuscribe(idTarea, idVolunteer) {
   }
 }
 
+async function getDatosVoluntario(userId) {
+  try {
+    // const voluntario = await models.volunteer.findByPk(userId);
+    const voluntario = await getById(userId);
+    if (!voluntario) {
+      throw new Error('no se encuentra el voluntario deseado');
+    }
+
+    const tareasVoluntario = voluntario.tareas || [];
+    const hoy = new Date();
+
+    const horasTrabajadas = tareasVoluntario.reduce((total, tarea) => {
+      if (tarea.tareasVoluntario && tarea.tareasVoluntario.asistio) {
+        return total + tarea.duracion;
+      }
+      return total;
+    }, 0);
+
+    const tareasPendientes = tareasVoluntario.filter((tarea) => {
+      const fechaTarea = new Date(tarea.date);
+      return tarea.tareasVoluntario && tarea.tareasVoluntario.asistio === false && fechaTarea > hoy;
+    });
+
+    const puntosAdquiridos = tareasVoluntario.reduce((totalPuntos, tarea) => {
+      if (tarea.tareasVoluntario && tarea.tareasVoluntario.asistio) {
+        return totalPuntos + tarea.points;
+      }
+      return totalPuntos;
+    }, 0);
+
+    const premiosCanjeados = await voluntario.getPremios();
+
+    return {
+      voluntario, horasTrabajadas, tareasPendientes, puntosAdquiridos, premiosCanjeados,
+    };
+  } catch (error) {
+    console.error('Error en getDatosVoluntario:', error);
+    throw error;
+  }
+}
+
+
 module.exports = {
   // eslint-disable-next-line max-len
-  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, asignarTareaVoluntario, canjearPremioService, unsuscribe,
+  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, asignarTareaVoluntario, canjearPremioService, unsuscribe, getDatosVoluntario,
 };

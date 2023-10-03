@@ -6,63 +6,10 @@ const models = require('../models/index');
 
 async function getDataVoluntario(req, res) {
   const { usuario } = req;
-
   try {
-    const voluntario = await volunteerServices.getById(usuario.id);
-
-    // Devuelve las horas trabajadas
-    const tareasVoluntario = voluntario.tareas || [];
-
-    const hoy = new Date();
-
-    const horasTrabajadas = tareasVoluntario.reduce((total, tarea) => {
-      if (tarea.tareasVoluntario && tarea.tareasVoluntario.asistio) {
-        return total + tarea.duracion;
-      }
-      return total;
-    }, 0);
-
-    // voluntario.horasTrabajadas = horasTrabajadas;
-
-    // Devuelve las tareas pendientes
-    const tareasPendientes = tareasVoluntario.filter((tarea) => {
-      const fechaTarea = new Date(tarea.date);
-
-      // eslint-disable-next-line max-len
-      return tarea.tareasVoluntario && tarea.tareasVoluntario.asistio === false && fechaTarea > hoy;
-    });
-
-    // Devuelve los puntos adquiridos en las tareas realizadas
-    const puntosAdquiridos = tareasVoluntario.reduce((totalPuntos, tarea) => {
-      if (tarea.tareasVoluntario && tarea.tareasVoluntario.asistio) {
-        return totalPuntos + tarea.points;
-      }
-      return totalPuntos;
-    }, 0);
-
-    // Devuelve los premios canjeados
-    /*
-    const premiosCanjeados = await models.premiosMid.findAll({
-      where: { volunteerId: voluntario.id },
-      include: [
-        {
-          model: models.premio,
-        },
-      ],
-    });
-
-    if (premiosCanjeados.length > 0) {
-      voluntario.premiosCanjeados = premiosCanjeados;
-    } else {
-      voluntario.premiosCanjeados = [];
-    }
-    */
-
-    res.status(200).json({
-      voluntario, horasTrabajadas, tareasPendientes, puntosAdquiridos,
-    });
+    const data = await volunteerServices.getDatosVoluntario(usuario.id);
+    res.status(200).send(data);
   } catch (error) {
-    console.error('Error al obtener datos del voluntario:', error);
     res.status(500).send('Error interno del servidor');
   }
 }
