@@ -1,13 +1,39 @@
 <section class="section flex flex-col font-poppins">
-  <header class="headerOrg relative w-screen h-[100px] flex justify-between items-center">
-    <div class="w-full justify-center flex items-center">
-
-    <img src="{{ image }}" alt="Logo organización" class="relative w-[160px] img"/>
-<input type="file" #fileInput hidden (change)="onFileSelected($event)">
-    </div>
+  <app-modal-status
+    *ngIf="onModalStatus"
+    [message]="messageModal"
+    [textBtn]="textBtnModalStatus"
+    [status]="statusModal"
+  >
+  </app-modal-status>
+  <header
+    class="headerOrg relative w-screen h-[100px] flex justify-center items-center"
+  >
+    <figure
+      class="relative w-[50px] aspect-square rounded-full border-2 border-white sm:w-[80px] shadow-md shadow-dimGray"
+    >
+      <img
+        [src]="
+          dataHeader.image?.imageUrl
+            ? dataHeader.image?.imageUrl
+            : '/assets/imgs/not-found.webp'
+        "
+        alt="avatar"
+        class="w-full h-full object-cover rounded-full"
+      />
+      <label
+        for="file"
+        class="absolute bottom-0 right-0 text-xl px-1 bg-DarkGray rounded-full shadow-md shadow-darkSlateBlue cursor-pointer"
+      >
+        <input
+          type="file"
+          id="file"
+          name="file"
+          class="hidden"
+          (change)="changePhotoUser($event)"
+        />
+        <i class="bx bx-edit text-black"> </i>
+      </label>
+    </figure>
   </header>
 </section>
-
-
-
-
