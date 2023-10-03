@@ -2,24 +2,27 @@
     background-color: var(--color-5);
     color: var(--color-1);
     text-align: center;
-    padding: var(--size-1);
+    padding: var(--size-2);
 
     /* position: fixed; */
     position: static;
     bottom: 0;
     left: 0;
     width: 100%;
-}
+}   
 
 .footer h6 {
-    font-size: var(--font-size-3);
+    font-size: var(--font-size-4);
 }
 
 .footer-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    margin-left: var(--size-2);
 }
+
+
 
 .footer-left {
     display: flex;
@@ -31,13 +34,13 @@
 }
 
 .image-container {
-    max-width: 25rem;
-    border-radius: 4rem;
-    background: radial-gradient(circle, var(--color-0) 0%, var(--color-1) 40%, var(--color-5) 80%);
+    max-width: 15rem;
+    border-radius: 1rem;
+    background: radial-gradient(circle, var(--color-0) 0%, var(--color-1) 10%, var(--color-5) 40%);
 }
 
 .image {
-    max-width: 6rem;
+    max-width: 5rem;
 }
 
 .icon-image {
