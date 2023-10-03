@@ -33,6 +33,10 @@ select {
   border-radius: 4px;
 }
 
+textarea {
+  height: 135px;
+}
+
 /* Columnas */
 .row {
   display: flex;
@@ -49,7 +53,7 @@ select {
 }
 
 .media_columna_der .campo {
-  padding-bottom: 46px;
+  padding-bottom: 5px;
 }
 
 .media_columna_der .campo input {
@@ -75,6 +79,7 @@ select {
 
 .botones-container {
   text-align: center;
+  margin-top: 15px;
 }
 
 /* Mensaje */
@@ -84,29 +89,61 @@ select {
 
 /* Imágenes */
 .imagenes-container {
-  margin-top: 20px;
-  max-width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 2%;
+  width: 100%;
+  height: 80px;
   overflow: auto;
-}
-
+  background-color: white;
+  border-radius: 5px;
+} 
 .imagenes {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  width: 100%;
+  margin: 1%;
+  gap: 10px;    
+  height: 80%;
+}  
+.imagen {
+  display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.imagen {
-  flex-basis: calc(33.33% - 10px);
-  max-width: 100%;
+  flex-basis: calc(20% - 10px);
   border: 2px solid #ccc;
-  box-sizing: border-box;
-}
-
+  margin-left: 1%;
+  margin-right: 1%;
+  
+}  
 .imagen img {
-  width: 100%;
-  height: auto;
+  width: 90%;
+  height: 90%;
+}
+.imagen img:hover {
+  cursor: pointer;
+  filter: grayscale(100%);
+  transition: filter 0.4s;
+} 
+
+#botonCargar {
+  background-color: #d68a96;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  width: max-content;
+  font-weight: 400;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+#botonCargar:hover {
+  background-color: grey;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+} 
+input[type="file"] {
+  display: none;
 }
 
 /* Precio */
@@ -118,8 +155,6 @@ select {
 .peso-sign {
   margin-right: 5px;
 }
-
-
 p {
   background-color: #f2f2f2; 
   border: 1px solid #ff0000; 
@@ -131,4 +166,8 @@ p {
   margin-top: 10px ; 
   text-align: center; 
   font-weight: bold;
+}
+
+#envio {
+  margin-top: 2px;
 }
