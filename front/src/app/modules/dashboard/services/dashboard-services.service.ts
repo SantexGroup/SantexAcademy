@@ -56,12 +56,27 @@ export class DashboardServicesService {
     return this.http.get(url, options);
   }
 
-  updateProfileOrganization(data: string, token: string): Observable<any> {
-    const url = `${this.apiUrl}/org`;
+
+  updateProfileOrganization(data:string, token: string): Observable<any> {
+    const url = `${this.apiUrl}/organizacion/me/update`;
+
     const headers = new HttpHeaders({
       'x-access-token': token,
     });
     const options = { headers: headers };
     return this.http.put(url, data, options);
   }
+
+
+
+  deleteProfileOrganization(token: string): Observable<any> {
+    const url = `${this.apiUrl}/organizacion/me`;
+    const headers = new HttpHeaders({
+      'x-access-token': token,
+    });
+    const options = { headers: headers };
+    return this.http.delete(url, options);
+  }
+
+
 }
