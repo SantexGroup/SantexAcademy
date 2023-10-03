@@ -67,18 +67,11 @@ export class ModificarArticuloComponent implements OnInit {
         this.nomArt = res.nombre.charAt(0).toUpperCase() + res.nombre.slice(1);
         this.descArt = res.detalles.charAt(0).toUpperCase() + res.detalles.slice(1);
         this.precioArt = res.precio;
-        console.log("Envio1: " + res.envio)
-        console.log("Cateogrías array: " + JSON.stringify(this.listcategorias))
-        console.log("Id cat array: " + this.listcategorias[1].id)
-        console.log("Id res: " + res.idTipoProducto)
-        console.log("Nombre cat desde listCat: " + this.listcategorias[2].name.charAt(0).toUpperCase() + this.listcategorias[2].name.slice(1))
         //buscar categoria prod y eliminar de array
         for (let i=0; i < this.listcategorias.length; i++) {
           if (res.idTipoProducto == this.listcategorias[i].id) {
             this.catArt = JSON.stringify(this.listcategorias[i].name.charAt(0).toUpperCase() + this.listcategorias[i].name.slice(1));
-            console.log("Cateogría final: " + this.catArt);
             this.catArt = this.catArt.slice(1, this.catArt.length-1);
-            console.log("Cateogría final: " + this.catArt);    
           }
           if (this.catArt != this.listcategorias[i].name.charAt(0).toUpperCase() + this.listcategorias[i].name.slice(1)) {
             let newList = this.cat;
@@ -87,7 +80,6 @@ export class ModificarArticuloComponent implements OnInit {
           }
         }
         //reemplazar envio
-        console.log("Envio2: " + res.envio);
         if (!this.respuesta.envio) {this.envios = ['Buscar en local', 'Envío a domicilio']}
         //reemplazar imagenes y texto de imágenes
         if (res.Images){
