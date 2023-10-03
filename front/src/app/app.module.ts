@@ -36,6 +36,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ProfilesFourComponent } from './modules/profiles-four/profiles-four.component';
 import { ProfileOneComponent } from './modules/profile-one/profile-one.component';
 import { ProfileTwoComponent } from './modules/profile-two/profile-two.component';
+import { ProfileThreeComponent } from './modules/profile-three/profile-three.component';
 
 
 
@@ -55,7 +56,8 @@ import { ProfileTwoComponent } from './modules/profile-two/profile-two.component
     ProfilesComponent,
     ProfilesFourComponent,
     ProfileOneComponent,
-    ProfileTwoComponent
+    ProfileTwoComponent,
+    ProfileThreeComponent
   ],
   imports: [
     BrowserModule,
