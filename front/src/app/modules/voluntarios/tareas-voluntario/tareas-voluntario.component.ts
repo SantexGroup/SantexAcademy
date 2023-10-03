@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ResumenVoluntario } from 'src/app/core/interfaces/resumenVoluntario';
 import { Tarea } from 'src/app/core/interfaces/tarea';
 import { Voluntario } from 'src/app/core/interfaces/voluntario';
 import { TareaService } from 'src/app/core/services/tarea.service';
@@ -12,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class TareasVoluntarioComponent implements OnInit {
   
-  datosVoluntario:Voluntario | null = null;
+  datosVoluntario:ResumenVoluntario | null = null;
   constructor(private voluntarioService:VoluntarioService, private tareaService:TareaService) {
     this.voluntarioService.getDatosVoluntario.subscribe({
       next:(res)=> this.datosVoluntario = res
@@ -37,14 +38,20 @@ export class TareasVoluntarioComponent implements OnInit {
         confirmButtonText: 'Si'
       }).then((result) => {
         if (result.isConfirmed) {
-          this.tareaService.inscribirVoluntario(tarea.id!,this.datosVoluntario?.id!).subscribe({
+          this.tareaService.inscribirVoluntario(tarea.id!,this.datosVoluntario?.voluntario.id!).subscribe({
             next:(res)=>{
               Swal.fire(
                 'Felicitaciones!',
                 `Te has inscripto a la tarea: ${tarea.name}`,
                 'success'
               );
-              this.voluntarioService.setDatosVoluntario = res;
+
+              const nuevosDatos:ResumenVoluntario = this.datosVoluntario!;
+
+              nuevosDatos.voluntario = res;
+
+
+              this.voluntarioService.setDatosVoluntario = nuevosDatos;
             },
             error:()=>{
               Swal.fire(
@@ -76,14 +83,19 @@ export class TareasVoluntarioComponent implements OnInit {
          confirmButtonText: 'Si'
        }).then((result) => {
          if (result.isConfirmed) {
-           this.tareaService.desinscribirVoluntario(tarea.id!,this.datosVoluntario?.id!).subscribe({
+           this.tareaService.desinscribirVoluntario(tarea.id!,this.datosVoluntario?.voluntario.id!).subscribe({
              next:(res)=>{
                Swal.fire(
                  'Ok!',
                  `Te desinscribiste a la tarea: ${tarea.name}`,
                  'success'
                );
-               this.voluntarioService.setDatosVoluntario = res;
+
+               const nuevosDatos:ResumenVoluntario = this.datosVoluntario!; 
+
+               nuevosDatos.voluntario = res;
+
+               this.voluntarioService.setDatosVoluntario = nuevosDatos;
              },
              error:()=>{
                Swal.fire(

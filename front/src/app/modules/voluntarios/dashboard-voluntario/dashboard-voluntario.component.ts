@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ResumenVoluntario } from 'src/app/core/interfaces/resumenVoluntario';
 import { Voluntario } from 'src/app/core/interfaces/voluntario';
 import { VoluntarioService } from 'src/app/core/services/voluntario.service';
 
@@ -16,9 +17,8 @@ export class DashboardVoluntarioComponent implements OnInit{
     this.datosVoluntario$ = this.voluntarioService.getDatosVoluntario;
   }
   
-  datosVoluntario$:Observable<Voluntario | null>;
+  datosVoluntario$:Observable<ResumenVoluntario | null>;
   suscripcion;
   ngOnInit(): void {
-    
   }
 }
