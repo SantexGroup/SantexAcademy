@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     quantity: DataTypes.INTEGER,//cantidad total de productos
-    //stock: DataTypes.INTEGER, //cantidad de productos disponibles para alquiler todavia no se us
+    //stock: DataTypes.INTEGER, //cantidad de productos disponibles para alquiler todavia no se usa
     price: DataTypes.FLOAT,
     image: DataTypes.STRING,
     status: DataTypes.STRING,
