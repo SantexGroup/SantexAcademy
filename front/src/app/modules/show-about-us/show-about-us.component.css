@@ -18,6 +18,7 @@
 }
 .card {
     border-radius: 1rem;
+    box-shadow: 0.5rem 0.5rem;
 }
 .card-text {
     font-size: 1.3rem;
