@@ -1,7 +1,7 @@
 <header class="header">
   <div class="header-logo">ABC Muebleria</div>
   <nav class="header-nav" [class.open-menu]="isMenuOpen">
-    <ul class="navbar-menu" (click)="toggleMenu()">
+    <ul class="navbar-menu">
       <li class="nav-item" routerLinkActive="active" *ngFor="let item of menu">
         <a [routerLink]='item.paht'>{{ item.name }}</a>
       </li>
@@ -9,7 +9,7 @@
   </nav>
 
   <div class="header-der">
-    <a class="cart" routerLink="./shopping-cart">
+    <a [matBadge]="total$ | async" matBadgeColor="warn" class="cart" routerLink="./shopping-cart">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="1em"
@@ -45,7 +45,7 @@
       </svg>
     </a>
 
-    <div class="header-menu-button" (click)="toggleMenu()">
+    <div class="header-menu-button">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="1em"
