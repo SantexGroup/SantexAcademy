@@ -55,7 +55,7 @@ async function cambiarEstadoVendedorUser(req, res, next) {
 }
 
 // editar usuario
-/* async function editUser(req, res) {
+async function editUser(req, res) {
   const { id } = req.params;
   const {
     firstName, lastName, dni, mail, password, alias,
@@ -66,7 +66,7 @@ async function cambiarEstadoVendedorUser(req, res, next) {
     alias, idLocalidad, calleYAltura);
 
   res.status(201).send(usuario);
-} */
+}
 
 // eliminar usuario
 
