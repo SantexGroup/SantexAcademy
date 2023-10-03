@@ -13,11 +13,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   User.init({
-    // id: {
-    //   type: DataTypes.INTEGER,
-    //   autoIncrement: true,
-    //   primaryKey: true
-    // },
     nombreCompleto: DataTypes.STRING,
     nombreUsuario: DataTypes.STRING,
     fechaNacimiento: DataTypes.DATE,
@@ -28,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true,
       },
     },
-    contraseña: DataTypes.STRING,
+    password: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'User',
