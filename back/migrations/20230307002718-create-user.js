@@ -15,6 +15,19 @@ module.exports = {
       lastName: {
         type: Sequelize.STRING
       },
+      email:{
+          type: Sequelize.STRING,
+      },
+      username:{
+          type: Sequelize.STRING
+      },
+      password:{ 
+          type: Sequelize.STRING
+      },
+      type:{ //tipo de usuario 0 comprador 1 vendedor 2 root
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

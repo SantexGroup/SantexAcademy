@@ -16,6 +16,17 @@ module.exports = (sequelize, DataTypes) => {
         through: 'AlquilerProducto', // Nombre de la tabla intermedia
         foreignKey: 'alquilerId',   // Nombre de la clave foránea en la tabla intermedia
       });
+      Alquiler.belongsTo(models.User, {
+        foreignKey: 'userId',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        as: 'verificadoPorPor',
+      })
+      Alquiler.belongsTo(models.User, {
+        foreignKey: 'userId',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        as: 'solicitadoPor',})
     }
   }
   Alquiler.init({
