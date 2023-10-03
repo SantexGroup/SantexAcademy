@@ -9,6 +9,7 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
 import { WhatsappButtonComponent } from './components/whatsapp-button/whatsapp-button.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { RouterModule } from '@angular/router';
+import { SliderExchangeComponent } from './components/slider-exchange/slider-exchange.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { RouterModule } from '@angular/router';
     VolunteeringSearchComponent,
     TestimonialsComponent,
     WhatsappButtonComponent,
+    SliderExchangeComponent,
   ],
   imports: [CommonModule, RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
