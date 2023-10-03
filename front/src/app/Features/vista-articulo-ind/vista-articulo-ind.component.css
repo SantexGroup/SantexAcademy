@@ -16,6 +16,7 @@
 /* imagen */
 #divImagen {
     display: flex;
+    justify-content: center;
     align-items: center;
     width: 1100px; /* revisar medidas y maquetado */
     height: 500px;
@@ -26,9 +27,11 @@
 #fondoImagen {
     display: flex;
     justify-content: center;
+    max-width: 70%;
 }
 
 #imagen {
+    
     max-width: 70%;
     border: 1px solid grey;
     border-radius: 5px;
