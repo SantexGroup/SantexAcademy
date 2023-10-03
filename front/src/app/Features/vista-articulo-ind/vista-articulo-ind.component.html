@@ -1,31 +1,26 @@
 <app-barra></app-barra>
 <div id="inicial" class="">
     <div id="general" class="d-flex">
-
         <!-- Imagen -->
         <div id="divImagen" class="col">
             <div id="fondoImagen" class="col">
                 <img id="imagen" class="img-fluid" [src]="images[0]" />
             </div>
         </div>
-
         <!-- Info -->
         <div id="datos" *ngIf="respuesta">
-
             <!-- Nombres -->
             <div id="divTitulo">
                 <div class="d-flex justify-content-center">
                     <p id="nombreProd" >{{nombreArt}}</p>
                 </div>
-                <div class="d-flex justify-content-end" *ngIf="respuesta.tipo">
-                    <a routerLink="/">Categoría: {{respuesta.tipo.name}}</a>
-                    
+                <div class="d-flex justify-content-end">
+                    <a routerLink="/">Categoría: {{catArt}}</a>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <a routerLink="/">Vendedor: {{respuesta.usuario.firstName}} {{respuesta.usuario.lastName}}</a>
+                    <a routerLink="/">Vendedor: {{nomUSer}}</a>
                 </div>
             </div>
-
             <!-- Descripción -->
             <div id="divDesc">
                 <p id="descTitulo">Descripción:</p>
@@ -33,40 +28,32 @@
                     <p>{{descArt}}</p>
                 </div>
             </div>
-
             <!-- Seleccionables -->
             <div id="divSeleccionables" class="d-flex text-center justify-content-between">
                 <form id="seleccionables" action="#" method="post">
                     <div>
-                        <select [(ngModel)]="envSel"  (change)="capturarEnvio()" name="envio" required>
-                            <option value="" disabled selected hidden>Opción de envío</option>
+                        <select [(ngModel)]="envSel" (change)="capturarEnvio()" name="envio" required>
+                            <option value="" selected hidden>Opción de envío</option>
                             <option value="retiro">Retiro por local</option>
-                            <option value="envio" *ngIf="respuesta.articulos.envio">Envío a domicilio</option>
+                            <option value="envio" *ngIf="envBolOri">Envío a domicilio</option>
                         </select>
                     </div>
-
                     <div>
                         <select [(ngModel)]="diasSel" (change)="capturarDias()" name="dias" required>
-                            <option value="" disabled selected hidden>Cantidad de días</option>
-                            <option value=0>1</option>
-                            <option value=1>2</option>
-                            <option value=2>3</option>
-                            <option value=3>4</option>
-                            <option value=4>5</option>
-                            <option value=5>6</option>
-                            <option value=6>7</option>
+                            <option value="0" selected hidden>Cantidad de días</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
                         </select>
                     </div>
-
                     <div>
                         <select [(ngModel)]="pagoSel" (change)="capturarPago()" name="pago" required>
-                            <option value="" disable selected hidden>Forma de pago</option>
+                            <option value="" selected hidden>Forma de pago</option>
                             <option value="efectivo">Pago con efectivo</option>
-                            <option value="tarjeta" *ngIf="(respuesta.usuario)">Pago con tarjeta</option>
+                            <option value="tarjeta" *ngIf="envBolOri">Pago con tarjeta</option>
                         </select>
                     </div>
                 </form>
-
                 <!-- Botón y precio -->
                 <div id="divBotonYPrecio">
                     <div>
