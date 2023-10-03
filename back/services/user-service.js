@@ -104,52 +104,17 @@ async function cambiarEstadoVendedor(id) {
 
 // editar usuario
 
-/* async function editUsuario(
-  id,
-  firstName,
-  lastName,
-  dni,
-  mail,
-  password,
-  alias,
-  idLocalidad,
-  calleYAltura,
-  idProvincia
-) {
-  const user = await getUserFromId(id, true);
+async function editUsuario(id, firstName, lastName, dni, mail, password, alias,
+  idLocalidad, calleYAltura) {
+  const user = await User.findByPk(id);
 
   if (!user) {
-    throw new Error(`Usuario con ID ${id} no encontrado`);
-  }
-
-  let direccion = user.direccion;
-
-  if (!direccion) {
-
-    direccion = await Direccion.create({
-      idLocalidad,
-      calleYAltura,
-    });
-  } else {
-
-    if (idLocalidad) {
-      direccion.idLocalidad = idLocalidad;
-    }
-
-    if (calleYAltura) {
-      direccion.calleYAltura = calleYAltura;
-    }
-  }
-
-  if (direccion.changed()) {
-    await direccion.save();
-    user.idDireccion = direccion.id;
+    return { error: 'Usuario no encontrado' };
   }
 
   if (firstName) {
     user.firstName = firstName;
   }
-
   if (lastName) {
     user.lastName = lastName;
   }
@@ -170,18 +135,44 @@ async function cambiarEstadoVendedor(id) {
     user.alias = alias;
   }
 
-  if (idProvincia) {
-    const localidad = await localidad.findOne({ where: { id: idLocalidad } });
-    if (localidad) {
-      await localidad.update({ idProvincia });
-    }
+  const direccion = await Direccion.findByPk(user.idDireccion);
+
+  if (idLocalidad) {
+    direccion.idLocalidad = idLocalidad;
   }
+
+  if (calleYAltura) {
+    direccion.calleYAltura = calleYAltura;
+  }
+
+  const direccionEdited = await direccion.save();
 
   const userEdited = await user.save();
 
-  return userEdited;
-} */
+  return { userEdited, direccionEdited };
+}
+
+// eliminar usuario
+
+async function deleteUsuario(id) {
+  try {
+    const result = await User.destroy({
+      where: {
+        id,
+      },
+    });
+
+    if (result === 1) {
+      return { success: true, message: `Usuario con ID ${id} eliminado exitosamente.` };
+    }
+    return { success: false, message: `No se encontró el usuario con ID ${id}.` };
+  } catch (error) {
+    console.error(`Error al eliminar el usuario: ${error.message}`);
+    return { success: false, message: `Error al eliminar el usuario: ${error.message}` };
+  }
+}
 
 module.exports = {
-  login, userRegister, cambiarEstadoVendedor, getUserFromId,
+  login, userRegister, cambiarEstadoVendedor, getUserFromId, editUsuario, deleteUsuario,
+
 };

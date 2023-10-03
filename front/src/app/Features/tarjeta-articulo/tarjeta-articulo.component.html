@@ -1,11 +1,12 @@
 <app-barra></app-barra>
-<div id="primero">
-<div id="principal" class="container">
-  <div id="general" class="row">
-    <div *ngFor="let articulo of listArticulos" class="col-md-3 mb-4 tarjeta-container animate__animated animate__backInRight" id ="tarjetas">
-      <div class="card" style="width: 100%;">
+<div class="container">
+  <div class="row">
+    <div *ngFor="let articulo of listArticulos" class="col-md-3 mb-4 tarjeta-container">
+      <div class="card" >
         <div class="card-body">
+          <div id="contImg">
           <img id="FotoArticulo" [src]="images[listArticulos.indexOf(articulo)]">
+          </div>
           <h5 class="card-title">{{ articulo.nombre }}</h5>
           <p>{{ articulo.detalles }}</p>
           <h6 id="Precio" class="card-subtitle">Precio: {{ articulo.precio }}</h6>
