@@ -130,6 +130,7 @@ select {
   width: 100%;
   margin: 1%;
   gap: 10px;    
+  height: 80%;
 }  
 .imagen {
   display: flex;
@@ -139,6 +140,7 @@ select {
   border: 2px solid #ccc;
   margin-left: 1%;
   margin-right: 1%;
+  
 }  
 .imagen img {
   width: 90%;
