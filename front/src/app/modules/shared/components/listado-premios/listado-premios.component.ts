@@ -20,14 +20,13 @@ export class ListadoPremiosComponent implements OnInit {
 
   listPremios:Premio[] = [];
 
-  datosVoluntario!:ResumenVoluntario;
+  datosVoluntario:ResumenVoluntario|null = null;
 
   pdfUrl!:string;
 
   constructor(private premioService:PremioService, private modal:MatDialog, private voluntarioService:VoluntarioService) { }
 
   ngOnInit(): void {
-
     if(this.esVoluntario) {
       this.obtenerDatosVoluntarios();
     }
@@ -92,13 +91,12 @@ export class ListadoPremiosComponent implements OnInit {
   obtenerDatosVoluntarios():void{
     this.voluntarioService.obtenerDatosVoluntario().subscribe({
       next:(res)=>{
-        this.datosVoluntario = res;
       }
     });
   }
 
   canjear(premio:Premio):void{
-    this.premioService.canjear(this.datosVoluntario.voluntario.id!, premio.id!).subscribe({
+    this.premioService.canjear(this.datosVoluntario?.voluntario.id!, premio.id!).subscribe({
       next:(data:Blob)=>{
         const blob = new Blob([data], { type: 'application/pdf' });
         const url = window.URL.createObjectURL(blob);
