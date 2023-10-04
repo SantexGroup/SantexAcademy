@@ -6,9 +6,9 @@
                 <!-- <img [src]="Images[0]"> -->
             </div>
             <div id="datosVen">
-                <p id="nomArt">{{nomArt}}</p>
-                <p id="nombreVen">{{nomVen}}</p>
-                <p id="catArt">{{catArt}}</p>
+                <p id="nomArt">{{modelo.nomArt}}</p>
+                <p id="nombreVen">{{modelo.nomVen}}</p>
+                <p id="catArt">{{modelo.catArt}}</p>
             </div>
             <div id="descripcion">
                 <p id="desArt">{{desArt}}</p>
@@ -17,7 +17,7 @@
                 <p id="envArt">Entrega: {{envArt}}</p>
                 <p id="preArt">Precio: ${{preArt}}</p>
             </div>
-            <div id="acciones">
+            <div id="acciones"> 
                 <a id="verArt" (click)="redireccion1()">Visualizar Artículo</a>
                 <a id="modArt" (click)="redireccion2()">Modificar Artículo</a>
                 <a id="eliArt" (click)="redireccion3()">Eliminar Artículo</a>
