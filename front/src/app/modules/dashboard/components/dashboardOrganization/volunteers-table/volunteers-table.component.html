@@ -1,7 +1,7 @@
 <article class="w-full px-4 pb-16 overflow-auto pt-12 rounded-md">
   <app-modal-question-volunteerings
     [nameVolunteeringDelete]="nameVolunteeringDelete"
-    (onDeleteVolunteering)="(deleteVolunteering)"
+    [idVolunteeringDelete]="idVolunteeringDelete"
     (cancelDeletion)="(declineDeleteVolunteering)"
     *ngIf="onModalQuestion"
   >
@@ -57,9 +57,14 @@
             <td
               class="py-4 whitespace-no-wrap text-center flex items-center justify-center"
             >
-              <button mat-icon-button class="custom-icon-button">
+              <button
+                mat-icon-button
+                class="custom-icon-button"
+                (click)="editVolunteering(item)"
+              >
                 <mat-icon>edit</mat-icon>
               </button>
+
               <button
                 mat-icon-button
                 class="custom-icon-button"

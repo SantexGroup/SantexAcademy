@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class TabsDashboardOrganizationComponent {
   @Input() dataTabs: any = {};
   @ViewChild('fileInput') fileInput: ElementRef | undefined;
+  volunteerDataEdit: any;
 
   userForm: FormGroup;
   newVolunteering: boolean = false;
@@ -169,5 +170,10 @@ export class TabsDashboardOrganizationComponent {
 
   activeNewVolunteering() {
     this.newVolunteering = !this.newVolunteering;
+  }
+
+  handleEditVolunteering(volunteering: any) {
+    this.volunteerDataEdit = volunteering;
+    this.newVolunteering = true;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectToken } from 'src/app/core/auth.selectors';
 import { DashboardServicesService } from '../../../services/dashboard-services.service';
@@ -11,8 +11,10 @@ import { volunteering } from '../../../models/volunteerings.model';
 })
 export class VolunteersTableComponent implements OnInit {
   @Input() idOrg: string = '';
+  @Output() onEditVolunteering = new EventEmitter<any>();
   volunteerings: volunteering[] = [];
   nameVolunteeringDelete: string = '';
+  idVolunteeringDelete: string = '';
   onModalQuestion: boolean = false;
   constructor(
     private store: Store,
@@ -29,7 +31,6 @@ export class VolunteersTableComponent implements OnInit {
         this.dashServices.volunteeringByIdOrg(token).subscribe({
           next: (res) => {
             this.volunteerings = res;
-            console.log(res);
           },
           error: (err) => {
             console.log(err);
@@ -41,23 +42,15 @@ export class VolunteersTableComponent implements OnInit {
 
   deleteVolunteering(idVol: string, nameVol: string) {
     this.nameVolunteeringDelete = nameVol;
+    this.idVolunteeringDelete = idVol;
     this.onModalQuestion = true;
-    this.store.select(selectToken).subscribe((token) => {
-      if (token) {
-        this.dashServices.deleteVolunteeringByIdOrg(token, idVol).subscribe({
-          next: (res) => {
-            window.location.reload;
-            console.log(res);
-          },
-          error: (err) => {
-            console.log(err);
-          },
-        });
-      }
-    });
   }
 
   declineDeleteVolunteering() {
     this.onModalQuestion = !this.onModalQuestion;
+  }
+
+  editVolunteering(item: any) {
+    this.onEditVolunteering.emit(item);
   }
 }
