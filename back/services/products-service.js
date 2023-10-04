@@ -24,7 +24,7 @@ async function getProductoById(id) {
     throw new Error();
   }
   
-  return {articulos, usuario, tipo};
+  return articulos;
 }
 
 // categorias
