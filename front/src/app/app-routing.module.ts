@@ -21,6 +21,7 @@ import { NoAuthGuard } from './guards/no-auth/no-auth.guard';
 const routes: Routes = [
   { path: '', loadChildren: () => import('./modules/landing/landing.module').then(m => m.LandingModule) },
   { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule), canActivate: [NoAuthGuard] },
+  { path: 'pass-reset', loadChildren: () => import('./modules/pass-reset/pass-reset.module').then(m => m.PassResetModule), canActivate: [NoAuthGuard] },
   { path: 'register', loadChildren: () => import('./modules/register/register.module').then(m => m.RegisterModule), canActivate: [NoAuthGuard] },
   { path: 'news', loadChildren: () => import('./modules/news/news.module').then(m => m.NewsModule) },
   { path: 'contact', loadChildren: () => import('./modules/contact/contact.module').then(m => m.ContactModule) },

@@ -56,5 +56,11 @@ input {
 }
 
 .link-registro {
-  padding: 1rem;
+  padding: 1rem 0;
+}
+
+.link-reset {
+  margin-top: 1rem;
+  padding: 1rem 0;
+
 }
