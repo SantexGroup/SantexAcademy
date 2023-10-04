@@ -1,15 +1,37 @@
+
 const cursoService = require('../services/cursoService');
 
 async function getAllCursos(req, res){
-    const cursos = await cursoService.getAll();
-    res.status(200).send(cursos);
-}
+    try {
+        const cursos = await cursoService.getAll();
+        res.status(200).send(cursos);
+    
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({ mensaje: 'Error al buscar un curso' });
+    }
+}    
+async function getCursoById(req, res, next) {
+    const { id } = req.params;
+    try {
+      const curso = await cursoService.getOne(id);
+      if (curso != null) {
+        return res.status(200).send(curso);  
+      } else {
+        res.status(404).json({ mensaje: 'Error al buscar curso' })
+      }
+      
+    } catch (error) {
+      next(error)
+    
+    }
+  
+  }
 async function createCurso(req, res) {
     try {
         const nuevoCurso = req.body;
-        console.log('estoy en createCurso en controller')
+        
         const cursoCreado = await cursoService.crearCurso(nuevoCurso);
-        console.log(cursoCreado.tojson());
         return res.status(201).json(cursoCreado);
     } catch (error) {
         console.error('Error al crear un nuevo curso: ', error);
@@ -17,4 +39,23 @@ async function createCurso(req, res) {
     }
     
 }
-module.exports = {getAllCursos, createCurso}
+async function editCurso(req, res) {
+    try {
+      const cursoId = req.params.id; 
+      const updatedCursoData = req.body; 
+  
+      const curso = await cursoService.editCurso(cursoId, updatedCursoData);
+  
+      return res.status(200).json({ mensaje: 'Curso actualizado correctamente', curso: curso });
+    } catch (error) {
+      console.error('Error al editar curso: ', error);
+      return res.status(400).json({ mensaje: 'Error al editar curso' });
+    }
+  }
+  
+  async function deleteCurso(req, res){
+    const {id} = req.params;
+    await cursoService.deleteCurso(id);
+    return res.status(200).send(`Curso con el ${id} ha sido eliminado exitosamente`);
+  }
+module.exports = {getAllCursos,getCursoById, createCurso, editCurso,deleteCurso}
