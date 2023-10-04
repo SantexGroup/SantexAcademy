@@ -32,11 +32,11 @@ const getVoluntariadosByOrganization = async (idOrg) => {
   }
 };
 
-const updateVoluntariadoById = async (idOrg, idVoluntariado, voluntariado) => {
+const updateVoluntariadoById = async (newData, idOrg, idVol) => {
   const updatedVolunteering = await voluntariadoProvider.updateVoluntariadoById(
+    newData,
     idOrg,
-    idVoluntariado,
-    voluntariado
+    idVol
   );
   return updatedVolunteering;
 };

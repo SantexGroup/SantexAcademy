@@ -22,7 +22,7 @@ voluntariadoRouter.get(
 );
 
 voluntariadoRouter.put(
-  "/:idOrg/:idVoluntariado",
+  "/me/:idVol",
   verifyToken,
   isOrg,
   voluntariadoController.updateVoluntariadoById

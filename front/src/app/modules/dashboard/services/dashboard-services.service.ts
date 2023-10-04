@@ -103,6 +103,19 @@ export class DashboardServicesService {
     return this.http.get<[volunteering]>(url, options);
   }
 
+  updateVolunteeringByIdOrg(
+    token: string,
+    data: any,
+    idVol: string
+  ): Observable<any> {
+    const url = `${this.apiUrl}/voluntariado/me/${idVol}`;
+    const headers = new HttpHeaders({
+      'x-access-token': token,
+    });
+    const options = { headers: headers };
+    return this.http.put(url, data, options);
+  }
+
   deleteVolunteeringByIdOrg(token: string, idVol: string): Observable<any> {
     const url = `${this.apiUrl}/voluntariado/me/${idVol}`;
     const headers = new HttpHeaders({

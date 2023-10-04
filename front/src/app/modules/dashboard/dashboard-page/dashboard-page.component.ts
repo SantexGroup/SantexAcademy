@@ -37,8 +37,6 @@ export class DashboardPageComponent implements OnInit {
             this.dashService.getProfileOrganization(token).subscribe({
               next: (response) => {
                 this.dataOrg = response;
-
-                console.log('dataDeOrg', response);
               },
               error: (error) => {
                 console.log(error);

@@ -290,12 +290,14 @@
         Crear nuevo voluntariado
       </button>
       <app-volunteers-table
+        (onEditVolunteering)="handleEditVolunteering($event)"
         *ngIf="!newVolunteering"
         [idOrg]="dataTabs.id"
       ></app-volunteers-table>
 
       <app-new-volunteering
         *ngIf="newVolunteering"
+        [volunteerDataEdit]="volunteerDataEdit"
         (declineNewVolunteering)="activeNewVolunteering()"
       >
       </app-new-volunteering>
