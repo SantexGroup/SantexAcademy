@@ -3,8 +3,8 @@ const passport = require('passport');
 const isAuthenticatedVoluntario = async (req, res, next) => {
   try {
     // eslint-disable-next-line consistent-return
-    await passport.authenticate('jwt', { session: false }, (err, user, info) => {
-      if (err || !user || info.tipo !== 'voluntario') {
+    await passport.authenticate('jwt', { session: false }, (err, user) => {
+      if (err || !user || user.rols[0].name !== 'voluntario') {
         const error = new Error('Usuario no autorizado');
         error.status = 401;
         return next(error);
@@ -20,8 +20,8 @@ const isAuthenticatedVoluntario = async (req, res, next) => {
 const isAuthenticatedOrganizacion = async (req, res, next) => {
   try {
     // eslint-disable-next-line consistent-return
-    await passport.authenticate('jwt', { session: false }, (err, user, info) => {
-      if (err || !user || info.tipo !== 'organizacion') {
+    await passport.authenticate('jwt', { session: false }, (err, user) => {
+      if (err || !user || user.rols[0].name !== 'organizacion') {
         const error = new Error('Usuario no autorizado');
         error.status = 401;
         return next(error);
@@ -37,8 +37,8 @@ const isAuthenticatedOrganizacion = async (req, res, next) => {
 const isAuthenticatedAdmin = async (req, res, next) => {
   try {
     // eslint-disable-next-line consistent-return
-    await passport.authenticate('jwt', { session: false }, (err, user, info) => {
-      if (err || !user || info.tipo !== 'admin') {
+    await passport.authenticate('jwt', { session: false }, (err, user) => {
+      if (err || !user || user.rols[0].name !== 'admin') {
         const error = new Error('Usuario no autorizado');
         error.status = 401;
         return next(error);
