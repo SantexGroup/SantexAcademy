@@ -1,0 +1,99 @@
+/* Main content */
+
+.card1 {
+    max-width: 550px;
+    border-radius: 32px;
+    margin: 50px;
+    padding: 24px;
+}
+
+.card-title {
+    color: #1E1B2C;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.034px;
+}
+
+.card-text {
+    color: #1E1B2C;
+    font-family: Jost;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.019px;
+}
+
+/* Boton de tarjeta */
+
+.card1-button {
+    background-color: transparent; 
+    border: 2px solid orange;
+    color: orange;
+    font-weight: 500;
+    border-radius: 32px; 
+}
+
+.card1-button:active {
+    background-color: orange !important;
+    color: white;
+}
+
+/* Estilos de imagen de perfil */
+
+.img-container{
+    display: grid;
+    place-content: center;
+}
+
+.profile-img {
+    width: 164px;
+    height: 164px;
+    border: 2px solid orange;
+    border-radius: 32px;
+}
+
+.button-loadFile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid orange;
+    margin-right: 5px;
+    margin-top: 10px;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #fff;
+    color: orange;
+    font-weight: 500;
+    border-radius: 32px;
+}
+.button-loadFile:active {
+    background-color: orange !important;
+    color: white;
+}
+
+.button-loadFile input[type="file"] {
+    display: none;
+  }
+
+/* Cuerpo de la tarjeta */
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 164px;
+
+}
+
+/* Calendar */
+
+.calendar-container{
+    margin: 2%;
+    border-radius: 32px;
+
+}
+

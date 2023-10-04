@@ -1,5 +1,5 @@
 const Express = require('express');
-
+const admi = require('../services/admiService')
 // Middlewares:
 // const rootPath = require('../middleware/root_path.middleware');
 // const errors = require('../middleware/error_handler.middleware');
@@ -19,5 +19,5 @@ app.use('/profesors', profesorRoutes);
 app.use('/cursos', cursoRoutes);
 
 // app.use('/', rootPath.handler);
-
+admi.admiCreado()
 module.exports = app;

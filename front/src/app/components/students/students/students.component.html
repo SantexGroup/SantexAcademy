@@ -1,0 +1,28 @@
+<div class="ud-main-content">
+  <div class="card mb-3 card1">
+    <div class="row g-0">
+      <div class="col-md-4 img-container">
+        <div class="img-container">
+          <img class="profile-img" [src]="imageSrc" *ngIf="imageSrc" alt="Imagen cargada">
+        </div>
+        <label class="button-loadFile custom-file-upload">
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" style="display:none;">
+          Subir Foto
+        </label>
+      </div>
+      <div class="card1-body" class="col-md-8">
+        <div class="card-body">
+          <h1 class="card-title">{{ user.name }} {{ user.lastName }}</h1>
+          <p class="card-text">Correo: {{ user.email }}</p>
+          <p class="card-text">Género: {{ user.gender }}</p>
+          <!-- <p class="card-text">Usuario: {{ user.username }}</p> -->
+          <button type="button" class="btn card1-button" routerLink="/students/student-personalData">Mis Datos</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calendar-container">
+    
+  </div>
+</div>
