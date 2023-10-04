@@ -66,11 +66,10 @@ const getVoluntariadosByOrganization = async (req, res) => {
 
 const updateVoluntariadoById = async (req, res) => {
   try {
-    const { idOrg, idVoluntariado } = req.params;
     const volunteering = await voluntariadoService.updateVoluntariadoById(
-      idOrg,
-      idVoluntariado,
-      req.body
+      req.body,
+      req.orgId,
+      req.params.idVol
     );
     if (!volunteering) {
       res.status(404).json({

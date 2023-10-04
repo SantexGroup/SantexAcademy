@@ -74,18 +74,20 @@ const getVoluntariadosByOrganizationId = async (idOrg) => {
   }
 };
 
-const updateVoluntariadoById = async (idOrg, idVoluntariado, voluntariado) => {
+const updateVoluntariadoById = async (newData, idOrg, idVol) => {
+  console.log("idVol", idVol, "idOrg", idOrg);
   try {
-    const [affectedRows] = await Voluntariado.update(voluntariado, {
-      where: { idVoluntariado, organizationId: idOrg, deletedAt: null },
+    const volunteeringUpdate = await Voluntariado.update(newData, {
+      where: {
+        idVolunteering: idVol,
+        organizationId: idOrg,
+        deletedAt: null,
+      },
+      returning: true,
     });
-    if (affectedRows === 0) {
-      throw new Error("No se encontrò el registro.");
-    }
-    const volunteeringModified = await Voluntariado.findOne({
-      where: { idVoluntariado },
-    });
-    return volunteeringModified;
+    if (!volunteeringUpdate) return;
+
+    return volunteeringUpdate;
   } catch (err) {
     console.error(
       "The volunteering could not be updated due to an error.",
