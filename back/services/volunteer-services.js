@@ -2,29 +2,56 @@
 /* eslint-disable object-shorthand */
 /* eslint-disable import/order */
 // eslint-disable-next-line no-unused-vars
-const { DataTypes, Sequelize } = require('sequelize');
-const volunteerModel = require('../models/volunteer-model');
 const models = require('../models/index');
 
 const jwt = require('jsonwebtoken');
-const { sequelize } = require('../models');
 const bcrypt = require('bcrypt');
 
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const path = require('path');
 
-const Volunteer = volunteerModel(sequelize, DataTypes);
-
 async function getAll() {
-  const listVolunteer = await Volunteer.findAll();
+  const listVolunteer = await models.usuario.findAll({
+    attributes: {
+      exclude: [
+        'password',
+      ],
+    },
+    include: [
+      {
+        model: models.rol,
+        where: {
+          name: 'voluntario',
+        },
+      },
+    ],
+  });
   return listVolunteer;
 }
 
 async function getById(id) {
-  const voluntarioConTarea = await models.volunteer.findOne({
-    where: { id },
-    include: [{ model: models.tarea }],
+  const voluntarioConTarea = await models.usuario.findOne({
+
+    where: {
+      id,
+    },
+    attributes: {
+      exclude: [
+        'password',
+      ],
+    },
+    include: [
+      {
+        model: models.tarea,
+      },
+      {
+        model: models.rol,
+        where: {
+          name: 'voluntario',
+        },
+      },
+    ],
   });
 
   if (voluntarioConTarea == null) {
@@ -34,21 +61,27 @@ async function getById(id) {
   return voluntarioConTarea;
 }
 
-async function createUser(name, lastname, dni, email, password, address, phone) {
-  const user = new Volunteer();
+async function createUser(name, lastname, email, password, address, phone) {
+  const nuevoUsuario = await models.usuario.create({
+    name,
+    lastname,
+    email,
+    password: await bcrypt.hash(password, 10),
+    address,
+    phone,
+    points: 0,
 
-  user.name = name;
-  user.lastname = lastname;
-  user.dni = dni;
-  user.email = email;
-  user.password = await bcrypt.hash(password, 10);
-  user.address = address;
-  user.phone = phone;
+  });
+  const rolVoluntario = await models.rol.findOne({
+    where: {
+      name: 'voluntario',
+    },
+  });
+  await nuevoUsuario.addRol(rolVoluntario);
 
-  const userCreated = await user.save();
-  delete userCreated.dataValues.password;
+  delete nuevoUsuario.dataValues.password;
 
-  return userCreated;
+  return nuevoUsuario;
 }
 
 async function editUser(id, name, lastname, dni, email, address, phone, points) {
@@ -91,7 +124,23 @@ async function editUser(id, name, lastname, dni, email, address, phone, points) 
 
 async function modifyPassword(id, currentPassword, newPassword) {
   try {
-    const user = await getById(id);
+    const user = await models.usuario.findOne({
+
+      where: {
+        id,
+      },
+      include: [
+        {
+          model: models.rol,
+          where: {
+            name: 'voluntario',
+          },
+        },
+        {
+          model: models.tarea,
+        },
+      ],
+    });
 
     const passwordMatch = await bcrypt.compare(currentPassword, user.password);
 
@@ -139,16 +188,25 @@ async function deleteUser(id) {
     }
     // Elimina al voluntario
     await user.destroy();
+    return true;
   } catch (error) {
     return { error: 'Error interno en el servidor' };
   }
 }
 
 async function login(email, password) {
-  const user = await Volunteer.findOne({
+  const user = await models.usuario.findOne({
     where: {
       email: email,
     },
+    include: [
+      {
+        model: models.rol,
+        where: {
+          name: 'voluntario',
+        },
+      },
+    ],
   });
 
   if (!user) {
@@ -160,14 +218,14 @@ async function login(email, password) {
   if (!passwordMatch) {
     throw new Error('Email o contraseña incorrectos');
   }
-  const token = jwt.sign({ id: user.id, tipoUsuario: 'voluntario' }, process.env.JWT_SECRET, { expiresIn: '1h' });
+  const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
   return token;
 }
 
 async function asignarTareaVoluntario(idVolunteer, idTarea) {
   try {
-    const voluntario = await models.volunteer.findByPk(idVolunteer);
+    const voluntario = await getById(idVolunteer);
     const tarea = await models.tarea.findByPk(idTarea);
 
     if (!voluntario) {
@@ -186,9 +244,9 @@ async function asignarTareaVoluntario(idVolunteer, idTarea) {
     await tarea.save();
     await voluntario.addTarea(tarea, { through: { asistio: false } });
 
-    const voluntarioConTarea = await models.volunteer.findOne({
+    const voluntarioConTarea = await models.usuario.findOne({
       where: { id: idVolunteer },
-      include: [{ model: models.tarea }],
+      include: [{ model: models.tarea }, { model: models.rol, where: { name: 'voluntario' } }],
     });
 
     delete voluntarioConTarea.dataValues.password;
@@ -201,8 +259,8 @@ async function asignarTareaVoluntario(idVolunteer, idTarea) {
 
 async function canjearPremioService(volunteerId, premioId) {
   try {
-    const voluntario = await models.volunteer.findByPk(volunteerId);
-    const premio = await models.premios.findByPk(premioId);
+    const voluntario = await getById(volunteerId);
+    const premio = await models.premio.findByPk(premioId);
 
     if (!voluntario) {
       return { error: 'No se encuentra voluntario con el ID proporcionado' };
@@ -220,11 +278,11 @@ async function canjearPremioService(volunteerId, premioId) {
     }
 
     // Realizar el canje
-    await voluntario.addPremio(premio, { through:{date: new Date() } });
+    await voluntario.addPremio(premio, { through: { date: new Date() } });
 
     const formattedDate = new Date().toLocaleDateString().replace(/\//g, '-');
 
-    //Crear pdf
+    // Crear pdf
     const pdfPath = path.join(__dirname, '../archivo_premios', `${formattedDate}-${voluntario.name}-${voluntario.id}_canje_premio.pdf`);
     const pdfDoc = new PDFDocument();
     pdfDoc.pipe(fs.createWriteStream(pdfPath));
@@ -238,14 +296,14 @@ async function canjearPremioService(volunteerId, premioId) {
     voluntario.points -= puntosPremio;
     await voluntario.save();
 
-    //Actualiza la cantidad de premios disponibles:
+    // Actualiza la cantidad de premios disponibles:
     premio.cantidad -= 1;
     await premio.save();
 
     // Obtener el voluntario actualizado con sus premios
-    const voluntarioConPremios = await models.volunteer.findOne({
+    const voluntarioConPremios = await models.usuario.findOne({
       where: { id: volunteerId },
-      include: [{ model: models.premios }],
+      include: [{ model: models.premio }, { model: models.rol, where: { name: 'voluntario' } }],
     });
 
     delete voluntarioConPremios.dataValues.password;
@@ -260,7 +318,7 @@ async function unsuscribe(idTarea, idVolunteer) {
   try {
     const tarea = await models.tarea.findByPk(idTarea);
 
-    const voluntario = await models.volunteer.findByPk(idVolunteer);
+    const voluntario = await getById(idVolunteer);
 
     if (!tarea) {
       throw new Error('No se ha encontrado la tarea que se solicito');
@@ -276,11 +334,17 @@ async function unsuscribe(idTarea, idVolunteer) {
       await voluntario.removeTarea(tarea);
       tarea.cantInscriptos -= 1;
       await tarea.save();
-      console.log('desuscripto');
 
-      const voluntarioActualizado = await models.volunteer.findOne({
+      const voluntarioActualizado = await models.usuario.findOne({
         where: { id: idVolunteer },
-        include: [{ model: models.tarea }],
+        include: [
+          {
+            model: models.rol,
+            where: {
+              name: 'voluntario',
+            },
+          },
+          { model: models.tarea }],
       });
 
       delete voluntarioActualizado.dataValues.password;
@@ -303,6 +367,9 @@ async function getDatosVoluntario(userId) {
       throw new Error('no se encuentra el voluntario deseado');
     }
 
+    const tareas = await voluntario.getTareas();
+
+    voluntario.tareas = tareas;
     const tareasVoluntario = voluntario.tareas || [];
     const hoy = new Date();
 
@@ -315,7 +382,8 @@ async function getDatosVoluntario(userId) {
 
     const tareasPendientes = tareasVoluntario.filter((tarea) => {
       const fechaTarea = new Date(tarea.date);
-      return tarea.tareasVoluntario && tarea.tareasVoluntario.asistio === false && fechaTarea > hoy;
+      // eslint-disable-next-line max-len
+      return tarea.tareasVoluntario && tarea.tareasVoluntario.asistio === false && fechaTarea >= hoy;
     });
 
     const puntosAdquiridos = tareasVoluntario.reduce((totalPuntos, tarea) => {
@@ -328,14 +396,12 @@ async function getDatosVoluntario(userId) {
     const premiosCanjeados = await voluntario.getPremios();
 
     return {
-      voluntario, horasTrabajadas, tareasPendientes, puntosAdquiridos, premiosCanjeados,
+      voluntario, horasTrabajadas, tareasPendientes, puntosAdquiridos, premiosCanjeados, tareas,
     };
   } catch (error) {
-    console.error('Error en getDatosVoluntario:', error);
     throw error;
   }
 }
-
 
 module.exports = {
   // eslint-disable-next-line max-len

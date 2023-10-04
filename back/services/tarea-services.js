@@ -1,10 +1,5 @@
 /* eslint-disable no-useless-catch */
 // eslint-disable-next-line no-unused-vars
-const { DataTypes, Sequelize } = require('sequelize');
-const tareaModel = require('../models/tarea-model');
-const { sequelize } = require('../models');
-
-const Tarea = tareaModel(sequelize, DataTypes);
 const models = require('../models/index');
 
 async function getAll() {
@@ -14,7 +9,7 @@ async function getAll() {
         model: models.category,
       },
       {
-        model: models.coordinator,
+        model: models.usuario,
         attributes: { exclude: ['email', 'password'] },
       },
     ],
@@ -23,7 +18,7 @@ async function getAll() {
 }
 
 async function getById(id) {
-  const tarea = await models.tarea.findByPk(id, { include: [{ model: models.category }, { model: models.coordinator, attributes: { exclude: ['email', 'password'] } }] });
+  const tarea = await models.tarea.findByPk(id, { include: [{ model: models.category }, { model: models.usuario, attributes: { exclude: ['email', 'password'] } }] });
 
   if (tarea == null) {
     throw new Error('Tarea no encontrada');
@@ -34,35 +29,34 @@ async function getById(id) {
 
 // eslint-disable-next-line max-len
 async function createTarea(name, description, coordinatorId, hora, date, place, categoryId, cantParticipantes, duracion, latitud, longitud) {
-  const tarea = new Tarea();
-
-  tarea.name = name;
-  tarea.description = description;
-  tarea.date = date;
-  tarea.place = place;
-  tarea.cantParticipantes = cantParticipantes;
-  tarea.duracion = duracion;
-  tarea.hora = hora;
-  tarea.longitud = longitud;
-  tarea.latitud = latitud;
-  tarea.cantInscriptos = 0;
-
-  if (models.tarea.findByPk(coordinatorId)) {
-    tarea.coordinatorId = coordinatorId;
-  } else {
-    throw new Error('El id proporcionado no coincide con las tareas registradas');
-  }
+  // if (models.tarea.findByPk(coordinatorId)) { -----------> Para que es esa validacion?
+  //   tarea.usuarioId = coordinatorId;
+  // } else {
+  //   throw new Error('El id proporcionado no coincide con las tareas registradas');
+  // }
 
   const category = await models.category.findByPk(categoryId);
   if (!category) {
     throw new Error('la categoria no fue encontrada');
-  } else {
-    tarea.categoryId = categoryId;
   }
-  tarea.points = duracion * category.puntosPorHora;
 
-  const tareaCreated = await tarea.save();
-  return tareaCreated;
+  const nuevaTarea = await models.tarea.create({
+    name,
+    description,
+    date,
+    place,
+    cantParticipantes,
+    duracion,
+    hora,
+    longitud,
+    latitud,
+    cantInscriptos: 0,
+    usuarioId: coordinatorId,
+    categoryId,
+    points: duracion * category.puntosPorHora,
+  });
+
+  return nuevaTarea;
 }
 
 // eslint-disable-next-line max-len
@@ -76,7 +70,7 @@ async function editTarea(id, name, description, coordinatorId, date, place, cate
     tarea.description = description;
   }
   if (coordinatorId) {
-    tarea.coordinatorId = coordinatorId;
+    tarea.usuarioId = coordinatorId;
   }
   // eslint-disable-next-line max-len
 
@@ -142,9 +136,25 @@ async function deleteTarea(id) {
 
 async function getByIdOrganizacion(coordinatorId) {
   try {
-    const organizacion = await models.coordinator.findByPk(coordinatorId);
+    const organizacion = await models.usuario.findOne({
+      where: {
+        id: coordinatorId,
+      },
+      include: [
+        {
+          model: models.rol,
+          where: {
+            name: 'organizacion',
+          },
+        },
+      ],
+    });
 
-    const tareas = await organizacion.getTareas();
+    const tareas = await models.tarea.findAll({
+      where: {
+        usuarioId: organizacion.id,
+      },
+    });
 
     return tareas;
   } catch (error) {
@@ -159,7 +169,7 @@ async function getInscriptos(id) {
       throw new Error('Tarea no encontrada');
     }
 
-    const volunteers = await tarea.getVolunteers({ attributes: { exclude: ['password', 'id', 'address'] } });
+    const volunteers = await tarea.getUsuarios({ attributes: { exclude: ['password', 'id', 'address'] } });
     return volunteers;
   } catch (error) {
     throw new Error(`Error al obtener voluntarios: ${error.message}`);
@@ -182,7 +192,7 @@ const editasistio = async (idTarea, listaVoluntariosModificados) => {
     }
 
     // eslint-disable-next-line no-await-in-loop
-    const voluntario = await models.volunteer.findByPk(tareasVoluntario.volunteerId);
+    const voluntario = await models.usuario.findByPk(tareasVoluntario.usuarioId);
 
     if (voluntarioData.tareasVoluntario.asistio === true) {
       tareasVoluntario.asistio = true; // Cambiar el estado de asistencia a true
