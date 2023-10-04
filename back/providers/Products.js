@@ -20,7 +20,7 @@ const getProducts= async(req,res)=>{
         }
 
     
-        const allProducts= await Product.findAll({
+        const allProducts= await Product.findAndCountAll({
             limit:size,
             offset:page * size
         });
