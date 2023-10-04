@@ -3,6 +3,7 @@ import { vistaArtIndServ } from 'src/app/core/services/vista-art-ind-serv.servic
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
+
 @Component({
   selector: 'app-vista-articulo-ind',
   templateUrl: './vista-articulo-ind.component.html',
@@ -39,7 +40,11 @@ export class VistaArtIndComponent implements OnInit {
   logeadoComprador: boolean = false;
   logeadoVendedor: boolean = false;
   logeadoVendedorProd: boolean = false;
-  
+
+  nombreTitular: string = '';
+  numeroTarjeta: string = '';
+  mesVencimiento: string = '';
+  codigoSeguridad: string = '';
   
 
   constructor(private service: vistaArtIndServ, private router: Router) { }

@@ -15,11 +15,11 @@
             <!-- Nombres -->
             <div id="divTitulo">
                 <div class="d-flex justify-content-center">
-                    <p id="nombreProd" >{{respuesta.articulos.nombre}}</p>
+                    <p id="nombreProd">{{respuesta.articulos.nombre}}</p>
                 </div>
                 <div class="d-flex justify-content-end" *ngIf="respuesta.tipo">
                     <a routerLink="/">Categoría: {{respuesta.tipo.name}}</a>
-                    
+
                 </div>
                 <div class="d-flex justify-content-end">
                     <a routerLink="/">Vendedor: {{respuesta.usuario.firstName}} {{respuesta.usuario.lastName}}</a>
@@ -38,7 +38,7 @@
             <div id="divSeleccionables" class="d-flex text-center justify-content-between">
                 <form id="seleccionables" action="#" method="post">
                     <div>
-                        <select [(ngModel)]="envSel"  (change)="capturarEnvio()" name="envio" required>
+                        <select [(ngModel)]="envSel" (change)="capturarEnvio()" name="envio" required>
                             <option value="" disabled selected hidden>Opción de envío</option>
                             <option value="retiro">Retiro por local</option>
                             <option value="envio" *ngIf="respuesta.articulos.envio">Envío a domicilio</option>
@@ -73,9 +73,13 @@
                         <div>
                             <p id="precio">Precio: ${{respuesta.articulos.precio}}</p>
                         </div>
-                        <button class="boton" data-bs-toggle="modal" data-bs-target="#staticBackdrop" *ngIf="(logeadoComprador || logeadoVendedor) && !logeadoVendedorProd" type="submit" (click)="botAlq()">Alquilar Producto</button>
-                        <button class="boton" *ngIf="!logeadoComprador && !logeadoVendedor" type="submit" routerLink="/registro">Cree una cuenta</button>
-                        <button class="boton" *ngIf="logeadoVendedorProd" type="submit" routerLink="/">Ud es el vendedor</button>
+                        <button class="boton" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                            *ngIf="(logeadoComprador || logeadoVendedor) && !logeadoVendedorProd" type="submit"
+                            (click)="botAlq()">Alquilar Producto</button>
+                        <button class="boton" *ngIf="!logeadoComprador && !logeadoVendedor" type="submit"
+                            routerLink="/registro">Cree una cuenta</button>
+                        <button class="boton" *ngIf="logeadoVendedorProd" type="submit" routerLink="/">Ud es el
+                            vendedor</button>
                     </div>
                     <div id="relleno"></div>
                 </div>
@@ -84,32 +88,54 @@
     </div>
 
     <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirmación del alquiler</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirmación del alquiler</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li id="nombreProducto">Producto: {{respuesta.articulos.nombre}}</li>
+                        <li id="diasContratados">Días contratados: {{diasSel}}</li>
+                        <li id="metodoEnvio">
+                            Método de envío:
+                            <span *ngIf="envSel === 'envio'">El envío llegará a su domicilio.</span>
+                            <span *ngIf="envSel === 'retiro'">Deberá buscar el producto en el local.</span>
+                        </li>
+                        <li id="metodoPago">
+                            Método de pago:
+                            <span *ngIf="pagoSel === 'efectivo'"> Efectivo.</span>
+                            <span *ngIf="pagoSel === 'tarjeta'">Tarjeta.</span>
+                        </li>
+                        <p id="precioP">Precio: ${{respuesta.articulos.precio}}</p>
+
+                        <div *ngIf="pagoSel === 'tarjeta'">
+                            <h6>Ingrese los datos de la tarjeta</h6>
+                            <label for="nombreTitular">Nombre del titular: </label>
+                            <input type="text" id="nombreTitular" placeholder=" Ej: Tadeo Reisin"
+                                [(ngModel)]="nombreTitular" required>
+                            <label for="numeroTarjeta">Número de tarjeta: </label>
+                            <input type="text" id="numeroTarjeta" placeholder=" Ej: 1234 5678 9012 3456 "
+                                [(ngModel)]="numeroTarjeta" required>
+                            <label for="mesVencimiento">Mes y Año de vencimiento: </label>
+                            <input type="text" id="mesVencimiento" placeholder=" Ej: 12/25 "
+                                [(ngModel)]="mesVencimiento" required>
+                            <label for="codigoSeguridad">Código de seguridad (CVV): </label>
+                            <input type="text" id="codigoSeguridad" placeholder=" Ej: 168 "
+                                [(ngModel)]="codigoSeguridad" required>
+                        </div>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Modificar</button>
+                    <button type="button" class="btn btn-primary">Confirmar</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <ul>
-            <li>Mesa de madera</li>
-            <li>tiempo: 3 dias</li>
-            <li>Para retirar en: Bolivia 150 </li>
-            <li>Método de pago: Tarjeta de crédito</li>
-            <p>Numero de la tarjeta</p>
-            <p>Nombre y apellido</p>
-            <p>Vencimiento</p>
-            <p>Cod. de seguridad</p>
-            <p> DNI del titular</p>
-          </ul>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Modificar</button>
-          <button type="button" class="btn btn-primary">Confirmar</button>
-        </div>
-      </div>
     </div>
-  </div>
-  
+
+
 </div>
