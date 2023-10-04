@@ -13,5 +13,7 @@ productRouter.post(
 );
 
 productRouter.get('/products', JWTDecoder, (_req, res) => res.send('OK'));
+ productRouter.get("/products",getProducts);
+ productRouter.get("/", getProdByName);
 
 module.exports = productRouter;

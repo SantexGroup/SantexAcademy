@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "name": "Living",
+    "price": 100,
+    "quantity": 10,
+    "details": "Detalles del producto 1",
+    "photo": "base64_encoded_image_1",
+    "userId": "8d70f3b5-52f6-4b4a-8be4-9243d6e8db4d",
+    "category": "empresarial"
+  },
+  {
+    "id": 2,
+    "name": "Producto 2",
+    "price": 75,
+    "quantity": 20,
+    "details": "Detalles del producto 2",
+    "photo": "base64_encoded_image_2",
+    "userId": "7aeb325e-2eb2-4a63-8e86-9c69f6a5566c",
+    "category": "gala"
+  },
+  {
+    "id": 3,
+    "name": "Producto 3",
+    "price": 50,
+    "quantity": 15,
+    "details": "Detalles del producto 3",
+    "photo": "base64_encoded_image_3",
+    "userId": "ee3b52ac-67ab-4857-9c8d-45df2e6a6821",
+    "category": "familiar"
+  },
+  {
+    "id": 4,
+    "name": "Producto 4",
+    "price": 120,
+    "quantity": 5,
+    "details": "Detalles del producto 4",
+    "photo": "base64_encoded_image_4",
+    "userId": "8d70f3b5-52f6-4b4a-8be4-9243d6e8db4d",
+    "category": "empresarial"
+  },
+  {
+    "id": 5,
+    "name": "Producto 5",
+    "price": 90,
+    "quantity": 30,
+    "details": "Detalles del producto 5",
+    "photo": "base64_encoded_image_5",
+    "userId": "7aeb325e-2eb2-4a63-8e86-9c69f6a5566c",
+    "category": "gala"
+  },
+  {
+    "id": 6,
+    "name": "Producto 6",
+    "price": 65,
+    "quantity": 12,
+    "details": "Detalles del producto 6",
+    "photo": "base64_encoded_image_6",
+    "userId": "ee3b52ac-67ab-4857-9c8d-45df2e6a6821",
+    "category": "familiar"
+  },
+  {
+    "id": 7,
+    "name": "Producto 7",
+    "price": 85,
+    "quantity": 18,
+    "details": "Detalles del producto 7",
+    "photo": "base64_encoded_image_7",
+    "userId": "8d70f3b5-52f6-4b4a-8be4-9243d6e8db4d",
+    "category": "empresarial"
+  },
+  {
+    "id": 8,
+    "name": "Producto 8",
+    "price": 55,
+    "quantity": 25,
+    "details": "Detalles del producto 8",
+    "photo": "base64_encoded_image_8",
+    "userId": "7aeb325e-2eb2-4a63-8e86-9c69f6a5566c",
+    "category": "gala"
+  },
+  {
+    "id": 9,
+    "name": "Producto 9",
+    "price": 110,
+    "quantity": 8,
+    "details": "Detalles del producto 9",
+    "photo": "base64_encoded_image_9",
+    "userId": "ee3b52ac-67ab-4857-9c8d-45df2e6a6821",
+    "category": "familiar"
+  },
+  {
+    "id": 10,
+    "name": "Producto 10",
+    "price": 95,
+    "quantity": 22,
+    "details": "Detalles del producto 10",
+    "photo": "base64_encoded_image_10",
+    "userId": "8d70f3b5-52f6-4b4a-8be4-9243d6e8db4d",
+    "category": "empresarial"
+  },
+  {
+    "id": 11,
+    "name": "Producto 11",
+    "price": 75,
+    "quantity": 15,
+    "details": "Detalles del producto 11",
+    "photo": "base64_encoded_image_11",
+    "userId": "7aeb325e-2eb2-4a63-8e86-9c69f6a5566c",
+    "category": "gala"
+  },
+  {
+    "id": 12,
+    "name": "Producto 12",
+    "price": 125,
+    "quantity": 6,
+    "details": "Detalles del producto 12",
+    "photo": "base64_encoded_image_12",
+    "userId": "ee3b52ac-67ab-4857-9c8d-45df2e6a6821",
+    "category": "familiar"
+  },
+  {
+    "id": 13,
+    "name": "Producto 13",
+    "price": 70,
+    "quantity": 28,
+    "details": "Detalles del producto 13",
+    "photo": "base64_encoded_image_13",
+    "userId": "8d70f3b5-52f6-4b4a-8be4-9243d6e8db4d",
+    "category": "empresarial"
+  },
+  {
+    "id": 14,
+    "name": "Producto 14",
+    "price": 45,
+    "quantity": 17,
+    "details": "Detalles del producto 14",
+    "photo": "base64_encoded_image_14",
+    "userId": "7aeb325e-2eb2-4a63-8e86-9c69f6a5566c",
+    "category": "gala"
+  },
+  {
+    "id": 15,
+    "name": "Producto 15",
+    "price": 105,
+    "quantity": 9,
+    "details": "Detalles del producto 15",
+    "photo": "base64_encoded_image_15",
+    "userId": "ee3b52ac-67ab-4857-9c8d-45df2e6a6821",
+    "category": "familiar"
+  }
+]
