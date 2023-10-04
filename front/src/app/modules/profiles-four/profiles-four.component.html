@@ -2,8 +2,8 @@
     <app-modal-add></app-modal-add>
     <section class="container">
         <div class="personales_skills_language">
-            <div class="picture">
-                <img src="assets/Imagenes/foto_test.jpg" alt="foto">
+            <div class="picture" *ngIf="userData.urlPicture">
+                <img [src]="userData.urlPicture" alt="foto">
             </div>
             <p class="aboutMe_text"> Sobre Mi </p>
             <div class="aboutMe">

@@ -22,6 +22,7 @@ export class ProfilesFourComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.userData.urlPicture)
   }  
 
 }
