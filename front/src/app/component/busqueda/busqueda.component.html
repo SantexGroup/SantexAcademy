@@ -1,0 +1,6 @@
+<section>
+    <form>
+        <input matInput class="input-buscador" type="text" placeholder="Buscar por nombre" (keyup.enter)="filterResult(busquedaFilter.value)" #busquedaFilter>
+        <button mat-button class="boton-busqueda" type="button" (click)="filterResult(busquedaFilter.value)">Busqueda</button>
+    </form>
+</section>

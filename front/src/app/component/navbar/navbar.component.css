@@ -19,6 +19,20 @@
     font-size: 23px;
 }
 
+.menu {
+    margin-right: 1em;
+    padding-left: 1em;
+    font-size: 50px;
+}
+
+.busqueda {
+    margin-right: 1em;
+    padding-left: 3em;
+    text-shadow: 1px 1px 5px black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 23px;
+}
+
 img {
     height: 100%;
     width: auto;
@@ -26,6 +40,7 @@ img {
     max-height: 100%;
     margin-right: 3em;
     border-radius: 20%;
+    margin-top: 10px;
 }
 
 .mat-toolbar {

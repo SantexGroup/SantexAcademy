@@ -11,15 +11,27 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { BusquedaComponent } from './component/busqueda/busqueda.component';
+import { Output, Input } from '@angular/core';
+import { PantallaComponent } from './component/pantalla/pantalla.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { MenuComponent } from './component/menu/menu.component';
+import { Injectable } from '@angular/core';
+
 
 //Rutas
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 
+// Servicios
+import { MueblesService } from './service/muebles.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     BuyerRegistrationComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -29,13 +41,17 @@ import { AppRoutingModule } from './app-routing.module';
     MatSlideToggleModule,
     NavbarComponent,  
     PruebaComponent, 
+    MatMenuModule,
     BrowserAnimationsModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    BusquedaComponent,
+    PantallaComponent,
+    MenuComponent    
   ],
-  providers: [],
+  providers: [MueblesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
