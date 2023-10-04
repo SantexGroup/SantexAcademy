@@ -3,139 +3,149 @@ body {
     margin: 1rem;
     position: relative;
 }
-
-.container {
+.container{
     display: flex;
     justify-content: space-between;
     width: 210mm;
     height: 297mm;
+    border: solid 2px black;
+    margin: 3rem;
+    padding: 0;
 }
-
-.personales_skills_language {
-    background: rgb(43, 30, 30);
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-}
-
-.picture {
-    width: 286px;
-    height: 300px;
-}
-
-.picture img {
-    width: 100%;
-    height: 85%;
-    border: 2px solid rgb(43, 30, 30);
-    filter: grayscale(1);
-}
-
-.aboutMe_text {
-    margin: 2rem 1rem 0 1rem;
-    color: rgb(233, 218, 7);
-}
-
-.personales,
-.skills,
-.languages {
-    margin: 5rem 1rem 1rem 1rem;
-    color: rgb(233, 218, 7);
-}
-
-.personales h1,
-.skills h1,
-.languages h1 {
-    color: #FFF;
-    border-bottom: 4px solid rgb(233, 218, 7);
-    font-weight: bold;
-    text-align: center;
-}
-
-.identificador {
-    display: flex;
-    justify-content: space-around;
-    position: absolute;
-    align-items: center;
-    background: rgb(233, 218, 7);
-    width: 70%;
-    height: 10rem;
-    margin: 5% 0% 0 27%;
-}
-
-.identificador .nombre {
-    margin: 2rem 0 0 11rem;
-    font-size: 3rem;
-    font-weight: bold;
-    color: #000;
-}
-
-.identificador .apellido {
-    margin: 2rem 11rem 0 0;
-    font-size: 3rem;
-    color: #000;
-}
-
-.informacion {
-    margin-top: 18rem;
-    display: flex;
-    flex-direction: column;
-    width: 69%;
-}
-
-.informacion ul {
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
-
-
-.informacion ul li {
-    margin: 2rem 2rem 0 0;
-}
-
-.informacion ul li h2 {
-    border-bottom: 4px solid #000;
-    font-weight: 900;
-}
-
-.formacion ul,
-.referencias ul {
-    display: flex;
-    flex-direction: column;
-}
-
-
-.informacion ul .fechas {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    color: rgb(233, 218, 7);
-    font-weight: bold;
-    text-align: start;
-}
-
-.informacion ul .fechas p {
-    width: 100%;
-}
-
-.experiencias h1,
-.formacion h1,
-.referencias h1 {
-    border-bottom: 4px solid rgb(233, 218, 7);
-    text-align: start;
-    font-weight: bold;
-    color: #000;
-}
-
-.formacion_referencias {
+.botonera{
     display: flex;
     justify-content: space-between;
+    margin-left: 6em;
+    margin-right: 6em;
+}
+
+.izquierdo{
+    width: 35%;
+    height: 100%;
+    background-color: black;
+}
+.derecha{
+    width: 65%;
+    height: 100%;
+}
+.foto-container {
     width: 100%;
+    height: 25%;
+    display: flex;
+    overflow: hidden;
+    background-size: contain; 
+    background-position: center;
 }
 
-.formacion {
-    width: 45%;
+.foto img {
+    width: 100%;
+    height: auto;
+    filter: grayscale(100%);    
 }
+.aboutMe{
+    color: rgb(255, 200, 0);
+    margin: 2rem;
+}
+.izquierdo .titulo{
+    color: white;
+    border-bottom: solid 3px rgb(255, 200, 0);
+    margin-left: 2rem;    
+}
+.izquierdo .titulo h2{
+    margin: 0;
+}
+.izquierdo .contenido{
+    display: flex;
+    color: white;
+    margin: 2rem 0rem 1rem 2rem;
+    flex-direction: column;
+    justify-content: center;
+    
+    
+}
+mat-icon{
+    color: rgb(255, 200, 0);
+}
+.izquierdo .contenido h4{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+    margin: 2px 2rem 0rem 0rem;
+    text-align: start;
+}
+ul{
+    margin: 0;
+    padding: 0;    
+}
+li{ 
+    justify-content: center;
+    align-items: center;
+}
+.mat-progress-bar{
+    display: flex;
+    width: 30%;
+    height: 5px;    
+    background-color: rgb(255, 200, 0);
+    position:relative;
+          
+}
+.barra{    
+    justify-content: right;
+    
+    
 
-.referencias {
-    width: 45%;
+   
+}
+.mat-progress-bar-fill::after {
+    background-color: #FFC800 !important; /* Cambia este valor al color deseado */
+  }
+
+.identificador{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    width: 90%;
+    background-color: rgb(255, 200, 0);
+    margin-top: 3rem;
+}
+h1{
+    font-size: 30px;
+    text-transform: uppercase;
+    margin: .5rem;    
+}
+.derecha .titulo{
+    border-bottom: solid 3px rgb(255, 200, 0);
+    margin: 2rem 2rem 1rem 2rem
+}
+.derecha .titulo h2{
+    margin: 0;
+    padding: 0;
+}
+.derecha .contenido h5{
+    color: rgb(255, 200, 0);
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+}
+.derecha .contenido h4{
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+}
+.derecha li{
+    margin-top: 1rem;
+}
+.derecha .contenido{
+    margin: 1rem 2rem 1rem 2rem;
+}
+.derecha .contenido .fecha{
+    background-color: rgb(255, 200, 0);
+    display: flex;
+    font-weight: 500;
+    width: 6rem;
+    height: max-content;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
 }

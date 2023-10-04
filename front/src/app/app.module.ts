@@ -40,6 +40,7 @@ import { ProfileOneComponent } from './modules/profile-one/profile-one.component
 import { ProfileTwoComponent } from './modules/profile-two/profile-two.component';
 import { ProfileThreeComponent } from './modules/profile-three/profile-three.component';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions, MatCheckboxModule} from '@angular/material/checkbox';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 
@@ -88,6 +89,7 @@ import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions, MatCheckboxModu
     LoadingModule,
     MatCardModule,
     MatCheckboxModule,
+    MatProgressBarModule,
     ToastrModule.forRoot({
       timeOut: 9000,
       positionClass: 'toast-top-center',
