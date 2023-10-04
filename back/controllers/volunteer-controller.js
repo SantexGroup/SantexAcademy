@@ -36,12 +36,12 @@ async function getVolunteerById(req, res, next) {
 
 async function createVolunteer(req, res, next) {
   const {
-    name, lastname, dni, email, password, address, phone,
+    name, lastname, email, password, address, phone,
   } = req.body;
 
   try {
     // eslint-disable-next-line max-len
-    const user = await volunteerServices.createUser(name, lastname, dni, email, password, address, phone);
+    const user = await volunteerServices.createUser(name, lastname, email, password, address, phone);
     res.status(201).send(user);
   } catch (error) {
     next(error);
