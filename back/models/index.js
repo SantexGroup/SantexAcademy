@@ -2,12 +2,22 @@ const Organizacion = require('./Organizacion');
 const Producto = require('./Producto');
 const OrdenDeCanje = require('./OrdenDeCanje');
 const Roles = require('./Roles');
+const Testimonios = require('./Testimonios');
 const Usuario = require('./Usuario');
 const UsuarioEnVoluntariado = require('./UsuarioEnVoluntariado');
 const Voluntariado = require('./Voluntariado');
 
 // Relaciones
 
+Usuario.hasOne(Testimonios, {
+  foreignKey: 'userId',
+  as: 'testimonio',
+});
+
+Testimonios.belongsTo(Usuario, {
+  foreignKey: 'userId',
+  as: 'usuario',
+});
 
 Usuario.belongsToMany(Voluntariado, {
   as: 'voluntariados',
@@ -86,6 +96,7 @@ module.exports = {
   Producto,
   OrdenDeCanje,
   Roles,
+  Testimonios,
   Usuario,
   UsuarioEnVoluntariado,
   Voluntariado,

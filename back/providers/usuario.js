@@ -1,7 +1,47 @@
-const { Usuario } = require("../models");
+const { Usuario, Testimonios } = require("../models");
 const { sequelize } = require("../config/db-config");
 const { Op } = require("sequelize");
 const { comparePassword, hashPassword } = require("../config/crypt");
+
+
+const createTestimonialById = async (id, testimonial) => {
+  try {
+    // Crear el testimonio asociado al usuario identificado por 'id'
+    console.log('Creando testimonio con los siguientes datos:');
+    console.log('Usuario ID:', id);
+    console.log('Testimonio:', testimonial);
+
+    const testimonialCreated = await Testimonios.create({
+      ...testimonial,
+      userId: id, // Asociar el testimonio al usuario
+    });
+
+    console.log('Testimonio creado exitosamente:', testimonialCreated);
+
+    return testimonialCreated;
+  } catch (error) {
+    console.error('Error al crear el testimonio:', error);
+    throw error;
+  }
+}
+
+const getAllTestimonials = async () => {
+  try {
+    const testimonials = await Testimonios.findAll({
+      include: [{
+        model: Usuario,
+        as: "usuario",
+        attributes: ["fullName", "image"],
+        
+      }]
+    });
+
+    return testimonials;
+  } catch (error) {
+    throw error;
+  }
+}
+
 
 const loginUser = async (email, password) => {
   try {
@@ -168,6 +208,8 @@ const updatePhotoMyProfile = async (image, id) => {
 };
 
 module.exports = {
+  createTestimonialById,
+  getAllTestimonials,
   loginUser,
   createUser,
   getUsersByCriteria,
