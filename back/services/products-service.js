@@ -107,6 +107,37 @@ async function editArticle(id, idUsuario, idTipoProducto, nombre, detalles, prec
   return productEdited;
 }
 
+// productos por vendedor
+async function getProductosPorVendedor(id) {
+  const productosVendedor = await Products.findAll({
+
+    where: {
+      idUsuario: id,
+    },
+    include: [{
+      model: User,
+    }],
+  });
+
+  if (productosVendedor.length < 1) {
+    return { message: 'Usuario sin productos publicados' };
+  }
+
+  const primerProducto = productosVendedor[0];
+
+  if (primerProducto.User === null) {
+    return { error: 'Usuario no encontrado' };
+  }
+
+  return productosVendedor;
+}
+
 module.exports = {
-  products, getAllCategories, chargeProducts, getProductoById, editArticle, getCategoriaById,
+  products,
+  getAllCategories,
+  chargeProducts,
+  getProductoById,
+  editArticle,
+  getCategoriaById,
+  getProductosPorVendedor,
 };

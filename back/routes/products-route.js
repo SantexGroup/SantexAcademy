@@ -22,4 +22,7 @@ router.post('/cargar-producto', productsController.chargeProduct);
 // modificar articulo
 router.put('/modificar-articulo/:id', productsController.editProduct);
 
+// productos por vendedor
+router.get('/productos-por-vendedor/:id', productsController.getProductosVendedor);
+
 module.exports = router;
