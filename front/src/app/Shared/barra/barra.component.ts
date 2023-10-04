@@ -8,14 +8,15 @@ import { BarraService } from 'src/app/core/services/barra.service';
 })
 export class BarraComponent implements OnInit {
 
+  sidebarExpanded = true;
   listCategorias: any[]=[]
 
   constructor (private service: BarraService) { }
 
   ngOnInit(): void {
     this.service.getCategories().subscribe(categorias => {
-    console.log(categorias)
-    this.listCategorias = categorias
+      console.log(categorias)
+      this.listCategorias = categorias
     })
   }
 

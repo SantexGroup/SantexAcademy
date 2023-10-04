@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CargaArticulosComponent } from './Features/carga-articulos/carga-articulos.component';
 import { TarjetaArticuloComponent } from './Features/tarjeta-articulo/tarjeta-articulo.component';
 import { VistaArtIndComponent } from './Features/vista-articulo-ind/vista-articulo-ind.component';
+import { BarraLateralComponent } from './Shared/barra-lateral/barra-lateral.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { VistaArtIndComponent } from './Features/vista-articulo-ind/vista-articu
     RegistroComponent,
     CargaArticulosComponent,
     TarjetaArticuloComponent,
-    VistaArtIndComponent
+    VistaArtIndComponent,
+    BarraLateralComponent
   ],
   imports: [
     BrowserModule,
