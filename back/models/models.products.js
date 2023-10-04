@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Products.belongsToMany(models.Alquiler, { through: "AlquilerProducto", foreignKey: "ProductId" });
       Products.belongsToMany(models.Categories, { through: "ProductsCategories", foreignKey: "ProductId" });
-      Products.belongsToMany(models.Carritos, { through: "productosEnCarritos", foreignKey: "ProductId" });
+      Products.belongsToMany(models.Carrito, { through: "productosEnCarritos", foreignKey: "ProductId" });
 
     //dependiendo los alquileres con sus fechas podemos ver caunto stock hay para esos dias, si hay 0 no es posible alquilar nigun producto para ese dia 
   }}
