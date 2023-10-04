@@ -15,7 +15,7 @@ export class TabsDashboardOrganizationComponent {
   @ViewChild('fileInput') fileInput: ElementRef | undefined;
 
   userForm: FormGroup;
-
+  newVolunteering: boolean = false;
   activeTab: number = 1;
   editData: boolean = false;
   fadeAnimationClass = '';
@@ -63,6 +63,22 @@ export class TabsDashboardOrganizationComponent {
       urlWebSite: this.dataTabs.urlWebSite,
     });
     this.editData = true;
+  }
+
+  declineEditProfile() {
+    this.fadeAnimationClass = '';
+
+    this.userForm.setValue({
+      name: '',
+      cuit: '',
+      location: '',
+      phone: '',
+      email: '',
+      category: '',
+      description: '',
+      urlWebSite: '',
+    });
+    this.editData = false;
   }
 
   saveDataProfileOrg() {
@@ -149,5 +165,9 @@ export class TabsDashboardOrganizationComponent {
 
   closeModalStatus() {
     this.onModalStatus = false;
+  }
+
+  activeNewVolunteering() {
+    this.newVolunteering = !this.newVolunteering;
   }
 }

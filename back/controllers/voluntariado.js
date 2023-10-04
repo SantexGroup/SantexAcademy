@@ -47,9 +47,8 @@ const getVolunteerById = async (req, res, next) => {
 
 const getVoluntariadosByOrganization = async (req, res) => {
   try {
-    const { idOrg } = req.params.idOrg;
     const volunteerings =
-      await voluntariadoService.getVoluntariadosByOrganization(idOrg);
+      await voluntariadoService.getVoluntariadosByOrganization(req.orgId);
     if (!volunteerings) {
       res.status(404).json({
         action: "getVoluntariadosByOrganization",
@@ -90,9 +89,9 @@ const updateVoluntariadoById = async (req, res) => {
 
 const deleteVoluntariadoById = async (req, res) => {
   try {
-    const { idVoluntariado } = req.params;
     const volunteering = await voluntariadoService.deleteVoluntariadoById(
-      idVoluntariado
+      req.params.idVol,
+      req.orgId
     );
     if (!volunteering) {
       res.status(404).json({
@@ -100,7 +99,7 @@ const deleteVoluntariadoById = async (req, res) => {
         error: "Voluntariado not found.",
       });
     } else {
-      res.status(202).json(volunteering);
+      res.status(204).json({});
     }
   } catch (err) {
     res

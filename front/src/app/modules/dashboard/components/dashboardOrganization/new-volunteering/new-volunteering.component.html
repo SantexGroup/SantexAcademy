@@ -1,0 +1,88 @@
+<section class="w-full flex flex-col p-2">
+  <h3 class="text-center text-2xl">Crear nuevo voluntariado</h3>
+  <form [formGroup]="newVolunteering" class="flex flex-col gap-4">
+    <div class="flex flex-col text-start gap-2">
+      <label for="name">Nombre:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        formControlName="name"
+        class="border-none rounded-md py-1 pl-2"
+      />
+    </div>
+    <div class="flex flex-col text-start gap-2">
+      <label for="description">Breve descripción:</label>
+      <textarea
+        type="text"
+        id="description"
+        name="description"
+        formControlName="description"
+        class="h-[150px] pl-2 rounded-md resize-none"
+      >
+      </textarea>
+    </div>
+    <div class="flex flex-col text-start gap-2">
+      <label for="mode">Modalidad de trabajo:</label>
+      <select
+        id="mode"
+        class="border-none rounded-md py-2 pl-2 bg-white"
+        (change)="onTimeWorkChange('modeOfwork', $event)"
+      >
+        <option value="" disabled selected class="text-DarkGray">
+          Seleccionar una opción
+        </option>
+        <option value="presencial">Presencial</option>
+        <option value="hibrido">Híbrido</option>
+        <option value="remoto">Remoto</option>
+      </select>
+    </div>
+    <div class="flex flex-col text-start gap-2">
+      <label for="time-work">Tiempo de trabajo:</label>
+      <select
+        id="time-work"
+        class="border-none rounded-md py-2 pl-2 bg-white"
+        (change)="onTimeWorkChange('workTime', $event)"
+      >
+        <option value="" disabled selected class="text-DarkGray">
+          Seleccionar una opción
+        </option>
+        <option value="tiempo completo">Tiempo Completo</option>
+        <option value="tiempo parcial">Tiempo Parcial</option>
+        <option value="temporada">Temporada</option>
+      </select>
+    </div>
+    <div class="flex flex-col text-start gap-2">
+      <label for="vacancies">Vacantes a cubrir:</label>
+      <input
+        type="number"
+        id="vacancies"
+        name="vacancies"
+        formControlName="vacancies"
+        class="border-none rounded-md py-1 pl-2"
+      />
+    </div>
+    <div class="flex flex-col text-start gap-2">
+      <label for="address">Ubicación del voluntariado:</label>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        formControlName="address"
+        class="border-none rounded-md py-1 pl-2"
+      />
+    </div>
+    <div class="flex flex-col text-start gap-2">
+      <label for="reward">Recompensas por completar la tarea:</label>
+      <input
+        type="number"
+        id="reward"
+        name="reward"
+        formControlName="reward"
+        class="border-none rounded-md py-1 pl-2"
+      />
+    </div>
+    <button (click)="addNewVolunteering()">Guardar</button>
+    <button (click)="closeNewVolunteering()">Cancelar</button>
+  </form>
+</section>

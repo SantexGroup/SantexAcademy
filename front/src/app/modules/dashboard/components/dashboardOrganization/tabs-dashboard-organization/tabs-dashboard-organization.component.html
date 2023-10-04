@@ -16,7 +16,7 @@
   <ul class="tabs group">
     <li>
       <a
-        class="switch"
+        class="switch cursor-pointer"
         [ngClass]="{ activeTa: activeTab === 1 }"
         (click)="activateTab(1)"
         >Información de la organización</a
@@ -24,7 +24,7 @@
     </li>
     <li>
       <a
-        class="switch"
+        class="switch cursor-pointer"
         [ngClass]="{ activeTa: activeTab === 2 }"
         (click)="activateTab(2)"
         >Gestión de voluntariados</a
@@ -32,7 +32,7 @@
     </li>
     <li>
       <a
-        class="switch"
+        class="switch cursor-pointer"
         [ngClass]="{ activeTa: activeTab === 3 }"
         (click)="activateTab(3)"
         >Voluntariados finalizados</a
@@ -93,7 +93,7 @@
             </div>
           </div>
 
-          <div class="flex">
+          <div class="flex flex-col">
             <div class="w-3/3 p-4">
               <li>
                 <p><strong>Descripción: </strong>{{ dataTabs.description }}</p>
@@ -220,7 +220,7 @@
               (change)="onCategoryChange($event)"
             >
               <option value="" disabled selected hidden style="color: grey">
-                Selecciona una categoría
+                {{ dataTabs.category }}
               </option>
               <option value="asistencia">Medio ambiente y fauna</option>
               <option value="educacion" class="uppercase">
@@ -261,7 +261,13 @@
           </div>
         </div>
 
-        <div class="flex justify-end p-4">
+        <div class="flex gap-4 justify-end p-4">
+          <button
+            (click)="declineEditProfile()"
+            class="text-white rounded-md bg-[#3F2883] mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-edit"
+          >
+            Cancelar
+          </button>
           <button
             (click)="saveDataProfileOrg()"
             class="text-white rounded-md bg-[#3F2883] mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-edit"
@@ -277,20 +283,22 @@
 
     <div *ngIf="activeTab === 2" id="two">
       <button
-        *ngIf="!editData"
-        (click)="activeEditProfileOrg()"
+        *ngIf="!newVolunteering"
+        (click)="activeNewVolunteering()"
         class="text-white absolute rounded-md bg-[#B1237D] mt-14 right-24 px-[15px] py-[5px] font-semibold font-poppins btn-shadow"
       >
         Crear nuevo voluntariado
       </button>
       <app-volunteers-table
-        *ngIf="!editData"
-        [ngClass]="fadeAnimationClass"
+        *ngIf="!newVolunteering"
+        [idOrg]="dataTabs.id"
       ></app-volunteers-table>
-      <app-new-volunteering-form
-        *ngIf="editData"
-        [ngClass]="fadeAnimationClass"
-      ></app-new-volunteering-form>
+
+      <app-new-volunteering
+        *ngIf="newVolunteering"
+        (declineNewVolunteering)="activeNewVolunteering()"
+      >
+      </app-new-volunteering>
     </div>
 
     <!-- !TAB 3 -->
