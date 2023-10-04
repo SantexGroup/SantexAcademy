@@ -81,7 +81,8 @@ export class ProfilesFourComponent implements OnInit, AfterViewInit {
     if (!profileContainer) {
       console.error('No se encontró el elemento con el ID "profile-two".');
       return;
-    }
+      console.log(this.userData.urlPicture)
+  }
 
     try {
       const canvas: HTMLCanvasElement = await html2canvas(profileContainer, {

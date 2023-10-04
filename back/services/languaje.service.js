@@ -27,11 +27,11 @@ async function getLanguage(id) {
 }
 
 // service que trae todos los idiomas de un usuario
-async function getAllLanguage(id) {
-  const UserLanguage = await Profile.findAll({
+async function getAllLanguage(userId) {
+  const userLanguage = await Profile.findAll({
     attributes: [],
     where: {
-      user_id: id,
+      user_id: userId,
     },
     include: [{
       model: ProfileLanguage,
@@ -41,24 +41,31 @@ async function getAllLanguage(id) {
       },
       include: [{
         model: Language,
-        attributes: ['id', 'language'],
       }],
     }],
   });
-  if (UserLanguage) {
-    const languageList = UserLanguage.reduce(
-      (allLanguages, language) => allLanguages.concat(language.ProfileLanguages), [],
-    );
 
-    const allLanguage = languageList.map((language) => ({
-      id: language.Language.id,
-      level: language.level,
-      language: language.Language.language,
-    }));
+  const languageList = [];
+  const idLanguage = [];
 
-    return allLanguage;
-  }
-  throw new Error(`No existe el lenguaje para el usuario ${id}`);
+  userLanguage.forEach((element) => {
+    for (let i = 0; i < element.ProfileLanguages.length; i += 1) {
+      const languageItem = {
+        id: element.ProfileLanguages[i].Language.id,
+        language: element.ProfileLanguages[i].Language.language,
+        level: element.ProfileLanguages[i].level,
+      };
+
+      const { id } = element.ProfileLanguages[i].Language;
+
+      if (!idLanguage.includes(id)) {
+        idLanguage.push(id);
+        languageList.push(languageItem);
+      }
+    }
+  });
+
+  return languageList;
 }
 
 // servicio que Agrega un lenguaje
