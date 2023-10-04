@@ -1,4 +1,4 @@
-
+const { curso } = require('../models');
 const cursoService = require('../services/cursoService');
 
 async function getAllCursos(req, res){
@@ -30,7 +30,12 @@ async function getCursoById(req, res, next) {
 async function createCurso(req, res) {
     try {
         const nuevoCurso = req.body;
-        
+        const {nombre} = req.body.nombre
+         // Verificar que si existe un curso con igual nombre
+        let curso = await curso.findOne(nombre) || null;
+        if (curso !== null) {
+          return res.status(205).json({ msg: 'Curso con ese nombre ya existente' })
+        }
         const cursoCreado = await cursoService.crearCurso(nuevoCurso);
         return res.status(201).json(cursoCreado);
     } catch (error) {
