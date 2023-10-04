@@ -2,12 +2,17 @@
     margin: 0;
     padding: 0;
 }
+body {
+    overflow-y: auto;
+    margin: 1rem;
+    position: relative;
+}
 .container{
     border: solid 2px black;
     width: 210mm;
     height: 297mm;    
     display: flex;
-    margin: 2rem 3rem 0rem 6rem;
+    margin: 2rem 3rem 2rem 6rem;
 }
 .botonera{
     display: flex;

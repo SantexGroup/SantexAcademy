@@ -1,3 +1,6 @@
+<app-modal-add></app-modal-add>
+<body>
+    
 <div class="botonera">
     <input type="color" [(ngModel)]="selectedColor">
     <button mat-raised-button color="primary" (click)="applyColors()">Aplicar Color</button>
@@ -7,7 +10,7 @@
     <section class="izquierdo" [ngStyle]="{ 'background-color': selectedColor }">
         <div class="container-img">
             <div>
-                <img src="../../../assets/Imagenes/foto_cv_lc_es_11.jpeg" alt="">
+                <img src="{{userData.urlPicture}}" alt="">
             </div>            
         </div>
         <div class="contenido">
@@ -78,3 +81,4 @@
         </div>
     </section>
 </div>
+</body>

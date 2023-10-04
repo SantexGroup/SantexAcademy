@@ -7,6 +7,8 @@ body {
 .container {
     display: flex;
     justify-content: space-between;
+    width: 210mm;
+    height: 297mm;
 }
 
 .personales_skills_language {

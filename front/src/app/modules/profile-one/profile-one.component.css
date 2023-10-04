@@ -4,6 +4,12 @@
     max-width: 300mm;
     position: sticky;
 }
+body {
+    overflow-y: auto;
+    margin: 1rem;
+    position: relative;
+} 
+
 .conteiner{
     display: flex;   
     justify-content: center;
