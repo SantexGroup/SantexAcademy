@@ -52,7 +52,11 @@ export class VistaArtIndComponent implements OnInit {
   logeadoComprador: boolean = false;
   logeadoVendedor: boolean = false;
   logeadoVendedorProd: boolean = false;
-  
+
+  nombreTitular: string = '';
+  numeroTarjeta: string = '';
+  mesVencimiento: string = '';
+  codigoSeguridad: string = '';
   
 
   constructor(private service: vistaArtIndServ, private router: Router, private barraService: BarraService) { }
@@ -71,48 +75,48 @@ export class VistaArtIndComponent implements OnInit {
       this.id = newObject;
     }
   }
-  //traer datos
-  datosProd(id: number) {
-    this.barraService.getCategories().subscribe(categorias => {this.listcategorias = categorias});
-    this.service.datosProdServ(id).subscribe(res => {
-      this.respuesta = res;
-      console.log("Respuesta: " + JSON.stringify(this.respuesta));
-      //reemplazar datos
-      if(res) {
-        //nombre art, desc y envio
-        this.nombreArt = JSON.stringify(res.nombre);
-        this.nombreArt = res.nombre.charAt(0).toUpperCase() + res.nombre.slice(1);
-        this.descArt = JSON.stringify(res.detalles);
-        this.descArt = res.detalles.charAt(0).toUpperCase() + res.detalles.slice(1);
-        if (res.envio == true) {
-          this.envBolOri = true;
-        }
-         //buscar categoria prod y eliminar de array
-        for (let i=0; i < this.listcategorias.length; i++) {
-          if (this.respuesta.idTipoProducto == this.listcategorias[i].id) {
-            this.catArt = JSON.stringify(this.listcategorias[i].name.charAt(0).toUpperCase() + this.listcategorias[i].name.slice(1));
-            this.catArt = this.catArt.slice(1, this.catArt.length-1);
-            console.log("Categorái: " + this.catArt)
+    //traer datos
+    datosProd(id: number) {
+      this.barraService.getCategories().subscribe(categorias => {this.listcategorias = categorias});
+      this.service.datosProdServ(id).subscribe(res => {
+        this.respuesta = res;
+        console.log("Respuesta: " + JSON.stringify(this.respuesta));
+        //reemplazar datos
+        if(res) {
+          //nombre art, desc y envio
+          this.nombreArt = JSON.stringify(res.nombre);
+          this.nombreArt = res.nombre.charAt(0).toUpperCase() + res.nombre.slice(1);
+          this.descArt = JSON.stringify(res.detalles);
+          this.descArt = res.detalles.charAt(0).toUpperCase() + res.detalles.slice(1);
+          if (res.envio == true) {
+            this.envBolOri = true;
           }
-          if (this.catArt != this.listcategorias[i].name.charAt(0).toUpperCase() + this.listcategorias[i].name.slice(1)) {
-            let newList = this.cat;
-            newList.push(this.listcategorias[i]);
-            this.cat = newList;
+           //buscar categoria prod y eliminar de array
+          for (let i=0; i < this.listcategorias.length; i++) {
+            if (this.respuesta.idTipoProducto == this.listcategorias[i].id) {
+              this.catArt = JSON.stringify(this.listcategorias[i].name.charAt(0).toUpperCase() + this.listcategorias[i].name.slice(1));
+              this.catArt = this.catArt.slice(1, this.catArt.length-1);
+              console.log("Categorái: " + this.catArt)
+            }
+            if (this.catArt != this.listcategorias[i].name.charAt(0).toUpperCase() + this.listcategorias[i].name.slice(1)) {
+              let newList = this.cat;
+              newList.push(this.listcategorias[i]);
+              this.cat = newList;
+            }
           }
-        }
-        if (this.respuesta.Images){
-          const imagesProd = this.respuesta.Images
-          for (let i = 0; i < imagesProd.length; i++){
-            this.images.push(this.servidor + imagesProd[i].url);
+          if (this.respuesta.Images){
+            const imagesProd = this.respuesta.Images
+            for (let i = 0; i < imagesProd.length; i++){
+              this.images.push(this.servidor + imagesProd[i].url);
+            }
           }
+          this.service.datosUsuario(this.respuesta.idUsuario).subscribe(user => {
+            this.respuestaUser = user;
+            this.nomUSer = this.respuestaUser.firstName.charAt(0).toUpperCase() + this.respuestaUser.firstName.slice(1) + ' ' + (this.respuestaUser.lastName.charAt(0).toUpperCase() + this.respuestaUser.lastName.slice(1));
+          })
         }
-        this.service.datosUsuario(this.respuesta.idUsuario).subscribe(user => {
-          this.respuestaUser = user;
-          this.nomUSer = this.respuestaUser.firstName.charAt(0).toUpperCase() + this.respuestaUser.firstName.slice(1) + ' ' + (this.respuestaUser.lastName.charAt(0).toUpperCase() + this.respuestaUser.lastName.slice(1));
-        })
-      }
-    }) 
-  }
+      }) 
+    }
   //corroborar logueos
   corroborarLogeo() {    
     let infoLocal = localStorage.getItem('resLog')
@@ -180,6 +184,6 @@ export class VistaArtIndComponent implements OnInit {
       }
       localStorage.setItem('datosAlq', JSON.stringify(datosAlq));
     }
-    this.router.navigate(['confirmacion-articulo']);
+    //this.router.navigate(['confirmacion-articulo']);
   }  
 }

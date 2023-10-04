@@ -25,7 +25,6 @@ async function getProductoById(id) {
   if (articulos == null) {
     throw new Error();
   }
-
   return articulos;
 }
 
