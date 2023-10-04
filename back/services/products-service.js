@@ -1,9 +1,11 @@
-const { Products, tipoProducto, User, Images } = require('../models');
+const {
+  Products, tipoProducto, User, Images,
+} = require('../models');
 
 // obtener todos
 async function products() {
   const productos = await Products.findAll({
-    include: [{ model: Images }]
+    include: [{ model: Images }],
   });
   console.log('Productos', productos);
 
@@ -13,17 +15,16 @@ async function products() {
 // obtener por id
 async function getProductoById(id) {
   const articulos = await Products.findByPk(id, {
-    include: [{ model: Images }]
+    include: [{ model: Images }],
   });
   const idUser = articulos.idUsuario;
   const idTipo = articulos.idTipoProducto;
-  const usuario = await User.findByPk(idUser);
-  const tipo = await tipoProducto.findByPk(idTipo);
+  await User.findByPk(idUser);
+  await tipoProducto.findByPk(idTipo);
 
   if (articulos == null) {
     throw new Error();
   }
-  
   return articulos;
 }
 
@@ -71,7 +72,11 @@ async function chargeProducts(idUsuario, idTipoProducto, nombre, detalles, preci
 // modificar articulo
 
 async function editArticle(id, idUsuario, idTipoProducto, nombre, detalles, precio, envio) {
-  const articulo = await getProductoById(id);
+  const articulo = await Products.findByPk(id);
+
+  if (!articulo) {
+    return { error: 'Artículo no encontrado' };
+  }
 
   if (idUsuario) {
     articulo.idUsuario = idUsuario;

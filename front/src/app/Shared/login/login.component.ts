@@ -25,10 +25,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
 
     this.corroborarLogeo();
-
-    console.log('vendedor: ' + this.logeadoVendedor);
-    console.log('comprador: ' + this.logeadoComprador);
-
   }
 
   botonLogin() {
@@ -95,7 +91,6 @@ export class LoginComponent implements OnInit {
             const userId = newObject[1].users.id;
             const cambioVendedor = this.service.cambioVendedorServ(userId).subscribe(res => {
             if (cambioVendedor) {
-              console.log(res);
               localStorage.clear();
               localStorage.setItem("resLog", JSON.stringify(res));
               this.logeadoVendedor = true;

@@ -12,14 +12,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class CargaArticulosComponent implements OnInit {
 
-  /*
-  catReg: string = '0';
-  nomReg: string = '';
-  desReg: string = '';
-  preReg: string = '';
-  envReg: string = '';
-  */
-
+  textoCarga: string = '(0) Imágenes seleccionadas';
   idUser: string = '';
   confVendedor: boolean = false;
   mensajeRegistro: string = '';
@@ -40,14 +33,13 @@ export class CargaArticulosComponent implements OnInit {
   });
 
   ngOnInit(): void {
-
     this.getIdUser();
+    this.barraService.getCategories().subscribe(categorias => {
+      this.listcategorias = categorias;
 
-    this.barraService.getCategories().subscribe(categorias => {this.listcategorias = categorias});
+    });
   }
-
   subirProducto(): void { 
-    //if (this.formUp.get('catReg')?.value && this.formUp.get('nomReg')?.value && this.desReg && this.preReg && this.envReg) {
       this.service.carga(
         this.formUp.get('catReg')?.value,
         this.formUp.get('nomReg')?.value,
@@ -65,22 +57,12 @@ export class CargaArticulosComponent implements OnInit {
         this.mensajeService.mensajeRegistro('Articulo cargado con éxito.');
         this.router.navigate(['home-page']);
       });
-
-      /*
-    } else {
-      this.mensajeService.mensajeRegistro('Campos incompletos. Por favor, complete todos los campos.');
-    }
-    */
   }
-
   subirImages() {
-
     const formData = new FormData();
-
     for(let img of this.images){
       formData.append('images', img);
     }
-
     this.service.cargaFiles(formData).subscribe(res => {
       console.log(res);
       if(res){
@@ -91,44 +73,47 @@ export class CargaArticulosComponent implements OnInit {
         }
       }  
     })
-    console.log('carga exitosa de imagenes');
   }
-
-  onFileSelected(event: any): void {
-    
-    //dejar de visualizar las imagenes cuando suba otra
+  reemplazarImagen(event: any): void {
     const files = event.target.files;
     this.images = files;
+    this.uploadedImages.length = 0;
     if (files) {
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         if (file.type.startsWith('image/')) {
           const reader = new FileReader();
           reader.readAsDataURL(file);
-
           reader.onload = () => {
             this.uploadedImages.push(reader.result as string);
-          };
+          }; 
         }
-      }
+        if (i == files.length-1) {
+          this.textoCarga = '(' + files.length + ') Imágenes seleccionadas'
+        }
+      }    
     }
   }
-
   getIdUser() {    
     let infoLocal = localStorage.getItem('resLog')
     if (infoLocal) {
       let newObject = JSON.parse(infoLocal);
-
       const idUser = newObject[1].users.id;
       this.idUser = idUser;
-      console.log(this.idUser)
-
       const vendedor = newObject[1].users.estadoDeVendedor;
       if (vendedor){
         this.confVendedor = true;
       }
     }
   }
-
-
+  quitarImagen(image: string) {
+    if (confirm("¿Desea eliminar imagen?") == true) {
+      for (let i=0; i < this.uploadedImages.length; i++) {
+        if (image == this.uploadedImages[i]) {
+          this.uploadedImages.splice(i, 1);
+        }
+        this.textoCarga = '(' + (this.uploadedImages.length) + ') Imágenes seleccionadas'
+      }
+    }    
+  }
 }

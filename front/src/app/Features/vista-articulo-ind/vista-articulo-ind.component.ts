@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { BarraService } from 'src/app/core/services/barra.service';
 
-
 @Component({
   selector: 'app-vista-articulo-ind',
   templateUrl: './vista-articulo-ind.component.html',
@@ -76,7 +75,6 @@ export class VistaArtIndComponent implements OnInit {
       this.id = newObject;
     }
   }
-
     //traer datos
     datosProd(id: number) {
       this.barraService.getCategories().subscribe(categorias => {this.listcategorias = categorias});
@@ -119,8 +117,6 @@ export class VistaArtIndComponent implements OnInit {
         }
       }) 
     }
-
-
   //corroborar logueos
   corroborarLogeo() {    
     let infoLocal = localStorage.getItem('resLog')
@@ -188,6 +184,6 @@ export class VistaArtIndComponent implements OnInit {
       }
       localStorage.setItem('datosAlq', JSON.stringify(datosAlq));
     }
-    //redirigir a la pantalla de confirmar la transacción
+    //this.router.navigate(['confirmacion-articulo']);
   }  
 }

@@ -42,7 +42,7 @@ db.Images = require('./images')(sequelize, Sequelize);
 db.tipoProducto = require('./tipoproducto')(sequelize, Sequelize);
 db.Alquiler = require('./alquiler')(sequelize, Sequelize);
 db.estado = require('./estado')(sequelize, Sequelize);
-db.direccion = require('./direccion')(sequelize, Sequelize);
+db.Direccion = require('./direccion')(sequelize, Sequelize);
 db.localidad = require('./localidad')(sequelize, Sequelize);
 db.provincia = require('./provincia')(sequelize, Sequelize);
 
@@ -95,18 +95,18 @@ db.Alquiler.belongsTo(db.estado, {
 });
 
 // Relacion Direccion-User (one-to-one)
-db.direccion.hasOne(db.User, {
+db.Direccion.hasOne(db.User, {
   foreignKey: 'idDireccion',
 });
-db.User.belongsTo(db.direccion, {
+db.User.belongsTo(db.Direccion, {
   foreignKey: 'idDireccion',
 });
 
 // Relacion Localidad-Direccion (one-to-many)
-db.localidad.hasMany(db.direccion, {
+db.localidad.hasMany(db.Direccion, {
   foreignKey: 'idLocalidad',
 });
-db.direccion.belongsTo(db.localidad, {
+db.Direccion.belongsTo(db.localidad, {
   foreignKey: 'idLocalidad',
 });
 
@@ -117,5 +117,13 @@ db.provincia.hasMany(db.localidad, {
 db.localidad.belongsTo(db.provincia, {
   foreignKey: 'idProvincia',
 });
+
+/* // Relacion Provincia-Dirección
+db.provincia.hasMany(db.Direccion, {
+   foreignKey: 'idProvincia'
+});
+db.Direccion.belongsTo(db.provincia, {
+   foreignKey: 'idProvincia'
+}); */
 
 module.exports = db;
