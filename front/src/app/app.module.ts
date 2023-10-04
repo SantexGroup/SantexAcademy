@@ -17,6 +17,13 @@ import { PantallaComponent } from './component/pantalla/pantalla.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { MenuComponent } from './component/menu/menu.component';
 import { Injectable } from '@angular/core';
+import { AgregarProductoComponent } from './component/agregar-producto/agregar-producto.component';
+import { AgregarProductoModalComponent } from './component/agregar-producto-modal/agregar-producto-modal.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog'; // Importa MatDialogModule
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 //Rutas
@@ -31,7 +38,8 @@ import { MueblesService } from './service/muebles.service';
   declarations: [
     AppComponent,
     BuyerRegistrationComponent,
-    
+    AgregarProductoComponent, 
+    AgregarProductoModalComponent, 
   ],
   imports: [
     CommonModule,
@@ -49,7 +57,12 @@ import { MueblesService } from './service/muebles.service';
     MatButtonModule,
     BusquedaComponent,
     PantallaComponent,
-    MenuComponent    
+    MenuComponent,
+    MatSelectModule,
+    MatOptionModule,
+    MatDialogModule,
+    HttpClientModule,
+    
   ],
   providers: [MueblesService],
   bootstrap: [AppComponent]
