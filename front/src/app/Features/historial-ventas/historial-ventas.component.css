@@ -1,0 +1,19 @@
+#general {
+    display: flex;
+    justify-content: center;  
+    align-items: center;    
+    height: 80%;
+}
+
+#recuadro {
+    min-height: 70%;
+    width: 55%;    
+    background-color: rgb(222, 217, 217);
+    border-radius: 15px;
+}
+
+#articulo {
+    display: flex;
+    margin: 10px;
+    max-height: 50px; /* esto no funciona */
+}

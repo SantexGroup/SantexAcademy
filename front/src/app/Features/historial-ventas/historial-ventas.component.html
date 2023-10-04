@@ -1,0 +1,28 @@
+<app-barra></app-barra>
+<div id="general">
+    <div id="recuadro">
+        <div id="articulo">
+            <div id="imagen">
+                <!-- <img [src]="Images[0]"> -->
+            </div>
+            <div id="datosVen">
+                <p id="nomArt">{{nomArt}}</p>
+                <p id="nombreVen">{{nomVen}}</p>
+                <p id="catArt">{{catArt}}</p>
+            </div>
+            <div id="descripcion">
+                <p id="desArt">{{desArt}}</p>
+            </div>
+            <div id="datosArt">
+                <p id="envArt">Entrega: {{envArt}}</p>
+                <p id="preArt">Precio: ${{preArt}}</p>
+            </div>
+            <div id="acciones">
+                <a id="verArt" (click)="redireccion1()">Visualizar Artículo</a>
+                <a id="modArt" (click)="redireccion2()">Modificar Artículo</a>
+                <a id="eliArt" (click)="redireccion3()">Eliminar Artículo</a>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer class="fixed-bottom"></app-footer>
