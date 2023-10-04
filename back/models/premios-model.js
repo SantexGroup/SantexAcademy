@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
 
     }, {
       sequelize,
-      modelName: 'premios',
+      modelName: 'premio',
       timestamps: false,
       underscored: false,
       createdAt: false,

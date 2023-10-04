@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      coordinatorId: {
+      usuarioId: {
         type: DataTypes.INTEGER,
       },
       points: {

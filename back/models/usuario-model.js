@@ -53,8 +53,9 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Usuario.associate = (models) => {
-    Usuario.belongsToMany(models.premios, { through: models.premiosMid });
+    Usuario.belongsToMany(models.premio, { through: models.premiosMid });
     Usuario.belongsToMany(models.tarea, { through: models.tareasVoluntario });
+    Usuario.belongsToMany(models.rol, { through: models.usuarioRol });
     Usuario.hasMany(models.tarea);
   };
 
