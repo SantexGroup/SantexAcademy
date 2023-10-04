@@ -1,7 +1,6 @@
 const categoriescontroller = {};
 const { Categories, Products } = require("../models");
 const { router } = require("../routes");
-const sequelize = require('sequelize');7
 const Op = require('sequelize').Op;
 /**
  * @method POST
