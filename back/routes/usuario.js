@@ -11,13 +11,12 @@ const {
 
 const {
   verifyToken,
-  isAdmin,
   isUser,
 } = require("../middleware/authMiddleware");
 
 
-userRouter.get('/', productController.getAllProducts);
-userRouter.get('/:id', verifyToken, isUser, productController.getProduct);
+userRouter.get('/products', productController.getAllProducts);
+userRouter.get('/products/:id', verifyToken, isUser, productController.getProduct);
 
 
 userRouter.get("/me/profile", verifyToken, isUser, userController.getMyUser);
@@ -41,6 +40,10 @@ userRouter.post(
   isUser,
   usuarioEnVoluntariadoController.join
 );
+
+userRouter.post("/testimonials/create", verifyToken, isUser, userController.createTestimonialsById);
+
+userRouter.get("/testimonials", userController.getAllTestimonials);
 
 userRouter.get(
   "/postulate",

@@ -77,6 +77,11 @@ const Usuario = sequelize.define(
         using: "BTREE",
         fields: [{ name: "rolesId" }],
       },
+      {
+        name: "idx_usuario_testimonio",
+        using: "BTREE",
+        fields: [{ name: "id" }, { name: "createdAt" }],
+    },
     ],
   },
 

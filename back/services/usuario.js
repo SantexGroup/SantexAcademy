@@ -1,5 +1,19 @@
 const { userProvider } = require("../providers");
 
+const createTestimonialsById = async (id, testimonial) => {
+  const createdTestimonial = await userProvider.createTestimonialById(
+    id,
+    testimonial
+  );
+  return createdTestimonial;
+
+}
+ const getAllTestimonials = async () => {
+  const testimonials = await userProvider.getAllTestimonials();
+  return testimonials; 
+
+ }
+
 const loginUser = async (email, password) => {
   const user = await userProvider.loginUser(email, password);
 
@@ -48,6 +62,8 @@ const updatePhotoMyProfile = async (image, id) => {
 };
 
 module.exports = {
+  createTestimonialsById,
+  getAllTestimonials,
   loginUser,
   getMyUser,
   createUser,

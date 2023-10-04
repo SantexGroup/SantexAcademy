@@ -4,6 +4,32 @@ require("dotenv").config();
 const fs = require("fs-extra");
 const cloudinary = require("../config/cloudinary");
 
+
+const createTestimonialsById = async (req, res) => {
+  const userId = req.userId;
+  const testimonial = req.body;
+  try {
+    const testimonials = await userService.createTestimonialsById(userId, testimonial) ;
+    res.status(201).json(testimonials);
+  } catch (err) {
+    res
+      .status(500)
+      .json({ action: "createTestimonialsById", error: err.message });
+  }
+};
+
+const getAllTestimonials = async (req, res) => {
+  try {
+    const testimonials = await userService.getAllTestimonials();
+    res.status(200).json(testimonials);
+  } catch (err) {
+    res
+      .status(500)
+      .json({ action: "getTestimonials", error: err.message });
+  }
+
+}
+
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -144,6 +170,8 @@ const updatePhotoMyProfile = async (req, res, next) => {
 };
 
 module.exports = {
+  createTestimonialsById,
+  getAllTestimonials,
   loginUser,
   createUser,
   getUsersByCriteria,
