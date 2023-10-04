@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { CuentaService } from 'src/app/core/services/cuenta.service';
 import { OrganizacionService } from 'src/app/core/services/organizacion.service';
 
 @Component({
@@ -11,14 +12,14 @@ import { OrganizacionService } from 'src/app/core/services/organizacion.service'
 })
 export class OrganizacionesComponent implements OnInit {
   @ViewChild('sideNav')sideNav!:MatSidenav;
-  constructor(private organizacionService:OrganizacionService, private router:Router, private matSnackBar:MatSnackBar) { }
+  constructor(private organizacionService:OrganizacionService, private router:Router, private matSnackBar:MatSnackBar, private cuentaService:CuentaService) { }
 
   ngOnInit(): void {
 
     this.organizacionService.obtenerDatosOrganizacion().subscribe({
       next:()=>{
         
-        this.router.navigate(['organizaciones/dashboard']);
+        this.router.navigate(['organizacion/dashboard']);
       },
       error:()=>{
         this.matSnackBar.open('Sesión Caducada','ERROR',{
@@ -27,9 +28,9 @@ export class OrganizacionesComponent implements OnInit {
         verticalPosition:'top'}
         );
         
-        this.organizacionService.setCredencialesOrganizacion = null;
-        localStorage.removeItem('credencialesOrganizacion');
-        this.router.navigate(['/index/login'],{queryParams:{tipo:'organizacion'}});
+        this.cuentaService.setCredencialesUsuario = null;
+        localStorage.removeItem('credencialesUsuario');
+        this.router.navigate(['/index/login']);
       }
     });
 
@@ -40,8 +41,8 @@ export class OrganizacionesComponent implements OnInit {
     this.sideNav.close();
   }
   cerrarSesion(){
-    this.organizacionService.setCredencialesOrganizacion = null;
-    localStorage.removeItem('credencialesOrganizacion');
+    this.cuentaService.setCredencialesUsuario = null;
+    localStorage.removeItem('credencialesUsuario');
     this.router.navigate(['/index']);
 
   }

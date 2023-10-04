@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Tarea } from 'src/app/core/interfaces/tarea';
 import { TareaService } from 'src/app/core/services/tarea.service';
 import { DetalleTareaComponent } from '../detalle-tarea/detalle-tarea.component';
-import { Voluntario } from 'src/app/core/interfaces/voluntario';
+import { ResumenVoluntario } from 'src/app/core/interfaces/resumenVoluntario';
 
 @Component({
   selector: 'app-listado-tareas',
@@ -13,7 +13,7 @@ import { Voluntario } from 'src/app/core/interfaces/voluntario';
 export class ListadoTareasComponent implements OnInit, OnChanges {
   
   @Input() esVoluntario:boolean = false;
-  @Input() datosVoluntario: Voluntario | null = null;
+  @Input() datosVoluntario: ResumenVoluntario | null = null;
   
   @Output() tareaInscripcion = new EventEmitter<Tarea>();
   @Output() tareaDesinscripcion = new EventEmitter<Tarea>();
@@ -45,7 +45,6 @@ export class ListadoTareasComponent implements OnInit, OnChanges {
   mostrarTareas():void{
     this.tareaService.getTareas().subscribe({
       next:(res)=>{
-        console.log(res);
         this.listadoTareas = res;
       },
       error:()=>{

@@ -124,9 +124,8 @@ export class CrearModificarTareaModalComponent implements OnInit, AfterViewInit 
         
         this.listCategorias = res;
       },
-      error:(err)=> {
+      error:()=> {
         
-        console.log(err)
       
       }
     });

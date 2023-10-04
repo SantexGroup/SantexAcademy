@@ -75,7 +75,6 @@ export class ListadoPremiosComponent implements OnInit {
           
           },
           error:(err)=>{
-            console.log(err);
             Swal.fire(
               'Error',
               'No se pudo eliminar el premio.',
