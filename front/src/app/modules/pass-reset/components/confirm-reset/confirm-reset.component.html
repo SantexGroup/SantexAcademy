@@ -18,7 +18,10 @@
                         <input [attr.type]="showPassword" id="password" name="password" [(ngModel)]="password" required
                             minlength="8" placeholder="Nueva Contraseña" />
                         <h6 class="icon" (click)="togglePasswordVisibility()">
-                            {{ showPassword === 'password' ? 'SH' : 'HI' }}
+                            <img *ngIf="showPassword === 'password'" class="icon"
+                                src="../../../../../assets/icons/eye.svg" alt="eye-slash" />
+                            <img *ngIf="showPassword !== 'password'" class="icon"
+                                src="../../../../../assets/icons/eye-slash.svg" alt="eye" />
                         </h6>
                     </div>
                     <div *ngIf="formSubmitted && loginForm.controls.password.invalid" class="error-text">
@@ -33,7 +36,10 @@
                         <input [attr.type]="showPassword" id="password2" name="password2" [(ngModel)]="password2"
                             required minlength="8" placeholder="Repita la nueva Contraseña" />
                         <h6 class="icon" (click)="togglePasswordVisibility()">
-                            {{ showPassword === 'password' ? 'SH' : 'HI' }}
+                            <img *ngIf="showPassword === 'password'" class="icon"
+                                src="../../../../../assets/icons/eye.svg" alt="eye-slash" />
+                            <img *ngIf="showPassword !== 'password'" class="icon"
+                                src="../../../../../assets/icons/eye-slash.svg" alt="eye" />
                         </h6>
                     </div>
                     <div *ngIf="formSubmitted && loginForm.controls.password2.invalid" class="error-text">
