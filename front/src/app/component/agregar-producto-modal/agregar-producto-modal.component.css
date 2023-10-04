@@ -1,0 +1,28 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.foto-container {
+  border-radius: 15px;
+  width: 400px; /* Establece el ancho deseado */
+  height: 400px; /* Establece la altura deseada */
+  overflow: hidden; /* Oculta cualquier parte de la imagen que exceda las dimensiones del contenedor */
+}
+
+.form-container {
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    display:block;
+    padding: 3vh;
+    border-color: #C991D9;
+    border-style: inset;
+    background-color: #F2BDD0;
+    border-radius: 50px;
+    max-width: 450px;
+  }
+.mat-form-field{
+  padding-left: 2vh;
+}
+  
+.mat-raised-button{
+  margin: 3%;
+}
