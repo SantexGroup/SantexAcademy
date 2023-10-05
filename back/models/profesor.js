@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Profesor.init({
+    img: DataTypes.URL,
     nombreCompleto: DataTypes.STRING,
     nombreUsuario: DataTypes.STRING,
     fechaNacimiento: DataTypes.DATE,

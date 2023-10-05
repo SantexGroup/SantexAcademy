@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   User.init({
+    img: DataTypes.URL,
     nombreCompleto: DataTypes.STRING,
     nombreUsuario: DataTypes.STRING,
     fechaNacimiento: DataTypes.DATE,

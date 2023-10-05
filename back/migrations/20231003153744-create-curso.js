@@ -9,6 +9,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      img: {
+        defaultValue: '',
+        type: Sequelize.URL,
+      },
       nombre: {
         allowNull: false,
         type: Sequelize.STRING

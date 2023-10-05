@@ -27,6 +27,7 @@ async function editCurso(cursoId, updatedData) {
             throw new Error('Usuario no encontrado');
         }
         curso.nombre = updatedData.nombre;
+        curso.fechaInicio = updatedData.fechaInicio;
         curso.duracion = updatedData.duracion;
         curso.precio = updatedData.precio;
         curso.descripcion = updatedData.descripcion;
