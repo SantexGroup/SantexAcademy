@@ -44,4 +44,4 @@ export class CursosService {
     return this.http.put<Curso>(`${ this.baseUrl }curso/${curso.id}`, curso)
   }
   
-  }
+}

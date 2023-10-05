@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+
 import { Docenteporcurso } from '../interfaces/docenteporcurso';
+import { Curso } from 'src/app/modules/cursos/interface/cursos.interface';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +23,11 @@ export class DocenteporcursoService {
   getDocentePorCursoPorId(id: number): Observable<Docenteporcurso>{
     return this.http.get<Docenteporcurso>(`${this.baseUrl}docenteporcurso/${ id }`)
   }
-
+  //-----------------Agrego para busacr los cursos de un docente------------//
+  getCursoPorDocentePorID(id: number): Observable<Curso[]>{
+    return this.http.get<Curso[]>(`${this.baseUrl}docenteporcurso/${ id }/cursos`)
+  }
+  //-------------------------------------------------------------------------//
   addDocentePorCurso(docente: Docenteporcurso): Observable<Docenteporcurso> {
     return this.http.post<Docenteporcurso>(`${this.baseUrl}docenteporcurso`, docente);
   }

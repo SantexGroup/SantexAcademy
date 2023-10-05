@@ -7,7 +7,7 @@ const matriculaService = require('./matricula');
 const docenteService = require('./docente');
 const especialidadService = require('./especialidad');
 const docenteporcursoService = require('./docenteporcurso');
-const cursadoPorAlumnoService = require['apply./cursadoporalumno']
+const cursadoPorAlumnoService = require('./cursadoporalumno')
 
 module.exports = {
   userService,

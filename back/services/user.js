@@ -68,7 +68,7 @@ const getCursos = async (id) => {
   }
 };
 
-//NO BORRAR--sirve para buscar cualquier usuario usando cualquier dato--util para filtros//
+//NO BORRAR--sirve para buscar cualquier usuario usando cualquier dato --util para filtros//
 
 const getUserByData = async (searchCriteria) => {
   try {
