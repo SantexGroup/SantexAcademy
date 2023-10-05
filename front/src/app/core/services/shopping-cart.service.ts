@@ -14,7 +14,7 @@ export class ShoppingCartService {
   private cart = new BehaviorSubject<Product[]>([]);
 
   cart$ = this.cart.asObservable();
-
+  private ProductUrl:string ="http://localhost:4001/carrito/"
   public totalPrice(): number {
     let total: number = 0;
     for(let product of this.productList) {
@@ -24,8 +24,12 @@ export class ShoppingCartService {
   }
 
   addProducto(product: Product) {
-    this.productList = [...this.productList, product];
-    this.cart.next(this.productList);
+    
+    let url = this.ProductUrl + "add/" + 1 //1 hace referencia a user id
+      return this._http.put(url, product).subscribe()
+  }
+  obtenerCarrito(id : string){
+    return this._http.get(this.ProductUrl+id);
   }
 
   // Función para eliminar un producto del carrito
