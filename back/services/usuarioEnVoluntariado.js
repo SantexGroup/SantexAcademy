@@ -1,20 +1,20 @@
-const {usuarioEnVoluntariadoProvider} = require('../providers');
+const { usuarioEnVoluntariadoProvider } = require("../providers");
 
 // Servicio para unirse a un voluntariado
 const join = async (userId, organizationId, idVolunteering) => {
   try {
-
     // Llamar al proveedor para crear la relación usuario-voluntariado
-    await usuarioEnVoluntariadoProvider.join(userId,organizationId, idVolunteering);
-
-    return 'Usuario unido al voluntariado exitosamente.';
+    const volunteering = await usuarioEnVoluntariadoProvider.join(
+      userId,
+      organizationId,
+      idVolunteering
+    );
+    return volunteering;
   } catch (err) {
     console.error(err);
     throw err;
   }
 };
-
-
 
 const getJoins = async (userId) => {
   try {
@@ -25,17 +25,17 @@ const getJoins = async (userId) => {
     console.error(err);
     throw err;
   }
-
-}
+};
 
 const getCompletedPostulation = async (idOrg) => {
   try {
-    const postulations = await usuarioEnVoluntariadoProvider.getCompletedPostulation(idOrg);
+    const postulations =
+      await usuarioEnVoluntariadoProvider.getCompletedPostulation(idOrg);
     return postulations;
   } catch (error) {
-    console.error('Internal server error', error);  
+    console.error("Internal server error", error);
   }
-}
+};
 
 const accreditationReward = async (idOrg) => {
   try {
@@ -46,32 +46,31 @@ const accreditationReward = async (idOrg) => {
   }
 };
 
-
-
-const updateStatusById = async (postulateId, status) => {
+const updateStatusById = async (postulationId, status) => {
   try {
-    const postulate = await usuarioEnVoluntariadoProvider.updateStatusById(postulateId, status);
+    const postulate = await usuarioEnVoluntariadoProvider.updateStatusById(
+      status,
+      postulationId
+    );
 
     return postulate;
   } catch (err) {
     console.error(err);
     throw err;
   }
+};
 
-}
-
-const deleteJoinById = async(postulateId) => {
+const deleteJoinById = async (postulateId) => {
   try {
-    const postulate = await usuarioEnVoluntariadoProvider.deleteJoinById(postulateId);
-
+    const postulate = await usuarioEnVoluntariadoProvider.deleteJoinById(
+      postulateId
+    );
     return postulate;
   } catch (err) {
     console.error(err);
     throw err;
   }
-
-
-}
+};
 
 module.exports = {
   join,
@@ -79,5 +78,5 @@ module.exports = {
   getCompletedPostulation,
   updateStatusById,
   accreditationReward,
-  deleteJoinById
+  deleteJoinById,
 };

@@ -104,7 +104,6 @@
                 <p><strong>Descripción: </strong>{{ dataTabs.description }}</p>
               </li>
             </div>
-
           </div>
         </ul>
       </div>
@@ -122,7 +121,7 @@
           <button
             *ngIf="!editData"
             (click)="handleProfileDelete()"
-            class="text-white rounded-md bg-[#3F2883] mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-edit"
+            class="text-white rounded-md bg-mediumViolet mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-edit"
           >
             Eliminar perfil
           </button>
@@ -265,13 +264,13 @@
         <div class="flex gap-4 justify-end p-4">
           <button
             (click)="declineEditProfile()"
-            class="text-white rounded-md bg-[#3F2883] mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-edit"
+            class="text-white rounded-md bg-mediumViolet mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-edit"
           >
             Cancelar
           </button>
           <button
             (click)="saveDataProfileOrg()"
-            class="text-white rounded-md bg-[#3F2883] mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-edit"
+            class="text-white rounded-md bg-darkSlateBlue mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-edit"
           >
             Guardar
           </button>
@@ -286,7 +285,7 @@
       <button
         *ngIf="!newVolunteering"
         (click)="activeNewVolunteering()"
-        class="text-white absolute rounded-md bg-[#B1237D] mt-14 right-24 px-[15px] py-[5px] font-semibold font-poppins btn-shadow"
+        class="text-white absolute rounded-md bg-darkSlateBlue mt-14 right-24 px-[15px] py-[5px] font-semibold font-poppins btn-shadow"
       >
         Crear nuevo voluntariado
       </button>
