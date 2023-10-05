@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Carrito.belongsTo(models.User)
        Carrito.belongsToMany(models.Products, {
         through: 'productosEnCarritos', // Nombre de la tabla intermedia
-        foreignKey: 'alquilerId',   // Nombre de la clave foránea en la tabla intermedia
+        foreignKey: 'idCarrito',   // Nombre de la clave foránea en la tabla intermedia
       });
       }
        
