@@ -1,0 +1,17 @@
+.course-grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Define el ancho de cada columna */
+    grid-gap: 20px; /* Ajusta el espacio entre las tarjetas */
+    justify-items: center; /* Centra las tarjetas en las columnas */
+}
+
+.course-card {
+    max-width: 300px;
+  }
+  
+  .header-image-card {
+    background-image: url('~src/assets/img/incubadora-image.png');
+    background-size: cover;
+  }
+  
+  

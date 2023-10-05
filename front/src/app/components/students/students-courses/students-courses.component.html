@@ -1,1 +1,21 @@
-<p>students-courses works!</p>
+<div class="course-grid-container">
+
+    <mat-card class="course-card" *ngFor="let curso of cursos">
+        <mat-card-header>
+            <div mat-card-avatar class="header-image-card"></div>
+            <mat-card-title>{{ curso.nombre }}</mat-card-title>
+            <mat-card-subtitle>Fecha de inicio: {{ curso.fechaInicio }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="curso.img" alt="Foto del curso">
+        <mat-card-content>
+            <p>Duración: {{ curso.duracion }}</p>
+            <p>Precio: {{ curso.precio }}</p>
+            <p>Descripción: {{ curso.descripcion }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button>Comprar</button>
+            <button mat-button>Guardar</button>
+        </mat-card-actions>
+    </mat-card>
+
+</div>
