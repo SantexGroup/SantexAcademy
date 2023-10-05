@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DashboardServicesService } from '../../../services/dashboard-services.service';
+import { VolunteerService } from '../../../services/volunteer.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { selectToken } from 'src/app/core/auth.selectors';
@@ -24,7 +24,7 @@ export class DataVolunteerComponent {
   textMessage: string = '';
 
   constructor(
-    private dashServices: DashboardServicesService,
+    private volServices: VolunteerService,
     private formBuilder: FormBuilder,
     private store: Store
   ) {
@@ -67,31 +67,29 @@ export class DataVolunteerComponent {
       if (userData) {
         this.store.select(selectToken).subscribe((token) => {
           if (token) {
-            this.dashServices
-              .updateProfileVolunteer(userData, token)
-              .subscribe({
-                next: (res) => {
-                  if (res) {
-                    this.onModalStatus = true;
-                    this.statusModal = 'success';
-                    this.textMessage =
-                      ' ¡Tus datos se han modificado correctamente!';
-
-                    setTimeout(() => {
-                      this.onModalStatus = false;
-                      window.location.reload();
-                    }, 3000);
-                  }
-                },
-                error: (err) => {
-                  console.log('error when editing the user', err);
+            this.volServices.updateProfileVolunteer(userData, token).subscribe({
+              next: (res) => {
+                if (res) {
                   this.onModalStatus = true;
-                  this.statusModal = 'failed';
-                  this.textBtnModalStatus = 'Aceptar';
+                  this.statusModal = 'success';
                   this.textMessage =
-                    '¡Se produjo un error al modificar tus datos! Por favor, inténtalo de nuevo más tarde.';
-                },
-              });
+                    ' ¡Tus datos se han modificado correctamente!';
+
+                  setTimeout(() => {
+                    this.onModalStatus = false;
+                    window.location.reload();
+                  }, 3000);
+                }
+              },
+              error: (err) => {
+                console.log('error when editing the user', err);
+                this.onModalStatus = true;
+                this.statusModal = 'failed';
+                this.textBtnModalStatus = 'Aceptar';
+                this.textMessage =
+                  '¡Se produjo un error al modificar tus datos! Por favor, inténtalo de nuevo más tarde.';
+              },
+            });
           }
           this.editData = false;
         });
@@ -106,7 +104,7 @@ export class DataVolunteerComponent {
   deleteProfile() {
     this.store.select(selectToken).subscribe((token) => {
       if (token) {
-        this.dashServices.deleteProfileVolunteer(token).subscribe({
+        this.volServices.deleteProfileVolunteer(token).subscribe({
           next: (res) => {},
           error: (err) => {
             console.log('error deleting user', err);

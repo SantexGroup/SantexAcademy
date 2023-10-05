@@ -2,7 +2,7 @@
   <app-modal-question-volunteerings
     [nameVolunteeringDelete]="nameVolunteeringDelete"
     [idVolunteeringDelete]="idVolunteeringDelete"
-    (cancelDeletion)="(declineDeleteVolunteering)"
+    (cancelDeletion)="declineDeleteVolunteering()"
     *ngIf="onModalQuestion"
   >
   </app-modal-question-volunteerings>
@@ -67,12 +67,11 @@
 
               <button
                 mat-icon-button
-                class="custom-icon-button"
                 (click)="
                   deleteVolunteering(item.idVolunteering.toString(), item.name)
                 "
               >
-                <mat-icon>delete</mat-icon>
+                <mat-icon class="text-redError">delete</mat-icon>
               </button>
             </td>
           </tr>

@@ -16,9 +16,7 @@ export class VolunteerCardComponent implements OnInit {
   openModalQuestion: boolean = false;
   constructor(private datePipe: DatePipe, private router: Router) {}
 
-  ngOnInit(): void {
-    console.log(this.data);
-  }
+  ngOnInit(): void {}
 
   formatCreatedAtDate(dateString: string): string {
     const createdAtDate = new Date(dateString);

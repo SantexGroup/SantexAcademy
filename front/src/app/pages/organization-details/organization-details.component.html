@@ -4,14 +4,14 @@
       class="w-full h-[250px] flex flex-col items-center justify-start gap-2 sm:h-[350px]"
     >
       <img
-        *ngIf="!organization[0]?.urlWebSite"
+        *ngIf="!organization[0]?.coverPage"
         src="/assets/logo/logohand.svg"
-        alt="Subir imagen"
+        alt="logo voluntime"
         class="w-[100px] h-[100px] object-cover imageUpload"
       />
       <img
-        *ngIf="organization[0]?.urlWebSite"
-        [src]="organization[0]?.urlWebSite"
+        *ngIf="organization[0]?.coverPage"
+        [src]="organization[0]?.coverPage.imageUrl"
         alt="Subir imagen"
         class="w-full h-full object-cover"
       />
