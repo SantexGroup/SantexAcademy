@@ -1,9 +1,11 @@
-const { Products, tipoProducto, User, Images } = require('../models');
+const {
+  Products, tipoProducto, User, Images,
+} = require('../models');
 
 // obtener todos
 async function products() {
   const productos = await Products.findAll({
-    include: [{ model: Images }]
+    include: [{ model: Images }],
   });
   console.log('Productos', productos);
 
@@ -13,18 +15,17 @@ async function products() {
 // obtener por id
 async function getProductoById(id) {
   const articulos = await Products.findByPk(id, {
-    include: [{ model: Images }]
+    include: [{ model: Images }],
   });
   const idUser = articulos.idUsuario;
   const idTipo = articulos.idTipoProducto;
-  const usuario = await User.findByPk(idUser);
-  const tipo = await tipoProducto.findByPk(idTipo);
+  await User.findByPk(idUser);
+  await tipoProducto.findByPk(idTipo);
 
   if (articulos == null) {
     throw new Error();
   }
-  
-  return {articulos, usuario, tipo};
+  return articulos;
 }
 
 // categorias
@@ -71,7 +72,11 @@ async function chargeProducts(idUsuario, idTipoProducto, nombre, detalles, preci
 // modificar articulo
 
 async function editArticle(id, idUsuario, idTipoProducto, nombre, detalles, precio, envio) {
-  const articulo = await getProductoById(id);
+  const articulo = await Products.findByPk(id);
+
+  if (!articulo) {
+    return { error: 'Artículo no encontrado' };
+  }
 
   if (idUsuario) {
     articulo.idUsuario = idUsuario;
@@ -101,6 +106,37 @@ async function editArticle(id, idUsuario, idTipoProducto, nombre, detalles, prec
   return productEdited;
 }
 
+// productos por vendedor
+async function getProductosPorVendedor(id) {
+  const productosVendedor = await Products.findAll({
+
+    where: {
+      idUsuario: id,
+    },
+    include: [{
+      model: User,
+    }],
+  });
+
+  if (productosVendedor.length < 1) {
+    return { message: 'Usuario sin productos publicados' };
+  }
+
+  const primerProducto = productosVendedor[0];
+
+  if (primerProducto.User === null) {
+    return { error: 'Usuario no encontrado' };
+  }
+
+  return productosVendedor;
+}
+
 module.exports = {
-  products, getAllCategories, chargeProducts, getProductoById, editArticle, getCategoriaById,
+  products,
+  getAllCategories,
+  chargeProducts,
+  getProductoById,
+  editArticle,
+  getCategoriaById,
+  getProductosPorVendedor,
 };

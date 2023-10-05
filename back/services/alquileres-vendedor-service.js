@@ -8,9 +8,12 @@ async function getAlquileresByVendedor(id) {
         model: Products,
         where: { idUsuario: id },
       }],
-
     },
   );
+
+  if (ventasVendedor.length < 1) {
+    return { error: 'Usuario sin ventas' };
+  }
 
   return ventasVendedor;
 }

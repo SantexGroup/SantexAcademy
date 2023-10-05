@@ -15,6 +15,7 @@ import { CargaArticulosComponent } from './Features/carga-articulos/carga-articu
 import { TarjetaArticuloComponent } from './Features/tarjeta-articulo/tarjeta-articulo.component';
 import { VistaArtIndComponent } from './Features/vista-articulo-ind/vista-articulo-ind.component';
 import { BarraLateralComponent } from './Shared/barra-lateral/barra-lateral.component';
+import { ModificarArticuloComponent } from './Features/modificar-articulo/modificar-articulo.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { BarraLateralComponent } from './Shared/barra-lateral/barra-lateral.comp
     CargaArticulosComponent,
     TarjetaArticuloComponent,
     VistaArtIndComponent,
-    BarraLateralComponent
+    BarraLateralComponent,
+    ModificarArticuloComponent
   ],
   imports: [
     BrowserModule,

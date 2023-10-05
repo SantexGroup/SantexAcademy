@@ -1,0 +1,88 @@
+<app-barra></app-barra>
+<!-- Cartel no logueados -->
+<p *ngIf="!confVendedor">¡Para subir un articulo nuevo debe ser vendedor!</p>
+<!-- General  -->
+<div id="general">
+    <!-- Título  -->
+    <div id="titulo">
+        <h2 *ngIf="confVendedor">Modificar Artículo</h2>
+    </div>
+    <!-- Formulario -->
+    <div class="formulario" *ngIf="confVendedor">
+        <form id="form-art" action="#" class="form" method="post" enctype="multipart/form-data" [formGroup]="formUp">
+            <div class="row">
+            <!-- Columna izquierda -->
+                <div class="media_columna">
+                    <div class="campo">
+                        <label for="nombre">Nombre del producto 
+                            <span>(indique un nombre nuevo)</span>
+                            </label>
+                        <input type="text" name="nombre" formControlName="nomReg" value="{{nomArt}}"required>
+                    </div>
+                    <!-- Descripción -->
+                    <div class="campo">
+                        <label for="descripcion">Descripción 
+                            <span>(ingrese una nueva descripción)</span>
+                        </label>
+                        <textarea formControlName="desReg" name="descripcion" rows="4" value="{{descArt}}" required></textarea>
+                    </div>
+                    <!-- Precio -->
+                    <div class="campo">
+                        <label for="precio">Precio 
+                            <span>(ingrese el precio actualizado)</span>
+                        </label>
+                        <div class="precio-input">
+                            <span class="peso-sign">$</span>
+                            <input id="precio" formControlName="preReg" type="number" name="precio" step="1.00" value="{{precioArt}}" required>
+                        </div>
+                    </div>
+                </div>
+                <!-- Columna derecha -->
+                <div class="media_columna_der">
+                    <!-- Categorías -->
+                    <div class="campo">
+                        <label for="categorias">Categorias 
+                            <span>(seleccione una categoría nueva)</span>
+                        </label>
+                        <select formControlName="catReg" name="categoria">
+                            <option value="0">{{catArt}}</option>
+                            <option *ngFor="let categoria of cat" [value]="categoria.id">{{ categoria.name.charAt(0).toUpperCase() + categoria.name.slice(1) }}</option>
+                        </select>
+                        <div class="select_arrow"></div>
+                    </div>
+                    <!-- Imágenes -->
+                    <div class="campo">
+                        <label>Cargar Imágenes <span>(imágenes a reemplazar) </span>
+                        </label>
+                        <label id="botonCargar"for="imagenes">{{textoCarga}}</label>
+                        <input type="file" id="imagenes" name="images" formControlName="images" (change)="reemplazarImagen($event)" accept="image/*"multiple />
+                        <div class="imagenes-container">
+                            <div class="imagenes">
+                                <div class="imagen" *ngFor="let image of uploadedImages">
+                                    <img *ngIf="image" (click)="quitarImagen(image)"[src]="image" alt="Imagen cargada"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Envío -->
+                    <div class="campo">
+                        <label for="envio">Opción de envío 
+                            <span>(nueva opción de envío)</span>
+                        </label>
+                        <select formControlName="envReg" id="envio" name="envio" required>
+                            <option *ngFor="let envio of envios" [value]="envios.indexOf(envio)">{{ envio }}</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Botón -->
+                <div class="botones-container ">
+                    <input (click)="modificarProducto()" class="subir-boton" type="button" value="Confirmar cambios" [disabled]="formUp.invalid"/>
+                </div>
+                <div *ngIf="mensajeRegistro" class="mensaje">
+                    {{ mensajeRegistro }}
+                </div>            
+            </div>
+        </form>
+    </div>
+    <app-footer class="fixed-bottom"></app-footer>
+</div>

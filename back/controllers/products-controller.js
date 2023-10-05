@@ -22,7 +22,7 @@ async function getProductFromId(req, res) {
 
     res.status(200).send(articulo);
   } catch (error) {
-    res.status(404).send('Producto no encontrado: ' + error);
+    res.status(404).send(`Producto no encontrado: ${error}`);
   }
 }
 
@@ -49,7 +49,7 @@ async function getCategoriesFromId(req, res) {
 // cargar producto
 async function chargeProduct(req, res) {
   const {
-    idUsuario, idTipoProducto, nombre, detalles, precio, envio
+    idUsuario, idTipoProducto, nombre, detalles, precio, envio,
   } = req.body;
 
   const product = await productsService.chargeProducts(idUsuario, idTipoProducto, nombre,
@@ -71,6 +71,20 @@ async function editProduct(req, res) {
   res.status(201).send(article);
 }
 
+// productos por vendedor
+async function getProductosVendedor(req, res) {
+  const { id } = req.params;
+  const productosVendedor = await productsService.getProductosPorVendedor(id);
+
+  res.status(200).send(productosVendedor);
+}
+
 module.exports = {
-  products, getCategories, chargeProduct, getProductFromId, editProduct, getCategoriesFromId,
+  products,
+  getCategories,
+  chargeProduct,
+  getProductFromId,
+  editProduct,
+  getCategoriesFromId,
+  getProductosVendedor,
 };

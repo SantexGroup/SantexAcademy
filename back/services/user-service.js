@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const jwt = require('jsonwebtoken');
-const { User, Direccion } = require('../models');
+const { User, Direccion, localidad } = require('../models');
 
 // login
 async function login(mail, password) {
@@ -59,9 +59,27 @@ async function userRegister(
 // usuario por id
 
 async function getUserFromId(id) {
-  const user = await User.findByPk(id);
+  try {
+    const usuario = await User.findByPk(id, {
+      include: [
+        {
+          model: Direccion,
+          attributes: ['idLocalidad', 'calleYaltura'],
+          include: [
+            {
+              model: localidad,
+              attributes: ['idProvincia', 'nombre'],
+            },
+          ],
+        },
+      ],
+    });
 
-  return user;
+    return usuario;
+  } catch (error) {
+    console.error(`Error al buscar el usuario: ${error.message}`);
+    throw error;
+  }
 }
 
 // cambiar estado de vendedor
@@ -88,7 +106,11 @@ async function cambiarEstadoVendedor(id) {
 
 async function editUsuario(id, firstName, lastName, dni, mail, password, alias,
   idLocalidad, calleYAltura) {
-  const user = await getUserFromId(id);
+  const user = await User.findByPk(id);
+
+  if (!user) {
+    return { error: 'Usuario no encontrado' };
+  }
 
   if (firstName) {
     user.firstName = firstName;
@@ -113,17 +135,21 @@ async function editUsuario(id, firstName, lastName, dni, mail, password, alias,
     user.alias = alias;
   }
 
+  const direccion = await Direccion.findByPk(user.idDireccion);
+
   if (idLocalidad) {
-    user.idLocalidad = idLocalidad;
+    direccion.idLocalidad = idLocalidad;
   }
 
   if (calleYAltura) {
-    user.calleYAltura = calleYAltura;
+    direccion.calleYAltura = calleYAltura;
   }
+
+  const direccionEdited = await direccion.save();
 
   const userEdited = await user.save();
 
-  return userEdited;
+  return { userEdited, direccionEdited };
 }
 
 // eliminar usuario
@@ -148,4 +174,5 @@ async function deleteUsuario(id) {
 
 module.exports = {
   login, userRegister, cambiarEstadoVendedor, getUserFromId, editUsuario, deleteUsuario,
+
 };

@@ -31,9 +31,13 @@ async function getUserById(req, res) {
   try {
     const usuario = await userService.getUserFromId(id);
 
-    res.status(200).send(usuario);
+    if (usuario) {
+      res.status(200).send(usuario);
+    } else {
+      res.status(404).send({ message: 'Usuario no encontrado' });
+    }
   } catch (error) {
-    res.status(404).send('Usuario no encontrado');
+    res.status(500).send({ message: 'Error al buscar el usuario' });
   }
 }
 
@@ -79,5 +83,7 @@ async function deleteUser(req, res) {
 }
 
 module.exports = {
+
   login, createUser, cambiarEstadoVendedorUser, editUser, getUserById, deleteUser,
+
 };

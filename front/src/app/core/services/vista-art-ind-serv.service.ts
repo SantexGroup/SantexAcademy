@@ -12,7 +12,14 @@ export class vistaArtIndServ {
     // console.log('/productos/obtener-producto-por-id/:' + idProd)
     return this.apiService.get<any>('/productos/obtener-producto-por-id/' + id)
   }
-
+  datosUsuario(idUser: number) {
+    const id= idUser;
+    return this.apiService.get<any>('/users/' + id)
+  }
+  dias(idProd: number) {
+    const id = idProd;
+    return this.apiService.get<any>('/alquiler/' + id)
+  }
   getImageProduct(imageName: string){
     return this.apiService.get<any>('/images/' + imageName);
   }

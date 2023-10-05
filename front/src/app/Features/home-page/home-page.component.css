@@ -1,0 +1,96 @@
+#grande {
+    height: 100%
+}
+#general {
+    display: flex;
+    justify-content: center;
+    height: 80%;
+}
+h1 {
+    font-weight: 700;
+}
+#tarjetas button {
+    margin-bottom: 10px;
+    width: max-content;
+    background-color: #d68a96;
+    border: white;
+}
+#descripcion {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    color: #d68a96;
+    margin: 0;
+}
+h2 {
+    font-weight: 300; 
+    font-size: large;
+    --animate-duration: 2s;
+}
+#divIma {
+    display: inline-block;
+    width: max-content;
+}
+#scrolleable {
+    height: 30px;
+    width: max-content;
+}
+.carousel-control-prev-icon {
+    color: purple;
+}
+.carousel-control-color{
+    color: black;
+}             
+#titulo {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    color: #d68a96;
+}
+#divIma {
+    display: flex;
+    justify-content: center;
+}
+img {
+    margin-top: 10px;
+    height: 250px;
+    width: 200px;
+    border-radius: 5px;
+}
+#carusel {
+    display:grid;
+    justify-content: center;
+}
+#contenedor { 
+   width: max-content;
+}
+#divArt {
+    width: 270px;
+    --animate-duration: 2.5s;
+}
+.carousel-item active {
+    width: max-content;
+}
+#divTar {
+    display: flex;
+    align-content: center;
+    width: 200px;
+    border: 1px solid grey;
+    border-radius: 15px;
+}
+#tarjetas {
+    display:grid;
+    justify-content: center;
+    height: 400px;
+}
+#botones {
+    position: relative;
+    top: 10px;  
+}
+#carouselExampleDark {
+    margin-top: 20px;
+}
+#tarjetas button:hover {
+    background-color: #c95c6d;
+    transition: background-color 0.3s, color 0.3s;
+}
