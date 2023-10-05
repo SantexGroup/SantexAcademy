@@ -1,4 +1,17 @@
 const profesorSevice = require('../services/profesorService');
+
+async function loginProfesor(req, res) {
+  try {
+    const { nombreUsuario, contraseña } = req.body;
+
+    const { profesor, token } = await profesorSevice.login(nombreUsuario, contraseña);
+
+    res.status(200).json({ profesor, token });
+  } catch (error) {
+    console.error('Error al iniciar sesión: ', error);
+    return res.status(401).json({ mensaje: 'Nombre de usuario o contraseña incorrectos' });
+  }
+}
 const { Profesor } = require('../models');
 
 async function createProfesor(req, res) {
@@ -56,4 +69,4 @@ async function deleteProfesor(req, res) {
   await profesorSevice.deleteProfesor(id);
   return res.status(200).send(`Profesor con el ${id} ha sido eliminado exitosamente`);
 }
-module.exports = { createProfesor, getAllProfesors, getProfesorById, editProfesor, deleteProfesor };
+module.exports = { loginProfesor,createProfesor, getAllProfesors, getProfesorById, editProfesor, deleteProfesor };
