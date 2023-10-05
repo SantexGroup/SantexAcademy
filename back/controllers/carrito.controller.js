@@ -34,6 +34,42 @@ carritocontroller.crear = async (req, res) => {
   }
 };
 /**
+ * @method POST
+ * @name CrearOEditar
+ * @body {usuario , [productos], fechaInicio, fechaFin}
+ * @description metodo para editar un carrito existente o crear unp nuevo
+ */
+carritocontroller.crearOEditar = async (req, res) => {
+  try {
+    let carrito = await Carrito.findOne({
+      where: {
+        userId: req.body.usuario,
+      },
+    });
+    if (!carrito) {
+      carrito = await Carrito.create(req.body);
+    } else {
+      carrito = await carrito.update(req.body);
+    }
+    let productos = req.body.productos;
+    let usuario = await User.findByPk(req.body.usuario);
+    if (!usuario) {
+      return res.status(400).json({ msg: "El usuario no existe" });
+    }
+    for (let i = 0; i < productos.length; i++) {
+      let producto = await Products.findByPk(productos[i]);
+      await carrito.addProduct(producto);
+    }
+    await carrito.setUser(usuario);
+    res.status(200).json(carrito);
+  } catch (error) {
+    console.log(error)
+    res
+      .status(400)
+      .json({
+        msg: "Error creando el carrito intente nuevamente"})}}
+
+/**
  * @method GET
  * @name getCarrito
  * @param {idUser} Id del usuario del que obtendremos el carrito
