@@ -131,6 +131,25 @@ async function getProductosPorVendedor(id) {
   return productosVendedor;
 }
 
+// eliminar articulo
+async function deleteArticle(id) {
+  try {
+    const result = await Products.destroy({
+      where: {
+        id,
+      },
+    });
+
+    if (result === 1) {
+      return { success: true, message: `Articulo con ID ${id} eliminado exitosamente.` };
+    }
+    return { success: false, message: `No se encontró el Articulo con ID ${id}.` };
+  } catch (error) {
+    console.error(`Error al eliminar el articulo: ${error.message}`);
+    return { success: false, message: `Error al eliminar el articulo: ${error.message}` };
+  }
+}
+
 module.exports = {
   products,
   getAllCategories,
@@ -139,4 +158,5 @@ module.exports = {
   editArticle,
   getCategoriaById,
   getProductosPorVendedor,
+  deleteArticle,
 };

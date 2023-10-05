@@ -79,6 +79,19 @@ async function getProductosVendedor(req, res) {
   res.status(200).send(productosVendedor);
 }
 
+// eliminar articulo
+async function deleteProduct(req, res) {
+  const { id } = req.params;
+
+  const result = await productsService.deleteArticle(id);
+
+  if (result.success) {
+    res.status(201).send({ message: `Articulo con id ${id} ha sido eliminado con éxito` });
+  } else {
+    res.status(404).send({ message: `No se encontró el articulo con ID ${id}` });
+  }
+}
+
 module.exports = {
   products,
   getCategories,
@@ -87,4 +100,5 @@ module.exports = {
   editProduct,
   getCategoriesFromId,
   getProductosVendedor,
+  deleteProduct,
 };
