@@ -139,6 +139,56 @@ async function login(email, password) {
   return token;
 }
 
+const tareaServices = require('../services/tarea-services');
+
+async function getDataCoordinator(userId) {
+  try {
+    const coordinador = await getById(userId);
+
+    if (!coordinador) {
+      throw new Error('No se encuentra coordinador con el id proporcionado');
+    }
+
+    console.log(coordinador);
+
+    const tareas = await tareaServices.getByIdOrganizacion(userId);
+
+
+    coordinador.tareas = tareas;
+
+    let totalInscriptos = 0;
+    let totalPuntosOtorgados = 0;
+    const hoy = new Date();
+    const proximasTareas = [];
+
+    // eslint-disable-next-line no-restricted-syntax, guard-for-in
+    for (const tarea of tareas) {
+      const fechaTarea = new Date(tarea.date);
+
+      if (fechaTarea > hoy) {
+        proximasTareas.push(tarea);
+      }
+
+      const inscriptos = tarea.cantInscriptos;
+      // eslint-disable-next-line no-restricted-syntax, guard-for-in, no-plusplus
+      for (let i = 0; i < inscriptos; i++) {
+        totalInscriptos += 1;
+        totalPuntosOtorgados += tarea.points;
+      }
+    }
+
+    return {
+      coordinador,
+      totalInscriptos,
+      totalPuntosOtorgados,
+      proximasTareas,
+    };
+  } catch (error) {
+    console.error('Error en getDataCoordinator:', error.message);
+    throw error;
+  }
+}
+
 module.exports = {
-  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword,
+  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, getDataCoordinator,
 };
