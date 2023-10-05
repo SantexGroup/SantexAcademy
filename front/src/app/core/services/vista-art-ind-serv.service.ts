@@ -23,4 +23,19 @@ export class vistaArtIndServ {
   getImageProduct(imageName: string){
     return this.apiService.get<any>('/images/' + imageName);
   }
+  newAlquiler(
+    idProducto: number,
+    idComprador: string,
+    modoEnvio: boolean,
+    dias: number,
+    formaPago: string
+    ) {
+      const body = {
+        idComprador: idComprador, 
+        modoEnvio: modoEnvio,
+        dias: dias,
+        formaPago: formaPago
+      }
+    return this.apiService.post<any>('/alquiler/new/' + idProducto, body);
+  }
 }

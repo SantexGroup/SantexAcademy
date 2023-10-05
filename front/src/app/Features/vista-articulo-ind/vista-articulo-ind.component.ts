@@ -23,7 +23,7 @@ export class VistaArtIndComponent implements OnInit {
   id: number = 0;
 
   //id del usuario
-  idUsuario: number = 0;
+  idUsuario: string = '';
   nomUSer: string = '';
 
   //Mayúsculas
@@ -146,6 +146,7 @@ export class VistaArtIndComponent implements OnInit {
       let newObject = JSON.parse(infoLocal);
       if (newObject) {
         if (newObject[1].users.id == this.id) {
+
           this.logeadoVendedorProd = true;
         }
       }
@@ -161,6 +162,8 @@ export class VistaArtIndComponent implements OnInit {
     console.log(this.env)
     if (this.env == "envio") {
       this.envBol = true;
+    } else {
+      this.envBol = false;
     }
   }
   capturarDias() {
@@ -170,10 +173,22 @@ export class VistaArtIndComponent implements OnInit {
     this.pago = this.pagoSel;
     if (this.pago == "tarjeta") {
       this.pagoBol = true;
+    } else {
+      this.pagoBol = false;
     }
   }
   //confirmación
   botAlq() {
+      console.log('id Producto:', this.id)
+      console.log('id Usuario:', this.idUsuario);
+      console.log('envio:', this.envBol)
+      console.log('dias:', this.dias)
+      console.log('forma de pago:', this.pago)
+      this.service.newAlquiler(this.id, this.idUsuario, this.envBol, this.dias, this.pago).subscribe(res => {
+        console.log(res);
+      })
+    }
+    /*
     if(confirm("¿Desea pasar a la vista de transacción?")) { 
       const datosAlq = {
         idProd: this.id,
@@ -185,5 +200,5 @@ export class VistaArtIndComponent implements OnInit {
       localStorage.setItem('datosAlq', JSON.stringify(datosAlq));
     }
     //this.router.navigate(['confirmacion-articulo']);
-  }  
-}
+    */
+  }
