@@ -9,5 +9,8 @@ router.get('/getById/:id', cursoController.getCursoById);
 router.post('/createCurso', cursoController.createCurso);
 router.put('/editCurso/:id', cursoController.editCurso);
 router.delete('/deleteCurso/:id', cursoController.deleteCurso);
+//
+router.get('/busquedaCurso/:filtro', )
+
 
 module.exports = router;

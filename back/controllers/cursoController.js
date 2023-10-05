@@ -63,4 +63,17 @@ async function editCurso(req, res) {
     await cursoService.deleteCurso(id);
     return res.status(200).send(`Curso con el ${id} ha sido eliminado exitosamente`);
   }
-module.exports = {getAllCursos,getCursoById, createCurso, editCurso,deleteCurso}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  module.exports = {getAllCursos,getCursoById, createCurso, editCurso,deleteCurso}

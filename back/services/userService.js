@@ -50,4 +50,3 @@ async function deleteUser(id){
 
 module.exports = { crearUsuario, getAll, getById, editUser,deleteUser };
 
-//nombreCompleto,nombreUsuario,fechaNacimiento,genero,correoElectronico,password,
