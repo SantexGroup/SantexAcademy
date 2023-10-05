@@ -15,7 +15,7 @@ app.use('/', authLogin);
 app.use('/', product);
 
 // use=
-app.use('/ping', (req, res) => {
+app.get('/test', (req, res) => {
   res.json({
     response: 'pong!',
   });
