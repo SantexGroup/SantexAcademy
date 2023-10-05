@@ -92,7 +92,7 @@ export class VistaArtIndComponent implements OnInit {
           if (this.respuesta.idTipoProducto == this.listcategorias[i].id) {
             this.catArt = JSON.stringify(this.listcategorias[i].name.charAt(0).toUpperCase() + this.listcategorias[i].name.slice(1));
             this.catArt = this.catArt.slice(1, this.catArt.length-1);
-            console.log("Categorái: " + this.catArt)
+            console.log("Categoría: " + this.catArt);
           }
           if (this.catArt != this.listcategorias[i].name.charAt(0).toUpperCase() + this.listcategorias[i].name.slice(1)) {
             let newList = this.cat;

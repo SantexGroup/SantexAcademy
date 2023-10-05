@@ -75,7 +75,7 @@
     text-decoration: none;
     color:#d68a96;
     font-size: 11px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; /* era una prueba */
 }
 
 #divTitulo a:hover {

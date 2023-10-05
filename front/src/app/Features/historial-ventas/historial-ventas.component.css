@@ -1,19 +1,66 @@
+p, a {
+    font-size: small;
+    margin: 0;
+    padding-left: 5px;
+}
+
+a {
+    color: #d68a96;
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+    color:#bd394d;
+}
+
+img {
+    height: 60px;
+    width: 60px;
+}
+
 #general {
     display: flex;
     justify-content: center;  
     align-items: center;    
     height: 80%;
+    border: 1px solid grey
 }
 
 #recuadro {
     min-height: 70%;
     width: 55%;    
-    background-color: rgb(222, 217, 217);
+    background-color: rgba(230, 230, 230, 0.805);
     border-radius: 15px;
 }
 
 #articulo {
     display: flex;
+    justify-content: space-around;
     margin: 10px;
-    max-height: 50px; /* esto no funciona */
+    padding: 5px;
+    padding-bottom: 8px;
+    height: 70px;
+    border-bottom: 1px solid #d68a96;
 }
+
+#datosVen {
+    width: 20%;
+}
+
+#descripcion {
+    width: 30%;
+    background-color: white;
+    border-radius: 5px;
+}
+
+#desArt {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#acciones {
+    display:grid;
+}
+
+
