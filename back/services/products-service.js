@@ -110,12 +110,13 @@ async function editArticle(id, idUsuario, idTipoProducto, nombre, detalles, prec
 // productos por vendedor
 async function getProductosPorVendedor(id) {
   const productosVendedor = await Products.findAll({
-
     where: {
       idUsuario: id,
     },
     include: [{
       model: User,
+    }, {
+      model: Images,
     }],
   });
 
