@@ -79,13 +79,14 @@ carritocontroller.getCarrito = async (req, res) => {
   try {
     const carrito = await Carrito.findAll({
       where: {
-        idUser: req.params.id,
+        userId: req.params.id,
       },
       include: [Products],
     });
     res.status(200).json(carrito);
   } catch (error) {
     res.status(400).json({ error: error.message });
+    console.log(error)
   }
 };
 /**
