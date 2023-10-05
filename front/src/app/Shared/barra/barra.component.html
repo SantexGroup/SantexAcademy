@@ -33,7 +33,8 @@
         <button class="btn btn-outline-success" type="submit">Buscar</button>
       </form>
       <div id="espacioApp"></div>
-      <app-login> </app-login>
+      <!-- <app-login> </app-login> -->
+      <app-barra-lateral [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-barra-lateral>
     </div>
   </div> 
 </nav>
