@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog';
 
 interface Generos {
-  generos: string;
+  gender: string;
 }
 
 @Component({
@@ -17,10 +17,10 @@ export class FormularioRegistroComponent implements OnInit {
 
   generoControl = new FormControl<Generos | null>(null, Validators.required);
   selectFormControl = new FormControl('', Validators.required);
-  generos: Generos[] = [
+  gender: Generos[] = [
 
-    {generos: 'Masculino'},
-    {generos: 'Femenino'},
+    {gender: 'Masculino'},
+    {gender: 'Femenino'},
   ];
 
 
@@ -31,11 +31,11 @@ export class FormularioRegistroComponent implements OnInit {
   ngOnInit(): void {
     this.myForm = this.formBuilder.group({
       nombreCompleto: ['', [Validators.required]],
-      usuario: ['', [Validators.required]],
+      user: ['', [Validators.required]],
       password: ['', [Validators.required]],
       confirmarPassword: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      generos: ['', [Validators.required]],
+      gender: ['', [Validators.required]],
 
     }, { validator: this.checkPasswords });
 

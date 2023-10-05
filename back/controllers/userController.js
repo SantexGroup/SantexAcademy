@@ -1,4 +1,6 @@
 const userService = require('../services/userService');
+const { User } = require('../models');
+
 
 async function loginUser(req, res) {
   try {
@@ -17,8 +19,12 @@ async function createUser(req, res) {
   // Crear un usuario que no existia
   try {
     const nuevoUsuario = req.body;
+    const {nombreUsuario} = req.body.nombreUsuario
     // Verificar que si existe un usuario con igual nombre de usuario
-
+    let user = await User.findOne(nombreUsuario) || null;
+    if (user !== null){
+      return res.status(205).json({ msg: 'Usuario ya existente'})
+    }
     // Si no existe un usuario
     const usuarioCreado = await userService.crearUsuario(nuevoUsuario);
     return res.status(201).json(usuarioCreado);

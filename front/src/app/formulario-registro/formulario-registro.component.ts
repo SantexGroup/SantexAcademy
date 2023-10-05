@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { HttpClient } from '@angular/common/http';
 
 interface Generos {
   generos: string;
@@ -26,7 +27,7 @@ export class FormularioRegistroComponent implements OnInit {
 
   myForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, public dialog: MatDialog) {}
+  constructor(private http: HttpClient, private formBuilder: FormBuilder, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.myForm = this.formBuilder.group({
@@ -39,6 +40,7 @@ export class FormularioRegistroComponent implements OnInit {
 
     }, { validator: this.checkPasswords });
 
+    this.http.post('http://localhost:4001/users/createUser', {  }).subscribe();
 
   }
 
@@ -47,10 +49,7 @@ export class FormularioRegistroComponent implements OnInit {
     const confirmPassword = group.get('confirmarPassword')?.value;
   
     return password === confirmPassword ? null : { notMatching: true };
-  }
-  
-
-  
+  } 
 
   onSubmit() {
   }
