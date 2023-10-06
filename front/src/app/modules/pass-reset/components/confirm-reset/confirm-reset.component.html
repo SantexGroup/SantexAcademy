@@ -1,0 +1,63 @@
+<div class="wrapper">
+    <div class="body">
+        <div class="form-container">
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="form-group text-center">
+                    <div class="logo-container">
+                        <img class="image-logo mx-auto d-block"
+                            src="../../../../../assets/imagen/IncubadoraNOC_logo-noBackground.png" alt="foto-logo"
+                            routerLink="/">
+                    </div>
+                </div>
+            </div>
+            <h1 class="title-login">Ingrese nueva Contraseña</h1>
+            <form #loginForm="ngForm" (ngSubmit)="confirmPassword(loginForm)">
+                <div class="form-group">
+                    <div class="input-container">
+                        <label for="password"></label>
+                        <input [attr.type]="showPassword" id="password" name="password" [(ngModel)]="password" required
+                            minlength="8" placeholder="Nueva Contraseña" />
+                        <h6 class="icon" (click)="togglePasswordVisibility()">
+                            <img *ngIf="showPassword === 'password'" class="icon"
+                                src="../../../../../assets/icons/eye.svg" alt="eye-slash" />
+                            <img *ngIf="showPassword !== 'password'" class="icon"
+                                src="../../../../../assets/icons/eye-slash.svg" alt="eye" />
+                        </h6>
+                    </div>
+                    <div *ngIf="formSubmitted && loginForm.controls.password.invalid" class="error-text">
+                        <div *ngIf="loginForm.controls.password?.errors?.required">Ingrese la contraseña.</div>
+                        <div *ngIf="loginForm.controls.password?.errors?.minlength">Largo minimo de 8 caracteres</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-container">
+                        <label for="password2"></label>
+                        <input [attr.type]="showPassword" id="password2" name="password2" [(ngModel)]="password2"
+                            required minlength="8" placeholder="Repita la nueva Contraseña" />
+                        <h6 class="icon" (click)="togglePasswordVisibility()">
+                            <img *ngIf="showPassword === 'password'" class="icon"
+                                src="../../../../../assets/icons/eye.svg" alt="eye-slash" />
+                            <img *ngIf="showPassword !== 'password'" class="icon"
+                                src="../../../../../assets/icons/eye-slash.svg" alt="eye" />
+                        </h6>
+                    </div>
+                    <div *ngIf="formSubmitted && loginForm.controls.password2.invalid" class="error-text">
+                        <div *ngIf="loginForm.controls.password2?.errors?.required">Repita la contraseña.</div>
+                        <div *ngIf="loginForm.controls.password2?.errors?.minlength">Largo minimo de 8 caracteres</div>
+                    </div>
+                </div>
+
+                <div *ngIf="loginForm.controls.password2?.touched && (loginForm.controls.password2.value !== loginForm.controls.password.value)"
+                    class="error-text">
+                    Las contraseñas tienen que ser iguales
+                </div>
+
+
+                <button type="submit" class="btn-custom" (click)="confirmPassword(loginForm)">Resetear
+                    Contraseña</button>
+
+            </form>
+        </div>
+    </div>
+</div>
