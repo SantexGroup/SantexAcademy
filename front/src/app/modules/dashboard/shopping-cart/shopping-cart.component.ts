@@ -11,31 +11,34 @@ import { Observable, map } from 'rxjs';
 
 export class ShoppingCartComponent implements OnInit {
   
-  productList: Product[] | undefined = [];
-
-  total$: Observable<number>;
+  productList: Product[] = new Array<Product>();
+  p!:Product 
+  
   constructor(private shoppingCartService: ShoppingCartService) { 
-    this.total$ = this.shoppingCartService.cart$
-      .pipe(
-        map(products => products.length)
-      );
+    
   }
 
   // Método para calcular el total de los precios
-  get totalPrice(): number {
-    return this.shoppingCartService.totalPrice();
-  }
+  totalPrice: number = 0;
   
   // Función para vaciar el carrito
   emptyCart(): void {
-    this.shoppingCartService.clearCart();
+    this.shoppingCartService.clearCart().subscribe();
+    this.productList = [];
+
   }
 
 
   ngOnInit(): void {
-    this.shoppingCartService.cart$.subscribe(items => {
-      this.productList = items;
-    });
+    this.shoppingCartService.obtenerCarrito("1").subscribe(data =>
+      {
+       let lista = data[0].Products;
+       lista.forEach((e: any) => {
+        this.totalPrice = this.totalPrice + e.price
+         this.p = e
+         this.productList.push(this.p);
+       })
+     })     
   }
 
 }

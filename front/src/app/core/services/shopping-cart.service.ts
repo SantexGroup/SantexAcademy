@@ -28,7 +28,7 @@ export class ShoppingCartService {
     let url = this.ProductUrl + "add/" + 1 //1 hace referencia a user id
       return this._http.put(url, product).subscribe()
   }
-  obtenerCarrito(id : string){
+  obtenerCarrito(id : string): Observable<any>{ // id del usuario
     return this._http.get(this.ProductUrl+id);
   }
 
@@ -42,9 +42,9 @@ export class ShoppingCartService {
   }
 
   // Función para vaciar el carrito
-  clearCart() {
-    this.productList = [];
-    this.cart.next(this.productList);
+  clearCart() {//se borra el carrito hay que enviar usuario
+    let id = "1"
+    return this._http.delete(this.ProductUrl+id);
   }
 
 }

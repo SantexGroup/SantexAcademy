@@ -1,20 +1,19 @@
-<div class="empty" *ngIf="(total$ | async) === 0">
+<div class="empty" *ngIf="productList.length  === 0">
     <span>El Carrito esta Vacio...</span>
   </div>
   
-  <main class="main" *ngIf="(total$ | async) !== 0">
+  <main class="main" *ngIf="productList.length !== 0">
     <h2 class="h2">Carrito de Compras</h2>
     <div class="shopping-cart">
       <app-card *ngFor="let product of productList" [product]="product"></app-card>
     </div>
-    
     <button type="submit" class="button empty-cart" (click)="emptyCart()">Vaciar Carrito</button>
     
     <section class="summary">
       <h2 class="h2">Resumen de Compras</h2>
       <div class="price-shopping">
         <div class="summary-item">
-          <span class="product-cost">Productos ({{ total$ | async }})</span>
+          <span class="product-cost">Productos ({{productList.length}})</span>
           <span class="product-cost">$ {{ totalPrice }}</span>
         </div>
         <div class="summary-item">
