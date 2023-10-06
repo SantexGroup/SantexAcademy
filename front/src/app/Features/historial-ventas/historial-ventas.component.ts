@@ -46,7 +46,7 @@ export class HistorialVentasComponent implements OnInit {
     }else{
       alert("No está logueado")
     }
-    //nombre vendedor
+    //traer y reemplazar nombre vendedor
     this.service.infoVendedor(this.idVen).subscribe(resVen => {
       this.modelo.nomVen = JSON.stringify(resVen.firstName.charAt(0).toUpperCase() + resVen.firstName.slice(1) + ' ' + (resVen.lastName.charAt(0).toUpperCase() + resVen.lastName.slice(1)));
       this.modelo.nomVen = this.modelo.nomVen.slice(1, this.modelo.nomVen.length-1);
@@ -54,7 +54,7 @@ export class HistorialVentasComponent implements OnInit {
     //traer lista de categorias
     this.service.getCategories().subscribe(resCat => {this.listcategorias = resCat; 
     });
-    //traer articulos, imaArt, nomArt, desArt, preArt e idArt
+    //traer articulos y reemplazar idArt, imaArt, nomArt, desArt, preArt y envArt
     this.service.articulosVendedor(this.idVen).subscribe(res => {
       this.respuesta = res;
       if (JSON.stringify(res.message) == '"Usuario sin productos publicados"') {
@@ -71,6 +71,7 @@ export class HistorialVentasComponent implements OnInit {
         }else {
           this.modelo.envArt = 'Retiro';
         }  
+        //reemplazar categoria
         if (this.modelo.catArt == '') {
           for (let j=0; j < this.listcategorias.length; j++) {
             if (this.respuesta[i].idTipoProducto+1 == this.listcategorias[j].id) { //revisar porque en la DB hay 4 valores para idTipoProducto
@@ -80,6 +81,7 @@ export class HistorialVentasComponent implements OnInit {
             }
           }
         }
+        //pushear articulo individual en array de articulos
         this.articulos.push({ ...this.modelo });
         this.modelo.catArt = '';
       }  
