@@ -14,6 +14,9 @@ export class HisVenService {
     return this.service.get<any>('/users/' + id)
   }
   getCategories() {
-    return this.service.get<any>("/productos/categories")
+    return this.service.get<any>('/productos/categories')
+  }
+  eliminarArticulo(id: number) {
+    return this.service.delete<any>('productos/eliminar-articulo/' + id)
   }
 }

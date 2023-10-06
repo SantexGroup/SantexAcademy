@@ -102,10 +102,17 @@ export class HistorialVentasComponent implements OnInit {
   }
   eliminar(idProd: number) {
     if(confirm("¿Desea eliminar el artículo? Esta acción no se puede deshacer")) {
-      localStorage.setItem('idProd', JSON.stringify(this.modelo.idArt));
-      // aca iria el servicio
-      alert("Artículo borrado con éxito");
-      this.router.navigate(['historial-ventas']);
+      console.log("Id Prod: " + idProd)
+      this.service.eliminarArticulo(idProd).subscribe(resEli => {
+        console.log("Res eli: " + resEli)
+        if (resEli) {
+          console.log("Res eli: " + resEli)
+          alert("Artículo borrado con éxito");
+          this.router.navigate(['historial-ventas']);
+        }else{
+          alert("No se ha podido eliminar su artículo");
+        }
+      })
     }
   }
 }
