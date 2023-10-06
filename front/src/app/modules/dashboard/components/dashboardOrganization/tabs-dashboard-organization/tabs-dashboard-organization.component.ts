@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DashboardServicesService } from '../../../services/dashboard-services.service';
+import { OrganizationService } from '../../../services/organization.service';
 import { Store } from '@ngrx/store';
 import { selectToken } from 'src/app/core/auth.selectors';
 import { Router } from '@angular/router';
@@ -31,7 +31,7 @@ export class TabsDashboardOrganizationComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private dashService: DashboardServicesService,
+    private orgService: OrganizationService,
     private router: Router,
     private store: Store
   ) {
@@ -88,7 +88,7 @@ export class TabsDashboardOrganizationComponent {
       if (userData) {
         this.store.select(selectToken).subscribe((token) => {
           if (token) {
-            this.dashService
+            this.orgService
               .updateProfileOrganization(userData, token)
               .subscribe({
                 next: (res) => {
@@ -123,7 +123,7 @@ export class TabsDashboardOrganizationComponent {
   deleteProfile() {
     this.store.select(selectToken).subscribe((token) => {
       if (token) {
-        this.dashService.deleteProfileOrganization(token).subscribe({
+        this.orgService.deleteProfileOrganization(token).subscribe({
           next: (res) => {
             if (res) {
               this.store;

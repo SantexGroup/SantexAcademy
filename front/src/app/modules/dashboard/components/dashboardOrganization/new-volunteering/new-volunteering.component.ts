@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { DashboardServicesService } from '../../../services/dashboard-services.service';
+import { OrganizationService } from '../../../services/organization.service';
 import { selectToken } from 'src/app/core/auth.selectors';
 
 @Component({
@@ -13,10 +13,15 @@ export class NewVolunteeringComponent implements OnInit {
   @Input() volunteerDataEdit: any;
   @Output() declineNewVolunteering = new EventEmitter();
   newVolunteering: FormGroup;
+
+  onModalStatus: boolean = false;
+  statusModal: string = '';
+  messageModalStatus: string = '';
+  textBtnModalStatus: string = '';
   constructor(
     private fb: FormBuilder,
     private store: Store,
-    private dashServices: DashboardServicesService
+    private orgServices: OrganizationService
   ) {
     this.newVolunteering = this.fb.group({
       name: ['', Validators.required],
@@ -60,7 +65,7 @@ export class NewVolunteeringComponent implements OnInit {
       this.store.select(selectToken).subscribe((token) => {
         if (token) {
           if (this.volunteerDataEdit) {
-            this.dashServices
+            this.orgServices
               .updateVolunteeringByIdOrg(
                 token,
                 formData,
@@ -75,13 +80,24 @@ export class NewVolunteeringComponent implements OnInit {
                 },
               });
           } else {
-            this.dashServices.addVolunteering(formData, token).subscribe({
+            this.orgServices.addVolunteering(formData, token).subscribe({
               next: (res) => {
-                console.log(res);
+                this.onModalStatus = true;
+                this.statusModal = 'success';
+                this.messageModalStatus =
+                  'Tu voluntariado se creo exitosamente';
                 this.newVolunteering.reset();
+                setTimeout(() => {
+                  this.onModalStatus = false;
+                }, 2000);
               },
               error: (err) => {
-                console.log(err);
+                this.onModalStatus = true;
+                this.statusModal = 'failed';
+                this.messageModalStatus =
+                  'Ocurrio un error al crear tu voluntariado, por favor, intenta mas tarde.';
+                this.textBtnModalStatus = 'Aceptar';
+                this.newVolunteering.reset();
               },
             });
           }

@@ -6,18 +6,18 @@ const {
   userController,
   usuarioEnVoluntariadoController,
   productController,
-  canjeController
+  canjeController,
 } = require("../controllers");
 
-const {
+const { verifyToken, isUser } = require("../middleware/authMiddleware");
+
+userRouter.get("/products", productController.getAllProducts);
+userRouter.get(
+  "/products/:id",
   verifyToken,
   isUser,
-} = require("../middleware/authMiddleware");
-
-
-userRouter.get('/products', productController.getAllProducts);
-userRouter.get('/products/:id', verifyToken, isUser, productController.getProduct);
-
+  productController.getProduct
+);
 
 userRouter.get("/me/profile", verifyToken, isUser, userController.getMyUser);
 userRouter.put("/me/update", verifyToken, isUser, userController.updateMyUser);
@@ -41,32 +41,32 @@ userRouter.post(
   usuarioEnVoluntariadoController.join
 );
 
-userRouter.post("/testimonials/create", verifyToken, isUser, userController.createTestimonialsById);
+userRouter.post(
+  "/testimonials/create",
+  verifyToken,
+  isUser,
+  userController.createTestimonialsById
+);
 
 userRouter.get("/testimonials", userController.getAllTestimonials);
 
 userRouter.get(
-  "/postulate",
+  "/me/postulations",
   verifyToken,
   isUser,
   usuarioEnVoluntariadoController.getJoins
 );
 
 userRouter.put(
-  "/postulate/update",
-  verifyToken,
-  isUser,
+  "/postulation/:idPostulation",
   usuarioEnVoluntariadoController.updateStatusById
 );
 
 userRouter.delete(
-  "/postulate/delete",
-  verifyToken,
-  isUser,
+  "/postulation/:idPostulation",
   usuarioEnVoluntariadoController.deleteJoinById
 );
 
-userRouter.post("/exchange", verifyToken, isUser , canjeController.createOrder)
-
+userRouter.post("/exchange", verifyToken, isUser, canjeController.createOrder);
 
 module.exports = userRouter;

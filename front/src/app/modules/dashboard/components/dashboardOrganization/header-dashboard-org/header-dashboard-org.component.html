@@ -10,7 +10,7 @@
     class="headerOrg relative w-screen h-[100px] flex justify-center items-center"
   >
     <figure
-      class="relative w-[50px] aspect-square rounded-full border-2 border-white sm:w-[80px] shadow-md shadow-dimGray"
+      class="relative w-[200px] h-[100px] bg-[#d4d4d4] border-2 border-white rounded-md shadow-lg shadow-dimGray"
     >
       <img
         [src]="
@@ -19,11 +19,11 @@
             : '/assets/imgs/not-found.webp'
         "
         alt="avatar"
-        class="w-full h-full object-cover rounded-full"
+        class="w-full h-full object-contain p-2"
       />
       <label
         for="file"
-        class="absolute bottom-0 right-0 text-xl px-1 bg-DarkGray rounded-full shadow-md shadow-darkSlateBlue cursor-pointer"
+        class="absolute bottom-0 right-[-.4em] grid place-items-center text-xl px-1 py-1 bg-DarkGray rounded-full shadow-md shadow-darkSlateBlue cursor-pointer"
       >
         <input
           type="file"

@@ -41,10 +41,9 @@ const updateVoluntariadoById = async (newData, idOrg, idVol) => {
   return updatedVolunteering;
 };
 
-const deleteVoluntariadoById = async (idVol, idOrg) => {
+const deleteVoluntariadoById = async (id) => {
   const deletedVoluntariado = await voluntariadoProvider.deleteVoluntariadoById(
-    idVol,
-    idOrg
+    id
   );
   return deletedVoluntariado;
 };

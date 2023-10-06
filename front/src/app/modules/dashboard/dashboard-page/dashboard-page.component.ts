@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardServicesService } from '../services/dashboard-services.service';
+import { VolunteerService } from '../services/volunteer.service';
+import { OrganizationService } from '../services/organization.service';
+
 import { selectToken, selectUserType } from 'src/app/core/auth.selectors';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
@@ -12,7 +14,9 @@ import { Router } from '@angular/router';
 export class DashboardPageComponent implements OnInit {
   constructor(
     private store: Store,
-    private dashService: DashboardServicesService,
+    private volService: VolunteerService,
+    private orgService: OrganizationService,
+
     private router: Router
   ) {}
 
@@ -24,7 +28,7 @@ export class DashboardPageComponent implements OnInit {
       if (token) {
         this.store.select(selectUserType).subscribe((userType) => {
           if (userType === 'vol') {
-            this.dashService.getProfileVolunteer(token).subscribe({
+            this.volService.getProfileVolunteer(token).subscribe({
               next: (response) => {
                 this.dataUser = response;
               },
@@ -34,7 +38,7 @@ export class DashboardPageComponent implements OnInit {
               complete: () => {},
             });
           } else if (userType === 'org') {
-            this.dashService.getProfileOrganization(token).subscribe({
+            this.orgService.getProfileOrganization(token).subscribe({
               next: (response) => {
                 this.dataOrg = response;
               },

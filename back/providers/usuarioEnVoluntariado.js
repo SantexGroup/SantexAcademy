@@ -1,4 +1,5 @@
 const { UsuarioEnVoluntariado, Voluntariado, Usuario } = require("../models");
+const { post } = require("../routes/voluntariado");
 
 // Proveedor de Datos para crear la relación usuario-voluntariado
 const join = async (userId, organizationId, idVolunteering) => {
@@ -29,7 +30,7 @@ const join = async (userId, organizationId, idVolunteering) => {
 const getJoins = async (userId) => {
   try {
     const joins = await UsuarioEnVoluntariado.findAll({
-      where: { userId },
+      where: { userId, deletedAt: null },
       include: [{ model: Voluntariado, as: "voluntariado" }],
       attributes: { exclude: ["deletedAt"] },
     });
@@ -96,24 +97,25 @@ const accreditationReward = async (idOrg) => {
   }
 };
 
-const updateStatusById = async (postulateId, status) => {
+const updateStatusById = async (idPostulation, status) => {
   try {
-    const postulate = await UsuarioEnVoluntariado.findByPk(postulateId);
-
-    if (!postulate) {
-      throw new Error("The postulate does not exist.");
-    }
-
-    await postulate.update({ status });
+    const postulationUpdate = await UsuarioEnVoluntariado.update(
+      { status },
+      {
+        where: { idVolunteering: idPostulation },
+      }
+    );
+    if (!postulationUpdate) return;
+    return postulationUpdate;
   } catch (err) {
     console.error(err);
     throw err;
   }
 };
 
-const deleteJoinById = async (postulateId) => {
+const deleteJoinById = async (postulationId) => {
   try {
-    const postulate = await UsuarioEnVoluntariado.findByPk(postulateId);
+    const postulate = await UsuarioEnVoluntariado.findByPk(postulationId);
 
     if (!postulate) {
       throw new Error("The postulate does not exist.");
@@ -127,10 +129,8 @@ const deleteJoinById = async (postulateId) => {
 
     await postulate.update(
       { deletedAt: new Date() },
-      { where: { postulateId } }
+      { where: { postulationId } }
     );
-
-    await postulate.increment("spots");
   } catch (err) {
     console.error(err);
     throw err;

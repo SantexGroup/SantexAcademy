@@ -7,6 +7,7 @@ import { VolunteersComponent } from './pages/volunteers/volunteers.component';
 import { OrganizationDetailsComponent } from './pages/organization-details/organization-details.component';
 import { authGuard } from './guards/auth.guard';
 import { VolunterIdComponent } from './pages/volunter-id/volunter-id.component';
+import { ExchangeComponent } from './pages/exchange/exchange.component';
 
 const routes: Routes = [
   { path: '', title: 'VolunTime - Inicio', component: HomePageComponent },
@@ -36,6 +37,11 @@ const routes: Routes = [
     path: 'organizacion',
     title: 'VolunTime',
     component: OrganizationDetailsComponent,
+  },
+  {
+    path: 'exchange',
+    title: 'VolunTime',
+    component: ExchangeComponent,
   },
 
   {
