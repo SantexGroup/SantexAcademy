@@ -3,6 +3,7 @@ import { ApiService } from '../http/api.service';
 import { Observable } from 'rxjs';
 import { Tarea } from '../interfaces/tarea';
 import { Voluntario } from '../interfaces/voluntario';
+import { ResumenVoluntario } from '../interfaces/resumenVoluntario';
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +40,7 @@ export class TareaService {
     return this.apiService.put('/tarea/cambiar-estado/'+id, {nuevoEstado});
   }
 
-  inscribirVoluntario(idTarea:number, idVoluntario:number):Observable<Voluntario>{
+  inscribirVoluntario(idTarea:number, idVoluntario:number):Observable<ResumenVoluntario>{
 
     const parametros = {
       idVolunteer:idVoluntario,
@@ -49,7 +50,7 @@ export class TareaService {
 
   }
 
-  desinscribirVoluntario(idTarea:number, idVoluntario:number):Observable<Voluntario>{
+  desinscribirVoluntario(idTarea:number, idVoluntario:number):Observable<ResumenVoluntario>{
 
     const parametros = {
       idVolunteer:idVoluntario,
