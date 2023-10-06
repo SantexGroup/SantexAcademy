@@ -2,7 +2,6 @@
 #inicial {
     margin-top: 1%;
 }
-
 #general {
   display: flex;
   max-width: 80%;
@@ -11,8 +10,8 @@
   background-color: rgb(226, 226, 226);
   border: 1px solid #ccc;
   border-radius: 15px;
+  cursor: default;
 }
-
 /* imagen */
 #divImagen {
     display: flex;
@@ -23,31 +22,25 @@
     background-color: white;
     border-radius: 10px;
 }
-
 #fondoImagen {
     display: flex;
     justify-content: center;
     max-width: 70%;
 }
-
 #imagen {
-    
     max-width: 70%;
     border: 1px solid grey;
     border-radius: 5px;
 }
-
 /* datos */
 #datos {
     width: 45%;
     margin-left: 2%;
 }
-
 #datos label {
   display: flex;
   justify-content: right;
 }
-
 #datos p {
     display: block;
     justify-content: right;
@@ -56,7 +49,6 @@
     padding: 0;
     font-weight: bold;
 }
-
 #datos a {
     display: block;
     justify-content: right;
@@ -65,41 +57,34 @@
     padding: 0;
     font-weight: bold;
 }
-
 /* título */
 #divTitulo {
     margin: 1%;
 }
-
 #divTitulo a {
     text-decoration: none;
     color:#d68a96;
     font-size: 11px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; /* era una prueba */
 }
-
 #divTitulo a:hover {
-    color:blueviolet
+    color:blueviolet;
 }
-
 #nombreProd {
     display: flex;
     width: max-content;
     font-size: 35px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
 /* descripción */
 #divDesc {
     height: 30%;
     padding: 1%;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;  
 }
-
 #descTitulo {
     margin-left: 1%;
 }
-
 #divDescProd {
     height: 70%;
     padding-top: 1%;
@@ -111,16 +96,13 @@
     border-radius: 4px;
     border: 1px solid lightgrey;  
 }
-
 /* seleccionables */
 #divSeleccionables {
     padding: 1%;
 }
-
 #seleccionables {
     width: 40%;
 }
-
 select {
   width: 100%;
   padding: 5%;
@@ -128,22 +110,18 @@ select {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
 select:hover {
     cursor: pointer;
     border: 2px solid;
 }
-
 select:focus {
     border: 2px solid;
 }
-
 /* botón */
 #divBotonYPrecio {
     display: flex;
     align-items: center;
 }
-
 .boton {
     padding: 10px 20px; /* tengo dudas con esto */
     margin-top: 10%;
@@ -152,17 +130,14 @@ select:focus {
     background-color: #d68a96;
     color: white;
 }
-
 .boton:hover {
     cursor: pointer;
     background-color: #c95c6d;
     transition: background-color 0.3s, color 0.3s;
 }
-
 #precio {
     color:darkslateblue;
 }
-
 #relleno {
     width: 80px;
 }

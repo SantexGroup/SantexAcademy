@@ -22,6 +22,9 @@ router.post('/cargar-producto', productsController.chargeProduct);
 // modificar articulo
 router.put('/modificar-articulo/:id', productsController.editProduct);
 
+// eliminar articulo
+router.delete('/eliminar-articulo/:id', productsController.deleteProduct);
+
 // productos por vendedor
 router.get('/productos-por-vendedor/:id', productsController.getProductosVendedor);
 
