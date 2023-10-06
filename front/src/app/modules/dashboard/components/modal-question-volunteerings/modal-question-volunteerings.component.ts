@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { DashboardServicesService } from '../../services/dashboard-services.service';
+import { OrganizationService } from '../../services/organization.service';
 import { selectToken } from 'src/app/core/auth.selectors';
 
 @Component({
@@ -9,10 +9,7 @@ import { selectToken } from 'src/app/core/auth.selectors';
   styleUrls: ['./modal-question-volunteerings.component.css'],
 })
 export class ModalQuestionVolunteeringsComponent {
-  constructor(
-    private store: Store,
-    private dashServices: DashboardServicesService
-  ) {}
+  constructor(private store: Store, private orgServices: OrganizationService) {}
   @Output() cancelDeletion = new EventEmitter();
   @Input() nameVolunteeringDelete: string = '';
   @Input() idVolunteeringDelete: string = '';
@@ -20,7 +17,7 @@ export class ModalQuestionVolunteeringsComponent {
   handdleDeleteVolunteering() {
     this.store.select(selectToken).subscribe((token) => {
       if (token) {
-        this.dashServices
+        this.orgServices
           .deleteVolunteeringByIdOrg(token, this.idVolunteeringDelete)
           .subscribe({
             next: (res) => {

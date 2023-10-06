@@ -4,17 +4,16 @@ const { usuarioEnVoluntariadoService } = require("../services");
 const join = async (req, res) => {
   try {
     const userId = req.userId;
-    const organizationId  = req.params.idOrg;
-    const idVolunteering  = req.params.idVol;
+    const organizationId = req.params.idOrg;
+    const idVolunteering = req.params.idVol;
 
-    const result = await usuarioEnVoluntariadoService.join(
+    const postulation = await usuarioEnVoluntariadoService.join(
       userId,
       organizationId,
       idVolunteering
     );
-    res.status(201).json({ action: "join", message: result });
+    res.status(201).json({ action: "join", postulation });
   } catch (err) {
-    console.error(err);
     res.status(500).json({ action: "join", error: "Internal server error." });
   }
 };
@@ -22,10 +21,11 @@ const join = async (req, res) => {
 const getJoins = async (req, res) => {
   try {
     const userId = req.userId;
-    const result = await usuarioEnVoluntariadoService.getJoins(userId);
-    res.status(200).json({ action: "getJoins", message: result });
+    const allPostulationsUser = await usuarioEnVoluntariadoService.getJoins(
+      userId
+    );
+    res.status(200).json(allPostulationsUser);
   } catch (err) {
-    console.error(err);
     res
       .status(500)
       .json({ action: "getJoins", error: "Internal server error." });
@@ -38,12 +38,10 @@ const getCompletedPostulation = async (req, res) => {
     const volunteerings =
       await usuarioEnVoluntariadoService.getCompletedPostulation(orgId);
     if (!volunteerings) {
-      res
-        .status(404)
-        .json({
-          action: "getCompletedPostulation",
-          error: "Voluntariados not found.",
-        });
+      res.status(404).json({
+        action: "getCompletedPostulation",
+        error: "Voluntariados not found.",
+      });
     } else {
       res.json(volunteerings);
     }
@@ -56,12 +54,14 @@ const getCompletedPostulation = async (req, res) => {
 
 const updateStatusById = async (req, res) => {
   try {
-    const { postulateId, status } = req.body;
-    const result = await usuarioEnVoluntariadoService.updateStatusById(
-      postulateId,
-      status
-    );
-    res.status(200).json({ action: "updateStatusById", message: result });
+    const postulationUpdate =
+      await usuarioEnVoluntariadoService.updateStatusById(
+        req.body.status,
+        req.params.idPostulation
+      );
+    res
+      .status(200)
+      .json({ action: "updateStatusPostulation", postulationUpdate });
   } catch (err) {
     console.error(err);
     res
@@ -69,7 +69,6 @@ const updateStatusById = async (req, res) => {
       .json({ action: "updateStatusById", error: "Internal server error." });
   }
 };
-
 const accreditationReward = async (req, res) => {
   try {
     const idOrg = req.orgId;
@@ -84,9 +83,8 @@ const accreditationReward = async (req, res) => {
 
 const deleteJoinById = async (req, res) => {
   try {
-    const { postulateId } = req.body;
     const result = await usuarioEnVoluntariadoService.deleteJoinById(
-      postulateId
+      req.params.idPostulation
     );
     res.status(200).json({ action: "deleteJoinById", message: result });
   } catch (err) {

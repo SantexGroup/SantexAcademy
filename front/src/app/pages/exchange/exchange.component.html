@@ -1,0 +1,42 @@
+<div class="exchange-container w-full mt-[96px] m:mt-[116px] lg:mt-0">
+
+  <div class="content-title flex justify-center w-full text-white mt-0">
+    <p class="title z-100">Catálogo de Canjes</p>
+  </div>
+  <div class="content w-full h-auto bg-[#d9d4e6] ">
+    <p class="rewards font-bold my-8 mx-5">Recompensas por tu compromiso</p>
+    <div class="cards inline-flex flex-wrap justify-center mb-8" [ngClass]="screenSize">
+      <div class="card flex flex-col items-center m-2 rounded-lg bg-white shadow"
+        *ngFor="let producto of productosVisibles">
+        <div class="image">
+          <img [src]="producto.imagen" alt="Producto" class="h-full">
+        </div>
+        <div class="detail flex flex-col justify-center items-center">
+          <p class="font-semibold">{{ producto.nombre }}</p>
+          <p class="text-deepPink font-medium">{{ producto.puntos }} puntos</p>
+        </div>
+        <button class="btn-exchange bg-darkSlateBlue p-1 rounded text-white">Canjear</button>
+      </div>
+    </div>
+
+    <div class="w-full mb-4 flex justify-center items-center ">
+      <div class="pagination flex mx-3">
+        <button (click)="paginaActual = paginaActual - 1" [disabled]="paginaActual === 1" class="page-navigation-button">
+          <i class="bx bx-chevron-left  font-medium"></i>
+        </button>
+      <ul class="page-numbers flex">
+        <li *ngFor="let numero of numerosDePagina" [class.active]="numero === paginaActual" (click)="paginaActual = numero"
+          [class.disabled]="paginaActual === 1 || paginaActual === numerosDePagina[numerosDePagina.length - 1]"
+          class="m-3 cursor-pointer font-medium">
+          {{ numero }}
+        </li>
+      </ul>
+
+      <button (click)="paginaActual = paginaActual + 1"
+        [disabled]="paginaActual === numerosDePagina[numerosDePagina.length - 1]" class="page-navigation-button">
+        <i class="bx bx-chevron-right text-xl font-medium"></i>
+      </button>
+      </div>
+    </div>
+  </div>
+</div>

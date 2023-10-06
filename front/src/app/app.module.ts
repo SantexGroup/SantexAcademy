@@ -32,6 +32,9 @@ import { StoreModule, ActionReducer } from '@ngrx/store';
 import { authReducer } from './core/auth.reducer';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { ModalAplicationComponent } from './components/modal-aplication/modal-aplication.component';
+import { ExchangeComponent } from './pages/exchange/exchange.component';
+import { ModalAfterApplicationComponent } from './components/modal-after-application/modal-after-application.component';
+
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
@@ -51,6 +54,8 @@ export function localStorageSyncReducer(
     OrganizationDetailsComponent,
     VolunterIdComponent,
     ModalAplicationComponent,
+    ExchangeComponent,
+    ModalAfterApplicationComponent,
   ],
   imports: [
     BrowserModule,

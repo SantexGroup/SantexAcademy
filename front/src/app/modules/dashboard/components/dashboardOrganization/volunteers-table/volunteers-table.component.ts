@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectToken } from 'src/app/core/auth.selectors';
-import { DashboardServicesService } from '../../../services/dashboard-services.service';
+import { OrganizationService } from '../../../services/organization.service';
 import { volunteering } from '../../../models/volunteerings.model';
 
 @Component({
@@ -16,10 +16,7 @@ export class VolunteersTableComponent implements OnInit {
   nameVolunteeringDelete: string = '';
   idVolunteeringDelete: string = '';
   onModalQuestion: boolean = false;
-  constructor(
-    private store: Store,
-    private dashServices: DashboardServicesService
-  ) {}
+  constructor(private store: Store, private orgServices: OrganizationService) {}
 
   ngOnInit(): void {
     this.getAllMeVolunteerings();
@@ -28,7 +25,7 @@ export class VolunteersTableComponent implements OnInit {
   getAllMeVolunteerings() {
     this.store.select(selectToken).subscribe((token) => {
       if (token) {
-        this.dashServices.volunteeringByIdOrg(token).subscribe({
+        this.orgServices.volunteeringByIdOrg(token).subscribe({
           next: (res) => {
             this.volunteerings = res;
           },

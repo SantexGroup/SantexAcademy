@@ -97,12 +97,11 @@ const updateVoluntariadoById = async (newData, idOrg, idVol) => {
   }
 };
 
-const deleteVoluntariadoById = async (idVol, idOrg) => {
+const deleteVoluntariadoById = async (idVoluntariado) => {
   try {
     const volunteering = await Voluntariado.findOne({
       where: {
-        idVolunteering: idVol,
-        organizationId: idOrg,
+        idVoluntariado,
         deletedAt: null,
       },
     });
@@ -114,7 +113,7 @@ const deleteVoluntariadoById = async (idVol, idOrg) => {
     // Aplicar borrado lógico estableciendo la columna deletedAt
     await Voluntariado.update(
       { deletedAt: new Date() },
-      { where: { idVolunteering: idVol, organizationId: idOrg } }
+      { where: { idVoluntariado } }
     );
 
     // // todo! --Eliminar físicamente el registro de la tabla CestaRecompensas--
