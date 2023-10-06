@@ -1,5 +1,5 @@
 @import '~bootstrap/dist/css/bootstrap.css';
-
+@import '~ngx-toastr/toastr';
 /* 
     1) en lo posible usar siempre rems (no px), esta seteado para que 10 px sean 1 rem
 

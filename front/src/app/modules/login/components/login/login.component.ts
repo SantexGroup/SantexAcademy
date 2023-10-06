@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
 import { NgForm } from '@angular/forms';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   password: string = '';
   formSubmitted: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService,private toastr: ToastrService, private router: Router) { }
 
   login(loginForm: NgForm) {
     if (!loginForm.valid) {
@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
       },
       (error: any) => {
         console.error('Error al iniciar sesión:', error);
+        this.toastr.error('Error al iniciar sesión', 'Error');
       }
     );
   }
