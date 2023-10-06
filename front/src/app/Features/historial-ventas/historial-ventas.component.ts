@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HisVenService } from 'src/app/core/services/his-ven.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-historial-ventas',
@@ -10,8 +11,10 @@ import { Router } from '@angular/router';
 export class HistorialVentasComponent implements OnInit {
   
   idVen: number = 0;
-  articulos: any = [];
+  listcategorias: any[] = [];
+  articulos: any = [];  
   modelo: any = {
+    imaArt: '',
     nomArt: '',
     nomVen: '',    
     catArt: '',
@@ -19,14 +22,13 @@ export class HistorialVentasComponent implements OnInit {
     desArt: '',
     preArt: '',
     envArt: '',
-    
-  }
-  listcategorias: any[] = [];
-
+    idCat: 0,
+  };
   pagArt: string = '';
   articulosVen: any = [];
   datosLog: any = {};
   respuesta: any = [];
+  servidor: string = environment.API_URL + '/images/';
 
   constructor(private service: HisVenService, private router: Router) { }
 
@@ -41,73 +43,68 @@ export class HistorialVentasComponent implements OnInit {
       let newObject = JSON.parse(datosLog);
       this.datosLog = newObject;
       this.idVen = this.datosLog[1].users.id;
+    }else{
+      alert("No está logueado")
     }
     //nombre vendedor
     this.service.infoVendedor(this.idVen).subscribe(resVen => {
       this.modelo.nomVen = JSON.stringify(resVen.firstName.charAt(0).toUpperCase() + resVen.firstName.slice(1) + ' ' + (resVen.lastName.charAt(0).toUpperCase() + resVen.lastName.slice(1)));
       this.modelo.nomVen = this.modelo.nomVen.slice(1, this.modelo.nomVen.length-1);
-      console.log("modelo 1: " + this.modelo.nomVen)
     });
     //traer lista de categorias
     this.service.getCategories().subscribe(resCat => {this.listcategorias = resCat; 
-      // console.log("cateogrías: " + JSON.stringify(this.listcategorias))
     });
-    //traer articulos, nomArt, desArt, preArt e idArt
+    //traer articulos, imaArt, nomArt, desArt, preArt e idArt
     this.service.articulosVendedor(this.idVen).subscribe(res => {
       this.respuesta = res;
-      // console.log("articulos: " + JSON.stringify(res));
-      console.log("Cantidad articulos: " + res.length)
-      for (let i=0; i < 5; i++) {
+      if (JSON.stringify(res.message) == '"Usuario sin productos publicados"') {
+        alert("No tiene productos cargados");
+      }
+      for (let i=0; i < res.length; i++) {
+        this.modelo.imaArt = this.servidor + this.respuesta[i].Images[0].url;
         this.modelo.idArt = res[i].id;
         this.modelo.nomArt = res[i].nombre;
         this.modelo.desArt = res[i].detalles;
         this.modelo.preArt = res[i].precio;
         if(res[i].envio) {
-          this.modelo.envArt = 'envío y retiro';
+          this.modelo.envArt = 'Envío y retiro';
         }else {
-          this.modelo.envArt = 'retiro'
+          this.modelo.envArt = 'Retiro';
         }  
-        // console.log("modelo 2: " + JSON.stringify(this.modelo))
-        
-        //nombre categoria producto
-        // console.log("Id prod para cat: " + this.respuesta[i].idTipoProducto)
-        // console.log("Largo cat: " + this.listcategorias.length)
         if (this.modelo.catArt == '') {
           for (let j=0; j < this.listcategorias.length; j++) {
-            console.log("respuesta id: " + this.respuesta[i].idTipoProducto)
-            if (this.respuesta[i].idTipoProducto == this.listcategorias[j].id) {
+            if (this.respuesta[i].idTipoProducto+1 == this.listcategorias[j].id) { //revisar porque en la DB hay 4 valores para idTipoProducto
               this.modelo.catArt = JSON.stringify(this.listcategorias[j].name.charAt(0).toUpperCase() + this.listcategorias[j].name.slice(1));
               this.modelo.catArt = this.modelo.catArt.slice(1, this.modelo.catArt.length-1);
-              // console.log("nomCat: " + this.modelo.catArt)
-              // console.log("modelo 3: " + JSON.stringify(this.modelo))
+              this.modelo.idCat = this.listcategorias[j].id;
             }
           }
         }
-        
-        // console.log("articulos!!: " + JSON.stringify(this.articulos))
-        // console.log("(iteración) modelo:" + i + JSON.stringify(this.modelo))
-        this.articulos.push(this.modelo)
-        console.log("articulo individual:" + (i+1) + JSON.stringify(this.articulos[i]))
+        this.articulos.push({ ...this.modelo });
         this.modelo.catArt = '';
-        // console.log("articulos todos:" + (i+1) + JSON.stringify(this.articulos))
       }  
-      // console.log("Lista articulos: " + JSON.stringify(this.articulos))
-      // console.log("articulos final: " + JSON.stringify(this.articulos[0]))
     })
   }
-  //redirecciones acciones
-  redireccion1(idProd: number) {
-    // localStorage.setItem('idProd', idProd.toString());
-    console.log("idProd: " + idProd.toString())
-    // this.router.navigate(['vista-articulo']);
+  //acciones
+  redirigirCategoria(idCat: number) {
+    localStorage.setItem('idCat', idCat.toString());
+    this.router.navigate(['/']);
   }
-  redireccion2() {
-    localStorage.setItem('idProd', JSON.stringify(this.modelo.idArt));
+  visualizar(idProd: number) {
+    localStorage.setItem('idProd', idProd.toString());
+    this.router.navigate(['vista-articulo']);
+  }
+  modificar(idProd: number) {
+    localStorage.setItem('idProd', idProd.toString());
     this.router.navigate(['modificar-articulo']);    
   }
-  redireccion3() {
-    localStorage.setItem('idProd', JSON.stringify(this.modelo.idArt));
-    // this.router.navigate(['modificar-articulo']);    
+  eliminar(idProd: number) {
+    if(confirm("¿Desea eliminar el artículo? Esta acción no se puede deshacer")) {
+      localStorage.setItem('idProd', JSON.stringify(this.modelo.idArt));
+      // aca iria el servicio
+      alert("Artículo borrado con éxito");
+      this.router.navigate(['historial-ventas']);
+    }
   }
 }
 

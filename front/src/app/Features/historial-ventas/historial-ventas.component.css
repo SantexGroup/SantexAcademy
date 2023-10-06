@@ -1,66 +1,89 @@
 p, a {
+    width: 150px;
     font-size: small;
     margin: 0;
     padding-left: 5px;
+    font-weight: 600;
+    cursor:default;
 }
-
 a {
-    color: #d68a96;
+    font-weight: 400;
+}
+span {
+    color: #d7818e;
+    cursor: pointer;
+}
+span:hover {
+    color:blueviolet;
+}
+#articulo a {
+    color: #bd394d;
     text-decoration: none;
 }
-
-a:hover {
+#articulo a:hover {
     cursor: pointer;
-    color:#bd394d;
+    color:blueviolet;
+    transition: 0.3s;
 }
-
+#catArt span:hover {
+    cursor: pointer;
+}
 img {
     height: 60px;
     width: 60px;
+    border-radius: 4px;
 }
-
+#datosVen {
+    width: 400px;
+    
+}
 #general {
     display: flex;
     justify-content: center;  
     align-items: center;    
     height: 80%;
-    border: 1px solid grey
 }
-
 #recuadro {
-    min-height: 70%;
-    width: 55%;    
+    min-height: 90%;
+    width: 75%;    
+    max-height: 60%;
     background-color: rgba(230, 230, 230, 0.805);
     border-radius: 15px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-color: blue green; /* esto no funciona */
 }
-
 #articulo {
     display: flex;
-    justify-content: space-around;
+    justify-content:space-around;
     margin: 10px;
     padding: 5px;
     padding-bottom: 8px;
     height: 70px;
     border-bottom: 1px solid #d68a96;
 }
-
 #datosVen {
     width: 20%;
 }
-
+#datosVen p {
+    width: 150px;
+}
 #descripcion {
     width: 30%;
+    min-width: 30%;
+    max-width: 30%;
     background-color: white;
     border-radius: 5px;
 }
-
 #desArt {
+    width: max-content;
+    color: grey;
     padding-left: 5px;
     padding-right: 5px;
 }
-
 #acciones {
     display:grid;
 }
-
-
+#acciones p {
+    width: 50px;
+}

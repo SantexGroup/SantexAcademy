@@ -149,7 +149,7 @@ export class ModificarArticuloComponent implements OnInit {
         console.log("Respuesta service modArt: " + this.idProducto)
         this.subirImages();
       }
-      this.mensajeService.mensajeRegistro('Articulo cargado con éxito.');
+      this.mensajeService.mensajeRegistro('Articulo modificado con éxito.');
       this.router.navigate(['home-page']);
     });
   }
