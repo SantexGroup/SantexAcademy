@@ -114,11 +114,30 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Modificar</button>
-                    <button type="button" class="btn btn-primary" (click)="botAlq()">Confirmar</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="botAlq()">Confirmar</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Modal 2-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h1 class="modal-title fs-5" id="exampleModalLabel" *ngIf="alquilado">Articulo alquilado con éxito!</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel" *ngIf="!alquilado">Hubo un error al alquilar el articulo, verifique los campos e intentelo de nuevo.</h1>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 
 
 </div>

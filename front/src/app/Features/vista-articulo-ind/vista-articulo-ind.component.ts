@@ -57,6 +57,9 @@ export class VistaArtIndComponent implements OnInit {
   numeroTarjeta: string = '';
   mesVencimiento: string = '';
   codigoSeguridad: string = '';
+
+  // resultado alquiler
+  alquilado: boolean = false;
   
 
   constructor(private service: vistaArtIndServ, private router: Router, private barraService: BarraService) { }
@@ -186,6 +189,9 @@ export class VistaArtIndComponent implements OnInit {
       console.log('forma de pago:', this.pago)
       this.service.newAlquiler(this.id, this.idUsuario, this.envBol, this.dias, this.pago).subscribe(res => {
         console.log(res);
+        if (res[0] && res[1]) {
+          this.alquilado = true;
+        }
       })
     }
     /*
