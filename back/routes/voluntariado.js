@@ -13,7 +13,7 @@ const { verifyToken, isAdmin, isOrg } = require("../middleware/authMiddleware");
 // );
 
 voluntariadoRouter.get(
-  "/me/volunteerings",
+  "/me/:idOrg",
   verifyToken,
   isOrg,
   voluntariadoController.getVoluntariadosByOrganization
@@ -27,7 +27,7 @@ voluntariadoRouter.get(
 // );
 
 voluntariadoRouter.delete(
-  "/me/:idVol",
+  "/:idOrg/:idVoluntariado",
   verifyToken,
   isOrg,
   voluntariadoController.deleteVoluntariadoById
