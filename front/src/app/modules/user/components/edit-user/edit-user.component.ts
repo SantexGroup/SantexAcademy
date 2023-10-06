@@ -10,27 +10,27 @@ import { Router } from '@angular/router';
 })
 export class EditUserComponent implements OnInit {
 
-  user: any= {};
+  user: any = {};
 
   constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const userId = params['id'];
-      if (userId) {        
+      if (userId) {
         this.userService.getUserById(userId).subscribe((user) => {
-          this.user = user; 
+          this.user = user;
           console.log('Usuario cargado:', this.user);
         });
       }
     });
   }
 
-  editUser() {    
+  editUser() {
     this.userService.updateUser(this.user).subscribe(
       (response: any) => {
-        console.log('Usuario actualizado exitosamente', response);        
-        this.router.navigate(['/user-list']);
+        console.log('Usuario actualizado exitosamente', response);
+        this.router.navigate(['/user/user-list']);
       },
       (error: any) => {
         console.error('Error al actualizar usuario:', error);
@@ -40,6 +40,6 @@ export class EditUserComponent implements OnInit {
 
   navigateToUserList() {
     this.router.navigate(['/user/user-list']);
-  }  
+  }
 
 }
