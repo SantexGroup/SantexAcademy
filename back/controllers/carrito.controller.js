@@ -126,4 +126,59 @@ carritocontroller.deleteCarrito = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 }
+
+/**
+ * @method PUT
+ * @name addProduct
+ * @param {id} Id del usuario del que obtendremos el carrito
+ * @body {idProduct}  
+ * @description metodo para oañadoir un objeto al carrito de un usuario (si no existe carrito, la funcion lo  debe crear)
+ */
+  carritocontroller.addProduct = async (req, res) => {
+    console.log("llego3")
+    try {
+      let productId = req.body.id
+      let carrito = await Carrito.findOne({
+        where: {
+          userId: req.params.id,
+        },
+      });
+      if (!carrito) {
+        console.log(req.params.id)
+        carrito = await Carrito.create()
+        carrito.setUser(req.params.id)
+      }
+      let producto = await Products.findByPk(productId);
+      await carrito.addProduct(producto);
+      res.status(200).json({msg: 'Producto agregado correctamente'});
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+
+  /**
+ * @method PUT
+ * @name deleteProduct
+ * @param {id} Id del usuario del que obtendremos el carrito
+ * @body {idProduct}  
+ * @description metodo para eliminar un objeto de un carrito
+ */
+
+   carritocontroller.deleteProduct = async (req, res) => {
+    try {
+      let productId = req.body.id
+      let carrito = await Carrito.findOne({
+        where: {
+          userId: req.params.id,
+        },
+      });
+      let producto = await Products.findByPk(productId);
+      await carrito.removeProduct(producto);
+      res.status(200).json({msg: 'Producto eliminado correctamente'});
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+
+
 module.exports = carritocontroller;

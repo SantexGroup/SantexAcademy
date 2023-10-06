@@ -22,11 +22,9 @@ export class NavBarComponent implements OnInit {
   total$: Observable<number>;
 
   constructor(private shoppingCartService: ShoppingCartService, private elRef: ElementRef) { 
-    this.total$ = this.shoppingCartService.cart$
-      .pipe(
-        map(products => products.length)
+    this.total$ = this.shoppingCartService.obtenerCarrito("1").pipe(
+        map(products => products[0].Products.length)
       );
-
   }
 
   @HostListener('document:click', ['$event'])
