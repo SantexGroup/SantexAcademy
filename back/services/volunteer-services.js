@@ -10,6 +10,7 @@ const bcrypt = require('bcrypt');
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const path = require('path');
+const { error } = require('console');
 
 async function getAll() {
   const listVolunteer = await models.usuario.findAll({
@@ -62,6 +63,14 @@ async function getById(id) {
 }
 
 async function createUser(name, lastname, email, password, address, phone) {
+  const existeUsuario = await models.usuario.findOne({
+    where: {
+      email,
+    },
+  });
+
+  if (existeUsuario !== null) throw new Error();
+
   const nuevoUsuario = await models.usuario.create({
     name,
     lastname,
@@ -244,14 +253,14 @@ async function asignarTareaVoluntario(idVolunteer, idTarea) {
     await tarea.save();
     await voluntario.addTarea(tarea, { through: { asistio: false } });
 
-    const voluntarioConTarea = await models.usuario.findOne({
-      where: { id: idVolunteer },
-      include: [{ model: models.tarea }, { model: models.rol, where: { name: 'voluntario' } }],
-    });
+    // const voluntarioConTarea = await models.usuario.findOne({
+    //   where: { id: idVolunteer },
+    //   include: [{ model: models.tarea }, { model: models.rol, where: { name: 'voluntario' } }],
+    // });
 
-    delete voluntarioConTarea.dataValues.password;
+    const tareas = await voluntario.getTareas();
 
-    return { success: true, voluntario: voluntarioConTarea };
+    return { voluntario, tareas };
   } catch (error) {
     return { error: 'Error interno en el servidor' };
   }
@@ -335,21 +344,22 @@ async function unsuscribe(idTarea, idVolunteer) {
       tarea.cantInscriptos -= 1;
       await tarea.save();
 
-      const voluntarioActualizado = await models.usuario.findOne({
-        where: { id: idVolunteer },
-        include: [
-          {
-            model: models.rol,
-            where: {
-              name: 'voluntario',
-            },
-          },
-          { model: models.tarea }],
-      });
+      // const voluntarioActualizado = await models.usuario.findOne({
+      //   where: { id: idVolunteer },
+      //   include: [
+      //     {
+      //       model: models.rol,
+      //       where: {
+      //         name: 'voluntario',
+      //       },
+      //     },
+      //     { model: models.tarea }],
+      // });
 
-      delete voluntarioActualizado.dataValues.password;
+      // delete voluntarioActualizado.dataValues.password;
+      const tareas = await voluntario.getTareas();
 
-      return { success: true, voluntario: voluntarioActualizado };
+      return { success: true, voluntario, tareas };
       // eslint-disable-next-line no-else-return
     } else {
       throw new Error('El voluntario no está inscripto a esta tarea');

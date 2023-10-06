@@ -34,6 +34,13 @@ async function getById(id) {
 }
 
 async function createUser(name, description, email, password, address, phone) {
+  // eslint-disable-next-line no-useless-catch
+  const existeUsuario = await models.usuario.findOne({
+    where: {
+      email,
+    },
+  });
+  if (existeUsuario !== null) throw new Error();
   const organizacion = await models.usuario.create({
     name,
     description,
