@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BarraComponent } from './Shared/barra/barra.component';
 import { HomePageComponent } from './Features/home-page/home-page.component';
 import { BasesComponent } from './Features/bases/bases.component';
 import { RegistroComponent } from './Features/registro/registro.component';
@@ -9,6 +8,7 @@ import { TarjetaArticuloComponent } from './Features/tarjeta-articulo/tarjeta-ar
 import { VistaArtIndComponent } from './Features/vista-articulo-ind/vista-articulo-ind.component';
 import { ModificarArticuloComponent } from './Features/modificar-articulo/modificar-articulo.component';
 import { HistorialVentasComponent } from './Features/historial-ventas/historial-ventas.component';
+import { HistorialCompradorComponent } from './Features/historial-comprador/historial-comprador.component';
 
 
 const routes: Routes = [
@@ -48,7 +48,10 @@ const routes: Routes = [
     path: 'historial-ventas',
     component: HistorialVentasComponent,
   },
-
+  {
+    path: 'historial-compras',
+    component: HistorialCompradorComponent,
+  },
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
