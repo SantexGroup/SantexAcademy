@@ -5,6 +5,8 @@ require("dotenv").config();
 const { validationResult } = require("express-validator");
 const cloudinary = require("../config/cloudinary");
 
+
+
 const loginOrganization = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -129,7 +131,7 @@ const deleteOrganizationById = async (req, res) => {
   }
 };
 
-// query parameters
+
 
 // Se pasan req.query y req.body por que son los parametros que se pasan por la url y por el body
 const getOrganizationByCriteria = async (req, res) => {
@@ -199,6 +201,9 @@ const updatePhotoMyProfile = async (req, res, next) => {
     next();
   }
 };
+
+
+
 
 module.exports = {
   loginOrganization,

@@ -10,6 +10,7 @@ import { WhatsappButtonComponent } from './components/whatsapp-button/whatsapp-b
 import { HeroComponent } from './components/hero/hero.component';
 import { RouterModule } from '@angular/router';
 import { SliderExchangeComponent } from './components/slider-exchange/slider-exchange.component';
+import { RegisterLoginExchangeModalComponent } from './components/register-login-exchange-modal/register-login-exchange-modal.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SliderExchangeComponent } from './components/slider-exchange/slider-exc
     TestimonialsComponent,
     WhatsappButtonComponent,
     SliderExchangeComponent,
+    RegisterLoginExchangeModalComponent,
   ],
   imports: [CommonModule, RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

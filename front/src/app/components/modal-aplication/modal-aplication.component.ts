@@ -11,6 +11,8 @@ import { VolunteeringService } from 'src/app/services/volunteering.service';
 })
 export class ModalAplicationComponent implements OnInit {
   @Output() closeModalQuestion = new EventEmitter();
+  @Output() onModalAfterApplication = new EventEmitter();
+
   @Input() idOrg: string = '';
   @Input() idVol: string = '';
   @Input() nameOrg: string = '';
@@ -36,12 +38,12 @@ export class ModalAplicationComponent implements OnInit {
           .subscribe({
             next: (res) => {
               console.log(res);
-              if (res) {
-                this.router.navigate(['dashboard']);
-              }
+              this.onModalAfterApplication.emit('success');
+              this.closeModalQuestion.emit();
             },
             error: (err) => {
-              console.log(err);
+              this.onModalAfterApplication.emit('failed');
+              this.closeModalQuestion.emit();
             },
           });
       }

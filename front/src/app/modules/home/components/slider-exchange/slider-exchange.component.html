@@ -1,16 +1,19 @@
 <article class="exchange-container w-full h-screen flex justify-center items-center">
+
   <div class="sidebar grid place-items-center w-[10%] h-[100%] text-white">
     <p class="title">Catálogo de Canjes</p>
   </div>
   <div class="content w-[90%] h-full bg-[#d9d4e6] overflow-hidden overflow-y-auto">
     <p class="rewards font-bold">Recompensas por tu compromiso</p>
     <div class="flex justify-between">
-    <p class="recommended text-3xl font-semibold mb-[10px]">Más recomendados</p>
-    <a href="/exchange">
-    <button class="">Ver más</button>
-    </a>
+      <p class="recommended text-3xl font-semibold mb-[10px]">Más recomendados</p>
+      <a href="/exchange">
+        <button class="">Ver más</button>
+      </a>
     </div>
+
     <div class="cards inline-flex flex-wrap justify-center">
+
       <div class="card relative flex flex-col items-center m-1.5 rounded-lg bg-white overflow-hidden shadow">
         <div class="image">
           <img src="../../../../../assets/products/vaso termico.png" alt="Producto" class="h-full">
@@ -20,8 +23,9 @@
           <p class="font-semibold">Vaso Termico</p>
           <p class="text-deepPink font-medium  ">10 puntos</p>
         </div>
-        <button class="bg-darkSlateBlue p-1 rounded text-white">Canjear</button>
+        <button class="bg-darkSlateBlue p-1 rounded text-white" (click)="openModal()">Canjear</button>
       </div>
+
       <div class="card relative flex flex-col items-center m-1.5 rounded-lg bg-white overflow-hidden shadow">
         <div class="image">
           <img src="../../../../../assets/products/mochila.png" alt="Producto" class="h-full">
@@ -124,5 +128,7 @@
 
 
     </div>
+    <app-register-login-exchange-modal *ngIf="isModalOpen" (closeModalEvent)="closeModal()"
+      class="modal-exchange"></app-register-login-exchange-modal>
   </div>
 </article>

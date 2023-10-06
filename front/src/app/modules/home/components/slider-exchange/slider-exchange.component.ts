@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class SliderExchangeComponent {
 
+
+  isModalOpen = false;
+
+  openModal(): void {
+    this.isModalOpen = true;
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false;
+  }
 }

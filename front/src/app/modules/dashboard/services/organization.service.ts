@@ -86,4 +86,13 @@ export class OrganizationService {
     const options = { headers: headers };
     return this.http.delete(url, options);
   }
+
+  getVolunteeringsCompleted(token: string): Observable<any> {
+    const url = `${this.apiUrl}/organizacion/postulation/completed`;
+    const headers = new HttpHeaders({
+      'x-access-token': token,
+    });
+    const options = { headers: headers };
+    return this.http.get(url, options);
+  }
 }

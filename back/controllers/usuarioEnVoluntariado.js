@@ -69,7 +69,6 @@ const updateStatusById = async (req, res) => {
       .json({ action: "updateStatusById", error: "Internal server error." });
   }
 };
-
 const accreditationReward = async (req, res) => {
   try {
     const idOrg = req.orgId;
