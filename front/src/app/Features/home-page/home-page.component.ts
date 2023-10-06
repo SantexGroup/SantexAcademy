@@ -11,6 +11,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+  
+  sidebarExpanded = true;
 
   images: string[] = [];
   listArticulos: any = [];
