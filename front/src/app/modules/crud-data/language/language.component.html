@@ -7,6 +7,9 @@
                 <mat-label for="company">Idioma:</mat-label>
                 <input matInput formControlName="language" type="text">
             </mat-form-field>
+            <p class="error-form" *ngIf="languageForm.controls['language'].errors?.['maxlength']">El maximo es de 45 caracteres</p>
+            <br><p class="error-form" *ngIf="languageForm.controls['language'].errors?.['pattern']">Solo se permiten letras</p>
+
             <mat-form-field>
                 <mat-label for="position">Nivel:</mat-label>
                 <mat-select formControlName="level" name="countries">

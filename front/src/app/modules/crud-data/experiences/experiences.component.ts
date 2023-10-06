@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Countries } from 'src/app/core/interfaces/country.interface';
 import { Experience } from 'src/app/core/interfaces/experience.interface';
 import { ExperienceStatus } from 'src/app/core/interfaces/experienceStatus.interface';
@@ -35,14 +35,14 @@ export class ExperiencesComponent implements OnInit {
     public toastr: ToastrService
   ) {
     this.experienceForm = this.fb.group({
-      description: '',
-      company: '',
-      position: '',
-      typesId: '',
-      statusId: '',
-      countriesId: '',
-      startDate: '',
-      endDate: null,
+      description: ['', [ Validators.maxLength(255) ]],
+      company: ['', [ Validators.maxLength(45) ]],
+      position: ['', [ Validators.maxLength(45) ]],
+      typesId: [''],
+      statusId: [''],
+      countriesId: [''],
+      startDate: [''],
+      endDate: [null],
     });
   }
 

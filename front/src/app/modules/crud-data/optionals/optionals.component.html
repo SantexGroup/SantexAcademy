@@ -9,18 +9,26 @@
                             <mat-label>Perfil:</mat-label>
                             <textarea matInput formControlName="profile" cols="30" rows="10"></textarea>
                         </mat-form-field>
+                        <p class="error-form" *ngIf="optionalsForm.controls['profile'].errors?.['maxlength']">El maximo es de 255 caracteres</p>
+
                         <mat-form-field>
                             <mat-label for="webPage">Pagina Web:</mat-label>
                             <input matInput formControlName="webPage" type="text" name="webPage">
                         </mat-form-field>
+                        <p class="error-form" *ngIf="optionalsForm.controls['webPage'].errors?.['maxlength']">El maximo es de 255 caracteres</p>
+
                         <mat-form-field>
                             <mat-label for="linkedIn">linkedIn:</mat-label>
                             <input matInput formControlName="linkedIn" type="text" name="linkedIn">
                         </mat-form-field>
+                        <p class="error-form" *ngIf="optionalsForm.controls['linkedIn'].errors?.['maxlength']">El maximo es de 45 caracteres</p>
+
                         <mat-form-field>
                             <mat-label for="zipCode">Codigo postal:</mat-label>
-                            <input matInput formControlName="zipCode" type="number" name="zipCode">
+                            <input matInput formControlName="zipCode" type="text" name="zipCode">
                         </mat-form-field>
+                        <p class="error-form" *ngIf="optionalsForm.controls['zipCode'].errors?.['maxlength']">El maximo es de 10 caracteres</p>
+
                     </div>
                     <div class="carousel-item">
                         <mat-form-field>

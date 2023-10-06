@@ -31,7 +31,6 @@ form input {
   border: none;
   border-radius: 5px;
   width: 100%;
-  /* text-transform: capitalize; */
 }
 
 form mat-form-field {
@@ -143,12 +142,4 @@ form mat-form-field {
   height: 150px;
   margin: 5px 15px; 
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-}
-
-.error {
-  font-size: 12px;
-  margin-top: -20px;
-  margin-bottom: 1px; 
-  padding: 0px; 
-  color: red;
 }

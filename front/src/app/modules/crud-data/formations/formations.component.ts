@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Formations } from 'src/app/core/interfaces/formation.interface';
 import { FormationsStatus } from 'src/app/core/interfaces/formationsStatus.interface';
 import { FormationsTypes } from 'src/app/core/interfaces/formationsTypes.interface';
@@ -31,11 +31,11 @@ export class FormationsComponent implements OnInit {
     this.formationForm = this.fb.group({
       statusId: [''],
       typesId: [''],
-      title: [''],
-      institute: [''],
+      title: ['', [ Validators.maxLength(45) ]],
+      institute: ['', [ Validators.maxLength(45) ]],
       startDate: [null],
       endDate: [null],
-      description: [''],
+      description: ['', [ Validators.maxLength(255)] ],
     })
   }
 

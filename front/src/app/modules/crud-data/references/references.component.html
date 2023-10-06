@@ -6,18 +6,29 @@
                 <mat-label for="name">Nombre:</mat-label>
                 <input matInput formControlName="name" type="text">
             </mat-form-field>
+            <p class="error-form" *ngIf="referenceForm.controls['name'].errors?.['maxlength']">El maximo es de 45 caracteres</p>
+            <br><p class="error-form" *ngIf="referenceForm.controls['name'].errors?.['pattern']">El nombre solo puede contener letras</p>
+
             <mat-form-field>
                 <mat-label for="lastName">Apellido:</mat-label>
                 <input matInput formControlName="lastName" type="text">
             </mat-form-field>
+            <p class="error-form" *ngIf="referenceForm.controls['lastName'].errors?.['maxlength']">El maximo es de 45 caracteres</p>
+            <br><p class="error-form" *ngIf="referenceForm.controls['lastName'].errors?.['pattern']">El apellido solo puede contener letras</p>
+
             <mat-form-field>
                 <mat-label for="email">Mail:</mat-label>
                 <input matInput formControlName="email" type="text">
             </mat-form-field>
+            <p class="error-form" *ngIf="referenceForm.controls['email'].errors?.['email']">Se debe ingresar un correo valido</p>
+
             <mat-form-field>
                 <mat-label for="phone">Telefono:</mat-label>
                 <input matInput formControlName="phone" type="text">
             </mat-form-field>
+            <p class="error-form" *ngIf="referenceForm.controls['phone'].errors?.['maxlength']">El maximo es de 10 caracteres</p>
+            <br><p class="error-form" *ngIf="referenceForm.controls['phone'].errors?.['pattern']">El numero de contato no puede contener letras</p>
+
             <mat-form-field>
                 <mat-label for="company">Empresa:</mat-label>
                 <mat-select formControlName="company">
@@ -26,6 +37,7 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
+            
             <div class="botonera">
                 <div class="botones">
                     <button 

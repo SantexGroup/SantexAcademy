@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Skill } from 'src/app/core/interfaces/skill.interface';
 import { SkillService } from 'src/app/core/services/skill.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
@@ -25,8 +25,8 @@ export class SkillComponent implements OnInit {
     public toastr: ToastrService
   ) {
     this.skillForm = this.fb.group({
-      skill: '',
-      level: ''
+      skill: ['', [ Validators.maxLength(45), Validators.pattern('^[a-zA-Z ]*$')]],
+      level: ['']
     });
 
   }

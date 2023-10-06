@@ -4,14 +4,14 @@
     <!-- * Input de NOMBRE -->
     <mat-form-field>
       <mat-label>Nombre:</mat-label>
-      <input matInput required placeholder="Nombre" type="text" class="input" formControlName="name">
+      <input matInput required placeholder="Nombre" type="text" class="input capitalize" formControlName="name">
     </mat-form-field>
     <p class="error" *ngIf="name?.errors?.['required'] && name?.dirty">Este campo es obligatorio</p>
 
     <!-- * Input de APELLIDO -->
     <mat-form-field>
       <mat-label>Apellido:</mat-label>
-      <input matInput required name="lastName" placeholder="Apellido" type="text" class="input"
+      <input matInput required name="lastName" placeholder="Apellido" type="text" class="input capitalize"
         formControlName="lastName">
     </mat-form-field>
     <p class="error" *ngIf="lastName?.errors?.['required'] && lastName?.dirty">Este campo es obligatorio</p>

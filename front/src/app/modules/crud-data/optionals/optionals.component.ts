@@ -37,16 +37,16 @@ export class OptionalsComponent implements OnInit {
       maritalId: ['', Validators.required],
       sexsId: ['', Validators.required],
       countriesId: ['', Validators.required],
-      profile: [''],
-      webPage: [''],
-      linkedIn: [''],
+      profile: ['', [ Validators.maxLength(255) ]],
+      webPage: ['', [ Validators.maxLength(255)] ],
+      linkedIn: ['', [ Validators.maxLength(45)] ],
       hobbies: [''],
       aptitudes: [''],
       driverLicense: [''],
       aboutMe: [''],
       achievements: [''],
       address: [''],
-      zipCode: [''],
+      zipCode: ['', [ Validators.maxLength(10) ] ],
     });
 
   }

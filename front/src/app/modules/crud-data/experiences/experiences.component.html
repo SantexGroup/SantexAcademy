@@ -6,14 +6,20 @@
                 <mat-label for="description">Descripcion:</mat-label>
                 <textarea matInput formControlName="description" cols="30" rows="5"></textarea>
             </mat-form-field>
+            <p class="error-form" *ngIf="experienceForm.controls['description'].errors?.['maxlength']">La decripcion debe ser de 255 caracteres como maximo</p>
+
             <mat-form-field>
                 <mat-label for="company">Compania:</mat-label>
                 <input matInput formControlName="company" type="text">
             </mat-form-field>
+            <p class="error-form" *ngIf="experienceForm.controls['company'].errors?.['maxlength']">El maximo es de 45 caracteres</p>
+
             <mat-form-field>
                 <mat-label for="position">Posicion:</mat-label>
                 <input matInput formControlName="position" type="text">
             </mat-form-field>
+            <p class="error-form" *ngIf="experienceForm.controls['position'].errors?.['maxlength']">El maximo es de 45 caracteres</p>
+
             <mat-form-field>
                 <mat-label for="type">Tipo:</mat-label>
                 <mat-select formControlName="typesId">

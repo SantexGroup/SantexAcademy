@@ -4,15 +4,15 @@
     (change)="userData.markForm(personalForm)">
       <mat-form-field>
         <mat-label>Nombres</mat-label>
-        <input matInput formControlName="name">
+        <input matInput formControlName="name" class="capitalize">
       </mat-form-field>
-      <p class="error" *ngIf="personalForm.controls['name'].status == 'INVALID'" >El nombre no puede tener numeros</p>
+      <p class="error-form" *ngIf="personalForm.controls['name'].errors?.['pattern']" >El nombre no puede contener numeros</p>
 
       <mat-form-field>
         <mat-label>Apellido</mat-label>
-        <input matInput formControlName="lastName">
+        <input matInput formControlName="lastName" class="capitalize">
       </mat-form-field>
-      <p class="error" *ngIf="personalForm.controls['lastName'].status == 'INVALID'" >El apellido no puede tener numeros</p>
+      <p class="error-form" *ngIf="personalForm.controls['lastName'].errors?.['pattern']" >El apellido no puede contener numeros</p>
 
       <div class="dates">
         <mat-form-field>
@@ -27,14 +27,14 @@
         <mat-label>Numero de Contacto</mat-label>
         <input matInput formControlName="phone">
       </mat-form-field>
-      <p class="error" *ngIf="personalForm.controls['phone'].errors?.['maxlength']">El dato ingresado tiene mas  de 10 numeros </p>
-      <br><p class="error" *ngIf="personalForm.controls['phone'].errors?.['pattern']">El numero de contacto no puede contener letras</p>
+      <p class="error-form" *ngIf="personalForm.controls['phone'].errors?.['maxlength']">El dato ingresado tiene mas  de 10 numeros </p>
+      <br><p class="error-form" *ngIf="personalForm.controls['phone'].errors?.['pattern']">El numero de contacto no puede contener letras</p>
 
       <mat-form-field>
         <mat-label>Correo</mat-label>
         <input matInput type="email" formControlName="email">
       </mat-form-field>
-      <p class="error" *ngIf="personalForm.controls['email'].errors?.['email']">Debe ingresar un correo valido</p>
+      <p class="error-form" *ngIf="personalForm.controls['email'].errors?.['email']">Debe ingresar un correo valido</p>
 
 
       <!-- * Seccion del imagen -->
@@ -47,7 +47,7 @@
 
       <div class="botonera">
         <div class="botones">
-            <button class="plus" type="submit" *ngIf="views.plusOne" (click)="dataUserUpdate()">
+            <button class="plus" type="submit" *ngIf="views.plusOne" (click)="dataUserUpdate()" >
                 <img src="./assets/Imagenes/plus.png" alt="+">
             </button>
             <button 
