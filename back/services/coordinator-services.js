@@ -146,9 +146,10 @@ async function login(email, password) {
   return token;
 }
 
-const tareaServices = require('../services/tarea-services');
+const tareaServices = require('./tarea-services');
 
 async function getDataCoordinator(userId) {
+  // eslint-disable-next-line no-useless-catch
   try {
     const coordinador = await getById(userId);
 
@@ -156,10 +157,7 @@ async function getDataCoordinator(userId) {
       throw new Error('No se encuentra coordinador con el id proporcionado');
     }
 
-    console.log(coordinador);
-
     const tareas = await tareaServices.getByIdOrganizacion(userId);
-
 
     coordinador.tareas = tareas;
 
@@ -191,7 +189,6 @@ async function getDataCoordinator(userId) {
       proximasTareas,
     };
   } catch (error) {
-    console.error('Error en getDataCoordinator:', error.message);
     throw error;
   }
 }
