@@ -2,12 +2,30 @@ const Organizacion = require('./Organizacion');
 const Producto = require('./Producto');
 const OrdenDeCanje = require('./OrdenDeCanje');
 const Roles = require('./Roles');
+const RecoveryToken = require('./RecoveryToken');
 const Testimonios = require('./Testimonios');
 const Usuario = require('./Usuario');
 const UsuarioEnVoluntariado = require('./UsuarioEnVoluntariado');
 const Voluntariado = require('./Voluntariado');
 
 // Relaciones
+
+
+Usuario.hasMany(RecoveryToken, {
+  foreignKey: 'userId',
+});
+
+RecoveryToken.belongsTo(Usuario, {
+  foreignKey: 'userId',
+});
+
+Organizacion.hasMany(RecoveryToken, {
+  foreignKey: 'orgId',
+});
+
+RecoveryToken.belongsTo(Organizacion, {
+  foreignKey: 'orgId',
+});
 
 Usuario.hasOne(Testimonios, {
   foreignKey: 'userId',
@@ -96,6 +114,7 @@ module.exports = {
   Producto,
   OrdenDeCanje,
   Roles,
+  RecoveryToken,
   Testimonios,
   Usuario,
   UsuarioEnVoluntariado,

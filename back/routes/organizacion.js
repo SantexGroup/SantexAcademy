@@ -4,6 +4,8 @@ const orgRouter = express.Router();
 const {
   orgController,
   usuarioEnVoluntariadoController,
+  recoveryController,
+
 } = require("../controllers");
 
 const { verifyToken, isOrg } = require("../middleware/authMiddleware");
@@ -53,6 +55,10 @@ orgRouter.post(
   isOrg,
   usuarioEnVoluntariadoController.accreditationReward
 );
+
+
+orgRouter.post("/forgot-password", verifyToken, isOrg,  recoveryController.forgotPassword);
+orgRouter.post("/reset-password", verifyToken, isOrg, recoveryController.resetPassword);
 
 module.exports = orgRouter;
 

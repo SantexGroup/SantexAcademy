@@ -29,6 +29,31 @@ const loginOrg = async (email, cuit, password) => {
   }
 };
 
+// Proveedor
+const updatePassword = async (orgId, password) => {
+  try {
+    const org = await Organizacion.findOne({
+      where: {
+        id: orgId,
+      },
+    });
+
+    if (!org) {
+      throw new Error("Organization not found");
+    }
+
+    // Actualiza la contraseña y guarda los cambios
+    org.password = hashPassword(password);
+    await org.save();
+
+    // Devuelve la organización actualizada
+    return org;
+  } catch (error) {
+    throw error;
+  }
+};
+
+
 const createOrganization = async (data) => {
   const { image, password, ...restOfData } = data;
   try {
@@ -210,6 +235,7 @@ const updatePhotoMyProfile = async (image, id) => {
 
 module.exports = {
   loginOrg,
+  updatePassword,
   getOrganizations,
   getOrganizationByCriteria,
   createOrganization,

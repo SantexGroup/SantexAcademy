@@ -9,6 +9,11 @@ const loginOrg = async (email, cuit, password) => {
   return org;
 };
 
+const updatePassword = async (orgId, password) => {
+  const updatedPassword = await orgProvider.updatePassword(orgId, password);
+  return updatedPassword;
+}
+
 const createOrganization = async (data) => {
   const { image, ...restOfData } = data;
   const createdOrganization = await orgProvider.createOrganization({
@@ -64,6 +69,7 @@ const updatePhotoMyProfile = async (image, id) => {
 
 module.exports = {
   loginOrg,
+  updatePassword,
   getOrganizations,
   getOrganizationByCriteria,
   createOrganization,

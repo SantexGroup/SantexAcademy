@@ -1,5 +1,5 @@
 {
-  "name": "santex-academy-api",
+  "name": "voluntime-api",
   "version": "1.0.0",
   "private": true,
   "config": {},
@@ -46,7 +46,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.27.5",
     "husky": "^4.3.8",
-    "nodemon": "^2.0.21"
+    "nodemon": "^3.0.1"
   },
   "husky": {
     "hooks": {
