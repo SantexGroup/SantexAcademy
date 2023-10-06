@@ -215,6 +215,36 @@ card-client {
 .carousel-alquileres {
   margin: 3em;
 }
+
+.badge {
+  width: 80px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  background: #DDFFDE;
+  border: 1px solid #08581d0e;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+  color: #08581D;
+
+}
+/* Para Alquiler Aprobado */
+.approved {
+  background: #116d11; 
+  color: white; 
+}
+
+/* Para Alquiler Desaprobado */
+.disapproved {
+  background: #db2626; 
+  color: white; 
+}
+
 @media (min-width: 768px) {
     .container {
         flex-direction: row;
