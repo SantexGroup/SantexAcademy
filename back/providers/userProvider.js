@@ -49,10 +49,7 @@ const userValidate = async (data) => {
 
 const find = async (filterParams) => {
   try {
-    let options = {
-      where: {},
-      paranoid: false // se muestran incluso los eliminados
-    };
+    let options = { where: {} };
     if (filterParams.role) options.where.role = filterParams.role;
     return await db.User.findAll(options);
   } catch (error) {
@@ -83,10 +80,7 @@ const deleteUser = async (id) => {
 
 const getCourses = async (id, filterParams) => {
   try {
-      let options = {
-          where: {},
-          paranoid: false // se muestran incluso los eliminados
-      };
+      let options = { where: {} };
       if (filterParams.role) options.where.role = filterParams.role;
       const user = await db.User.findByPk(id);
       return await user?.getCourses(options);
