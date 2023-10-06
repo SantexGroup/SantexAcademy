@@ -15,6 +15,7 @@ import { CargaArticulosComponent } from './Features/carga-articulos/carga-articu
 import { TarjetaArticuloComponent } from './Features/tarjeta-articulo/tarjeta-articulo.component';
 import { VistaArtIndComponent } from './Features/vista-articulo-ind/vista-articulo-ind.component';
 import { ModificarArticuloComponent } from './Features/modificar-articulo/modificar-articulo.component';
+import { DatosUsuarioComponent } from './Features/datos-usuario/datos-usuario.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ModificarArticuloComponent } from './Features/modificar-articulo/modifi
     CargaArticulosComponent,
     TarjetaArticuloComponent,
     VistaArtIndComponent,
-    ModificarArticuloComponent
+    ModificarArticuloComponent,
+    DatosUsuarioComponent
   ],
   imports: [
     BrowserModule,

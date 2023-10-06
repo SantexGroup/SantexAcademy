@@ -1,0 +1,33 @@
+<app-barra></app-barra>
+<div id="divprincipal">
+    <p>-</p>
+    <div class="formulario">
+        <div class="formulario_container">
+            <div class="titulo_container">
+                <h2>Datos del Usuario</h2>
+            </div>
+            <div class="arregloFila">
+                <div class="">
+                    <div>
+                        <p>Email: {{ corDat }}</p>
+                        <p>Contraseña: {{ pasDat }}</p>
+                        <p>Alias: {{ aliDat }}</p>
+                        <p>Nombres: {{ nomDat }}</p>
+                        <p>Apellidos: {{ apeDat }}</p>
+                        <p>DNI: {{ dniDat }}</p>
+                        <p>Provincia: {{ proDat }}</p>
+                        <p>Localidad: {{ locDat }}</p>
+                        <p>Dirección: {{ dirDat }}</p>
+                        <button>Editar</button>
+                    </div>
+                    <div *ngIf="mensajeDatosUsuario">
+                        {{ mensajeDatosUsuario }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>-</p>
+</div>
+
+<app-footer></app-footer>
