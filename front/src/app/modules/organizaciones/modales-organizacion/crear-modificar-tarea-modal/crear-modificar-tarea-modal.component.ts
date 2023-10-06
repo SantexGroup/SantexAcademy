@@ -13,6 +13,7 @@ import { OrganizacionService } from 'src/app/core/services/organizacion.service'
 import { TareaService } from 'src/app/core/services/tarea.service';
 import * as moment from 'moment';
 import { ThisReceiver } from '@angular/compiler';
+import { ResumenOrganizacion } from 'src/app/core/interfaces/resumenOrganizacion';
 
 @Component({
   selector: 'app-crear-tarea-modal',
@@ -63,7 +64,7 @@ export class CrearModificarTareaModalComponent implements OnInit, AfterViewInit 
   @ViewChild('inputDireccion') inputDireccion!: ElementRef;
   
   listCategorias:Categoria[] = [];
-  datosOrganizacion$:Observable<Organizacion | null>;
+  datosOrganizacion$:Observable<ResumenOrganizacion | null>;
   form:FormGroup;
   titulo:string;
   modificar:boolean;
@@ -136,7 +137,7 @@ export class CrearModificarTareaModalComponent implements OnInit, AfterViewInit 
     let idCoordinador = null;
     this.datosOrganizacion$.pipe(take(1)).subscribe({
       next:(res)=>{
-        idCoordinador = res?.id;
+        idCoordinador = res?.coordinador.id;
       }
     });
     

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Organizacion } from 'src/app/core/interfaces/organizacion';
+import { ResumenOrganizacion } from 'src/app/core/interfaces/resumenOrganizacion';
 import { OrganizacionService } from 'src/app/core/services/organizacion.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class DashboardOrganizacionComponent implements OnInit {
     this.datosOrganizacion$ = organizacionService.getDatosOrganizacion;
   }
 
-  datosOrganizacion$:Observable<Organizacion|null>;
+  datosOrganizacion$:Observable<ResumenOrganizacion|null>;
 
 
   ngOnInit(): void {

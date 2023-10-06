@@ -1,10 +1,10 @@
 <div class="fondo-degradado">
-    <div *ngIf="datosOrganizacion$ | async as organizacion" >
-        <h2 class="titulo">Dashboard de la organización {{organizacion.name}}</h2>
-        <p>Descripción de la organización: {{organizacion.description}}</p>
-        <p>Email de la organización: {{organizacion.email}}</p>
-        <p>Dirección de la organización: {{organizacion.address}}</p>
-        <p>Teléfono de la organización: {{organizacion.phone}}</p>
+    <div *ngIf="datosOrganizacion$ | async as resumenOrganizacion" >
+        <h2 class="titulo">Dashboard de la organización {{resumenOrganizacion.coordinador.name}}</h2>
+        <p>Descripción de la organización: {{resumenOrganizacion.coordinador.description}}</p>
+        <p>Email de la organización: {{resumenOrganizacion.coordinador.email}}</p>
+        <p>Dirección de la organización: {{resumenOrganizacion.coordinador.address}}</p>
+        <p>Teléfono de la organización: {{resumenOrganizacion.coordinador.phone}}</p>
     </div>
 
     <ng-template #sinDatos>

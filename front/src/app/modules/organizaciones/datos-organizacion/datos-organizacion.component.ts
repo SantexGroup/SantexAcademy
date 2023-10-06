@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Organizacion } from 'src/app/core/interfaces/organizacion';
+import { ResumenOrganizacion } from 'src/app/core/interfaces/resumenOrganizacion';
 import { OrganizacionService } from 'src/app/core/services/organizacion.service';
 
 @Component({
@@ -36,7 +37,7 @@ export class DatosOrganizacionComponent implements OnInit, OnDestroy {
     this.mostrarPasswordNuevo = false;
    }
    
-   datosOrganizacion!:Organizacion;
+   datosOrganizacion!:ResumenOrganizacion;
    formOrganizacion:FormGroup;
    editarDatos:boolean;
    suscripcionDatos;
@@ -55,11 +56,11 @@ export class DatosOrganizacionComponent implements OnInit, OnDestroy {
   }
   irModificar():void{
     this.formOrganizacion.patchValue({
-      nombre: this.datosOrganizacion.name,
-      direccion:this.datosOrganizacion.address,
-      telefono:this.datosOrganizacion.phone,
-      descripcion:this.datosOrganizacion.description,
-      email:this.datosOrganizacion.email
+      nombre: this.datosOrganizacion.coordinador.name,
+      direccion:this.datosOrganizacion.coordinador.address,
+      telefono:this.datosOrganizacion.coordinador.phone,
+      descripcion:this.datosOrganizacion.coordinador.description,
+      email:this.datosOrganizacion.coordinador.email
     });
     this.editarDatos = true;
   }
@@ -74,10 +75,10 @@ export class DatosOrganizacionComponent implements OnInit, OnDestroy {
       description:dataForm.descripcion,
       email:dataForm.email,
       phone:dataForm.telefono,
-      password:this.datosOrganizacion.password
+      password:this.datosOrganizacion.coordinador.password
     }
 
-    this.organizacionService.modificarOrganizacion(this.datosOrganizacion.id!, organizacion).subscribe({
+    this.organizacionService.modificarOrganizacion(this.datosOrganizacion.coordinador.id!, organizacion).subscribe({
       next:()=>{
         this.matSnackBar.open("Los datos se actualizaron correctamente", "OK",{
           horizontalPosition:'center',
@@ -115,7 +116,7 @@ export class DatosOrganizacionComponent implements OnInit, OnDestroy {
 
     const formValue = this.formPassword.value;
 
-    this.organizacionService.modificarPassword(this.datosOrganizacion.id!, formValue.passwordActual,formValue.passwordNuevo).subscribe({
+    this.organizacionService.modificarPassword(this.datosOrganizacion.coordinador.id!, formValue.passwordActual,formValue.passwordNuevo).subscribe({
       next:()=>{
         this.matSnackBar.open("La contraseña se actualizó correctamente", "OK",{
           horizontalPosition:'center',

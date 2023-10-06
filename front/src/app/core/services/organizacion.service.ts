@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Organizacion } from '../interfaces/organizacion';
 import { Credencial } from '../interfaces/credencial';
 import { DatosLogin } from '../interfaces/datosLogin';
+import { ResumenOrganizacion } from '../interfaces/resumenOrganizacion';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,13 @@ export class OrganizacionService {
 
   constructor(private apiService:ApiService) {
 
-    this.datosOrganizacion = new BehaviorSubject<Organizacion | null>(null);
+    this.datosOrganizacion = new BehaviorSubject<ResumenOrganizacion | null>(null);
   }
 
 
-  private datosOrganizacion:BehaviorSubject<Organizacion | null >;
+  private datosOrganizacion:BehaviorSubject<ResumenOrganizacion | null >;
 
-  get getDatosOrganizacion():Observable<Organizacion|null>{
+  get getDatosOrganizacion():Observable<ResumenOrganizacion|null>{
     return this.datosOrganizacion.asObservable();
   }
 
@@ -42,7 +43,10 @@ export class OrganizacionService {
    return this.apiService.put<Organizacion>(`/coordinator/edit-user/${id}`,organizacion).pipe(
     map((res)=>{
       
-      this.datosOrganizacion.next(res);
+      const nuevosDatos = this.datosOrganizacion.value;
+      nuevosDatos!.coordinador = res;
+
+      this.datosOrganizacion.next(nuevosDatos);
 
       return res;
     })
@@ -54,8 +58,8 @@ export class OrganizacionService {
   }
 
 
-  obtenerDatosOrganizacion():Observable<Organizacion>{
-    return this.apiService.get<Organizacion>('/coordinator/datos').pipe(
+  obtenerDatosOrganizacion():Observable<ResumenOrganizacion>{
+    return this.apiService.get<ResumenOrganizacion>('/coordinator/datos').pipe(
       map((res)=>{
         this.datosOrganizacion.next(res);
         return res;
