@@ -209,7 +209,16 @@ const editasistio = async (idTarea, listaVoluntariosModificados) => {
   }
 };
 
+async function listadoTareasRecientes() {
+  const tareas = await getAll({
+    order: [['date', 'DESC']],
+    limit: 5,
+  });
+
+  return tareas;
+}
+
 module.exports = {
   // eslint-disable-next-line max-len
-  getAll, getById, createTarea, editTarea, deleteTarea, getByIdOrganizacion, cambiarEstado, getInscriptos, editasistio,
+  getAll, getById, createTarea, editTarea, deleteTarea, getByIdOrganizacion, cambiarEstado, getInscriptos, editasistio, listadoTareasRecientes,
 };
