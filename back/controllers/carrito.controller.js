@@ -156,4 +156,29 @@ carritocontroller.deleteCarrito = async (req, res) => {
     }
   }
 
+  /**
+ * @method PUT
+ * @name deleteProduct
+ * @param {id} Id del usuario del que obtendremos el carrito
+ * @body {idProduct}  
+ * @description metodo para eliminar un objeto de un carrito
+ */
+
+   carritocontroller.deleteProduct = async (req, res) => {
+    try {
+      let productId = req.body.id
+      let carrito = await Carrito.findOne({
+        where: {
+          userId: req.params.id,
+        },
+      });
+      let producto = await Products.findByPk(productId);
+      await carrito.removeProduct(producto);
+      res.status(200).json({msg: 'Producto eliminado correctamente'});
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+
+
 module.exports = carritocontroller;
