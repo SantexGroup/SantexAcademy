@@ -11,6 +11,7 @@
 .content{
   /* padding: clamp(1rem, 0.572rem + 2.14vw, 2.5rem); */
   padding: clamp(0.938rem, 0.597rem + 1.7vw, 1.875rem);
+
 }
 
 .title{
@@ -51,3 +52,4 @@ button:hover {
   background-color: #ffffff;
   border: 2px solid rgb(63, 40, 131);
 }
+
