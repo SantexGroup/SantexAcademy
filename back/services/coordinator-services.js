@@ -170,10 +170,9 @@ async function getDataCoordinator(userId) {
     for (const tarea of tareas) {
       const fechaTarea = new Date(tarea.date);
 
-      if (fechaTarea > hoy) {
+      if (fechaTarea >= hoy) {
         proximasTareas.push(tarea);
       }
-
       const inscriptos = tarea.cantInscriptos;
       // eslint-disable-next-line no-restricted-syntax, guard-for-in, no-plusplus
       for (let i = 0; i < inscriptos; i++) {
@@ -181,6 +180,7 @@ async function getDataCoordinator(userId) {
         totalPuntosOtorgados += tarea.points;
       }
     }
+    proximasTareas.sort((a, b) => new Date(a.date) - new Date(b.date));
 
     return {
       coordinador,
