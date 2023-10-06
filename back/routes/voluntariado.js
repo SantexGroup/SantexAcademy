@@ -12,12 +12,12 @@ const { verifyToken, isAdmin, isOrg } = require("../middleware/authMiddleware");
 //   voluntariadoController.createVoluntariado
 // );
 
-// voluntariadoRouter.get(
-//   "/me/volunteerings",
-//   verifyToken,
-//   isOrg,
-//   voluntariadoController.getVoluntariadosByOrganization
-// );
+voluntariadoRouter.get(
+  "/me/volunteerings",
+  verifyToken,
+  isOrg,
+  voluntariadoController.getVoluntariadosByOrganization
+);
 
 // voluntariadoRouter.put(
 //   "/me/:idVol",
@@ -26,12 +26,12 @@ const { verifyToken, isAdmin, isOrg } = require("../middleware/authMiddleware");
 //   voluntariadoController.updateVoluntariadoById
 // );
 
-// voluntariadoRouter.delete(
-//   "/me/:idVol",
-//   verifyToken,
-//   isOrg,
-//   voluntariadoController.deleteVoluntariadoById
-// );
+voluntariadoRouter.delete(
+  "/me/:idVol",
+  verifyToken,
+  isOrg,
+  voluntariadoController.deleteVoluntariadoById
+);
 
 // voluntariadoRouter.delete(
 //   "/admin/:idOrg/:idVoluntariado",
