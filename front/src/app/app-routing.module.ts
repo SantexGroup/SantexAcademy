@@ -8,6 +8,7 @@ import { CargaArticulosComponent } from './Features/carga-articulos/carga-articu
 import { TarjetaArticuloComponent } from './Features/tarjeta-articulo/tarjeta-articulo.component';
 import { VistaArtIndComponent } from './Features/vista-articulo-ind/vista-articulo-ind.component';
 import { ModificarArticuloComponent } from './Features/modificar-articulo/modificar-articulo.component';
+import { HistorialVentasComponent } from './Features/historial-ventas/historial-ventas.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'modificar-articulo',
     component: ModificarArticuloComponent,
+  },
+  {
+    path: 'historial-ventas',
+    component: HistorialVentasComponent,
   },
 
 ]
