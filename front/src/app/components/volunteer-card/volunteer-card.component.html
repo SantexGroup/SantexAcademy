@@ -4,9 +4,18 @@
   [idVol]="idVolunteering"
   [nameVol]="nameVol"
   [nameOrg]="nameOrg"
+  (onModalAfterApplication)="onModalQuestionAftertApplication($event)"
   (closeModalQuestion)="closeModalApplication()"
 >
 </app-modal-aplication>
+
+<app-modal-after-application
+  *ngIf="afterApplication"
+  [status]="statusModalApplication"
+  [message]="messageModalApplication"
+  (continueViewing)="continueViewing()"
+>
+</app-modal-after-application>
 <article
   class="w-full flex flex-col items-center justify-center shadow shadow-lightGray p-4 gap-4 rounded-lg sm:flex-row lg:p-6"
 >
