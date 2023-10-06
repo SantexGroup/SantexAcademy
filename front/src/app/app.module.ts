@@ -32,8 +32,9 @@ import { HistorialVentasComponent } from './Features/historial-ventas/historial-
     CargaArticulosComponent,
     TarjetaArticuloComponent,
     VistaArtIndComponent,
-    HistorialVentasComponent
-    ModificarArticuloComponent
+    HistorialVentasComponent,
+    ModificarArticuloComponent,
+    BarraLateralComponent,
 
   ],
   imports: [
