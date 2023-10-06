@@ -1,10 +1,14 @@
 const coordinatorServices = require('../services/coordinator-services');
 
-function getDataOrganizacion(req, res) {
+async function getDataOrganizacion(req, res) {
   const { usuario } = req;
 
-  delete usuario.dataValues.password;
-  res.status(200).send(usuario);
+  try {
+    const data = await coordinatorServices.getDataCoordinator(usuario.id);
+    res.status(200).send(data);
+  } catch (error) {
+    res.status(500).send('Error interno del servidor');
+  }
 }
 
 async function getAllCoordinators(req, res) {
