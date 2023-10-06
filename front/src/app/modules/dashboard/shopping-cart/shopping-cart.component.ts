@@ -25,7 +25,6 @@ export class ShoppingCartComponent implements OnInit {
   emptyCart(): void {
     this.shoppingCartService.clearCart().subscribe();
     this.productList = [];
-
   }
 
 
@@ -40,5 +39,4 @@ export class ShoppingCartComponent implements OnInit {
        })
      })     
   }
-
 }

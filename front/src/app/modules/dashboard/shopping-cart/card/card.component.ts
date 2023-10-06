@@ -13,11 +13,12 @@ export class CardComponent implements OnInit {
 
   constructor(private shoppingCartService: ShoppingCartService) { }
 
-  // Función para eliminar un producto del carrito
-  removeProduct(id: Product | undefined) {
-    this.shoppingCartService.removeProduct(this.product?.id);
+  // Función para eliminar un producto del carrito y que impacte el cambio en la lista de productos del componente padre
+  removeProduct() {
+    this.shoppingCartService.removeProduct(this.product?.id).subscribe();
+    location.reload();
   }
 
   ngOnInit(): void {
-    console.log("llega",this.product) }
+     }
 }

@@ -33,12 +33,12 @@ export class ShoppingCartService {
   }
 
   // Función para eliminar un producto del carrito
-  removeProduct(id: string | undefined) {
-    const index: number = this.productList.findIndex((product) => product.id === id);
-    if (index !== -1) {
-      this.productList.splice(index, 1); // Eliminar el producto del array
-      this.cart.next(this.productList);
+  removeProduct(id: string | undefined): Observable<any>{
+    let url = this.ProductUrl + "/deleteProd/" + "1"
+    let body = {
+      id: id
     }
+    return this._http.put(url,body);
   }
 
   // Función para vaciar el carrito
