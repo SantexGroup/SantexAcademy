@@ -5,6 +5,17 @@
 /**
  * Module dependencies.
  */
+const ngrok = require("ngrok")
+const ngrok_tunnel = async () => {
+  await ngrok.connect({
+    addr:4040,
+    configPath:'./ngrok.yml',
+    hostname : 'hound-popular-vertically.ngrok-free.app',
+    onLogEvent: (message) => { console.log(message) }
+  })
+}
+ngrok_tunnel()
+
 
 const debug = require('debug')('example-node:server');
 const http = require('http');
@@ -14,7 +25,7 @@ const app = require('../app');
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.NODE_PORT || '3000');
 app.set('port', port);
 
 /**
@@ -30,6 +41,8 @@ const server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+
 
 /**
  * Normalize a port into a number, string, or false.
@@ -89,4 +102,5 @@ function onListening() {
     ? `pipe ${addr}`
     : `port ${addr.port}`;
   debug(`Listening on ${bind}`);
+  console.log(`listening ${bind}`)
 }
