@@ -26,4 +26,9 @@ export class UserService {
     const url = `${this.apiUrl}/api/user/${user.id}`;
     return this.http.put(url, user);
   }
+
+  deleteUserById(userId: number): Observable<any> {
+    const url = `${this.apiUrl}/api/user/${userId}`;
+    return this.http.delete(url);
+  }
 }
