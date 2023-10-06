@@ -10,12 +10,12 @@ const routes: Routes = [
     loadChildren: ()=> import ('./modules/index/index.module').then(m=>m.IndexModule)
   },
   {
-    path:'voluntarios',
+    path:'voluntario',
     loadChildren:()=> import('./modules/voluntarios/voluntarios.module').then(m=>m.VoluntariosModule),
     canLoad:[VoluntarioGuard]
   },
   {
-    path:'organizaciones',
+    path:'organizacion',
     loadChildren:()=>import('./modules/organizaciones/organizaciones.module').then(m=>m.OrganizacionesModule),
     canLoad:[OrganizacionGuard]
 

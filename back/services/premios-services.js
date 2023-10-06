@@ -1,16 +1,12 @@
-const { DataTypes, Sequelize } = require('sequelize');
-const premiosModel = require('../models/premios-model');
-const { sequelize } = require('../models');
-
-const Premios = premiosModel(sequelize, DataTypes);
+const models = require('../models/index');
 
 async function getAll() {
-  const listPremios = await Premios.findAll();
+  const listPremios = await models.premio.findAll();
   return listPremios;
 }
 
 async function getById(id) {
-  const prem = await Premios.findByPk(id);
+  const prem = await models.premio.findByPk(id);
 
   if (prem == null) {
     throw new Error('Premio no encontrado');
@@ -19,20 +15,17 @@ async function getById(id) {
   return prem;
 }
 
-async function createPremios(name, description, costo,cantidad) {
-  const prem = new Premios();
-
-  prem.name = name;
-  prem.description = description;
-  prem.costo= costo;
-  prem.cantidad= cantidad
-
-  const premCreated = await prem.save();
-
+async function createPremios(name, description, costo, cantidad) {
+  const premCreated = await models.premio.create({
+    name,
+    description,
+    costo,
+    cantidad,
+  });
   return premCreated;
 }
 
-async function editPremios(id, name, description, costo,cantidad) {
+async function editPremios(id, name, description, costo, cantidad) {
   const prem = await getById(id);
   if (name) {
     prem.name = name;

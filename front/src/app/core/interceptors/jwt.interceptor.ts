@@ -15,102 +15,51 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from '../services/admin.service';
 import { SpinnerService } from '../services/spinner.service';
+import { CuentaService } from '../services/cuenta.service';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
-  constructor(private voluntarioService:VoluntarioService, private organizacionService:OrganizacionService,private router:Router, private matSnackBar:MatSnackBar,
-    private adminService:AdminService, private spinnerService:SpinnerService) {}
-  credencialesVoluntario:Credencial|null = null;
-  credencialesOrganizacion:Credencial|null = null;
-  credencialesAdmin:Credencial|null = null;
+  constructor(private cuentaService:CuentaService,private router:Router, private matSnackBar:MatSnackBar,
+     private spinnerService:SpinnerService) {}
+
+  credencialesUsuario:Credencial|null = null;
+
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     
     this.spinnerService.mostrar();
 
-    this.voluntarioService.getCredencialesVoluntario.pipe(take(1)).subscribe({
-      next:(res)=>this.credencialesVoluntario = res
-    });
+    this.cuentaService.getCredencialesUsuario.pipe(take(1)).subscribe({next:(res)=> this.credencialesUsuario = res});
     
-    this.organizacionService.getCredencialesOrganizacion.pipe(take(1)).subscribe({
-      next:(res)=> this.credencialesOrganizacion = res
-    });
-
-    this.adminService.getCredencialesAdmin.pipe(take(1)).subscribe({
-      next:(res)=>this.credencialesAdmin = res
-    });
-
+       if(this.credencialesUsuario !== null){
+         request = request.clone({
+           setHeaders:{
+             Authorization:`Bearer ${this.credencialesUsuario.token}`
+           }
+         });
+    
     
 
-    if(this.credencialesVoluntario!= null){
-      request = request.clone({
-        setHeaders:{
-          Authorization:`Bearer ${this.credencialesVoluntario.token}`
-        }
-      });
-      
-      return next.handle(request).pipe(catchError((error:HttpErrorResponse)=>{
-       if(error.status === 401){
-
-        this.voluntarioService.setCredencialesVoluntario = null;
-        this.mostrarAlertaSesionCaducada();
-        this.router.navigate(['/index/login'],{queryParams:{tipo:'voluntario'}});
-        
-      };
-        
-        return throwError(()=>error); 
-      }
-      ), finalize(()=>{
-        this.spinnerService.ocultar();
-      }));  
-    }
-    else if(this.credencialesOrganizacion!= null){
-      request = request.clone({
-        setHeaders:{
-          Authorization:`Bearer ${this.credencialesOrganizacion.token}`
-        }
-      });
       return next.handle(request).pipe(catchError((err:HttpErrorResponse)=>{
         if(err.status ===401){
 
-          this.organizacionService.setCredencialesOrganizacion = null;
-          this.mostrarAlertaSesionCaducada();
-          this.router.navigate(['/index/login'],{queryParams:{tipo:'organizacion'}});
           
-
+          
+          this.cuentaService.setCredencialesUsuario = null;
+          this.mostrarAlertaSesionCaducada();
+          this.router.navigate(['/index/login']);
         }
 
         return throwError(()=>err);
-      }), finalize(()=>{
-          this.spinnerService.ocultar();
-      }));    
-    }
-    else if(this.credencialesAdmin != null){
-      request = request.clone({
-        setHeaders:{
-          Authorization:`Bearer ${this.credencialesAdmin.token}`
-        }
-      });
-      return next.handle(request).pipe(catchError((err:HttpErrorResponse)=>{
-        if(err.status ===401){
-
-          this.adminService.setCredencialesAdmin = null;
-          this.mostrarAlertaSesionCaducada();
-          this.router.navigate(['/index/login'],{queryParams:{tipo:'admin'}});
-          
-
-        }
-
-        return throwError(()=>err);
-      }), finalize(()=>{
+      }), 
+      finalize(()=>{
         this.spinnerService.ocultar();
-      }));    
+      })); 
+
     }
-    else{
-      return next.handle(request).pipe(finalize(()=>{
-        this.spinnerService.ocultar();
-      }));
-    }
+
+    return next.handle(request).pipe(finalize(()=>this.spinnerService.ocultar()));
+    
     
   }
 

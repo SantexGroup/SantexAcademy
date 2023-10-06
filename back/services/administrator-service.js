@@ -1,18 +1,40 @@
-const { DataTypes } = require('sequelize');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const administratorModel = require('../models/administrator-model');
-const { sequelize } = require('../models');
 const models = require('../models/index');
 
-const Administrator = administratorModel(sequelize, DataTypes);
-
 async function getAll() {
-  const listAdmin = await Administrator.findAll();
+  const listAdmin = await models.usuario.findAll({
+    attributes: {
+      excludes: 'password',
+    },
+    include: [
+      {
+        model: models.rol,
+        where: {
+          name: 'admin',
+        },
+      },
+    ],
+  });
   return listAdmin;
 }
 async function getById(id) {
-  const user = await Administrator.findByPk(id);
+  const user = await models.usuario.findOne({
+    where: {
+      id,
+    },
+    attributes: {
+      excludes: 'password',
+    },
+    include: [
+      {
+        model: models.rol,
+        where: {
+          name: 'admin',
+        },
+      },
+    ],
+  });
 
   if (user == null) {
     throw new Error('Administrador no encontrado');
@@ -21,12 +43,10 @@ async function getById(id) {
   return user;
 }
 async function createUser(email, password) {
-  const user = new Administrator();
-
-  user.email = email;
-  user.password = await bcrypt.hash(password, 10);
-
-  const userCreated = await user.save();
+  const userCreated = await models.usuario.create({
+    email,
+    password: await bcrypt.hash(password, 10),
+  });
   delete userCreated.dataValues.password;
   return userCreated;
 }
@@ -73,10 +93,19 @@ async function deleteUser(id) {
 }
 
 async function login(email, password) {
-  const user = await Administrator.findOne({
+  const user = await models.usuario.findOne({
     where: {
       email,
     },
+    include: [
+      {
+        model: models.rol,
+        where: {
+          name: 'admin',
+        },
+      },
+    ],
+
   });
 
   if (!user) {
@@ -87,13 +116,29 @@ async function login(email, password) {
   if (!passwordMatch) {
     throw new Error('Email o contraseña incorrectos');
   }
-  const token = jwt.sign({ id: user.id, tipoUsuario: 'admin' }, process.env.JWT_SECRET, { expiresIn: '1h' });
+  const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
   return token;
 }
 
 async function createAdminDefault(email = 'admin@gmail.com', password = 'Admin123!') {
-  const admin = await models.admin.findOne({
+  const roles = await models.rol.findOne();
+
+  if (roles === null) {
+    await models.rol.create({
+      name: 'admin',
+    });
+
+    await models.rol.create({
+      name: 'organizacion',
+    });
+
+    await models.rol.create({
+      name: 'voluntario',
+    });
+  }
+
+  const admin = await models.usuario.findOne({
     where: {
       email,
     },
@@ -101,9 +146,43 @@ async function createAdminDefault(email = 'admin@gmail.com', password = 'Admin12
   // eslint-disable-next-line no-useless-return
   if (admin !== null) return;
 
-  await createUser(email, password);
+  const adminCreado = await models.usuario.create({
+    name: 'Usuario Admin por defecto',
+    email,
+    password: await bcrypt.hash(password, 10),
+  });
+  const rolAdmin = await models.rol.findOne({
+    where: {
+      name: 'admin',
+    },
+  });
+
+  await adminCreado.addRol(rolAdmin);
 }
 
+const volunteerServices = require('./volunteer-services');
+const coordinatorServices = require('./coordinator-services');
+
+async function getDataAdmin(userId) {
+  const admin = await getById(userId);
+
+  if (!admin) {
+    throw new Error('Admin con id proporcionado no encontrado');
+  }
+
+  const cantVolunteer = await volunteerServices.getAll();
+
+  if (!cantVolunteer) {
+    throw new Error('No se encontraron voluntarios');
+  }
+
+  const cantCoordinator = await coordinatorServices.getAll();
+  if (!cantCoordinator) {
+    throw new Error('No se encontraron coordinadores/ organizaciones');
+  }
+
+  return { cantCoordinator, cantVolunteer, admin };
+}
 module.exports = {
-  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, createAdminDefault,
+  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, createAdminDefault, getDataAdmin,
 };

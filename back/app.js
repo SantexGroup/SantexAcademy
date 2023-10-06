@@ -89,6 +89,7 @@ app.use('/category', routes.category);
 app.use('/tarea', routes.tarea);
 app.use('/administrator', routes.administrator);
 app.use('/premios', routes.premios);
+app.use('/cuentas', routes.cuentas);
 
 //PDFS de voucher generados
 //ejemplo http://localhost:3000/mostrar-pdf/21-9-2023-Benja-1_canje_premio.pdf

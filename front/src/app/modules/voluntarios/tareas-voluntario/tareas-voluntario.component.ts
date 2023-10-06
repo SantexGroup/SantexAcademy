@@ -16,7 +16,7 @@ export class TareasVoluntarioComponent implements OnInit {
   datosVoluntario:ResumenVoluntario | null = null;
   constructor(private voluntarioService:VoluntarioService, private tareaService:TareaService) {
     this.voluntarioService.getDatosVoluntario.subscribe({
-      next:(res)=> this.datosVoluntario = res
+      next:(res)=> {this.datosVoluntario = res; console.log("Nuevos datos")}
     });
    }
 
@@ -45,11 +45,10 @@ export class TareasVoluntarioComponent implements OnInit {
                 `Te has inscripto a la tarea: ${tarea.name}`,
                 'success'
               );
-
               const nuevosDatos:ResumenVoluntario = this.datosVoluntario!;
 
-              nuevosDatos.voluntario = res;
-
+              nuevosDatos.voluntario = res.voluntario;
+              nuevosDatos.tareas = res.tareas;
 
               this.voluntarioService.setDatosVoluntario = nuevosDatos;
             },
@@ -91,10 +90,11 @@ export class TareasVoluntarioComponent implements OnInit {
                  'success'
                );
 
-               const nuevosDatos:ResumenVoluntario = this.datosVoluntario!; 
+               const nuevosDatos:ResumenVoluntario = this.datosVoluntario!;
 
-               nuevosDatos.voluntario = res;
-
+               nuevosDatos.voluntario = res.voluntario;
+               nuevosDatos.tareas = res.tareas;
+ 
                this.voluntarioService.setDatosVoluntario = nuevosDatos;
              },
              error:()=>{

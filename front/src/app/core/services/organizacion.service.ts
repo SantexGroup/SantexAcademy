@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Organizacion } from '../interfaces/organizacion';
 import { Credencial } from '../interfaces/credencial';
 import { DatosLogin } from '../interfaces/datosLogin';
+import { ResumenOrganizacion } from '../interfaces/resumenOrganizacion';
 
 @Injectable({
   providedIn: 'root'
@@ -12,24 +13,13 @@ export class OrganizacionService {
 
   constructor(private apiService:ApiService) {
 
-    this.credencialesOrganizacion = new BehaviorSubject<Credencial | null>(JSON.parse(localStorage.getItem('credencialesOrganizacion')!));
-    this.datosOrganizacion = new BehaviorSubject<Organizacion | null>(null);
+    this.datosOrganizacion = new BehaviorSubject<ResumenOrganizacion | null>(null);
   }
 
-  private credencialesOrganizacion:BehaviorSubject<Credencial | null>;
 
-  get getCredencialesOrganizacion():Observable<Credencial| null>{
-    
-    return this.credencialesOrganizacion.asObservable();
-  }
+  private datosOrganizacion:BehaviorSubject<ResumenOrganizacion | null >;
 
-  set setCredencialesOrganizacion(value:Credencial|null){
-    this.credencialesOrganizacion.next(value);
-  }
-
-  private datosOrganizacion:BehaviorSubject<Organizacion | null >;
-
-  get getDatosOrganizacion():Observable<Organizacion|null>{
+  get getDatosOrganizacion():Observable<ResumenOrganizacion|null>{
     return this.datosOrganizacion.asObservable();
   }
 
@@ -53,7 +43,10 @@ export class OrganizacionService {
    return this.apiService.put<Organizacion>(`/coordinator/edit-user/${id}`,organizacion).pipe(
     map((res)=>{
       
-      this.datosOrganizacion.next(res);
+      const nuevosDatos = this.datosOrganizacion.value;
+      nuevosDatos!.coordinador = res;
+
+      this.datosOrganizacion.next(nuevosDatos);
 
       return res;
     })
@@ -64,25 +57,9 @@ export class OrganizacionService {
    return this.apiService.delete<boolean>(`/coordinator/delete-user/${id}`);
   }
 
-  iniciarSesion(datosLogin:DatosLogin):Observable<Credencial>{
-    return this.apiService.post<Credencial>("/coordinator/login", datosLogin).pipe(
-      map((res)=>{
 
-        const credenciales:Credencial = {
-          token: res.token,
-          tipoUsuario:'organizacion'
-        };
-        
-        this.credencialesOrganizacion.next(credenciales);
-
-        localStorage.setItem('credencialesOrganizacion', JSON.stringify(credenciales));
-        return credenciales;
-      })
-    );
-  }
-
-  obtenerDatosOrganizacion():Observable<Organizacion>{
-    return this.apiService.get<Organizacion>('/coordinator/datos').pipe(
+  obtenerDatosOrganizacion():Observable<ResumenOrganizacion>{
+    return this.apiService.get<ResumenOrganizacion>('/coordinator/datos').pipe(
       map((res)=>{
         this.datosOrganizacion.next(res);
         return res;

@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      coordinatorId: {
+      usuarioId: {
         type: DataTypes.INTEGER,
       },
       points: {
@@ -87,9 +87,9 @@ module.exports = (sequelize, DataTypes) => {
     },
   );
   Tarea.associate = (models) => {
-    Tarea.belongsToMany(models.volunteer, { through: models.tareasVoluntario });
+    Tarea.belongsToMany(models.usuario, { through: models.tareasVoluntario });
     Tarea.belongsTo(models.category);
-    Tarea.belongsTo(models.coordinator);
+    Tarea.belongsTo(models.usuario);
   };
   return Tarea;
 };

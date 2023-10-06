@@ -12,6 +12,7 @@ const tareaRoutes = require('./tarea-routes');
 const categoryRoutes = require('./category-routes');
 const administratorRoutes = require('./administrator-routes');
 const premiosRoutes = require('./premios-routes');
+const cuentasRoutes = require('./cuentas-routes');
 
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
@@ -24,6 +25,7 @@ app.use('/category', categoryRoutes);
 
 app.use('/administrator', administratorRoutes);
 app.use('/premios', premiosRoutes);
+app.use('/cuentas', cuentasRoutes);
 
 // eslint-disable-next-line max-len
 module.exports = {
@@ -35,6 +37,7 @@ module.exports = {
   premios: premiosRoutes,
   administrator: administratorRoutes,
   tarea: tareaRoutes,
+  cuentas: cuentasRoutes,
 
 
 };

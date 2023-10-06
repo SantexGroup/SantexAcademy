@@ -104,7 +104,15 @@ const editAsistio = async (req, res) => {
   }
 };
 
+async function tareasRecientes(req, res) {
+  try {
+    const data = await tareaServices.listadoTareasRecientes();
+    res.status(200).send(data);
+  } catch (error) {
+    res.status(500).send('Error interno en el servidor');
+  }
+}
 module.exports = {
   // eslint-disable-next-line max-len
-  getAllTarea, getTareaById, createTarea, editTarea, deleteTarea, editEstado, getTareaByIdOrganizacion, getVolunteersForTask, editAsistio,
+  getAllTarea, getTareaById, createTarea, editTarea, deleteTarea, editEstado, getTareaByIdOrganizacion, getVolunteersForTask, editAsistio, tareasRecientes,
 };

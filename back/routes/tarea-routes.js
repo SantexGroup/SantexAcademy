@@ -13,4 +13,5 @@ router.delete('/delete-tarea/:id', isAuthenticatedOrganizacion, tareaController.
 router.put('/cambiar-estado/:id', isAuthenticatedOrganizacion, tareaController.editEstado);
 router.get('/inscriptos/:id', isAuthenticatedOrganizacion, tareaController.getVolunteersForTask);
 router.put('/cambiar-asistencia/', tareaController.editAsistio);
+router.get('/ultimas-tareas/', tareaController.tareasRecientes);
 module.exports = router;

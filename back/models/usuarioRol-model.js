@@ -1,9 +1,8 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Administrator extends Model {}
-
-  Administrator.init(
+  class UsuarioRol extends Model { }
+  UsuarioRol.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -11,23 +10,15 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         allowNull: false,
       },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-    },
-    {
+    }, {
       sequelize,
-      modelName: 'admin',
+      modelName: 'usuarioRol',
       timestamps: false,
       underscored: false,
       createdAt: false,
       updatedAt: false,
     },
   );
-  return Administrator;
+
+  return UsuarioRol;
 };

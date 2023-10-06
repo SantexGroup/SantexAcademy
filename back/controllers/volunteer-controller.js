@@ -36,15 +36,15 @@ async function getVolunteerById(req, res, next) {
 
 async function createVolunteer(req, res, next) {
   const {
-    name, lastname, dni, email, password, address, phone,
+    name, lastname, email, password, address, phone,
   } = req.body;
 
   try {
     // eslint-disable-next-line max-len
-    const user = await volunteerServices.createUser(name, lastname, dni, email, password, address, phone);
+    const user = await volunteerServices.createUser(name, lastname, email, password, address, phone);
     res.status(201).send(user);
   } catch (error) {
-    next(error);
+    res.status(500).json({ error: 'Ocurrió un error en el servidor' });
   }
 }
 
@@ -110,7 +110,7 @@ async function asingVolunteerWork(req, res, next) {
       return res.status(400).json({ error: result.error });
     }
 
-    res.status(200).send(result.voluntario);
+    res.status(200).send(result);
   } catch (error) {
     next(error);
   }
@@ -156,7 +156,7 @@ async function unsuscribeVolunteerWork (req, res) {
     if (result.error) {
       return res.status(400).json({ error: result.error });
     }
-    res.status(200).send(result.voluntario);
+    res.status(200).send(result);
   } catch (error) {
     res.status(500).json({ error: 'Ocurrió un error en el servidor' });
   }

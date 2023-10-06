@@ -1,21 +1,30 @@
-/* eslint-disable import/order */
-/* eslint-disable object-shorthand */
-// eslint-disable-next-line no-unused-vars
-const { DataTypes, Sequelize } = require('sequelize');
-const coordinatorModel = require('../models/coordinator-model');
-const { sequelize } = require('../models');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-const Coordinator = coordinatorModel(sequelize, DataTypes);
+const models = require('../models/index');
 
 async function getAll() {
-  const listCoord = await Coordinator.findAll();
+  const listCoord = await models.usuario.findAll({
+    attributes: {
+      exclude: [
+        'password',
+      ],
+    },
+    include: [
+      {
+        model: models.rol,
+        where: {
+          name: 'organizacion',
+        },
+      },
+    ],
+  });
+
   return listCoord;
 }
 
 async function getById(id) {
-  const user = await Coordinator.findByPk(id);
+  const user = await models.usuario.findByPk(id);
 
   if (user == null) {
     throw new Error('Usuario no encontrado');
@@ -25,18 +34,31 @@ async function getById(id) {
 }
 
 async function createUser(name, description, email, password, address, phone) {
-  const user = new Coordinator();
+  // eslint-disable-next-line no-useless-catch
+  const existeUsuario = await models.usuario.findOne({
+    where: {
+      email,
+    },
+  });
+  if (existeUsuario !== null) throw new Error();
+  const organizacion = await models.usuario.create({
+    name,
+    description,
+    email,
+    password: await bcrypt.hash(password, 10),
+    address,
+    phone,
+  });
 
-  user.name = name;
-  user.description = description;
-  user.email = email;
-  user.password = await bcrypt.hash(password, 10);
-  user.address = address;
-  user.phone = phone;
+  const rolOrganizacion = await models.rol.findOne({
+    where: {
+      name: 'organizacion',
+    },
+  });
+  await organizacion.addRol(rolOrganizacion);
 
-  const userCreated = await user.save();
-  delete userCreated.dataValues.password;
-  return userCreated;
+  delete organizacion.dataValues.password;
+  return organizacion;
 }
 
 async function editUser(id, name, description, email, address, phone) {
@@ -95,10 +117,18 @@ async function deleteUser(id) {
 }
 
 async function login(email, password) {
-  const user = await Coordinator.findOne({
+  const user = await models.usuario.findOne({
     where: {
-      email: email,
+      email,
     },
+    include: [
+      {
+        model: models.rol,
+        where: {
+          name: 'organizacion',
+        },
+      },
+    ],
   });
 
   if (!user) {
@@ -111,11 +141,58 @@ async function login(email, password) {
     throw new Error('Email o contraseña incorrectos');
   }
 
-  const token = jwt.sign({ id: user.id, tipoUsuario: 'organizacion' }, process.env.JWT_SECRET, { expiresIn: '1h' });
+  const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
   return token;
 }
 
+const tareaServices = require('./tarea-services');
+
+async function getDataCoordinator(userId) {
+  // eslint-disable-next-line no-useless-catch
+  try {
+    const coordinador = await getById(userId);
+
+    if (!coordinador) {
+      throw new Error('No se encuentra coordinador con el id proporcionado');
+    }
+
+    const tareas = await tareaServices.getByIdOrganizacion(userId);
+
+    coordinador.tareas = tareas;
+
+    let totalInscriptos = 0;
+    let totalPuntosOtorgados = 0;
+    const hoy = new Date();
+    const proximasTareas = [];
+
+    // eslint-disable-next-line no-restricted-syntax, guard-for-in
+    for (const tarea of tareas) {
+      const fechaTarea = new Date(tarea.date);
+
+      if (fechaTarea >= hoy) {
+        proximasTareas.push(tarea);
+      }
+      const inscriptos = tarea.cantInscriptos;
+      // eslint-disable-next-line no-restricted-syntax, guard-for-in, no-plusplus
+      for (let i = 0; i < inscriptos; i++) {
+        totalInscriptos += 1;
+        totalPuntosOtorgados += tarea.points;
+      }
+    }
+    proximasTareas.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    return {
+      coordinador,
+      totalInscriptos,
+      totalPuntosOtorgados,
+      proximasTareas,
+    };
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
-  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword,
+  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, getDataCoordinator,
 };

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/core/services/admin.service';
+import { CuentaService } from 'src/app/core/services/cuenta.service';
 
 @Component({
   selector: 'app-admin',
@@ -10,7 +11,7 @@ import { AdminService } from 'src/app/core/services/admin.service';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private router:Router, private adminService:AdminService) { }
+  constructor(private router:Router, private cuentaService:CuentaService) { }
 
   @ViewChild('sideNav')sideNav!:MatSidenav;
 
@@ -22,8 +23,8 @@ export class AdminComponent implements OnInit {
     this.sideNav.close();
   }
   cerrarSesion(){
-    this.adminService.setCredencialesAdmin = null;
-    localStorage.removeItem('credencialesAdmin');
+    this.cuentaService.setCredencialesUsuario = null;
+    localStorage.removeItem('credencialesUsuario');
     this.router.navigate(['/index']);
 
   }

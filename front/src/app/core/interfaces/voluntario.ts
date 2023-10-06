@@ -10,6 +10,5 @@ export interface Voluntario {
     address: string,
     points?: number,
     phone: string,
-    tareas?:Tarea[],
     tareasVoluntario?:TareasVoluntario
 }

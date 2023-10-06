@@ -1,21 +1,22 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Coordinator extends Model { }
-  Coordinator.init(
+  class Usuario extends Model { }
+  Usuario.init(
     {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
+        allowNull: false,
       },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      description: {
+      lastname: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       email: {
         type: DataTypes.STRING,
@@ -27,23 +28,36 @@ module.exports = (sequelize, DataTypes) => {
       },
       address: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
+      },
+      points: {
+        type: DataTypes.BIGINT,
+        allowNull: true,
       },
       phone: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
+      },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
     }, {
       sequelize,
-      modelName: 'coordinator',
+      modelName: 'usuario',
       timestamps: false,
       underscored: false,
       createdAt: false,
       updatedAt: false,
     },
   );
-  Coordinator.associate = (models) => {
-    Coordinator.hasMany(models.tarea);
+
+  Usuario.associate = (models) => {
+    Usuario.belongsToMany(models.premio, { through: models.premiosMid });
+    Usuario.belongsToMany(models.tarea, { through: models.tareasVoluntario });
+    Usuario.belongsToMany(models.rol, { through: models.usuarioRol });
+    Usuario.hasMany(models.tarea);
   };
-  return Coordinator;
+
+  return Usuario;
 };

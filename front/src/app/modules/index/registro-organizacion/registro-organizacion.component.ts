@@ -53,7 +53,7 @@ export class RegistroOrganizacionComponent implements OnInit {
         verticalPosition:'top'});
         this.irLoginOrganizacion();
       },
-      error:(error)=>{ console.log(error);
+      error:()=>{ 
         this.matSnackBar.open('Error al registrarse','ERROR',{
           duration:3000,
         horizontalPosition:'center',

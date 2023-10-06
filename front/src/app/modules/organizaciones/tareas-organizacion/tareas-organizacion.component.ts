@@ -94,8 +94,7 @@ export class TareasOrganizacionComponent implements OnInit {
             this.mostrarTareas();
           
           },
-          error:(err)=>{
-            console.log(err);
+          error:()=>{
             Swal.fire(
               'Error',
               'No se pudo eliminar la tarea.',
@@ -136,8 +135,7 @@ export class TareasOrganizacionComponent implements OnInit {
             this.mostrarTareas();
           
           },
-          error:(err)=>{
-            console.log(err);
+          error:()=>{
             Swal.fire(
               'Error',
               'No se pudo modificar el estado.',

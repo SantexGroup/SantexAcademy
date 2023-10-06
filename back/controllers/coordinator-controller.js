@@ -1,10 +1,14 @@
 const coordinatorServices = require('../services/coordinator-services');
 
-function getDataOrganizacion(req, res) {
+async function getDataOrganizacion(req, res) {
   const { usuario } = req;
 
-  delete usuario.dataValues.password;
-  res.status(200).send(usuario);
+  try {
+    const data = await coordinatorServices.getDataCoordinator(usuario.id);
+    res.status(200).send(data);
+  } catch (error) {
+    res.status(500).send('Error interno del servidor');
+  }
 }
 
 async function getAllCoordinators(req, res) {
@@ -27,11 +31,14 @@ async function createCoordinator(req, res) {
   const {
     name, description, email, password, address, phone,
   } = req.body;
+  try {
+    // eslint-disable-next-line max-len
+    const user = await coordinatorServices.createUser(name, description, email, password, address, phone);
 
-  // eslint-disable-next-line max-len
-  const user = await coordinatorServices.createUser(name, description, email, password, address, phone);
-
-  res.status(201).send(user);
+    res.status(201).send(user);
+  } catch (error) {
+    res.status(500).send('Error al crear la organización');
+  }
 }
 
 async function editCoordinator(req, res) {

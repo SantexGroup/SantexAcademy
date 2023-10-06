@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { CuentaService } from 'src/app/core/services/cuenta.service';
 import { VoluntarioService } from 'src/app/core/services/voluntario.service';
 
 @Component({
@@ -13,17 +14,17 @@ export class VoluntariosComponent implements OnInit {
   @ViewChild('sideNav') sideNav!:MatSidenav;
 
 
-  constructor(private voluntarioService:VoluntarioService, private router:Router,private matSnackBar:MatSnackBar) { }
+  constructor(private voluntarioService:VoluntarioService, private router:Router,private matSnackBar:MatSnackBar, private cuentaService:CuentaService) { }
 
   ngOnInit(): void {
 
     this.voluntarioService.obtenerDatosVoluntario().subscribe({
-      next:()=>{
-        
-        this.router.navigate(['/voluntarios/dashboard']);
+      next:(res)=>{
+        console.log(res);
+        this.router.navigate(['/voluntario/dashboard']);
       },
       error:()=>{
-        this.voluntarioService.setCredencialesVoluntario = null;
+        this.cuentaService.setCredencialesUsuario = null;
         
         this.matSnackBar.open('Sesión Caducada','ERROR',{
           duration:3000,
@@ -31,8 +32,8 @@ export class VoluntariosComponent implements OnInit {
         verticalPosition:'top'}
         );
         
-        localStorage.removeItem('credencialesVoluntario');
-        this.router.navigate(['/index/login'],{queryParams:{tipo:'voluntario'}});
+        localStorage.removeItem('credencialesUsuario');
+        this.router.navigate(['/index/login']);
         
       }
     }
@@ -46,7 +47,7 @@ export class VoluntariosComponent implements OnInit {
   }
 
   cerrarSesion(){
-    this.voluntarioService.setCredencialesVoluntario = null;
+    this.cuentaService.setCredencialesUsuario = null;
     localStorage.removeItem('credencialesVoluntario');
     this.router.navigate(['/index']);
 

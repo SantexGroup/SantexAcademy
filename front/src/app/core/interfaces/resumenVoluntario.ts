@@ -6,6 +6,7 @@ export interface ResumenVoluntario{
     horasTrabajadas:number,
     puntosAdquiridos:number,
     tareasPendientes:Tarea[],
+    tareas:Tarea[]
     premiosCanjeados:Premio[],
     voluntario:Voluntario
     

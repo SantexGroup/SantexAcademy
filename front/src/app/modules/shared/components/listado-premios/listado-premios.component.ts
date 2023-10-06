@@ -75,7 +75,6 @@ export class ListadoPremiosComponent implements OnInit {
           
           },
           error:(err)=>{
-            console.log(err);
             Swal.fire(
               'Error',
               'No se pudo eliminar el premio.',
@@ -92,8 +91,19 @@ export class ListadoPremiosComponent implements OnInit {
     this.voluntarioService.obtenerDatosVoluntario().subscribe({
       next:(res)=>{
         this.datosVoluntario = res;
+        console.log(res);
       }
     });
+  }
+
+  verificarCanje(premio:Premio):boolean{
+    let resultado = false;
+    if(this.datosVoluntario){
+
+      resultado = this.datosVoluntario.premiosCanjeados.some(p=> p.id === premio.id)!;
+    }
+    return resultado;
+
   }
 
   canjear(premio:Premio):void{

@@ -92,7 +92,9 @@ button{
     font-weight: 500;
 }
 
-
+.sin-voluntario{
+    justify-content: center!important;
+}
 
 @media (min-width:650px) {
     .contenedor{
