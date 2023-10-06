@@ -160,6 +160,29 @@ async function createAdminDefault(email = 'admin@gmail.com', password = 'Admin12
   await adminCreado.addRol(rolAdmin);
 }
 
+const volunteerServices = require('./volunteer-services');
+const coordinatorServices = require('./coordinator-services');
+
+async function getDataAdmin(userId) {
+  const admin = await getById(userId);
+
+  if (!admin) {
+    throw new Error('Admin con id proporcionado no encontrado');
+  }
+
+  const cantVolunteer = await volunteerServices.getAll();
+
+  if (!cantVolunteer) {
+    throw new Error('No se encontraron voluntarios');
+  }
+
+  const cantCoordinator = await coordinatorServices.getAll();
+  if (!cantCoordinator) {
+    throw new Error('No se encontraron coordinadores/ organizaciones');
+  }
+
+  return { cantCoordinator, cantVolunteer, admin };
+}
 module.exports = {
-  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, createAdminDefault,
+  getAll, getById, createUser, editUser, deleteUser, login, modifyPassword, createAdminDefault, getDataAdmin,
 };
