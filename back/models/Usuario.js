@@ -1,6 +1,5 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/db-config");
-const softDelete = require('sequelize-soft-delete');
 
 
 const Usuario = sequelize.define(

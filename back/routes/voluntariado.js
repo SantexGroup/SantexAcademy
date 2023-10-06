@@ -1,9 +1,20 @@
 const express = require("express");
+<<<<<<< Updated upstream
 
 const voluntariadoRouter = express.Router();
 const { voluntariadoController } = require("../controllers");
 const { verifyToken, isAdmin, isOrg } = require("../middleware/authMiddleware");
 
+=======
+const voluntariadoRouter = express.Router();
+const  {voluntariadoController}  = require("../controllers");
+
+const { verifyToken, isAdmin, isOrg } = require("../middleware/authMiddleware");
+
+voluntariadoRouter.get("/all", voluntariadoController.getAllVolunteers);
+voluntariadoRouter.get("/:id", voluntariadoController.getVolunteerById);
+
+>>>>>>> Stashed changes
 voluntariadoRouter.post(
   "/",
   verifyToken,
@@ -11,9 +22,12 @@ voluntariadoRouter.post(
   voluntariadoController.createVoluntariado
 );
 
+<<<<<<< Updated upstream
 voluntariadoRouter.get("/all", voluntariadoController.getAllVolunteers);
 voluntariadoRouter.get("/:id", voluntariadoController.getVolunteerById);
 
+=======
+>>>>>>> Stashed changes
 voluntariadoRouter.get(
   "/me/volunteerings",
   verifyToken,
