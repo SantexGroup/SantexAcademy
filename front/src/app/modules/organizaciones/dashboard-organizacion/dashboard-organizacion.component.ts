@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { Organizacion } from 'src/app/core/interfaces/organizacion';
 import { ResumenOrganizacion } from 'src/app/core/interfaces/resumenOrganizacion';
+import { Tarea } from 'src/app/core/interfaces/tarea';
 import { OrganizacionService } from 'src/app/core/services/organizacion.service';
+import { DetalleTareaComponent } from '../../shared/components/detalle-tarea/detalle-tarea.component';
 
 @Component({
   selector: 'app-dashboard-organizacion',
@@ -11,7 +13,7 @@ import { OrganizacionService } from 'src/app/core/services/organizacion.service'
 })
 export class DashboardOrganizacionComponent implements OnInit {
 
-  constructor(organizacionService:OrganizacionService) {
+  constructor(organizacionService:OrganizacionService, private modal:MatDialog) {
     this.datosOrganizacion$ = organizacionService.getDatosOrganizacion;
   }
 
@@ -19,6 +21,10 @@ export class DashboardOrganizacionComponent implements OnInit {
 
 
   ngOnInit(): void {
+  }
+
+  verDetalles(tarea:Tarea):void{
+    this.modal.open(DetalleTareaComponent, {data:tarea}); 
   }
 
 }
