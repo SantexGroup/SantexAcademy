@@ -14,8 +14,13 @@ async function login(req, res) {
 async function getData(req, res) {
   const { usuario } = req;
 
-  delete usuario.dataValues.password;
-  res.status(200).send(usuario);
+  try {
+    const data = await adminService.getDataAdmin(usuario.id);
+    delete usuario.dataValues.password;
+    res.status(200).send(data);
+  } catch (error) {
+    res.status(500).send('Erro interno en el servidor');
+  }
 }
 async function getAllAdministrator(req, res) {
   const user = await adminService.getAll();
