@@ -100,15 +100,17 @@ export class HistorialVentasComponent implements OnInit {
     localStorage.setItem('idProd', idProd.toString());
     this.router.navigate(['modificar-articulo']);    
   }
-  eliminar(idProd: number) {
+  eliminar(id: number) {
     if(confirm("¿Desea eliminar el artículo? Esta acción no se puede deshacer")) {
-      console.log("Id Prod: " + idProd)
-      this.service.eliminarArticulo(idProd).subscribe(resEli => {
+      console.log("Id Prod: " + id);
+      this.service.eliminarArticulo(id).subscribe(resEli => {
         console.log("Res eli: " + resEli)
-        if (resEli) {
+        if(resEli) {
           console.log("Res eli: " + resEli)
           alert("Artículo borrado con éxito");
-          this.router.navigate(['historial-ventas']);
+          this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
+            this.router.navigate(['/historial-ventas']).then(()=>{})
+          })
         }else{
           alert("No se ha podido eliminar su artículo");
         }

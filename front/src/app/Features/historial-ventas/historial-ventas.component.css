@@ -64,6 +64,7 @@ img {
 #articulo {
     display: flex;
     justify-content:space-around;
+    align-items: center;
     margin: 10px;
     padding: 5px;
     padding-bottom: 8px;
@@ -80,6 +81,8 @@ img {
     width: 30%;
     min-width: 30%;
     max-width: 30%;
+    height: 95%;
+    max-height: 95%;
     background-color: white;
     border-radius: 5px;
 }
