@@ -35,6 +35,6 @@ export class VolunteeringService {
       'x-access-token': token,
     });
     const options = { headers: headers };
-    return this.http.post(url, options);
+    return this.http.post(url, {}, options);
   }
 }

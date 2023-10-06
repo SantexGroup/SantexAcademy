@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DashboardServicesService } from '../../../services/dashboard-services.service';
+import { OrganizationService } from '../../../services/organization.service';
 import { Store } from '@ngrx/store';
 import { selectToken } from 'src/app/core/auth.selectors';
 
@@ -10,10 +10,7 @@ import { selectToken } from 'src/app/core/auth.selectors';
 })
 export class HeaderDashboardOrgComponent {
   @Input() dataHeader: any = {};
-  constructor(
-    private dashServices: DashboardServicesService,
-    private store: Store
-  ) {}
+  constructor(private orgServices: OrganizationService, private store: Store) {}
   statusModal: string = '';
   messageModal: string = '';
   onModalStatus: boolean = false;
@@ -25,7 +22,7 @@ export class HeaderDashboardOrgComponent {
       formData.append('file', file);
       this.store.select(selectToken).subscribe((token) => {
         if (token) {
-          this.dashServices.updatePhotoProfileOrg(formData, token).subscribe({
+          this.orgServices.updatePhotoProfileOrg(formData, token).subscribe({
             next: (response) => {
               if (response) {
                 this.onModalStatus = true;

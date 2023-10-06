@@ -50,11 +50,11 @@ export class FormLoginComponent implements OnInit {
       this.authService.loginVolunteer(userData).subscribe({
         next: (response) => {
           this.store.dispatch(setToken({ token: response.token }));
+          this.store.dispatch(setUserType({ userType: 'vol' }));
           this.onModalStatus = true;
           this.statusSession = 'success-loginV';
           this.routeBtnContinue = 'voluntariados';
           this.textBtnModal = 'Explorar Oportunidades';
-          this.store.dispatch(setUserType({ userType: 'vol' }));
         },
         error: (error) => {
           console.error('login error', error);
@@ -75,11 +75,11 @@ export class FormLoginComponent implements OnInit {
       this.authService.loginCordinator(userData).subscribe({
         next: (response) => {
           this.store.dispatch(setToken({ token: response.token }));
+          this.store.dispatch(setUserType({ userType: 'org' }));
           this.onModalStatus = true;
           this.statusSession = 'success-loginO';
           this.routeBtnContinue = 'dashboard';
           this.textBtnModal = 'Ir al Dashboard';
-          this.store.dispatch(setUserType({ userType: 'org' }));
         },
         error: (error) => {
           console.error('Login error', error);

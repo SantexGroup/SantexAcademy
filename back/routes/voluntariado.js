@@ -1,8 +1,9 @@
 const express = require("express");
-
-const voluntariadoRouter = express.Router();
 const { voluntariadoController } = require("../controllers");
+const voluntariadoRouter = express.Router();
 const { verifyToken, isAdmin, isOrg } = require("../middleware/authMiddleware");
+voluntariadoRouter.get("/all", voluntariadoController.getAllVolunteers);
+voluntariadoRouter.get("/:id", voluntariadoController.getVolunteerById);
 
 voluntariadoRouter.post(
   "/",
@@ -10,9 +11,6 @@ voluntariadoRouter.post(
   isOrg,
   voluntariadoController.createVoluntariado
 );
-
-voluntariadoRouter.get("/all", voluntariadoController.getAllVolunteers);
-voluntariadoRouter.get("/:id", voluntariadoController.getVolunteerById);
 
 voluntariadoRouter.get(
   "/me/volunteerings",

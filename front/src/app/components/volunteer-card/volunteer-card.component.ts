@@ -14,11 +14,13 @@ export class VolunteerCardComponent implements OnInit {
   nameVol: string = '';
   nameOrg: string = '';
   openModalQuestion: boolean = false;
+  afterApplication: boolean = false;
+  statusModalApplication: string = '';
+  messageModalApplication: string = '';
+
   constructor(private datePipe: DatePipe, private router: Router) {}
 
-  ngOnInit(): void {
-    console.log(this.data);
-  }
+  ngOnInit(): void {}
 
   formatCreatedAtDate(dateString: string): string {
     const createdAtDate = new Date(dateString);
@@ -62,6 +64,25 @@ export class VolunteerCardComponent implements OnInit {
 
   closeModalApplication() {
     this.openModalQuestion = !this.openModalQuestion;
+  }
+
+  onModalQuestionAftertApplication(status: string) {
+    if (status === 'success') {
+      this.statusModalApplication = 'success';
+      this.messageModalApplication =
+        '¡Felicidades! Tu solicitud para participar en el voluntariado ha sido exitosa. Agradecemos tu interés en ser parte de nuestro equipo y contribuir a nuestra causa. Pronto te contactaremos con más detalles sobre tu participación en este voluntariado. Mientras tanto, puedes explorar más oportunidades de voluntariado o visitar tu panel de control para ver el estado de tus postulaciones.';
+      this.afterApplication = true;
+    } else {
+      this.statusModalApplication = 'failed';
+
+      this.messageModalApplication =
+        'Lamentablemente, la solicitud para el voluntariado no se pudo procesar en este momento. Por favor, inténtalo nuevamente más tarde o ponte en contacto con nosotros para obtener asistencia.';
+      this.afterApplication = true;
+    }
+  }
+
+  continueViewing() {
+    this.afterApplication = false;
   }
 
   viewVolunteering(id: number) {
