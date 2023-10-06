@@ -1,5 +1,4 @@
 const { UsuarioEnVoluntariado, Voluntariado, Usuario } = require("../models");
-const { post } = require("../routes/voluntariado");
 
 // Proveedor de Datos para crear la relación usuario-voluntariado
 const join = async (userId, organizationId, idVolunteering) => {
@@ -113,9 +112,9 @@ const updateStatusById = async (idPostulation, status) => {
   }
 };
 
-const deleteJoinById = async (postulationId) => {
+const deleteJoinById = async (postulateId) => {
   try {
-    const postulate = await UsuarioEnVoluntariado.findByPk(postulationId);
+    const postulate = await UsuarioEnVoluntariado.findByPk(postulateId);
 
     if (!postulate) {
       throw new Error("The postulate does not exist.");
@@ -129,8 +128,10 @@ const deleteJoinById = async (postulationId) => {
 
     await postulate.update(
       { deletedAt: new Date() },
-      { where: { postulationId } }
+      { where: { postulateId } }
     );
+
+    await postulate.increment("spots");
   } catch (err) {
     console.error(err);
     throw err;
