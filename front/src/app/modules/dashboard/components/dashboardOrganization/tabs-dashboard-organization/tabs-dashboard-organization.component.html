@@ -210,7 +210,7 @@
           </div>
         </div>
 
-        <div class="flex items-center">
+        <div class="flex items-center capitalize">
           <div class="w-1/6 p-4">
             <strong>Categoría:</strong>
           </div>
@@ -219,14 +219,14 @@
               class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg text-[#cbd5e1]::placeholder"
               (change)="onCategoryChange($event)"
             >
-              <option value="" disabled selected hidden style="color: grey">
+              <option value="" disabled selected hidden style="color: grey" >
                 {{ dataTabs.category }}
               </option>
-              <option value="asistencia">Medio ambiente y fauna</option>
-              <option value="educacion" class="uppercase">
+              <option value="asistencia" class="capitalize">Medio ambiente y fauna</option>
+              <option value="educacion" class="capitalize">
                 Asistencia Social
               </option>
-              <option value="salud">Salud y discapacidad</option>
+              <option value="salud" class="capitalize">Salud y discapacidad</option>
             </select>
           </div>
         </div>
