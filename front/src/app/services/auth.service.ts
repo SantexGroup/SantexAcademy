@@ -25,7 +25,8 @@ export class AuthService {
     }
 
     // CONTROLAR ESTO TAMBIEN
-    if ('con la nueva respuesta del backend buscar en este data algo sobre admin') {
+    if ('con la nueva respuesta del backend buscar en este data algo sobre admin y cambiar o no') {
+      console.log('siempre entra a este IF y por eso siempre queda en true')
       this.isAdmin = true;
     }
 

@@ -20,7 +20,7 @@
                     <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
                 </li>
                 <li class="nav-item">
-                <!--
+                    <!--
                     <a class="nav-link" routerLink="/news">Noticias</a>
                 -->
                     <a class="nav-link" href="https://www.lavoz.com.ar/" target="_blank">Noticias</a>
@@ -39,7 +39,7 @@
                 </li>
             </ul>
             <ul *ngIf="isLogged" class="navbar-nav justify-content-end">
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="isAdmin">
                     <a class="nav-link" routerLink="/user/user-list">Usuarios</a>
                 </li>
                 <li class="nav-item">
