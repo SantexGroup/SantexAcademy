@@ -18,6 +18,7 @@ export class VistaPorTextoComponent implements OnInit {
   servidor: string = environment.API_URL + '/images/'
   images: string[] = [];
   listArtId: string[] = [];
+  resBus: string = JSON.stringify(localStorage.getItem('texBus'))
   
   constructor(private service: VisTextSerService, private router: Router) { }
 

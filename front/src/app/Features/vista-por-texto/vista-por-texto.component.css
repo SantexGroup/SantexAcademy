@@ -3,7 +3,13 @@ a, p {
     font-weight: 500;
     margin: 0;
 }
-
+#texto {
+    color: black;
+    margin-bottom: 1%;
+}
+span {
+    color: #d68a96;
+}
 a {
     text-decoration: none;
 }
