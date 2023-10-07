@@ -67,6 +67,7 @@ async function login(nick, password) {
     user: {
       name: user.name,
       lastName: user.lastName,
+      pictureLink: user.pictureLink,
     },
     profile,
     accessToken: token,
