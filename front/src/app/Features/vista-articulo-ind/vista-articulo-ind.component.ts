@@ -18,19 +18,15 @@ export class VistaArtIndComponent implements OnInit {
   // obtener imgs
   servidor: string = environment.API_URL + '/images/';
   images: string[] = [];
-
   //id del producto
   id: number = 0;
-
   //id del usuario
   idUsuario: number = 0;
   nomUSer: string = '';
-
   //Mayúsculas
   nombreArt: string = '';
   descArt: string = '';
-  
-  //seleccionables
+    //seleccionables
   envSel: string = '';
   env: string = '';
   envBolOri: boolean = false;
@@ -43,11 +39,9 @@ export class VistaArtIndComponent implements OnInit {
   pago: string = '';
   pagoBolOri: boolean = false;
   pagoBol: boolean = false;
-
   //traer datos
   respuesta: any = [];
   respuestaUser: any = [];
-
   //estados logueo
   logeadoComprador: boolean = false;
   logeadoVendedor: boolean = false;

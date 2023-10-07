@@ -17,6 +17,8 @@ import { VistaArtIndComponent } from './Features/vista-articulo-ind/vista-articu
 import { BarraLateralComponent } from './Shared/barra-lateral/barra-lateral.component';
 import { ModificarArticuloComponent } from './Features/modificar-articulo/modificar-articulo.component';
 import { HistorialVentasComponent } from './Features/historial-ventas/historial-ventas.component';
+import { HistorialCompradorComponent } from './Features/historial-comprador/historial-comprador.component';
+import { VistaPorTextoComponent } from './Features/vista-por-texto/vista-por-texto.component';
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { HistorialVentasComponent } from './Features/historial-ventas/historial-
     HistorialVentasComponent,
     ModificarArticuloComponent,
     BarraLateralComponent,
-
+    HistorialCompradorComponent,
+    VistaPorTextoComponent,
   ],
   imports: [
     BrowserModule,

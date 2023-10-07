@@ -1,0 +1,24 @@
+<app-barra></app-barra>
+<div class="container">
+  <p id="texto">Texto ingresado: <span>{{resBus}}</span></p>
+  <div class="row">
+    <div *ngFor="let articulo of listArticulos" class="col-md-3 mb-4 tarjeta-container">
+      <div class="card" >
+        <div id="tarjeta" class="card-body">
+          <div id="contImg">
+            <img id="FotoArticulo" [src]="images[listArticulos.indexOf(articulo)]">
+          </div>
+            <div id="datos">
+                <div id="datos2">
+                    <a class="card-title" (click)="redireccion(articulo.id)" >{{ articulo.nombre.charAt(0).toUpperCase() + articulo.nombre.slice(1) }}</a>
+                    <p>{{ articulo.detalles.charAt(0).toUpperCase() + articulo.detalles.slice(1) }}</p>
+                    <p id="Precio" class="card-subtitle">${{ articulo.precio }}</p>
+                </div>
+                <button id="boton" (click)="redireccion(articulo.id)">Ver más</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
