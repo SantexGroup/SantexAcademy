@@ -31,7 +31,7 @@ export class BarraComponent implements OnInit {
   }
   buscar() {
     if(this.textoTip == '') {
-      alert('No ingresó un texto')
+      alert('Debe ingresar un texto')
     }else {
       for(let i=0; i < this.listArticulosFilt.length; i++) {
         localStorage.removeItem('idProdsBus');
@@ -39,7 +39,7 @@ export class BarraComponent implements OnInit {
         localStorage.setItem('idProdsBus', JSON.stringify(this.listArticulosId)); 
       }
       this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
-        this.router.navigate(['/tarjeta']).then(()=>{})
+        this.router.navigate(['/vista-por-texto']).then(()=>{})
       })
     }
   }

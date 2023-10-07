@@ -1,3 +1,14 @@
+#titulo {
+    display: flex;
+    justify-content: center;
+}
+h1 {
+    padding-top: 1%;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0px;
+    color: #d68a96;
+}
 p, a {
     width: 150px;
     font-size: small;
@@ -49,7 +60,7 @@ img {
     display: flex;
     justify-content: center;  
     align-items: center;    
-    height: 80%;
+    height: 75%;
 }
 #recuadro {
     min-height: 90%;
