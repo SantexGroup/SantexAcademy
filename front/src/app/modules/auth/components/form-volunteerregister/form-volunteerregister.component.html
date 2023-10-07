@@ -7,7 +7,8 @@
     [status]="statusSession"
     [routeContinue]="routeBtnContinue"
     [textBtn]="textBtnModal"
-    [textEmailFound]="emailFound"
+    [errors]="errors"
+    [message]="messageModal"
   ></app-modal-status-form>
 
   <figure class="w-full h-[500px] bg-mediumViolet relative lg:h-[700px]">
@@ -111,7 +112,7 @@
             "
             class="flex-initial text-end text-deepPink"
           >
-            Por favor, ingresa un nombre válido.
+            El nombre completo debe tener al menos 2 caracteres.
           </p>
         </div>
       </div>
@@ -134,7 +135,7 @@
             "
             class="flex-initial text-end text-deepPink"
           >
-            Por favor, ingresa un email válido.
+            Eso no parece un correo válido.
           </p>
         </div>
       </div>
@@ -157,7 +158,7 @@
             "
             class="flex-initial text-end text-deepPink"
           >
-            Por favor, ingresa un teléfono válido.
+            El número de teléfono no es válido para Argentina.
           </p>
         </div>
       </div>
@@ -180,7 +181,9 @@
             "
             class="flex-initial text-end text-deepPink"
           >
-            Por favor, ingresa una contraseña.
+            La contraseña debe contener al menos una letra minúscula, una letra
+            mayúscula, un número y un símbolo, y tener al menos 8 caracteres de
+            longitud.
           </p>
         </div>
         <i

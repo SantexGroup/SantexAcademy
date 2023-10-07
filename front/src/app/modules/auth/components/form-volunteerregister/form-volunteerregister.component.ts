@@ -17,11 +17,11 @@ export class FormVolunteerregisterComponent {
 
   onModal: boolean = false;
   statusSession: string = '';
+  messageModal: string = '';
   routeBtnContinue: string = '';
   textBtnModal: string = '';
   imageUrl: string | ArrayBuffer | null = null;
-  emailFound: boolean = false;
-
+  errors: any = [];
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -61,18 +61,21 @@ export class FormVolunteerregisterComponent {
         next: (response) => {
           this.onModal = true;
           this.statusSession = 'success';
+          this.messageModal =
+            ' ¡Bienvenido a Voluntime! Tu cuenta se ha creado exitosamente. Ahora puedes iniciar sesión y explorar emocionantes oportunidades de voluntariado. ¡Comienza a marcar la diferencia hoy mismo!';
           this.routeBtnContinue = 'auth/login';
           this.textBtnModal = 'Iniciar Sesión';
         },
         error: (error) => {
           if (error.error.emailFound) {
-            console.error('Error in volunteer registration:', error);
             this.onModal = true;
-            this.statusSession = 'failed-emailFound';
+            this.statusSession = 'failed';
+            this.messageModal =
+              'Ya existe una cuenta registrada con ese email, por favor inicie sesión.';
             this.routeBtnContinue = 'auth/login';
             this.textBtnModal = 'Iniciar Sesión';
           } else {
-            console.error('Error in volunteer registration:', error);
+            this.errors = error.error.errors;
             this.onModal = true;
             this.statusSession = 'failed';
             this.routeBtnContinue = 'auth/volunteer-register';

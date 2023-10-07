@@ -3,7 +3,6 @@ const upload = require("../config/multerConfig");
 const authRouter = express.Router();
 const { userController, orgController } = require("../controllers");
 const { sendMail } = require("../config/send_gmail");
-const { verifyToken } = require("../middleware/authMiddleware");
 
 const {
   signUpVolunteer,

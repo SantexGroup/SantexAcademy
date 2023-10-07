@@ -11,6 +11,7 @@ export class ModalStatusFormComponent {
   @Input() routeContinue: string = '';
   @Input() textBtn: string = '';
   @Input() message: string = '';
+  @Input() errors: any = [];
 
   @Output() changueValueModal = new EventEmitter();
 

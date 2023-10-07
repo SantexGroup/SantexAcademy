@@ -3,45 +3,44 @@ const { sequelize } = require("../config/db-config");
 const { Op } = require("sequelize");
 const { comparePassword, hashPassword } = require("../config/crypt");
 
-
 const createTestimonialById = async (id, testimonial) => {
   try {
     // Crear el testimonio asociado al usuario identificado por 'id'
-    console.log('Creando testimonio con los siguientes datos:');
-    console.log('Usuario ID:', id);
-    console.log('Testimonio:', testimonial);
+    console.log("Creando testimonio con los siguientes datos:");
+    console.log("Usuario ID:", id);
+    console.log("Testimonio:", testimonial);
 
     const testimonialCreated = await Testimonios.create({
       ...testimonial,
       userId: id, // Asociar el testimonio al usuario
     });
 
-    console.log('Testimonio creado exitosamente:', testimonialCreated);
+    console.log("Testimonio creado exitosamente:", testimonialCreated);
 
     return testimonialCreated;
   } catch (error) {
-    console.error('Error al crear el testimonio:', error);
+    console.error("Error al crear el testimonio:", error);
     throw error;
   }
-}
+};
 
 const getAllTestimonials = async () => {
   try {
     const testimonials = await Testimonios.findAll({
-      include: [{
-        model: Usuario,
-        as: "usuario",
-        attributes: ["fullName", "image"],
-        
-      }]
+      include: [
+        {
+          model: Usuario,
+          as: "usuario",
+          attributes: ["fullName", "image"],
+        },
+      ],
     });
 
     return testimonials;
   } catch (error) {
     throw error;
   }
-}
-
+};
 
 const loginUser = async (email, password) => {
   try {
@@ -66,8 +65,8 @@ const loginUser = async (email, password) => {
   }
 };
 
-const createUser = async (usuario,password ) => {
-  const { image, ...restOfData } = usuario;
+const createUser = async (usuario) => {
+  const { image, password, ...restOfData } = usuario;
 
   let transaction;
   try {
@@ -88,20 +87,26 @@ const createUser = async (usuario,password ) => {
         // Restaurar el registro eliminado lógicamente y actualizarlo
         await existingUser.restore();
       }
-      await existingUser.update({
-        image,
-        password: hashPassword(password),
-        rolesId: restOfData.rolesId ? restOfData.rolesId : 1,
-        ...restOfData,
-      }, { transaction });
+      await existingUser.update(
+        {
+          image,
+          password: hashPassword(password),
+          rolesId: restOfData.rolesId ? restOfData.rolesId : 1,
+          ...restOfData,
+        },
+        { transaction }
+      );
     } else {
       // Crear el nuevo registro de usuario
-      existingUser = await Usuario.create({
-        image,
-       password: hashPassword(password),
-        rolesId: restOfData.rolesId ? restOfData.rolesId : 1,
-        ...restOfData,
-      }, { transaction });
+      existingUser = await Usuario.create(
+        {
+          image,
+          password: hashPassword(password),
+          rolesId: restOfData.rolesId ? restOfData.rolesId : 1,
+          ...restOfData,
+        },
+        { transaction }
+      );
     }
 
     await transaction.commit();
@@ -119,8 +124,6 @@ const createUser = async (usuario,password ) => {
     throw err;
   }
 };
-
-
 
 const getUsersByCriteria = async (queryOptions, bodyOptions) => {
   try {
@@ -180,12 +183,12 @@ const updateMyUser = async (usuario, id) => {
 
 const deleteUser = async (id) => {
   try {
-    const deletedUser=await Usuario.destroy({
+    const deletedUser = await Usuario.destroy({
       where: {
         id,
       },
     });
-    return deletedUser
+    return deletedUser;
   } catch (error) {
     console.error("Ocurrió un error al eliminar el usuario.", error);
     throw error;
