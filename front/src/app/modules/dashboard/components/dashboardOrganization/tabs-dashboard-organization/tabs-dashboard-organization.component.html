@@ -121,7 +121,7 @@
           <button
             *ngIf="!editData"
             (click)="handleProfileDelete()"
-            class="text-white rounded-md bg-mediumViolet mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-edit"
+            class="text-white rounded-md bg-mediumViolet mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-eliminate"
           >
             Eliminar perfil
           </button>
@@ -219,7 +219,7 @@
               class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg text-[#cbd5e1]::placeholder"
               (change)="onCategoryChange($event)"
             >
-              <option value="" disabled selected hidden style="color: grey" >
+              <option value="" disabled selected hidden style="color: grey" class="capitalize">
                 {{ dataTabs.category }}
               </option>
               <option value="asistencia" class="capitalize">Medio ambiente y fauna</option>
