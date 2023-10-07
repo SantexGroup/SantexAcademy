@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, catchError, map, of, tap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, of, switchMap, tap } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 
@@ -12,12 +12,15 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
+  isLoggedIn = false; // Variable para el estado de inicio de sesión
+  userType: string | undefined; // Variable para el tipo de usuario
+  //Para validar los cambios en la auth
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
   
   private baseUrl: string = environment.API_URL;
   private _user!: Usuario;
-
- 
 
   get user(){
     return { ...this._user };
@@ -57,37 +60,38 @@ export class AuthService {
       )
   }
 
-  login( email: string, password: string){
+  login(email: string, password: string): Observable<boolean> {
+    const url = `${this.baseUrl}user/login`;
+    const body = { email, password };
+  
+    return this.http.post<AuthResponse>(url, body).pipe(
+      tap((resp) => {
+        if (resp.ok) {
+          localStorage.setItem('token', resp.token!);
+          this._user = {
+            username: resp.username!,
+            id: resp.id!,
+            tipoDeUsuario: resp.tipoDeUsuario!
+          };
+        }
+      }),
+      map((resp) => resp.ok),
+      catchError((err) => {
+        this.toastr.error(err.error.msg, 'Error');
+        return of(false);
+      }),
+      switchMap(() => this.validarToken()), // Actualizo el estado de autenticación después del inicio de sesión
+      tap(() => {
+        this.isAuthenticatedSubject.next(true); // Actualizo el estado de autenticación
+      })
+      );
+  }
 
-    const url = `${ this.baseUrl}user/login`;
-    const body = {email, password};
-
-    return this.http.post<AuthResponse>( url, body )
-      .pipe(
-        tap(resp => {
-          if(resp.ok){
-            localStorage.setItem('token', resp.token!);
-            console.log('Tipo de Usuario:', resp.tipoDeUsuario);//BORRAR agregado para comprobar 
-            this._user = {
-              username: resp.username!,
-              id: resp.id!,
-              tipoDeUsuario: resp.tipoDeUsuario!
-            }
-            console.log('Tipo de _user:', this._user.tipoDeUsuario);//BORRAR agregado para comprobar 
-          }
-        }),
-        map(resp => resp.ok),
-        catchError(err => {
-          this.toastr.error(err.error.msg, 'Error'); // Muestra el mensaje de error con Toastr
-          return of(err.error.msg);
-        
-         } )
-      )
-
+  getIsAuthenticated(): boolean {
+    return this.isAuthenticatedSubject.value;
   }
 
   validarToken(): Observable<boolean>{
-
     const url = `${ this.baseUrl}user/renew`;
     const headers = new HttpHeaders()
       .set('Authorization', localStorage.getItem('token') || '');
@@ -106,30 +110,48 @@ export class AuthService {
                 }),
                 catchError( err => of(false))
               )
-
   }
 
-  logout(){
-    // localStorage.removeItem('token');
-      Swal.fire({
-        title: '¿Desea cerrar la sesión?',
-        text: 'Seleccione una opción:',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonText: 'Reiniciar Sesión',
-        cancelButtonText: 'Salir'
+  logout() {
+    Swal.fire({
+      title: '¿Desea cerrar la sesión?',
+      text: 'Seleccione una opción:',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Reiniciar Sesión',
+      cancelButtonText: 'Salir'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Si elige reiniciar sesion, borra datos almacenados
+        localStorage.clear(); // Elimina todos los datos del localStorage
+        this.isAuthenticatedSubject.next(false); 
+  
+        // Redirige al usuario a la página de inicio de sesión después de cerrar la sesión
+        this.router.navigateByUrl('/dashboard').then(() => {
+          this.isLoggedIn = false; // Actualiza el estado de autenticación
+        });
+      } else {
+        // Si elige salir, borra datos almacenados
+        localStorage.clear();
+        this.isAuthenticatedSubject.next(false); 
+  
+        // Redirige al usuario al dashboard después de cerrar la sesión
+        this.router.navigateByUrl('/dashboard').then(() => {
+          this.isLoggedIn = false; // Actualiza el estado de autenticación
+        });
+      }
+    });
+  }
+  
 
-      }).then((result) => {
-        if (result.isConfirmed) {
-          // Si elige reiniciar sesion, borra datos almacenados y redirige a login
-          localStorage.clear(); // Elimina todos los datos del localStorage
-          this.router.navigateByUrl('/login'); // Redirige al usuario a la página de inicio de sesión
-        } else {
-          // Si elige salir, borra datos almacenados y redirige a pagina de principal
-          localStorage.clear();
-          this.router.navigateByUrl('/dashboard'); // Redirige al usuario al dashboard
-        }
-      });
+  setLoggedInStatus(isLoggedIn: boolean, userType: string) {
+    this.isLoggedIn = isLoggedIn;
+    this.userType = userType;
+  }
+
+  // Método para verificar si el usuario ha iniciado sesión
+  isAuthenticated(): boolean {
+    return this.isLoggedIn;
   }
    
 }

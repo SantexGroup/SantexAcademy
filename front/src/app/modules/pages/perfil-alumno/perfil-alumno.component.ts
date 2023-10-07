@@ -18,11 +18,15 @@ export class PerfilAlumnoComponent {
 
     constructor(private router: Router,private authService: AuthService) {}
   
-    logout(): void {
-      this.router.navigateByUrl('/login');
+    logout(): void {    
       this.authService.logout();
       console.log("Deslogueo")
-      this.isLoggedIn = false;
+      this.router.navigateByUrl('/login');
+      
+      // Actualiza el estado de autenticación después del logout
+      this.authService.isAuthenticated$.subscribe((authenticated) => {
+        this.isLoggedIn = authenticated;
+      });
     }
   };
 

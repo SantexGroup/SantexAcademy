@@ -15,7 +15,7 @@ export class NavComponent implements OnInit {
   isLoggedIn = false;
   
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router, public authService: AuthService) {
     this.checkScreenSize();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -48,17 +48,12 @@ export class NavComponent implements OnInit {
     this.isProfileMenuOpen = !this.isProfileMenuOpen;
   }
 
-  
-  
-  
-
-  logout() {
+  async logout() {
     console.log('logout() called');
-    this.router.navigateByUrl('/login');
-    this.authService.logout();
+    await this.authService.logout(); // Espera a que se complete el proceso de cierre de sesión
+    this.router.navigateByUrl('/dashboard'); // Redirige después de que se haya completado el cierre de sesión
     this.isLoggedIn = false;
   }
-
 }
 
 
