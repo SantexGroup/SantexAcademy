@@ -9,27 +9,14 @@ import { selectToken } from 'src/app/core/auth.selectors';
   styleUrls: ['./completed-volunteering.component.css'],
 })
 export class CompletedVolunteeringComponent implements OnInit {
-  datosTabla?: any[];
+  volunteeringsCompleted: any;
+  statusModal: string = '';
+  messageModal: string = '';
+  textBtnModal: string = '';
+  onModal: boolean = false;
   constructor(private orgServices: OrganizationService, private store: Store) {}
   ngOnInit(): void {
-    this.datosTabla = [
-      {
-        name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Donec tristique',
-        modality: 'Presencial',
-        time: 'A tiempo parcial',
-        location: 'Córdoba',
-        rewards: '10',
-        action: '',
-      },
-    ];
     this.getVolunteeringsFinish();
-  }
-  editarDato(dato: any) {
-    // Lógica para editar el dato, por ejemplo, abrir un formulario de edición
-  }
-
-  eliminarDato(dato: any) {
-    // Lógica para eliminar el dato, por ejemplo, mostrar un cuadro de diálogo de confirmación
   }
 
   getVolunteeringsFinish() {
@@ -37,6 +24,7 @@ export class CompletedVolunteeringComponent implements OnInit {
       if (token) {
         this.orgServices.getVolunteeringsCompleted(token).subscribe({
           next: (res) => {
+            this.volunteeringsCompleted = res;
             console.log(res);
           },
           error: (err) => {
@@ -45,5 +33,34 @@ export class CompletedVolunteeringComponent implements OnInit {
         });
       }
     });
+  }
+
+  creditReward() {
+    this.store.select(selectToken).subscribe((token) => {
+      if (token) {
+        this.orgServices.creditRewardVolunteer(token).subscribe({
+          next: (res) => {
+            this.onModal = true;
+            this.statusModal = 'success';
+            this.messageModal =
+              'La recompensa ha sido acredita con éxito al usuario.';
+            setTimeout(() => {
+              this.onModal = false;
+            }, 2000);
+          },
+          error: (err) => {
+            this.onModal = true;
+            this.statusModal = 'failed';
+            this.messageModal =
+              'Ocurrió un error al acreditar la recompensa al usuario, por favor, intenta más tarde.';
+            this.textBtnModal = 'Aceptar';
+          },
+        });
+      }
+    });
+  }
+
+  closeModal() {
+    this.onModal = !this.onModal;
   }
 }
