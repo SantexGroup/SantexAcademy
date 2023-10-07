@@ -8,7 +8,7 @@ import { Component, HostListener } from '@angular/core';
 })
 export class ExchangeComponent {
   productos = [
-    { nombre: 'Vaso Termico', puntos: 10, imagen: '../../../../../assets/products/vaso termico.png' },
+    { nombre: 'Vaso Termico', puntos: 10, imagen: '../../../../../assets/products/vaso-termico.png' },
     { nombre: 'Mochila', puntos: 10, imagen: '../../../../../assets/products/mochila.png' },
     { nombre: 'Producto 3', puntos: 10, imagen: '../../../../../assets/imgs/patron1.png' },
     { nombre: 'Producto 3', puntos: 10, imagen: '../../../../../assets/imgs/patron1.png' },
