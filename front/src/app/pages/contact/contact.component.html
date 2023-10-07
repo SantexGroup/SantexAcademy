@@ -65,36 +65,6 @@
         </li>
       </ul>
     </div>
-    <form class="flex flex-col gap-4 p-4 lg:p-0">
-      <div class="flex flex-col">
-        <label for="full_name" class="lg:text-xl">Nombre Completo</label>
-        <input
-          type="text"
-          id="full_name"
-          name="full_name"
-          class="pl-2 border border-DarkGray rounded-md shadow-md m:w-[400px] lg:py-2 lg:w-[500px]"
-        />
-      </div>
-      <div class="flex flex-col">
-        <label for="email" class="lg:text-xl">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          class="pl-2 border border-DarkGray rounded-md shadow-md m:w-[400px] lg:py-2 lg:w-[500px]"
-        />
-      </div>
-      <div class="flex flex-col">
-        <label for="message" class="lg:text-xl">Mensaje</label>
-        <textarea
-          type="text"
-          id="message"
-          name="message"
-          class="resize-none h-[150px] border border-DarkGray rounded-md shadow-md m:w-[400px] lg:w-[500px]"
-        >
-        </textarea>
-      </div>
-      <button class="btn_send">Enviar <i className="bx bx-send"></i></button>
-    </form>
+    <app-form-contact></app-form-contact>
   </article>
 </section>

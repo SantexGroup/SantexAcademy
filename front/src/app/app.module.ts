@@ -11,6 +11,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DatePipe } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { register } from 'swiper/element/bundle';
 register();
@@ -36,7 +37,8 @@ import { ExchangeComponent } from './pages/exchange/exchange.component';
 import { ModalAfterApplicationComponent } from './components/modal-after-application/modal-after-application.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactComponent } from './pages/contact/contact.component';
-
+import { FormContactComponent } from './components/form-contact/form-contact.component';
+import { ModalStatusComponent } from './components/modal-status/modal-status.component';
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
@@ -60,6 +62,8 @@ export function localStorageSyncReducer(
     ModalAfterApplicationComponent,
     AboutUsComponent,
     ContactComponent,
+    FormContactComponent,
+    ModalStatusComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +72,7 @@ export function localStorageSyncReducer(
     authModule,
     DashboardModule,
     FormsModule,
+    ReactiveFormsModule,
     MatExpansionModule,
     MatDatepickerModule,
     MatInputModule,
