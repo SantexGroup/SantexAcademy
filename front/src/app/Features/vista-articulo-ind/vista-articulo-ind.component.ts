@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { vistaArtIndServ } from 'src/app/core/services/vista-art-ind-serv.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { BarraService } from 'src/app/core/services/barra.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-vista-articulo-ind',
@@ -60,6 +61,8 @@ export class VistaArtIndComponent implements OnInit {
 
   // resultado alquiler
   alquilado: boolean = false;
+
+  @ViewChild('seleccionables') test: any;
   
 
   constructor(private service: vistaArtIndServ, private router: Router, private barraService: BarraService) { }
@@ -180,13 +183,16 @@ export class VistaArtIndComponent implements OnInit {
       this.pagoBol = false;
     }
   }
+
+  // control del form
+  formControl() {
+    this.test.control.markAsTouched();
+    this.test.control.markAsDirty();
+    console.log(this.test);
+  }
+
   //confirmación
   botAlq() {
-      console.log('id Producto:', this.id)
-      console.log('id Usuario:', this.idUsuario);
-      console.log('envio:', this.envBol)
-      console.log('dias:', this.dias)
-      console.log('forma de pago:', this.pago)
       this.service.newAlquiler(this.id, this.idUsuario, this.envBol, this.dias, this.pago).subscribe(res => {
         console.log(res);
         if (res[0] && res[1]) {
