@@ -49,14 +49,12 @@ const getCompletedPostulation = async (idOrg) => {
         {
           model: Voluntariado,
           as: "voluntariado",
-          attributes: ["descripcion", "Reward"],
+          //attributes: ["descripcion", "reward"],
         },
-      ],
-      include: [
         {
           model: Usuario,
           as: "usuario",
-          attributes: ["fullname", "email"],
+          //attributes: ["fullname", "email"],
         },
       ],
     });
@@ -82,7 +80,7 @@ const accreditationReward = async (idOrg) => {
       const user = await Usuario.findOne({ where: { id: postulation.userId } });
 
       // Sumar la recompensa de la postulación a la recompensa del usuario
-      user.hoursAcc += postulation.voluntariado.Reward;
+      user.hoursAcc += postulation.voluntariado.reward;
 
       // Guardar el usuario actualizado
       await user.save();
@@ -101,7 +99,7 @@ const updateStatusById = async (idPostulation, status) => {
     const postulationUpdate = await UsuarioEnVoluntariado.update(
       { status },
       {
-        where: { idVolunteering: idPostulation },
+        where: { postulateId: idPostulation },
       }
     );
     if (!postulationUpdate) return;

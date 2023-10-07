@@ -55,7 +55,7 @@ const updatePassword = async (orgId, password) => {
 
 
 const createOrganization = async (data) => {
-  const { image, ...restOfData } = data;
+  const { image, password,...restOfData } = data;
   try {
     let existingOrg = await Organizacion.findOne({
       where: {
@@ -75,13 +75,13 @@ const createOrganization = async (data) => {
       }
       await existingOrg.update({
         image,
-        //password: hashPassword(password),
+        password: hashPassword(password),
         ...restOfData,
       });
     } else {
       existingOrg = await Organizacion.create({
         image,
-        //password: hashPassword(password), 
+        password: hashPassword(password), 
         ...restOfData,
       });
     }

@@ -2,6 +2,7 @@ const express = require("express");
 const { voluntariadoController } = require("../controllers");
 const voluntariadoRouter = express.Router();
 const { verifyToken, isAdmin, isOrg } = require("../middleware/authMiddleware");
+
 voluntariadoRouter.get("/all", voluntariadoController.getAllVolunteers);
 voluntariadoRouter.get("/:id", voluntariadoController.getVolunteerById);
 
