@@ -13,7 +13,7 @@
           <a class="dropdown-item" *ngFor="let categoria of listCategorias">{{categoria.name}}</a> 
       </div>
       <form class="d-flex">
-        <input (keyup)="filtrarProductos(inputFilter.value)" #inputFilter class="form-control me-2" type="search" placeholder="Busque un producto" aria-label="Search">
+        <input (keyup)="filtrarProductos(inputFilter.value)" (keyup.enter)="buscar()" #inputFilter class="form-control me-2" type="search" placeholder="Busque un producto" aria-label="Search">
       </form>
       <button (click)="buscar()" class="btn btn-outline-success" type="submit">Buscar</button>
       <div id="espacioApp"></div>
