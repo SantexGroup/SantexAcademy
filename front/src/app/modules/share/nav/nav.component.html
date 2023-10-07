@@ -33,7 +33,13 @@
         <li *ngIf="!authService.isLoggedIn"> <!-- Mostrar solo si el usuario no ha iniciado sesión -->
           <a routerLink="/login" class="nav-link">Iniciar Sesión</a>
         </li>
-        <li *ngIf="authService.isLoggedIn && authService.user.tipoDeUsuario !== 'Administrador'"> <!-- Mostrar solo si el usuario ha iniciado sesión como Alumno -->
+        <li *ngIf="authService.isLoggedIn">
+          <span class="nav-link" style="color: white;">Bienvenido, {{ authService.user.username }}</span>
+        </li>
+        <li *ngIf="authService.isLoggedIn && authService.user.tipoDeUsuario === 'Docente'"> <!-- Mostrar solo si el usuario ha iniciado sesión como Docente -->
+          <a routerLink="/perfil-docente" class="nav-link">Mi perfil docente</a>
+        </li>
+        <li *ngIf="authService.isLoggedIn && authService.user.tipoDeUsuario === 'Alumno' "> <!-- Mostrar solo si el usuario ha iniciado sesión como Alumno -->
           <a routerLink="/perfil-alumno" class="nav-link">Mi perfil</a>
         </li>
         <li *ngIf="authService.isLoggedIn" > <!-- Mostrar solo si el usuario ha iniciado sesión como Alumno -->
