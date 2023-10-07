@@ -24,7 +24,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/contact">Contacto</a>
-                </li>
+                </li>              
             </ul>
 
             <ul *ngIf="!isLogged" class="navbar-nav justify-content-end">
@@ -36,6 +36,9 @@
                 </li>
             </ul>
             <ul *ngIf="isLogged" class="navbar-nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/course/course-list">Cursos</a>
+                </li>  
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/user/user-list">Usuarios</a>
                 </li>
