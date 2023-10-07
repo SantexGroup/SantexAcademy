@@ -26,7 +26,7 @@ const initializeDB = async () => {
 
     // Sync all defined models to DB
     await sequelize.sync({ force: false }); // force: if true, each start deletes DB
-    await sequelize.sync({ alter: true });
+    // await sequelize.sync({ alter: true });
 
     //await sequelize.sync({ alter: true })
     // Create default roles
