@@ -47,9 +47,8 @@ const getVolunteerById = async (req, res, next) => {
 
 const getVoluntariadosByOrganization = async (req, res) => {
   try {
-    const { idOrg } = req.params.idOrg;
     const volunteerings =
-      await voluntariadoService.getVoluntariadosByOrganization(idOrg);
+      await voluntariadoService.getVoluntariadosByOrganization(req.orgId);
     if (!volunteerings) {
       res.status(404).json({
         action: "getVoluntariadosByOrganization",

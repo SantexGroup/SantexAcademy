@@ -66,8 +66,8 @@ const loginUser = async (email, password) => {
   }
 };
 
-const createUser = async (usuario) => {
-  const { image, password, ...restOfData } = usuario;
+const createUser = async (usuario,password ) => {
+  const { image, ...restOfData } = usuario;
 
   let transaction;
   try {
@@ -98,7 +98,7 @@ const createUser = async (usuario) => {
       // Crear el nuevo registro de usuario
       existingUser = await Usuario.create({
         image,
-        password: hashPassword(password),
+       password: hashPassword(password),
         rolesId: restOfData.rolesId ? restOfData.rolesId : 1,
         ...restOfData,
       }, { transaction });

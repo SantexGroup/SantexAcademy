@@ -55,7 +55,7 @@ const updatePassword = async (orgId, password) => {
 
 
 const createOrganization = async (data) => {
-  const { image, password, ...restOfData } = data;
+  const { image, password,...restOfData } = data;
   try {
     let existingOrg = await Organizacion.findOne({
       where: {

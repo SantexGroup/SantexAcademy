@@ -90,7 +90,7 @@
                   mat-menu-item
                   *ngIf="dato.status == 'active'"
                   (click)="
-                    updateStatusPostulation('abandoned', dato.idVolunteering)
+                    updateStatusPostulation('abandoned', dato.postulateId)
                   "
                 >
                   <mat-icon>cancel</mat-icon>
@@ -100,7 +100,7 @@
                   mat-menu-item
                   *ngIf="dato.status == 'active'"
                   (click)="
-                    updateStatusPostulation('finished', dato.idVolunteering)
+                    updateStatusPostulation('finished', dato.postulateId)
                   "
                 >
                   <mat-icon>done</mat-icon>
@@ -110,7 +110,7 @@
                 <button
                   mat-menu-item
                   *ngIf="dato.status == 'abandoned'"
-                  (click)="deletePostulation(dato.idVolunteering)"
+                  (click)="deletePostulation(dato.postulateId)"
                 >
                   <mat-icon>delete</mat-icon>
                   <span>Eliminar</span>

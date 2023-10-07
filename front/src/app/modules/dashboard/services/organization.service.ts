@@ -95,4 +95,13 @@ export class OrganizationService {
     const options = { headers: headers };
     return this.http.get(url, options);
   }
+
+  creditRewardVolunteer(token: string): Observable<any> {
+    const url = `${this.apiUrl}/organizacion/postulation/accreditation`;
+    const headers = new HttpHeaders({
+      'x-access-token': token,
+    });
+    const options = { headers: headers };
+    return this.http.post(url, {}, options);
+  }
 }

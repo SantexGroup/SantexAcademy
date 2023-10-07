@@ -5,8 +5,6 @@ require("dotenv").config();
 const { validationResult } = require("express-validator");
 const cloudinary = require("../config/cloudinary");
 
-
-
 const loginOrganization = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -52,17 +50,21 @@ const createOrganization = async (req, res) => {
       const uploadResult = await cloudinary.uploader.upload(req.file.path);
       imageUrl = uploadResult.secure_url;
       publicId = uploadResult.public_id;
-      await fs.unlink(req.file.path);
     }
 
     const newOrganization = await orgService.createOrganization({
       image: { imageUrl, publicId },
       ...restOfData,
     });
+
     res.status(201).json({
       message: "The organization was successfully created",
       newOrganization,
     });
+
+    if (req.file) {
+      await fs.unlink(req.file.path);
+    }
   } catch (err) {
     res.status(500).json({ action: "createOrganization", error: err.message });
   }
@@ -130,8 +132,6 @@ const deleteOrganizationById = async (req, res) => {
       .json({ action: "deleteOrganizationById", error: err.message });
   }
 };
-
-
 
 // Se pasan req.query y req.body por que son los parametros que se pasan por la url y por el body
 const getOrganizationByCriteria = async (req, res) => {
@@ -201,9 +201,6 @@ const updatePhotoMyProfile = async (req, res, next) => {
     next();
   }
 };
-
-
-
 
 module.exports = {
   loginOrganization,
