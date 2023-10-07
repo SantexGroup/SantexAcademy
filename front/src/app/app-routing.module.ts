@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { NoAuthGuard } from './guards/no-auth/no-auth.guard';
+import { AdminGuard } from './guards/admin/admin.guard';
 
 
 /**
@@ -27,7 +28,7 @@ const routes: Routes = [
   { path: 'contact', loadChildren: () => import('./modules/contact/contact.module').then(m => m.ContactModule) },
   { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule), canActivate: [AuthGuard] },
   { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule), canActivate: [AuthGuard] },
-  { path: 'course', loadChildren: () => import('./modules/course/course.module').then(m => m.CourseModule), canActivate: [AuthGuard] },
+  { path: 'course', loadChildren: () => import('./modules/course/course.module').then(m => m.CourseModule), canActivate: [AuthGuard, AdminGuard] },
   { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard] },
 
   { path: '', redirectTo: '/', pathMatch: 'full' },
