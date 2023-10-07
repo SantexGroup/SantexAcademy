@@ -23,12 +23,10 @@
         />
       </svg>
     </a>
-    <a
-      href=""
-      class="header-user"
-      routerLink="./shopping-cart"
-    >
-      <svg
+    <!--Modificacion boton-->
+    <div class="dropdown" (click)="onButtonClick()">
+      <button class="dropbtn">
+        <svg
         class="user"
         xmlns="http://www.w3.org/2000/svg"
         width="1em"
@@ -43,7 +41,21 @@
           d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
         />
       </svg>
-    </a>
+      </button>
+      <!--Menu delplegable usuario Autenticado-->
+      <div class="dropdown-content" *ngIf="isDropdownOpen && isAuthenticated">
+        <ul style="list-style: none;">
+          <li >
+            <!--¡ Hola {{perfilUsuario.nombre}} !-->
+            ¡Hola Juan Alberto!
+          </li>
+          <li><a href="./dashboard/perfil-Users">Perfil</a></li>
+          <li><a href="./dashboard/home">Home</a></li>
+          <hr>
+          <li (click)="logout()"><a href="./dashboard/login">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
 
     <div class="header-menu-button" (click)="toggleMenu()">
       <svg

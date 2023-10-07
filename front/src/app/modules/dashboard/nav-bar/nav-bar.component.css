@@ -84,6 +84,70 @@
     flex-shrink: 0; 
   }
 
+/* Dropdown Button */
+.dropbtn {
+    background-color: #115dfc;
+    color: white;
+    padding: 6px;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    
+  }
+
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #3359ac;
+    border-radius: 50%;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: block;
+    position: absolute;
+    background-color: #115dfc;
+    min-width: 160px;
+    box-shadow: 0px 1px 6px 0px #115dfc;
+    left: auto;
+    right: 0;
+    z-index: 100;
+  }
+  
+
+  .dropdown-content ul  {
+    list-style: none;
+    padding-left: 0px;
+    color: #eeebe7;
+    display: block;
+    text-align: center;
+    justify-content: center;
+    margin-top: 1.3em;
+    padding: 12px 15px;
+  }
+  .dropdown-content ul li a {
+    margin: 0;
+    color: #eeebe7;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: #3359ac;
+    padding: 0px;
+  }
+  
+  /* Show the dropdown menu (use ngIf to add/remove this class when the user clicks on the dropdown button) */
+  .show {
+    display: block;
+  }
+  
+
 @media screen and (max-width: 920px) {
 
     .header {
