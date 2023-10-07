@@ -207,4 +207,8 @@ export class VistaArtIndComponent implements OnInit {
     }
     //this.router.navigate(['confirmacion-articulo']);
     */
+
+    redirect() {
+      this.router.navigateByUrl('/');
+    }
   }

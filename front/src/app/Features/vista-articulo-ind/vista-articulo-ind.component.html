@@ -132,7 +132,8 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel" *ngIf="!alquilado">Hubo un error al alquilar el articulo, verifique los campos e intentelo de nuevo.</h1>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" *ngIf="alquilado" (click)="redirect()">Aceptar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" *ngIf="!alquilado">Aceptar</button>
         </div>
       </div>
     </div>
