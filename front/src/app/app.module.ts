@@ -34,6 +34,8 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { ModalAplicationComponent } from './components/modal-aplication/modal-aplication.component';
 import { ExchangeComponent } from './pages/exchange/exchange.component';
 import { ModalAfterApplicationComponent } from './components/modal-after-application/modal-after-application.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 export function localStorageSyncReducer(
@@ -56,6 +58,8 @@ export function localStorageSyncReducer(
     ModalAplicationComponent,
     ExchangeComponent,
     ModalAfterApplicationComponent,
+    AboutUsComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

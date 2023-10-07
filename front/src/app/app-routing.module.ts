@@ -8,6 +8,8 @@ import { OrganizationDetailsComponent } from './pages/organization-details/organ
 import { authGuard } from './guards/auth.guard';
 import { VolunterIdComponent } from './pages/volunter-id/volunter-id.component';
 import { ExchangeComponent } from './pages/exchange/exchange.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 const routes: Routes = [
   { path: '', title: 'VolunTime - Inicio', component: HomePageComponent },
@@ -42,6 +44,16 @@ const routes: Routes = [
     path: 'exchange',
     title: 'VolunTime',
     component: ExchangeComponent,
+  },
+  {
+    path: 'nosotros',
+    title: 'VolunTime - Quienes Somos',
+    component: AboutUsComponent,
+  },
+  {
+    path: 'contacto',
+    title: 'VolunTime - Contacto',
+    component: ContactComponent,
   },
 
   {
