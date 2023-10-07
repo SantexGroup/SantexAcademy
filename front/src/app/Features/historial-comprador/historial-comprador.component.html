@@ -8,7 +8,7 @@
             </div>
             <div id="datosVen">
                 <p id="nomArt">Nombre: <span>{{articulo.nomArt}}</span></p>
-                <!-- <p id="nombreVen">Vendedor: {{articulo.nomVen}}</p> -->
+                <p id="nombreVen">Vendedor: {{articulo.nomVen}}</p>
                 <p id="catArt">Categoría: <span (click)="redirigirCategoria(articulo.catArt)">{{articulo.catArt}}</span></p>
             </div>
             <div id="descripcion">
@@ -20,7 +20,7 @@
             </div>
             <div id="acciones"> 
                 <a id="verArt" (click)="visualizar(articulo.idArt)">Visualizar Artículo</a>
-                <a id="modArt" (click)="modificar(articulo.idArt)">Modificar Artículo</a>
+                <!-- <a id="modArt" (click)="modificar(articulo.idArt)">Modificar Artículo</a> -->
                 <!-- <a id="eliArt" (click)="eliminar(articulo.idArt)">Eliminar Artículo</a> -->
             </div>
         </div>

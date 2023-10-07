@@ -56,17 +56,19 @@ export class HistorialCompradorComponent implements OnInit {
     });
     //traer lista de categorias
     this.service.getCategories().subscribe(resCat => {this.listcategorias = resCat});
-    //traer articulos y reemplazar nomVen, idArt, imaArt, nomArt, desArt, preArt y envArt
+    //traer articulos
     this.service.articulosComprador(this.idCom).subscribe(res => {
       this.respuesta = res;
       console.log("respuesta: " + JSON.stringify(res));
       if (JSON.stringify(res.message) == '"Usuario sin productos publicados"') {
         alert("No tiene productos cargados");
       }
+      //reemplazar nomVen, idArt, imaArt, nomArt, desArt, preArt y envArt
       for (let i=0; i < res.length; i++) {
         console.log("Imagen prod: " + i + JSON.stringify(res[i].Product));
         this.modelo.imaArt = this.servidor + res[i].Product.Images[0].url;
-        this.modelo.idArt = res[i].id;
+        this.modelo.idArt = res[i].idProducto;
+        // this.modelo.nomVen = ;
         this.modelo.nomArt = res[i].Product.nombre;
         this.modelo.desArt = res[i].Product.detalles;
         this.modelo.preArt = res[i].Product.id;
@@ -101,25 +103,4 @@ export class HistorialCompradorComponent implements OnInit {
     localStorage.setItem('idProd', idProd.toString());
     this.router.navigate(['vista-articulo']);
   }
-  modificar(idProd: number) {
-    localStorage.setItem('idProd', idProd.toString());
-    this.router.navigate(['modificar-articulo']);    
-  }
-  // eliminar(id: number) {
-  //   if(confirm("¿Desea eliminar el artículo? Esta acción no se puede deshacer")) {
-  //     console.log("Id Prod: " + id);
-  //     this.service.eliminarArticulo(id).subscribe(resEli => {
-  //       console.log("Res eli: " + resEli)
-  //       if(resEli) {
-  //         console.log("Res eli: " + resEli)
-  //         alert("Artículo borrado con éxito");
-  //         this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
-  //           this.router.navigate(['/historial-ventas']).then(()=>{})
-  //         })
-  //       }else{
-  //         alert("No se ha podido eliminar su artículo");
-  //       }
-  //     })
-  //   }
-  // }
 }

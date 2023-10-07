@@ -1,5 +1,9 @@
 <app-barra></app-barra>
+<div id="titulo">
+    <h1>Historial de artículos publicados</h1>
+</div>
 <div id="general">
+    
     <div id="recuadro">
         <div id="scrollbar"></div>
         <div id="articulo" *ngFor="let articulo of articulos">
@@ -7,7 +11,7 @@
                 <img [src]="articulo.imaArt">
             </div>
             <div id="datosVen">
-                <p id="nomArt">Nombre: <span>{{articulo.nomArt}}</span></p>
+                <p id="nomArt">Nombre: <span (click)="visualizar(articulo.idArt)">{{articulo.nomArt}}</span></p>
                 <!-- <p id="nombreVen">Vendedor: {{articulo.nomVen}}</p> -->
                 <p id="catArt">Categoría: <span (click)="redirigirCategoria(articulo.catArt)">{{articulo.catArt}}</span></p>
             </div>

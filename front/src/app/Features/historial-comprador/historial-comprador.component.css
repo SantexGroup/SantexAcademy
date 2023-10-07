@@ -92,6 +92,11 @@ img {
     padding-left: 5px;
     padding-right: 5px;
 }
+#nomArt span:hover {
+    cursor: pointer;
+    color:blueviolet;
+    transition: 0.3s;
+}
 #acciones {
     display:grid;
     align-content: end;

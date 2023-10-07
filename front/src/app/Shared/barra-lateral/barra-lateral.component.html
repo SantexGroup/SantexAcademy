@@ -5,12 +5,6 @@
       </div>
     </div>
     <div class="content">
-      <!-- <div class="link">
-        <div class="content" [routerLink]="['/tarjeta']" [routerLinkActive]="'active'">
-         <i class="fa-solid fa-shop"> </i>
-          <div class="title">Articulos</div>
-        </div>
-      </div> -->
       <div *ngIf="isExpanded && !logeadoComprador && !logeadoVendedor" class="form-login">
         <h4>Iniciar sesion</h4>
         <div class="form-group">
@@ -19,7 +13,6 @@
             <p class="registro" routerLink="/registro">¿No tienes una cuenta? Registrate</p>
             <button class="btn btn-primary" (click)="botonLogin()" type="button" >Ingresar</button>
           </div>
-         
       </div>
       <p class="bienvenida" *ngIf="isExpanded && (logeadoComprador || logeadoVendedor)" >Hola, {{userFirstName}} {{userLastName}}!</p>
       <div *ngIf="logeadoComprador || logeadoVendedor" class="link">
