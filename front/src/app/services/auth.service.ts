@@ -10,6 +10,8 @@ export class AuthService {
 
   private isAuthenticated = false;
   private isAdmin = false;
+  private isTeacher = false;
+  private isStudent = false;
   private data: any = [];  //los datos que me da el backEnd
 
   constructor(private http: HttpClient) { }
@@ -25,9 +27,11 @@ export class AuthService {
     }
 
     // CONTROLAR ESTO TAMBIEN
-    if ('con la nueva respuesta del backend buscar en este data algo sobre admin y cambiar o no') {
-      console.log('siempre entra a este IF y por eso siempre queda en true')
+    if ('con la nueva respuesta del backend podre definir esto...') {
+      // console.log('siempre entra a este IF y por eso siempre todo queda en true')
       this.isAdmin = true;
+      this.isTeacher = true;
+      this.isStudent = true;
     }
 
     return this.data
@@ -44,6 +48,14 @@ export class AuthService {
 
   isAdministrator(): boolean {
     return this.isAdmin;
+  }
+
+  isTeachers(): boolean {
+    return this.isTeacher;
+  }
+
+  isStudents(): boolean {
+    return this.isStudent;
   }
 
 }

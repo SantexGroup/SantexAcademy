@@ -11,10 +11,15 @@ export class NavbarComponent implements OnInit {
   constructor(private authService: AuthService) {
     this.isLogged = this.isLoggedFromService();
     this.isAdmin = this.isAdminFromService();
-    console.log('isAdmin desde navbar', this.isAdmin)
+    this.isTeacher = this.isTeacherFromService();
+    this.isStudent = this.isStudentFromService();
   }
+
   isLogged: boolean = false;
   isAdmin: boolean = false;
+  isTeacher: boolean = false;
+  isStudent: boolean = false;
+
 
   isLoggedFromService() {
     return this.authService.isLoggedIn();
@@ -22,6 +27,14 @@ export class NavbarComponent implements OnInit {
 
   isAdminFromService() {
     return this.authService.isAdministrator();
+  }
+
+  isTeacherFromService() {
+    return this.authService.isTeachers();
+  }
+
+  isStudentFromService() {
+    return this.authService.isStudents();
   }
 
   ngOnInit(): void {

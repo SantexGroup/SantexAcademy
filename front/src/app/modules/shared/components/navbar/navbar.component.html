@@ -39,6 +39,12 @@
                 </li>
             </ul>
             <ul *ngIf="isLogged" class="navbar-nav justify-content-end">
+                <li class="nav-item" *ngIf="isStudent">
+                    <a class="nav-link" routerLink="/student">Alumnos</a>
+                </li>
+                <li class="nav-item" *ngIf="isTeacher">
+                    <a class="nav-link" routerLink="/teacher">Profesores</a>
+                </li>
                 <li class="nav-item" *ngIf="isAdmin">
                     <a class="nav-link" routerLink="/user/user-list">Usuarios</a>
                 </li>
