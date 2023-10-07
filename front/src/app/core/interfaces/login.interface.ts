@@ -3,6 +3,7 @@ export interface loginInterface {
   user:{
     name:string,
     lastName:string,
+    pictureLink:string
   },
   profile: {
     id:number,

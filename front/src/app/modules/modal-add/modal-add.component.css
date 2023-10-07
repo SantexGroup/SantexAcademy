@@ -1,5 +1,14 @@
+.startSelect{
+    display: flex;
+    justify-content: space-around;
+}
+
 .start {
-    margin: 1% 0 2% 40%;
+    height: 36px;
+}
+
+.new {
+    height: 36px;
 }
 
 ::-webkit-scrollbar {
@@ -30,7 +39,7 @@
     width: 800px;
     margin-left: -25%;
     overflow-y: scroll;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);

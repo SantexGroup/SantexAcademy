@@ -10,31 +10,21 @@ import { UserDataService } from 'src/app/core/services/toolServices/userData.ser
 })
 export class ProfilesComponent implements OnInit {
 
-  profileList: any[] = [];
-
   constructor(
     private views: NavBarService,
     private _profileServ: ProfileService,
-    private userData: UserDataService 
+    public userData: UserDataService 
   ) { }
 
   ngOnInit(): void {
     this.views.changeTitle('Perfiles')
-    this.getProfiles()
+    this.userData.getProfiles()
   }
 
-  deleteProfiles(id:number){
-
+  deleteProfiles(id?:number){
     return this._profileServ.deleteProfile(id).subscribe(()=>{
-      this.getProfiles();
+      this.userData.getProfiles();
     });
-
-  }
-
-  getProfiles(){
-    return this._profileServ.getProfile(this.userData.userId).subscribe((profiles)=>{
-      this.profileList = profiles;
-    })
   }
 
 }

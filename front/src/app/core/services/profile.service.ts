@@ -21,7 +21,7 @@ export class ProfileService {
     return this.api.get<Profile[]>(`profiles/todos/${id}`);
   }
 
-  deleteProfile(id:number):Observable<Profile>{
+  deleteProfile(id?:number):Observable<Profile>{
     return this.api.delete<Profile>(`profiles/delete/${id}`)
   }
 

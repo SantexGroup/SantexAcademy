@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
+import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 
 
 @Component({
@@ -11,13 +12,13 @@ import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.servic
 export class CVComponent implements OnInit {
 
   constructor( 
-    public views: NavBarService
+    public views: NavBarService,
+    private userData: UserDataService
    ) { }
 
   ngOnInit(): void {
-    
+    this.userData.getProfiles();
   }  
-
 }
 
 

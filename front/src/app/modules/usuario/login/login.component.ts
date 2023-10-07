@@ -57,9 +57,11 @@ export class LoginComponent implements OnInit{
         this.views.accountButton = false;
         this.dataUser.userName = data.user.name;
         this.dataUser.lastName = data.user.lastName;
+        this.dataUser.urlPicture = data.user.pictureLink;
         localStorage.setItem('accessToken', data.accessToken);
         localStorage.setItem('userName', data.user.name);
         localStorage.setItem('lastName', data.user.lastName);
+        localStorage.setItem('picture', data.user.pictureLink);
         this.views.changeTitle("Bienvenido! " + data.user.name + " " + data.user.lastName);
         this.router.navigate([`/home/${data.profile.userId}/cv`]);
         }, 
@@ -67,7 +69,7 @@ export class LoginComponent implements OnInit{
           this.toastr.error("Usuario o contraseña incorrectos!", "VERIFICAR DATOS");
         },
         complete: () => { 
-          console.log("Done") 
+          this.dataUser.getProfiles(); 
         }
       });
     }
