@@ -7,7 +7,7 @@
         <p class="card-text">Editar Usuario</p>
       </div>
 
-      <form #editForm="ngForm" (submit)="editUser(); navigateToUserList()">
+      <form #editForm="ngForm" (submit)="editUser()">
         <div class="form-group col-12">
           <select id="role" name="role" [(ngModel)]="user.role" class="form-control" required>
             <option value="" disabled selected>Selecciona un rol</option>
@@ -16,7 +16,7 @@
             <option value="admin">Administrador</option>
           </select>
         </div>
-        
+
         <div class="form-row mb-2">
           <div class="form-group col-12">
             <input type="text" [(ngModel)]="user.firstName" name="firstName" class="form-control" required
@@ -44,4 +44,3 @@
     </div>
   </div>
 </div>
-

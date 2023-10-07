@@ -1,5 +1,5 @@
 @import '~bootstrap/dist/css/bootstrap.css';
-
+@import '~ngx-toastr/toastr';
 /* 
     1) en lo posible usar siempre rems (no px), esta seteado para que 10 px sean 1 rem
 
@@ -39,11 +39,15 @@
     --font-family-1: 'Poppins', sans-serif;
     --box-shadow-1: rgb(0 0 0 / 10%) 0 0 10px;
     --font-size-0: 0,5rem;
-    --size-1: 1rem;
     --font-size-1: 1rem;
     --font-size-2: 1.2rem;
     --font-size-3: 1.5rem;
+    --font-size-4: 0.8rem;
     --font-size-7: 3rem;
+     
+    --size-1: 1rem;
+    --size-2: 1.3rem;
+
     --border-radius: 3px;
 
     --separation: 5rem;

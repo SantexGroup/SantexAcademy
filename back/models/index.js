@@ -16,6 +16,7 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
+// Importa los modelos del directorio y los guarda en "db"
 fs
   .readdirSync(__dirname)
   .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
@@ -26,9 +27,19 @@ fs
   });
 
 Object.keys(db).forEach((modelName) => {
+
+  // Crea las asociaciones
   if (db[modelName].associate) {
     db[modelName].associate(db);
-  }
+  };
+
+  // Define y agrega la "scope" predeterminada
+  db[modelName].addScope('defaultScope', {
+    attributes: {
+      exclude: ['deletedAt']
+    }
+  });
+  
 });
 
 db.sequelize = sequelize;
