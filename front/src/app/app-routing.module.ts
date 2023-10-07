@@ -10,6 +10,8 @@ import { VolunterIdComponent } from './pages/volunter-id/volunter-id.component';
 import { ExchangeComponent } from './pages/exchange/exchange.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { StepsToVolunteerComponent } from './pages/steps-to-volunteer/steps-to-volunteer.component';
+import { BenefitsComponent } from './pages/benefits/benefits.component';
 
 const routes: Routes = [
   { path: '', title: 'VolunTime - Inicio', component: HomePageComponent },
@@ -54,6 +56,16 @@ const routes: Routes = [
     path: 'contacto',
     title: 'VolunTime - Contacto',
     component: ContactComponent,
+  },
+  {
+    path: 'steps',
+    title: 'VolunTime - Steps',
+    component: StepsToVolunteerComponent,
+  },
+  {
+    path: 'benefits',
+    title: 'VolunTime - Steps',
+    component: BenefitsComponent,
   },
 
   {

@@ -36,9 +36,14 @@ import { ModalAplicationComponent } from './components/modal-aplication/modal-ap
 import { ExchangeComponent } from './pages/exchange/exchange.component';
 import { ModalAfterApplicationComponent } from './components/modal-after-application/modal-after-application.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
-import { ContactComponent } from './pages/contact/contact.component';
+
+import { StepsToVolunteerComponent } from './pages/steps-to-volunteer/steps-to-volunteer.component';
+import { BenefitsComponent } from './pages/benefits/benefits.component';
+
+
 import { FormContactComponent } from './components/form-contact/form-contact.component';
 import { ModalStatusComponent } from './components/modal-status/modal-status.component';
+
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
@@ -62,6 +67,10 @@ export function localStorageSyncReducer(
     ModalAfterApplicationComponent,
     AboutUsComponent,
     ContactComponent,
+
+    StepsToVolunteerComponent,
+    BenefitsComponent,
+
     FormContactComponent,
     ModalStatusComponent,
   ],
