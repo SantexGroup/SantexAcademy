@@ -10,7 +10,7 @@ const {
 const { verifyToken, isOrg } = require("../middleware/authMiddleware");
 const upload = require("../config/multerConfig");
 
-orgRouter.get("/", orgController.getOrganizationByCriteria);
+orgRouter.get("/", orgController.getOrganizations);
 orgRouter.get("/search", orgController.getOrganizationByLocation);
 orgRouter.get(
   "/me/profile",
