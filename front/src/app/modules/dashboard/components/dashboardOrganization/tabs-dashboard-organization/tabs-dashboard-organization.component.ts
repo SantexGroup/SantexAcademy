@@ -176,4 +176,8 @@ export class TabsDashboardOrganizationComponent {
     this.volunteerDataEdit = volunteering;
     this.newVolunteering = true;
   }
+
+  redirectToVolunteersTable() {
+    this.newVolunteering = false;
+  }
 }
