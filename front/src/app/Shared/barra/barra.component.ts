@@ -15,26 +15,32 @@ export class BarraComponent implements OnInit {
   listArticulosId: string[]=[];
   listArticulosFilt: any[]=[];
   listObj: {} = {};
-  texto: string = '';
-  textoFiltrado: string = '';
-  nombreArt: string = '';
+  textoTip: string = '';
 
   constructor(private service: BarraService, private router: Router) { }
-  
 
   ngOnInit(): void {
     this.service.getCategories().subscribe(categorias => {this.listCategorias = categorias});
-    this.service.getProducts().subscribe(articulos => {this.listArticulos = articulos
-  });
+    this.service.getProducts().subscribe(articulos => {this.listArticulos = articulos});
   }
+
   filtrarProductos(texto: string) {
+    localStorage.removeItem('idProdsBus')
     this.listArticulosFilt = this.listArticulos.filter(filt => filt.nombre.toLowerCase().indexOf(texto) > -1);
+    this.textoTip = texto;
   }
   buscar() {
-    for(let i=0; i < this.listArticulosFilt.length; i++) {
-      this.listArticulosId.push(JSON.stringify(this.listArticulosFilt[i].id));
-      localStorage.setItem('idProdsBus', JSON.stringify(this.listArticulosId)); 
+    if(this.textoTip == '') {
+      alert('No ingresó un texto')
+    }else {
+      for(let i=0; i < this.listArticulosFilt.length; i++) {
+        localStorage.removeItem('idProdsBus');
+        this.listArticulosId.push(JSON.stringify(this.listArticulosFilt[i].id));
+        localStorage.setItem('idProdsBus', JSON.stringify(this.listArticulosId)); 
+      }
+      this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
+        this.router.navigate(['/tarjeta']).then(()=>{})
+      })
     }
-    this.router.navigate(['tarjeta']);
   }
 }
