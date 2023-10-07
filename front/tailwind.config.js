@@ -13,6 +13,7 @@ module.exports = {
       xl: "1280px",
       "2xl": "1536px",
     },
+
     colors: {
       white: "#FFF",
       black: "#18181b",
@@ -96,5 +97,5 @@ module.exports = {
       black: "900",
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animated")],
 };
