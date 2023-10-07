@@ -22,6 +22,7 @@ export class FormLoginComponent implements OnInit {
   routeBtnContinue: string = '';
   textBtnModal: string = '';
   isCoordinator: string = '';
+  messageModal: string = '';
 
   constructor(
     private router: Router,
@@ -53,6 +54,8 @@ export class FormLoginComponent implements OnInit {
           this.store.dispatch(setUserType({ userType: 'vol' }));
           this.onModalStatus = true;
           this.statusSession = 'success-loginV';
+          this.messageModal =
+            'Has iniciado sesión exitosamente en tu cuenta de VolunTime. Estamos emocionados de tenerte de vuelta y listos para colaborar juntos en proyectos significativos de voluntariado. Gracias por ser parte de nuestra comunidad comprometida con el cambio positivo.';
           this.routeBtnContinue = 'voluntariados';
           this.textBtnModal = 'Explorar Oportunidades';
         },
@@ -61,6 +64,7 @@ export class FormLoginComponent implements OnInit {
           this.onModalStatus = true;
           this.statusSession = 'failed-login';
           this.routeBtnContinue = 'auth/login';
+          this.messageModal = 'Credenciales invalidas';
           this.textBtnModal = 'Volver a intentar';
         },
         complete: () => {},

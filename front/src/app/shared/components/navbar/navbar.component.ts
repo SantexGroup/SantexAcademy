@@ -84,9 +84,9 @@ export class NavbarComponent {
   }
 
   logout() {
-    localStorage.removeItem('auth');
     this.store.dispatch(resetToken());
     this.store.dispatch(resetUserType());
+    window.location.reload();
   }
 
   openProfileMenu() {
