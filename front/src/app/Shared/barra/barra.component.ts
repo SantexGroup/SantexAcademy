@@ -31,7 +31,7 @@ export class BarraComponent implements OnInit {
   }
   buscar() {
     if(this.textoTip == '') {
-      alert('Debe ingresar un texto')
+      alert('Debe ingresar un texto');
     }else {
       for(let i=0; i < this.listArticulosFilt.length; i++) {
         localStorage.removeItem('idProdsBus');
