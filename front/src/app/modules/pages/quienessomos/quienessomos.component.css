@@ -51,7 +51,7 @@
 
 /* Estilos para el área de imagen */
 .image-area {
-  background: #f1f2f6;
+  background: #ffffff;
   margin: 0;
   padding: 0;
   position: relative;
@@ -90,6 +90,7 @@
 .img-wrapper img {
   height: 370px;
   width: 300px;
+  object-fit: cover;
   filter: grayscale(100%);
   transition: 1s;
 }

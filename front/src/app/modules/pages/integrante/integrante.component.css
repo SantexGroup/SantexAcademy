@@ -1,0 +1,73 @@
+/* Estilos para el contenedor principal */
+.container {
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Estilos para los encabezados */
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333333;
+}
+
+h3 {
+    font-size: 20px;
+    color: #555555;
+}
+
+p {
+    color: #666666;
+}
+
+/* Estilos para los enlaces */
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Estilos para los iconos de redes sociales */
+.social-links a i {
+    color: #007bff;
+    font-size: 30px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover i {
+    color: #0056b3;
+}
+
+/* Estilos para las imágenes */
+.custom-image img {
+    width: 450px;
+    height: 450px;
+    border-radius: 10px;
+    object-fit: cover; /* Evita que las imágenes se estiren y las ajusta manteniendo la relación de aspecto */
+}
+
+
+/* Estilos para el texto de las redes sociales */
+.social-links a {
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+/* Estilo para hacer la página responsive */
+@media (max-width: 768px) {
+    .col {
+        text-align: center;
+    }
+}
