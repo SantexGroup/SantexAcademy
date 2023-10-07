@@ -40,6 +40,8 @@ export class AuthService {
   logout(): void {
     this.isAuthenticated = false;
     this.isAdmin = false;
+    this.isTeacher = false;
+    this.isStudent = false;
   }
 
   isLoggedIn(): boolean {

@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { NoAuthGuard } from './guards/no-auth/no-auth.guard';
 import { AdminGuard } from './guards/admin/admin.guard';
+import { StudentGuard } from './guards/student/student.guard';
+import { TeacherGuard } from './guards/teacher/teacher.guard';
 
 
 /**
@@ -27,9 +29,9 @@ const routes: Routes = [
   { path: 'news', loadChildren: () => import('./modules/news/news.module').then(m => m.NewsModule) },
   { path: 'contact', loadChildren: () => import('./modules/contact/contact.module').then(m => m.ContactModule) },
   { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule), canActivate: [AuthGuard] },
-  { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule), canActivate: [AuthGuard] },
-  { path: 'student', loadChildren: () => import('./modules/students/students.module').then(m => m.StudentsModule), canActivate: [AuthGuard] },
-  { path: 'teacher', loadChildren: () => import('./modules/teachers/teachers.module').then(m => m.TeachersModule), canActivate: [AuthGuard] },
+  { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule), canActivate: [AuthGuard, AdminGuard] },
+  { path: 'student', loadChildren: () => import('./modules/students/students.module').then(m => m.StudentsModule), canActivate: [AuthGuard, StudentGuard] },
+  { path: 'teacher', loadChildren: () => import('./modules/teachers/teachers.module').then(m => m.TeachersModule), canActivate: [AuthGuard, TeacherGuard] },
   { path: 'course', loadChildren: () => import('./modules/course/course.module').then(m => m.CourseModule), canActivate: [AuthGuard, AdminGuard] },
   { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard] },
 
