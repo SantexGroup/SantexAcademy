@@ -1,0 +1,77 @@
+<form class="flex flex-col gap-4 p-4 lg:p-0" [formGroup]="dataForm">
+  <app-modal-status
+    (closeModalStatus)="closeModal()"
+    [status]="statusModal"
+    [message]="messageModal"
+    *ngIf="onModalStatus"
+  >
+  </app-modal-status>
+  <div class="flex flex-col">
+    <label for="full_name" class="lg:text-xl">Nombre Completo</label>
+    <input
+      type="text"
+      id="full_name"
+      name="full_name"
+      formControlName="full_name"
+      class="pl-2 border border-DarkGray rounded-md shadow-md m:w-[400px] lg:py-2 lg:w-[500px]"
+    />
+    <div class="w-full items-center justify-end">
+      <p
+        *ngIf="
+          dataForm.get('full_name')?.invalid &&
+          (dataForm.get('full_name')?.dirty ||
+            dataForm.get('full_name')?.touched)
+        "
+        class="flex-initial text-end text-deepPink"
+      >
+        Por favor, ingresa un nombre.
+      </p>
+    </div>
+  </div>
+  <div class="flex flex-col">
+    <label for="email" class="lg:text-xl">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      formControlName="email"
+      class="pl-2 border border-DarkGray rounded-md shadow-md m:w-[400px] lg:py-2 lg:w-[500px]"
+    />
+    <div class="w-full items-center justify-end">
+      <p
+        *ngIf="
+          dataForm.get('email')?.invalid &&
+          (dataForm.get('email')?.dirty || dataForm.get('email')?.touched)
+        "
+        class="flex-initial text-end text-deepPink"
+      >
+        Eso no parece un email valido.
+      </p>
+    </div>
+  </div>
+  <div class="flex flex-col">
+    <label for="message" class="lg:text-xl">Mensaje</label>
+    <textarea
+      type="text"
+      id="message"
+      name="message"
+      formControlName="message"
+      class="resize-none h-[150px] border border-DarkGray rounded-md shadow-md m:w-[400px] lg:w-[500px]"
+    >
+    </textarea>
+    <div class="w-full items-center justify-end">
+      <p
+        *ngIf="
+          dataForm.get('message')?.invalid &&
+          (dataForm.get('message')?.dirty || dataForm.get('message')?.touched)
+        "
+        class="flex-initial text-end text-deepPink"
+      >
+        Escribe un mensaje.
+      </p>
+    </div>
+  </div>
+  <button class="btn_send" (click)="sendEmail()" [disabled]="!dataForm.valid">
+    Enviar <i className="bx bx-send"></i>
+  </button>
+</form>
