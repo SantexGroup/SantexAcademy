@@ -6,24 +6,13 @@
   >
     <figure class="w-full h-[150px]">
       <img
-        src="/assets/icons/good.png"
+        [src]="
+          status === 'success'
+            ? '/assets/icons/good.png'
+            : '/assets/icons/bad.png'
+        "
         alt="icono good"
         class="w-full h-full object-contain"
-        *ngIf="
-          status === 'success' ||
-          status === 'success-loginV' ||
-          status === 'success-loginO'
-        "
-      />
-      <img
-        src="/assets/icons/bad.png"
-        alt="icono bad"
-        class="w-full h-full object-contain"
-        *ngIf="
-          status === 'failed' ||
-          status === 'failed-login' ||
-          status === 'failed-emailFound'
-        "
       />
     </figure>
 
