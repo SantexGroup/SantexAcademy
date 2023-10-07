@@ -36,6 +36,8 @@ import { ExchangeComponent } from './pages/exchange/exchange.component';
 import { ModalAfterApplicationComponent } from './components/modal-after-application/modal-after-application.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { StepsToVolunteerComponent } from './pages/steps-to-volunteer/steps-to-volunteer.component';
+import { BenefitsComponent } from './pages/benefits/benefits.component';
 
 
 export function localStorageSyncReducer(
@@ -60,6 +62,8 @@ export function localStorageSyncReducer(
     ModalAfterApplicationComponent,
     AboutUsComponent,
     ContactComponent,
+    StepsToVolunteerComponent,
+    BenefitsComponent,
   ],
   imports: [
     BrowserModule,
