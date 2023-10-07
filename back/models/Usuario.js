@@ -1,7 +1,6 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/db-config");
 
-
 const Usuario = sequelize.define(
   "usuario",
   {
@@ -32,8 +31,7 @@ const Usuario = sequelize.define(
     },
     reputation: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0, 
+      defaultValue: 0,
     },
     hoursAcc: {
       type: DataTypes.INTEGER,
@@ -56,7 +54,7 @@ const Usuario = sequelize.define(
   {
     sequelize,
     tableName: "usuario",
-    timestamps: true, 
+    timestamps: true,
     paranoid: true,
     indexes: [
       {
@@ -80,11 +78,9 @@ const Usuario = sequelize.define(
         name: "idx_usuario_testimonio",
         using: "BTREE",
         fields: [{ name: "id" }, { name: "createdAt" }],
-    },
+      },
     ],
-  },
-
-);  
-
+  }
+);
 
 module.exports = Usuario;

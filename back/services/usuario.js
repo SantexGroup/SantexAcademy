@@ -6,21 +6,23 @@ const createTestimonialsById = async (id, testimonial) => {
     testimonial
   );
   return createdTestimonial;
-
-}
- const getAllTestimonials = async () => {
+};
+const getAllTestimonials = async () => {
   const testimonials = await userProvider.getAllTestimonials();
-  return testimonials; 
-
- }
+  return testimonials;
+};
 
 const loginUser = async (email, password) => {
-  const user = await userProvider.loginUser(email, password);
+  try {
+    const user = await userProvider.loginUser(email, password);
 
-  if (!user) {
-    return;
+    if (!user) {
+      return;
+    }
+    return user;
+  } catch (error) {
+    throw new Error(error);
   }
-  return user;
 };
 
 const createUser = async (user) => {
