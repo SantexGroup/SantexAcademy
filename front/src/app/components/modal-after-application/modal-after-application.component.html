@@ -32,6 +32,7 @@
         <a routerLink="/dashboard"> Ver mis aplicaciones </a>
       </button>
       <button
+        (click)="continueView()"
         *ngIf="status === 'failed'"
         class="px-4 py-1 border-none rounded-md bg-darkSlateBlue text-white font-bold"
       >
