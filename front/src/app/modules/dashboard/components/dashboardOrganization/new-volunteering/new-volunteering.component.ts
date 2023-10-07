@@ -12,6 +12,7 @@ import { selectToken } from 'src/app/core/auth.selectors';
 export class NewVolunteeringComponent implements OnInit {
   @Input() volunteerDataEdit: any;
   @Output() declineNewVolunteering = new EventEmitter();
+  @Output() newVolunteeringCompleted = new EventEmitter();
   newVolunteering: FormGroup;
 
   onModalStatus: boolean = false;
@@ -89,6 +90,7 @@ export class NewVolunteeringComponent implements OnInit {
                 this.newVolunteering.reset();
                 setTimeout(() => {
                   this.onModalStatus = false;
+                  this.newVolunteeringCompleted.emit(); 
                 }, 2000);
               },
               error: (err) => {
