@@ -44,9 +44,9 @@ const signUpVolunteer = [
   check("password")
     .notEmpty()
     .withMessage("La contraseña es obligatoria")
-    .matches(/^(?=\S*\d)(?=\S*[A-Z])(?=\S*[a-z])\S{8,16}$/)
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/)
     .withMessage(
-      "La contraseña debe tener entre 8 y 16 caracteres, al menos un numero, al menos una minúscula y al menos una mayúscula"
+      "La contraseña debe contener al menos una letra minúscula, una letra mayúscula, un número y un símbolo, y tener al menos 8 caracteres de longitud"
     ),
   check("phone")
     .optional()
@@ -126,6 +126,20 @@ const signUpCoordinator = [
       "salud y discapacidad",
     ])
     .withMessage("La categoría no es válida"),
+
+  (req, res, next) => {
+    try {
+      validationResult(req).throw();
+      return next();
+    } catch (error) {
+      const validationErrors = error.array().map((err) => ({
+        param: err.param,
+        location: err.location,
+        msg: err.msg,
+      }));
+      res.status(403).json({ errors: validationErrors });
+    }
+  },
 ];
 
 module.exports = {

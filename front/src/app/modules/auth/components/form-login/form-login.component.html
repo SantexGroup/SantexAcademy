@@ -12,6 +12,7 @@
     [status]="statusSession"
     [routeContinue]="routeBtnContinue"
     [textBtn]="textBtnModal"
+    [message]="messageModal"
   ></app-modal-status-form>
   <figure class="w-full h-[500px] bg-darkSlateBlue relative lg:h-[700px]">
     <img
@@ -59,6 +60,17 @@
           class="border border-dimGray rounded-md py-2 pl-2"
           formControlName="email"
         />
+        <div class="w-full items-center justify-end">
+          <p
+            *ngIf="
+              loginForm.get('email')?.invalid &&
+              (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)
+            "
+            class="flex-initial text-end text-deepPink"
+          >
+            Eso no parece un correo válido.
+          </p>
+        </div>
       </div>
       <div class="w-full flex flex-col gap-1 relative">
         <label for="password" class="text-start"><b>Contraseña</b></label>
@@ -92,6 +104,7 @@
       </div>
       <div class="w-full flex flex-col items-center justify-center gap-4 mt-2">
         <button
+          [disabled]="!loginForm.valid"
           type="submit"
           class="w-full py-2 bg-darkSlateBlue text-white rounded-md font-semibold"
           (click)="sendValues()"

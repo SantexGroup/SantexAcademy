@@ -22,6 +22,7 @@ export class FormLoginComponent implements OnInit {
   routeBtnContinue: string = '';
   textBtnModal: string = '';
   isCoordinator: string = '';
+  messageModal: string = '';
 
   constructor(
     private router: Router,
@@ -52,15 +53,17 @@ export class FormLoginComponent implements OnInit {
           this.store.dispatch(setToken({ token: response.token }));
           this.store.dispatch(setUserType({ userType: 'vol' }));
           this.onModalStatus = true;
-          this.statusSession = 'success-loginV';
+          this.statusSession = 'success';
+          this.messageModal =
+            'Has iniciado sesión exitosamente en tu cuenta de VolunTime. Estamos emocionados de tenerte de vuelta y listos para colaborar juntos en proyectos significativos de voluntariado. Gracias por ser parte de nuestra comunidad comprometida con el cambio positivo.';
           this.routeBtnContinue = 'voluntariados';
           this.textBtnModal = 'Explorar Oportunidades';
         },
         error: (error) => {
-          console.error('login error', error);
           this.onModalStatus = true;
-          this.statusSession = 'failed-login';
+          this.statusSession = 'failed';
           this.routeBtnContinue = 'auth/login';
+          this.messageModal = 'Credenciales invalidas';
           this.textBtnModal = 'Volver a intentar';
         },
         complete: () => {},
@@ -77,14 +80,16 @@ export class FormLoginComponent implements OnInit {
           this.store.dispatch(setToken({ token: response.token }));
           this.store.dispatch(setUserType({ userType: 'org' }));
           this.onModalStatus = true;
-          this.statusSession = 'success-loginO';
+          this.statusSession = 'success';
+          this.messageModal =
+            'Has iniciado sesión exitosamente en tu cuenta de VolunTime. Estamos emocionados de tenerte de vuelta y agradecidos por tu compromiso en la promoción de oportunidades de voluntariado. Tu dedicación es fundamental para hacer del mundo un lugar mejor';
           this.routeBtnContinue = 'dashboard';
           this.textBtnModal = 'Ir al Dashboard';
         },
         error: (error) => {
-          console.error('Login error', error);
           this.onModalStatus = true;
-          this.statusSession = 'failed-login';
+          this.statusSession = 'failed';
+          this.messageModal = 'Credenciales invalidas';
           this.routeBtnContinue = 'auth/login';
           this.textBtnModal = 'Volver a intentar';
         },

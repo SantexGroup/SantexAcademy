@@ -17,6 +17,7 @@ export class FormCoordinatorsRegisterComponent {
   messageModal: string = '';
   routeBtnContinue: string = '';
   textBtn: string = '';
+  errors: any = {};
 
   showPassword: boolean = false;
   subscription: Subscription | null = null;
@@ -76,10 +77,12 @@ export class FormCoordinatorsRegisterComponent {
             console.error('Error in coordinator registration:', error);
             this.onModal = true;
             this.statusSession = 'failed-emailFound';
+            this.messageModal =
+              'Ya existe una cuenta con ese email, por favor, inicie sesión';
             this.routeBtnContinue = 'auth/login';
             this.textBtn = 'Iniciar Sesión';
           } else {
-            console.error('Error in coordinator registration:', error);
+            this.errors = error.error.errors;
             this.onModal = true;
             this.statusSession = 'failed';
             this.routeBtnContinue = 'auth/coordinator-register';

@@ -11,6 +11,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DatePipe } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { register } from 'swiper/element/bundle';
 register();
@@ -35,9 +36,13 @@ import { ModalAplicationComponent } from './components/modal-aplication/modal-ap
 import { ExchangeComponent } from './pages/exchange/exchange.component';
 import { ModalAfterApplicationComponent } from './components/modal-after-application/modal-after-application.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
-import { ContactComponent } from './pages/contact/contact.component';
+
 import { StepsToVolunteerComponent } from './pages/steps-to-volunteer/steps-to-volunteer.component';
 import { BenefitsComponent } from './pages/benefits/benefits.component';
+
+
+import { FormContactComponent } from './components/form-contact/form-contact.component';
+import { ModalStatusComponent } from './components/modal-status/modal-status.component';
 
 
 export function localStorageSyncReducer(
@@ -62,8 +67,12 @@ export function localStorageSyncReducer(
     ModalAfterApplicationComponent,
     AboutUsComponent,
     ContactComponent,
+
     StepsToVolunteerComponent,
     BenefitsComponent,
+
+    FormContactComponent,
+    ModalStatusComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,6 +81,7 @@ export function localStorageSyncReducer(
     authModule,
     DashboardModule,
     FormsModule,
+    ReactiveFormsModule,
     MatExpansionModule,
     MatDatepickerModule,
     MatInputModule,

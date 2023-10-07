@@ -2,6 +2,8 @@ const express = require("express");
 const upload = require("../config/multerConfig");
 const authRouter = express.Router();
 const { userController, orgController } = require("../controllers");
+const { sendMail } = require("../config/send_gmail");
+
 const {
   signUpVolunteer,
   mailFoudVolunteer,
@@ -28,5 +30,7 @@ authRouter.post(
 );
 
 authRouter.post("/org/login", orgController.loginOrganization);
+
+authRouter.post("/sendemail", sendMail);
 
 module.exports = authRouter;

@@ -11,24 +11,17 @@
             ? '/assets/icons/good.png'
             : '/assets/icons/bad.png'
         "
-        alt="icono good"
+        alt="icono status"
         class="w-full h-full object-contain"
       />
     </figure>
-
-    <p *ngIf="message" class="text-center">{{ message }}</p>
-    <ng-container *ngIf="!message">
-      <ng-container *ngFor="let item of errors">
-        <p class="text-center">{{ item.msg }}</p>
-      </ng-container>
-    </ng-container>
-
+    <p>{{ message }}</p>
     <button
-      type="button"
-      (click)="handlleContinue()"
-      class="py-2 px-4 bg-mediumViolet text-white rounded-md font-semibold shadow-md shadow-dimGray"
+      *ngIf="status === 'failed'"
+      (click)="closeModal()"
+      class="py-2 px-4 bg-darkSlateBlue text-white rounded-md font-semibold shadow-md shadow-dimGray"
     >
-      {{ textBtn }}
+      Aceptar
     </button>
   </article>
 </section>
