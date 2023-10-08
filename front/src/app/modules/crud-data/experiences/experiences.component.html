@@ -64,7 +64,8 @@
                     class="plus" 
                     type="submit" 
                     *ngIf="views.plusOne"
-                    (click)="addExperience()">
+                    (click)="addExperience()"
+                    [disabled]="experienceForm.status === 'INVALID'">
                         <img src="./assets/Imagenes/plus.png" alt="+">
                     </button>
                     <button type="submit" 

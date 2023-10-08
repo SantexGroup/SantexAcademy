@@ -47,14 +47,8 @@
 
       <div class="botonera">
         <div class="botones">
-            <button class="plus" type="submit" *ngIf="views.plusOne" (click)="dataUserUpdate()" >
+            <button class="plus submit-form" type="submit" *ngIf="views.plusOne" (click)="dataUserUpdate()" [disabled]="personalForm.status === 'INVALID'">
                 <img src="./assets/Imagenes/plus.png" alt="+">
-            </button>
-            <button 
-            type="submit" mat-raised-button 
-            color="primary" 
-            *ngIf="views.saveButton">
-                Guardar
             </button>
         </div>
     </div>
@@ -81,3 +75,11 @@
   </div>
   </div>
 </body>
+
+
+<!--             <button 
+            type="submit" mat-raised-button 
+            color="primary" 
+            *ngIf="views.saveButton">
+                Guardarddddddddddd
+            </button> -->

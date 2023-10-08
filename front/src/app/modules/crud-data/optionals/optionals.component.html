@@ -28,13 +28,15 @@
                             <input matInput formControlName="zipCode" type="text" name="zipCode">
                         </mat-form-field>
                         <p class="error-form" *ngIf="optionalsForm.controls['zipCode'].errors?.['maxlength']">El maximo es de 10 caracteres</p>
-
                     </div>
+                    
                     <div class="carousel-item">
                         <mat-form-field>
                             <mat-label for="aboutMe">Sobre Mi:</mat-label>
                             <textarea matInput formControlName="aboutMe" cols="30" rows="10"></textarea>
                         </mat-form-field>
+                        <p class="error-form" *ngIf="optionalsForm.controls['aboutMe'].errors?.['maxlength']">El maximo es de 255 caracteres</p>
+
                         <mat-form-field>
                             <mat-label>Licencia de conducir</mat-label>
                             <mat-select formControlName="driverLicense" name="driverLicense">
@@ -42,6 +44,7 @@
                                 <mat-option value="No">No</mat-option>
                             </mat-select>
                         </mat-form-field>
+
                         <mat-form-field>
                             <mat-label>Nacionalidad</mat-label>
                             <mat-select formControlName="countriesId" name="countries">
@@ -50,11 +53,15 @@
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
+                        <p class="error-form" *ngIf="optionalsForm.controls['countriesId'].errors?.['required'] && optionalsForm.controls['countriesId'].touched">Este campo es obligatirio</p>
+
                         <mat-form-field>
                             <mat-label for="address">Direccion:</mat-label>
                             <input matInput formControlName="address" type="text" name="address">
                         </mat-form-field>
+                        <p class="error-form" *ngIf="optionalsForm.controls['address'].errors?.['maxlength']">El maximo es de 45 caracteres</p>
                     </div>
+
                     <div class="carousel-item">
                         <mat-form-field>
                             <mat-label>Estado Civil</mat-label>
@@ -64,6 +71,8 @@
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
+                        <p class="error-form" *ngIf="optionalsForm.controls['maritalId'].errors?.['required'] && optionalsForm.controls['maritalId'].touched">Este campo es obligatorio</p>
+
                         <mat-form-field>
                             <mat-label>Genero</mat-label>
                             <mat-select name="sexs" formControlName="sexsId">
@@ -72,24 +81,33 @@
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
+                        <p class="error-form" *ngIf="optionalsForm.controls['sexsId'].errors?.['required'] && optionalsForm.controls['sexsId'].touched">Este campo es obligatorio</p>
+
                         <mat-form-field>
                             <mat-label for="hobbies">Pasatiempos:</mat-label>
                             <textarea matInput formControlName="hobbies" cols="30" rows="3"></textarea>
                         </mat-form-field>
+                        <p class="error-form" *ngIf="optionalsForm.controls['hobbies'].errors?.['maxlength']">El maximo es de 45 caracteres</p>
+
                         <mat-form-field>
                             <mat-label for="achievements">Logros:</mat-label>
                             <textarea matInput formControlName="achievements" cols="30" rows="3"></textarea>
                         </mat-form-field>
+                        <p class="error-form" *ngIf="optionalsForm.controls['achievements'].errors?.['maxlength']">El maximo es de 45 caracteres</p>
+
                         <mat-form-field>
                             <mat-label for="aptitudes">Aptitudes:</mat-label>
                             <textarea matInput formControlName="aptitudes" cols="30" rows="3"></textarea>
                         </mat-form-field>
+                        <p class="error-form" *ngIf="optionalsForm.controls['aptitudes'].errors?.['maxlength']">El maximo es de 45 caracteres</p>
                     </div>
                 </div>
+                
                 <div class="botonera">
                     <div class="botones">
                         <button class="plus" type="submit" *ngIf="views.plusOne"
-                            (click)="postOptionals()">
+                            (click)="postOptionals()"
+                            [disabled]="optionalsForm.status === 'INVALID'">
                             <img src="./assets/Imagenes/plus.png" alt="+">
                         </button>
                         <button type="submit" mat-raised-button color="primary" *ngIf="views.saveButton"

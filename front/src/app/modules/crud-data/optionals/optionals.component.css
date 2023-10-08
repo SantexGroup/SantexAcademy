@@ -73,7 +73,7 @@
     filter: opacity(0.4);
 }
 
-.botonera .plus img:hover {
+.botonera .plus:enabled img:hover {
     width: 4.5rem;
     height: 4.5rem;
     filter: opacity(1);

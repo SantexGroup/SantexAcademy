@@ -19,7 +19,8 @@
             </mat-form-field>
             <div class="botonera">
                 <div class="botones">
-                    <button class="plus" type="submit" *ngIf="views.plusOne" (click)="addSkillToProfile()">
+                    <button class="plus" type="submit" *ngIf="views.plusOne" (click)="addSkillToProfile()"
+                    [disabled]="skillForm.status === 'INVALID'">
                         <img src="./assets/Imagenes/plus.png" alt="+">
                     </button>
                     <button 

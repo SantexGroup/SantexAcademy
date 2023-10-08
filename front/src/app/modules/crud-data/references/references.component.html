@@ -44,7 +44,8 @@
                     class="plus" 
                     type="submit" 
                     *ngIf="views.plusOne"
-                    (click)="addReference()">
+                    (click)="addReference()"
+                    [disabled]="referenceForm.status === 'INVALID'">
                         <img src="./assets/Imagenes/plus.png" alt="+">
                     </button>
                     <button 
