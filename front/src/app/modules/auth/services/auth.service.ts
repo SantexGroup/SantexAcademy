@@ -127,7 +127,7 @@ export class AuthService {
         this.isAuthenticatedSubject.next(false); 
   
         // Redirige al usuario a la página de inicio de sesión después de cerrar la sesión
-        this.router.navigateByUrl('/dashboard').then(() => {
+        this.router.navigateByUrl('/login').then(() => {
           this.isLoggedIn = false; // Actualiza el estado de autenticación
         });
       } else {
