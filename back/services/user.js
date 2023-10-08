@@ -1,4 +1,4 @@
-const { User, TipoDeUsuario } = require('../models');
+const { User, TipoDeUsuario, Curso, Matricula } = require('../models');
 
 const allUser = async () => {
   const users = await User.findAll({
@@ -58,17 +58,49 @@ const getUser = async (id) => {
   }
 };
 
+//------------Trae cursos x usuario------------------//
 const getCursos = async (id) => {
   try {
     const user = await User.findByPk(id);
     const cursos = await user.getCursos();
     return cursos;
   } catch (error) {
-    throw new Error('Hubo un error al obtener los cursos.');
+    throw new Error('Hubo un error en servicios back al obtener los cursos.');
   }
 };
 
-//NO BORRAR--sirve para buscar cualquier usuario usando cualquier dato--util para filtros//
+//------------Trae matriculas x usuario------------------//
+const getMatriculaPorUserId = async (id) => {
+  try {
+    const matriculas = await Matricula.findAll({
+      where: {
+        userId: id,
+      },
+    });
+    return matriculas;
+  } catch (error) {
+    throw new Error('Hubo un error en services user al obtener las matrículas por usuario.');
+  }
+};
+
+//------------Trae (matricula x curso) x usuario-----//
+const getMatricula = async (id) => {
+  try {
+    const cursosConMatricula = await Curso.findAll({
+      include: [{
+        model: Matricula,
+        where: { id },
+        attributes: ['habilitado'],
+        required: true,
+      }],
+    });
+    return cursosConMatricula;
+  } catch (error) {
+    throw new Error('Hubo un error en servicios back al obtener las matriculas.');
+  }
+};
+
+//NO BORRAR--sirve para buscar cualquier usuario usando cualquier dato --util para filtros//
 
 const getUserByData = async (searchCriteria) => {
   try {
@@ -76,20 +108,14 @@ const getUserByData = async (searchCriteria) => {
       where: searchCriteria,
     });
     if (!user) {
-      throw new Error('No se encuentra usuario en userService'+ JSON.stringify(searchCriteria)); // Detiene todo por el error
+      throw new Error('No se encuentra usuario en userService'+ JSON.stringify(searchCriteria));
     }
     return user;
   } catch (error) {
     console.error('Hubo un error al buscar criteria en userService:', error + JSON.stringify(searchCriteria));
-    throw error; // Lanzar la excepción original nuevamente
+    throw error; 
   }
 };
-// const getUserByData = async (searchCriteria) => {
-//   const user = await User.findOne({
-//     where: searchCriteria,
-//   });
-//   return user;
-// };
 
 //-------------------------------------------------------------------------------------//
 
@@ -139,4 +165,6 @@ module.exports = {
   updateUser,
   deleteUser,
   allUserByFilters,
+  getMatricula,
+  getMatriculaPorUserId,
 };

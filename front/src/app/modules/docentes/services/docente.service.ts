@@ -20,7 +20,11 @@ export class DocenteService {
   getDocentePorId(id: number): Observable<Docente>{
     return this.http.get<Docente>(`${this.baseUrl}docente/${ id }`)
   }
-
+  //----------------Agrego para buscar docente por id usuario------//
+  getDocenteIdByuserId(id: number): Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}docente/userdocente/${ id }`)
+  }
+  //--------------------------------------------------------------//
   addDocente(docente: Docente): Observable<Docente> {
     return this.http.post<Docente>(`${this.baseUrl}docente`, docente);
   }

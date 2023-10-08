@@ -31,7 +31,7 @@ export class UsersService {
   //addUser( user: User): Observable<User> {
     //console.log('addUser :', this.http.post<User>(`${ this.baseUrl }user`, user))
     //return this.http.post<User>(`${ this.baseUrl }user`, user)
-  //}
+  //} 
   
   addUser(user: User): Observable<User> {
     return this.http.post<{ ok: boolean, user: User, token: string }>(`${this.baseUrl}user`, user)
@@ -52,4 +52,10 @@ export class UsersService {
   activardesactivar( user: User): Observable<User> {
     return this.http.put<User>(`${ this.baseUrl }user/${user.id}`, user)
   }
+
+  // Agregada para obtener los usuarios alumnos de un curso especifico por id
+  obtenerUsuariosDelCurso(cursoId: number): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseUrl}curso/${cursoId}/users`);
+  }
+
 }

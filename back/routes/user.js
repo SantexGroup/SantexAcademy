@@ -16,7 +16,9 @@ const { validarJWT } = require('../middleware/validar-jwt');
 router.get('/', userController.allUser);
 //router.get('/', userController.allUserByFilters);
 router.get('/renew', validarJWT, userController.revalidarToken);
-router.get('/:id/cursos', userController.getCursos);
+router.get('/:id/cursos', userController.getCursos);// Creada para traer todos los cursos por usuario/alumno
+router.get('/:id/matricula', userController.getMatricula);// Creada para traer los cursos con matricula por user/alumno
+router.get('/:id/usermatricula', userController.getMatriculaPorUserIdController);// Creada para traer matriculas por usuario/alumno
 router.get('/:id', userController.getUser);
 router.post('/', [
   check('username', 'El username es obligatorio').not().isEmpty(),
@@ -32,13 +34,16 @@ router.post('/login', [
 router.put('/:id', userController.updateUser);
 router.delete('/:id', userController.deleteUser);
 
-///////////-------NO borrar, no comentar, por favor no tocar, se usa solo para verificacion de link-----//////
+///////////-------NO borrar, no comentar, por favor no tocar, se usa solo para verificacion de link-----///// /
 router.post('/verifyLink', (req, res) => {
   const codeRegister = req.body.codeRegister; // Extrae el código del cuerpo de la solicitud POST
   console.log(`Valor de codeRegister en routes: ${codeRegister}`);
   verifyLink(req, res);
 });
 //-----------------------------------------------------------------------------------------------------/////
+//------------ Nueva ruta para usar en perfil-docente--------------------- -----//
+router.post('/byData', userController.getByData);
+//---------------------------------------------------------------------------//
 
 
 module.exports = router;

@@ -72,14 +72,41 @@ const getDocentePorCurso = async (id) => {
         {
           model: Curso,
           as: 'CursoEnDocentePorCurso',
+          
         },
       ],
     });
+    console.log('1- en SERVICIO BACK docenteporcurso getDocentePorCurso:', docenteporcurso);//BORRAR
     return docenteporcurso; 
   } catch (error) {
     throw new Error('Hubo un error al obtener el docente por curso.');
   }
 };
+
+//-------------------------Metodo para ver los cursos de un docente-----------------------------//
+const getCursoPorDocentePorId = async (id) => {
+  try {
+    const docenteporcurso = await DocentePorCurso.findOne({
+      where: {
+        iddocente: id,
+        habilitado: true,
+      },
+      include: [
+        {
+          model: Curso,
+          as: 'CursoEnDocentePorCurso',
+        },
+      ],
+    });
+    if (!docenteporcurso) {
+      return [];
+    }
+    return docenteporcurso || [];
+  } catch (error) {
+    throw new Error('Hubo un error al obtener los cursos del docente habilitado.');
+  }
+};
+//------------------------------------------------------------------------------//
 
 const getCursosByDocente = async (iddocente) => {
   console.log("getCursosByDocente")
@@ -111,11 +138,11 @@ const getCursosByDocente = async (iddocente) => {
   }
 };
 
-
 module.exports = {
   allDocentesPorCurso,
   createDocentePorCurso,
   updateDocentePorCurso,
   getDocentePorCurso,
+  getCursoPorDocentePorId,
   getCursosByDocente
 };

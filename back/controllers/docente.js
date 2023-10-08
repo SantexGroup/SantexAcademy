@@ -48,9 +48,28 @@ const getDocente = async (req, res, next) => {
   }
 };
 
+//------------ nuevo get para recuperar el docentId desde el userId--------------------//
+const obtenerDocenteIdPorUserId = async (req, res, next) => {
+  const { userId } = req.params;
+  try {
+    const docenteId = await docenteService.getDocenteIdByUserId(userId);
+
+    if (docenteId !== null) {
+      res.status(200).json(docenteId);
+    } else {
+      res.status(404).json({ message: 'No se encontró un docente para el id ingresado' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'En back/controller/docente.js: Error al obtener el docenteId' });
+  }
+};
+//---------------------------------------------------------------------------------------//
+
 module.exports = {
     allDocentes,
     createDocente,
     updateDocente,
-    getDocente
+    getDocente,
+    obtenerDocenteIdPorUserId,
 };

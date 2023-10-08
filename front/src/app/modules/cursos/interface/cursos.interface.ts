@@ -21,7 +21,7 @@ export interface Curso {
   idusuarioalta?: number | null | undefined; 
   idusuariomodificacion?: number | null | undefined; 
   estado?: string | undefined; 
-  createdAt: Date;
+  createdAt?: Date;
   updatedAt?: Date;
   Nivel?: Nivel; // nivel como opcional
 }

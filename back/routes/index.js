@@ -11,6 +11,7 @@ const matriculaRoutes = require('./matricula');
 const docenteRoutes = require('./docente');
 const especialidadRoutes = require('./especialidad');
 const docentePorCursoRoutes = require('./docenteporcurso');
+const cursadoPorAlumnoRoutes = require('./cursadoporalumno')
 const app = Express();
 
 // Rutas
@@ -29,6 +30,7 @@ app.use('/matricula', matriculaRoutes);
 app.use('/docente', docenteRoutes)
 app.use('/especialidad', especialidadRoutes)
 app.use('/docenteporcurso', docentePorCursoRoutes)
+app.use('/cursadoporalumno', cursadoPorAlumnoRoutes)
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);

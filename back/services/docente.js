@@ -70,11 +70,32 @@ const getDocente = async (id) => {
   }
 };
 
+//------------ nuevo get para recuperar el docentId desde el userId--------------------//
+const getDocenteIdByUserId = async (userId) => {
+  try {
+    const docente = await Docente.findOne({
+      where: {
+        idusuario: userId
+      }
+    });
+    if (docente) {
+      return docente.id;
+    } else {
+      console.log('No se encuentra docente con el id de usuario seleccionado.')
+      return null;
+    }
+  } catch (error) {
+    throw new Error('En back/services/docente.js Hubo un error en la búsqueda');
+  }
+};
+//---------------------------------------------------------------------------------------//
+
 module.exports = {
   allDocentes,
   createDocente,
   updateDocente,
-  getDocente
+  getDocente,
+  getDocenteIdByUserId,
 };
 
 /*

@@ -36,12 +36,25 @@
 }
 
 /* Estilos para el campo de búsqueda */
+.alum-bus label{
+  padding: 3px 3px;
+  font-weight: bold;
+  margin-left: 2%;
+}
+
+.alum-bus select{
+  padding: 3px 3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: 3%;
+}
+
 .alum-bus input[type="text"] {
-  width: calc(50% - 10px); /* Ancho del campo de búsqueda */
+  width: calc(35% - 10px); /* Ancho del campo de búsqueda */
   padding: 10px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-left: 30%;
+  margin-left: 20%;
 }
 
 /* Estilos para el botón de búsqueda */

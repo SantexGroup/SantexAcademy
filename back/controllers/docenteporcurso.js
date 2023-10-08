@@ -48,7 +48,22 @@ const getDocentePorCurso = async (req, res, next) => {
     next(error);
   }
 };
+//------------------------Para ver los cursos por docente -------------------------------//
+const cursoPorDocentePorIDController = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const cursos = await docenteporcursoService.getCursoPorDocentePorId(id);
+    if (cursos.length === 0) {
+      return res.status(404).json({ message: 'No se encontraron cursos habilitados para este docente.' });
+    }
+    res.status(200).json(cursos);
+  } catch (error) {
+    console.error(error);
+    next(error); 
+  }
+};
 
+//--------------------------------------------------------------------------------------//
 const getCursosPorDocente = async (req, res, next) => {
   const { iddocente } = req.params; // Cambia a iddocente
   console.log('ID del docente recibido:', iddocente); 
@@ -67,5 +82,6 @@ module.exports = {
     createDocentePorCurso,
     updateDocentePorCurso,
     getDocentePorCurso,
+    cursoPorDocentePorIDController,
     getCursosPorDocente
 };

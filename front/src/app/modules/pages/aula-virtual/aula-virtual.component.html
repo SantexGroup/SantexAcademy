@@ -43,29 +43,64 @@
             </div>
         </div>
 
-            <div class="alum-datos">
-                <div class="alum-bus">
-                    <input type="text" placeholder="Ingresar nombre o email" /><!--[(ngModel)]="searchQuery"-->
-                    <button (click)="search()">Buscar Alumno</button>
-                </div>
-                <div  class='resultado-busqueda '>
-                    <p>alumno buscado</p>
-                </div>
-                <div   class='alumno-datos'>
-                    <p>alumno datos</p>
-                </div>
-                <div class='notas-prom-asist'>
-                    <div  class='notas'>
-                        <p>alumno notas</p>
-                    </div>
-                    <div  class='promedio'>
-                        <p>alumno promedio</p>
-                    </div>
-                    <div  class='asistencia'>
-                        <p>alumno asistencia</p>
-                    </div>
-                </div>
+        <div class="aula-virtual">
+            <!-- Formulario para la búsqueda -->
+            <form [formGroup]="formulario" (ngSubmit)="search()">
+              <label for="selectedField">Seleccionar campo:</label>
+              <select id="selectedField" formControlName="selectedField">
+                <option value="nombre">Nombre</option>
+                <option value="apellido">Apellido</option>
+                <option value="username">Usuario</option>
+                <option value="email">E-mail</option>
+              </select>
+              
+              <label for="searchQuery">Buscar:</label>
+              <input type="text" id="searchQuery" formControlName="searchQuery">
+              
+              <button type="submit">Buscar</button>
+            </form>
+          
+            <div>
+              <p>Resultado de la búsqueda: {{ alumnoSeleccionado ? 'Coincidencia encontrada' : 'No hay coincidencias' }}</p>
             </div>
+          
+            <!-- Detalles del alumno -->
+            <div *ngIf="alumnoSeleccionado">
+              <h2>Detalles del alumno:</h2>
+              <p>Nombre: {{ alumnoSeleccionado.nombre }}</p>
+              <p>Apellido: {{ alumnoSeleccionado.apellido }}</p>
+              <p>Usuario: {{ alumnoSeleccionado.username }}</p>
+              <p>E-mail: {{ alumnoSeleccionado.email }}</p>
+            </div>
+          
+            <!-- Formulario para agregar datos -->
+            <form [formGroup]="formulario" (ngSubmit)="courseId !== undefined ? agregarDatos(courseId) : null">
+             
+              <label for="notaInput">Nota:</label>
+              <input type="number" id="notaInput" formControlName="notaInput">
+              
+              <button type="submit">Agregar Datos</button>
+            </form>
+          
+            <!-- Casillas para mostrar resultados -->
+            <div>
+              <h2>Resultados de la búsqueda:</h2>
+              <!-- Agregar elementos para mostrar los resultados -->
+            </div>
+          
+            <!-- Casillas para calificaciones -->
+            <div>
+              <h2>Calificaciones:</h2>
+              <!-- Agregar casillas para ingresar notas y mostrar el promedio -->
+            </div>
+          
+            <!-- Casillas para asistencia -->
+            <div>
+              <h2>Asistencia:</h2>
+              <!-- Agregar elementos para ingresar datos de asistencia -->
+            </div>
+          </div>
+          <button (click)="guardarDatosDB()">Guardar Datos</button>
     </div>
     
 </body>

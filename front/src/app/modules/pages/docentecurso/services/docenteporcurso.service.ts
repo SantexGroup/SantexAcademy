@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+
 import { Docenteporcurso } from '../interfaces/docenteporcurso';
+import { Curso } from 'src/app/modules/cursos/interface/cursos.interface';
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,15 +24,11 @@ export class DocenteporcursoService {
     console.log("Llamando a getDocentePorCursoPorId")
     return this.http.get<Docenteporcurso>(`${this.baseUrl}docenteporcurso/${ id }`)
   }
-
-  getCursosPorDocenteId(idDocente: number): Observable<Docenteporcurso[]> {
-    // Realizar una solicitud HTTP GET para obtener los cursos por docente
-    console.log("Llamando a getCursosPorDocenteId")
-    const url = `${this.baseUrl}docenteporcurso/iddocente/${idDocente}`; 
-
-    return this.http.get<Docenteporcurso[]>(url);
+  //-----------------Agrego para busacr los cursos de un docente------------//
+  getCursoPorDocentePorID(id: number): Observable<Curso[]>{
+    return this.http.get<Curso[]>(`${this.baseUrl}docenteporcurso/${ id }/cursos`)
   }
-
+  //-------------------------------------------------------------------------//
   addDocentePorCurso(docente: Docenteporcurso): Observable<Docenteporcurso> {
     return this.http.post<Docenteporcurso>(`${this.baseUrl}docenteporcurso`, docente);
   }
@@ -40,5 +39,12 @@ export class DocenteporcursoService {
 
   habilitardocentePorCurso( docente: Docenteporcurso): Observable<Docenteporcurso> {
     return this.http.put<Docenteporcurso>(`${ this.baseUrl }docenteporcurso/${docente.id}`, docente)
+  }
+
+  getCursosPorDocenteId(idDocente: number): Observable<Docenteporcurso[]> {
+    console.log("Llamando a getCursosPorDocenteId")
+    const url = `${this.baseUrl}docenteporcurso/iddocente/${idDocente}`; 
+
+    return this.http.get<Docenteporcurso[]>(url);
   }
 }

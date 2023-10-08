@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { QuienessomosComponent } from './quienessomos/quienessomos.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
@@ -16,7 +18,7 @@ import { HabilitarmatriculaDirective } from 'src/app/directivas/habilitarmatricu
 import { PerfilAlumnoComponent} from './perfil-alumno/perfil-alumno.component';
 import { PerfilAlumnoEditarComponent } from './perfil-alumno-editar/perfil-alumno-editar.component';
 import { PerfilDocenteComponent } from './perfil-docente/perfil-docente.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//import { FormsModule, ReactiveFormsModule } from '@angular/forms';//Duplicado arriba
 import { HabilitardocenteDirective } from 'src/app/directivas/habilitardocente.directive';
 import { DocenteespecialidadComponent } from './docenteespecialidad/docenteespecialidad.component';
 import { DocentecursoComponent } from './docentecurso/docentecurso.component';
@@ -68,3 +70,4 @@ import { NotificationComponent } from './notification/notification.component';
   ]
 })
 export class PagesModule { }
+

@@ -7,6 +7,7 @@ const matriculaService = require('./matricula');
 const docenteService = require('./docente');
 const especialidadService = require('./especialidad');
 const docenteporcursoService = require('./docenteporcurso');
+const cursadoPorAlumnoService = require('./cursadoporalumno')
 
 module.exports = {
   userService,
@@ -17,5 +18,6 @@ module.exports = {
   matriculaService,
   docenteService,
   especialidadService,
-  docenteporcursoService
+  docenteporcursoService,
+  cursadoPorAlumnoService,
 };
