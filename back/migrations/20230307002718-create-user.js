@@ -28,6 +28,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         defaultValue: 0
       },
+      profilePic:{
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

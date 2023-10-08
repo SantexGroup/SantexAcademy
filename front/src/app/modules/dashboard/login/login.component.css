@@ -111,6 +111,10 @@
     color: red;
     font-size: .7rem;
   }
+  .error{
+    color: red;
+    
+  }
 
 /*  TABLET */
 @media screen and (max-width: 768px) {

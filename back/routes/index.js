@@ -22,6 +22,7 @@ app.use("/alquiler", rutasAlquiler );
 app.use("/categories", rutasCategoria);
 app.use("/public", Express.static("uploads"));
 app.use("/carrito", rutasCarrito)
+app.use("/user", require("./routes.user"))
 
 
 app.use('/', rootPath.handler);
