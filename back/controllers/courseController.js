@@ -73,4 +73,15 @@ const removeUser = async (req, res) => {
     }
 };
 
-module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers, addUser, removeUser };
+const searchCourses = async (req, res) => {
+    try {
+      const { name, by } = req.query;
+      const courses = await courseService.searchCourses(name, by);
+      res.json(courses);
+    } catch (error) {
+      console.error('Error al buscar cursos:', error);
+      res.status(500).json({ error: 'Error al buscar cursos' });
+    }
+  };
+
+module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers, addUser, removeUser, searchCourses };
