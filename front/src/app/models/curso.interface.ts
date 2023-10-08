@@ -19,7 +19,7 @@ export interface Curso {
   fechaInicio:           Date;
   fechafin:              null;
   idusuarioalta:         null;
-  estado:                boolean;
+  estado:                string;
   idusuariomodificacion: null;
   createdAt:             Date;
   updatedAt:             Date;

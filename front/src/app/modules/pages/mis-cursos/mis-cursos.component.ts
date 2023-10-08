@@ -46,7 +46,8 @@ import { MatriculasService } from '../../matriculas/services/matriculas.service'
 
   cursos: Curso[] = [];
   //matriculas: Matricula[] = [];
-  
+  cursosPorDocente: Docenteporcurso[] = [];
+
   constructor(private authService: AuthService,
               private usersService: UsersService,
               private router: Router,
@@ -96,14 +97,19 @@ import { MatriculasService } from '../../matriculas/services/matriculas.service'
                   cursosNoHabilitados.push(curso);
                 }
               });
-          
-              if (this.cursos && this.cursos.length > 0 && this.cursos[0].imagen) {
-                localStorage.setItem('nombreCurso', this.cursos[0].nombre);
-                localStorage.setItem('imagenCurso', this.cursos[0].imagen);
-                console.log('Nombre del curso guardado en localStorage:', this.cursos[0].nombre);
-                console.log('Imagen del curso guardada en localStorage:', this.cursos[0].imagen);
+
+              const nombreCurso = this.cursos[0].nombre;
+              const imagenCurso = this.cursos[0].imagen;
+
+              if (nombreCurso && imagenCurso) {
+                localStorage.setItem('nombreCurso', nombreCurso);
+                localStorage.setItem('imagenCurso', imagenCurso);
+                console.log('Nombre del curso guardado en localStorage:', nombreCurso);
+                console.log('Imagen del curso guardada en localStorage:', imagenCurso);
+              } else {
+                console.error('Nombre de curso o imagen de curso no definidos');
               }
-          
+                       
               console.log('Cursos Alumno habilitados:', cursosHabilitados);
               console.log('Cursos Alumno no habilitados:', cursosNoHabilitados);
             });
@@ -118,43 +124,47 @@ import { MatriculasService } from '../../matriculas/services/matriculas.service'
 
                 console.log('6.- Verificar si es un docente habilitado:', habilitado);
                 const esDocenteHabilitado = habilitado?.DocenteEnDocentePorCurso?.habilitado;
-
                   if (esDocenteHabilitado) {
                     console.log('7.- esDocenteHabilitado:', esDocenteHabilitado);
                     // this.obtenerCursosParaDocente(habilitado?.DocenteEnDocentePorCurso?.id??0);
-                    this.docenteporcursoService.getCursoPorDocentePorID(docenteId).subscribe((cursos) => {
 
-                      console.log('8.- Cursos para docentes obtenidos:', cursos);
-                      this.cursos = cursos;
+                    this.docenteporcursoService.getCursosPorDocenteId(docenteId) 
+                    .subscribe((cursosPorDocente => {
+                      this.cursosPorDocente = cursosPorDocente;
 
-                      if (this.cursos && this.cursos.length > 0 && this.cursos[0].imagen) {
-                        localStorage.setItem('nombreCurso', this.cursos[0].nombre);
-                        localStorage.setItem('imagenCurso', this.cursos[0].imagen);
-                        console.log('Nombre del curso guardado en localStorage:', this.cursos[0].nombre);
-                        console.log('Imagen del curso guardada en localStorage:', this.cursos[0].imagen);
+                      // Filtra los valores undefined y los cursos que no tienen 'fechainicio'
+                      const cursosDefinidos = this.cursosPorDocente
+                        .map(docentePorCurso => docentePorCurso.CursoEnDocentePorCurso)
+                        .filter(curso => curso) as Curso[];
+
+                      // Asigna los cursos filtrados a la propiedad 'cursos'
+                      console.log('8.- Cursos para docentes obtenidos:', cursosDefinidos);
+                      this.cursos = cursosDefinidos;
+
+                      const nombreCurso = this.cursos[0].nombre;
+                      const imagenCurso = this.cursos[0].imagen;
+
+                      if (nombreCurso && imagenCurso) {
+                        localStorage.setItem('nombreCurso', nombreCurso);
+                        localStorage.setItem('imagenCurso', imagenCurso);
+                        console.log('Nombre del curso guardado en localStorage:', nombreCurso);
+                        console.log('Imagen del curso guardada en localStorage:', imagenCurso);
+                      } else {
+                        console.error('Nombre de curso o imagen de curso no definidos');
                       }
-                        console.log('8.- Cursos Docente:', this.cursos);
-
-
-
-                    });
-
+                      console.log('8.- Cursos Docente:', this.cursos);
+                    }));
                   } else {
-                   // this.obtenerCursosParaocente();
-
-                  }
+                    console.log('Docente no habilitado');
+                 }
               });
-
             } else {
-              console.log('10.- No se encontró un docente asociado al usuario.');
-                  
+              console.log('10.- No se encontró un docente asociado al usuario.'); 
             }
           });
 
         }
       }    
-        
-    
     });
   }  
 
@@ -179,7 +189,5 @@ import { MatriculasService } from '../../matriculas/services/matriculas.service'
       });
     }
   }
-   
-  
 }
 

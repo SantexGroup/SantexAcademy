@@ -8,20 +8,20 @@ import { Nivel } from "src/app/models/nivel.interface";
 
 export interface Curso {
   id?: number;
-  nombre: string;
-  descripcion: string;
+  nombre?: string;
+  descripcion?: string;
   imagen?: string;
-  duracion: number;
-  capacidad: number;
-  idnivel: number;
-  requisitos: string;
-  habilitado: boolean;
-  fechainicio: Date;
-  fechafin?: Date;
-  idusuarioalta: number;
-  idusuariomodificacion?: number;
-  estado: string;
-  createdAt: Date;
+  duracion?: number;
+  capacidad?: number;
+  idnivel?: number | null | undefined;
+  requisitos?: string;
+  habilitado?: boolean;
+  fechainicio?: Date | null | undefined; 
+  fechafin?: Date | null | undefined; 
+  idusuarioalta?: number | null | undefined; 
+  idusuariomodificacion?: number | null | undefined; 
+  estado?: string | undefined; 
+  createdAt?: Date;
   updatedAt?: Date;
   Nivel?: Nivel; // nivel como opcional
 }

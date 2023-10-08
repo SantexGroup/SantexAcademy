@@ -271,7 +271,7 @@ export class AdminComponent implements OnInit {
     } else {
       // Filtro los cursos por nombre
       this.cursosFiltrados = this.cursos.filter(curso =>
-        curso.nombre.toLowerCase().includes(this.searchCurso.toLowerCase())
+        curso?.nombre?.toLowerCase().includes(this.searchCurso.toLowerCase())
       );
     }
   
@@ -285,7 +285,7 @@ export class AdminComponent implements OnInit {
       this.matriculasFiltradas = this.matriculas;
     } else {
       this.matriculasFiltradas = this.matriculas.filter(matricula =>
-        matricula.Curso?.nombre.toLowerCase().includes(this.searchMatricula.toLowerCase())
+        matricula.Curso?.nombre?.toLowerCase().includes(this.searchMatricula.toLowerCase())
       );
     }
   

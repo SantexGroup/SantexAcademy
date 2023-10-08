@@ -39,4 +39,11 @@ export class DocenteporcursoService {
   habilitardocentePorCurso( docente: Docenteporcurso): Observable<Docenteporcurso> {
     return this.http.put<Docenteporcurso>(`${ this.baseUrl }docenteporcurso/${docente.id}`, docente)
   }
+
+  getCursosPorDocenteId(idDocente: number): Observable<Docenteporcurso[]> {
+    console.log("Llamando a getCursosPorDocenteId")
+    const url = `${this.baseUrl}docenteporcurso/iddocente/${idDocente}`; 
+
+    return this.http.get<Docenteporcurso[]>(url);
+  }
 }

@@ -61,7 +61,20 @@ const cursoPorDocentePorIDController = async (req, res, next) => {
     next(error); 
   }
 };
+
 //--------------------------------------------------------------------------------------//
+const getCursosPorDocente = async (req, res, next) => {
+  const { iddocente } = req.params; // Cambia a iddocente
+  console.log('ID del docente recibido:', iddocente); 
+  try {
+    const cursospordocente = await docenteporcursoService.getCursosByDocente(iddocente);
+    res.status(200).json(cursospordocente);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    next(error);
+  }
+};
 
 module.exports = {
     allDocentesPorCurso,
@@ -69,4 +82,5 @@ module.exports = {
     updateDocentePorCurso,
     getDocentePorCurso,
     cursoPorDocentePorIDController,
+    getCursosPorDocente
 };
