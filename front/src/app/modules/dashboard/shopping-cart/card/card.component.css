@@ -42,14 +42,14 @@
 
 .card_img {
   width: 100%;
-  min-height: 10rem;
+  height: 10rem;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-.card_img svg {
-  width: 100%;
-  height: auto;
+.card_img img {
+  height: 100%;
   object-fit: cover;
 }
 

@@ -21,6 +21,7 @@ import { VistaProveedoresComponent } from './vista-proveedores/vista-proveedores
 import { MatChipsModule } from '@angular/material/chips';
 import { SearchProductComponent } from './search-product/search-product.component';
 import { ProductCardComponent } from './search-product/product-card/product-card.component';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { CardComponent } from './shopping-cart/card/card.component';
 import { FooterComponent } from './footer/footer.component';
@@ -48,6 +49,7 @@ import { VistaHomeVendedorComponent } from './vista-home-vendedor/vista-home-ven
     FormsModule,
     MatDialogModule,
     MatSelectModule,
+    MatBadgeModule
   ],
   exports: [DashboardPageComponent],
   providers: [],
