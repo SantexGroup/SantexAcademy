@@ -38,7 +38,7 @@ export class CourseService {
       .set('name', name)
       .set('by', by);
 
-    return this.http.get<any[]>(`${this.apiUrl}/courses`, { params });
+    return this.http.get<any[]>(`${this.apiUrl}/api/course/search`, { params });
   }
  
 }

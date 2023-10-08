@@ -1,4 +1,6 @@
 const { Course, User } = require('../models');
+const { Op } = require('sequelize');
+
 
 const createCourse = async (course) => {
     try {
@@ -83,4 +85,33 @@ const removeUser = async (courseId, userId) => {
     }
 };
 
-module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers, addUser, removeUser };
+const searchCourses = async (name, by) => {
+    try {
+      // Define una variable para almacenar las condiciones de búsqueda
+      const searchConditions = {};
+  
+      // Verifica si se proporciona el nombre y agrega la condición correspondiente
+      if (name) {
+        searchConditions.name = {
+          [Op.like]: `%${name}%`, // Esto buscará nombres que contengan el valor proporcionado
+        };
+      }
+  
+      // Verifica el valor de 'by' y agrega la condición correspondiente
+      if (by === 'byProfesor') {
+        // Agrega la condición para buscar por profesor si es necesario
+      }
+  
+      // Utiliza Sequelize para buscar cursos basados en las condiciones de búsqueda
+      const courses = await Course.findAll({
+        where: searchConditions,
+      });
+  
+      return courses;
+    } catch (err) {
+      console.error('Error al buscar cursos:', err.message);
+      throw err;
+    }
+  };
+
+module.exports = { createCourse, getCourses, getCourse, updateCourse, deleteCourse, getUsers, addUser, removeUser, searchCourses };

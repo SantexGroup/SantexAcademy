@@ -3,6 +3,8 @@ const router = express.Router();
 
 const courseController = require('../controllers/courseController');
 
+router.get('/search', courseController.searchCourses);
+
 router.route('/')
     .get(courseController.getCourses)
     .post(courseController.createCourse);
@@ -19,3 +21,4 @@ router.route('/:courseId/user/:userId')
     .delete(courseController.removeUser);
 
 module.exports = router;
+
