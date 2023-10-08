@@ -69,7 +69,6 @@ const deleteCurso = async (id) => {
     if (!curso) {
       throw new Error('Curso no encontrado.');
     }
-
     await curso.update({ estado: 'B' });
     return curso;
   } catch (error) {
@@ -83,7 +82,6 @@ const activardesactivarCurso = async (id, estahabilitado) => {
     if (!curso) {
       throw new Error('Curso no encontrado.');
     }
-
     await curso.update({ habilitado: estahabilitado });
     return curso;
   } catch (error) {

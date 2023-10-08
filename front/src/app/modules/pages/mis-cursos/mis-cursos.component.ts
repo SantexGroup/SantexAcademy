@@ -9,27 +9,28 @@ import { Matricula } from '../../matriculas/interfaces/interfaces';
 import { Docenteporcurso } from '../docentecurso/interfaces/docenteporcurso';
 import { DocenteporcursoService } from '../docentecurso/services/docenteporcurso.service';
 import { DocenteService } from '../../docentes/services/docente.service';
+import { Curso } from '../../cursos/interface/cursos.interface';
+import { MatriculasService } from '../../matriculas/services/matriculas.service';
 
-
-interface Curso extends Matricula, Docenteporcurso {
-  id?: number;
-  nombre: string;
-  descripcion: string;
-  imagen?: string;
-  duracion: number;
-  capacidad: number;
-  idnivel: number;
-  requisitos: string;
-  habilitado: boolean;
-  fechainicio: Date;
-  fechafin?: Date;
-  idusuarioalta: number;
-  idusuariomodificacion?: number;
-  estado: string;
-  createdAt: Date;
-  updatedAt?: Date;
-  Nivel?: Nivel; 
-}
+// interface Curso extends Matricula, Docenteporcurso {
+//   id?: number;
+//   nombre: string;
+//   descripcion: string;
+//   imagen?: string;
+//   duracion: number;
+//   capacidad: number;
+//   idnivel: number;
+//   requisitos: string;
+//   habilitado: boolean;
+//   fechainicio: Date;
+//   fechafin?: Date;
+//   idusuarioalta: number;
+//   idusuariomodificacion?: number;
+//   estado: string;
+//   createdAt: Date;
+//   updatedAt?: Date;
+//   Nivel?: Nivel; 
+// }
 
 @Component({
     selector: 'app-mis-cursos',
@@ -44,12 +45,14 @@ interface Curso extends Matricula, Docenteporcurso {
   }
 
   cursos: Curso[] = [];
+  //matriculas: Matricula[] = [];
   
   constructor(private authService: AuthService,
               private usersService: UsersService,
               private router: Router,
               private docenteporcursoService: DocenteporcursoService,
               private docenteService:DocenteService,
+              private matriculasService: MatriculasService,
              ) { }
 
 
@@ -60,20 +63,51 @@ interface Curso extends Matricula, Docenteporcurso {
                     
       } else {
         console.log('1.- Usuario autenticado. ID de usuario:', this.user.id);
-        if (this.user.tipoDeUsuario === 'Alumno'){
+        if (this.user.tipoDeUsuario === 'Alumno') {
           console.log('2.- Tipo de usuario Alumno?:', this.user.tipoDeUsuario);
-          this.usersService.getCursosPorUserId(this.user.id).subscribe((cursos => { 
-
+          this.usersService.getCursosPorUserId(this.user.id).subscribe((cursos) => {
+            console.log('Respuesta de getCursosPorUserId:', cursos);
+            console.log('B1.- This.user trae this.cursos:', this.cursos);
             this.cursos = cursos;
-            if (this.cursos && this.cursos.length > 0 && this.cursos[0].imagen) {
-              localStorage.setItem('nombreCurso', this.cursos[0].nombre);
-              localStorage.setItem('imagenCurso', this.cursos[0].imagen);
-              console.log('Nombre del curso guardado en localStorage:', this.cursos[0].nombre);
-              console.log('Imagen del curso guardada en localStorage:', this.cursos[0].imagen);
-            }
-              console.log('3.- Cursos Alumno:', this.cursos);
-          }));
-
+          
+            this.matriculasService.getMatriculaByUserId(this.user.id).subscribe((matriculas) => {
+              console.log('Respuesta de getMatriculaByUserId:', matriculas);
+              console.log('B2.- This.user trae matriculas:', matriculas);
+              
+              // Crear arrays para cursos habilitados y no habilitados
+              const cursosHabilitados: Curso[] = [];
+              const cursosNoHabilitados: Curso[] = [];
+          
+              this.cursos.forEach((curso) => {
+                console.log('Valor de curso.id:', curso);
+              
+                const matricula = matriculas.find((matricula) => matricula.cursoId === curso.id);
+              
+                if (matricula && matricula.habilitado === true) {
+                  curso.habilitado = true;
+                  console.log('B3.- curso.id trae cursos.habilitados:', curso.habilitado);
+                } else {
+                  curso.habilitado = false;
+                }
+             
+                if (curso.habilitado) {
+                  cursosHabilitados.push(curso);
+                } else {
+                  cursosNoHabilitados.push(curso);
+                }
+              });
+          
+              if (this.cursos && this.cursos.length > 0 && this.cursos[0].imagen) {
+                localStorage.setItem('nombreCurso', this.cursos[0].nombre);
+                localStorage.setItem('imagenCurso', this.cursos[0].imagen);
+                console.log('Nombre del curso guardado en localStorage:', this.cursos[0].nombre);
+                console.log('Imagen del curso guardada en localStorage:', this.cursos[0].imagen);
+              }
+          
+              console.log('Cursos Alumno habilitados:', cursosHabilitados);
+              console.log('Cursos Alumno no habilitados:', cursosNoHabilitados);
+            });
+          });
         } else {
           console.log('4.- Comienza Docente: Tipo de usuario Docente?:', this.user.tipoDeUsuario);
           this.docenteService.getDocenteIdByuserId(this.user.id).subscribe((docenteId) => {
@@ -145,31 +179,7 @@ interface Curso extends Matricula, Docenteporcurso {
       });
     }
   }
-
-//   validarCursos() {
-//     this.cursos.forEach(curso => {
-//       if (curso.hasOwnProperty('Matricula')) {
-//         curso.habilitado = curso.Matricula?.habilitado ?? false; // Para estudiantes
-//       } else if (curso.hasOwnProperty('Docenteporcurso')) {
-//         curso.habilitado = curso.Docenteporcurso?.habilitado ?? false; // Para docentes
-//       } else {
-//         curso.habilitado = false; // Si no es ni estudiante ni docente, no está habilitado
-//       }
-//     });
-//   }
-// }
-
-  // esCursoHabilitado(curso: Curso): boolean {
-  //   if (curso.hasOwnProperty('Matricula')) {
-  //     return curso.Matricula?.habilitado ?? false; // Para estudiantes
-  //   } else if (curso.hasOwnProperty('Docenteporcurso')) {
-  //     return curso.Docenteporcurso?.habilitado ?? false; // Para docentes
-  //   } else {
-  //     return false; // Si no es ni estudiante ni docente, no está habilitado
-  //   }
-  // }   
-
-
-    
+   
+  
 }
 

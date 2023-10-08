@@ -12,7 +12,8 @@
   <h5>Hola, {{user.username}} !</h5>
   <div class="container">
 
-    <div class="curso-card" *ngFor="let curso of cursos" ><!--[ngClass]="{'curso-habilitado': esCursoHabilitado(curso), 'curso-no-habilitado': !esCursoHabilitado(curso)}"-->
+    <!--<div class="curso-card" *ngFor="let curso of cursos" [ngClass]="{'curso-habilitado': esCursoHabilitado(curso), 'curso-no-habilitado': !esCursoHabilitado(curso)}">-->
+    <div class="curso-card" *ngFor="let curso of cursos" [ngClass]="{'curso-habilitado': curso.habilitado, 'curso-no-habilitado': !curso.habilitado}">
       <figure>
         <img src="{{curso.imagen}}" alt="Imagen del curso">
       </figure>

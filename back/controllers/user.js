@@ -1,7 +1,7 @@
 const bcript = require('bcrypt');
 //const { validationResult } = require('express-validator');//BORRAR si no se usa
 
-const { User } = require('../models');
+const { User, Curso, Matricula } = require('../models');
 const { userService, emailService } = require('../services');
 const { codeGenerator } = require('../helpers/codeGenerator');
 const { generarJWT } = require('../helpers/jwt');
@@ -40,6 +40,7 @@ const getUser = async (req, res, next) => {
   }
 };
 
+//--------------Trae todos los cursos de un usuario/alumno -----///
 const getCursos = async (req, res, next) => {
   const { id } = req.params;
   try {
@@ -48,6 +49,41 @@ const getCursos = async (req, res, next) => {
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
+    next(error);
+  }
+};
+
+//--------------Trae matriculas de un usuario/alumno -----///
+const getMatriculaPorUserIdController = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const matriculas = await userService.getMatriculaPorUserId(id);
+    res.status(200).json(matriculas);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Hubo un error en controller user al obtener las matrículas por usuario.' });
+    next(error);
+  }
+};
+
+//--------------Trae los cursos con matricula de un usuario/alumno ----- ///
+
+const getMatricula = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const cursosConMatricula = await Curso.findAll({
+      include: [{
+        model: Matricula,
+        where: { id },
+        attributes: ['habilitado'],
+        required: true,
+      }],
+    });
+    res.status(200).json(cursosConMatricula);
+  } catch (error) {
+    
+    console.error(error);
+    res.status(500).json({ message: 'Hubo un error en controller users al obtener las matriculas.' });
     next(error);
   }
 };
@@ -211,6 +247,8 @@ module.exports = {
   allUser,
   getUser,
   getCursos,
+  getMatricula,
+  getMatriculaPorUserIdController,
   getByData,
   createUser,
   login,
