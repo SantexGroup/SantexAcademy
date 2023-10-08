@@ -143,6 +143,20 @@ a.login-button:hover {
   }
 
 
+/* Estilos de mensajes luego de pasar por el formulario */
+.success-message {
+  background-color: #4CAF50; 
+  color: white; 
+}
+
+/* Estilo para mensajes de error */
+.error-message {
+  background-color: #f44336; 
+  color: white; 
+}
+
+
+
 
 
 

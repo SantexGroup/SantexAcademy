@@ -1,8 +1,8 @@
 .course-grid-container{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Define el ancho de cada columna */
-    grid-gap: 20px; /* Ajusta el espacio entre las tarjetas */
-    justify-items: center; /* Centra las tarjetas en las columnas */
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); 
+    grid-gap: 20px; 
+    justify-items: center; 
 }
 
 .course-card {
