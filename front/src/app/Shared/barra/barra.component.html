@@ -1,22 +1,25 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
+<nav id="BarraGeneral" class="navbar navbar-expand-lg bg-body-tertiary">
+  <div id="BarraColor" class="container-fluid">
     <a class="navbar-brand" href="#">
       <img id="Logo" src="../../../assets/logoimage.jpg" alt="Logo" width="60" height="60">
     </a>
     <a class="navbar-brand" href="#">Delkat</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <button data-bs-toggle="dropdown">Categorías</button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" *ngFor="let categoria of listCategorias">{{categoria.name}}</a> 
-      </div>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categorias
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" (click)="filtrar(categoria.id)" *ngFor="let categoria of listCategorias">{{categoria.name}}</a></li> 
+          </ul>
+        </li>
+      </ul>
       <form class="d-flex">
         <input (keyup)="filtrarProductos(inputFilter.value)" (keyup.enter)="buscar()" #inputFilter class="form-control me-2" type="search" placeholder="Busque un producto" aria-label="Search">
       </form>
-      <button (click)="buscar()" class="btn btn-outline-success" type="submit">Buscar</button>
-      <div id="espacioApp"></div>
+      <button id="BotonColor" (click)="buscar()" class="btn btn-outline-success" type="submit">Buscar</button>
+      
       <app-barra-lateral [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-barra-lateral>
     </div>
   </div> 

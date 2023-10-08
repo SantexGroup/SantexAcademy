@@ -24,6 +24,11 @@ export class BarraComponent implements OnInit {
     this.service.getProducts().subscribe(articulos => {this.listArticulos = articulos});
   }
 
+  filtrar(idCategoria: string) {
+    this.router.navigate(['/categorias', idCategoria]);
+  }
+
+
   filtrarProductos(texto: string) {
     localStorage.removeItem('idProdsBus')
     this.listArticulosFilt = this.listArticulos.filter(filt => filt.nombre.toLowerCase().indexOf(texto) > -1);
@@ -46,3 +51,24 @@ export class BarraComponent implements OnInit {
     }
   }
 }
+
+
+
+
+
+/*
+
+export class BarraComponent implements OnInit {
+
+  listCategorias: any[]=[]
+
+  constructor (private service: BarraService, private router: Router) { }
+
+  ngOnInit(): void {
+    this.service.getCategories().subscribe(categorias => {
+    console.log(categorias)
+    this.listCategorias = categorias
+    })
+  }
+
+*/

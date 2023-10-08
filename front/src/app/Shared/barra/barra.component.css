@@ -19,6 +19,7 @@ img {
     border-bottom: 1px solid #e6b68b;
 }
 
+
 #iteminicial {
     border-radius: 0px;
 }
@@ -35,16 +36,20 @@ img {
     border: 1px solid #874421;
 }
 
+
 #logo {
     display: flex;
     align-items: center;
 }
+
 
 .categorias {
     display: flex;
     align-items: center;
     margin: 20px;
 }
+
+
 
 #buscador {
     display: flex;
@@ -63,6 +68,7 @@ img {
     font-size: 0.8em;
 }
 
+
 app-login {
     display:flex;
     justify-content: right;
@@ -74,3 +80,23 @@ app-login {
     outline: 1px solid #874421;
     box-shadow: none;
 }
+
+#BarraGeneral {
+    padding: 0;
+}
+
+#BarraColor {
+    background-color: #e1dede;
+}
+
+#BotonColor {
+    color: #f0eaeb;
+    background-color: #d68a96;
+    border: 0;
+    margin-right: 500px;
+}
+
+#BotonColor:hover {
+    background-color: #c95c6d;
+}
+
