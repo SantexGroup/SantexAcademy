@@ -51,6 +51,9 @@ const getUser = async (id) => {
           as: 'TipoDeUsuario',
         },
       ],
+      where: {
+        estado: 'A',
+      },
     });
     return user;
   } catch (error) {
@@ -75,6 +78,7 @@ const getMatriculaPorUserId = async (id) => {
     const matriculas = await Matricula.findAll({
       where: {
         userId: id,
+        estado: 'A'
       },
     });
     return matriculas;
@@ -89,10 +93,13 @@ const getMatricula = async (id) => {
     const cursosConMatricula = await Curso.findAll({
       include: [{
         model: Matricula,
-        where: { id },
+        where: { id, estado:'A' },
         attributes: ['habilitado'],
         required: true,
       }],
+      where: {
+        estado: 'A',
+      },
     });
     return cursosConMatricula;
   } catch (error) {
@@ -105,7 +112,7 @@ const getMatricula = async (id) => {
 const getUserByData = async (searchCriteria) => {
   try {
     const user = await User.findOne({
-      where: searchCriteria,
+      where: searchCriteria, estado: 'A'
     });
     if (!user) {
       throw new Error('No se encuentra usuario en userService'+ JSON.stringify(searchCriteria));

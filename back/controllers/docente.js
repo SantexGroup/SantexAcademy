@@ -66,10 +66,23 @@ const obtenerDocenteIdPorUserId = async (req, res, next) => {
 };
 //---------------------------------------------------------------------------------------//
 
+const deleteDocente = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const user = await docenteService.deleteDocente(id);
+    res.json(user);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    next(error);
+  }
+};
+
 module.exports = {
     allDocentes,
     createDocente,
     updateDocente,
     getDocente,
     obtenerDocenteIdPorUserId,
+    deleteDocente,
 };

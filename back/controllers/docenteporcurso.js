@@ -77,11 +77,24 @@ const getCursosPorDocente = async (req, res, next) => {
   }
 };
 
+const deleteDocentePorCurso = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const docenteporcurso = await docenteporcursoService.deleteDocentePorCurso(id);
+    res.json(docenteporcurso);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    next(error);
+  }
+};
+
 module.exports = {
     allDocentesPorCurso,
     createDocentePorCurso,
     updateDocentePorCurso,
     getDocentePorCurso,
     cursoPorDocentePorIDController,
-    getCursosPorDocente
+    getCursosPorDocente,
+    deleteDocentePorCurso
 };

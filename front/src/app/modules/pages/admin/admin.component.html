@@ -270,6 +270,12 @@
                                 <i class="bi bi-trash"></i>
                             </button>
                         </td>
+                        <td>
+                            <a class="btn btn-sm btn-danger" (click)="confirmarEliminarMatricula(matricula.id)">Eliminar</a>
+                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
+                                <i class="bi bi-trash"></i>
+                            </button>     
+                            </td>       
                     </tr>
                 </tbody>
             </table>
@@ -352,8 +358,12 @@
                                 <i class="bi bi-trash"></i>
                             </button>
                           </td>
-
-                          
+                          <td>
+                          <a class="btn btn-sm btn-danger" (click)="confirmarEliminarDocente(docente.id)">Eliminar</a>
+                          <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
+                              <i class="bi bi-trash"></i>
+                          </button>     
+                          </td>          
                     </tr>
                 </tbody>
             </table>
@@ -401,6 +411,7 @@
                         <th scope="col">Identificador</th>
                         <th scope="col">Docente</th>
                         <th scope="col">Curso</th>
+                        <th scope="col">Estado de docente asignado</th>
                         <th scope="col">Estado</th>
                     </tr>
                 </thead>
@@ -417,21 +428,39 @@
                             {{ docenteporcurso?.CursoEnDocentePorCurso?.nombre || 'Sin especificar' }}
                         </td>
                          <td>
-                            <span [style.color]="docenteporcurso?.CursoEnDocentePorCurso ? 'black' : 'red'">
-                                {{ docenteporcurso?.CursoEnDocentePorCurso ? 'Con docente asignado' : 'Sin docente asignado' }}
+                            <span [style.color]="docenteporcurso?.DocenteEnDocentePorCurso ? 'black' : 'red'">
+                                {{ docenteporcurso?.DocenteEnDocentePorCurso ? 'Con docente asignado' : 'Sin docente asignado' }}
+                              </span>
+                        </td>
+                        <td>
+                            <span [style.color]="docenteporcurso.habilitado ? 'black' : 'red'">
+                                {{ docenteporcurso.habilitado ? 'Activado' : 'Desactivado' }}
                               </span>
                         </td>
                           <td>
                             <!--<a class="btn btn-sm btn-primary" [routerLink]="['/curso/asignardocente/',docenteporcurso.id]">Asignar docente</a>-->
 
-                            <a class="btn btn-sm btn-primary" [routerLink]="docenteporcurso?.CursoEnDocentePorCurso ? ['/curso/asignardocente/', docenteporcurso.id] : ['/curso/asignardocente/', docenteporcurso.id]">
-                                {{ docenteporcurso?.CursoEnDocentePorCurso ? 'Cambiar asignación de docente' : 'Asignar docente' }}
+                            <a class="btn btn-sm btn-primary" [routerLink]="docenteporcurso?.DocenteEnDocentePorCurso ? ['/curso/asignardocente/', docenteporcurso.id] : ['/curso/asignardocente/', docenteporcurso.id]">
+                                {{ docenteporcurso?.DocenteEnDocentePorCurso ? 'Cambiar asignación de docente' : 'Asignar docente' }}
                               </a>
 
                             <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
                             </button>
                         </td>
+
+                        <td>
+                            <a class="btn btn-sm btn-primary" (click)="habilitarDocentePorCurso(docenteporcurso, !docenteporcurso.habilitado)">
+                                <span [appActivardesactivarcurso]="docenteporcurso.habilitado"></span>
+                            </a>
+                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                            <a class="btn btn-sm btn-danger" (click)="confirmarEliminarDocentePorCurso(docenteporcurso.id)">Eliminar</a>
+                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
+                                <i class="bi bi-trash"></i>
+                            </button>    
+                          </td>
                     </tr>
                 </tbody>
             </table>

@@ -15,6 +15,9 @@ const allDocentes = async () => {
           as: 'Especialidad',  
         },
       ],
+      where: {
+        estado: 'A',
+      },
     });
 
     // Devolvemos el objeto docentes
@@ -63,6 +66,9 @@ const getDocente = async (id) => {
           as: 'Especialidad',  
         },
       ],
+      where: {
+        estado: 'A',
+      },
     });
     return user;
   } catch (error) {
@@ -75,7 +81,8 @@ const getDocenteIdByUserId = async (userId) => {
   try {
     const docente = await Docente.findOne({
       where: {
-        idusuario: userId
+        idusuario: userId,
+        estado: 'A'
       }
     });
     if (docente) {
@@ -90,12 +97,28 @@ const getDocenteIdByUserId = async (userId) => {
 };
 //---------------------------------------------------------------------------------------//
 
+const deleteDocente = async (id) => {
+  try {
+    const docente = await Docente.findByPk(id);
+    if (!docente) {
+      throw new Error('Docente no encontrado.');
+    }
+
+    await docente.update({ estado: 'B' });
+    return docente; // Cambiado de 'user' a 'docente'
+  } catch (error) {
+    throw new Error('Hubo un error al eliminar el docente.');
+  }
+};
+
+
 module.exports = {
   allDocentes,
   createDocente,
   updateDocente,
   getDocente,
   getDocenteIdByUserId,
+  deleteDocente
 };
 
 /*

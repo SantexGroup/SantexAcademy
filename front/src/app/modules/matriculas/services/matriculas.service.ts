@@ -68,5 +68,8 @@ export class MatriculasService {
     return this.http.put<Matricula>(`${ this.baseUrl }matricula/${matricula.id}`, matricula)
   }
   
-  
+  deleteMatricula( id: number ): Observable<any>{
+    return this.http.delete<any>(`${ this.baseUrl }matricula/${id}`)
+  }
+
 }

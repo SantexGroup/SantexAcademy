@@ -36,4 +36,8 @@ export class DocenteService {
   habilitardocente( docente: Docente): Observable<Docente> {
     return this.http.put<Docente>(`${ this.baseUrl }docente/${docente.id}`, docente)
   }
+
+  deleteDocente( id: number ): Observable<any>{
+    return this.http.delete<any>(`${ this.baseUrl }docente/${id}`)
+  }
 }

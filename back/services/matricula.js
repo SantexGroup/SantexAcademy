@@ -40,8 +40,23 @@ const updateMatricula = async (id, body) => {
   }
 };
 
+const deleteMatricula = async (id) => {
+  try {
+    const matricula = await Matricula.findByPk(id);
+    if (!matricula) {
+      throw new Error('Matricula no encontrada.');
+    }
+
+    await matricula.update({ estado: 'B' });
+    return matricula; // Cambiado de 'user' a 'docente'
+  } catch (error) {
+    throw new Error('Hubo un error al eliminar la matricula.');
+  }
+};
+
 module.exports = {
   createMatricula,
   updateMatricula,
-  allMatriculas
+  allMatriculas,
+  deleteMatricula
 };

@@ -47,4 +47,12 @@ export class DocenteporcursoService {
 
     return this.http.get<Docenteporcurso[]>(url);
   }
+
+  habilitardocenteporcurso( docenteporcurso: Docenteporcurso): Observable<Docenteporcurso> {
+    return this.http.put<Docenteporcurso>(`${ this.baseUrl }docenteporcurso/${docenteporcurso.id}`, docenteporcurso)
+  }
+
+  deleteDocentePorCurso( id: number ): Observable<any>{
+    return this.http.delete<any>(`${ this.baseUrl }docenteporcurso/${id}`)
+  } 
 }

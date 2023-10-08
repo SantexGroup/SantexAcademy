@@ -24,6 +24,9 @@ const getCurso = async (id) => {
           as: 'Nivel', // Asegúrate de usar el mismo nombre que definiste en la asociación
         },
       ],
+      where: {
+        estado: 'A',
+      }
     });
     return curso;
   } catch (error) {

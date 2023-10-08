@@ -36,8 +36,22 @@ const updateMatricula = async (req, res, next) => {
   }
 };
 
+const deleteMatricula = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const matricula = await matriculaService.deleteMatricula(id);
+    res.json(matricula);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    next(error);
+  }
+};
+
+
 module.exports = {
   createMatricula,
   updateMatricula,
-  allMatriculas
+  allMatriculas,
+  deleteMatricula
 };

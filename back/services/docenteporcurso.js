@@ -21,6 +21,9 @@ const allDocentesPorCurso = async () => {
           as: 'CursoEnDocentePorCurso',
         },
       ],
+      where: {
+        estado: 'A',
+      },
     });
     return docentesporcurso;
   } catch (error) {
@@ -75,6 +78,9 @@ const getDocentePorCurso = async (id) => {
           
         },
       ],
+      where: {
+        estado: 'A',
+      },
     });
     console.log('1- en SERVICIO BACK docenteporcurso getDocentePorCurso:', docenteporcurso);//BORRAR
     return docenteporcurso; 
@@ -90,6 +96,7 @@ const getCursoPorDocentePorId = async (id) => {
       where: {
         iddocente: id,
         habilitado: true,
+        estado: 'A'
       },
       include: [
         {
@@ -97,6 +104,9 @@ const getCursoPorDocentePorId = async (id) => {
           as: 'CursoEnDocentePorCurso',
         },
       ],
+      where: {
+        estado: 'A',
+      },
     });
     if (!docenteporcurso) {
       return [];
@@ -112,7 +122,7 @@ const getCursosByDocente = async (iddocente) => {
   console.log("getCursosByDocente")
   try {
     const cursos = await DocentePorCurso.findAll({
-      where: { iddocente: iddocente },
+      where: { iddocente: iddocente, estado: 'A' },
         include: [
           {
             model: Docente,
@@ -129,6 +139,7 @@ const getCursosByDocente = async (iddocente) => {
             as: 'CursoEnDocentePorCurso',
           },
       ],
+      
     });
 
     return cursos
@@ -138,11 +149,26 @@ const getCursosByDocente = async (iddocente) => {
   }
 };
 
+const deleteDocentePorCurso = async (id) => {
+  try {
+    const docenteporcurso = await DocentePorCurso.findByPk(id);
+    if (!docenteporcurso) {
+      throw new Error('Docente por curso no encontrado.');
+    }
+
+    await docenteporcurso.update({ estado: 'B' });
+    return docenteporcurso; 
+  } catch (error) {
+    throw new Error('Hubo un error al eliminar el docente por curso.');
+  }
+};
+
 module.exports = {
   allDocentesPorCurso,
   createDocentePorCurso,
   updateDocentePorCurso,
   getDocentePorCurso,
   getCursoPorDocentePorId,
-  getCursosByDocente
+  getCursosByDocente,
+  deleteDocentePorCurso
 };

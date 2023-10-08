@@ -107,7 +107,7 @@ export class CreateCursoComponent implements OnInit {
             this.docenteporcursoService.addDocentePorCurso({
               idcurso: curso.id,
               iddocente: 0,
-              habilitado: true, //Al crear un nvo. curso creo un nvo. CURSODOCENTE deshabilitado para que el admin lo habilite formalmente!!!!
+              habilitado: false, //Al crear un nvo. curso creo un nvo. CURSODOCENTE deshabilitado para que el admin lo habilite formalmente!!!!
               estado: 'A'
             }).subscribe(
               docente => {

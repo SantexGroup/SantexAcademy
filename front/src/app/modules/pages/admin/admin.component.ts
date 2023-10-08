@@ -162,6 +162,20 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  confirmarEliminarDocentePorCurso(docentePorCursoId: number): void {
+    const confirmacion = window.confirm("¿Estás seguro de que deseas eliminar el registro seleccionado?");
+    if (confirmacion) {
+      this.deleteDocentePorCurso(docentePorCursoId);
+    }
+  }
+
+  deleteDocentePorCurso(docentePorCursoId: number) {
+    console.log("Llamando al eliminar");
+    this.docenteporcursoService.deleteDocentePorCurso(docentePorCursoId).subscribe((resp) => {
+      this.obtenerDocentesPorCurso();
+    });
+  }
+
   deleteCurso(curso: number) {
     console.log("Llamando al eliminar");
     this.cursoService.deleteCurso(curso).subscribe((resp) => {
@@ -176,6 +190,20 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  deleteMatricula(matricula: number) {
+    console.log("Matricula a eliminar:", matricula)
+    this.matriculasService.deleteMatricula(matricula).subscribe((resp) => {
+      this.obtenerMatriculas();
+    });
+  }
+
+  deleteDocente(docente: number) {
+    console.log("Docente a eliminar:", docente)
+    this.docentesService.deleteDocente(docente).subscribe((resp) => {
+      this.obtenerDocentes();
+    });
+  }
+  
   confirmarEliminarUsuario(userId: number): void {
     const confirmacion = window.confirm("¿Estás seguro de que deseas eliminar este usuario?");
     if (confirmacion) {
@@ -183,6 +211,20 @@ export class AdminComponent implements OnInit {
     }
   }
   
+
+  confirmarEliminarDocente(docenteId: number): void {
+    const confirmacion = window.confirm("¿Estás seguro de que deseas eliminar este docente?");
+    if (confirmacion) {
+      this.deleteDocente(docenteId);
+    }
+  }
+
+  confirmarEliminarMatricula(matriculaId: number): void {
+    const confirmacion = window.confirm("¿Estás seguro de que deseas eliminar la matrícula seleccionada?");
+    if (confirmacion) {
+      this.deleteMatricula(matriculaId);
+    }
+  }
 
   confirmarActivarDesactivarUser(user: User, estahabilitado: boolean): void {
     const confirmacion = window.confirm("¿Estás seguro de que deseas activar/desactivar el usuario?");
@@ -215,6 +257,16 @@ export class AdminComponent implements OnInit {
 
     this.matriculasService.habilitarmatricula(matricula).subscribe((resp) => {
      this.obtenerMatriculas();
+    });
+  }
+
+  habilitarDocentePorCurso(docenteporcurso: Docenteporcurso, estahabilitado: boolean) {
+    console.log(docenteporcurso);
+    console.log(estahabilitado);
+    docenteporcurso.habilitado = estahabilitado; // Asignar el valor a la propiedad 'habilitado' del objeto 'user' pasado como parámetro
+
+    this.docenteporcursoService.habilitardocenteporcurso(docenteporcurso).subscribe((resp) => {
+     this.obtenerDocentesPorCurso();
     });
   }
 
