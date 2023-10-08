@@ -15,15 +15,35 @@ export class ChanchadaComponent implements OnInit {
   constructor(private courseService: CourseService) { }
 
   ngOnInit(): void {
-    this.courses = this.courseService.getCourses();
+    this.courseService.getCourses().subscribe(
+      (data: any[]) => {
+        this.courses = data;
+      },
+      (error) => {
+        console.error('Error al cargar los cursos:', error);
+      }
+    );
   }
 
   buscar() {
     if (this.opcionSeleccionada === 'ByName') {
-      this.courses = this.courseService.getCourseByPattern(this.texto, 'ByName');
-
+      this.courseService.getCoursesByPattern(this.texto, 'ByName').subscribe(
+        (data: any[]) => {
+          this.courses = data;
+        },
+        (error) => {
+          console.error('Error al buscar cursos por nombre:', error);
+        }
+      );
     } else if (this.opcionSeleccionada === 'byProfesor') {
-      this.courses = this.courseService.getCourseByPattern(this.texto, 'byProfesor');
+      this.courseService.getCoursesByPattern(this.texto, 'byProfesor').subscribe(
+        (data: any[]) => {
+          this.courses = data;
+        },
+        (error) => {
+          console.error('Error al buscar cursos por profesor:', error);
+        }
+      );
     }
   }
 }
