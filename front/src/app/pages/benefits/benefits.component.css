@@ -17,8 +17,6 @@
 .benefits-content{
   display: grid;
   gap: clamp(1rem, -1.571rem + 12.86vw, 10rem);
-  /* filas */
-  grid-auto-rows: 15rem;
-  /* columnas */
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
+   grid-auto-rows: auto;
+   grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
 }
