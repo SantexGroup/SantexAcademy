@@ -1,7 +1,7 @@
 <app-barra></app-barra>
 <div id="divprincipal">
     <p>-</p>
-    <div class="formulario">
+    <div id="FormularioCompleto" class="formulario">
         <div class="formulario_container">
             <div class="titulo_container">
                 <h2>Crear Cuenta</h2>
@@ -55,7 +55,7 @@
                             <input [(ngModel)]="dirReg" type="text" name="direccion" placeholder="Calle y altura"
                                 required />
                         </div>
-                        <input (click)="botReg()" class="button" type="submit" value="Registrar" />
+                        <input id="BotonColor" (click)="botReg()" class="button" type="submit" value="Registrar" />
                         <div *ngIf="mensajeRegistro">
                             {{ mensajeRegistro }}
                         </div>

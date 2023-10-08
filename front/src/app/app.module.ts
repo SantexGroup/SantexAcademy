@@ -19,6 +19,7 @@ import { ModificarArticuloComponent } from './Features/modificar-articulo/modifi
 import { HistorialVentasComponent } from './Features/historial-ventas/historial-ventas.component';
 import { HistorialCompradorComponent } from './Features/historial-comprador/historial-comprador.component';
 import { VistaPorTextoComponent } from './Features/vista-por-texto/vista-por-texto.component';
+import { CategoriasComponent } from './Features/categorias/categorias.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { VistaPorTextoComponent } from './Features/vista-por-texto/vista-por-tex
     BarraLateralComponent,
     HistorialCompradorComponent,
     VistaPorTextoComponent,
+    CategoriasComponent,
   ],
   imports: [
     BrowserModule,
