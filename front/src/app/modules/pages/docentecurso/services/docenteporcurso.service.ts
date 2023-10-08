@@ -18,7 +18,16 @@ export class DocenteporcursoService {
   }
 
   getDocentePorCursoPorId(id: number): Observable<Docenteporcurso>{
+    console.log("Llamando a getDocentePorCursoPorId")
     return this.http.get<Docenteporcurso>(`${this.baseUrl}docenteporcurso/${ id }`)
+  }
+
+  getCursosPorDocenteId(idDocente: number): Observable<Docenteporcurso[]> {
+    // Realizar una solicitud HTTP GET para obtener los cursos por docente
+    console.log("Llamando a getCursosPorDocenteId")
+    const url = `${this.baseUrl}docenteporcurso/iddocente/${idDocente}`; 
+
+    return this.http.get<Docenteporcurso[]>(url);
   }
 
   addDocentePorCurso(docente: Docenteporcurso): Observable<Docenteporcurso> {

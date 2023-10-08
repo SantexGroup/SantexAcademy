@@ -53,7 +53,7 @@ export class CreateCursoComponent implements OnInit {
   ) {}
 
   niveles: Nivel[] = [];
-  nivelSeleccionado: number | undefined = undefined;
+  nivelSeleccionado: number | null | undefined = undefined;
   formattedStartDate: string | undefined;
   notificationMessage: string | undefined;
   
@@ -73,7 +73,7 @@ export class CreateCursoComponent implements OnInit {
     .pipe(switchMap(({ id }) => this.cursosService.getCursoPorId(id)))
     .subscribe((curso) => {
       this.curso = curso;
-      this.nivelSeleccionado = curso.idnivel;  
+      this.nivelSeleccionado = curso?.idnivel;  
     });  
   }
 
@@ -83,7 +83,7 @@ export class CreateCursoComponent implements OnInit {
   }
 
   guardar() {
-    if (this.curso.nombre.trim().length === 0) {
+    if (this.curso?.nombre?.trim().length === 0) {
       return;
     }
 

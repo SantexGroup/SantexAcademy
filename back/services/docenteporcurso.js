@@ -55,6 +55,7 @@ const updateDocentePorCurso = async (id, body) => {
 };
 
 const getDocentePorCurso = async (id) => {
+  console.log("getDocentePorCurso")
   try {
     const docenteporcurso = await DocentePorCurso.findByPk(id, {
       include: [
@@ -80,9 +81,41 @@ const getDocentePorCurso = async (id) => {
   }
 };
 
+const getCursosByDocente = async (iddocente) => {
+  console.log("getCursosByDocente")
+  try {
+    const cursos = await DocentePorCurso.findAll({
+      where: { iddocente: iddocente },
+        include: [
+          {
+            model: Docente,
+            as: 'DocenteEnDocentePorCurso', 
+            include: [
+              {
+                model: User, 
+                as: 'UserDocente', 
+              },
+            ],
+          },
+          {
+            model: Curso,
+            as: 'CursoEnDocentePorCurso',
+          },
+      ],
+    });
+
+    return cursos
+    //.map((docentePorCurso) => docentePorCurso.CursoEnDocentePorCurso);
+  } catch (error) {
+    throw new Error('Hubo un error al obtener los cursos por docente.');
+  }
+};
+
+
 module.exports = {
   allDocentesPorCurso,
   createDocentePorCurso,
   updateDocentePorCurso,
-  getDocentePorCurso
+  getDocentePorCurso,
+  getCursosByDocente
 };
