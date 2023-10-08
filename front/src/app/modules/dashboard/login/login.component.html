@@ -10,13 +10,13 @@
             Nombre de Usuario
         </label>
         
-        <input placeholder="Usuario o correo electrónico" title="Nombre de Usuario" name="input-name-us" type="text" class="input_field" id="name_field" formControlName="nombreUs">
-        <p class="errorInput" *ngIf="myForm.get('nombreUs')?.touched && myForm.get('nombreUs')?.hasError('required')">Campo Obligatorio</p>
+        <input placeholder="Usuario o correo electrónico" title="Nombre de Usuario" name="input-name-us" type="text" class="input_field" id="name_field" formControlName="username">
+        <p class="errorInput" *ngIf="myForm.get('username')?.touched && myForm.get('username')?.hasError('required')">Campo Obligatorio</p>
     </div>
     <div class="input_container">
         <label class="input_label" for="name_field"> <mat-icon>https</mat-icon> Contraseña</label>
-        <input placeholder="Contraseña" title="Contraseña" name="input-password" type="password" class="input_field" id="password_field" formControlName="passwordUs">
-        <p class="errorInput" *ngIf="myForm.get('passwordUs')?.touched && myForm.get('passwordUs')?.hasError('required')">Campo Obligatorio</p>
+        <input placeholder="Contraseña" title="Contraseña" name="input-password" type="password" class="input_field" id="password_field" formControlName="password">
+        <p class="errorInput" *ngIf="myForm.get('password')?.touched && myForm.get('password')?.hasError('required')">Campo Obligatorio</p>
         
     </div>
     
