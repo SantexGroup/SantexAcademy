@@ -1,3 +1,23 @@
 <app-navbar></app-navbar>
-<p>Esta es la vista de cursos hay que llenarla un poquito todavia</p>
-<app-footer></app-footer>
+
+<div class="wrapper">
+  <div class="row align-items-center">
+    <div class="container mt-4">
+      <div *ngIf="course" class="card">
+        <div class="card-header">
+          <h2>Detalles del Curso</h2>
+        </div>
+        <div class="card-body">          
+          <p><strong>Id:</strong> {{ course.id }}</p>                  
+          <p><strong>Nombre:</strong> {{ course.name }}</p>
+          <p><strong>Descripción:</strong> {{ course.description }}</p>
+          <p><strong>Imagen:</strong> {{ course.image }}</p>
+          <button class="btn btn-primary" (click)="redirectToEditCourse(course.id)">Editar</button>
+          <button (click)="deleteCourse()" class="btn btn-danger">Borrar Curso</button>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
