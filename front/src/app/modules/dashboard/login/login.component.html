@@ -23,5 +23,8 @@
     <button title="Sign In" type="submit" class="sign-in_btn" [disabled]="myForm.invalid" >
         <span>Entrar</span>
     </button>
+    <div class="errorInput" *ngIf="error != ''">
+       <b>{{error}}</b> 
+    </div>
 </form>
 
