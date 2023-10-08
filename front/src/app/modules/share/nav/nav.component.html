@@ -24,14 +24,31 @@
       </li>
     </ul>
 
-    <ul class="nav-links-right">
-      <li [class.selected]="activeRoute.includes('/Registrarse')">
-        <a routerLink="/register" class="nav-link ">Registrarse</a>
-      </li>
-      <li [class.selected]="activeRoute.includes('/Iniciar Sesión')">
-        <a routerLink="/login" class="nav-link ">Iniciar Sesión</a>
-      </li>
-      <li *ngIf="isLoggedIn" class="nav-item dropdown-center">
+   <!-- nav.component.html -->
+
+      <ul class="nav-links-right">
+        <li *ngIf="!authService.isLoggedIn"> <!-- Mostrar solo si el usuario no ha iniciado sesión -->
+          <a routerLink="/register" class="nav-link">Registrarse</a>
+        </li>
+        <li *ngIf="!authService.isLoggedIn"> <!-- Mostrar solo si el usuario no ha iniciado sesión -->
+          <a routerLink="/login" class="nav-link">Iniciar Sesión</a>
+        </li>
+        <li *ngIf="authService.isLoggedIn">
+          <span class="nav-link" style="color: white;">Bienvenido, {{ authService.user.username }}</span>
+        </li>
+        <li *ngIf="authService.isLoggedIn && authService.user.tipoDeUsuario === 'Docente'"> <!-- Mostrar solo si el usuario ha iniciado sesión como Docente -->
+          <a routerLink="/perfil-docente" class="nav-link">Mi perfil docente</a>
+        </li>
+        <li *ngIf="authService.isLoggedIn && authService.user.tipoDeUsuario === 'Alumno' "> <!-- Mostrar solo si el usuario ha iniciado sesión como Alumno -->
+          <a routerLink="/perfil-alumno" class="nav-link">Mi perfil</a>
+        </li>
+        <li *ngIf="authService.isLoggedIn" > <!-- Mostrar solo si el usuario ha iniciado sesión como Alumno -->
+          <a routerLink="/login" (click)="logout()">Cerrar sesión</a>
+        </li>
+        <li *ngIf="authService.isLoggedIn && authService.user.tipoDeUsuario === 'Administrador'"> <!-- Mostrar solo si el usuario ha iniciado sesión como Alumno -->
+          <a routerLink="/admin">Administrador</a>
+        </li>
+        <li *ngIf="!isLoggedIn" class="nav-item dropdown-center">
         <a *ngIf="isLoggedIn" class="nav-link-profile dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="./assets/images/no-perfil.jpg" alt="Foto de perfil" class="profile-image">
         </a>

@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
       .subscribe( ok => {
         console.log(ok)
         if (ok === true){
+          this.authService.setLoggedInStatus(true, this.authService.user.tipoDeUsuario);
           switch (this.authService.user.tipoDeUsuario) {
            case 'Administrador':
             this.router.navigateByUrl('/admin');
