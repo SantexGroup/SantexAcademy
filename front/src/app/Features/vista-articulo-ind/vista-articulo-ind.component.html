@@ -96,10 +96,16 @@
                         <p id="precioP">Precio: ${{respuesta.precio}}</p>
 
                         <div *ngIf="pagoSel === 'tarjeta'">
+                            <form [formGroup]="formTarj">
                             <h6>Ingrese los datos de la tarjeta</h6>
                             <label for="nombreTitular">Nombre del titular: </label>
-                            <input type="text" id="nombreTitular" placeholder=" Ej: Tadeo Reisin"
-                                [(ngModel)]="nombreTitular" required>
+                            <input type="text" id="nombreTitular" class="form-control" [ngClass]="{'is-invalid': nombreTarjControl.invalid && nombreTarjControl.touched}" placeholder=" Ej: Tadeo Reisin"
+                                [(ngModel)]="nombreTitular" formControlName="nombreTarj" required>
+                                <!--
+                            <div *ngIf="nombreTarjControl.invalid && nombreTarjControl.touched" class="small text-danger">
+                                Este campo es obligatorio.
+                            </div>
+                            -->
                             <label for="numeroTarjeta">Número de tarjeta: </label>
                             <input type="text" id="numeroTarjeta" placeholder=" Ej: 1234 5678 9012 3456 "
                                 [(ngModel)]="numeroTarjeta" required>
@@ -109,12 +115,13 @@
                             <label for="codigoSeguridad">Código de seguridad (CVV): </label>
                             <input type="text" id="codigoSeguridad" placeholder=" Ej: 168 "
                                 [(ngModel)]="codigoSeguridad" required>
+                            </form>
                         </div>
                     </ul>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Modificar</button>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="botAlq()">Confirmar</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" [disabled]="formTarj.invalid" (click)="botAlq()">Confirmar</button>
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@ import { vistaArtIndServ } from 'src/app/core/services/vista-art-ind-serv.servic
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { BarraService } from 'src/app/core/services/barra.service';
-import { FormsModule } from '@angular/forms';
+import { FormControl, Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-vista-articulo-ind',
@@ -54,10 +54,17 @@ export class VistaArtIndComponent implements OnInit {
   logeadoVendedor: boolean = false;
   logeadoVendedorProd: boolean = false;
 
+  //tarjeta
   nombreTitular: string = '';
   numeroTarjeta: string = '';
   mesVencimiento: string = '';
   codigoSeguridad: string = '';
+
+  formTarj: UntypedFormGroup;
+  nombreTarjControl: FormControl = new FormControl('', [Validators.required, Validators.maxLength(30)]);
+  numeroTarjControl: FormControl = new FormControl('', [Validators.required]);
+  mesVencTarjControl: FormControl = new FormControl('', [Validators.required]);
+  codSegTarjControl: FormControl = new FormControl('', [Validators.required]);
 
   // resultado alquiler
   alquilado: boolean = false;
@@ -65,7 +72,16 @@ export class VistaArtIndComponent implements OnInit {
   @ViewChild('seleccionables') test: any;
   
 
-  constructor(private service: vistaArtIndServ, private router: Router, private barraService: BarraService) { }
+  constructor(private service: vistaArtIndServ, private router: Router, private barraService: BarraService, private uFormBuilder: UntypedFormBuilder) {
+
+    this.formTarj = this.uFormBuilder.group({
+      nombreTarj: this.nombreTarjControl,
+      numeroTarj: this.numeroTarjControl,
+      mesVencTarj: this.mesVencTarjControl,
+      codSegTarj: this.codSegTarjControl
+    });
+
+   }
 
   ngOnInit(): void {
     this.getIdProd();
