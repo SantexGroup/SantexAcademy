@@ -60,17 +60,21 @@
                             {{ user.email }}
                         </td>
                         <td>
-                              {{ user.TipoDeUsuario?.nombre }}
+                            {{ user.TipoDeUsuario?.nombre }}
                         </td>
                         <td>
-                            <a class="btn btn-sm btn-primary" (click)="confirmarActivarDesactivarUser(user, !user.activoactualmente)">
-                                  <span [appEstadoUsuario]="user.activoactualmente"></span>
-                              </a>
-                              <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
-                                  <i class="bi bi-trash"></i>
-                              </button>
-                          </td>
+                            <span [style.color]="user.activoactualmente ? 'black' : 'red'">
+                                {{ user.activoactualmente ? 'Activado' : 'Desactivado' }}
+                              </span>
+                        </td>
                         <td class="text-end">
+                            <a class="btn btn-sm btn-primary" (click)="confirmarActivarDesactivarUser(user, !user.activoactualmente)">
+                                {{ user.activoactualmente ? 'Desactivar' : 'Activar' }}
+                            </a>
+                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
+                                <i class="bi bi-trash"></i>
+                            </button>
+
                             <a class="btn btn-sm btn-primary" [routerLink]="['/users/edit/', user?.id]">Ver/Editar</a>
                             <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
@@ -162,12 +166,9 @@
                             {{ curso.requisitos }}
                         </td>
                         <td>
-                          <a class="btn btn-sm btn-primary" (click)="confirmarActivarDesactivarCurso(curso, !curso.habilitado)">
-                                <span [appActivardesactivarcurso]="curso.habilitado"></span>
-                            </a>
-                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
-                                <i class="bi bi-trash"></i>
-                            </button>
+                            <span [style.color]="curso.habilitado ? 'black' : 'red'">
+                                {{ curso.habilitado ? 'Activado' : 'Desactivado' }}
+                              </span>
                         </td>
                         <td>
                             {{ curso.fechainicio | date : "dd/MM/yyyy HH:mm" }}
@@ -176,6 +177,13 @@
                             {{ curso.fechafin | date : "dd/MM/yyyy HH:mm" }}
                         </td>
                         <td class="text-end">
+                            <a class="btn btn-sm btn-primary" (click)="confirmarActivarDesactivarCurso(curso, !curso.habilitado)">
+                                <span [appActivardesactivarcurso]="curso.habilitado"></span>
+                            </a>
+                            <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
+                                <i class="bi bi-trash"></i>
+                            </button>
+
                             <a class="btn btn-sm btn-primary" [routerLink]="['/cursos/edit/', curso.id]">Ver/Editar</a>
                             <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
@@ -250,6 +258,11 @@
                             {{ matricula?.User?.apellido + ', ' + matricula?.User?.nombre }}
                         </td>
                         <td>
+                            <span [style.color]="matricula.habilitado ? 'black' : 'red'">
+                                {{ matricula.habilitado ? 'Habilitada' : 'Deshabilitada' }}
+                              </span>
+                        </td>
+                        <td>            
                           <a class="btn btn-sm btn-primary" (click)="habilitarMatricula(matricula, !matricula.habilitado)">
                                 <span [appHabilitarmatricula]="matricula.habilitado"></span>
                             </a>
@@ -303,6 +316,7 @@
                         <th scope="col">Docente</th>
                         <th scope="col">Especialidad</th>
                         <th scope="col">Asignar especialidad</th>
+                        <th scope="col">Estado</th>
                         <th scope="col">Habilitar como docente</th>
                     </tr>
                 </thead>
@@ -325,6 +339,11 @@
                                   <i class="bi bi-trash"></i>
                               </button>
                           </td>
+                          <td>
+                            <span [style.color]="docente.habilitado ? 'black' : 'red'">
+                                {{ docente.habilitado ? 'Habilitado como docente' : 'Deshabilitado como docente' }}
+                              </span>
+                        </td>
                           <td>
                             <a class="btn btn-sm btn-primary" (click)="habilitarDocente(docente, !docente.habilitado)">
                                 <span [appHabilitardocente]="docente.habilitado"></span>
@@ -382,7 +401,7 @@
                         <th scope="col">Identificador</th>
                         <th scope="col">Docente</th>
                         <th scope="col">Curso</th>
-                        <th scope="col">Asignar docente</th>
+                        <th scope="col">Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -397,13 +416,22 @@
                         <td>
                             {{ docenteporcurso?.CursoEnDocentePorCurso?.nombre || 'Sin especificar' }}
                         </td>
-                       
+                         <td>
+                            <span [style.color]="docenteporcurso?.CursoEnDocentePorCurso ? 'black' : 'red'">
+                                {{ docenteporcurso?.CursoEnDocentePorCurso ? 'Con docente asignado' : 'Sin docente asignado' }}
+                              </span>
+                        </td>
                           <td>
-                            <a class="btn btn-sm btn-primary" [routerLink]="['/curso/asignardocente/',docenteporcurso.id]">Asignar docente</a>
+                            <!--<a class="btn btn-sm btn-primary" [routerLink]="['/curso/asignardocente/',docenteporcurso.id]">Asignar docente</a>-->
+
+                            <a class="btn btn-sm btn-primary" [routerLink]="docenteporcurso?.CursoEnDocentePorCurso ? ['/curso/asignardocente/', docenteporcurso.id] : ['/curso/asignardocente/', docenteporcurso.id]">
+                                {{ docenteporcurso?.CursoEnDocentePorCurso ? 'Cambiar asignación de docente' : 'Asignar docente' }}
+                              </a>
+
                             <button type="button" class="btn btn-sm btn-neutral text-danger-hover">
                                 <i class="bi bi-trash"></i>
                             </button>
-                          </td>
+                        </td>
                     </tr>
                 </tbody>
             </table>
