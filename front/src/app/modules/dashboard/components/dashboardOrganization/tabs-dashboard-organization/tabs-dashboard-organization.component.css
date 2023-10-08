@@ -1,0 +1,120 @@
+.btn-edit:hover {
+  background-color: #ffffff;
+  color: #3F2883;
+  outline: 2px solid #3F2883;
+}
+.btn-add:hover {
+  background-color: #ffffff;
+  color: #B1237D;
+  outline: 2px solid #B1237D;
+}
+
+.btn-eliminate:hover {
+  background-color: #ffffff;
+  color: #B1237D;
+  outline: 2px solid #B1237D;
+}
+
+ul.tabs {
+width: 99%;
+  height: 80px;
+  margin: 0 auto;
+  list-style: none;
+  overflow: hidden;
+  padding: 0;
+}
+
+ul.tabs li {
+  float: left;
+  width: 33.333333333333333333333333333333%;
+}
+
+ul.tabs li a {
+  position: relative;
+  display: block;
+  height: 50px;
+  margin-top: 40px;
+  padding: 10px 0 0 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background: #3F2883;
+  -webkit-box-shadow: 8px 12px 25px 2px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 8px 12px 25px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 8px 12px 25px 2px rgba(0, 0, 0, 0.4);
+  border: 0px solid #000000;
+  -webkit-transition: padding 0.2s ease, margin 0.2s ease;
+  -moz-transition: padding 0.2s ease, margin 0.2s ease;
+  -o-transition: padding 0.2s ease, margin 0.2s ease;
+  -ms-transition: padding 0.2s ease, margin 0.2s ease;
+  transition: padding 0.2s ease, margin 0.2s ease;
+}
+
+.tabs li:first-child a {
+  z-index: 3;
+  -webkit-border-top-left-radius: 8px;
+  -moz-border-radius-topleft: 8px;
+  border-top-left-radius: 8px;
+}
+
+.tabs li:nth-child(2) a {
+  z-index: 2;
+}
+
+.tabs li:last-child a {
+  z-index: 1;
+  -webkit-box-shadow: 2px 8px 25px -2px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 2px 8px 25px -2px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 8px 25px -2px rgba(0, 0, 0, 0.3);
+  -webkit-border-top-right-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  border-top-right-radius: 8px;
+
+}
+
+ul.tabs li a:hover {
+  margin: 35px 0 0 0;
+  padding: 10px 0 5px 0;
+}
+
+ul.tabs li a.activeTa {
+  margin: 30px 0 0 0;
+  padding: 10px 0 10px 0;
+  background: #C5BEDA;
+  color: #3F2883;
+  font-weight: bold;
+  z-index: 4;
+  outline: none;
+  border: solid 2px #3F2883;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+}
+
+.group:before,
+.group:after {
+  content: " ";
+  display: table;
+ }
+
+.group:after {
+  clear: both;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in-out-animation {
+  animation: fade-in-out 3s cubic-bezier(.25, 1, .30, 1) both;
+}
+
+
+

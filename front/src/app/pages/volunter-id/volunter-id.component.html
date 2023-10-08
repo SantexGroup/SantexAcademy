@@ -1,0 +1,79 @@
+<section
+  class="w-full flex flex-col mt-[96px] font-dosis m:mt-[115px] lg:mt-[0px]"
+>
+  <article class="w-full flex flex-col gap-4 md:flex-row">
+    <figure class="w-full h-[200px] md:h-auto">
+      <img
+        [src]="
+          volunteering.organization?.image.imageUrl
+            ? volunteering.organization?.image.imageUrl
+            : '/assets/imgs/not-found.webp'
+        "
+        alt="imagen voluntariado"
+        class="w-full h-full object-contain md:max-h-[400px]"
+      />
+    </figure>
+    <div class="w-full p-4">
+      <ul class="w-full flex flex-col gap-4">
+        <li class="w-full flex flex-wrap items-center justify-around">
+          <span class="text-lg text-dimGray"
+            >• {{ formatCreatedAtDate(volunteering.createdAt) }}</span
+          >
+          <span class="text-lg text-dimGray">• {{ volunteering.address }}</span>
+        </li>
+        <li class="w-full flex flex-col gap-2 text-center">
+          <span class="text-DarkGray text-sm md:text-base">Voluntariado</span>
+          <h2 class="text-4xl font-bold md:text-5xl">
+            {{ volunteering.name }}
+          </h2>
+          <p class="text-black font-medium text-lg md:text-xl">
+            {{ volunteering.description }}
+          </p>
+        </li>
+        <li class="flex flex-col">
+          <span class="text-center text-DarkGray text-sm md:text-base"
+            >Descripción del Voluntariado</span
+          >
+          <p class="md:text-lg">
+            <b class="text-black">Modalidad de trabajo: </b>
+            {{ volunteering.modeOfwork }}
+          </p>
+          <p class="md:text-lg">
+            <b>Compromiso:</b> {{ volunteering.workTime }}
+          </p>
+        </li>
+        <li class="w-full flex items-center justify-center">
+          <button
+            class="py-1 w-2/5 uppercase border border-DarkGray bg-white text-black rounded-lg shadow-lg font-bold lg:hover:bg-black lg:hover:text-white md:w-4/5"
+          >
+            Aplicar
+          </button>
+        </li>
+      </ul>
+    </div>
+  </article>
+  <article class="w-full flex-col p-4 md:px-8">
+    <span class="text-xl font-bold text-black md:pl-8 md:text-2xl lg:pl-16"
+      >Conoce a la Organización</span
+    >
+    <ul class="w-full flex flex-col gap-4 mt-4">
+      <li class="w-full flex flex-col gap-2 text-center">
+        <span class="text-DarkGray text-sm md:text-base">Organización</span>
+        <h2 class="text-4xl font-bold md:text-5xl">
+          {{ volunteering.organization?.name }}
+        </h2>
+        <p
+          class="text-black font-medium text-lg md:text-xl md:w-[80%] md:m-auto"
+        >
+          {{ volunteering.organization?.description }}
+        </p>
+        <a
+          [routerLink]="['/organizacion']"
+          [queryParams]="{ id: volunteering.organizationId }"
+          class="text-midnightBlue"
+          >Ver mas acerca de estar Organización</a
+        >
+      </li>
+    </ul>
+  </article>
+</section>

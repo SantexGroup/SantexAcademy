@@ -1,0 +1,26 @@
+<section
+  class="min-w-full flex flex-col gap-12 p-4 pt-16 pb-16 items-center justify-center mt-[90px] bg-bgOptionsRegister lg:mt-[0px] lg:pb-28 lg:pt-20"
+>
+  <header class="w-full flex flex-col gap-2 text-center">
+    <h2 class="font-semibold text-2xl md:text-4xl">¡Bienvenido!</h2>
+    <p class="md:text-lg">¿Cómo te gustaría registrarte en VolunTime?</p>
+  </header>
+  <div
+    class="w-full flex flex-col items-center justify-center gap-20 lg:flex-row lg:gap-28"
+  >
+    <app-card-optionregister
+      textBtnOne="Voluntario"
+      textBtnTwo="Crear una cuenta"
+      subtitle="Registrate, explorá las oportunidades, participá y compartí tu experiencia"
+      [itemsList]="itemsVolunteer"
+      route="/auth/volunteer-register"
+    ></app-card-optionregister>
+    <app-card-optionregister
+      textBtnOne="Coordinador (ONG)"
+      textBtnTwo="Crear una cuenta"
+      subtitle="Registrate, publicá tus proyectos, conectá con voluntarios"
+      [itemsList]="itemsCordinator"
+      route="/auth/coordinator-register"
+    ></app-card-optionregister>
+  </div>
+</section>

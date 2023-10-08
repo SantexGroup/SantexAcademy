@@ -1,0 +1,22 @@
+.curved::after {
+  content: '';
+  border-top-left-radius: 50% 100%;
+  border-top-right-radius: 50% 100%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  height: 32%;
+}
+
+
+.title-steps {
+  font-size: clamp(1rem, 0.714rem + 1.43vw, 2rem);
+}
+
+.benefits-content{
+  display: grid;
+  gap: clamp(1rem, -1.571rem + 12.86vw, 10rem);
+   grid-auto-rows: auto;
+   grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
+}

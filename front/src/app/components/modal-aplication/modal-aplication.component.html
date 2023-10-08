@@ -1,0 +1,26 @@
+<section
+  class="fixed top-0 right-0 bottom-0 left-0 m-auto w-full min-h-screen flex items-center justify-center bg-black z-10 bg-opacity-[.6]"
+>
+  <article
+    class="w-11/12 p-4 flex flex-col items-center justify-center gap-4 rounded-md bg-white sm:w-[600px] sm:mt-[3em]"
+  >
+    <p>
+      Estas por aplicar al voluntariado {{ nameVol }} de la organizacion
+      {{ nameOrg }}
+    </p>
+    <div class="flex items-center justify-center gap-4">
+      <button
+        (click)="closeModal()"
+        class="border-none px-4 bg-mediumViolet text-white rounded-md"
+      >
+        Cancelar
+      </button>
+      <button
+        (click)="generateApplication()"
+        class="border-none px-4 bg-darkSlateBlue text-white rounded-md"
+      >
+        Continuar
+      </button>
+    </div>
+  </article>
+</section>

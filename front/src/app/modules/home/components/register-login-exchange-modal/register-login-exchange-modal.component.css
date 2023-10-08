@@ -1,0 +1,22 @@
+.modal-exchange {
+  transform: translate(-50%, -50%);
+  background: linear-gradient(to left top,
+        rgb(255, 55, 147, .9),
+        rgb(63, 40, 131, .9),
+        rgb(255, 64, 33, .9));
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.text1{
+font-size: clamp(0.875rem, 0.804rem + 0.36vw, 1.125rem);
+}
+
+.text2{
+font-size:clamp(0.75rem, 0.679rem + 0.36vw, 1rem);
+}
+
+.btn-modal:hover {
+  color: rgb(63, 40, 131);
+  background-color: #ffffff;
+  outline: 2px solid rgb(63, 40, 131);
+}

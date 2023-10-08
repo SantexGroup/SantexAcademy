@@ -1,0 +1,84 @@
+<article class="w-full px-4 pb-16 overflow-auto pt-12 rounded-md">
+  <app-modal-question-volunteerings
+    [nameVolunteeringDelete]="nameVolunteeringDelete"
+    [idVolunteeringDelete]="idVolunteeringDelete"
+    (cancelDeletion)="declineDeleteVolunteering()"
+    *ngIf="onModalQuestion"
+  >
+  </app-modal-question-volunteerings>
+  <p class="text-[32px] font-semibold text-[#1C132D]">
+    Listado de voluntariados
+  </p>
+  <div
+    class="w-full flex items-center mt-14 flex-col gap-4 shadow-md shadow-dimGray bg-white rounded-lg"
+  >
+    <div
+      class="w-[360px] max-h-[400px] overflow-auto customScroll m:w-[450px] sm:w-full lg:w-[500px] xl:w-full"
+    >
+      <table class="w-full divide-y divide-lightGray">
+        <thead class="w-full bg-darkSlateBlue">
+          <tr class="text-white font-semibold text-xs sm:text-sm uppercase">
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Nombre del proyecto
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Descripción
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Ubicación
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Modalidad
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Horas
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Vacantes
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Acción
+            </th>
+          </tr>
+        </thead>
+        <tbody class="w-full bg-white divide-y divide-lightGray">
+          <tr *ngFor="let item of volunteerings">
+            <td class="px-6 py-4 whitespace-no-wrap">{{ item.name }}</td>
+            <td class="px-6 py-4 whitespace-no-wrap">
+              {{ item.description }}
+            </td>
+            <td class="px-6 py-4 whitespace-no-wrap">{{ item.address }}</td>
+            <td class="px-6 py-4 whitespace-no-wrap">{{ item.modeOfwork }}</td>
+            <td class="px-6 py-4 whitespace-no-wrap">{{ item.workTime }}</td>
+            <td class="px-6 py-4 whitespace-no-wrap">{{ item.vacancies }}</td>
+
+            <td
+              class="py-4 whitespace-no-wrap text-center flex items-center justify-center"
+            ></td>
+
+            <td
+              class="py-4 whitespace-no-wrap text-center flex items-center justify-center"
+            >
+              <button
+                mat-icon-button
+                class="custom-icon-button"
+                (click)="editVolunteering(item)"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+
+              <button
+                mat-icon-button
+                (click)="
+                  deleteVolunteering(item.idVolunteering.toString(), item.name)
+                "
+              >
+                <mat-icon class="text-redError">delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</article>

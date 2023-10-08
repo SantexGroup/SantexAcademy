@@ -1,0 +1,46 @@
+<section class="w-full flex flex-col">
+  <app-hero></app-hero>
+  <app-slider-organizations></app-slider-organizations>
+  <section class="bg-image w-full h-full py-16 mb-16">
+    <h2
+      class="text-2xl text-center font-bold pb-12 px-4 sm:text-3xl lg:text-4xl text-[#1c132d]"
+    >
+      BUSCÁ UN VOLUNTARIADO SEGÚN TUS PREFERENCIAS
+    </h2>
+    <div class="flex flex-wrap justify-center gap-8">
+      <app-volunteering-search
+        *ngFor="let item of volunteeringData"
+        [image]="item.image"
+        [title]="item.title"
+        [backgroundColor]="item.backgroundColor"
+      ></app-volunteering-search>
+    </div>
+  </section>
+  <app-cards-agendahours></app-cards-agendahours>
+  <img
+    class="foto-fija bg-white bg-no-repeat bg-center border-0 border-[#d9d9d9] border-solid bg-cover bg-fixed w-screen h-[491px] bg-[url('https://res.cloudinary.com/carina-bosio/image/upload/v1693270223/xAcademy/grupo-manos-diversas-multietnicas-levantadas_wu1nu5.jpg')]"
+  />
+  <section>
+    <app-slider-exchange></app-slider-exchange>
+  </section>
+
+  <section class="w-full flex flex-col gap-12 pt-16 px-4 mb-16">
+    <h2
+      class="text-center text-2xl font-bold sm:text-3xl lg:text-4xl uppercase text-[#130b1a]"
+    >
+      Voces Voluntarias: Experiencias compartidas en horas de compromiso
+    </h2>
+    <div class="flex flex-wrap justify-center gap-[55px]">
+
+      <app-testimonials
+        *ngFor="let item of testimonialsData"
+        [image]="item.image"
+        [name]="item.name"
+        [volunteerPlace]="item.volunteerplace"
+        [testimonial]="item.testimonial"
+      ></app-testimonials>
+    </div>
+  </section>
+
+  <app-whatsapp-button></app-whatsapp-button>
+</section>

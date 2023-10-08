@@ -1,0 +1,85 @@
+<footer
+  class="relative w-full flex flex-col p-4 bg-darkSlateBlue bg-opacity-10"
+>
+  <div
+    class="w-full flex flex-col p-4 gap-8 lg:flex-row lg:items-center lg:justify-center"
+  >
+    <article
+      class="w-full flex flex-col items-center justify-center gap-2 lg:w-[50%] lg:border-r border-lightGray lg:pb-8"
+    >
+      <figure class="flex items-center gap-2">
+        <img
+          src="/assets/logo/logohand.svg"
+          alt="logo"
+          class="w-[50px] sm:w-[70px]"
+        />
+        <img
+          src="/assets/logo/logovoluntime.svg"
+          alt="logo"
+          class="w-[80px] sm:w-[100px]"
+        />
+      </figure>
+    </article>
+    <hr class="boder border-lightGray lg:hidden" />
+    <article class="w-full items-center justify-center">
+      <ul
+        class="grid grid-cols-1 gap-x-8 gap-y-4 justify-items-center text-center text-sm mb-2 m:grid-cols-2 sm:grid-cols-4 sm:text-base"
+      >
+        <li>
+          <b class="text-lg lg:text-xl">Descubrir</b>
+          <p class="lg:text-lg cursor-pointer lg:hover:text-blueViolet">
+            Organizaciones
+          </p>
+          <p class="lg:text-lg cursor-pointer lg:hover:text-blueViolet">
+            <a routerLink="voluntariados">
+              Oportunidades <br />de voluntariado
+            </a>
+          </p>
+        </li>
+        <li>
+          <b class="text-lg lg:text-xl">Quienes somos</b>
+          <p class="lg:text-lg cursor-pointer lg:hover:text-blueViolet">
+            Acerca de nosotros
+          </p>
+          <p class="lg:text-lg cursor-pointer lg:hover:text-blueViolet">
+            Nuestro equipo
+          </p>
+        </li>
+        <li>
+          <b class="text-lg lg:text-xl">Contactanos</b>
+          <p class="lg:text-lg cursor-pointer lg:hover:text-blueViolet">
+            +54 351 1234567
+          </p>
+        </li>
+        <li>
+          <b class="text-lg lg:text-xl">Síguenos</b>
+          <div
+            class="text-base text-dimGray flex items-center gap-2 sm:text-xl lg:text-2xl pt-1"
+          >
+            <i
+              class="bx bxl-facebook-square cursor-pointer lg:hover:text-blueViolet"
+            ></i
+            ><i
+              class="bx bxl-twitter cursor-pointer lg:hover:text-blueViolet"
+            ></i
+            ><i
+              class="bx bxl-instagram cursor-pointer lg:hover:text-blueViolet"
+            ></i>
+          </div>
+        </li>
+      </ul>
+    </article>
+    <hr class="boder border-lightGray md:hidden" />
+  </div>
+  <div
+    class="w-full md:border-t border-lightGray text-center md:pt-4 lg:pb-4 lg:pt-8"
+  >
+    <span class="text-xs text-center sm:text-sm"
+      >Copyright © 2023 VolunTime - Todos los derechos reservados</span
+    >
+  </div>
+  <i
+    class="bx bx-chevron-up absolute bottom-8 right-4 rounded-full px-1 bg-dimGray text-white text-2xl cursor-pointer lg:hover:text-blueViolet"
+    (click)="scrollToTop()"
+  ></i>
+</footer>

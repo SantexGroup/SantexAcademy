@@ -1,0 +1,76 @@
+<app-modal-aplication
+  *ngIf="openModalQuestion"
+  [idOrg]="idOrganization"
+  [idVol]="idVolunteering"
+  [nameVol]="nameVol"
+  [nameOrg]="nameOrg"
+  (onModalAfterApplication)="onModalQuestionAftertApplication($event)"
+  (closeModalQuestion)="closeModalApplication()"
+>
+</app-modal-aplication>
+
+<app-modal-after-application
+  *ngIf="afterApplication"
+  [status]="statusModalApplication"
+  [message]="messageModalApplication"
+  (continueViewing)="continueViewing()"
+>
+</app-modal-after-application>
+<article
+  class="w-full flex flex-col items-center justify-center shadow shadow-lightGray p-4 gap-4 rounded-lg sm:flex-row lg:p-6"
+>
+  <figure class="w-[100px] sm:w-[200px]">
+    <img
+      [src]="
+        data.organization?.image
+          ? data.organization?.image.imageUrl
+          : '/assets/imgs/not-found.webp'
+      "
+      alt=""
+      class="w-full h-full object-contain"
+    />
+  </figure>
+  <div
+    class="w-full flex flex-col items-center justify-center text-center gap-2 border-b border-b-lightGray sm:border-b-0 sm:text-start sm:items-start sm:pl-8"
+  >
+    <h3 class="font-semibold xl:text-xl">
+      {{ data.name }}
+    </h3>
+    <div class="sm:flex items-center justify-center text-center gap-4">
+      <span
+        class="bg-darkSlateBlue text-white py-1 px-2 rounded-lg text-xs uppercase"
+        >{{ data.modeOfwork }}</span
+      >
+      <div
+        class="flex items-center justify-center gap-2 mt-2 sm:mt-0 lg:text-lg"
+      >
+        <p>{{ data.address }}</p>
+        <div class="h-[1em] w-[1px] bg-lightGray rounded-lg"></div>
+        <p>{{ data.workTime }}</p>
+      </div>
+    </div>
+    <p class="text-sm text-DarkGray pb-2">
+      {{ formatCreatedAtDate(data.createdAt) }}
+    </p>
+  </div>
+  <div
+    class="flex items-center justify-center gap-12 sm:flex-col sm:w-[20%] sm:border-l sm:border-l-lightGray sm:gap-4 lg:text-lg"
+  >
+    <button
+      (click)="
+        handleApplication(
+          data.organizationId,
+          data.idVolunteering,
+          data.name,
+          data.organization?.name
+        )
+      "
+    >
+      Aplicar
+    </button>
+    <div
+      class="h-[2em] w-[1px] bg-lightGray rounded-lg sm:w-[80%] sm:h-[1px]"
+    ></div>
+    <button (click)="viewVolunteering(data.idVolunteering)">Ver más</button>
+  </div>
+</article>

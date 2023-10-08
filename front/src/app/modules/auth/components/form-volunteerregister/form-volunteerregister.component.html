@@ -1,0 +1,222 @@
+<section
+  class="w-full flex flex-col items-center justify-center gap-4 mb-16 lg:flex-row"
+>
+  <app-modal-status-form
+    *ngIf="onModal"
+    (changueValueModal)="changeValueModal()"
+    [status]="statusSession"
+    [routeContinue]="routeBtnContinue"
+    [textBtn]="textBtnModal"
+    [errors]="errors"
+    [message]="messageModal"
+  ></app-modal-status-form>
+
+  <figure class="w-full h-[500px] bg-mediumViolet relative lg:h-[700px]">
+    <img
+      src="/assets/forms/fondo-login.svg"
+      alt=""
+      class="w-full h-full object-cover opacity-[0.8]"
+    />
+    <div
+      class="p-4 bg-white opacity-[.7] flex flex-col items-center justify-center gap-4 text-center min-w-[100px] w-[220px] h-[250px] rounded-md absolute top-[5em] left-0 right-0 bottom-0 m-auto lg:gap-12 lg:top-[-3em] lg:w-[300px] lg:h-[350px]"
+    >
+      <figure class="flex items-center gap-2">
+        <img
+          src="/assets/logo/logohand.svg"
+          alt="logo"
+          class="w-[50px] sm:w-[70px]"
+        />
+        <img
+          src="/assets/logo/logovoluntime.svg"
+          alt="logo"
+          class="w-[80px] sm:w-[100px]"
+        />
+      </figure>
+      <p>
+        Conectando necesidades con corazones dispuestos.¡Marcá la diferencia y
+        dejá una huella positiva en el mundo!
+      </p>
+    </div>
+  </figure>
+  <article class="w-full flex flex-col items-center justify-center gap-12">
+    <header class="w-full flex flex-col items-center justify-center gap-4">
+      <h2 class="font-semibold text-2xl">¡Bienvenido!</h2>
+      <p>Registrate en tu cuenta VolunTime</p>
+    </header>
+    <form
+      [formGroup]="registerVolunteer"
+      class="w-full flex flex-col px-4 gap-4 max-w-[600px]"
+      enctype="multipart/form-data"
+    >
+      <div
+        class="flex items-center justify-evenly"
+        *ngIf="!registerVolunteer.get('file')?.value"
+      >
+        <p class="text-center lg:text-lg">
+          <b> Selecciona una foto de perfil. </b>
+        </p>
+        <label for="file" class="cursor-pointer">
+          <div
+            class="w-[100px] grid place-items-center aspect-square rounded-full border border-lightGray shadow-lg lg:w-[120px] lg:hover:bg-bgOptionsRegister group"
+          >
+            <i
+              class="bx bxs-user-plus text-5xl text-lightGray lg:text-6xl lg:group-hover:text-white"
+            ></i>
+          </div>
+
+          <input
+            type="file"
+            id="file"
+            name="file"
+            class="hidden"
+            (change)="onFileSelected($event)"
+          />
+        </label>
+      </div>
+
+      <div
+        class="flex items-center justify-evenly"
+        *ngIf="registerVolunteer.get('file')?.value"
+      >
+        <button (click)="deleteImage()" class="btn__delete font-semibold">
+          <span class="tooltip"><i class="bx bx-trash text-2xl"></i></span>
+          Eliminar
+        </button>
+        <div class="flex flex-col justify-center items-center gap-4 mb-8">
+          <p class="text-center lg:text-lg"><b> Imagen seleccionada. </b></p>
+          <figure class="">
+            <img
+              [src]="imageUrl"
+              alt="Vista previa"
+              class="w-[100px] grid place-items-center object-cover aspect-square rounded-full border border-lightGray shadow-lg lg:w-[120px]"
+            />
+          </figure>
+        </div>
+      </div>
+      <div class="w-full flex flex-col text-start gap-1">
+        <label for="full_name"><b>Apellido y nombre</b></label>
+        <input
+          id="full_name"
+          type="text"
+          name="full_name"
+          placeholder="Introduce tu apellido y nombre"
+          class="border border-dimGray rounded-md py-2 pl-2 outline-none"
+          formControlName="fullName"
+        />
+        <div class="w-full items-center justify-end">
+          <p
+            *ngIf="
+              registerVolunteer.get('fullName')?.invalid &&
+              (registerVolunteer.get('fullName')?.dirty ||
+                registerVolunteer.get('fullName')?.touched)
+            "
+            class="flex-initial text-end text-deepPink"
+          >
+            El nombre completo debe tener al menos 2 caracteres.
+          </p>
+        </div>
+      </div>
+      <div class="w-full flex flex-col text-start gap-1">
+        <label for="email"><b>Correo electrónico</b></label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          placeholder="Introduce tu correo electrónico"
+          class="border border-dimGray rounded-md py-2 pl-2 outline-none"
+          formControlName="email"
+        />
+        <div class="w-full items-center justify-end">
+          <p
+            *ngIf="
+              registerVolunteer.get('email')?.invalid &&
+              (registerVolunteer.get('email')?.dirty ||
+                registerVolunteer.get('email')?.touched)
+            "
+            class="flex-initial text-end text-deepPink"
+          >
+            Eso no parece un correo válido.
+          </p>
+        </div>
+      </div>
+      <div class="w-full flex flex-col text-start gap-1">
+        <label for="phone"><b>Teléfono</b></label>
+        <input
+          id="phone"
+          type="number"
+          name="phone"
+          placeholder="Introduce tu número telefónico"
+          class="border border-dimGray rounded-md py-2 pl-2 outline-none"
+          formControlName="phone"
+        />
+        <div class="w-full items-center justify-end">
+          <p
+            *ngIf="
+              registerVolunteer.get('phone')?.invalid &&
+              (registerVolunteer.get('phone')?.dirty ||
+                registerVolunteer.get('phone')?.touched)
+            "
+            class="flex-initial text-end text-deepPink"
+          >
+            El número de teléfono no es válido para Argentina.
+          </p>
+        </div>
+      </div>
+      <div class="w-full flex flex-col gap-1 relative">
+        <label for="password" class="text-start"><b>Contraseña</b></label>
+        <input
+          id="password"
+          [type]="showPassword ? 'text' : 'password'"
+          name="password"
+          placeholder="Introduce tu contraseña"
+          class="border border-dimGray rounded-md py-2 pl-2 outline-none"
+          formControlName="password"
+        />
+        <div class="w-full items-center justify-end">
+          <p
+            *ngIf="
+              registerVolunteer.get('password')?.invalid &&
+              (registerVolunteer.get('password')?.dirty ||
+                registerVolunteer.get('password')?.touched)
+            "
+            class="flex-initial text-end text-deepPink"
+          >
+            La contraseña debe contener al menos una letra minúscula, una letra
+            mayúscula, un número y un símbolo, y tener al menos 8 caracteres de
+            longitud.
+          </p>
+        </div>
+        <i
+          class="bx bx-low-vision absolute top-9 right-4 text-xl cursor-pointer"
+          (click)="sendShowPassword()"
+        ></i>
+      </div>
+      <div class="w-full flex flex-col items-center justify-center gap-4 mt-2">
+        <button
+          type="submit"
+          class="w-full py-2 bg-mediumViolet text-white rounded-md font-semibold"
+          (click)="sendValues()"
+        >
+          Registrate
+        </button>
+        <b>o</b>
+        <button
+          class="w-full flex items-center justify-center gap-2 py-2 border border-mediumViolet rounded-md font-normal"
+        >
+          <img src="/assets/logo/logo-google.svg" />
+          Registrate con Google
+        </button>
+        <p class="text-sm">
+          ¿Ya tienes una cuenta?
+
+          <span
+            class="text-mediumViolet cursor-pointer"
+            (click)="navigateToLogin()"
+          >
+            Iniciar sesión.
+          </span>
+        </p>
+      </div>
+    </form>
+  </article>
+</section>

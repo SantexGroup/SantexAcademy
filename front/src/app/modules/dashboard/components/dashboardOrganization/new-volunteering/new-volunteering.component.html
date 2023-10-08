@@ -1,0 +1,191 @@
+<section class="w-full flex flex-col p-2">
+  <app-modal-status
+    [status]="statusModal"
+    [textBtn]="textBtnModalStatus"
+    [message]="messageModalStatus"
+    *ngIf="onModalStatus"
+  ></app-modal-status>
+  <h3 class="text-center text-2xl">Crear nuevo voluntariado</h3>
+  <form [formGroup]="newVolunteering" class="flex flex-col gap-4">
+    <div class="flex flex-col text-start gap-2">
+      <label for="name">Nombre:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        formControlName="name"
+        class="border-none rounded-md py-1 pl-2"
+      />
+      <div class="w-full items-center justify-end">
+        <p
+          *ngIf="
+            newVolunteering.get('name')?.invalid &&
+            (newVolunteering.get('name')?.dirty ||
+              newVolunteering.get('name')?.touched)
+          "
+          class="flex-initial text-end text-deepPink"
+        >
+          El voluntariado debe tener un nombre.
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-col text-start gap-2">
+      <label for="description">Breve descripción:</label>
+      <textarea
+        type="text"
+        id="description"
+        name="description"
+        formControlName="description"
+        class="h-[150px] pl-2 rounded-md resize-none"
+      >
+      </textarea>
+      <div class="w-full items-center justify-end">
+        <p
+          *ngIf="
+            newVolunteering.get('description')?.invalid &&
+            (newVolunteering.get('description')?.dirty ||
+              newVolunteering.get('description')?.touched)
+          "
+          class="flex-initial text-end text-deepPink"
+        >
+          El voluntariado debe tener una descripción.
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-col text-start gap-2">
+      <label for="mode">Modalidad de trabajo:</label>
+      <select
+        id="mode"
+        class="border-none rounded-md py-2 pl-2 bg-white"
+        (change)="onTimeWorkChange('modeOfwork', $event)"
+      >
+        <option value="" disabled selected class="text-DarkGray">
+          Seleccionar una opción
+        </option>
+        <option value="presencial">Presencial</option>
+        <option value="hibrido">Híbrido</option>
+        <option value="remoto">Remoto</option>
+      </select>
+
+      <div class="w-full items-center justify-end">
+        <p
+          *ngIf="
+            newVolunteering.get('modeOfwork')?.invalid &&
+            (newVolunteering.get('modeOfwork')?.dirty ||
+              newVolunteering.get('modeOfwork')?.touched)
+          "
+          class="flex-initial text-end text-deepPink"
+        >
+          Seleccione una opción válida.
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-col text-start gap-2">
+      <label for="time-work">Tiempo de trabajo:</label>
+      <select
+        id="time-work"
+        class="border-none rounded-md py-2 pl-2 bg-white"
+        (change)="onTimeWorkChange('workTime', $event)"
+      >
+        <option value="" disabled selected class="text-DarkGray">
+          Seleccionar una opción
+        </option>
+        <option value="tiempo completo">Tiempo Completo</option>
+        <option value="tiempo parcial">Tiempo Parcial</option>
+        <option value="temporada">Temporada</option>
+      </select>
+      <div class="w-full items-center justify-end">
+        <p
+          *ngIf="
+            newVolunteering.get('workTime')?.invalid &&
+            (newVolunteering.get('workTime')?.dirty ||
+              newVolunteering.get('workTime')?.touched)
+          "
+          class="flex-initial text-end text-deepPink"
+        >
+          Seleccione una opción válida.
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-col text-start gap-2">
+      <label for="vacancies">Vacantes a cubrir:</label>
+      <input
+        type="number"
+        id="vacancies"
+        name="vacancies"
+        formControlName="vacancies"
+        class="border-none rounded-md py-1 pl-2"
+      />
+      <div class="w-full items-center justify-end">
+        <p
+          *ngIf="
+            newVolunteering.get('vacancies')?.hasError('required') &&
+            (newVolunteering.get('vacancies')?.dirty ||
+              newVolunteering.get('vacancies')?.touched)
+          "
+          class="flex-initial text-end text-deepPink"
+        >
+          El voluntariado debe tener como minimo una vacante disponible.
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-col text-start gap-2">
+      <label for="address">Ubicación del voluntariado:</label>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        formControlName="address"
+        class="border-none rounded-md py-1 pl-2"
+      />
+      <div class="w-full items-center justify-end">
+        <p
+          *ngIf="
+            newVolunteering.get('address')?.invalid &&
+            (newVolunteering.get('address')?.dirty ||
+              newVolunteering.get('address')?.touched)
+          "
+          class="flex-initial text-end text-deepPink"
+        >
+          Debe proporcionar la ubicación del voluntariado.
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-col text-start gap-2">
+      <label for="reward">Recompensas por completar la tarea:</label>
+      <input
+        type="number"
+        id="reward"
+        name="reward"
+        formControlName="reward"
+        class="border-none rounded-md py-1 pl-2"
+      />
+      <div class="w-full items-center justify-end">
+        <p
+          *ngIf="
+            newVolunteering.get('reward')?.invalid &&
+            (newVolunteering.get('reward')?.dirty ||
+              newVolunteering.get('reward')?.touched)
+          "
+          class="flex-initial text-end text-deepPink"
+        >
+          La recompensa es obligatoria.
+        </p>
+      </div>
+    </div>
+    <div class="w-full flex items-center justify-around">
+      <button
+        (click)="closeNewVolunteering()"
+        class="w-[200px] px-4 py-1 border-none rounded-md bg-mediumViolet text-white font-bold btn-cancel"
+      >
+        Cancelar
+      </button>
+      <button
+        (click)="addNewVolunteering()"
+        class="w-[200px] px-4 py-1 border-none rounded-md bg-darkSlateBlue text-white font-bold btn-save"
+      >
+        Guardar
+      </button>
+    </div>
+  </form>
+</section>

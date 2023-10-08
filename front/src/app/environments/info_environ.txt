@@ -1,0 +1,1 @@
+*environments*  Contiene archivos de configuración para diferentes entornos (desarrollo y producción).

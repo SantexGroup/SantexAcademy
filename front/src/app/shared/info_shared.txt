@@ -1,0 +1,2 @@
+La carpeta *Shared* contiene elementos compartidos en toda la aplicación.
+Como por ejemplo *Components* como son el Navbar y el Footer que se muestran en toda la aplicacion.

@@ -1,0 +1,22 @@
+<section
+  class="fixed top-0 right-0 bottom-0 left-0 m-auto w-full min-h-screen flex items-center justify-center bg-black z-10 bg-opacity-[.6]"
+>
+  <article
+    class="w-11/12 p-4 flex flex-col items-center justify-center gap-4 rounded-md bg-white sm:w-[400px] sm:mt-[3em]"
+  >
+    <h3 class="font-semibold text-lg sm:text-xl">
+      ¿Como deseas iniciar sesión?
+    </h3>
+    <button
+      (click)="handleSelect('voluntario')"
+      class="py-1 px-2 text-white rounded-md font-semibold bg-mediumViolet"
+    >
+      Como Voluntario</button
+    ><button
+      (click)="handleSelect('organizacion')"
+      class="py-1 px-2 text-white rounded-md font-semibold bg-darkSlateBlue"
+    >
+      Como Organización
+    </button>
+  </article>
+</section>

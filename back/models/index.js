@@ -1,37 +1,122 @@
-/* eslint-disable global-require */
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
+const Organizacion = require('./Organizacion');
+const Producto = require('./Producto');
+const OrdenDeCanje = require('./OrdenDeCanje');
+const Roles = require('./Roles');
+const RecoveryToken = require('./RecoveryToken');
+const Testimonios = require('./Testimonios');
+const Usuario = require('./Usuario');
+const UsuarioEnVoluntariado = require('./UsuarioEnVoluntariado');
+const Voluntariado = require('./Voluntariado');
 
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-// eslint-disable-next-line import/no-dynamic-require
-const config = require(`${__dirname}/../config/config.js`)[env];
-const db = {};
+// Relaciones
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
 
-fs
-  .readdirSync(__dirname)
-  .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
-  .forEach((file) => {
-    // eslint-disable-next-line import/no-dynamic-require
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
-  });
-
-Object.keys(db).forEach((modelName) => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
+Usuario.hasMany(RecoveryToken, {
+  foreignKey: 'userId',
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+RecoveryToken.belongsTo(Usuario, {
+  foreignKey: 'userId',
+});
 
-module.exports = db;
+Organizacion.hasMany(RecoveryToken, {
+  foreignKey: 'orgId',
+});
+
+RecoveryToken.belongsTo(Organizacion, {
+  foreignKey: 'orgId',
+});
+
+Usuario.hasOne(Testimonios, {
+  foreignKey: 'userId',
+  as: 'testimonio',
+});
+
+Testimonios.belongsTo(Usuario, {
+  foreignKey: 'userId',
+  as: 'usuario',
+});
+
+Usuario.belongsToMany(Voluntariado, {
+  as: 'voluntariados',
+  through: UsuarioEnVoluntariado,
+  foreignKey: 'userId',
+  otherKey: 'idVolunteering',
+});
+Voluntariado.belongsToMany(Usuario, {
+  as: 'usuarios',
+  through: UsuarioEnVoluntariado,
+  foreignKey: 'idVolunteering',
+  otherKey: 'userId',
+});
+
+Voluntariado.belongsTo(Organizacion, {
+  as: 'organization',
+  foreignKey: 'organizationId',
+});
+Organizacion.hasMany(Voluntariado, {
+  as: 'voluntariados',
+  foreignKey: 'organizationId',
+});
+OrdenDeCanje.belongsTo(Producto, {
+  as: 'producto',
+  foreignKey: 'productId',
+});
+Producto.hasMany(OrdenDeCanje, {
+  as: 'OrdenDeCanje',
+  foreignKey: 'productId',
+});
+Usuario.belongsTo(Roles, { as: 'role', foreignKey: 'rolesId' });
+Roles.hasMany(Usuario, { as: 'usuarios', foreignKey: 'rolesId' });
+
+
+UsuarioEnVoluntariado.belongsTo(Usuario, {
+  as: 'usuario',
+  foreignKey: 'userId', 
+});
+
+Producto.belongsToMany(Usuario, {
+  through: OrdenDeCanje,
+  as: 'usuarios',
+  foreignKey: 'productId',
+});
+Usuario.belongsToMany(Producto, {
+  through: OrdenDeCanje,
+  as: 'productos',
+  foreignKey: 'userId',
+});
+
+Usuario.hasMany(OrdenDeCanje, {
+  as: 'ordenes',
+  foreignKey: 'userId',
+});
+OrdenDeCanje.belongsTo(Usuario, {
+  as: 'usuario',
+  foreignKey: 'userId',
+});
+
+Usuario.hasMany(UsuarioEnVoluntariado, {
+  as: 'usuarioEnVoluntariados',
+  foreignKey: 'userId',
+});
+UsuarioEnVoluntariado.belongsTo(Voluntariado, {
+  as: 'voluntariado',
+  foreignKey: 'idVolunteering',
+});
+Voluntariado.hasMany(UsuarioEnVoluntariado, {
+  as: 'usuarioEnVoluntariados',
+  foreignKey: 'idVolunteering',
+});
+
+// Exportar los modelos
+module.exports = {
+  Organizacion,
+  Producto,
+  OrdenDeCanje,
+  Roles,
+  RecoveryToken,
+  Testimonios,
+  Usuario,
+  UsuarioEnVoluntariado,
+  Voluntariado,
+};

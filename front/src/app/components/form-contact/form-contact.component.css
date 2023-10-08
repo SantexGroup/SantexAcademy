@@ -1,0 +1,35 @@
+.btn_send {
+  width: 150px;
+  height: 30px;
+  background: #ff3793;
+  color: #eaebed;
+  position: relative;
+  border: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.2s;
+  border-radius: 5px;
+  opacity: 0.8;
+  letter-spacing: 1px;
+  box-shadow: #bc204f 0px 7px 2px, #000 0px 8px 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.btn_send i {
+  font-size: 1.3em;
+}
+
+.btn_send:active {
+  top: 4px;
+  box-shadow: #ff3793 0px 3px 2px, #18181b 0px 3px 5px;
+}
+
+@media screen and (min-width: 996px) {
+  .btn_send:hover {
+    opacity: 1;
+  }
+}

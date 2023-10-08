@@ -1,0 +1,15 @@
+<section class="w-full min-h-screen relative font-dosis">
+  <app-header [dataHeader]="dataVolunteer"></app-header>
+  <div class="lg:flex lg:align-center lg:justify-around lg:mt-16">
+    <app-data-volunteer [dataVolunteer]="dataVolunteer"></app-data-volunteer>
+    <app-volunteer-history></app-volunteer-history>
+  </div>
+
+  <figure class="w-4/5 absolute bottom-0 right-0 -z-10">
+    <img
+      src="/assets/forms/elipe_bottom-right.svg"
+      alt="alipse"
+      class="w-full h-full object-cover"
+    />
+  </figure>
+</section>

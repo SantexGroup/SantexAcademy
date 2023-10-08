@@ -1,0 +1,10 @@
+.custom-icon-button {
+  color: #3f2883;
+  /* Change this to the color you desire */
+}
+
+.btn-shadow:hover {
+  background-color: #ffffff;
+  color: #3F2883;
+  outline: 2px solid #3F2883;
+}

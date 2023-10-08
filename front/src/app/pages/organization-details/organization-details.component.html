@@ -1,0 +1,65 @@
+<section class="w-full flex flex-col gap-4 mt-[115px] font-dosis mb-12">
+  <header class="w-full relative">
+    <figure
+      class="w-full h-[250px] flex flex-col items-center justify-start gap-2 sm:h-[350px]"
+    >
+      <img
+        *ngIf="!organization[0]?.coverPage"
+        src="/assets/logo/logohand.svg"
+        alt="logo voluntime"
+        class="w-[100px] h-[100px] object-cover imageUpload"
+      />
+      <img
+        *ngIf="organization[0]?.coverPage"
+        [src]="organization[0]?.coverPage.imageUrl"
+        alt="Subir imagen"
+        class="w-full h-full object-cover"
+      />
+    </figure>
+    <article
+      class="absolute p-4 w-full left-0 right-0 bottom-0 bg-bgHeaderOrganization sm:p-8"
+    >
+      <h2 class="text-4xl text-white font-extrabold Tsha md:text-5xl">
+        {{ organization[0]?.name }}
+      </h2>
+      <a routerLink="#" class="text-white text-sm Tsha md:text-lg"
+        >www.ejemplo.com.ar</a
+      >
+    </article>
+  </header>
+  <article class="w-full px-2 sm:px-8">
+    <ul class="flex flex-col gap-6 sm:w-[80%]">
+      <li>
+        <span class="text-2xl font-bold md:text-3xl">
+          Voluntariado en {{ organization[0]?.name }}
+        </span>
+        <p class="sm:text-lg md:text-xl">{{ organization[0]?.description }}</p>
+      </li>
+      <li>
+        <span class="text-2xl font-bold md:text-3xl">
+          Tipos de Voluntariados
+        </span>
+        <p class="sm:text-lg md:text-xl">{{ organization[0]?.category }}</p>
+      </li>
+      <li>
+        <span class="text-2xl font-bold md:text-3xl">
+          Duracion de los programas de voluntariados
+        </span>
+        <p class="sm:text-lg md:text-xl">
+          Cada oportunidad de voluntariado indica el tiempo estimado necesario
+          para completar la tarea. Esto te permite elegir actividades que se
+          ajusten a tu disponibilidad y compromiso. Las organizaciones
+          proporcionan estimaciones que van desde unas pocas horas hasta días o
+          semanas. Tu tiempo y esfuerzo son altamente valorados al unirte a un
+          programa de voluntariado.
+        </p>
+      </li>
+      <li>
+        <span class="text-2xl font-bold md:text-3xl">
+          Oportunidades de voluntariados ofrecidos
+        </span>
+        <p class=""></p>
+      </li>
+    </ul>
+  </article>
+</section>

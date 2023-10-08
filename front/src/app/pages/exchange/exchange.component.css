@@ -1,0 +1,69 @@
+.content-title {
+  background: linear-gradient(to left top,
+      rgb(255, 55, 147),
+      rgb(63, 40, 131),
+      rgb(255, 64, 33));
+
+}
+
+.content {
+  padding: clamp(0.938rem, 0.67rem + 1.34vw, 1.875rem);
+}
+
+.title {
+  font-size: clamp(1.25rem, 0.536rem + 3.57vw, 3.75rem);
+}
+
+.rewards {
+  font-size: clamp(1rem, 0.75rem + 1.25vw, 1.875rem);
+}
+
+.recommended {
+  font-size: clamp(0.938rem, 0.848rem + 0.45vw, 1.25rem);
+}
+
+.card {
+  width: clamp(7.5rem, 5.714rem + 8.93vw, 13.75rem);
+  height: clamp(10rem, 7.857rem + 10.71vw, 17.5rem);
+}
+
+.image {
+  height: clamp(5.125rem, 3.911rem + 6.07vw, 9.375rem);
+}
+
+.detail {
+  padding: clamp(0.313rem, 0.116rem + 0.98vw, 1rem) 0;
+}
+
+p {
+  font-size: clamp(0.75rem, 0.679rem + 0.36vw, 1rem);
+}
+
+.btn-exchange {
+  font-size: clamp(0.75rem, 0.679rem + 0.36vw, 1rem);
+}
+
+.btn-exchange:hover {
+  color: rgb(63, 40, 131);
+  background-color: #ffffff;
+  border: 2px solid rgb(63, 40, 131);
+}
+
+.page-numbers .active {
+  color: #b1237d;
+
+}
+
+.page-navigation-button:disabled {
+ color: #c3c3c3;
+ pointer-events: none;
+
+}
+
+.pagination{
+  font-size: clamp(0.75rem, 0.607rem + 0.71vw, 1.25rem);
+}
+
+
+
+

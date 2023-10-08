@@ -1,0 +1,133 @@
+<div
+  class="w-full flex flex-col items-center justify-center gap-4 mb-16 lg:flex-row"
+>
+  <app-modal-options-login
+    *ngIf="hiddenModal"
+    (optionSelected)="selectedOption($event)"
+  >
+  </app-modal-options-login>
+  <app-modal-status-form
+    *ngIf="onModalStatus"
+    (changueValueModal)="changueModalStatus()"
+    [status]="statusSession"
+    [routeContinue]="routeBtnContinue"
+    [textBtn]="textBtnModal"
+    [message]="messageModal"
+  ></app-modal-status-form>
+  <figure class="w-full h-[500px] bg-darkSlateBlue relative lg:h-[700px]">
+    <img
+      src="/assets/forms/fondo-login.svg"
+      alt=""
+      class="w-full h-full object-cover opacity-[0.6]"
+    />
+    <div
+      class="p-4 bg-white opacity-[.7] flex flex-col items-center justify-center gap-4 text-center min-w-[100px] w-[220px] h-[250px] rounded-md absolute top-[5em] left-0 right-0 bottom-0 m-auto lg:gap-12 lg:top-[-3em] lg:w-[300px] lg:h-[350px]"
+    >
+      <figure class="flex items-center gap-2">
+        <img
+          src="/assets/logo/logohand.svg"
+          alt="logo"
+          class="w-[50px] sm:w-[70px]"
+        />
+        <img
+          src="/assets/logo/logovoluntime.svg"
+          alt="logo"
+          class="w-[80px] sm:w-[100px]"
+        />
+      </figure>
+      <p>
+        Conectando necesidades con corazones dispuestos.¡Marcá la diferencia y
+        dejá una huella positiva en el mundo!
+      </p>
+    </div>
+  </figure>
+  <article class="w-full flex flex-col items-center justify-center gap-12">
+    <header class="w-full flex flex-col items-center justify-center gap-4">
+      <h2 class="font-semibold text-2xl">¡Hola!</h2>
+      <p>Iniciá sesión en tu cuenta VolunTime</p>
+    </header>
+    <form
+      [formGroup]="loginForm"
+      class="w-full flex flex-col px-4 gap-4 max-w-[600px]"
+    >
+      <div class="w-full flex flex-col text-start gap-1">
+        <label for="email"><b>Correo electrónico</b></label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          placeholder="Introduce tu correo electrónico"
+          class="border border-dimGray rounded-md py-2 pl-2"
+          formControlName="email"
+        />
+        <div class="w-full items-center justify-end">
+          <p
+            *ngIf="
+              loginForm.get('email')?.invalid &&
+              (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)
+            "
+            class="flex-initial text-end text-deepPink"
+          >
+            Eso no parece un correo válido.
+          </p>
+        </div>
+      </div>
+      <div class="w-full flex flex-col gap-1 relative">
+        <label for="password" class="text-start"><b>Contraseña</b></label>
+        <input
+          id="password"
+          [type]="showPassword ? 'text' : 'password'"
+          name="password"
+          placeholder="Introduce tu contraseña"
+          class="border border-dimGray rounded-md py-2 pl-2"
+          formControlName="password"
+        />
+        <i
+          class="bx bx-low-vision absolute top-9 right-4 text-xl cursor-pointer"
+          (click)="sendShowPassword()"
+        ></i>
+        <p class="text-end text-blueViolet text-sm cursor-pointer">
+          ¿Olvidaste tu contraseña?
+        </p>
+      </div>
+      <div class="w-full flex flex-col gap-1 relative" *ngIf="showCuit">
+        <label for="cuit" class="text-start"><b>CUIT</b></label>
+        <input
+          id="cuit"
+          type="number"
+          name="cuit"
+          placeholder="Ingrese el CUIT de su Organización"
+          class="border border-dimGray rounded-md py-2 pl-2"
+          formControlName="cuit"
+          required="true"
+        />
+      </div>
+      <div class="w-full flex flex-col items-center justify-center gap-4 mt-2">
+        <button
+          [disabled]="!loginForm.valid"
+          type="submit"
+          class="w-full py-2 bg-darkSlateBlue text-white rounded-md font-semibold"
+          (click)="sendValues()"
+        >
+          Iniciar sesión
+        </button>
+        <b>o</b>
+        <button
+          class="w-full flex items-center justify-center gap-2 py-2 border border-darkSlateBlue rounded-md font-normal"
+        >
+          <img src="/assets/logo/logo-google.svg" />
+          Iniciar sesión con Google
+        </button>
+        <p class="text-sm">
+          ¿Todavía no tienes una cuenta?
+          <span
+            class="text-blueViolet cursor-pointer"
+            (click)="navigateToOptionsRegister()"
+          >
+            Regístrate.
+          </span>
+        </p>
+      </div>
+    </form>
+  </article>
+</div>

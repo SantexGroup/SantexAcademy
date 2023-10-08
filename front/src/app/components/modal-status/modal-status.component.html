@@ -1,0 +1,27 @@
+<section
+  class="fixed top-0 right-0 bottom-0 left-0 m-auto w-full min-h-screen flex items-center justify-center bg-black z-10 bg-opacity-[.6]"
+>
+  <article
+    class="w-11/12 p-4 flex flex-col items-center justify-center gap-4 rounded-md bg-white sm:w-[600px] sm:mt-[3em]"
+  >
+    <figure class="w-full h-[150px]">
+      <img
+        [src]="
+          status === 'success'
+            ? '/assets/icons/good.png'
+            : '/assets/icons/bad.png'
+        "
+        alt="icono status"
+        class="w-full h-full object-contain"
+      />
+    </figure>
+    <p>{{ message }}</p>
+    <button
+      *ngIf="status === 'failed'"
+      (click)="closeModal()"
+      class="py-2 px-4 bg-darkSlateBlue text-white rounded-md font-semibold shadow-md shadow-dimGray"
+    >
+      Aceptar
+    </button>
+  </article>
+</section>

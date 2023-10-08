@@ -1,0 +1,47 @@
+<article
+  class="min-w-[100px] max-w-[350px] flex flex-col items-center justify-center gap-6 bg-white rounded-md p-4"
+>
+  <ng-container *ngIf="textBtnOne == 'Voluntario'">
+    <i class="bx bxs-user text-4xl text-mediumViolet"></i>
+  </ng-container>
+  <ng-container *ngIf="textBtnOne == 'Coordinador (ONG)'">
+    <i class="bx bxs-extension text-4xl text-darkSlateBlue"></i>
+  </ng-container>
+  <button
+    (click)="navigateToRegister()"
+    [ngClass]="{
+      'bg-mediumViolet': textBtnOne == 'Voluntario',
+      'bg-darkSlateBlue': textBtnOne == 'Coordinador (ONG)',
+      'text-mediumViolet': textBtnOne == 'Voluntario',
+      'text-darkSlateBlue ': textBtnOne == 'Coordinador (ONG)'
+    }"
+    class="py-2 px-4 rounded-md bg-opacity-[.3] font-medium"
+  >
+    {{ textBtnOne }}
+  </button>
+  <p class="text-sm text-center">
+    {{ subtitle }}
+  </p>
+  <ul class="flex flex-col gap-4">
+    <li
+      *ngFor="let item of itemsList"
+      class="flex items-center justify-start text-start gap-2"
+    >
+      <span
+        class="w-[8px] h-[8px] rounded-full"
+        [ngClass]="{'bg-mediumViolet': textBtnOne == 'Voluntario',
+        'bg-darkSlateBlue': textBtnOne == 'Coordinador (ONG)',}"
+      ></span>
+
+      {{ item }}
+    </li>
+  </ul>
+  <button
+    [ngClass]="{'bg-mediumViolet': textBtnOne == 'Voluntario',
+        'bg-darkSlateBlue': textBtnOne == 'Coordinador (ONG)',}"
+    (click)="navigateToRegister()"
+    class="w-full py-2 text-white rounded-md font-semibold lg:w-[90%]"
+  >
+    {{ textBtnTwo }}
+  </button>
+</article>

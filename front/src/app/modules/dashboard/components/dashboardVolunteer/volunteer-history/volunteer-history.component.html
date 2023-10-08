@@ -1,0 +1,133 @@
+<article class="w-full mt-16 px-4 pb-16 overflow-auto">
+  <div
+    class="w-full flex items-center flex-col gap-4 shadow-md shadow-dimGray p-2 bg-white rounded-lg xl:p-8"
+  >
+    <div class="w-full">
+      <h2 class="text-2xl font-bold text-start sm:text-3xl xl:pb-4">
+        Historial de Voluntariados
+      </h2>
+    </div>
+
+    <div
+      class="w-[360px] max-h-[400px] overflow-auto customScroll m:w-[450px] sm:w-full lg:w-[500px] xl:w-full"
+    >
+      <div
+        *ngIf="meVolunteerings?.length <= 0"
+        class="w-full flex items-center justify-center text-center p-4"
+      >
+        <p class="font-bold lg:text-lg">
+          No has aplicado a ningún voluntariado aún
+        </p>
+      </div>
+      <table
+        class="w-full divide-y divide-lightGray"
+        *ngIf="meVolunteerings?.length > 0"
+      >
+        <thead class="w-full bg-mediumViolet">
+          <tr class="text-white font-semibold text-xs sm:text-sm uppercase">
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Tarea a realizar
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Voluntariado
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              modalidad
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Horas Estimadas
+            </th>
+            <th class="px-6 py-3 bg-gray-50 text-left leading-4 tracking-wider">
+              Estado
+            </th>
+          </tr>
+        </thead>
+        <tbody class="w-full bg-white divide-y divide-lightGray">
+          <tr *ngFor="let dato of meVolunteerings">
+            <td class="px-6 py-4 whitespace-no-wrap lg:font-bold lg:text-lg">
+              {{ dato.voluntariado.description }}
+            </td>
+            <td class="px-6 py-4 whitespace-no-wrap lg:font-bold lg:text-lg">
+              {{ dato.voluntariado.name }}
+            </td>
+            <td class="px-6 py-4 whitespace-no-wrap lg:font-bold lg:text-lg">
+              {{ dato.voluntariado.modeOfwork }}
+            </td>
+            <td class="px-6 py-4 whitespace-no-wrap lg:font-bold lg:text-lg">
+              {{ dato.voluntariado.workTime }}
+            </td>
+            <td
+              class="py-4 whitespace-no-wrap text-center flex items-center justify-center"
+            >
+              <p
+                [ngClass]="{
+                'bg-forestGreen':dato.status === 'finished',
+                'bg-red': dato.status === 'abandoned',
+                'bg-darkSlateBlue': dato.status === 'active',
+
+              }"
+                class="text-white py-1 font-semibold rounded-md w-[105px] xl:px-0 lg:text-lg"
+              >
+                {{
+                  dato.status === "active"
+                    ? "En Proceso"
+                    : dato.status === "abandoned"
+                    ? "Abandonado"
+                    : dato.status === "finished"
+                    ? "Finalizado"
+                    : ""
+                }}
+              </p>
+              <button
+                mat-icon-button
+                [matMenuTriggerFor]="menu"
+                class="flex items-center justify-center text-center mb-1"
+              >
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button
+                  mat-menu-item
+                  *ngIf="dato.status == 'active'"
+                  (click)="
+                    updateStatusPostulation('abandoned', dato.postulateId)
+                  "
+                >
+                  <mat-icon>cancel</mat-icon>
+                  <span>Abandonar</span>
+                </button>
+                <button
+                  mat-menu-item
+                  *ngIf="dato.status == 'active'"
+                  (click)="
+                    updateStatusPostulation('finished', dato.postulateId)
+                  "
+                >
+                  <mat-icon>done</mat-icon>
+                  <span>Dar por finalizado</span>
+                </button>
+
+                <button
+                  mat-menu-item
+                  *ngIf="dato.status == 'abandoned'"
+                  (click)="deletePostulation(dato.postulateId)"
+                >
+                  <mat-icon>delete</mat-icon>
+                  <span>Eliminar</span>
+                </button>
+                <button mat-menu-item *ngIf="dato.status == 'finished'">
+                  <mat-icon>delete</mat-icon>
+                  <span>Eliminar</span>
+                </button>
+                <button mat-menu-item *ngIf="dato.status == 'finished'">
+                  <mat-icon>list</mat-icon>
+                  <span>Ver resultados</span>
+                </button>
+              </mat-menu>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</article>

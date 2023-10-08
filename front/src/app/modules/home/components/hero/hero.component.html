@@ -1,0 +1,30 @@
+<div
+  class="hero flex justify-between items-center m-0 w-screen font-poppins overflow-hidden"
+>
+  <div class="text-hero text-white font-[400] max-w-screen-sm min-w-[100px]">
+    <p>
+      Si estás buscando una forma de marcar la diferencia en el mundo, podés
+      ofrecerte como voluntario unas horas a la semana.<br />
+      Es una manera fácil y gratificante de retribuir a tu comunidad y hacer del
+      mundo un lugar mejor.
+    </p>
+    <!-- <p>Es una manera fácil y gratificante de retribuir a tu comunidad y hacer del mundo un lugar mejor.</p> -->
+  </div>
+  <div
+    class="gallery flex gap-[1vw] w-[800px] min-w-[200px] h-full whitespace-nowrap"
+  >
+    <ng-container *ngFor="let imageBlock of imageBlocks">
+      <!-- Repite el bloque de imágenes dos veces -->
+      <div class="gallery_line flex flex-col gap-[1vw] h-fit whitespace-nowrap">
+        <ng-container *ngFor="let _ of [0, 1]">
+          <ng-container *ngFor="let imageUrl of imageBlock">
+            <img
+              [src]="imageUrl"
+              class="flex-[1_1_auto] w-full object-cover whitespace-nowrap"
+            />
+          </ng-container>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</div>

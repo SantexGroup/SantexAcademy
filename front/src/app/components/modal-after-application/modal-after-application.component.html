@@ -1,0 +1,43 @@
+<section
+  class="fixed top-0 right-0 bottom-0 left-0 m-auto w-full min-h-screen flex items-center justify-center bg-black z-10 bg-opacity-[.6]"
+>
+  <article
+    class="w-11/12 p-4 flex flex-col items-center justify-center gap-4 rounded-md bg-white sm:w-[600px] sm:mt-[3em]"
+  >
+    <figure class="w-full h-[150px]">
+      <img
+        [src]="
+          status === 'success'
+            ? '/assets/icons/good.png'
+            : '/assets/icons/bad.png'
+        "
+        alt="icono good"
+        class="w-full h-full object-contain"
+      />
+    </figure>
+
+    <p class="text-center">{{ message }}</p>
+    <div class="w-full flex flex-col items-center justify-center gap-4">
+      <button
+        (click)="continueView()"
+        *ngIf="status === 'success'"
+        class="px-4 py-1 border-none rounded-md bg-darkSlateBlue text-white font-bold"
+      >
+        Seguir explorando oportunidades
+      </button>
+      <button
+        *ngIf="status === 'success'"
+        class="px-4 py-1 border-none rounded-md bg-darkSlateBlue text-white font-bold"
+      >
+        <a routerLink="/dashboard"> Ver mis aplicaciones </a>
+      </button>
+      <button
+        (click)="continueView()"
+        *ngIf="status === 'failed'"
+        class="px-4 py-1 border-none rounded-md bg-darkSlateBlue text-white font-bold"
+      >
+        Aceptar
+      </button>
+    </div>
+  </article>
+</section>

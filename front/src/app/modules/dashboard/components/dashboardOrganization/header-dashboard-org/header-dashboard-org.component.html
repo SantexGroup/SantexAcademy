@@ -1,0 +1,39 @@
+<section class="section flex flex-col font-poppins">
+  <app-modal-status
+    *ngIf="onModalStatus"
+    [message]="messageModal"
+    [textBtn]="textBtnModalStatus"
+    [status]="statusModal"
+  >
+  </app-modal-status>
+  <header
+    class="headerOrg relative w-screen h-[100px] flex justify-center items-center"
+  >
+    <figure
+      class="relative w-[200px] h-[100px] bg-white border-2 border-white rounded-lg shadow-inner shadow-black"
+    >
+      <img
+        [src]="
+          dataHeader.image?.imageUrl
+            ? dataHeader.image?.imageUrl
+            : '/assets/imgs/not-found.webp'
+        "
+        alt="avatar"
+        class="w-full h-full object-contain p-2"
+      />
+      <label
+        for="file"
+        class="absolute bottom-0 right-[-.4em] grid place-items-center text-xl px-1 py-1 bg-DarkGray/70 rounded-full shadow-md shadow-darkSlateBlue cursor-pointer"
+      >
+        <input
+          type="file"
+          id="file"
+          name="file"
+          class="hidden"
+          (change)="changePhotoUser($event)"
+        />
+        <i class="bx bx-edit text-black"> </i>
+      </label>
+    </figure>
+  </header>
+</section>

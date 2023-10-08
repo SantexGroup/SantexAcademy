@@ -1,0 +1,257 @@
+<header
+  class="fixed top-0 left-0 w-full flex flex-col p-6 bg-white z-20 lg:gap-4 lg:relative lg:flex-row lg:justify-between"
+  id="arriba"
+>
+  <a routerLink="/" class="max-w-[200px]"
+    ><figure class="w-full h-full flex items-center gap-2">
+      <img
+        src="/assets/logo/logohand.svg"
+        alt="logo"
+        class="w-[50px] m:w-[70px]"
+      />
+      <img
+        src="/assets/logo/logovoluntime.svg"
+        alt="logo"
+        class="w-[80px] m:w-[100px]"
+      /></figure
+  ></a>
+
+  <i
+    [ngClass]="!isOpen ? 'hidden' : 'visible absolute top-8 right-4'"
+    class="bx bx-menu text-3xl cursor-pointer m:text-4xl lg:hidden"
+    (click)="handleMenu()"
+  ></i>
+  <i
+    [ngClass]="isOpen ? 'hidden' : 'visible absolute top-8 right-4'"
+    class="bx bx-x text-3xl cursor-pointer m:text-4xl lg:hidden"
+    (click)="handleMenu()"
+  ></i>
+
+  <nav [ngClass]="isOpen ? 'navbar' : 'navbar navbar-closed'">
+    <ul
+      class="w-full flex flex-col items-center justify-center gap-4 m:text-lg lg:flex-row lg:justify-end lg:gap-8 lg:items-start lg:pt-4 lg:absolute"
+    >
+      <li
+        *ngIf="isToken"
+        (click)="handleMenu()"
+        class="w-full flex items-center justify-center gap-4 cursor-pointer lg:hidden"
+      >
+        <figure
+          class="w-[50px] aspect-square rounded-full border border-lightGray lg:disabled"
+        >
+          <img
+            [src]="
+              dataUser.image?.imageUrl
+                ? dataUser.image?.imageUrl
+                : '/assets/imgs/not-found.webp'
+            "
+            alt="avatar"
+            class="w-full h-full object-cover rounded-full"
+          />
+        </figure>
+        <div class="flex flex-col">
+          <h4 class="text-lg font-semibold">{{ dataUser.fullName }}</h4>
+          <a
+            routerLink="/dashboard"
+            class="flex items-center justify-center text-center text-sm text-DarkGray mt-[-.5em]"
+          >
+            Mi perfil <i class="bx bx-chevron-right text-lg"></i>
+          </a>
+        </div>
+      </li>
+      <li class="">
+        <div
+          class="w-full flex items-center justify-center cursor-pointer optionDesk"
+          (click)="openOpOne()"
+        >
+          <span class="text-xl whitespace-nowrap max-w-[200px]"
+            >Hazte voluntario/a</span
+          >
+          <i
+            class="bx bx-chevron-down text-2xl iconRow"
+            [ngClass]="{ rotate: openOptionOne }"
+          ></i>
+        </div>
+
+        <ul
+          [ngClass]="
+            openOptionOne
+              ? 'flex flex-col items-center gap-2 bg-white p-2 lg:shadow-md lg:shadow-blueViolet'
+              : 'hidden'
+          "
+          [ngStyle]="{ 'max-height.px': openOptionOne ? maxHeight : 0 }"
+        >
+          <li
+            class="cursor-pointer lg:hover:text-blueViolet"
+            (click)="handleMenu()"
+          >
+            <a routerLink="/voluntariados">Buscar voluntariados</a>
+          </li>
+
+          <li
+            class="cursor-pointer lg:hover:text-blueViolet"
+            (click)="handleMenu()"
+          >
+          <a routerLink="/steps">6 pasos para ser voluntario</a>
+
+          </li>
+          <li
+            class="cursor-pointer lg:hover:text-blueViolet"
+            (click)="handleMenu()"
+          >
+          <a routerLink="/benefits">Beneficios de ser voluntario</a>
+
+          </li>
+        </ul>
+      </li>
+      <li>
+        <div
+          class="w-full flex items-center justify-center cursor-pointer"
+          (click)="openOpTwo()"
+        >
+          <span class="text-xl whitespace-nowrap max-w-[200px]">
+            ¿Tienes dudas?
+          </span>
+
+          <i
+            class="bx bx-chevron-down text-2xl iconRow"
+            [ngClass]="{ rotate: openOptionTwo }"
+          ></i>
+        </div>
+        <ul
+          [ngClass]="
+            openOptionTwo
+              ? 'flex flex-col items-center gap-2 p-2 bg-white lg:shadow-md lg:shadow-blueViolet lg:items-start'
+              : 'hidden'
+          "
+        >
+          <li
+            class="cursor-pointer lg:hover:text-blueViolet"
+            (click)="handleMenu()"
+          >
+            <a routerLink="/nosotros"> ¿Quienes Somos? </a>
+          </li>
+          <li
+            class="cursor-pointer lg:hover:text-blueViolet"
+            (click)="handleMenu()"
+          >
+            Testimonios de voluntarios
+          </li>
+          <li class="text-xl cursor-pointer" (click)="handleMenu()">
+            <a routerLink="/contacto"> Contacto </a>
+          </li>
+        </ul>
+      </li>
+      <li class="lg:hidden text-xl cursor-pointer" (click)="handleMenu()">
+        Acerca de nosotros
+      </li>
+
+      <li
+        *ngIf="isToken"
+        class="flex items-center justify-center gap-2 lg:hidden text-xl cursor-pointer"
+      >
+        <i class="bx bx-log-out-circle"></i>
+        <a href="#" class="lg:hover:text-blueViolet" (click)="logout()"
+          >Cerrar Sesión</a
+        >
+      </li>
+      <li
+        class="lg:flex flex-col items-center justify-center gap-4 lg:flex-row font-semibold lg:items-start"
+      >
+        <div
+          *ngIf="!isToken"
+          class="flex flex-col items-center justify-center gap-4 lg:flex-row font-semibold lg:items-start"
+        >
+          <a
+            (click)="handleMenu()"
+            routerLink="/auth/login"
+            class="lg:text-xl whitespace-nowrap max-w-[200px] lg:hover:text-blueViolet"
+            >Iniciar sesión</a
+          >
+          <a
+            (click)="handleMenu()"
+            routerLink="/auth/options-register"
+            class="py-1 px-4 bg-darkSlateBlue text-white rounded-md"
+            >Registrarse</a
+          >
+        </div>
+        <div *ngIf="isToken" class="hidden lg:flex items-center justify-center">
+          <article class="mt-[-.5em] relative group">
+            <figure
+              *ngIf="dataUser.image?.imageUrl"
+              class="w-[50px] aspect-square rounded-full border border-lightGray cursor-pointer lg:disabled"
+            >
+              <img
+                [src]="dataUser.image?.imageUrl"
+                alt="avatar"
+                class="w-full h-full object-cover rounded-full"
+              />
+            </figure>
+            <figure
+              *ngIf="!dataUser.image?.imageUrl"
+              class="w-[50px] aspect-square rounded-full border border-lightGray lg:disabled"
+            >
+              <img
+                src="/assets/imgs/not-found.webp"
+                alt="avatar"
+                class="w-full h-full object-cover rounded-full"
+              />
+            </figure>
+            <div
+              class="hidden group-hover:block absolute top-12 right-0 lg:w-64 lg:bg-white lg:shadow-lg lg:shadow-lightGray"
+            >
+              <ul class="w-full flex flex-col gap-4 p-2 text-lg font-medium">
+                <li
+                  class="w-full flex flex-col gap-2 items-center justify-center"
+                >
+                  <span class="text-lightGray">{{ dataUser.email }}</span>
+                  <figure
+                    *ngIf="dataUser.image?.imageUrl"
+                    class="w-[80px] h-[80px] aspect-square rounded-full border border-lightGray shadow-lg shadow-lightGray"
+                  >
+                    <img
+                      [src]="dataUser.image?.imageUrl"
+                      alt="avatar"
+                      class="w-full h-full object-cover rounded-full"
+                    />
+                  </figure>
+                  <figure
+                    *ngIf="!dataUser.image?.imageUrl"
+                    class="w-[80px] aspect-square rounded-full border border-lightGray shadow-lg shadow-lightGray"
+                  >
+                    <img
+                      src="/assets/imgs/not-found.webp"
+                      alt="avatar"
+                      class="w-full h-full object-cover rounded-full"
+                    />
+                  </figure>
+                  <h4>
+                    ¡Hola,
+                    {{ dataUser.cuit ? dataUser.name : dataUser.fullName }}!
+                  </h4>
+                </li>
+                <li
+                  (click)="handleMenu()"
+                  class="w-full flex flex-col items-center justify-center text-center"
+                >
+                  <a
+                    routerLink="/dashboard"
+                    class="hover:text-blueViolet border border-DarkGray hover:border-blueViolet px-2 rounded-xl shadow-md"
+                    >Gestionar tu cuenta</a
+                  >
+                </li>
+                <li
+                  class="w-full flex items-center justify-center gap-2 text-center lg:hover:text-blueViolet"
+                >
+                  <i class="bx bx-log-out-circle"></i>
+
+                  <a href="#" class="" (click)="logout()">Cerrar Sesión</a>
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>

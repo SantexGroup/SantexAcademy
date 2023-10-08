@@ -1,0 +1,146 @@
+<article class="mt-16 w-full flex flex-col px-4">
+  <app-modal-question
+    *ngIf="onModalQuestion"
+    (onDeleteProfile)="deleteProfile()"
+    (cancelDeletion)="handleProfileDelete()"
+  >
+  </app-modal-question>
+  <app-modal-status
+    *ngIf="onModalStatus"
+    (changueValueModal)="closeModalStatus()"
+    [textBtn]="textBtnModalStatus"
+    [status]="statusModal"
+    [message]="textMessage"
+  >
+  </app-modal-status>
+  <div
+    class="w-full flex flex-col shadow-md shadow-dimGray p-2 bg-white rounded-lg sm:w-[400px] xl:w-[500px] xl:p-8"
+  >
+    <h2 class="text-2xl font-bold sm:text-3xl xl:pb-4">Tus datos</h2>
+    <ul class="mt-4 sm:text-lg" *ngIf="!editData">
+      <li>{{ dataVolunteer.fullName }}</li>
+      <li>{{ dataVolunteer.email }}</li>
+      <li>{{ dataVolunteer.phone }}</li>
+    </ul>
+    <form
+      class="w-full mt-4 flex flex-col gap-2"
+      *ngIf="editData"
+      [formGroup]="userForm"
+    >
+      <div class="w-full flex flex-col text-start gap-1">
+        <label id="full_name" class="text-dimGray">Nombre Completo</label>
+        <input
+          id="full_name"
+          name="fullName"
+          type="text"
+          formControlName="fullName"
+          class="pl-2 py-1 border border-lightGray outline-none rounded-md sm:text-lg"
+        />
+        <div class="w-full items-center justify-end">
+          <p
+            *ngIf="
+              userForm.get('fullName')?.invalid &&
+              (userForm.get('fullName')?.dirty ||
+                userForm.get('fullName')?.touched)
+            "
+            class="flex-initial text-end text-deepPink"
+          >
+            El nombre completo debe tener al menos 2 caracteres.
+          </p>
+        </div>
+      </div>
+      <div class="w-full flex flex-col text-start gap-1">
+        <label id="email" class="text-dimGray">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          formControlName="email"
+          class="pl-2 py-1 border border-lightGray outline-none rounded-md sm:text-lg"
+        />
+        <div class="w-full items-center justify-end">
+          <p
+            *ngIf="
+              userForm.get('email')?.invalid &&
+              (userForm.get('email')?.dirty || userForm.get('email')?.touched)
+            "
+            class="flex-initial text-end text-deepPink"
+          >
+            Eso no parece un correo válido.
+          </p>
+        </div>
+      </div>
+      <div class="w-full flex flex-col text-start gap-1">
+        <label id="phone" class="text-dimGray">Telefono</label>
+        <input
+          id="phone"
+          name="phone"
+          type="text"
+          formControlName="phone"
+          class="pl-2 py-1 border border-lightGray outline-none rounded-md sm:text-lg"
+        />
+        <div class="w-full items-center justify-end">
+          <p
+            *ngIf="
+              userForm.get('phone')?.invalid &&
+              (userForm.get('phone')?.dirty || userForm.get('phone')?.touched)
+            "
+            class="flex-initial text-end text-deepPink"
+          >
+            El número de teléfono no es válido para Argentina.
+          </p>
+        </div>
+      </div>
+      <!-- <div class="w-full flex flex-col text-start gap-1">
+        <label id="password " class="text-dimGray">Contraseña</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          formControlName="password"
+          class="pl-2 py-1 border border-lightGray outline-none rounded-md sm:text-lg"
+        />
+        <div class="w-full items-center justify-end">
+          <p
+            *ngIf="
+              userForm.get('password')?.invalid &&
+              (userForm.get('password')?.dirty ||
+                userForm.get('password')?.touched)
+            "
+            class="flex-initial text-end text-deepPink"
+          >
+            La contraseña debe tener entre 8 y 16 caracteres, al menos un
+            numero, al menos una minúscula y al menos una mayúscula.
+          </p>
+        </div>
+      </div> -->
+      <button
+        (click)="saveDataProfile()"
+        class="bg-darkSlateBlue text-white py-1 rounded-md mt-4 text-xl font-semibold"
+      >
+        Guardar
+      </button>
+      <button
+        (click)="inactiveEditProfile()"
+        class="bg-deepPink text-white py-1 rounded-md mt-2 text-xl font-semibold"
+      >
+        Cancelar
+      </button>
+    </form>
+
+    <button
+      *ngIf="!editData"
+      (click)="activeEditProfile()"
+      class="bg-darkSlateBlue text-white py-1 rounded-md mt-4 text-xl font-semibold"
+    >
+      Editar perfil
+    </button>
+    <button
+      *ngIf="!editData"
+      (click)="handleProfileDelete()"
+      class="bg-deepPink text-white py-1 rounded-md mt-4 text-xl font-semibold"
+    >
+      Eliminar perfil
+    </button>
+  </div>
+</article>

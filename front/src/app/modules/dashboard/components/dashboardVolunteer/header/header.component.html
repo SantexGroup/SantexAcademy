@@ -1,0 +1,73 @@
+<header
+  class="relative w-full p-4 bg-darkSlateBlue rounded-b-3xl shadow-md shadow-dimGray"
+>
+  <app-modal-status
+    *ngIf="onModalStatus"
+    [message]="messageModal"
+    [textBtn]="textBtnModalStatus"
+    [status]="statusModal"
+  >
+  </app-modal-status>
+  <article class="flex items-center justify-start gap-2 sm:pl-8">
+    <figure
+      class="relative w-[50px] aspect-square rounded-full border-2 border-white sm:w-[80px] shadow-md shadow-dimGray"
+    >
+      <img
+        [src]="
+          dataHeader.image?.imageUrl
+            ? dataHeader.image?.imageUrl
+            : '/assets/imgs/not-found.webp'
+        "
+        alt="avatar"
+        class="w-full h-full object-cover rounded-full"
+      />
+      <label
+        for="file"
+        class="absolute bottom-0 right-0 text-xl px-1 bg-DarkGray rounded-full shadow-md shadow-darkSlateBlue cursor-pointer"
+      >
+        <input
+          type="file"
+          id="file"
+          name="file"
+          class="hidden"
+          (change)="changePhotoUser($event)"
+        />
+        <i class="bx bx-edit text-black"> </i>
+      </label>
+    </figure>
+    <div class="flex flex-col items-start justify-start text-start">
+      <h1 class="text-white font-bold sm:text-xl">{{ dataHeader.fullName }}</h1>
+      <ul class="flex items-center justify-center gap-2 text-xs sm:text-sm">
+        <li>⭐</li>
+        <li>⭐</li>
+        <li>⭐</li>
+      </ul>
+    </div>
+  </article>
+  <div
+    class="absolute top-4 right-2 flex flex-col gap-2 w-[165px] m:w-[200px] m:right-8 m:top-6 sm:w-[250px]"
+  >
+    <article
+      class="p-4 flex items-center justify-center gap-2 bg-white rounded-md shadow-md shadow-dimGray overflow-x-auto"
+    >
+      <figure class="min-w-[30px] max-w-[80px]">
+        <img
+          src="/assets/imgs/clock.svg"
+          alt="imagen reloj"
+          class="w-full h-full object-contain"
+        />
+      </figure>
+      <div class="flex flex-col text-center">
+        <h2 class="font-bold text-darkSlateBlue text-4xl m:text-3xl">
+          {{ dataHeader.hoursAcc }}
+        </h2>
+        <p class="text-xs font-bold sm:text-base">Tus horas acumuladas</p>
+      </div>
+    </article>
+    <button
+      class="w-full bg-mediumViolet text-white border-none py-1 px-2 rounded-md font-semibold uppercase shadow-md shadow-dimGray sm:text-xl"
+    >
+      Canjear tus horas
+    </button>
+  </div>
+</header>

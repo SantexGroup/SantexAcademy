@@ -1,0 +1,313 @@
+<div class="wrap -mt-[40px] mx-auto">
+  <app-modal-question
+    *ngIf="onModalQuestion"
+    (onDeleteProfile)="deleteProfile()"
+    (cancelDeletion)="handleProfileDelete()"
+  >
+  </app-modal-question>
+  <app-modal-status
+    *ngIf="onModalStatus"
+    (changueValueModal)="closeModalStatus()"
+    [textBtn]="textBtnModalStatus"
+    [status]="statusModal"
+    [message]="textMessage"
+  >
+  </app-modal-status>
+  <ul class="tabs group">
+    <li>
+      <a
+        class="switch cursor-pointer"
+        [ngClass]="{ activeTa: activeTab === 1 }"
+        (click)="activateTab(1)"
+        >Información de la organización</a
+      >
+    </li>
+    <li>
+      <a
+        class="switch cursor-pointer"
+        [ngClass]="{ activeTa: activeTab === 2 }"
+        (click)="activateTab(2)"
+        >Gestión de voluntariados</a
+      >
+    </li>
+    <li>
+      <a
+        class="switch cursor-pointer"
+        [ngClass]="{ activeTa: activeTab === 3 }"
+        (click)="activateTab(3)"
+        >Voluntariados finalizados</a
+      >
+    </li>
+  </ul>
+  <div
+    class="content w-[99%] h-auto m-auto pb-[30px] bg-[#c5beda] shadow-[2px 8px 25px -2px rgba(0, 0, 0, 0.3)] border-[2px] border-[#3F2883] border-t-[0] rounded-b-[8px]"
+  >
+    <!-- DATOS CAPTURADOS DEL BACK TAB 1 -->
+
+    <div *ngIf="activeTab === 1" id="one">
+      <div
+        *ngIf="!editData"
+        [ngClass]="fadeAnimationClass"
+        class="datos px-14 h-auto pt-[30px] w-[100%]"
+      >
+        <p class="text-[32px] font-semibold my-6">Datos de la Organización</p>
+        <ul>
+          <div class="flex">
+            <div class="w-2/3 p-4">
+              <li>
+                <p><strong>Nombre: </strong>{{ dataTabs.name }}</p>
+              </li>
+            </div>
+            <div class="w-1/3 p-4">
+              <li>
+                <p><strong>CUIT: </strong>{{ dataTabs.cuit }}</p>
+              </li>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="w-2/3 p-4">
+              <li>
+                <p><strong>Ubicación: </strong>{{ dataTabs.location }}</p>
+              </li>
+            </div>
+            <div class="w-1/3 p-4">
+              <li>
+                <p><strong>Teléfono: </strong>{{ dataTabs.phone }}</p>
+              </li>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="w-2/3 p-4">
+              <li>
+                <p><strong>Correo electrónico: </strong>{{ dataTabs.email }}</p>
+              </li>
+            </div>
+            <div class="w-1/3 p-4">
+              <li>
+                <p><strong>WebSite: </strong>{{ dataTabs.urlWebSite }}</p>
+              </li>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="w-3/3 p-4">
+              <li>
+                <p class="capitalize">
+                  <strong>Categoría: </strong>{{ dataTabs.category }}
+                </p>
+              </li>
+            </div>
+          </div>
+
+          <div class="flex flex-col">
+            <div class="w-3/3 p-4">
+              <li>
+                <p><strong>Descripción: </strong>{{ dataTabs.description }}</p>
+              </li>
+            </div>
+          </div>
+        </ul>
+      </div>
+      <div class="flex justify-end items-center">
+        <div class="flex justify-end p-4">
+          <button
+            *ngIf="!editData"
+            (click)="activeEditProfileOrg()"
+            class="text-white rounded-md bg-[#3F2883] mt-[30px] mr-[60px] w-[142px] py-[5px] font-semibold font-poppins btn-edit"
+          >
+            Editar datos
+          </button>
+        </div>
+        <div class="flex justify-end p-4">
+          <button
+            *ngIf="!editData"
+            (click)="handleProfileDelete()"
+            class="text-white rounded-md bg-mediumViolet mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-eliminate"
+          >
+            Eliminar perfil
+          </button>
+        </div>
+      </div>
+
+      <!-- DATOS CAPTURADOS DEL BACK A EDITAR -->
+
+      <form
+        class="datos px-14 h-auto w-[100%]"
+        [formGroup]="userForm"
+        *ngIf="editData"
+        [ngClass]="fadeAnimationClass"
+      >
+        <p class="text-[32px] font-semibold my-6">
+          Editar datos de la Organización
+        </p>
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <label><strong>Nombre:</strong></label>
+          </div>
+          <div class="p-4 w-full">
+            <input
+              id="name"
+              name="name"
+              type="text"
+              formControlName="name"
+              class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg"
+            />
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <label><strong>CUIT:</strong></label>
+          </div>
+          <div class="p-4 w-full">
+            <input
+              id="cuit"
+              name="cuit"
+              type="text"
+              formControlName="cuit"
+              class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg"
+            />
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <label><strong>Ubicación:</strong></label>
+          </div>
+          <div class="p-4 w-full">
+            <input
+              id="location"
+              name="location"
+              type="text"
+              formControlName="location"
+              class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg"
+            />
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <label><strong>Teléfono:</strong></label>
+          </div>
+          <div class="p-4 w-full">
+            <input
+              id="phone"
+              name="phone"
+              type="text"
+              formControlName="phone"
+              class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg"
+            />
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <label><strong>Correo electrónico:</strong></label>
+          </div>
+          <div class="p-4 w-full">
+            <input
+              id="email"
+              name="email"
+              type="text"
+              formControlName="email"
+              class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg"
+            />
+          </div>
+        </div>
+
+        <div class="flex items-center capitalize">
+          <div class="w-1/6 p-4">
+            <strong>Categoría:</strong>
+          </div>
+          <div class="p-4 w-full">
+            <select
+              class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg text-[#cbd5e1]::placeholder"
+              (change)="onCategoryChange($event)"
+            >
+              <option value="" disabled selected hidden style="color: grey" class="capitalize">
+                {{ dataTabs.category }}
+              </option>
+              <option value="asistencia" class="capitalize">Medio ambiente y fauna</option>
+              <option value="educacion" class="capitalize">
+                Asistencia Social
+              </option>
+              <option value="salud" class="capitalize">Salud y discapacidad</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <label><strong>Description:</strong></label>
+          </div>
+          <div class="p-4 w-full">
+            <input
+              id="description"
+              name="description"
+              type="text"
+              formControlName="description"
+              class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg"
+            />
+          </div>
+        </div>
+
+        <div class="flex items-center">
+          <div class="w-1/6 p-4">
+            <label for="urlWebSite"><strong>WebSite:</strong></label>
+          </div>
+          <div class="p-4 w-full">
+            <input
+              id="urlWebSite"
+              name="description"
+              type="text"
+              formControlName="urlWebSite"
+              class="w-[100%] h-[40px] pl-2 border border-lightGray outline-none rounded-md sm:text-lg"
+            />
+          </div>
+        </div>
+
+        <div class="flex gap-4 justify-end p-4">
+          <button
+            (click)="declineEditProfile()"
+            class="text-white rounded-md bg-mediumViolet mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-edit"
+          >
+            Cancelar
+          </button>
+          <button
+            (click)="saveDataProfileOrg()"
+            class="text-white rounded-md bg-darkSlateBlue mt-[30px] mr-[60px] px-[15px] py-[5px] font-semibold font-poppins btn-edit"
+          >
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- !TAB 2 -->
+    <!-- CREAR VOLUNTARIADO -->
+
+    <div *ngIf="activeTab === 2" id="two">
+      <button
+        *ngIf="!newVolunteering"
+        (click)="activeNewVolunteering()"
+        class="text-white absolute rounded-md bg-mediumViolet mt-14 right-24 px-[15px] py-[5px] font-semibold font-poppins btn-add"
+      >
+        Crear nuevo voluntariado
+      </button>
+      <app-volunteers-table
+        (onEditVolunteering)="handleEditVolunteering($event)"
+        *ngIf="!newVolunteering"
+        [idOrg]="dataTabs.id"
+      ></app-volunteers-table>
+
+      <app-new-volunteering
+        *ngIf="newVolunteering"
+        [volunteerDataEdit]="volunteerDataEdit"
+        (declineNewVolunteering)="activeNewVolunteering()"
+        (newVolunteeringCompleted)="redirectToVolunteersTable()"
+      >
+      </app-new-volunteering>
+    </div>
+
+    <!-- !TAB 3 -->
+
+    <div *ngIf="activeTab === 3" id="three">
+      <app-completed-volunteering></app-completed-volunteering>
+    </div>
+  </div>
+</div>

@@ -1,21 +1,30 @@
-const Express = require('express');
+const express = require("express");
 
-// Middlewares:
-const rootPath = require('../middleware/root_path.middleware');
-const errors = require('../middleware/error_handler.middleware');
+const routes = express();
+const orgRouter = require("./organizacion");
+const userRouter = require("./usuario");
+const authRouter = require("./auth");
+const voluntariadoRouter = require("./voluntariado");
+const adminRouter = require("./admin");
 
-const app = Express();
+// // Middlewares:
+// const rootPath = require('../middleware/root_path.middleware');
+// const errors = require('../middleware/error_handler.middleware');
 
-// Rutas
-
-// use=
-app.use('/ping', (req, res) => {
+routes.use("/ping", (req, res) => {
   res.json({
-    response: 'pong!',
+    response: "pong!",
   });
 });
-app.use('/', rootPath.handler);
-app.use(rootPath.setHeaders);
-app.use(errors.handler);
 
-module.exports = app;
+routes.use("/organizacion", orgRouter);
+routes.use("/usuarios", userRouter);
+routes.use("/voluntariado", voluntariadoRouter);
+routes.use("/auth", authRouter);
+routes.use("/admin", adminRouter);
+
+// routes.use('/', rootPath.handler);
+// routes.use(rootPath.setHeaders);
+// routes.use(errors.handler);
+
+module.exports = routes;

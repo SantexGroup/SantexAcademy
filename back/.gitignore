@@ -28,4 +28,5 @@ npm-debug.log*
 .env
 /logs
 /package-lock.json
-
+.env.copy
+public/uploads/*
