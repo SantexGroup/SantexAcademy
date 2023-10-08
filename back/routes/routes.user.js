@@ -10,5 +10,5 @@ router.get("/", controller.getAll);
 router.get("/:id", controller.getOne);
 router.put("/:id", multerMId.single("profilePic"),  controller.edit);
 router.delete("/:id", controller.delete);
-
+router.post("/login", controller.login);
 module.exports = router;

@@ -1,7 +1,7 @@
 const usercontroller = {};
 const { error } = require("winston");
 const { User } = require("../models");
-const { router } = require("../routes");
+const { router, param } = require("../routes");
 const Op = require("sequelize").Op;
 
 /**
@@ -19,7 +19,7 @@ const Op = require("sequelize").Op;
  */
 usercontroller.create = async (req, res) => {
   try {
-    
+    console.log(req.body);
     //buscamos el usuario
     u = await User.findOne({
       where: {
@@ -32,25 +32,26 @@ usercontroller.create = async (req, res) => {
       },
     });
     if (u) {
-      console.log(u)
+      console.log(u);
       return res.status(400).json({ msg: "El usuario ya existe" });
     }
-    if(req.file){
-      req.body.profilePic  = process.env.DIRECCION +"/public/"+ req.file.filename
+    if (req.file) {
+      req.body.profilePic =
+        process.env.DIRECCION + "/public/" + req.file.filename;
     }
-    
+
     User.create(req.body);
     return res.status(200).json({ msg: "usuario creado correctamente" });
-  } catch(error) {
-    console.log(error)
+  } catch (error) {
+    console.log(error);
     return res.status(400).json({ msg: "Error creando el usuario" });
   }
 };
 //getOne
-usercontroller.getOne =  async  (req, res) => {
+usercontroller.getOne = async (req, res) => {
   User.findByPk(req.params.id)
     .then((user) => {
-       res.json(user);
+      res.json(user);
     })
     .catch((err) => {
       res.json(err);
@@ -58,7 +59,7 @@ usercontroller.getOne =  async  (req, res) => {
 };
 
 //get ALL
-usercontroller.getAll =  (req, res) => {
+usercontroller.getAll = (req, res) => {
   User.findAll()
     .then((user) => {
       res.json(user);
@@ -68,8 +69,8 @@ usercontroller.getAll =  (req, res) => {
     });
 };
 //edit
-usercontroller.edit =  async  (req, res) => {
-  req.body.profilePic  = process.env.DIRECCION +"/public/"+ req.file.filename
+usercontroller.edit = async (req, res) => {
+  req.body.profilePic = process.env.DIRECCION + "/public/" + req.file.filename;
   User.update(req.body, {
     where: {
       id: req.params.id,
@@ -83,7 +84,7 @@ usercontroller.edit =  async  (req, res) => {
     });
 };
 //delete
-usercontroller.delete =  async  (req, res) => {
+usercontroller.delete = async (req, res) => {
   User.destroy({
     where: {
       id: req.params.id,
@@ -95,5 +96,37 @@ usercontroller.delete =  async  (req, res) => {
     .catch((err) => {
       res.json(err);
     });
+};
+//login busca si coincide el mail o el  nombre de usuario y el password
+usercontroller.login = async (req, res) => {
+  try {
+    let parameter;
+    if (req.body.email) {
+      parameter = req.body.email;
+    } else {
+      parameter = req.body.username;
+    }
+    const user = await User.findOne({
+      where: {
+        [Op.or]: [
+          {
+            email: parameter
+          },
+          {
+            username: parameter
+          },
+        ],
+      },
+    });
+    if (!user) {
+      return res.status(400).json({ msg: "El usuario no existe" });
+    }
+    if (user.password !== req.body.password) {
+      return res.status(400).json({ msg: "Contraseña incorrecta" });
+    }
+    return res.status(200).json({ msg: "Bienvenido", user });
+  } catch (error) {
+    return res.status(400).json({ msg: "Error en el login" });
+  }
 };
 module.exports = usercontroller;
