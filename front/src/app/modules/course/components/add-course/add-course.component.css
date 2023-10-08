@@ -1,0 +1,52 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    background: var(--background-gradient);
+}
+
+.body {
+    text-align: center;
+    margin: 1vh;
+}
+
+.form-container {
+    background-color: VAR(--color-0);
+    padding: var(--font-size-3);
+    border-radius: 0.5rem;
+    box-shadow: VAR(--box-shadow-1);
+    max-width: 400px;
+    width: 60vh;
+    margin: 0 auto;
+}
+
+input {
+    font-size: 14px;
+    width: 100%;
+    padding: var(--font-size-1) var(--font-size-1);
+    margin: var(--font-size-1) 0;
+    box-sizing: border-box;
+    border-color: var(--color-3);
+}
+
+select {
+    font-size: var(--font-size-2);
+    width: 100%;
+    padding: var(--font-size-1) var(--font-size-1);
+    margin: var(--font-size-1) 0;
+    box-sizing: border-box;
+    border-color: var(--color-3);
+}
+
+textarea {
+    font-size: var(--font-size-1);
+}
+
+.btn-custom {
+    padding: 1vh;
+    background-color: VAR(--color-primary);
+    color: var(--color-0);
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
