@@ -42,6 +42,7 @@ import { BenefitsComponent } from './pages/benefits/benefits.component';
 
 
 import { FormContactComponent } from './components/form-contact/form-contact.component';
+import { ContactComponent } from './pages/contact/contact.component';
 import { ModalStatusComponent } from './components/modal-status/modal-status.component';
 
 
