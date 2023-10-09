@@ -10,10 +10,9 @@ h1 {
     color: #d68a96;
 }
 p, a {
-    width: 150px;
+    width: max-content;
     font-size: small;
     margin: 0;
-    
     font-weight: 600;
     cursor:default;
 }
@@ -31,10 +30,13 @@ span {
     width: 500px;
     /* display:inline-flexbox; */
 }
+#nombreVen {
+    display: flex;
+    
+}
 #nomArt span{
     width: 100%;;
     cursor: default;
-    width: 400px;
 }
 #articulo a {
     color: #bd394d;
@@ -56,11 +58,14 @@ img {
     width: 400px;
     
 }
+#datosArt {
+    width: 20%;
+}
 #general {
     display: flex;
     justify-content: center;  
     align-items: center;    
-    height: 75%;
+    height: 80%;
 }
 #recuadro {
     min-height: 90%;
@@ -86,7 +91,7 @@ img {
     width: 20%;
 }
 #datosVen p {
-    width: 150px;
+    width: 100%;
 }
 #descripcion {
     width: 30%;
@@ -111,9 +116,10 @@ img {
 #acciones {
     display:grid;
     align-content: end;
+    width: 13%;
 }
-#acciones p {
-    width: 50px;
+#acciones a {
+    margin-top: 2%;
 }
 #modArt {
     align-content: end;

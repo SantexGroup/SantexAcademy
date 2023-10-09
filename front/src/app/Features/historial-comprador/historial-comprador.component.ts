@@ -12,6 +12,7 @@ export class HistorialCompradorComponent implements OnInit {
   
   idCom: number = 0;
   nomCom: string = '';
+  date: Date = new Date;
 
   listcategorias: any[] = [];
   articulos: any = [];  
@@ -23,6 +24,8 @@ export class HistorialCompradorComponent implements OnInit {
     idArt: 0,
     desArt: '',
     preArt: '',
+    fecArt: '',
+    retArt: '',
     envArt: '',
     idCat: 0,
   };
@@ -63,20 +66,24 @@ export class HistorialCompradorComponent implements OnInit {
       if (JSON.stringify(res.message) == '"Usuario sin productos publicados"') {
         alert("No tiene productos cargados");
       }
-      //reemplazar nomVen, idArt, imaArt, nomArt, desArt, preArt y envArt
+      //reemplazar imaArt, idArt, nomVen, nomArt, desArt, preArt, fecArt y envArt
       for (let i=0; i < res.length; i++) {
         console.log("Imagen prod: " + i + JSON.stringify(res[i].Product));
         this.modelo.imaArt = this.servidor + res[i].Product.Images[0].url;
-        console.log("Img:" + this.respuesta[i].Product.Images[0])
         this.modelo.idArt = res[i].idProducto;
-        // this.modelo.nomVen = ;
-        this.modelo.nomArt = res[i].Product.nombre;
-        this.modelo.desArt = res[i].Product.detalles;
+        this.modelo.nomVen = res[i].Product.User.firstName.charAt(0).toUpperCase() + res[i].Product.User.firstName.slice(1) + ' ' + (res[i].Product.User.lastName.charAt(0).toUpperCase() + res[i].Product.User.lastName.slice(1));
+        this.modelo.nomArt = res[i].Product.nombre.charAt(0).toUpperCase() + res[i].Product.nombre.slice(1);
+        this.modelo.desArt = res[i].Product.detalles.charAt(0).toUpperCase() + res[i].Product.detalles.slice(1);;
         this.modelo.preArt = res[i].Product.id;
-        if(res[i].Product.envio) {
+        this.modelo.fecArt = res[i].createdAt.slice(0, 10);
+        this.date = new Date(res[i].createdAt);
+        this.date.setDate( this.date.getDate() + 3 );  ;
+        this.modelo.retArt = JSON.stringify(this.date)
+        this.modelo.retArt = JSON.stringify(this.modelo.retArt.slice(0, 11));
+        if(res[i].modoEnvio == true) {
           this.modelo.envArt = 'Envío y retiro';
         }else {
-          this.modelo.envArt = 'Retiro';
+          this.modelo.envArt = 'En local';
         }  
         //reemplazar categoria
         if (this.modelo.catArt == '') {
@@ -100,7 +107,7 @@ export class HistorialCompradorComponent implements OnInit {
     localStorage.setItem('idCat', idCat.toString());
     this.router.navigate(['/']);
   }
-  visualizar(idProd: number) {
+  redirigirProducto(idProd: number) {
     localStorage.setItem('idProd', idProd.toString());
     this.router.navigate(['vista-articulo']);
   }

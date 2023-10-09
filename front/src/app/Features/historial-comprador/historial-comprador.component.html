@@ -10,19 +10,23 @@
                 <img [src]="articulo.imaArt">
             </div>
             <div id="datosVen">
-                <p id="nomArt">Nombre: <span>{{articulo.nomArt}}</span></p>
-                <p id="nombreVen">Vendedor: {{articulo.nomVen}}</p>
+                <p id="nomArt">Nombre: <span (click)="redirigirProducto(articulo.idArt)">{{articulo.nomArt}}</span></p>
+                <p id="nombreVen">Vendedor: <span>{{articulo.nomVen}}</span></p> <!-- no se agrega el espacio después de vendedor -->
                 <p id="catArt">Categoría: <span (click)="redirigirCategoria(articulo.catArt)">{{articulo.catArt}}</span></p>
             </div>
             <div id="descripcion">
                 <p id="desArt">{{articulo.desArt}}</p>
             </div>
             <div id="datosArt">
-                <p id="envArt">Entrega: <span>{{articulo.envArt}}</span></p>
-                <p id="preArt">Precio: <span>${{articulo.preArt}}</span></p>
+                <p id="fecArt">Fecha alquiler: <span>{{articulo.fecArt | date}}</span></p>
+                <P>Fecha devolución: <span>{{articulo.retArt | date}}</span></P>
+                <p id="envArt">Entrega y devolución: <span>{{articulo.envArt}}</span></p>
+                
             </div>
             <div id="acciones"> 
-                <a id="verArt" (click)="visualizar(articulo.idArt)">Visualizar Artículo</a>
+                <p id="preArt">Precio: <span>${{articulo.preArt}}</span></p>
+                <a id="verArt" (click)="redirigirProducto(articulo.idArt)">Visualizar Artículo</a>
+                <a>Ver comprobante</a>
             </div>
         </div>
     </div>

@@ -18,13 +18,13 @@
       <div *ngIf="logeadoComprador || logeadoVendedor" class="link">
         <div class="content" [routerLink]="['/misCompras']" [routerLinkActive]="'active'">
         <i class="fa-solid fa-cart-shopping"></i>
-          <div class="title">Mis Compras</div>
+          <div class="title" (click)="redirigirCompras()">Mis Compras</div>
         </div>
       </div>
       <div *ngIf="logeadoVendedor" class="link">
         <div class="content" [routerLink]="['/misVentas']" [routerLinkActive]="'active'">
             <i class="fa-solid fa-handshake"></i>
-          <div class="title">Mis Ventas</div>
+          <div class="title" (click)="redirigirVentas()">Mis Ventas</div>
         </div>
       </div>
       <div (click)="botonVendedor()" *ngIf="logeadoComprador" class="link">
