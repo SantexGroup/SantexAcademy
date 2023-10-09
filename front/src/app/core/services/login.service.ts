@@ -8,12 +8,12 @@ import { LoginData } from '../interfaces/login';
 })
 export class LoginService {
 
-  url = "http://localhost:4001/api/users"
+  url = "http://localhost:4001/api/auth"
 
   constructor(private http: HttpClient) { }
 
   login(data:LoginData) {
-    return this.http.get<User>(this.url+"/email/"+data.email);
+    return this.http.post<User>(this.url, data);
   }
 
 

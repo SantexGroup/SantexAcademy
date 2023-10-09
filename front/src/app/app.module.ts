@@ -19,6 +19,7 @@ import { EditScheduleComponent } from './modules/admin-panel/schedules/edit-sche
 import { CategoryComponent } from './modules/admin-panel/categories/category.component';
 import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.component';
 import { CourseComponent } from './modules/admin-panel/courses/course.component';
+import { LoginComponent } from './modules/login/login/login.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { CourseComponent } from './modules/admin-panel/courses/course.component'
     EditScheduleComponent,
     CategoryComponent,
     ScheduleComponent,
-    CourseComponent
+    CourseComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

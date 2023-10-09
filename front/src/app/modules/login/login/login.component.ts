@@ -5,6 +5,7 @@ import { LoginData } from 'src/app/core/interfaces/login';
 import { LoginService } from 'src/app/core/services/login.service';
 import { User } from 'src/app/core/interfaces/user';
 import { UserService } from 'src/app/core/services/user.service';
+import { LoginModule } from './login.module';
 
 @Component({
   selector: 'app-login',
@@ -53,17 +54,19 @@ export class LoginComponent implements OnInit {
 
     login () {
       if(this.loginForm.valid){
-        this.loginSvc.login(this.loginForm.value as LoginData).subscribe((user: User) => {
-          this.loginUser = this.loginForm.value as LoginData;
-          this.loggedUser = user;
-          console.log(this.loginUser, this.loggedUser);
-          if (this.loginUser.password === this.loggedUser.password) {
-            this.router.navigateByUrl('/dashboard');
+        this.loginSvc.login(this.loginForm.value as LoginData).subscribe({
+          next: (userData) => {
+            console.log(userData)
+          },
+          error: (errorData) => {
+            console.error(errorData)
+            this.loginError = "Email o contraseña incorrecta."
+          },
+          complete: () => {
+            this.router.navigateByUrl('');
             this.loginForm.reset();
-            } else {
-              this.loginError = "Usuario o contraseña incorrecta.";
-            }
-          }) 
+          }
+      })
         } else {
           this.loginError = "Error al ingresar los datos."
         }}}

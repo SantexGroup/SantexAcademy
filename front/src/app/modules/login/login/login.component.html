@@ -1,11 +1,15 @@
 <body>
     <div class="signup-a">
-        <h1>Iniciar Sesión</h1>
-    <form [formGroup] = "loginForm">
-       <div>
-        <p class="texto">No tienes cuenta?<a> ¡Crea una! </a> Te tomara menos de un minuto.</p>
-       </div>
-       <p class="text-danger">{{loginError}}</p>
+        <div class="container">
+            <div class="text-center">
+            <h2>¡Bienvenido a la Incubadora del NOC!</h2>
+            <img src="../assets/img/LOGIN-INCUBADORA-1-LOGO.png" class="img-fluid">
+            <h2>Iniciar Sesión</h2>
+            </div>
+        <form [formGroup] = "loginForm">
+        <div class="text-center">
+            <p class="txt" style="color: gray; font-size: 13px;">No tienes cuenta? <a href="" > ¡Crea una! </a> Te tomara menos de un minuto.</p>
+        <p class="text-danger">{{loginError}}</p>
         <label for="username"> Email </label>
         <input formControlName= "email" type="email" class="form-control" placeholder="ejemplo@tuemail.com" id="email">
 
@@ -38,10 +42,15 @@
             <a class="contra" href="#">Olvidaste la contraseña?</a><br>
         </div>
 
-        <button id="button" class="btn" (click)="login()">Iniciar Sesión</button>     
-    </form>
+            <p class="txt" style="color: gray; font-size: 13px;">Si todavía no autenticaste tu usuario, <a href="/createnewcode">haz click aquí</a> </p>
+        
 
+        <button id="button" class="btn" (click)="login()">Iniciar Sesión</button>  
+    </div>   
+    </form>
     </div>
+    </div>
+               
    
 </body>
  

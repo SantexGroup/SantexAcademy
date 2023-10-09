@@ -12,6 +12,7 @@ import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.comp
 import { AddScheduleComponent } from './modules/admin-panel/schedules/add-schedule/add-schedule.component';
 import { EditScheduleComponent } from './modules/admin-panel/schedules/edit-schedule/edit-schedule.component';
 import { CourseComponent } from './modules/admin-panel/courses/course.component';
+import { LoginComponent } from './modules/login/login/login.component';
 
 const routes: Routes = [
   {
@@ -51,8 +52,7 @@ const routes: Routes = [
     path: 'curso/:id',component:DescriptionCourseComponent
   },
   {
-    path: 'login',
-    loadChildren: () => import ('./modules/login/login.module').then(m => m.LoginModule),
+    path: 'login', component: LoginComponent
   },
   {
     path: '**',

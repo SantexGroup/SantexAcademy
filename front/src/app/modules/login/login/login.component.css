@@ -3,35 +3,32 @@ body {
     padding: 0;
     font-family: sans-serif;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .signup-a{
-    width: 900px;
-    height: 600px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    width: 500px;
+    height: 680px;
+    margin: 60px;
     background: white;
     color: black;
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
     box-sizing: border-box;
     padding: 20px 30px;
     border-radius: 10px;
     box-shadow: 5px 5px 15px rgb(5, 34, 112);
 }
 
-.signup-a h1{
-    margin: 0;
-    padding: 40px 0px 1px 315px;
-    text-align: center;
-    font-size: 40px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight:bolder;
-}
+.img-fluid {
+    max-width: 25%;
+};
 
-.signup-a .texto{
+.signup-a .text-center p{
     margin: 0;
-    padding: 0 0px 40px 450px;
     text-align:left;
     font-size: 13px;
     font-family: Arial, Helvetica, sans-serif;
@@ -39,7 +36,7 @@ body {
     color: rgb(164, 163, 163);
 }
 
-.signup-a .texto a{
+.signup-a .text-center a{
     margin: 0;
     padding:1px;
     font-size: 13px;
@@ -47,19 +44,19 @@ body {
     cursor: pointer;
 }
 
-.signup-a .texto a:hover {
-    color: rgb(216, 142, 3);
+.signup-a .text-center a:hover {
+    color: rgb(218, 142, 1);
 }
 
 .signup-a label{
     margin: 0;
-    padding: 0px 0px 0px 450px;
     font-weight: bold;
     display: block;
     font-size: 15px;
     height: 35px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .signup-a .rm{
@@ -72,13 +69,12 @@ body {
 .signup-a input{
     width: 100%;
     margin-bottom: 10px;
-    margin-left: 450px;
     margin-top: 10px;
 }
 
 .signup-a input[type="email"],
 .signup-a input[type="password"]{
-    width: 300px;
+    width: 100%;
     border: none;
     border-bottom: 1px solid rgb(0, 0, 0);
     background: transparent;
@@ -90,7 +86,6 @@ body {
 
 .signup-a .text-danger {
     margin-top: 0px;
-    margin-left: 450px;
     font-size: 12px;
 }
 
@@ -104,7 +99,6 @@ form button{
     outline: none;
     height: 40px;
     width: 300px;
-    margin: 30px 0px 20px 490px;
     background: orange;
     color: white;
     font-size: 23px;
@@ -120,15 +114,13 @@ form button:hover {
 
 
 
-.signup-a  .contra{
+.signup-a .text-center .contra{
     text-decoration: none;
     font-size: 15px;
     line-height: 40px;
     color: gray;
-    padding: 0px 0px 0px 50px;
-    margin: 0px 0px 0px 600px; 
 }
 
-.signup-a a:hover{
+/* .signup-a a:hover{
     color:orange;
-}
+} */
