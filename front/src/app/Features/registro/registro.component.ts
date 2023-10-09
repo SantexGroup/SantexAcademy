@@ -22,23 +22,17 @@ export class RegistroComponent implements OnInit {
 
   listprovincias: any[] = [];
   listlocalidades: any[] = [];
-
   mensajeRegistro: string = '';
 
   constructor(private service: RegistroService, private mensajeService: MensajeService, private router: Router) { }
 
   ngOnInit(): void {
-
     this.service.getProvincias().subscribe(provincias => {this.listprovincias = provincias});
-
   }
 
   actualizarLocalidades() {
-
     this.service.getLocalidades(this.proReg).subscribe(localidades => {this.listlocalidades = localidades});
   }
-
-
   botReg() {
     if (this.corReg && this.pasReg && this.aliReg && this.nomReg && this.apeReg && this.dniReg && this.proReg && this.locReg && this.dirReg) {
       console.log(this.corReg + this.pasReg);

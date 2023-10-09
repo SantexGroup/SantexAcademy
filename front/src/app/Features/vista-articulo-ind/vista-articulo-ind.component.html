@@ -9,7 +9,11 @@
         </div>
         <!-- Info -->
         <div id="datos" *ngIf="respuesta">
-            <!-- Nombres -->
+            <!-- icono -->
+            <div id="divIcon">
+                <img id="flechaIcon" routerLink=".." src="../../../assets/flechaIcon.png">
+            </div>
+            <!-- Nombres -->            
             <div id="divTitulo">
                 <div class="d-flex justify-content-center">
                     <p id="nombreProd" >{{nombreArt}}</p>
@@ -119,6 +123,5 @@
             </div>
         </div>
     </div>
-
-
+<app-footer></app-footer>
 </div>

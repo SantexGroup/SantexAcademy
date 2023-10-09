@@ -180,4 +180,7 @@ export class VistaArtIndComponent implements OnInit {
     }
     //this.router.navigate(['confirmacion-articulo']);
   }  
+  redireccion() {
+    //this.router.navigate(['confirmacion-articulo']);
+  }
 }

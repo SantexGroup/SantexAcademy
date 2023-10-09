@@ -1,5 +1,12 @@
 
-/* Cartel no logueados */
+/* General */
+#general {
+  height: 60%;
+}
+#titulo {
+  display:grid;
+  justify-content: center;
+}
 p {
   background-color: #f2f2f2; 
   border: 1px solid #ff0000; 
@@ -11,15 +18,6 @@ p {
   margin-top: 10px ; 
   text-align: center; 
   font-weight: bold;
-}
-/* General */
-#general {
-  height: 60%;
-}
-/* Título */
-#titulo {
-  display:grid;
-  justify-content: center;
 }
 h2 {
   font-size: 30px;

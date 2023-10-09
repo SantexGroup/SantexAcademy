@@ -9,28 +9,22 @@
     </div>
     <!-- Formulario -->
     <div class="formulario" *ngIf="confVendedor">
-        <form id="form-art" action="#" class="form" method="post" enctype="multipart/form-data" [formGroup]="formUp">
+        <form id="form-art" class="form" action="#" method="post" enctype="multipart/form-data" [formGroup]="formUp">
             <div class="row">
             <!-- Columna izquierda -->
                 <div class="media_columna">
                     <div class="campo">
-                        <label for="nombre">Nombre del producto 
-                            <span>(indique un nombre nuevo)</span>
-                            </label>
+                        <label for="nombre">Nombre del producto<span>(indique un nombre nuevo)</span></label>
                         <input type="text" name="nombre" formControlName="nomReg" value="{{nomArt}}"required>
                     </div>
                     <!-- Descripción -->
                     <div class="campo">
-                        <label for="descripcion">Descripción 
-                            <span>(ingrese una nueva descripción)</span>
-                        </label>
+                        <label for="descripcion">Descripción<span>(ingrese una nueva descripción)</span></label>
                         <textarea formControlName="desReg" name="descripcion" rows="4" value="{{descArt}}" required></textarea>
                     </div>
                     <!-- Precio -->
                     <div class="campo">
-                        <label for="precio">Precio 
-                            <span>(ingrese el precio actualizado)</span>
-                        </label>
+                        <label for="precio">Precio<span>(ingrese el precio actualizado)</span></label>
                         <div class="precio-input">
                             <span class="peso-sign">$</span>
                             <input id="precio" formControlName="preReg" type="number" name="precio" step="1.00" value="{{precioArt}}" required>
@@ -41,9 +35,7 @@
                 <div class="media_columna_der">
                     <!-- Categorías -->
                     <div class="campo">
-                        <label for="categorias">Categorias 
-                            <span>(seleccione una categoría nueva)</span>
-                        </label>
+                        <label for="categorias">Categorias<span>(seleccione una categoría nueva)</span></label>
                         <select formControlName="catReg" name="categoria">
                             <option value="0">{{catArt}}</option>
                             <option *ngFor="let categoria of cat" [value]="categoria.id">{{ categoria.name.charAt(0).toUpperCase() + categoria.name.slice(1) }}</option>
@@ -52,8 +44,7 @@
                     </div>
                     <!-- Imágenes -->
                     <div class="campo">
-                        <label>Cargar Imágenes <span>(imágenes a reemplazar) </span>
-                        </label>
+                        <label>Cargar Imágenes <span>(imágenes a reemplazar) </span></label>
                         <label id="botonCargar"for="imagenes">{{textoCarga}}</label>
                         <input type="file" id="imagenes" name="images" formControlName="images" (change)="reemplazarImagen($event)" accept="image/*"multiple />
                         <div class="imagenes-container">
@@ -66,9 +57,7 @@
                     </div>
                     <!-- Envío -->
                     <div class="campo">
-                        <label for="envio">Opción de envío 
-                            <span>(nueva opción de envío)</span>
-                        </label>
+                        <label for="envio">Opción de envío<span>(nueva opción de envío)</span></label>
                         <select formControlName="envReg" id="envio" name="envio" required>
                             <option *ngFor="let envio of envios" [value]="envios.indexOf(envio)">{{ envio }}</option>
                         </select>
