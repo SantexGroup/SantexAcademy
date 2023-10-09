@@ -203,6 +203,24 @@ const deleteUser = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+const inscription = async (req, res) => {
+  const { idCourse, idUser } = req.body;
+  try {
+    const inscriptionSelect = await UserService.inscription(idCourse, idUser);
+    return res.status(200).json(inscriptionSelect);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+const removeCourseRegistration = async (req, res) => {
+  const { idCourse, idUser } = req.params;
+  try {
+    const remove = await UserService.removeCourseRegistration(idCourse, idUser);
+    return res.status(200).json(remove);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 
 // exports
 module.exports = {
@@ -213,6 +231,8 @@ module.exports = {
   deleteUser,
   updatePassword,
   getUserByEmail,
+  inscription,
+  removeCourseRegistration,
   validateCode,
   createCode,
 };

@@ -27,6 +27,8 @@ const {
   updateUser,
   deleteUser,
   updatePassword,
+  inscription,
+  removeCourseRegistration,
   validateCode,
   createCode,
 } = require('./userController');
@@ -69,6 +71,8 @@ const UserController = {
   updateUser,
   deleteUser,
   updatePassword,
+  inscription,
+  removeCourseRegistration,
   validateCode,
   createCode,
 };

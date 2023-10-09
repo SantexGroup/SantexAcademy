@@ -16,6 +16,12 @@ export class UserService {
   postUser(user: User){
     return this.httpUser.post(this.apiUrl, user)
   }
+  getUserByEmail(email:string){
+    return this.httpUser.get(this.apiUrl+"/email/"+ email)
+  }
+  removeCourseRegistration(idCourse:number,idUser:number ){
+    return this.httpUser.delete(this.apiUrl+"/removeinscription/"+idCourse+"/"+idUser)
+  }
   validateCode(email:string, code:string){
     return this.httpUser.get(this.apiUrl+"/verificar-email/"+email+"/"+code)
   }
@@ -23,8 +29,6 @@ export class UserService {
     const requestBody = { email }; 
     return this.httpUser.post(this.apiUrl+ "/createnewcode", requestBody)
   }
-  getUserByEmail(email:string){
-    return this.httpUser.get(this.apiUrl+"/"+ email)
-  }
+
 
 }

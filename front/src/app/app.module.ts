@@ -21,6 +21,7 @@ import { CategoryComponent } from './modules/admin-panel/categories/category.com
 import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.component';
 import { CourseComponent } from './modules/admin-panel/courses/course.component';
 import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
+import { InscriptionsComponent } from './modules/inscriptions/inscriptions.component';
 import { CONTACTANOSComponent } from './modules/contactanos/contactanos.component';
 import { ValidationEmailComponent } from './modules/validationsUsers/validation-email/validation-email.component';
 import { CreateNewCodeComponent } from './modules/validationsUsers/create-new-code/create-new-code.component';
@@ -52,6 +53,7 @@ import { ShowAboutUsComponent } from './modules/show-about-us/show-about-us.comp
     ScheduleComponent,
     CourseComponent,
     DashboardPageComponent,
+    InscriptionsComponent,
     CONTACTANOSComponent,
     AboutUsComponent,
     AddAboutUsComponent,

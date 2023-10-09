@@ -27,6 +27,8 @@ const {
   getUsers,
   updateUser,
   patchUser,
+  inscription,
+  removeCourseRegistration,
   validateCode,
   createCode,
 } = require('./userService');
@@ -68,6 +70,8 @@ const UserService = {
   getUsers,
   updateUser,
   patchUser,
+  inscription,
+  removeCourseRegistration,
   validateCode,
   createCode,
 };

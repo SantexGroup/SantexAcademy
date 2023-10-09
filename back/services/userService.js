@@ -14,6 +14,11 @@ const patchUser = async (id, newPassword) => UserProvider.patchUser(id, newPassw
 
 const deleteUser = async (id) => UserProvider.deleteUser(id);
 
+const inscription = async (idCourse, idUser) => UserProvider.inscription(idCourse, idUser);
+/* eslint-disable */
+const removeCourseRegistration = async (idCourse, idUser) => 
+UserProvider.removeCourseRegistration(idCourse, idUser);
+/* eslint-enable */
 const validateCode = async (code, email) => UserProvider.validateCode(code, email);
 
 const createCode = async (email) => UserProvider.createCode(email);
@@ -25,6 +30,8 @@ module.exports = {
   deleteUser,
   patchUser,
   getUserByEmail,
+  inscription,
+  removeCourseRegistration,
   validateCode,
   createCode,
 };

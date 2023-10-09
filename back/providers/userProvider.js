@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
-const { User } = require('../models');
+const { User, Registered, Course } = require('../models');
 const transporter = require('../helpers');
+
 
 const createUser = async (userData) => {
   try {
@@ -14,6 +15,12 @@ const getUserById = async (id) => {
   try {
     const user = await User.findByPk(id, {
       attributes: { exclude: ['password'] },
+      include: [
+        {
+          model: Registered,
+          include: [Course],
+        },
+      ],
     });
     return user;
   } catch (error) {
@@ -24,6 +31,14 @@ const getUserByEmail = async (option) => {
   try {
     const user = await User.findOne({
       where: { email: option },
+      include: [
+        {
+          model: Registered,
+          include: [Course],
+        },
+      ],
+    });
+    return user;
     });
     return user;
   } catch (error) {
@@ -102,7 +117,6 @@ const createCode = async (email) => {
 
     const transporterSe = await transporter.sendMail({
       from: process.env.EMAIL,
-      /* to:user.email, */
       to: user.email,
       subject: 'Código de valdiacion de email: ',
       html: htmlBody,
@@ -189,6 +203,27 @@ const validateUser = async (email, password) => {
     return false;
   }
 };
+const inscription = async (idCourse, idUser) => {
+  try {
+    const relation = await Registered.create({
+      idUser,
+      idCourse,
+    });
+    return relation;
+  } catch (error) {
+    throw ('Error:', error);
+  }
+};
+const removeCourseRegistration = async (idCourseSelect, idUserSelect) => {
+  try {
+    const relation = await Registered.findOne(
+      { where: { idCourse: idCourseSelect, idUser: idUserSelect } },
+    );
+    return relation.destroy({ where: { id: relation.id } });
+  } catch (error) {
+    throw ('Error:', error);
+  }
+};
 
 module.exports = {
   createUser,
@@ -199,6 +234,8 @@ module.exports = {
   updateUser,
   patchUser,
   validateUser,
+  inscription,
+  removeCourseRegistration,
   validateCode,
   createCode,
 };
