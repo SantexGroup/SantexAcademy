@@ -39,6 +39,8 @@ export class UserDataService {
 
   phone = "" || localStorage.getItem('phone');
 
+  email = "" || localStorage.getItem('email');
+
   urlPicture = "";
 
   constructor(
