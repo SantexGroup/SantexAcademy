@@ -14,7 +14,7 @@ const join = async (req, res) => {
     );
     res.status(201).json({ action: "join", postulation });
   } catch (err) {
-    res.status(500).json({ action: "join", error: "Internal server error." });
+    res.status(500).json({ action: "join", error: err.message });
   }
 };
 
