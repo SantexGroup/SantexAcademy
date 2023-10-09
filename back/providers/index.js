@@ -29,7 +29,17 @@ const {
   patchUser,
   inscription,
   removeCourseRegistration,
+  validateCode,
+  createCode,
 } = require('./userProvider');
+
+const {
+  createAboutUS,
+  deleteAboutUS,
+  updateAboutUS,
+  getAboutUSById,
+  getAboutUSs,
+} = require('./aboutUSProvider');
 
 const CourseProvider = {
   createCourse,
@@ -62,7 +72,17 @@ const UserProvider = {
   patchUser,
   inscription,
   removeCourseRegistration,
+  validateCode,
+  createCode,
+};
+
+const AboutUSProvider = {
+  createAboutUS,
+  deleteAboutUS,
+  updateAboutUS,
+  getAboutUSById,
+  getAboutUSs,
 };
 module.exports = {
-  CourseProvider, CategoryProvider, ScheduleProvider, UserProvider,
+  CourseProvider, CategoryProvider, ScheduleProvider, UserProvider, AboutUSProvider,
 };

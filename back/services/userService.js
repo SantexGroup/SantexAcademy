@@ -19,6 +19,9 @@ const inscription = async (idCourse, idUser) => UserProvider.inscription(idCours
 const removeCourseRegistration = async (idCourse, idUser) => 
 UserProvider.removeCourseRegistration(idCourse, idUser);
 /* eslint-enable */
+const validateCode = async (code, email) => UserProvider.validateCode(code, email);
+
+const createCode = async (email) => UserProvider.createCode(email);
 module.exports = {
   getUserById,
   getUsers,
@@ -29,4 +32,6 @@ module.exports = {
   getUserByEmail,
   inscription,
   removeCourseRegistration,
+  validateCode,
+  createCode,
 };

@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../interfaces/user';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -21,5 +22,13 @@ export class UserService {
   removeCourseRegistration(idCourse:number,idUser:number ){
     return this.httpUser.delete(this.apiUrl+"/removeinscription/"+idCourse+"/"+idUser)
   }
+  validateCode(email:string, code:string){
+    return this.httpUser.get(this.apiUrl+"/verificar-email/"+email+"/"+code)
+  }
+  createCode(email:string):Observable<any>{
+    const requestBody = { email }; 
+    return this.httpUser.post(this.apiUrl+ "/createnewcode", requestBody)
+  }
+
 
 }
