@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Language } from 'src/app/core/interfaces/language.interface';
 import { Profile } from 'src/app/core/interfaces/profile.interface';
 import { Skill } from 'src/app/core/interfaces/skill.interface';
@@ -24,7 +25,8 @@ export class ModalAddComponent implements OnInit {
     public userData: UserDataService,
     private fb: FormBuilder,
     private _profileService: ProfileService,
-    private _profileTool: ProfilesToolService
+    private _profileTool: ProfilesToolService,
+    private toastr: ToastrService
   ) {
     this.profileForm = this.fb.group({
       userId: this.userData.userId,
@@ -39,6 +41,7 @@ export class ModalAddComponent implements OnInit {
     this.userData.getListFormations();
     this.userData.getReference();
     this.userData.getSkill();
+    this.userData.getPersonal();
     this._profileTool.newExperiences = [];
     this._profileTool.newFormations = [];
     this._profileTool.newOptionals = [];
@@ -77,6 +80,7 @@ export class ModalAddComponent implements OnInit {
     this._profileTool.newExperiences = element.Experiences!
     this._profileTool.newFormations = element.Formations!
     this._profileTool.newOptionals = element.Optionals!
+    this._profileTool.address = element.Optionals![0].address
     this._profileTool.newReferences = element.References!
   }
 
@@ -110,6 +114,7 @@ export class ModalAddComponent implements OnInit {
       this.userData.getMyOptionals();
     } else {
       this._profileTool.newOptionals.push(element)
+      this._profileTool.address = element.address
       this.userData.optionals = this._profileTool.newOptionals;
     }
   }
@@ -176,9 +181,10 @@ export class ModalAddComponent implements OnInit {
           this._profileTool.postAllFormations(data.id);
           this._profileTool.postAllLanguage(data.id);
         }
+        this.toastr.success('Su perfil se guardo correctamente', 'PERFILES')
       },
-      error: (error) => {
-        console.log(error);
+      error: () => {
+        this.toastr.error('El perfil no se pudo guardar', 'PERFILES')
       }
     })
   }
