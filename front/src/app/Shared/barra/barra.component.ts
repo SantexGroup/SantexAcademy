@@ -44,10 +44,10 @@ export class BarraComponent implements OnInit {
         this.listArticulosId.push(JSON.stringify(this.listArticulosFilt[i].id));
         localStorage.setItem('idProdsBus', JSON.stringify(this.listArticulosId)); 
         localStorage.setItem('texBus', this.textoTip);
-      }
+      };
       this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
         this.router.navigate(['/vista-por-texto']).then(()=>{})
-      })
+      });
     }
   }
 }

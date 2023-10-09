@@ -1,4 +1,4 @@
-const { Alquiler, Products } = require('../models');
+const { Alquiler, Products, Images, User } = require('../models');
 
 async function getAlquileresByIdComprador(idComprador) {
   const alquileres = await Alquiler.findAll({
@@ -6,7 +6,7 @@ async function getAlquileresByIdComprador(idComprador) {
       idComprador,
 
     },
-    include: [{ model: Products }],
+    include: { model: Products, include: [{ model: Images }], include: [{ model: User }]},
   });
   return alquileres;
 }
