@@ -16,11 +16,11 @@ import { CONTACTANOSComponent } from './modules/contactanos/contactanos.componen
 
 const routes: Routes = [
   {
-    path: '', component:CONTACTANOSComponent
+     path: '', component:HomePageComponent
   },
-  // {
-  //   path: '', component:HomePageComponent
-  // },
+  {
+    path: 'contactanos', component:CONTACTANOSComponent
+  },
   {
     path:'admin/panel', component:AdminPanelComponent
   },
