@@ -9,13 +9,16 @@ const logger = require('../utils/winston.logger');
 
 const config = {
   development: {
-    logging: (msg) => logger.api.debug(`Database: ${process.env.DB_DATABASE} - ${msg}`),
+    logging: (msg) => logger.api.debug(`Database: ${process.env.DATABASE_URL} - ${msg}`),
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     port: process.env.DB_PORT,
     host: process.env.DB_HOST,
     dialect: 'mysql',
+    dialectOptions: {
+      ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: true } : false,
+    },
     operatorsAliases: '0',
   },
   test: {
@@ -26,6 +29,9 @@ const config = {
     port: process.env.DB_PORT,
     host: process.env.DB_HOST,
     dialect: 'mysql',
+    dialectOptions: {
+      ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: true } : false,
+    },
     operatorsAliases: '0',
   },
   production: {
@@ -36,6 +42,9 @@ const config = {
     port: process.env.DB_PORT,
     host: process.env.DB_HOST,
     dialect: 'mysql',
+    dialectOptions: {
+      ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: true } : false,
+    },
     operatorsAliases: '0',
   },
 };
