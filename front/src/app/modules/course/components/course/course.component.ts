@@ -24,5 +24,26 @@ export class CourseComponent implements OnInit {
       }
     });
   }
+
+  deleteCourse() {
+    if (this.course && this.course.id) {      
+      this.courseService.deleteCourseById(this.course.id).subscribe(
+        () => {
+          console.log('Curso eliminado exitosamente');
+          alert("El Curso se eliminó correctamente")
+          this.router.navigate(['/course-list']);
+        },
+        (error) => {
+          console.error('Error al eliminar curso:', error);
+          alert("Error al eliminar el curso")
+        }
+      );
+    }
+  }
+  
+
+  redirectToEditCourse(courseId: number) {
+    this.router.navigate([`/course/edit-course/${courseId}`]);
+  }
  
 }

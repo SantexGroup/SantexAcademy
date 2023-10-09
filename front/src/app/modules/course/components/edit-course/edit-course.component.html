@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+
+<div class="wrapper">
+  <div class="row align-items-center">
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text">Editar Usuario</p>
+      </div>
+
+      <form #editForm="ngForm" (submit)="editCourse()">
+
+        <div class="form-row mb-2">
+          <div class="form-group col-12">
+            <input type="text" [(ngModel)]="course.name" name="name" class="form-control" required
+              placeholder="Nombre" minlength="2">
+          </div>
+
+          <div class="form-group col-12">
+            <input type="text" [(ngModel)]="course.description" name="description" class="form-control" required
+              placeholder="Descripción" minlength="2">
+          </div>
+
+          <div class="form-group col-12">
+            <input type="text" [(ngModel)]="course.image" name="image" class="form-control" required
+              placeholder="URL imagen" minlength="6">
+          </div>         
+        </div>
+
+        <button type="submit" class="btn btn-primary">Actualizar</button> 
+      </form>
+    </div>
+  </div>
+</div>
