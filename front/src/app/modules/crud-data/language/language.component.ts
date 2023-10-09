@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Language } from 'src/app/core/interfaces/language.interface';
 import { LanguagesService } from 'src/app/core/services/languages.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
@@ -26,8 +26,8 @@ export class LanguageComponent implements OnInit {
     public toastr: ToastrService
   ) {
     this.languageForm = this.fb.group({
-      language: '',
-      level: '',
+      language: ['', [ Validators.pattern('^[a-zA-Z ]*$'), Validators.maxLength(45) ]],
+      level: [''],
     })
 
   }

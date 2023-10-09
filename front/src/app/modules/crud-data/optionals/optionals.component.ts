@@ -34,19 +34,19 @@ export class OptionalsComponent implements OnInit {
     public toastr: ToastrService
   ) {
     this.optionalsForm = this.fb.group({
-      maritalId: ['', Validators.required],
-      sexsId: ['', Validators.required],
-      countriesId: ['', Validators.required],
-      profile: [''],
-      webPage: [''],
-      linkedIn: [''],
-      hobbies: [''],
-      aptitudes: [''],
+      maritalId: ['', Validators.required ],
+      sexsId: ['', Validators.required ] ,
+      countriesId: ['', Validators.required ],
+      profile: ['', [ Validators.maxLength(255) ]],
+      webPage: ['', [ Validators.maxLength(255) ] ],
+      linkedIn: ['', [ Validators.maxLength(45) ] ],
+      hobbies: ['', [ Validators.maxLength(45) ]],
+      aptitudes: ['', [ Validators.maxLength(45) ] ],
       driverLicense: [''],
-      aboutMe: [''],
-      achievements: [''],
-      address: [''],
-      zipCode: [''],
+      aboutMe: ['', [ Validators.maxLength(255) ]],
+      achievements: ['', [ Validators.maxLength(45) ] ],
+      address: ['', [ Validators.maxLength(45) ] ],
+      zipCode: ['', [ Validators.maxLength(10) ] ],
     });
 
   }
@@ -119,12 +119,13 @@ export class OptionalsComponent implements OnInit {
       profileId: this.userData.profileId,
     }
 
-    this._optionalsService.addOptionals(newOptionals).subscribe((optional) => {
+    console.log ('optionalsForm', this.optionalsForm)
+ /*    this._optionalsService.addOptionals(newOptionals).subscribe((optional) => {
       this.userData.optionals.push(optional);
       console.log(optional);
       console.log(this.userData.optionals);
       this.toastr.success('Se agregaron nuevos opcionales', 'OPCIONALES');
-    });
+    }); */
 
     this.optionalsForm.reset();
   }

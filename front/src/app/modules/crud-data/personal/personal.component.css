@@ -56,9 +56,10 @@ form mat-form-field {
   width: 4rem;
   height: 4rem;
   filter: opacity(0.4);
+  transition: all 0.3s ease-in-out;
 }
 
-.botonera .plus img:hover {
+.botonera .plus:enabled img:hover {
   width: 4.5rem;
   height: 4.5rem;
   filter: opacity(1);

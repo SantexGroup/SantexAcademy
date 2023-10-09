@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Reference } from 'src/app/core/interfaces/reference.interface';
 import { ExperiencesService } from 'src/app/core/services/experiences.service';
 import { ReferencesService } from 'src/app/core/services/references.service';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { ToastrService } from 'ngx-toastr';
+import { validateHorizontalPosition } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-references',
@@ -27,13 +28,12 @@ export class ReferencesComponent implements OnInit {
     public toastr: ToastrService
   ) {
     this.referenceForm = this.fb.group({
-      name: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      company: '',
-    });
-
+      name: ['', [ Validators.maxLength(45), Validators.pattern('^[a-zA-Z ]*$') ]],
+      lastName: ['', [ Validators.maxLength(45), Validators.pattern('^[a-zA-Z ]*$') ]],
+      email: ['', [ Validators.email ]],
+      phone: ['', [ Validators.maxLength(10), Validators.pattern('^[0-9]*$') ]],
+      company: [''],
+    }); 
   }
 
   ngOnInit(): void {

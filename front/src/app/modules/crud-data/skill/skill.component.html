@@ -6,6 +6,9 @@
                 <mat-label for="skill">Habilidad:</mat-label>
                 <input matInput formControlName="skill" type="text">
             </mat-form-field>
+            <p class="error-form" *ngIf="skillForm.controls['skill'].errors?.['maxlength']">El maximo es de 45 caracteres</p>
+            <br><p class="error-form" *ngIf="skillForm.controls['skill'].errors?.['pattern']">Solo se permiten letras</p>
+
             <mat-form-field>
                 <mat-label for="level">Nivel:</mat-label>
                 <mat-select formControlName="level" name="countries">
@@ -16,7 +19,8 @@
             </mat-form-field>
             <div class="botonera">
                 <div class="botones">
-                    <button class="plus" type="submit" *ngIf="views.plusOne" (click)="addSkillToProfile()">
+                    <button class="plus" type="submit" *ngIf="views.plusOne" (click)="addSkillToProfile()"
+                    [disabled]="skillForm.status === 'INVALID'">
                         <img src="./assets/Imagenes/plus.png" alt="+">
                     </button>
                     <button 
