@@ -7,6 +7,7 @@ const Course = require('./course');
 const CourseCategory = require('./coursecategory');
 const Schedule = require('./schedule');
 const User = require('./user');
+const AboutUS = require('./aboutUS');
 /* eslint-enable no-unused-vars */
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';

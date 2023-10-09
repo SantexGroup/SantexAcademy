@@ -12,6 +12,10 @@ import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.comp
 import { AddScheduleComponent } from './modules/admin-panel/schedules/add-schedule/add-schedule.component';
 import { EditScheduleComponent } from './modules/admin-panel/schedules/edit-schedule/edit-schedule.component';
 import { CourseComponent } from './modules/admin-panel/courses/course.component';
+import { ShowAboutUsComponent } from './modules/show-about-us/show-about-us.component';
+import { AboutUsComponent } from './modules/admin-panel/about-us/about-us.component';
+import { AddAboutUsComponent } from './modules/admin-panel/about-us/add-about-us/add-about-us.component';
+import { EditAboutUsComponent } from './modules/admin-panel/about-us/edit-about-us/edit-about-us.component';
 
 const routes: Routes = [
   {
@@ -48,7 +52,22 @@ const routes: Routes = [
     path:'admin/panel/schedules/editSchedule/:id', component:EditScheduleComponent
   },
   {
+    path:'admin/panel/about-us', component:AboutUsComponent
+  },
+  {
+    path:'admin/panel/about-us/addAbout', component:AddAboutUsComponent
+  },
+  {
+    path:'admin/panel/about-us/editAbout/:id', component:EditAboutUsComponent
+  },
+  {
     path: 'curso/:id',component:DescriptionCourseComponent
+  },
+  {
+    path: 'cursos/:id',component:DescriptionCourseComponent
+  },
+  {
+    path: 'sobreNosotros', component:ShowAboutUsComponent,
   },
   {
     path: '**',
