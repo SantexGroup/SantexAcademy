@@ -14,17 +14,6 @@ import { LoginModule } from './login.module';
 })
 export class LoginComponent implements OnInit {
 
-
-  loggedUser: User = {
-      id: 0,
-      firstName:"",
-      lastName:"",
-      email:"",
-      phone:"",
-      password:"",
-      active:false,
-      admin:false};
-
   loginError = "";
 
   loginForm = this.formBuilder.group({
@@ -32,10 +21,7 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required]
   })
 
-  loginUser: LoginData = {
-    email: "",
-    password: ""
-  }
+
 
   constructor(private formBuilder: FormBuilder, private userSvc: UserService ,private loginSvc: LoginService, private router: Router) { }
 
@@ -54,19 +40,17 @@ export class LoginComponent implements OnInit {
 
     login () {
       if(this.loginForm.valid){
-        this.loginSvc.login(this.loginForm.value as LoginData).subscribe({
-          next: (userData) => {
-            console.log(userData)
-          },
-          error: (errorData) => {
-            console.error(errorData)
-            this.loginError = "Email o contraseña incorrecta."
-          },
-          complete: () => {
+        this.loginSvc.login(this.loginForm.value as LoginData).subscribe(
+          (userData) => {
+            localStorage.setItem('token', userData.token);
             this.router.navigateByUrl('');
             this.loginForm.reset();
-          }
-      })
+          },
+          (errorData) => {
+            console.error(errorData);
+            this.loginError = "Email o contraseña incorrecta.";
+          },
+      )
         } else {
           this.loginError = "Error al ingresar los datos."
         }}}
