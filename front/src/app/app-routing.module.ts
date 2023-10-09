@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {SigupViewComponent} from './modules/sigup-view/sigup-view.component'
 import { ValidationEmailComponent } from './modules/validationsUsers/validation-email/validation-email.component';
 import { CreateNewCodeComponent } from './modules/validationsUsers/create-new-code/create-new-code.component';
 import { DescriptionCourseComponent } from './modules/description-course/description-course.component';
@@ -76,6 +77,10 @@ const routes: Routes = [
   {
     path: 'sobreNosotros', component:ShowAboutUsComponent,
   },
+  {
+    path: 'signup',
+    component: SigupViewComponent,
+  }, 
   {
     path: '**',
     redirectTo: 'dashboard'
