@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/core/services/user.service';
 
 export interface Usuario {
   nombre: string;
@@ -30,7 +32,7 @@ export class VistaHomeVendedorComponent implements OnInit {
     {nombreC: 'Amelia7', fechaInicio: '22/03/23', fechaFin: '22/04/23', unidades: 10},
     {nombreC: 'Amelia7', fechaInicio: '22/03/23', fechaFin: '22/04/23', unidades: 10}
   ];
-
+  
   usuarioList: Usuario = 
     {nombre: 'Juan Alberto', direccion:'Avnda Vespucio - Jujuy', pedidos: this.pedidoList1}
   ;
@@ -38,9 +40,13 @@ export class VistaHomeVendedorComponent implements OnInit {
 // Variable sujeta al usuario
   esVendedor: boolean = true;
   greetingMessage: string = '';
- 
+  user: any = localStorage.getItem("user")
 
-  constructor() { }
+  constructor(private usersev:UserService, private router: Router) {
+    if(this.user){
+      this.user=JSON.parse(this.user)
+    }
+   }
 
   // this.esVendedor = this.authService.esVendedor();
   ngOnInit() {

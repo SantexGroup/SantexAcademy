@@ -2,8 +2,8 @@
   <div class="header-logo">ABC Muebleria</div>
   <nav class="header-nav" [class.open-menu]="isMenuOpen">
     <ul class="navbar-menu">
-      <li class="nav-item" routerLinkActive="active" *ngFor="let item of menu">
-        <a [routerLink]='item.paht'>{{ item.name }}</a>
+      <li class="nav-item" routerLinkActive="active" *ngFor="let item of menu" >
+        <a *ngIf="item.type <= userType" [routerLink]='item.paht'>{{ item.name }}</a>
       </li>
     </ul>
   </nav>

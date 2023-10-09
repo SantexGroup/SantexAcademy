@@ -1,7 +1,7 @@
 <!--<p>vista-home-vendedor works!</p>-->
 <div *ngIf="esVendedor">
     <div class="saludo-usuario">
-        <p class="usuario-text">{{ greetingMessage }}, {{usuarioList.nombre}}</p>
+        <p class="usuario-text">{{ greetingMessage }}, {{user.firstName}} {{user.lastName}}</p>
     </div>
     <div class="empty" *ngIf="usuarioList.pedidos.length <= 0">
         <span>No cuenta con pedidos aún, intenta más tarde.</span>

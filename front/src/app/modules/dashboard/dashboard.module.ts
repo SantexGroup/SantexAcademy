@@ -22,7 +22,6 @@ import { MatChipsModule } from '@angular/material/chips';
 import { SearchProductComponent } from './search-product/search-product.component';
 import { ProductCardComponent } from './search-product/product-card/product-card.component';
 import { MatBadgeModule } from '@angular/material/badge';
-
 import { CardComponent } from './shopping-cart/card/card.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
