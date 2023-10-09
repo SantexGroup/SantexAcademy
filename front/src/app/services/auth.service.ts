@@ -10,7 +10,6 @@ import * as moment from "moment";
 })
 export class AuthService {
 
-  // private isAuthenticated = false;
   private isAdmin = false;
   private isTeacher = false;
   private isStudent = false;
