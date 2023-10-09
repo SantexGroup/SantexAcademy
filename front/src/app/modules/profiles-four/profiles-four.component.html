@@ -13,8 +13,8 @@
                 </div>
             </div>
             <div class="card-container">
-                <div class="aboutMe" [ngStyle]="{ 'color': selectedColor }">
-                    <h4>Soy un muchacho de barrio, que aunque pasen los años nunca me olvidare, que mi escuela fue la calle, que en la vida pierda o gane.. yo te lo juro por ésta..</h4>
+                <div class="aboutMe" [ngStyle]="{ 'color': selectedColor }" *ngFor="let option of profile.newOptionals">
+                    <h4> {{option.aboutMe}} </h4>
                 </div>
             </div>
             <div class="card-container">
@@ -23,9 +23,9 @@
                 </div>
                 <div class="contenido">
                     <h4><mat-icon [ngStyle]="{ 'color': selectedColor }">account_circle</mat-icon>@instagram</h4>
-                    <h4><mat-icon [ngStyle]="{ 'color': selectedColor }">settings_cell</mat-icon> 351-3554720</h4>
-                    <h4><mat-icon [ngStyle]="{ 'color': selectedColor }">email</mat-icon> mariano@gmail.com</h4>
-                    <h4><mat-icon [ngStyle]="{ 'color': selectedColor }">home</mat-icon> Av colon 1241</h4>                    
+                    <h4><mat-icon [ngStyle]="{ 'color': selectedColor }">settings_cell</mat-icon> {{userData.user.phone}} </h4>
+                    <h4><mat-icon [ngStyle]="{ 'color': selectedColor }">email</mat-icon> {{userData.user.email}} </h4>
+                    <h4><mat-icon [ngStyle]="{ 'color': selectedColor }">home</mat-icon> {{profile.address}} </h4>                    
                 </div>
             </div>
             <div class="card-container">
@@ -34,7 +34,7 @@
                 </div>
                 <div class="contenido">
                     <ul>
-                        <li *ngFor="let skill of userData.skills">
+                        <li *ngFor="let skill of profile.newSkills">
                             <h4>{{skill.skill}} <mat-progress-bar mode="determinate" [value]="skill.level * 10" class="barra" [ngStyle]="{ 'background-color': selectedColor }"></mat-progress-bar></h4>
                         </li>
                     </ul>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="contenido">
                     <ul>
-                        <li *ngFor="let language of userData.languages">
+                        <li *ngFor="let language of profile.newLanguages">
                             <h4>{{language.language}} <mat-progress-bar mode= "determinate" [value]= "language.level * 10" class="barra" [ngStyle]="{ 'background-color': selectedColor }"></mat-progress-bar></h4>
                         </li>
                     </ul>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="contenido">
                     <ul>
-                        <li *ngFor="let formation of userData.formations">
+                        <li *ngFor="let formation of profile.newFormations">
                             <h5 [ngStyle]="{ 'color': selectedColor }">{{formation.endDate}}</h5>
                             <h4>{{formation.title}}</h4>
                             <h3>{{formation.institute}}</h3>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="contenido">
                     <ul>
-                        <li *ngFor="let experience of userData.experiences" style="justify-content: left;">
+                        <li *ngFor="let experience of profile.newExperiences" style="justify-content: left;">
                             <div style="display: flex; justify-content: space-between; margin-right: 15rem;"><h4 class="fecha" [ngStyle]="{ 'background-color': selectedColor }"> {{experience.startDate}}</h4><h3>{{experience.company}}</h3></div>
                             <h4>{{experience.position}}</h4>
                             <h3>{{experience.description}}</h3>

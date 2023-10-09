@@ -43,13 +43,11 @@ body {
     background-color: rgb(58, 83, 134);
     color: white;
 }
-.derecho{
-    width: 60%;
-    height: 100%;    
-}
+
 img{
     width: 100%;    
 }
+
 .izquierdo .card-item{
     border-bottom: solid 2px white;
     padding-bottom: 1rem;

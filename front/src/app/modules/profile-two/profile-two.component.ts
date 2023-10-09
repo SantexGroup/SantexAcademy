@@ -68,12 +68,12 @@ export class ProfileTwoComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
-    this.userData.getMyOptionals();
+    /* this.userData.getMyOptionals();
     this.userData.languageGet();
     this.userData.getExperience();
     this.userData.getListFormations();
     this.userData.getReference();
-    this.userData.getSkill();
+    this.userData.getSkill(); */
   }
 
    async downloadPDF() {

@@ -32,6 +32,8 @@ export class ProfilesToolService {
   newFormations: Formations[] = [];
   newLanguages: Language[] = [];
   newSkills: Skill[] = [];
+
+  address!:string;
   
   postAllOptionals(id:number){
     const relationList:Observable<ProfileOptional>[] = this.newOptionals.map(optional => {
@@ -46,8 +48,8 @@ export class ProfilesToolService {
       next: (result: ProfileOptional[]) => {
         return result
       },
-      error: (error) => {
-        console.log(error)
+      error: () => {
+        this.toastr.error('No fue posible guardar los opcionales', 'OPCIONALES');
       }
     })
 
@@ -66,8 +68,8 @@ export class ProfilesToolService {
       next: (result: ProfileReference[]) =>{
         return result
       },
-      error: (error) => {
-        console.log(error)
+      error: () => {
+        this.toastr.error('No fue posible guardar las referencias', 'REFERENCIAS');
       }
     })
   }
@@ -85,8 +87,8 @@ export class ProfilesToolService {
       next: (result: ProfileFormation[]) =>{
         return result
       },
-      error: (error) => {
-        console.log(error)
+      error: () => {
+        this.toastr.error('No fue posible guardar los formaciones', 'FORMACIONES');
       }
     })
   }
@@ -104,8 +106,8 @@ export class ProfilesToolService {
       next: (result: ProfileExperience[]) =>{
         return result
       },
-      error: (error) => {
-        console.log(error)
+      error: () => {
+        this.toastr.error('No fue posible guardar los experiencias', 'EXPERIENCIAS');
       }
     })
   }
@@ -124,8 +126,8 @@ export class ProfilesToolService {
       next: (result: ProfileSkill[]) =>{
         return result
       },
-      error: (error) => {
-        console.log(error)
+      error: () => {
+        this.toastr.error('No fue posible guardar los habilidades', 'HABILIDADES');
       }
     })
   }
@@ -144,8 +146,8 @@ export class ProfilesToolService {
       next: (result: ProfileLanguage[]) =>{
         return result
       },
-      error: (error) => {
-        console.log(error)
+      error: () => {
+        this.toastr.error('No fue posible guardar los idiomas', 'IDIOMAS');
       }
     })
   }

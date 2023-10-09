@@ -17,6 +17,7 @@ import { FormGroup } from '@angular/forms';
 import { Profile } from '../../interfaces/profile.interface';
 import { ProfileService } from '../profile.service';
 import { User } from '../../interfaces/user.interface';
+import { UserService } from '../usuario.service';
 
 @Injectable({
   providedIn: 'root'
@@ -44,8 +45,7 @@ export class UserDataService {
 
   urlPicture = "" || localStorage.getItem('picture');
 
-  email = "" || localStorage.getItem('email');
-
+  email = "" || localStorage.getItem('email'); 
 
   constructor(
     private _experience: ExperiencesService,
@@ -54,7 +54,8 @@ export class UserDataService {
     private _optionals: OptionalsService,
     private _references: ReferencesService,
     private _skills: SkillService,
-    private _profiles: ProfileService
+    private _profiles: ProfileService,
+    private _personal: UserService
    ){
 
   }
@@ -66,7 +67,7 @@ export class UserDataService {
     }
   }
 
-  user: User[] = []; 
+  user = {} as  User; 
   experiences: Experience[] = [];
   formations: Formations[] = [];
   languages: Language[] = [];
@@ -74,7 +75,7 @@ export class UserDataService {
   references: Reference[] = [];
   skills: Skill[] = [];
   profileList: Profile[] = [];
-
+  
   getExperience(){
     this._experience.getExperience(this.userId).subscribe((experieceList: Experience[])=>{
       this.experiences = experieceList;
@@ -115,6 +116,12 @@ export class UserDataService {
     return this._profiles.getProfile(this.userId).subscribe((profiles: Profile[])=>{
       this.profileList = profiles;
     })
+  }
+
+  getPersonal(){
+    return this._personal.getUser(this.userId).subscribe((userData)=>{
+      this.user = userData;
+    });
   }
 
 

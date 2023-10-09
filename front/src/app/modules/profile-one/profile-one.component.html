@@ -21,21 +21,14 @@
                     <h3> {{option.aboutMe}} </h3>
                 </div>
                 <div class="contenido-card">
-                    <h4> Perfil: {{option.profile}} </h4>
+                    <h4 > Perfil: {{option.profile}} </h4>
                     <h5> Pagina Web: {{option.webPage}}</h5>
                     <h5> LinkedIn: {{option.linkedIn}}</h5>
                     <h5> Aptitudes: {{option.aptitudes}}</h5>
-                </div>
-                <div class="titulo-card">
-                    <h3> Logros </h3>
-                </div>
-                <div class="contenido-card">
                     <h4> Logros: {{option.achievements}} </h4>
                     <h5> Genero: {{option.Sex?.gender}}</h5>
                     <h5> Estado Civil: {{option.Marital?.condition}}</h5>
-                    <!-- <h5> Aptitudes: {{option.aptitudes}}</h5> -->
                 </div>
-
             </div>
             <div class="card-item">
                 <div class="titulo-card">
@@ -55,9 +48,9 @@
             <div class="card-item">
                 <div class="nombre">
                     <h1 [ngStyle]="{ 'color': selectedColor }">{{userData.userName}}<br>{{userData.lastName}}</h1>
-                    <h4 [ngStyle]="{ 'color': selectedColor }"><mat-icon>phone</mat-icon> - 351- 3588549</h4>
-                    <h4 [ngStyle]="{ 'color': selectedColor }"><mat-icon>mail</mat-icon> - rodriguezm@gmail.com</h4>
-                    <h4 [ngStyle]="{ 'color': selectedColor }"><mat-icon>home</mat-icon> - Av Colon 1241</h4>
+                    <h4 [ngStyle]="{ 'color': selectedColor }"><mat-icon>phone</mat-icon> - {{userData.user.phone}} </h4>
+                    <h4 [ngStyle]="{ 'color': selectedColor }"><mat-icon>mail</mat-icon> - {{userData.user.email}} </h4>
+                    <h4 [ngStyle]="{ 'color': selectedColor }"><mat-icon>home</mat-icon> - {{profile.address}}</h4>
                 </div>
             </div>
             <div class="card-item">

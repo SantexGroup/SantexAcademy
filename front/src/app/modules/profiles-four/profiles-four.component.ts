@@ -5,6 +5,7 @@ import { UserDataService } from 'src/app/core/services/toolServices/userData.ser
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { ProfilesToolService } from 'src/app/core/services/toolServices/profiles-tool.service';
 
 @Component({
   selector: 'app-profiles-four',
@@ -31,6 +32,7 @@ export class ProfilesFourComponent implements OnInit, AfterViewInit {
   constructor(
     public userData: UserDataService,
     public views: NavBarService,
+    public profile: ProfilesToolService,
     private renderer: Renderer2    
   ) { }
 

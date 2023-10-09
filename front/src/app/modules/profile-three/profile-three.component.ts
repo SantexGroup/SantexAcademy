@@ -4,6 +4,7 @@ import { Profile } from 'src/app/core/interfaces/profile.interface';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { ProfilesToolService } from 'src/app/core/services/toolServices/profiles-tool.service';
 @Component({
   selector: 'app-profile-three',
   templateUrl: './profile-three.component.html',
@@ -30,6 +31,7 @@ export class ProfileThreeComponent implements OnInit, AfterViewInit{
   constructor(
     public userData: UserDataService,
     public views: NavBarService,
+    public profile: ProfilesToolService,
     private renderer: Renderer2    
   ) { }
 
