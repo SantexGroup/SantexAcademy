@@ -27,6 +27,8 @@ const {
   getUsers,
   updateUser,
   patchUser,
+  validateCode,
+  createCode,
 } = require('./userProvider');
 
 const {
@@ -66,6 +68,8 @@ const UserProvider = {
   getUsers,
   updateUser,
   patchUser,
+  validateCode,
+  createCode,
 };
 
 const AboutUSProvider = {

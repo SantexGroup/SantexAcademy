@@ -3,7 +3,7 @@ const { body } = require('express-validator');
 const { UserController } = require('../controllers');
 
 const router = express.Router();
-router.get('/email', body('email').isEmail(), UserController.getUserByEmail);
+router.get('/:email', UserController.getUserByEmail);
 router.get('/:userId', UserController.getUserById);
 
 router.get('/', UserController.getUsers);
@@ -16,6 +16,16 @@ router.post(
   body('password').isString(),
   UserController.createUser,
 );
+router.post(
+  '/createnewcode',
+  body('email').isString(),
+  UserController.createCode,
+
+);
+router.get(
+  '/verificar-email/:email/:code',
+  UserController.validateCode,
+);
 router.put(
   '/:userId',
   body('firstName').isString(),
@@ -25,9 +35,11 @@ router.put(
   body('password').isString(),
   UserController.updateUser,
 );
-router.patch('/:userId',
+router.patch(
+  '/:userId',
   body('password').isString(),
-  UserController.updatePassword);
+  UserController.updatePassword,
+);
 
 router.delete('/:userId', UserController.deleteUser);
 

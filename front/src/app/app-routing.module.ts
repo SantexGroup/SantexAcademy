@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ValidationEmailComponent } from './modules/validationsUsers/validation-email/validation-email.component';
+import { CreateNewCodeComponent } from './modules/validationsUsers/create-new-code/create-new-code.component';
 import { DescriptionCourseComponent } from './modules/description-course/description-course.component';
 import { HomePageComponent } from './modules/home-page/home-page.component';
 import { AdminPanelComponent } from './modules/admin-panel/admin-panel.component';
@@ -64,6 +66,11 @@ const routes: Routes = [
     path: 'curso/:id',component:DescriptionCourseComponent
   },
   {
+    path: 'verificar-email/:email/:code',component:ValidationEmailComponent 
+  },
+  {
+    path: 'crear-codigo',component:CreateNewCodeComponent 
+  },
     path: 'cursos/:id',component:DescriptionCourseComponent
   },
   {
