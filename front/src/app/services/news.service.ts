@@ -16,11 +16,11 @@ export class NewsService {
     },
     {
       id: 2,
-      title: 'Bartender ¿Que es y que hace?',
+      title: 'Curso bordado punto cruz',
       autor:'Equipo editorial indeed',
-      description: ' En este artículo aprenderas sobre qué es un bartender,las habilidades necesarias para tener éxito y el salario promedio. ',
-      sourceUrl: "https://www.indeed.com/orientacion-profesional/como-encontrar-empleo/que-es-bartender",
-      imageUrl: ""
+      description: ' Aprenderas a confeccionar bordados con punto cruz  ',
+      sourceUrl: "https://www.facebook.com/permalink.php?story_fbid=pfbid02aM1vQtpVs9b49AK7ADYrHCkAMDa3QCKmLgHyvSbidGg9tHky7XrdT8qqqEyjxKQUl&id=100063640024874",
+      imageUrl: "https://scontent.fcor10-3.fna.fbcdn.net/v/t39.30808-6/385069333_806004584864202_6610361793456488804_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5614bc&_nc_ohc=XepmxOCR2QQAX8f22M0&_nc_ht=scontent.fcor10-3.fna&oh=00_AfCo3vxGYsVsdTVMpPgyn6RpstDR75PpWmKbzgWUqn03ww&oe=652A5175"
     },
     {
       id: 3,
@@ -28,7 +28,7 @@ export class NewsService {
       autor:'Incubadora del NOC',
       description: 'Hoy tan en auge la cocina saludable aprenderas a preparar platos deliciosos y sanos',
       sourceUrl: "https://www.facebook.com/permalink.php?story_fbid=pfbid0HY6hauCZjxBEji8Quq9hZff3pNsaYig6cSr89w8gVN3WEeUTXdbyLrBFmczftYBkl&id=100063640024874",
-      imageUrl: "https://www.facebook.com/photo?fbid=807981547999839&set=pcb.807981567999837"
+      imageUrl: "https://scontent.fcor10-3.fna.fbcdn.net/v/t39.30808-6/386339775_807981641333163_128921996252550808_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5614bc&_nc_ohc=tuVUOnhaOSUAX-4WAg5&_nc_ht=scontent.fcor10-3.fna&oh=00_AfB6shJZ3vBuEvC_QDeZGngGFGqsPxXU7QGAue6Q9VO8BQ&oe=652A3A1E"
     },
     {
       id: 4,
@@ -52,7 +52,7 @@ export class NewsService {
       autor:'Incubadora del NOC',
       description: 'Podes inscribirte en cualquiera de nuestros cursos disponibles',
       sourceUrl: "https://www.facebook.com/permalink.php?story_fbid=pfbid0Xa9j1azdohpDDjKNSfqKHimQWUvcS84Duk5hRyssDc7B267YwsfyHaTCJdh7oy6Ul&id=100063640024874",
-      imageUrl: "https://scontent.fcor10-4.fna.fbcdn.net/v/t39.30808-6/386340307_806011981530129_5575405270560351854_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5614bc&_nc_ohc=0s2u_vBbvSsAX9YF7Tq&_nc_ht=scontent.fcor10-4.fna&oh=00_AfAlsnD7CLc-7J2M1ELPcciCGIcj3lZxNDQdlhehMBccqg&oe=652A4A73"
+      imageUrl: "https://scontent.fcor10-4.fna.fbcdn.net/v/t39.30808-6/386340307_806011981530129_5575405270560351854_n.jpg?stp=dst-jpg_s600x600&_nc_cat=111&ccb=1-7&_nc_sid=5614bc&_nc_ohc=0s2u_vBbvSsAX9YF7Tq&_nc_ht=scontent.fcor10-4.fna&oh=00_AfANWltRj1drcLnwS1DIKwckTS6a3SLhDq37mstkl-cjgw&oe=652A4A73"
     },
 
   ];
