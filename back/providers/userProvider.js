@@ -36,11 +36,11 @@ const userValidate = async (data) => {
     const userFound = await db.User.findOne({ where: { email } });
 
     if (!userFound) {
-      return false;
+      return null;
     }
     const passIsCorrect = await bcrypt.compare(data.password, userFound.password);
 
-    return passIsCorrect;
+    return passIsCorrect ? userFound : null;
   } catch (error) {
     console.error('I can not find the user. Error: ', error);
     throw error;

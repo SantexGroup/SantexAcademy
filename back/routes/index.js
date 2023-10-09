@@ -9,9 +9,11 @@ const app = Express();
 // Rutas
 const loginRouter = require('./userRoutes');
 const courseRouter = require('./courseRoutes');
+const authRouter = require('./authRoutes');
 // use=
 app.use('/api/user', loginRouter);
 app.use('/api/course', courseRouter);
+app.use('/api/auth', authRouter);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);

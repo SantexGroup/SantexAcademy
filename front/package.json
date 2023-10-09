@@ -23,6 +23,8 @@
     "@popperjs/core": "^2.10.2",
     "bootstrap": "^5.3.1",
     "ngx-toastr": "^15.2.2",
+    "jwt-decode": "^3.1.2",
+    "moment": "^2.29.4",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

@@ -28,8 +28,11 @@
             <div *ngIf="loginForm.controls.password?.errors?.required">Ingrese la contraseña.</div>
             <div *ngIf="loginForm.controls.password?.errors?.minlength">Contraseña inválida</div>
           </div>
+          <div *ngIf="wrongPassword" class="error-text">
+            <div>El usuario y/o la contraseña es incorrecta</div>
+          </div>
         </div>
-        <button type="submit" class="btn-custom" (click)="login(loginForm)">Iniciar Sesión</button>
+        <button type="submit" class="btn-custom" (click)="login(loginForm);$event.preventDefault();">Iniciar Sesión</button>
 
       </form>
       <div class="link-reset">

@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { baseURL } from '../../../src/config';
-
+import { map} from "rxjs";
+import jwt_decode from "jwt-decode";
+import * as moment from "moment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private isAuthenticated = false;
   private isAdmin = false;
   private isTeacher = false;
   private isStudent = false;
@@ -18,34 +19,44 @@ export class AuthService {
 
   login(email: string, password: string) {
     const userData = { email, password };
-    this.data = this.http.post(`${baseURL}/api/user/login`, userData);
-
-    // CONTROLAR ESTO
-    if ('con la nueva respuesta buscar si se loggeo OK o no y ahi recien cambiar a true') { }
-    if (true) {
-      this.isAuthenticated = true;
-    }
-
-    // CONTROLAR ESTO TAMBIEN
-    if ('con la nueva respuesta del backend podre definir esto...') {
-      // console.log('siempre entra a este IF y por eso siempre todo queda en true')
-      this.isAdmin = true;
-      this.isTeacher = true;
-      this.isStudent = true;
-    }
-
-    return this.data
+    return this.http.post(`${baseURL}/api/auth/login`, userData).pipe(
+      map((response: any) => {
+        if (response.message === 'Login exitoso') {
+          this.setSession(response);
+        }
+        return response;
+      })
+    );
   }
 
   logout(): void {
-    this.isAuthenticated = false;
+    localStorage.removeItem("token");
+    localStorage.removeItem("expires_at");
+    localStorage.removeItem("session");
     this.isAdmin = false;
     this.isTeacher = false;
     this.isStudent = false;
   }
 
   isLoggedIn(): boolean {
-    return this.isAuthenticated;
+    return moment().isBefore(this.getExpiration());
+  }
+
+  private setSession(authResult: any) {
+    localStorage.setItem('token', authResult.token);
+    localStorage.setItem('session', JSON.stringify(jwt_decode(authResult.token)));
+    const expiresAt = moment().add(3600,'second');
+    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
+  }
+
+  getUser() {
+    return JSON.parse(localStorage.getItem("session") ?? '');
+  }
+
+  getExpiration() {
+    const expiration = localStorage.getItem("expires_at");
+    const expiresAt = JSON.parse(expiration ?? '0');
+    return moment(expiresAt);
   }
 
   isAdministrator(): boolean {
@@ -59,5 +70,4 @@ export class AuthService {
   isStudents(): boolean {
     return this.isStudent;
   }
-
 }

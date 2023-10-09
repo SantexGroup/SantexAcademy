@@ -1,25 +1,14 @@
-const { User } = require('../models');
-const jwt = require('jsonwebtoken');
+const authService = require('../services/authService');
 
 const login = async (req, res) => {
-  const { email, password } = req.body;
-
   try {
-    const user = await db.User.findOne({ where: { email } });
-
-    if (!user || user.password !== password) {
-      return res.status(401).json({ message: 'Credenciales inválidas' });
+    const authUser = await authService.login(req.body);
+    if (authUser) {
+      res.status(200).json({ message: 'Login exitoso', token: authUser });
+    } else {
+      res.status(401).json({ message: 'El usuario no existe o la contraseña es incorrecta' });
     }
-
-    // Genera un token JWT
-    const token = jwt.sign({ userId: user.id }, 'mi_secreto_secreto', { expiresIn: '1h' });
-
-    res.json({ token });
-
-    res.status(200).json({ message: 'Login successful' });
-
   } catch (error) {
-    console.error('Error al iniciar sesión:', error);
     res.status(500).json({ message: 'Error en el servidor' });
   }
 };
