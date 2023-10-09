@@ -63,8 +63,8 @@ export class HistorialVentasComponent implements OnInit {
       for (let i=0; i < res.length; i++) {
         this.modelo.imaArt = this.servidor + this.respuesta[i].Images[0].url;
         this.modelo.idArt = res[i].id;
-        this.modelo.nomArt = res[i].nombre;
-        this.modelo.desArt = res[i].detalles;
+        this.modelo.nomArt = res[i].nombre.charAt(0).toUpperCase() + res[i].nombre.slice(1);
+        this.modelo.desArt = res[i].detalles.charAt(0).toUpperCase() + res[i].detalles.slice(1);
         this.modelo.preArt = res[i].precio;
         if(res[i].envio) {
           this.modelo.envArt = 'Envío y retiro';

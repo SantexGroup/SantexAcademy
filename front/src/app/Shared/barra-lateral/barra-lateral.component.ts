@@ -121,4 +121,10 @@ export class BarraLateralComponent implements OnInit {
     }
   }
 }
+  redirigirCompras() {
+    this.router.navigateByUrl('/historial-compras');
+  }
+  redirigirVentas() {
+    this.router.navigateByUrl('/historial-ventas');
+  }
 }
