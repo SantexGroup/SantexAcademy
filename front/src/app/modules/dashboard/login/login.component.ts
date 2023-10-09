@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/core/services/user.service';
-
+import { Router } from '@angular/router';
+import { User } from 'src/app/core/interfaces/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,8 +14,8 @@ export class LoginComponent implements OnInit {
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required])
   });
-
-  constructor(private userServ: UserService) { }
+  actualUser : User | undefined;
+  constructor(private userServ: UserService, private router: Router) { }
   
   ingresarUs () {
     this.userServ.login(this.myForm.value).subscribe(
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
         // }
         if(res.user){
           localStorage.setItem('user', JSON.stringify(res.user));
+          this.router.navigate([this.userServ.getPreviousUrl() || ['/']]);
         }else{
           this.error = "error en la solicitud"
         }
