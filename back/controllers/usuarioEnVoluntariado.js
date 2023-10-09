@@ -28,7 +28,7 @@ const getJoins = async (req, res) => {
   } catch (err) {
     res
       .status(500)
-      .json({ action: "getJoins", error: "Internal server error." });
+      .json({ action: "getJoins", error: err.message });
   }
 };
 
@@ -66,7 +66,7 @@ const updateStatusById = async (req, res) => {
     console.error(err);
     res
       .status(500)
-      .json({ action: "updateStatusById", error: "Internal server error." });
+      .json({ action: "updateStatusById", error: err.message });
   }
 };
 
@@ -92,7 +92,7 @@ const deleteJoinById = async (req, res) => {
     console.error(err);
     res
       .status(500)
-      .json({ action: "deleteJoinById", error: "Internal server error." });
+      .json({ action: "deleteJoinById", error: err.message });
   }
 };
 
