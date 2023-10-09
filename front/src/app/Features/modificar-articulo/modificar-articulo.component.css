@@ -20,16 +20,15 @@ p {
   font-weight: bold;
 }
 h2 {
+  text-align: center;
+  width: max-content;
+  color: #d68a96;
   font-size: 30px;
   font-weight: 700;
   margin-bottom: 0px;
   margin-top: 4%;
-  text-align: center;
-  border-radius: 5px;
-  width: max-content;
   padding-left: 3px;
   padding-right: 3px;
-  color: #d68a96;
 }
 /* Formulario */
 .form {

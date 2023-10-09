@@ -20,9 +20,6 @@ export class CargaArticulosComponent implements OnInit {
   uploadedImages: string[] = [];
   idProducto: string = '';
   images: any = [];
-
-  constructor(private service: CargaArticulosService, private router: Router, private mensajeService: MensajeService, private barraService:BarraService, private formBuilder: FormBuilder) { }
-
   formUp = this.formBuilder.group({
     'catReg': ['0', Validators.required],
     'nomReg': ['', Validators.required],
@@ -32,12 +29,11 @@ export class CargaArticulosComponent implements OnInit {
     'images': ['', Validators.required],
   });
 
+  constructor(private service: CargaArticulosService, private router: Router, private mensajeService: MensajeService, private barraService:BarraService, private formBuilder: FormBuilder) { }
+
   ngOnInit(): void {
     this.getIdUser();
-    this.barraService.getCategories().subscribe(categorias => {
-      this.listcategorias = categorias;
-
-    });
+    this.barraService.getCategories().subscribe(categorias => {this.listcategorias = categorias});
   }
   subirProducto(): void { 
       this.service.carga(
