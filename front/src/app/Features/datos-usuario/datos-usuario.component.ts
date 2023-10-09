@@ -22,14 +22,50 @@ export class DatosUsuarioComponent implements OnInit {
 
   listprovincias: any[] = [];
   listlocalidades: any[] = [];
+  
+  idUser: number = 0;
+
+  emailUsuario: string = '';
+  contraseniaUsuario: string = '';
+  aliasUsuario: string = '';
+  nombreUsuario: string = '';
+  apellidosUsuario: string = '';
+  dniUsuario: string = '';
+  provinciaUsuario: string = '';
+  localidadUsuario: string = '';
+  direccionUsuario: any[] = [];
 
   mensajeDatosUsuario: string = '';
 
   constructor(private service: DatosUsuarioService, private mensajeService: MensajeService, private router: Router) { }
 
   ngOnInit(): void {
-    this.service.getProvincias().subscribe(provincias => { this.listprovincias = provincias });
+    this.service.getDatosUsuario(this.idUser).subscribe(usuario => { console.log(usuario);
+
+    this.emailUsuario = usuario.mail
+    this.contraseniaUsuario = usuario.password
+    this.aliasUsuario = usuario.alias
+    this.nombreUsuario = usuario.firstName
+    this.apellidosUsuario = usuario.lastName
+    this.dniUsuario = usuario.dni
+    this.provinciaUsuario = usuario.direccion.idProvincia
+    this.localidadUsuario = usuario.idLocalidad
+    this.direccionUsuario = usuario.direccion
+    });
+
+    
+    
+    
+    
+
   }
+
+  /* function() {
+    this.service.getDatosUsuario(this.idUser).subscribe(res => {
+      console.log(JSON.stringify(res))
+    })
+  } */
+  
 
 /*   actualizarLocalidades() {
     this.service.getLocalidades(this.proDat).subscribe(localidades => { this.listlocalidades = localidades });

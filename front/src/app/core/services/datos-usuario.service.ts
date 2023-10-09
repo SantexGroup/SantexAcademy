@@ -43,9 +43,10 @@ export class DatosUsuarioService {
     return this.apiService.post('/users/user-register', body)
   }
 
-  datoosUsuario(idUser: number) {
-    const id= idUser;
-    return this.apiService.get<any>('/user/' + id)
+  getDatosUsuario(idUser: Number) {
+    const id = idUser
+
+    return this.apiService.get<any>('/users/' + 12)
   }
 
   getProvincias() {
