@@ -107,13 +107,13 @@
                             </div>
                             -->
                             <label for="numeroTarjeta">Número de tarjeta: </label>
-                            <input type="text" id="numeroTarjeta" placeholder=" Ej: 1234 5678 9012 3456 "
+                            <input type="text" id="numeroTarjeta" class="form-control" [ngClass]="{'is-invalid': numeroTarjControl.invalid && numeroTarjControl.touched}" formControlName="numeroTarj" placeholder=" Ej: 1234 5678 9012 3456 "
                                 [(ngModel)]="numeroTarjeta" required>
                             <label for="mesVencimiento">Mes y Año de vencimiento: </label>
-                            <input type="text" id="mesVencimiento" placeholder=" Ej: 12/25 "
+                            <input type="text" id="mesVencimiento" class="form-control" [ngClass]="{'is-invalid': mesVencTarjControl.invalid && mesVencTarjControl.touched}" formControlName="mesVencTarj" placeholder=" Ej: 12/25 "
                                 [(ngModel)]="mesVencimiento" required>
                             <label for="codigoSeguridad">Código de seguridad (CVV): </label>
-                            <input type="text" id="codigoSeguridad" placeholder=" Ej: 168 "
+                            <input type="text" id="codigoSeguridad" class="form-control" [ngClass]="{'is-invalid': codSegTarjControl.invalid && codSegTarjControl.touched}" formControlName="codSegTarj" placeholder=" Ej: 168 "
                                 [(ngModel)]="codigoSeguridad" required>
                             </form>
                         </div>
@@ -121,7 +121,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Modificar</button>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" [disabled]="formTarj.invalid" (click)="botAlq()">Confirmar</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" *ngIf="pagoSel === 'tarjeta'" [disabled]="formTarj.invalid" (click)="botAlq()">Confirmar</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" *ngIf="pagoSel !== 'tarjeta'" (click)="botAlq()">Confirmar</button>
                 </div>
             </div>
         </div>
