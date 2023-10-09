@@ -62,7 +62,7 @@ async function updateUser(req, res, next) {
   const updateData = req.body;
 
   try {
-    const userUpdate = await userService.updateUser( id, updateData );
+    const userUpdate = await userService.updateUser(id, updateData);
     res.status(200).send(userUpdate);
   } catch (error) {
     next(error);

@@ -67,6 +67,7 @@ async function login(nick, password) {
     user: {
       name: user.name,
       lastName: user.lastName,
+      pictureLink: user.pictureLink,
     },
     profile,
     accessToken: token,
@@ -86,7 +87,7 @@ async function getUser(id) {
 
 // Servicio que actualiza datos de un usuario
 async function updateUser(
-  id, updateData
+  id, updateData,
 /*   name,
   lastName,
   bornDate,
@@ -97,7 +98,7 @@ async function updateUser(
   // Buscar al usuario en la base de datos por su ID
   const user = await getUser(id);
 
-/*   const updateData = {
+  /*   const updateData = {
     name,
     lastName,
     bornDate,
@@ -105,7 +106,7 @@ async function updateUser(
     pictureLink,
   }; */
 
-/*   if (user) {
+  /*   if (user) {
     if (email !== '') {
       updateData.email = email;
     }

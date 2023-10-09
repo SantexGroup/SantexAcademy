@@ -13,6 +13,8 @@ import { ProfileExperience,
          ProfileOptional, 
          ProfileReference, 
          ProfileSkill } from '../../interfaces/relations.interface';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +22,8 @@ import { ProfileExperience,
 export class ProfilesToolService {
 
   constructor(
-    private _profile: ProfileService
+    private _profile: ProfileService,
+    private toastr: ToastrService
   ) { }
 
   newOptionals: Optionals[] = [];
@@ -29,15 +32,6 @@ export class ProfilesToolService {
   newFormations: Formations[] = [];
   newLanguages: Language[] = [];
   newSkills: Skill[] = [];
-  
-  selectedOptional(){
-    const selectedOptional: Optionals = this.newOptionals[0];
-    if(selectedOptional){
-      return selectedOptional;
-    }else{
-      return "Sobre mi";
-    }
-  }
   
   postAllOptionals(id:number){
     const relationList:Observable<ProfileOptional>[] = this.newOptionals.map(optional => {

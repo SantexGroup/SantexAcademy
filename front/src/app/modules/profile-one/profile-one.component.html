@@ -1,13 +1,14 @@
-<app-modal-add></app-modal-add>
-<body>
-    
-
-<div class="todo">
+<div class="control">
+    <app-modal-add></app-modal-add>
     <div class="botonera">
-        <input type="color" [(ngModel)]="selectedColor">
+        <mat-label for="color">Color:
+            <input name="color" type="color" [(ngModel)]="selectedColor">
+        </mat-label>
         <button mat-raised-button color="primary" (click)="applyColors()">Aplicar Color</button>
-        <button mat-raised-button color="primary" (click)="downloadPDF()" >Descargar PDF</button>
-    </div>   
+        <button mat-raised-button color="primary" (click)="downloadPDF()">Descargar PDF</button>
+    </div>
+</div>
+<div class="todo">
     <div class="conteiner" id="profile-one">
         <div class="izquierdo" [ngStyle]="{ 'background-color': selectedColor }">
             <div class="img-conteiner">
@@ -15,12 +16,24 @@
                     <img src="{{userData.urlPicture}}" alt="">
                 </div>
             </div>
-            <div class="card-item">
+            <div class="card-item" *ngFor="let option of profile.newOptionals">
                 <div class="titulo-card">
-                    <h3>SOBRE MI</h3>
+                    <h3> {{option.aboutMe}} </h3>
                 </div>
                 <div class="contenido-card">
-                    <h4>Soy un profesional apasionado y altamente motivado con una sólida formación en [tu campo de estudio o profesión]. A lo largo de mi carrera, he adquirido una valiosa experiencia en [mencionar áreas relevantes], lo que me ha permitido desarrollar habilidades excepcionales en [lista de habilidades clave relacionadas con tu campo]</h4>
+                    <h4> Perfil: {{option.profile}} </h4>
+                    <h5> Pagina Web: {{option.webPage}}</h5>
+                    <h5> LinkedIn: {{option.linkedIn}}</h5>
+                    <h5> Aptitudes: {{option.aptitudes}}</h5>
+                </div>
+                <div class="titulo-card">
+                    <h3> Logros </h3>
+                </div>
+                <div class="contenido-card">
+                    <h4> Logros: {{option.achievements}} </h4>
+                    <h5> Genero: {{option.Sex?.gender}}</h5>
+                    <h5> Estado Civil: {{option.Marital?.condition}}</h5>
+                    <!-- <h5> Aptitudes: {{option.aptitudes}}</h5> -->
                 </div>
 
             </div>
@@ -30,9 +43,9 @@
                 </div>
                 <div class="contenido-card">
                     <ul>
-                        <li *ngFor="let formation of userData.formations">
+                        <li *ngFor="let formation of profile.newFormations">
                             <h4>{{formation.institute}}</h4>
-                            <h5>{{formation.title}}- {{formation.endDate}}</h5>
+                            <h5>{{formation.title}} - {{formation.endDate}}</h5>
                         </li>
                     </ul>
                 </div>
@@ -42,34 +55,35 @@
             <div class="card-item">
                 <div class="nombre">
                     <h1 [ngStyle]="{ 'color': selectedColor }">{{userData.userName}}<br>{{userData.lastName}}</h1>
-                    <h4 [ngStyle]="{ 'color': selectedColor }"><mat-icon>phone</mat-icon> -  351- 3588549</h4>
+                    <h4 [ngStyle]="{ 'color': selectedColor }"><mat-icon>phone</mat-icon> - 351- 3588549</h4>
                     <h4 [ngStyle]="{ 'color': selectedColor }"><mat-icon>mail</mat-icon> - rodriguezm@gmail.com</h4>
                     <h4 [ngStyle]="{ 'color': selectedColor }"><mat-icon>home</mat-icon> - Av Colon 1241</h4>
                 </div>
             </div>
             <div class="card-item">
-                <div class="titulo-card" >
+                <div class="titulo-card">
                     <h3 [ngStyle]="{ 'color': selectedColor }">EXPERIENCIA</h3>
                 </div>
                 <div class="contenido-card" [ngStyle]="{ 'border-top-color': selectedColor }">
                     <ul>
-                        <li *ngFor="let experience of userData.experiences">
-                            <h4 >{{experience.company}} - {{experience.Country}}</h4>
+                        <li *ngFor="let experience of profile.newExperiences">
+                            <h4>{{experience.company}} - {{experience.Country?.country}}</h4>
                             <h5>{{experience.position}} - {{experience.endDate}}</h5>
-                            <h5>{{experience.description}}</h5>    
+                            <h5>{{experience.description}}</h5>
                         </li>
                     </ul>
                 </div>
                 <div class="card-item">
                     <div class="titulo-card" [ngStyle]="{ 'border-bottom-color': selectedColor }">
-                        <h3 [ngStyle]="{ 'color': selectedColor }"  >IDIOMAS Y EXTRAS</h3>
+                        <h3 [ngStyle]="{ 'color': selectedColor }">IDIOMAS Y EXTRAS</h3>
                     </div>
-                    <div class="contenido-card" class="contenido-card" [ngStyle]="{ 'border-top-color': selectedColor }">
+                    <div class="contenido-card" class="contenido-card"
+                        [ngStyle]="{ 'border-top-color': selectedColor }">
                         <ul>
-                            <li *ngFor="let language of userData.languages">
+                            <li *ngFor="let language of profile.newLanguages">
                                 <h4>{{language.language}} - Nivel: {{language.level}}</h4>
                             </li>
-                            <li *ngFor="let skill of userData.skills">
+                            <li *ngFor="let skill of profile.newSkills">
                                 <h4>{{skill.skill}} Nivel: {{skill.level}}</h4>
                             </li>
                         </ul>
@@ -79,4 +93,3 @@
         </div>
     </div>
 </div>
-</body>

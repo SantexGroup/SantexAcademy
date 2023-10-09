@@ -14,6 +14,9 @@ import { Optionals } from '../../interfaces/optionlas.interface';
 import { Reference } from '../../interfaces/reference.interface';
 import { Skill } from '../../interfaces/skill.interface';
 import { FormGroup } from '@angular/forms';
+import { Profile } from '../../interfaces/profile.interface';
+import { ProfileService } from '../profile.service';
+import { User } from '../../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -39,9 +42,10 @@ export class UserDataService {
 
   phone = "" || localStorage.getItem('phone');
 
+  urlPicture = "" || localStorage.getItem('picture');
+
   email = "" || localStorage.getItem('email');
 
-  urlPicture = "";
 
   constructor(
     private _experience: ExperiencesService,
@@ -49,7 +53,8 @@ export class UserDataService {
     private _language: LanguagesService,
     private _optionals: OptionalsService,
     private _references: ReferencesService,
-    private _skills: SkillService
+    private _skills: SkillService,
+    private _profiles: ProfileService
    ){
 
   }
@@ -61,12 +66,14 @@ export class UserDataService {
     }
   }
 
+  user: User[] = []; 
   experiences: Experience[] = [];
   formations: Formations[] = [];
   languages: Language[] = [];
   optionals: Optionals[] = [];
   references: Reference[] = [];
   skills: Skill[] = [];
+  profileList: Profile[] = [];
 
   getExperience(){
     this._experience.getExperience(this.userId).subscribe((experieceList: Experience[])=>{
@@ -89,7 +96,6 @@ export class UserDataService {
   getMyOptionals(){
     this._optionals.getMyOptionals(this.userId).subscribe((myOptionals: Optionals[]) => {
       this.optionals = myOptionals;
-      console.log(myOptionals); 
     });
   }
 
@@ -102,6 +108,12 @@ export class UserDataService {
   getSkill(){
     this._skills.getSkillsByUser(this.userId).subscribe((skillList: Skill[])=>{
       this.skills = skillList;
+    })
+  }
+
+  getProfiles(){
+    return this._profiles.getProfile(this.userId).subscribe((profiles: Profile[])=>{
+      this.profileList = profiles;
     })
   }
 
