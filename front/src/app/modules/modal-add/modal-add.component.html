@@ -3,7 +3,7 @@
     mat-flat-button color="warn" 
     type="button" data-bs-toggle="modal"
     data-bs-target="#ModalSelect"
-    [disabled]="hide">
+    (click)="reset()">
         Comencemos!
     </button>
 <!--     <button class="new"

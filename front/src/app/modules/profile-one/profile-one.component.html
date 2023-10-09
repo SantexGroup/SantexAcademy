@@ -1,11 +1,14 @@
-<app-modal-add></app-modal-add>
-<div class="todo">
+<div class="control">
+    <app-modal-add></app-modal-add>
     <div class="botonera">
-        <mat-label for="color">Color:</mat-label>
-        <input name="color" type="color" [(ngModel)]="selectedColor">
+        <mat-label for="color">Color:
+            <input name="color" type="color" [(ngModel)]="selectedColor">
+        </mat-label>
         <button mat-raised-button color="primary" (click)="applyColors()">Aplicar Color</button>
         <button mat-raised-button color="primary" (click)="downloadPDF()">Descargar PDF</button>
     </div>
+</div>
+<div class="todo">
     <div class="conteiner" id="profile-one">
         <div class="izquierdo" [ngStyle]="{ 'background-color': selectedColor }">
             <div class="img-conteiner">
