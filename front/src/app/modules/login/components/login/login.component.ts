@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   formSubmitted: boolean = false;
+  wrongPassword: boolean = false;
 
   constructor(private authService: AuthService,private toastr: ToastrService, private router: Router) { }
 
@@ -25,20 +26,19 @@ export class LoginComponent implements OnInit {
     const email = this.email;
     const password = this.password;
 
-    this.authService.login(email, password).subscribe(
-      (response: any) => {
-        if (response === 'Login exitoso') { //login exitoso es la "respuesta" del backend
-          return this.router.navigate(['/home']);
+    this.authService.login(email, password).subscribe({
+      next: (response: any) => {
+        if (this.authService.isLoggedIn()) {
+          this.router.navigate(['/home']);
         } else {
-          // redireccionar a /login y ver como mandar error de algun tipo
-          return console.log('desde if negativo', response);
+          this.wrongPassword = true;
         }
       },
-      (error: any) => {
+      error: (error: any) => {
         console.error('Error al iniciar sesión:', error);
         this.toastr.error('Error al iniciar sesión', 'Error');
       }
-    );
+    });
   }
 
   ngOnInit(): void { }
