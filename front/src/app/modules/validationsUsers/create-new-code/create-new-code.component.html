@@ -1,0 +1,51 @@
+<div class="row mb-3 mt-3 offset-lg-2 userSelect">
+  <div
+    class="card text-white mb-3"
+    style="max-width: 50rem; background-color: var(--colorBlue)"
+  >
+    <div class="card-header text-center fs-3"style="text-shadow: 2px 2px 5px #000000;"><b>Código de validación</b></div>
+    <div class="card-body">
+      <form [formGroup]="emailForm" (ngSubmit)="createCode()"*ngIf="!finish">
+        <div class="row mb-3 mb-3">
+          <label class="form-label mb-0 p-0"><b>Email</b></label>
+          <input
+            formControlName="email"
+            type="email"
+            class="form-control"
+            placeholder="Ingrese el email"
+          />
+          <span
+            *ngIf="
+            emailForm.get('email')?.hasError('required') &&
+            emailForm.get('email')?.touched
+            "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px"
+          >
+            El campo email es <strong>requerido</strong>
+          </span>
+        </div>
+        <div class="row mb-3 mt-2 text-center">
+          <div class="col-lg-6">
+            <button class="boton" routerLink="/">
+              Volver
+            </button>
+          </div>
+          <div class="col-lg-6">
+            <button
+              [disabled]="emailForm.invalid"
+              type="submit"
+              class="boton"
+            >
+              Aceptar
+            </button>
+          </div>
+        </div>
+      </form>
+      <div *ngIf="finish">
+        <h3>Ya se ha realizado la operación por favor revise su email.</h3>
+        <button class="boton" routerLink="/login">Volver al login</button>
+      </div>
+    </div>
+  </div>
+</div>

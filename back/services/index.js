@@ -27,7 +27,17 @@ const {
   getUsers,
   updateUser,
   patchUser,
+  validateCode,
+  createCode,
 } = require('./userService');
+
+const {
+  createAboutUS,
+  deleteAboutUS,
+  updateAboutUS,
+  getAboutUSById,
+  getAboutUSs,
+} = require('./aboutUSService');
 
 const CourseService = {
   createCourse,
@@ -58,7 +68,16 @@ const UserService = {
   getUsers,
   updateUser,
   patchUser,
+  validateCode,
+  createCode,
+};
+const AboutUSService = {
+  createAboutUS,
+  deleteAboutUS,
+  updateAboutUS,
+  getAboutUSById,
+  getAboutUSs,
 };
 module.exports = {
-  CourseService, CategoryService, ScheduleService, UserService,
+  CourseService, CategoryService, ScheduleService, UserService, AboutUSService,
 };

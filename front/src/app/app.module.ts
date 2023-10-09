@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SigupViewComponent } from './modules/sigup-view/sigup-view.component';
 import { DescriptionCourseComponent } from './modules/description-course/description-course.component';
 import { NavbarComponent } from './modules/navbar/navbar.component';
 import { HomePageComponent } from './modules/home-page/home-page.component';
@@ -21,10 +22,20 @@ import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.comp
 import { CourseComponent } from './modules/admin-panel/courses/course.component';
 import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
 import { CONTACTANOSComponent } from './modules/contactanos/contactanos.component';
+import { ValidationEmailComponent } from './modules/validationsUsers/validation-email/validation-email.component';
+import { CreateNewCodeComponent } from './modules/validationsUsers/create-new-code/create-new-code.component';
+import { AboutUsComponent } from './modules/admin-panel/about-us/about-us.component';
+import { AddAboutUsComponent } from './modules/admin-panel/about-us/add-about-us/add-about-us.component';
+import { EditAboutUsComponent } from './modules/admin-panel/about-us/edit-about-us/edit-about-us.component';
+import { ShowAboutUsComponent } from './modules/show-about-us/show-about-us.component';
+
 
 
 @NgModule({
   declarations: [
+    SigupViewComponent,
+    ValidationEmailComponent,
+    CreateNewCodeComponent,
     DescriptionCourseComponent,
     NavbarComponent,
     HomePageComponent,
@@ -42,14 +53,19 @@ import { CONTACTANOSComponent } from './modules/contactanos/contactanos.componen
     CourseComponent,
     DashboardPageComponent,
     CONTACTANOSComponent,
+    AboutUsComponent,
+    AddAboutUsComponent,
+    EditAboutUsComponent,
+    ShowAboutUsComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
+     
   providers: [DatePipe],
 
   bootstrap: [AppComponent]
