@@ -20,8 +20,14 @@ import { CategoryComponent } from './modules/admin-panel/categories/category.com
 import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.component';
 import { CourseComponent } from './modules/admin-panel/courses/course.component';
 import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
+
 import { ValidationEmailComponent } from './modules/validationsUsers/validation-email/validation-email.component';
 import { CreateNewCodeComponent } from './modules/validationsUsers/create-new-code/create-new-code.component';
+
+import { AboutUsComponent } from './modules/admin-panel/about-us/about-us.component';
+import { AddAboutUsComponent } from './modules/admin-panel/about-us/add-about-us/add-about-us.component';
+import { EditAboutUsComponent } from './modules/admin-panel/about-us/edit-about-us/edit-about-us.component';
+import { ShowAboutUsComponent } from './modules/show-about-us/show-about-us.component';
 
 
 
@@ -45,6 +51,10 @@ import { CreateNewCodeComponent } from './modules/validationsUsers/create-new-co
     ScheduleComponent,
     CourseComponent,
     DashboardPageComponent,
+    AboutUsComponent,
+    AddAboutUsComponent,
+    EditAboutUsComponent,
+    ShowAboutUsComponent,
   ],
   imports: [
     BrowserModule,

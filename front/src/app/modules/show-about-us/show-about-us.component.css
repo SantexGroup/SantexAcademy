@@ -1,0 +1,34 @@
+.container {
+    font-family: 'Aoboshi One', serif;
+    text-decoration: none;
+    overflow: hidden;
+    max-width: 30rem;
+}
+.title {
+    color: gray;
+}
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: auto;
+}
+.container-fluid {
+    border-width: 15px;
+}
+.card {
+    border-radius: 1rem;
+    box-shadow: 0.5rem 0.5rem;
+}
+.card-text {
+    font-size: 1.3rem;
+}
+.custom-card {
+    background-color: rgba(245, 245, 245, 0.9);
+}
+.custom-card h3,
+.custom-card img,
+.custom-card .card-body,
+.custom-card .card-text {
+    opacity: 1;
+}
