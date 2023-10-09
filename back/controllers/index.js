@@ -4,23 +4,40 @@ const {
   getCourses,
   updateCourse,
   deleteCourse,
-} = require("./courseController");
+} = require('./courseController');
 const {
   createCategory,
   getCategoryById,
   getCategories,
   updateCategory,
   deleteCategory,
-} = require("./categoryController");
+} = require('./categoryController');
 const {
   createSchedule,
   getScheduleById,
   getSchedules,
   updateSchedule,
   deleteSchedule,
-} = require("./scheduleController");
+} = require('./scheduleController');
+const {
+  createUser,
+  getUserById,
+  getUserByEmail,
+  getUsers,
+  updateUser,
+  deleteUser,
+  updatePassword,
+  validateCode,
+  createCode,
+} = require('./userController');
 
-
+const {
+  createAboutUS,
+  updateAboutUS,
+  deleteAboutUS,
+  getAboutUSById,
+  getAboutUSs,
+} = require('./aboutUSController');
 
 const CourseController = {
   createCourse,
@@ -44,4 +61,24 @@ const ScheduleController = {
   updateSchedule,
   deleteSchedule,
 };
-module.exports = { CategoryController, CourseController, ScheduleController };
+const UserController = {
+  createUser,
+  getUserById,
+  getUserByEmail,
+  getUsers,
+  updateUser,
+  deleteUser,
+  updatePassword,
+  validateCode,
+  createCode,
+};
+const AboutUSController = {
+  createAboutUS,
+  updateAboutUS,
+  deleteAboutUS,
+  getAboutUSById,
+  getAboutUSs,
+};
+module.exports = {
+  CategoryController, CourseController, ScheduleController, UserController, AboutUSController,
+};

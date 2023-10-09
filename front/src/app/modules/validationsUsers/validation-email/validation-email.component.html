@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div class="row mb-3 mt-3 offset-lg-2 userSelect">
+        <div
+          class="card text-white mb-3"
+          style="max-width: 50rem; background-color: var(--colorBlue)"
+        >
+          <div class="card-header text-center fs-3"style="text-shadow: 2px 2px 5px #000000;"><b>Código de validación</b></div>
+          <div class="card-body">
+            <div class="col" *ngIf="validateOK">
+                <h1>Ya está registrado</h1>
+                <button class="boton" routerLink="/login">volver al login</button>
+            </div>
+            <div class="col" *ngIf="!validateOK">
+                <h1>No se pudo registrar</h1>
+                <h4>Si sigue teniendo problemas pruebe crear un nuevo código <a routerLink="/crear-codigo" style="color: white;">aquí</a></h4>
+                
+            </div>
+          </div>
+        </div>      
+</div>

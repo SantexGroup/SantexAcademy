@@ -1,0 +1,59 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.logo{
+    height: 70px;
+    width: 130px;
+    font-family: sans-serif;
+}
+
+@media (max-width: 400px) {
+    .patrocionos{
+        width: 250px;
+        height: 40px;
+    }
+  }
+  @media (max-width:767px) {
+    hr{
+        visibility: hidden;
+    }
+  }
+/* ------------------------------------------- */
+.color-box{
+    background-color: rgb(230, 230, 230);
+}
+
+.cuerpo1{
+    display:flex;
+    align-items: center;
+
+}
+
+ .wrapper i {
+    max-width: 320px;
+    font-size: 70px;
+    color: gray;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.text-box{
+    color:black(33, 30, 30);
+}
+
+.text-box h3{
+    font-size: 25px;
+}
+
+.text-box p{
+    margin-top: 10px;
+    font-size: 16px;
+    color: gray;
+    flex: 1;
+}
+

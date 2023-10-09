@@ -1,0 +1,27 @@
+.panel{
+    width: 900px;
+    height: 620px;
+    background: white;
+    color: black;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgb(5, 34, 112);
+}
+.botonS{
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 350px;
+    background: orange;
+    color: white; 
+    font-size: 23px;
+    font-weight: bold;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px rgb(128, 128, 128);
+    transition: 0.2;
+}
+.botonS:hover{
+    transform: scale(1.01);
+    background: rgb(231, 150, 0);
+}

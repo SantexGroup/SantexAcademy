@@ -1,7 +1,11 @@
+import { Schedule } from "./schedule";
+import { ScheduleCourses } from "./scheduleCourses";
+
 export interface Course {
     id: number;
     name: string,
-    descripcion: string,
+    description: string,
+    image: string,
     maxStudents: number,
     start: Date;
     end: Date;
@@ -10,5 +14,5 @@ export interface Course {
     requirement: string,
     teacher: string,
     CourseCategoryName: string,
-
+    ScheduleCourses?:[ScheduleCourses]
 }
