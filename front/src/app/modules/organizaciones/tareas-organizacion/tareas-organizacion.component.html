@@ -1,0 +1,129 @@
+<div class="fondo-degradado">
+  <h2 class="titulo">MIS TAREAS</h2>
+  
+  
+  
+  <div class="contenedor"> 
+    
+    <button mat-raised-button color="accent" (click)="crearTarea()">+ NUEVA TAREA</button>
+    
+    <div class="contenedor-filtro">
+      
+      <mat-form-field class="filtro">
+          <mat-label>Filtrar</mat-label>
+          <input matInput (keyup)="filtrar($event)" placeholder="Filtrar ..." #input>
+      </mat-form-field>
+      
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+      <!-- Nombre -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let tarea"><p class="nombre-tarea">{{tarea.name}}</p>  </td>
+      </ng-container>
+    
+      <!-- Fecha -->
+      <!-- <ng-container matColumnDef="fecha" >
+        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+        <td mat-cell *matCellDef="let tarea"> {{tarea.date}} </td>
+      </ng-container> -->
+
+       <!-- Lugar -->
+         <!-- <ng-container matColumnDef="lugar"  >
+          <th mat-header-cell *matHeaderCellDef> Lugar </th>
+          <td mat-cell *matCellDef="let tarea"> {{tarea.place}} </td>
+        </ng-container> -->
+
+        <!-- Estado -->
+         <ng-container matColumnDef="estado"  >
+          <th mat-header-cell *matHeaderCellDef class="titulo-acciones"> Estado </th>
+          <td mat-cell *matCellDef="let tarea" style="width: 90px;">
+            
+              <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; ">
+                <p style="margin: 0;" > {{tarea.estado|titlecase}}</p> 
+                <mat-icon [ngStyle]="{'color':tarea.estado==='activa'?'green':'red'}">radio_button_checked</mat-icon>
+                  
+            </div>
+          </td>
+        </ng-container>         
+
+      
+      <!-- Categoria -->
+      <ng-container matColumnDef="categoria" >
+        <th mat-header-cell *matHeaderCellDef> Categoria </th>
+        <td mat-cell *matCellDef="let tarea"> {{tarea.category?.name}} </td>
+      </ng-container>
+    
+      <!-- Acciones -->
+     
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef style="text-align: end;"> Acciones </th>
+        <td mat-cell *matCellDef="let tarea" >
+          <div style="display: flex;justify-content: flex-end;" >
+
+            <button mat-icon-button [matMenuTriggerFor]="menu" [matMenuTriggerData]="{tareaMenu:tarea}" matTooltip="Menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </div>
+          <!-- <div class="contenedor-acciones">
+            <button mat-icon-button  matTooltip="Modificar Estado" (click)="cambiarEstado(tarea)"><mat-icon>loop</mat-icon></button> 
+            <button mat-icon-button color="accent" matTooltip="Ver detalle" (click)="verDetalleTarea(tarea)"><mat-icon>search</mat-icon></button> 
+            <button mat-icon-button color="primary" matTooltip="Editar" (click)="editarTarea(tarea)"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button color="primary" matTooltip="Editar" (click)="eliminarTarea(tarea)"><mat-icon>delete</mat-icon></button>
+
+          </div> -->
+        </td>
+      </ng-container>
+
+      
+      <mat-menu #menu="matMenu" >
+        <ng-template  matMenuContent let-tarea="tareaMenu">
+
+          <button mat-menu-item (click)="verDetalleTarea(tarea)">
+            <mat-icon color="accent" >search</mat-icon>
+            <span>Detalle</span>
+          </button>
+          <button mat-menu-item (click)="verInscriptos(tarea)">
+            <mat-icon color="primary" >how_to_reg</mat-icon>
+            <span>Inscriptos</span>
+          </button>
+          <button mat-menu-item (click)="cambiarEstado(tarea)">
+            <mat-icon >loop</mat-icon>
+            <span>Cambiar estado</span>
+          </button>
+          <button mat-menu-item (click)="editarTarea(tarea)">
+            <mat-icon color="primary">edit</mat-icon>
+            <span>Editar</span>
+          </button>
+          <button mat-menu-item (click)="eliminarTarea(tarea)">
+            <mat-icon color="warn">delete</mat-icon>
+            <span>Eliminar</span>
+          </button>
+        </ng-template>
+      </mat-menu>
+
+
+
+
+    
+      <tr mat-header-row *matHeaderRowDef="columnasTabla"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnasTabla;"></tr>
+    
+      
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4" *ngIf="dataSource.data.length>0; else sinDatos">No hay valores que coincidad con "{{input.value}}"</td>
+        <ng-template #sinDatos>
+
+          <td class="mat-cell" colspan="4">No hay tareas para mostrar.</td>
+        </ng-template>
+      </tr>
+    </table>
+
+
+    </div>
+    
+   
+
+</div>

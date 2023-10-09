@@ -1,0 +1,44 @@
+mat-dialog-content{
+    width: 80vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+mat-card-content{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 20px 10px;
+}
+
+.titulo-propiedad{
+   
+   font-weight: 500; 
+   
+   
+}
+.titulo{
+    margin-bottom: 30px;
+    width: 100%;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+.contenido-propiedad{
+    margin-top: 5px;
+    width: 100%;
+    white-space: normal;
+    overflow-wrap: break-word;
+    
+}
+
+@media (min-width:650px) {
+    mat-dialog-content{
+        width: 500px;
+    }
+}

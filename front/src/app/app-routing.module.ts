@@ -1,14 +1,33 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { VoluntarioGuard } from './core/guards/voluntario.guard';
+import { OrganizacionGuard } from './core/guards/organizacion.guard';
+import { AdminGuard } from './core/guards/admin.guard';
 
 const routes: Routes = [
   {
-    path: 'dashboard',
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+    path:'index',
+    loadChildren: ()=> import ('./modules/index/index.module').then(m=>m.IndexModule)
+  },
+  {
+    path:'voluntario',
+    loadChildren:()=> import('./modules/voluntarios/voluntarios.module').then(m=>m.VoluntariosModule),
+    canLoad:[VoluntarioGuard]
+  },
+  {
+    path:'organizacion',
+    loadChildren:()=>import('./modules/organizaciones/organizaciones.module').then(m=>m.OrganizacionesModule),
+    canLoad:[OrganizacionGuard]
+
+  },
+  {
+    path:'admin',
+    loadChildren:()=>import('./modules/admin/admin.module').then(m=>m.AdminModule),
+    canLoad:[AdminGuard]
   },
   {
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: 'index'
   }
 ];
 

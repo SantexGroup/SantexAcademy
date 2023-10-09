@@ -150,6 +150,31 @@ export class ApiService {
     return this.http.post<T>(this.apiUrl + url, postBody, opts);
   }
 
+
+  public postDownload<T>(
+    url: string,
+    body?: any,
+    params: HttpParams | undefined = undefined
+  ): Observable<T> {
+    const headers = this.httpHeaders.delete('Content-Type');
+    let postBody  = body;
+    const opts = {
+      headers,
+      params,
+      responseType: 'blob' as any,
+    };
+
+    if (params) {
+      opts.params = params;
+    }
+    if (!postBody) {
+      postBody = {};
+    }
+
+    return this.http.post<T>(this.apiUrl + url, postBody, opts);
+  }
+
+  
   /**
    * Constructs a `PUT` request that interprets the body as a JSON object and
    * returns the response body as a JSON object.

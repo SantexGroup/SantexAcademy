@@ -1,0 +1,98 @@
+<mat-dialog-content>
+
+    <form [formGroup]="form">
+        
+        <h3>{{titulo}}</h3>
+
+
+        <!-- Nombre -->
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Ingresá un nombre" formControlName="nombre">
+            <mat-icon matSuffix>drive_file_rename_outline</mat-icon>
+        </mat-form-field>
+        
+        
+        
+        <!-- Fecha -->
+        
+        <mat-form-field  appearance="outline" style="display: flex; flex-direction: column;">
+            <mat-label>Fecha</mat-label>
+            <div class="contenedor-input-date">
+                
+                <input matInput [matDatepicker]="picker" formControlName="fecha">
+
+                <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
+            </div>    
+
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker #picker color="primary"></mat-datepicker>
+        </mat-form-field>
+         <!-- Hora de inicio -->
+
+         <mat-form-field appearance="outline">
+            <mat-label>Horario de inicio:</mat-label>
+            <mat-select disableRipple formControlName="horaInicio" >
+                <mat-option *ngFor="let horario of horariosDisponibles" [value]="horario" (click)="calcularPuntos()">{{horario}}:00 hs. </mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+        
+        <!-- Categoria -->
+
+        <mat-form-field  appearance="outline">
+            <mat-label>Seleccioná una categoria</mat-label>
+            <mat-select disableRipple formControlName="categoriaId" >
+                <mat-option *ngFor="let categoria of listCategorias" [value]="categoria.id" (click)="calcularPuntos(categoria)">{{categoria.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+         <!-- Duracion -->
+
+         <mat-form-field appearance="outline">
+            <mat-label>Seleccioná una duración</mat-label>
+            <mat-select disableRipple formControlName="duracion" >
+                <mat-option *ngFor="let hora of listHoras" [value]="hora" (click)="calcularPuntos()">{{hora}} {{(hora===1)?'hora.':'horas.'}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        
+        <!-- Puntos -->
+        <mat-form-field  appearance="outline">
+            <mat-label>Puntaje</mat-label>
+            <input type="number" matInput readonly formControlName="puntos">
+            <mat-icon matSuffix>more_time</mat-icon>
+        </mat-form-field>
+        
+        
+        
+        <!-- Dirección -->
+        <mat-form-field appearance="outline">
+            <mat-label>Dirección</mat-label>
+            <input matInput placeholder="Ingresá una dirección" #inputDireccion  formControlName="direccion">
+            <mat-icon matSuffix>my_location</mat-icon>
+        </mat-form-field> 
+
+         <!-- Cantidad de participantes -->
+         <mat-form-field appearance="outline">
+            <mat-label>Cantidad de Participantes</mat-label>
+            <input type="number" matInput placeholder="Ingresá una cantidad" formControlName="cantidadParticipantes">
+            <mat-icon matSuffix>group_add</mat-icon>
+        </mat-form-field>
+        
+        <!-- Descripción -->
+        <mat-form-field appearance="outline">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput placeholder="Ingresá una descripción" rows="5" style="resize: none;" formControlName="descripcion"></textarea>
+            <mat-icon matSuffix>description</mat-icon>
+        </mat-form-field>
+    
+        <div class="contenedor-botones">
+            <button *ngIf="!modificar" mat-raised-button color="primary" (click)="crearTarea()" [disabled]="form.invalid || direccionFormateada===''">CREAR</button>
+            <button *ngIf="modificar" mat-raised-button color="primary" (click)="modificarTarea()" [disabled]="form.invalid">MODIFICAR</button>
+            <button mat-raised-button color="warn" mat-dialog-close>CERRAR</button>
+        </div>
+</form>
+
+
+</mat-dialog-content>

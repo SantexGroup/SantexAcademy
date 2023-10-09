@@ -1,0 +1,29 @@
+<nav class="navbar">
+    <mat-icon class="icono-menu" (click)="sideNav.toggle()">menu</mat-icon>
+    <p class="logo icono-menu" (click)="redireccionarA('/index')">Página de Inicio</p>
+</nav>
+
+<mat-sidenav-container >
+    <mat-sidenav #sideNav mode="over" >
+        <mat-nav-list >
+            <a mat-list-item class="icono-menu" (click)="redireccionarA('/voluntario/dashboard')" >Dashboard</a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item class="icono-menu" (click)="redireccionarA('/voluntario/tareas')" >Tareas</a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item class="icono-menu" (click)="redireccionarA('/voluntario/premios')" >Premios</a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item class="icono-menu" (click)="redireccionarA('/voluntario/datos')">Mis datos</a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item class="icono-menu" (click)="cerrarSesion()">Cerrar Sesión</a>
+        </mat-nav-list>
+      <mat-nav-list>
+        <a mat-list-item class="icono-menu" (click)="sideNav.toggle()" >Ocultar</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+        <router-outlet></router-outlet>
+  </mat-sidenav-container>

@@ -1,0 +1,72 @@
+
+<div class="fondo-degradado">
+    <div  *ngIf="datosOrganizacion$ | async as resumen" class="contenedor">
+
+        <h2 class="titulo-nombre">Bienvenido {{resumen.coordinador.name}}!</h2>
+        <div class="contenedor-card">
+            
+            <div class="card">
+                <p>+ {{resumen.totalPuntosOtorgados}}</p>
+                <h2>PUNTOS OTORGADOS</h2>
+            </div>
+            <div class="card">
+                <p>+ {{resumen.totalInscriptos}}</p>
+                <h2>INSCRIPTOS</h2>
+            </div>
+            <!-- <div class="card item-3">
+                <p>0</p>
+                <h2>TAREAS FINALIZADAS</h2>
+            </div> -->
+    
+            
+        </div>
+        <h2 class="titulo-nombre">PRÓXIMAS TAREAS</h2>
+        <div class="contenedor-card-tareas" *ngIf="resumen.proximasTareas.length > 0; else sinTareas">
+
+            <div class="card-tareas" *ngFor="let tarea of resumen.proximasTareas" [ngClass]="{'una-tarea':resumen.proximasTareas.length===1}">
+                    
+               
+                        
+                        <div class="card-title">
+                            <div>
+                                <p class="titulo">{{tarea.name | titlecase}}</p>
+                                <p class="subtitulo">{{tarea.category?.name}}</p>
+                                
+                            </div>
+                            <div>
+                                <p class="fecha">{{tarea.date|date:'dd/MM/yyyy'}}</p>
+                                <p class="puntos">+ {{tarea.points}}</p>
+                            </div>
+                        </div>
+                
+                        <div class="card-content">
+                            <p class="valor">Organización: <span> {{tarea.coordinator?.name}}</span></p>
+                            <p >{{tarea.description}}</p>
+                            <p class="valor">Estado: <span>{{tarea.estado|titlecase}}</span></p>
+                            
+                            <p class="valor">Inscriptos: <span>{{tarea.cantInscriptos| number:'1.0-0'}}/{{tarea.cantParticipantes| number:'1.0-0'}}</span></p>
+                        </div>
+                        
+                        <div class="card-actions" >
+                
+                            <button mat-raised-button  color="primary" (click)="verDetalles(tarea)">DETALLES</button>
+                        </div>
+                
+                        
+                    </div>
+
+        
+                    
+                </div>
+                
+                <ng-template #sinTareas>
+                    <div class="card-tareas card-sin-tareas">
+    
+                        <h3>No tienes ninguna tarea pendiente</h3>
+                    </div>
+                </ng-template>
+
+    </div>
+  
+</div>
+

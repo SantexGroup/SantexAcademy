@@ -1,0 +1,23 @@
+<mat-dialog-content>
+    <h2 style="text-align: center;">Inscriptos a: {{tarea.name}}</h2>
+    <div *ngIf="listVoluntarios.length>0;else sinVoluntarios">
+        <div class="contenedor-tabla">
+            <p class="subtitulo">Nombre </p>
+            <p class="subtitulo">Asistencia</p>
+            
+        </div>
+        <div class="contenedor-tabla item" *ngFor="let voluntario of listVoluntarios" >
+            <p >{{voluntario.name|titlecase}} {{voluntario.lastname|titlecase}}</p>
+            <mat-checkbox [checked]="voluntario.tareasVoluntario?.asistio"  (change)="modificarAsistencia(voluntario)"></mat-checkbox>
+    
+        </div>
+
+    </div>
+    <ng-template #sinVoluntarios>
+        <p>No hay ningún voluntario inscripto.</p>
+    </ng-template>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button *ngIf="listVoluntarios.length>0" [disabled]="listVoluntariosModificados.length<1" mat-raised-button color="primary" (click)="modificarAsistencias()">CONFIRMAR</button>
+    <button mat-raised-button color="warn" mat-dialog-close>CERRAR</button>
+</mat-dialog-actions>

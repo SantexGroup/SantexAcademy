@@ -1,0 +1,112 @@
+.fondo-degradado{
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    width: 100%;
+    height: calc(100vh - 54px);
+    background-image: linear-gradient(90deg,#8c52ff,#1bdaff);
+}
+
+.titulo{
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 300;
+}
+
+.contenedor-card{
+    background-color: white;
+    width: 300px;
+    border-radius: 20px;
+    padding: 20px 30px;
+}
+
+.titulo-propiedad{
+    margin: 0;
+    font-weight: 500;
+    
+}
+
+.margin-left-10{
+    margin-left: 10px;
+}
+
+.contenido-propiedad{
+    margin:0;
+    width: 100%;
+    white-space: normal ;
+    overflow-wrap: break-word;
+ 
+}
+
+.propiedad{
+    margin-bottom: 10px;
+}
+.input-full-width{
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border:black solid 1px;
+    
+    font-style: italic;
+    outline: none;
+}
+
+.input-full-width:focus-visible{
+    border: #8c52ff solid 2px;
+   
+}
+
+.mensaje-error{
+    color: red;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.input-valid{
+
+    border: rgba(144, 255, 40, 0.905) solid 2px;
+}
+
+.input-invalid{
+
+    border: red solid 2px;
+}
+
+.contenedor-botones{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 20px;
+}
+
+.password{
+    margin-top: 20px;
+}
+.input-password{
+    width:85%;
+
+}
+
+.contenedor-cambio-password{
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icono-password{
+    cursor: pointer;
+    
+}
+
+.icono-password:hover{
+    color: rgba(0, 0, 0, .5);
+}

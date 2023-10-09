@@ -1,0 +1,34 @@
+.navbar{
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    z-index: 999;
+}
+
+mat-sidenav{
+    width: 200px;
+    height: calc(100vh - 54px);
+    z-index: 999;
+    background-color: black;
+    
+}
+
+.icono-menu{
+    color: white;
+    cursor: pointer;
+}
+
+.icono-menu:hover{
+
+    
+    color: #1bdaff;
+    cursor: pointer;
+}
+
+.logo{
+    color:white;
+    margin : 0;
+}

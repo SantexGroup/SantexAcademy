@@ -1,3 +1,4 @@
+require('dotenv').config();
 const Sequelize = require('sequelize');
 const logger = require('../../utils/winston.logger');
 
@@ -27,4 +28,4 @@ const sequelize = new Sequelize(
   process.env.DB_PASSWORD,
   sequelizeOptions,
 );
-module.exports.connection = sequelize;
+module.exports.connection = { sequelize };

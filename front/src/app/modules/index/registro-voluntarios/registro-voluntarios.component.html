@@ -1,0 +1,98 @@
+<div class="fondo-degradado">
+    <h2 class="titulo">Registro de voluntarios</h2>
+    <form class="formulario" [formGroup]="formRegistro" >
+
+        <div class="contenedor-input">
+            <input type="text" class="input-full-width" formControlName="nombre"  placeholder="Ingresá un nombre *"
+            [ngClass]="{'input-invalid':formRegistro.get('nombre')?.touched && formRegistro.get('nombre')?.invalid,
+                         'input-valid':formRegistro.get('nombre')?.touched && formRegistro.get('nombre')?.valid}">
+            <p *ngIf="formRegistro.get('nombre')?.touched && formRegistro.get('nombre')?.value == ''" 
+            class="mensaje-error">Este campo es obligatorio</p>
+
+            <p *ngIf="formRegistro.get('nombre')?.touched && formRegistro.get('nombre')?.value != '' && formRegistro.get('nombre')?.errors" 
+            class="mensaje-error">El nombre como mínimo debe tener {{formRegistro.get('nombre')?.errors?.['minlength'].requiredLength}} letras</p>
+
+
+             
+
+        </div>
+
+        <div class="contenedor-input">
+
+            <input type="text" class="input-full-width"  formControlName="apellido"  placeholder="Ingresa un apellido *"
+            [ngClass]="{'input-invalid':formRegistro.get('apellido')?.touched && formRegistro.get('apellido')?.invalid,
+            'input-valid':formRegistro.get('apellido')?.touched && formRegistro.get('apellido')?.valid}">
+            
+            <p *ngIf="formRegistro.get('apellido')?.touched && formRegistro.get('apellido')?.value == ''" 
+            class="mensaje-error">Este campo es obligatorio</p>
+
+            <p *ngIf="formRegistro.get('apellido')?.touched && formRegistro.get('apellido')?.value != '' && formRegistro.get('apellido')?.errors" 
+            class="mensaje-error">El apellido como mínimo debe tener {{formRegistro.get('apellido')?.errors?.['minlength'].requiredLength}} letras</p>
+        </div>
+        
+        <div class="contenedor-input">
+
+            <input type="text" class="input-full-width"   formControlName="direccion"  placeholder="Ingresá una dirección *"
+            [ngClass]="{'input-invalid':formRegistro.get('direccion')?.touched && formRegistro.get('direccion')?.invalid,
+            'input-valid':formRegistro.get('direccion')?.touched && formRegistro.get('direccion')?.valid}">
+            
+            <p *ngIf="formRegistro.get('direccion')?.touched && formRegistro.get('direccion')?.value == ''" 
+            class="mensaje-error">Este campo es obligatorio</p>
+
+            <p *ngIf="formRegistro.get('direccion')?.touched && formRegistro.get('direccion')?.value != '' && formRegistro.get('direccion')?.errors" 
+            class="mensaje-error">La dirección como mínimo debe tener {{formRegistro.get('direccion')?.errors?.['minlength'].requiredLength}} caracteres</p>
+            
+        </div>
+
+        <div class="contenedor-input">
+
+            
+            <input type="number" class="input-full-width"  formControlName="telefono"  placeholder="Ingresá un número de teléfono *"
+            [ngClass]="{'input-invalid':formRegistro.get('telefono')?.touched && formRegistro.get('telefono')?.invalid,
+            'input-valid':formRegistro.get('telefono')?.touched && formRegistro.get('telefono')?.valid}">
+            
+            <p *ngIf="formRegistro.get('telefono')?.touched && formRegistro.get('telefono')?.errors?.['required']" 
+            class="mensaje-error">Este campo es obligatorio</p>
+
+            <p *ngIf="formRegistro.get('telefono')?.touched && formRegistro.get('telefono')?.value && formRegistro.get('telefono')?.errors" 
+            class="mensaje-error">El teléfono como mínimo debe tener 8 números</p>
+            
+        </div>
+
+        <div class="contenedor-input">
+
+            <input type="email"  class="input-full-width"  formControlName="email"  placeholder="Ingresá un email *"
+            [ngClass]="{'input-invalid':formRegistro.get('email')?.touched && formRegistro.get('email')?.invalid,
+            'input-valid':formRegistro.get('email')?.touched && formRegistro.get('email')?.valid}">
+            
+            <p *ngIf="formRegistro.get('email')?.touched && formRegistro.get('email')?.value == ''" 
+            class="mensaje-error">Este campo es obligatorio</p>
+
+            <p *ngIf="formRegistro.get('email')?.touched && formRegistro.get('email')?.value != '' && formRegistro.get('email')?.errors" 
+            class="mensaje-error">Ingrese un email válido</p>
+        </div>
+        <div class="contenedor-input">
+
+            
+            <input type="password" class="input-full-width"  formControlName="password"  placeholder="Ingresá una contraseña *" autocomplete="current-password"
+            [ngClass]="{'input-invalid':formRegistro.get('password')?.touched && formRegistro.get('password')?.invalid,
+            'input-valid':formRegistro.get('password')?.touched && formRegistro.get('password')?.valid}">
+            
+            <p *ngIf="formRegistro.get('password')?.touched && formRegistro.get('password')?.value == ''" 
+            class="mensaje-error">Este campo es obligatorio</p>
+
+            <p *ngIf="formRegistro.get('password')?.touched && formRegistro.get('password')?.value != '' && formRegistro.get('password')?.errors" 
+            class="mensaje-error">La contraseña como mínimo debe tener {{formRegistro.get('password')?.errors?.['minlength'].requiredLength}} caracteres</p>
+            
+        </div>
+        
+        <button  class="button-full-width" [disabled]="!formRegistro.valid" [ngClass]="{'button-disabled':formRegistro.invalid}" (click)="crearVoluntario()">Registrarse</button>
+        
+    </form>
+    
+        <p>¿Ya tienes una cuenta? <span class="inicia-sesion" (click)="irLoginVoluntario()" > Inicia Sesión</span></p>
+
+        <button mat-raised-button color="accent" class="boton-volver" routerLink="/index" >Volver al Inicio</button>
+
+    
+</div>

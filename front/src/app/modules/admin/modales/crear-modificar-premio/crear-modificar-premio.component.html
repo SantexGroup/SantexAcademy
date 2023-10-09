@@ -1,0 +1,49 @@
+<mat-dialog-content>
+
+    <form [formGroup]="form">
+        
+        <h3>{{modificar?'MODIFICAR':'CREAR'}} PREMIO</h3>
+
+
+        <!-- Nombre -->
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Ingresá un nombre" formControlName="nombre">
+            <mat-icon matSuffix>drive_file_rename_outline</mat-icon>
+        </mat-form-field>
+        
+        
+        <!--Costo (Puntos) -->
+        <mat-form-field  appearance="outline">
+            <mat-label>Costo (Puntos)</mat-label>
+            <input type="number" matInput placeholder="Ingresa el costo" formControlName="costo">
+            <mat-icon matSuffix>more_time</mat-icon>
+        </mat-form-field>
+        
+        
+        
+       
+
+         <!-- Cantidad disponible -->
+         <mat-form-field appearance="outline">
+            <mat-label>Cantidad Disponible</mat-label>
+            <input type="number" matInput placeholder="Ingresá una cantidad" formControlName="cantidad">
+            <mat-icon matSuffix>group_add</mat-icon>
+        </mat-form-field>
+        
+        <!-- Descripción -->
+        <mat-form-field appearance="outline">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput placeholder="Ingresá una descripción" rows="5" style="resize: none;" formControlName="descripcion"></textarea>
+            <mat-icon matSuffix>description</mat-icon>
+        </mat-form-field>
+    
+        <div class="contenedor-botones">
+            <button *ngIf="!modificar" mat-raised-button color="primary" (click)="crearPremio()" [disabled]="form.invalid">CREAR</button>
+            <button *ngIf="modificar" mat-raised-button color="primary" (click)="modificarPremio()" [disabled]="form.invalid">MODIFICAR</button>
+            <button mat-raised-button color="warn" mat-dialog-close>CERRAR</button>
+        </div>
+</form>
+
+
+</mat-dialog-content>

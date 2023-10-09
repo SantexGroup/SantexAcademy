@@ -1,0 +1,41 @@
+<nav class="navbar">
+    <mat-icon class="icono-menu" (click)="sideNav.toggle()">menu</mat-icon>
+    <p class="logo icono-menu" (click)="redireccionarA('/')">CLUB DE HORAS</p>
+</nav>
+
+<mat-sidenav-container >
+    <mat-sidenav #sideNav mode="over" >
+        <mat-nav-list >
+            <a mat-list-item class="icono-menu" (click)="redireccionarA('/')" >Inicio</a>
+        </mat-nav-list>
+        <div *ngIf="(credencialesUsuario$|async) === null ;else sesionIniciada">
+            
+            <mat-nav-list >
+                <a mat-list-item class="icono-menu" (click)="irLogin()" >Login</a>
+            </mat-nav-list>
+            <mat-nav-list>
+                <a mat-list-item class="icono-menu" (click)="redireccionarA('/index/registro-voluntario')">Registro Voluntarios</a>
+            </mat-nav-list>
+            <mat-nav-list>
+                <a mat-list-item class="icono-menu" (click)="redireccionarA('/index/registro-organizacion')">Registro Organizaciones</a>
+            </mat-nav-list>
+          
+            
+        </div>
+
+        <ng-template #sesionIniciada>
+            <mat-nav-list *ngIf="(credencialesUsuario$|async) as credenciales" >
+            <a mat-list-item class="icono-menu" (click)="redireccionarA(credenciales.tipo)" >Dashboard</a>
+            </mat-nav-list>
+            
+        </ng-template>
+        <mat-nav-list>
+            <a mat-list-item class="icono-menu" (click)="sideNav.toggle()" >Cerrar </a>
+          </mat-nav-list>
+        
+    </mat-sidenav>
+
+   
+            <router-outlet></router-outlet>
+        
+  </mat-sidenav-container>

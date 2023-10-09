@@ -1,0 +1,26 @@
+1. Ejecuta Docker Compose:
+En la línea de comandos, ve al directorio donde tienes el archivo docker-compose.yml y ejecuta el siguiente comando para iniciar el contenedor de MySQL:
+
+docker-compose up -d
+
+2. En la  linea de comando coloca el siguiente comando para ejecutar la base de datos de docker
+
+en id-del-contendor colocar el id que aparece al hacer docker ps.
+
+ docker exec -it colocar-id-del-contendor mysql -uroot -p12345678
+
+usuario root
+contraseña 12345678
+
+3. Una vez a dento de la interfaz de mysql copiar y pegar todo el contenido de BBDD_de_club de horas y pegarlo en la linea de comandos de mysql;
+
+4. Listo!, base de datos creada!
+
+5. Seguro les aparecera un error al querer levantar el rpyecto, entonces van a la consola de comandos, colocan:
+
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' NOMBRE_DEL_CONTENEDOR_O_ID
+
+en NOMBRE_DEL_CONTENEDOR_O_ID colocan justamente el nombre o id del contenedor que crearon para la base de datos y les devuleve una direcion ip.
+Ejemplo: 172.18.0.2
+
+eso lo copian y lo pegan en el .env

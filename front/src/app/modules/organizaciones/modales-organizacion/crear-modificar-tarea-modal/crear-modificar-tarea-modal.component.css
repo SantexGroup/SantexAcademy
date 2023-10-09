@@ -1,0 +1,47 @@
+form{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 10px;
+    width: 100%;
+    height: auto;
+    
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+
+mat-dialog-content{
+    
+    width: 80vw;
+    
+    height: 70vh;
+}
+
+.contenedor-botones{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.contenedor-input-date{
+    display: flex; 
+    align-items: center;
+}
+button{
+    padding: 0 5vw;
+}
+@media (min-width:650px) {
+    mat-dialog-content{
+        width: 500px;
+    }
+
+   button{
+        padding: 5px 50px;
+    }
+}

@@ -6,16 +6,38 @@ const errors = require('../middleware/error_handler.middleware');
 
 const app = Express();
 
-// Rutas
+const volunteerRoutes = require('./volunteer-routes');
+const coordinatorRoutes = require('./coordinator-routes');
+const tareaRoutes = require('./tarea-routes');
+const categoryRoutes = require('./category-routes');
+const administratorRoutes = require('./administrator-routes');
+const premiosRoutes = require('./premios-routes');
+const cuentasRoutes = require('./cuentas-routes');
 
-// use=
-app.use('/ping', (req, res) => {
-  res.json({
-    response: 'pong!',
-  });
-});
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
 
-module.exports = app;
+app.use('/volunteer', volunteerRoutes);
+app.use('/coordinator', coordinatorRoutes);
+app.use('/tarea', tareaRoutes);
+app.use('/category', categoryRoutes);
+
+app.use('/administrator', administratorRoutes);
+app.use('/premios', premiosRoutes);
+app.use('/cuentas', cuentasRoutes);
+
+// eslint-disable-next-line max-len
+module.exports = {
+  // eslint-disable-next-line max-len
+
+  volunteer: volunteerRoutes,
+  coordinator: coordinatorRoutes,
+  category: categoryRoutes,
+  premios: premiosRoutes,
+  administrator: administratorRoutes,
+  tarea: tareaRoutes,
+  cuentas: cuentasRoutes,
+
+
+};

@@ -1,0 +1,49 @@
+<div class="contenedor fondo-degradado">
+    <h2 class="titulo">Login</h2>
+    <form class="formulario" [formGroup]="formLogin" >
+  
+        
+        <div class="contenedor-input">
+
+            <input type="email" class="input-full-width" required formControlName="email"  placeholder="Ingresá el email *"
+            [ngClass]="{'input-invalid':formLogin.get('email')?.touched && formLogin.get('email')?.invalid,
+            'input-valid':formLogin.get('email')?.touched && formLogin.get('email')?.valid}">
+            
+            <p *ngIf="formLogin.get('email')?.touched && formLogin.get('email')?.value == ''" 
+            class="mensaje-error">Este campo es obligatorio</p>
+
+            <p *ngIf="formLogin.get('email')?.touched && formLogin.get('email')?.value != '' && formLogin.get('email')?.errors" 
+            class="mensaje-error">Ingrese un email válido</p>
+
+        </div>          
+        
+        <div class="contenedor-input">
+
+            <input [type]="mostrarPassword?'text':'password'" class="input-full-width" required formControlName="password"  placeholder="Ingresá la contraseña *" autocomplete="current-password"
+            [ngClass]="{'input-invalid':formLogin.get('password')?.touched && formLogin.get('password')?.invalid,
+            'input-valid':formLogin.get('password')?.touched && formLogin.get('password')?.valid}">
+            
+            <p *ngIf="formLogin.get('password')?.touched && formLogin.get('password')?.invalid" 
+            class="mensaje-error">Este campo es obligatorio</p>
+            
+            
+         </div>   
+                   
+            
+
+        
+        <span class="boton-mostrar" (click)="mostrarPassword= !mostrarPassword" >{{mostrarPassword?'Ocultar':'Mostrar'}} contraseña</span>
+       
+       
+        
+        <button  class="button-full-width" [disabled]="!formLogin.valid" [ngClass]="{'button-disabled':formLogin.invalid}" (click)="iniciarSesion()">Iniciar Sesión</button>
+        
+    </form>
+ 
+        <!-- <p *ngIf="!admin" >¿No tienes una cuenta? <span class="inicia-sesion" (click)="irRegistro()" >Registrate</span></p> -->
+
+       
+
+        <button mat-raised-button color="accent" class="boton-volver" routerLink="/index" >Volver al Inicio</button>
+    
+</div>
