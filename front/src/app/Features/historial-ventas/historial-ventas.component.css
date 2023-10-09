@@ -94,6 +94,12 @@ img {
 #datosVen p {
     width: 150px;
 }
+#datosArt {
+    width: 20%;
+}
+#datosArt p {
+    width: max-content;
+}
 #descripcion {
     width: 30%;
     min-width: 30%;

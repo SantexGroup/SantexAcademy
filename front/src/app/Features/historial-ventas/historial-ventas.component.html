@@ -14,11 +14,13 @@
                 <p id="nomArt">Nombre: <span (click)="visualizar(articulo.idArt)">{{articulo.nomArt}}</span></p>
                 <!-- <p id="nombreVen">Vendedor: {{articulo.nomVen}}</p> -->
                 <p id="catArt">Categoría: <span (click)="redirigirCategoria(articulo.catArt)">{{articulo.catArt}}</span></p>
+                <p>Estado: <span>{{articulo.estArt}}</span></p>
             </div>
             <div id="descripcion">
                 <p id="desArt">{{articulo.desArt}}</p>
             </div>
             <div id="datosArt">
+                <p>Fecha de publicación: <span>{{articulo.fecArt | date}}</span></p>
                 <p id="envArt">Entrega: <span>{{articulo.envArt}}</span></p>
                 <p id="preArt">Precio: <span>${{articulo.preArt}}</span></p>
             </div>

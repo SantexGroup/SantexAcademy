@@ -18,9 +18,11 @@ export class HistorialVentasComponent implements OnInit {
     nomArt: '',
     nomVen: '',    
     catArt: '',
+    estArt: '',
     idArt: 0,
     desArt: '',
     preArt: '',
+    fecArt: '',
     envArt: '',
     idCat: 0,
   };
@@ -66,6 +68,12 @@ export class HistorialVentasComponent implements OnInit {
         this.modelo.nomArt = res[i].nombre.charAt(0).toUpperCase() + res[i].nombre.slice(1);
         this.modelo.desArt = res[i].detalles.charAt(0).toUpperCase() + res[i].detalles.slice(1);
         this.modelo.preArt = res[i].precio;
+        this.modelo.fecArt = res[i].createdAt.slice(0, 10);
+        if(res[i].estado == false) {
+          this.modelo.estArt = 'Alquilado' 
+        }else {
+          this.modelo.estArt = 'Disponible'
+        }
         if(res[i].envio) {
           this.modelo.envArt = 'Envío y retiro';
         }else {
