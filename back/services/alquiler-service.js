@@ -4,9 +4,9 @@ async function getAlquileresByIdComprador(idComprador) {
   const alquileres = await Alquiler.findAll({
     where: {
       idComprador,
-
+      
     },
-    include: { model: Products, include: [{ model: Images }], include: [{ model: User }]},
+    include: { model: Products, include: [{ model: Images}, {model: User} ]},
   });
   return alquileres;
 }

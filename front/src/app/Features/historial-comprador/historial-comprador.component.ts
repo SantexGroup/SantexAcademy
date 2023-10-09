@@ -67,6 +67,7 @@ export class HistorialCompradorComponent implements OnInit {
       for (let i=0; i < res.length; i++) {
         console.log("Imagen prod: " + i + JSON.stringify(res[i].Product));
         this.modelo.imaArt = this.servidor + res[i].Product.Images[0].url;
+        console.log("Img:" + this.respuesta[i].Product.Images[0])
         this.modelo.idArt = res[i].idProducto;
         // this.modelo.nomVen = ;
         this.modelo.nomArt = res[i].Product.nombre;
