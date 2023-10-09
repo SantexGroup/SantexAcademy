@@ -16,6 +16,7 @@ import { SkillComponent } from '../crud-data/skill/skill.component';
 import { ProfilesComponent } from '../profiles/profiles.component';
 import { ProfileOneComponent } from '../profile-one/profile-one.component';
 import { ProfileTwoComponent } from '../profile-two/profile-two.component';
+import { ProfileThreeComponent } from '../profile-three/profile-three.component';
 
 
 const crudRoutes: Routes = [
@@ -39,6 +40,10 @@ const crudRoutes: Routes = [
           {
             path: 'two',
             component: ProfileTwoComponent
+          },
+          {
+            path: 'three',
+            component: ProfileThreeComponent
           }
         ]
       },

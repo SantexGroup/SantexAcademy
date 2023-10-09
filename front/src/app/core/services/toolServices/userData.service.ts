@@ -44,6 +44,9 @@ export class UserDataService {
 
   urlPicture = "" || localStorage.getItem('picture');
 
+  email = "" || localStorage.getItem('email');
+
+
   constructor(
     private _experience: ExperiencesService,
     private _formations: FormationsService,

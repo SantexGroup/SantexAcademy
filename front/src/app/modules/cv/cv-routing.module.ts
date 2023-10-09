@@ -5,6 +5,7 @@ import { CVComponent } from './cv.component';
 import { ProfilesFourComponent } from '../profiles-four/profiles-four.component';
 import { ProfileOneComponent } from '../profile-one/profile-one.component';
 import { ProfileTwoComponent } from '../profile-two/profile-two.component';
+import { ProfileThreeComponent } from '../profile-three/profile-three.component';
 
 const routes: Routes = [
     {
@@ -22,6 +23,10 @@ const routes: Routes = [
     {
       path: 'two',
       component: ProfileTwoComponent
+    },
+    {
+      path:'three',
+      component: ProfileThreeComponent
     }
 ]
 

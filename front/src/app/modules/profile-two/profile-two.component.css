@@ -7,6 +7,11 @@
     display: flexbox;    
     justify-content: center;    
 }
+body {
+    overflow-y: auto;
+    margin: 1rem;
+    position: relative;
+}
 .conteiner{
     height: 297mm;
     width: 210mm;
