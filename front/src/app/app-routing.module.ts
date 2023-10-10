@@ -51,6 +51,7 @@ const routes: Routes = [
     path: 'datos-usuario',
     component: DatosUsuarioComponent,
   },
+  {
 
     path: 'historial-ventas',
     component: HistorialVentasComponent,

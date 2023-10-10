@@ -36,7 +36,7 @@ import { CategoriasComponent } from './Features/categorias/categorias.component'
     TarjetaArticuloComponent,
     VistaArtIndComponent,
     ModificarArticuloComponent,
-    DatosUsuarioComponent
+    DatosUsuarioComponent,
     HistorialVentasComponent,
     ModificarArticuloComponent,
     BarraLateralComponent,
