@@ -20,6 +20,10 @@ span {
     margin-bottom: 1%;
     margin-top: 1%;
 }
+#botonNavegacion {
+    display: flex;
+    justify-content: end;
+}
 /* imagen */
 #divImagenes {
     display: grid;
@@ -51,24 +55,6 @@ span {
     filter: grayscale(100%);
     transition: filter 0.1s;
     cursor: pointer;
-}
-/* icono */
-#divIcon {
-    display: flex;
-    justify-content: right;
-}
-#divIcon img {
-    border: 3px solid #a13343;
-    border-radius: 100%;
-}
-#divIcon img:hover {
-    
-    cursor: pointer;
-}
-#flechaIcon {
-    width: 5%;
-    height: 5%;
-    
 }
 /* datos */
 #datos {

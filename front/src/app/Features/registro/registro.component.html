@@ -3,6 +3,9 @@
     <p>-</p>
     <div id="FormularioCompleto" class="formulario">
         <div class="formulario_container">
+            <div id="botonNavegacion">
+                <app-boton-navegacion></app-boton-navegacion>
+            </div>
             <div class="titulo_container">
                 <h2>Crear Cuenta</h2>
             </div>
@@ -13,8 +16,7 @@
                             <input [(ngModel)]="corReg" type="email" name="email" placeholder="Email" required/>
                         </div>
                         <div class="input_field"> <span><i class="fa fa-lock" aria-hidden="true"></i></span>
-                            <input [(ngModel)]="pasReg" type="password" name="password" placeholder="Contraseña"
-                                required />
+                            <input [(ngModel)]="pasReg" type="password" name="password" placeholder="Contraseña"required />
                         </div>
                         <div class="input_field"> <span><i class="fa fa-lock" aria-hidden="true"></i></span>
                             <input [(ngModel)]="aliReg" type="text" name="alias" placeholder="Alias" required/>

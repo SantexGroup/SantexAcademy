@@ -35,10 +35,6 @@ const routes: Routes = [
     component: CargaArticulosComponent
   },
   {
-    path: 'tarjeta',
-    component: TarjetaArticuloComponent
-  },
-  {
     path: 'vista-articulo',
     component: VistaArtIndComponent,
   },
