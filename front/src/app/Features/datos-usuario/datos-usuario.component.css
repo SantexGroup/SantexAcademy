@@ -237,11 +237,25 @@
   }
 
   button {
-    margin-left: 150px;
-    border-radius: 100px;
-    width: 70px;
-    font-weight: bold;
+    background: #838383;
+    height: 35px;
+    line-height: 35px;
+    width: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
+  button:hover {
+    background: #aa7780;
+  }
+  
 
 
   
