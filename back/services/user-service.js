@@ -1,7 +1,9 @@
 require('dotenv').config();
 
 const jwt = require('jsonwebtoken');
-const { User, Direccion, localidad } = require('../models');
+const {
+  User, Direccion, localidad, provincia,
+} = require('../models');
 
 // login
 async function login(mail, password) {
@@ -69,6 +71,11 @@ async function getUserFromId(id) {
             {
               model: localidad,
               attributes: ['idProvincia', 'nombre'],
+              include: [
+                {
+                  model: provincia,
+                },
+              ],
             },
           ],
         },

@@ -7,11 +7,11 @@ import { CargaArticulosComponent } from './Features/carga-articulos/carga-articu
 import { TarjetaArticuloComponent } from './Features/tarjeta-articulo/tarjeta-articulo.component';
 import { VistaArtIndComponent } from './Features/vista-articulo-ind/vista-articulo-ind.component';
 import { ModificarArticuloComponent } from './Features/modificar-articulo/modificar-articulo.component';
+import { DatosUsuarioComponent } from './Features/datos-usuario/datos-usuario.component';
 import { HistorialVentasComponent } from './Features/historial-ventas/historial-ventas.component';
 import { HistorialCompradorComponent } from './Features/historial-comprador/historial-comprador.component';
 import { VistaPorTextoComponent } from './Features/vista-por-texto/vista-por-texto.component';
 import { CategoriasComponent } from './Features/categorias/categorias.component';
-
 
 const routes: Routes = [
   {
@@ -47,6 +47,11 @@ const routes: Routes = [
     component: ModificarArticuloComponent,
   },
   {
+
+    path: 'datos-usuario',
+    component: DatosUsuarioComponent,
+  },
+
     path: 'historial-ventas',
     component: HistorialVentasComponent,
   },
