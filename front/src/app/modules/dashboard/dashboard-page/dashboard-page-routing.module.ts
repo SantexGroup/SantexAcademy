@@ -32,6 +32,7 @@ const routes: Routes = [
       {
         path: 'form-update/:id',
         component: FormUpdateComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'form-add-product',
@@ -40,8 +41,7 @@ const routes: Routes = [
       },
       {
         path: 'search-product',
-        component: SearchProductComponent,
-        canActivate: [AuthGuard]
+        component: SearchProductComponent
       },
       {
         path: 'form-delete',

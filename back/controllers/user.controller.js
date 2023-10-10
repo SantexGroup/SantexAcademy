@@ -40,8 +40,8 @@ usercontroller.create = async (req, res) => {
         process.env.DIRECCION + "/public/" + req.file.filename;
     }
 
-    User.create(req.body);
-    return res.status(200).json({ msg: "usuario creado correctamente" });
+    a = User.create(req.body);
+    return res.status(200).json({ msg: "usuario creado correctamente", user: a });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ msg: "Error creando el usuario" });

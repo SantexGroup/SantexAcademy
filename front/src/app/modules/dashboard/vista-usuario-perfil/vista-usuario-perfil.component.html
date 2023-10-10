@@ -9,7 +9,7 @@
                 </svg>
             </div>
             <p class="name-client"> Usuario
-                <span>{{perfilUsuario.nombre}}
+                <span>{{perfilUsuario.firstName}} {{perfilUsuario.lastName}}
                 </span>
             </p>
         </div>
@@ -17,13 +17,13 @@
     <div class="user-data">
         <h1>Datos del Usuario</h1>
         <hr>
-        <p>Usuario: {{perfilUsuario.usuario}}</p>
-        <p>Nombre: {{perfilUsuario.nombre}}</p>
-        <p>Apellido: {{perfilUsuario.apellido}}</p>
-        <p>Dni: {{perfilUsuario.dni}}</p>
-        <p>Correo electrónico: {{perfilUsuario.correo}}</p>
-        <p>Dirección: {{perfilUsuario.direccion}}</p>
-        <p>Fecha de registro: {{perfilUsuario.fechaCreacion | date:'MMMM d, y'}}</p>
+        <p>Usuario: {{perfilUsuario.username}}</p>
+        <p>Nombre: {{perfilUsuario.firstName}}</p>
+        <p>Apellido: {{perfilUsuario.lastName}}</p>
+        <!-- <p>Dni: {{perfilUsuario.dni}}</p> -->
+        <p>Correo electrónico: {{perfilUsuario.email}}</p>
+        <!-- <p>Dirección: {{perfilUsuario.direccion}}</p> -->
+        <p>Fecha de registro: {{perfilUsuario.createdAt | date:'MMMM d, y'}}</p>
         <!-- Agrega más datos del usuario aquí -->
     </div>
     

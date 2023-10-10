@@ -112,8 +112,13 @@
     font-size: .7rem;
   }
   .error{
-    color: red;
-    
+    color: red; 
+  }
+  .link:visited{
+    color: #0e47c3;
+  }
+  .link:link{
+    color: #115DFC;
   }
 
 /*  TABLET */

@@ -1,16 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/core/interfaces/user';
+import { UserService } from 'src/app/core/services/user.service';
 
-export interface Usuario {
-  usuario: string;
-  nombre: string;
-  apellido: string;
-  dni: string;
-  correo: string;
-  fechaCreacion: Date;
-  direccion: string;
-  productos: Producto[];
-  alquileres: Alquiler[];
-}
+
 export interface Producto {
   nombre: string;
   precio: number;
@@ -53,13 +45,14 @@ export class VistaUsuarioPerfilComponent implements OnInit {
   ]
 
   //Creamos un Usuario
-  perfilUsuario: Usuario = {
-    usuario: 'UsuarioJose', nombre: 'Jose Alberto', apellido: 'Martinez', dni:'900333999', correo:'jAlberto@gmail.com', fechaCreacion: new Date('2023-09-20'), direccion: 'Amirante Brown, B° Malvinas, nro:300', productos: this.productList2, alquileres: this.alquileresList2 
+  perfilUsuario!:User 
+
+  constructor(private userServ: UserService, ) { 
+    
   }
 
-  constructor() { }
-
   ngOnInit(): void {
+    this.perfilUsuario = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")!) : null;
   }
   removeProducto(index: number){
       // Función para eliminar un producto del carrousel
