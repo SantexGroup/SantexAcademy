@@ -3,6 +3,7 @@ import { vistaArtIndServ } from 'src/app/core/services/vista-art-ind-serv.servic
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { BarraService } from 'src/app/core/services/barra.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-vista-articulo-ind',
@@ -15,6 +16,7 @@ export class VistaArtIndComponent implements OnInit {
   listcategorias: any[] = [];
   catArt: string = '';
   cat: any = [];
+  idCat: number = 0;
   // obtener imgs
   servidor: string = environment.API_URL + '/images/';
   images: string[] = [];
@@ -53,7 +55,7 @@ export class VistaArtIndComponent implements OnInit {
   codigoSeguridad: string = '';
   
 
-  constructor(private service: vistaArtIndServ, private router: Router, private barraService: BarraService) { }
+  constructor(private service: vistaArtIndServ, private router: Router, private barraService: BarraService, private location: Location) { }
 
   ngOnInit(): void {
     this.getIdProd();
@@ -90,6 +92,7 @@ export class VistaArtIndComponent implements OnInit {
             if (this.respuesta.idTipoProducto == this.listcategorias[i].id) {
               this.catArt = JSON.stringify(this.listcategorias[i].name.charAt(0).toUpperCase() + this.listcategorias[i].name.slice(1));
               this.catArt = this.catArt.slice(1, this.catArt.length-1);
+              this.idCat = this.listcategorias[i].id;
               console.log("Categorái: " + this.catArt)
             }
             if (this.catArt != this.listcategorias[i].name.charAt(0).toUpperCase() + this.listcategorias[i].name.slice(1)) {
@@ -181,6 +184,12 @@ export class VistaArtIndComponent implements OnInit {
     //this.router.navigate(['confirmacion-articulo']);
   }  
   redireccion() {
-    //this.router.navigate(['confirmacion-articulo']);
+    this.location.back();
+  }
+  redirigirCategoria() {
+    this.router.navigate(['categorias/' + this.idCat]);
+  }
+  alertaVen() {
+    alert("No puede contratar su propio servicio")
   }
 }

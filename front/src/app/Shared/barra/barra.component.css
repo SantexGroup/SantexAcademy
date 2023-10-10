@@ -4,99 +4,82 @@
     border-bottom: 2px solid #874421;
     display: flex;
 }
-
 img {
-    width: 80px;
-    padding-left: 30px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    width: 40px;
+    margin-left: 10px;
+    background-color: none;
 }
-
 .dropdown-menu {
     border: 1px solid #e6b68b;
     border-radius: 20px;
 }
-
 .dropdown-item {
     border-bottom: 1px solid #e6b68b;
 }
-
-
 #iteminicial {
     border-radius: 0px;
 }
-
 #itemfinal {
     border-bottom: none;
     border-radius: 8px;
 }
-
-.dropdown button {
-    background-color: #e6b68b;
-    color: white;
-    border-radius: 10px;
-    border: 1px solid #874421;
-}
-
-
-#logo {
-    display: flex;
-    align-items: center;
-}
-
 
 .categorias {
     display: flex;
     align-items: center;
     margin: 20px;
 }
-
-
-
-#buscador {
-    display: flex;
-    align-items: center;
-}
-
-#buscador input {
-    border: 1px solid #874421;
-    color: white;
-    height: 27px;
-    background-color: #e6b68b;
-}
-
 ::placeholder {
-    color: white;
+    color: grey;
     font-size: 0.8em;
 }
-
-
 app-login {
     display:flex;
     justify-content: right;
     width: 100%;
     padding-right: 60px;
 }
-
 *:focus {
     outline: 1px solid #874421;
     box-shadow: none;
 }
-
 #BarraGeneral {
     padding: 0;
 }
-
 #BarraColor {
     background-color: #e1dede;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
-
 #BotonColor {
     color: #f0eaeb;
     background-color: #d68a96;
     border: 0;
-    margin-right: 500px;
 }
-
 #BotonColor:hover {
     background-color: #c95c6d;
 }
-
+.navbar-nav {
+    margin-left: 10px;
+}
+#buscador {
+    margin-left: 20px;
+}
+input {
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    font-size:medium;
+    color: grey;
+}
+button {
+    margin-left: 10px;
+}
+input:focus { 
+    outline: none; 
+}

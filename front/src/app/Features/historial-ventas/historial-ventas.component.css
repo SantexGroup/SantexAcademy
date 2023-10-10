@@ -13,7 +13,6 @@ p, a {
     width: 150px;
     font-size: small;
     margin: 0;
-    
     font-weight: 600;
     cursor:default;
 }
@@ -29,7 +28,6 @@ span {
 }
 #nomArt {
     width: 500px;
-    /* display:inline-flexbox; */
 }
 #nomArt span{
     width: 100%;;
@@ -60,7 +58,6 @@ img {
 #datosVen {
     display: grid;
     width: 400px;
-    
 }
 #general {
     display: flex;
