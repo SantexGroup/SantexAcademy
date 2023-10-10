@@ -14,9 +14,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { CargaArticulosComponent } from './Features/carga-articulos/carga-articulos.component';
 import { TarjetaArticuloComponent } from './Features/tarjeta-articulo/tarjeta-articulo.component';
 import { VistaArtIndComponent } from './Features/vista-articulo-ind/vista-articulo-ind.component';
+import { BarraLateralComponent } from './Shared/barra-lateral/barra-lateral.component';
 import { ModificarArticuloComponent } from './Features/modificar-articulo/modificar-articulo.component';
 import { DatosUsuarioComponent } from './Features/datos-usuario/datos-usuario.component';
-
+import { HistorialVentasComponent } from './Features/historial-ventas/historial-ventas.component';
+import { HistorialCompradorComponent } from './Features/historial-comprador/historial-comprador.component';
+import { VistaPorTextoComponent } from './Features/vista-por-texto/vista-por-texto.component';
+import { CategoriasComponent } from './Features/categorias/categorias.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,13 @@ import { DatosUsuarioComponent } from './Features/datos-usuario/datos-usuario.co
     VistaArtIndComponent,
     ModificarArticuloComponent,
     DatosUsuarioComponent
+    HistorialVentasComponent,
+    ModificarArticuloComponent,
+    BarraLateralComponent,
+    HistorialCompradorComponent,
+    VistaPorTextoComponent,
+    CategoriasComponent,
+
   ],
   imports: [
     BrowserModule,

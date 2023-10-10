@@ -1,76 +1,70 @@
-.barraNavegacion {
-    margin: 0;
-    height: 90px;
-    border-bottom: 2px solid #874421;
-    display: flex;
-}
-
+/* etiquetas */
 img {
-    width: 80px;
-    padding-left: 30px;
+    width: 40px;
+    margin-left: 20px;
+    background-color: none;
 }
-
-.dropdown-menu {
-    border: 1px solid #e6b68b;
-    border-radius: 20px;
+button {
+    margin-left: 15px;
 }
-
-.dropdown-item {
-    border-bottom: 1px solid #e6b68b;
+input {
+    height: 30px;
+    color: grey;
+    border-radius: 5px;
+    border: none;
+    font-size:medium;
+    text-indent: 5px;
 }
-
-#iteminicial {
-    border-radius: 0px;
+input:focus { 
+    outline: none; 
 }
-
-#itemfinal {
-    border-bottom: none;
-    border-radius: 8px;
-}
-
-.dropdown button {
-    background-color: #e6b68b;
-    color: white;
-    border-radius: 10px;
-    border: 1px solid #874421;
-}
-
-#logo {
-    display: flex;
-    align-items: center;
-}
-
-.categorias {
-    display: flex;
-    align-items: center;
-    margin: 20px;
-}
-
-#buscador {
-    display: flex;
-    align-items: center;
-}
-
-#buscador input {
-    border: 1px solid #874421;
-    color: white;
-    height: 27px;
-    background-color: #e6b68b;
-}
-
 ::placeholder {
+    color: grey;
+    font-size: 0.9em;
+}
+/* generales */
+#BarraGeneral {
+    padding: 0;
+}
+#BarraColor {
+    background-color: #e1dede;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+/* logos */
+#delkat {
+    font-weight: 500;
+}
+.navbar-nav {
+    margin-left: 10px;
+}
+.navbar-brand {
+    padding: 0;
+}
+/* categorias */
+.dropdown-menu {
+    margin: 0;
+    padding: 0;
+    border-radius: 20px;    
+    border: 1px solid #d68a96
+}
+.dropdown-item {
+    border-radius: 30px;
+}
+.dropdown-item:hover {
+    cursor: pointer;
+    background-color: #d68a96;
     color: white;
-    font-size: 0.8em;
 }
-
-app-login {
-    display:flex;
-    justify-content: right;
-    width: 100%;
-    padding-right: 60px;
+/* buscador */
+#buscador {
+    margin-left: 20px;
 }
-
-*:focus {
-    outline: 1px solid #874421;
-    box-shadow: none;
+#BotonBuscar {
+    color: #f0eaeb;
+    background-color: #d68a96;
+    border: 0;
+}
+#BotonBuscar:hover {
+    background-color: #c95c6d;
 }
