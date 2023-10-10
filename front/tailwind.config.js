@@ -65,10 +65,10 @@ module.exports = {
       bgOptionsRegister: "rgba(63, 40, 131, 0.36)",
     },
     fontFamily: {
-      sans: ["Open Sans"],
-      poppins: ["Poppins"],
-      dosis: ["Dosis", "sans"],
-      martian: ["Martian Mono", "monospace"],
+      // sans: ["Open Sans"],
+      roboto: ["Roboto"],
+      // dosis: ["Dosis", "sans"],
+      // martian: ["Martian Mono", "monospace"],
     },
     fontSize: {
       xs: ["0.75rem", { lineHeight: "1rem" }],

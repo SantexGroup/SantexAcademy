@@ -14,7 +14,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #fff;
-  font-family: "Open Sans", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   display: flex;
   justify-content: center;
   overflow-x: hidden;
