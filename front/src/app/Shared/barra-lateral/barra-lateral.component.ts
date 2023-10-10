@@ -127,4 +127,10 @@ export class BarraLateralComponent implements OnInit {
   redirigirVentas() {
     this.router.navigateByUrl('/historial-ventas');
   }
+  redirigirCargarProducto(){
+    this.router.navigateByUrl('/carga-articulos');
+  }
+  redirigirProductosCargados(){
+    this.router.navigateByUrl('/historial-ventas');
+  }
 }
