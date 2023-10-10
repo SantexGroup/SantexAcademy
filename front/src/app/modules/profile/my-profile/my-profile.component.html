@@ -7,19 +7,19 @@
       <div class="row">
         <div class="col-md-4">
           <label for="firstname"><strong>Nombre:</strong> </label>
-          <input type="text" class="form-control" id="nombre" [(ngModel)]="userPrueba.firstname" disabled>
+          <input type="text" class="form-control" id="nombre" [(ngModel)]="userPrueba.firstname" name="firstname" disabled>
         </div>
       </div>
       <div class="row">
         <div class="col-md-4">
           <label for="lastname"><strong>Apellido:</strong> </label>
-          <input type="text" class="form-control" id="lastname" [(ngModel)]="userPrueba.lastname" disabled>
+          <input type="text" class="form-control" id="lastname" [(ngModel)]="userPrueba.lastname" name="lastname" disabled>
         </div>
       </div>
       <div class="row">
         <div class="col-md-4">
           <label for="phone"><strong>Teléfono:</strong> </label>
-          <input type="text" class="form-control" id="phone" [(ngModel)]="userPrueba.phone" disabled>
+          <input type="text" class="form-control" id="phone" [(ngModel)]="userPrueba.phone" name="phone" disabled>
         </div>
       </div>
       <div class="row">
@@ -36,25 +36,28 @@
     <div class="edit-user" *ngIf="isEditing">
       <h2>Editar Usuario</h2>
   
-      <form>
+      <form (ngSubmit)="saveUser()">
         <div class="form-group">
           <label for="nombre">Nombre:</label>
-          <input type="text" class="form-control" id="nombre" value="{{userPrueba.firstname}}" required>
+          <input type="text" class="form-control" id="nombre" [(ngModel)]="userPrueba.firstname" name="editfirstname"
+          value="{{userPrueba.firstname}}" required>
         </div>
   
         <div class="form-group">
           <label for="apellido">Apellido:</label>
-          <input type="text" class="form-control" id="apellido" value="{{userPrueba.lastname}}" required>
+          <input type="text" class="form-control" id="apellido" [(ngModel)]="userPrueba.lastname" name="editlastname"
+          value="{{userPrueba.lastname}}" required>
         </div>
   
         <div class="form-group">
           <label for="telefono">Teléfono:</label>
-          <input type="text" class="form-control" id="telefono" value="{{userPrueba.phone}}" required>
+          <input type="text" class="form-control" id="telefono" [(ngModel)]="userPrueba.phone" name="editphone"
+          value="{{userPrueba.phone}}" required>
         </div>
         <br>  
         <div class="modal-footer">
           <button class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>          
-          <button class="btn btn-primary" (click)="saveUser()">Guardar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
         </div>      
       </form>
       <hr>

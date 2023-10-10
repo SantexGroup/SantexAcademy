@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -14,10 +15,16 @@ export class MyProfileComponent implements OnInit {
     phone: '123456789',
     email: 'cj@mail.com'
   };
+  user: any;
+  token: string | null = localStorage.getItem('token')
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+  }
+
+  getUserToken(){
+    //let idToken = JSON.parse(atob(this.token.split('.')[1]));
   }
 
   isEditing: boolean = false;
@@ -28,6 +35,7 @@ export class MyProfileComponent implements OnInit {
 
   saveUser() {
     // Lógica para guardar los cambios del usuario
+    //this.userService.putUser(this.user,this.idToken).subscribe()
     this.isEditing = false;
   }
 
