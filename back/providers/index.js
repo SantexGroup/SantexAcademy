@@ -32,6 +32,7 @@ const {
   validateCode,
   createCode,
   patchAdmins,
+  deleteAdmins,
 } = require('./userProvider');
 
 const {
@@ -76,6 +77,7 @@ const UserProvider = {
   validateCode,
   createCode,
   patchAdmins,
+  deleteAdmins,
 };
 
 const AboutUSProvider = {

@@ -5,6 +5,7 @@ const { UserController } = require('../controllers');
 const router = express.Router();
 router.get('/:userId', UserController.getUserById);
 
+router.delete('/admin/:userId', UserController.deleteAdmins);
 router.get('/', UserController.getUsers);
 router.get('/email/:email', UserController.getUserByEmail);
 router.post(
@@ -14,6 +15,11 @@ router.post(
   body('email').isEmail(),
   body('password').isString(),
   UserController.createUser,
+);
+router.patch(
+  '/admins',
+  body('userId').isInt(),
+  UserController.patchAdmins,
 );
 router.delete(
   '/removeinscription/:idCourse/:idUser',
@@ -45,17 +51,12 @@ router.put(
   body('password').isString(),
   UserController.updateUser,
 );
-router.patch(
-  '/admins',
-  body('userId').isInt(),
-  UserController.patchAdmins,
-);
+
 router.patch(
   '/:userId',
   body('password').isString(),
   UserController.updatePassword,
 );
-
 router.delete('/:userId', UserController.deleteUser);
 
 module.exports = router;

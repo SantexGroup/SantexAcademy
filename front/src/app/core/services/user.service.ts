@@ -12,7 +12,20 @@ export class UserService {
   private apiUrl= 'http://localhost:4001/api/users'
 
   constructor(private httpUser: HttpClient) { }
+  patchAdmins(userId:number){
+    const requestBody = { userId }; 
+    return this.httpUser.patch(this.apiUrl+"/admins",requestBody)
+  }
+  deleteAdmins(userId:number){
+    return this.httpUser.delete(this.apiUrl+"/admin/" + userId)
+  }
 
+  getUsers(){
+    return this.httpUser.get(this.apiUrl)
+  }
+  getUser(id: number){
+    return this.httpUser.get(this.apiUrl+"/"+ id)
+  }
   postUser(user: User){
     return this.httpUser.post(this.apiUrl, user)
   }

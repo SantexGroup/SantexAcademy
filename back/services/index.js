@@ -32,6 +32,7 @@ const {
   validateCode,
   createCode,
   patchAdmins,
+  deleteAdmins,
 } = require('./userService');
 
 const {
@@ -76,6 +77,7 @@ const UserService = {
   validateCode,
   createCode,
   patchAdmins,
+  deleteAdmins,
 };
 const AboutUSService = {
   createAboutUS,
