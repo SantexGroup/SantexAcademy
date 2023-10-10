@@ -1,0 +1,48 @@
+
+.button-conteiner{
+    background: #0D6EFD;
+    height: 106vh;
+}
+
+#first{
+    margin-top: 3rem;
+}
+
+.button-nav{
+    margin: 10px;
+    width: 300px;
+    font-size: large;
+}
+
+.button-nav button{
+    background: #FFF;
+    color: #0D6EFD;
+}
+
+.button-nav button:hover{
+    background: #0D6EFD;
+    border: 1px solid #FFF;
+    color: #FFF;
+}
+
+.mat-raised-button{
+    width: 100%;
+}
+
+.bienvenido{
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+}
+.textArea{
+    margin-top: 1rem;
+    width: 100%;
+    height: 95vh;
+    overflow-y: auto;
+}
+
+textarea{
+    width: 100%;
+}
