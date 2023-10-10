@@ -4,6 +4,7 @@ import { Course } from 'src/app/core/interfaces/course';
 import { CourseService } from 'src/app/core/services/course.service';
 import { Schedule } from 'src/app/core/interfaces/schedule';
 import { ScheduleCourses } from 'src/app/core/interfaces/scheduleCourses';
+import { AuthenticationService } from 'src/app/core/services/authentication.service'
 import { take } from 'rxjs';
 @Component({
   selector: 'app-description-course',
@@ -50,7 +51,8 @@ export class DescriptionCourseComponent {
   constructor(
     private courseService: CourseService,
     private aRouter: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private auth: AuthenticationService
   ) {
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
     this.getCourse();
@@ -113,5 +115,8 @@ export class DescriptionCourseComponent {
   }
   redirect(id: number){
     window.location.assign("/curso/"+id)
+  }
+  adminCheck(): boolean {
+    return this.auth.isUserAdmin();
   }
 }

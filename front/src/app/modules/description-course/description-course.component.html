@@ -63,6 +63,9 @@
       <h5>Inicio: {{ startFormat }}</h5>
       <h5>Finalización: {{ endFormat }}</h5>
     </div>
+    <div class="row mt-1 p-3" *ngIf="adminCheck()">
+      <p>here the students shall be</p>
+    </div>
   </div>
   <div class="row p-2 m-2 rounded" style="background-color: orange">
     <h2>OTROS CURSOS QUE TE PODRIAN INTERESAR</h2>
