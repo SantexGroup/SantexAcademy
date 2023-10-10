@@ -26,9 +26,11 @@ app.use(helmet());
 app.use(helmet.ieNoOpen());
 // Sets "Strict-Transport-Security: max-age=5184000; includeSubDomains".
 const sixtyDaysInSeconds = 5184000;
-app.use(helmet.hsts({
-  maxAge: sixtyDaysInSeconds,
-}));
+app.use(
+  helmet.hsts({
+    maxAge: sixtyDaysInSeconds,
+  }),
+);
 // Sets "X-Content-Type-Options: nosniff".
 app.use(helmet.noSniff());
 app.use(helmet.frameguard({ action: 'deny' }));
@@ -49,13 +51,13 @@ if (config.environment === 'production') {
 }
 app.use(session(sess));
 app.use(express.json());
-app.use(express.urlencoded(
-  {
+app.use(
+  express.urlencoded({
     extended: false,
     limit: '10kb',
     parameterLimit: 10,
-  },
-));
+  }),
+);
 
 // Cors configuration
 const whitelist = process.env.CORS.split(' ');
@@ -75,8 +77,9 @@ app.use(cors(corsOptions));
 if (config.environment === 'production') {
   app.set('trust proxy', 1); // trust first proxy
 }
-
-models.sequelize.authenticate()
+console.log(`Puerto usado ${process.env.PORT}`);
+models.sequelize
+  .authenticate()
   .then(() => {
     logger.api.debug('Conexión con la Base de Datos: EXITOSA');
   })
@@ -86,4 +89,5 @@ models.sequelize.authenticate()
   });
 
 app.use('/', routes);
+
 module.exports = app;

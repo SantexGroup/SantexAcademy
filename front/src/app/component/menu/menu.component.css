@@ -1,0 +1,18 @@
+.mat-icon-button .mat-icon {
+    line-height: 8px;
+}
+
+.mat-flat-button.mat-accent,
+.mat-raised-button.mat-accent,
+.mat-fab.mat-accent,
+.mat-mini-fab.mat-accent {
+    background-color: orange;
+}
+
+.mat-menu-item.productos {
+    background: #e7e7e7;
+}
+
+.mat-menu-item.usuario {
+    background: #e7e7e7;
+}

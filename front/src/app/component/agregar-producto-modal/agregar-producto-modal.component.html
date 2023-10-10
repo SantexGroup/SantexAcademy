@@ -1,0 +1,41 @@
+<form class="form-container">
+    <mat-form-field>
+      <input matInput style="padding-left: 20px;" placeholder="Nombre del producto" name="Nombre" required>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Categoría de eventos</mat-label>
+      <mat-select formGroupName="option" required>
+        <mat-option value="empresarial">Empresarial</mat-option>
+        <mat-option value="familiar">Familiar</mat-option>
+        <mat-option value="gala">Gala</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput placeholder="Precio por evento"  type="number" name="Precio" required>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput placeholder="Cantidad disponible" type="number" name="Cantidad"required>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <textarea matInput placeholder="Detalle del producto" name="Detalle" required></textarea>
+    </mat-form-field>
+
+    <input type="file" (change)="subirFoto($event)" *ngIf="inputVisible">
+
+
+    <div class="foto-container" *ngIf="fotoSerializada">
+      <img [src]="fotoSerializada" alt="Vista previa de la foto" *ngIf="fotoCargada"
+      [ngStyle]="{ 'border': fotoCargada ? '4px solid #C991D9' : '1px solid #ccc', 
+    'width.vh': fotoCargada ? 45 : 'auto',
+    'height.vh': fotoCargada ? 45 : 'auto' }" >
+    </div>
+
+
+    <button mat-raised-button color="primary" (click)="crearProducto()">Crear</button>
+  </form>
+  
+  

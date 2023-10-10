@@ -1,0 +1,7 @@
+p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+    padding-left: 4em;
+    padding-top: 4em;
+    display: flex;
+}

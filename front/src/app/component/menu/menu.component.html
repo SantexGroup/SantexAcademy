@@ -1,0 +1,29 @@
+<button mat-fab mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+  <mat-icon class="menu-1">account_circle</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item class="usuario">
+      <mat-icon>perm_identity</mat-icon>
+      <span>Usuario</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>info</mat-icon>
+      <span>Informacion</span>
+    </button>
+    <button mat-menu-item (click)="abrirModal()" class="productos">
+      <mat-icon>shop</mat-icon>
+      <span>Productos</span>
+      </button>
+    <button mat-menu-item>
+      <mat-icon>shopping_cart</mat-icon>
+      <span>Mis Productos</span>
+      </button>
+    <button mat-menu-item>
+      <mat-icon>store</mat-icon>
+      <span>Vender Producto</span>
+      </button>
+    <button mat-menu-item>
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Deslogueo</span>
+    </button>
+</mat-menu>

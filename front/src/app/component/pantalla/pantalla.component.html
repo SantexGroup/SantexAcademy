@@ -1,0 +1,5 @@
+<ul>
+    <li *ngFor="let mueble of muebleService.mueblesFiltrados">
+        {{mueble.nombre}} {{mueble.precio | currency}}
+    </li>
+</ul>

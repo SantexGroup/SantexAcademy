@@ -12,10 +12,11 @@
     "db:create": "./node_modules/.bin/sequelize db:create",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
     "db:migrate:undo": "./node_modules/.bin/sequelize db:migrate:undo",
-    "db:seed:all": "./node_modules/.bin/sequelize db:seed:all"
+    "db:seed:all": "./node_modules/.bin/sequelize db:seed:all",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "bcrypt": "^5.1.0",
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "debug": "^4.3.4",
     "dotenv": "^8.6.0",
@@ -24,11 +25,13 @@
     "express-session": "^1.17.3",
     "express-validator": "6.6.1",
     "helmet": "^4.6.0",
+    "jose": "4.14.4",
     "lint-staged": "^10.5.4",
     "moment": "^2.29.4",
     "morgan": "~1.10.0",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.29.0",
+    "sequelize": "^6.32.1",
+    "sequelize-auto-migrations": "^1.0.3",
     "sequelize-cli": "^6.6.0",
     "winston": "^3.8.2",
     "winston-daily-rotate-file": "^4.7.1",
@@ -40,7 +43,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.27.5",
     "husky": "^4.3.8",
-    "nodemon": "^2.0.21"
+    "nodemon": "^2.0.22"
   },
   "husky": {
     "hooks": {

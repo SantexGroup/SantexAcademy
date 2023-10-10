@@ -1,2 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background: -webkit-linear-gradient(90deg, white 10%, rgb(250, 185, 65) 90%);
+    display: flex;
+}
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mat-dialog-container{
+    background-color: transparent;
+    border-radius: 52px !important;
+    padding: 0% !important;
+  }
+
+
