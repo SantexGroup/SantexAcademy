@@ -11,8 +11,10 @@ import { SearchProductComponent } from '../search-product/search-product.compone
 import { FooterComponent } from '../footer/footer.component';
 import { LoginComponent } from '../login/login.component';
 import { VistaUsuarioPerfilComponent } from '../vista-usuario-perfil/vista-usuario-perfil.component';
+import { RegisterUsersComponent } from '../register-users/register-users.component';
 import { VistaHomeVendedorComponent } from '../vista-home-vendedor/vista-home-vendedor.component';
 import { AuthGuard } from '../../../core/guards/auth.guard';
+
 
 const routes: Routes = [
   {
@@ -59,6 +61,11 @@ const routes: Routes = [
         path: 'perfil-Users',
         component: VistaUsuarioPerfilComponent,
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'register',
+        component: RegisterUsersComponent
+        
       },
       {
         path:'home-vendedor',
