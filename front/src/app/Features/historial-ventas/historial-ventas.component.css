@@ -83,7 +83,9 @@ img {
     color:blueviolet;
     cursor: pointer;
 }
-
+#datosVen p {
+    width: max-content;
+}
 /* descripcion articulo */
 #descripcion {
     width: 30%;
