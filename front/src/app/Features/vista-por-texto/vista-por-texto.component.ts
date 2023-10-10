@@ -14,6 +14,7 @@ export class VistaPorTextoComponent implements OnInit {
   listArticulos: any = [];
   images: string[] = [];
   listArtId: string[] = [];
+  bolArt: boolean = false;
   servidor: string = environment.API_URL + '/images/'
   resBus: string = JSON.stringify(localStorage.getItem('texBus'))
   
@@ -28,8 +29,7 @@ export class VistaPorTextoComponent implements OnInit {
     if (idProdsBus) {
       let newObject = JSON.parse(idProdsBus);
       this.listArtId = newObject;
-    } else {
-      alert('No hay productos con el texto ingresado')
+      this.bolArt = true;
     }
     //peticiones
     const observables = this.listArtId.map(id => this.service.traerProductos(+id));
