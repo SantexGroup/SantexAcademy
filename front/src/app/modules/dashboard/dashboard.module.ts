@@ -21,18 +21,22 @@ import { VistaProveedoresComponent } from './vista-proveedores/vista-proveedores
 import { MatChipsModule } from '@angular/material/chips';
 import { SearchProductComponent } from './search-product/search-product.component';
 import { ProductCardComponent } from './search-product/product-card/product-card.component';
-
+import { MatBadgeModule } from '@angular/material/badge';
 import { CardComponent } from './shopping-cart/card/card.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { VistaUsuarioPerfilComponent } from './vista-usuario-perfil/vista-usuario-perfil.component';
 import { RegisterUsersComponent } from './register-users/register-users.component';
+import { VistaHomeVendedorComponent } from './vista-home-vendedor/vista-home-vendedor.component';
+
 
 
 @NgModule({
   declarations: [DashboardPageComponent, FormAddProductComponent, FormUpdateComponent, NavBarComponent,
   FormDeleteComponent, HomeComponent, PopUpHomeComponent, ShoppingCartComponent,
-  SearchProductComponent, ProductCardComponent, VistaProveedoresComponent,FooterComponent, LoginComponent, CardComponent,VistaUsuarioPerfilComponent, RegisterUsersComponent],
+  SearchProductComponent, ProductCardComponent, VistaProveedoresComponent,FooterComponent, 
+  LoginComponent, CardComponent,VistaUsuarioPerfilComponent, VistaHomeVendedorComponent, RegisterUsersComponent],
+
 
 
 
@@ -48,6 +52,7 @@ import { RegisterUsersComponent } from './register-users/register-users.componen
     FormsModule,
     MatDialogModule,
     MatSelectModule,
+    MatBadgeModule
   ],
   exports: [DashboardPageComponent],
   providers: [],

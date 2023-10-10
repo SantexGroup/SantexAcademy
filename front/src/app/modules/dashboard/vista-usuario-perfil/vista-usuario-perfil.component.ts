@@ -20,6 +20,7 @@ export interface Alquiler {
   nombre: string;
   precio: number;
   cantidad: number;
+  aceptado: string;
 }
 @Component({
   selector: 'app-vista-usuario-perfil',
@@ -39,16 +40,16 @@ export class VistaUsuarioPerfilComponent implements OnInit {
     {nombre: 'Mesa Algarrobo', precio: 60, descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nostrum commodi aperiam, ipsa incidunt eum quibusdam recusandae temporibus ipsum accusantium? Explicabo minus reprehenderit temporibus adipisci odio beatae. Eaque, impedit libero.'},
   ];
   alquileresList: Alquiler[] = [
-    {nombre: 'Mesa22', precio: 200, cantidad: 50},
-    {nombre: 'silla22', precio: 150, cantidad: 60},
-    {nombre: 'Mesa22', precio: 200, cantidad: 50},
-    {nombre: 'silla22', precio: 150, cantidad: 60},
-    {nombre: 'Mesa22', precio: 200, cantidad: 50},
-    {nombre: 'silla22', precio: 150, cantidad: 60},
+    {nombre: 'Mesa22', precio: 200, cantidad: 50, aceptado:"Si"},
+    {nombre: 'silla22', precio: 150, cantidad: 60, aceptado:"No"},
+    {nombre: 'Mesa22', precio: 200, cantidad: 50, aceptado:"Si"},
+    {nombre: 'silla22', precio: 150, cantidad: 60, aceptado:"No"},
+    {nombre: 'Mesa22', precio: 200, cantidad: 50, aceptado:"No"},
+    {nombre: 'silla22', precio: 150, cantidad: 60, aceptado:"No"},
   ];
   alquileresList2: Alquiler[] = [
-    {nombre: 'Mesa23', precio: 200, cantidad: 50},
-    {nombre: 'silla23', precio: 150, cantidad: 60},
+    {nombre: 'Mesa23', precio: 200, cantidad: 50, aceptado:"No"},
+    {nombre: 'silla23', precio: 150, cantidad: 60, aceptado:"Si"},
   ]
 
   //Creamos un Usuario
@@ -65,4 +66,5 @@ export class VistaUsuarioPerfilComponent implements OnInit {
     this.productList2.splice(index, 1);
 
   }
+  
 }

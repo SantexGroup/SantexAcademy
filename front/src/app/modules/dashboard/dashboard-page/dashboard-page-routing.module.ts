@@ -6,14 +6,14 @@ import { FormAddProductComponent } from '../form-add-product/form-add-product.co
 import { FormDeleteComponent } from '../form-delete/form-delete.component';
 import { HomeComponent } from '../home/home.component';
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
-
 import { VistaProveedoresComponent } from '../vista-proveedores/vista-proveedores.component';
-
 import { SearchProductComponent } from '../search-product/search-product.component';
 import { FooterComponent } from '../footer/footer.component';
 import { LoginComponent } from '../login/login.component';
 import { VistaUsuarioPerfilComponent } from '../vista-usuario-perfil/vista-usuario-perfil.component';
 import { RegisterUsersComponent } from '../register-users/register-users.component';
+import { VistaHomeVendedorComponent } from '../vista-home-vendedor/vista-home-vendedor.component';
+import { AuthGuard } from '../../../core/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -35,27 +35,23 @@ const routes: Routes = [
       },
       {
         path: 'form-add-product',
-        component: FormAddProductComponent
+        component: FormAddProductComponent, 
+        canActivate: [AuthGuard]
       },
       {
         path: 'search-product',
-        component: SearchProductComponent
+        component: SearchProductComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'form-delete',
-        component: FormDeleteComponent
+        component: FormDeleteComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'shopping-cart',
-        component: ShoppingCartComponent
-      },
-      {
-        path: 'proveedores',
-        component: VistaProveedoresComponent
-      },
-      {
-        path: 'footer',
-        component: FooterComponent
+        component: ShoppingCartComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'login',
@@ -63,11 +59,18 @@ const routes: Routes = [
       },
       {
         path: 'perfil-Users',
-        component: VistaUsuarioPerfilComponent
+        component: VistaUsuarioPerfilComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'register',
         component: RegisterUsersComponent
+        
+      },
+      {
+        path:'home-vendedor',
+        component: VistaHomeVendedorComponent,
+        canActivate: [AuthGuard]
       }
     ]
     
