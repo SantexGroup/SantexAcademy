@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-user',
@@ -14,7 +15,7 @@ export class EditUserComponent implements OnInit {
   userId: string = '';
 
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -29,21 +30,17 @@ export class EditUserComponent implements OnInit {
   }
 
   editUser() {
-    this.userService.updateUser(this.user).subscribe(
-      (response: any) => {
-        console.log('Usuario actualizado exitosamente', response);
-        // this.router.navigate(['/user/${this.userId}']);
+    this.userService.updateUser(this.user).subscribe({
+      next: (response: any) => {
+        console.log('Usuario actualizado exitosamente', response);      
+        this.toastr.success('Usuario editado exitosamente');
         this.router.navigate([`/user/${this.userId}`]);
 
       },
-      (error: any) => {
+      error: (error: any) => {
         console.error('Error al actualizar usuario:', error);
+        this.toastr.error('Error al editar el usuario');
       }
-    );
+    });
   }
-
-  navigateToUserList() {
-    this.router.navigate(['/user/user-list']);
-  }
-
 }

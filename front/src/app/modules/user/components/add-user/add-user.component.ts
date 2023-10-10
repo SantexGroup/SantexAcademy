@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { baseURL } from 'src/config';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-user',
@@ -16,7 +17,7 @@ export class AddUserComponent implements OnInit {
   firstName: string = '';
   lastName: string = '';  
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private toastr: ToastrService) { }
 
   createUser() {
 
@@ -28,16 +29,17 @@ export class AddUserComponent implements OnInit {
       lastName: this.lastName
     };
     
-    this.http.post(`${baseURL}/api/user/create`, userData).subscribe(
-      (response) => {
+    this.http.post(`${baseURL}/api/user/create`, userData).subscribe({
+      next:(response) => {
         console.log('Usuario registrado exitosamente', response);
-        alert("Usuario creado exitosamente")
+        this.toastr.success("Usuario creado exitosamente")
+        this.navigateToUserList();
       },
-      (error) => {
+      error:(error) => {
         console.error('Error al registrar usuario:', error);
-        alert("Error al crear el Usuario")
+        this.toastr.error("Error al crear el Usuario")
       }
-    );    
+  });    
   }
 
   navigateToUserList() {
