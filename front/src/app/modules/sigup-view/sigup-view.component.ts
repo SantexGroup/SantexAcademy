@@ -21,6 +21,7 @@ export class SigupViewComponent {
     password:'',
     active: true,
     admin:false,
+    Registereds:[{id: 0, idCourse: 0, idUser: 0}]
    
 
   }
@@ -47,6 +48,7 @@ export class SigupViewComponent {
       password: this.form.value.password,
       active: true,
       admin:false,
+      Registereds:[{id: 0, idCourse: 0, idUser: 0}]
     }
 
     this.userService.postUser(this.user)
