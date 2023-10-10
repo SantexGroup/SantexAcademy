@@ -44,6 +44,12 @@ span {color: #d7818e;}
     scroll-behavior: smooth;
     scrollbar-color: blue green; /* esto no funciona */
 }
+#botonNavegacion {
+    display: flex;
+    justify-content: end;
+    padding-right: 10px;
+    padding-top: 5px;
+}
 
 /* articulos */
 #articulo {
