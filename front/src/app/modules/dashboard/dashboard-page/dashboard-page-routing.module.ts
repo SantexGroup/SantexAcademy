@@ -13,6 +13,7 @@ import { SearchProductComponent } from '../search-product/search-product.compone
 import { FooterComponent } from '../footer/footer.component';
 import { LoginComponent } from '../login/login.component';
 import { VistaUsuarioPerfilComponent } from '../vista-usuario-perfil/vista-usuario-perfil.component';
+import { RegisterUsersComponent } from '../register-users/register-users.component';
 
 
 const routes: Routes = [
@@ -63,6 +64,10 @@ const routes: Routes = [
       {
         path: 'perfil-Users',
         component: VistaUsuarioPerfilComponent
+      },
+      {
+        path: 'register',
+        component: RegisterUsersComponent
       }
     ]
     
