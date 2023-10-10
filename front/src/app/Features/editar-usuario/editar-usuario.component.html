@@ -1,0 +1,68 @@
+<app-barra></app-barra>
+<div id="divprincipal">
+    <p>-</p>
+    <div id="FormularioCompleto" class="formulario">
+        <div class="formulario_container">
+            <div class="titulo_container">
+                <h2>Crear Cuenta</h2>
+            </div>
+            <div class="arregloFila">
+                <div>
+                    <form>
+                        <div class="input_field"> <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                            <input [(ngModel)]="corReg" type="email" name="email" placeholder="Email" required />
+                        </div>
+                        <div class="input_field"> <span><i class="fa fa-lock" aria-hidden="true"></i></span>
+                            <input [(ngModel)]="pasReg" type="password" name="password" placeholder="Contraseña"
+                                required />
+                        </div>
+                        <div class="input_field"> <span><i class="fa fa-lock" aria-hidden="true"></i></span>
+                            <input [(ngModel)]="aliReg" type="text" name="alias" placeholder="Alias" required />
+                        </div>
+                        <div class="row clearfix">
+                            <div class="media_columna">
+                                <div class="input_field"> <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    <input [(ngModel)]="nomReg" type="text" name="nombres" placeholder="Nombres" />
+                                </div>
+                            </div>
+                            <div class="media_columna">
+                                <div class="input_field"> <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    <input [(ngModel)]="apeReg" type="text" name="apellidos" placeholder="Apellidos"
+                                        required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fa-solid fa-id-card" class="input_field"> <span><i></i></span>
+                            <input [(ngModel)]="dniReg" type="text" name="DNI" placeholder="DNI" required />
+                        </div>
+                        <div class="input_field select_option">
+                            <select [(ngModel)]="proReg" name="provincia" (change)="actualizarLocalidades()">
+                                <option value="0">Seleccione Provincia</option>
+                                <option *ngFor="let provincia of listprovincias" [value]="provincia.id">
+                                    {{provincia.nombre}}</option>
+                            </select>
+                            <div class="select_arrow"></div>
+                        </div>
+                        <div class="input_field select_option">
+                            <select [(ngModel)]="locReg" name="localidad">
+                                <option value="0">Seleccione Localidad</option>
+                                <option *ngFor="let localidad of listlocalidades" [value]="localidad.id">
+                                    {{localidad.nombre}}</option>
+                            </select>
+                            <div class="select_arrow"></div>
+                        </div>
+                        <div class="input_field"> <span><i class="fa-solid fa-house"></i></span>
+                            <input [(ngModel)]="dirReg" type="text" name="direccion" placeholder="Calle y altura"
+                                required />
+                        </div>
+                        <input id="BotonColor" class="button" type="submit" value="Registrar" (click)="botReg()" />
+                        <div *ngIf="mensajeRegistro">
+                            {{ mensajeRegistro }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

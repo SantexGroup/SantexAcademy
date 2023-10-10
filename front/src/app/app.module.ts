@@ -21,6 +21,7 @@ import { HistorialVentasComponent } from './Features/historial-ventas/historial-
 import { HistorialCompradorComponent } from './Features/historial-comprador/historial-comprador.component';
 import { VistaPorTextoComponent } from './Features/vista-por-texto/vista-por-texto.component';
 import { CategoriasComponent } from './Features/categorias/categorias.component';
+import { EditarUsuarioComponent } from './Features/editar-usuario/editar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { CategoriasComponent } from './Features/categorias/categorias.component'
     HistorialCompradorComponent,
     VistaPorTextoComponent,
     CategoriasComponent,
+    EditarUsuarioComponent,
 
   ],
   imports: [
