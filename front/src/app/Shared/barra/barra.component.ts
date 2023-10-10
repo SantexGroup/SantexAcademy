@@ -25,7 +25,9 @@ export class BarraComponent implements OnInit {
   }
 
   filtrar(idCategoria: string) {
-    this.router.navigate(['/categorias', idCategoria]);
+    this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
+      this.router.navigate(['/categorias', idCategoria]).then(()=>{})
+    })
   }
 
 
