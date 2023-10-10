@@ -12,14 +12,12 @@ export class NavbarComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {
     this.isLogged = this.isLoggedFromService();
     this.isAdmin = this.isAdminFromService();
-    this.isTeacher = this.isTeacherFromService();
-    this.isStudent = this.isStudentFromService();
+    this.isStudentOrTeacher = this.isTeacherOrStudentFromService();
   }
 
   isLogged: boolean = false;
   isAdmin: boolean = false;
-  isTeacher: boolean = false;
-  isStudent: boolean = false;
+  isStudentOrTeacher: boolean = false;
 
 
   isLoggedFromService() {
@@ -30,20 +28,17 @@ export class NavbarComponent implements OnInit {
     return this.authService.isAdministrator();
   }
 
-  isTeacherFromService() {
-    return this.authService.isTeachers();
+  isTeacherOrStudentFromService() {
+    return this.authService.checkStudentOrTeacher();
   }
 
-  isStudentFromService() {
-    return this.authService.isStudents();
-  }
 
   ngOnInit(): void {
   }
 
   logout() {
-    this.authService.logout(); 
-    this.navigateToLanding();   
+    this.authService.logout();
+    this.navigateToLanding();
   }
 
   navigateToLanding() {

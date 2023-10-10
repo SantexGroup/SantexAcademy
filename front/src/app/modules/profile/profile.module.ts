@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TeachersRoutingModule } from './teachers-routing.module';
+import { ProfileRoutingModule } from './profile-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { SharedModule } from '../shared/shared.module';
 
@@ -12,8 +12,8 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
-    TeachersRoutingModule,
+    ProfileRoutingModule,
     SharedModule
   ]
 })
-export class TeachersModule { }
+export class ProfileModule { }
