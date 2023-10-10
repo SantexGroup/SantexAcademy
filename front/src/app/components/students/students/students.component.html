@@ -1,4 +1,7 @@
-<div class="ud-main-content">
+<div class="ud-main-content grid-container">
+
+  <!-- ITEM 1 -->
+  <div class="grid-item">
   <div class="card mb-3 card1">
     <div class="row g-0">
       <div class="col-md-4 img-container">
@@ -12,7 +15,7 @@
       </div>
       <div class="card1-body" class="col-md-8">
         <div class="card-body">
-          <h1 class="card-title">{{ user.name }} {{ user.lastName }}</h1>
+          <h1 class="card-title">{{ user.nombreCompleto }}</h1>
           <p class="card-text">Correo: {{ user.email }}</p>
           <p class="card-text">Género: {{ user.gender }}</p>
           <!-- <p class="card-text">Usuario: {{ user.username }}</p> -->
@@ -21,8 +24,58 @@
       </div>
     </div>
   </div>
+</div>
 
-  <div class="calendar-container">
-    
+<!-- ITEM 2 -->
+  <div class="grid-item">
+    <mat-card class="demo-inline-calendar-card">
+      <mat-calendar [(selected)]="selected"></mat-calendar>
+    </mat-card>
+    <p>Selected date: {{selected}}</p>
   </div>
+
+  <div class="grid-item-courses">
+    <h1>CURSOS</h1>
+
+    <mat-card class="courses-section" *ngFor="let coursesItem of courses">
+
+      <mat-card class="courses-card">
+        <mat-card-header>
+          <img mat-card-image [src]="coursesItem.img" alt="Foto del curso">
+          <mat-card-title> {{ coursesItem.titulo }}</mat-card-title>
+          <mat-card-subtitle>Fecha de inicio: {{ coursesItem.fechaInicio }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>Duración: {{ coursesItem.duracion }}</p>
+          <p>Precio: {{ coursesItem.precio }}</p>
+          <p>Descripción: {{ coursesItem.descripcion }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+
+    </mat-card>
+
+  </div>
+
+  <div class="grid-item-news">
+    <h1>NOVEDADES</h1>
+
+    <mat-card class="news-section" *ngFor="let newsItem of news">
+      
+      <mat-card>
+        <mat-card-title>{{ newsItem.title }}</mat-card-title>
+        <p>Duración: {{ newsItem.duration }}</p>
+        <p>{{ newsItem.description }}</p>
+      </mat-card>
+
+    
+    </mat-card>
+    
+
+  </div>
+
 </div>
