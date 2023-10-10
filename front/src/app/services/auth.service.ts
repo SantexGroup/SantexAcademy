@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { baseURL } from '../../../src/config';
-import { map} from "rxjs";
+import { map } from "rxjs";
 import jwt_decode from "jwt-decode";
 import * as moment from "moment";
 
@@ -11,9 +11,7 @@ import * as moment from "moment";
 export class AuthService {
 
   private isAdmin = true;
-  private isTeacher = true;
-  private isStudent = true;
-  private data: any = [];  //los datos que me da el backEnd
+  private isStudentOrTeacher = true;
 
   constructor(private http: HttpClient) { }
 
@@ -34,8 +32,7 @@ export class AuthService {
     localStorage.removeItem("expires_at");
     localStorage.removeItem("session");
     this.isAdmin = false;
-    this.isTeacher = false;
-    this.isStudent = false;
+    this.isStudentOrTeacher = false
   }
 
   isLoggedIn(): boolean {
@@ -45,7 +42,7 @@ export class AuthService {
   private setSession(authResult: any) {
     localStorage.setItem('token', authResult.token);
     localStorage.setItem('session', JSON.stringify(jwt_decode(authResult.token)));
-    const expiresAt = moment().add(3600,'second');
+    const expiresAt = moment().add(3600, 'second');
     localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
   }
 
@@ -63,11 +60,8 @@ export class AuthService {
     return this.isAdmin;
   }
 
-  isTeachers(): boolean {
-    return this.isTeacher;
+  checkStudentOrTeacher(): boolean {
+    return this.isStudentOrTeacher;
   }
 
-  isStudents(): boolean {
-    return this.isStudent;
-  }
 }
