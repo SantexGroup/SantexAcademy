@@ -78,6 +78,7 @@ const routes: Routes = [
   {
     path: 'crear-codigo',component:CreateNewCodeComponent 
   },
+  {
     path: 'cursos/:id',component:DescriptionCourseComponent
   },
   {

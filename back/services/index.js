@@ -31,6 +31,7 @@ const {
   removeCourseRegistration,
   validateCode,
   createCode,
+  patchAdmins,
 } = require('./userService');
 
 const {
@@ -74,6 +75,7 @@ const UserService = {
   removeCourseRegistration,
   validateCode,
   createCode,
+  patchAdmins,
 };
 const AboutUSService = {
   createAboutUS,

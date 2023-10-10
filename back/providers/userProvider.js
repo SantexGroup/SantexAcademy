@@ -2,7 +2,6 @@ const bcrypt = require('bcrypt');
 const { User, Registered, Course } = require('../models');
 const transporter = require('../helpers');
 
-
 const createUser = async (userData) => {
   try {
     const newUser = await User.create(userData);
@@ -37,8 +36,6 @@ const getUserByEmail = async (option) => {
           include: [Course],
         },
       ],
-    });
-    return user;
     });
     return user;
   } catch (error) {
@@ -173,6 +170,16 @@ const patchUser = async (userId, newPassword) => {
     throw ('Error:', error);
   }
 };
+const patchAdmins = async (userId) => {
+  try {
+    const user = await User.findByPk(userId.userId);
+    user.admin = true;
+    await user.save();
+    return user;
+  } catch (error) {
+    throw ('Error:', error);
+  }
+};
 const deleteUser = async (userId) => {
   try {
     return await User.update(
@@ -238,4 +245,5 @@ module.exports = {
   removeCourseRegistration,
   validateCode,
   createCode,
+  patchAdmins,
 };

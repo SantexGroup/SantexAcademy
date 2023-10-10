@@ -46,6 +46,11 @@ router.put(
   UserController.updateUser,
 );
 router.patch(
+  '/admins',
+  body('userId').isInt(),
+  UserController.patchAdmins,
+);
+router.patch(
   '/:userId',
   body('password').isString(),
   UserController.updatePassword,
