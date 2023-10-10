@@ -32,7 +32,7 @@ module.exports = {
             key: 'id',
           }},
           //estado que tiene de valor inicial "revision" luego puede ser "aprobado" o "denegado"
-      Estado:{
+      estado:{
         type: Sequelize.STRING,
         defaultValue: "revision",
         // type: Sequelize.ENUM('en revision', 'aprobado', 'denegado')
