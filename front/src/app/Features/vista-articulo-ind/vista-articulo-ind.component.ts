@@ -20,6 +20,7 @@ export class VistaArtIndComponent implements OnInit {
   // obtener imgs
   servidor: string = environment.API_URL + '/images/';
   images: string[] = [];
+  imagenInicial: string = '';
   //id del producto
   id: number = 0;
   //id del usuario
@@ -103,6 +104,7 @@ export class VistaArtIndComponent implements OnInit {
           }
           if (this.respuesta.Images){
             const imagesProd = this.respuesta.Images
+            this.imagenInicial = this.servidor + imagesProd[0].url;
             for (let i = 0; i < imagesProd.length; i++){
               this.images.push(this.servidor + imagesProd[i].url);
             }
@@ -147,6 +149,10 @@ export class VistaArtIndComponent implements OnInit {
         }
       }
     }
+  }
+  // reemplazar imagen clickeada
+  cambiarImagen(url: string) {
+    this.imagenInicial = url;
   }
   //mensaje de alerta
   mensajeDias() {

@@ -1,9 +1,18 @@
 <app-barra></app-barra>
 <div id="inicial" class="">
     <div id="general" class="d-flex">
-        <!-- Imagen -->
-        <div id="divImagen" class="col">
-            <div id="fondoImagen" class="col"><img id="imagen" class="img-fluid" [src]="images[0]" /></div>
+        <!-- Imagenes -->
+        <div id="divImagenes" class="col">
+            <div id="fondoImagen">
+                <div id="divImagen">
+                    <img class="img-fluid"[src]="imagenInicial"/>
+                </div>
+            </div>
+            <div id="fondoImagenes">
+                <div id="imagenes">
+                    <img *ngFor="let image of images" (click)="cambiarImagen(image)" [src]="image">
+                </div>
+            </div>
         </div>
         <!-- Info -->
         <div id="datos" *ngIf="respuesta">

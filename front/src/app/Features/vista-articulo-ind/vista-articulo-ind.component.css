@@ -21,8 +21,8 @@ span {
     margin-top: 1%;
 }
 /* imagen */
-#divImagen {
-    display: flex;
+#divImagenes {
+    display: grid;
     justify-content: center;
     align-items: center;
     width: 1100px; /* revisar medidas y maquetado */
@@ -31,14 +31,26 @@ span {
     border-radius: 10px;
 }
 #fondoImagen {
+    justify-self: center;
+    max-width: 65%;
+    width: 65%;
+}
+#divImagen {
     display: flex;
     justify-content: center;
-    max-width: 70%;
 }
-#imagen {
-    max-width: 70%;
-    border: 1px solid grey;
+#divImagen img {
+    min-height: 400px;
+    max-height: 600px;
+    min-width: 300px;
     border-radius: 5px;
+}
+#fondoImagenes {justify-self: center}
+#imagenes img {width: 50px}
+#imagenes img:hover {
+    filter: grayscale(100%);
+    transition: filter 0.1s;
+    cursor: pointer;
 }
 /* icono */
 #divIcon {
