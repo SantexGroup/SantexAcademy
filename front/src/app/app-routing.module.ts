@@ -10,6 +10,7 @@ import { ModificarArticuloComponent } from './Features/modificar-articulo/modifi
 import { HistorialVentasComponent } from './Features/historial-ventas/historial-ventas.component';
 import { HistorialCompradorComponent } from './Features/historial-comprador/historial-comprador.component';
 import { VistaPorTextoComponent } from './Features/vista-por-texto/vista-por-texto.component';
+import { CategoriasComponent } from './Features/categorias/categorias.component';
 
 
 const routes: Routes = [
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'vista-por-texto',
     component: VistaPorTextoComponent,
+  },
+  {
+    path: 'categorias/:id',
+    component: CategoriasComponent,
   },
 ]
 @NgModule({

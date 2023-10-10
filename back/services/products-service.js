@@ -38,14 +38,17 @@ async function getAllCategories() {
 
 // categoria por id
 async function getCategoriaById(id) {
-  const categoria = await tipoProducto.findOne({
-    include: [{
+  const categoria = await tipoProducto.findByPk(id, {
+    include: {
       model: Products,
-      where: { idTipoProducto: id },
-    }],
+      include: [{
+        model: Images
+      }]
+    }
 
-  });
-
+  })
+  
+  console.log(categoria)
   if (categoria == null) {
     throw new Error();
   }
