@@ -2,7 +2,6 @@ const bcrypt = require('bcrypt');
 const { User, Registered, Course } = require('../models');
 const transporter = require('../helpers');
 
-
 const createUser = async (userData) => {
   try {
     const newUser = await User.create(userData);
@@ -37,8 +36,6 @@ const getUserByEmail = async (option) => {
           include: [Course],
         },
       ],
-    });
-    return user;
     });
     return user;
   } catch (error) {
