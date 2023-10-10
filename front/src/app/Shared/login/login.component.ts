@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   constructor(private service: LoginService, private router: Router) { } 
 
   ngOnInit(): void {
-
     this.corroborarLogeo();
   }
 

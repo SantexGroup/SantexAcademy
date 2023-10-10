@@ -1,6 +1,10 @@
-#titulo {
-    display: flex;
-    justify-content: center;
+/* etiquetas */
+img {
+    height: 60px;
+    width: 65px;
+    min-width: 65px;
+    max-width: 65px;
+    border-radius: 4px;
 }
 h1 {
     padding-top: 1%;
@@ -16,50 +20,13 @@ p, a {
     font-weight: 600;
     cursor:default;
 }
-a {
-    font-weight: 400;
-}
-span {
-    color: #d7818e;
-}
-#catArt span:hover {
-    color:blueviolet;
-    cursor: pointer;
-}
-#nomArt {
-    width: 500px;
-    /* display:inline-flexbox; */
-}
-#nombreVen {
+a {font-weight: 400;}
+span {color: #d7818e;}
+
+/* general */
+#titulo {
     display: flex;
-    
-}
-#nomArt span{
-    width: 100%;;
-    cursor: default;
-}
-#articulo a {
-    color: #bd394d;
-    text-decoration: none;
-}
-#articulo a:hover {
-    cursor: pointer;
-    color:blueviolet;
-    transition: 0.3s;
-}
-img {
-    height: 60px;
-    width: 65px;
-    min-width: 65px;
-    max-width: 65px;
-    border-radius: 4px;
-}
-#datosVen {
-    width: 400px;
-    
-}
-#datosArt {
-    width: 20%;
+    justify-content: center;
 }
 #general {
     display: flex;
@@ -77,6 +44,8 @@ img {
     scroll-behavior: smooth;
     scrollbar-color: blue green; /* esto no funciona */
 }
+
+/* articulos */
 #articulo {
     display: flex;
     justify-content:space-around;
@@ -87,12 +56,38 @@ img {
     height: 75px;
     border-bottom: 1px solid #d68a96;
 }
-#datosVen {
-    width: 20%;
+#articulo a {
+    color: #bd394d;
+    text-decoration: none;
 }
-#datosVen p {
-    width: 100%;
+#articulo a:hover {
+    cursor: pointer;
+    color:blueviolet;
+    transition: 0.3s;
 }
+
+/* datos vendedor */
+#datosVen {width: 400px;}
+#datosVen {width: 20%;}
+#datosVen p {width: 100%;}
+#nomArt {width: 500px;}
+#nomArt span{
+    width: 100%;;
+    cursor: default;
+}
+#nomArt span:hover {
+    cursor: pointer;
+    color:blueviolet;
+    transition: 0.3s;
+}
+#nombreVen {display: flex;
+}
+#catArt span:hover {
+    color:blueviolet;
+    cursor: pointer;
+}
+
+/* datos articulo */
 #descripcion {
     width: 30%;
     min-width: 30%;
@@ -108,19 +103,12 @@ img {
     padding-left: 5px;
     padding-right: 5px;
 }
-#nomArt span:hover {
-    cursor: pointer;
-    color:blueviolet;
-    transition: 0.3s;
-}
+#datosArt {width: 20%;}
+
+/* acciones */
 #acciones {
     display:grid;
     align-content: end;
     width: 13%;
 }
-#acciones a {
-    margin-top: 2%;
-}
-#modArt {
-    align-content: end;
-}
+#acciones a {margin-top: 2%;}

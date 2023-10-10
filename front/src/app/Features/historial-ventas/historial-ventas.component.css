@@ -1,7 +1,4 @@
-#titulo {
-    display: flex;
-    justify-content: center;
-}
+/* etiquetas */
 h1 {
     padding-top: 1%;
     font-size: 30px;
@@ -16,38 +13,8 @@ p, a {
     font-weight: 600;
     cursor:default;
 }
-a {
-    font-weight: 400;
-}
-span {
-    color: #d7818e;
-}
-#catArt span:hover {
-    color:blueviolet;
-    cursor: pointer;
-}
-#nomArt {
-    width: 500px;
-}
-#nomArt span{
-    width: 100%;;
-    
-}
-#nomArt span:hover {
-    cursor: pointer;
-    color:blueviolet;
-    transition: 0.3s;
-}
-#articulo a {
-    color: #bd394d;
-    text-decoration: none;
-}
-#articulo a:hover {
-    cursor: pointer;
-    color:blueviolet;
-    transition: 0.3s;
-}
-
+a {font-weight: 400}
+span {color: #d7818e}
 img {
     height: 60px;
     width: 65px;
@@ -55,9 +22,11 @@ img {
     max-width: 65px;
     border-radius: 4px;
 }
-#datosVen {
-    display: grid;
-    width: 400px;
+
+/* general */
+#titulo {
+    display: flex;
+    justify-content: center;
 }
 #general {
     display: flex;
@@ -73,8 +42,9 @@ img {
     border-radius: 15px;
     overflow-y: auto;
     scroll-behavior: smooth;
-    scrollbar-color: blue green; /* esto no funciona */
 }
+
+/* articulo */
 #articulo {
     display: flex;
     justify-content:space-around;
@@ -85,18 +55,36 @@ img {
     height: 75px;
     border-bottom: 1px solid #d68a96;
 }
+#articulo a {
+    color: #bd394d;
+    text-decoration: none;
+}
+#articulo a:hover {
+    cursor: pointer;
+    color:blueviolet;
+    transition: 0.3s;
+}
+
+/* datos vendedor */
 #datosVen {
-    width: 20%;
+    display: grid;
+    width: 400px;
 }
-#datosVen p {
-    width: 150px;
+#datosVen {width: 20%;}
+#datosVen p {width: 150px;}
+#nomArt {width: 500px;}
+#nomArt span{width: 100%;}
+#nomArt span:hover {
+    cursor: pointer;
+    color:blueviolet;
+    transition: 0.3s;
 }
-#datosArt {
-    width: 20%;
+#catArt span:hover {
+    color:blueviolet;
+    cursor: pointer;
 }
-#datosArt p {
-    width: max-content;
-}
+
+/* descripcion articulo */
 #descripcion {
     width: 30%;
     min-width: 30%;
@@ -112,13 +100,15 @@ img {
     padding-left: 5px;
     padding-right: 5px;
 }
+
+/* datos articulo */
+#datosArt {width: 20%;}
+#datosArt p {width: max-content;}
+
+/* acciones */
 #acciones {
     display:grid;
     align-content: end;
 }
-#acciones p {
-    width: 50px;
-}
-#modArt {
-    align-content: end;
-}
+#acciones p {width: 50px;}
+#modArt {align-content: end;}

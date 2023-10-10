@@ -27,9 +27,17 @@ export class RegistroComponent implements OnInit {
   constructor(private service: RegistroService, private mensajeService: MensajeService, private router: Router) { }
 
   ngOnInit(): void {
+    this.corroborarLogueo();
     this.service.getProvincias().subscribe(provincias => {this.listprovincias = provincias});
   }
 
+  corroborarLogueo() {    
+    let infoLocal = localStorage.getItem('resLog')
+    if (infoLocal) {
+      alert("Ya está logueado");
+      this.router.navigate(['home-page']);
+    }
+  }
   actualizarLocalidades() {
     this.service.getLocalidades(this.proReg).subscribe(localidades => {this.listlocalidades = localidades});
   }

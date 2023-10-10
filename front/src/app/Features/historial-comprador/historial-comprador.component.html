@@ -1,28 +1,26 @@
 <app-barra></app-barra>
-<div id="titulo">
-    <h1>Historial de artículos contratados</h1>
-</div>
+<!-- general -->
+<div id="titulo"><h1>Historial de artículos contratados</h1></div>
 <div id="general">
     <div id="recuadro">
-        <div id="scrollbar"></div>
+        <!-- articulos -->
         <div id="articulo" *ngFor="let articulo of articulos">
-            <div id="imagen">
-                <img [src]="articulo.imaArt">
-            </div>
+            <!-- imagen -->
+            <img [src]="articulo.imaArt">
+            <!-- datos vendedor -->
             <div id="datosVen">
                 <p id="nomArt">Nombre: <span (click)="redirigirProducto(articulo.idArt)">{{articulo.nomArt}}</span></p>
-                <p id="nombreVen">Vendedor: <span>{{articulo.nomVen}}</span></p> <!-- no se agrega el espacio después de vendedor -->
+                <p id="nombreVen">Vendedor: <span>{{articulo.nomVen}}</span></p>
                 <p id="catArt">Categoría: <span (click)="redirigirCategoria(articulo.catArt)">{{articulo.catArt}}</span></p>
             </div>
-            <div id="descripcion">
-                <p id="desArt">{{articulo.desArt}}</p>
-            </div>
+            <!-- datos articulo -->
+            <div id="descripcion"><p id="desArt">{{articulo.desArt}}</p></div>
             <div id="datosArt">
-                <p id="fecArt">Fecha alquiler: <span>{{articulo.fecArt | date}}</span></p>
+                <p>Fecha alquiler: <span>{{articulo.fecArt | date}}</span></p>
                 <P>Fecha devolución: <span>{{articulo.retArt | date}}</span></P>
-                <p id="envArt">Entrega y devolución: <span>{{articulo.envArt}}</span></p>
-                
+                <p>Entrega y devolución: <span>{{articulo.envArt}}</span></p>
             </div>
+            <!-- acciones -->
             <div id="acciones"> 
                 <p id="preArt">Precio: <span>${{articulo.preArt}}</span></p>
                 <a id="verArt" (click)="redirigirProducto(articulo.idArt)">Visualizar Artículo</a>
@@ -31,4 +29,4 @@
         </div>
     </div>
 </div>
-<app-footer class="fixed-bottom"></app-footer>
+<app-footer></app-footer>
