@@ -27,6 +27,18 @@
           <div class="title" (click)="redirigirVentas()">Mis Ventas</div>
         </div>
       </div>
+      <div *ngIf="logeadoVendedor" class="link">
+        <div class="content" [routerLink]="['/carga-articulos']" [routerLinkActive]="'active'">
+          <i class="fa-solid fa-box"></i>
+          <div class="title" (click)="redirigirCargarProducto()">Cargar Artículo</div>
+        </div>
+      </div>
+            <div *ngIf="logeadoVendedor" class="link">
+        <div class="content" [routerLink]="['/historial-ventas']" [routerLinkActive]="'active'">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <div class="title" (click)="redirigirProductosCargados()">Mis Artículos</div>
+        </div>
+      </div>
       <div (click)="botonVendedor()" *ngIf="logeadoComprador" class="link">
         <div class="content">
             <i class="fa-solid fa-sack-dollar"></i>
