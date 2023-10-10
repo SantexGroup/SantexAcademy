@@ -10,9 +10,9 @@ import * as moment from "moment";
 })
 export class AuthService {
 
-  private isAdmin = false;
-  private isTeacher = false;
-  private isStudent = false;
+  private isAdmin = true;
+  private isTeacher = true;
+  private isStudent = true;
   private data: any = [];  //los datos que me da el backEnd
 
   constructor(private http: HttpClient) { }
