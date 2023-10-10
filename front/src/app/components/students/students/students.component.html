@@ -41,11 +41,11 @@
 
       <mat-card class="courses-card">
         <mat-card-header>
-          <img mat-card-image [src]="coursesItem.img" alt="Foto del curso">
-          <mat-card-title> {{ coursesItem.titulo }}</mat-card-title>
+          <div mat-card-avatar class="header-image-coursesCard"></div>
+          <mat-card-title> {{ coursesItem.nombre }}</mat-card-title>
           <mat-card-subtitle>Fecha de inicio: {{ coursesItem.fechaInicio }}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <img mat-card-image [src]="coursesItem.img" alt="Foto del curso">
         <mat-card-content>
           <p>Duración: {{ coursesItem.duracion }}</p>
           <p>Precio: {{ coursesItem.precio }}</p>

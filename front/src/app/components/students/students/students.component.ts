@@ -46,10 +46,14 @@ export class StudentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get<any[]>('http://localhost:4001/cursos/getAll') // Reemplaza 'courses' con la URL correcta de tu endpoint de cursos
+    this.http.get<any[]>('http://localhost:4001/cursos/getAll') 
     .subscribe((data) => {
-      this.courses = data; // Almacena los cursos obtenidos del backend en la propiedad 'courses'
-    });
+      this.courses = data;
+    },
+    (error) => {
+      console.log('Error al obtener cursos: ', error);
+    }
+    );
 
 
   }
