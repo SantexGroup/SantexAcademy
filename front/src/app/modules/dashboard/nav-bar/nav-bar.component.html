@@ -9,7 +9,7 @@
   </nav>
 
   <div class="header-der">
-    <a [matBadge]="total$ | async" matBadgeColor="warn" class="cart" routerLink="./shopping-cart">
+    <a *ngIf="userType==0" [matBadge]="total$ | async" matBadgeColor="warn" class="cart" routerLink="./shopping-cart">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="1em"

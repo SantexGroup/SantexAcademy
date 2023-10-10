@@ -38,7 +38,6 @@ export class NavBarComponent implements OnInit {
     if(this.user){
       this.user = JSON.parse(this.user)
       this.userType = this.user.type
-      console.log(this.userType)
     }    
   }
 
