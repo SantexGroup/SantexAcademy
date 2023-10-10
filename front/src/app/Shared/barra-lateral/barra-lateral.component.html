@@ -9,7 +9,7 @@
         <h4>Iniciar sesion</h4>
         <div class="form-group">
             <input [(ngModel)]="corLog" id="inputCorreo"  type="text" class="form-control"  placeholder="Correo">
-            <input [(ngModel)]="pasLog" id="inputContraseña" type="password" class="form-control" placeholder="Contraseña">
+            <input [(ngModel)]="pasLog" id="inputContraseña" (keyup.enter)="botonLogin()" type="password" class="form-control" placeholder="Contraseña">
             <p class="registro" routerLink="/registro">¿No tienes una cuenta? Registrate</p>
             <button class="btn btn-primary" (click)="botonLogin()" type="button" >Ingresar</button>
           </div>

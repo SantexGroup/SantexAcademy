@@ -4,7 +4,6 @@ import { HomePageComponent } from './Features/home-page/home-page.component';
 import { BasesComponent } from './Features/bases/bases.component';
 import { RegistroComponent } from './Features/registro/registro.component';
 import { CargaArticulosComponent } from './Features/carga-articulos/carga-articulos.component';
-import { TarjetaArticuloComponent } from './Features/tarjeta-articulo/tarjeta-articulo.component';
 import { VistaArtIndComponent } from './Features/vista-articulo-ind/vista-articulo-ind.component';
 import { ModificarArticuloComponent } from './Features/modificar-articulo/modificar-articulo.component';
 import { DatosUsuarioComponent } from './Features/datos-usuario/datos-usuario.component';
@@ -43,12 +42,10 @@ const routes: Routes = [
     component: ModificarArticuloComponent,
   },
   {
-
     path: 'datos-usuario',
     component: DatosUsuarioComponent,
   },
   {
-
     path: 'historial-ventas',
     component: HistorialVentasComponent,
   },
