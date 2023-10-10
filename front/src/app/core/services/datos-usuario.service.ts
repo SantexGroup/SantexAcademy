@@ -18,6 +18,7 @@ export class DatosUsuarioService {
   idProv: string = '';
 
 
+
   constructor(private apiService: ApiService) { }
 
   datosUsuario(
@@ -43,18 +44,10 @@ export class DatosUsuarioService {
     return this.apiService.post('/users/user-register', body)
   }
 
-  getDatosUsuario(idUser: Number) {
+  getDatosUsuario(idUser: String) {
     const id = idUser
 
-    return this.apiService.get<any>('/users/' + 12)
-  }
-
-  getProvincias() {
-    return this.apiService.get<any>('/direccion/provincias');
-  }
-
-  getLocalidades(idProv: string) {
-    return this.apiService.get<any>('/direccion/localidades/' + idProv);
+    return this.apiService.get<any>('/users/' + id)
   }
 }
 
