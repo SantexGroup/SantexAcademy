@@ -21,6 +21,7 @@ export class AuthService {
       map((response: any) => {
         if (response.message === 'Login exitoso') {
           this.setSession(response);
+          this.updateRol(response);
         }
         return response;
       })
@@ -31,8 +32,7 @@ export class AuthService {
     localStorage.removeItem("token");
     localStorage.removeItem("expires_at");
     localStorage.removeItem("session");
-    this.isAdmin = false;
-    this.isStudentOrTeacher = false
+    this.cleanRol();
   }
 
   isLoggedIn(): boolean {
@@ -44,6 +44,33 @@ export class AuthService {
     localStorage.setItem('session', JSON.stringify(jwt_decode(authResult.token)));
     const expiresAt = moment().add(3600, 'second');
     localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
+  }
+
+  private updateRol(authResult: any) {
+    let { role }: any = jwt_decode(authResult.token)
+
+    switch (role) {
+      case 'admin':
+        this.isAdmin = true;
+        break;
+
+      case 'teacher':
+      case 'student':
+        this.isStudentOrTeacher = true;
+        break;
+
+      default:
+        this.isAdmin = false;
+        this.isStudentOrTeacher = true
+        break;
+    }
+    return
+  }
+
+  private cleanRol() {
+    this.isAdmin = false;
+    this.isStudentOrTeacher = false;
+    return
   }
 
   getUser() {
