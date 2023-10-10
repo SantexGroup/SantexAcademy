@@ -120,7 +120,6 @@
     color: #eeebe7;
     background-color: #115DFC;
     letter-spacing: .05em;
-    text-shadow: 
-      4px 4px 0px #929497, 
-      7px 7px 0px rgba(0, 0, 0, 0.2);
+    font-weight: 700;
+    
   }
