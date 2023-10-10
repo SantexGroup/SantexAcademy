@@ -34,6 +34,8 @@ export class RegisterComponent {
       next:(response) => {
         console.log('Usuario registrado exitosamente', response);
         this.toastr.success('Se ha registrado con éxito', '¡Felicidades!');
+        this.navigateToLogin();
+
 
       },
       error:(error) => {
