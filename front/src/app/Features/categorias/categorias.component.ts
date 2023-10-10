@@ -43,17 +43,14 @@ export class CategoriasComponent implements OnInit {
           for (let i = 0; i < productos.length; i++){
             if(productos[i].Images[0].url){
               const imageName = productos[i].Images[0].url;
-  
               this.images.push(this.servidor + imageName);
               this.listArticulos.push(productos[i]);
             }
           }
         }
-
       })
     })
   }
-
   verMas(id: string) {
     localStorage.setItem( 'idProd', JSON.stringify(id));
     this.router.navigateByUrl('/vista-articulo');

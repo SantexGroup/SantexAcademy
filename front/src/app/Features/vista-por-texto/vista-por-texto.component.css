@@ -1,4 +1,4 @@
-/* tags */
+/* etiquetas */
 img {
     border-radius: 5px;
     max-width: 90%;
@@ -8,17 +8,11 @@ a, p {
     font-weight: 500;
     margin: 0;
 }
-span {
-    color: #d68a96;
-}
-a {
-    text-decoration: none;
-}
-p:hover {
-    cursor: default;
-}
+span {color: #d68a96;}
+a {text-decoration: none;}
+p:hover {cursor: default;}
 a:hover {
-    color: #c95c6d;
+    color: blueviolet;
     cursor: pointer
 }
 button {
@@ -30,25 +24,25 @@ button {
     border: none;
     margin-top: 2%;
 }
-button:hover {
-    background-color: #c95c6d;
-}
+button:hover {background-color: #c95c6d;}
+
 /* general */
-.container {
-    margin-top: 2%;
-}
+.container {margin-top: 2%;}
 #texto {
     color: black;
     margin-bottom: 1%;
 }
+
 /* tarjeta */
 .card {
     background-color: rgb(226, 226, 226);
+    margin-bottom: 25px;
 }
 #tarjeta {
     display: block;
     align-items: center;
 }
+
 /* imagen */
 #contImg {
     display: flex;
@@ -56,24 +50,18 @@ button:hover {
     width: 100%;
     margin-bottom: 2%;
 }
-#FotoArticulo {
-    height: 250px;
-}
+#FotoArticulo {height: 250px;}
+
 /* datos */
 #datos {
     display: block;
     margin-left: 6%;
     align-items: baseline;
 }
-#datos2 {
-    margin-left: 1%;
-}
-#datos2 a, p {
-    margin-top: 1%;
-}
-.card-subtitle {
-    color: grey;
-}
+#datos2 {margin-left: 1%;}
+#datos2 a, p {margin-top: 1%;}
+.card-subtitle {color: grey;}
+
 /* boton */
 #Ver-mas {
     background-color: rgb(20, 12, 6);

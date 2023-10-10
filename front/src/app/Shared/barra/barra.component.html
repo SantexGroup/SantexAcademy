@@ -1,7 +1,7 @@
 <nav id="BarraGeneral" class="navbar navbar-expand-lg ">
   <div id="BarraColor" class="container-fluid">
     <!-- logos -->
-    <a class="navbar-brand" href="#"><img id="logo" class="img-fluid" src="../../../assets/delkat4.png" alt="Logo" width="60" height="60"></a>
+    <i class="navbar-brand" href="#"><img id="logo" class="img-fluid" src="../../../assets/delkat4.png" alt="Logo" width="60" height="60"></i>
     <a id="delkat" class="navbar-brand" href="#">Delkat</a>
     <div class="collapse navbar-collapse" >
       <!-- categorias -->
@@ -10,7 +10,7 @@
           <a class="nav-link dropdown-toggle" href=".." role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
           <ul class="dropdown-menu">
             <li id="liCat" *ngFor="let categoria of listCategorias">
-              <a class="dropdown-item" (click)="filtrar(categoria.id)" >{{categoria.name}}</a>
+              <a class="dropdown-item" (click)="filtrar(categoria.id)" >{{categoria.name.charAt(0).toUpperCase() + categoria.name.slice(1)}}</a>
             </li>
           </ul>
         </li>
