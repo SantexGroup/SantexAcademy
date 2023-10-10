@@ -1,18 +1,24 @@
-<nav id="BarraGeneral" class="navbar navbar-expand-lg bg-body-tertiary">
+<nav id="BarraGeneral" class="navbar navbar-expand-lg ">
   <div id="BarraColor" class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img id="logo" class="img-fluid" src="../../../assets/delkat4.png" alt="Logo" width="60" height="60">
-    </a>
-    <a class="navbar-brand" href="#">Delkat</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <!-- logos -->
+    <a class="navbar-brand" href="#"><img id="logo" class="img-fluid" src="../../../assets/delkat4.png" alt="Logo" width="60" height="60"></a>
+    <a id="delkat" class="navbar-brand" href="#">Delkat</a>
+    <div class="collapse navbar-collapse" >
+      <!-- categorias -->
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
-          <ul class="dropdown-menu"><li><a class="dropdown-item" (click)="filtrar(categoria.id)" *ngFor="let categoria of listCategorias">{{categoria.name}}</a></li></ul>
+          <a class="nav-link dropdown-toggle" href=".." role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
+          <ul class="dropdown-menu">
+            <li id="liCat" *ngFor="let categoria of listCategorias">
+              <a class="dropdown-item" (click)="filtrar(categoria.id)" >{{categoria.name}}</a>
+            </li>
+          </ul>
         </li>
       </ul>
+      <!-- buscador -->
       <form id="buscador" ><input #inputFilter spellcheck="false" autocomplete="off" (keyup)="filtrarProductos(inputFilter.value)" (keyup.enter)="buscar()" aria-label="Search" placeholder="Busque un producto"></form>
-      <button id="BotonColor" (click)="buscar()" class="btn btn-outline-success" type="submit">Buscar</button>
+      <button id="BotonBuscar" (click)="buscar()" class="btn btn-outline-success" type="submit">Buscar</button>
+      <!-- barra lateral -->
       <app-barra-lateral [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-barra-lateral>
     </div>
   </div> 

@@ -1,85 +1,70 @@
-.barraNavegacion {
-    margin: 0;
-    height: 90px;
-    border-bottom: 2px solid #874421;
-    display: flex;
-}
+/* etiquetas */
 img {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    align-content: center;
     width: 40px;
-    margin-left: 10px;
+    margin-left: 20px;
     background-color: none;
 }
-.dropdown-menu {
-    border: 1px solid #e6b68b;
-    border-radius: 20px;
+button {
+    margin-left: 15px;
 }
-.dropdown-item {
-    border-bottom: 1px solid #e6b68b;
+input {
+    height: 30px;
+    color: grey;
+    border-radius: 5px;
+    border: none;
+    font-size:medium;
+    text-indent: 5px;
 }
-#iteminicial {
-    border-radius: 0px;
-}
-#itemfinal {
-    border-bottom: none;
-    border-radius: 8px;
-}
-
-.categorias {
-    display: flex;
-    align-items: center;
-    margin: 20px;
+input:focus { 
+    outline: none; 
 }
 ::placeholder {
     color: grey;
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
-app-login {
-    display:flex;
-    justify-content: right;
-    width: 100%;
-    padding-right: 60px;
-}
-*:focus {
-    outline: 1px solid #874421;
-    box-shadow: none;
-}
+/* generales */
 #BarraGeneral {
     padding: 0;
 }
 #BarraColor {
     background-color: #e1dede;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
-#BotonColor {
-    color: #f0eaeb;
-    background-color: #d68a96;
-    border: 0;
-}
-#BotonColor:hover {
-    background-color: #c95c6d;
+/* logos */
+#delkat {
+    font-weight: 500;
 }
 .navbar-nav {
     margin-left: 10px;
 }
+.navbar-brand {
+    padding: 0;
+}
+/* categorias */
+.dropdown-menu {
+    margin: 0;
+    padding: 0;
+    border-radius: 20px;    
+    border: 1px solid #d68a96
+}
+.dropdown-item {
+    border-radius: 30px;
+}
+.dropdown-item:hover {
+    cursor: pointer;
+    background-color: #d68a96;
+    color: white;
+}
+/* buscador */
 #buscador {
     margin-left: 20px;
 }
-input {
-    height: 30px;
-    border-radius: 5px;
-    border: none;
-    font-size:medium;
-    color: grey;
+#BotonBuscar {
+    color: #f0eaeb;
+    background-color: #d68a96;
+    border: 0;
 }
-button {
-    margin-left: 10px;
-}
-input:focus { 
-    outline: none; 
+#BotonBuscar:hover {
+    background-color: #c95c6d;
 }
