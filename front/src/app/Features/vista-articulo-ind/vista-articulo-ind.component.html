@@ -17,7 +17,9 @@
         <!-- Info -->
         <div id="datos" *ngIf="respuesta">
             <!-- icono -->
-            <div id="divIcon"><img id="flechaIcon" (click)="redireccion()" src="../../../assets/output-onlinepngtools (1).png"></div>
+            <div id="botonNavegacion">
+                <app-boton-navegacion></app-boton-navegacion>
+            </div>
             <!-- Nombres -->            
             <div id="divTitulo">
                 <div class="d-flex justify-content-center"><p id="nombreProd" >{{nombreArt}}</p></div>
