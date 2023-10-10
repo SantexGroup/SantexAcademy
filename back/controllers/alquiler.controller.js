@@ -4,39 +4,51 @@ const { Alquiler } = require("../models/");
 const { Op } = require("sequelize");
 /**
  * @method POST
- * @name alquilar
+ * @name verificarAlquiler
  * @body {fechaInicio, fechaFin, [productos](ids de productos a alquilar)}
- * @description metodo para alquilar un producto entre 2 fechas,
- *  debemos verificar que no este alquilador entre estas fechas, si lo esta informamos que no es posible alquilar
+ * @description metodo para verificar si un alquiler puede ser realizado,
+ * buscara un alquiler aprobado con las fechas y productos dle alquiler a confirmar,
+ *  si encunetra el alquiler debe ser rechazado
  */
-alquilercontroller.alquilar = async (req, res) => {
+alquilercontroller.verificarAlquiler = async (req, res) => {
   try {
     req.body.fechaInicio = new Date(req.body.fechaInicio);
     req.body.fechaFin = new Date(req.body.fechaFin);
-    const productos = req.body.productos
-    let PrecioFinal=0
+    const productos = req.body.productos;
 
     for (let i = 0; i < productos.length; i++) {
       let producto = await Products.findByPk(productos[i]);
       if (!producto) {
-        return res.status(404).json({ message: "Producto con id "+ productos[i] +" no encontrado" });
+        return res.status(404).json({
+          message: "Producto con id " + productos[i] + " no encontrado",
+        });
       }
-      PrecioFinal = PrecioFinal+ producto.price
+      PrecioFinal = PrecioFinal + producto.price;
       // Verificar si existe un alquiler en las fechas dadas
-      
+
       let alquilerExistente = await Alquiler.findOne({
-       where:{ [Op.or]: [//si las fechas de fin  o de inicio solicitadas estan entre fechas de inicio y fin ya guardadas, no se puede alquilar
-          {
-              fechaInicio: {
-                [Op.between]: [req.body.fechaInicio, req.body.fechaFin],
-              },
-          },
-          {
-              fechaFin: {
-                [Op.between]: [req.body.fechaInicio, req.body.fechaFin],
-              },
-          },
-        ]},
+        where: {
+          [Op.and]: [
+            {
+              [Op.or]: [
+                //si las fechas de fin  o de inicio solicitadas estan entre fechas de inicio y fin ya guardadas, no se puede alquilar
+                {
+                  fechaInicio: {
+                    [Op.between]: [req.body.fechaInicio, req.body.fechaFin],
+                  },
+                },
+                {
+                  fechaFin: {
+                    [Op.between]: [req.body.fechaInicio, req.body.fechaFin],
+                  },
+                },
+              ],
+            },
+            {
+              estado: "aprobado",
+            },
+          ],
+        },
         include: [
           {
             model: Products,
@@ -47,21 +59,19 @@ alquilercontroller.alquilar = async (req, res) => {
           },
         ],
       });
-      console.log("alquilerExistente",alquilerExistente)
       if (alquilerExistente) {
-        return res
-          .status(400)
-          .json({ message: "El producto con id "+ productos[i] +" ya esta alquilado entre esas fechas" });
+        return res.status(200).json({
+          message:
+            "El producto con id " +
+            productos[i] +
+            " ya esta alquilado entre esas fechas, el alquiler debe ser rechazado",
+          estado: 0,
+        });
       }
     }
-    req.body.precioFinal = PrecioFinal
-    const alq = await Alquiler.create(req.body);
-    for (let i = 0; i < productos.length; i++) {
-      let producto = await Products.findByPk(productos[i]);
-      await alq.addProduct(producto);
-    }
-
-    return res.status(201).json({ message: "Alquiler creado con éxito" });
+    return res
+      .status(201)
+      .json({ message: "El alquiler puede ser aprobado", estado: 1 });
   } catch (error) {
     console.log(error);
     res.status(400).json({ error: error.message });
@@ -69,9 +79,26 @@ alquilercontroller.alquilar = async (req, res) => {
 };
 
 /**
+ * @method POST
+ * @name crearAlquiler
+ * @body {fechaInicio, fechaFin, [productos](ids de productos a alquilar)}
+ * @description metodo para pedir alquiler (se crea atuomaticamente con esado en revision)
+ */
+alquilercontroller.crearAlquiler = async (req, res) => {
+  const productos = req.body.productos;
+  let PrecioFinal = 0;
+  req.body.precioFinal = PrecioFinal;
+  const alq = await Alquiler.create(req.body);
+  for (let i = 0; i < productos.length; i++) {
+    let producto = await Products.findByPk(productos[i]);
+    await alq.addProduct(producto);
+  }
+};
+
+/**
  * @method GET
  * @name alquileres
- * @body 
+ * @body
  * @description metodo para obtener todos los alquileres acutales
  */
 
@@ -89,7 +116,7 @@ alquilercontroller.alquileres = async (req, res) => {
     console.log(error);
     res.status(400).json({ error: error.message });
   }
-}
+};
 
 /**
  * @method GET
@@ -105,8 +132,8 @@ alquilercontroller.alquileresById = async (req, res) => {
         {
           model: Products,
           where: {
-            id: req.params.id
-          }
+            id: req.params.id,
+          },
         },
       ],
     });
@@ -115,8 +142,59 @@ alquilercontroller.alquileresById = async (req, res) => {
     console.log(error);
     res.status(400).json({ error: error.message });
   }
+};
+
+
+/**
+ * @method GET
+ * @name alquilerespedidos
+ * @param {id} id del usuario que pidio los alquileres
+ * @description metodo para obtenr los alquileres que fueron solicitado por un usario
+ */
+
+alquilercontroller.alquilerespedidos = async (req, res) => {
+  try {
+    const alquileres = await Alquiler.findAll({
+      include: [
+        {
+          model: Products,
+        },
+      ],
+      where: {
+        solicitadoPor: req.params.id,
+      },
+    });
+    return res.status(200).json(alquileres);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error: error.message });
+  }
 }
 
+/**
+ * @method GET
+ * @name alquileresgestionados
+ * @param {id} id del usuario que gestiono los alquileres
+ * @description metodo para obtener alquileres que fueron gestionado por un usario (tipo 1 o 2)
+ */
 
+alquilercontroller.alquileresgestionados = async (req, res) => {
+  try {
+    const alquileres = await Alquiler.findAll({
+      include: [
+        {
+          model: Products,
+        },
+      ],
+      where: {
+        verificadoPor: req.params.id,
+      },
+    });
+    return res.status(200).json(alquileres);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error: error.message });
+  }
+}
 
 module.exports = alquilercontroller;
