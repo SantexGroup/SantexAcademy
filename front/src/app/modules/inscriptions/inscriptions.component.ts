@@ -26,7 +26,6 @@ export class InscriptionsComponent {
           (data) => {
             this.userData = data;
             this.inscriptions = this.userData.Registereds;
-            console.log(this.userData.Registereds[0].Course.id)
           },
           (error) => {
             console.log(error);
