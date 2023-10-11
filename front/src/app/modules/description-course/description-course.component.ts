@@ -12,13 +12,13 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrls: ['./description-course.component.css'],
 })
 export class DescriptionCourseComponent {
+  notRegistered : boolean = false
   id: number = 0;
   start: any = new Date();
   end: Date = new Date();
   startFormat: any;
   endFormat: any;
   token: string | null = localStorage.getItem('token');
-  token2: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhbmdlbGdhYnJpZWxuaWV2YXNAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY5NzAzNzQzMn0.YyTG9xG-Tx5Ct5fsbiCUKhNnIgpdy26JypFNyAq62PI"
   schedule: Schedule = {
     id: 0,
     active: true,
@@ -56,7 +56,6 @@ export class DescriptionCourseComponent {
     private router: Router,
     private userService: UserService
   ) {
-    localStorage.setItem("token", this.token2)
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
     this.getCourse();
     this.getCourses();
@@ -117,7 +116,7 @@ export class DescriptionCourseComponent {
     window.location.assign('/curso/' + id);
   }
   register() {
-    if (this.token) {
+    if (this.token !== null) {
       try {
         const tokenPayload = JSON.parse(atob(this.token.split('.')[1]));
         this.userService.inscription(this.id, tokenPayload.id).subscribe(
@@ -129,6 +128,8 @@ export class DescriptionCourseComponent {
           }
         );
       } catch (error) {}
+    }else{
+      this.notRegistered = true
     }
   }
 }

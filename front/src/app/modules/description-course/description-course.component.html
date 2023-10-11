@@ -18,7 +18,15 @@
         </div>
       </div>
       <div class="col-md-7 col-sm-12 p-2 mt-4">
-        <div><button class="boton" (click)="register()">Inscribirse</button></div>
+        <div>
+          <button class="boton" (click)="register()">Inscribirse</button>
+
+        </div>
+        <div *ngIf="notRegistered">
+          <div class="row mt-3">
+            <h4>Para inscribirse en un curso es necesario que este logueado en una cuenta</h4>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-md-6 col-sm-12">
