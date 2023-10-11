@@ -45,3 +45,9 @@ ul{
     height: 2.5rem;
     filter: opacity(1);
 }
+
+.card-title{
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+}

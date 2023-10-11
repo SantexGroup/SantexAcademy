@@ -72,10 +72,11 @@ form mat-form-field {
 }
 
 .lista {
+  margin: 2rem 1rem 0 0;
   flex-direction: column;
   justify-content: center;
   overflow-y: auto;
-  width: 37%;
+  width: 45%;
   height: 95vh;
 }
 
@@ -85,7 +86,7 @@ form mat-form-field {
   border-radius: 14px;
   width: 20rem;
   -webkit-box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.57);
-  -moz-box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.57);
+  -moz-box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.329);
   box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.57);
 }
 
@@ -139,8 +140,8 @@ form mat-form-field {
 }
 
 .imagenBox {
-  width: 150px;
-  height: 150px;
+  width: 300px;
+  height: 300px;
   margin: 5px 15px; 
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }

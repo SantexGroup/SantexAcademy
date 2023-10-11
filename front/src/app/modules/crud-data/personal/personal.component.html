@@ -1,18 +1,19 @@
 <body>
   <div class="personalInput">
-    <form [formGroup]="personalForm"
-    (change)="userData.markForm(personalForm)">
+    <form [formGroup]="personalForm" (change)="userData.markForm(personalForm)">
       <mat-form-field>
         <mat-label>Nombres</mat-label>
         <input matInput formControlName="name" class="capitalize">
       </mat-form-field>
-      <p class="error-form" *ngIf="personalForm.controls['name'].errors?.['pattern']" >El nombre no puede contener numeros</p>
+      <p class="error-form" *ngIf="personalForm.controls['name'].errors?.['pattern']">El nombre no puede contener
+        numeros</p>
 
       <mat-form-field>
         <mat-label>Apellido</mat-label>
         <input matInput formControlName="lastName" class="capitalize">
       </mat-form-field>
-      <p class="error-form" *ngIf="personalForm.controls['lastName'].errors?.['pattern']" >El apellido no puede contener numeros</p>
+      <p class="error-form" *ngIf="personalForm.controls['lastName'].errors?.['pattern']">El apellido no puede contener
+        numeros</p>
 
       <div class="dates">
         <mat-form-field>
@@ -27,16 +28,27 @@
         <mat-label>Numero de Contacto</mat-label>
         <input matInput formControlName="phone">
       </mat-form-field>
-      <p class="error-form" *ngIf="personalForm.controls['phone'].errors?.['maxlength']">El dato ingresado tiene mas  de 10 numeros </p>
-      <br><p class="error-form" *ngIf="personalForm.controls['phone'].errors?.['pattern']">El numero de contacto no puede contener letras</p>
+      <p class="error-form" *ngIf="personalForm.controls['phone'].errors?.['maxlength']">El dato ingresado tiene mas de
+        10 numeros </p>
+      <br>
+      <p class="error-form" *ngIf="personalForm.controls['phone'].errors?.['pattern']">El numero de contacto no puede
+        contener letras</p>
 
       <mat-form-field>
         <mat-label>Correo</mat-label>
         <input matInput type="email" formControlName="email">
       </mat-form-field>
       <p class="error-form" *ngIf="personalForm.controls['email'].errors?.['email']">Debe ingresar un correo valido</p>
-
-
+      <div class="botonera">
+        <div class="botones">
+          <button class="plus submit-form" type="submit" *ngIf="views.plusOne" (click)="dataUserUpdate()"
+            [disabled]="personalForm.status === 'INVALID'">
+            <img src="./assets/Imagenes/plus.png" alt="+">
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="lista">
       <!-- * Seccion del imagen -->
       <div class="imagenSection">
         <img class="imagenBox" [src]="url">
@@ -44,35 +56,7 @@
 
         <label class="imagenLabel" for="imagen" style="cursor: pointer;">Cargar Foto</label>
       </div>
-
-      <div class="botonera">
-        <div class="botones">
-            <button class="plus submit-form" type="submit" *ngIf="views.plusOne" (click)="dataUserUpdate()" [disabled]="personalForm.status === 'INVALID'">
-                <img src="./assets/Imagenes/plus.png" alt="+">
-            </button>
-        </div>
     </div>
-    </form>
-    <div class="lista">
-      <ul>
-          <li>
-              <div class="card">
-                  <div class="card-body">
-                      <h5 class="card-title"> Titulo </h5>
-                      <p class="card-text"> Detalle </p>
-                      <div class="botonera-card">
-                          <button>
-                              <img src="./assets/Imagenes/editar.png" alt="Editar">
-                          </button>
-                          <button>
-                              <img src="./assets/Imagenes/delete.png" alt="Eliminar">
-                          </button>
-                      </div>
-                  </div>
-              </div>
-          </li>
-      </ul>
-  </div>
   </div>
 </body>
 
