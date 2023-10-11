@@ -55,7 +55,7 @@ export class EditarUsuarioService {
   }
 
   eliminarUsuario(id: number) {
-    console.log('me usaron con el id' + " " + id);
+    console.log('se eliminio usuario con el ID' + " " + id);
     return this.apiService.delete('/users/delete/' + id);
   }
   
