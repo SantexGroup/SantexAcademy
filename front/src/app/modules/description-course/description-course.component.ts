@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/core/interfaces/course';
 import { CourseService } from 'src/app/core/services/course.service';
+import { Registered } from 'src/app/core/interfaces/registered';
+import { RegisterService } from 'src/app/core/services/register.service';
 import { Schedule } from 'src/app/core/interfaces/schedule';
 import { ScheduleCourses } from 'src/app/core/interfaces/scheduleCourses';
 import { AuthenticationService } from 'src/app/core/services/authentication.service'
@@ -46,17 +48,26 @@ export class DescriptionCourseComponent {
     CourseCategoryName: '',
     ScheduleCourses: [this.scheduleCourse],
   };
+  registered: Registered = {
+    id: 0,
+    idCourse: 0,
+    idUser: 0,
+    User: [],
+  };
   courses: Course[] = [];
   coursesSelect: Course[] = [];
+  registereds: Registered[] = [];
   constructor(
     private courseService: CourseService,
     private aRouter: ActivatedRoute,
     private router: Router,
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    private registerService: RegisterService
   ) {
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
     this.getCourse();
     this.getCourses();
+    this.getregisters();
   }
 
   getCourse() {
@@ -99,6 +110,17 @@ export class DescriptionCourseComponent {
           
         });
         console.log(this.coursesSelect)
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  getregisters() {
+    this.registerService.getRegisterById(this.id).subscribe(
+      (data) => {
+        this.registereds = <any>data;
+        console.log(this.registereds)
       },
       (error) => {
         console.log(error);

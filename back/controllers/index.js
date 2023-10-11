@@ -41,6 +41,10 @@ const {
   getAboutUSs,
 } = require('./aboutUSController');
 
+const {
+  getRegisterById,
+} = require('./registerController');
+
 const CourseController = {
   createCourse,
   getCourseById,
@@ -83,6 +87,15 @@ const AboutUSController = {
   getAboutUSById,
   getAboutUSs,
 };
+const RegisterController = {
+  getRegisterById,
+};
+
 module.exports = {
-  CategoryController, CourseController, ScheduleController, UserController, AboutUSController,
+  CategoryController,
+  CourseController,
+  ScheduleController,
+  UserController,
+  AboutUSController,
+  RegisterController,
 };

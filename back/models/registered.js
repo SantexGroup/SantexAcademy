@@ -12,12 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Registered.belongsTo(models.Course, {
-        foreignKey: 'id',
-        target_key: 'idCourse',
+        foreignKey: 'idCourse',
       });
       Registered.belongsTo(models.User, {
-        foreignKey: 'id',
-        target_key: 'idUser',
+        foreignKey: 'idUser',
       });
     }
   }
