@@ -35,7 +35,7 @@
             <div id="divSeleccionables" class="d-flex text-center justify-content-between">
                 <form id="seleccionables" action="#" method="post">
                     <div>
-                        <select [(ngModel)]="envSel" (change)="capturarEnvio()" name="envio" required>
+                        <select  [(ngModel)]="envSel" (change)="capturarEnvio()" name="envio" required>
                             <option value="" selected hidden>Opción de envío</option>
                             <option value="retiro">Retiro por local</option>
                             <option value="envio" *ngIf="envBolOri">Envío a domicilio</option>
@@ -60,8 +60,10 @@
                 <!-- Botón y precio -->
                 <div id="divBotonYPrecio">
                     <div>
-                        <div><p id="precio">Precio: ${{respuesta.precio}}</p></div>
-                        <button class="boton" data-bs-toggle="modal" data-bs-target="#staticBackdrop" *ngIf="(logeadoComprador || logeadoVendedor) && !logeadoVendedorProd" type="submit" (click)="botAlq()">Alquilar Producto</button>
+                        <div>
+                            <p id="precio">Precio: ${{respuesta.precio}}</p>
+                        </div>
+                        <button class="boton" data-bs-toggle="modal" data-bs-target="#staticBackdrop" *ngIf="(logeadoComprador || logeadoVendedor) && !logeadoVendedorProd" type="submit" [disabled]="envSel === '' || diasSel == 0 || pagoSel == ''" >Alquilar Producto</button>
                         <button class="boton" *ngIf="!logeadoComprador && !logeadoVendedor" type="submit" routerLink="/registro">Cree una cuenta</button>
                         <button class="boton" *ngIf="logeadoVendedorProd" type="submit" (click)="alertaVen()">Ud es el vendedor</button>
                     </div>
@@ -97,28 +99,56 @@
                         <p id="precioP">Precio: ${{respuesta.precio}}</p>
 
                         <div *ngIf="pagoSel === 'tarjeta'">
+                            <form [formGroup]="formTarj">
                             <h6>Ingrese los datos de la tarjeta</h6>
                             <label for="nombreTitular">Nombre del titular: </label>
-                            <input type="text" id="nombreTitular" placeholder=" Ej: Tadeo Reisin"
-                                [(ngModel)]="nombreTitular" required>
+                            <input type="text" id="nombreTitular" class="form-control" [ngClass]="{'is-invalid': nombreTarjControl.invalid && nombreTarjControl.touched}" placeholder=" Ej: Tadeo Reisin"
+                                [(ngModel)]="nombreTitular" formControlName="nombreTarj" required>
+                                <!--
+                            <div *ngIf="nombreTarjControl.invalid && nombreTarjControl.touched" class="small text-danger">
+                                Este campo es obligatorio.
+                            </div>
+                            -->
                             <label for="numeroTarjeta">Número de tarjeta: </label>
-                            <input type="text" id="numeroTarjeta" placeholder=" Ej: 1234 5678 9012 3456 "
+                            <input type="text" id="numeroTarjeta" class="form-control" [ngClass]="{'is-invalid': numeroTarjControl.invalid && numeroTarjControl.touched}" formControlName="numeroTarj" placeholder=" Ej: 1234 5678 9012 3456 "
                                 [(ngModel)]="numeroTarjeta" required>
                             <label for="mesVencimiento">Mes y Año de vencimiento: </label>
-                            <input type="text" id="mesVencimiento" placeholder=" Ej: 12/25 "
+                            <input type="text" id="mesVencimiento" class="form-control" [ngClass]="{'is-invalid': mesVencTarjControl.invalid && mesVencTarjControl.touched}" formControlName="mesVencTarj" placeholder=" Ej: 12/25 "
                                 [(ngModel)]="mesVencimiento" required>
                             <label for="codigoSeguridad">Código de seguridad (CVV): </label>
-                            <input type="text" id="codigoSeguridad" placeholder=" Ej: 168 "
+                            <input type="text" id="codigoSeguridad" class="form-control" [ngClass]="{'is-invalid': codSegTarjControl.invalid && codSegTarjControl.touched}" formControlName="codSegTarj" placeholder=" Ej: 168 "
                                 [(ngModel)]="codigoSeguridad" required>
+                            </form>
                         </div>
                     </ul>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Modificar</button>
-                    <button type="button" class="btn btn-primary">Confirmar</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" *ngIf="pagoSel === 'tarjeta'" [disabled]="formTarj.invalid" (click)="botAlq()">Confirmar</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" *ngIf="pagoSel !== 'tarjeta'" (click)="botAlq()">Confirmar</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Modal 2-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h1 class="modal-title fs-5" id="exampleModalLabel" *ngIf="alquilado">Articulo alquilado con éxito!</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel" *ngIf="!alquilado">Hubo un error al alquilar el articulo, verifique los campos e intentelo de nuevo.</h1>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" *ngIf="alquilado" (click)="redirect()">Aceptar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" *ngIf="!alquilado">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 <app-footer></app-footer>
 </div>

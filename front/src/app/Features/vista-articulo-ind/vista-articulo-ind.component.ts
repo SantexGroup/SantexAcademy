@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { vistaArtIndServ } from 'src/app/core/services/vista-art-ind-serv.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { BarraService } from 'src/app/core/services/barra.service';
+import { FormControl, Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Location } from '@angular/common';
 
 @Component({
@@ -24,7 +25,7 @@ export class VistaArtIndComponent implements OnInit {
   //id del producto
   id: number = 0;
   //id del usuario
-  idUsuario: number = 0;
+  idUsuario: string = '';
   nomUSer: string = '';
   //Mayúsculas
   nombreArt: string = '';
@@ -50,13 +51,33 @@ export class VistaArtIndComponent implements OnInit {
   logeadoVendedor: boolean = false;
   logeadoVendedorProd: boolean = false;
 
+  //tarjeta
   nombreTitular: string = '';
   numeroTarjeta: string = '';
   mesVencimiento: string = '';
   codigoSeguridad: string = '';
-  
 
-  constructor(private service: vistaArtIndServ, private router: Router, private barraService: BarraService, private location: Location) { }
+  formTarj: UntypedFormGroup;
+  nombreTarjControl: FormControl = new FormControl('', [Validators.required, Validators.maxLength(30)]);
+  numeroTarjControl: FormControl = new FormControl('', [Validators.required]);
+  mesVencTarjControl: FormControl = new FormControl('', [Validators.required]);
+  codSegTarjControl: FormControl = new FormControl('', [Validators.required]);
+
+  // resultado alquiler
+  alquilado: boolean = false;
+
+  @ViewChild('seleccionables') test: any;
+  
+  constructor(private service: vistaArtIndServ, private router: Router, private barraService: BarraService, private uFormBuilder: UntypedFormBuilder, private location: Location) {
+
+    this.formTarj = this.uFormBuilder.group({
+      nombreTarj: this.nombreTarjControl,
+      numeroTarj: this.numeroTarjControl,
+      mesVencTarj: this.mesVencTarjControl,
+      codSegTarj: this.codSegTarjControl
+    });
+
+   }
 
   ngOnInit(): void {
     this.getIdProd();
@@ -145,6 +166,7 @@ export class VistaArtIndComponent implements OnInit {
       let newObject = JSON.parse(infoLocal);
       if (newObject) {
         if (newObject[1].users.id == this.id) {
+
           this.logeadoVendedorProd = true;
         }
       }
@@ -164,6 +186,8 @@ export class VistaArtIndComponent implements OnInit {
     console.log(this.env)
     if (this.env == "envio") {
       this.envBol = true;
+    } else {
+      this.envBol = false;
     }
   }
   capturarDias() {
@@ -173,22 +197,31 @@ export class VistaArtIndComponent implements OnInit {
     this.pago = this.pagoSel;
     if (this.pago == "tarjeta") {
       this.pagoBol = true;
+    } else {
+      this.pagoBol = false;
     }
   }
+
+  // control del form
+  formControl() {
+    this.test.control.markAsTouched();
+    this.test.control.markAsDirty();
+    console.log(this.test);
+  }
+
   //confirmación
   botAlq() {
-    if(confirm("¿Desea pasar a la vista de transacción?")) { 
-      const datosAlq = {
-        idProd: this.id,
-        idAlq: this.idUsuario,
-        envio: this.envBol,
-        dias: (Number(this.dias)) + 1,
-        pago: this.pagoBol,
-      }
-      localStorage.setItem('datosAlq', JSON.stringify(datosAlq));
+      this.service.newAlquiler(this.id, this.idUsuario, this.envBol, this.dias, this.pago).subscribe(res => {
+        console.log(res);
+        if (res[0] && res[1]) {
+          this.alquilado = true;
+        }
+      })
     }
-    //this.router.navigate(['confirmacion-articulo']);
-  }  
+
+  redirect() {
+      this.router.navigateByUrl('/');
+    }
   redireccion() {
     this.location.back();
   }
