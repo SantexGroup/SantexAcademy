@@ -12,6 +12,7 @@ export class AuthService {
 
   private isAdmin = true;
   private isStudentOrTeacher = true;
+  private username: string  = '';
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +22,7 @@ export class AuthService {
       map((response: any) => {
         if (response.message === 'Login exitoso') {
           this.setSession(response);
-          this.updateRol(response);
+          this.updateUserDetails(response);
         }
         return response;
       })
@@ -46,8 +47,8 @@ export class AuthService {
     localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
   }
 
-  private updateRol(authResult: any) {
-    let { role }: any = jwt_decode(authResult.token)
+  private updateUserDetails(authResult: any) {
+    let { role, firstName }: any = jwt_decode(authResult.token); // Obtén el nombre de usuario desde el token
 
     switch (role) {
       case 'admin':
@@ -61,11 +62,17 @@ export class AuthService {
 
       default:
         this.isAdmin = false;
-        this.isStudentOrTeacher = true
+        this.isStudentOrTeacher = true;
         break;
     }
-    return
+
+    this.username = firstName; // Almacena el nombre de usuario en la propiedad 'username'
   }
+
+  getUsername(): string | null {
+    return this.username;
+  }
+
 
   private cleanRol() {
     this.isAdmin = false;
