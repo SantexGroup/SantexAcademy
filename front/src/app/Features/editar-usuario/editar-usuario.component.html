@@ -52,6 +52,9 @@
                             <input [(ngModel)]="dirReg" type="text" name="direccion" placeholder="Calle y altura" required/>
                         </div>
                         <input id="BotonColor" class="button" type="submit" value="Confirmar" (click)="botReg()" />
+                        <br>
+                        <br>
+                        <input id="BotonColor" class="button" type="submit" value="Eliminar Cuenta" (click)="eliminarCuenta()" />
                         <div *ngIf="mensajeRegistro">
                             {{ mensajeRegistro }}
                         </div>

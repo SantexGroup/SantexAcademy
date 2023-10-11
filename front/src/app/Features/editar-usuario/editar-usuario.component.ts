@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EditarUsuarioService } from 'src/app/core/services/editar-usuario.service';
 import { MensajeService } from 'src/app/core/services/mensaje.service';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-editar-usuario',
@@ -9,6 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./editar-usuario.component.css']
 })
 export class EditarUsuarioComponent implements OnInit {
+
+  @Input() isExpanded: boolean = false;
+  @Output() toggleSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   idUser: string = '';
 
@@ -26,10 +30,20 @@ export class EditarUsuarioComponent implements OnInit {
   listlocalidades: any[] = [];
   mensajeRegistro: string = '';
 
+  corLog: string = '';
+  pasLog: string = '';
+
+
+  logeadoComprador: boolean = false;
+  logeadoVendedor: boolean = false;
+  infoLoc: any[] = [];
+  resLogin: any[] = [];
+
   constructor(private service: EditarUsuarioService, private mensajeService: MensajeService, private router: Router) { }
 
   ngOnInit(): void {
     this.getIdUsuario()
+    this.corroborarLogeo()
     
     this.service.getProvincias().subscribe(provincias => {this.listprovincias = provincias});
   }
@@ -73,4 +87,73 @@ export class EditarUsuarioComponent implements OnInit {
       }
     }
   }
+
+  corroborarLogeo() {    
+    let infoLocal = localStorage.getItem('resLog')
+    if (infoLocal) {
+      let newObject = JSON.parse(infoLocal);
+      if (newObject) {
+        if (newObject[1].users.estadoDeVendedor) {
+          this.logeadoVendedor = true;
+          this.logeadoComprador = false;
+        }
+        else if (!newObject[1].users.estadoDeVendedor) {
+          this.logeadoComprador = true;
+          this.logeadoVendedor = false;
+        } else {
+          this.logeadoComprador = false;
+          this.logeadoVendedor = false;
+        }
+      }
+    }
+  }
+
+  eliminarCuenta() {
+    if (confirm("¿Desea eliminar su cuenta? Al confirmar no podrá recuperar sus datos. Esta acción no se puede deshacer")) {
+      console.log("Id User: " + this.idUser);
+  
+      const idNumber: number = +this.idUser;
+  
+      this.service.eliminarUsuario(idNumber).subscribe((resEli: any) => {
+        console.log("Res eli: " + resEli);
+        if (resEli) {
+          console.log("Res eli: " + resEli);
+          this.desloguear();
+          console.log('deslogueo con exito');
+          
+          alert("Cuenta eliminada con éxito");
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/']).then(() => { });
+          });
+        } else {
+          alert("No se ha podido eliminar su cuenta");
+        }
+      });
+    }
+  }
+  
+  desloguear() {
+    console.log('Entrando en la función desloguear');
+  
+    let infoLocal = localStorage.getItem('resLog');
+    console.log('Info local:', infoLocal);
+  
+    if (infoLocal) {
+      console.log('Info local existe');
+      if (this.logeadoComprador || this.logeadoVendedor) {
+        console.log('Usuario está logeado como comprador o vendedor');
+        this.logeadoVendedor = false;
+        this.logeadoComprador = false;
+        localStorage.clear();
+        console.log('LocalStorage limpio');
+        this.router.navigateByUrl('/');
+        this.isExpanded = false;
+        this.corLog = '';
+        this.pasLog = '';
+        console.log('Redirigido a / y variables restablecidas');
+      }
+    }
+  }
+  
 }
+
