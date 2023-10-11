@@ -1,3 +1,7 @@
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    filter: invert(108%);
+  }
+
 #FotoArticulo {
     height: 200px;
     max-width: 200px;

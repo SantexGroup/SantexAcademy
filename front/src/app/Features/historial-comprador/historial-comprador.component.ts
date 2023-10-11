@@ -78,8 +78,8 @@ export class HistorialCompradorComponent implements OnInit {
         this.modelo.fecArt = res[i].createdAt.slice(0, 10);
         this.date = new Date(res[i].createdAt);
         this.date.setDate( this.date.getDate() + 3 );  ;
-        this.modelo.retArt = JSON.stringify(this.date)
-        this.modelo.retArt = JSON.stringify(this.modelo.retArt.slice(0, 11));
+        this.modelo.retArt = JSON.stringify(this.date);
+        this.modelo.retArt = this.modelo.retArt.slice(1, 11);
         if(res[i].modoEnvio == true) {
           this.modelo.envArt = 'Envío y retiro';
         }else {
@@ -88,7 +88,7 @@ export class HistorialCompradorComponent implements OnInit {
         //reemplazar categoria
         if (this.modelo.catArt == '') {
           for (let j=0; j < this.listcategorias.length; j++) {
-            if (this.respuesta[i].Product.idTipoProducto+1 == this.listcategorias[j].id) { //revisar porque en la DB hay 4 valores para idTipoProducto
+            if (this.respuesta[i].Product.idTipoProducto == this.listcategorias[j].id) { //revisar porque en la DB hay 4 valores para idTipoProducto
               this.modelo.catArt = JSON.stringify(this.listcategorias[j].name.charAt(0).toUpperCase() + this.listcategorias[j].name.slice(1));
               this.modelo.catArt = this.modelo.catArt.slice(1, this.modelo.catArt.length-1);
               this.modelo.idCat = this.listcategorias[j].id;
@@ -103,9 +103,11 @@ export class HistorialCompradorComponent implements OnInit {
     })
   }
   //acciones
-  redirigirCategoria(idCat: number) {
-    localStorage.setItem('idCat', idCat.toString());
-    this.router.navigate(['/']);
+  redirigirCategoria(idCat: string) {
+    //localStorage.setItem('idCat', idCat.toString()); // tadeo
+    //localStorage.setItem('idCat', idCat); // erick
+    // el comp de categorias no solicita datos del local storage, solo el id de categoria en la ruta:
+    this.router.navigate(['/categorias', idCat]);
   }
   redirigirProducto(idProd: number) {
     localStorage.setItem('idProd', idProd.toString());
