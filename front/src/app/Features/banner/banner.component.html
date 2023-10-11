@@ -1,5 +1,6 @@
-<div class="row justify-content-center">
-    <div id="carouselExampleAutoplaying" class="carousel slide col-sm-8" data-bs-ride="carousel">
+
+<div class="row align-items-start">
+    <div id="carouselExampleAutoplaying" class="carousel slide col-sm-12 contenedor" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img [src]="url1" class="d-block w-100" (click)="redCategory()" alt="banner-01">
@@ -19,5 +20,23 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
+    </div>
+  </div>
+
+  <div class="container contenedorTarjeta">
+    <div class="row">
+      <div *ngFor="let articulo of listArticulos" class="col-2 mb-4 tarjeta-container">
+        <div class="card" >
+          <div class="card-body">
+            <div id="contImg">
+            <img id="FotoArticulo" [src]="images[listArticulos.indexOf(articulo)]">
+            </div>
+            <h5 class="card-title">{{ articulo.nombre }}</h5>
+            <p>{{ articulo.detalles }}</p>
+            <h6 id="Precio" class="card-subtitle">${{ articulo.precio }}</h6>
+            <button (click)="verMas(articulo.id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
