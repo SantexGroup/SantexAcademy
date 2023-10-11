@@ -17,6 +17,5 @@ router.post('/upload', upload, uploadDrive); /* Ruta para subir las imagenes a G
 router.get('/getUser/:id', userController.getUser); //* agregado
 router.put('/update/:id', updateValidation, userController.updateUser);
 router.delete('/remove/:id', userController.userDeleted);
-router.get('/password', userController.resetPassword);
 
 module.exports = router;

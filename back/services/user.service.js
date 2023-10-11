@@ -114,20 +114,6 @@ async function deleteUser(id) {
   }
 }
 
-async function passwordRest(nick, mail, newPassword) {
-  const user = await User.findOne({
-    where: {
-      nick,
-      mail,
-    },
-  });
-  if (user) {
-    await user.update({
-      password: newPassword,
-    });
-  }
-}
-//
 // Exportamos el servicio para inyectar en el controlador
 module.exports = {
   recordUser,
@@ -135,5 +121,4 @@ module.exports = {
   login,
   getUser,
   deleteUser,
-  passwordRest,
 };
