@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class EditarUsuarioComponent implements OnInit {
 
+  idUser: string = '';
+
   corReg: string = '';
   pasReg: string = '';
   aliReg: string = '';
@@ -27,24 +29,20 @@ export class EditarUsuarioComponent implements OnInit {
   constructor(private service: EditarUsuarioService, private mensajeService: MensajeService, private router: Router) { }
 
   ngOnInit(): void {
-    this.corroborarLogueo();
+    this.getIdUsuario()
+    
     this.service.getProvincias().subscribe(provincias => {this.listprovincias = provincias});
   }
 
-  corroborarLogueo() {    
-    let infoLocal = localStorage.getItem('resLog')
-    if (infoLocal) {
-      alert("Ya está logueado");
-      this.router.navigate(['home-page']);
-    }
-  }
+  
   actualizarLocalidades() {
     this.service.getLocalidades(this.proReg).subscribe(localidades => {this.listlocalidades = localidades});
   }
+  
   botReg() {
     if (this.corReg && this.pasReg && this.aliReg && this.nomReg && this.apeReg && this.dniReg && this.proReg && this.locReg && this.dirReg) {
       console.log(this.corReg + this.pasReg);
-      this.service.registro(
+      this.service.modificarUsuario(
         this.corReg,
         this.pasReg,
         this.aliReg,
@@ -52,14 +50,27 @@ export class EditarUsuarioComponent implements OnInit {
         this.apeReg,
         this.dniReg,
         this.locReg,
-        this.dirReg
+        this.dirReg,
+        this.idUser
       ).subscribe(respuesta => {
         console.log(respuesta);
-        this.mensajeService.mensajeRegistro('Registro completado con éxito.');
+        this.mensajeService.mensajeRegistro('Se han guardado sus cambios.');
         this.router.navigate(['home-page']);
       });
     } else {
       this.mensajeService.mensajeRegistro('Campos incompletos. Por favor, complete todos los campos.');
+    }
+  }
+
+  getIdUsuario() {    
+    let infoLocal = localStorage.getItem('resLog')
+    if (infoLocal) {
+      let newObject = JSON.parse(infoLocal);
+      if (newObject) {
+        this.idUser = newObject[1].users.id
+        console.log(this.idUser);
+        
+      }
     }
   }
 }

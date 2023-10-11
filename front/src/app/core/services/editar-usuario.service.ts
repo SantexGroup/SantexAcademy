@@ -17,10 +17,12 @@ export class EditarUsuarioService {
 
   idProv: string = '';
 
+  idUser: string = '';
+
 
   constructor(private apiService: ApiService) { }
 
-  registro(
+  modificarUsuario(
     corRegServ: string, 
     pasRegServ: string, 
     aliRegServ: string, 
@@ -28,7 +30,8 @@ export class EditarUsuarioService {
     apeRegServ: string,
     dniRegServ: string,
     locRegServ: string,
-    dirRegServ: string) {
+    dirRegServ: string,
+    idUser: string) {
     const body = {
       firstName: nomRegServ,
       lastName: apeRegServ,
@@ -40,7 +43,7 @@ export class EditarUsuarioService {
       calleYAltura: dirRegServ
     }
     console.log(body);
-    return this.apiService.post('/users/user-register', body)
+    return this.apiService.put('/users/edit/' + idUser, body)
   }
 
   getProvincias() {

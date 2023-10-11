@@ -12,6 +12,7 @@ import { HistorialVentasComponent } from './Features/historial-ventas/historial-
 import { HistorialCompradorComponent } from './Features/historial-comprador/historial-comprador.component';
 import { VistaPorTextoComponent } from './Features/vista-por-texto/vista-por-texto.component';
 import { CategoriasComponent } from './Features/categorias/categorias.component';
+import { EditarUsuarioComponent } from './Features/editar-usuario/editar-usuario.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,11 @@ const routes: Routes = [
 
     path: 'datos-usuario',
     component: DatosUsuarioComponent,
+  },
+  {
+    path: 'editar-usuario',
+    component: EditarUsuarioComponent
+  
   },
   {
 

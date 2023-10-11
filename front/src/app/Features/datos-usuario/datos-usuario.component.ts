@@ -55,4 +55,10 @@ export class DatosUsuarioComponent implements OnInit {
       }
     }
   }
+
+  EditarUsuario() {
+    // Puedes ajustar la ruta a donde quieras redirigir
+    this.router.navigate(['/editar-usuario']);
+  }
+  
 } 

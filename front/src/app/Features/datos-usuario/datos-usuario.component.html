@@ -17,7 +17,7 @@
                         <p>Provincia: {{ provinciaUsuario }}</p>
                         <p>Localidad: {{ localidadUsuario }}</p>
                         <p>Dirección: {{ direccionUsuario }}</p>
-                        <button>Editar</button>
+                        <button (click)="EditarUsuario()">Editar</button>
                     </div>
                     <div *ngIf="mensajeDatosUsuario">
                         {{ mensajeDatosUsuario }}
