@@ -32,17 +32,26 @@ export class CourseComponent implements OnInit {
 
   deleteCourse() {
     if (this.course && this.course.id) {      
-      this.courseService.deleteCourseById(this.course.id).subscribe(
-        () => {
-          console.log('Curso eliminado exitosamente');
-          this.toastr.success('Curso eliminado exitosamente')
-          this.navigateToCourseList();
-        },
-        (error) => {
-          console.error('Error al eliminar curso:', error);
-          this.toastr.error('Error al eliminar curso')
-        }
-      );
+      this.toastr.warning('¿Esta seguro? Presione la ventana para eliminar este curso', 'Confirmación', {
+        closeButton: true,
+        timeOut: 7000,
+        extendedTimeOut: 2000,
+        tapToDismiss: false,
+        progressBar: true,
+        progressAnimation: 'increasing',
+      }).onTap.subscribe(() => {        
+        this.courseService.deleteCourseById(this.course.id).subscribe(
+          () => {
+            console.log('Curso eliminado exitosamente');
+            this.toastr.success('Curso eliminado exitosamente');
+            this.navigateToCourseList();
+          },
+          (error) => {
+            console.error('Error al eliminar curso:', error);
+            this.toastr.error('Error al eliminar curso');
+          }
+        );
+      });
     }
   }
   

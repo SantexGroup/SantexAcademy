@@ -41,3 +41,7 @@
 .custom-logout {
     cursor: pointer !important;
   }
+
+.username {
+    margin-right: 2.5rem; 
+}
