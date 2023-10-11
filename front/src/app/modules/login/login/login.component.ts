@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginData } from 'src/app/core/interfaces/login';
 import { LoginService } from 'src/app/core/services/login.service';
 import { User } from 'src/app/core/interfaces/user';
 import { UserService } from 'src/app/core/services/user.service';
-import { LoginModule } from './login.module';
+import { Token } from 'src/app/core/interfaces/token';
 
 @Component({
   selector: 'app-login',
@@ -16,41 +16,60 @@ export class LoginComponent implements OnInit {
 
   loginError = "";
 
-  loginForm = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required]
-  })
+  form: FormGroup 
 
+  token: Token = {
+    token:'' };
 
+  loginData: LoginData = {
+    email: '',
+    password: '',
+  };
 
-  constructor(private formBuilder: FormBuilder, private userSvc: UserService ,private loginSvc: LoginService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private userSvc: UserService ,private loginSvc: LoginService, private router: Router) { 
+
+    this.form = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    })
+    
+    this.register()
+  }
 
   ngOnInit(): void {
   }
 
-    get email () {
-      return this.loginForm.controls.email;
-    }
+    // get email () {
+    //   return this.loginForm.controls.email;
+    // }
     
-    get password () {
-      return this.loginForm.controls.password;
+    // get password () {
+    //   return this.loginForm.controls.password;
+    // }
+
+
+    register(){
+      this.form.setValue({
+        email: "",
+        password:"",
+      })
     }
-
-
-
+  
     login () {
-      if(this.loginForm.valid){
-        this.loginSvc.login(this.loginForm.value as LoginData).subscribe(
+        this.loginData = {
+          email: this.form.value.email,
+          password: this.form.value.password,
+        }
+        this.loginSvc.login(this.loginData).subscribe(
           (userData) => {
-            localStorage.setItem('token', userData.token);
+            this.token = <any>userData
+            localStorage.setItem('token', this.token.token);
             this.router.navigateByUrl('');
-            this.loginForm.reset();
+            this.form.reset();
           },
           (errorData) => {
             console.error(errorData);
             this.loginError = "Email o contraseña incorrecta.";
           },
       )
-        } else {
-          this.loginError = "Error al ingresar los datos."
-        }}}
+      }};

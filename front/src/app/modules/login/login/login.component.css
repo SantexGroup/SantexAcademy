@@ -61,11 +61,12 @@ body {
 
 .signup-a .rm{
     display:inline-flex;
-}
+} 
 
 .signup-a .rm label{
     padding: 5px;
 }
+
 .signup-a input{
     width: 100%;
     margin-bottom: 10px;
