@@ -118,12 +118,12 @@ export class OptionalsComponent implements OnInit {
     }
 
     console.log ('optionalsForm', this.optionalsForm)
- /*    this._optionalsService.addOptionals(newOptionals).subscribe((optional) => {
+    this._optionalsService.addOptionals(newOptionals).subscribe((optional) => {
       this.userData.optionals.push(optional);
       console.log(optional);
       console.log(this.userData.optionals);
       this.toastr.success('Se agregaron nuevos opcionales', 'OPCIONALES');
-    }); */
+    });
 
     this.optionalsForm.reset();
   }
