@@ -9,10 +9,10 @@
   <div *ngIf="listArticulos"class="row">
     <!-- tarjetas -->
     <div *ngFor="let articulo of listArticulos" class="col-md-3 mb-4 tarjeta-container">
-      <div class="card" >
-        <div id="tarjeta" class="card-body">
+      <div class="card shadow bg-body rounded" >
+        <div id="tarjeta" class="card-body shadow bg-body rounded">
           <!-- imagen -->
-          <div id="contImg"><img id="FotoArticulo" [src]="images[listArticulos.indexOf(articulo)]"></div>
+          <div id="contImg"><img id="FotoArticulo" class="shadow bg-body rounded" [src]="images[listArticulos.indexOf(articulo)]"></div>
           <!-- datos -->
             <div id="datos">
                 <div id="datos2">
