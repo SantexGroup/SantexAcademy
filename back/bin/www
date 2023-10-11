@@ -5,16 +5,7 @@
 /**
  * Module dependencies.
  */
-const ngrok = require("ngrok")
-const ngrok_tunnel = async () => {
-  await ngrok.connect({
-    addr:4040,
-    configPath:'./ngrok.yml',
-    hostname : 'hound-popular-vertically.ngrok-free.app',
-    onLogEvent: (message) => { console.log(message) }
-  })
-}
-ngrok_tunnel()
+
 
 
 const debug = require('debug')('example-node:server');
