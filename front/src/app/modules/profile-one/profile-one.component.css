@@ -19,9 +19,11 @@ body {
     display: flex;   
     justify-content: center;
     border: solid 2px black;
-    height: 297mm;
+    max-height: auto;
+    min-height: 297mm;
     width: 210mm;
     margin: 6em;
+    padding: 0;
     
 }
 
@@ -39,9 +41,13 @@ body {
 
 .izquierdo{
     width: 40%;
-    height: 100%;
+    min-height: 100%;
     background-color: rgb(58, 83, 134);
     color: white;
+}
+.derecho{
+    width: 60%;
+    height: auto;    
 }
 
 img{
