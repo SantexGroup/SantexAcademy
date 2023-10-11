@@ -2,7 +2,6 @@
 #inicial {
     margin-top: 1%;
 }
-
 #general {
   display: flex;
   max-width: 80%;
@@ -11,11 +10,23 @@
   background-color: rgb(226, 226, 226);
   border: 1px solid #ccc;
   border-radius: 15px;
+  cursor: default;
 }
-
-/* imagen */
-#divImagen {
+span {
+    text-decoration: none;
+    color:black;
+    font-weight: 600;
+    font-size: 11px;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+#botonNavegacion {
     display: flex;
+    justify-content: end;
+}
+/* imagen */
+#divImagenes {
+    display: grid;
     justify-content: center;
     align-items: center;
     width: 1100px; /* revisar medidas y maquetado */
@@ -23,31 +34,44 @@
     background-color: white;
     border-radius: 10px;
 }
-
 #fondoImagen {
+    justify-self: center;
+    max-width: 65%;
+    width: 65%;
+}
+#divImagen {
     display: flex;
     justify-content: center;
-    max-width: 70%;
 }
-
-#imagen {
-    
-    max-width: 70%;
-    border: 1px solid grey;
+#divImagen img {
+    min-height: 300px;
+    max-height: 400px;
+    min-width: 250px;
     border-radius: 5px;
 }
-
+#fondoImagenes {
+    justify-self: center;
+    background-color: rgb(226, 226, 226);
+    border-radius: 10px;
+}
+#imagenes img {
+    width: 50px;
+    margin: 10px;
+}
+#imagenes img:hover {
+    filter: grayscale(100%);
+    transition: filter 0.1s;
+    cursor: pointer;
+}
 /* datos */
 #datos {
     width: 45%;
     margin-left: 2%;
 }
-
 #datos label {
   display: flex;
   justify-content: right;
 }
-
 #datos p {
     display: block;
     justify-content: right;
@@ -56,7 +80,6 @@
     padding: 0;
     font-weight: bold;
 }
-
 #datos a {
     display: block;
     justify-content: right;
@@ -65,41 +88,35 @@
     padding: 0;
     font-weight: bold;
 }
-
 /* título */
 #divTitulo {
     margin: 1%;
 }
-
 #divTitulo a {
     text-decoration: none;
     color:#d68a96;
     font-size: 11px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
 #divTitulo a:hover {
-    color:blueviolet
+    color:blueviolet;
+    cursor: pointer;
 }
-
 #nombreProd {
     display: flex;
     width: max-content;
+    color: #d68a96;
     font-size: 35px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
 /* descripción */
 #divDesc {
     height: 30%;
     padding: 1%;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;  
 }
-
 #descTitulo {
     margin-left: 1%;
 }
-
 #divDescProd {
     height: 70%;
     padding-top: 1%;
@@ -111,16 +128,13 @@
     border-radius: 4px;
     border: 1px solid lightgrey;  
 }
-
 /* seleccionables */
 #divSeleccionables {
     padding: 1%;
 }
-
 #seleccionables {
     width: 40%;
 }
-
 select {
   width: 100%;
   padding: 5%;
@@ -128,22 +142,18 @@ select {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
 select:hover {
     cursor: pointer;
     border: 2px solid;
 }
-
 select:focus {
     border: 2px solid;
 }
-
 /* botón */
 #divBotonYPrecio {
     display: flex;
     align-items: center;
 }
-
 .boton {
     padding: 10px 20px; /* tengo dudas con esto */
     margin-top: 10%;
@@ -152,21 +162,17 @@ select:focus {
     background-color: #d68a96;
     color: white;
 }
-
 .boton:hover {
     cursor: pointer;
     background-color: #c95c6d;
     transition: background-color 0.3s, color 0.3s;
 }
-
 #precio {
     color:darkslateblue;
 }
-
 #relleno {
-    width: 80px;
+    width: 50px;
 }
-
 
 /* Modal */
 
@@ -233,4 +239,7 @@ input[type="text"] {
   padding: 15px;
   border-radius: 5px;
   background-color: #f5f5f5;
+}
+input {
+    padding-left: 15px;
 }

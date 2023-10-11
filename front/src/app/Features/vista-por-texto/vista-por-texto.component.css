@@ -1,0 +1,77 @@
+/* etiquetas */
+img {
+    border-radius: 5px;
+    max-width: 90%;
+}
+a, p {
+    color: #d68a96;
+    font-weight: 500;
+    margin: 0;
+}
+span {color: #d68a96;}
+a {text-decoration: none;}
+p:hover {cursor: default;}
+a:hover {
+    color: blueviolet;
+    cursor: pointer
+}
+button {
+    background-color: #d68a96;
+    color: white;
+    border-radius: 5px;
+    width: 35%;
+    height: 35px;
+    border: none;
+    margin-top: 2%;
+}
+button:hover {background-color: #c95c6d;}
+
+/* general */
+.container {margin-top: 2%;}
+#texto {
+    color: black;
+    margin-bottom: 1%;
+}
+#cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* tarjeta */
+.card {
+    background-color: rgb(226, 226, 226);
+    margin-bottom: 25px;
+}
+#tarjeta {
+    display: block;
+    align-items: center;
+}
+
+/* imagen */
+#contImg {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 2%;
+}
+#FotoArticulo {height: 250px;}
+
+/* datos */
+#datos {
+    display: block;
+    margin-left: 6%;
+    align-items: baseline;
+}
+#datos2 {margin-left: 1%;}
+#datos2 a, p {margin-top: 1%;}
+.card-subtitle {color: grey;}
+
+/* boton */
+#Ver-mas {
+    background-color: rgb(20, 12, 6);
+    font-size: 15px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-top: 5%;
+}

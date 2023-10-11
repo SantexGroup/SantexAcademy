@@ -1,0 +1,59 @@
+<div class="sidebar" [ngClass]="{ 'expanded': isExpanded }">
+    <div class="header">
+      <div id="icono" class="toggle pt-3 mb-4" (click)="handleSidebarToggle()">
+        <i class="fa-solid fa-user fa-xl"></i>
+      </div>
+    </div>
+    <div class="content">
+      <div *ngIf="isExpanded && !logeadoComprador && !logeadoVendedor" class="form-login">
+        <h4>Iniciar sesion</h4>
+        <div class="form-group">
+            <input [(ngModel)]="corLog" id="inputCorreo"  type="text" class="form-control"  placeholder="Correo">
+            <input [(ngModel)]="pasLog" id="inputContraseña" (keyup.enter)="botonLogin()" type="password" class="form-control" placeholder="Contraseña">
+            <p class="registro" routerLink="/registro">¿No tienes una cuenta? Registrate</p>
+            <button class="btn btn-primary" (click)="botonLogin()" type="button" >Ingresar</button>
+          </div>
+      </div>
+      <p class="bienvenida" *ngIf="isExpanded && (logeadoComprador || logeadoVendedor)" >Hola, {{userFirstName}} {{userLastName}}!</p>
+      <div *ngIf="logeadoComprador || logeadoVendedor" class="link">
+
+        <div class="content" [routerLink]="['/misDatos']" [routerLinkActive]="'active'">
+          <i class="fa fa-address-book" aria-hidden="true"></i>
+
+            <div class="title" (click)="redirigirDatosUsuario()">Mis Datos</div>
+          </div>
+
+        <div class="content" [routerLink]="['/misCompras']" [routerLinkActive]="'active'">
+        <i class="fa-solid fa-cart-shopping"></i>
+          <div class="title" (click)="redirigirCompras()">Mis Compras</div>
+        </div>
+      </div>
+      <div *ngIf="logeadoVendedor" class="link">
+        <div class="content" [routerLink]="['/misVentas']" [routerLinkActive]="'active'">
+            <i class="fa-solid fa-handshake"></i>
+          <div class="title" (click)="redirigirVentas()">Mis Ventas</div>
+        </div>
+      </div>
+      <div *ngIf="logeadoVendedor" class="link">
+        <div class="content" [routerLink]="['/carga-articulos']" [routerLinkActive]="'active'">
+          <i class="fa-solid fa-box"></i>
+          <div class="title" (click)="redirigirCargarProducto()">Cargar Artículo</div>
+        </div>
+      </div>
+            <div *ngIf="logeadoVendedor" class="link">
+        <div class="content" [routerLink]="['/historial-ventas']" [routerLinkActive]="'active'">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <div class="title" (click)="redirigirProductosCargados()">Mis Artículos</div>
+        </div>
+      </div>
+      <div (click)="botonVendedor()" *ngIf="logeadoComprador" class="link">
+        <div class="content">
+            <i class="fa-solid fa-sack-dollar"></i>
+          <div class="title">Convertirse en vendedor</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-menu" *ngIf="(logeadoComprador || logeadoVendedor) && isExpanded">
+        <button (click)="deslogear()" class="btn btn-secondary">Cerrar sesion</button>
+    </div>
+  </div>

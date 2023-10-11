@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BarraComponent } from './Shared/barra/barra.component';
 import { HomePageComponent } from './Features/home-page/home-page.component';
 import { BasesComponent } from './Features/bases/bases.component';
 import { RegistroComponent } from './Features/registro/registro.component';
 import { CargaArticulosComponent } from './Features/carga-articulos/carga-articulos.component';
-import { TarjetaArticuloComponent } from './Features/tarjeta-articulo/tarjeta-articulo.component';
 import { VistaArtIndComponent } from './Features/vista-articulo-ind/vista-articulo-ind.component';
 import { ModificarArticuloComponent } from './Features/modificar-articulo/modificar-articulo.component';
-
+import { DatosUsuarioComponent } from './Features/datos-usuario/datos-usuario.component';
+import { HistorialVentasComponent } from './Features/historial-ventas/historial-ventas.component';
+import { HistorialCompradorComponent } from './Features/historial-comprador/historial-comprador.component';
+import { VistaPorTextoComponent } from './Features/vista-por-texto/vista-por-texto.component';
+import { CategoriasComponent } from './Features/categorias/categorias.component';
+import { EditarUsuarioComponent } from './Features/editar-usuario/editar-usuario.component';
 
 const routes: Routes = [
   {
@@ -32,10 +35,6 @@ const routes: Routes = [
     component: CargaArticulosComponent
   },
   {
-    path: 'tarjeta',
-    component: TarjetaArticuloComponent
-  },
-  {
     path: 'vista-articulo',
     component: VistaArtIndComponent,
   },
@@ -43,7 +42,30 @@ const routes: Routes = [
     path: 'modificar-articulo',
     component: ModificarArticuloComponent,
   },
-
+  {
+    path: 'datos-usuario',
+    component: DatosUsuarioComponent,
+  },
+  {
+    path: 'editar-usuario',
+    component: EditarUsuarioComponent  
+  },
+  {
+    path: 'historial-ventas',
+    component: HistorialVentasComponent,
+  },
+  {
+    path: 'historial-compras',
+    component: HistorialCompradorComponent,
+  },
+  {
+    path: 'vista-por-texto',
+    component: VistaPorTextoComponent,
+  },
+  {
+    path: 'categorias/:id',
+    component: CategoriasComponent,
+  },
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

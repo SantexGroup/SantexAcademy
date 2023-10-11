@@ -16,29 +16,26 @@ import { ModArtService } from 'src/app/core/services/mod-art.service';
 })
 export class ModificarArticuloComponent implements OnInit {
 
+  // traer datos
   infoLocal: any = {};
   idProd: any = {};
   respuesta: any = [];
   cat: any = [];
   nomArt: string = '';
-  artInd: any = {};
   descArt: string = '';
   precioArt: number = 0;
   catArt: string = '';
-  envio1: string = '';
-  envio2: string = '';
   envios: string[] = ['Envío a domicilio', 'Buscar en local']
   textoCarga: string = '';
+  uploadedImages: string[] = [];
   servidor: string = environment.API_URL + '/images/';
-  imagesFilt: any = [];
-  
+  // modificar articulo
   idUser: string = '';
+  idProducto: string = '';
   confVendedor: boolean = false;
   mensajeRegistro: string = '';
   listcategorias: any[] = [];
-  uploadedImages: string[] = [];
-  idProducto: string = '';
-  images: any = [];
+  images: any = [];  
 
   constructor(private cargaService: CargaArticulosService, private service: ModArtService, private vistaArtService: vistaArtIndServ, private confService: ConfirmacionArticuloServService, private router: Router, private mensajeService: MensajeService, private barraService:BarraService, private formBuilder: FormBuilder) { }
 
@@ -64,6 +61,7 @@ export class ModificarArticuloComponent implements OnInit {
       this.vistaArtService.datosProdServ(id).subscribe(res => {
         this.respuesta = res;
         console.log("Respuesta: " + JSON.stringify(res));
+        //reemplazar nom, det y pre
         this.nomArt = res.nombre.charAt(0).toUpperCase() + res.nombre.slice(1);
         this.descArt = res.detalles.charAt(0).toUpperCase() + res.detalles.slice(1);
         this.precioArt = res.precio;
@@ -149,7 +147,7 @@ export class ModificarArticuloComponent implements OnInit {
         console.log("Respuesta service modArt: " + this.idProducto)
         this.subirImages();
       }
-      this.mensajeService.mensajeRegistro('Articulo cargado con éxito.');
+      this.mensajeService.mensajeRegistro('Articulo modificado con éxito.');
       this.router.navigate(['home-page']);
     });
   }

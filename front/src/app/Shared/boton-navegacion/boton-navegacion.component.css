@@ -1,0 +1,8 @@
+#flechaIcon {
+    cursor: pointer;
+    height: 25px;
+}
+#flechaIcon:hover {
+    filter: grayscale(100%);
+    transition: filter 0.4s;
+}

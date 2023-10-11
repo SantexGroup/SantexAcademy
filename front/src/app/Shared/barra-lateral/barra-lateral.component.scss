@@ -1,0 +1,161 @@
+  .sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    height: 100vh;
+    transition: 0.3s;
+  
+    width: 60px;
+    &.expanded {
+      width: 220px;
+      z-index: 100;
+      .header {
+        h1 {
+          margin-left: 0px;
+        }
+      }
+      .content {
+        .link {
+          .content {
+            .title {
+              max-width: 100px;
+            }
+            .icon {
+              margin-right: 3px;
+            }
+          }
+          .children {
+            .content {
+              padding-left: 30px;
+            }
+          }
+        }
+      }
+    }
+  
+    background: #e1dede;
+    color: #6d6e7e;
+  
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+  
+      background: #e1dede;
+  
+      h1 {
+        font-size: 20px;
+        color: #6d6e7e;
+        margin: 0;
+        flex: 1;
+        transition: 0.3s;
+  
+        margin-left: -100px;
+      }
+    }
+  
+    .content {
+      .link {
+        .children {
+          .content {
+            background: #F8F9FA;
+            // padding-left: 30px;
+            padding-left: 10px;
+  
+            &.active {
+              background: #F8F9FA;
+            }
+          }
+        }
+        .content {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 10px;
+  
+          cursor: pointer;
+  
+          transition: 0.3s;
+  
+          &:hover {
+            background: #ffdbe1;
+            .title {
+              color: black;
+              font-weight: bold;
+            }
+          }
+  
+          &.active {
+            background: #F8F9FA;
+            .title {
+              color: black;
+              font-weight: bold;
+            }
+          }
+  
+          .icon {
+            flex: 0 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0px;
+          }
+          .title {
+            flex: 1;
+            padding-left: .5rem;
+            color: #6d6e7e;
+            transition: 0.3s;
+            max-width: 0px;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+  .form-login {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    input {
+      margin-bottom: 0.3rem;
+    }
+
+    button {
+      background-color: black;
+    }
+
+    .registro {
+      &:hover {
+        color: blue;
+        cursor: pointer;
+      }
+    }
+    
+  }
+.footer-menu {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 5%;
+    padding-bottom: 0;
+
+    button {
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+  h4 {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  .bienvenida {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+#icono:hover {
+  cursor: pointer;
+}

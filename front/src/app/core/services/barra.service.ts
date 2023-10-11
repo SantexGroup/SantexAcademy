@@ -11,4 +11,7 @@ export class BarraService {
   getCategories() {
     return this.apiservice.get<any>("/productos/categories")
   }
+  getProducts() {
+    return this.apiservice.get<any>('/productos/products/')
+  }
 }

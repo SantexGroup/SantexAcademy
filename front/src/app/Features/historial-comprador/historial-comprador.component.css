@@ -1,0 +1,120 @@
+/* etiquetas */
+img {
+    height: 60px;
+    width: 65px;
+    min-width: 65px;
+    max-width: 65px;
+    border-radius: 4px;
+}
+h1 {
+    padding-top: 1%;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0px;
+    color: #d68a96;
+}
+p, a {
+    width: max-content;
+    font-size: small;
+    margin: 0;
+    font-weight: 600;
+    cursor:default;
+}
+a {font-weight: 400;}
+span {color: #d7818e;}
+
+/* general */
+#titulo {
+    display: flex;
+    justify-content: center;
+}
+#general {
+    display: flex;
+    justify-content: center;  
+    align-items: center;    
+    height: 80%;
+}
+#recuadro {
+    min-height: 90%;
+    width: 75%;    
+    max-height: 60%;
+    background-color: rgba(230, 230, 230, 0.805);
+    border-radius: 15px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-color: blue green; /* esto no funciona */
+}
+#botonNavegacion {
+    display: flex;
+    justify-content: end;
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+/* articulos */
+#articulo {
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    margin: 10px;
+    padding: 5px;
+    padding-bottom: 8px;
+    height: 75px;
+    border-bottom: 1px solid #d68a96;
+}
+#articulo a {
+    color: #bd394d;
+    text-decoration: none;
+}
+#articulo a:hover {
+    cursor: pointer;
+    color:blueviolet;
+    transition: 0.3s;
+}
+
+/* datos vendedor */
+#datosVen {width: 400px;}
+#datosVen {width: 20%;}
+#datosVen p {width: 100%;}
+#nomArt {width: 500px;}
+#nomArt span{
+    width: 100%;;
+    cursor: default;
+}
+#nomArt span:hover {
+    cursor: pointer;
+    color:blueviolet;
+    transition: 0.3s;
+}
+#nombreVen {display: flex;
+}
+#catArt span:hover {
+    color:blueviolet;
+    cursor: pointer;
+}
+
+/* datos articulo */
+#descripcion {
+    width: 30%;
+    min-width: 30%;
+    max-width: 30%;
+    height: 95%;
+    max-height: 95%;
+    background-color: white;
+    border-radius: 5px;
+}
+#desArt {
+    width: max-content;
+    color: grey;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#datosArt {width: 20%;}
+
+/* acciones */
+#acciones {
+    display:grid;
+    align-content: end;
+    width: 13%;
+}
+#acciones a {margin-top: 2%;}

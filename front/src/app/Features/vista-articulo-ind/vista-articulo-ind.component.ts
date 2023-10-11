@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { BarraService } from 'src/app/core/services/barra.service';
 import { FormControl, Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-vista-articulo-ind',
@@ -16,22 +17,20 @@ export class VistaArtIndComponent implements OnInit {
   listcategorias: any[] = [];
   catArt: string = '';
   cat: any = [];
+  idCat: number = 0;
   // obtener imgs
   servidor: string = environment.API_URL + '/images/';
   images: string[] = [];
-
+  imagenInicial: string = '';
   //id del producto
   id: number = 0;
-
   //id del usuario
   idUsuario: string = '';
   nomUSer: string = '';
-
   //Mayúsculas
   nombreArt: string = '';
   descArt: string = '';
-  
-  //seleccionables
+    //seleccionables
   envSel: string = '';
   env: string = '';
   envBolOri: boolean = false;
@@ -44,11 +43,9 @@ export class VistaArtIndComponent implements OnInit {
   pago: string = '';
   pagoBolOri: boolean = false;
   pagoBol: boolean = false;
-
   //traer datos
   respuesta: any = [];
   respuestaUser: any = [];
-
   //estados logueo
   logeadoComprador: boolean = false;
   logeadoVendedor: boolean = false;
@@ -71,8 +68,7 @@ export class VistaArtIndComponent implements OnInit {
 
   @ViewChild('seleccionables') test: any;
   
-
-  constructor(private service: vistaArtIndServ, private router: Router, private barraService: BarraService, private uFormBuilder: UntypedFormBuilder) {
+  constructor(private service: vistaArtIndServ, private router: Router, private barraService: BarraService, private uFormBuilder: UntypedFormBuilder, private location: Location) {
 
     this.formTarj = this.uFormBuilder.group({
       nombreTarj: this.nombreTarjControl,
@@ -118,6 +114,7 @@ export class VistaArtIndComponent implements OnInit {
             if (this.respuesta.idTipoProducto == this.listcategorias[i].id) {
               this.catArt = JSON.stringify(this.listcategorias[i].name.charAt(0).toUpperCase() + this.listcategorias[i].name.slice(1));
               this.catArt = this.catArt.slice(1, this.catArt.length-1);
+              this.idCat = this.listcategorias[i].id;
               console.log("Categorái: " + this.catArt)
             }
             if (this.catArt != this.listcategorias[i].name.charAt(0).toUpperCase() + this.listcategorias[i].name.slice(1)) {
@@ -128,6 +125,7 @@ export class VistaArtIndComponent implements OnInit {
           }
           if (this.respuesta.Images){
             const imagesProd = this.respuesta.Images
+            this.imagenInicial = this.servidor + imagesProd[0].url;
             for (let i = 0; i < imagesProd.length; i++){
               this.images.push(this.servidor + imagesProd[i].url);
             }
@@ -174,6 +172,10 @@ export class VistaArtIndComponent implements OnInit {
       }
     }
   }
+  // reemplazar imagen clickeada
+  cambiarImagen(url: string) {
+    this.imagenInicial = url;
+  }
   //mensaje de alerta
   mensajeDias() {
     alert("Tanto para envío como para retiro tendrá su producto en un plazo de 2 días");    
@@ -216,21 +218,17 @@ export class VistaArtIndComponent implements OnInit {
         }
       })
     }
-    /*
-    if(confirm("¿Desea pasar a la vista de transacción?")) { 
-      const datosAlq = {
-        idProd: this.id,
-        idAlq: this.idUsuario,
-        envio: this.envBol,
-        dias: (Number(this.dias)) + 1,
-        pago: this.pagoBol,
-      }
-      localStorage.setItem('datosAlq', JSON.stringify(datosAlq));
-    }
-    //this.router.navigate(['confirmacion-articulo']);
-    */
 
-    redirect() {
+  redirect() {
       this.router.navigateByUrl('/');
     }
+  redireccion() {
+    this.location.back();
   }
+  redirigirCategoria() {
+    this.router.navigate(['categorias/' + this.idCat]);
+  }
+  alertaVen() {
+    alert("No puede contratar su propio servicio")
+  }
+}

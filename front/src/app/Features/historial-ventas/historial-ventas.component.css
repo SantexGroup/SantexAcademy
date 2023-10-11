@@ -1,0 +1,123 @@
+/* etiquetas */
+h1 {
+    padding-top: 1%;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0px;
+    color: #d68a96;
+}
+p, a {
+    width: 150px;
+    font-size: small;
+    margin: 0;
+    font-weight: 600;
+    cursor:default;
+}
+a {font-weight: 400}
+span {color: #d7818e}
+img {
+    height: 60px;
+    width: 65px;
+    min-width: 65px;
+    max-width: 65px;
+    border-radius: 4px;
+}
+
+/* general */
+#titulo {
+    display: flex;
+    justify-content: center;
+}
+#general {
+    display: flex;
+    justify-content: center;  
+    align-items: center;    
+    height: 75%;
+}
+#recuadro {
+    min-height: 90%;
+    width: 75%;    
+    max-height: 60%;
+    background-color: rgba(230, 230, 230, 0.805);
+    border-radius: 15px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+#botonNavegacion {
+    display: flex;
+    justify-content: end;
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+/* articulo */
+#articulo {
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    margin: 10px;
+    margin-top: 0;
+    padding: 5px;
+    padding-bottom: 8px;
+    height: 75px;
+    border-bottom: 1px solid #d68a96;
+}
+#articulo a {
+    color: #bd394d;
+    text-decoration: none;
+}
+#articulo a:hover {
+    cursor: pointer;
+    color:blueviolet;
+    transition: 0.3s;
+}
+
+/* datos vendedor */
+#datosVen {
+    display: grid;
+    width: 400px;
+}
+#datosVen {width: 20%;}
+#datosVen p {width: 150px;}
+#nomArt {width: 500px;}
+#nomArt span{width: 100%;}
+#nomArt span:hover {
+    cursor: pointer;
+    color:blueviolet;
+    transition: 0.3s;
+}
+#catArt span:hover {
+    color:blueviolet;
+    cursor: pointer;
+}
+#datosVen p {
+    width: max-content;
+}
+/* descripcion articulo */
+#descripcion {
+    width: 30%;
+    min-width: 30%;
+    max-width: 30%;
+    height: 95%;
+    max-height: 95%;
+    background-color: white;
+    border-radius: 5px;
+}
+#desArt {
+    width: max-content;
+    color: grey;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* datos articulo */
+#datosArt {width: 20%;}
+#datosArt p {width: max-content;}
+
+/* acciones */
+#acciones {
+    display:grid;
+    align-content: end;
+}
+#acciones p {width: 50px;}
+#modArt {align-content: end;}

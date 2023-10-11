@@ -7,17 +7,14 @@ const router = express.Router();
 // registro de usuario
 router.post('/user-register', userController.createUser);
 
-
 // login
 router.post('/login', userController.login);
-
 
 // obteenr por id
 router.get('/:id', userController.getUserById);
 
 // editar usuario
 router.put('/edit/:id', userController.editUser);
-
 
 // cambiar estado vendedor
 router.put('/estado-vendedor/:id', userController.cambiarEstadoVendedorUser);

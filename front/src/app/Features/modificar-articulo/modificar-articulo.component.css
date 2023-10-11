@@ -1,5 +1,12 @@
 
-/* Cartel no logueados */
+/* General */
+#general {
+  height: 60%;
+}
+#titulo {
+  display:grid;
+  justify-content: center;
+}
 p {
   background-color: #f2f2f2; 
   border: 1px solid #ff0000; 
@@ -12,33 +19,23 @@ p {
   text-align: center; 
   font-weight: bold;
 }
-/* General */
-#general {
-  height: 60%;
-}
-/* Título */
-#titulo {
-  display:grid;
-  justify-content: center;
-}
 h2 {
+  text-align: center;
+  width: max-content;
+  color: #d68a96;
   font-size: 30px;
   font-weight: 700;
   margin-bottom: 0px;
   margin-top: 4%;
-  text-align: center;
-  border-radius: 5px;
-  width: max-content;
   padding-left: 3px;
   padding-right: 3px;
-  color: #d68a96;
-  --animate-duration: 1.2s;
 }
 /* Formulario */
 .form {
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
+  padding-top: 10px;
   background-color: #cccccc8a;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -50,6 +47,10 @@ h2 {
 .row {
   display: flex;
   justify-content: space-between;
+}
+#botonNavegacion {
+  display: flex;
+  justify-content: end;
 }
 /* Columna izquierda */
 .media_columna {

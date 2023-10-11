@@ -1,0 +1,36 @@
+<app-barra></app-barra>
+<!-- general -->
+<div id="titulo"><h1>Historial de artículos publicados</h1></div>
+<div id="general">
+    <div id="recuadro">
+        <div id="botonNavegacion">
+            <app-boton-navegacion></app-boton-navegacion>
+        </div>
+        <!-- articulo -->
+        <div id="articulo" *ngFor="let articulo of articulos">
+            <!-- imagen -->
+            <div id="imagen"><img [src]="articulo.imaArt"></div>
+            <!-- datos vendedor -->
+            <div id="datosVen">
+                <p id="nomArt">Nombre: <span (click)="visualizar(articulo.idArt)">{{articulo.nomArt}}</span></p>
+                <p id="catArt">Categoría: <span (click)="redirigirCategoria(articulo.catArt)">{{articulo.catArt}}</span></p>
+                <p>Estado: <span>{{articulo.estArt}}</span></p>
+            </div>
+            <!-- descripcion articulo -->
+            <div id="descripcion"><p id="desArt">{{articulo.desArt}}</p></div>
+            <!-- datos articulo -->
+            <div id="datosArt">
+                <p>Fecha de publicación: <span>{{articulo.fecArt | date}}</span></p>
+                <p>Entrega: <span>{{articulo.envArt}}</span></p>
+                <p>Precio: <span>${{articulo.preArt}}</span></p>
+            </div>
+            <!-- acciones -->
+            <div id="acciones"> 
+                <a (click)="visualizar(articulo.idArt)">Visualizar Artículo</a>
+                <a (click)="modificar(articulo.idArt)">Modificar Artículo</a>
+                <a (click)="eliminar(articulo.idArt)">Eliminar Artículo</a>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,23 +1,22 @@
 <app-barra></app-barra>
 <p *ngIf="!confVendedor">¡Para subir un articulo nuevo debe ser vendedor!</p>
 <div class="formulario" *ngIf="confVendedor">
-    <h2>Carga de Producto</h2>
-
+    <h2>Cargar artículo</h2>
     <form action="#" class="form" method="post" id="form-art"  enctype="multipart/form-data" [formGroup]="formUp">
+        <div id="botonNavegacion">
+            <app-boton-navegacion></app-boton-navegacion>
+        </div>
         <div class="row">
-
             <!-- Columna izquierda -->
             <div class="media_columna">
                 <div class="campo">
                     <label for="nombre">Nombre del Producto:</label>
-                    <input formControlName="nomReg" type="text" id="nombre" name="nombre" required>
+                    <input formControlName="nomReg" type="text" id="nombre" name="nombre" spellcheck="false" autocomplete="off" required>
                 </div>
-
                 <div class="campo">
                     <label for="descripcion">Descripción del Producto:</label>
-                    <textarea formControlName="desReg" id="descripcion" name="descripcion" rows="4" required></textarea>
+                    <textarea formControlName="desReg" id="descripcion" name="descripcion" rows="4" spellcheck="false" autocomplete="off" required></textarea>
                 </div>
-
                 <div class="campo">
                     <label for="precio">Precio del Producto:</label>
                     <div class="precio-input">
@@ -26,10 +25,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- Columna derecha -->
             <div class="media_columna_der">
-
                 <div class="campo">
                     <label for="categorias">Categorias:</label>
                     <select formControlName="catReg" name="categoria">
@@ -38,10 +35,8 @@
                     </select>
                     <div class="select_arrow"></div>
                 </div>
-
                 <div class="campo">
-                    <label>Cargar Imágenes <span>(imágenes a reemplazar) </span>
-                    </label>
+                    <label>Cargar Imágenes <span>(imágenes a reemplazar)</span></label>
                     <label id="botonCargar"for="imagenes">{{textoCarga}}</label>
                     <input type="file" id="imagenes" name="images" formControlName="images" (change)="reemplazarImagen($event)" accept="image/*"multiple />
                     <div class="imagenes-container">
@@ -52,7 +47,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div id="envio" class="campo">
                     <label for="envio">Opción de Envío:</label>
                     <select formControlName="envReg" id="envio" name="envio" required>
@@ -62,14 +56,10 @@
                     </select>
                 </div>
             </div>
-
-
             <div class="botones-container">
                 <input (click)="subirProducto()" class="subir-boton" type="button" value="Subir Producto" [disabled]="formUp.invalid"/>
             </div>
-            <div *ngIf="mensajeRegistro" class="mensaje">
-                {{ mensajeRegistro }}
-            </div>            
+            <div *ngIf="mensajeRegistro" class="mensaje">{{ mensajeRegistro }}</div>            
         </div>
     </form>
 </div>
