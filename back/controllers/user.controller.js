@@ -78,6 +78,25 @@ async function userDeleted(req, res, next) {
     next(error);
   }
 }
+
+async function resetPassword(req, res, next) {
+  const {
+    nick,
+    mail,
+    newPassword,
+  } = req.body;
+  try {
+    const salt = await bcrypt.genSalt();
+    const passworCrypt = await bcrypt.hash(newPassword, salt);
+
+    await userService.passwordReset(nick, mail, passworCrypt);
+    res.status(201).json({
+      message: 'Contraseña Reestablecida',
+    });
+  } catch (error) {
+    next(error);
+  }
+}
 // Modulos a exportar para inyectar en routes
 module.exports = {
   recordUser,
@@ -85,4 +104,5 @@ module.exports = {
   getUser, //* agregado
   login,
   userDeleted,
+  resetPassword,
 };
