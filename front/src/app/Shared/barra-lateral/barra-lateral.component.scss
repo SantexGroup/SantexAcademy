@@ -2,14 +2,14 @@
     position: fixed;
     right: 0;
     top: 0;
-  
+    z-index: 100;
     height: 100vh;
     transition: 0.3s;
   
     width: 60px;
     &.expanded {
       width: 220px;
-  
+      z-index: 100;
       .header {
         h1 {
           margin-left: 0px;
