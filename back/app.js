@@ -77,7 +77,7 @@ app.use(cors(corsOptions));
 if (config.environment === 'production') {
   app.set('trust proxy', 1); // trust first proxy
 }
-console.log(`Puerto usado ${process.env.PORT}`);
+
 models.sequelize
   .authenticate()
   .then(() => {
