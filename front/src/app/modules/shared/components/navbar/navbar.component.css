@@ -37,3 +37,7 @@
 .image {
     max-width: 6rem;
 }
+
+.custom-logout {
+    cursor: pointer !important;
+  }
