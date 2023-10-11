@@ -19,5 +19,5 @@ app.use('/profesors', profesorRoutes);
 app.use('/cursos', cursoRoutes);
 
 // app.use('/', rootPath.handler);
-admi.admiCreado()
+// admi.admiCreado()
 module.exports = app;

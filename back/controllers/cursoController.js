@@ -1,4 +1,4 @@
-const { Op } = require('sequelize');
+
 const { curso } = require('../models');
 const cursoService = require('../services/cursoService');
 
@@ -65,19 +65,37 @@ async function deleteCurso(req, res) {
   return res.status(200).send(`Curso con el ${id} ha sido eliminado exitosamente`);
 }
 
-async function buscarCursosPorNombre(nombre) {
-  const condiciones = {};
-  if (nombre) {
-    condiciones.nombre = { [Op.like]: `%${nombre}%` };
+async function buscarCursos(req, res) {
+  try {
+    const { nombre } = req.body;
+    const cursos = await cursoService.buscarCursosPorNombre(nombre);
+    return res.json(cursos);
+  } catch (error) {
+    console.error(error);
+    return res.status(400).json({ error: 'Error en la búsqueda de cursos' });
   }
-
-  const cursos = await curso.findAll({
-    where: condiciones,
-  });
-
-  return cursos;
 }
 
 
+async function novedades(req, res) {
+  try {
+    const { fecha } = req.body;
+    const cursos = await cursoService.buscarCursosRecientes(fecha);
+    if (cursos.length === 0) {
+      return res.status(404).json({ message: 'No se encontraron cursos recientes' });
+    }
 
-module.exports = { getAllCursos, getCursoById, createCurso, editCurso, deleteCurso,buscarCursosPorNombre}
+    // Devuelve solo los campos nombre, duracion y descripcion
+    const novedadesCursos = cursos.map(curso => ({
+      nombre: curso.nombre,
+      duracion: curso.duracion,
+      descripcion: curso.descripcion,
+    }));
+    return res.json(novedadesCursos);
+  } catch (error) {
+    console.error(error);
+    return res.status(400).json({ error: 'Error en la búsqueda de cursos' });
+  }
+}
+
+module.exports = { getAllCursos, getCursoById, createCurso, editCurso, deleteCurso, buscarCursos, novedades }

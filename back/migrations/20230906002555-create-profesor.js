@@ -11,7 +11,7 @@ module.exports = {
       },
       img: {
         defaultValue: '',
-        type: Sequelize.URL,
+        type: Sequelize.STRING,
       },
       nombreCompleto: {
         type: Sequelize.STRING

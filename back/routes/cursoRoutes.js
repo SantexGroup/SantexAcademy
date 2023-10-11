@@ -1,6 +1,6 @@
 const express = require('express');
 const cursoController = require('../controllers/cursoController');
-const curso = require('../models/curso');
+
 const router = express.Router();
 
 //endpoints
@@ -10,7 +10,7 @@ router.post('/createCurso', cursoController.createCurso);
 router.put('/editCurso/:id', cursoController.editCurso);
 router.delete('/deleteCurso/:id', cursoController.deleteCurso);
 //
-router.get('/busquedaCurso/:filtro', )
-
+router.get('/busquedaCurso', cursoController.buscarCursos )
+router.get('/novedadesCursos', cursoController.novedades)
 
 module.exports = router;
