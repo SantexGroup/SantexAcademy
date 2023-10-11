@@ -44,13 +44,20 @@ span {
     justify-content: center;
 }
 #divImagen img {
-    min-height: 400px;
-    max-height: 600px;
-    min-width: 300px;
+    min-height: 300px;
+    max-height: 400px;
+    min-width: 250px;
     border-radius: 5px;
 }
-#fondoImagenes {justify-self: center}
-#imagenes img {width: 50px}
+#fondoImagenes {
+    justify-self: center;
+    background-color: rgb(226, 226, 226);
+    border-radius: 10px;
+}
+#imagenes img {
+    width: 50px;
+    margin: 10px;
+}
 #imagenes img:hover {
     filter: grayscale(100%);
     transition: filter 0.1s;
