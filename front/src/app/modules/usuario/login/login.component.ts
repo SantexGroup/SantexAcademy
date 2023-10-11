@@ -5,6 +5,7 @@ import { UserDataService } from 'src/app/core/services/toolServices/userData.ser
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserService } from 'src/app/core/services/usuario.service';
 import { ToastrService } from 'ngx-toastr';
+import { loginInterface } from 'src/app/core/interfaces/login.interface';
 
 
 @Component({
@@ -31,6 +32,19 @@ export class LoginComponent implements OnInit{
   toRegister(){
     this.router.navigate(['/registro']);
   }  
+
+  userLevel(data:loginInterface){
+    if(data.user.rolesId === 2){
+      this.router.navigate([`/admin`]);
+    }else{
+      this.router.navigate([`/home/${data.profile.userId}/cv`]);
+    }
+
+    if(data.user.rolesId === 3){
+      this.dataUser.level = 3;
+      this.router.navigate(['/registro']);
+    }
+  }
 
   get nick() {
     return this.loginForm.controls.nick;
@@ -64,7 +78,7 @@ export class LoginComponent implements OnInit{
         localStorage.setItem('picture', data.user.pictureLink);
         localStorage.setItem('rol', String(data.user.rolesId))
         this.views.changeTitle("Bienvenido! " + data.user.name + " " + data.user.lastName);
-        this.router.navigate([`/home/${data.profile.userId}/cv`]);
+        this.userLevel(data);
         }, 
         error: () => { 
           this.toastr.error("Usuario o contraseña incorrectos!", "VERIFICAR DATOS");

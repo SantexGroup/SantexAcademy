@@ -35,6 +35,8 @@ export class UserDataService {
   /* userId que se escribe desde el servicio de login */
   userId: number = 0;
 
+  level: number = 0;
+
   companies: string[] = [];
 
   userName = "" || localStorage.getItem('userName');

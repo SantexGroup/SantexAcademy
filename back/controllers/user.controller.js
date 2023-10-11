@@ -78,6 +78,7 @@ async function userDeleted(req, res, next) {
     next(error);
   }
 }
+
 // Modulos a exportar para inyectar en routes
 module.exports = {
   recordUser,
