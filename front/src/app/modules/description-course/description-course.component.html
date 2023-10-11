@@ -1,10 +1,10 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-6 col-sm-12 p-2">
-      <div
-        class="p-4 rounded"
-        style="background-color: #f0f0f0; box-shadow: 1px 1px 7px #000"
-      >
+    <div
+      class="col-md-5 col-sm-12 p-4 rounded m-2"
+      style="background-color: #f0f0f0; box-shadow: 1px 1px 7px #000"
+    >
+      <div class="">
         <h1
           style="
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
@@ -14,8 +14,11 @@
           {{ course.name }}
         </h1>
         <div class="mt-5">
-          <h4>Profesor/a: {{ course.teacher }} </h4>
+          <h4>Profesor/a: {{ course.teacher }}</h4>
         </div>
+      </div>
+      <div class="col-md-7 col-sm-12 p-2 mt-4">
+        <div><button class="boton" (click)="register()">Inscribirse</button></div>
       </div>
     </div>
     <div class="col-md-6 col-sm-12">
@@ -43,7 +46,7 @@
       <h2>
         <b><u>Horario:</u></b>
       </h2>
-      <div >
+      <div>
         <div *ngFor="let scheduleItem of course.ScheduleCourses">
           <h4>{{ scheduleItem?.Schedule?.schedule }}</h4>
         </div>

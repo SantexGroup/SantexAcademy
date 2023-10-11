@@ -40,7 +40,7 @@
           style="background-color: var(--colorOrange)"
           data-bs-toggle="modal"
           data-bs-target="#delete"
-          (click)="selectId(userData.id)"
+          (click)="selectId(register.Course.id)"
         >
           Dar de Baja
         </button>
@@ -65,7 +65,7 @@
                 <button
                   type="button"
                   class="boton col"
-                  (click)="deleteInscription(register.Course.id)"
+                  (click)="deleteInscription()"
                 >
                   Aceptar
                 </button>

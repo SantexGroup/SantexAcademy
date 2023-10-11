@@ -5,6 +5,7 @@ import { CourseService } from 'src/app/core/services/course.service';
 import { Schedule } from 'src/app/core/interfaces/schedule';
 import { ScheduleCourses } from 'src/app/core/interfaces/scheduleCourses';
 import { take } from 'rxjs';
+import { UserService } from 'src/app/core/services/user.service';
 @Component({
   selector: 'app-description-course',
   templateUrl: './description-course.component.html',
@@ -16,6 +17,8 @@ export class DescriptionCourseComponent {
   end: Date = new Date();
   startFormat: any;
   endFormat: any;
+  token: string | null = localStorage.getItem('token');
+  token2: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhbmdlbGdhYnJpZWxuaWV2YXNAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY5NzAzNzQzMn0.YyTG9xG-Tx5Ct5fsbiCUKhNnIgpdy26JypFNyAq62PI"
   schedule: Schedule = {
     id: 0,
     active: true,
@@ -50,8 +53,10 @@ export class DescriptionCourseComponent {
   constructor(
     private courseService: CourseService,
     private aRouter: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {
+    localStorage.setItem("token", this.token2)
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
     this.getCourse();
     this.getCourses();
@@ -79,7 +84,6 @@ export class DescriptionCourseComponent {
         this.end = this.course.end;
         this.startFormat = this.formatDateToYYYYMMDD(this.start);
         this.endFormat = this.formatDateToYYYYMMDD(this.end);
-
       },
       (error) => {
         console.log(error);
@@ -90,13 +94,11 @@ export class DescriptionCourseComponent {
     this.courseService.getCourse().subscribe(
       (data) => {
         this.courses = <any>data;
-        this.courses.forEach(element => {
-          if(element.id !== this.id && element.active == true ){
-            this.coursesSelect.push(element)
+        this.courses.forEach((element) => {
+          if (element.id !== this.id && element.active == true) {
+            this.coursesSelect.push(element);
           }
-          
         });
-        console.log(this.coursesSelect)
       },
       (error) => {
         console.log(error);
@@ -111,7 +113,22 @@ export class DescriptionCourseComponent {
 
     return `${year}/${month}/${day}`;
   }
-  redirect(id: number){
-    window.location.assign("/curso/"+id)
+  redirect(id: number) {
+    window.location.assign('/curso/' + id);
+  }
+  register() {
+    if (this.token) {
+      try {
+        const tokenPayload = JSON.parse(atob(this.token.split('.')[1]));
+        this.userService.inscription(this.id, tokenPayload.id).subscribe(
+          (data)=>{
+            this.router.navigate(['profile/inscripciones']);
+          },
+          (error)=>{
+            console.log(error)
+          }
+        );
+      } catch (error) {}
+    }
   }
 }
