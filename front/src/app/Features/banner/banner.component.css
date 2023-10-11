@@ -1,6 +1,67 @@
-p {
-    height: 450px;
+#FotoArticulo {
+    height: 200px;
+    max-width: 200px;
+    margin-bottom: 10px;
+}
+
+#Ver-mas {
+    color: #f0eaeb;
+    background-color: #d68a96;
+    font-size: 15px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+    border: 0;
+    
+}
+
+#Ver-mas:hover {
+    background-color: #c95c6d;
+}
+
+h5 {
+
+    margin-left: 10px;
+    
+}
+
+#Precio { 
+    margin-top: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 5px;
+}
+
+.tarjeta-container {
+    margin: 0 10px 10px 0;
+    margin-right: 45px;
+    margin-left: 45px;
+  }
+
+.contenedor{
+    padding-right: 20px;
+}
+
+.contenedorTarjeta{
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    margin: 10px;
+    
+}
+
+.contenedorTarjeta .card{
+    width: 250px;
+    height: 380px;
+    border-radius: 8px;
+    box-shadow: 0 2px rgba(0, 0, 0, 1);
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+    transition: all 0.25s;
+    
+}
+
+.contenedorTarjeta .card:hover{
+    transform: translate(-10px);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 1);
 }

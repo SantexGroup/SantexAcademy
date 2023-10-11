@@ -35,6 +35,7 @@ h2 {
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
+  padding-top: 10px;
   background-color: #cccccc8a;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -46,6 +47,10 @@ h2 {
 .row {
   display: flex;
   justify-content: space-between;
+}
+#botonNavegacion {
+  display: flex;
+  justify-content: end;
 }
 /* Columna izquierda */
 .media_columna {

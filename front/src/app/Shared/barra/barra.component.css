@@ -4,6 +4,9 @@ img {
     margin-left: 20px;
     background-color: none;
 }
+img:hover {
+    cursor: pointer;
+}
 button {
     margin-left: 15px;
 }

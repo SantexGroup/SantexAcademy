@@ -25,6 +25,7 @@ p{
   max-width: 100%;
   box-sizing: border-box;
   padding: 25px;
+  padding-top: 10px;
   margin: 8% auto 0;
   position: relative;
   border-radius: 3%;
@@ -32,6 +33,12 @@ p{
 .formulario .titulo_container {
   text-align: center;
   padding-bottom: 15px;
+}
+#botonNavegacion {
+  display: flex;
+  justify-content: start;
+  padding-right: 10px;
+  padding-top: 5px;
 }
 /* formulario tags */
 .formulario h2 {

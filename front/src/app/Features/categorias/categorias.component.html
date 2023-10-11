@@ -1,14 +1,17 @@
 <app-barra></app-barra>
 <!-- general -->
 <div class="container">
-  <p id="texto">Categoría: <span>"{{nameCategory.charAt(0).toUpperCase() + nameCategory.slice(1)}}"</span></p>
+  <div id="cabecera">
+    <p id="texto">Categoría: <span>"{{nameCategory.charAt(0).toUpperCase() + nameCategory.slice(1)}}"</span></p>
+    <app-boton-navegacion></app-boton-navegacion>
+  </div>
   <div class="row">
     <!-- tarjeta -->
     <div *ngFor="let articulo of listArticulos" class="tarjeta-container col-md-3 mb-4 ">
       <div class="card">
-        <div id="tarjeta" class="card-body">
+        <div id="tarjeta" class="card-body shadow bg-body rounded">
           <!-- imagen -->
-          <div id="contImg"><img id="FotoArticulo" [src]="images[listArticulos.indexOf(articulo)]"></div>
+          <div id="contImg"><img id="FotoArticulo" class="shadow bg-body rounded" [src]="images[listArticulos.indexOf(articulo)]"></div>
           <!-- datos -->
             <div id="datos">
                 <div id="datos2">

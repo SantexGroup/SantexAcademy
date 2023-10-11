@@ -20,9 +20,13 @@ span {
     margin-bottom: 1%;
     margin-top: 1%;
 }
-/* imagen */
-#divImagen {
+#botonNavegacion {
     display: flex;
+    justify-content: end;
+}
+/* imagen */
+#divImagenes {
+    display: grid;
     justify-content: center;
     align-items: center;
     width: 1100px; /* revisar medidas y maquetado */
@@ -31,32 +35,33 @@ span {
     border-radius: 10px;
 }
 #fondoImagen {
+    justify-self: center;
+    max-width: 65%;
+    width: 65%;
+}
+#divImagen {
     display: flex;
     justify-content: center;
-    max-width: 70%;
 }
-#imagen {
-    max-width: 70%;
-    border: 1px solid grey;
+#divImagen img {
+    min-height: 300px;
+    max-height: 400px;
+    min-width: 250px;
     border-radius: 5px;
 }
-/* icono */
-#divIcon {
-    display: flex;
-    justify-content: right;
+#fondoImagenes {
+    justify-self: center;
+    background-color: rgb(226, 226, 226);
+    border-radius: 10px;
 }
-#divIcon img {
-    border: 3px solid #a13343;
-    border-radius: 100%;
+#imagenes img {
+    width: 50px;
+    margin: 10px;
 }
-#divIcon img:hover {
-    
+#imagenes img:hover {
+    filter: grayscale(100%);
+    transition: filter 0.1s;
     cursor: pointer;
-}
-#flechaIcon {
-    width: 5%;
-    height: 5%;
-    
 }
 /* datos */
 #datos {

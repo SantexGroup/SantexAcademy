@@ -31,6 +31,11 @@ button:hover {background-color: #c95c6d;}
     color: black;
     margin-bottom: 1%;
 }
+#cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 /* tarjeta */
 .card {

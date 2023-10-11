@@ -22,6 +22,8 @@ import { HistorialCompradorComponent } from './Features/historial-comprador/hist
 import { VistaPorTextoComponent } from './Features/vista-por-texto/vista-por-texto.component';
 import { CategoriasComponent } from './Features/categorias/categorias.component';
 import { EditarUsuarioComponent } from './Features/editar-usuario/editar-usuario.component';
+import { BotonNavegacionComponent } from './Shared/boton-navegacion/boton-navegacion.component';
+
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { EditarUsuarioComponent } from './Features/editar-usuario/editar-usuario
     VistaPorTextoComponent,
     CategoriasComponent,
     EditarUsuarioComponent,
+    BotonNavegacionComponent,
 
   ],
   imports: [
