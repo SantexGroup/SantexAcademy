@@ -16,25 +16,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     const session = JSON.parse(localStorage.getItem("session") ?? '{}');
-    const { role, firstName }: any = session;
-
-    switch (role) {
-      case 'admin':
-        this.isAdmin = true;
-        break;
-
-      case 'teacher':
-      case 'student':
-        this.isStudentOrTeacher = true;
-        break;
-
-      default:
-        this.isAdmin = false;
-        this.isStudentOrTeacher = true;
-        break;
-    }
-
-    this.username = firstName;
+    this.updateUserDetails(session);
   }
 
   login(email: string, password: string) {
