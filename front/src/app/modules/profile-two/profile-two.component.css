@@ -13,8 +13,10 @@ body {
     position: relative;
 }
 .conteiner{
-    height: 297mm;
+    height: auto;
     width: 210mm;
+    max-height: auto;
+    min-height: 297mm;
     display: flex;
     border: 1px solid black;
     position: relative;
@@ -35,7 +37,7 @@ body {
 }
 
 .izquierdo{
-    height: 90%;
+    min-height: 100%;
     width: 50%;
     display: block;
     margin-left: 2em;    

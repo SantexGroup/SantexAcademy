@@ -6,7 +6,8 @@ body {
     display: flex;
     justify-content: space-between;
     width: 210mm;
-    height: 297mm;
+    max-height: auto;
+    min-height: 297mm;
     border: solid 2px black;
     margin: 3rem;
     padding: 0;
@@ -20,7 +21,7 @@ body {
 
 .izquierdo{
     width: 35%;
-    height: 100%;
+    min-height: 100%;
     background-color: black;
 }
 .derecha{
