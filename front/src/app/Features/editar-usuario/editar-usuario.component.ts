@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { RegistroService } from 'src/app/core/services/registro.service';
+import { EditarUsuarioService } from 'src/app/core/services/editar-usuario.service';
 import { MensajeService } from 'src/app/core/services/mensaje.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css']
+  selector: 'app-editar-usuario',
+  templateUrl: './editar-usuario.component.html',
+  styleUrls: ['./editar-usuario.component.css']
 })
-export class RegistroComponent implements OnInit {
+export class EditarUsuarioComponent implements OnInit {
+
+  idUser: string = '';
 
   corReg: string = '';
   pasReg: string = '';
@@ -22,27 +24,25 @@ export class RegistroComponent implements OnInit {
 
   listprovincias: any[] = [];
   listlocalidades: any[] = [];
-
   mensajeRegistro: string = '';
 
-  constructor(private service: RegistroService, private mensajeService: MensajeService, private router: Router) { }
+  constructor(private service: EditarUsuarioService, private mensajeService: MensajeService, private router: Router) { }
 
   ngOnInit(): void {
-
+    this.getIdUsuario()
+    
     this.service.getProvincias().subscribe(provincias => {this.listprovincias = provincias});
-
   }
 
+  
   actualizarLocalidades() {
-
     this.service.getLocalidades(this.proReg).subscribe(localidades => {this.listlocalidades = localidades});
   }
-
-
+  
   botReg() {
     if (this.corReg && this.pasReg && this.aliReg && this.nomReg && this.apeReg && this.dniReg && this.proReg && this.locReg && this.dirReg) {
       console.log(this.corReg + this.pasReg);
-      this.service.registro(
+      this.service.modificarUsuario(
         this.corReg,
         this.pasReg,
         this.aliReg,
@@ -50,14 +50,27 @@ export class RegistroComponent implements OnInit {
         this.apeReg,
         this.dniReg,
         this.locReg,
-        this.dirReg
+        this.dirReg,
+        this.idUser
       ).subscribe(respuesta => {
         console.log(respuesta);
-        this.mensajeService.mensajeRegistro('Registro completado con éxito.');
+        this.mensajeService.mensajeRegistro('Se han guardado sus cambios.');
         this.router.navigate(['home-page']);
       });
     } else {
       this.mensajeService.mensajeRegistro('Campos incompletos. Por favor, complete todos los campos.');
+    }
+  }
+
+  getIdUsuario() {    
+    let infoLocal = localStorage.getItem('resLog')
+    if (infoLocal) {
+      let newObject = JSON.parse(infoLocal);
+      if (newObject) {
+        this.idUser = newObject[1].users.id
+        console.log(this.idUser);
+        
+      }
     }
   }
 }
