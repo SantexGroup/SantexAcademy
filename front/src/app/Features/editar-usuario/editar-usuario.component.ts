@@ -3,6 +3,7 @@ import { EditarUsuarioService } from 'src/app/core/services/editar-usuario.servi
 import { MensajeService } from 'src/app/core/services/mensaje.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-editar-usuario',
   templateUrl: './editar-usuario.component.html',
@@ -73,4 +74,31 @@ export class EditarUsuarioComponent implements OnInit {
       }
     }
   }
+
+  eliminarCuenta() {
+    if (confirm("¿Desea eliminar su cuenta? Al confirmar no podrá recuperar sus datos. Esta acción no se puede deshacer")) {
+      console.log("Id User: " + this.idUser);
+  
+      const idNumber: number = +this.idUser;
+  
+      this.service.eliminarUsuario(idNumber).subscribe((resEli: any) => {
+        console.log("Res eli: " + resEli);
+        if (resEli) {
+          console.log("Res eli: " + resEli);
+          alert("Cuenta eliminada con éxito");
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/']).then(() => { });
+          });
+        } else {
+          alert("No se ha podido eliminar su cuenta");
+        }
+      });
+    }
+  }
+  
+  
+
+
+
+
 }

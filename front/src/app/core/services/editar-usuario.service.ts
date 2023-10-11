@@ -53,5 +53,12 @@ export class EditarUsuarioService {
   getLocalidades(idProv: string) {
     return this.apiService.get<any>('/direccion/localidades/' + idProv);
   }
+
+  eliminarUsuario(id: number) {
+    console.log('me usaron con el id' + " " + id);
+    return this.apiService.delete('/users/delete/' + id);
+  }
+  
+  
 }
 
