@@ -1,26 +1,22 @@
 /* Main content */
 
-.grid-container{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto auto;
-    height: 100vh;
-    text-align: center;
+.main-container{
+    display: flex;
+    flex-wrap: wrap; 
+     
 }
 
-.grid-item{
-    display: flex;
-    align-items:flex-start; /* Centra verticalmente */
-    justify-content: center; /* Centra horizontalmente */
+.grid-item-card{
+    flex: 0 1 calc(33.33% - 20px); 
+    margin-right: 20px;
 }
 
 
 
 .card1 {
     width: 550px;
-    height: 250px;
     border-radius: 32px;
-    margin: 50px;
+    margin: 50px 50px 50px 150px;
     padding: 24px
 }
 
@@ -39,7 +35,7 @@
     font-family: Jost;
     font-size: 16px;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 500;
     line-height: normal;
     letter-spacing: 0.019px;
 }
@@ -109,38 +105,110 @@
 /* Calendar */
 
 .demo-inline-calendar-card {
-    width: 450px;
-    margin: 30px 200px 30px 0px;
+    width: 100%;
+    border-radius: 32px;
+    margin-bottom: 20px;
+    color: orange;
   }
+
+  .grid-item-calendar {
+    flex: 0 1 calc(33.33% - 20px); 
+    margin-left: 100px;
+    
+    
+  }
+  
+  .calendar-item {
+    margin-bottom: 10px;
+    color: orange;
+  }
+  
+.calendar-container {
+    display: flex;
+    flex-direction: column; 
+    margin-top: 20px; 
+    margin-left: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .selected-date {
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: orange;
+  }
+  
+  
+  
+  
   
 
   /* NOVEDADES */
 
-.gird-item-news {
-    grid-column: span 2;
-
-}
-
-.news-section {
-    width: 600px;
+  .grid-item-news {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+    margin-top: 20px; 
+    margin-left: 130px;
+    margin-bottom: 20px;
+    justify-content: space-evenly;
+  }
+  
+  .section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: orange;
+  }
+  
+  .news-section {
+    width: 700px;
     height: auto;
     display: flex;
     flex-direction: column;
+    align-items: center; 
+    border-radius: 32px;
+    margin-top: 10px; 
+    margin-left: 30px;
+    
   }
-
-  .news-card{
-    width: 200px;
+  
+  .news-card-items {
+    width: 100%;
     margin: 10px;
+    border: 1px solid #ccc;
+    background-color: orange;
+    border-radius: 32px;
+    color: white;
   }
+  
+  .news-card {
+    width: 100%;
+  }
+  
+  .news-card-title {
+    text-align: center; 
+  }
+  
+  .news-card-description {
+    text-align: center; 
+    margin-top: 10px; 
+  }
+  
 
   /* CURSOS */
 
   .grid-item-courses{
+    flex: 0 1 calc(33.33% - 20px);
     margin: 50px;
     width: 600px;
     height: auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .header-image-coursesCard {
@@ -149,5 +217,5 @@
   }
 
   .courses-card{
-    width: 200px;
+    width: 250px;
   }

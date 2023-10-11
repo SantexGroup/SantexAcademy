@@ -21,21 +21,21 @@ export class StudentsComponent implements OnInit {
   news = [
     {
       "id": 1,
-      "title": "Desarrollo Software",
-      "duration": "10 días",
-      "description": "Descripción del Curso 1",
+      "title": "SEMINARIO DE LENCERIA",
+      "duration": "4 clases",
+      "description": "Aprenderas a realizar bodys, incluye materiales!",
     },
     {
       "id": 2,
-      "title": "GIT y GITHUB",
-      "duration": "2 dias",
-      "description": "Podras aprender a utilizar correctamente git y github para tus proyectos y trabajo en equipo!",
+      "title": "SEMIPERMANENTE",
+      "duration": "3 clases",
+      "description": "Aprovecha este receso de invierno para aprender a realizar uñas espléndidas!",
     },
     {
       "id": 3,
-      "title": "Desarrollo Web",
-      "duration": "6 meses",
-      "description": "Aprende todo lo relacionado a Desarrollo Web: HTML, CSS, JS, ANGULAR",
+      "title": "TALLER DE VERANO",
+      "duration": "4 dias",
+      "description": "Aprovechemos estas vacaciones para que nuestros pequeños creen en libertad y se diviertan!",
     }
   ];
 
