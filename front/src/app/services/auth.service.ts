@@ -10,11 +10,14 @@ import * as moment from "moment";
 })
 export class AuthService {
 
-  private isAdmin = true;
-  private isStudentOrTeacher = true;
-  private username: string  = '';
+  private isAdmin = false;
+  private isStudentOrTeacher = false;
+  private username: string = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    const session = JSON.parse(localStorage.getItem("session") ?? '{}');
+    this.updateUserDetails(session);
+  }
 
   login(email: string, password: string) {
     const userData = { email, password };
@@ -22,7 +25,6 @@ export class AuthService {
       map((response: any) => {
         if (response.message === 'Login exitoso') {
           this.setSession(response);
-          this.updateUserDetails(response);
         }
         return response;
       })
@@ -42,13 +44,16 @@ export class AuthService {
 
   private setSession(authResult: any) {
     localStorage.setItem('token', authResult.token);
-    localStorage.setItem('session', JSON.stringify(jwt_decode(authResult.token)));
+    const session = jwt_decode(authResult.token);
+
+    localStorage.setItem('session', JSON.stringify(session));
     const expiresAt = moment().add(3600, 'second');
     localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
+    this.updateUserDetails(session);
   }
 
-  private updateUserDetails(authResult: any) {
-    let { role, firstName }: any = jwt_decode(authResult.token); // Obtén el nombre de usuario desde el token
+  private updateUserDetails(session: any) {
+    let { role, firstName }: any = session;
 
     switch (role) {
       case 'admin':
