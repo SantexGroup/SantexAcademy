@@ -1,31 +1,26 @@
 <app-barra></app-barra>
-<div class="container">
+<div class="container contenedorTarjeta">
   <!-- texto -->
-  <div id="cabecera">
-    <p id="texto">Búsqueda de: <span>{{resBus}}</span></p>
+  <div id="encabezado">
+    <p id="Categoria">Búsqueda de: <span>{{resBus}}</span></p>
     <app-boton-navegacion></app-boton-navegacion>
   </div>
   <p *ngIf="!bolArt">No hay productos según su búsqueda, intente nuevamente</p>
   <div *ngIf="listArticulos"class="row">
-    <!-- tarjetas -->
-    <div *ngFor="let articulo of listArticulos" class="col-md-3 mb-4 tarjeta-container">
-      <div class="card shadow bg-body rounded" >
-        <div id="tarjeta" class="card-body shadow bg-body rounded">
-          <!-- imagen -->
-          <div id="contImg"><img id="FotoArticulo" class="shadow bg-body rounded" [src]="images[listArticulos.indexOf(articulo)]"></div>
-          <!-- datos -->
-            <div id="datos">
-                <div id="datos2">
-                    <a class="card-title" (click)="redireccion(articulo.id)" >{{ articulo.nombre.charAt(0).toUpperCase() + articulo.nombre.slice(1) }}</a>
-                    <p>{{ articulo.detalles.charAt(0).toUpperCase() + articulo.detalles.slice(1) }}</p>
-                    <p class="card-subtitle">${{ articulo.precio }}</p>
-                </div>
-                <!-- ver mas -->
+    <div *ngFor="let articulo of listArticulos" class="col-2 mb-4 tarjeta-container">
+      <div class="card" >
+        <div class="card-body">
+          <div id="contImg">
+          <img id="FotoArticulo" [src]="images[listArticulos.indexOf(articulo)]">
+          </div>
+          <h5 class="card-title">{{ articulo.nombre }}</h5>
+          <p class="descripcion">{{ articulo.detalles }}</p>
+          <h6 id="Precio" class="card-subtitle">${{ articulo.precio }}</h6>
                 <button id="boton" (click)="redireccion(articulo.id)">Ver más</button>
             </div>
         </div>
       </div>
     </div>
+>
   </div>
-</div>
 <app-footer></app-footer>
