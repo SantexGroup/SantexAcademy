@@ -93,6 +93,9 @@ const routes: Routes = [
     path: 'sobreNosotros', component:ShowAboutUsComponent,
   },
   {
+    path: 'profile/inscripciones', component:InscriptionsComponent,
+  },
+  {
     path: 'signup',
     component: SigupViewComponent,
   }, 

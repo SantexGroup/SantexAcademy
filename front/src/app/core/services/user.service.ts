@@ -32,7 +32,9 @@ export class UserService {
     return this.httpUser.get(this.apiUrl+"/email/"+ email)
   }
   removeCourseRegistration(idCourse:number,idUser:number ){
-    return this.httpUser.delete(this.apiUrl+"/removeinscription/"+idCourse+"/"+idUser)
+    const idCourseSelect = idCourse;
+    const idUserSelect = idUser;
+    return this.httpUser.delete(this.apiUrl+"/removeinscription/"+idCourseSelect+"/"+idUserSelect)
   }
   validateCode(email:string, code:string){
     return this.httpUser.get(this.apiUrl+"/verificar-email/"+email+"/"+code)
@@ -40,6 +42,10 @@ export class UserService {
   createCode(email:string):Observable<any>{
     const requestBody = { email }; 
     return this.httpUser.post(this.apiUrl+ "/createnewcode", requestBody)
+  }
+  inscription(idCourse:number, idUser:number){  
+  const data = { idCourse, idUser };
+  return this.httpUser.post(this.apiUrl + "/inscription", data);
   }
 
 

@@ -236,7 +236,7 @@ const removeCourseRegistration = async (idCourseSelect, idUserSelect) => {
     const relation = await Registered.findOne(
       { where: { idCourse: idCourseSelect, idUser: idUserSelect } },
     );
-    return relation.destroy({ where: { id: relation.id } });
+    return Registered.destroy({ where: { id: relation.id } });
   } catch (error) {
     throw ('Error:', error);
   }
