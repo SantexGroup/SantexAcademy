@@ -22,13 +22,13 @@ export class DashboardPageComponent implements OnInit {
 
   ngOnInit(): void {
   
-    this.courseSvc.getCourse().subscribe((data) => {
+    this.courseSvc.getCourses().subscribe((data: any) => {
       this.courseList = <any>data;
         this.courses = this.courseList.filter((course) => this.courseList.indexOf(course) < 6);
         this.moreCourses = this.courseList.filter((course) => this.courseList.indexOf(course) >= 6);
   
   },
-  (error)=>{
+  (error: any)=>{
     console.log(error)
   });
 
