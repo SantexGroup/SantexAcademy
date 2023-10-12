@@ -83,10 +83,12 @@ export class EditarUsuarioComponent implements OnInit {
       let newObject = JSON.parse(infoLocal);
       const idUser = newObject[1].users.id;
       this.idUser = idUser;
-      const vendedor = newObject[1].users.estadoDeVendedor;
-      if (vendedor){
-       this.confUsuario = true;
+      if (idUser) {
+        this.confUsuario = true; // El usuario está logueado
+      } else {
+        this.confUsuario = false; // El usuario no está logueado
       }
+      
     }
   }
 

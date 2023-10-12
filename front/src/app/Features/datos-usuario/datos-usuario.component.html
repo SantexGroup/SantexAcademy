@@ -1,10 +1,14 @@
 <app-barra></app-barra>
-<div id="divprincipal">
+<p *ngIf="!confUsuario">¡Para ver sus datos debe estar registrado como Usuario!</p>
 <div id="botonNavegacion">
     <app-boton-navegacion></app-boton-navegacion>
 </div>
-    <p>-</p>
+
+<div *ngIf="confUsuario" id="divprincipal">
     <div class="formulario">
+        <div id="botonNavegacion">
+            <app-boton-navegacion></app-boton-navegacion>
+        </div>
         <div class="formulario_container">
             <div class="titulo_container">
                 <h2>Datos del Usuario</h2>
@@ -29,7 +33,6 @@
             </div>
         </div>
     </div>
-    <p>-</p>
 </div>
 
 <app-footer></app-footer>

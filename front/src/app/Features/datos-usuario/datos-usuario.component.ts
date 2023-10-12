@@ -23,11 +23,12 @@ export class DatosUsuarioComponent implements OnInit {
   direccionUsuario: string = '';
 
   mensajeDatosUsuario: string = '';
+  confUsuario: boolean = false;
 
   constructor(private service: DatosUsuarioService, private mensajeService: MensajeService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getIdUsuario()
+    this.getIdUser()
 
     this.service.getDatosUsuario(this.idUser).subscribe(usuario => { console.log(usuario);
 
@@ -44,15 +45,18 @@ export class DatosUsuarioComponent implements OnInit {
 
   }
 
-  getIdUsuario() {    
-    let infoLocal = localStorage.getItem('resLog')
+  getIdUser() {    
+    let infoLocal = localStorage.getItem('resLog');
     if (infoLocal) {
       let newObject = JSON.parse(infoLocal);
-      if (newObject) {
-        this.idUser = newObject[1].users.id
-        console.log(this.idUser);
-        
+      const idUser = newObject[1].users.id;
+      this.idUser = idUser;
+      if (idUser) {
+        this.confUsuario = true; // El usuario está logueado
+      } else {
+        this.confUsuario = false; // El usuario no está logueado
       }
+      
     }
   }
 
