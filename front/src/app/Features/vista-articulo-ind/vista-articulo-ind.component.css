@@ -243,3 +243,26 @@ input[type="text"] {
 input {
     padding-left: 15px;
 }
+
+.modal-body {
+    justify-content: center;
+}
+
+.modal-body span {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: medium;
+  }
+
+.modal-body li {
+    padding-bottom: 10px;
+    font-size:medium;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+#modal-precio {
+    font-weight: 600;
+    font-size: larger;
+}
