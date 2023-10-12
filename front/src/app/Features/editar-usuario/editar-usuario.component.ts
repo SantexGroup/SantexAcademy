@@ -36,13 +36,14 @@ export class EditarUsuarioComponent implements OnInit {
 
   logeadoComprador: boolean = false;
   logeadoVendedor: boolean = false;
+  confUsuario: boolean = false;
   infoLoc: any[] = [];
   resLogin: any[] = [];
 
   constructor(private service: EditarUsuarioService, private mensajeService: MensajeService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getIdUsuario()
+    this.getIdUser()
     this.corroborarLogeo()
     
     this.service.getProvincias().subscribe(provincias => {this.listprovincias = provincias});
@@ -76,14 +77,15 @@ export class EditarUsuarioComponent implements OnInit {
     }
   }
 
-  getIdUsuario() {    
-    let infoLocal = localStorage.getItem('resLog')
+  getIdUser() {    
+    let infoLocal = localStorage.getItem('resLog');
     if (infoLocal) {
       let newObject = JSON.parse(infoLocal);
-      if (newObject) {
-        this.idUser = newObject[1].users.id
-        console.log(this.idUser);
-        
+      const idUser = newObject[1].users.id;
+      this.idUser = idUser;
+      const vendedor = newObject[1].users.estadoDeVendedor;
+      if (vendedor){
+       this.confUsuario = true;
       }
     }
   }
@@ -122,9 +124,7 @@ export class EditarUsuarioComponent implements OnInit {
           console.log('deslogueo con exito');
           
           alert("Cuenta eliminada con éxito");
-          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-            this.router.navigate(['/']).then(() => { });
-          });
+          this.router.navigate(['/']);
         } else {
           alert("No se ha podido eliminar su cuenta");
         }
@@ -146,7 +146,6 @@ export class EditarUsuarioComponent implements OnInit {
         this.logeadoComprador = false;
         localStorage.clear();
         console.log('LocalStorage limpio');
-        this.router.navigateByUrl('/');
         this.isExpanded = false;
         this.corLog = '';
         this.pasLog = '';
