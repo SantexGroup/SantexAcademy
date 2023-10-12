@@ -63,24 +63,27 @@
       <h5>Inicio: {{ startFormat }}</h5>
       <h5>Finalización: {{ endFormat }}</h5>
     </div>
-    <div class="row mt-1 p-3" *ngIf="adminCheck()">
-      <table class="table table-sm">
+    <button class="btn btn-secondary btn-lg btn-block" *ngIf="adminCheck()" (click)="alterTableVisibility()">
+      {{ tableVisibility ? 'Ocultar Inscriptos' : 'Mostrar Inscriptos' }}
+    </button>
+    <div class="row mt-1 p-3 tableContainer" *ngIf="adminCheck()">
+      <table class="table table-sm" *ngIf="tableVisibility">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First name</th>
-            <th scope="col">Last name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
+            <th scope="col" class="tableColor">#</th>
+            <th scope="col" class="tableColor">First name</th>
+            <th scope="col" class="tableColor">Last name</th>
+            <th scope="col" class="tableColor">Email</th>
+            <th scope="col" class="tableColor">Phone</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let register of registereds; let i = index">
-            <th scope="row">{{ i+1 }}</th>
-            <td>{{ register.User.firstname }}</td>
-            <td>{{ register.User.lastname }}</td>
-            <td>{{ register.User.email }}</td>
-            <td>{{ register.User.phone }}</td>
+            <th scope="row" class="tableColor">{{ i+1 }}</th>
+            <td class="tableColor">{{ register.User.firstname }}</td>
+            <td class="tableColor">{{ register.User.lastname }}</td>
+            <td class="tableColor">{{ register.User.email }}</td>
+            <td class="tableColor">{{ register.User.phone }}</td>
           </tr>
         </tbody>
       </table>

@@ -57,12 +57,13 @@ export class DescriptionCourseComponent {
   courses: Course[] = [];
   coursesSelect: Course[] = [];
   registereds: Registered[] = [];
+  public tableVisibility: boolean = false;
   constructor(
     private courseService: CourseService,
     private aRouter: ActivatedRoute,
     private router: Router,
     private auth: AuthenticationService,
-    private registerService: RegisterService
+    private registerService: RegisterService,
   ) {
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
     this.getCourse();
@@ -140,5 +141,8 @@ export class DescriptionCourseComponent {
   }
   adminCheck(): boolean {
     return this.auth.isUserAdmin();
+  }
+  alterTableVisibility(){
+    this.tableVisibility = !this.tableVisibility;
   }
 }
