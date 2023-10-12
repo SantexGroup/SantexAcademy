@@ -82,23 +82,26 @@
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirmación del alquiler</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body row">
+                    <div class="modal-section col-11">
                     <ul>
-                        <li id="nombreProducto">Producto: {{respuesta.nombre}}</li>
-                        <li id="diasContratados">Días contratados: {{diasSel}}</li>
+                        <li id="nombreProducto">Producto:  <span>{{respuesta.nombre}}</span></li>
+                        <li id="diasContratados">Tiempo: <span>{{diasSel}} dias</span></li>
                         <li id="metodoEnvio">
-                            Método de envío:
-                            <span *ngIf="envSel === 'envio'">El envío llegará a su domicilio.</span>
-                            <span *ngIf="envSel === 'retiro'">Deberá buscar el producto en el local.</span>
+                            Envío:
+                            <span *ngIf="envSel === 'envio'"> A domicilio</span>
+                            <span *ngIf="envSel === 'retiro'"> Retiro por sucursal</span>
                         </li>
                         <li id="metodoPago">
-                            Método de pago:
-                            <span *ngIf="pagoSel === 'efectivo'"> Efectivo.</span>
-                            <span *ngIf="pagoSel === 'tarjeta'">Tarjeta.</span>
+                            Modo de pago:
+                            <span *ngIf="pagoSel === 'efectivo'"> Efectivo</span>
+                            <span *ngIf="pagoSel === 'tarjeta'">Tarjeta</span>
                         </li>
-                        <p id="precioP">Precio: ${{respuesta.precio}}</p>
-
-                        <div *ngIf="pagoSel === 'tarjeta'">
+                        <li id="precioP">Pagás: <span id="modal-precio">${{respuesta.precio}}</span></li>
+                    </ul>
+                    </div>
+                    <div class="modal-section col-11 border-top" *ngIf="pagoSel === 'tarjeta'">
+                        <div class="p-2">
                             <form [formGroup]="formTarj">
                             <h6>Ingrese los datos de la tarjeta</h6>
                             <label for="nombreTitular">Nombre del titular: </label>
@@ -120,7 +123,7 @@
                                 [(ngModel)]="codigoSeguridad" required>
                             </form>
                         </div>
-                    </ul>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Modificar</button>
