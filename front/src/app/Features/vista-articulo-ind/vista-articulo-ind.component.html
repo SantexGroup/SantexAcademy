@@ -139,8 +139,9 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+        <h1 class="modal-title fs-5" id="exampleModalLabel" *ngIf="!alqcheck">Procesando...</h1>
           <h1 class="modal-title fs-5" id="exampleModalLabel" *ngIf="alquilado">Articulo alquilado con éxito!</h1>
-          <h1 class="modal-title fs-5" id="exampleModalLabel" *ngIf="!alquilado">Hubo un error al alquilar el articulo, verifique los campos e intentelo de nuevo.</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel" *ngIf="alqcheck && !alquilado">Hubo un error al alquilar el articulo, verifique los campos e intentelo de nuevo.</h1>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal" *ngIf="alquilado" (click)="redirect()">Aceptar</button>

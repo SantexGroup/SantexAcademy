@@ -64,6 +64,7 @@ export class VistaArtIndComponent implements OnInit {
   codSegTarjControl: FormControl = new FormControl('', [Validators.required]);
 
   // resultado alquiler
+  alqcheck: boolean = false;
   alquilado: boolean = false;
 
   @ViewChild('seleccionables') test: any;
@@ -214,13 +215,17 @@ export class VistaArtIndComponent implements OnInit {
       this.service.newAlquiler(this.id, this.idUsuario, this.envBol, this.dias, this.pago).subscribe(res => {
         console.log(res);
         if (res[0] && res[1]) {
+          this.alqcheck = true;
           this.alquilado = true;
+        } else {
+          this.alqcheck = true;
+          this.alquilado = false;
         }
       })
     }
 
   redirect() {
-      this.router.navigateByUrl('/');
+      this.router.navigate(['/historial-compras']);
     }
   redireccion() {
     this.location.back();
