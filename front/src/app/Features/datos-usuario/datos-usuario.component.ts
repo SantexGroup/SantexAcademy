@@ -52,16 +52,15 @@ export class DatosUsuarioComponent implements OnInit {
       const idUser = newObject[1].users.id;
       this.idUser = idUser;
       if (idUser) {
-        this.confUsuario = true; // El usuario está logueado
+        this.confUsuario = true; 
       } else {
-        this.confUsuario = false; // El usuario no está logueado
+        this.confUsuario = false; 
       }
       
     }
   }
 
   EditarUsuario() {
-    // Puedes ajustar la ruta a donde quieras redirigir
     this.router.navigate(['/editar-usuario']);
   }
   
