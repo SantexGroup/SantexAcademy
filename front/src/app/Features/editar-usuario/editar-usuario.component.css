@@ -4,8 +4,17 @@
     font-size: 14px;
     background: #f4f3f38a;
   }  
-  p{
-    color: #dd9f9f8a;
+  p {
+    background-color: #f2f2f2; 
+    border: 1px solid #ff0000; 
+    padding: 10px;
+    border-radius: 5px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    font-size: 18px; 
+    color: #333; 
+    margin-top: 10px ; 
+    text-align: center; 
+    font-weight: bold;
   }
   #BotonColor {
     color: #f0eaeb;
