@@ -72,7 +72,7 @@ export class DescriptionCourseComponent {
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
     this.getCourse();
     this.getCourses();
-    this.getregisters();
+    this.getRegisters();
   }
 
   getCourse() {
@@ -118,11 +118,10 @@ export class DescriptionCourseComponent {
       }
     );
   }
-  getregisters() {
+  getRegisters() {
     this.registerService.getRegisterById(this.id).subscribe(
       (data) => {
         this.registereds = <any>data;
-        console.log(this.registereds)
       },
       (error) => {
         console.log(error);
