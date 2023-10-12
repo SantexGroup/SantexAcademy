@@ -19,7 +19,6 @@ export class UserService {
   deleteAdmins(userId:number){
     return this.httpUser.delete(this.apiUrl+"/admin/" + userId)
   }
-
   getUsers(){
     return this.httpUser.get(this.apiUrl)
   }
@@ -27,7 +26,7 @@ export class UserService {
     return this.httpUser.get(this.apiUrl+"/"+ id)
   }
   postUser(user: User){
-    return this.httpUser.post(this.apiUrl, user)
+    return this.httpUser.post(this.apiUrl, user);
   }
   getUserByEmail(email:string){
     return this.httpUser.get(this.apiUrl+"/email/"+ email)

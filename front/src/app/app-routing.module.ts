@@ -15,6 +15,7 @@ import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.comp
 import { AddScheduleComponent } from './modules/admin-panel/schedules/add-schedule/add-schedule.component';
 import { EditScheduleComponent } from './modules/admin-panel/schedules/edit-schedule/edit-schedule.component';
 import { CourseComponent } from './modules/admin-panel/courses/course.component';
+import { LoginComponent } from './modules/login/login/login.component';
 import { InscriptionsComponent } from './modules/inscriptions/inscriptions.component';
 import { CONTACTANOSComponent } from './modules/contactanos/contactanos.component';
 import { ShowAboutUsComponent } from './modules/show-about-us/show-about-us.component';
@@ -75,6 +76,9 @@ const routes: Routes = [
   },
   {
     path: 'curso/:id',component:DescriptionCourseComponent
+  },
+  {
+    path: 'login', component: LoginComponent
   },
   {
     path: 'verificar-email/:email/:code',component:ValidationEmailComponent 

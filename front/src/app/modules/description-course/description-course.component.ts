@@ -87,7 +87,7 @@ export class DescriptionCourseComponent {
     );
   }
   getCourses() {
-    this.courseService.getCourse().subscribe(
+    this.courseService.getCourses().subscribe(
       (data) => {
         this.courses = <any>data;
         this.courses.forEach(element => {
