@@ -13,6 +13,8 @@ export class InscriptionsComponent {
   inscriptions: [] = [];
   constructor(private userService: UserService) {
     this.getToken();
+    
+    
   }
   getToken() {
     if (this.token) {
@@ -34,8 +36,8 @@ export class InscriptionsComponent {
       }
     }
   }
-  deleteInscription(idCourse: number) {
-    this.userService.removeCourseRegistration(idCourse, this.id).subscribe(
+  deleteInscription() {
+    this.userService.removeCourseRegistration(this.id, this.userData.id).subscribe(
       (res) => {
         window.location.reload();
       },

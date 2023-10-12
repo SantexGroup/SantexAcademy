@@ -32,6 +32,7 @@ app.use('/api/registers', registerRouter);
 /* TODO cuando se haga el merge de la rama US1 agregar
   authMW y adminCheck a los endpoints que corresponda */
 
+
 // endpoints arriba de esta linea
 app.use('/', rootPath.handler);
 

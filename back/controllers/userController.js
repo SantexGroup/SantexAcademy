@@ -221,7 +221,25 @@ const removeCourseRegistration = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
-
+const patchAdmins = async (req, res) => {
+  const userId = req.body;
+  try {
+    const admins = await UserService.patchAdmins(userId);
+    return res.status(200).json(admins);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+const deleteAdmins = async (req, res) => {
+  const userId = req.params;
+  console.log(userId);
+  try {
+    const admins = await UserService.deleteAdmins(userId);
+    return res.status(200).json(admins);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 // exports
 module.exports = {
   createUser,
@@ -235,4 +253,6 @@ module.exports = {
   removeCourseRegistration,
   validateCode,
   createCode,
+  patchAdmins,
+  deleteAdmins,
 };

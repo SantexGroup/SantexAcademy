@@ -20,6 +20,7 @@ import { EditScheduleComponent } from './modules/admin-panel/schedules/edit-sche
 import { CategoryComponent } from './modules/admin-panel/categories/category.component';
 import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.component';
 import { CourseComponent } from './modules/admin-panel/courses/course.component';
+import { LoginComponent } from './modules/login/login/login.component';
 import { DashboardPageComponent } from './modules/dashboard/dashboard-page/dashboard-page.component';
 import { InscriptionsComponent } from './modules/inscriptions/inscriptions.component';
 import { CONTACTANOSComponent } from './modules/contactanos/contactanos.component';
@@ -29,7 +30,7 @@ import { AboutUsComponent } from './modules/admin-panel/about-us/about-us.compon
 import { AddAboutUsComponent } from './modules/admin-panel/about-us/add-about-us/add-about-us.component';
 import { EditAboutUsComponent } from './modules/admin-panel/about-us/edit-about-us/edit-about-us.component';
 import { ShowAboutUsComponent } from './modules/show-about-us/show-about-us.component';
-
+import { AdminsComponent } from './modules/admin-panel/admins/admins.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { ShowAboutUsComponent } from './modules/show-about-us/show-about-us.comp
     CategoryComponent,
     ScheduleComponent,
     CourseComponent,
+    LoginComponent
     DashboardPageComponent,
     InscriptionsComponent,
     CONTACTANOSComponent,
@@ -59,13 +61,14 @@ import { ShowAboutUsComponent } from './modules/show-about-us/show-about-us.comp
     AddAboutUsComponent,
     EditAboutUsComponent,
     ShowAboutUsComponent,
+    AdminsComponent,
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
   ],
      
   providers: [DatePipe],

@@ -17,10 +17,9 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
   getCourses(){
-    this.courseService.getCourse().subscribe(
+    this.courseService.getCourses().subscribe(
       (res) => {
         this.courses = <any>res;
-        console.log(this.courses)
       },
       (err) => console.log(err)
     );

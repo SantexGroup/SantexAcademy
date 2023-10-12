@@ -15,12 +15,14 @@ import { ScheduleComponent } from './modules/admin-panel/schedules/schedule.comp
 import { AddScheduleComponent } from './modules/admin-panel/schedules/add-schedule/add-schedule.component';
 import { EditScheduleComponent } from './modules/admin-panel/schedules/edit-schedule/edit-schedule.component';
 import { CourseComponent } from './modules/admin-panel/courses/course.component';
+import { LoginComponent } from './modules/login/login/login.component';
 import { InscriptionsComponent } from './modules/inscriptions/inscriptions.component';
 import { CONTACTANOSComponent } from './modules/contactanos/contactanos.component';
 import { ShowAboutUsComponent } from './modules/show-about-us/show-about-us.component';
 import { AboutUsComponent } from './modules/admin-panel/about-us/about-us.component';
 import { AddAboutUsComponent } from './modules/admin-panel/about-us/add-about-us/add-about-us.component';
 import { EditAboutUsComponent } from './modules/admin-panel/about-us/edit-about-us/edit-about-us.component';
+import { AdminsComponent } from './modules/admin-panel/admins/admins.component';
 
 
 const routes: Routes = [
@@ -70,7 +72,13 @@ const routes: Routes = [
     path:'admin/panel/about-us/editAbout/:id', component:EditAboutUsComponent
   },
   {
+    path:'admin/panel/admins', component:AdminsComponent
+  },
+  {
     path: 'curso/:id',component:DescriptionCourseComponent
+  },
+  {
+    path: 'login', component: LoginComponent
   },
   {
     path: 'verificar-email/:email/:code',component:ValidationEmailComponent 
@@ -83,6 +91,9 @@ const routes: Routes = [
   },
   {
     path: 'sobreNosotros', component:ShowAboutUsComponent,
+  },
+  {
+    path: 'profile/inscripciones', component:InscriptionsComponent,
   },
   {
     path: 'signup',

@@ -31,6 +31,8 @@ const {
   removeCourseRegistration,
   validateCode,
   createCode,
+  patchAdmins,
+  deleteAdmins,
 } = require('./userController');
 
 const {
@@ -79,6 +81,8 @@ const UserController = {
   removeCourseRegistration,
   validateCode,
   createCode,
+  patchAdmins,
+  deleteAdmins,
 };
 const AboutUSController = {
   createAboutUS,
