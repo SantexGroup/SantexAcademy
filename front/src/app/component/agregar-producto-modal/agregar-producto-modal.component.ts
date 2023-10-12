@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 
@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './agregar-producto-modal.component.html',
   styleUrls: ['./agregar-producto-modal.component.css']
 })
-export class AgregarProductoModalComponent {
+export class AgregarProductoModalComponent implements OnInit {
 fotoSerializada: any;
 limpiarFoto() {
 }
@@ -21,6 +21,8 @@ limpiarFoto() {
  
 
   constructor(public dialogRef: MatDialogRef<AgregarProductoModalComponent>, private http: HttpClient) {}
+  ngOnInit(): void {
+  }
   fotoCargada: boolean = false;
 
   subirFoto(event: any): void {
@@ -49,16 +51,19 @@ limpiarFoto() {
   crearProducto(): void {
     // Objeto contenedor de los datos del formulario.
     const producto = {
-      nombre: 'Nombre del producto',
-      categoria: 'Empresarial',
-      precioEvento: 100,
-      cantidadDisponible: 10,
-      detalle: 'Detalle del producto',
-      foto: this.fotoSerializada
-    };
+        "userId" : 1,
+        "name": "TEST",
+        "price": 12,
+        "quantity": 1,
+        "details": "TEST DETAILS",
+        "category" : "empresarial"
+        
+        
+      }
 
     //Servicio HTTP de Angular para enviar estos datos al backend.
-    this.http.post('https://qkbpvgr6-5001.brs.devtunnels.ms/', producto).subscribe((response: any) => {
+    this.http.post('http://localhost:3000/products', producto,{headers:{Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY5NzA3NTgyOSwiZXhwIjoxNjk5NjY3ODI5fQ.krrlOFO2FeOCPisBkcgYpRHOlbnUENDX17_lxp4vx64"
+  }}).subscribe((response: any) => {
       console.log('Producto creado exitosamente', response);
 
       this.dialogRef.close();

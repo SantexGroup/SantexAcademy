@@ -72,7 +72,7 @@ const corsOptions = {
     }
   },
 };
-app.use(cors(corsOptions));
+app.use(cors());
 
 if (config.environment === 'production') {
   app.set('trust proxy', 1); // trust first proxy
