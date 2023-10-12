@@ -1,3 +1,4 @@
+const { Profesor } = require('../models');
 const profesorSevice = require('../services/profesorService');
 
 async function loginProfesor(req, res) {
@@ -12,22 +13,24 @@ async function loginProfesor(req, res) {
     return res.status(401).json({ mensaje: 'Nombre de usuario o contraseña incorrectos' });
   }
 }
-const { Profesor } = require('../models');
+
 
 async function createProfesor(req, res) {
   try {
     const nuevoProfesor = req.body;
-    const {nombreUsuario} = req.body.nombreUsuario
+    const { nombreUsuario } = req.body;
     // Verificar que si existe un profesor con igual nombre de usuario
-    let profesor = await Profesor.findOne(nombreUsuario) || null;
-    if (profesor !== null) {
-      return res.status(205).json({ msg: 'Profesor con nombre de Usuario ya existente' })
+    let profesor = await Profesor.findOne({ where: { nombreUsuario } });
+    if (profesor !== null){
+      return res.status(205).json({ msg: 'Usuario ya existente'})
     }
+    
     const profesorCreado = await profesorSevice.crearProfesor(nuevoProfesor);
+
     return res.status(201).json(profesorCreado);
   } catch (error) {
-    console.error('Error al crear profesor: ', error);
-    return res.status(400).json({ mensaje: 'Error al crear profesor' });
+    console.error('Error al crear usuario: ', error);
+    return res.status(400).json({ mensaje: 'Error al crear usuario' });
   }
 }
 async function getAllProfesors(req, res) {

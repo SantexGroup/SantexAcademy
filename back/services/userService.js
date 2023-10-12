@@ -3,29 +3,36 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 // Genera un token JWT válido para el usuario
-function generateJWT(user) {
-  return jwt.sign({ id: user.id }, 'tu_clave_secreta', { expiresIn: '1h' });
+function generateJWT(datosUsuario) {
+  try {
+    // Genera un token JWT para el usuario recién registrado
+    const tokenLogin = jwt.sign({ id: datosUsuario.id, nombreUsuario: datosUsuario.nombreUsuario }, process.env.SECRET_KEY || 'grupo39', { expiresIn: '1h' });
+    return tokenLogin;
+  } catch (error) {
+    console.error('Error al generar JWT:', error);
+    throw error;
+  }
 }
+
 
 async function crearUsuario(datosUsuario) {
   try {
-    // Genera un salt para cifrar la contraseña
-    const salt = await bcrypt.genSalt(10);
-
+   
     // Cifra la contraseña con el salt
-    const contraseñaCifrada = await bcrypt.hash(datosUsuario.contraseña, salt);
+    const contraseñaCifrada = await bcrypt.hash(datosUsuario.contraseña, 10);
 
     // Reemplaza la contraseña en los datos del usuario
     datosUsuario.contraseña = contraseñaCifrada;
 
-   // Genera un token JWT para el usuario recién registrado
-   const token = generateJWT(usuarioCreado);
+   
 
-   return { usuario: usuarioCreado.toJSON(), token };
- } catch (error) {
-   console.error('Error al crear usuario:', error);
-   throw error;
- }
+   const usuarioCreado = await User.create(datosUsuario);
+
+   return { usuario: usuarioCreado.toJSON()};
+  } catch (error) {
+    console.error('Error al crear usuario:', error);
+    throw error;
+  }
 }
 
 async function login(nombreUsuario, contraseña) {
@@ -45,9 +52,9 @@ async function login(nombreUsuario, contraseña) {
     }
 
     // Genera un token JWT para el usuario
-    const token = generateJWT(usuario);
-
-    return { usuario: usuario.toJSON(), token };
+    const tokenLogin = generateJWT(usuario);
+    
+    return { tokenLogin };
   } catch (error) {
     throw error;
   }
