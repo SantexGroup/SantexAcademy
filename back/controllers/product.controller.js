@@ -15,16 +15,6 @@ const productController = (req, res, next) => {
     try {
       await findEntityByProperty({ id: product.userId }, User);
 
-      const photo = decodeBase64(product.foto);
-
-      const photoPath = `${PRODUCT_IMAGE_PATH}/${resolveNameAndExtension(
-        product.foto,
-      )}`;
-
-      await saveFile(photo, photoPath);
-
-      await SaveEntityService(product, Product);
-
       res.status(201).json(product);
     } catch (error) {
       next({
