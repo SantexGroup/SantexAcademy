@@ -22,6 +22,11 @@ UserProvider.removeCourseRegistration(idCourse, idUser);
 const validateCode = async (code, email) => UserProvider.validateCode(code, email);
 
 const createCode = async (email) => UserProvider.createCode(email);
+
+const patchAdmins = async (userId) => UserProvider.patchAdmins(userId);
+
+const deleteAdmins = async (userId) => UserProvider.deleteAdmins(userId);
+
 module.exports = {
   getUserById,
   getUsers,
@@ -34,4 +39,6 @@ module.exports = {
   removeCourseRegistration,
   validateCode,
   createCode,
+  patchAdmins,
+  deleteAdmins,
 };

@@ -30,6 +30,7 @@ import { AboutUsComponent } from './modules/admin-panel/about-us/about-us.compon
 import { AddAboutUsComponent } from './modules/admin-panel/about-us/add-about-us/add-about-us.component';
 import { EditAboutUsComponent } from './modules/admin-panel/about-us/edit-about-us/edit-about-us.component';
 import { ShowAboutUsComponent } from './modules/show-about-us/show-about-us.component';
+import { AdminsComponent } from './modules/admin-panel/admins/admins.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { ShowAboutUsComponent } from './modules/show-about-us/show-about-us.comp
     AddAboutUsComponent,
     EditAboutUsComponent,
     ShowAboutUsComponent,
+    AdminsComponent,
   ],
   imports: [
     BrowserModule,

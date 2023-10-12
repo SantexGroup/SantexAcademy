@@ -22,6 +22,7 @@ import { ShowAboutUsComponent } from './modules/show-about-us/show-about-us.comp
 import { AboutUsComponent } from './modules/admin-panel/about-us/about-us.component';
 import { AddAboutUsComponent } from './modules/admin-panel/about-us/add-about-us/add-about-us.component';
 import { EditAboutUsComponent } from './modules/admin-panel/about-us/edit-about-us/edit-about-us.component';
+import { AdminsComponent } from './modules/admin-panel/admins/admins.component';
 
 
 const routes: Routes = [
@@ -69,6 +70,9 @@ const routes: Routes = [
   },
   {
     path:'admin/panel/about-us/editAbout/:id', component:EditAboutUsComponent
+  },
+  {
+    path:'admin/panel/admins', component:AdminsComponent
   },
   {
     path: 'curso/:id',component:DescriptionCourseComponent

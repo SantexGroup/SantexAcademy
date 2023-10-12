@@ -12,12 +12,18 @@ export class UserService {
   private apiUrl= 'http://localhost:4001/api/users'
 
   constructor(private httpUser: HttpClient) { }
-
-  getUsers(){
-    return this.httpUser.get<User[]>(this.apiUrl);
+  patchAdmins(userId:number){
+    const requestBody = { userId }; 
+    return this.httpUser.patch(this.apiUrl+"/admins",requestBody)
   }
-  getUserByEmail(email:string) {
-    return this.httpUser.get<User>(this.apiUrl+"/email/"+email);
+  deleteAdmins(userId:number){
+    return this.httpUser.delete(this.apiUrl+"/admin/" + userId)
+  }
+  getUsers(){
+    return this.httpUser.get(this.apiUrl)
+  }
+  getUser(id: number){
+    return this.httpUser.get(this.apiUrl+"/"+ id)
   }
   postUser(user: User){
     return this.httpUser.post(this.apiUrl, user);

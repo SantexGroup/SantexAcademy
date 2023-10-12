@@ -170,6 +170,26 @@ const patchUser = async (userId, newPassword) => {
     throw ('Error:', error);
   }
 };
+const patchAdmins = async (userId) => {
+  try {
+    const user = await User.findByPk(userId.userId);
+    user.admin = true;
+    await user.save();
+    return user;
+  } catch (error) {
+    throw ('Error:', error);
+  }
+};
+const deleteAdmins = async (userId) => {
+  try {
+    const user = await User.findByPk(userId.userId);
+    user.admin = false;
+    await user.save();
+    return user;
+  } catch (error) {
+    throw ('Error:', error);
+  }
+};
 const deleteUser = async (userId) => {
   try {
     return await User.update(
@@ -235,4 +255,6 @@ module.exports = {
   removeCourseRegistration,
   validateCode,
   createCode,
+  patchAdmins,
+  deleteAdmins,
 };
