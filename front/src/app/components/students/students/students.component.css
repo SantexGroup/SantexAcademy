@@ -1,10 +1,27 @@
 /* Main content */
 
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    height: 100vh;
+    text-align: center;
+}
+
+.grid-item{
+    display: flex;
+    align-items:flex-start; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+}
+
+
+
 .card1 {
-    max-width: 550px;
+    width: 550px;
+    height: 250px;
     border-radius: 32px;
     margin: 50px;
-    padding: 24px;
+    padding: 24px
 }
 
 .card-title {
@@ -91,9 +108,46 @@
 
 /* Calendar */
 
-.calendar-container{
-    margin: 2%;
-    border-radius: 32px;
+.demo-inline-calendar-card {
+    width: 450px;
+    margin: 30px 200px 30px 0px;
+  }
+  
+
+  /* NOVEDADES */
+
+.gird-item-news {
+    grid-column: span 2;
 
 }
 
+.news-section {
+    width: 600px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .news-card{
+    width: 200px;
+    margin: 10px;
+  }
+
+  /* CURSOS */
+
+  .grid-item-courses{
+    margin: 50px;
+    width: 600px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-image-coursesCard {
+    background-image: url('~src/assets/img/incubadora-image.png');
+    background-size: cover;
+  }
+
+  .courses-card{
+    width: 200px;
+  }
