@@ -11,6 +11,10 @@
     margin: 1vh;
 }
 
+.card{
+    padding-bottom: 1rem ;
+}
+
 .form-container {
     background-color: VAR(--color-0);
     padding: 20px;
