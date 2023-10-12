@@ -95,6 +95,23 @@ button {
     letter-spacing: .5px;
 }
 
+.btn-info {
+    width: 100%;
+    color: var(--color-6);
+    border-radius: var(--border-radius);
+    background-color: var(--color-grad-1);
+    padding: .5rem;
+    font-weight: 600;
+    letter-spacing: .5px;
+}
+
+.btn-custom {
+    color: var(--color-0) ;
+    background-color: var(--color-4);
+    padding: .5rem;
+    font-weight: 600;
+}
+
 .btn-default {
     width: 100%;
     padding: .65rem;
@@ -106,6 +123,10 @@ button {
 button:disabled {
     opacity: .5;
     background-color: var(--color-4);
+}
+
+.btn-danger:hover {
+    border-color: var(--color-6);
 }
 
 .d-flex {
