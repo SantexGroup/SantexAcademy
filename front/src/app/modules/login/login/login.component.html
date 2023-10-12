@@ -1,0 +1,61 @@
+<body>
+    <div class="signup-a">
+        <div class="container">
+            <div class="text-center">
+            <h2>¡Bienvenido a la Incubadora del NOC!</h2>
+            <img src="../assets/img/LOGIN-INCUBADORA-1-LOGO.png" class="img-fluid">
+            <h2>Iniciar Sesión</h2>
+            </div>
+            <p class="text-center" style="color: gray; font-size: 13px;">No tienes cuenta? <a routerLink="/signup" > ¡Crea una! </a> Te tomara menos de un minuto.</p>
+        <form [formGroup] = "form" (ngSubmit)="login()">
+        <div class="text-center">
+        <p class="text-danger">{{loginError}}</p>
+        <label for="username"> Email </label>
+        <input formControlName= "email" type="email" class="form-control" placeholder="ejemplo@tuemail.com" id="email">
+
+        <div
+            *ngIf="
+              form.get('email')?.hasError('required') &&
+              form.get('email')?.touched
+            "
+            class="mt-1"
+            style="color: rgb(255, 73, 73); font-size: 12px;"
+          >
+            El campo email es <strong>requerido</strong>
+        </div>
+        
+        <label for="password"> Contraseña</label>
+        <input formControlName= "password" type="password" class="form-control" placeholder="tu contraseña" id="password">
+        
+        <div
+            *ngIf="
+              form.get('password')?.hasError('required') &&
+              form.get('password')?.touched
+            "
+            class="mt-1"
+            style="color: rgb(255, 73, 73); font-size: 12px;"
+          >
+            El campo contraseña es <strong>requerido</strong>
+        </div>
+        
+        <div class="rm">
+         <input type="checkbox" id="rem">
+         <label for="rem">Recuérdame</label>
+        </div>
+
+        <div>
+            <a class="contra" href="#">Olvidaste la contraseña?</a><br>
+        </div>
+
+            <p class="txt" style="color: gray; font-size: 13px;">Si todavía no autenticaste tu usuario, <a routerLink="/crear-codigo">haz click aquí</a> </p>
+        
+
+        <button id="button" class="btn" [disabled]="form.invalid">Iniciar Sesión</button>  
+    </div>   
+    </form>
+    </div>
+    </div>
+               
+   
+</body>
+ 

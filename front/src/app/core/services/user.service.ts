@@ -13,8 +13,14 @@ export class UserService {
 
   constructor(private httpUser: HttpClient) { }
 
+  getUsers(){
+    return this.httpUser.get<User[]>(this.apiUrl);
+  }
+  getUserByEmail(email:string) {
+    return this.httpUser.get<User>(this.apiUrl+"/email/"+email);
+  }
   postUser(user: User){
-    return this.httpUser.post(this.apiUrl, user)
+    return this.httpUser.post(this.apiUrl, user);
   }
   getUserByEmail(email:string){
     return this.httpUser.get(this.apiUrl+"/email/"+ email)
