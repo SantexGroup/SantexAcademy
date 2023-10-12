@@ -5,8 +5,8 @@ async function getAll() {
     return listCursos;
 }
 async function getOne(id) {
-    const curso = await curso.findByPk(id);
-    return curso;
+    const cursoEncontrado = await curso.findByPk(id);
+    return cursoEncontrado;
 }
 
 async function crearCurso(nuevoCurso) {
@@ -21,12 +21,13 @@ async function crearCurso(nuevoCurso) {
 }
 async function editCurso(cursoId, updatedData) {
     try {
-        const curso = await getById(cursoId);
+        const curso = await getOne(cursoId);
 
         if (!curso) {
             throw new Error('Usuario no encontrado');
         }
         curso.nombre = updatedData.nombre;
+        curso.fechaInicio = updatedData.fechaInicio;
         curso.duracion = updatedData.duracion;
         curso.precio = updatedData.precio;
         curso.descripcion = updatedData.descripcion;
@@ -38,7 +39,7 @@ async function editCurso(cursoId, updatedData) {
     }
 }
 async function deleteCurso(id) {
-    const curso = await getById(id)
+    const curso = await getOne(id)
     await curso.destroy(id)
 }
 module.exports = { getAll, getOne, crearCurso , editCurso, deleteCurso}

@@ -30,7 +30,7 @@ module.exports = {
         unique: true,
         type: Sequelize.STRING,
       },
-      password: {
+      contraseña: {
         allowNull: false,
         type: Sequelize.STRING,
       },
