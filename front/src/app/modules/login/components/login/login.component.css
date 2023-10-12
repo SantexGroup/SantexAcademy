@@ -52,6 +52,7 @@ input {
 
 .image-logo {
   max-width: 8rem;
+  cursor: pointer;
 }
 
 .link-registro {

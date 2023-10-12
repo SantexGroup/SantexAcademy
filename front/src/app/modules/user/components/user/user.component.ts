@@ -41,28 +41,19 @@ export class UserComponent implements OnInit {
 
   deleteUser() {
     if (this.user && this.user.id) {      
-      this.toastr.warning('¿Estás seguro? Presione esta ventana para eliminar este usuario?', 'Confirmación', {
-        closeButton: true,
-        timeOut: 7000,
-        extendedTimeOut: 2000,
-        tapToDismiss: false,
-        progressBar: true,
-        progressAnimation: 'increasing',
-      }).onTap.subscribe(() => {        
-        this.userService.deleteUserById(this.user.id).subscribe({
-          next: () => {
-            console.log('Usuario eliminado exitosamente');
-            this.toastr.success('El usuario se eliminó correctamente');
-            this.navigateToUserList();
-          },
-          error: (error) => {
-            console.error('Error al eliminar usuario:', error);
-            this.toastr.error('Error al eliminar el usuario');
-          },
-        });
+      this.userService.deleteUserById(this.user.id).subscribe({
+        next:() => {
+          console.log('Usuario eliminado exitosamente');
+          this.toastr.success("El usuario se eliminó correctamente")
+          this.navigateToUserList();
+        },
+        error: (error) => {
+          console.error('Error al eliminar usuario:', error);
+          this.toastr.error("Error al eliminar el usuario")
+        }
       });
     }
-  }
+  }  
 
   redirectToEditUser(userId: number) {
     this.router.navigate([`/user/edit-user/${userId}`]);
@@ -72,4 +63,5 @@ export class UserComponent implements OnInit {
     this.router.navigate(['/user/user-list']);
   }
 }
+
 
