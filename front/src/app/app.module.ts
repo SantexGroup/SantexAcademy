@@ -53,7 +53,7 @@ import { AdminsComponent } from './modules/admin-panel/admins/admins.component';
     CategoryComponent,
     ScheduleComponent,
     CourseComponent,
-    LoginComponent
+    LoginComponent,
     DashboardPageComponent,
     InscriptionsComponent,
     CONTACTANOSComponent,

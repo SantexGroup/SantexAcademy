@@ -74,6 +74,31 @@
       <h5>Inicio: {{ startFormat }}</h5>
       <h5>Finalización: {{ endFormat }}</h5>
     </div>
+    <button class="btn btn-secondary btn-lg btn-block" *ngIf="adminCheck()" (click)="alterTableVisibility()">
+      {{ tableVisibility ? 'Ocultar Inscriptos' : 'Mostrar Inscriptos' }}
+    </button>
+    <div class="row mt-1 p-3 tableContainer" *ngIf="adminCheck()">
+      <table class="table table-sm" *ngIf="tableVisibility">
+        <thead>
+          <tr>
+            <th scope="col" class="tableColor">#</th>
+            <th scope="col" class="tableColor">First name</th>
+            <th scope="col" class="tableColor">Last name</th>
+            <th scope="col" class="tableColor">Email</th>
+            <th scope="col" class="tableColor">Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let register of registereds; let i = index">
+            <th scope="row" class="tableColor">{{ i+1 }}</th>
+            <td class="tableColor">{{ register.User.firstname }}</td>
+            <td class="tableColor">{{ register.User.lastname }}</td>
+            <td class="tableColor">{{ register.User.email }}</td>
+            <td class="tableColor">{{ register.User.phone }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
   <div class="row p-2 m-2 rounded" style="background-color: orange">
     <h2>OTROS CURSOS QUE TE PODRIAN INTERESAR</h2>

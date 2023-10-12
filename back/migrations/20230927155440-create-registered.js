@@ -7,25 +7,39 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       idCourse: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Course',
+          key: 'id',
+        },
       },
       idUser: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'User',
+          key: 'id',
+        },
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       }
+    });
+    await queryInterface.addConstraint('Registereds', {
+      fields: ['idUser', 'idCourse'],
+      type: 'unique',
+      name: 'unique_user_course',
     });
   },
   async down(queryInterface, Sequelize) {
+    await queryInterface.removeConstraint('Registereds', 'unique_user_course');
     await queryInterface.dropTable('Registereds');
   }
 };

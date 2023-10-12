@@ -42,6 +42,9 @@ const {
   getAboutUSById,
   getAboutUSs,
 } = require('./aboutUSService');
+const {
+  getRegisters,
+} = require('./registerService');
 
 const CourseService = {
   createCourse,
@@ -86,6 +89,9 @@ const AboutUSService = {
   getAboutUSById,
   getAboutUSs,
 };
+const RegisterService = {
+  getRegisters,
+};
 module.exports = {
-  CourseService, CategoryService, ScheduleService, UserService, AboutUSService,
+  CourseService, CategoryService, ScheduleService, UserService, AboutUSService, RegisterService,
 };

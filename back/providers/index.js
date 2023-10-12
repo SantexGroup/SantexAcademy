@@ -43,6 +43,10 @@ const {
   getAboutUSs,
 } = require('./aboutUSProvider');
 
+const {
+  getRegisters,
+} = require('./registerProvider');
+
 const CourseProvider = {
   createCourse,
   deleteCourse,
@@ -87,6 +91,15 @@ const AboutUSProvider = {
   getAboutUSById,
   getAboutUSs,
 };
+const RegisterProvider = {
+  getRegisters,
+};
+
 module.exports = {
-  CourseProvider, CategoryProvider, ScheduleProvider, UserProvider, AboutUSProvider,
+  CourseProvider,
+  CategoryProvider,
+  ScheduleProvider,
+  UserProvider,
+  AboutUSProvider,
+  RegisterProvider,
 };

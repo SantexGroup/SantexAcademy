@@ -2,8 +2,11 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/core/interfaces/course';
 import { CourseService } from 'src/app/core/services/course.service';
+import { Registered } from 'src/app/core/interfaces/registered';
+import { RegisterService } from 'src/app/core/services/register.service';
 import { Schedule } from 'src/app/core/interfaces/schedule';
 import { ScheduleCourses } from 'src/app/core/interfaces/scheduleCourses';
+import { AuthenticationService } from 'src/app/core/services/authentication.service'
 import { take } from 'rxjs';
 import { UserService } from 'src/app/core/services/user.service';
 @Component({
@@ -48,17 +51,28 @@ export class DescriptionCourseComponent {
     CourseCategoryName: '',
     ScheduleCourses: [this.scheduleCourse],
   };
+  registered: Registered = {
+    id: 0,
+    idCourse: 0,
+    idUser: 0,
+    User: [],
+  };
   courses: Course[] = [];
   coursesSelect: Course[] = [];
+  registereds: Registered[] = [];
+  public tableVisibility: boolean = false;
   constructor(
     private courseService: CourseService,
     private aRouter: ActivatedRoute,
     private router: Router,
+    private auth: AuthenticationService,
+    private registerService: RegisterService,
     private userService: UserService
   ) {
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
     this.getCourse();
     this.getCourses();
+    this.getRegisters();
   }
 
   getCourse() {
@@ -104,6 +118,16 @@ export class DescriptionCourseComponent {
       }
     );
   }
+  getRegisters() {
+    this.registerService.getRegisterById(this.id).subscribe(
+      (data) => {
+        this.registereds = <any>data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
   formatDateToYYYYMMDD(dateinput: Date) {
     const date = new Date(dateinput);
     const year = date.getFullYear();
@@ -131,5 +155,11 @@ export class DescriptionCourseComponent {
     }else{
       this.notRegistered = true
     }
+  }
+  adminCheck(): boolean {
+    return this.auth.isUserAdmin();
+  }
+  alterTableVisibility(){
+    this.tableVisibility = !this.tableVisibility;
   }
 }
