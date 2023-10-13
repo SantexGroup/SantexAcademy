@@ -25,6 +25,9 @@ export class UserService {
   getUser(id: number){
     return this.httpUser.get(this.apiUrl+"/"+ id)
   }
+  getCourseCategory(){
+    return this.httpUser.get(this.apiUrl+"/category")
+  }
   postUser(user: User){
     return this.httpUser.post(this.apiUrl, user);
   }
