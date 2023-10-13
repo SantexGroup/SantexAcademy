@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit {
   constructor(private courseCategoryService: CourseCategoryService) {
     
     this.getCourseCategory();
+    this.getToken();
    }
 
   ngOnInit(): void {
@@ -34,6 +35,7 @@ export class NavbarComponent implements OnInit {
     if (this.token) {
       try {
         const tokenPayload = JSON.parse(atob(this.token.split('.')[1]));
+        console.log(tokenPayload)
         this.dates.isAdmin = tokenPayload.isAdmin;
         this.logueado = true
         if(this.dates.isAdmin){
@@ -47,13 +49,8 @@ export class NavbarComponent implements OnInit {
       this.admin = false
     }
   }
-  isAdmin(){
-
-
-
+  logOut(){
+    localStorage.clear();
+    window.location.reload();
   }
-
-
-
-
 }
