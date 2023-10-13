@@ -18,9 +18,11 @@
         </div>
       </div>
       <div class="col-md-7 col-sm-12 p-2 mt-4">
-        <div>
+        <div *ngIf="!isRegistered">
           <button class="boton" (click)="register()">Inscribirse</button>
-
+        </div>
+        <div class="row mt-3" *ngIf="isRegistered">
+          <h4>Usted ya se encuentra registrado en este curso</h4>
         </div>
         <div *ngIf="notRegistered">
           <div class="row mt-3">

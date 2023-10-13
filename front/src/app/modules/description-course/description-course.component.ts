@@ -21,6 +21,8 @@ export class DescriptionCourseComponent {
   end: Date = new Date();
   startFormat: any;
   endFormat: any;
+  isRegistered : boolean = true;
+  userData: any = {};
   token: string | null = localStorage.getItem('token');
   schedule: Schedule = {
     id: 0,
@@ -73,6 +75,7 @@ export class DescriptionCourseComponent {
     this.getCourse();
     this.getCourses();
     this.getRegisters();
+    this.userRegistered();
   }
 
   getCourse() {
@@ -161,5 +164,29 @@ export class DescriptionCourseComponent {
   }
   alterTableVisibility(){
     this.tableVisibility = !this.tableVisibility;
+  }
+  userRegistered(){
+    if (this.token) {
+      try {
+        const tokenPayload = JSON.parse(atob(this.token.split('.')[1]));
+        this.userData.email = tokenPayload.email;
+        
+        this.userService.getUserByEmail(this.userData.email).subscribe(
+          (data) => {
+            this.userData = data;
+            this.userData.Registereds.forEach((element: { idCourse: number; }) => {
+              if(element.idCourse !== this.id){
+                this.isRegistered = false
+              }
+            });
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      } catch (error) {
+        console.log(error)
+      }
+    }
   }
 }
