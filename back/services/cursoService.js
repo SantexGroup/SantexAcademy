@@ -6,8 +6,8 @@ async function getAll() {
     return listCursos;
 }
 async function getOne(id) {
-    const curso = await curso.findByPk(id);
-    return curso;
+    const cursoEncontrado = await curso.findByPk(id);
+    return cursoEncontrado;
 }
 
 async function crearCurso(nuevoCurso) {
@@ -22,7 +22,7 @@ async function crearCurso(nuevoCurso) {
 }
 async function editCurso(cursoId, updatedData) {
     try {
-        const curso = await getById(cursoId);
+        const curso = await getOne(cursoId);
 
         if (!curso) {
             throw new Error('Usuario no encontrado');
@@ -40,7 +40,7 @@ async function editCurso(cursoId, updatedData) {
     }
 }
 async function deleteCurso(id) {
-    const curso = await getById(id)
+    const curso = await getOne(id)
     await curso.destroy(id)
 }
 

@@ -23,6 +23,8 @@ import { StudentsPersonalDataComponent } from '../students/students-personal-dat
 import { StudentsCoursesComponent } from '../students/students-courses/students-courses.component';
 import { LayoutComponent } from '../students/layout/layout.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 
 
@@ -60,6 +62,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatSidenavModule,
     MatToolbarModule,
     HttpClientModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

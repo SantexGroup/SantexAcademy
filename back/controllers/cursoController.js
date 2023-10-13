@@ -29,21 +29,21 @@ async function getCursoById(req, res, next) {
 
 }
 async function createCurso(req, res) {
-  try {
-    const nuevoCurso = req.body;
-    const { nombre } = req.body.nombre
-    // Verificar que si existe un curso con igual nombre
-    let curso = await curso.findOne(nombre) || null;
-    if (curso !== null) {
-      return res.status(205).json({ msg: 'Curso con ese nombre ya existente' })
+    try {
+        const nuevoCurso = req.body;
+        const { nombre } = req.body;
+         // Verificar que si existe un curso con igual nombre
+        let cursoEncontrado = await curso.findOne({ where: { nombre } });
+        if (cursoEncontrado !== null) {
+          return res.status(205).json({ msg: 'Curso con ese nombre ya existente' })
+        }
+        const cursoCreado = await cursoService.crearCurso(nuevoCurso);
+        return res.status(201).json(cursoCreado);
+    } catch (error) {
+        console.error('Error al crear un nuevo curso: ', error);
+        return res.status(400).json({ mensaje: 'Error al crear un nuevo curso' });
     }
-    const cursoCreado = await cursoService.crearCurso(nuevoCurso);
-    return res.status(201).json(cursoCreado);
-  } catch (error) {
-    console.error('Error al crear un nuevo curso: ', error);
-    return res.status(400).json({ mensaje: 'Error al crear un nuevo curso' });
-  }
-
+    
 }
 async function editCurso(req, res) {
   try {

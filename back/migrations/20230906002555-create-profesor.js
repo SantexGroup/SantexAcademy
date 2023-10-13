@@ -39,7 +39,7 @@ module.exports = {
         unique: true,
         type: Sequelize.STRING
       },
-      password: {
+      contraseña: {
         type: Sequelize.STRING
       },
       createdAt: {
