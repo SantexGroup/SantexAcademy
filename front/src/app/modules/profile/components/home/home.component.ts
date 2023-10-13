@@ -10,10 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HomeComponent implements OnInit {
 
   user: User = {} as User;
-  email: string = '';
-  password: string = '';
-  firstName: string = '';
-  lastName: string = '';
+
 
   constructor(private authService: AuthService) { }
 
