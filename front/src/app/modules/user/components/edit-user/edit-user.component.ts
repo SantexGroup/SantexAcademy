@@ -35,12 +35,15 @@ export class EditUserComponent implements OnInit {
         console.log('Usuario actualizado exitosamente', response);      
         this.toastr.success('Usuario editado exitosamente');
         this.router.navigate([`/user/${this.userId}`]);
-
       },
       error: (error: any) => {
         console.error('Error al actualizar usuario:', error);
         this.toastr.error('Error al editar el usuario');
       }
     });
+  }
+
+  backToUser(){
+    this.router.navigate([`/user/${this.userId}`]);
   }
 }
