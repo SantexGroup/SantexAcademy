@@ -24,8 +24,8 @@
     </button>
     <div class="collapse navbar-collapse row" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
-        <li class="nav-item dropdown col text-center">
+
+        <li class="nav-item dropdown col-3 text-center">
           <a
             class="nav-link dropdown-toggle text-white fs-5"
             href="#"
@@ -37,23 +37,48 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-book" viewBox="0 0 448 512"><path d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/>
           </svg>Cursos</a>
           <ul class="dropdown-menu text-center" style="background: rgb(41, 64, 145);width: 100%;">
-            <div *ngFor="let course of courses" >
-              <li><a class="dropdown-item text-white" href="/cursos/{{course.id}}">{{ course.name }}</a></li>
+            
+            <div *ngFor="let category of coursesCategory" >
+              
+              <li><a class="dropdown-item itemBlue text-white" href="/{{category.name}}">{{ category.name }}</a></li>
             </div>
             
           </ul>
           
         </li>
-        <li class="nav-item col text-center">
+        <li class="nav-item col-3 text-center">
           <a class="nav-link active text-white fs-5" routerLink="/sobreNosotros">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-book" viewBox="0 0 640 512"><path d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"/>
             </svg>Sobre nosotros</a> 
         </li>
-        <li class="nav-item col text-center">
+        <li class="nav-item col-3 text-center">
           <a class="nav-link active text-white fs-5" routerLink="/contactanos">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-book" viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
             </svg>Contacto</a>
         </li>
+        <li class="nav-item col text-center" *ngIf="admin">
+          <a class="nav-link active text-white fs-5" routerLink="/admin/panel">Panel</a>
+        </li>
+        <li class="nav-item col-1 text-center" *ngIf="register" style="display: flex; flex-direction: column; align-items: flex-end;">
+          <button class="nav-link active fs-5 m-1 btn" id="buttonsNavBar"  routerLink="/signup" ><b>Registro</b></button>
+        </li>
+         <li class="nav-item col-2 text-center" *ngIf="register" style="display: flex; flex-direction: column; align-items: flex-end;">
+          <button class="nav-link active fs-5 btn m-1 " id="buttonsNavBar" routerLink="/login" style="padding-left: 18px;padding-right: 18px;"><b>Iniciar Sesion</b></button>
+        </li>
+        <li class="nav-item dropdown col text-center" *ngIf="logueado" style="display: flex; flex-direction: column; align-items:center;">
+          <button class="nav-link dropdown-toggle text-white btn fs-5" data-bs-toggle="dropdown" style="color: #fff; background-color:orange ; padding-left: 10px;padding-right: 10px;font-family: sans-serif;"><b>Mi Perfil</b></button>
+          <ul class="dropdown-menu" style="background: orange;width: 100%;">
+            <li><a class="dropdown-item itemColor text-white" style="font-size: 18px;" href="/profile"><b>Mis datos</b></a></li>
+            <li><a class="dropdown-item itemColor text-white" style="font-size: 18px;" href="/profile/inscripciones"><b>Inscripciones</b></a></li>
+            <li><a class="dropdown-item itemColor text-white" style="font-size: 18px;" (click)="logOut()"><b>Cerrar sesion</b></a></li>
+          </ul>
+          
+        </li>
+
+
+
+
+
       </ul>
     </div>
   </div>

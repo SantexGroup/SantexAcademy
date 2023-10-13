@@ -10,11 +10,19 @@
     font-family: sans-serif;
     margin: 10px;
 }
-.dropdown-item:hover {
+.itemBlue:hover {
     background-color: rgb(57, 87, 196) !important; 
 }
-
+.itemColor:hover{
+    background-color: rgb(253, 204, 111);
+}
 .bi{
     margin-right: 10px;
     color: white;
+}
+#buttonsNavBar{
+    color: #fff; 
+    background-color:orange ; 
+    padding-top: 3px; 
+    padding-bottom: 3px;
 }

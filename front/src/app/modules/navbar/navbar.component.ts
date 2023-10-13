@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Course } from 'src/app/core/interfaces/course';
-import { CourseService } from 'src/app/core/services/course.service';
+import { CourseCategory } from 'src/app/core/interfaces/courseCategory';
+import { CourseCategoryService } from 'src/app/core/services/course-category.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -8,20 +9,48 @@ import { CourseService } from 'src/app/core/services/course.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  courses: Course[]= [];
-  constructor(private courseService: CourseService) {
+  coursesCategory: CourseCategory[]= [];
+  dates: any={};
+  token: string | null= localStorage.getItem('token');
+  admin : boolean = false;
+  logueado : boolean = false;
+  register : boolean = false;
+  constructor(private courseCategoryService: CourseCategoryService) {
     
-    this.getCourses();
+    this.getCourseCategory();
+    this.getToken();
    }
 
   ngOnInit(): void {
   }
-  getCourses(){
-    this.courseService.getCourses().subscribe(
+  getCourseCategory(){
+    this.courseCategoryService.getCourseCategory().subscribe(
       (res) => {
-        this.courses = <any>res;
+        this.coursesCategory = <any>res;
       },
       (err) => console.log(err)
     );
+  }
+  getToken(){
+    if (this.token) {
+      try {
+        const tokenPayload = JSON.parse(atob(this.token.split('.')[1]));
+        console.log(tokenPayload)
+        this.dates.isAdmin = tokenPayload.isAdmin;
+        this.logueado = true
+        if(this.dates.isAdmin){
+          this.admin = true
+        }
+      } catch (error) {
+        
+      }
+    }else{
+      this.register = true
+      this.admin = false
+    }
+  }
+  logOut(){
+    localStorage.clear();
+    window.location.reload();
   }
 }
