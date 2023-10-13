@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HisComService } from 'src/app/core/services/his-com.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-historial-comprador',
@@ -49,7 +50,11 @@ export class HistorialCompradorComponent implements OnInit {
       this.datosLog = newObject;
       this.idCom = this.datosLog[1].users.id;
     }else{
-      alert("No está logueado")
+      Swal.fire({
+        icon: 'error',
+        title: 'No se encuentra logueado',
+        confirmButtonText: "Ok"
+      })
     }
     //traer y reemplazar nombre comprador
     this.service.infoComprador(this.idCom).subscribe(resCom => {
@@ -64,7 +69,11 @@ export class HistorialCompradorComponent implements OnInit {
       this.respuesta = res;
       console.log("respuesta: " + JSON.stringify(res));
       if (JSON.stringify(res.message) == '"Usuario sin productos publicados"') {
-        alert("No tiene productos cargados");
+        Swal.fire({
+          icon: 'error',
+          title: 'No tiene productor cargados',
+          confirmButtonText: "Ok"
+        });
       }
       //reemplazar imaArt, idArt, nomVen, nomArt, desArt, preArt, fecArt y envArt
       for (let i=0; i < res.length; i++) {
