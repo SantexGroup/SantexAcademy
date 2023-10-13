@@ -82,6 +82,7 @@ interface CursoConMatricula extends Curso {
     esCursoHabilitado(curso: CursoConMatricula): boolean {
       return curso.Matricula?.habilitado ?? false;
     }
-
-    
+   
 }
+
+

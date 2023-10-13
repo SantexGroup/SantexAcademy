@@ -3,14 +3,15 @@
   }
   .registeranswer {
     /* min-height: 67vh; */
-    background-color: #d87920;
+    background-color: #ff9800;
     border-radius: 5px;
     /* display: flex; */
     justify-content: center;
     text-align: center;
-    color: rgb(2, 2, 126);
+    color: white;/* rgb(2, 2, 126);*/
   }
-  /*Ya sabemos porque se agrega esta parte*/
+
+  /*Ya sabemos porque se agrega esta parte*
   .floating-popup {
     position: fixed;
     top: 0;
@@ -47,4 +48,4 @@
   }
   button:hover {
     background-color: #ffaa00;
-  }
+  }*/
