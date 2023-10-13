@@ -93,10 +93,10 @@
         <tbody>
           <tr *ngFor="let register of registereds; let i = index">
             <th scope="row" class="tableColor">{{ i+1 }}</th>
-            <td class="tableColor">{{ register.User.firstname }}</td>
-            <td class="tableColor">{{ register.User.lastname }}</td>
-            <td class="tableColor">{{ register.User.email }}</td>
-            <td class="tableColor">{{ register.User.phone }}</td>
+            <td class="tableColor">{{ register.user.firstname }}</td>
+            <td class="tableColor">{{ register.user.lastname }}</td>
+            <td class="tableColor">{{ register.user.email }}</td>
+            <td class="tableColor">{{ register.user.phone }}</td>
           </tr>
         </tbody>
       </table>

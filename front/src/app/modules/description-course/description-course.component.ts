@@ -57,7 +57,7 @@ export class DescriptionCourseComponent {
     id: 0,
     idCourse: 0,
     idUser: 0,
-    User: [],
+    user: [],
   };
   courses: Course[] = [];
   coursesSelect: Course[] = [];
