@@ -13,28 +13,49 @@ export class UserService {
 
   constructor(private httpUser: HttpClient) { }
 
-  getUsers() {
-    return this.httpUser.get<User>(this.apiUrl)
-  };
-
-  getUserById(id:number){
-    return this.httpUser.get<User>(this.apiUrl+'/'+id)
+  patchAdmins(userId:number){
+    const requestBody = { userId }; 
+    return this.httpUser.patch(this.apiUrl+"/admins",requestBody)
   }
-
+  deleteAdmins(userId:number){
+    return this.httpUser.delete(this.apiUrl+"/admin/" + userId)
+  }
+  getUsers(){
+    return this.httpUser.get(this.apiUrl)
+  }
+  getUser(id: number){
+    return this.httpUser.get(this.apiUrl+"/"+ id)
+  }
   postUser(user: User){
-    return this.httpUser.post(this.apiUrl, user)
+    return this.httpUser.post(this.apiUrl, user);
   }
-
+  getUserByEmail(email:string){
+    return this.httpUser.get(this.apiUrl+"/email/"+ email)
+  }
+  removeCourseRegistration(idCourse:number,idUser:number ){
+    const idCourseSelect = idCourse;
+    const idUserSelect = idUser;
+    return this.httpUser.delete(this.apiUrl+"/removeinscription/"+idCourseSelect+"/"+idUserSelect)
+  }
+  validateCode(email:string, code:string){
+    return this.httpUser.get(this.apiUrl+"/verificar-email/"+email+"/"+code)
+  }
+  createCode(email:string):Observable<any>{
+    const requestBody = { email }; 
+    return this.httpUser.post(this.apiUrl+ "/createnewcode", requestBody)
+  }
+  inscription(idCourse:number, idUser:number){  
+  const data = { idCourse, idUser };
+  return this.httpUser.post(this.apiUrl + "/inscription", data);
+  }
   putUser(user: User, id:number){
     const userSelected= user
     const idSelected= id
     return this.httpUser.put(this.apiUrl+'/'+idSelected, userSelected)
   }
-
   deleteUser(id:number){
     return this.httpUser.delete(this.apiUrl+'/'+id)
   }
-  
   getUserByEmail(email:string){
     return this.httpUser.get(this.apiUrl+"/email/"+ email)
   }

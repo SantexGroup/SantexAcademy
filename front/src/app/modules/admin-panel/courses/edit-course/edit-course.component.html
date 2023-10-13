@@ -27,12 +27,12 @@
         </div>
         <div class="row mb-3">
           <label class="form-label mb-0 p-0"><b>Descripción</b></label>
-          <input
+          <textarea
             formControlName="description"
             type="text"
             class="form-control mt-2"
             placeholder="Ingrese descripcion"
-          />
+          ></textarea>
           <span
             *ngIf="
               form.get('description')?.hasError('required') &&

@@ -1,0 +1,80 @@
+<div class="container-fluid">
+  <div
+    class="row rounded p-2 m-3"
+    style="
+      background-color: #fff;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    "
+  >
+    <h1>Aquí podra ver todos los cursos en los cuales se haya inscripto</h1>
+  </div>
+  <div *ngFor="let register of userData.Registereds">
+    <div
+      class="row rounded m-3 p-3"
+      style="background-color: #fff; box-shadow: 1px 1px 7px #fff"
+    >
+      <div class="col-sm-12 col-md-6 col-lg-8">
+        <div>
+          <h2>
+            <b>{{ register.Course.name }}</b>
+          </h2>
+        </div>
+        <div>
+          <h5>{{ register.Course.description }}</h5>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-3 col-lg-2">
+        <h4 class="mt-3" style="color: orange">En curso</h4>
+      </div>
+      <div class="col-sm-12 col-md-3 col-lg-2">
+        <img
+          src="{{ register.Course.image }}"
+          alt="{{ register.Course.name }}"
+          height="100px"
+        />
+      </div>
+      <div class="col">
+        <button
+          type="button"
+          class="boton"
+          style="background-color: var(--colorOrange)"
+          data-bs-toggle="modal"
+          data-bs-target="#delete"
+          (click)="selectId(register.Course.id)"
+        >
+          Dar de Baja
+        </button>
+
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="delete"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <p>¿Está seguro que deseas <b>abandonar</b> este curso?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="boton col" data-bs-dismiss="modal">
+                  Volver
+                </button>
+                <button
+                  type="button"
+                  class="boton col"
+                  (click)="deleteInscription()"
+                >
+                  Aceptar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

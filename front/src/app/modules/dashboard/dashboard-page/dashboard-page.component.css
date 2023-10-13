@@ -7,23 +7,31 @@ body {
 .subheader { 
     background-color: #FA8F21;
     color: white;
-    height: 45px;
-    margin: 20px;
+    height: 60px;
+    width: 100%;
+    margin: 0px;
+    
+}
+h2{
+    font-size: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 h3 {
+    font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #B4B0AD;
+    color: #000000;
+    padding: 10px 10px 40px 10px;
 }
 .coursebox {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    padding: 0 25px  ;
 }
 
 .courseinfo button {
@@ -65,6 +73,7 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 40px 10px 10px 10px;
 }
 .button1 button:hover {
     background-color: #d87b1e;
@@ -82,4 +91,19 @@ h3 {
 }
 
 
-
+@media (max-width: 400px) {
+    h2{
+        font-size: 25px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+    h3 {
+        font-size: 15px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        color: #000000;
+        padding: 10px 10px 40px 10px;
+    }
+}

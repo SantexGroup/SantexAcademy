@@ -6,8 +6,9 @@ const router = express.Router();
 router.get('/email/:email', UserController.getUserByEmail);
 router.get('/:userId', UserController.getUserById);
 
+router.delete('/admin/:userId', UserController.deleteAdmins);
 router.get('/', UserController.getUsers);
-
+router.get('/email/:email', UserController.getUserByEmail);
 router.post(
   '/',
   body('firstName').isString(),
@@ -15,6 +16,32 @@ router.post(
   body('email').isEmail(),
   body('password').isString(),
   UserController.createUser,
+);
+router.patch(
+  '/admins',
+  body('userId').isInt(),
+  UserController.patchAdmins,
+);
+router.delete(
+  '/removeinscription/:idCourse/:idUser',
+  UserController.removeCourseRegistration,
+);
+router.post(
+  '/inscription',
+  body('idCourse').isInt(),
+  body('idUser').isInt(),
+  UserController.inscription,
+);
+
+router.post(
+  '/createnewcode',
+  body('email').isString(),
+  UserController.createCode,
+
+);
+router.get(
+  '/verificar-email/:email/:code',
+  UserController.validateCode,
 );
 router.put(
   '/:userId',
@@ -25,10 +52,12 @@ router.put(
   body('password').isString(),
   UserController.updateUser,
 );
-router.patch('/:userId',
-  body('password').isString(),
-  UserController.updatePassword);
 
+router.patch(
+  '/:userId',
+  body('password').isString(),
+  UserController.updatePassword,
+);
 router.delete('/:userId', UserController.deleteUser);
 
 module.exports = router;

@@ -1,0 +1,285 @@
+
+    .signup-a{
+    width: 900px;
+    height: 620px;
+    background: white;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgb(5, 34, 112);
+}
+
+.signup-a h1{
+    margin: 0;
+    padding: 0 500px 10px 0px;
+    text-align: center;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:bolder;
+}
+
+.signup-a label{
+    margin: 0;
+    padding-top: 20px;
+    font-weight: bold;
+    display: block;
+    font-size: 15px;
+    height: 35px;
+}
+
+.signup-a input{
+    width: 100%;
+    margin-bottom: 0px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.signup-a input[type="text"],
+.signup-a input[type="password"],
+.signup-a input[type="tel"],
+.signup-a input[type="email"] {
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    background: transparent;
+    outline: none;
+    height: 20px;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+}
+::placeholder{
+    color: rgb(213, 213, 213);
+    font-style: italic;
+}
+.signup-a .submit{
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 200px;
+    background: orange;
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px rgb(128, 128, 128);
+    cursor: pointer;
+    margin: 0 0 0 60px;
+}
+
+.signup-a input[type="submit"]:hover{
+    color:black;
+}
+
+.signup-a a{
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 40px;
+    color: gray;
+    padding: 0px 0px 0px 50px;
+    margin: 0px 120px;
+    
+}
+
+.signup-a a:hover{
+    color: rgb(9, 72, 180);
+}
+
+.signup-a .avatar{
+    height: 620px;
+    width: 490px;
+    position: absolute;
+    top: 0px;
+    left: calc(51.5% - 50px);
+    border-radius: 10px;
+}
+
+/* ----------------------------- */
+
+.warnings{
+    width: 350px;
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+/*  diseño del modal "registro exitoso"*/
+
+.modal-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content .modal-header {
+    font-size: 20px;
+    color: rgb(9, 72, 180);
+    font-weight: bolder;
+}
+ 
+.btn{
+    background-color: orange;
+    border-radius: 20px;
+    border: none;
+}
+
+.img-logo{
+    height: 100px;
+}
+
+.modal-content .modal-body{
+ font-size: 20px;
+ text-align: center;
+}
+.codigo-m{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+/* span - dato requerido */
+
+span{
+    color: red;
+    font-size: 12px;
+    padding: 0 0 0 30px;
+}
+
+
+/* ----------------RESPONSIVE---------------------------- */
+@media only screen and (max-width: 1326px)and (min-width: 959px){
+    .signup-a{
+        width: 928px;
+        height: 620px;
+        padding: 20px 30px;
+    }
+
+    .signup-a .avatar{
+        height: 620px;
+        width: 500px;
+        position: absolute;
+        top: 0px;
+        left: calc(51.5% - 50px);
+        border-radius: 10px;
+    }
+
+    .signup-a h1{
+        margin: 0;
+        padding: 0 500px 10px 0px;
+        text-align: center;
+        font-size: 25px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight:bolder;
+    }
+
+    .signup-a input[type="text"],
+    .signup-a input[type="password"],
+    .signup-a input[type="tel"],
+    .signup-a input[type="email"] {
+        width: 300px;
+        
+    }
+    .signup-a .submit{
+        margin: 0 0 0 60px;
+    }
+    .signup-a a{
+        padding: 0px 0px 0px 50px;
+        margin: 0px 120px;
+    }
+}
+
+@media only screen and (max-width: 960px)and (min-width: 479px){
+    .signup-a{
+        width: 710px;
+        height: 620px;
+        padding: 20px 15px;
+    }
+
+    .signup-a .avatar{
+        height: 620px;
+        width: 395px;
+        position: absolute;
+        top: 0px;
+        left: calc(51.5% - 50px);
+        border-radius: 10px;
+}
+.signup-a h1{
+    margin: 0;
+    padding: 0 370px 10px 0px;
+    text-align: center;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:bolder;
+}
+.signup-a input[type="text"],
+.signup-a input[type="password"],
+.signup-a input[type="tel"],
+.signup-a input[type="email"] {
+    width: 260px;
+}
+.signup-a .submit{
+    margin: 0 0 0 30px;
+}
+
+.signup-a a{
+    padding: 0px 0px 0px 60px;
+    margin: 0px 0px; 
+}
+}
+
+@media only screen and (max-width: 480px){
+    .signup-a{
+        width: 295px;
+        height: 620px;
+        padding: 20px 15px;
+        background: url(../../../assets/signup.img/LOGO1.png);
+        background-size: 70px;
+        background-repeat: no-repeat;
+        background-position:220px 5px;
+        background-color: white;
+    }
+
+    .signup-a .avatar{
+        display: none;
+    }
+
+    .signup-a h1{
+        margin-left: 0px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    .signup-a input[type="text"],
+    .signup-a input[type="password"],
+    .signup-a input[type="tel"],
+    .signup-a input[type="email"] {
+        width: 240px;
+    }
+
+    .signup-a .submit{
+        margin: 0 0 0 30px;
+    }
+
+    .signup-a a{
+        padding: 0px 0px 0px 60px;
+        margin: 0px 0px;
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
