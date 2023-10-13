@@ -5,10 +5,16 @@
 }
 
 .logo{
-    height: 70px;
-    width: 130px;
+    height: 50px;
+    width: 120px;
     font-family: sans-serif;
+    margin: 10px;
 }
 .dropdown-item:hover {
     background-color: rgb(57, 87, 196) !important; 
+}
+
+.bi{
+    margin-right: 10px;
+    color: white;
 }

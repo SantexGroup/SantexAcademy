@@ -1,3 +1,4 @@
+// eslint-disable-next-line strict, lines-around-directive
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -12,14 +13,14 @@ module.exports = {
       idCourse: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Course',
+          model: 'Courses',
           key: 'id',
         },
       },
       idUser: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'User',
+          model: 'Users',
           key: 'id',
         },
       },
