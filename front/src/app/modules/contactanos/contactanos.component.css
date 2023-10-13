@@ -1,0 +1,188 @@
+body{
+    position: relative;
+    width: 100%;
+    min-height: 90vh;
+    padding: 2rem;
+    background: url(../../../assets/img/gente-que-hace-flores-papel-arte-artesania-trabajo-artesanal.jpg);
+    background-size: cover;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form{
+    width: 100%;
+    max-width: 70rem;
+    height: 600px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 1px rgb(5, 5, 5);
+    z-index: 1000;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+
+/* como podemos ayudarte? */
+.contact-info{
+    padding: 2.3rem 2.2rem;
+    position: relative;
+}
+.contact-info .title{
+    color:rgb(24, 75, 184);
+    font-weight: bold;
+}
+
+.text{
+    color: rgb(24, 75, 184);
+    margin: 1.5rem 0 2rem 0;
+    /* margin-bottom: 50px; */
+}
+
+.information{
+    display: flex;
+    color: rgb(24, 75, 184);
+    margin: 15px 0;
+    align-items: center;
+    font-size: 20px;
+}
+
+.fa-solid{
+    font-size: 28px;
+    width: 28px;
+    margin-right: 0.7rem;
+}
+
+.social-media{
+    padding: 2rem 0 0 0;
+}
+
+
+ /* nuestras redes sociales */
+.social-media p{
+    margin-top: 50px;
+    color: rgb(24, 75, 184);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.social-icon{
+    display: flex;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon a{
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    background: orange;
+    color: white;
+    text-align: center;
+    line-height: 35px;
+    margin-right: 0.5rem;
+    transition: .3s;
+}
+
+.social-icon a:hover{
+    transform: scale(1.05);
+}
+
+
+/* ----------responsive------------------------------- */
+
+/* RESPONSIVE STYLE */
+@media (max-width: 850px){
+    .form{
+        grid-template-columns: 1fr;
+    }
+    .contact-info:before{
+        bottom: initial;
+        top: -75px;
+        right: 65px;
+        transform: scale(0.95);
+    }
+    .contact-form:before{
+        top: -13px;
+        left: initial;
+        right: 70px;
+    }
+
+    .contact-info{
+        padding: 1rem 2.2rem;
+        position: relative;
+    }
+    .square{
+        transform: translate(140%, 43%);
+        height: 350px;
+    }
+    .title{
+        font-size: 2rem;
+        margin: 0 0 0 50px;
+    }
+    .text{
+        margin: 1rem 10rem 1.5rem 0;
+    }
+    .social-media p{
+        margin: 10px 0 0 0;
+    }
+    .social-icon{
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        margin: 5px 0 0 120px;
+    }
+}
+
+
+
+@media (max-width: 480px){
+    .container{
+        padding: 0rem;
+    }
+    .contact-info:before{
+        display: none;
+    }
+    form,
+    .contact-info{
+        padding: 1.7rem 1rem;
+    }
+    
+    .text, .information, .social-media p{
+        font-size: 0.8rem;
+    }
+
+    .text{
+        margin: 1.5rem 19rem 2rem 0;
+    }
+
+    .title{
+        font-size: 1.6rem;
+        margin: 0 0 0 20px;
+    }
+    .social-media p{
+        margin: 0 0 0 30px;
+    }
+    .social-icon{
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        margin: 10px 0 0 70px;
+    }
+    .icon{
+        width: 23px;
+    }
+
+    .input{
+        padding: 0.45rem 1.2rem;
+    }
+
+    .btn{
+        padding: 0.45rem 1.2rem;
+    }
+}
+

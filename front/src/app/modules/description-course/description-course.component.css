@@ -111,3 +111,11 @@
 .base2 a:hover{
     color: black;
 }
+.tableColor{
+    background-color: lightgray;
+}
+.tableContainer{
+    overflow-x: auto;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+}

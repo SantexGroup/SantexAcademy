@@ -13,8 +13,8 @@ export class CourseService {
 
   constructor(private httpCourse: HttpClient) { }
 
-  getCourse() {
-    return this.httpCourse.get<Course>(this.apiUrl)
+  getCourses() {
+    return this.httpCourse.get<Course[]>(this.apiUrl)
   };
   
   getCourseById(id:number){

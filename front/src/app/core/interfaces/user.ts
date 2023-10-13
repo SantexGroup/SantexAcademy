@@ -1,5 +1,4 @@
-import { Registered } from "./registered";
-
+import { Registered } from "./registered"
 export interface User {
     id: number,
     firstName:string,

@@ -1,0 +1,17 @@
+<div class="container-fluid text-center">
+    <div class="row justify-content-center" *ngFor="let abouts of groupedAbouts">
+      <h1 class="title mix-blend-mode">{{ abouts.abouts[0].title }}</h1>
+      <div class="col-md-4 container-fluid container" *ngFor="let about of abouts.abouts">
+        <div class="about mb-4">
+          <div class="about-body">
+            <div class="card custom-card">
+            <h3>{{ about.subtitle }}</h3>
+              <img src="{{ about.image }}" class="card-img-top" alt="{{ about.subtitle }}">
+              <div class="card-body">
+                <p class="card-text">{{ about.description }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

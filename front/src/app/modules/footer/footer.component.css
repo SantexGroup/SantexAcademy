@@ -4,3 +4,16 @@
     width: 130px;
     font-family: sans-serif;
 }
+
+.row p{
+    color: black;
+    font-size:10px;
+}
+
+.container-fluid{
+    background-color: rgb(241, 239, 239);
+}
+
+@media (max-width: 400px) {
+    
+}

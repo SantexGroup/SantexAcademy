@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-a{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    width: 500px;
+    height: 680px;
+    margin: 60px;
+    background: white;
+    color: black;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgb(5, 34, 112);
+}
+
+.img-fluid {
+    max-width: 25%;
+};
+
+.signup-a .text-center p{
+    margin: 0;
+    text-align:left;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:normal;
+    color: rgb(164, 163, 163);
+}
+
+.signup-a .text-center a{
+    margin: 0;
+    padding:1px;
+    font-size: 13px;
+    color: orange;
+    cursor: pointer;
+}
+
+.signup-a .text-center a:hover {
+    color: rgb(218, 142, 1);
+}
+
+.signup-a label{
+    margin: 0;
+    font-weight: bold;
+    display: block;
+    font-size: 15px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-a .rm{
+    display:inline-flex;
+} 
+
+.signup-a .rm label{
+    padding: 5px;
+}
+
+.signup-a input{
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.signup-a input[type="email"],
+.signup-a input[type="password"]{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    background: transparent;
+    outline: none;
+    height: 20px;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+}
+
+.signup-a .text-danger {
+    margin-top: 0px;
+    font-size: 12px;
+}
+
+::placeholder{
+    color: rgb(213, 213, 213);
+    font-style: italic;
+}
+
+form button{
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 300px;
+    background: orange;
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px rgb(128, 128, 128);
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: rgb(218, 142, 1);
+}
+
+
+
+.signup-a .text-center .contra{
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 40px;
+    color: gray;
+}
+
+/* .signup-a a:hover{
+    color:orange;
+} */

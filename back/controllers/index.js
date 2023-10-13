@@ -27,7 +27,25 @@ const {
   updateUser,
   deleteUser,
   updatePassword,
+  inscription,
+  removeCourseRegistration,
+  validateCode,
+  createCode,
+  patchAdmins,
+  deleteAdmins,
 } = require('./userController');
+
+const {
+  createAboutUS,
+  updateAboutUS,
+  deleteAboutUS,
+  getAboutUSById,
+  getAboutUSs,
+} = require('./aboutUSController');
+
+const {
+  getRegisterById,
+} = require('./registerController');
 
 const CourseController = {
   createCourse,
@@ -59,7 +77,29 @@ const UserController = {
   updateUser,
   deleteUser,
   updatePassword,
+  inscription,
+  removeCourseRegistration,
+  validateCode,
+  createCode,
+  patchAdmins,
+  deleteAdmins,
 };
+const AboutUSController = {
+  createAboutUS,
+  updateAboutUS,
+  deleteAboutUS,
+  getAboutUSById,
+  getAboutUSs,
+};
+const RegisterController = {
+  getRegisterById,
+};
+
 module.exports = {
-  CategoryController, CourseController, ScheduleController, UserController,
+  CategoryController,
+  CourseController,
+  ScheduleController,
+  UserController,
+  AboutUSController,
+  RegisterController,
 };

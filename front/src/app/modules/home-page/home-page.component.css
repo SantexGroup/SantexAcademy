@@ -6,23 +6,16 @@
 
 
 .logo{
-    height: 70px;
-    width: 130px;
+    height: 80px;
+    width: 150px;
     font-family: sans-serif;
 }
+.container-fluid{
+padding: 0px;
+}
 
-@media (max-width: 400px) {
-    .patrocionos{
-        width: 250px;
-        height: 40px;
-    }
-  }
-  @media (max-width:767px) {
-    hr{
-        visibility: hidden;
-    }
-  }
-/* ------------------------------------------- */
+
+
 .color-box{
     background-color: rgb(230, 230, 230);
 }
@@ -30,7 +23,8 @@
 .cuerpo1{
     display:flex;
     align-items: center;
-
+    background-color: white;
+    padding: 15px 15px;
 }
 
  .wrapper i {
@@ -57,3 +51,81 @@
     flex: 1;
 }
 
+.row1{
+    background-color: white;
+    padding: 30px 20px 30px 20px;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    height: 150px;
+    width: 100%;
+    
+}
+.col{
+    background-color: white;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.col img{
+    height: 60px
+}
+.row2{
+    width: 100%;
+    background-color: rgb(231, 231, 231);
+    padding-bottom: 20px;
+}
+h3{
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.row3{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+/* ------------------------------------------- */
+
+
+@media (max-width: 400px) {
+    .row1{
+        background-color: white;
+        padding: 10px;
+        margin: 0px;
+        display: flex;
+        flex-direction: row;
+        height: 50px;
+        width: 100%; 
+    }
+    .col{
+        background-color: white;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    .col img{
+        height: 20px
+    }
+
+    h3 {
+        font-size: 20px;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+    }
+  }
+
+
+
+
+  @media (max-width:767px) {
+    hr{
+        visibility: hidden;
+    }
+  }
