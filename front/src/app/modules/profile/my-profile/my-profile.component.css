@@ -27,18 +27,5 @@ h1,h2{
 .boton{
   margin: 10px;
 }
-.botonEdit{
-  border: none;
-  outline: none;
-  height: 40px;
-  width: 150px;
-  background: orange;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-  border-radius: 20px;
-  box-shadow: 3px 3px 10px rgb(128, 128, 128);
-  transition: 0.2;
-}
 
   

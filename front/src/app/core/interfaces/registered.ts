@@ -1,5 +1,5 @@
 export interface Registered{
-    User: any;
+    user: any;
     id: number;
     idCourse: number;
     idUser: number;
