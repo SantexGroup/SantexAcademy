@@ -1,11 +1,12 @@
 .container{
   background-color: rgb(255, 154, 23);
+  padding: 20px;
 }
 .user-details {
     margin-bottom: 20px;
   }
   
-  .edit-user {
+.edit-user {
     margin-top: 20px;
-  }
+}
   

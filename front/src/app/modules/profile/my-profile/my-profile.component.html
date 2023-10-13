@@ -1,66 +1,94 @@
-<app-sidebar-user></app-sidebar-user> <!--Menu de navegación para info de usuario-->
+
 <br>
 <div class="container">
     <h1><strong>Información del Usuario</strong></h1>
   
-    <div class="user-details">
+    <div class="card text-white mb-3">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <label for="firstname"><strong>Nombre:</strong> </label>
-          <input type="text" class="form-control" id="nombre" [(ngModel)]="userPrueba.firstname" name="firstname" disabled>
+          <input type="text" class="form-control" id="nombre" [(ngModel)]="userData.firstName" disabled>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <label for="lastname"><strong>Apellido:</strong> </label>
-          <input type="text" class="form-control" id="lastname" [(ngModel)]="userPrueba.lastname" name="lastname" disabled>
+          <input type="text" class="form-control" id="lastname" [(ngModel)]="userData.lastName" disabled>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <label for="phone"><strong>Teléfono:</strong> </label>
-          <input type="text" class="form-control" id="phone" [(ngModel)]="userPrueba.phone" name="phone" disabled>
+          <input type="text" class="form-control" id="phone" [(ngModel)]="userData.phone" disabled>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <label for="email"><strong>Correo Electrónico:</strong> </label>
-          <input type="email" class="form-control" id="email" [(ngModel)]="userPrueba.email" disabled>
+          <input type="email" class="form-control" id="email" [(ngModel)]="userData.email" disabled>
         </div>
       </div>
     </div>
 
-    <button class="btn btn-primary" (click)="editUser()">Editar</button>
+
+    <button class="boton" (click)="editUser()">Editar</button>
     <hr>
   
     <div class="edit-user" *ngIf="isEditing">
       <h2>Editar Usuario</h2>
   
-      <form (ngSubmit)="saveUser()">
+      <form [formGroup]="form" (ngSubmit)="putUser()">
         <div class="form-group">
-          <label for="nombre">Nombre:</label>
-          <input type="text" class="form-control" id="nombre" [(ngModel)]="userPrueba.firstname" name="editfirstname"
-          value="{{userPrueba.firstname}}" required>
+          <label>Nombre:</label>
+          <input formControlName= 'firstName' type="text" class="form-control">
+          <span
+            *ngIf="
+              form.get('firstName')?.hasError('required') &&
+              form.get('firstName')?.touched
+            "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px">
+            El campo nombre es <strong>requerido</strong>
+          </span>
+        </div>
+        
+  
+        <div class="form-group">
+          <label >Apellido:</label>
+          <input formControlName= 'lastName' type="text" class="form-control">
+          <span
+            *ngIf="
+              form.get('lastname')?.hasError('required') &&
+              form.get('lastName')?.touched
+            "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px">
+            El campo apellido es <strong>requerido</strong>
+          </span>
         </div>
   
         <div class="form-group">
-          <label for="apellido">Apellido:</label>
-          <input type="text" class="form-control" id="apellido" [(ngModel)]="userPrueba.lastname" name="editlastname"
-          value="{{userPrueba.lastname}}" required>
-        </div>
-  
-        <div class="form-group">
-          <label for="telefono">Teléfono:</label>
-          <input type="text" class="form-control" id="telefono" [(ngModel)]="userPrueba.phone" name="editphone"
-          value="{{userPrueba.phone}}" required>
+          <label>Teléfono:</label>
+          <input formControlName= 'phone' type="text" class="form-control">
+          <span
+            *ngIf="
+              form.get('phone')?.hasError('required') &&
+              form.get('phone')?.touched
+            "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px">
+            El campo teléfono es <strong>requerido</strong>
+          </span>
         </div>
         <br>  
-        <div class="modal-footer">
-          <button class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>          
-          <button type="submit" class="btn btn-primary">Guardar</button>
-        </div>      
+        <div class="col-lg-6">
+          <button class="boton" (click)="cancelEdit()">Cancelar</button>   
+          <button [disabled]="form.invalid" type="submit" class="boton">
+            Aceptar
+          </button>
+        </div>
       </form>
       <hr>
     </div>
-  </div>
+</div>
   

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProfileRoutingModule } from './profile-routing.module';
 import { MyProfileComponent } from './my-profile/my-profile.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarUserComponent } from './sidebar-user/sidebar-user.component';
 
 
@@ -16,6 +16,7 @@ import { SidebarUserComponent } from './sidebar-user/sidebar-user.component';
     CommonModule,
     ProfileRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     MyProfileComponent,

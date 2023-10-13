@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/core/interfaces/user';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -8,23 +9,64 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrls: ['./my-profile.component.css']
 })
 export class MyProfileComponent implements OnInit {
+  form: FormGroup;  
+  userData: any = {}
+  token: string | null 
+  token2: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtYWlsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTY5NjcwMzd9.AwV2vUvtHFyE-Xiw9dYfdzIdMVvPRD3ygRo_YpZuYIs"
+  idUser: number=0;
+  userEdit: User = {
+    id: 0,
+    firstName:"",
+    lastName:'',
+    email:'',
+    phone: '',
+    password:'',
+    active: true,
+    admin:false,
+    Registereds:[{id: 0, idCourse: 0, idUser: 0}] 
 
-  userPrueba: any = {
-    firstname: 'Carlos',
-    lastname: 'Juarez',
-    phone: '123456789',
-    email: 'cj@mail.com'
-  };
-  user: any;
-  token: string | null = localStorage.getItem('token')
+  }
+  
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private fb: FormBuilder,) {    
+    localStorage.setItem("token",this.token2);
+    this.token =  localStorage.getItem('token');
+    this.getUserToken();
+
+    this.form = this.fb.group({
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    phone: ['', Validators.required],
+    })
+  }
+   
 
   ngOnInit(): void {
   }
 
   getUserToken(){
-    //let idToken = JSON.parse(atob(this.token.split('.')[1]));
+    if(this.token){try {
+      const payload = JSON.parse(atob(this.token.split('.')[1]));
+      this.userData.email= payload.email
+      this.userService.getUserByEmail(this.userData.email).subscribe((data) => {
+        this.userData = data;
+        this.idUser=this.userData.id;
+        this.form.setValue({
+          firstName: this.userData.firstName,
+          lastName: this.userData.lastName,
+          phone:this.userData.phone
+        })
+      },
+      (error) => {
+        console.log(error);
+      })
+      
+    } catch (error) {
+      console.error(error)
+    }
+
+    }
+    
   }
 
   isEditing: boolean = false;
@@ -33,10 +75,27 @@ export class MyProfileComponent implements OnInit {
     this.isEditing = true;
   }
 
-  saveUser() {
-    // Lógica para guardar los cambios del usuario
-    //this.userService.putUser(this.user,this.idToken).subscribe()
-    this.isEditing = false;
+  putUser() {
+    this.userEdit = {
+      id:0,
+      firstName: this.form.value.firstName,
+      lastName: this.form.value.lastName,
+      email: this.userData.email,
+      phone: this.form.value.phone,
+      password: this.userData.password,
+      active: this.userData.active,
+      admin:this.userData.admin,
+      Registereds:[{id: 0, idCourse: 0, idUser: 0}]
+    }
+    this.userService.putUser(this.userEdit,this.idUser).subscribe(
+      (data) => {
+        window.location.reload();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
   }
 
   cancelEdit(){
