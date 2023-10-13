@@ -1,12 +1,44 @@
 .container{
-  background-color: rgb(255, 154, 23);
+  background-color: rgb(231, 231, 231);
   padding: 20px;
 }
+
+.form-control{
+  margin: 15px;
+}
+
+h1,h2{
+  font-weight: bold;
+  padding: 20px;
+}
+
+#firstName, #lastName, #phone, #email{
+  margin: 10px 1px;
+} 
+
 .user-details {
-    margin-bottom: 20px;
-  }
+  margin-bottom: 20px;
+}
   
 .edit-user {
-    margin-top: 20px;
+  margin-top: 20px;
 }
+
+.boton{
+  margin: 10px;
+}
+.botonEdit{
+  border: none;
+  outline: none;
+  height: 40px;
+  width: 150px;
+  background: orange;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(128, 128, 128);
+  transition: 0.2;
+}
+
   

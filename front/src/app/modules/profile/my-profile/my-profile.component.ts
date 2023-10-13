@@ -70,9 +70,11 @@ export class MyProfileComponent implements OnInit {
   }
 
   isEditing: boolean = false;
+  buttonEdit: boolean=true;
 
   editUser() {
     this.isEditing = true;
+    this.buttonEdit= false;
   }
 
   putUser() {
@@ -105,6 +107,7 @@ export class MyProfileComponent implements OnInit {
       phone:this.userData.phone
     });
     this.isEditing = false;
+    this.buttonEdit= true;
   }
 
 }

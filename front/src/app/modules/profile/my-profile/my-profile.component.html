@@ -1,28 +1,28 @@
 <br>
-<div class="container">
+<div class= "container rounded">
     <h1><strong>Información del Usuario</strong></h1>
   
     <div class="user-details">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-12">
           <label for="firstname"><strong>Nombre:</strong> </label>
-          <input type="text" class="form-control" id="nombre" [(ngModel)]="userData.firstName" disabled>
+          <input type="text" class="form-control" id="firstName" [(ngModel)]="userData.firstName" disabled>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-12">
           <label for="lastname"><strong>Apellido:</strong> </label>
-          <input type="text" class="form-control" id="lastname" [(ngModel)]="userData.lastName" disabled>
+          <input type="text" class="form-control" id="lastName" [(ngModel)]="userData.lastName" disabled>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-12">
           <label for="phone"><strong>Teléfono:</strong> </label>
           <input type="text" class="form-control" id="phone" [(ngModel)]="userData.phone" disabled>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-12">
           <label for="email"><strong>Correo Electrónico:</strong> </label>
           <input type="email" class="form-control" id="email" [(ngModel)]="userData.email" disabled>
         </div>
@@ -30,7 +30,7 @@
     </div>
 
 
-    <button class="boton" (click)="editUser()">Editar</button>
+    <button class="boton" *ngIf="buttonEdit" (click)="editUser()">Editar</button>
     <hr>
   
     <div class="edit-user" *ngIf="isEditing">
@@ -38,8 +38,8 @@
   
       <form [formGroup]="form" (ngSubmit)="putUser()">
         <div class="form-group">
-          <label>Nombre:</label>
-          <input formControlName= 'firstName' type="text" class="form-control">
+          <label><strong>Nombre:</strong></label>
+          <input formControlName= 'firstName' type="text" class="form-control" id="firstName">
           <span
             *ngIf="
               form.get('firstName')?.hasError('required') &&
@@ -49,12 +49,11 @@
             style="background-color: rgb(255, 73, 73); border-radius: 5px">
             El campo nombre es <strong>requerido</strong>
           </span>
-        </div>
-        
+        </div>        
   
         <div class="form-group">
-          <label >Apellido:</label>
-          <input formControlName= 'lastName' type="text" class="form-control">
+          <label><strong>Apellido:</strong></label>
+          <input formControlName= 'lastName' type="text" class="form-control" id="lastName">
           <span
             *ngIf="
               form.get('lastname')?.hasError('required') &&
@@ -67,8 +66,8 @@
         </div>
   
         <div class="form-group">
-          <label>Teléfono:</label>
-          <input formControlName= 'phone' type="text" class="form-control">
+          <label><strong>Teléfono:</strong></label>
+          <input formControlName= 'phone' type="text" class="form-control" id="phone">
           <span
             *ngIf="
               form.get('phone')?.hasError('required') &&
