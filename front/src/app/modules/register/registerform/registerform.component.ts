@@ -122,7 +122,7 @@ export class RegisterformComponent implements OnInit {
             console.log('Valores enviados en la solicitud:', this.userData);//BORRAR
              if (user) {
                console.log('Registro exitoso:', user);
-               alert("Sea registrado exitosamente. Por favor revise su correo.");
+               alert("Se ha registrado exitosamente. Por favor revise su correo.");
                this.redirregistersuccess()
             } else {
                console.error('Error al registrar en onEnviar');

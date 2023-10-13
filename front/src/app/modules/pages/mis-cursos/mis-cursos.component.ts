@@ -189,5 +189,10 @@ import { MatriculasService } from '../../matriculas/services/matriculas.service'
       });
     }
   }
+
+  //esCursoHabilitado(curso: CursoConMatricula): boolean {
+    //return curso.Matricula?.habilitado ?? false;
+  //}
 }
+
 

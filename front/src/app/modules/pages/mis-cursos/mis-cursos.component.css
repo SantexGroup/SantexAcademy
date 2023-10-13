@@ -1,144 +1,239 @@
 /* Estilos generales */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Contenedor principal */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Tarjeta */
+.curso-card {
+  width: calc(33.33% - 20px);
+  margin: 0 0 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: transform 0.4s, box-shadow 0.4s;
+  background-color: #fff; /* Fondo blanco en la tarjeta */
+  transform: scale(0.7); /* Escalar el tamaño de la tarjeta */
+  transform-origin: top; /* Punto de origen del escalamiento */
+}
+
+/* Imagen de la tarjeta */
+.curso-card figure {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.curso-card figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Contenido de la tarjeta */
+.curso-card .contenido-card {
+  padding: 20px;
+  flex-grow: 1;
+}
+
+/* Título de la tarjeta */
+.curso-card .contenido-card h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Descripción de la tarjeta */
+.curso-card .contenido-card p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+/* Información adicional de la tarjeta */
+.curso-card .contenido-card .duracion,
+.curso-card .contenido-card .fechafin,
+.curso-card .contenido-card .requisitos {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+/* Enlace dentro de la tarjeta */
+button {
+  margin-top: auto;
+  align-self: center;
+  display: block; /* inline-block; */
+  padding: 5px 10px;
+  margin-top: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #15910c;
+  border: 1px solid #a7aba7;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.4s, color 0.4s;
+}
+
+/* Efecto hover de la tarjeta */
+.curso-card:hover {
+  box-shadow: 7px 7px 30px rgba(255, 101, 1, 0.5);
+  background-color: #faf1f1; /* Cambio de fondo a negro en el hover de la tarjeta */
+  transform: translateY(-3%);
+}
+
+/* Color de texto blanco en el hover del enlace */
+button:hover {
+  background: #27d62a;
+  color: #fff; /* Cambio de color de texto a blanco en el hover del enlace */
+}
+
+/* Estilo para h1 */
+h1 {
+  color: rgb(5, 5, 166);
+  text-align: center; /* Centrar horizontalmente */
+  /*text-decoration:;  Subrayar */
+  font-weight: bold; /* Negrita */
+  background-color: #1a1a40(226, 146, 48); /* Resaltado */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra */
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  background-color: #1a1a40;
+}
+
+.box .inner {
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  font-size: 3em;
+  font-family: sans-serif;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.box .inner:first-child {
+  background-color: #7052ff;
+  color: #ffa500;
+  transform-origin: right;
+  transform: perspective(100px) rotateY(-15deg);
+}
+
+.box .inner:last-child {
+  background-color: #84b6f4;
+  color: #ff9835;
+  transform-origin: left;
+  transform: perspective(100px) rotateY(15deg);
+}
+
+.box .inner span {
+  position: absolute;
+  animation: marquee 5s linear infinite;
+}
+
+.box .inner:first-child span {
+  animation-delay: 2.5s;
+  left: -100%;
+}
+
+@keyframes marquee {
+  from {
+    left: 100%;
   }
 
-  /* Contenedor principal */
-  .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  to {
+    left: -100%;
   }
+}
+/*Estilo para h5*/
 
-  /* Tarjeta */
+.bg-5 {
+  background: linear-gradient(to right, rgb(240, 152, 25), rgb(237, 222, 93));
+}
+
+.titulo-con-fondo {
+  font-size: 24px;
+  background: linear-gradient(to right, #1708d5,#0f06b4); /* Cambia los colores del gradiente según tus preferencias */
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+   /* Alinea el texto al centro si lo deseas */
+  position: relative;
+  overflow: hidden;
+  padding-left: 45px;
+  font-family: 'Bungee Spice', cursive;
+
+}
+
+.titulo-con-fondo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent); /* Cambia el color del brillo si lo deseas */
+  animation: brillo 2s linear infinite;
+  font-family: 'Roboto', sans-serif;
+}
+
+@keyframes brillo {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+
+
+/* Estilo para cursos habilitados */
+.curso-habilitado {
+  box-shadow: 7px 7px 30px rgba(84, 253, 107, 0.5);
+  border-left: 5px solid #42a948; /* Borde izquierdo verde */
+}
+
+/* Estilo para cursos no habilitados */
+.curso-no-habilitado {
+  box-shadow: 7px 7px 30px rgba(243, 157, 157, 0.5);
+  border-left: 5px solid #a94442; /* Borde izquierdo rojo */
+}
+
+/* Estilos responsivos */
+@media (max-width: 992px) {
   .curso-card {
-    width: calc(33.33% - 20px);
-    margin: 0 0 20px 0;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    transition: transform 0.4s, box-shadow 0.4s;
-    background-color: #fff; /* Fondo blanco en la tarjeta */
-    transform: scale(0.7); /* Escalar el tamaño de la tarjeta */
-    transform-origin: top;/* Punto de origen del escalamiento */
+    width: calc(45% - 20px);
   }
+}
 
-  /* Imagen de la tarjeta */
-  .curso-card figure {
-    width: 100%;
-    height: 200px;
-    border-radius: 10px;
-    overflow: hidden;
+@media (max-width: 768px) {
+  .curso-card {
+    width: calc(100% - 20px);
   }
+}
 
-  .curso-card figure img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  /* Contenido de la tarjeta */
-  .curso-card .contenido-card {
-    padding: 20px;
-    flex-grow: 1;
-  }
-
-  /* Título de la tarjeta */
-  .curso-card .contenido-card h3 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
-  }
-
-  /* Descripción de la tarjeta */
-  .curso-card .contenido-card p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 10px;
-    color: #666;
-  }
-
-  /* Información adicional de la tarjeta */
-  .curso-card .contenido-card .duracion,
-  .curso-card .contenido-card .fechafin,
-  .curso-card .contenido-card .requisitos {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #444;
-  }
-
-  /* Enlace dentro de la tarjeta */
-  button {
-    margin-top: auto;
-    align-self: center;
-    display: block; /* inline-block; */
-    padding: 5px 10px;
-    margin-top: 10px;
-    text-align: center;
-    text-decoration: none;
-    color: #15910c;
-    border: 1px solid #a7aba7;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.4s, color 0.4s;
-  }
-
-  /* Efecto hover de la tarjeta */
-  .curso-card:hover {
-    box-shadow: 7px 7px 30px rgba(255, 101, 1, 0.5);
-    background-color: #faf1f1; /* Cambio de fondo a negro en el hover de la tarjeta */
-    transform: translateY(-3%);
-  }
-
-  /* Color de texto blanco en el hover del enlace */
-  button:hover {
-    background: #27d62a;
-    color: #fff; /* Cambio de color de texto a blanco en el hover del enlace */
-  }
-
-  /* Estilo para h1 */
-  h1 {
-    color: rgb(5, 5, 166);
-    text-align: center; /* Centrar horizontalmente */
-    text-decoration: underline; /* Subrayar */
-    font-weight: bold; /* Negrita */
-    background-color: rgb(226, 146, 48); /* Resaltado */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra */
-  }
-
-  /* Estilo para cursos habilitados */
-  .curso-habilitado {
-    box-shadow: 7px 7px 30px rgba(84, 253, 107, 0.5);
-    border-left: 5px solid #42A948; /* Borde izquierdo verde */
-  }
-
-  /* Estilo para cursos no habilitados */
-  .curso-no-habilitado {
-    box-shadow: 7px 7px 30px rgba(243, 157, 157, 0.5);
-    border-left: 5px solid #a94442; /* Borde izquierdo rojo */
-  }
-
-   /* Estilos responsivos */
-   @media (max-width: 992px) {
-    .curso-card {
-      width: calc(45% - 20px);
-    }
-  }
-
-  @media (max-width: 768px) {
-    .curso-card {
-      width: calc(100% - 20px);
-    }
-  }
 
