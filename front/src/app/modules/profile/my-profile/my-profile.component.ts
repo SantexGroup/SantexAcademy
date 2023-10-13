@@ -12,7 +12,6 @@ export class MyProfileComponent implements OnInit {
   form: FormGroup;  
   userData: any = {}
   token: string | null 
-  token2: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtYWlsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTY5NjcwMzd9.AwV2vUvtHFyE-Xiw9dYfdzIdMVvPRD3ygRo_YpZuYIs"
   idUser: number=0;
   userEdit: User = {
     id: 0,
@@ -28,8 +27,7 @@ export class MyProfileComponent implements OnInit {
   }
   
 
-  constructor(private userService: UserService, private fb: FormBuilder,) {    
-    localStorage.setItem("token",this.token2);
+  constructor(private userService: UserService, private fb: FormBuilder,) {
     this.token =  localStorage.getItem('token');
     this.getUserToken();
 
