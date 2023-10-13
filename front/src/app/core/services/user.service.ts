@@ -12,6 +12,7 @@ export class UserService {
   private apiUrl= 'http://localhost:4001/api/users'
 
   constructor(private httpUser: HttpClient) { }
+
   patchAdmins(userId:number){
     const requestBody = { userId }; 
     return this.httpUser.patch(this.apiUrl+"/admins",requestBody)
@@ -47,6 +48,25 @@ export class UserService {
   const data = { idCourse, idUser };
   return this.httpUser.post(this.apiUrl + "/inscription", data);
   }
-
-
+  putUser(user: User, id:number){
+    const userSelected= user
+    const idSelected= id
+    return this.httpUser.put(this.apiUrl+'/'+idSelected, userSelected)
+  }
+  deleteUser(id:number){
+    return this.httpUser.delete(this.apiUrl+'/'+id)
+  }
+  getUserByEmail(email:string){
+    return this.httpUser.get(this.apiUrl+"/email/"+ email)
+  }
+  removeCourseRegistration(idCourse:number,idUser:number ){
+    return this.httpUser.delete(this.apiUrl+"/removeinscription/"+idCourse+"/"+idUser)
+  }
+  validateCode(email:string, code:string){
+    return this.httpUser.get(this.apiUrl+"/verificar-email/"+email+"/"+code)
+  }
+  createCode(email:string):Observable<any>{
+    const requestBody = { email }; 
+    return this.httpUser.post(this.apiUrl+ "/createnewcode", requestBody)
+  }
 }

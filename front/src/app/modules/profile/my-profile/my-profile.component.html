@@ -1,0 +1,92 @@
+<br>
+<div class= "container rounded">
+    <h1><strong>Información del Usuario</strong></h1>
+  
+    <div class="user-details">
+      <div class="row">
+        <div class="col-12">
+          <label for="firstname"><strong>Nombre:</strong> </label>
+          <input type="text" class="form-control" id="firstName" [(ngModel)]="userData.firstName" disabled>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label for="lastname"><strong>Apellido:</strong> </label>
+          <input type="text" class="form-control" id="lastName" [(ngModel)]="userData.lastName" disabled>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label for="phone"><strong>Teléfono:</strong> </label>
+          <input type="text" class="form-control" id="phone" [(ngModel)]="userData.phone" disabled>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label for="email"><strong>Correo Electrónico:</strong> </label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="userData.email" disabled>
+        </div>
+      </div>
+    </div>
+
+
+    <button class="boton" *ngIf="buttonEdit" (click)="editUser()">Editar</button>
+    <hr>
+  
+    <div class="edit-user" *ngIf="isEditing">
+      <h2>Editar Usuario</h2>
+  
+      <form [formGroup]="form" (ngSubmit)="putUser()">
+        <div class="form-group">
+          <label><strong>Nombre:</strong></label>
+          <input formControlName= 'firstName' type="text" class="form-control" id="firstName">
+          <span
+            *ngIf="
+              form.get('firstName')?.hasError('required') &&
+              form.get('firstName')?.touched
+            "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px">
+            El campo nombre es <strong>requerido</strong>
+          </span>
+        </div>        
+  
+        <div class="form-group">
+          <label><strong>Apellido:</strong></label>
+          <input formControlName= 'lastName' type="text" class="form-control" id="lastName">
+          <span
+            *ngIf="
+              form.get('lastname')?.hasError('required') &&
+              form.get('lastName')?.touched
+            "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px">
+            El campo apellido es <strong>requerido</strong>
+          </span>
+        </div>
+  
+        <div class="form-group">
+          <label><strong>Teléfono:</strong></label>
+          <input formControlName= 'phone' type="text" class="form-control" id="phone">
+          <span
+            *ngIf="
+              form.get('phone')?.hasError('required') &&
+              form.get('phone')?.touched
+            "
+            class="mt-1"
+            style="background-color: rgb(255, 73, 73); border-radius: 5px">
+            El campo teléfono es <strong>requerido</strong>
+          </span>
+        </div>
+        <br>  
+        <div class="col-lg-6">
+          <button class="boton" (click)="cancelEdit()">Cancelar</button>   
+          <button [disabled]="form.invalid" type="submit" class="boton">
+            Aceptar
+          </button>
+        </div>
+      </form>
+      <hr>
+    </div>
+</div>
+  
