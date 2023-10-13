@@ -21,7 +21,7 @@ export class DescriptionCourseComponent {
   end: Date = new Date();
   startFormat: any;
   endFormat: any;
-  isRegistered : boolean = true;
+  isRegistered : boolean = false;
   userData: any = {};
   token: string | null = localStorage.getItem('token');
   schedule: Schedule = {
@@ -57,7 +57,7 @@ export class DescriptionCourseComponent {
     id: 0,
     idCourse: 0,
     idUser: 0,
-    user: [],
+    User: [],
   };
   courses: Course[] = [];
   coursesSelect: Course[] = [];
@@ -170,13 +170,17 @@ export class DescriptionCourseComponent {
       try {
         const tokenPayload = JSON.parse(atob(this.token.split('.')[1]));
         this.userData.email = tokenPayload.email;
-        
+
         this.userService.getUserByEmail(this.userData.email).subscribe(
           (data) => {
             this.userData = data;
+            console.log(this.userData.Registereds);
+            if (this.userData.Registereds.id === false){
+              this.isRegistered = false;
+            }
             this.userData.Registereds.forEach((element: { idCourse: number; }) => {
-              if(element.idCourse !== this.id){
-                this.isRegistered = false
+              if(element.idCourse === this.id){
+                this.isRegistered = true;
               }
             });
           },

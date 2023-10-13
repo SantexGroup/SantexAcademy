@@ -1,4 +1,8 @@
 /* eslint-disable no-unused-vars */
+const bcrypt = require('bcrypt');
+
+const saltRounds = 10;
+
 const {
   CourseCategory,
   AboutUS,
@@ -16,7 +20,7 @@ async function start() {
     code: 'JP001',
     email: 'admin@admin.com',
     phone: '1155555555',
-    password: 'admin',
+    password: await bcrypt.hash('password', saltRounds),
     active: true,
     admin: true,
   });
@@ -26,7 +30,7 @@ async function start() {
     code: 'JP001',
     email: 'juan.perez@example.com',
     phone: '1155555555',
-    password: 'password',
+    password: await bcrypt.hash('password', saltRounds),
     active: true,
     admin: false,
   });
@@ -36,7 +40,7 @@ async function start() {
     code: 'MG002',
     email: 'maria.gomez@example.com',
     phone: '1155555556',
-    password: 'password',
+    password: await bcrypt.hash('password', saltRounds),
     active: true,
     admin: false,
   });
@@ -46,7 +50,7 @@ async function start() {
     code: 'LR003',
     email: 'luis.rodriguez@example.com',
     phone: '1155555557',
-    password: 'password',
+    password: await bcrypt.hash('password', saltRounds),
     active: true,
     admin: true,
   });
