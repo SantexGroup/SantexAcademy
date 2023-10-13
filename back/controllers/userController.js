@@ -232,7 +232,6 @@ const patchAdmins = async (req, res) => {
 };
 const deleteAdmins = async (req, res) => {
   const userId = req.params;
-  console.log(userId);
   try {
     const admins = await UserService.deleteAdmins(userId);
     return res.status(200).json(admins);

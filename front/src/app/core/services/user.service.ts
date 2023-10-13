@@ -54,7 +54,8 @@ export class UserService {
     return this.httpUser.delete(this.apiUrl+'/'+id)
   }
   getUserByEmail(email:string){
-    return this.httpUser.get(this.apiUrl+"/email/"+ email)
+    const emailSelected = email
+    return this.httpUser.get(this.apiUrl+"/email/"+ emailSelected)
   }
   validateCode(email:string, code:string){
     return this.httpUser.get(this.apiUrl+"/verificar-email/"+email+"/"+code)

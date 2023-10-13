@@ -22,7 +22,7 @@ export class MyProfileComponent implements OnInit {
     password:'',
     active: true,
     admin:false,
-    Registereds:[{id: 0, idCourse: 0, idUser: 0, user: []}] 
+    Registereds:[{id: 0, idCourse: 0, idUser: 0, User: []}] 
 
   }
   
@@ -85,7 +85,7 @@ export class MyProfileComponent implements OnInit {
       password: this.userData.password,
       active: this.userData.active,
       admin:this.userData.admin,
-      Registereds:[{id: 0, idCourse: 0, idUser: 0, user: []}]
+      Registereds:[{id: 0, idCourse: 0, idUser: 0, User: []}]
     }
     this.userService.putUser(this.userEdit,this.idUser).subscribe(
       (data) => {
