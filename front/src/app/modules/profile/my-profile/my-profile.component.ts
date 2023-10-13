@@ -99,6 +99,11 @@ export class MyProfileComponent implements OnInit {
   }
 
   cancelEdit(){
+    this.form.patchValue({
+      firstName: this.userData.firstName,
+      lastName: this.userData.lastName,
+      phone:this.userData.phone
+    });
     this.isEditing = false;
   }
 
