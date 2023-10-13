@@ -54,24 +54,64 @@ async function start() {
     active: true,
     title: 'Sobre Nosotros',
     subtitle: 'Descubre quiénes somos',
-    image: 'https://picsum.photos/150',
-    description: 'Somos una empresa líder en nuestra industria.',
+    image: 'https://www.xplora.eu/wp-content/uploads/como-escribir-web-sobre-nosotros.jpg',
+    description: 'Somos una empresa que apoya a emprendedores, brindándoles herramientas para alcanzar el éxito.',
     priority: 1,
   });
   const aboutUs2 = await AboutUS.create({
-    active: true,
+    active: false,
     title: 'Historia',
     subtitle: 'Nuestra trayectoria',
-    image: 'https://picsum.photos/150',
+    image: 'https://secure.gravatar.com/avatar/165d18487e3aa214335f1cb22d0e3913?s=600&d=mm&r=g',
     description: 'Más de 20 años de experiencia en el mercado.',
     priority: 2,
   });
   const aboutUs3 = await AboutUS.create({
     active: true,
     title: 'Equipo',
-    subtitle: 'Conoce a nuestro equipo',
-    image: 'https://picsum.photos/150',
-    description: 'Nuestro equipo está comprometido con la excelencia.',
+    subtitle: 'Esteban Quito',
+    image: 'https://secure.gravatar.com/avatar/165d18487e3aa214335f1cb22d0e3913?s=600&d=mm&r=g',
+    description: 'Nuestro CEO',
+    priority: 3,
+  });
+  const aboutUs4 = await AboutUS.create({
+    active: true,
+    title: 'Nuestro Equipo',
+    subtitle: 'María Gutiérrez',
+    image: 'https://secure.gravatar.com/avatar/165d18487e3aa214335f1cb22d0e3913?s=600&d=mm&r=g',
+    description: 'Conoce a María, parte esencial de nuestro equipo.',
+    priority: 3,
+  });
+  const aboutUs5 = await AboutUS.create({
+    active: true,
+    title: 'Nuestro Equipo',
+    subtitle: 'Pedro Sánchez',
+    image: 'https://secure.gravatar.com/avatar/165d18487e3aa214335f1cb22d0e3913?s=600&d=mm&r=g',
+    description: 'Descubre el trabajo de Pedro en nuestro equipo.',
+    priority: 3,
+  });
+  const aboutUs6 = await AboutUS.create({
+    active: true,
+    title: 'Nuestro Equipo',
+    subtitle: 'Laura Pérez',
+    image: 'https://secure.gravatar.com/avatar/165d18487e3aa214335f1cb22d0e3913?s=600&d=mm&r=g',
+    description: 'Laura es un miembro valioso de nuestro equipo.',
+    priority: 3,
+  });
+  const aboutUs7 = await AboutUS.create({
+    active: true,
+    title: 'Nuestro Equipo',
+    subtitle: 'Carlos Rodríguez',
+    image: 'https://secure.gravatar.com/avatar/165d18487e3aa214335f1cb22d0e3913?s=600&d=mm&r=g',
+    description: 'Carlos contribuye de manera excepcional a nuestro equipo.',
+    priority: 3,
+  });
+  const aboutUs8 = await AboutUS.create({
+    active: true,
+    title: 'Nuestro Equipo',
+    subtitle: 'Sofía Martínez',
+    image: 'https://secure.gravatar.com/avatar/165d18487e3aa214335f1cb22d0e3913?s=600&d=mm&r=g',
+    description: 'Sofía es un pilar fundamental de nuestro equipo.',
     priority: 3,
   });
   const courseCategory1 = await CourseCategory.create({
