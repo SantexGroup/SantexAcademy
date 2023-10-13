@@ -1,81 +1,282 @@
-const { CourseCategory } = require("../models");
-const {CourseProvider, ScheduleProvider}= require("../providers")
-// Datos a cargar
-const categoriesToLoad = ["Talleres", "Cursos", "Seminarios"];
-const objetCourse1 = {
-  name: "Taller de diseño y reciclaje",
-  image:"https://instagram.fcor2-2.fna.fbcdn.net/v/t51.2885-15/351766151_278661664522157_8803022371375872742_n.webp?stp=dst-jpg_e35&_nc_ht=instagram.fcor2-2.fna.fbcdn.net&_nc_cat=105&_nc_ohc=zdpyVfIgCU4AX8d2bHO&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MzExOTkwODMxNDc3OTcyOTkyMA%3D%3D.2-ccb7-5&oh=00_AfD-Vplt2vFHmNGKctuHThMp5gDGnRvf-VDQ9ACK-ndlrQ&oe=64E55AA8&_nc_sid=b41fef",
-  description: "Diseño y materializacion de productos ecologicos",
-  maxStudents: 50,
-  start: "2023-6-14",
-  end: "2023-6-21",
-  active: true,
-  price: 10000,
-  requirement: "llevar la materia prima",
-  teacher: "Juan Perez",
-  CourseCategoryName: "Talleres",
-};
-const objetCourse2 = {
-  name: "Curso de sublimacion",
-  image:"https://instagram.fcor2-1.fna.fbcdn.net/v/t51.2885-15/357416675_265987282695879_14194642772113204_n.webp?stp=dst-jpg_e35&_nc_ht=instagram.fcor2-1.fna.fbcdn.net&_nc_cat=103&_nc_ohc=1WbUEFnaCYwAX8RezIx&edm=ACWDqb8BAAAA&ccb=7-5&ig_cache_key=MzEzODc3MjE3MzI3OTc0NzYwMQ%3D%3D.2-ccb7-5&oh=00_AfAsfZsjU3CmuOwHT2i3dZFfVgE2XyarIrlfeWEbsKQ-Pg&oe=64E3EB94&_nc_sid=ee9879",
-  description: "Podras aprender a subliminar distintos productos como gorras, tazas, llaveros, entre otros",
-  maxStudents: 500,
-  start: "2024-1-11",
-  end: "2024-2-11",
-  active: false,
-  price: 15000,
-  requirement: "nada",
-  teacher: "Roberto Gusman",
-  CourseCategoryName: "Cursos",
-};
-const objetCourse3 = {
-    name: "Seminario de velas",
-    image:"https://instagram.fcor2-1.fna.fbcdn.net/v/t51.2885-15/357462975_5862168230556579_1249311485733936949_n.webp?stp=dst-jpg_e35&_nc_ht=instagram.fcor2-1.fna.fbcdn.net&_nc_cat=103&_nc_ohc=5a_rpcXiMe0AX8IOqlN&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MzEzODc3MTU3OTQwODQ2MTQ3Mw%3D%3D.2-ccb7-5&oh=00_AfDXkAhCX3J_xqlAg6hb5YKeONnNvQaf32n1ZW2x_eOOJQ&oe=64E421BA&_nc_sid=b41fef",
-    description: "Aprende a realizar velas aromaticas y creativas",
-    maxStudents: 100,
-    start: "2024-2-11",
-    end: "2024-3-11",
-    active: false,
-    price: 50000,
-    requirement: "Tener ganas ;)",
-    teacher: "Agustina Simon",
-    CourseCategoryName: "Seminarios",
-  };
-const objetSchedule1 = {
+/* eslint-disable no-unused-vars */
+const {
+  CourseCategory,
+  AboutUS,
+  Course,
+  Registered,
+  Schedule,
+  ScheduleCourses,
+  User,
+} = require('../models');
+
+async function start() {
+  const admin = await User.create({
+    firstName: 'Admin',
+    lastName: 'Admin',
+    code: 'JP001',
+    email: 'admin@admin.com',
+    phone: '1155555555',
+    password: 'admin',
     active: true,
-	where: "Aula 1",
-	course: "Taller de diseño y reciclaje",
-	day:"lunes",
-	schedule:"15 a 17"
-};
-const objetSchedule2 = {
-    active: false,
-	where: "Aula 3",
-	course: "Curso de sublimacion",
-	day:"martes",
-	schedule:"19 a 21"
-};
-const objetSchedule3 = {
-    active: false,
-	where: "Aula 4",
-	course: "Seminario de velas",
-	day:"jueves",
-	schedule:"10 a 12"
-};
-// Carga de datos
-async function loadData() {
-  for (const categoryName of categoriesToLoad) {
-    await CourseCategory.create({ name: categoryName });
-  }
-  await CourseProvider.createCourse(objetCourse1);
-  await CourseProvider.createCourse(objetCourse2);
-  await CourseProvider.createCourse(objetCourse3);
-  await ScheduleProvider.createSchedule(objetSchedule1);
-  await ScheduleProvider.createSchedule(objetSchedule2);
-  await ScheduleProvider.createSchedule(objetSchedule3)
-
-  console.log("Datos cargados exitosamente.");
-  process.exit();
+    admin: true,
+  });
+  const user1 = await User.create({
+    firstName: 'Juan',
+    lastName: 'Pérez',
+    code: 'JP001',
+    email: 'juan.perez@example.com',
+    phone: '1155555555',
+    password: 'password',
+    active: true,
+    admin: false,
+  });
+  const user2 = await User.create({
+    firstName: 'María',
+    lastName: 'Gómez',
+    code: 'MG002',
+    email: 'maria.gomez@example.com',
+    phone: '1155555556',
+    password: 'password',
+    active: true,
+    admin: false,
+  });
+  const user3 = await User.create({
+    firstName: 'Luis',
+    lastName: 'Rodríguez',
+    code: 'LR003',
+    email: 'luis.rodriguez@example.com',
+    phone: '1155555557',
+    password: 'password',
+    active: true,
+    admin: true,
+  });
+  const aboutUs1 = await AboutUS.create({
+    active: true,
+    title: 'Sobre Nosotros',
+    subtitle: 'Descubre quiénes somos',
+    image: 'https://picsum.photos/150',
+    description: 'Somos una empresa líder en nuestra industria.',
+    priority: 1,
+  });
+  const aboutUs2 = await AboutUS.create({
+    active: true,
+    title: 'Historia',
+    subtitle: 'Nuestra trayectoria',
+    image: 'https://picsum.photos/150',
+    description: 'Más de 20 años de experiencia en el mercado.',
+    priority: 2,
+  });
+  const aboutUs3 = await AboutUS.create({
+    active: true,
+    title: 'Equipo',
+    subtitle: 'Conoce a nuestro equipo',
+    image: 'https://picsum.photos/150',
+    description: 'Nuestro equipo está comprometido con la excelencia.',
+    priority: 3,
+  });
+  const courseCategory1 = await CourseCategory.create({
+    name: 'Programación',
+  });
+  const courseCategory2 = await CourseCategory.create({
+    name: 'Diseño Gráfico',
+  });
+  const courseCategory3 = await CourseCategory.create({
+    name: 'Idiomas',
+  });
+  const courseCategory4 = await CourseCategory.create({
+    name: 'Belleza y Moda',
+  });
+  const courseCategory5 = await CourseCategory.create({
+    name: 'Artes Culinarias',
+  });
+  const course1 = await Course.create({
+    name: 'Introducción a JavaScript',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/800px-Unofficial_JavaScript_logo_2.svg.png',
+    description: 'Aprende los fundamentos de la programación en JavaScript.',
+    maxStudents: 30,
+    start: new Date('2023-11-01'),
+    end: new Date('2023-12-31'),
+    active: true,
+    price: 99,
+    requirement: 'No se requieren conocimientos previos',
+    teacher: 'Carlos Sánchez',
+    CourseCategoryId: courseCategory1.id,
+  });
+  const course2 = await Course.create({
+    name: 'Diseño de Logotipos',
+    image: 'https://blend.co.ke/wp-content/uploads/2022/11/Illustrator.jpg',
+    description: 'Crea logotipos impactantes con Adobe Illustrator.',
+    maxStudents: 20,
+    start: new Date('2023-11-15'),
+    end: new Date('2023-12-30'),
+    active: true,
+    price: 79,
+    requirement: 'Conocimientos básicos de diseño gráfico',
+    teacher: 'Ana Martínez',
+    CourseCategoryId: courseCategory2.id,
+  });
+  const course3 = await Course.create({
+    name: 'Inglés Avanzado',
+    image: 'https://img.freepik.com/free-vector/hand-drawn-english-book-background_23-2149483336.jpg',
+    description: 'Mejora tus habilidades en inglés con un enfoque avanzado.',
+    maxStudents: 25,
+    start: new Date('2023-10-15'),
+    end: new Date('2023-12-31'),
+    active: true,
+    price: 129,
+    requirement: 'Nivel intermedio de inglés',
+    teacher: 'Laura Pérez',
+    CourseCategoryId: courseCategory3.id,
+  });
+  const course4 = await Course.create({
+    name: 'Programación en Python',
+    image: 'https://miro.medium.com/v2/resize:fit:1200/1*m0H6-tUbW6grMlezlb52yw.png',
+    description: 'Aprende a programar en Python, un lenguaje versátil y poderoso.',
+    maxStudents: 25,
+    start: new Date('2023-10-15'),
+    end: new Date('2023-12-31'),
+    active: true,
+    price: 109,
+    requirement: 'Conocimientos básicos de programación',
+    teacher: 'Eduardo Martínez',
+    CourseCategoryId: courseCategory1.id,
+  });
+  const course5 = await Course.create({
+    name: 'Fotografía para Principiantes',
+    image: 'https://www.fotodng.com/wp-content/uploads/2016/08/curso-fotografia-imaginacion.jpg',
+    description: 'Inicia tu viaje en la fotografía con este curso apto para principiantes.',
+    maxStudents: 20,
+    start: new Date('2023-11-10'),
+    end: new Date('2023-12-31'),
+    active: true,
+    price: 79,
+    requirement: 'No se requieren conocimientos previos en fotografía',
+    teacher: 'María Rodríguez',
+    CourseCategoryId: courseCategory2.id,
+  });
+  const course6 = await Course.create({
+    name: 'Curso de Cocina Italiana',
+    image: 'https://www.gediscovery.edu.pe/uploads/cursos-libres-2/cocina-italiana.jpg',
+    description: 'Aprende a preparar deliciosos platos italianos con auténticas recetas.',
+    maxStudents: 20,
+    start: new Date('2023-11-15'),
+    end: new Date('2023-12-30'),
+    active: true,
+    price: 129,
+    requirement: 'No se requieren conocimientos previos',
+    teacher: 'Luigi Rossi',
+    CourseCategoryId: courseCategory5.id, // Use the new category's ID.
+  });
+  const course7 = await Course.create({
+    name: 'Curso de Uñas Semipermanentes',
+    image: 'https://d22fxaf9t8d39k.cloudfront.net/c77e25f33e6878b298e81131508d7003ac003163ec666d0bd937c3076e13f93a364.jpeg',
+    description: 'Aprende a realizar tratamientos de uñas semipermanentes y diseño de uñas.',
+    maxStudents: 20,
+    start: new Date('2023-11-20'),
+    end: new Date('2023-12-31'),
+    active: true,
+    price: 89,
+    requirement: 'Conocimientos básicos de manicura',
+    teacher: 'Luisa Martínez',
+    CourseCategoryId: courseCategory4.id,
+  });
+  const schedule1 = await Schedule.create({
+    where: 'Buenos Aires',
+    active: true,
+    day: 'Lunes',
+    schedule: '9:00 AM - 5:00 PM',
+  });
+  const schedule2 = await Schedule.create({
+    where: 'Córdoba',
+    active: true,
+    day: 'Martes',
+    schedule: '10:00 AM - 6:00 PM',
+  });
+  const schedule3 = await Schedule.create({
+    where: 'Rosario',
+    active: true,
+    day: 'Miércoles',
+    schedule: '8:00 AM - 4:00 PM',
+  });
+  const scheduleCourse1 = await ScheduleCourses.create({
+    idCourse: course1.id,
+    idSchedule: schedule1.id,
+  });
+  const scheduleCourse2 = await ScheduleCourses.create({
+    idCourse: course2.id,
+    idSchedule: schedule2.id,
+  });
+  const scheduleCourse3 = await ScheduleCourses.create({
+    idCourse: course3.id,
+    idSchedule: schedule3.id,
+  });
+  const registered11 = await Registered.create({
+    idCourse: course1.id,
+    idUser: user1.id,
+  });
+  const registered12 = await Registered.create({
+    idCourse: course2.id,
+    idUser: user1.id,
+  });
+  const registered13 = await Registered.create({
+    idCourse: course3.id,
+    idUser: user1.id,
+  });
+  const registered21 = await Registered.create({
+    idCourse: course1.id,
+    idUser: user2.id,
+  });
+  const registered22 = await Registered.create({
+    idCourse: course2.id,
+    idUser: user2.id,
+  });
+  const registered23 = await Registered.create({
+    idCourse: course3.id,
+    idUser: user2.id,
+  });
+  const registered31 = await Registered.create({
+    idCourse: course1.id,
+    idUser: user3.id,
+  });
+  const registered32 = await Registered.create({
+    idCourse: course2.id,
+    idUser: user3.id,
+  });
+  const registered33 = await Registered.create({
+    idCourse: course3.id,
+    idUser: user3.id,
+  });
+  const registered41 = await Registered.create({
+    idCourse: course4.id,
+    idUser: user1.id,
+  });
+  const registered42 = await Registered.create({
+    idCourse: course5.id,
+    idUser: user1.id,
+  });
+  const registered43 = await Registered.create({
+    idCourse: course6.id,
+    idUser: user1.id,
+  });
+  const registered44 = await Registered.create({
+    idCourse: course7.id,
+    idUser: user1.id,
+  });
+  const registered51 = await Registered.create({
+    idCourse: course4.id,
+    idUser: user2.id,
+  });
+  const registered52 = await Registered.create({
+    idCourse: course5.id,
+    idUser: user2.id,
+  });
+  const registered53 = await Registered.create({
+    idCourse: course6.id,
+    idUser: user2.id,
+  });
+  const registered54 = await Registered.create({
+    idCourse: course7.id,
+    idUser: user2.id,
+  });
 }
-
-loadData();
+start();
