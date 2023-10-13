@@ -24,11 +24,12 @@ import { StudentsCoursesComponent } from '../students/students-courses/students-
 import { LayoutComponent } from '../students/layout/layout.component';
 import { HttpClientModule } from '@angular/common/http';
 
-
+import { PaginaPrincipalComponent } from '../pagina-principal/pagina-principal.component';
 
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     StudentsPersonalDataComponent,
     StudentsCoursesComponent,
     LayoutComponent,
+    PaginaPrincipalComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { StudentsComponent } from '../students/students/students.component';
 import { StudentsPersonalDataComponent } from '../students/students-personal-data/students-personal-data.component';
 import { StudentsCoursesComponent } from '../students/students-courses/students-courses.component';
 import { LayoutComponent } from '../students/layout/layout.component';
+import { PaginaPrincipalComponent } from '../pagina-principal/pagina-principal.component';
 
 
 
@@ -16,12 +17,13 @@ const routes: Routes = [
   children: [
     { path: 'user-dashboard', component: StudentsComponent },
     { path: 'student-courses', component: StudentsCoursesComponent},
-    { path: 'student-personalData', component: StudentsPersonalDataComponent},
+    { path: 'student-personalData', component: StudentsPersonalDataComponent },
   ],
 },
 
 { path: 'registro', component: FormularioRegistroComponent },
 { path: 'login', component: LoginComponent},
+{ path: 'pagina-principal', component:PaginaPrincipalComponent },
   
 
   {
