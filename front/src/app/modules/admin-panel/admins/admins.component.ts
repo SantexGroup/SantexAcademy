@@ -21,7 +21,7 @@ export class AdminsComponent {
     admin: false,
     Registereds: [
       {
-        User: {},
+        user: [],
         id: 0,
         idCourse: 0,
         idUser: 0,

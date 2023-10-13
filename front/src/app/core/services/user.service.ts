@@ -32,16 +32,10 @@ export class UserService {
   postUser(user: User){
     return this.httpUser.post(this.apiUrl, user);
   }
-  getUserByEmail(email:string){
-    return this.httpUser.get(this.apiUrl+"/email/"+ email)
-  }
   removeCourseRegistration(idCourse:number,idUser:number ){
     const idCourseSelect = idCourse;
     const idUserSelect = idUser;
     return this.httpUser.delete(this.apiUrl+"/removeinscription/"+idCourseSelect+"/"+idUserSelect)
-  }
-  validateCode(email:string, code:string){
-    return this.httpUser.get(this.apiUrl+"/verificar-email/"+email+"/"+code)
   }
   createCode(email:string):Observable<any>{
     const requestBody = { email }; 
@@ -62,14 +56,7 @@ export class UserService {
   getUserByEmail(email:string){
     return this.httpUser.get(this.apiUrl+"/email/"+ email)
   }
-  removeCourseRegistration(idCourse:number,idUser:number ){
-    return this.httpUser.delete(this.apiUrl+"/removeinscription/"+idCourse+"/"+idUser)
-  }
   validateCode(email:string, code:string){
     return this.httpUser.get(this.apiUrl+"/verificar-email/"+email+"/"+code)
-  }
-  createCode(email:string):Observable<any>{
-    const requestBody = { email }; 
-    return this.httpUser.post(this.apiUrl+ "/createnewcode", requestBody)
   }
 }
