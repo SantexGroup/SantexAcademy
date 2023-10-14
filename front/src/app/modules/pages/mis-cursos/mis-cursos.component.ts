@@ -3,34 +3,13 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 import { AuthService } from '../../auth/services/auth.service';
-//import { Nivel } from 'src/app/models/nivel.interface';// En serio?!
 import { UsersService } from '../../users/services/users.service';
-//import { Matricula } from '../../matriculas/interfaces/interfaces';
 import { Docenteporcurso } from '../docentecurso/interfaces/docenteporcurso';
 import { DocenteporcursoService } from '../docentecurso/services/docenteporcurso.service';
 import { DocenteService } from '../../docentes/services/docente.service';
 import { Curso } from '../../cursos/interface/cursos.interface';
 import { MatriculasService } from '../../matriculas/services/matriculas.service';
 
-// interface Curso extends Matricula, Docenteporcurso {
-//   id?: number;
-//   nombre: string;
-//   descripcion: string;
-//   imagen?: string;
-//   duracion: number;
-//   capacidad: number;
-//   idnivel: number;
-//   requisitos: string;
-//   habilitado: boolean;
-//   fechainicio: Date;
-//   fechafin?: Date;
-//   idusuarioalta: number;
-//   idusuariomodificacion?: number;
-//   estado: string;
-//   createdAt: Date;
-//   updatedAt?: Date;
-//   Nivel?: Nivel; 
-// }
 
 @Component({
     selector: 'app-mis-cursos',
@@ -45,7 +24,6 @@ import { MatriculasService } from '../../matriculas/services/matriculas.service'
   }
 
   cursos: Curso[] = [];
-  //matriculas: Matricula[] = [];
   cursosPorDocente: Docenteporcurso[] = [];
 
   constructor(private authService: AuthService,
@@ -125,18 +103,15 @@ import { MatriculasService } from '../../matriculas/services/matriculas.service'
                 const esDocenteHabilitado = habilitado?.DocenteEnDocentePorCurso?.habilitado;
                   if (esDocenteHabilitado) {
                     console.log('7.- esDocenteHabilitado:', esDocenteHabilitado);
-                    // this.obtenerCursosParaDocente(habilitado?.DocenteEnDocentePorCurso?.id??0);
 
                     this.docenteporcursoService.getCursosPorDocenteId(docenteId) 
                     .subscribe((cursosPorDocente => {
                       this.cursosPorDocente = cursosPorDocente;
 
-                      // Filtra los valores undefined y los cursos que no tienen 'fechainicio'
                       const cursosDefinidos = this.cursosPorDocente
                         .map(docentePorCurso => docentePorCurso.CursoEnDocentePorCurso)
                         .filter(curso => curso) as Curso[];
 
-                      // Asigna los cursos filtrados a la propiedad 'cursos'
                       console.log('8.- Cursos para docentes obtenidos:', cursosDefinidos);
                       this.cursos = cursosDefinidos;
 
@@ -188,5 +163,36 @@ import { MatriculasService } from '../../matriculas/services/matriculas.service'
       });
     }
   }
+
+
 }
 
+//import { Nivel } from 'src/app/models/nivel.interface';// En serio?!
+//import { Matricula } from '../../matriculas/interfaces/interfaces';
+// interface Curso extends Matricula, Docenteporcurso {
+//   id?: number;
+//   nombre: string;
+//   descripcion: string;
+//   imagen?: string;
+//   duracion: number;
+//   capacidad: number;
+//   idnivel: number;
+//   requisitos: string;
+//   habilitado: boolean;
+//   fechainicio: Date;
+//   fechafin?: Date;
+//   idusuarioalta: number;
+//   idusuariomodificacion?: number;
+//   estado: string;
+//   createdAt: Date;
+//   updatedAt?: Date;
+//   Nivel?: Nivel; 
+// }
+//matriculas: Matricula[] = [];
+// this.obtenerCursosParaDocente(habilitado?.DocenteEnDocentePorCurso?.id??0);
+                      // Filtra los valores undefined y los cursos que no tienen 'fechainicio'
+                      // Asigna los cursos filtrados a la propiedad 'cursos'
+                      
+  //esCursoHabilitado(curso: CursoConMatricula): boolean {
+    //return curso.Matricula?.habilitado ?? false;
+  //}
