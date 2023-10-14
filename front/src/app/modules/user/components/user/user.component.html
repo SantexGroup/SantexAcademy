@@ -8,15 +8,20 @@
           <h2>Detalles del usuario</h2>
         </div>
         <div class="card-body">
-          <p><strong>Id:</strong> {{ user.id }}</p>
-          <p><strong>Rol:</strong> {{ getRoleName(user.role) }}</p>
-          <p><strong>Nombre:</strong> {{ user.firstName }}</p>
-          <p><strong>Apellido:</strong> {{ user.lastName }}</p>
-          <p><strong>Correo electrónico:</strong> {{ user.email }}</p>
-          <button class="btn btn-primary" (click)="redirectToEditUser(user.id)">Editar</button>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Borrar Usuario
-          </button>
+          <div class="image-container">
+            <img src="../../../../../assets/imagen/no-image.png" class="image" alt="no-image">
+          </div>
+          <div class="user-details">
+            <p><strong>Id:</strong> {{ user.id }}</p>
+            <p><strong>Rol:</strong> {{ getRoleName(user.role) }}</p>
+            <p><strong>Nombre:</strong> {{ user.firstName }}</p>
+            <p><strong>Apellido:</strong> {{ user.lastName }}</p>
+            <p><strong>Correo electrónico:</strong> {{ user.email }}</p>
+            <button class="btn btn-primary" (click)="redirectToEditUser(user.id)">Editar</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Borrar Usuario
+            </button>
+          </div>
         </div>
       </div>
     </div>
