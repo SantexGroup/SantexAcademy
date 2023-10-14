@@ -41,7 +41,7 @@ h1 {
    
 }*/
 #bienvenidos {
-    background: url("../src/resources/banner.png");
+    background: url("../src/assets/img/banner.png");
     background-repeat: no-repeat;
     background-size: cover; /* Esto ajustará la imagen al 100% del ancho del contenedor */
     width: 100%;
