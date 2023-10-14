@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { BarraService } from 'src/app/core/services/barra.service';
 import { FormControl, Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Location } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vista-articulo-ind',
@@ -179,7 +180,12 @@ export class VistaArtIndComponent implements OnInit {
   }
   //mensaje de alerta
   mensajeDias() {
-    alert("Tanto para envío como para retiro tendrá su producto en un plazo de 2 días");    
+    Swal.fire({
+      icon: 'info',
+      title: 'Perfecto!',
+      text: 'El envío o retiro su producto tendrá un plazo de 2 días',
+      confirmButtonText: "Ok"
+    })  
   }
   //seleccionables
   capturarEnvio() {
@@ -234,6 +240,11 @@ export class VistaArtIndComponent implements OnInit {
     this.router.navigate(['categorias/' + this.idCat]);
   }
   alertaVen() {
-    alert("No puede contratar su propio servicio")
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'No puede contratar su propio servicio!',
+      confirmButtonText: "Ok"
+    })
   }
 }

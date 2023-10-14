@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BarraService } from 'src/app/core/services/barra.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-barra',
@@ -35,7 +36,12 @@ export class BarraComponent implements OnInit {
   }
   buscar() {
     if(this.textoTip == '') {
-      alert('Debe ingresar un texto');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No se encontró el articulo!',
+        confirmButtonText: "Ok"
+      })
     }else {
       for(let i=0; i < this.listArticulosFilt.length; i++) {
         localStorage.removeItem('idProdsBus');
