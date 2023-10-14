@@ -1,36 +1,54 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mis Cursos</title>
-  <link rel="stylesheet" href="mis-cursos.component.css">
-
-</head>
-<body>
-  <h1>Mis cursos</h1>
-  <h5>Hola, {{user.username}} !</h5>
-  <div class="container">
-
-    <!--<div class="curso-card" *ngFor="let curso of cursos" [ngClass]="{'curso-habilitado': esCursoHabilitado(curso), 'curso-no-habilitado': !esCursoHabilitado(curso)}">-->
-    <div class="curso-card" *ngFor="let curso of cursos" [ngClass]="{'curso-habilitado': curso.habilitado, 'curso-no-habilitado': !curso.habilitado}">
-      <figure>
-        <img src="{{curso.imagen}}" alt="Imagen del curso">
-      </figure>
-      <div class="contenido-card">
-        <h3>{{curso.nombre}}</h3>
-        <p>{{curso.descripcion}}</p>
-        <p class="duracion">Duración: {{curso.duracion}} meses</p>
-        <p class="fechafin">Fin: {{curso.fechafin}}</p>
-        <p class="requisitos">Requisitos: {{curso.requisitos}}</p>
-      </div>
-        <button (click)="ingresar(curso)">INGRESAR</button>
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mis Cursos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mis-cursos.component.css" />
     
-  </div>
+  </head>
+  <body>
+    <div class="box">
+      <div class="inner">
+        <span>Mis Cursos</span>
+      </div>
+      <div class="inner">
+        <span>Mis Cursos</span>
+      </div>
+    </div>
 
+    <div class="bg-5">
+      <h5 class="titulo-con-fondo">Hola, {{ user.username }} !</h5>
+    </div>
 
-<!-- <app-mis-cursos></app-mis-cursos>
+    <div class="container">
+      <div
+        class="curso-card"
+        *ngFor="let curso of cursos"
+        [ngClass]="{'curso-habilitado': curso.habilitado, 'curso-no-habilitado': !curso.habilitado}"
+      ><!--[ngClass]="{'curso-habilitado': esCursoHabilitado(curso), 'curso-no-habilitado': !esCursoHabilitado(curso)}">-->
+      
+        <figure>
+          <img src="{{ curso.imagen }}" alt="Imagen del curso" />
+        </figure>
+        <div class="contenido-card">
+          <h3>{{ curso.nombre }}</h3>
+          <p>{{ curso.descripcion }}</p>
+          <p class="duracion">Duración: {{ curso.duracion }} meses</p>
+          <p class="fechafin">Fin: {{ curso.fechafin }}</p>
+          <p class="requisitos">Requisitos: {{ curso.requisitos }}</p>
+        </div>
+        <button (click)="ingresar(curso)">INGRESAR</button>
+      </div>
+    </div>
+
+  </body>
+  </html>
+
+    <!-- <app-mis-cursos></app-mis-cursos>
 
 <h2>Mis Cursos Inscritos</h2>
 <ul>
@@ -44,3 +62,31 @@
     <li *ngFor="let curso of cursosInscritos">{{ curso }}</li>
   </ul>
 </div> -->
+
+
+<!-- <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Cursos</title>
+  <link rel="stylesheet" href="mis-cursos.component.css">
+
+</head>
+<body>
+  <h1>Mis cursos</h1>
+  <h5>Hola, {{user.username}} !</h5>
+  <div class="container">
+
+    <div class="curso-card" *ngFor="let curso of cursos" [ngClass]="{'curso-habilitado': esCursoHabilitado(curso), 'curso-no-habilitado': !esCursoHabilitado(curso)}">-->
+    <!-- <div class="curso-card" *ngFor="let curso of cursos" [ngClass]="{'curso-habilitado': curso.habilitado, 'curso-no-habilitado': !curso.habilitado}">
+      <figure>
+        <img src="{{curso.imagen}}" alt="Imagen del curso">
+      </figure>
+      <div class="contenido-card">
+        <h3>{{curso.nombre}}</h3>
+        <p>{{curso.descripcion}}</p>
+        <p class="duracion">Duración: {{curso.duracion}} meses</p>
+        <p class="fechafin">Fin: {{curso.fechafin}}</p>
+        <p class="requisitos">Requisitos: {{curso.requisitos}}</p>
+      </div>
+        <button (click)="ingresar(curso)">INGRESAR</button>
+    </div> -->

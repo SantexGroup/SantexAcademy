@@ -34,7 +34,7 @@
           <a routerLink="/login" class="nav-link">Iniciar Sesión</a>
         </li>
         <li *ngIf="authService.isLoggedIn">
-          <span class="nav-link" style="color: white;">Bienvenido, {{ authService.user.username }}</span>
+          <span class="nav-link" style="color: white;">Hola, {{ authService.user.username }} !!</span>
         </li>
         <li *ngIf="authService.isLoggedIn && authService.user.tipoDeUsuario === 'Docente'"> <!-- Mostrar solo si el usuario ha iniciado sesión como Docente -->
           <a routerLink="/perfil-docente" class="nav-link">Mi perfil docente</a>

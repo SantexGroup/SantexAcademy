@@ -45,8 +45,7 @@
   transform: scale(1.03);
 }
 
-/* Estilo de las imágenes en las tarjetas */
-/* Estilo de las imágenes en las tarjetas */
+
 /* Estilo de las imágenes en las tarjetas */
 .blog-card .photo img {
   width: 300px;
@@ -99,3 +98,110 @@
   background-color: #ff6501; /* Cambiamos el color de fondo al hacer hover */
   color: #fff; /* Cambiamos el color del texto al hacer hover */
 }
+
+/* SECCION NOVEDADES*/
+
+/*.container{
+  display: flex;
+  background: #030321;
+  margin-left: 0;
+  width: 100%;
+  height: 100px;
+  
+}*/
+/* Estilo base para el título */
+
+
+/*.container {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  margin:0;
+  padding: 0;
+  height: 70px;
+  background:#000039; #2d2c55;
+  
+  
+}
+
+
+.text-copy {
+
+  font: 12em 'Montserrat';
+  fill:none;
+    padding-left: 20px;
+    stroke-dasharray: 6% 29%;
+    stroke-width: 7px;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 5.5s infinite linear;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.text-copy:nth-child(1){
+	stroke: #4D163D;
+	animation-delay: -1;
+}
+
+.text-copy:nth-child(2){
+	stroke: #840037;
+	animation-delay: -2s;
+}
+
+.text-copy:nth-child(3){
+	stroke: #BD0034;
+	animation-delay: -3s;
+}
+
+.text-copy:nth-child(4){
+	stroke: #BD0034;
+	animation-delay: -4s;
+}
+
+.text-copy:nth-child(5){
+	stroke: #FDB731;
+	animation-delay: -5s;
+}
+
+@keyframes stroke-offset{
+	100% {stroke-dashoffset: -35%;}
+}*/
+
+
+/* Estilo para el contenedor del botón */
+.button-container {
+  display: flex;
+ 
+  height:50px;
+}
+
+/* Estilo base para el título */
+h3 {
+  font-size: 24px;
+  color:white;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+/* Definir la animación */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+  }
+  40% {
+      transform: translateY(-10px);
+  }
+  60% {
+      transform: translateY(-5px);
+  }
+}
+
+/* Estilo para el botón */
+.animated-button {
+  animation: bounce 2s ease-in-out infinite;
+  background-color:#fb6a3d; /* Cambia el color de fondo del botón a azul */
+  padding: 5px 20px; /* Añade relleno al botón para que sea más grande */
+  border-radius: 80px;
+  margin-left: 100px;
+}
+
+
