@@ -1,9 +1,11 @@
 .carousel-control-prev-icon, .carousel-control-next-icon {
     filter: invert(108%);
   }
+/*
 .contenedorCarousel{
     height: 650px;
 }
+*/
 
 #FotoArticulo {
     height: 200px;
