@@ -45,62 +45,66 @@
 
         <div class="aula-virtual">
             <!-- Formulario para la búsqueda -->
-            <form [formGroup]="formulario" (ngSubmit)="search()">
-              <label for="selectedField">Seleccionar campo:</label>
-              <select id="selectedField" formControlName="selectedField">
+            <form [formGroup]="formulario" (ngSubmit)="search()" class="formSearch">
+              <label for="selectedField" class="formSelected">Seleccionar campo: </label>
+              <select id="selectedField" formControlName="selectedField" class="formSelected">
                 <option value="nombre">Nombre</option>
                 <option value="apellido">Apellido</option>
                 <option value="username">Usuario</option>
                 <option value="email">E-mail</option>
               </select>
               
-              <label for="searchQuery">Buscar:</label>
-              <input type="text" id="searchQuery" formControlName="searchQuery">
+              <label for="searchQuery" class="formInput">Buscar: </label>
+              <input type="text" id="searchQuery" formControlName="searchQuery" class="formInput">
               
-              <button type="submit">Buscar</button>
+              <button type="submit" class="formButton">Buscar</button>
             </form>
+
+            <!-- <div>
+              <p>Valor seleccionado: {{ this.formulario.get('selectedField')?.value }}</p>
+              <p>Valor de búsqueda: {{ this.formulario.get('searchQuery')?.value }}</p>
+            </div> -->
           
             <div>
-              <p>Resultado de la búsqueda: {{ alumnoSeleccionado ? 'Coincidencia encontrada' : 'No hay coincidencias' }}</p>
+              <p class="mensaje-positivo" *ngIf="alumnoSeleccionado; else noCoincidencias">
+                Coincidencia encontrada: {{ alumnoSeleccionado.username }}
+              </p>
+              <ng-template #noCoincidencias>
+                <p class="mensaje-negativo">No se encontraron coincidencias</p>
+              </ng-template>
             </div>
-          
+
             <!-- Detalles del alumno -->
-            <div *ngIf="alumnoSeleccionado">
+            <div *ngIf="alumnoSeleccionado" class="alumno-datos">
               <h2>Detalles del alumno:</h2>
               <p>Nombre: {{ alumnoSeleccionado.nombre }}</p>
               <p>Apellido: {{ alumnoSeleccionado.apellido }}</p>
               <p>Usuario: {{ alumnoSeleccionado.username }}</p>
               <p>E-mail: {{ alumnoSeleccionado.email }}</p>
             </div>
-          
-            <!-- Formulario para agregar datos -->
-            <form [formGroup]="formulario" (ngSubmit)="courseId !== undefined ? agregarDatos(courseId) : null">
-             
-              <label for="notaInput">Nota:</label>
-              <input type="number" id="notaInput" formControlName="notaInput">
-              
-              <button type="submit">Agregar Datos</button>
-            </form>
-          
-            <!-- Casillas para mostrar resultados -->
-            <div>
-              <h2>Resultados de la búsqueda:</h2>
-              <!-- Agregar elementos para mostrar los resultados -->
-            </div>
-          
+
             <!-- Casillas para calificaciones -->
-            <div>
+            <div *ngIf="alumnoSeleccionado" class="alumno-datos">
               <h2>Calificaciones:</h2>
-              <!-- Agregar casillas para ingresar notas y mostrar el promedio -->
+              <form [formGroup]="formulario" (ngSubmit)="courseId !== undefined ? agregarDatos(courseId) : null" class="notas-prom-asist ">
+                
+                <label for="notaInput">Notas:</label>
+                <input type="number" id="notaInput" formControlName="notaInput">
+              
+                <button type="submit" class="buttonNotas">Agregar Datos</button>
+              </form>
             </div>
-          
+
             <!-- Casillas para asistencia -->
-            <div>
+            <div *ngIf="alumnoSeleccionado" class="alumno-datos">
               <h2>Asistencia:</h2>
               <!-- Agregar elementos para ingresar datos de asistencia -->
             </div>
           </div>
-          <button (click)="guardarDatosDB()">Guardar Datos</button>
+
+          <div class="buttonEnd">
+            <button (click)="guardarDatosDB()">Guardar Datos</button>
+          </div>
     </div>
     
 </body>

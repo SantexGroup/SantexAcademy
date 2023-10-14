@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 import { AuthService } from '../../auth/services/auth.service';
-import { Nivel } from 'src/app/models/nivel.interface';// En serio?!
+//import { Nivel } from 'src/app/models/nivel.interface';// En serio?!
 import { UsersService } from '../../users/services/users.service';
-import { Matricula } from '../../matriculas/interfaces/interfaces';
+//import { Matricula } from '../../matriculas/interfaces/interfaces';
 import { Docenteporcurso } from '../docentecurso/interfaces/docenteporcurso';
 import { DocenteporcursoService } from '../docentecurso/services/docenteporcurso.service';
 import { DocenteService } from '../../docentes/services/docente.service';
@@ -75,7 +75,6 @@ import { MatriculasService } from '../../matriculas/services/matriculas.service'
               console.log('Respuesta de getMatriculaByUserId:', matriculas);
               console.log('B2.- This.user trae matriculas:', matriculas);
               
-              // Crear arrays para cursos habilitados y no habilitados
               const cursosHabilitados: Curso[] = [];
               const cursosNoHabilitados: Curso[] = [];
           

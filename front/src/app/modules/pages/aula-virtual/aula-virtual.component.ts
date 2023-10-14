@@ -35,7 +35,7 @@ export class AulaVirtualComponent implements OnInit {
   
   alumnoSeleccionado: User | null = null;
 
-  selectedField: string = 'nombre';      // Campo de busqueda
+  selectedField: string = '';            // Campo de busqueda
   searchQuery: string = ''               // Valor de busqueda
   notaInput: number = 0;                 // Entrada de notas
   mesInput: string = '';                 // Entrada de mes
@@ -93,7 +93,7 @@ export class AulaVirtualComponent implements OnInit {
   search() {
     const selectedField = this.formulario.get('selectedField')?.value;
     const searchQuery = this.formulario.get('searchQuery')?.value;
-    
+    console.log(selectedField, searchQuery);
     this.alumnoSeleccionado = null;
     const valorBusqueda = searchQuery.toLowerCase();
 

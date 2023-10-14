@@ -14,85 +14,117 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #007bff; /* Color de fondo del encabezado */
+  background-color: #007bff;
   padding: 20px;
-  color: white; /* Color del texto */
+  color: white;
 }
 
 /* Estilos para la imagen del curso */
 .curso-imagen img {
-  max-width: 150px; /* Ancho máximo de la imagen */
+  max-width: 150px;
   height: auto;
-  margin-left: 25px; /* Espacio a la izquierda de la imagen */
+  margin-left: 25px;
   border: 2px solid rgb(205, 107, 28);
   border-radius: 5px;
 }
 
-/* Estilos para el cuadro de búsqueda de alumnos */
-.alum-datos {
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin-top: 20px;
+/* Estilos para el div general de form */
+.aula-virtual {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+
+/* Estilos para el formulario de búsqueda de alumnos */
+.formSearch {
+  padding: 5px;
 }
 
 /* Estilos para el campo de búsqueda */
-.alum-bus label{
-  padding: 3px 3px;
+.formSelected {
   font-weight: bold;
-  margin-left: 2%;
+  margin-left: 1%;
 }
 
-.alum-bus select{
-  padding: 3px 3px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-left: 3%;
-}
-
-.alum-bus input[type="text"] {
-  width: calc(35% - 10px); /* Ancho del campo de búsqueda */
-  padding: 10px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-left: 20%;
+.formInput {
+  font-weight: bold;
+  margin-left: 1%;
 }
 
 /* Estilos para el botón de búsqueda */
-.alum-bus button {
-  background-color: #007bff; /* Color de fondo del botón de búsqueda */
-  color: white; /* Color del texto del botón */
+.formButton {
+  background-color: #007bff;
+  color: white;
   border: 2px solid #2200ff;
   border-radius: 4px;
-  padding: 10px 20px;
   cursor: pointer;
-  margin-left: 7px;
+  margin-left: 1%;
 }
 
 /* Estilos para el botón de búsqueda al pasar el mouse */
-.alum-bus button:hover {
-  background-color: #0056b3; /* Cambio de color al pasar el mouse */
+.formButton:hover {
+  background-color: #0056b3;
 }
 
 /* Estilos para el resultado de la búsqueda */
-.resultado-busqueda {
-  margin-top: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.mensaje-positivo {
+  color: green;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 1%;
+}
+
+.mensaje-negativo {
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 1%;
 }
 
 /* Estilos para la sección de datos del alumno */
 .alumno-datos {
   margin-top: 20px;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 4px;
 }
 
-/* Estilos para la sección de notas, promedio y asistencia */
-.notas-prom-asist {
-  margin-top: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
+/* Estilos para el boton Notas */
+.buttonNotas {
+  background-color: #007bff;
+  color: white;
+  border: 2px solid #2200ff;
   border-radius: 4px;
+  cursor: pointer;
+  margin-left: 1%;
+}
+
+/* Estilos para el botón de búsqueda al pasar el mouse */
+.buttonNotas:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para el boton Guardar */
+.buttonEnd {
+  margin: 5px 5px;
+  text-align: center;
+}
+
+.buttonEnd button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: 2px solid #0132f8;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  /* Estilos responsivos para ajustar el ancho */
+  max-width: 100%;
+  width: auto;
+}
+
+.buttonEnd button:hover {
+  background-color: #03f523;
+  color: #2200ff;
+  font-weight: bold;
 }
