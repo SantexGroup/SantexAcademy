@@ -7,9 +7,9 @@
         <div class="card-header">
           <h2>Detalles del usuario</h2>
         </div>
-        <div class="card-body">          
+        <div class="card-body">
           <p><strong>Id:</strong> {{ user.id }}</p>
-          <p><strong>Rol:</strong> {{ getRoleName(user.role) }}</p>          
+          <p><strong>Rol:</strong> {{ getRoleName(user.role) }}</p>
           <p><strong>Nombre:</strong> {{ user.firstName }}</p>
           <p><strong>Apellido:</strong> {{ user.lastName }}</p>
           <p><strong>Correo electrónico:</strong> {{ user.email }}</p>
@@ -32,8 +32,8 @@
         <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmación</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        ¿Está seguro de eliminar a {{ user.firstName }}?
+      <div class="modal-body" *ngIf="user">
+        <p><strong>Nombre:</strong> {{ user.firstName }}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
