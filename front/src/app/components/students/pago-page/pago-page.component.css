@@ -1,0 +1,31 @@
+.container {
+    display: grid;
+    place-content: center;
+    padding: 20px;
+    border: 0.5px solid rgba(0, 0, 0, 0.071);
+    border-radius: 55px;
+    width: 450px;
+    margin: 15%;
+}
+.custom-file-upload {
+    display: inline-block;
+    background-color: orange; /* Color de fondo naranja */
+    color: white; /* Color de texto blanco */
+    padding: 6px 12px; /* Ajuste el relleno según sea necesario */
+    cursor: pointer;
+    border: 1px solid orange; /* Borde naranja */
+    border-radius: 5px; /* Bordes redondeados */
+  }
+  
+.custom-file-upload input[type="file"] {
+    display: none; /* Oculta el botón de carga de archivo predeterminado */
+  }
+
+/* Estilos adicionales para la entrada de archivo personalizada */
+.custom-file-upload::before {
+    content: 'Subir comprobante'; /* Texto del botón */
+  }
+  
+  .custom-file-upload:hover {
+    background-color: darkorange; /* Cambia el color de fondo en el hover */
+  }

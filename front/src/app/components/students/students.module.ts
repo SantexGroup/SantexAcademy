@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { StudentsRoutingModule } from './students-routing.module';
 import { LayoutComponent } from './layout/layout.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { PagoPageComponent } from './pago-page/pago-page.component';
 
 
 
@@ -21,7 +22,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     StudentsComponent,
             StudentsCoursesComponent,
             StudentsPersonalDataComponent,
-            LayoutComponent
+            LayoutComponent,
+            PagoPageComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     StudentsRoutingModule,
     MatDatepickerModule,
     
-  ]
+  ],
+  exports: [LayoutComponent, ]
 })
 export class StudentModule { }
