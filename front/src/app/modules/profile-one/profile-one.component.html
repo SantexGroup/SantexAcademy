@@ -1,0 +1,77 @@
+<div class="todo">
+    <div class="botonera">
+        <button mat-raised-button color="primary" (click)="downloadPDF()" >Download PDF</button>
+        <input type="color" [(ngModel)]="selectedColor">
+        <button mat-raised-button color="primary" (click)="applyColors()">Aplicar Color</button>
+    </div>   
+    <div class="conteiner" id="profile-one">
+        <div class="izquierdo" [ngStyle]="{ 'background-color': selectedColor }">
+            <div class="img-conteiner">
+                <div class="img">
+                    <img src="{{userData.urlPicture}}" alt="">
+                </div>
+            </div>
+            <div class="card-item">
+                <div class="titulo-card">
+                    <h3>SOBRE MI</h3>
+                </div>
+                <div class="contenido-card">
+                    <h4>Soy un profesional apasionado y altamente motivado con una sólida formación en [tu campo de estudio o profesión]. A lo largo de mi carrera, he adquirido una valiosa experiencia en [mencionar áreas relevantes], lo que me ha permitido desarrollar habilidades excepcionales en [lista de habilidades clave relacionadas con tu campo]</h4>
+                </div>
+
+            </div>
+            <div class="card-item">
+                <div class="titulo-card">
+                    <h3>EDUCACIÓN</h3>
+                </div>
+                <div class="contenido-card">
+                    <ul>
+                        <li *ngFor="let formation of userData.formations">
+                            <h4>{{formation.institute}}</h4>
+                            <h5>{{formation.title}}- {{formation.endDate}}</h5>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="derecho">
+            <div class="card-item">
+                <div class="nombre">
+                    <h1 [ngStyle]="{ 'color': selectedColor }">{{userData.userName}}<br>{{userData.lastName}}</h1>
+                    <h4 [ngStyle]="{ 'color': selectedColor }"><mat-icon>phone</mat-icon> -  351- 3588549</h4>
+                    <h4 [ngStyle]="{ 'color': selectedColor }"><mat-icon>mail</mat-icon> - rodriguezm@gmail.com</h4>
+                    <h4 [ngStyle]="{ 'color': selectedColor }"><mat-icon>home</mat-icon> - Av Colon 1241</h4>
+                </div>
+            </div>
+            <div class="card-item">
+                <div class="titulo-card" >
+                    <h3 [ngStyle]="{ 'color': selectedColor }">EXPERIENCIA</h3>
+                </div>
+                <div class="contenido-card" [ngStyle]="{ 'border-top-color': selectedColor }">
+                    <ul>
+                        <li *ngFor="let experience of userData.experiences">
+                            <h4 >{{experience.company}} - {{experience.Country}}</h4>
+                            <h5>{{experience.position}} - {{experience.endDate}}</h5>
+                            <h5>{{experience.description}}</h5>    
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-item">
+                    <div class="titulo-card" [ngStyle]="{ 'border-bottom-color': selectedColor }">
+                        <h3 [ngStyle]="{ 'color': selectedColor }"  >IDIOMAS Y EXTRAS</h3>
+                    </div>
+                    <div class="contenido-card" class="contenido-card" [ngStyle]="{ 'border-top-color': selectedColor }">
+                        <ul>
+                            <li *ngFor="let language of userData.languages">
+                                <h4>{{language.language}} - Nivel: {{language.level}}</h4>
+                            </li>
+                            <li *ngFor="let skill of userData.skills">
+                                <h4>{{skill.skill}} Nivel: {{skill.level}}</h4>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

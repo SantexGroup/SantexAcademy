@@ -1,14 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
-    path: 'dashboard',
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+    path: '',
+    component: AppComponent
   },
   {
-    path: '**',
-    redirectTo: 'dashboard'
+    path: '#nosotrosContacto',
+    component: AppComponent
+  },
+  {
+    path: 'home/:id',
+    loadChildren: () => 
+    import('./modules/lazyLoading/crud-data.module')
+    .then(m => m.CrudDataModule)
+  }, 
+  {
+    path: '',
+    loadChildren: () => 
+    import('./modules/lazyLoading/usuario.module')
+    .then(m => m.UsuarioModule)
   }
 ];
 

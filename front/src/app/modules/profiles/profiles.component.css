@@ -1,0 +1,220 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #fcfafa;
+    color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flexbox;
+}
+.conteiner-profiles{
+    display: flex;
+    background-color: #fcfcfc;
+    margin-top: 50px;
+
+}
+
+.profile-1{
+    width: 30%;
+    max-width: 300px;
+    border: 2px solid #000;
+    margin:auto;
+    font-size: 10px;
+    line-height: 5px;
+    text-align: center;
+    display: grid;    
+    grid-gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "header header header"
+                         "item-foto experiencia experiencia"
+                         "item-foto experiencia experiencia"
+                         "sobreMi experiencia experiencia"
+                         "sobreMi formacion formacion"
+                         "links formacion formacion"
+                         "skills opcionales referencias"
+                         "skills opcionales referencias";
+
+}
+.profile-1 > div{
+    display: flex;
+    padding: 20px;
+    color: white;
+    background: #449fdf ;
+    box-shadow: 2px 2px 10px rgba(0,0,0,25);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}  
+.profile-1 > .header {
+    
+    grid-area: header;
+   
+}
+.profile-1 > .item-foto {
+    
+    grid-row-start: item-foto ;
+    grid-row-end: item-foto ;
+    
+}
+.profile-1 > .experiencia{
+    
+    grid-area: experiencia;
+}
+.profile-1 > .formacion{
+    
+    grid-area: formacion;
+}
+.profile-1 > .sobre-mi{
+    
+    grid-area: sobreMi;
+}
+.profile-1 > .links{
+   
+    grid-area: links;
+}
+.profile-1 > .skills{
+    
+    grid-area: skills;
+}
+.profile-1 > .opcionales{
+    
+    grid-area: opcionales;
+}
+.profile-1 > .referencias{
+    
+    grid-area: referencias;
+}
+.profile-2{
+    width: 30%;
+    max-width: 300px;
+    border: 2px solid #000;
+    margin:auto;
+    font-size: 10px;
+    line-height: 5px;
+    text-align: center;
+    display: grid;    
+    grid-gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-areas: "item-foto sobreMi sobreMi sobreMi"
+                         "item-foto sobreMi sobreMi sobreMi"
+                         "opcionales experiencia experiencia experiencia"
+                         "opcionales experiencia experiencia experiencia"
+                         "opcionales experiencia experiencia experiencia"
+                         "links formacion formacion formacion"
+                         "links formacion formacion formacion"
+                         "skills skills referencias referencias"
+                         "skills skills referencias referencias";
+    grid-gap: 5px;
+}
+.profile-2 > div{
+    display: flex;
+    padding: 20px;
+    color: white;
+    background: #2f89fc ;
+    box-shadow: 2px 2px 10px rgba(0,0,0,25);
+    text-align: center;
+    justify-content: center;
+    align-items: center;  
+}
+.profile-2 > .header {
+   
+    grid-area: header;
+   
+}
+.profile-2 > .item-foto {
+    
+    grid-row-start: item-foto ;
+    grid-row-end: item-foto ;
+    
+}
+.profile-2 > .experiencia{
+    
+    grid-area: experiencia;
+}
+.profile-2 > .formacion{
+    
+    grid-area: formacion;
+}
+.profile-2 > .sobre-mi{
+    
+    grid-area: sobreMi;
+}
+.profile-2 > .links{
+    
+    grid-area: links;
+}
+.profile-2 > .skills{
+    
+    grid-area: skills;
+}
+.profile-2 > .opcionales{
+   
+    grid-area: opcionales;
+}
+.profile-2 > .referencias{
+    
+    grid-area: referencias;
+}
+
+/* desde aca*/
+
+.profile-3{
+    width: 30%;
+    max-width: 500px;
+    border: 2px solid #000;
+    margin:2px;
+    font-size: 10px;
+    line-height: 2px;
+    text-align: center;
+    display: grid;    
+    grid-gap: 5px;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "titulo titulo titulo"
+                         "sobreMi experiencias skills"
+                         "sobreMi experiencias skills"
+                         "sobreMi experiencias skills"
+                         "sobreMi experiencias skills"
+                         "opcionales formaciones links"
+                         "opcionales formaciones links"
+                         "opcionales formaciones links"
+                         "referencias referencias referencias";
+    grid-gap: 5px;
+}
+.profile-3 > div{
+    display: flex;
+    padding: 2px;
+    color: white;
+    background: #2f89fc ;
+    box-shadow: 2px 2px 10px rgba(0,0,0,25);
+    text-align: center;
+    justify-content: center;
+    align-items: center;  
+}
+.profile-3 > .titulo{
+    grid-area: titulo;
+}
+.profile-3 > .sobreMi{
+    grid-area: sobreMi;
+}
+.profile-3 > .experiencias{
+    grid-area: experiencias;
+}
+.profile-3 > .skills{
+    grid-area: skills;
+}
+.profile-3 > .opcionales{
+    grid-area: opcionales;
+}
+.profile-3 > .formaciones{
+    grid-area: formaciones;
+}
+.profile-3 > .links{
+    grid-area: links;
+}
+.profile-3 > .referencias{
+    grid-area: referencias;
+}

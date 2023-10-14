@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const passport = require('passport');
 // Express Dependencies:
 const express = require('express');
 // Sanitizacion XSS
@@ -9,6 +10,7 @@ const helmet = require('helmet');
 const session = require('express-session');
 // Winston logger Dependencies
 const cors = require('cors');
+const PassportStrategy = require('./config/files/passport-config');
 const logger = require('./utils/winston.logger');
 
 // Models:
@@ -58,7 +60,7 @@ app.use(express.urlencoded(
 ));
 
 // Cors configuration
-const whitelist = process.env.CORS.split(' ');
+const whitelist = process.env.CORS.split(',');
 
 const corsOptions = {
   origin(origin, callback) {
@@ -85,5 +87,8 @@ models.sequelize.authenticate()
     logger.api.error(err);
   });
 
+passport.use(PassportStrategy);
+
 app.use('/', routes);
+
 module.exports = app;

@@ -1,0 +1,37 @@
+.title{
+    text-align: center;
+}
+
+.title h1{
+    color: #0D6EFD;
+    font-weight: bold;
+}
+
+section{
+    display: flex;
+    margin: 2rem 0 0 4rem;
+    width: 800px;
+    height: 600px;
+}
+
+section img{
+    width: 0;
+    flex-grow: 1;
+    border-top: 3px solid #0D6EFD;
+    border-bottom: 3px solid #0D6EFD;
+    border-left: 3px solid #0D6EFD;
+    object-fit: cover;
+    opacity: .5;
+    transition: .5s ease;
+}
+
+section img:hover{
+    cursor: pointer;
+    width: 300px;
+    opacity: 1;
+    filter: contrast(120%);
+    -webkit-box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.7);
+    -moz-box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.7);
+    box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.7);
+
+}

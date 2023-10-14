@@ -1,0 +1,53 @@
+<body>
+    <div class="skillsInput">
+        <form [formGroup]="skillForm"
+        (change)="userData.markForm(skillForm)">
+            <mat-form-field>
+                <mat-label for="skill">Habilidad:</mat-label>
+                <input matInput formControlName="skill" type="text">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="level">Nivel:</mat-label>
+                <mat-select formControlName="level" name="countries">
+                    <mat-option *ngFor="let level of userData.levels" [value]="level">
+                        {{level}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="botonera">
+                <div class="botones">
+                    <button class="plus" type="submit" *ngIf="views.plusOne" (click)="addSkillToProfile()">
+                        <img src="./assets/Imagenes/plus.png" alt="+">
+                    </button>
+                    <button 
+                    type="submit" mat-raised-button 
+                    color="primary" 
+                    (click)="skillUpdate()"
+                    *ngIf="views.saveButton">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="lista">
+            <ul>
+                <li *ngFor="let skill of userData.skills">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"> Habilidad: {{skill.skill}} </h5>
+                            <p class="card-text"> Nivel: {{skill.level}} </p>
+                            <div class="botonera-card">
+                                <button (click)="getSelectedSkill(skill.id)" (click)="views.changeViews()">
+                                    <img src="./assets/Imagenes/editar.png" alt="Editar">
+                                </button>
+                                <button (click)="skillDelete(skill.id)">
+                                    <img src="./assets/Imagenes/delete.png" alt="Eliminar">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>

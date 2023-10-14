@@ -1,0 +1,82 @@
+.todo {
+    justify-content: center;
+    max-height: fit-content;
+    max-width: 300mm;
+    position: sticky;
+}
+.conteiner{
+    display: flex;   
+    justify-content: center;
+    border: solid 2px black;
+    height: 297mm;
+    width: 210mm;
+    margin: 6em;
+    
+}
+.botonera{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 6em;
+    margin-right: 6em;
+}
+.izquierdo{
+    width: 40%;
+    height: 100%;
+    background-color: rgb(58, 83, 134);
+    color: white;
+}
+.derecho{
+    width: 60%;
+    height: 100%;    
+}
+img{
+    width: 100%;    
+}
+.izquierdo .card-item{
+    border-bottom: solid 2px white;
+    padding-bottom: 1rem;
+    margin: 1rem 2rem 3rem 2rem;
+}
+.izquierdo .titulo-card h3{    
+    font-weight: 400;
+    font-size: x-large;    
+}
+
+   
+.izquierdo .contenido-card h4{
+    margin: 0;
+}
+ul{
+    padding: 0;        
+}
+.derecho .nombre h1{
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 4rem;
+    line-height: 1;
+    padding-top: 2rem;
+    color: rgb(58, 83, 134);
+    margin-left: 1rem;
+}
+.nombre h4{
+    width: 100%;
+    display: inline-flex;
+    margin-left: 1rem;
+    padding-left: 1rem;
+    color: rgb(58, 83, 134);
+}
+.derecho .titulo-card h3{
+    font-weight: 400;
+    font-size: x-large;
+    color: rgb(58, 83, 134);
+    
+    padding-left: 2rem;
+    margin-top: 4rem;
+    margin-right: 10rem;
+}
+.derecho .contenido-card{
+    border-top: solid 6px;
+    border-top-color: rgb(58, 83, 134);
+    margin-left: 2rem;
+    margin-right: 8rem;
+}

@@ -1,0 +1,100 @@
+.todo{
+    display: flexbox;    
+    justify-content: center;    
+}
+.conteiner{
+    height: 297mm;
+    width: 210mm;
+    display: flex;
+    border: 1px solid black;
+    position: relative;
+    margin:  5em;
+    
+}
+.izquierdo{
+    height: 90%;
+    width: 50%;
+    display: block;
+    margin-left: 2em;    
+}
+.derecho{
+    height: 90%;
+    width: 50%;
+    display: block;
+    margin-right: 2em;
+}
+.conteiner-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(251, 205, 37, 0.957);
+    border-radius: 50% 0% 50% 50%;
+    height: 17em;
+    width: 17em;
+    margin: 4em;
+}
+img{
+    border-radius: 50%;
+    height: 15.5em;
+    width: 15.5em;
+}
+.titulo-card{
+    display: flex;
+    background-color: black;
+    border-radius: 30px;
+    color: rgba(251, 205, 37, 0.957);    
+    height: 3em;
+    width: 83%;
+    margin-left: 2em;
+    align-items: center;
+    text-align: justify;     
+}
+.titulo-card h3{
+    max-width: 80%;
+    max-height: min-content;
+    margin: 0;
+    margin-top: .5em;
+    margin-left: 2em;
+    font-weight: 700;   
+}
+.contenido-card h4{
+    margin: 0 ;
+    margin-top: 1em;
+    font-weight: 700;
+}
+.contenido-card h5{
+    font-size: 15px;
+}
+h1{
+    text-transform: uppercase;
+    margin: 0;
+    margin-bottom: .5em;
+    font-weight: 800;
+    font-size: 45px;
+    margin-top: 1.5em;
+    line-height: 1;
+    border-bottom: 4px solid; 
+    border-bottom-color: rgba(251, 205, 37, 0.957);
+}
+.footer{
+    display: inline-flex;
+}
+.datos{
+    margin-top: 2em;
+    margin-left: 2em;
+}
+input{
+  width: 50px; /* Ajusta el ancho según tu diseño */
+  height: 50px; /* Ajusta la altura según tu diseño */
+  border: none; /* Quita el borde predeterminado del input color */
+  border-radius: 50%; /* Establece un borde redondeado para que sea similar a un botón */
+  background-color: #1976D2; /* Color primario de Material Design */
+  cursor: pointer; /* Cambia el cursor al estilo de enlace (mano) cuando se pasa por encima */
+  color: white; /* Color de texto en contraste con el fondo */
+}
+.botonera{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 6em;
+    margin-right: 6em;
+}

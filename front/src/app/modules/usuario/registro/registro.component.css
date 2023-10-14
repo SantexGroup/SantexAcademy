@@ -1,0 +1,77 @@
+.ng-invalid:not(form).ng-touched input{
+  -webkit-box-shadow: -14px 12px 19px -6px rgba(165, 62, 22, 0.8);
+  -moz-box-shadow: -14px 12px 19px -6px rgba(165, 62, 22, 0.8);
+  box-shadow: -14px 12px 19px -6px rgba(165, 62, 22, 0.8);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2rem auto auto auto;
+  padding: 35px;
+  width: 400px;
+  border-radius: 14px;
+  -webkit-box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.57);
+  -moz-box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.57);
+  box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.57);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  /* max-width: 350px; */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.title {
+  font-size: 30px;
+  color: royalblue;
+  font-weight: 500;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form label .input {
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  background-color: royalblue;
+  margin-top: 25px;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+}
+
+.submit:hover {
+  background-color: rgb(56, 90, 194);
+}
+
+.submit:disabled {
+  background-color: #808080;
+}
+
+.error {
+  font-size: 12px;
+  margin-top: 2px;
+  margin-bottom: 1px; 
+  padding: 0px; 
+  color: red;
+}
