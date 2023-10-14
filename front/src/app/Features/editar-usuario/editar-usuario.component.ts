@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EditarUsuarioService } from 'src/app/core/services/editar-usuario.service';
 import { MensajeService } from 'src/app/core/services/mensaje.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -125,10 +126,19 @@ export class EditarUsuarioComponent implements OnInit {
           this.desloguear();
           console.log('deslogueo con exito');
           
-          alert("Cuenta eliminada con éxito");
+          Swal.fire({
+            icon: 'success',
+            title: 'Su cuenta ha sido eliminada',
+            confirmButtonText: "Ok"
+          })
           this.router.navigate(['/']);
         } else {
-          alert("No se ha podido eliminar su cuenta");
+          Swal.fire({
+            icon: 'error',
+            title: 'No se ha podido eliminar su cuenta',
+            confirmButtonText: "Ok"
+          })
+          this.router.navigate(['/']);
         }
       });
     }

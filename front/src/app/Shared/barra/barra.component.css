@@ -47,17 +47,19 @@ input:focus {
 /* categorias */
 .dropdown-menu {
     margin: 0;
-    padding: 0;
-    border-radius: 20px;    
-    border: 1px solid #d68a96
+    padding: 0;    
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: 0;
+    background-color: #E1DEDE;
+    margin-top: 13px;
 }
-.dropdown-item {
-    border-radius: 30px;
-}
+
 .dropdown-item:hover {
     cursor: pointer;
     background-color: #d68a96;
     color: white;
+
 }
 /* buscador */
 #buscador {
