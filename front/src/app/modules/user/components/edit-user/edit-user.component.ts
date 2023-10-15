@@ -60,4 +60,8 @@ export class EditUserComponent implements OnInit {
       }
     });
   }
+
+  goBack() {
+    this.router.navigate([`/user/${this.user.id}`]);
+  }
 }
