@@ -23,6 +23,8 @@ export class EditUserComponent implements OnInit {
       if (userId) {
         this.userService.getUserById(userId).subscribe((user) => {
           this.user = user;
+          this.user.password = null;
+          console.log('desde params', user)
           this.isAdmin = this.user.role === 'admin';
         });
       } else {
@@ -30,6 +32,8 @@ export class EditUserComponent implements OnInit {
         if (userId) {
           this.userService.getUserById(userId).subscribe((user) => {
             this.user = user;
+            this.user.password = null;
+            console.log('desde localstorage', user)
             this.isAdmin = this.user.role === 'admin';
           });
         } else {
@@ -47,7 +51,7 @@ export class EditUserComponent implements OnInit {
       next: (response: any) => {
         console.log('Usuario actualizado exitosamente', response);
         this.toastr.success('Usuario editado exitosamente');
-        this.router.navigate([`/user/${this.userId}`]);
+        this.router.navigate([`/user/${this.user.id}`]);
 
       },
       error: (error: any) => {
