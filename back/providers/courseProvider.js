@@ -1,11 +1,16 @@
 const { Course, User } = require('../models');
 const { Op } = require('sequelize');
 
+const ExtensiveCourse = Course.scope('defaultScope', 'withTeachersAndCategories');
 
 const createCourse = async (course) => {
     try {
-        const newCourse = await Course.create(course);
-        return await Course.findByPk(newCourse.id);
+        return await Course.create({
+            name: course.name,
+            description: course.description,
+            image: course.image,
+            durationHours: course.durationHours
+        });
     } catch (err) {
         console.error('Error when creating course.', err.message);
         throw err;
@@ -14,7 +19,7 @@ const createCourse = async (course) => {
 
 const getCourses = async () => {
     try {
-        return await Course.findAll();
+        return await ExtensiveCourse.findAll();
     } catch (err) {
         console.error('Error when fetching courses.', err.message);
         throw err;
@@ -23,7 +28,7 @@ const getCourses = async () => {
 
 const getCourse = async (id) => {
     try {
-        return await Course.findByPk(id);
+        return await ExtensiveCourse.findByPk(id);
     } catch (err) {
         console.error('Error when fetching course.', err.message);
         throw err;
@@ -32,7 +37,14 @@ const getCourse = async (id) => {
 
 const updateCourse = async (id, newValues) => {
     try {
-        await Course.update(newValues, { where: { id } });
+        await Course.update({
+            name: newValues.name,
+            description: newValues.description,
+            image: newValues.image,
+            durationHours: newValues.durationHours
+        }, {
+            where: { id }
+        });
         return await Course.findByPk(id);
     } catch (err) {
         console.error('Error when updating course.', err.message);
@@ -63,14 +75,23 @@ const getUsers = async (id, filterParams) => {
 
 const addUser = async (courseId, userId) => {
     try {
+        // Comprueba que el curso y el usuario existan
         const course = await Course.findByPk(courseId);
         const user = await User.findByPk(userId);
         if (!course || !user) return null;
-        const courseHasUser = await course.hasUser(user);
-        if (!courseHasUser) await course.addUser(userId);
+
+        // Comprueba que el usuario no esté en el curso
+        if ( await course.hasUser(user) ) {
+            throw new Error('The user is already in the course.');
+        }
+
+        // Agrega el usuario al curso
+        await course.addUser(userId);
+
+        // Devuelve el usuario con la asociación creada
         return ( await course.getUsers({ where: { id: userId } }) )[0];
     } catch (err) {
-        console.error('Error when adding user to course.', err);
+        console.error('Error when adding user to course.', err.message);
         throw err;
     }
 };
@@ -80,7 +101,7 @@ const removeUser = async (courseId, userId) => {
         const course = await Course.findByPk(courseId);
         return await course?.removeUser(userId);
     } catch (err) {
-        console.error('Error when removing user from course.', err);
+        console.error('Error when removing user from course.', err.message);
         throw err;
     }
 };
