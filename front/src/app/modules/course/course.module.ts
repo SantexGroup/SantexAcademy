@@ -7,6 +7,7 @@ import { CourseListComponent } from './components/course-list/course-list.compon
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { EditCourseComponent } from './components/edit-course/edit-course.component';
 import { FormsModule } from '@angular/forms';
+import { MyCoursesComponent } from './components/my-courses/my-courses.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     CourseComponent,
     CourseListComponent,
     AddCourseComponent,
-    EditCourseComponent
+    EditCourseComponent,
+    MyCoursesComponent
   ],
   imports: [
     CommonModule,

@@ -5,8 +5,18 @@
     padding: var(--font-size-1);
 }
 
-.btn-info {
+.btn-custom {
     color: var(--color-0) ;
     background-color: var(--color-4);
-    padding: var(--font-size-1);
+    padding: .5rem;
+    font-weight: 600;
 }
+
+.btn-custom:hover {
+    background-color: var(--color-2);
+}
+
+.btn-info:hover {
+    background-color: var(--color-2);
+}
+

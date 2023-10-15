@@ -32,17 +32,17 @@ export class CourseComponent implements OnInit {
 
   deleteCourse() {
     if (this.course && this.course.id) {      
-      this.courseService.deleteCourseById(this.course.id).subscribe(
-        () => {
+      this.courseService.deleteCourseById(this.course.id).subscribe({
+        next: () => {
           console.log('Curso eliminado exitosamente');
-          this.toastr.success('Curso eliminado exitosamente')
+          this.toastr.success('Curso eliminado correctamante')
           this.navigateToCourseList();
         },
-        (error) => {
+        error: (error) => {
           console.error('Error al eliminar curso:', error);
           this.toastr.error('Error al eliminar curso')
         }
-      );
+    });
     }
   }
   

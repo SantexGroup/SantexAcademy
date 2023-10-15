@@ -41,3 +41,11 @@
 .custom-logout {
     cursor: pointer !important;
   }
+
+.username {
+    margin-right: 2.5rem; 
+}
+
+.nav-link:hover {
+    color: var(--color-grad-1) !important;
+  }

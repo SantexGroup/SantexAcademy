@@ -57,3 +57,10 @@ textarea {
     bottom: 0;
     width: 100%;
 }
+
+.btn-danger{
+    width: 100%;
+    padding: .5rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
