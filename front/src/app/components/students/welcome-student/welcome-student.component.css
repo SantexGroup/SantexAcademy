@@ -1,0 +1,12 @@
+.welcome-container{
+    display: grid;
+    place-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.welcome-image{
+    width: 600px;
+    height: 600px;
+    border-radius: 32px;
+}
