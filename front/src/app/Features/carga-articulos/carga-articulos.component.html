@@ -1,11 +1,17 @@
 <app-barra></app-barra>
-<p *ngIf="!confVendedor">¡Para subir un articulo nuevo debe ser vendedor!</p>
+<div *ngIf="!confVendedor">
+    <h3>¡Para subir un articulo nuevo debe ser vendedor!</h3>
+    <div id="botonNavegacion" style="padding-top: 0%;">
+        <app-boton-navegacion></app-boton-navegacion>
+    </div>
+</div>
 <div class="formulario" *ngIf="confVendedor">
+    <div id="botonNavegacion" style="padding-top: 0.1%;">
+        <app-boton-navegacion></app-boton-navegacion>
+    </div>
     <h2>Cargar artículo</h2>
     <form action="#" class="form" method="post" id="form-art"  enctype="multipart/form-data" [formGroup]="formUp">
-        <div id="botonNavegacion">
-            <app-boton-navegacion></app-boton-navegacion>
-        </div>
+        
         <div class="row">
             <!-- Columna izquierda -->
             <div class="media_columna">

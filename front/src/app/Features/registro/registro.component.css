@@ -9,12 +9,20 @@ p{
 }
 #BotonColor {
   color: #f0eaeb;
-  background-color: #d68a96;
   border: 0;
+  border: none;
+  border-radius: 4px;
+  background-color: #d68a96;
+  color: white;
+  width: 100%;
+  margin-bottom: 0%;
 }
 #BotonColor:hover {
   background-color: #c95c6d;
-}
+  cursor: pointer;
+  background-color: #c95c6d;
+  transition: background-color 0.3s, color 0.3s;
+} 
 /* formulario general */
 #FormularioCompleto {
   margin-top: 15px;
@@ -35,10 +43,9 @@ p{
   padding-bottom: 15px;
 }
 #botonNavegacion {
-  display: flex;
-  justify-content: start;
-  padding-right: 10px;
-  padding-top: 5px;
+  margin-left: 0.5%;
+  padding-top: 0.5%;
+  
 }
 /* formulario tags */
 .formulario h2 {
@@ -146,6 +153,7 @@ p{
   border-style: solid;
   border-color: #7b7b7b transparent transparent transparent;
 }
+
 
 /* ---------------------------------------------- Responsive --------------------------------------------------*/
 

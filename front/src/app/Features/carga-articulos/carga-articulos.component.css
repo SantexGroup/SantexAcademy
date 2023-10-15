@@ -48,9 +48,9 @@ textarea {
   height: 135px;
 }
 #botonNavegacion {
-  display: flex;
-  justify-content: end;
+  margin-left: 0.5%;
 }
+
 /* Columnas */
 .row {
   display: flex;
@@ -159,4 +159,17 @@ input[type="file"] {
 }
 #envio {
   margin-top: 2px;
+}
+
+h3 {
+  background-color: #ffffff; 
+  border: 1px solid #c95c6d; 
+  padding: 10px;
+  border-radius: 5px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  font-size: 18px; 
+  color: #333; 
+  margin-top: 10px ; 
+  text-align: center; 
+  font-weight: bold;
 }
