@@ -34,6 +34,10 @@ app.use(helmet.hsts({
 // Sets "X-Content-Type-Options: nosniff".
 app.use(helmet.noSniff());
 app.use(helmet.frameguard({ action: 'deny' }));
+app.use('/ruta-a-resetPassword.js', (req, res) => {
+  res.set('Content-Type', 'application/javascript'); // Establece el tipo de contenido correcto
+  res.sendFile('ruta-a-resetPassword.js', { root: __dirname }); // Ruta al archivo JavaScript
+});
 
 app.use(xss());
 // Sets cookies security settings
@@ -58,6 +62,10 @@ app.use(express.urlencoded(
     parameterLimit: 10,
   },
 ));
+
+app.set('view engine', 'ejs');
+app.set('views', './views');
+app.use(express.static('./public'));
 
 // Cors configuration
 const whitelist = process.env.CORS.split(',');

@@ -19,6 +19,7 @@
     "cors": "^2.8.5",
     "debug": "^4.3.4",
     "dotenv": "^8.6.0",
+    "ejs": "^3.1.9",
     "envalid": "^7.3.1",
     "express": "^4.17.3",
     "express-session": "^1.17.3",
