@@ -13,26 +13,39 @@ export class EditUserComponent implements OnInit {
 
   user: any = {};
   userId: string = '';
-
+  isAdmin: boolean = false;
 
   constructor(private route: ActivatedRoute, private userService: UserService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.userId = params['id'];
-      if (this.userId) {
-        this.userService.getUserById(this.userId).subscribe((user) => {
+    this.route.paramMap.subscribe((params) => {
+      const userId = params.get('id');
+      if (userId) {
+        this.userService.getUserById(userId).subscribe((user) => {
           this.user = user;
-          console.log('Usuario cargado:', this.user);
+          this.isAdmin = this.user.role === 'admin';
         });
+      } else {
+        const { userId } = JSON.parse(localStorage.getItem('session')!);
+        if (userId) {
+          this.userService.getUserById(userId).subscribe((user) => {
+            this.user = user;
+            this.isAdmin = this.user.role === 'admin';
+          });
+        } else {
+          console.log('No se encontró un userId en los parámetros ni en el localStorage.');
+        }
       }
     });
+
+
+
   }
 
   editUser() {
     this.userService.updateUser(this.user).subscribe({
       next: (response: any) => {
-        console.log('Usuario actualizado exitosamente', response);      
+        console.log('Usuario actualizado exitosamente', response);
         this.toastr.success('Usuario editado exitosamente');
         this.router.navigate([`/user/${this.userId}`]);
 
