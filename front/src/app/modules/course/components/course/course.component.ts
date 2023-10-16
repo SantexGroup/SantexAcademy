@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CourseService } from 'src/app/services/course.service';
 
 @Component({
@@ -12,7 +13,11 @@ export class CourseComponent implements OnInit {
 
   course: any;
 
-  constructor(private route: ActivatedRoute, private courseService: CourseService, private router: Router ) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private courseService: CourseService, 
+    private router: Router,
+    private toastr: ToastrService ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -27,23 +32,27 @@ export class CourseComponent implements OnInit {
 
   deleteCourse() {
     if (this.course && this.course.id) {      
-      this.courseService.deleteCourseById(this.course.id).subscribe(
-        () => {
+      this.courseService.deleteCourseById(this.course.id).subscribe({
+        next: () => {
           console.log('Curso eliminado exitosamente');
-          alert("El Curso se eliminó correctamente")
-          this.router.navigate(['/course-list']);
+          this.toastr.success('Curso eliminado correctamante')
+          this.navigateToCourseList();
         },
-        (error) => {
+        error: (error) => {
           console.error('Error al eliminar curso:', error);
-          alert("Error al eliminar el curso")
+          this.toastr.error('Error al eliminar curso')
         }
-      );
+    });
     }
   }
   
 
   redirectToEditCourse(courseId: number) {
     this.router.navigate([`/course/edit-course/${courseId}`]);
+  }
+
+  navigateToCourseList() {
+    this.router.navigate(['/course/course-list']);
   }
  
 }

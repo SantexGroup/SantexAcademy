@@ -3,6 +3,7 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { baseURL } from 'src/config';
 import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -19,7 +20,7 @@ export class RegisterComponent {
   firstName: string = '';
   lastName: string = '';  
 
-  constructor(private http: HttpClient, private toastr: ToastrService,private router: Router ) { }
+  constructor(private http: HttpClient, private toastr: ToastrService, private router: Router ) { }
 
   registerUser() {
     const userData = { 
@@ -29,17 +30,19 @@ export class RegisterComponent {
       lastName: this.lastName 
     };
 
-    this.http.post(`${baseURL}/api/user/create`, userData).subscribe(
-      (response) => {
+    this.http.post(`${baseURL}/api/user/create`, userData).subscribe({
+      next:(response) => {
         console.log('Usuario registrado exitosamente', response);
-        this.toastr.success('Usuario registrado exitosamente', '¡Felicidades!');
+        this.toastr.success('Se ha registrado con éxito', '¡Felicidades!');
+        this.navigateToLogin();
+
 
       },
-      (error) => {
+      error:(error) => {
         console.error('Error al registrar usuario:', error);
         this.toastr.error('Error al registrarse', 'Error');
       }
-    );    
+    });    
   }
 
   navigateToLogin() {

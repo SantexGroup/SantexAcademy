@@ -4,7 +4,7 @@
   <div class="row align-items-center">
     <div class="card">
       <div class="card-body">
-        <p class="card-text">Editar Usuario</p>
+        <h2 class="card-text">Editar Usuario</h2>
       </div>
 
       <form #editForm="ngForm" (submit)="editUser()">
@@ -39,8 +39,10 @@
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Actualizar</button> <!-- Cambiar el texto -->
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <button (click)="backToUser()" type="submit" class="btn btn-danger">Cancelar</button> 
       </form>
+     
     </div>
   </div>
 </div>

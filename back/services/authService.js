@@ -1,27 +1,27 @@
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const db = require('../models'); 
+const userProvider = require('../providers/userProvider');
 
-
-const login = async (req, res) => {
-    const { email, password } = req.body;
-  
-    try {      
-      const user = await db.User.findOne({ where: { email } });
-  
-      if (!user || user.password !== password) {
-        return res.status(401).json({ message: 'Credenciales inválidas' });
-      }
-  
-      // Genera un token JWT
-      const token = jwt.sign({ userId: user.id }, 'mi_secreto_secreto', { expiresIn: '1h' });
-  
-      res.json({ token });
-    } catch (error) {
-      console.error('Error al iniciar sesión:', error);
-      res.status(500).json({ message: 'Error en el servidor' });
+const login = async (data) => {
+  const user = await userProvider.userValidate(data);
+  try {
+    if (!user) {
+      return null;
     }
-  };
+
+    // Genera un token JWT
+    const token = jwt.sign({
+      userId: user.id,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      role: user.role
+    }, 'secret', { expiresIn: '1h' });
+    return token;
+  } catch (error) {
+    console.error('Error al iniciar sesión:', error);
+    return null;
+  }
+};
 
 // Función para registrar un nuevo usuario
 const registerUser = async (userData) => {

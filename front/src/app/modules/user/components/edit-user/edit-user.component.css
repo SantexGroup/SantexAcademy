@@ -11,6 +11,10 @@
     margin: 1vh;
 }
 
+.card{
+    padding-bottom: 1rem ;
+}
+
 .form-container {
     background-color: VAR(--color-0);
     padding: 20px;
@@ -52,4 +56,11 @@ textarea {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+.btn-danger{
+    width: 100%;
+    padding: .5rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
 }

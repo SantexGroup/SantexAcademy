@@ -13,12 +13,16 @@
     transition: 0.3s ease;
 }
 
+.card-body{
+    /* margin-bottom: -5%; */
+}
+
 .form-container {
     background-color: VAR(--color-0);
-    padding: 20vh;
+    padding: 20px;
     border-radius: 5px;
     box-shadow: VAR(--box-shadow-1);
-    max-width: 400vh;
+    max-width: 400px;
     width: 60vh;
     margin: 0 auto;
 }
@@ -26,8 +30,9 @@
 input {
     font-size: 2vh;
     width: 100%;
+    height: 45px;
     padding: 1vh 2vh;
-    margin: 1vh 0;
+    margin: 10px 0;
     box-sizing: border-box;
     border-color: var(--color-3);
 }
@@ -63,4 +68,10 @@ textarea {
 
 .custom-checkbox input[type="checkbox"] {
     margin-right: 5px;
+
+}
+
+.card{
+    padding: 2.0rem;
+    border-radius: 5px;
 }

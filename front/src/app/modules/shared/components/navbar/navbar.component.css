@@ -7,6 +7,22 @@
     color: var(--color-1);
 }
 
+.custom-dropdown {
+    background-color:var(--color-5);
+    color: var(--color-1);
+    border:  var(--color-0);
+}
+
+.custom-dropdown .dropdown-item {
+    color:  var(--color-1);
+    background-color: transparent;
+    font-size: medium;
+}
+
+.custom-dropdown .dropdown-item:hover {
+    color: var(--color-grad-1)
+}
+
 .custom-navbar .navbar-toggler-icon {
     background-color: var(--color-1);
 }
@@ -21,3 +37,15 @@
 .image {
     max-width: 6rem;
 }
+
+.custom-logout {
+    cursor: pointer !important;
+  }
+
+.username {
+    margin-right: 2.5rem; 
+}
+
+.nav-link:hover {
+    color: var(--color-grad-1) !important;
+  }

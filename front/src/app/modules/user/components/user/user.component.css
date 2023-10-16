@@ -43,13 +43,27 @@ textarea {
     font-size: 14px;
 }
 
-.btn-custom {
-    background-color: VAR(--color-primary);
-    color: var(--color-0);
+.btn-danger{
+    width: 100%;
+    padding: .5rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
 }
 
-.footer {
-    position: fixed;
-    bottom: 0;
+.btn-primary{
     width: 100%;
+    padding: .5rem;   
+    margin-bottom: .5rem;
+}
+
+.btn-info{
+    width: 100%;
+    padding: .5rem;   
+    margin-bottom: .5rem;
+}
+
+.btn-info:hover {
+    background-color: var(--color-0);
+    color: var(--color-6);
+    border-color: var(--color-6);
 }

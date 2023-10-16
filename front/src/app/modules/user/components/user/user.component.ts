@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user',
@@ -12,7 +13,7 @@ export class UserComponent implements OnInit {
 
   user: any;
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router, private toastr: ToastrService) { }
 
   getRoleName(role: string): string {
     switch (role) {
@@ -40,25 +41,27 @@ export class UserComponent implements OnInit {
 
   deleteUser() {
     if (this.user && this.user.id) {      
-      this.userService.deleteUserById(this.user.id).subscribe(
-        () => {
+      this.userService.deleteUserById(this.user.id).subscribe({
+        next:() => {
           console.log('Usuario eliminado exitosamente');
-          alert("El usuario se elimino correctamente")
-          this.router.navigate(['/user-list']);
+          this.toastr.success("El usuario se eliminó correctamente")
+          this.navigateToUserList();
         },
-        (error) => {
+        error: (error) => {
           console.error('Error al eliminar usuario:', error);
-          alert("Error al eliminar el usuario")
+          this.toastr.error("Error al eliminar el usuario")
         }
-      );
+      });
     }
-  }
-  
+  }  
 
   redirectToEditUser(userId: number) {
     this.router.navigate([`/user/edit-user/${userId}`]);
   }
 
-
+  navigateToUserList(){
+    this.router.navigate(['/user/user-list']);
+  }
 }
+
 

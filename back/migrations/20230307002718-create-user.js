@@ -38,7 +38,8 @@ module.exports = {
       },
       role: {
         type: Sequelize.ENUM,
-        values: ['admin', 'teacher', 'student']
+        values: ['admin', 'teacher', 'student'],
+        defaultValue: 'student'
       },
       specialty: {
         type: Sequelize.STRING

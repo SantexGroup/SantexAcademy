@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,17 +9,23 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authService: AuthService) {
+  username: string = '';
+
+  constructor(private authService: AuthService, private router: Router) {    
     this.isLogged = this.isLoggedFromService();
     this.isAdmin = this.isAdminFromService();
-    this.isTeacher = this.isTeacherFromService();
-    this.isStudent = this.isStudentFromService();
+    this.isStudentOrTeacher = this.isTeacherOrStudentFromService(); 
+    
+    const storedUsername: string | null = localStorage.getItem('username');
+    if (storedUsername) {
+      this.username = storedUsername;
+    }
   }
 
   isLogged: boolean = false;
   isAdmin: boolean = false;
-  isTeacher: boolean = false;
-  isStudent: boolean = false;
+  isStudentOrTeacher: boolean = false;
+  
 
 
   isLoggedFromService() {
@@ -29,19 +36,27 @@ export class NavbarComponent implements OnInit {
     return this.authService.isAdministrator();
   }
 
-  isTeacherFromService() {
-    return this.authService.isTeachers();
+  isTeacherOrStudentFromService() {
+    return this.authService.checkStudentOrTeacher();
   }
 
-  isStudentFromService() {
-    return this.authService.isStudents();
-  }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    const username = this.authService.getUsername();
+    if (username) {
+      this.username = username;
+      localStorage.setItem('username', username);
+    }
   }
 
   logout() {
+    localStorage.removeItem('username');
     this.authService.logout();
+    this.navigateToLanding();
+  }
+
+  navigateToLanding() {
+    this.router.navigate(['/']);
   }
 
 }

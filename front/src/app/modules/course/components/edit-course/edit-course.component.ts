@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { CourseService } from 'src/app/services/course.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-course',
@@ -13,7 +14,7 @@ export class EditCourseComponent implements OnInit {
   course: any = {};
   courseId: string = '';
 
-  constructor(private route: ActivatedRoute, private courseService: CourseService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private courseService: CourseService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -28,20 +29,24 @@ export class EditCourseComponent implements OnInit {
   }
 
   editCourse() {
-    this.courseService.updateCourse(this.course).subscribe(
-      (response: any) => {
-        console.log('Curso actualizado exitosamente', response);        
-        this.router.navigate([`/course/${this.courseId}`]);
+    this.courseService.updateCourse(this.course).subscribe({
+      next:(response: any) => {
+        console.log('Curso actualizado exitosamente', response); 
+        this.toastr.success('Curso editado con exito')       
+        this.router.navigate([`/course/${this.courseId}`]);        
       },
-      (error: any) => {
-        console.error('Error al actualizar curso:', error);
+      error:(error: any) => {
+        console.error('Error al actualizar el curso:', error);
+        this.toastr.error('Error al editar el curso');
       }
-    );
+    });
   }
 
   navigateToCourseList() {
     this.router.navigate(['/course/course-list']);
   }
 
-
+  backToCourse(){
+    this.router.navigate([`/course/${this.courseId}`]);
+  }
 }

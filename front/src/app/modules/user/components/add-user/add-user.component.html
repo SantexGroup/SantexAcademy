@@ -7,7 +7,7 @@
         <p class="card-text">Crear Usuario</p>
       </div>
 
-      <form #registrationForm="ngForm" (submit)="createUser(); navigateToUserList()">
+      <form #registrationForm="ngForm" (submit)="createUser()">
         <div class="form-group col-12">          
           <select id="role" name="role" [(ngModel)]="role" class="form-control" required>
             <option value="" disabled selected>Selecciona un rol</option>
