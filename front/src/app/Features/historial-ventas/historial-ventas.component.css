@@ -6,6 +6,18 @@ h1 {
     margin: 0px;
     color: #d68a96;
 }
+h3 {
+    background-color: #ffffff; 
+    border: 1px solid #c95c6d; 
+    padding: 10px;
+    border-radius: 5px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    font-size: 18px; 
+    color: #333; 
+    margin-top: 10px ; 
+    text-align: center; 
+    font-weight: bold;
+  }
 p, a {
     width: 150px;
     font-size: small;
@@ -44,11 +56,10 @@ img {
     scroll-behavior: smooth;
 }
 #botonNavegacion {
-    display: flex;
-    justify-content: end;
-    padding-right: 10px;
-    padding-top: 5px;
-}
+    margin-left: 0.5%;
+    padding-top: 0.5%;
+    
+  }
 
 /* articulo */
 #articulo {

@@ -1,4 +1,7 @@
 <app-barra></app-barra>
+<div id="botonNavegacion">
+    <app-boton-navegacion></app-boton-navegacion>
+</div>
 <div id="inicial" class="">
     <div id="general" class="d-flex">
         <!-- Imagenes -->
@@ -16,10 +19,6 @@
         </div>
         <!-- Info -->
         <div id="datos" *ngIf="respuesta">
-            <!-- icono -->
-            <div id="botonNavegacion">
-                <app-boton-navegacion></app-boton-navegacion>
-            </div>
             <!-- Nombres -->            
             <div id="divTitulo">
                 <div class="d-flex justify-content-center"><p id="nombreProd" >{{nombreArt}}</p></div>
