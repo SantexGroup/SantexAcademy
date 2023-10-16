@@ -2,7 +2,7 @@
 
 const { Model } = require('sequelize');
 // const ModeloBase = require('./modelBase');
-const DescripcionTelefono = require('./descripcionTelefonoModels');
+const DescripcionTelefono = require('./descripcionTelefonoModel');
 
 module.exports = (sequelize, DataTypes) => {
   // class Donante extends Model {

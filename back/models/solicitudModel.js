@@ -1,12 +1,13 @@
-// Creacion del modelo de solicitante
+// Creacion del modelo de solicitud
 
 const { Model } = require('sequelize');
 // const ModeloBase = require('./modelBase');
-const DescripcionTelefono = require('./descripcionTelefonoModels');
+const Solicitante = require('./solicitanteModel');
+const EstadoOperacion = require('./estadoOperacionModel');
 
 module.exports = (sequelize, DataTypes) => {
-  // class Solicitante extends ModeloBase {
-  class Solicitante extends Model {
+  //  class Usuario extends ModeloBase {
+  class Solicitud extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -15,16 +16,16 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       // define association here
-      Solicitante.belongsTo(models.DescripcionTelefono, {
-        foreignKey: 'id_descripcion_telefono',
-      });
+      Solicitud.belongsTo(models.Solicitante, { foreignKey: 'id_solicitante' });
+
+      Solicitud.belongsTo(models.EstadoOperacion, { foreignKey: 'id_estado_operacion' });
     }
   }
 
   // Inicializar la clase base
   // super.initModeloBase(sequelize);
 
-  Solicitante.init(
+  Solicitud.init(
     {
       // id:  DataTypes.INTEGER,
       id: {
@@ -33,34 +34,39 @@ module.exports = (sequelize, DataTypes) => {
         // autoIncrement: true,
       },
 
-      razon_social: DataTypes.STRING,
-
-      email: DataTypes.STRING,
-
-      calle: DataTypes.STRING,
-
-      numero: DataTypes.STRING,
-
-      piso: DataTypes.STRING,
-
-      departamento: DataTypes.STRING,
-
-      codigo_postal: DataTypes.STRING,
-
-      id_descripcion_telefono: {
+      id_donante: {
         type: DataTypes.INTEGER,
 
         references: {
           // Se toma de la ayuda de Sequelize
           // This is a reference to another model
-          model: DescripcionTelefono,
+          model: Solicitante,
 
           // This is the column name of the referenced model
           key: 'id',
         },
       },
 
-      descripcion_telefono: DataTypes.STRING,
+      razon_social_donante: DataTypes.STRING,
+
+      descripcion_donacion: DataTypes.STRING,
+
+      fecha_donacion: DataTypes.DATE,
+
+      id_estado_operacion: {
+        type: DataTypes.INTEGER,
+
+        references: {
+          // Se toma de la ayuda de Sequelize
+          // This is a reference to another model
+          model: EstadoOperacion,
+
+          // This is the column name of the referenced model
+          key: 'id',
+        },
+      },
+
+      estado_operacion: DataTypes.STRING,
 
       activo: DataTypes.INTEGER,
 
@@ -74,9 +80,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Solicitante',
+      modelName: 'Solicitud',
     },
   );
 
-  return Solicitante;
+  return Solicitud;
 };

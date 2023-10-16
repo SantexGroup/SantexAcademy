@@ -2,12 +2,12 @@
 
 const { Model } = require('sequelize');
 // const ModeloBase = require('./modeloBase');
-const Solicitud = require('./solicitudModels');
-const DispositivoElectronico = require('./dispositivoElectronicoModels');
+const Donacion = require('./donacionModel');
+const DispositivoElectronico = require('./dispositivoElectronicoModel');
 
 module.exports = (sequelize, DataTypes) => {
   //  class Usuario extends ModeloBase {
-  class SolicitudDispositivo extends Model {
+  class DonacionDispositivo extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -16,11 +16,11 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       // define association here
-      SolicitudDispositivo.belongsTo(models.Solicitud, {
-        foreignKey: 'id_solicitud',
+      DonacionDispositivo.belongsTo(models.Donacion, {
+        foreignKey: 'id_donacion',
       });
 
-      SolicitudDispositivo.belongsTo(models.Solicitud, {
+      DonacionDispositivo.belongsTo(models.DispositivoElectronico, {
         foreignKey: 'id_dispositivo_electronico',
       });
     }
@@ -29,33 +29,33 @@ module.exports = (sequelize, DataTypes) => {
   // Inicializar la clase base
   // super.initModeloBase(sequelize);
 
-  SolicitudDispositivo.init(
+  DonacionDispositivo.init(
     {
       // id:  DataTypes.INTEGER,
       id: {
         primaryKey: true,
         type: DataTypes.INTEGER,
-        autoIncrement: true,
+        // autoIncrement: true,
       },
 
-      cantidad_solicitada: DataTypes.INTEGER,
+      cantidad_donada: DataTypes.INTEGER,
 
       fecha_adquisicion: DataTypes.DATE,
 
-      id_solicitud: {
+      id_donacion: {
         type: DataTypes.INTEGER,
 
         references: {
           // Se toma de la ayuda de Sequelize
           // This is a reference to another model
-          model: Solicitud,
+          model: Donacion,
 
           // This is the column name of the referenced model
           key: 'id',
         },
       },
 
-      descripcion_solicitud: DataTypes.STRING,
+      descripcion_donacion: DataTypes.STRING,
 
       id_dispositivo_electronico: {
         type: DataTypes.INTEGER,
@@ -84,9 +84,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'SolicitudDispositivo',
+      modelName: 'DonacionDispositivo',
     },
   );
 
-  return SolicitudDispositivo;
+  return DonacionDispositivo;
 };

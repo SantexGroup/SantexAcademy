@@ -1,13 +1,13 @@
-// Creacion del modelo de donecion
+// Creacion del modelo de donacion de dispositivo
 
 const { Model } = require('sequelize');
-// const ModeloBase = require('./modelBase');
-const Donante = require('./donanteModels');
-const EstadoOperacion = require('./estadoOperacionModels');
+// const ModeloBase = require('./modeloBase');
+const Solicitud = require('./solicitudModel');
+const DispositivoElectronico = require('./dispositivoElectronicoModel');
 
 module.exports = (sequelize, DataTypes) => {
   //  class Usuario extends ModeloBase {
-  class Donacion extends Model {
+  class SolicitudDispositivo extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -16,57 +16,61 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       // define association here
-      Donacion.belongsTo(models.Donante, { foreignKey: 'id_donante' });
+      SolicitudDispositivo.belongsTo(models.Solicitud, {
+        foreignKey: 'id_solicitud',
+      });
 
-      Donacion.belongsTo(models.EstadoOperacion, { foreignKey: 'id_estado_operacion' });
+      SolicitudDispositivo.belongsTo(models.Solicitud, {
+        foreignKey: 'id_dispositivo_electronico',
+      });
     }
   }
 
   // Inicializar la clase base
   // super.initModeloBase(sequelize);
 
-  Donacion.init(
+  SolicitudDispositivo.init(
     {
       // id:  DataTypes.INTEGER,
       id: {
         primaryKey: true,
         type: DataTypes.INTEGER,
-        // autoIncrement: true,
+        autoIncrement: true,
       },
 
-      id_donante: {
+      cantidad_solicitada: DataTypes.INTEGER,
+
+      fecha_adquisicion: DataTypes.DATE,
+
+      id_solicitud: {
         type: DataTypes.INTEGER,
 
         references: {
           // Se toma de la ayuda de Sequelize
           // This is a reference to another model
-          model: Donante,
+          model: Solicitud,
 
           // This is the column name of the referenced model
           key: 'id',
         },
       },
 
-      razon_social_donante: DataTypes.STRING,
+      descripcion_solicitud: DataTypes.STRING,
 
-      descripcion_donacion: DataTypes.STRING,
-
-      fecha_donacion: DataTypes.DATE,
-
-      id_estado_operacion: {
+      id_dispositivo_electronico: {
         type: DataTypes.INTEGER,
 
         references: {
           // Se toma de la ayuda de Sequelize
           // This is a reference to another model
-          model: EstadoOperacion,
+          model: DispositivoElectronico,
 
           // This is the column name of the referenced model
           key: 'id',
         },
       },
 
-      estado_operacion: DataTypes.STRING,
+      descripcion_dispositivo_electronico: DataTypes.STRING,
 
       activo: DataTypes.INTEGER,
 
@@ -80,9 +84,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Donacion',
+      modelName: 'SolicitudDispositivo',
     },
   );
 
-  return Donacion;
+  return SolicitudDispositivo;
 };
