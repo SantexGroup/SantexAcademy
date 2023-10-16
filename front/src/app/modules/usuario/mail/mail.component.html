@@ -1,0 +1,14 @@
+<div class="form-container">
+    <form class="form"> 
+      <mat-form-field [formGroup]="resetForm">
+        <mat-label>Email:</mat-label>
+        <input matInput 
+        required name="email" 
+        placeholder="Email" 
+        type="email" 
+        class="input" 
+        formControlName="email">
+      </mat-form-field>
+      <button class="submit" type="button" (click)="sendMeEmail()" > Enviar </button>
+    </form>
+  </div>

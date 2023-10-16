@@ -73,3 +73,13 @@
   font-size: 12px;
   color: red;
 }
+
+.forgot{
+  text-align: center;
+  color: blue;
+  text-decoration: underline;
+}
+
+.forgot:hover{
+  cursor: pointer;
+}
