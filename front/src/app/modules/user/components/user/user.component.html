@@ -22,6 +22,7 @@
               Borrar Usuario
             </button>
           </div>
+          <button class="btn btn-info" (click)="navigateToUserList()">Volver</button>
         </div>
       </div>
     </div>
@@ -41,8 +42,8 @@
         <p><strong>Nombre:</strong> {{ user.firstName }}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button (click)="deleteUser()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Si</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+        <button (click)="deleteUser()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Si, eliminae este usuario</button>
       </div>
     </div>
   </div>

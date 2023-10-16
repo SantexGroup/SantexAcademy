@@ -52,7 +52,6 @@ export class EditUserComponent implements OnInit {
         console.log('Usuario actualizado exitosamente', response);
         this.toastr.success('Usuario editado exitosamente');
         this.router.navigate([`/user/${this.user.id}`]);
-
       },
       error: (error: any) => {
         console.error('Error al actualizar usuario:', error);
@@ -61,7 +60,7 @@ export class EditUserComponent implements OnInit {
     });
   }
 
+
   goBack() {
     this.router.navigate([`/user/${this.user.id}`]);
-  }
 }

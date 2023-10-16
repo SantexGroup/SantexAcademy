@@ -12,10 +12,11 @@
           <p><strong>Nombre:</strong> {{ course.name }}</p>
           <p><strong>Descripción:</strong> {{ course.description }}</p>
           <p><strong>Imagen:</strong> {{ course.image }}</p>
-          <button class="btn btn-primary" (click)="redirectToEditCourse(course.id)">Editar</button>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <button class="btn btn-info" (click)="redirectToEditCourse(course.id)">Editar Curso</button>
+          <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Borrar Curso
           </button>
+          <button class="btn btn-info" (click)="navigateToCourseList()">Volver</button>
         </div>
       </div>
     </div>
@@ -34,8 +35,8 @@
         ¿Esta seguro de eliminar el curso de {{ course.name }}?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button  (click)="deleteCourse()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Si</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+        <button  (click)="deleteCourse()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Si, eliminar este curso</button>
       </div>
     </div>
   </div>
