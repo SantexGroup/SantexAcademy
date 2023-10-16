@@ -1,11 +1,21 @@
 <app-barra></app-barra>
+
+<div *ngIf="!confUsuario">
+    <h3>¡Para ver su historial de compras debe estar registrado como usuario!</h3>
+    <div id="botonNavegacion" style="padding-top: 0%;">
+        <app-boton-navegacion></app-boton-navegacion>
+    </div>
+</div>
+
 <!-- general -->
-<div id="titulo"><h1>Historial de artículos contratados</h1></div>
+
+<div *ngIf="confUsuario">
+    <div id="botonNavegacion">
+        <app-boton-navegacion></app-boton-navegacion>
+    </div>
+    <div id="titulo"><h1>Historial de artículos contratados</h1></div>
 <div id="general">
     <div id="recuadro">
-        <div id="botonNavegacion">
-            <app-boton-navegacion></app-boton-navegacion>
-        </div>
         <!-- articulos -->
         <div id="articulo" *ngFor="let articulo of articulos">
             <!-- imagen -->
@@ -87,4 +97,8 @@
     </div>
 
 </div>
+
+</div>
+
+
 <app-footer></app-footer>

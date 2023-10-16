@@ -1,11 +1,21 @@
 <app-barra></app-barra>
+
+<div *ngIf="!confVendedor">
+    <h3>¡Para poder ver sus articulos publicados debe estar registrado como vendedor!</h3>
+    <div id="botonNavegacion" style="padding-top: 0%;">
+        <app-boton-navegacion></app-boton-navegacion>
+    </div>
+</div>
+
 <!-- general -->
-<div id="titulo"><h1>Historial de artículos publicados</h1></div>
+
+<div *ngIf="confVendedor">
+    <div id="botonNavegacion" style="padding-top: 0%; margin-top: 0.5%;">
+        <app-boton-navegacion></app-boton-navegacion>
+    </div>
+    <div id="titulo"><h1>Historial de artículos publicados</h1></div>
 <div id="general">
     <div id="recuadro">
-        <div id="botonNavegacion">
-            <app-boton-navegacion></app-boton-navegacion>
-        </div>
         <!-- articulo -->
         <div id="articulo" *ngFor="let articulo of articulos">
             <!-- imagen -->
@@ -33,4 +43,8 @@
         </div>
     </div>
 </div>
+
+
+</div>
+
 <app-footer></app-footer>

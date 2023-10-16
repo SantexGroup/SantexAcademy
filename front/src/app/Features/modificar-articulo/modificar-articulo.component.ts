@@ -35,7 +35,10 @@ export class ModificarArticuloComponent implements OnInit {
   confVendedor: boolean = false;
   mensajeRegistro: string = '';
   listcategorias: any[] = [];
-  images: any = [];  
+  images: any = [];
+  
+  logeadoComprador: boolean = false;
+  logeadoVendedor: boolean = false;
 
   constructor(private cargaService: CargaArticulosService, private service: ModArtService, private vistaArtService: vistaArtIndServ, private confService: ConfirmacionArticuloServService, private router: Router, private mensajeService: MensajeService, private barraService:BarraService, private formBuilder: FormBuilder) { }
 
@@ -164,5 +167,25 @@ export class ModificarArticuloComponent implements OnInit {
         }
       }  
     })
-  }  
+  }
+  
+  corroborarLogeo() {    
+    let infoLocal = localStorage.getItem('resLog')
+    if (infoLocal) {
+      let newObject = JSON.parse(infoLocal);
+      if (newObject) {
+        if (newObject[1].users.estadoDeVendedor) {
+          this.logeadoVendedor = true;
+          this.logeadoComprador = false;
+        }
+        else if (!newObject[1].users.estadoDeVendedor) {
+          this.logeadoComprador = true;
+          this.logeadoVendedor = false;
+        } else {
+          this.logeadoComprador = false;
+          this.logeadoVendedor = false;
+        }
+      }
+    }
+  }
 }

@@ -1,14 +1,17 @@
 <app-barra></app-barra>
-<p *ngIf="!confUsuario">¡Para editar sus datos debe estar registrado como Usuario!</p>
-<div id="botonNavegacion">
-    <app-boton-navegacion></app-boton-navegacion>
+<div *ngIf="!confUsuario">
+    <h3>¡Para editar sus datos debe estar registrado como Usuario!</h3>
+    <div id="botonNavegacion" style="padding-top: 0%;">
+        <app-boton-navegacion></app-boton-navegacion>
+    </div>
 </div>
 
 <div *ngIf="confUsuario" id="divprincipal">
+    <div id="botonNavegacion" style="padding-top: 0.5%;">
+        <app-boton-navegacion></app-boton-navegacion>
+    </div>
     <div id="FormularioCompleto" class="formulario">
-        <div id="botonNavegacion">
-            <app-boton-navegacion></app-boton-navegacion>
-        </div>
+        
         <div class="formulario_container">
             <div class="titulo_container">
                 <h2>Editar Usuario</h2>
@@ -58,11 +61,13 @@
                         <div class="input_field"> <span><i class="fa-solid fa-house"></i></span>
                             <input [(ngModel)]="dirReg" type="text" name="direccion" placeholder="Calle y altura" required/>
                         </div>
-                        <input id="BotonColor" class="button" type="submit" value="Confirmar" (click)="botReg()" />
-                        <br>
-                        <br>
-                        <input id="BotonColor" class="button" type="submit" value="Eliminar Cuenta" (click)="eliminarCuenta()" />
-                        <div *ngIf="mensajeRegistro">
+                        <div style="margin-top: 16%;">
+                            <input id="BotonColor" style="margin-bottom: 5%;" class="button" type="submit" value="Confirmar" (click)="botReg()" />
+                            <br>
+                            <input id="BotonColor" class="button" type="submit" value="Eliminar Cuenta" (click)="eliminarCuenta()" />
+                            <div *ngIf="mensajeRegistro">
+                        </div>
+                      
                             {{ mensajeRegistro }}
                         </div>
                     </form>
