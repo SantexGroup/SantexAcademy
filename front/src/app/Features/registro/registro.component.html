@@ -1,5 +1,11 @@
 <app-barra></app-barra>
-<div id="divprincipal">
+<div *ngIf="confUsuario">
+    <h3> Ya se encuentra registrado</h3>
+    <div id="botonNavegacion" style="padding-top: 0%;">
+        <app-boton-navegacion></app-boton-navegacion>
+    </div>
+</div>
+<div *ngIf="!confUsuario" id="divprincipal">
     <div id="botonNavegacion">
         <app-boton-navegacion></app-boton-navegacion>
     </div>

@@ -26,9 +26,13 @@ export class RegistroComponent implements OnInit {
 
   mensajeRegistro: string = '';
 
+  idUser: string = '';
+  confUsuario: boolean = false;
+
   constructor(private service: RegistroService, private mensajeService: MensajeService, private router: Router, private loginservice: LoginService) { }
 
   ngOnInit(): void {
+    this.getIdUser();
 
     this.service.getProvincias().subscribe(provincias => {this.listprovincias = provincias});
 
@@ -65,6 +69,21 @@ export class RegistroComponent implements OnInit {
         });
     } else {
       this.mensajeService.mensajeRegistro('Campos incompletos. Por favor, complete todos los campos.');
+    }
+  }
+
+  getIdUser() {    
+    let infoLocal = localStorage.getItem('resLog');
+    if (infoLocal) {
+      let newObject = JSON.parse(infoLocal);
+      const idUser = newObject[1].users.id;
+      this.idUser = idUser;
+      if (idUser) {
+        this.confUsuario = true; 
+      } else {
+        this.confUsuario = false; 
+      }
+      
     }
   }
 }
