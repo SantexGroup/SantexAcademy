@@ -119,6 +119,7 @@ h5 {
 #botonNavegacion {
     margin-left: 0.5%;
     padding-top: 0.5%;
+    margin-top: -1.3%;
 }
 .contenedorTarjeta .card:hover{
     transform: translate(-10px);
