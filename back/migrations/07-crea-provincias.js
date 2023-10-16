@@ -1,3 +1,5 @@
+// Creacion de tabla probincias
+
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */

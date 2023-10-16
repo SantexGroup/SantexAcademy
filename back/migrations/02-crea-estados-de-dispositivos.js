@@ -1,3 +1,5 @@
+// Creacion de tabla estados de dispositivos
+
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */

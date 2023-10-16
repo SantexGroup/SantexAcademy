@@ -1,3 +1,5 @@
+// Creacion de tabla descripciones de correo el electronico
+
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */

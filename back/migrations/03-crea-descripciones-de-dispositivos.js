@@ -1,3 +1,5 @@
+// Creacion de tabla descripciones de dispositivos
+
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */

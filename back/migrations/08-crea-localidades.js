@@ -1,3 +1,5 @@
+// Creacion de tabla localidades
+
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
