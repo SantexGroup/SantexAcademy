@@ -11,6 +11,7 @@ const {
   getCategories,
   updateCategory,
   deleteCategory,
+  getCategoriesCourse,
 } = require('./categoryController');
 const {
   createSchedule,
@@ -61,6 +62,7 @@ const CategoryController = {
   getCategories,
   updateCategory,
   deleteCategory,
+  getCategoriesCourse,
 };
 const ScheduleController = {
   createSchedule,

@@ -31,6 +31,7 @@ import { AddAboutUsComponent } from './modules/admin-panel/about-us/add-about-us
 import { EditAboutUsComponent } from './modules/admin-panel/about-us/edit-about-us/edit-about-us.component';
 import { ShowAboutUsComponent } from './modules/show-about-us/show-about-us.component';
 import { AdminsComponent } from './modules/admin-panel/admins/admins.component';
+import { CategoriesComponent } from './modules/description-course/categories/categories.component';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { AdminsComponent } from './modules/admin-panel/admins/admins.component';
     EditAboutUsComponent,
     ShowAboutUsComponent,
     AdminsComponent,
+    CategoriesComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ const {
   getCategory,
   getCategories,
   updateCategory,
+  getCategoriesCourse,
 } = require('./categoryService');
 const {
   createSchedule,
@@ -59,6 +60,7 @@ const CategoryService = {
   getCategory,
   getCategories,
   updateCategory,
+  getCategoriesCourse,
 };
 const ScheduleService = {
   createSchedule,

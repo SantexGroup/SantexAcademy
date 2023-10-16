@@ -1,0 +1,22 @@
+
+.verMas{
+    margin: 10px 0 20px 0;
+    background-color: orange;
+    border: none;
+    color: white;
+    height: 40px;
+    width: 100px;
+    border-radius: 50px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.options{
+    background-color: white;
+    box-shadow: 1px 2px 5px #000; 
+    max-width: 350px;
+}
+@media (max-width: 768px) {
+    .options{
+        width: 350px;
+    }
+}

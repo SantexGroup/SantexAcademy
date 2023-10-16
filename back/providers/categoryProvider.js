@@ -1,59 +1,41 @@
-const { CourseCategory } = require("../models");
+const { CourseCategory } = require('../models');
+const { Course } = require('../models');
 
 const createCategory = async (options) => {
-  try {
-    const newCategory = await CourseCategory.create(options);
-    return newCategory;
-  } catch (error) {
-    throw error;
-  }
+  const newCategory = await CourseCategory.create(options);
+  return newCategory;
 };
-
+const getCategoriesCourse = async (categoryName) => {
+  const categories = await CourseCategory.findOne({
+    where: { name: categoryName },
+    include: [
+      {
+        model: Course,
+      },
+    ],
+  });
+  return categories;
+};
 const getCategories = async () => {
-  try {
-    const categories = await CourseCategory.findAll();
-    return categories;
-
-  } catch (error) {
-    throw error;
-  }
+  const categories = await CourseCategory.findAll();
+  return categories;
 };
 
 const getCategoryById = async (id) => {
-  try {
-    const category = await CourseCategory.findByPk(id);
-    return category;
-
-  } catch (error) {
-    throw error;
-  }
+  const category = await CourseCategory.findByPk(id);
+  return category;
 };
 const getCategoryByName = async (name) => {
-  try {
-    const category = await CourseCategory.findOne({ where: { name } });
-    return category;
-
-  } catch (error) {
-    throw error;
-  }
+  const category = await CourseCategory.findOne({ where: { name } });
+  return category;
 };
 const updateCategory = async (CategoryId, CategoryOptions) => {
-  try {
-    await getCategoryById(CategoryId);
-    await CourseCategory.update(CategoryOptions, { where: { id: CategoryId } });
-    return CourseCategory.findByPk(CategoryId);
-  } catch (error) {
-    throw error;
-  }
+  await getCategoryById(CategoryId);
+  await CourseCategory.update(CategoryOptions, { where: { id: CategoryId } });
+  return CourseCategory.findByPk(CategoryId);
 };
 
-const deleteCategory = async (CategoryId) => {
-  try {
-    return CourseCategory.destroy({ where: { id: CategoryId } });
-  } catch (error) {
-    throw error;
-  }
-};
+const deleteCategory = async (CategoryId) => CourseCategory.destroy({ where: { id: CategoryId } });
 
 module.exports = {
   createCategory,
@@ -62,4 +44,5 @@ module.exports = {
   getCategories,
   updateCategory,
   getCategoryByName,
+  getCategoriesCourse,
 };

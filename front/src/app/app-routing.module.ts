@@ -23,6 +23,7 @@ import { AboutUsComponent } from './modules/admin-panel/about-us/about-us.compon
 import { AddAboutUsComponent } from './modules/admin-panel/about-us/add-about-us/add-about-us.component';
 import { EditAboutUsComponent } from './modules/admin-panel/about-us/edit-about-us/edit-about-us.component';
 import { AdminsComponent } from './modules/admin-panel/admins/admins.component';
+import { CategoriesComponent } from './modules/description-course/categories/categories.component';
 
 
 const routes: Routes = [
@@ -76,6 +77,9 @@ const routes: Routes = [
   },
   {
     path: 'curso/:id',component:DescriptionCourseComponent
+  },
+  {
+    path: 'categoria/:CategoryName', component:CategoriesComponent
   },
   {
     path:'profile',

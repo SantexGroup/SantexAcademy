@@ -1,24 +1,18 @@
-const {CategoryProvider} = require("../providers");
+const { CategoryProvider } = require('../providers');
 
-const getCategories = async () => {
-  return await CategoryProvider.getCategories();
+const getCategories = () => CategoryProvider.getCategories();
+
+const getCategory = (id) => CategoryProvider.getCategoryById(id);
+
+const createCategory = (options) => CategoryProvider.createCategory(options);
+
+const updateCategory = (id, options) => CategoryProvider.updateCategory(id, options);
+
+const deleteCategory = (id) => CategoryProvider.deleteCategory(id);
+
+const getCategoriesCourse = (CategoryName) => CategoryProvider.getCategoriesCourse(CategoryName);
+
+// exports
+module.exports = {
+  createCategory, deleteCategory, getCategory, getCategories, updateCategory, getCategoriesCourse,
 };
-
-const getCategory= async (id) => {
-  return await CategoryProvider.getCategoryById(id);
-};
-
-const createCategory = async (options) => {
-  return await CategoryProvider.createCategory(options);
-};
-
-const updateCategory = async (id, options) => {
-  return await CategoryProvider.updateCategory(id, options);
-};
-
-const deleteCategory = async (id) => {
-  return await CategoryProvider.deleteCategory(id);
-};
-
-//exports
-module.exports = { createCategory ,deleteCategory, getCategory, getCategories, updateCategory };

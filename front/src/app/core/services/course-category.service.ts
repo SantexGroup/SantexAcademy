@@ -31,4 +31,7 @@ export class CourseCategoryService {
   deleteCourseCategory(id:number){
     return this.httpCourseCategory.delete(this.apiUrl+'/'+id)
   }  
+  getCategoriesCourse(CategoryName: string){
+    return this.httpCourseCategory.get(this.apiUrl+ "/courses/"+ CategoryName)
+  }
 }
