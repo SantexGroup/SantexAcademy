@@ -89,7 +89,7 @@ async function resetMail(req, res, next) {
   }
 }
 
-async function resetPage(res) {
+async function resetPage(req, res) {
   res.render('page');
 }
 
