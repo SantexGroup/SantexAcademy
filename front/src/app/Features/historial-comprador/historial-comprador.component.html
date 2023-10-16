@@ -39,29 +39,41 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                    <h1 class="modal-title fs-5" id="modal-title-2">Delkat S.A</h1>
-                    <p>CUIT:<span>20-12345678-9</span></p>
-                    <p>Responsable Inscripto</p>
-                    <p>Inicio de act. 01/10/2023</p>
+                    <h1 class="modal-title fs-5" id="modal-title-2">Delkat S.A.</h1>
+                    <div class="comprobante-content">
+                    <p>CUIT:</p><span>20-12345678-9</span>
+                    </div>
+                    <span>Responsable Inscripto</span>
+                    <div class="comprobante-content">
+                    <p>Inicio de act.</p><span>01/10/2023</span>
+                    </div>
                     <div class="border-top"></div>
                     <h5>FACTURA 'B'</h5>
                     <p>N° 0001-00000001</p>
-                    <p>Fecha: {{articulo.fecArt | date}}</p>
-                    <p>Apellido y Nombre: {{nomCom}}</p>
-                    <p>Condicion ante IVA: Consumidor Final</p>
-                    <p>Domicilio: {{dirCom}}</p>
-                    <p>Condicion de venta: {{articulo.formaPago}}</p>
+                    <div class="comprobante-content">
+                    <p>Fecha:</p><span>{{articulo.fecArt | date}}</span>
+                    </div>
+                    <div class="comprobante-content">
+                    <p>Apellido y Nombre:</p><span>{{nomCom}}</span>
+                    </div>
+                    <div class="comprobante-content">
+                    <p>Condicion ante IVA:</p><span>Consumidor Final</span>
+                    </div>
+                    <div class="comprobante-content">
+                    <p>Domicilio:</p><span>{{dirCom}}</span>
+                    </div>
+                    <div class="comprobante-content">
+                    <p>Condicion de venta:</p><span>{{articulo.formaPago}}</span>
+                    </div>
                     <div class="border-top"></div>
-                    <p>1,00 X ${{articulo.preArt}}</p>
+                    <p style="font-weight: 400;">1,00 x ${{articulo.preArt}}</p>
                     <div class="comprobante-content">
-                    <p>{{articulo.nomArt}}</p><span>${{articulo.preArt}}</span>
+                    <span>{{articulo.nomArt}}</span><span>${{articulo.preArt}}</span>
                     </div>
-                    <p>1,00 X ${{articulo.preArt}}</p>
-                    <div class="comprobante-content">
-                    <p>Total:</p><span>${{articulo.preArt}}</span>
+                    <div class="border-top"></div>
+                    <div class="comprobante-content precio-final">
+                    <span>Total:</span><span>${{articulo.preArt}}</span>
                     </div>
-
-
 
                     </div>
                     <div class="modal-footer">
