@@ -3,30 +3,32 @@
   <app-boton-navegacion></app-boton-navegacion>
 </div>
 <!-- general -->
+
 <div class="container">
   <div id="cabecera">
     <p id="texto">Categoría: <span>"{{nameCategory.charAt(0).toUpperCase() + nameCategory.slice(1)}}"</span></p>
+<div class="container contenedorTarjeta">
+  <div id="encabezado">
+    <p class="Categoria" id="texto">Categoría: <span>"{{nameCategory.charAt(0).toUpperCase() + nameCategory.slice(1)}}"</span></p>
+    <app-boton-navegacion></app-boton-navegacion>
   </div>
+
   <div class="row">
-    <!-- tarjeta -->
-    <div *ngFor="let articulo of listArticulos" class="tarjeta-container col-md-3 mb-4 ">
-      <div class="card">
-        <div id="tarjeta" class="card-body shadow bg-body rounded">
-          <!-- imagen -->
-          <div id="contImg"><img id="FotoArticulo" class="shadow bg-body rounded" [src]="images[listArticulos.indexOf(articulo)]"></div>
-          <!-- datos -->
-            <div id="datos">
-                <div id="datos2">
-                    <a class="card-title" (click)="verMas(articulo.id)" >{{ articulo.nombre.charAt(0).toUpperCase() + articulo.nombre.slice(1) }}</a>
-                    <p>{{ articulo.detalles.charAt(0).toUpperCase() + articulo.detalles.slice(1) }}</p>
-                    <p id="Precio" class="card-subtitle">${{ articulo.precio }}</p>
-                </div>
-                <!-- boton -->
-                <button id="boton" (click)="verMas(articulo.id)">Ver más</button>
-            </div>
+    <div *ngFor="let articulo of listArticulos" class="col-2 mb-4 tarjeta-container">
+      <div class="card" >
+        <div class="card-body">
+          <div id="contImg">
+          <img id="FotoArticulo" [src]="images[listArticulos.indexOf(articulo)]">
+          </div>
+          <h5 class="card-title">{{ articulo.nombre }}</h5>
+          <p class="descripcion">{{ articulo.detalles }}</p>
+          <h6 id="Precio" class="card-subtitle">${{ articulo.precio }}</h6>
+          <button (click)="verMas(articulo.id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 <app-footer></app-footer>
+
+

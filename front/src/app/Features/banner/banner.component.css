@@ -1,11 +1,18 @@
 .carousel-control-prev-icon, .carousel-control-next-icon {
     filter: invert(108%);
   }
+/*
+.contenedorCarousel{
+    height: 650px;
+}
+*/
 
 #FotoArticulo {
     height: 200px;
     max-width: 200px;
     margin-bottom: 10px;
+    border-radius: 10px;
+
 }
 
 #Ver-mas {
@@ -26,6 +33,12 @@ h5 {
 
     margin-left: 10px;
     
+}
+
+.descripcion{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 #Precio { 
@@ -62,6 +75,7 @@ h5 {
     margin: 20px;
     text-align: center;
     transition: all 0.25s;
+    background-color: rgb(238, 235, 235);
     
 }
 
@@ -69,3 +83,4 @@ h5 {
     transform: translate(-10px);
     box-shadow: 0 10px 10px rgba(0, 0, 0, 1);
 }
+
