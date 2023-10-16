@@ -34,11 +34,15 @@ export class HistorialCompradorComponent implements OnInit {
   datosLog: any = {};
   respuesta: any = [];
   servidor: string = environment.API_URL + '/images/';
+  
+  confUsuario: boolean = false;
+  idUser: string = '';
 
   constructor(private service: HisComService, private router: Router) { }
 
   ngOnInit(): void {
     this.datos();
+    this.getIdUser();
   }
 
   datos() {
@@ -112,5 +116,19 @@ export class HistorialCompradorComponent implements OnInit {
   redirigirProducto(idProd: number) {
     localStorage.setItem('idProd', idProd.toString());
     this.router.navigate(['vista-articulo']);
+  }
+  getIdUser() {    
+    let infoLocal = localStorage.getItem('resLog');
+    if (infoLocal) {
+      let newObject = JSON.parse(infoLocal);
+      const idUser = newObject[1].users.id;
+      this.idUser = idUser;
+      if (idUser) {
+        this.confUsuario = true; 
+      } else {
+        this.confUsuario = false; 
+      }
+      
+    }
   }
 }

@@ -1,18 +1,24 @@
 <app-barra></app-barra>
-<!-- Cartel no logueados -->
-<h3 *ngIf="!confVendedor">¡Para subir un articulo nuevo debe ser vendedor!</h3>
+<div *ngIf="!confVendedor">
+    <h3>¡Para subir un articulo nuevo debe ser vendedor!</h3>
+    <div id="botonNavegacion" style="padding-top: 0%;">
+        <app-boton-navegacion></app-boton-navegacion>
+    </div>
+</div>
 <!-- General  -->
 <div id="general">
+    <div class="formulario" *ngIf="confVendedor">
+        <div id="botonNavegacion">
+            <app-boton-navegacion></app-boton-navegacion>
+        </div>
     <!-- Título  -->
     <div id="titulo">
         <h2 *ngIf="confVendedor">Modificar Artículo</h2>
     </div>
     <!-- Formulario -->
-    <div class="formulario" *ngIf="confVendedor">
+    
         <form id="form-art" class="form" action="#" method="post" enctype="multipart/form-data" [formGroup]="formUp">
-            <div id="botonNavegacion">
-                <app-boton-navegacion></app-boton-navegacion>
-            </div>
+            
             <div class="row">
             <!-- Columna izquierda -->
                 <div class="media_columna">
