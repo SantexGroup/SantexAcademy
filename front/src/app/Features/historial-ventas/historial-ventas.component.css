@@ -6,15 +6,24 @@ h1 {
     margin: 0px;
     color: #d68a96;
 }
-p, a {
+
+p,
+a {
     width: 150px;
     font-size: small;
     margin: 0;
     font-weight: 600;
-    cursor:default;
+    cursor: default;
 }
-a {font-weight: 400}
-span {color: #d7818e}
+
+a {
+    font-weight: 400
+}
+
+span {
+    color: #d7818e
+}
+
 img {
     height: 60px;
     width: 65px;
@@ -28,21 +37,24 @@ img {
     display: flex;
     justify-content: center;
 }
+
 #general {
     display: flex;
-    justify-content: center;  
-    align-items: center;    
+    justify-content: center;
+    align-items: center;
     height: 75%;
 }
+
 #recuadro {
     min-height: 90%;
-    width: 75%;    
+    width: 75%;
     max-height: 60%;
     background-color: rgba(230, 230, 230, 0.805);
     border-radius: 15px;
     overflow-y: auto;
     scroll-behavior: smooth;
 }
+
 #botonNavegacion {
     display: flex;
     justify-content: end;
@@ -53,7 +65,7 @@ img {
 /* articulo */
 #articulo {
     display: flex;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
     margin: 10px;
     margin-top: 0;
@@ -62,13 +74,15 @@ img {
     height: 75px;
     border-bottom: 1px solid #d68a96;
 }
+
 #articulo a {
     color: #bd394d;
     text-decoration: none;
 }
+
 #articulo a:hover {
     cursor: pointer;
-    color:blueviolet;
+    color: blueviolet;
     transition: 0.3s;
 }
 
@@ -77,22 +91,38 @@ img {
     display: grid;
     width: 400px;
 }
-#datosVen {width: 20%;}
-#datosVen p {width: 150px;}
-#nomArt {width: 500px;}
-#nomArt span{width: 100%;}
+
+#datosVen {
+    width: 20%;
+}
+
+#datosVen p {
+    width: 150px;
+}
+
+#nomArt {
+    width: 500px;
+}
+
+#nomArt span {
+    width: 100%;
+}
+
 #nomArt span:hover {
     cursor: pointer;
-    color:blueviolet;
+    color: blueviolet;
     transition: 0.3s;
 }
+
 #catArt span:hover {
-    color:blueviolet;
+    color: blueviolet;
     cursor: pointer;
 }
+
 #datosVen p {
     width: max-content;
 }
+
 /* descripcion articulo */
 #descripcion {
     width: 30%;
@@ -100,24 +130,37 @@ img {
     max-width: 30%;
     height: 95%;
     max-height: 95%;
-    background-color: white;
-    border-radius: 5px;
+    background-color: rgba(230, 230, 230, 0.805);
+
 }
+
 #desArt {
     width: max-content;
-    color: grey;
+    color: rgb(14, 14, 14);
     padding-left: 5px;
     padding-right: 5px;
+    font-size: larger;
 }
 
 /* datos articulo */
-#datosArt {width: 20%;}
-#datosArt p {width: max-content;}
+#datosArt {
+    width: 20%;
+}
+
+#datosArt p {
+    width: max-content;
+}
 
 /* acciones */
 #acciones {
-    display:grid;
+    display: grid;
     align-content: end;
 }
-#acciones p {width: 50px;}
-#modArt {align-content: end;}
+
+#acciones p {
+    width: 50px;
+}
+
+#modArt {
+    align-content: end;
+}
