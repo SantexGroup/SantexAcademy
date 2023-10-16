@@ -13,6 +13,32 @@ h1 {
     margin: 0px;
     color: #d68a96;
 }
+.modal-content span, p, h1 {
+    color: black;
+}
+.modal-content span {
+    font-weight:500;
+}
+.modal-content p {
+    font-weight: 400;
+    font-size: medium;
+}
+.precio-final {
+    font-size: 25px;
+    font-weight: 600;
+}
+#modal-title {
+    margin-left: 30%;
+}
+.comprobante-content {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0;
+}
+
+.border-top {
+    margin: 10px 0;
+}
 h3 {
     background-color: #ffffff; 
     border: 1px solid #c95c6d; 
