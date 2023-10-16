@@ -24,7 +24,7 @@ const userRoutes: Routes = [
 @NgModule({
   declarations: [
     RegistroComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     CommonModule, 

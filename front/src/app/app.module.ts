@@ -41,10 +41,7 @@ import { ProfileTwoComponent } from './modules/profile-two/profile-two.component
 import { ProfileThreeComponent } from './modules/profile-three/profile-three.component';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions, MatCheckboxModule} from '@angular/material/checkbox';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { AdminComponent } from './modules/usuario/admin/admin.component';
-
-
-
+import { MailComponent } from './modules/usuario/mail/mail.component';
 
 
 @NgModule({
@@ -66,7 +63,7 @@ import { AdminComponent } from './modules/usuario/admin/admin.component';
     ProfileOneComponent,
     ProfileTwoComponent,
     ProfileThreeComponent,
-    AdminComponent
+    MailComponent,
   ],
   imports: [
     BrowserModule,

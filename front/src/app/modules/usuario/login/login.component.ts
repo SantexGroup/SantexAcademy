@@ -31,7 +31,11 @@ export class LoginComponent implements OnInit{
 
   toRegister(){
     this.router.navigate(['/registro']);
-  }  
+  }
+  
+  toMail(){
+    this.router.navigate(['/mail']);
+  }
 
   userLevel(data:loginInterface){
     if(data.user.rolesId === 2){
