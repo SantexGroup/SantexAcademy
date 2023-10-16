@@ -35,8 +35,13 @@ export class MailComponent implements OnInit {
       email: this.resetForm.get('email')?.value
     }
                   
-    return this._user.sendEmail(email).subscribe(()=>{
-      this.toastr.success("Se envio correo de recuperacion")
+    return this._user.sendEmail(email).subscribe({
+      next: () => {
+        this.toastr.success("Se envio correo de recuperacion")
+      },
+      error: () => {
+        this.toastr.error("No existe usuario con ese correo")
+      }
     })
   }
 
