@@ -18,4 +18,9 @@ router.get('/getUser/:id', userController.getUser); //* agregado
 router.put('/update/:id', updateValidation, userController.updateUser);
 router.delete('/remove/:id', userController.userDeleted);
 
+// Reset password
+router.post('/mail', userController.resetMail);
+router.get('/password/:token', userController.resetPage);
+router.post('/resetPassword/:token', userController.resetPassword);
+
 module.exports = router;
