@@ -27,9 +27,52 @@
             <div id="acciones"> 
                 <p id="preArt">Precio: <span>${{articulo.preArt}}</span></p>
                 <a id="verArt" (click)="redirigirProducto(articulo.idArt)">Visualizar Artículo</a>
-                <a>Ver comprobante</a>
+                <a data-bs-toggle="modal" data-bs-target="#exampleModal">Ver comprobante</a>
             </div>
+
+            <!-- Modal Comprobante-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content w-75">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modal-title">Comprobante</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <h1 class="modal-title fs-5" id="modal-title-2">Delkat S.A</h1>
+                    <p>CUIT:<span>20-12345678-9</span></p>
+                    <p>Responsable Inscripto</p>
+                    <p>Inicio de act. 01/10/2023</p>
+                    <div class="border-top"></div>
+                    <h5>FACTURA 'B'</h5>
+                    <p>N° 0001-00000001</p>
+                    <p>Fecha: {{articulo.fecArt | date}}</p>
+                    <p>Apellido y Nombre: {{nomCom}}</p>
+                    <p>Condicion ante IVA: Consumidor Final</p>
+                    <p>Domicilio: {{dirCom}}</p>
+                    <p>Condicion de venta: {{articulo.formaPago}}</p>
+                    <div class="border-top"></div>
+                    <p>1,00 X ${{articulo.preArt}}</p>
+                    <div class="comprobante-content">
+                    <p>{{articulo.nomArt}}</p><span>${{articulo.preArt}}</span>
+                    </div>
+                    <p>1,00 X ${{articulo.preArt}}</p>
+                    <div class="comprobante-content">
+                    <p>Total:</p><span>${{articulo.preArt}}</span>
+                    </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
         </div>
     </div>
+
 </div>
 <app-footer></app-footer>
