@@ -29,7 +29,6 @@ export class ListadoTareasComponent implements OnInit {
       this.voluntarioService.getDatosVoluntario.subscribe({
         next:(res)=>{
           this.datosVoluntario = res;
-          console.log(this.datosVoluntario);
           this.mostrarTareas();
         }
       });
