@@ -72,10 +72,9 @@ export class ListadoTareasComponent implements OnInit {
   }
 
   verificarAsistencia(tarea:Tarea):boolean{
-    let resultado = false;
     if(this.datosVoluntario){
 
-      resultado = this.datosVoluntario.tareas?.some(t=> t.id === tarea.id)!;
+      const resultado = this.datosVoluntario.tareas?.some(t=> t.id === tarea.id)!;
 
       if(resultado){
         const index = this.datosVoluntario.tareas.findIndex(tareaVoluntario => tareaVoluntario.id === tarea.id);
