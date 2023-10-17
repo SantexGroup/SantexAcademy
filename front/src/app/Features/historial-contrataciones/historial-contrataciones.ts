@@ -23,7 +23,7 @@ export class HistorialContratacionesComponent implements OnInit {
   modelo: any = {
     imaArt: '',
     nomArt: '',
-    nomVen: '',    
+    nomCom: '',    
     estArt: '',
     idArt: 0,
     desArt: '',
@@ -83,11 +83,11 @@ export class HistorialContratacionesComponent implements OnInit {
           confirmButtonText: "Ok"
         });
       }
-      //reemplazar imaArt, idArt, nomVen, nomArt, desArt, preArt, fecArt y envArt
+      //reemplazar imaArt, idArt, nomCom, nomArt, desArt, preArt, fecArt y envArt
       for (let i=0; i < res.length; i++) {
         this.modelo.imaArt = this.servidor + res[i].Product.Images[0].url;
         this.modelo.idArt = res[i].idProducto;
-        this.modelo.nomVen = res[i].Product.User.firstName.charAt(0).toUpperCase() + res[i].Product.User.firstName.slice(1) + ' ' + (res[i].Product.User.lastName.charAt(0).toUpperCase() + res[i].Product.User.lastName.slice(1));
+        this.modelo.nomCom = res[i].Product.User.firstName.charAt(0).toUpperCase() + res[i].Product.User.firstName.slice(1) + ' ' + (res[i].Product.User.lastName.charAt(0).toUpperCase() + res[i].Product.User.lastName.slice(1));
         this.modelo.nomArt = res[i].Product.nombre.charAt(0).toUpperCase() + res[i].Product.nombre.slice(1);
         this.modelo.desArt = res[i].Product.detalles.charAt(0).toUpperCase() + res[i].Product.detalles.slice(1);;
         this.modelo.preArt = res[i].Product.precio;

@@ -19,6 +19,4 @@ export class HisComService {
   articulosComprador(id: number) {
     return this.service.get<any>('/alquiler/' + id);
   }
-
-
 }
