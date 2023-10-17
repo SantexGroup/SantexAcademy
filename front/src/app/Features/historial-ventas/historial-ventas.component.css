@@ -1,6 +1,7 @@
 /* etiquetas */
 h1 {
     padding-top: 1%;
+    padding-bottom: 1%;
     font-size: 30px;
     font-weight: 700;
     margin: 0px;
@@ -57,9 +58,8 @@ img {
 }
 #botonNavegacion {
     margin-left: 0.5%;
-    padding-top: 0.5%;
-    
-  }
+    padding-top: 0;
+}
 
 /* articulo */
 #articulo {

@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { HisComService } from 'src/app/core/services/his-com.service';
+import { HisContService } from 'src/app/core/services/his-cont.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-historial-comprador',
-  templateUrl: './historial-comprador.component.html',
-  styleUrls: ['./historial-comprador.component.css']
+  selector: 'app-historial-contrataciones',
+  templateUrl: './historial-contrataciones.component.html',
+  styleUrls: ['./historial-contrataciones.component.css']
 })
-export class HistorialCompradorComponent implements OnInit {
-  
+export class HistorialContratacionesComponent implements OnInit {
+
+  idVen: number = 0;
   idCom: number = 0;
   nomCom: string = '';
   dniCom: string = '';
@@ -23,7 +24,7 @@ export class HistorialCompradorComponent implements OnInit {
     imaArt: '',
     nomArt: '',
     nomVen: '',    
-    catArt: '',
+    estArt: '',
     idArt: 0,
     desArt: '',
     preArt: '',
@@ -42,7 +43,7 @@ export class HistorialCompradorComponent implements OnInit {
   confUsuario: boolean = false;
   idUser: string = '';
 
-  constructor(private service: HisComService, private router: Router) { }
+  constructor(private service: HisContService, private router: Router) { }
 
   ngOnInit(): void {
     this.datos();
@@ -55,9 +56,7 @@ export class HistorialCompradorComponent implements OnInit {
     if (datosLog) {
       let newObject = JSON.parse(datosLog);
       this.datosLog = newObject;
-      this.idCom = this.datosLog[1].users.id;
-      this.dniCom = this.datosLog[1].users.dni;
-
+      this.idVen = this.datosLog[1].users.id;
     }else{
       Swal.fire({
         icon: 'error',
@@ -69,16 +68,15 @@ export class HistorialCompradorComponent implements OnInit {
     this.service.infoComprador(this.idCom).subscribe(resCom => {
       this.nomCom = JSON.stringify(resCom.firstName.charAt(0).toUpperCase() + resCom.firstName.slice(1) + ' ' + (resCom.lastName.charAt(0).toUpperCase() + resCom.lastName.slice(1)));
       this.nomCom = this.nomCom.slice(1, this.nomCom.length-1);
-      console.log("nombre comprador: " + this.nomCom);
       this.dirCom = resCom.direccion.calleYaltura;
     });
     //traer lista de categorias
     this.service.getCategories().subscribe(resCat => {this.listcategorias = resCat});
     //traer articulos
-    this.service.articulosComprador(this.idCom).subscribe(res => {
+    this.service.articulosContratados(this.idVen).subscribe(res => {
       this.respuesta = res;
       console.log("respuesta: " + JSON.stringify(res));
-      if (JSON.stringify(res.message) == '"Usuario sin productos publicados"') {
+      if (JSON.stringify(res.message) == '"Usuario sin artículos contratados todavía"') {
         Swal.fire({
           icon: 'error',
           title: 'No tiene productos cargados',
@@ -87,7 +85,6 @@ export class HistorialCompradorComponent implements OnInit {
       }
       //reemplazar imaArt, idArt, nomVen, nomArt, desArt, preArt, fecArt y envArt
       for (let i=0; i < res.length; i++) {
-        console.log("Imagen prod: " + i + JSON.stringify(res[i].Product));
         this.modelo.imaArt = this.servidor + res[i].Product.Images[0].url;
         this.modelo.idArt = res[i].idProducto;
         this.modelo.nomVen = res[i].Product.User.firstName.charAt(0).toUpperCase() + res[i].Product.User.firstName.slice(1) + ' ' + (res[i].Product.User.lastName.charAt(0).toUpperCase() + res[i].Product.User.lastName.slice(1));
@@ -104,8 +101,12 @@ export class HistorialCompradorComponent implements OnInit {
         }else {
           this.modelo.envArt = 'En local';
         }  
+        if(res[i].Product.estado) {
+          this.modelo.estArt = 'Disponible'
+        }else {
+          this.modelo.estArt = 'Actualmente contratado'
+        }
         this.modelo.formaPago = res[i].formaPago;
-        console.log(res[i].formaPago);
         //reemplazar categoria
         if (this.modelo.catArt == '') {
           for (let j=0; j < this.listcategorias.length; j++) {
@@ -117,7 +118,6 @@ export class HistorialCompradorComponent implements OnInit {
           }
         }
         //pushear articulo individual en array de articulos
-        console.log("modelo: " + i + this.modelo)
         this.articulos.push({ ...this.modelo });
         this.modelo.catArt = '';
       }  
@@ -143,7 +143,7 @@ export class HistorialCompradorComponent implements OnInit {
       } else {
         this.confUsuario = false; 
       }
-      
     }
   }
+
 }

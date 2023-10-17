@@ -23,6 +23,7 @@ import { VistaPorTextoComponent } from './Features/vista-por-texto/vista-por-tex
 import { CategoriasComponent } from './Features/categorias/categorias.component';
 import { EditarUsuarioComponent } from './Features/editar-usuario/editar-usuario.component';
 import { BotonNavegacionComponent } from './Shared/boton-navegacion/boton-navegacion.component';
+import { HistorialContratacionesComponent } from './Features/historial-contrataciones/historial-contrataciones';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { BotonNavegacionComponent } from './Shared/boton-navegacion/boton-navega
     CategoriasComponent,
     EditarUsuarioComponent,
     BotonNavegacionComponent,
+    HistorialContratacionesComponent,
 
   ],
   imports: [

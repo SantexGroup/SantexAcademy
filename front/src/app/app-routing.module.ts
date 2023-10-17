@@ -12,6 +12,7 @@ import { HistorialCompradorComponent } from './Features/historial-comprador/hist
 import { VistaPorTextoComponent } from './Features/vista-por-texto/vista-por-texto.component';
 import { CategoriasComponent } from './Features/categorias/categorias.component';
 import { EditarUsuarioComponent } from './Features/editar-usuario/editar-usuario.component';
+import { HistorialContratacionesComponent } from './Features/historial-contrataciones/historial-contrataciones';
 
 const routes: Routes = [
   {
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path: 'historial-compras',
     component: HistorialCompradorComponent,
+  },
+  {
+    path: 'historial-contrataciones',
+    component: HistorialContratacionesComponent,
   },
   {
     path: 'vista-por-texto',
