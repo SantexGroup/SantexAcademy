@@ -60,6 +60,10 @@ const find = async (filterParams) => {
 
 const modifyUser = async (id, newUser) => {
   try {
+    if(newUser.password){
+      const hashedPassword = await bcrypt.hash(newUser.password, 10);
+      newUser.password = hashedPassword;
+    }
     const updatedUser = await db.User.update(newUser, { where: { id } });
     return updatedUser;
   } catch (error) {
