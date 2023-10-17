@@ -15,7 +15,7 @@
         </button>
 
         <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto">
+            <ul class="navbar-nav mx-auto custom-nav">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink="/home">Inicio</a>
                 </li>
@@ -35,25 +35,25 @@
                     <a class="nav-link" routerLink="/login">Ingresar</a>
                 </li>
             </ul>
-            <ul *ngIf="isLogged" class="navbar-nav justify-content-end">               
-    
-    <li class="nav-item" *ngIf="isAdmin">
-        <a class="nav-link" routerLink="/course/course-list">Cursos</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" *ngIf="isAdmin" routerLink="/user/user-list">Usuarios</a>
-    </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="username">{{ username }}</span>
-        </a>
-        <ul class="dropdown-menu custom-dropdown" role="menu">
-            <li><a class="dropdown-item" routerLink="/profile">Mi Perfil</a></li>
-            <li><a class="dropdown-item" routerLink="/course/my-courses">Mis cursos</a></li>
-            <li><a class="dropdown-item custom-logout" (click)="logout()">Salir</a></li>
-        </ul>
-    </li>
-</ul>
+            <ul *ngIf="isLogged" class="navbar-nav justify-content-end">
+
+                <li class="nav-item" *ngIf="isAdmin">
+                    <a class="nav-link" routerLink="/course/course-list">Cursos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" *ngIf="isAdmin" routerLink="/user/user-list">Usuarios</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="username">{{ username }}</span>
+                    </a>
+                    <ul class="dropdown-menu custom-dropdown" role="menu">
+                        <li><a class="dropdown-item" routerLink="/user/{{ userId }}">Mi Perfil</a></li>
+                        <li><a class="dropdown-item" routerLink="/course/my-courses">Mis cursos</a></li>
+                        <li><a class="dropdown-item custom-logout" (click)="logout()">Salir</a></li>
+                    </ul>
+                </li>
+            </ul>
 
         </div>
     </div>

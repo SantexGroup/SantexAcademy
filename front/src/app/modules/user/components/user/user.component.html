@@ -7,16 +7,23 @@
         <div class="card-header">
           <h2>Detalles del usuario</h2>
         </div>
-        <div class="card-body">          
-          <p><strong>Id:</strong> {{ user.id }}</p>
-          <p><strong>Rol:</strong> {{ getRoleName(user.role) }}</p>          
-          <p><strong>Nombre:</strong> {{ user.firstName }}</p>
-          <p><strong>Apellido:</strong> {{ user.lastName }}</p>
-          <p><strong>Correo electrónico:</strong> {{ user.email }}</p>
-          <button class="btn btn-primary" (click)="redirectToEditUser(user.id)">Editar</button>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Borrar Usuario
-          </button>
+        <div class="card-body">
+          <div class="image-container">
+            <img src="../../../../../assets/imagen/no-image.png" class="image" alt="no-image">
+          </div>
+          <div class="user-details">
+            <p><strong>Id:</strong> {{ user.id }}</p>
+            <p><strong>Rol:</strong> {{ getRoleName(user.role) }}</p>
+            <p><strong>Nombre:</strong> {{ user.firstName }}</p>
+            <p><strong>Apellido:</strong> {{ user.lastName }}</p>
+            <p><strong>Correo electrónico:</strong> {{ user.email }}</p>
+            <button class="btn btn-info" (click)="redirectToEditUser(user.id)">Editar</button>
+            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Borrar Usuario
+            </button>
+            <button class="btn btn-info" (click)="navigateToUserList()">Volver</button>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -32,12 +39,12 @@
         <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmación</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        ¿Está seguro de eliminar a {{ user.firstName }}?
+      <div class="modal-body" *ngIf="user">
+        <p>¿Esta seguro de eliminar a {{ user.firstName }}?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button (click)="deleteUser()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Si</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+        <button (click)="deleteUser()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Si, eliminar este usuario</button>
       </div>
     </div>
   </div>

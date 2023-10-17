@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     description: DataTypes.STRING,
     image: DataTypes.STRING,
-    durationHours: DataTypes.INTEGER
+    durationHours: DataTypes.INTEGER 
   }, {
     sequelize,
     modelName: 'Course',

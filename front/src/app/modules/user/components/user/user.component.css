@@ -6,50 +6,63 @@
     background: var(--background-gradient);
 }
 
-.body {
+.card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    margin: 1vh;
 }
 
-.form-container {
-    background-color: VAR(--color-0);
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: VAR(--box-shadow-1);
-    max-width: 400px;
-    width: 60vh;
-    margin: 0 auto;
+.card-header {
+    margin-bottom: 2rem;
+    background: var(--color-0);
 }
 
-input {
-    font-size: 14px;
+.card-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.image-container {
+    margin-right: 3rem;
+}
+
+.image {
+    width: 21rem;
+}
+
+.user-details {
+    text-align: left;
+}
+
+.btn {
+    margin-top: 1rem;
+}
+.btn-danger{
     width: 100%;
-    padding: 12px 20px;
-    margin: 10px 0;
-    box-sizing: border-box;
-    border-color: var(--color-3);
+    padding: .5rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
 }
 
-select {
-    font-size: 14px;
+.btn-primary{
     width: 100%;
-    padding: 12px 20px;
-    margin: 10px 0;
-    box-sizing: border-box;
-    border-color: var(--color-3);
+    padding: .5rem;   
+    margin-bottom: .5rem;
 }
 
-textarea {
-    font-size: 14px;
-}
-
-.btn-custom {
-    background-color: VAR(--color-primary);
-    color: var(--color-0);
-}
-
-.footer {
-    position: fixed;
-    bottom: 0;
+.btn-info{
     width: 100%;
+    padding: .5rem;   
+    margin-bottom: .5rem;
+}
+
+.btn-info:hover {
+    background-color: var(--color-0);
+    color: var(--color-6);
+    border-color: var(--color-6);
+
 }

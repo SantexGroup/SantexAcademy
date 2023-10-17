@@ -3,11 +3,14 @@ const router = express.Router();
 
 const courseController = require('../controllers/courseController');
 
+const { checkValidationResult } = require('../middleware/validation.middleware');
+const courseCreateValidations = require('../middleware/course.validation.mw')
+
 router.get('/search', courseController.searchCourses);
 
 router.route('/')
     .get(courseController.getCourses)
-    .post(courseController.createCourse);
+    .post(courseCreateValidations, checkValidationResult, courseController.createCourse);
 
 router.route('/:id')
     .get(courseController.getCourse)

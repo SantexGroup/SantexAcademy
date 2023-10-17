@@ -13,6 +13,7 @@ export class AuthService {
   private isAdmin = false;
   private isStudentOrTeacher = false;
   private username: string = '';
+  private userId: number = 0;
 
   constructor(private http: HttpClient) {
     const session = JSON.parse(localStorage.getItem("session") ?? '{}');
@@ -53,7 +54,7 @@ export class AuthService {
   }
 
   private updateUserDetails(session: any) {
-    let { role, firstName }: any = session;
+    let { role, firstName, userId }: any = session;
 
     switch (role) {
       case 'admin':
@@ -71,11 +72,16 @@ export class AuthService {
         break;
     }
 
-    this.username = firstName; // Almacena el nombre de usuario en la propiedad 'username'
+    this.username = firstName;
+    this.userId = userId;
   }
 
   getUsername(): string | null {
     return this.username;
+  }
+
+  getUserId(): number | null {
+    return this.userId;
   }
 
 
