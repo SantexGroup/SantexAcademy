@@ -2,77 +2,92 @@
 #inicial {
     margin-top: 1%;
 }
+
 #general {
-  display: flex;
-  max-width: 80%;
-  margin: auto;
-  padding: 2%;
-  background-color: rgb(226, 226, 226);
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  cursor: default;
+    display: flex;
+    max-width: 80%;
+    margin: auto;
+    padding: 2%;
+    background-color: rgb(226, 226, 226);
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    cursor: default;
 }
+
 span {
     text-decoration: none;
-    color:black;
+    color: black;
     font-weight: 600;
     font-size: 11px;
     margin-bottom: 1%;
     margin-top: 1%;
 }
+
 #botonNavegacion {
+
     margin-left: 0.5%;
     padding-top: 0.5%;
     
   }
+
 /* imagen */
 #divImagenes {
     display: grid;
     justify-content: center;
     align-items: center;
-    width: 1100px; /* revisar medidas y maquetado */
+    width: 1100px;
+    /* revisar medidas y maquetado */
     height: 500px;
     background-color: white;
     border-radius: 10px;
 }
+
 #fondoImagen {
     justify-self: center;
     max-width: 65%;
     width: 65%;
 }
+
 #divImagen {
     display: flex;
     justify-content: center;
 }
+
 #divImagen img {
     min-height: 300px;
     max-height: 400px;
     min-width: 250px;
     border-radius: 5px;
 }
+
 #fondoImagenes {
     justify-self: center;
     background-color: rgb(226, 226, 226);
     border-radius: 10px;
 }
+
 #imagenes img {
     width: 50px;
     margin: 10px;
 }
+
 #imagenes img:hover {
     filter: grayscale(100%);
     transition: filter 0.1s;
     cursor: pointer;
 }
+
 /* datos */
 #datos {
     width: 45%;
     margin-left: 2%;
 }
+
 #datos label {
-  display: flex;
-  justify-content: right;
+    display: flex;
+    justify-content: right;
 }
+
 #datos p {
     display: block;
     justify-content: right;
@@ -81,6 +96,7 @@ span {
     padding: 0;
     font-weight: bold;
 }
+
 #datos a {
     display: block;
     justify-content: right;
@@ -89,88 +105,103 @@ span {
     padding: 0;
     font-weight: bold;
 }
+
 /* título */
 #divTitulo {
     margin: 1%;
 }
+
 #divTitulo a {
     text-decoration: none;
-    color:#d68a96;
+    color: #d68a96;
     font-size: 11px;
 }
+
 #divTitulo a:hover {
-    color:blueviolet;
+    color: blueviolet;
     cursor: pointer;
 }
+
 #nombreProd {
     display: flex;
     width: max-content;
     color: #d68a96;
     font-size: 35px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
 /* descripción */
 #divDesc {
     height: 30%;
     padding: 1%;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;  
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
 #descTitulo {
     margin-left: 1%;
 }
+
 #divDescProd {
     height: 70%;
     padding-top: 1%;
     padding-left: 3%;
     padding-right: 3%;
-    background-color: white;
-    color: grey;  
-    font-size: small;  
-    border-radius: 4px;
-    border: 1px solid lightgrey;  
+    background-color: rgb(226, 226, 226);
+    font-size: larger;
 }
+
 /* seleccionables */
 #divSeleccionables {
     padding: 1%;
 }
+
 #seleccionables {
     width: 40%;
 }
+
 select {
-  width: 100%;
-  padding: 5%;
-  margin-top: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+    width: 100%;
+    padding: 5%;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
+
 select:hover {
     cursor: pointer;
     border: 2px solid;
 }
+
 select:focus {
     border: 2px solid;
 }
+
 /* botón */
 #divBotonYPrecio {
     display: flex;
     align-items: center;
 }
+
 .boton {
-    padding: 10px 20px; /* tengo dudas con esto */
+    padding: 10px 20px;
+    /* tengo dudas con esto */
     margin-top: 10%;
     border: none;
     border-radius: 4px;
     background-color: #d68a96;
     color: white;
 }
+
 .boton:hover {
     cursor: pointer;
     background-color: #c95c6d;
     transition: background-color 0.3s, color 0.3s;
 }
+
 #precio {
-    color:darkslateblue;
+    color: darkslateblue;
 }
+
 #relleno {
     width: 50px;
 }
@@ -179,68 +210,70 @@ select:focus {
 
 
 .modal-content {
-  border-radius: 10px;
+    border-radius: 10px;
 }
 
 .modal-body ul {
-  list-style-type: none;
-  padding: 0;
-  font-weight: 500;
+    list-style-type: none;
+    padding: 0;
+    font-weight: 500;
 }
 
-.modal h1{
+.modal h1 {
     padding-left: 100px;
 }
 
-.modal h6{
+.modal h6 {
     text-align: center;
     font-weight: bold;
     padding: 10px;
 }
 
-.modal p{
+.modal p {
     color: #000;
 }
 
 label {
-  font-weight: bold;
-  margin-right: 10px;
+    font-weight: bold;
+    margin-right: 10px;
 }
 
 input[type="text"] {
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
+
 .modal-footer button.btn-primary {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
 }
 
 .modal-footer button.btn-secondary {
-  background-color: #ccc;
-  color: #000;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
+    background-color: #ccc;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
 }
 
 .modal-footer {
-  justify-content:  space-evenly;
+    justify-content: space-evenly;
 }
 
 .datos-tarjeta {
-  margin-top: 20px;
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 5px;
-  background-color: #f5f5f5;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f5f5f5;
 }
+
 input {
     padding-left: 15px;
 }
@@ -253,13 +286,13 @@ input {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 400;
     font-size: medium;
-  }
+}
 
 .modal-body li {
     padding-bottom: 10px;
-    font-size:medium;
+    font-size: medium;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
 }
 
