@@ -9,8 +9,10 @@ const url = window.location.href;
 const segments = url.split('/');
 const token = segments[segments.length - 1];
 
+const localUrl = (`${segments[0]}`, '//', `${segments[2]}`, '/');
+
 const newPassword = async (pass) => {
-  await fetch(`http://localhost:3000/user/resetPassword/${token}`, {
+  await fetch(`${localUrl}user/resetPassword/${token}`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',

@@ -8,6 +8,10 @@
     justify-content: center;
 }
 
+.title{
+    display: none;
+}
+
 body{
     display: flex;
     flex-direction: column;
