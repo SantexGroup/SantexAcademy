@@ -6,6 +6,7 @@ const {
 async function products() {
   const productos = await Products.findAll({
     include: [{ model: Images }],
+    where: { estado: 1 },
   });
   console.log('Productos', productos);
 
@@ -42,13 +43,14 @@ async function getCategoriaById(id) {
     include: {
       model: Products,
       include: [{
-        model: Images
-      }]
-    }
+        model: Images,
+      }],
+      where: { estado: 1 },
+    },
 
-  })
-  
-  console.log(categoria)
+  });
+
+  console.log(categoria);
   if (categoria == null) {
     throw new Error();
   }
