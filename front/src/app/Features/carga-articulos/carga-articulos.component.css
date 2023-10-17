@@ -72,18 +72,13 @@ textarea {
 }
 /* Botones */
 .formulario .subir-boton {
-  background-color: #d68a96;
-  color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   transition: background-color 0.3s, color 0.3s;
   margin: -10px;
 }
-.formulario .subir-boton:hover {
-  background-color: #838383;
-  color: white;
-}
+
 .botones-container {
   text-align: center;
   margin-top: 15px;
@@ -142,13 +137,25 @@ textarea {
   border-radius: 4px;
 }
 #botonCargar:hover {
-  background-color: grey;
+  background-color: #c95c6d;
   transition: background-color 0.3s, color 0.3s;
   cursor: pointer;
 } 
 input[type="file"] {
   display: none;
 }
+
+.subir-boton {
+  color: #f0eaeb;
+  background-color: #d68a96;
+  border: 0px;
+}
+
+.subir-boton:hover {
+  background-color: #c95c6d;
+  cursor: pointer;
+}
+
 /* Precio */
 .precio-input {
   display: flex;
