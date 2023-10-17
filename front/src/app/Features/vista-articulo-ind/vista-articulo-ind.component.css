@@ -24,9 +24,11 @@ span {
 }
 
 #botonNavegacion {
-    display: flex;
-    justify-content: end;
-}
+
+    margin-left: 0.5%;
+    padding-top: 0.5%;
+    
+  }
 
 /* imagen */
 #divImagenes {

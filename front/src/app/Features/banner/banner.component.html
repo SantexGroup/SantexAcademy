@@ -1,6 +1,6 @@
 
 <div class="row align-items-start">
-    <div id="carouselExampleAutoplaying" class="carousel slide col-sm-12 contenedor" data-bs-ride="carousel">
+    <div id="carouselExampleAutoplaying" class="carousel slide col-sm-12 contenedor contenedorCarousel" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img [src]="url1" class="d-block w-100" (click)="redCategory()" alt="banner-01">
@@ -32,7 +32,7 @@
             <img id="FotoArticulo" [src]="images[listArticulos.indexOf(articulo)]">
             </div>
             <h5 class="card-title">{{ articulo.nombre }}</h5>
-            <p>{{ articulo.detalles }}</p>
+            <p class="descripcion">{{ articulo.detalles }}</p>
             <h6 id="Precio" class="card-subtitle">${{ articulo.precio }}</h6>
             <button (click)="verMas(articulo.id)" type="button" id="Ver-mas" class="btn btn-primary">Ver más</button>
           </div>

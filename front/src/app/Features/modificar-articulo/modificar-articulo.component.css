@@ -7,9 +7,9 @@
   display:grid;
   justify-content: center;
 }
-p {
-  background-color: #f2f2f2; 
-  border: 1px solid #ff0000; 
+h3 {
+  background-color: #ffffff; 
+  border: 1px solid #c95c6d; 
   padding: 10px;
   border-radius: 5px; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
@@ -49,8 +49,9 @@ h2 {
   justify-content: space-between;
 }
 #botonNavegacion {
-  display: flex;
-  justify-content: end;
+  margin-left: 0.5%;
+  padding-top: 0.5%;
+  
 }
 /* Columna izquierda */
 .media_columna {

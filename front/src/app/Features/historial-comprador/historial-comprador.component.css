@@ -15,8 +15,48 @@ h1 {
     color: #d68a96;
 }
 
-p,
-a {
+
+
+.modal-content span, p, h1 {
+    color: black;
+}
+.modal-content span {
+    font-weight:500;
+}
+.modal-content p {
+    font-weight: 400;
+    font-size: medium;
+}
+.precio-final {
+    font-size: 25px;
+    font-weight: 600;
+}
+#modal-title {
+    margin-left: 30%;
+}
+.comprobante-content {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0;
+}
+
+.border-top {
+    margin: 10px 0;
+}
+h3 {
+    background-color: #ffffff; 
+    border: 1px solid #c95c6d; 
+    padding: 10px;
+    border-radius: 5px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    font-size: 18px; 
+    color: #333; 
+    margin-top: 10px ; 
+    text-align: center; 
+    font-weight: bold;
+  }
+p, a {
+
     width: max-content;
     font-size: small;
     margin: 0;
@@ -58,10 +98,9 @@ span {
 }
 
 #botonNavegacion {
-    display: flex;
-    justify-content: end;
-    padding-right: 10px;
-    padding-top: 5px;
+    margin-left: 0.5%;
+    padding-top: 0.5%;
+    
 }
 
 /* articulos */

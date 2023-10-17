@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HisVenService } from 'src/app/core/services/his-ven.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-historial-ventas',
@@ -32,10 +33,16 @@ export class HistorialVentasComponent implements OnInit {
   respuesta: any = [];
   servidor: string = environment.API_URL + '/images/';
 
+  logeadoComprador: boolean = false;
+  logeadoVendedor: boolean = false;
+  idUser: string = '';
+  confVendedor: boolean = false;
+
   constructor(private service: HisVenService, private router: Router) { }
 
   ngOnInit(): void {
     this.datosVendedor();
+    this.getIdUser();
   }
 
   datosVendedor() {
@@ -46,7 +53,11 @@ export class HistorialVentasComponent implements OnInit {
       this.datosLog = newObject;
       this.idVen = this.datosLog[1].users.id;
     }else{
-      alert("No está logueado")
+      Swal.fire({
+        icon: 'error',
+        title: 'No está logueado',
+        confirmButtonText: "Ok"
+      });
     }
     //traer y reemplazar nombre vendedor
     this.service.infoVendedor(this.idVen).subscribe(resVen => {
@@ -60,7 +71,11 @@ export class HistorialVentasComponent implements OnInit {
     this.service.articulosVendedor(this.idVen).subscribe(res => {
       this.respuesta = res;
       if (JSON.stringify(res.message) == '"Usuario sin productos publicados"') {
-        alert("No tiene productos cargados");
+        Swal.fire({
+          icon: 'error',
+          title: 'No tiene productos cargados',
+          confirmButtonText: "Ok"
+        });
       }
       for (let i=0; i < res.length; i++) {
         this.modelo.imaArt = this.servidor + this.respuesta[i].Images[0].url;
@@ -115,14 +130,55 @@ export class HistorialVentasComponent implements OnInit {
         console.log("Res eli: " + resEli)
         if(resEli) {
           console.log("Res eli: " + resEli)
-          alert("Artículo borrado con éxito");
+          Swal.fire({
+            icon: 'success',
+            title: 'Artículo borrado con éxito',
+            confirmButtonText: "Ok"
+          });
           this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
             this.router.navigate(['/historial-ventas']).then(()=>{})
           })
         }else{
-          alert("No se ha podido eliminar su artículo");
+          Swal.fire({
+            icon: 'error',
+            title: 'No se ha podido eliminar su artículo',
+            confirmButtonText: "Ok"
+          });
         }
       })
+    }
+  }
+
+  getIdUser() {    
+    let infoLocal = localStorage.getItem('resLog');
+    if (infoLocal) {
+      let newObject = JSON.parse(infoLocal);
+      const idUser = newObject[1].users.id;
+      this.idUser = idUser;
+      const vendedor = newObject[1].users.estadoDeVendedor;
+      if (vendedor){
+       this.confVendedor = true;
+      }
+    }
+  }
+
+  corroborarLogeo() {    
+    let infoLocal = localStorage.getItem('resLog')
+    if (infoLocal) {
+      let newObject = JSON.parse(infoLocal);
+      if (newObject) {
+        if (newObject[1].users.estadoDeVendedor) {
+          this.logeadoVendedor = true;
+          this.logeadoComprador = false;
+        }
+        else if (!newObject[1].users.estadoDeVendedor) {
+          this.logeadoComprador = true;
+          this.logeadoVendedor = false;
+        } else {
+          this.logeadoComprador = false;
+          this.logeadoVendedor = false;
+        }
+      }
     }
   }
 }

@@ -1,11 +1,18 @@
 <app-barra></app-barra>
-<div id="divprincipal">
+<div *ngIf="confUsuario">
+    <h3> Ya se encuentra registrado</h3>
+    <div id="botonNavegacion" style="padding-top: 0%;">
+        <app-boton-navegacion></app-boton-navegacion>
+    </div>
+</div>
+<div *ngIf="!confUsuario" id="divprincipal">
+    <div id="botonNavegacion">
+        <app-boton-navegacion></app-boton-navegacion>
+    </div>
     <p>-</p>
     <div id="FormularioCompleto" class="formulario">
         <div class="formulario_container">
-            <div id="botonNavegacion">
-                <app-boton-navegacion></app-boton-navegacion>
-            </div>
+            
             <div class="titulo_container">
                 <h2>Crear Cuenta</h2>
             </div>

@@ -3,11 +3,14 @@
   font-family: Verdana, Geneva, sans-serif;
   font-size: 14px;
   background: #f4f3f38a;
+
 }
 
-p {
-  background-color: #f2f2f2;
 
+ 
+h3 {
+  background-color: #ffffff; 
+  border: 1px solid #c95c6d; 
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -17,6 +20,18 @@ p {
   text-align: left;
   font-weight: bold;
 }
+
+p {
+  background-color: #ffffff; 
+  padding: 10px;
+  border-radius: 5px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  font-size: 18px; 
+  color: #333; 
+  margin-top: 10px ; 
+  text-align: center; 
+}
+
 
 #BotonColor {
   color: #f0eaeb;
@@ -175,26 +190,34 @@ p {
   border-color: #7b7b7b transparent transparent transparent;
 }
 
-button {
-  background: #d68a96;
-  height: 35px;
-  line-height: 35px;
-  width: 100%;
+#BotonEditar {
+  color: #f0eaeb;
+  font-size: 110%;
+  background-color: #d68a96;
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 0%;
   border: none;
-  outline: none;
+  border-radius: 4px;
+  background-color: #d68a96;
+  color: white;
+  width: 100%;
+  padding: 2%;
+  
+}
+#BotonEditar:hover {
+  background-color: #c95c6d;
   cursor: pointer;
-  color: #fff;
-  font-size: 1.1em;
-  margin-bottom: 10px;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  background-color: #c95c6d;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-button:hover {
-  background-color: #c95c6d;
+#botonNavegacion {
+  margin-left: 0.5%;
+  padding-top: 0.5%;
+  
 }
+
 
 /* ---------------------------------------------- Responsive --------------------------------------------------*/
 
