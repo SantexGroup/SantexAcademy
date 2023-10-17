@@ -54,3 +54,13 @@ textarea {
     margin-top: .5rem;
     margin-bottom: .5rem;
 }
+
+.btn-info{
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+.btn-info:hover {
+    background-color: var(--color-0);
+    color: var(--color-6);
+    border-color: var(--color-6);
+}
