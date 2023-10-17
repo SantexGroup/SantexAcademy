@@ -9,6 +9,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      img: {
+        defaultValue: '',
+        type: Sequelize.STRING,
+      },
       nombreCompleto: {
         allowNull: false,
         type: Sequelize.STRING,

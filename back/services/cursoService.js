@@ -1,4 +1,5 @@
 const { curso } = require('../models');
+const { Op } = require('sequelize');
 
 async function getAll() {
     const listCursos = await curso.findAll()
@@ -42,4 +43,50 @@ async function deleteCurso(id) {
     const curso = await getOne(id)
     await curso.destroy(id)
 }
-module.exports = { getAll, getOne, crearCurso , editCurso, deleteCurso}
+
+
+
+async function buscarCursosPorNombre(nombre) {
+    const condiciones = {};
+    if (nombre) {
+        condiciones.nombre = { [Op.like]: `%${nombre}%` };
+    }
+
+    const cursos = await curso.findAll({
+        where: condiciones,
+    });
+
+    return cursos;
+}
+
+// async function buscarCursosRecientes(fechaInicio) {
+//     const condiciones = {};
+//     if (fechaInicio) {
+//         condiciones.fechaInicio = { [Op.gte]: new Date(fechaInicio) };
+//     }
+//     const cursos = await curso.findAll({
+//         where: condiciones,
+//     });
+
+//     return cursos;
+// }
+
+async function buscarCursosRecientes(fecha) {
+    try {
+      // Verifica que la fecha proporcionada sea válida
+      if (!fecha || !Date.parse(fecha)) {
+        throw new Error('La fecha proporcionada es inválida.');
+      }
+  
+      const cursos = await curso.findAll({
+        where: {
+          fechaInicio: { [Op.gte]: fecha },
+        },
+      });
+  
+      return cursos;
+    } catch (error) {
+      throw error;
+    }
+  }
+module.exports = { getAll, getOne, crearCurso, editCurso, deleteCurso, buscarCursosPorNombre,buscarCursosRecientes}
