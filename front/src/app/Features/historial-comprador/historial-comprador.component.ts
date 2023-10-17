@@ -143,7 +143,6 @@ export class HistorialCompradorComponent implements OnInit {
       } else {
         this.confUsuario = false; 
       }
-      
     }
   }
 }

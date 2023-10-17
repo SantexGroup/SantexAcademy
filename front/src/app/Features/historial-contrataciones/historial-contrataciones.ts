@@ -125,7 +125,6 @@ export class HistorialContratacionesComponent implements OnInit {
   }
   //acciones
   redirigirCategoria(idCat: string) {
-    // el comp de categorias no solicita datos del local storage, solo el id de categoria en la ruta:
     this.router.navigate(['/categorias', idCat]);
   }
   redirigirProducto(idProd: number) {
@@ -145,5 +144,4 @@ export class HistorialContratacionesComponent implements OnInit {
       }
     }
   }
-
 }
