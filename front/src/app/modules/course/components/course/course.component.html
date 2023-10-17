@@ -10,8 +10,8 @@
         <div class="card-body">          
           <p><strong>Id:</strong> {{ course.id }}</p>                  
           <p><strong>Nombre:</strong> {{ course.name }}</p>
-          <p><strong>Descripción:</strong> {{ course.description }}</p>
-          <p><strong>Imagen:</strong> {{ course.image }}</p>
+          <p><strong>Horas:</strong> {{ course.durationHours }}</p>
+          <p><strong>Descripción:</strong> {{ course.description }}</p>          
           <button class="btn btn-info" (click)="redirectToEditCourse(course.id)">Editar Curso</button>
           <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Borrar Curso

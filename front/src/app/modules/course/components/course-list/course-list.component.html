@@ -14,7 +14,7 @@
           <th scope="col">ID</th>
           <th scope="col">Nombre</th>
           <th scope="col">Descripción</th>
-          <th scope="col">Imagen</th>
+          <th scope="col">Horas</th>
           <th scope="col">Detalles</th>
         </tr>
       </thead>
@@ -23,7 +23,7 @@
           <th scope="row">{{ course.id }}</th>
           <td>{{ course.name }}</td>
           <td>{{ course.description }}</td>
-          <td>{{ course.image }}</td>
+          <td>{{ course.durationHours }}</td>
           <td><button class="btn btn-info" (click)="viewCourseDetails(course.id)">Detalles</button></td>
         </tr>
       </tbody>
