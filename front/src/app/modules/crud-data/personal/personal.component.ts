@@ -19,7 +19,7 @@ export class PersonalComponent implements OnInit {
   user = {} as User;
   personalForm: FormGroup;
   default = 'assets/Imagenes/placeHolderImage.jpg';
-  url: string = this.default;
+  url: string = this.userData.urlPicture || this.default;
   imagen = "";
 
   constructor(
@@ -121,4 +121,9 @@ export class PersonalComponent implements OnInit {
       this.getUser()  
     })
   }
+
+  imageDownload(url:string){
+    
+  }
+
 }

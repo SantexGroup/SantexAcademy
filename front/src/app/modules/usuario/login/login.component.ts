@@ -61,14 +61,13 @@ export class LoginComponent implements OnInit{
   loginForm = this.fb.group({
     //TODO ELIMINAR
     nick: ['', [ Validators.required ]],
-    password: ['', [ Validators.required, Validators.minLength(6) ]],
+    password: ['', [ Validators.required, Validators.minLength(8)]],
   })
   
   submit(myForm: FormGroup) {
     if(myForm.status == 'VALID') {
       this.userService.login(myForm.value).subscribe({
         next: (data) => { 
-        console.log(data);
         this.dataUser.userId = data.profile.userId;
         this.dataUser.profileId = data.profile.id;
         this.views.quickButton = true;

@@ -15,7 +15,9 @@ import { ProfileExperience,
 })
 export class ProfileService {
 
-  constructor(private api: ApiService) {}
+  constructor(
+    private api: ApiService,
+    ) {}
 
   getProfile(id: Number): Observable<Profile[]> {
     return this.api.get<Profile[]>(`profiles/todos/${id}`);
