@@ -33,13 +33,25 @@ Object.keys(db).forEach((modelName) => {
     db[modelName].associate(db);
   };
 
-  // Define y agrega la "scope" predeterminada
+  // Define opciones de consulta predeterminadas
   db[modelName].addScope('defaultScope', {
     attributes: {
       exclude: ['deletedAt']
     }
   });
   
+});
+
+db.Course.addScope('withTeachersAndCategories', {
+  include: [{
+    model: db.User,
+    as: 'teachers',
+    through: { attributes: [] } // Omite la tabla de asociación
+  }, {
+    model: db.Category,
+    as: 'categories',
+    through: { attributes: [] }
+  }]
 });
 
 db.sequelize = sequelize;

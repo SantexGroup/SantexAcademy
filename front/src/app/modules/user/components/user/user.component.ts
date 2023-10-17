@@ -31,18 +31,33 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const userId = params.get('id');
-      if (userId) {        
+      if (userId) {
         this.userService.getUserById(userId).subscribe((user) => {
           this.user = user;
         });
+      } else {
+        const { userId } = JSON.parse(localStorage.getItem('session')!);
+        if (userId) {
+          this.userService.getUserById(userId).subscribe((user) => {
+            this.user = user;
+          });
+        } else {
+          console.log('No se encontró un userId en los parámetros ni en el localStorage.');
+        }
       }
     });
   }
 
+
+
+
+
+
+
   deleteUser() {
-    if (this.user && this.user.id) {      
+    if (this.user && this.user.id) {
       this.userService.deleteUserById(this.user.id).subscribe({
-        next:() => {
+        next: () => {
           console.log('Usuario eliminado exitosamente');
           this.toastr.success("El usuario se eliminó correctamente")
           this.navigateToUserList();
@@ -53,13 +68,13 @@ export class UserComponent implements OnInit {
         }
       });
     }
-  }  
+  }
 
   redirectToEditUser(userId: number) {
     this.router.navigate([`/user/edit-user/${userId}`]);
   }
 
-  navigateToUserList(){
+  navigateToUserList() {
     this.router.navigate(['/user/user-list']);
   }
 }
