@@ -56,6 +56,12 @@
 .fixed-size-image {
     width: 35rem;
     height: 30rem;
+    object-fit: cover;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
-/* Hoovers */

@@ -13,7 +13,8 @@ export class AddCourseComponent implements OnInit {
 
   name: string = '';
   description: string = '';
-  image: string = ''; 
+  durationHours: string = '';
+  image: string = '';
 
   constructor(private http: HttpClient, private router: Router, private toastr: ToastrService) { }
 
@@ -22,11 +23,12 @@ export class AddCourseComponent implements OnInit {
     const courseData = {
       name: this.name,
       description: this.description,
+      durationHours: this.durationHours,
       image: this.image,
     };
-    
+
     this.http.post(`${baseURL}/api/course`, courseData).subscribe({
-      next:(response) => {
+      next: (response) => {
         console.log('Curso creado exitosamente', response);
         this.toastr.success('Curso creado con éxito');
         this.navigateToCourseList();
@@ -35,9 +37,8 @@ export class AddCourseComponent implements OnInit {
         console.error('Error al crear curso:', error);
         this.toastr.error("Error al crear el curso")
       }
-  });
-}
-  
+    });
+  }
 
   navigateToCourseList() {
     this.router.navigate(['/course/course-list']);
@@ -45,6 +46,4 @@ export class AddCourseComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
 }
