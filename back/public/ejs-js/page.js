@@ -9,7 +9,7 @@ const url = window.location.href;
 const segments = url.split('/');
 const token = segments[segments.length - 1];
 
-const localUrl = (`${segments[0]}`, '//', `${segments[2]}`, '/');
+const localUrl = process.env.URL;
 
 const newPassword = async (pass) => {
   await fetch(`${localUrl}user/resetPassword/${token}`, {
