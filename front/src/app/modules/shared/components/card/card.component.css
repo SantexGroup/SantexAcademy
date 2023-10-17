@@ -53,4 +53,9 @@
     background-color: var(--color-1);
 }
 
+.fixed-size-image {
+    width: 35rem;
+    height: 30rem;
+  }
+
 /* Hoovers */
