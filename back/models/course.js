@@ -10,22 +10,29 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Course.belongsToMany(models.User, { through: 'UserCourses' });
+      Course.belongsToMany(models.User, {
+        through: 'UserCourses'
+      });
+      Course.belongsToMany(models.User, {
+        scope: { role: 'teacher' },
+        as: 'teachers',
+        through: 'UserCourses'
+      });
+      Course.belongsToMany(models.Category, {
+        as: 'categories',
+        through: 'CourseCategories'
+      });
     }
   }
   Course.init({
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    image:{ 
-      type: DataTypes.STRING,
-      allowNull: false
-    }
+    description: DataTypes.STRING,
+    image: DataTypes.STRING,
+    durationHours: DataTypes.INTEGER 
   }, {
     sequelize,
     modelName: 'Course',
