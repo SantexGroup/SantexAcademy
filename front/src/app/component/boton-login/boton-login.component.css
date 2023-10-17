@@ -1,0 +1,14 @@
+.login{
+    background-color: orange;
+    transition: 0.5s;
+    color: white;
+    border-radius: 10px;
+    size: 32px;
+    margin-left: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border: none;
+    float: right;
+}
+
+

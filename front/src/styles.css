@@ -16,6 +16,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: transparent;
     border-radius: 52px !important;
     padding: 0% !important;
+    overflow: hidden;
   }
 
 
