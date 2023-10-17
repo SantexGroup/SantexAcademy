@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';  
 
 import { AuthService } from '../../auth/services/auth.service';
@@ -44,6 +44,13 @@ export class AulaVirtualComponent implements OnInit {
 
   formulario: FormGroup;
 
+  notas: number[] = [];
+  notaFinal: number = 0;
+
+  umbralAsistencia: number = 70;
+  diaDelMes: string[] = [];
+  casillasVerificadas: boolean[] = Array(31).fill(false);
+
   constructor(private route: ActivatedRoute,
              private authService: AuthService,
              private cursoService: CursosService,
@@ -62,6 +69,7 @@ export class AulaVirtualComponent implements OnInit {
                   cantidadClasesInput: [0],
                   casillasVerificadasInput: [0]
                 });
+                this.diaDelMes = Array.from({ length: 31 }, (_, i) => ` ${i + 1}`);
               }
 
   ngOnInit(): void {
@@ -123,8 +131,8 @@ export class AulaVirtualComponent implements OnInit {
         }
         if (!this.datosDeCursado[userId][courseId]) {
           this.datosDeCursado[userId][courseId] = {
-            notas: [],
-            notaFinal: 0,
+            notas: this.notas,
+            notaFinal: this.notaFinal,
             asistencia: {},
             condAsistencia: false,
           };
@@ -136,8 +144,10 @@ export class AulaVirtualComponent implements OnInit {
         const casillasVerificadas = this.formulario.get('casillasVerificadasInput')?.value;
 
         if (!isNaN(nota)) {
-          this.datosDeCursado[userId][courseId].notas.push(nota);
-          this.datosDeCursado[userId][courseId].notaFinal = this.promedio(this.datosDeCursado[userId][courseId].notas);
+          //this.datosDeCursado[userId][courseId].notas.push(nota);
+          //this.datosDeCursado[userId][courseId].notaFinal = this.promedio(this.datosDeCursado[userId][courseId].notas);
+          this.notas.push(nota);
+          this.notaFinal = this.promedio(this.notas);
         } else {
           console.log('La nota ingresada no es un número válido.');
         }
@@ -163,18 +173,34 @@ export class AulaVirtualComponent implements OnInit {
       return 0;
     }
     const suma = notas.reduce((total, nota) => total + nota, 0);
-    return suma / notas.length;
+    const promedio =suma / notas.length;
+    return Number(promedio.toFixed(2));
   }
 
   // Funcion para asistencia 
-  calcularPorcentajeAsistencia(mes: string, cantidadClases: number, casillasVerificadas: number): number {
-    if (isNaN(cantidadClases) || isNaN(casillasVerificadas) || cantidadClases <= 0 || casillasVerificadas < 0) {
+  calcularPorcentajeAsistencia(mes: string, cantidadClases: number, casillasVerificadasInput: number): number {
+    if (isNaN(cantidadClases) || isNaN(casillasVerificadasInput) || cantidadClases <= 0 || casillasVerificadasInput < 0) {
       return 0; 
     }
-    const porcentaje = (casillasVerificadas / cantidadClases) * 100;
+    const porcentaje = (casillasVerificadasInput / cantidadClases) * 100;
     return Math.round(porcentaje * 100) / 100;
   }
 
+  // Funcion para actualizar casillasVerificadasInput
+  actualizarCasillasVerificadasInput() {
+    this.casillasVerificadasInput = this.casillasVerificadas.filter(verificada => verificada).length;
+  }
+
+  // Funcion para determinar si es Regular o Libre
+  calcularCondicionAsistencia(porcentajeAsistencia: number): boolean {
+    return porcentajeAsistencia >= this.umbralAsistencia;
+  }
+
+  // Evento en html para escuchar cambios en las casillas de verificacion
+  onCasillaVerificadaChange(i: number) {
+    this.casillasVerificadas[i] = !this.casillasVerificadas[i];
+    this.actualizarCasillasVerificadasInput();
+  }
 
   guardarDatosDB() {
     if (Object.keys(this.datosDeCursado).length === 0) {

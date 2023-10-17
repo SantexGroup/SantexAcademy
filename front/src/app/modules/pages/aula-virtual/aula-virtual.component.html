@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="aula-virtual.component.css">
 
 </head>
+
 <body>
-    <!-- Contenido especifico para alumnos -->
+    <!-- //////////////////////////// Contenido especifico para alumnos ////////////////////////// -->
     <div *ngIf="tipoDeUsuario === 'Alumno'">
         <div class="contenedor">
             <div>
@@ -29,7 +30,7 @@
         </div> 
     </div>
 
-    <!-- Contenido especifico para docente -->
+    <!-- ////////////////////////// Contenido especifico para docente ///////////////////////// -->
     <div *ngIf="tipoDeUsuario === 'Docente'">
         <div class="curso-titulo">
             <div class="curso-com">
@@ -86,19 +87,61 @@
             <!-- Casillas para calificaciones -->
             <div *ngIf="alumnoSeleccionado" class="alumno-datos">
               <h2>Calificaciones:</h2>
-              <form [formGroup]="formulario" (ngSubmit)="courseId !== undefined ? agregarDatos(courseId) : null" class="notas-prom-asist ">
-                
-                <label for="notaInput">Notas:</label>
+              <form [formGroup]="formulario" (ngSubmit)="courseId !== undefined ? agregarDatos(courseId) : null">
+                <label for="notaInput">Notas: </label>
                 <input type="number" id="notaInput" formControlName="notaInput">
-              
                 <button type="submit" class="buttonNotas">Agregar Datos</button>
+
+                <!-- Mostrar todas las notas y el promedio -->
+                <div *ngIf="notas.length > 0" class="notasIngresadas">
+                  <p>Notas ingresadas: </p>
+                  <div class="notaBox" *ngFor="let nota of notas">{{ nota }}</div>
+                </div>
+                <div *ngIf="notas.length > 0" class="prom">
+                  <p class="enSerio">Promedio: </p>
+                  <p class="promBox">{{ notaFinal }}</p>
+                </div>
               </form>
             </div>
 
             <!-- Casillas para asistencia -->
             <div *ngIf="alumnoSeleccionado" class="alumno-datos">
               <h2>Asistencia:</h2>
-              <!-- Agregar elementos para ingresar datos de asistencia -->
+              
+              <select id="mesInput" [(ngModel)]="mesInput">
+                <option value="Enero">Enero</option>
+                <option value="Febrero">Febrero</option>
+                <option value="Marzo">Marzo</option>
+                <option value="Abril">Abril</option>
+                <option value="Mayo">Mayo</option>
+                <option value="Junio">Junio</option>
+                <option value="Julio">Julio</option>
+                <option value="Agosto">Agosto</option>
+                <option value="Septiembre">Septiembre</option>
+                <option value="Octubre">Octubre</option>
+                <option value="Noviembre">Noviembre</option>
+                <option value="Diciembre">Diciembre</option>
+              </select>
+
+              <label for="cantidadClasesInput">Cantidad de Clases:</label>
+              <input type="number" id="cantidadClasesInput" [(ngModel)]="cantidadClasesInput">
+
+              <label for="umbralInput">Umbral de asistencia:</label>
+              <input type="number" id="umbralInput" [(ngModel)]="umbralAsistencia">
+
+              <label>Registro de Asistencia:</label>
+              <div class="asistencia-checkboxes">
+                <label *ngFor="let dia of diaDelMes; let i = index">
+                  <input type="checkbox" [id]="'asistenciaDia' + i" [(ngModel)]="casillasVerificadas[i]" (change)="onCasillaVerificadaChange(i)">
+                  {{ dia }}
+                </label>
+              </div>
+
+              <div *ngIf="casillasVerificadasInput >= 0">
+                <p>Porcentaje de Asistencia: {{ calcularPorcentajeAsistencia(mesInput, cantidadClasesInput, casillasVerificadasInput) }}%</p>
+                <p>Condición de Asistencia: {{ calcularCondicionAsistencia(calcularPorcentajeAsistencia(mesInput, cantidadClasesInput, casillasVerificadasInput)) ? 'Regular' : 'Libre' }}</p>
+              </div>
+              
             </div>
           </div>
 

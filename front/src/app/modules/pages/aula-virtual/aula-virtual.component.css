@@ -104,6 +104,45 @@
   background-color: #0056b3;
 }
 
+/* Estilos para el contenedor de notas y promedio */
+.notasIngresadas {
+  display: inline-flex;
+  align-items: baseline;
+  flex-direction: row;
+  margin-left: 12%;
+}
+
+/* Estilos para cada cuadro de nota */
+.notaBox {
+  border: 1px solid #007bff;
+  padding: 2px;
+  margin-right: 5px;
+}
+
+/* Estilos para el contenedor de promedio */
+.prom {
+  display: inline-flex;
+  align-items: baseline;
+  flex-direction: row;
+  margin-left: 12%;
+  font-weight: bold;
+  background-color: rgb(98, 255, 0);
+  padding: 2px;
+}
+
+.enSerio {
+  display: inline-flex;
+  margin-bottom: 0;
+}
+
+/* Estilos para cada cuadro de promedio */
+.promBox {
+  border: 1px solid #059f17;
+  padding: 2px;
+  margin-right: 5px;
+  margin-bottom: 0;
+}
+
 /* Estilos para el boton Guardar */
 .buttonEnd {
   margin: 5px 5px;
