@@ -16,8 +16,8 @@ h3{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 75vh; 
-    width: 75vh;
+    height: 300px; 
+    width: 400px;
     border-color: #C991D9;
     border-style: inset;
     background-color: #F2BDD0;

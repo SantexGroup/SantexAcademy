@@ -23,6 +23,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog'; // Importa MatDialogModule
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+import { BotonLoginComponent } from './component/boton-login/boton-login.component';
 
 
 
@@ -32,6 +34,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Servicios
 import { MueblesService } from './service/muebles.service';
+import { FormLoginComponent } from './component/form-login/form-login.component';
+
 
 
 @NgModule({
@@ -39,7 +43,9 @@ import { MueblesService } from './service/muebles.service';
     AppComponent,
     BuyerRegistrationComponent,
     AgregarProductoComponent, 
-    AgregarProductoModalComponent, 
+    AgregarProductoModalComponent, FormLoginComponent, 
+    
+
   ],
   imports: [
     CommonModule,
@@ -62,9 +68,11 @@ import { MueblesService } from './service/muebles.service';
     MatOptionModule,
     MatDialogModule,
     HttpClientModule,
-    
+    MatIconModule,
+    BotonLoginComponent,
   ],
   providers: [MueblesService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,26 @@
+
+<div class="form-style">
+<mat-dialog-content>
+    <header>
+        <h1 class="h1">Login</h1>
+    </header>
+
+    <p><mat-form-field>
+        <input matInput placeholder="Usuario" type="email">
+        <mat-icon matSuffix >person</mat-icon>
+    </mat-form-field></p>
+
+    <p><mat-form-field>
+        <input matInput placeholder="Constraseña" type="password">
+        <mat-icon matSuffix>lock</mat-icon>
+    </mat-form-field></p>
+ <div class="buttons" >
+    <button mat-raised-button color="primary">
+        Ingresar
+    </button>
+    <button mat-raised-button color="primary" (click)="redirectToRegister()">
+        Registrarse
+    </button>
+ </div> 
+</mat-dialog-content>
+</div>
