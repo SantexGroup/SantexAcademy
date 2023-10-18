@@ -17,19 +17,19 @@
       <p class="bienvenida" *ngIf="isExpanded && (logeadoComprador || logeadoVendedor)" >Hola, {{userFirstName}} {{userLastName}}!</p>
       <div *ngIf="logeadoComprador || logeadoVendedor" class="link">
 
-        <div class="content" [routerLink]="['/misDatos']" [routerLinkActive]="'active'">
+        <div class="content" [routerLink]="['/datos-usuario']" [routerLinkActive]="'active'">
           <i class="fa fa-address-book" aria-hidden="true"></i>
 
             <div class="title" (click)="redirigirDatosUsuario()">Mis Datos</div>
           </div>
 
-        <div class="content" [routerLink]="['/misCompras']" [routerLinkActive]="'active'">
+        <div class="content" [routerLink]="['/historial-compras']" [routerLinkActive]="'active'">
         <i class="fa-solid fa-cart-shopping"></i>
           <div class="title" (click)="redirigirCompras()">Mis Compras</div>
         </div>
       </div>
       <div *ngIf="logeadoVendedor" class="link">
-        <div class="content" [routerLink]="['/misVentas']" [routerLinkActive]="'active'">
+        <div class="content" [routerLink]="['/historial-ventas']" [routerLinkActive]="'active'">
             <i class="fa-solid fa-handshake"></i>
           <div class="title" (click)="redirigirVentas()">Mis Ventas</div>
         </div>

@@ -84,6 +84,7 @@ export class HistorialCompradorComponent implements OnInit {
           title: 'No tiene productos cargados',
           confirmButtonText: "Ok"
         });
+        this.router.navigateByUrl('/');
       }
       //reemplazar imaArt, idArt, nomVen, nomArt, desArt, preArt, fecArt y envArt
       for (let i=0; i < res.length; i++) {

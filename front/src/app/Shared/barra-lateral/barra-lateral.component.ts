@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/core/services/login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-barra-lateral',
@@ -52,8 +53,15 @@ export class BarraLateralComponent implements OnInit {
           this.logeadoVendedor = true;
           this.logeadoComprador = false;
         }
+        Swal.fire('Bienvenido ' + this.userFirstName + " " + this.userLastName)
         this.router.navigateByUrl('/'); 
-      }
+      } 
+    }, err => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Usuario o contraseña incorrestos!',
+      })
     })
 
     this.isExpanded = false

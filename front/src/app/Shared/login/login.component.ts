@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LoginService } from 'src/app/core/services/login.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
           this.logeadoVendedor = true;
           this.logeadoComprador = false;
         }
+        
         this.router.navigateByUrl('/'); 
       }
     })

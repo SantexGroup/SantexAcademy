@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegistroService } from 'src/app/core/services/registro.service';
 import { MensajeService } from 'src/app/core/services/mensaje.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
@@ -23,7 +24,6 @@ export class RegistroComponent implements OnInit {
 
   listprovincias: any[] = [];
   listlocalidades: any[] = [];
-
   mensajeRegistro: string = '';
 
   idUser: string = '';
@@ -57,8 +57,11 @@ export class RegistroComponent implements OnInit {
         this.locReg,
         this.dirReg
       ).subscribe(respuesta => {
-        console.log(respuesta);
-        this.mensajeService.mensajeRegistro('Registro completado con éxito.');
+        Swal.fire({
+          icon: 'success',
+          text: 'Registro completado con éxito.',
+          confirmButtonText: "Ok"
+        })
 
         this.loginservice.login(this.corReg, this.pasReg).subscribe(res => {
           if (res) {
@@ -68,7 +71,12 @@ export class RegistroComponent implements OnInit {
         })
         });
     } else {
-      this.mensajeService.mensajeRegistro('Campos incompletos. Por favor, complete todos los campos.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos incompletos',
+        text: 'Por favor, complete todos los campos.',
+        confirmButtonText: "Ok"
+      })
     }
   }
 
