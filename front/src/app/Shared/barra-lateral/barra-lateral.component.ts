@@ -60,7 +60,7 @@ export class BarraLateralComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Usuario o contraseña incorrestos!',
+        text: 'Usuario o contraseña incorrectos!',
       })
     })
 

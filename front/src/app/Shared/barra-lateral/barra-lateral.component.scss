@@ -125,19 +125,21 @@
     button {
       background-color: #d68a96;
       margin-left: 3rem;
+      border: none;
     }
 
     button:hover{
       background-color: #c95c6d;
     }
-
+    .registro {
+      color:#d68a96
+    }
     .registro {
       &:hover {
-        color: blue;
+        color:blueviolet;
         cursor: pointer;
       }
     }
-    
   }
 .footer-menu {
     position: fixed;
@@ -155,7 +157,6 @@
     }
 
     button:hover {
-      color: rgb(219, 219, 219);
       background-color: #c95c6d;
     }
   }
@@ -163,10 +164,15 @@
     text-align: center;
     margin-top: 1rem;
     margin-bottom: 2rem;
+    color:#d68a96
   }
   .bienvenida {
     text-align: center;
     margin-top: 1rem;
     font-weight: bold;
+    
+  }
+  .bienvenida span {
+    color:#d68a96
   }
 #icono:hover {cursor: pointer;}

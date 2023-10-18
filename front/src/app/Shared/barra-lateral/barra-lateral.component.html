@@ -14,7 +14,7 @@
             <button class="btn btn-primary" (click)="botonLogin()" type="button" >Ingresar</button>
           </div>
       </div>
-      <p class="bienvenida" *ngIf="isExpanded && (logeadoComprador || logeadoVendedor)" >Hola, {{userFirstName}} {{userLastName}}!</p>
+      <p class="bienvenida" *ngIf="isExpanded && (logeadoComprador || logeadoVendedor)" >Hola, <span>{{userFirstName}} {{userLastName}}!</span></p>
       <div *ngIf="logeadoComprador || logeadoVendedor" class="link">
 
         <div class="content">
