@@ -17,31 +17,31 @@
       <p class="bienvenida" *ngIf="isExpanded && (logeadoComprador || logeadoVendedor)" >Hola, {{userFirstName}} {{userLastName}}!</p>
       <div *ngIf="logeadoComprador || logeadoVendedor" class="link">
 
-        <div class="content" [routerLink]="['/datos-usuario']" [routerLinkActive]="'active'">
+        <div class="content">
           <i class="fa fa-address-book" aria-hidden="true"></i>
 
             <div class="title" (click)="redirigirDatosUsuario()">Mis Datos</div>
           </div>
 
-        <div class="content" [routerLink]="['/historial-compras']" [routerLinkActive]="'active'">
+        <div class="content">
         <i class="fa-solid fa-cart-shopping"></i>
           <div class="title" (click)="redirigirCompras()">Mis Compras</div>
         </div>
       </div>
       <div *ngIf="logeadoVendedor" class="link">
-        <div class="content" [routerLink]="['/historial-ventas']" [routerLinkActive]="'active'">
+        <div class="content">
             <i class="fa-solid fa-handshake"></i>
           <div class="title" (click)="redirigirVentas()">Mis Ventas</div>
         </div>
       </div>
       <div *ngIf="logeadoVendedor" class="link">
-        <div class="content" [routerLink]="['/carga-articulos']" [routerLinkActive]="'active'">
+        <div class="content">
           <i class="fa-solid fa-box"></i>
           <div class="title" (click)="redirigirCargarProducto()">Cargar Artículo</div>
         </div>
       </div>
             <div *ngIf="logeadoVendedor" class="link">
-        <div class="content" [routerLink]="['/historial-ventas']" [routerLinkActive]="'active'">
+        <div class="content">
           <i class="fa-solid fa-boxes-stacked"></i>
           <div class="title" (click)="redirigirProductosCargados()">Mis Artículos</div>
         </div>

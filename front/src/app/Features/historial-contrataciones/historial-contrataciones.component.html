@@ -6,11 +6,11 @@
 <!-- general -->
 <div *ngIf="confUsuario">
     <div id="botonNavegacion"><app-boton-navegacion></app-boton-navegacion></div>
-    <div id="titulo"><h1>Historial de contrataciones</h1></div>
+    <div id="titulo"><h1>Historial de artículos alquilados</h1></div>
     <div id="general">
         <div id="recuadro">
             <!-- articulos -->
-            <div id="articulo" *ngFor="let articulo of articulos; let i = index" >
+            <div id="articulo" *ngFor="let articulo of articulos; let i = index">
                 <!-- imagen -->
                 <img [src]="articulo.imaArt">
                 <!-- datos vendedor -->
