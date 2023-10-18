@@ -13,6 +13,7 @@ export class HistorialContratacionesComponent implements OnInit {
 
   idVen: number = 0;
   date: Date = new Date;
+  idArt: number = 0;
 
   listcategorias: any[] = [];
   articulos: any = [];  
@@ -141,5 +142,8 @@ export class HistorialContratacionesComponent implements OnInit {
         this.confUsuario = false; 
       }
     }
+  }
+  numArt(idArt: number) {
+    this.idArt = idArt;
   }
 }
