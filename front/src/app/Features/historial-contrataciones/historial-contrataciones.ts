@@ -12,10 +12,6 @@ import Swal from 'sweetalert2';
 export class HistorialContratacionesComponent implements OnInit {
 
   idVen: number = 0;
-  idCom: number = 0;
-  nomCom: string = '';
-  dniCom: string = '';
-  dirCom: string = '';
   date: Date = new Date;
 
   listcategorias: any[] = [];
@@ -33,6 +29,7 @@ export class HistorialContratacionesComponent implements OnInit {
     envArt: '',
     formaPago: '',
     idCat: 0,
+    dirCom: '',
   };
   pagArt: string = '';
   articulosVen: any = [];
@@ -64,12 +61,6 @@ export class HistorialContratacionesComponent implements OnInit {
         confirmButtonText: "Ok"
       })
     }
-    //traer y reemplazar nombre comprador
-    this.service.infoComprador(this.idCom).subscribe(resCom => {
-      this.nomCom = JSON.stringify(resCom.firstName.charAt(0).toUpperCase() + resCom.firstName.slice(1) + ' ' + (resCom.lastName.charAt(0).toUpperCase() + resCom.lastName.slice(1)));
-      this.nomCom = this.nomCom.slice(1, this.nomCom.length-1);
-      this.dirCom = resCom.direccion.calleYaltura;
-    });
     //traer lista de categorias
     this.service.getCategories().subscribe(resCat => {this.listcategorias = resCat});
     //traer articulos
@@ -92,10 +83,13 @@ export class HistorialContratacionesComponent implements OnInit {
         this.modelo.desArt = res[i].Product.detalles.charAt(0).toUpperCase() + res[i].Product.detalles.slice(1);;
         this.modelo.preArt = res[i].Product.precio;
         this.modelo.fecArt = res[i].createdAt.slice(0, 10);
+        console.log("fecha individual: " + this.modelo.fecArt)
         this.date = new Date(res[i].createdAt);
         this.date.setDate( this.date.getDate() + 3 );  ;
         this.modelo.retArt = JSON.stringify(this.date);
         this.modelo.retArt = this.modelo.retArt.slice(1, 11);
+        console.log("direccion: " + JSON.stringify(res[i].User.direccion.calleYAltura));
+        this.modelo.dirCom = res[i].User.direccion.calleYAltura;
         if(res[i].modoEnvio == true) {
           this.modelo.envArt = 'Envío y retiro';
         }else {
@@ -119,9 +113,13 @@ export class HistorialContratacionesComponent implements OnInit {
         }
         //pushear articulo individual en array de articulos
         this.articulos.push({ ...this.modelo });
+        console.log("articulo individual: " + JSON.stringify(this.articulos[i]))
         this.modelo.catArt = '';
-      }  
+        
+      } 
+      console.log("articulos todos: " + JSON.stringify(this.articulos)) 
     })
+    
   }
   //acciones
   redirigirCategoria(idCat: string) {
