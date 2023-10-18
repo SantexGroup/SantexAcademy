@@ -8,6 +8,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { vistaArtIndServ } from 'src/app/core/services/vista-art-ind-serv.service';
 import { environment } from 'src/environments/environment';
 import { ModArtService } from 'src/app/core/services/mod-art.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-modificar-articulo',
@@ -33,9 +34,9 @@ export class ModificarArticuloComponent implements OnInit {
   idUser: string = '';
   idProducto: string = '';
   confVendedor: boolean = false;
-  mensajeRegistro: string = '';
   listcategorias: any[] = [];
   images: any = [];  
+  mensajeRegistro: string = '';
 
   constructor(private cargaService: CargaArticulosService, private service: ModArtService, private vistaArtService: vistaArtIndServ, private confService: ConfirmacionArticuloServService, private router: Router, private mensajeService: MensajeService, private barraService:BarraService, private formBuilder: FormBuilder) { }
 
@@ -147,7 +148,11 @@ export class ModificarArticuloComponent implements OnInit {
         console.log("Respuesta service modArt: " + this.idProducto)
         this.subirImages();
       }
-      this.mensajeService.mensajeRegistro('Articulo modificado con éxito.');
+      Swal.fire({
+        icon: 'success',
+        text: 'Articulo modificado con éxito.',
+        confirmButtonText: "Ok"
+      })
       this.router.navigate(['home-page']);
     });
   }

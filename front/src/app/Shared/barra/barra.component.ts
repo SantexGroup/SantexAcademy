@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class BarraComponent implements OnInit {
 
-  sidebarExpanded = true;
+  sidebarExpanded = false;
   listCategorias: any[]=[];
   listArticulos: any[]=[];
   listArticulosId: string[]=[];

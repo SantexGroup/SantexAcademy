@@ -70,11 +70,20 @@ export class EditarUsuarioComponent implements OnInit {
         this.idUser
       ).subscribe(respuesta => {
         console.log(respuesta);
-        this.mensajeService.mensajeRegistro('Se han guardado sus cambios.');
+        Swal.fire({
+          icon: 'success',
+          text: 'Se han guardado sus cambios.',
+          confirmButtonText: "Ok"
+        })
         this.router.navigate(['home-page']);
       });
     } else {
-      this.mensajeService.mensajeRegistro('Campos incompletos. Por favor, complete todos los campos.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos incompletos.',
+        text: 'Por favor, complete todos los campos.',
+        confirmButtonText: "Ok"
+      })
     }
   }
 
@@ -114,10 +123,19 @@ export class EditarUsuarioComponent implements OnInit {
   }
 
   eliminarCuenta() {
-    if (confirm("¿Desea eliminar su cuenta? Al confirmar no podrá recuperar sus datos. Esta acción no se puede deshacer")) {
-      console.log("Id User: " + this.idUser);
-  
-      const idNumber: number = +this.idUser;
+    Swal.fire({
+      title: '¿Desea eliminar su cuenta? ',
+      text: "Al confirmar no podrá recuperar sus datos. Esta acción no se puede deshacer",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6', 
+      confirmButtonText: 'Sí, deseo eliminarla',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        const idNumber: number = +this.idUser;
   
       this.service.eliminarUsuario(idNumber).subscribe((resEli: any) => {
         console.log("Res eli: " + resEli);
@@ -141,7 +159,12 @@ export class EditarUsuarioComponent implements OnInit {
           this.router.navigate(['/']);
         }
       });
-    }
+
+
+      }
+    })
+
+ 
   }
   
   desloguear() {

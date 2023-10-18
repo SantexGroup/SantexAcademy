@@ -4,6 +4,7 @@ import { MensajeService } from 'src/app/core/services/mensaje.service';
 import { CargaArticulosService } from 'src/app/core/services/carga-articulos.service';
 import { BarraService } from 'src/app/core/services/barra.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-carga-articulos',
@@ -50,7 +51,11 @@ export class CargaArticulosComponent implements OnInit {
           console.log(this.idProducto)
           this.subirImages();
         }
-        this.mensajeService.mensajeRegistro('Articulo cargado con éxito.');
+        Swal.fire({
+          icon: 'success',
+          text: 'Articulo cargado con éxito..',
+          confirmButtonText: "Ok"
+        })
         this.router.navigate(['home-page']);
       });
   }

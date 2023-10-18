@@ -70,6 +70,7 @@ export class HistorialVentasComponent implements OnInit {
           title: 'No tiene productos cargados',
           confirmButtonText: "Ok"
         });
+        this.router.navigateByUrl('/');
       }
       for (let i=0; i < res.length; i++) {
         this.modelo.imaArt = this.servidor + this.respuesta[i].Images[0].url;
