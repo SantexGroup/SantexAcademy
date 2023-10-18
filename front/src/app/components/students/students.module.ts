@@ -8,6 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { StudentsRoutingModule } from './students-routing.module';
 import { LayoutComponent } from './layout/layout.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { WelcomeStudentComponent } from './welcome-student/welcome-student.component';
+
 import { PagoPageComponent } from './pago-page/pago-page.component';
 
 
@@ -16,14 +18,14 @@ import { PagoPageComponent } from './pago-page/pago-page.component';
 
 
 @NgModule({
-  declarations: [
-    
+  declarations: [  
   
     StudentsComponent,
             StudentsCoursesComponent,
             StudentsPersonalDataComponent,
             LayoutComponent,
-            PagoPageComponent
+            PagoPageComponent,
+            WelcomeStudentComponent
   ],
   imports: [
     CommonModule,

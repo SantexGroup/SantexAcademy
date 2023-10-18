@@ -8,6 +8,7 @@ import { StudentsCoursesComponent } from '../students/students-courses/students-
 import { LayoutComponent } from '../students/layout/layout.component';
 import { PagoPageComponent } from '../students/pago-page/pago-page.component';
 import { PaginaPrincipalComponent } from '../pagina-principal/pagina-principal.component';
+import { WelcomeStudentComponent } from '../students/welcome-student/welcome-student.component';
 
 
 
@@ -19,14 +20,11 @@ const routes: Routes = [
     { path: 'user-dashboard', component: StudentsComponent },
     { path: 'student-courses', component: StudentsCoursesComponent},
     { path: 'student-personalData', component: StudentsPersonalDataComponent},
-    { path: 'pago-page', component: PagoPageComponent},
   ],
 },
 
 { path: 'registro', component: FormularioRegistroComponent },
 { path: 'login', component: LoginComponent},
-{ path: 'pagina-inicio', component: PaginaPrincipalComponent },
-
   
 
   {
