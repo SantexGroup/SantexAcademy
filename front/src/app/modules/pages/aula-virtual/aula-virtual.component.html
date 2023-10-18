@@ -131,15 +131,15 @@
 
               <label>Registro de Asistencia:</label>
               <div class="asistencia-checkboxes">
-                <label *ngFor="let dia of diaDelMes; let i = index">
-                  <input type="checkbox" [id]="'asistenciaDia' + i" [(ngModel)]="casillasVerificadas[i]" (change)="onCasillaVerificadaChange(i)">
+                <label *ngFor="let dia of diaDelMes; let i = index" (click)="onCasillaVerificadaChange(i)">
+                  <input type="checkbox" [id]="'asistenciaDia' + i" [(ngModel)]="casillasVerificadas[i]">
                   {{ dia }}
                 </label>
               </div>
-
-              <div *ngIf="casillasVerificadasInput >= 0">
-                <p>Porcentaje de Asistencia: {{ calcularPorcentajeAsistencia(mesInput, cantidadClasesInput, casillasVerificadasInput) }}%</p>
-                <p>Condición de Asistencia: {{ calcularCondicionAsistencia(calcularPorcentajeAsistencia(mesInput, cantidadClasesInput, casillasVerificadasInput)) ? 'Regular' : 'Libre' }}</p>
+              
+              <div *ngIf="casillasVerificadasInput !== undefined">
+                <p>Porcentaje de Asistencia: {{ calcularPorcentajeAsistencia(cantidadClasesInput, casillasVerificadasInput) }}%</p>
+                <p>Condición de Asistencia: {{ calcularCondicionAsistencia(calcularPorcentajeAsistencia(cantidadClasesInput, casillasVerificadasInput)) ? 'Regular' : 'Libre' }}</p>
               </div>
               
             </div>

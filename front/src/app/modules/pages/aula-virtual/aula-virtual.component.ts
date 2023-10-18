@@ -157,7 +157,7 @@ export class AulaVirtualComponent implements OnInit {
         //this.datosDeCursado[userId][courseId].cantidadClases = cantidadClases;
         //this.datosDeCursado[userId][courseId].casillasVerificadas = casillasVerificadas;
         this.datosDeCursado[userId][courseId].asistencia = {};
-        const porcentajeAsistencia = this.calcularPorcentajeAsistencia(mes, cantidadClases, casillasVerificadas);
+        const porcentajeAsistencia = this.calcularPorcentajeAsistencia(cantidadClases, casillasVerificadas);
         this.datosDeCursado[userId][courseId].asistencia[mes] = porcentajeAsistencia;
       } else {
         console.log('El alumno seleccionado no tiene un ID definido');
@@ -178,18 +178,18 @@ export class AulaVirtualComponent implements OnInit {
   }
 
   // Funcion para asistencia 
-  calcularPorcentajeAsistencia(mes: string, cantidadClases: number, casillasVerificadasInput: number): number {
+  calcularPorcentajeAsistencia(cantidadClases: number, casillasVerificadasInput: number): number {
     if (isNaN(cantidadClases) || isNaN(casillasVerificadasInput) || cantidadClases <= 0 || casillasVerificadasInput < 0) {
-      return 0; 
+      return 0;
     }
     const porcentaje = (casillasVerificadasInput / cantidadClases) * 100;
     return Math.round(porcentaje * 100) / 100;
   }
 
-  // Funcion para actualizar casillasVerificadasInput
-  actualizarCasillasVerificadasInput() {
-    this.casillasVerificadasInput = this.casillasVerificadas.filter(verificada => verificada).length;
-  }
+  // // Funcion para actualizar casillasVerificadasInput
+  // actualizarCasillasVerificadasInput(i: number): void {
+  //   this.casillasVerificadas[i] = !this.casillasVerificadas[i];
+  // }
 
   // Funcion para determinar si es Regular o Libre
   calcularCondicionAsistencia(porcentajeAsistencia: number): boolean {
@@ -199,7 +199,7 @@ export class AulaVirtualComponent implements OnInit {
   // Evento en html para escuchar cambios en las casillas de verificacion
   onCasillaVerificadaChange(i: number) {
     this.casillasVerificadas[i] = !this.casillasVerificadas[i];
-    this.actualizarCasillasVerificadasInput();
+    this.casillasVerificadasInput = this.casillasVerificadas.filter(verificada => verificada).length;
   }
 
   guardarDatosDB() {
