@@ -151,12 +151,12 @@
       margin-bottom: 1rem;
       background-color: #d68a96;
       color: #F8F9FA;
+      border: none;
     }
 
     button:hover {
       color: rgb(219, 219, 219);
       background-color: #c95c6d;
-      
     }
   }
   h4 {
@@ -169,6 +169,4 @@
     margin-top: 1rem;
     font-weight: bold;
   }
-#icono:hover {
-  cursor: pointer;
-}
+#icono:hover {cursor: pointer;}

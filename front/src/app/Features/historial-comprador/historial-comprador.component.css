@@ -150,3 +150,15 @@ span {color: #d7818e;}
     width: 13%;
 }
 #acciones a {margin-top: 2%;}
+
+/* comprobante */
+.btn {
+    background-color: #d68a96;
+    border: none;
+}
+.btn:hover {
+    background-color:#bd394d;
+}
+.modal-body span {
+    color: black;
+}
