@@ -149,3 +149,9 @@ form mat-form-field {
     text-align: center;
     font-weight: bold;
 }
+
+.consejo{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 8em ;
+}

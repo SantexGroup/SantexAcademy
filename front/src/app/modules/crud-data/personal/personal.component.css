@@ -145,3 +145,10 @@ form mat-form-field {
   margin: 5px 15px; 
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
+
+.consejo{
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 8em ;
+  margin-bottom: 2em;
+}
