@@ -71,6 +71,22 @@ form mat-form-field {
     justify-content: space-around;
 }
 
+.container-fluid{
+    display: flex;
+    justify-content: center;
+    margin: 6%;
+}
+.container-fluid button{
+    border-radius: 2em;
+    width: 15%;
+    filter: opacity(0.4)
+
+}
+.container-fluid button:hover{
+
+    filter: opacity(1);
+}
+
 .lista {
     flex-direction: column;
     justify-content: center;
@@ -132,4 +148,10 @@ form mat-form-field {
     font-size: 16px;
     text-align: center;
     font-weight: bold;
+}
+
+.consejo{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 8em ;
 }

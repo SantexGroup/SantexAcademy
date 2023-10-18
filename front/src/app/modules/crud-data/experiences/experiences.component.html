@@ -1,4 +1,15 @@
 <body>
+    <div class="consejo">
+        <button
+            type="button"
+            class="btn btn-primary" me-2
+            placement="right"
+            ngbPopover="Destaca tus logros clave, responsabilidades y duración de empleo en cada experiencia laboral. Cuanto más específico seas, mejor. Ponerlo en orden cronologico hace que se vea mejor."
+            popoverTitle="Para tener en cuenta"   
+        >
+        Consejo sobre tu experiencia
+        </button>
+    </div>
     <div class="experiencesInput">
         <form [formGroup]="experienceForm" 
         (change)="userData.markForm(experienceForm)">
@@ -74,6 +85,7 @@
                     (click)="updateExperience()">
                         Guardar
                     </button>
+
                 </div>
             </div>
         </form>
@@ -94,6 +106,9 @@
                                 <button
                                 (click)="deleteExperience(experience.id)">
                                     <img src="./assets/Imagenes/delete.png" alt="Eliminar">
+                                </button>
+                                <button>
+                                    
                                 </button>
                             </div>
                         </div>

@@ -1,4 +1,15 @@
 <body>
+    <div class="consejo">
+        <button
+            type="button"
+            class="btn btn-primary" me-2
+            placement="right"
+            ngbPopover="Enumera los idiomas que hablas y tu nivel de competencia en cada uno. Utiliza 1 como parametro de menor denominacion (basico) y 10 para nivel nativo"
+            popoverTitle="Para tener en cuenta"   
+        >
+        Consejo sobre los idimoas que hables
+        </button>
+    </div>
     <div class="languageInput">
         <form [formGroup]="languageForm" 
         (ngSubmit)="languageAdd()"

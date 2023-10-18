@@ -1,4 +1,15 @@
 <body>
+    <div class="consejo">
+        <button
+            type="button"
+            class="btn btn-primary" me-2
+            placement="right"
+            ngbPopover="Destaca tus habilidades más relevantes para el trabajo que buscas. Sé específico y usa una escala del 1 al 10 para poder especificar el nivel de expertis con el que cuentes. Cuantas más habilidades específicas puedas enumerar, mejor."
+            popoverTitle="Para tener en cuenta"   
+        >
+        Consejo sobre tus habiliades
+        </button>
+    </div>
     <div class="skillsInput">
         <form [formGroup]="skillForm"
         (change)="userData.markForm(skillForm)">

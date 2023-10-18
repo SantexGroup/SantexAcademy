@@ -1,4 +1,15 @@
 <body>
+  <div class="consejo">
+    <button
+        type="button"
+        class="btn btn-primary" me-2
+        placement="bottom"
+        ngbPopover="Proporciona información precisa y actualizada. Los datos personales incluyen tu nombre, información de contacto y ubicación. Asegúrate de que estén correctos para que los empleadores puedan comunicarse contigo fácilmente. Si adicionalmente vas a utilizar una foto, tu rostro no debe estar obstruido por tu cabello o accesorios como lentes de sol. Elige una foto en la que estés mirando directamente a la cámara "
+        popoverTitle="Para tener en cuenta"   
+    >
+    Consejo para tu informacion personal
+    </button>
+  </div>
   <div class="personalInput">
     <form [formGroup]="personalForm" (change)="userData.markForm(personalForm)">
       <mat-form-field>

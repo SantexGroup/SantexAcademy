@@ -131,3 +131,8 @@ form mat-form-field {
     height: 2.5rem;
     filter: opacity(1);
 }
+.consejo{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 8em ;
+}

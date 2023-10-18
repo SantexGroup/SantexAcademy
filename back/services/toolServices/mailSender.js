@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
