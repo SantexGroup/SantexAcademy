@@ -51,6 +51,17 @@ private userData1: BehaviorSubject<{ name: string, lastName: string }> = new Beh
     return this.api.post<any>('user/upload', pictureLink );
   }
 
+  /* Obtener foto de usuario */
+  downloadImage(url:any):Observable<any>{
+    const body = {url: url}
+    return this.api.post<any>('user/profile',body);
+  }
+
+  deleteImage():Observable<any>{
+    const name:string = "profile.jpeg"
+    return this.api.delete(`user/profile/${name}`);
+  }
+
   setUserData(name: string, lastName: string) {
     this.userData1.next({ name, lastName });
   }

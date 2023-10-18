@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavBarService } from './core/services/toolServices/nav-bar.service';
 import { UserDataService } from './core/services/toolServices/userData.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from './core/services/usuario.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +31,8 @@ export class AppComponent implements OnInit {
     }
     this.views.restart();
   }
+
+  
 
   activarNav(): void {
     this.active = !this.active

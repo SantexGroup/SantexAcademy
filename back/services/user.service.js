@@ -1,9 +1,12 @@
 // Los servicios disponibles para usuarios son : Crear un nuevo usuario, actualizar un usuario,
 // eliminar un usuario y Login.
 const jwt = require('jsonwebtoken');
+const path = require('path');
+const fs = require('fs');
 const AuthenticationException = require('../exceptions/authentication.exceptions');
 const { Profile, User } = require('../models');
 const transporter = require('./toolServices/mailSender');
+const download = require('./toolServices/download.services');
 
 async function recordUser(rolesId, nick, password, name, lastName, email, phone) {
   const userCreated = await User.create({
@@ -162,6 +165,22 @@ async function passwordReset(token, newPassword) {
   }
 }
 
+/* Gestion de imagenes */
+async function profileImage(url) {
+  await download(url, () => {
+    console.log('descarga completa');
+  });
+}
+
+async function imageGet(name) {
+  const image = (path.join(__dirname, '..', '/public/download', name));
+  return image;
+}
+
+async function imageDelete(name) {
+  fs.unlinkSync(path.join(__dirname, '..', '/public/download', name));
+}
+
 // Exportamos el servicio para inyectar en el controlador
 module.exports = {
   recordUser,
@@ -171,4 +190,7 @@ module.exports = {
   deleteUser,
   mailReset,
   passwordReset,
+  profileImage,
+  imageGet,
+  imageDelete,
 };

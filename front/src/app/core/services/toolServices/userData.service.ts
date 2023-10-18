@@ -18,6 +18,7 @@ import { Profile } from '../../interfaces/profile.interface';
 import { ProfileService } from '../profile.service';
 import { User } from '../../interfaces/user.interface';
 import { UserService } from '../usuario.service';
+import { ApiService } from '../../http/api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -26,12 +27,12 @@ export class UserDataService {
 
   checkForm: boolean = false;
 
-  newUser:boolean = false;
+  newUser: boolean = false;
 
   levels: number[] = Array.from({ length: 10 }, (_, index) => index + 1);
 
   /* profileId que se escribe desde el servicio de login */
-  profileId:number = 0; 
+  profileId: number = 0;
   /* userId que se escribe desde el servicio de login */
   userId: number = 0;
 
@@ -47,7 +48,9 @@ export class UserDataService {
 
   urlPicture = "" || localStorage.getItem('picture');
 
-  email = "" || localStorage.getItem('email'); 
+  email = "" || localStorage.getItem('email');
+
+  imageProfile: string = `${this.api.apiUrl}user/profile/profile.jpeg`;
 
   constructor(
     private _experience: ExperiencesService,
@@ -57,19 +60,21 @@ export class UserDataService {
     private _references: ReferencesService,
     private _skills: SkillService,
     private _profiles: ProfileService,
-    private _personal: UserService
-   ){
+    private _personal: UserService,
+    private _user: UserService,
+    private api: ApiService
+  ) {
 
   }
 
   /* Chequeo de formularios */
-  markForm(form: FormGroup){
-    if(form.dirty){
+  markForm(form: FormGroup) {
+    if (form.dirty) {
       this.checkForm = true;
     }
   }
 
-  user = {} as  User; 
+  user = {} as User;
   experiences: Experience[] = [];
   formations: Formations[] = [];
   languages: Language[] = [];
@@ -77,26 +82,26 @@ export class UserDataService {
   references: Reference[] = [];
   skills: Skill[] = [];
   profileList: Profile[] = [];
-  
-  getExperience(){
-    this._experience.getExperience(this.userId).subscribe((experieceList: Experience[])=>{
+
+  getExperience() {
+    this._experience.getExperience(this.userId).subscribe((experieceList: Experience[]) => {
       this.experiences = experieceList;
     });
   }
 
-  getListFormations(){
-    this._formations.getFormationByUser(this.userId).subscribe((formationList: Formations[]) => {      
+  getListFormations() {
+    this._formations.getFormationByUser(this.userId).subscribe((formationList: Formations[]) => {
       this.formations = formationList;
     });
   }
 
-  languageGet(){
+  languageGet() {
     this._language.getLanguages(this.userId).subscribe((languagesList: Language[]) => {
       this.languages = languagesList;
     });
   }
 
-  getMyOptionals(){
+  getMyOptionals() {
     this._optionals.getMyOptionals(this.userId).subscribe((myOptionals: Optionals[]) => {
       this.optionals = myOptionals;
     });
@@ -108,24 +113,29 @@ export class UserDataService {
     });
   }
 
-  getSkill(){
-    this._skills.getSkillsByUser(this.userId).subscribe((skillList: Skill[])=>{
+  getSkill() {
+    this._skills.getSkillsByUser(this.userId).subscribe((skillList: Skill[]) => {
       this.skills = skillList;
     })
   }
 
-  getProfiles(){
-    return this._profiles.getProfile(this.userId).subscribe((profiles: Profile[])=>{
+  getProfiles() {
+    return this._profiles.getProfile(this.userId).subscribe((profiles: Profile[]) => {
       this.profileList = profiles;
     })
   }
 
-  getPersonal(){
-    return this._personal.getUser(this.userId).subscribe((userData)=>{
+  getPersonal() {
+    return this._personal.getUser(this.userId).subscribe((userData) => {
       this.user = userData;
     });
   }
 
+  imageDownload() {
+    return this._user.downloadImage(this.urlPicture).subscribe(() => {
+      this.imageProfile = `${this.api.apiUrl}user/profile/profile.jpeg`;
+    });
+  }
 
   /* Autenticacion de usuariio */
   isAuthenticated() {

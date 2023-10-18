@@ -23,4 +23,9 @@ router.post('/mail', userController.resetMail);
 router.get('/password/:token', userController.resetPage);
 router.post('/resetPassword/:token', userController.resetPassword);
 
+// Profile image
+router.post('/profile', userController.imageUrl);
+router.get('/profile/:name', userController.imageProfile);
+router.delete('/profile/:name', userController.deleteImage);
+
 module.exports = router;
