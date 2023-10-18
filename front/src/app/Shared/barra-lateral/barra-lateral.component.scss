@@ -128,6 +128,7 @@
 
     button:hover{
       background-color: #c95c6d;
+      margin-left: 3rem;
     }
 
     .registro {
@@ -146,8 +147,16 @@
     padding-bottom: 0;
 
     button {
-      margin-right: 1rem;
+      margin-right: 3rem;
       margin-bottom: 1rem;
+      background-color: #f4f3f38a;
+      color: rgb(66, 66, 66);
+    }
+
+    button:hover {
+      color: rgb(219, 219, 219);
+      background-color: black; ;
+      
     }
   }
   h4 {

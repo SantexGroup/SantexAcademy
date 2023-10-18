@@ -3,6 +3,7 @@ import { RegistroService } from 'src/app/core/services/registro.service';
 import { MensajeService } from 'src/app/core/services/mensaje.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
   selector: 'app-registro',
@@ -25,9 +26,13 @@ export class RegistroComponent implements OnInit {
   listlocalidades: any[] = [];
   mensajeRegistro: string = '';
 
-  constructor(private service: RegistroService, private mensajeService: MensajeService, private router: Router) { }
+  idUser: string = '';
+  confUsuario: boolean = false;
+
+  constructor(private service: RegistroService, private mensajeService: MensajeService, private router: Router, private loginservice: LoginService) { }
 
   ngOnInit(): void {
+    this.getIdUser();
 
     this.service.getProvincias().subscribe(provincias => {this.listprovincias = provincias});
 
@@ -57,8 +62,14 @@ export class RegistroComponent implements OnInit {
           text: 'Registro completado con éxito.',
           confirmButtonText: "Ok"
         })
-        this.router.navigate(['home-page']);
-      });
+
+        this.loginservice.login(this.corReg, this.pasReg).subscribe(res => {
+          if (res) {
+            localStorage.setItem('resLog', JSON.stringify(res));
+          }
+          this.router.navigate(['home-page']);
+        })
+        });
     } else {
       Swal.fire({
         icon: 'error',
@@ -66,6 +77,21 @@ export class RegistroComponent implements OnInit {
         text: 'Por favor, complete todos los campos.',
         confirmButtonText: "Ok"
       })
+    }
+  }
+
+  getIdUser() {    
+    let infoLocal = localStorage.getItem('resLog');
+    if (infoLocal) {
+      let newObject = JSON.parse(infoLocal);
+      const idUser = newObject[1].users.id;
+      this.idUser = idUser;
+      if (idUser) {
+        this.confUsuario = true; 
+      } else {
+        this.confUsuario = false; 
+      }
+      
     }
   }
 }

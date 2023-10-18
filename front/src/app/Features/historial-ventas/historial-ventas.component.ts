@@ -33,10 +33,16 @@ export class HistorialVentasComponent implements OnInit {
   respuesta: any = [];
   servidor: string = environment.API_URL + '/images/';
 
+  logeadoComprador: boolean = false;
+  logeadoVendedor: boolean = false;
+  idUser: string = '';
+  confVendedor: boolean = false;
+
   constructor(private service: HisVenService, private router: Router) { }
 
   ngOnInit(): void {
     this.datosVendedor();
+    this.getIdUser();
   }
 
   datosVendedor() {
@@ -141,6 +147,39 @@ export class HistorialVentasComponent implements OnInit {
           });
         }
       })
+    }
+  }
+
+  getIdUser() {    
+    let infoLocal = localStorage.getItem('resLog');
+    if (infoLocal) {
+      let newObject = JSON.parse(infoLocal);
+      const idUser = newObject[1].users.id;
+      this.idUser = idUser;
+      const vendedor = newObject[1].users.estadoDeVendedor;
+      if (vendedor){
+       this.confVendedor = true;
+      }
+    }
+  }
+
+  corroborarLogeo() {    
+    let infoLocal = localStorage.getItem('resLog')
+    if (infoLocal) {
+      let newObject = JSON.parse(infoLocal);
+      if (newObject) {
+        if (newObject[1].users.estadoDeVendedor) {
+          this.logeadoVendedor = true;
+          this.logeadoComprador = false;
+        }
+        else if (!newObject[1].users.estadoDeVendedor) {
+          this.logeadoComprador = true;
+          this.logeadoVendedor = false;
+        } else {
+          this.logeadoComprador = false;
+          this.logeadoVendedor = false;
+        }
+      }
     }
   }
 }

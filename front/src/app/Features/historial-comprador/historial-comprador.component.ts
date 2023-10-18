@@ -13,6 +13,8 @@ export class HistorialCompradorComponent implements OnInit {
   
   idCom: number = 0;
   nomCom: string = '';
+  dniCom: string = '';
+  dirCom: string = '';
   date: Date = new Date;
 
   listcategorias: any[] = [];
@@ -28,6 +30,7 @@ export class HistorialCompradorComponent implements OnInit {
     fecArt: '',
     retArt: '',
     envArt: '',
+    formaPago: '',
     idCat: 0,
   };
   pagArt: string = '';
@@ -35,11 +38,15 @@ export class HistorialCompradorComponent implements OnInit {
   datosLog: any = {};
   respuesta: any = [];
   servidor: string = environment.API_URL + '/images/';
+  
+  confUsuario: boolean = false;
+  idUser: string = '';
 
   constructor(private service: HisComService, private router: Router) { }
 
   ngOnInit(): void {
     this.datos();
+    this.getIdUser();
   }
 
   datos() {
@@ -49,6 +56,8 @@ export class HistorialCompradorComponent implements OnInit {
       let newObject = JSON.parse(datosLog);
       this.datosLog = newObject;
       this.idCom = this.datosLog[1].users.id;
+      this.dniCom = this.datosLog[1].users.dni;
+
     }else{
       Swal.fire({
         icon: 'error',
@@ -61,6 +70,7 @@ export class HistorialCompradorComponent implements OnInit {
       this.nomCom = JSON.stringify(resCom.firstName.charAt(0).toUpperCase() + resCom.firstName.slice(1) + ' ' + (resCom.lastName.charAt(0).toUpperCase() + resCom.lastName.slice(1)));
       this.nomCom = this.nomCom.slice(1, this.nomCom.length-1);
       console.log("nombre comprador: " + this.nomCom);
+      this.dirCom = resCom.direccion.calleYaltura;
     });
     //traer lista de categorias
     this.service.getCategories().subscribe(resCat => {this.listcategorias = resCat});
@@ -71,7 +81,7 @@ export class HistorialCompradorComponent implements OnInit {
       if (JSON.stringify(res.message) == '"Usuario sin productos publicados"') {
         Swal.fire({
           icon: 'error',
-          title: 'No tiene productor cargados',
+          title: 'No tiene productos cargados',
           confirmButtonText: "Ok"
         });
         this.router.navigateByUrl('/');
@@ -95,6 +105,8 @@ export class HistorialCompradorComponent implements OnInit {
         }else {
           this.modelo.envArt = 'En local';
         }  
+        this.modelo.formaPago = res[i].formaPago;
+        console.log(res[i].formaPago);
         //reemplazar categoria
         if (this.modelo.catArt == '') {
           for (let j=0; j < this.listcategorias.length; j++) {
@@ -114,13 +126,25 @@ export class HistorialCompradorComponent implements OnInit {
   }
   //acciones
   redirigirCategoria(idCat: string) {
-    //localStorage.setItem('idCat', idCat.toString()); // tadeo
-    //localStorage.setItem('idCat', idCat); // erick
     // el comp de categorias no solicita datos del local storage, solo el id de categoria en la ruta:
     this.router.navigate(['/categorias', idCat]);
   }
   redirigirProducto(idProd: number) {
     localStorage.setItem('idProd', idProd.toString());
     this.router.navigate(['vista-articulo']);
+  }
+  getIdUser() {    
+    let infoLocal = localStorage.getItem('resLog');
+    if (infoLocal) {
+      let newObject = JSON.parse(infoLocal);
+      const idUser = newObject[1].users.id;
+      this.idUser = idUser;
+      if (idUser) {
+        this.confUsuario = true; 
+      } else {
+        this.confUsuario = false; 
+      }
+      
+    }
   }
 }

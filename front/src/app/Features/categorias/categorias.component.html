@@ -1,11 +1,12 @@
 <app-barra></app-barra>
+<div id="botonNavegacion" style="margin-top: -0.8%;">
+  <app-boton-navegacion></app-boton-navegacion>
+</div>
 <!-- general -->
+<div class="container">
+  <div id="cabecera">
+    <p id="texto">Categoría: <span>"{{nameCategory.charAt(0).toUpperCase() + nameCategory.slice(1)}}"</span></p>
 <div class="container contenedorTarjeta">
-  <div id="encabezado">
-    <p class="Categoria" id="texto">Categoría: <span>"{{nameCategory.charAt(0).toUpperCase() + nameCategory.slice(1)}}"</span></p>
-    <app-boton-navegacion></app-boton-navegacion>
-  </div>
-
   <div class="row">
     <div *ngFor="let articulo of listArticulos" class="col-2 mb-4 tarjeta-container">
       <div class="card" >

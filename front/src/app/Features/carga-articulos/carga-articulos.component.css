@@ -48,9 +48,9 @@ textarea {
   height: 135px;
 }
 #botonNavegacion {
-  display: flex;
-  justify-content: end;
+  margin-left: 0.5%;
 }
+
 /* Columnas */
 .row {
   display: flex;
@@ -72,18 +72,13 @@ textarea {
 }
 /* Botones */
 .formulario .subir-boton {
-  background-color: #d68a96;
-  color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   transition: background-color 0.3s, color 0.3s;
   margin: -10px;
 }
-.formulario .subir-boton:hover {
-  background-color: #838383;
-  color: white;
-}
+
 .botones-container {
   text-align: center;
   margin-top: 15px;
@@ -142,13 +137,25 @@ textarea {
   border-radius: 4px;
 }
 #botonCargar:hover {
-  background-color: grey;
+  background-color: #c95c6d;
   transition: background-color 0.3s, color 0.3s;
   cursor: pointer;
 } 
 input[type="file"] {
   display: none;
 }
+
+.subir-boton {
+  color: #f0eaeb;
+  background-color: #d68a96;
+  border: 0px;
+}
+
+.subir-boton:hover {
+  background-color: #c95c6d;
+  cursor: pointer;
+}
+
 /* Precio */
 .precio-input {
   display: flex;
@@ -159,4 +166,17 @@ input[type="file"] {
 }
 #envio {
   margin-top: 2px;
+}
+
+h3 {
+  background-color: #ffffff; 
+  border: 1px solid #c95c6d; 
+  padding: 10px;
+  border-radius: 5px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  font-size: 18px; 
+  color: #333; 
+  margin-top: 10px ; 
+  text-align: center; 
+  font-weight: bold;
 }

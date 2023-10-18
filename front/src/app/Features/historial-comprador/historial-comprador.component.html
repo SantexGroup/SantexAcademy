@@ -1,11 +1,22 @@
 <app-barra></app-barra>
+
+<div *ngIf="!confUsuario">
+    <h3>¡Para ver su historial de compras debe estar registrado como usuario!</h3>
+    <div id="botonNavegacion" style="padding-top: 0%;">
+        <app-boton-navegacion></app-boton-navegacion>
+    </div>
+</div>
+
 <!-- general -->
-<div id="titulo"><h1>Historial de artículos contratados</h1></div>
+
+<div *ngIf="confUsuario">
+    <div id="botonNavegacion">
+        <app-boton-navegacion></app-boton-navegacion>
+    </div>
+    <div id="titulo"><h1>Historial de artículos contratados</h1></div>
+    <br>
 <div id="general">
     <div id="recuadro">
-        <div id="botonNavegacion">
-            <app-boton-navegacion></app-boton-navegacion>
-        </div>
         <!-- articulos -->
         <div id="articulo" *ngFor="let articulo of articulos">
             <!-- imagen -->
@@ -27,9 +38,68 @@
             <div id="acciones"> 
                 <p id="preArt">Precio: <span>${{articulo.preArt}}</span></p>
                 <a id="verArt" (click)="redirigirProducto(articulo.idArt)">Visualizar Artículo</a>
-                <a>Ver comprobante</a>
+                <a data-bs-toggle="modal" data-bs-target="#exampleModal">Ver comprobante</a>
             </div>
+
+            <!-- Modal Comprobante-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content w-75">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modal-title">Comprobante</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <h1 class="modal-title fs-5" id="modal-title-2">Delkat S.A.</h1>
+                    <div class="comprobante-content">
+                    <p>CUIT:</p><span>20-12345678-9</span>
+                    </div>
+                    <span>Responsable Inscripto</span>
+                    <div class="comprobante-content">
+                    <p>Inicio de act.</p><span>01/10/2023</span>
+                    </div>
+                    <div class="border-top"></div>
+                    <h5>FACTURA 'B'</h5>
+                    <p>N° 0001-00000001</p>
+                    <div class="comprobante-content">
+                    <p>Fecha:</p><span>{{articulo.fecArt | date}}</span>
+                    </div>
+                    <div class="comprobante-content">
+                    <p>Apellido y Nombre:</p><span>{{nomCom}}</span>
+                    </div>
+                    <div class="comprobante-content">
+                    <p>Condicion ante IVA:</p><span>Consumidor Final</span>
+                    </div>
+                    <div class="comprobante-content">
+                    <p>Domicilio:</p><span>{{dirCom}}</span>
+                    </div>
+                    <div class="comprobante-content">
+                    <p>Condicion de venta:</p><span>{{articulo.formaPago}}</span>
+                    </div>
+                    <div class="border-top"></div>
+                    <p style="font-weight: 400;">1,00 x ${{articulo.preArt}}</p>
+                    <div class="comprobante-content">
+                    <span>{{articulo.nomArt}}</span><span>${{articulo.preArt}}</span>
+                    </div>
+                    <div class="border-top"></div>
+                    <div class="comprobante-content precio-final">
+                    <span>Total:</span><span>${{articulo.preArt}}</span>
+                    </div>
+
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
         </div>
     </div>
+
 </div>
+
+</div>
+
+
 <app-footer></app-footer>
