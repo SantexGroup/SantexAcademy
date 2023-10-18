@@ -121,12 +121,6 @@ span {color: #d7818e;}
     color:blueviolet;
     transition: 0.3s;
 }
-#nombreVen {display: flex;
-}
-#catArt span:hover {
-    color:blueviolet;
-    cursor: pointer;
-}
 
 /* datos articulo */
 #descripcion {

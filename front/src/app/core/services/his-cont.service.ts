@@ -4,9 +4,10 @@ import { ApiService } from '../http/api.service';
 @Injectable({
   providedIn: 'root'
 })
-export class HisComService {
+export class HisContService {
 
   constructor(private service: ApiService) { }
+
   infoComprador (id: number) {
     return this.service.get<any>('/users/' + id)
   }
@@ -16,7 +17,7 @@ export class HisComService {
   getCategories() {
     return this.service.get<any>('/productos/categories');
   }
-  articulosComprador(id: number) {
-    return this.service.get<any>('/alquiler/' + id);
+  articulosContratados(id: number) {
+    return this.service.get<any>('/vendedor/alquileres-vendedor/' + id);
   }
 }
