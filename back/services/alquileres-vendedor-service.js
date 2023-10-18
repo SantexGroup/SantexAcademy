@@ -1,5 +1,5 @@
 const {
-  Alquiler, Products, Images,
+  Alquiler, Products, Images, User
 } = require('../models');
 
 // obtener ventas segun vendedor
@@ -9,8 +9,9 @@ async function getAlquileresByVendedor(id) {
       include: [{
         model: Products,
         where: { idUsuario: id },
-        include: [{ model: Images }, { model: Alquiler }],
-      }],
+        include: [{ model: Images }, { model: User }],
+      }, {model: User}],
+      // include: [{model: User}],
     },
   );
 
