@@ -7,6 +7,7 @@ import { StudentsPersonalDataComponent } from '../students/students-personal-dat
 import { StudentsCoursesComponent } from '../students/students-courses/students-courses.component';
 import { LayoutComponent } from '../students/layout/layout.component';
 import { PagoPageComponent } from '../students/pago-page/pago-page.component';
+import { PaginaPrincipalComponent } from '../pagina-principal/pagina-principal.component';
 
 
 
@@ -24,6 +25,7 @@ const routes: Routes = [
 
 { path: 'registro', component: FormularioRegistroComponent },
 { path: 'login', component: LoginComponent},
+{ path: 'pagina-inicio', component: PaginaPrincipalComponent },
 
   
 
