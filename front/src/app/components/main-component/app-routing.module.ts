@@ -13,31 +13,20 @@ import { WelcomeStudentComponent } from '../students/welcome-student/welcome-stu
 
 
 const routes: Routes = [
-{
-  path: 'students',
-  component:LayoutComponent,
-  children: [
+  { path: 'students', component: LayoutComponent, children: [
+    { path: '', component: WelcomeStudentComponent },
     { path: 'user-dashboard', component: StudentsComponent },
-    { path: 'student-courses', component: StudentsCoursesComponent},
-    { path: 'student-personalData', component: StudentsPersonalDataComponent},
-  ],
-},
-
-{ path: 'registro', component: FormularioRegistroComponent },
-{ path: 'login', component: LoginComponent},
-  
-
-  {
-    path: 'dashboard',
-    loadChildren: () => import('../../modules/dashboard/dashboard.module').then(m => m.DashboardModule),
-  },
-  {
-    path: '**',
-    redirectTo: 'dashboard'
-  },
-
-
+    { path: 'student-courses', component: StudentsCoursesComponent },
+    { path: 'student-personalData', component: StudentsPersonalDataComponent },
+    { path: 'pago-page', component: PagoPageComponent},
+  ]},
+  { path: 'registro', component: FormularioRegistroComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', component: PaginaPrincipalComponent, pathMatch: 'full' }, 
+  { path: 'dashboard', loadChildren: () => import('../../modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
+  { path: '**', redirectTo: 'dashboard' },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
