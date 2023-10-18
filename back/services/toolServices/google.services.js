@@ -3,14 +3,13 @@ const { google } = require('googleapis');
 const googleValidation = require('../../config/files/google.config');
 const upload = require('./multer.services');
 
-const uploadDrive = ('/upload', upload, async (req, res) => {
+const uploadDrive = ('/upload', upload, async (req, res, next) => {
   try {
     const gDrive = google.drive({
       version: 'v3',
       auth: await googleValidation(),
     });
 
-    console.log('desde google service', req.file); // TODO ELIMIAR
     const fileMetadata = {
       name: req.file.originalname,
       parents: ['1U2zXpUVpRshEz35pnFjIbZoy7QTmSA3N'],
@@ -27,17 +26,13 @@ const uploadDrive = ('/upload', upload, async (req, res) => {
       fields: 'id',
     });
 
-    console.log('ID', data.id);
-
-    /* https://drive.google.com/uc?export=view&id= */
-
     const result = await (`https://drive.google.com/uc?export=view&id=${data.id}`);
 
     res.json(result);
 
     fs.unlinkSync(req.file.path);
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 });
 

@@ -23,11 +23,11 @@ async function getSkill(id) {
   throw new Error('Skill no encontrada');
 }
 
-async function getAllSkill(id) {
-  const skills = await Profile.findAll({
+async function getAllSkill(userId) {
+  const userSkills = await Profile.findAll({
     attributes: [],
     where: {
-      userId: id,
+      userId,
     },
     include: [
       {
@@ -38,26 +38,30 @@ async function getAllSkill(id) {
         },
         include: [{
           model: Skill,
-          attributes: ['id', 'skill'],
         }],
       }],
-    distinct: true,
-    group: ['skill'],
   });
-  if (skills) {
-    const listSkills = skills.reduce(
-      (allSkills, skill) => allSkills.concat(skill.ProfileSkills), [],
-    );
 
-    const allSkills = listSkills.map((skill) => ({
-      id: skill.Skill.id,
-      level: skill.level,
-      skill: skill.Skill.skill,
-    }));
+  const skillList = [];
+  const idSkill = [];
 
-    return allSkills;
-  }
-  throw new Error('No existe el skill');
+  userSkills.forEach((element) => {
+    for (let i = 0; i < element.ProfileSkills.length; i += 1) {
+      const skillItem = {
+        id: element.ProfileSkills[i].Skill.id,
+        skill: element.ProfileSkills[i].Skill.skill,
+        level: element.ProfileSkills[i].level,
+      };
+
+      const { id } = element.ProfileSkills[i].Skill;
+
+      if (!idSkill.includes(id)) {
+        idSkill.push(id);
+        skillList.push(skillItem);
+      }
+    }
+  });
+  return skillList;
 }
 
 async function addSkill(

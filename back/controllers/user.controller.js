@@ -59,25 +59,10 @@ async function getUser(req, res, next) {
 // Controlador que redirige al servicio para actulizar un usuario
 async function updateUser(req, res, next) {
   const { id } = req.params;
-  const {
-    name,
-    lastName,
-    bornDate,
-    phone,
-    email,
-    pictureLink,
-  } = req.body;
+  const updateData = req.body;
 
   try {
-    const userUpdate = await userService.updateUser(
-      id,
-      name,
-      lastName,
-      bornDate,
-      phone,
-      email,
-      pictureLink,
-    );
+    const userUpdate = await userService.updateUser(id, updateData);
     res.status(200).send(userUpdate);
   } catch (error) {
     next(error);
@@ -93,6 +78,35 @@ async function userDeleted(req, res, next) {
     next(error);
   }
 }
+
+async function resetMail(req, res, next) {
+  const { email } = req.body;
+  try {
+    await userService.mailReset(email);
+    res.status(200).json({ message: 'Se envio corrreo correctamente' });
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function resetPage(req, res) {
+  res.render('page');
+}
+
+async function resetPassword(req, res, next) {
+  const { token } = req.params;
+  const { password } = req.body;
+  try {
+    const salt = await bcrypt.genSalt();
+    const passwordCrypt = await bcrypt.hash(password, salt);
+
+    await userService.passwordReset(token, passwordCrypt);
+    res.status(200).send();
+  } catch (error) {
+    next(error);
+  }
+}
+
 // Modulos a exportar para inyectar en routes
 module.exports = {
   recordUser,
@@ -100,4 +114,7 @@ module.exports = {
   getUser, //* agregado
   login,
   userDeleted,
+  resetMail,
+  resetPage,
+  resetPassword,
 };

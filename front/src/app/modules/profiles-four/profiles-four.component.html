@@ -1,86 +1,90 @@
+<app-modal-add></app-modal-add>
 <body>
-    <section class="container">
-        <div class="personales_skills_language">
-            <div class="picture">
-                <img src="assets/Imagenes/foto_test.jpg" alt="foto">
-            </div>
-            <p class="aboutMe_text"> Sobre Mi </p>
-            <div class="aboutMe">
-                <div class="personales">
-                    <h1>DATOS PERSONALES</h1>
-                    <p>Telefono: {{ profileData?.User?.phone }}</p>
-                    <p>Email: {{ profileData?.User?.email }}</p>
+    <div class="botonera">
+        <input type="color" [(ngModel)]="selectedColor">
+        <button mat-raised-button color="primary" (click)="applyColors()">Aplicar Color</button>    
+        <button mat-raised-button color="primary" (click)="downloadPDF()" >Descargar PDF</button>
+        </div>  
+    <div class="container" id="profile">
+        <div class="izquierdo">
+            <div class="foto-conteiner">
+                <div class="foto">
+                    <img src="{{userData.urlPicture}}" alt="">
                 </div>
-                <div class="skills">
-                    <h1>HABILIDADES</h1>
+            </div>
+            <div class="card-container">
+                <div class="aboutMe" [ngStyle]="{ 'color': selectedColor }" *ngFor="let option of profile.newOptionals">
+                    <h4> {{option.aboutMe}} </h4>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="titulo" [ngStyle]="{ 'border-bottom-color': selectedColor }">
+                    <h2>CONTACTO</h2>
+                </div>
+                <div class="contenido">
+                    <h4><mat-icon [ngStyle]="{ 'color': selectedColor }">account_circle</mat-icon>@insta</h4>
+                    <h4><mat-icon [ngStyle]="{ 'color': selectedColor }">settings_cell</mat-icon> {{userData.user.phone}} </h4>
+                    <h4><mat-icon [ngStyle]="{ 'color': selectedColor }">email</mat-icon> {{userData.user.email}} </h4>
+                    <h4><mat-icon [ngStyle]="{ 'color': selectedColor }">home</mat-icon> {{profile.address}} </h4>                    
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="titulo" [ngStyle]="{ 'border-bottom-color': selectedColor }">
+                    <h2>FORTALEZAS</h2>
+                </div>
+                <div class="contenido">
                     <ul>
-                        <li *ngFor="let skill of userData.skills" >
-                            <p>Habilidad: {{skill.skill}} Nivel: {{skill.level}}</p>
+                        <li *ngFor="let skill of profile.newSkills">
+                            <h4>{{skill.skill}} <mat-progress-bar mode="determinate" [value]="skill.level * 10" class="barra" [ngStyle]="{ 'background-color': selectedColor }"></mat-progress-bar></h4>
                         </li>
                     </ul>
                 </div>
-                <div class="languages">
-                    <h1>IDIOMAS</h1>
-                    <ul>
-                        <li *ngFor="let language of userData.languages">
-                            <p>Idioma: {{language.language}} Nivel: {{language.level}}</p>
-                        </li>
-                    </ul>
-                </div>
             </div>
-        </div>
-        <div class="identificador">
-            <h1 class="nombre"> {{ userData.userName }}</h1>
-            <h1 class="apellido"> {{ userData.lastName }}</h1>
-        </div>
-        <div class="informacion">
-            <div class="experiencias">
-                <h1>EXPERIENCIAS</h1>
-                <ul>
-                    <li *ngFor="let experience of userData.experiences">
-                        <div class="fechas">
-                            <p>{{experience.startDate}}</p>
-                            <p>{{experience.endDate}}</p>
-                        </div>
-                        <h2>{{experience.company}}</h2>
-                        <p>Descripcion: {{experience.description}}</p>
-                        <p>Posicion: {{experience.position}} </p>
-                        <p>Pais: {{experience.Country?.country}}</p>
-                        <p>{{experience.ExperienceStatus?.status}}</p>
-                        <p>{{experience.ExperienceTypes?.type}}</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="formacion_referencias">
-                <div class="formacion">
-                    <h1>FORMACION</h1>
-                    <ul>
-                        <li *ngFor="let formation of userData.formations">
-                            <div class="fechas">
-                                <p>{{formation.startDate}}</p>
-                                <p>{{formation.endDate}}</p>
-                            </div>
-                            <h2>Institucion: {{formation.institute}}</h2>
-                            <p>Titulo: {{formation.title}}</p>
-                            <p>Descripcion: {{formation.description}} </p>
-                            <p>{{formation.FormationStatus?.status}}</p>
-                            <p>{{formation.FormationType?.type}}</p>
-                        </li>
-                    </ul>
+            <div class="card-container">
+                <div class="titulo" [ngStyle]="{ 'border-bottom-color': selectedColor }">
+                    <h2>IDIOMAS</h2>
                 </div>
-                <div class="referencias">
-                    <h1>REFERENCIAS</h1>
+                <div class="contenido">
                     <ul>
-                        <li *ngFor="let reference of userData.references">
-                            <h2>Nombre: {{reference.name}}</h2>
-                            <p>Apellido: {{reference.lastName}}</p>
-                            <p>Compania: {{reference.company}} </p>
-                            <p>{{reference.email}}</p>
-                            <p>{{reference.phone}}</p>
+                        <li *ngFor="let language of profile.newLanguages">
+                            <h4>{{language.language}} <mat-progress-bar mode= "determinate" [value]= "language.level * 10" class="barra" [ngStyle]="{ 'background-color': selectedColor }"></mat-progress-bar></h4>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-    </section>
+        <div class="derecha">
+            <div class="identificador" [ngStyle]="{ 'background-color': selectedColor }">
+                <h1 style="font-weight: 700;">{{userData.lastName}}</h1> <h1>{{userData.userName}}</h1>
+            </div>
+            <div class="card-container">
+                <div class="titulo" [ngStyle]="{ 'border-bottom-color': selectedColor }">
+                    <h2>EDUCACION</h2>
+                </div>
+                <div class="contenido">
+                    <ul>
+                        <li *ngFor="let formation of profile.newFormations">
+                            <h5 [ngStyle]="{ 'color': selectedColor }">{{formation.endDate}}</h5>
+                            <h4>{{formation.title}}</h4>
+                            <h3>{{formation.institute}}</h3>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="titulo" [ngStyle]="{ 'border-bottom-color': selectedColor }">
+                    <h2>EXPERIENCIA</h2>
+                </div>
+                <div class="contenido">
+                    <ul>
+                        <li *ngFor="let experience of profile.newExperiences" style="justify-content: left;">
+                            <div style="display: flex; justify-content: space-between; margin-right: 15rem;"><h4 class="fecha" [ngStyle]="{ 'background-color': selectedColor }"> {{experience.startDate}}</h4><h3>{{experience.company}}</h3></div>
+                            <h4>{{experience.position}}</h4>
+                            <h3>{{experience.description}}</h3>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>

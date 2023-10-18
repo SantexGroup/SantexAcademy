@@ -1,38 +1,17 @@
 <body>
-    
-    <div class="conteiner-profiles">
-        <div class="profile-1">
-            <div class="header">Titulo del CV</div>
-            <div class="item-foto">Foto</div>
-            <div class="experiencia">experiencia</div>
-            <div class="sobre-mi">Sobre mi</div>
-            <div class="formacion">formacion</div>    
-            <div class="links">links</div>
-            <div class="skills">skills</div>
-            <div class="opcionales">opcionales</div>
-            <div class="referencias">referencias</div>                       
-        </div>
-
-        <div class="profile-2">
-            <div class="item-foto">foto</div>
-            <div class="sobre-mi">Sobre Mi</div>
-            <div class="opcionales">opcionales</div>
-            <div class="experiencia">experiencias</div>
-            <div class="links">links</div>
-            <div class="formacion">formacion</div>
-            <div class="skills">skills</div>
-            <div class="referencias">references</div>
-            
-        </div>
-        <div class="profile-3">
-            <div class="titulo">Nombre y apellido</div>
-            <div class="sobreMi">Sobre mi</div>
-            <div class="experiencias">Experiencias</div>
-            <div class="skills">skills</div>
-            <div class="opcionales">opcion</div>
-            <div class="formaciones">formaciones</div>
-            <div class="links">liks</div>
-            <div class="referencias">referencias</div>
-        </div>
-    </div>
+    <ul>
+        <li *ngFor="let profile of userData.profileList">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"> {{profile.profileName}} </h5>
+                    <div class="botonera-card">
+                        <button
+                        (click)="deleteProfiles(profile.id)">
+                            <img src="./assets/Imagenes/delete.png" alt="Eliminar">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
 </body>

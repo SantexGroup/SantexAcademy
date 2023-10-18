@@ -15,4 +15,12 @@ export interface Optionals {
     zipCode: number,
     deletedAt?: Date,
     profileId: number,
+    Marital?: {
+        id?:number,
+        condition: string
+    }
+    Sex?: {
+        id?:number,
+        gender: string
+    }
 }

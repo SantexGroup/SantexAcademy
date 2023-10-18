@@ -1,0 +1,104 @@
+.startSelect{
+    display: flex;
+    justify-content: space-around;
+}
+
+.start {
+    height: 36px;
+}
+
+.new {
+    height: 36px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.modal-title{
+    text-align: center;
+}
+
+.modal {
+    margin-top: 2rem;
+}
+
+.profileName {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(212, 228, 243, 0.5);
+}
+
+.profileName button {
+    height: 2rem;
+}
+
+.modal-content {
+    width: 800px;
+    margin-left: -25%;
+    overflow-y: scroll;
+    background: rgba(255, 255, 255);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+}
+
+.list-container {
+    display: grid;
+    margin: 1rem 1rem 0 2rem;
+    width: 90%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+}
+
+ul{
+    width: 100%;
+    padding: 0;
+    margin: 1rem;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+    text-align: left;
+    list-style: none;
+}
+
+li h5{
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgb(255, 255, 255);
+}
+
+li p{
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgb(255, 255, 255);
+}
+
+.list-container div h3{
+    color: #3f6ad8;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    background: rgba(212, 228, 243, 0.5);
+    text-shadow: 2px 2px 4px rgb(255, 255, 255);
+}
+
+.check{
+    background-color: none;
+}
+
+/* .list-container div li .card {
+    display: flex;
+    width: 100%;
+    margin-top: 1rem;
+    background: rgba(67, 148, 224, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+} */

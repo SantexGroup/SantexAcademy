@@ -3,6 +3,7 @@
 const jwt = require('jsonwebtoken');
 const AuthenticationException = require('../exceptions/authentication.exceptions');
 const { Profile, User } = require('../models');
+const transporter = require('./toolServices/mailSender');
 
 async function recordUser(rolesId, nick, password, name, lastName, email, phone) {
   const userCreated = await User.create({
@@ -62,11 +63,14 @@ async function login(nick, password) {
     nick: user.nick,
     profileId: profile.id,
   }, jwtSecret, { expiresIn });
+
   // Devolver un objeto con el token de acceso
   return {
     user: {
       name: user.name,
       lastName: user.lastName,
+      pictureLink: user.pictureLink,
+      rolesId: user.rolesId,
     },
     profile,
     accessToken: token,
@@ -86,31 +90,11 @@ async function getUser(id) {
 
 // Servicio que actualiza datos de un usuario
 async function updateUser(
-  id,
-  name,
-  lastName,
-  bornDate,
-  phone,
-  email,
-  pictureLink,
+  id, updateData,
 ) {
   // Buscar al usuario en la base de datos por su ID
   const user = await getUser(id);
-
-  const updateData = {
-    name,
-    lastName,
-    bornDate,
-    phone,
-    pictureLink,
-  };
-
-  if (user) {
-    if (email !== '') {
-      updateData.email = email;
-    }
-    await user.update(updateData);
-  }
+  await user.update(updateData);
   return user;
 }
 
@@ -131,7 +115,53 @@ async function deleteUser(id) {
     throw Error('El susuario no existe');
   }
 }
-//
+
+async function mailReset(email) {
+  const user = await User.findOne({
+    where: {
+      email,
+    },
+  });
+
+  const jwtSecret = process.env.JWT_SECRET;
+  const expiresIn = 3000;
+
+  const token = jwt.sign({
+    id: user.id,
+    nick: user.nick,
+    email: user.email,
+  }, jwtSecret, { expiresIn });
+
+  if (user) {
+    const sendMail = await transporter.sendMail({
+      from: `CV-ASSISTANT ${process.env.EMAIL}`,
+      to: email,
+      subject: 'Recuperacion de contraseña',
+      text: 'Esto es una prueba',
+      html: `<h1>Hola ${user.name} ${user.lastName} </br></h1>
+            <p> Podras realizar el cambio de contraseña
+            en el siguiente enlace: <a href="${process.env.URL}/user/password/${token}">Cambiar contraseña</a></p>`,
+    });
+    return sendMail;
+  }
+  throw Error('Datos de usuario invalido');
+}
+
+async function passwordReset(token, newPassword) {
+  const jwtSecret = process.env.JWT_SECRET;
+  const isValidToken = jwt.verify(token, jwtSecret);
+
+  if (Date.now() >= isValidToken.exp * 1000) {
+    throw Error('Tu enlace para reiniciar la clave ha caducado');
+  } else {
+    const user = await User.findByPk(isValidToken.id);
+
+    await user.update({
+      password: newPassword,
+    });
+  }
+}
+
 // Exportamos el servicio para inyectar en el controlador
 module.exports = {
   recordUser,
@@ -139,4 +169,6 @@ module.exports = {
   login,
   getUser,
   deleteUser,
+  mailReset,
+  passwordReset,
 };

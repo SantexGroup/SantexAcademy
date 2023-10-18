@@ -14,6 +14,10 @@ import { Optionals } from '../../interfaces/optionlas.interface';
 import { Reference } from '../../interfaces/reference.interface';
 import { Skill } from '../../interfaces/skill.interface';
 import { FormGroup } from '@angular/forms';
+import { Profile } from '../../interfaces/profile.interface';
+import { ProfileService } from '../profile.service';
+import { User } from '../../interfaces/user.interface';
+import { UserService } from '../usuario.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +35,8 @@ export class UserDataService {
   /* userId que se escribe desde el servicio de login */
   userId: number = 0;
 
+  level: number = 0;
+
   companies: string[] = [];
 
   userName = "" || localStorage.getItem('userName');
@@ -39,8 +45,9 @@ export class UserDataService {
 
   phone = "" || localStorage.getItem('phone');
 
-  urlPicture = "";
+  urlPicture = "" || localStorage.getItem('picture');
 
+  email = "" || localStorage.getItem('email'); 
 
   constructor(
     private _experience: ExperiencesService,
@@ -48,7 +55,9 @@ export class UserDataService {
     private _language: LanguagesService,
     private _optionals: OptionalsService,
     private _references: ReferencesService,
-    private _skills: SkillService
+    private _skills: SkillService,
+    private _profiles: ProfileService,
+    private _personal: UserService
    ){
 
   }
@@ -60,12 +69,14 @@ export class UserDataService {
     }
   }
 
+  user = {} as  User; 
   experiences: Experience[] = [];
   formations: Formations[] = [];
   languages: Language[] = [];
   optionals: Optionals[] = [];
   references: Reference[] = [];
   skills: Skill[] = [];
+  profileList: Profile[] = [];
   
   getExperience(){
     this._experience.getExperience(this.userId).subscribe((experieceList: Experience[])=>{
@@ -88,7 +99,6 @@ export class UserDataService {
   getMyOptionals(){
     this._optionals.getMyOptionals(this.userId).subscribe((myOptionals: Optionals[]) => {
       this.optionals = myOptionals;
-      console.log(myOptionals); 
     });
   }
 
@@ -102,6 +112,18 @@ export class UserDataService {
     this._skills.getSkillsByUser(this.userId).subscribe((skillList: Skill[])=>{
       this.skills = skillList;
     })
+  }
+
+  getProfiles(){
+    return this._profiles.getProfile(this.userId).subscribe((profiles: Profile[])=>{
+      this.profileList = profiles;
+    })
+  }
+
+  getPersonal(){
+    return this._personal.getUser(this.userId).subscribe((userData)=>{
+      this.user = userData;
+    });
   }
 
 

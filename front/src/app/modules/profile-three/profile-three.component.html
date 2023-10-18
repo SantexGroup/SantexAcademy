@@ -1,0 +1,87 @@
+<div class="control">
+    <app-modal-add></app-modal-add>
+    <div class="botonera">
+        <mat-label for="color">Color:
+            <input name="color" type="color" [(ngModel)]="selectedColor">
+        </mat-label>
+        <button mat-raised-button color="primary" (click)="applyColors()">Aplicar Color</button>
+        <button mat-raised-button color="primary" (click)="downloadPDF()">Descargar PDF</button>
+    </div>
+</div>
+<body> 
+<div class="container" id="profile">
+    <section class="izquierdo" [ngStyle]="{ 'background-color': selectedColor }">
+        <div class="container-img">
+            <div>
+                <img src="{{userData.urlPicture}}" alt="">
+            </div>            
+        </div>
+        <div class="contenido" *ngFor="let option of profile.newOptionals">
+            <h4> {{option.aboutMe}} </h4>
+        </div>
+        <div class="card-titulo">
+            <div class="titulo">
+                <mat-icon style="font-size: 30px; margin-bottom: 6px;">account_circle</mat-icon>
+                <h2>CONTACTO</h2>                
+            </div>            
+        
+        <div class="contenido">
+            <h4>Celular : {{userData.user.phone}} </h4>
+            <h4>Correo: {{userData.user.email}} </h4>
+            <h4>Direccion: {{profile.address}} </h4>
+        </div>
+    </div>
+        <div class="card-titulo">
+            <div class="titulo">
+                <mat-icon style="font-size: 30px; margin-bottom: 6px;">school</mat-icon>
+                <h2>EDUCACION</h2>
+            </div>  
+            <div class="contenido">
+                <ul>
+                    <li *ngFor="let formation of profile.newFormations">
+                        <h3>{{formation.institute}}</h3>
+                        <h4>{{formation.title}} - {{formation.endDate}} </h4>
+                        <h4>{{formation.description}}</h4>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="derecho">
+        <div class="nombre">
+            <h1>{{userData.userName}}<br>{{userData.lastName}}</h1>
+        </div>
+        <div class="card-titulo">
+            <div class="titulo">
+            <mat-icon style="font-size: 30px; margin-bottom: 6px;">work</mat-icon>
+            <h2>EXPERIENCIA LABORAL</h2>
+            </div>
+            <div class="contenido">
+                <ul>
+                    <li *ngFor="let experience of profile.newExperiences">
+                        <h3>{{experience.position}}</h3>
+                        <h4>{{experience.company}} - {{experience.endDate}}</h4>
+                        <h4>{{experience.description}}</h4>
+                    </li>   
+                </ul>
+            </div>
+        </div>
+        <div class="card-titulo">
+            <div class="titulo">
+                <mat-icon style="font-size: 30px; margin-bottom: 6px">book</mat-icon>
+                <h2>IDIOMAS Y HABILIDADES</h2>
+            </div>
+            <div class="contenido">
+                <ul>
+                    <li *ngFor="let language of profile.newLanguages">
+                        <h4> Idioma: {{language.language}}- Nivel: {{language.level}}</h4>                        
+                    </li>
+                    <li *ngFor="let skill of profile.newSkills">
+                        <h4> Habilidad: {{skill.skill}} - Nivel: {{skill.level}}</h4>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+</body>

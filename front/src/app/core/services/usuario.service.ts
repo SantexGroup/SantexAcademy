@@ -62,5 +62,9 @@ private userData1: BehaviorSubject<{ name: string, lastName: string }> = new Beh
   uploadPicture(imagen: FormData): Observable<any>{
     return this.api.post<any>('user/upload', imagen);
   }
+
+  sendEmail(email:any):Observable<any>{
+    return this.api.post<any>('user/mail', email);
+  }
 }
 

@@ -1,0 +1,115 @@
+<div class="startSelect">
+    <button class="start" 
+    mat-flat-button color="warn" 
+    type="button" data-bs-toggle="modal"
+    data-bs-target="#ModalSelect"
+    (click)="reset()">
+        Comencemos!
+    </button>
+<!--     <button class="new"
+    mat-flat-button color="warn"
+    type="button" data-bs-toggle="modal"
+    data-bs-target="#ModalSelect"
+    [disabled]="!hide"
+    (click)="reset()">
+        Nuevo
+    </button> -->
+    <mat-form-field>
+        <mat-label>Perfiles Guardados</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let element of userData.profileList" 
+            [value]="element.id"
+            (click)="selectedProfile(element)"
+            >{{element.profileName}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalSelect" tabindex="-1" aria-labelledby="ModalSelect" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="ModalSelect">Arma tu Curriculum</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="profileName">
+                <mat-form-field [formGroup]="profileForm">
+                    <mat-label for="position">Nombre del Perfil:</mat-label>
+                    <input matInput type="text" formControlName="profileName" required>
+                </mat-form-field>
+                <button mat-raised-button color="accent" (click)="profilePost()">Guardar
+                </button>
+            </div>
+            <div class="list-container">
+                <div>
+                    <h3>OPCIONALES</h3>
+                    <ul>
+                        <li *ngFor="let element of userData.optionals">
+                            <h5 class="card-title">{{element.profile}}</h5>
+                            <section>
+                                <mat-checkbox color="primary" (change)="getOptional(element.id)"></mat-checkbox>
+                            </section>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>EXPERIENCIAS</h3>
+                    <ul>
+                        <li *ngFor="let element of userData.experiences">
+                            <h5 class="card-title">{{element.company}}</h5>
+                            <section>
+                                <mat-checkbox color="primary" (change)="getExperience(element.id)"></mat-checkbox>
+                            </section>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>REFERENCIAS</h3>
+                    <ul>
+                        <li *ngFor="let element of userData.references">
+                            <h5 class="card-title">{{element.name}} {{element.lastName}}</h5>
+                            <section>
+                                <mat-checkbox color="primary" (change)="getReference(element.id)"></mat-checkbox>
+                            </section>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>IDIOMAS</h3>
+                    <ul>
+                        <li *ngFor="let element of userData.languages">
+                            <h5 class="card-title">{{element.language}} - {{element.level}} </h5>
+                            <section>
+                                <mat-checkbox color="primary" (change)="getLanguage(element.id)"></mat-checkbox>
+                            </section>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>HABILIDADES</h3>
+                    <ul>
+                        <li *ngFor="let element of userData.skills">
+                            <h5 class="card-title">{{element.skill}} - {{element.level}}</h5>
+                            <section>
+                                <mat-checkbox color="primary" (change)="getSkill(element.id)"></mat-checkbox>
+                            </section>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>FORMACIONES</h3>
+                    <ul>
+                        <li *ngFor="let element of userData.formations">
+                            <h5 class="card-title">{{element.institute}}</h5>
+                            <section>
+                                <mat-checkbox color="primary" (change)="getFormation(element.id)"></mat-checkbox>
+                            </section>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

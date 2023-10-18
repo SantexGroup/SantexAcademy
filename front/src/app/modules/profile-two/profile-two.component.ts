@@ -4,6 +4,7 @@ import { Profile } from 'src/app/core/interfaces/profile.interface';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { ProfilesToolService } from 'src/app/core/services/toolServices/profiles-tool.service';
 
 
 @Component({
@@ -31,7 +32,8 @@ export class ProfileTwoComponent implements OnInit, AfterViewInit {
   constructor(
     public userData: UserDataService,
     public views: NavBarService,
-    private renderer: Renderer2    
+    private renderer: Renderer2,
+    public profile: ProfilesToolService    
   ) { }
 
   ngAfterViewInit() {
@@ -66,12 +68,12 @@ export class ProfileTwoComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
-    this.userData.getMyOptionals();
+    /* this.userData.getMyOptionals();
     this.userData.languageGet();
     this.userData.getExperience();
     this.userData.getListFormations();
     this.userData.getReference();
-    this.userData.getSkill();
+    this.userData.getSkill(); */
   }
 
    async downloadPDF() {

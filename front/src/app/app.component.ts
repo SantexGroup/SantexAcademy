@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavBarService } from './core/services/toolServices/nav-bar.service';
 import { UserDataService } from './core/services/toolServices/userData.service';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from './core/services/usuario.service';
 
 
@@ -11,54 +10,31 @@ import { UserService } from './core/services/usuario.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
-  public active : boolean = false
-  
-
+  public active: boolean = false
 
   constructor(
     public views: NavBarService,
     private userData: UserDataService,
     private router: Router,
-    private user: UserService
-    ){  }
+  ) { }
 
   ngOnInit(): void {
-    if(this.userData.isAuthenticated()){
+
+    if (this.userData.isAuthenticated()) {
       this.views.hideLanding();
       this.views.accountButton = false;
       this.views.quickButton = true;
       this.views.changeTitle("Bienvenido! " + this.userData.userName + " " + this.userData.lastName);
       this.router.navigate([`/home/${this.userData.userId}/cv`])
-    }else{
+    } else {
       this.router.navigate(['/']);
     }
     this.views.restart();
   }
-  
-  activarNav() : void {
+
+  activarNav(): void {
     this.active = !this.active
   }
-
-
-  uploadImage(event: any): any {
-    const fileToUpload = event.target.files[0];
-    console.log(event.target.files[0])
-    if(fileToUpload){
-      const formData = new FormData();
-      formData.append('pictureLink', fileToUpload);
-
-      this.user.uploadPicture(formData).subscribe((data)=>{
-        this.userData.urlPicture = "https://drive.google.com/uc?export=view&id=" + data;
-        console.log(this.userData.urlPicture);
-      });
-
-      
-    }
-
-    
-  }
-
-
 }

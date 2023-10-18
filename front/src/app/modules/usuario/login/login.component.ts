@@ -5,6 +5,7 @@ import { UserDataService } from 'src/app/core/services/toolServices/userData.ser
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserService } from 'src/app/core/services/usuario.service';
 import { ToastrService } from 'ngx-toastr';
+import { loginInterface } from 'src/app/core/interfaces/login.interface';
 
 
 @Component({
@@ -30,7 +31,24 @@ export class LoginComponent implements OnInit{
 
   toRegister(){
     this.router.navigate(['/registro']);
-  }  
+  }
+  
+  toMail(){
+    this.router.navigate(['/mail']);
+  }
+
+  userLevel(data:loginInterface){
+    if(data.user.rolesId === 2){
+      this.router.navigate([`/admin`]);
+    }else{
+      this.router.navigate([`/home/${data.profile.userId}/cv`]);
+    }
+
+    if(data.user.rolesId === 3){
+      this.dataUser.level = 3;
+      this.router.navigate(['/registro']);
+    }
+  }
 
   get nick() {
     return this.loginForm.controls.nick;
@@ -43,31 +61,33 @@ export class LoginComponent implements OnInit{
   loginForm = this.fb.group({
     //TODO ELIMINAR
     nick: ['', [ Validators.required ]],
-    password: ['', [ Validators.required, Validators.minLength(6) ]],
+    password: ['', [ Validators.required, Validators.minLength(8)]],
   })
   
   submit(myForm: FormGroup) {
     if(myForm.status == 'VALID') {
       this.userService.login(myForm.value).subscribe({
         next: (data) => { 
-        console.log(data);
         this.dataUser.userId = data.profile.userId;
         this.dataUser.profileId = data.profile.id;
         this.views.quickButton = true;
         this.views.accountButton = false;
         this.dataUser.userName = data.user.name;
         this.dataUser.lastName = data.user.lastName;
+        this.dataUser.urlPicture = data.user.pictureLink;
         localStorage.setItem('accessToken', data.accessToken);
         localStorage.setItem('userName', data.user.name);
         localStorage.setItem('lastName', data.user.lastName);
+        localStorage.setItem('picture', data.user.pictureLink);
+        localStorage.setItem('rol', String(data.user.rolesId))
         this.views.changeTitle("Bienvenido! " + data.user.name + " " + data.user.lastName);
-        this.router.navigate([`/home/${data.profile.userId}/cv`]);
+        this.userLevel(data);
         }, 
         error: () => { 
           this.toastr.error("Usuario o contraseña incorrectos!", "VERIFICAR DATOS");
         },
         complete: () => { 
-          console.log("Done") 
+          this.dataUser.getProfiles(); 
         }
       });
     }

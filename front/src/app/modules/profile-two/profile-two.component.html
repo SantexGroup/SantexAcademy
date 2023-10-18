@@ -1,9 +1,14 @@
-<div class="todo">
+<div class="control">
+    <app-modal-add></app-modal-add>
     <div class="botonera">
-    <button mat-raised-button color="primary" (click)="downloadPDF()" >Download PDF</button>
-    <input type="color" [(ngModel)]="selectedColor">
-    <button mat-raised-button color="primary" (click)="applyColors()">Aplicar Color</button>    
-    </div>    
+        <mat-label for="color">Color:
+            <input name="color" type="color" [(ngModel)]="selectedColor">
+        </mat-label>
+        <button mat-raised-button color="primary" (click)="applyColors()">Aplicar Color</button>
+        <button mat-raised-button color="primary" (click)="downloadPDF()">Descargar PDF</button>
+    </div>
+</div>
+<div class="todo">
     <div class="conteiner" id="profile-two">
         <div class="izquierdo" >
             <div class="conteiner-img" [ngStyle]="{ 'background-color': selectedColor }">
@@ -18,7 +23,7 @@
                 </div>
                 <div class="contenido-card">
                     <ul>
-                        <li *ngFor="let formation of userData.formations">
+                        <li *ngFor="let formation of profile.newFormations">
                              <h4>{{formation.institute}}</h4>
                              <h5>{{formation.title}} - ({{formation.endDate}})</h5>   
                         </li>
@@ -31,11 +36,11 @@
                 </div>
                 <div class="contenido-card">
                     <ul>
-                        <li *ngFor="let language of userData.languages">
+                        <li *ngFor="let language of profile.newLanguages">
                             <h4>IDIOMA: {{language.language}}</h4>
                             <h5>Nivel: {{language.level}}</h5>
                         </li>
-                        <li *ngFor="let skill of userData.skills">
+                        <li *ngFor="let skill of profile.newSkills">
                             <h4>{{skill.skill}} - - Nivel: {{skill.level}}</h4>
                         </li>
                     </ul>
@@ -43,12 +48,12 @@
             </div>
             <div class="card-item">
                 <div class="titulo-card">
-                    <h3 [ngStyle]="{ 'color': selectedColor }">Datos personales</h3>
+                    <h3 [ngStyle]="{ 'color': selectedColor }">DATOS PERSONALES</h3>
                 </div>
                 <div class="datos">
-                    <h5 class="footer"><mat-icon>phone</mat-icon> - 351-3554850</h5><br>
-                    <h5 class="footer"><mat-icon>email</mat-icon> - marianoS@gmail.com</h5><br>
-                    <h5 class="footer"><mat-icon>home</mat-icon> - Av colon 1221</h5>
+                    <h5 class="footer"><mat-icon>phone</mat-icon> - {{userData.user.phone}} </h5><br>
+                    <h5 class="footer"><mat-icon>email</mat-icon> - {{userData.user.email}} </h5><br>
+                    <h5 class="footer"><mat-icon>home</mat-icon> - {{profile.address}} </h5>
                 </div>
             </div>
         </div>
@@ -57,8 +62,8 @@
                 <h1 [ngStyle]="{ 'border-bottom-color': selectedColor }">{{userData.userName}}<br>{{userData.lastName}}</h1>
                                 
             </div>
-            <div class="contenido-card">
-                <h5 style="height: 15em;">Soy un profesional apasionado y altamente motivado con una sólida formación en [tu campo de estudio o profesión]. A lo largo de mi carrera, he adquirido una valiosa experiencia en [mencionar áreas relevantes], lo que me ha permitido desarrollar habilidades excepcionales en [lista de habilidades clave relacionadas con tu campo].</h5>
+            <div class="contenido-card" *ngFor="let option of profile.newOptionals">
+                <h5 style="height: 15em;"> {{option.aboutMe}} </h5>
             </div>
             <div class="card-item">
                 <div class="titulo-card">
@@ -66,7 +71,7 @@
                 </div>
                     <div class="contenido-card">
                         <ul>
-                            <li *ngFor="let experience of userData.experiences">                                
+                            <li *ngFor="let experience of profile.newExperiences">                                
                                 <h4>{{experience.position}}</h4>
                                 <h5>{{experience.company}} | ({{experience.startDate}} - {{experience.endDate}})</h5>
                                 <h5>{{experience.description}}</h5>

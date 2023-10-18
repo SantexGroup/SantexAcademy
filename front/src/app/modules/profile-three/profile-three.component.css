@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.control{
+    padding: 1rem;
+    height: 150px;
+}
+
+body {
+    overflow-y: auto;
+    margin: 1rem;
+    position: relative;
+}
+.container{
+    border: solid 2px black;
+    width: 210mm;    
+    max-height: auto;
+    min-height: 297mm;    
+    display: flex;
+    margin: 2rem 3rem 2rem 6rem;
+}
+.botonera{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 6em;
+    margin-right: 6em;
+}
+.izquierdo{
+    width: 40%;
+    min-height: 100%;
+    background-color: rgb(240, 208, 250);
+}
+.derecho{
+    width: 60%;
+    height: 100%;
+    margin-left: 2rem;
+}
+.container-img{
+    display: flex;        
+    justify-content: center;
+    align-items: center;   
+    width: 100%;
+    height: 25%;
+    overflow: hidden;
+    margin-top: 2rem;  
+}
+img{    
+    border-radius: 50%;
+    height: 12rem;
+    width: 12rem;
+   
+}
+.contenido{
+    margin: 0rem 1rem 0rem 1rem;
+    padding-bottom: 2rem;
+    border-bottom: 3px dashed #000;
+}
+.card-titulo{
+    
+    justify-items: center;
+    
+         
+}
+ .titulo {    
+    width: 100%;
+    padding-left: 2rem;
+    align-items: center;
+    display: inline-flex;
+    margin: 2rem 0rem 2rem 0rem;   
+}
+.titulo h2{
+    margin: 0;
+    padding-left: 1rem;
+}
+.contenido h4{
+    margin: 0;
+}
+.contenido h3{
+    margin: 1rem 0rem 0rem 0rem;
+    font-weight: 600;
+}
+.nombre{   
+    height: 10%;
+    border-bottom: solid 2px black;
+    margin: 3rem 2rem 2rem 1rem;
+}
+h1{
+    text-transform: uppercase;
+    width: 100%;
+    font-size: 40px;
+    line-height: 1.2;    
+}
