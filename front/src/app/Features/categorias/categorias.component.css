@@ -1,9 +1,7 @@
-
 .categoria {
     color: #d68a96;
     font-weight: 500;
     margin: 0;
-    
 }
 .container {margin-top: 2%;}
 #texto {
@@ -12,13 +10,11 @@
 }
 span {color: #d68a96;
 }
-
 a {text-decoration: none;}
 p:hover {cursor: default;}
 a:hover {
     color: blueviolet;
     cursor: pointer
-
 }
 #encabezado {
     display: flex;
@@ -34,67 +30,51 @@ app-boton-navegacion{
     font-family:Arial, Helvetica, sans-serif;
     font-weight: bolder;
 }
-
-
 #FotoArticulo {
     height: 200px;
     max-width: 200px;
     margin-bottom: 10px;
     border-radius: 10px;
-
 }
-
 #Ver-mas {
     color: #f0eaeb;
     background-color: #d68a96;
     font-size: 15px;
     font-family:Arial, Helvetica, sans-serif;
     margin-top: 10px;
-    border: 0;
-    
+    border: 0;  
 }
-
 #Ver-mas:hover {
     background-color: #c95c6d;
 }
-
 h5 {
-
     margin-left: 10px;
-    
 }
-
 .descripcion{
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 }
-
 #Precio { 
     margin-top: 10px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-left: 5px;
 }
-
 .tarjeta-container {
     margin: 0 10px 10px 0;
     margin-right: 45px;
     margin-left: 45px;
-  }
-
+}
 .contenedor{
     padding-right: 20px;
 }
-
 .contenedorTarjeta{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin: 10px;
-    
 }
-
 .contenedorTarjeta .card{
     width: 250px;
     height: 380px;
@@ -104,12 +84,11 @@ h5 {
     margin: 20px;
     text-align: center;
     transition: all 0.25s;
-    background-color: rgb(238, 235, 235);
-    
+    background-color: rgb(238, 235, 235); 
 }
 /* boton */
 #Ver-mas {
-    background-color: rgb(20, 12, 6);
+    background-color:#d68a96;
     font-size: 15px;
     font-family:Arial, Helvetica, sans-serif;
     margin-top: 5%;
@@ -120,5 +99,4 @@ h5 {
 .contenedorTarjeta .card:hover{
     transform: translate(-10px);
     box-shadow: 0 10px 10px rgba(0, 0, 0, 1);
-
 }
