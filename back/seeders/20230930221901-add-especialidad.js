@@ -15,19 +15,19 @@ module.exports = {
 
     await queryInterface.bulkInsert('Especialidads', [
       {
-        nombre: 'Especialidad 1',
+        nombre: 'Ciencias de la Computación',
         estado: 'A',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        nombre: 'Especialidad 2',
+        nombre: 'Análisis de Datos',
         estado: 'A',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        nombre: 'Especialidad 3',
+        nombre: 'Tecnologías de la Información',
         estado: 'A',
         createdAt: new Date(),
         updatedAt: new Date(),
