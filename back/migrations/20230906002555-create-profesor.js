@@ -9,6 +9,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      img: {
+        defaultValue: '',
+        type: Sequelize.STRING,
+      },
       nombreCompleto: {
         type: Sequelize.STRING
       },
@@ -35,7 +39,7 @@ module.exports = {
         unique: true,
         type: Sequelize.STRING
       },
-      password: {
+      contraseña: {
         type: Sequelize.STRING
       },
       createdAt: {

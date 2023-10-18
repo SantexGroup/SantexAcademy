@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
-
 @NgModule({
-  declarations: [],
+  // declarations: [RouterModule.forChild(routes)],
   imports: [
-    CommonModule
+    CommonModule,
   ]
 })
 export class StudentsRoutingModule { }

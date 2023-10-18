@@ -1,12 +1,13 @@
 const { curso } = require('../models');
+const { Op } = require('sequelize');
 
 async function getAll() {
     const listCursos = await curso.findAll()
     return listCursos;
 }
 async function getOne(id) {
-    const curso = await curso.findByPk(id);
-    return curso;
+    const cursoEncontrado = await curso.findByPk(id);
+    return cursoEncontrado;
 }
 
 async function crearCurso(nuevoCurso) {
@@ -21,12 +22,13 @@ async function crearCurso(nuevoCurso) {
 }
 async function editCurso(cursoId, updatedData) {
     try {
-        const curso = await getById(cursoId);
+        const curso = await getOne(cursoId);
 
         if (!curso) {
             throw new Error('Usuario no encontrado');
         }
         curso.nombre = updatedData.nombre;
+        curso.fechaInicio = updatedData.fechaInicio;
         curso.duracion = updatedData.duracion;
         curso.precio = updatedData.precio;
         curso.descripcion = updatedData.descripcion;
@@ -38,7 +40,53 @@ async function editCurso(cursoId, updatedData) {
     }
 }
 async function deleteCurso(id) {
-    const curso = await getById(id)
+    const curso = await getOne(id)
     await curso.destroy(id)
 }
-module.exports = { getAll, getOne, crearCurso , editCurso, deleteCurso}
+
+
+
+async function buscarCursosPorNombre(nombre) {
+    const condiciones = {};
+    if (nombre) {
+        condiciones.nombre = { [Op.like]: `%${nombre}%` };
+    }
+
+    const cursos = await curso.findAll({
+        where: condiciones,
+    });
+
+    return cursos;
+}
+
+// async function buscarCursosRecientes(fechaInicio) {
+//     const condiciones = {};
+//     if (fechaInicio) {
+//         condiciones.fechaInicio = { [Op.gte]: new Date(fechaInicio) };
+//     }
+//     const cursos = await curso.findAll({
+//         where: condiciones,
+//     });
+
+//     return cursos;
+// }
+
+async function buscarCursosRecientes(fecha) {
+    try {
+      // Verifica que la fecha proporcionada sea válida
+      if (!fecha || !Date.parse(fecha)) {
+        throw new Error('La fecha proporcionada es inválida.');
+      }
+  
+      const cursos = await curso.findAll({
+        where: {
+          fechaInicio: { [Op.gte]: fecha },
+        },
+      });
+  
+      return cursos;
+    } catch (error) {
+      throw error;
+    }
+  }
+module.exports = { getAll, getOne, crearCurso, editCurso, deleteCurso, buscarCursosPorNombre,buscarCursosRecientes}

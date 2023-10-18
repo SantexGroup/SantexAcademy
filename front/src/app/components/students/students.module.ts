@@ -7,6 +7,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { StudentsRoutingModule } from './students-routing.module';
 import { LayoutComponent } from './layout/layout.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { PagoPageComponent } from './pago-page/pago-page.component';
+
 
 
 
@@ -19,13 +22,17 @@ import { LayoutComponent } from './layout/layout.component';
     StudentsComponent,
             StudentsCoursesComponent,
             StudentsPersonalDataComponent,
-            LayoutComponent
+            LayoutComponent,
+            PagoPageComponent
   ],
   imports: [
     CommonModule,
     MatSidenavModule,
     MatIconModule,
     StudentsRoutingModule,
-  ]
+    MatDatepickerModule,
+    
+  ],
+  exports: [LayoutComponent, ]
 })
 export class StudentModule { }

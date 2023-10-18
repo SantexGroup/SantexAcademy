@@ -1,0 +1,17 @@
+.course-grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); 
+    grid-gap: 20px; 
+    justify-items: center; 
+}
+
+.course-card {
+    max-width: 300px;
+  }
+  
+  .header-image-card {
+    background-image: url('~src/assets/img/incubadora-image.png');
+    background-size: cover;
+  }
+  
+  

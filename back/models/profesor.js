@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Profesor.init({
+    img: DataTypes.STRING,
     nombreCompleto: DataTypes.STRING,
     nombreUsuario: DataTypes.STRING,
     fechaNacimiento: DataTypes.DATE,
@@ -27,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true,
       },
     },
-    password: DataTypes.STRING
+    contraseña: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Profesor',

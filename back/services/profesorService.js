@@ -1,24 +1,32 @@
+const { Profesor } = require('../models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { Profesor } = require('../models');
 
-function generateJWT(profesor) {
-  return jwt.sign({ id: profesor.id }, 'tu_clave_secreta', { expiresIn: '1h' });
+function generateJWT(datosProfesor) {
+  try {
+    // Genera un token JWT para el usuario recién registrado
+    const tokenLogin = jwt.sign({ id: datosProfesor.id, nombreUsuario: datosProfesor.nombreUsuario }, process.env.SECRET_KEY || 'grupo39', { expiresIn: '1h' });
+    return tokenLogin;
+  } catch (error) {
+    console.error('Error al generar JWT:', error);
+    throw error;
+  }
 }
 
 async function crearProfesor(datosProfesor) {
   try {
-    const salt = await bcrypt.genSalt(10);
-    const contraseñaCifrada = await bcrypt.hash(datosProfesor.contraseña, salt);
-    datosProfesor.contraseña = contraseñaCifrada;
-    
-    // Crear al profesor y obtener el objeto del profesor creado
-    const profesorCreado = await Profesor.create(datosProfesor);
-    
-    // Generar el token JWT utilizando el objeto del profesor creado
-    const token = generateJWT(profesorCreado);
+   
+    // Cifra la contraseña con el salt
+    const contraseñaCifrada = await bcrypt.hash(datosProfesor.contraseña, 10);
 
-    return { profesor: profesorCreado.toJSON(), token };
+    // Reemplaza la contraseña en los datos del usuario
+    datosProfesor.contraseña = contraseñaCifrada;
+
+   
+
+   const profesorCreado = await Profesor.create(datosProfesor);
+
+   return { profesor: profesorCreado.toJSON()};
   } catch (error) {
     console.error('Error al crear profesor:', error);
     throw error;
@@ -44,7 +52,7 @@ async function login(nombreUsuario, contraseña) {
     // Genera un token JWT para el usuario
     const token = generateJWT(profesor);
 
-    return { profesor: profesor.toJSON(), token };
+    return { token };
   } catch (error) {
     throw error;
   }
