@@ -75,7 +75,7 @@ export class HistorialContratacionesComponent implements OnInit {
     //traer articulos
     this.service.articulosContratados(this.idVen).subscribe(res => {
       this.respuesta = res;
-      console.log("respuesta: " + JSON.stringify(res));
+      console.log("respuesta: " + JSON.stringify(res[2]));
       if (JSON.stringify(res.message) == '"Usuario sin artículos contratados todavía"') {
         Swal.fire({
           icon: 'error',
@@ -87,7 +87,7 @@ export class HistorialContratacionesComponent implements OnInit {
       for (let i=0; i < res.length; i++) {
         this.modelo.imaArt = this.servidor + res[i].Product.Images[0].url;
         this.modelo.idArt = res[i].idProducto;
-        this.modelo.nomCom = res[i].Product.User.firstName.charAt(0).toUpperCase() + res[i].Product.User.firstName.slice(1) + ' ' + (res[i].Product.User.lastName.charAt(0).toUpperCase() + res[i].Product.User.lastName.slice(1));
+        this.modelo.nomCom = res[i].User.firstName.charAt(0).toUpperCase() + res[i].User.firstName.slice(1) + ' ' + (res[i].User.lastName.charAt(0).toUpperCase() + res[i].User.lastName.slice(1));
         this.modelo.nomArt = res[i].Product.nombre.charAt(0).toUpperCase() + res[i].Product.nombre.slice(1);
         this.modelo.desArt = res[i].Product.detalles.charAt(0).toUpperCase() + res[i].Product.detalles.slice(1);;
         this.modelo.preArt = res[i].Product.precio;

@@ -32,7 +32,6 @@
                 <a id="verArt" (click)="redirigirProducto(articulo.idArt)">Visualizar Artículo</a>
                 <a data-bs-toggle="modal" data-bs-target="#exampleModal">Ver comprobante</a>
             </div>
-
             <!-- Modal Comprobante-->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -57,7 +56,7 @@
                                 <p>Fecha:</p><span>{{articulo.fecArt | date}}</span>
                             </div>
                             <div class="comprobante-content">
-                                <p>Apellido y Nombre:</p><span>{{nomCom}}</span>
+                                <p>Apellido y Nombre:</p><span>{{articulo.nomCom}}</span>
                             </div>
                             <div class="comprobante-content">
                                 <p>Condicion ante IVA:</p><span>Consumidor Final</span>
