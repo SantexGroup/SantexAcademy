@@ -166,8 +166,8 @@ async function passwordReset(token, newPassword) {
 }
 
 /* Gestion de imagenes */
-async function profileImage(url) {
-  await download(url, () => {
+async function profileImage(url, id) {
+  await download(url, id, () => {
     console.log('descarga completa');
   });
 }

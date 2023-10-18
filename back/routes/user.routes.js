@@ -24,7 +24,7 @@ router.get('/password/:token', userController.resetPage);
 router.post('/resetPassword/:token', userController.resetPassword);
 
 // Profile image
-router.post('/profile', userController.imageUrl);
+router.post('/profile/:id', userController.imageUrl);
 router.get('/profile/:name', userController.imageProfile);
 router.delete('/profile/:name', userController.deleteImage);
 

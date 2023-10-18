@@ -16,11 +16,10 @@ export class NavBarComponent implements OnInit {
     public views: NavBarService,
     public userData: UserDataService,
     private changeDetector: ChangeDetectorRef,
-    private _user: UserService
   ) { }
 
   imageDelete(){
-    return this._user.deleteImage().subscribe(()=>{
+    return this.userData.deleteImage().subscribe(()=>{
       this.userData.urlPicture = ""
     })
   }

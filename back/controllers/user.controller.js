@@ -109,8 +109,9 @@ async function resetPassword(req, res, next) {
 
 async function imageUrl(req, res, next) {
   const { url } = req.body;
+  const { id } = req.params;
   try {
-    await userService.profileImage(url);
+    await userService.profileImage(url, id);
     res.status(200).json({ message: 'Descarga completa' });
   } catch (error) {
     next(error);

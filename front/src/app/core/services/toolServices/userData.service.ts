@@ -19,6 +19,7 @@ import { ProfileService } from '../profile.service';
 import { User } from '../../interfaces/user.interface';
 import { UserService } from '../usuario.service';
 import { ApiService } from '../../http/api.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +51,7 @@ export class UserDataService {
 
   email = "" || localStorage.getItem('email');
 
-  imageProfile: string = `${this.api.apiUrl}user/profile/profile.jpeg`;
+  imageProfile: string = `${this.api.apiUrl}user/profile/profile${this.userId}.jpeg`;
 
   constructor(
     private _experience: ExperiencesService,
@@ -61,7 +62,6 @@ export class UserDataService {
     private _skills: SkillService,
     private _profiles: ProfileService,
     private _personal: UserService,
-    private _user: UserService,
     private api: ApiService
   ) {
 
@@ -131,10 +131,15 @@ export class UserDataService {
     });
   }
 
-  imageDownload() {
-    return this._user.downloadImage(this.urlPicture).subscribe(() => {
-      this.imageProfile = `${this.api.apiUrl}user/profile/profile.jpeg`;
-    });
+  /* Obtener foto de usuario */
+  downloadImage(url: any, id: number): Observable<any> {
+    const body = { url: url }
+    return this.api.post<any>(`user/profile/${id}`, body);
+  }
+
+  deleteImage(): Observable<any> {
+    const name: string = `profile${this.userId}.jpeg`
+    return this.api.delete(`user/profile/${name}`);
   }
 
   /* Autenticacion de usuariio */
