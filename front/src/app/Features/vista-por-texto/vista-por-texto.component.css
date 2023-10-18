@@ -109,18 +109,7 @@ h5 {
     background-color: rgb(238, 235, 235);
     
 }
-/* boton */
-#Ver-mas {
-    background-color: rgb(20, 12, 6);
-    font-size: 15px;
-    font-family:Arial, Helvetica, sans-serif;
-    margin-top: 5%;
-}
-#botonNavegacion {
-    margin-left: 0.5%;
-    padding-top: 0.5%;
-    margin-top: -1.3%;
-}
+
 .contenedorTarjeta .card:hover{
     transform: translate(-10px);
     box-shadow: 0 10px 10px rgba(0, 0, 0, 1);
