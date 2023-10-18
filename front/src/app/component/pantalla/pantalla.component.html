@@ -1,5 +1,11 @@
-<ul>
-    <li *ngFor="let mueble of muebleService.mueblesFiltrados">
-        {{mueble.nombre}} {{mueble.precio | currency}}
-    </li>
-</ul>
+<div class="tarjeta" *ngFor="let mueble of muebleService.mueblesFiltrados">
+    <div class="nombre"> {{mueble.nombre}}</div>
+    <br>
+    <div class="categoria"> Categoria: {{mueble.categoria}}
+    </div>
+    <div class="cuerpo">
+        <div class="precio" alt="precio">
+            {{mueble.precio | currency}}
+        </div>
+        <div class="detalle" alt="detalle"> {{mueble.detalle}}</div>
+    </div>
