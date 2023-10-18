@@ -1,9 +1,12 @@
 <app-barra></app-barra>
+<div id="botonNavegacion">
+  <app-boton-navegacion></app-boton-navegacion>
+</div>
+<div class="container">
 <div class="container contenedorTarjeta">
   <!-- texto -->
   <div id="encabezado">
     <p id="Categoria">Búsqueda de: <span>{{resBus}}</span></p>
-    <app-boton-navegacion></app-boton-navegacion>
   </div>
   <p *ngIf="!bolArt">No hay productos según su búsqueda, intente nuevamente</p>
   <div *ngIf="listArticulos"class="row">
@@ -21,6 +24,5 @@
         </div>
       </div>
     </div>
->
   </div>
 <app-footer></app-footer>

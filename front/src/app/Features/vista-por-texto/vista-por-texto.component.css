@@ -26,10 +26,13 @@ a:hover {
     width: 95%;
     padding-top: 20px;
 }
-app-boton-navegacion{
-    padding-right: 0;
-    padding-left: 600px;
+
+#botonNavegacion {
+    margin-left: 0.5%;
+    padding-top: 0.5%;
+    margin-top: 0.1%;
 }
+
 #Categoria {
     color: black;
     margin-bottom: 1%;
