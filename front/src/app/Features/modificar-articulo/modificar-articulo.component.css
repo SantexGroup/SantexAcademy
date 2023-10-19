@@ -97,7 +97,7 @@ select {
   cursor: pointer;
 }
 .formulario .subir-boton:hover {
-  background-color: #838383;
+  background-color:#c95c6d;
   color: white;
 }
 .botones-container {
@@ -171,7 +171,7 @@ input[type="file"] {
   border-radius: 4px;
 }
 #botonCargar:hover {
-  background-color: grey;
+  background-color:#c95c6d;
   transition: background-color 0.3s, color 0.3s;
   cursor: pointer;
 } 
