@@ -12,6 +12,14 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        idusuario: 8,
+        idespecialidad: 2,
+        habilitado: false,
+        estado: 'A',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
           // Agrega más registros según sea necesario
     ], {});
   },

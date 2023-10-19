@@ -11,6 +11,41 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        iddocente: 0,
+        idcurso: 2,
+        estado: 'A',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        iddocente: 0,
+        idcurso: 3,
+        estado: 'A',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        iddocente: 0,
+        idcurso: 4,
+        estado: 'A',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        iddocente: 0,
+        idcurso: 5,
+        estado: 'A',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        iddocente: 0,
+        idcurso: 6,
+        estado: 'A',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
           // Agrega más registros según sea necesario
     ], {});
   },
