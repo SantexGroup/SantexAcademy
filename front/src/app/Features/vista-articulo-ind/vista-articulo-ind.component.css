@@ -16,7 +16,7 @@ span {
     text-decoration: none;
     color:black;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 15px;
     margin-bottom: 1%;
     margin-top: 1%;
 }
@@ -96,7 +96,7 @@ span {
 #divTitulo a {
     text-decoration: none;
     color:#d68a96;
-    font-size: 13px;
+    font-size: 15px;
 }
 #divTitulo a:hover {
     color:blueviolet;

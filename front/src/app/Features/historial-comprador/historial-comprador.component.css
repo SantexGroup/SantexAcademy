@@ -78,7 +78,6 @@ span {color: #d7818e;}
     border-radius: 15px;
     overflow-y: auto;
     scroll-behavior: smooth;
-    scrollbar-color: blue green; /* esto no funciona */
 }
 #botonNavegacion {
     margin-left: 0.5%;

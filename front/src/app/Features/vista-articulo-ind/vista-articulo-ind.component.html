@@ -64,7 +64,7 @@
                         </div>
                         <button class="boton" data-bs-toggle="modal" data-bs-target="#staticBackdrop" *ngIf="(logeadoComprador || logeadoVendedor) && !logeadoVendedorProd" type="submit" title="{{envSel === '' || diasSel == 0 || pagoSel == '' ? 
                         'Debe seleccionar todas las opciones': ''}}" [disabled]="envSel === '' || diasSel == 0 || pagoSel == ''" >Alquilar Producto</button>
-                        <button class="boton" *ngIf="!logeadoComprador && !logeadoVendedor" type="submit" routerLink="/registro">Cree una cuenta</button>
+                        <button class="boton" *ngIf="!logeadoComprador && !logeadoVendedor" type="submit" routerLink="/registro">Regístrese</button>
                         <button class="boton" *ngIf="logeadoVendedorProd" type="submit" (click)="alertaVen()">Ud es el vendedor</button>
                     </div>
                     <div id="relleno"></div>
