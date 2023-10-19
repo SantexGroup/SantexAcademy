@@ -131,3 +131,7 @@ img {
 }
 #acciones p {width: 50px;}
 #modArt {align-content: end;}
+
+#cuadrado {
+    padding-bottom: 2%;
+}
