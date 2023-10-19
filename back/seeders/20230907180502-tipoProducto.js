@@ -18,6 +18,18 @@ module.exports = {
       },
       {
         id: 3,
+        name: "escritorios",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        id: 4,
+        name: "sillones",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        id: 5,
         name: "catering",
         createdAt: new Date(),
         updatedAt: new Date()

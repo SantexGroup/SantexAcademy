@@ -44,7 +44,7 @@ export class BannerComponent implements OnInit {
   }
 
   redCategory(){
-    this.router.navigateByUrl('/tarjeta');
+    this.router.navigateByUrl('/categorias/4');
   }
 
   verMas(id: string) {
