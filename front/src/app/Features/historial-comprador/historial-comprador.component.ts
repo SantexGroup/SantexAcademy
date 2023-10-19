@@ -110,7 +110,7 @@ export class HistorialCompradorComponent implements OnInit {
         //reemplazar categoria
         if (this.modelo.catArt == '') {
           for (let j=0; j < this.listcategorias.length; j++) {
-            if (this.respuesta[i].Product.idTipoProducto == this.listcategorias[j].id) { //revisar porque en la DB hay 4 valores para idTipoProducto
+            if (this.respuesta[i].Product.idTipoProducto == this.listcategorias[j].id) {
               this.modelo.catArt = JSON.stringify(this.listcategorias[j].name.charAt(0).toUpperCase() + this.listcategorias[j].name.slice(1));
               this.modelo.catArt = this.modelo.catArt.slice(1, this.modelo.catArt.length-1);
               this.modelo.idCat = this.listcategorias[j].id;
