@@ -35,3 +35,7 @@ section img:hover{
     box-shadow: -14px 12px 19px -6px rgba(63, 106, 216, 0.7);
 
 }
+
+@media screen and (max-width: 990px){
+    
+}
