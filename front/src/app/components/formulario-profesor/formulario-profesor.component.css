@@ -124,23 +124,6 @@
     margin-top: 20px;
   }
 
-  .mensaje-regProf {
-    font-size: 14px;
-  }
-
-  .loginProfesor-button {
-    color:  #eca678; 
-    text-decoration: none;
-    transition: color 0.2s;
-    font-weight: bold;
-    margin-left: 5px;
-  }
-  
-  a.loginProfesor-button:hover {
-    color: #F5670E;
-    cursor: pointer; 
-  }
-
 .login-button {
   color:  #eca678; 
   text-decoration: none;

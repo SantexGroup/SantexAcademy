@@ -25,8 +25,7 @@ import { LayoutComponent } from '../students/layout/layout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { WelcomeStudentComponent } from '../students/welcome-student/welcome-student.component';
-
-
+import { FormularioProfesorComponent } from '../formulario-profesor/formulario-profesor.component';
 import { PaginaPrincipalComponent } from '../pagina-principal/pagina-principal.component';
 
 
@@ -45,6 +44,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LayoutComponent,
     PaginaPrincipalComponent,
     WelcomeStudentComponent,
+    FormularioProfesorComponent,
   ],
   imports: [
     BrowserModule,

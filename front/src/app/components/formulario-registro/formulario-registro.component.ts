@@ -1,13 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { ServiceRegService } from 'src/app/service/service-reg.service';
-import { HttpResponse } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ServiceRegService } from 'src/app/service/service-reg.service';
+import { HttpClient } from '@angular/common/http';
 
 interface Generos {
-  gender: string;
+  genero: string;
 }
 
 @Component({
@@ -17,43 +16,44 @@ interface Generos {
 })
 export class FormularioRegistroComponent implements OnInit {
   hide = true;
-  generoControl = new FormControl<Generos | null>(null, Validators.required);
-  selectFormControl = new FormControl('', Validators.required);
-  gender: Generos[] = [
-    { gender: 'Masculino' },
-    { gender: 'Femenino' },
+  genero: Generos[] = [
+    { genero: 'Masculino' },
+    { genero: 'Femenino' },
   ];
 
   myForm!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-    private registroService: ServiceRegService,
-    public dialog: MatDialog,
+    private http: HttpClient,
     private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     this.myForm = this.formBuilder.group({
       nombreCompleto: ['', [Validators.required]],
-      user: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      confirmarPassword: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      gender: ['', [Validators.required]],
-    }, { validator: this.checkPasswords });
+      nombreUsuario: ['', [Validators.required]],
+      contraseña: ['', [Validators.required]],
+      correoElectronico: ['', [Validators.required, Validators.email]],
+      genero: ['', [Validators.required]],
+    },);
   }
 
-  checkPasswords(group: FormGroup) {
-    const password = group.get('password')?.value;
-    const confirmPassword = group.get('confirmarPassword')?.value;
-    return password === confirmPassword ? null : { notMatching: true };
-  }
+
 
   onSubmit() {
     if (this.myForm.valid) {
       const formData = this.myForm.value;
-      this.registroService.registrarUsuario(formData).subscribe(
+     
+      const datosEnviar= {
+        nombreCompleto: formData.nombreCompleto,
+        nombreUsuario: formData.user,
+        contraseña: formData.password,
+        correoElectronico: formData.email,
+        genero: formData.gender,
+      }
+
+      this.http.post('http://localhost:4001/createUser', datosEnviar).subscribe(
         (response: any) => {
           // Manejar la respuesta del backend (éxito)
           console.log('Usuario registrado exitosamente', response);
@@ -68,18 +68,10 @@ export class FormularioRegistroComponent implements OnInit {
     }
   }
 
-  getErrorMessage(controlName: string) {
-    const control = this.myForm.get(controlName);
-    if (controlName === 'email' && control?.hasError('email')) {
-      return 'No es un correo válido';
-    }
-    return '';
-  }
-
   mostrarMensaje(mensaje: string, tipo: 'success' | 'error') {
     this.snackBar.open(mensaje, 'Cerrar', {
-      duration: 5000, 
-      panelClass: tipo === 'success' ? 'success-message' : 'error-message' 
-    })
+      duration: 5000,
+      panelClass: tipo === 'success' ? 'success-message' : 'error-message',
+    });
   }
 }

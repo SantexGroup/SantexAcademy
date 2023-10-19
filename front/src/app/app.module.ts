@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { PaginaPrincipalComponent } from './components/pagina-principal/pagina-principal.component';
+import { FormularioProfesorComponent } from './components/formulario-profesor/formulario-profesor.component';
 
 
 
@@ -24,6 +25,7 @@ import { PaginaPrincipalComponent } from './components/pagina-principal/pagina-p
     AppComponent,
     FormularioRegistroComponent,
     PaginaPrincipalComponent,
+    FormularioProfesorComponent,
   ],
   imports: [
     BrowserModule,

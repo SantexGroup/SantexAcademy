@@ -2,77 +2,71 @@
   <h2 class="title">Crear cuenta</h2>
   <hr class="divider">
   <form class="form-square" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
     <mat-form-field>
       <mat-label class="form-item">Nombre Completo</mat-label>
       <input class="form-input mat-form-field-infix" matInput placeholder="Ingrese Nombre Completo"
         formControlName="nombreCompleto" required>
-      <div *ngIf="myForm.get('nombreCompleto')?.invalid && myForm.get('nombreCompleto')?.touched" class="error-message">
-      </div>
+      <mat-error *ngIf="myForm.get('nombreCompleto')?.invalid && myForm.get('nombreCompleto')?.touched">
+        Completa este campo
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label class="form-item">Correo Electronico</mat-label>
+      <mat-label class="form-item">Correo Electrónico</mat-label>
       <input class="form-input mat-form-field-infix" type="email" matInput placeholder="ejemplo@ejemplo.com"
-        formControlName="email" required>
-      <mat-error *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched" class="error-message">
-        {{getErrorMessage('email')}}</mat-error>
+        formControlName="correoElectronico" required>
+      <mat-error *ngIf="myForm.get('correoElectronico')?.invalid && myForm.get('correoElectronico')?.touched">
+        Completa este campo o ingresa un correo válido
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label class="form-item">Usuario</mat-label>
-      <input class="form-input mat-form-field-infix" matInput placeholder="Ingrese su Usuario" formControlName="user"
+      <input class="form-input mat-form-field-infix" matInput placeholder="Ingrese su Usuario" formControlName="nombreUsuario"
         required>
-      <div *ngIf="myForm.get('user')?.invalid && myForm.get('user')?.touched" class="error-message"></div>
+      <mat-error *ngIf="myForm.get('nombreUsuario')?.invalid && myForm.get('nombreUsuario')?.touched">
+        Completa este campo
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label class="form-item">Contraseña</mat-label>
       <input class="form-input mat-form-field-infix" matInput [type]="hide ? 'password' : 'text'"
-        placeholder="Ingrese su Contraseña" formControlName="password" required>
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        placeholder="Ingrese su Contraseña" formControlName="contraseña" required>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide contraseña'"
         [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <div *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched" class="error-message">
-        Contraseña es requerida
-      </div>
+      <mat-error *ngIf="myForm.get('contraseña')?.invalid && myForm.get('contraseña')?.touched">
+        Completa este campo
+      </mat-error>
     </mat-form-field>
-
-    <mat-form-field>
-      <mat-label class="form-item">Confirmar Contraseña</mat-label>
-      <input class="form-input mat-form-field-infix" matInput [type]="hide ? 'password' : 'text'"
-        placeholder="Ingrese su Contraseña" formControlName="confirmarPassword" required>
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-        [attr.aria-pressed]="hide">
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-      <div *ngIf="myForm.get('confirmarPassword')?.invalid && myForm.get('confirmarPassword')?.touched"
-        class="error-message">
-        Confirmación de contraseña es requerida
-      </div>
-      <div *ngIf="myForm.hasError('notMatching', 'confirmarPassword')" class="error-message">
-        Las contraseñas no coinciden
-      </div>
-    </mat-form-field>
-
 
     <h4 class="form-item">Géneros</h4>
     <mat-form-field>
       <mat-label>Seleccionar</mat-label>
-      <mat-select formControlName="gender" required>
+      <mat-select formControlName="genero" required>
         <mat-option>--</mat-option>
-        <mat-option *ngFor="let generoItem of gender" [value]="generoItem.gender">
-          {{ generoItem.gender }}
+        <mat-option *ngFor="let generoItem of genero" [value]="generoItem.genero">
+          {{ generoItem.genero }}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="generoControl.invalid && generoControl.touched"></mat-error>
+      <mat-error *ngIf="myForm.get('genero')?.invalid && myForm.get('genero')?.touched">
+        Completa este campo
+      </mat-error>
     </mat-form-field>
 
-    <button class="button-create" mat-raised-button color="primary" type="button" [disabled]="myForm.invalid">Crear
-      Cuenta</button>
-
+    <button class="button-create" mat-raised-button color="primary" type="button" [disabled]="myForm.invalid">Crear Cuenta</button>
   </form>
+
   <p class="mensaje-iniciar-sesion">
-    ¿Ya tienes una cuenta? Haz clic en <a class="login-button" routerLink="/login"> INICIAR SESIÓN</a>
+    ¿Ya tienes una cuenta? <a class="login-button" routerLink="/login">INICIAR SESIÓN</a>
   </p>
+  
+  <p class="mensaje-regProf">
+    ¿Eres Profesor? <a class="loginProfesor-button" routerLink="/registro-profesor">REGISTRARSE PROFESOR</a>
+  </p>
+
+
 </div>

@@ -9,6 +9,7 @@ import { LayoutComponent } from '../students/layout/layout.component';
 import { PagoPageComponent } from '../students/pago-page/pago-page.component';
 import { PaginaPrincipalComponent } from '../pagina-principal/pagina-principal.component';
 import { WelcomeStudentComponent } from '../students/welcome-student/welcome-student.component';
+import { FormularioProfesorComponent } from '../formulario-profesor/formulario-profesor.component';
 
 
 
@@ -21,6 +22,7 @@ const routes: Routes = [
     { path: 'pago-page', component: PagoPageComponent},
   ]},
   { path: 'registro', component: FormularioRegistroComponent },
+  { path: 'registro-profesor', component: FormularioProfesorComponent },
   { path: 'login', component: LoginComponent },
   { path: '', component: PaginaPrincipalComponent, pathMatch: 'full' }, 
   { path: 'dashboard', loadChildren: () => import('../../modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
