@@ -66,6 +66,20 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
+      {
+        id: 10,
+        url: 'catering01.jpeg',
+        idProducto: 5,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        id: 11,
+        url: 'platos01.jpeg',
+        idProducto: 6,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
       
     ], {});
   },
