@@ -4,7 +4,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 /* Tarjeta */
 .curso-card {
   width: 350px; /* Ancho fijo deseado para todas las tarjetas */
@@ -20,10 +19,11 @@
   background-color: #fff; /* Fondo blanco en la tarjeta */
 }
 
+
 /* Imagen de la tarjeta */
 .curso-card figure {
   width: 100%;
-  height: 200%; /* Alto deseado para la imagen */
+  height: 200px; /* Establece la altura fija para la imagen */
   border-radius: 10px;
   overflow: hidden;
 }
@@ -33,27 +33,34 @@
   height: 100%;
   object-fit: cover;
 }
-
 /* Contenido de la tarjeta */
 .curso-card .contenido-card {
-  padding: 20px;
-  flex-grow: 1;
+  height: 200px; /* Establece la altura fija para el contenedor de texto */
+  padding: 0px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Título de la tarjeta */
 .curso-card .contenido-card h3 {
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 10px;
   color: #333;
+  margin-bottom: 7px;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Agrega puntos suspensivos (...) si el texto es demasiado largo para caber */
+  white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
 }
 
 /* Descripción de la tarjeta */
 .curso-card .contenido-card p {
   font-size: 16px;
   line-height: 1.5;
-  margin-bottom: 10px;
   color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Información adicional de la tarjeta */
@@ -62,20 +69,24 @@
 .curso-card .contenido-card .requisitos {
   font-size: 10px;
   font-weight: bold;
-  margin-bottom: 5px;
   color: #444;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Enlace dentro de la tarjeta */
 .curso-card .contenido-card a {
   display: inline-block;
-  padding: 10px;
+  padding: 10px 20px;
   margin-top: 5px;
   text-decoration: none;
   color: #2fb4cc;
   border: 1px solid #2fb4cc;
   border-radius: 4px;
   transition: background 0.4s, color 0.4s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Efecto hover de la tarjeta */
