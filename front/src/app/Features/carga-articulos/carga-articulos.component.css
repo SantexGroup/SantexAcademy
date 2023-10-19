@@ -79,9 +79,10 @@ textarea {
   border-radius: 4px;
   transition: background-color 0.3s, color 0.3s;
   margin: -10px;
+  cursor: pointer;
 }
 .formulario .subir-boton:hover {
-  background-color: #838383;
+  background-color:#c95c6d;
   color: white;
 }
 .botones-container {
@@ -142,7 +143,7 @@ textarea {
   border-radius: 4px;
 }
 #botonCargar:hover {
-  background-color: grey;
+  background-color:#c95c6d;
   transition: background-color 0.3s, color 0.3s;
   cursor: pointer;
 } 

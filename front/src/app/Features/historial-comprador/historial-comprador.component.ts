@@ -57,7 +57,6 @@ export class HistorialCompradorComponent implements OnInit {
       this.datosLog = newObject;
       this.idCom = this.datosLog[1].users.id;
       this.dniCom = this.datosLog[1].users.dni;
-
     }else{
       Swal.fire({
         icon: 'error',
