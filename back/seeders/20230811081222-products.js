@@ -75,6 +75,18 @@ module.exports = {
         updatedAt: new Date(),
         estado: true,
       },
+      {
+        id: 7,
+        idUsuario: 1,
+        idTipoProducto: 1,
+        nombre: 'Mesa malcom',
+        detalles: 'mesa malcom estilo industrial',
+        precio: 3000,
+        envio: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        estado: true,
+      },
       
     ], {});
   },
