@@ -106,8 +106,17 @@ export class BarraLateralComponent implements OnInit {
   }
   
   botonVendedor() {
-    if(confirm("¿Seguro que quiere activar su perfil de vendedor?")) {
-      let infoLocal = localStorage.getItem('resLog')
+    Swal.fire({
+      title: '¿Desea convertirse en vendedor? ',
+      text: "Podras publicar tus artículos para alquilar",
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, deseo ser comprador',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {let infoLocal = localStorage.getItem('resLog')
       if (infoLocal && (this.logeadoComprador || this.logeadoVendedor)) {
         let newObject = JSON.parse(infoLocal);
         if (newObject) {
@@ -126,9 +135,10 @@ export class BarraLateralComponent implements OnInit {
           })     
         }
       }
-    }
-  }
-}
+    }}})
+
+      }
+
   redirigirCompras() {
     this.router.navigateByUrl('/historial-compras');
   }
