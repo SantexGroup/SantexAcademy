@@ -1,7 +1,8 @@
 <div class="sidebar" [ngClass]="{ 'expanded': isExpanded }">
     <div class="header">
       <div id="icono" class="toggle pt-3 mb-4" (click)="handleSidebarToggle()">
-        <i class="fa-solid fa-user fa-xl"></i>
+        <i *ngIf="logeadoComprador || logeadoVendedor"class="fa-solid fa-user fa-xl" style="color: #d68a96"></i>
+        <i *ngIf="!logeadoComprador && !logeadoVendedor"class="fa-solid fa-user fa-xl"></i>
       </div>
     </div>
     <div class="content">
