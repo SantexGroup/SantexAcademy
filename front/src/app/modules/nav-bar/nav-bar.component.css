@@ -30,3 +30,12 @@
     color: #FFF;
     background: #3f6ad8;
 }
+
+@media screen and (max-width: 990px){
+
+    #id-navbar{
+        width: 100%;
+        
+    }
+
+}

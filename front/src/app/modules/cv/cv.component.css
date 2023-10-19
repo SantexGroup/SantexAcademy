@@ -37,5 +37,18 @@ section img:hover{
 }
 
 @media screen and (max-width: 990px){
+
+    section{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 70%;
+        margin: 0;
+    }
     
+    section img{
+        width:70%;
+        height: 50%;
+    }
 }

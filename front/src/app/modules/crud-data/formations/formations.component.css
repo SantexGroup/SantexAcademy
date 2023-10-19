@@ -130,7 +130,7 @@ form mat-form-field {
 
 .consejo{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     margin-right: 2em ;
     margin-bottom: 2em;
   }
