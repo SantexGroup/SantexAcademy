@@ -67,6 +67,7 @@ export class RegistroComponent implements OnInit{
       this.userService.registro(myForm.value).subscribe({
         next: (data) => { console.log(data);
         this.dataUser.profileId = data.profile.id;
+        this.dataUser.userId = data.profile.userId;
         this.views.quickButton = true;
         this.views.accountButton = false;
         this.dataUser.userName = data.user.name;

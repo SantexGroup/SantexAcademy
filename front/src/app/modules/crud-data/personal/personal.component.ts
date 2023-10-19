@@ -5,6 +5,7 @@ import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.servic
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
 import { UserService } from 'src/app/core/services/usuario.service';
 import { ToastrService } from 'ngx-toastr';
+import { ApiService } from 'src/app/core/http/api.service';
 
 
 
@@ -27,6 +28,7 @@ export class PersonalComponent implements OnInit {
     private userService: UserService,
     public userData: UserDataService,
     public views: NavBarService,
+    private api: ApiService,
     public toastr: ToastrService
   ) {
     this.personalForm = this.fb.group({
@@ -100,11 +102,18 @@ export class PersonalComponent implements OnInit {
       this.userService.uploadImage(this.imagen).subscribe((data) => {
         this.url = data;
         this.userData.urlPicture = this.url;
+        this.imageDownload();
         this.userUpdate();
       })
     } else {
       this.userUpdate()
     }
+  }
+
+  imageDownload() {
+    return this.userData.downloadImage(this.userData.urlPicture, this.userData.userId).subscribe(() => {
+      this.userData.imageProfile = `${this.api.apiUrl}user/profile/profile${this.userData.userId}.jpeg`;
+    });
   }
 
   userUpdate() {
@@ -120,10 +129,6 @@ export class PersonalComponent implements OnInit {
     this.userService.updateUser(this.userData.userId, userUpdate).subscribe(() => {
       this.getUser()  
     })
-  }
-
-  imageDownload(url:string){
-    
   }
 
 }

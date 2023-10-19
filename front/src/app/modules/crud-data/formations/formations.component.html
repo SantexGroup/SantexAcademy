@@ -82,7 +82,7 @@
                     <h4 class="card-title">Institucion: {{formation.institute}}</h4>
                     <h5 class="card-text">Descripcion</h5>
                     <h5 class="card-text">{{ formation.description }}</h5>
-                    <h5 class="card-text">Estado {{formation.statusId}}</h5>
+                    <h5 class="card-text">Estado {{formation.FormationStatus?.status}}</h5>
                     <div class="botonera-card">
                       <button (click)="editFormation(formation)" (click)="views.changeViews()" >
                         <img src="./assets/Imagenes/editar.png" alt="Editar">
@@ -94,7 +94,6 @@
                   </div>
                 </li>
               </ul>
-              
         </div>
     </div>
 </body>
