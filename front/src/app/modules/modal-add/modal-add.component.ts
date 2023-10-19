@@ -82,6 +82,7 @@ export class ModalAddComponent implements OnInit {
     this._profileTool.newOptionals = element.Optionals!
     this._profileTool.address = element.Optionals![0].address
     this._profileTool.newReferences = element.References!
+    this.toastr.success('Se cargo el perfil de manera correcta', 'PERFILES')
   }
 
   reset(){

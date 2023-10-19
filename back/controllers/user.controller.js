@@ -107,6 +107,40 @@ async function resetPassword(req, res, next) {
   }
 }
 
+async function imageUrl(req, res, next) {
+  const { url } = req.body;
+  const { id } = req.params;
+  try {
+    await userService.profileImage(url, id);
+    res.status(200).json({ message: 'Descarga completa' });
+  } catch (error) {
+    next(error);
+  }
+}
+
+/* Gestion de imagenes */
+async function imageProfile(req, res, next) {
+  const { name } = req.params;
+
+  try {
+    const image = await userService.imageGet(name);
+    res.status(200).sendFile(image);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function deleteImage(req, res, next) {
+  const { name } = req.params;
+
+  try {
+    await userService.imageDelete(name);
+    res.status(200).json({ message: 'Imagen Eliminada' });
+  } catch (error) {
+    next(error);
+  }
+}
+
 // Modulos a exportar para inyectar en routes
 module.exports = {
   recordUser,
@@ -117,4 +151,7 @@ module.exports = {
   resetMail,
   resetPage,
   resetPassword,
+  imageUrl,
+  imageProfile,
+  deleteImage,
 };

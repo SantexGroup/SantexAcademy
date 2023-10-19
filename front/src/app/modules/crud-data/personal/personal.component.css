@@ -141,15 +141,15 @@ form mat-form-field {
 
 .imagenBox {
   width: 300px;
-  height: 300px;
+  height: 350px;
   margin: 5px 15px; 
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
 .consejo{
   display: flex;
-  justify-content: flex-start;
-  margin-left: 8em ;
+  justify-content: flex-end;
+  margin-right: 2em ;
   margin-bottom: 2em;
 }
 

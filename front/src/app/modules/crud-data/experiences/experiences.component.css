@@ -165,6 +165,9 @@ form mat-form-field {
     }
     .lista{
         display: flex;
+        justify-content: flex-end;
+        margin-right: 2em ;
+        margin-bottom: 2em;
 
     }    
 }

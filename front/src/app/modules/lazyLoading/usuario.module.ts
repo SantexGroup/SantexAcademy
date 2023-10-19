@@ -16,8 +16,7 @@ const userRoutes: Routes = [
   },
   {
     path: 'registro',
-    component: RegistroComponent,
-    canDeactivate: [AbandonGuard]
+    component: RegistroComponent
   }
 ]
 

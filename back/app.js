@@ -63,9 +63,13 @@ app.use(express.urlencoded(
   },
 ));
 
+/* Configuaracion correo */
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(express.static('./public'));
+
+/* Configuracion imagenes */
+app.use('/download', express.static('./public/download'));
 
 // Cors configuration
 const whitelist = process.env.CORS.split(',');

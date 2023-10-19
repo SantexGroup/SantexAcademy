@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit{
         localStorage.setItem('userName', data.user.name);
         localStorage.setItem('lastName', data.user.lastName);
         localStorage.setItem('picture', data.user.pictureLink);
-        localStorage.setItem('rol', String(data.user.rolesId))
+        localStorage.setItem('rol', String(data.user.rolesId));
         this.views.changeTitle("Bienvenido! " + data.user.name + " " + data.user.lastName);
         this.userLevel(data);
         }, 

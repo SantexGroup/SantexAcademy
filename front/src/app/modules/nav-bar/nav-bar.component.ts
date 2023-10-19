@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { NavBarService } from 'src/app/core/services/toolServices/nav-bar.service';
 import { UserDataService } from 'src/app/core/services/toolServices/userData.service';
+import { UserService } from 'src/app/core/services/usuario.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,8 +15,14 @@ export class NavBarComponent implements OnInit {
   constructor(
     public views: NavBarService,
     public userData: UserDataService,
-    private changeDetector: ChangeDetectorRef
+    private changeDetector: ChangeDetectorRef,
   ) { }
+
+  imageDelete(){
+    return this.userData.deleteImage().subscribe(()=>{
+      this.userData.urlPicture = ""
+    })
+  }
 
 
   ngOnInit(): void {
@@ -26,6 +33,7 @@ export class NavBarComponent implements OnInit {
   }
 
   logout() {
+    this.imageDelete();
     localStorage.clear();
   }
 

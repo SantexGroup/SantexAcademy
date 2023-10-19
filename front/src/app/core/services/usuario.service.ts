@@ -5,6 +5,7 @@ import { registroInterface } from '../interfaces/registro.interface';
 import { User } from '../../core/interfaces/user.interface';
 import { ApiService } from '../http/api.service';
 import { loginInterface } from '../interfaces/login.interface';
+import { UserDataService } from './toolServices/userData.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,9 @@ export class UserService {
 
 private userData1: BehaviorSubject<{ name: string, lastName: string }> = new BehaviorSubject<{ name: string, lastName: string }>({ name: '', lastName: '' });
 
-  constructor( private api: ApiService ) { }
+  constructor( 
+    private api: ApiService
+     ) { }
 
   //* informa si se llevo al cabo el registro
   registrodeUsuario: BehaviorSubject<boolean> = new BehaviorSubject<boolean> (false); 
@@ -48,9 +51,10 @@ private userData1: BehaviorSubject<{ name: string, lastName: string }> = new Beh
   uploadImage(imagen: any) : Observable <any> {
     const pictureLink = new FormData();
     pictureLink.append('pictureLink', imagen);
-    return this.api.post<any>('user/upload', pictureLink );
+    return this.api.post<any>('user/upload', pictureLink);
   }
 
+  
   setUserData(name: string, lastName: string) {
     this.userData1.next({ name, lastName });
   }
