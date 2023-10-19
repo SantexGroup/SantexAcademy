@@ -75,8 +75,22 @@ module.exports = {
       },
       {
         id: 11,
-        url: 'platos01.jpeg',
+        url: 'platos01.jpg',
         idProducto: 6,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        id: 12,
+        url: 'mesa-malcom01.jpg',
+        idProducto: 7,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        id: 13,
+        url: 'mesa-malcom02.jpg',
+        idProducto: 7,
         createdAt: new Date(),
         updatedAt: new Date()
       },
