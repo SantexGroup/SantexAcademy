@@ -33,7 +33,13 @@ module.exports = {
         name: "catering",
         createdAt: new Date(),
         updatedAt: new Date()
-      }
+      },
+      {
+        id: 6,
+        name: "vajilla",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
       
     ], {})
     /**
