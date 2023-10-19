@@ -47,13 +47,13 @@ export class FormularioRegistroComponent implements OnInit {
      
       const datosEnviar= {
         nombreCompleto: formData.nombreCompleto,
-        nombreUsuario: formData.user,
-        contraseña: formData.password,
-        correoElectronico: formData.email,
-        genero: formData.gender,
+        nombreUsuario: formData.nombreUsuario,
+        contraseña: formData.contraseña,
+        correoElectronico: formData.correoElectronico,
+        genero: formData.genero,
       }
 
-      this.http.post('http://localhost:4001/createUser', datosEnviar).subscribe(
+      this.http.post('http://localhost:4001/users/createUser', datosEnviar).subscribe(
         (response: any) => {
           // Manejar la respuesta del backend (éxito)
           console.log('Usuario registrado exitosamente', response);

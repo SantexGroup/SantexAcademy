@@ -57,16 +57,15 @@
       </mat-error>
     </mat-form-field>
 
-    <button class="button-create" mat-raised-button color="primary" type="button" [disabled]="myForm.invalid">Crear Cuenta</button>
+    <button class="button-create" mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid">Crear Cuenta</button>
   </form>
 
   <p class="mensaje-iniciar-sesion">
     ¿Ya tienes una cuenta? <a class="login-button" routerLink="/login">INICIAR SESIÓN</a>
   </p>
-  
+
   <p class="mensaje-regProf">
     ¿Eres Profesor? <a class="loginProfesor-button" routerLink="/registro-profesor">REGISTRARSE PROFESOR</a>
   </p>
-
 
 </div>

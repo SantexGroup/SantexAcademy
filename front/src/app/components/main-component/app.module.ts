@@ -27,6 +27,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { WelcomeStudentComponent } from '../students/welcome-student/welcome-student.component';
 import { FormularioProfesorComponent } from '../formulario-profesor/formulario-profesor.component';
 import { PaginaPrincipalComponent } from '../pagina-principal/pagina-principal.component';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -67,6 +68,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatToolbarModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
