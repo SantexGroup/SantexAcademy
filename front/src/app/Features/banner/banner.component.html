@@ -29,7 +29,7 @@
         <div class="card" >
           <div class="card-body">
             <div id="contImg">
-            <img id="FotoArticulo" [src]="images[listArticulos.indexOf(articulo)]">
+            <img (click)="verMas(articulo.id)" id="FotoArticulo" [src]="images[listArticulos.indexOf(articulo)]">
             </div>
             <h5 class="card-title">{{ articulo.nombre }}</h5>
             <p class="descripcion">{{ articulo.detalles }}</p>

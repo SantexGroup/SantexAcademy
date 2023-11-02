@@ -113,7 +113,7 @@ export class BarraLateralComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, deseo ser comprador',
+      confirmButtonText: 'Sí, deseo ser vendedor',
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {let infoLocal = localStorage.getItem('resLog')

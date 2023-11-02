@@ -59,6 +59,11 @@ h5 {margin-left: 10px;}
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-left: 5px;
 }
+
+#contImg:hover {
+    cursor: pointer;
+}
+
 .tarjeta-container {
     margin: 0 10px 10px 0;
     margin-right: 45px;
