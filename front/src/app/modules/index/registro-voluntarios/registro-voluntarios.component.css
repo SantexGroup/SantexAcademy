@@ -102,5 +102,8 @@
 }
 
 .boton-volver{
+    border-radius: 20px;
+    padding: 0 20px;
     margin-bottom: 20px;
+    
 }

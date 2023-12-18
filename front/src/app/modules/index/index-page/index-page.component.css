@@ -13,10 +13,9 @@
 .seccion{
     display: flex;
     justify-content: center;
-    
     width: 100%;
     padding-top: 50px;
-    margin-top: 50px;
+    margin: 50px 0;
 }
 
 .contenedor-right{
@@ -72,6 +71,9 @@
 
 .fondo-blanco{
     background-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .contenedor-imagen{
@@ -161,4 +163,13 @@
 .tareas-disponibles{
     font-size: 24px;
     color: white;
+}
+
+@media (min-width:1000px) {
+  .seccion{
+    width: 900px;
+  }
+  .subtitulo{
+    font-size: 40px;
+  }
 }

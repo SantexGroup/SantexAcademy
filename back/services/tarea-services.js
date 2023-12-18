@@ -84,6 +84,8 @@ async function editTarea(id, name, description, coordinatorId, date, place, cate
       }
       tarea.categoryId = categoryId;
       tarea.points = tarea.duracion * category.puntosPorHora;
+    } else {
+      tarea.points = tarea.duracion * tarea.category.puntosPorHora;
     }
   }
 

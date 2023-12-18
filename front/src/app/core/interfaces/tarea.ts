@@ -1,5 +1,6 @@
 import { Categoria } from "./categoria"
 import { Organizacion } from "./organizacion"
+import { TareasVoluntario } from "./tareasVoluntario"
 
 export interface Tarea{
     id?:number,
@@ -18,5 +19,6 @@ export interface Tarea{
     estado?:string,
     hora:number,
     latitud:number,
-    longitud:number
+    longitud:number,
+    tareasVoluntario?:TareasVoluntario
 }

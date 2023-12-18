@@ -29,7 +29,7 @@ export class CrearModificarPremioComponent implements OnInit {
       nombre:['', [Validators.required,Validators.maxLength(40)]],
       cantidad:['', [Validators.required, Validators.max(200000)]],
       costo:['', [Validators.required, Validators.max(200000)]],
-      descripcion:['', [Validators.required, Validators.maxLength(50)]]
+      descripcion:['', [Validators.required, Validators.maxLength(100)]]
 
     });
 

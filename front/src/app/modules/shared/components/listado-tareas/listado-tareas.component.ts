@@ -70,6 +70,22 @@ export class ListadoTareasComponent implements OnInit {
 
   }
 
+  verificarAsistencia(tarea:Tarea):boolean{
+    if(this.datosVoluntario){
+
+      const resultado = this.datosVoluntario.tareas?.some(t=> t.id === tarea.id)!;
+
+      if(resultado){
+        const index = this.datosVoluntario.tareas.findIndex(tareaVoluntario => tareaVoluntario.id === tarea.id);
+        if(this.datosVoluntario.tareas[index].tareasVoluntario?.asistio){
+          return true;
+        }
+      }
+    }
+    return false;
+
+  }
+
   desinscribirVoluntario(tarea:Tarea):void{
     this.tareaDesinscripcion.emit(tarea);
   }
