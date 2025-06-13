@@ -5,7 +5,7 @@ XAcademy es un programa de formación en programación nativo llevado adelante p
 
 
 # Información del Proyecto
-Nombre: Verónica Inés
-Apellido: Zuliani
-Nacionalidad: Argentina
-Email: vero.zuliani92@gmail.com
+Nombre: Verónica Inés  
+Apellido: Zuliani  
+Nacionalidad: Argentina  
+Email: vero.zuliani92@gmail.com  
