@@ -1,0 +1,15 @@
+<!-- src/app/components/player/player.html -->
+<div class="player-container">
+  <h1>Detalles del Jugador</h1>
+  <p>Selecciona un jugador para ver sus detalles.</p>
+<div *ngIf="player; else noPlayer">
+  <h2>{{ player.name }}</h2>
+  <p>Club: {{ player.club }}</p>
+  <p>Posición: {{ player.position }}</p>
+  <p>Nacionalidad: {{ player.nationality }}</p>
+  <p>Rating: {{ player.rating }}</p>
+</div>
+
+<ng-template #noPlayer>
+  <p>{{ errorMessage || 'Cargando jugador...' }}</p>
+</ng-template>
