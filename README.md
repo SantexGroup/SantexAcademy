@@ -1,5 +1,11 @@
 # Santex Academy - FootballAPI
 
+## Informacion del Alumno
+Ana Fontana
+Bs As,Argentina
+anafontana822@hotmail.com
+
+
 ## Pasos para correr
 
 1. Instalar Docker Desktop: Si no lo tienen, es el primer paso.
