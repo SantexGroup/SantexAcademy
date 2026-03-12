@@ -67,3 +67,9 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
+### Información del Proyecto
+#### Información Personal
+- Nombre y apellido: Matías Alancay
+- Nacionalidad: Argentina
+- Email: matias9486mdp@gmail.com
