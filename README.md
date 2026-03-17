@@ -1,5 +1,12 @@
 # Santex Academy - FootballAPI
 
+## Informacion del proyecto
+
+Nombre: Mateo Nahuel
+Apellido: Matias
+Nacionalidad: Argentina
+Email: mateomatias1304@gmail.com
+
 ## Pasos para correr
 
 1. Instalar Docker Desktop: Si no lo tienen, es el primer paso.
