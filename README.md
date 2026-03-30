@@ -67,3 +67,9 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+## Información del alumno
+
+- Nombre: Gina
+- Apellido: Vegetti
+- Nacionalidad: Argentina
+- Email: ggvegetti@gmail.com
