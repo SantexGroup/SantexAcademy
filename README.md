@@ -1,5 +1,9 @@
 # Santex Academy - FootballAPI
 
+Diego Hernández - 
+Argentino - 
+dnandez@gmail.com
+
 ## Pasos para correr
 
 1. Instalar Docker Desktop: Si no lo tienen, es el primer paso.
